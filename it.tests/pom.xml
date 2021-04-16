@@ -18,15 +18,15 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>com.lebara.assets</groupId>
-        <artifactId>lebara-assets</artifactId>
+        <groupId>com.lebara</groupId>
+        <artifactId>lebara</artifactId>
         <version>1.0.0-SNAPSHOT</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
 
-    <artifactId>lebara-assets.it.tests</artifactId>
-    <name>Lebara Assets - Integration Tests</name>
-    <description>Integration Tests for Lebara Assets</description>
+    <artifactId>lebara.it.tests</artifactId>
+    <name>Lebara - Integration Tests</name>
+    <description>Integration Tests for Lebara</description>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

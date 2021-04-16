@@ -6,8 +6,8 @@
     <!-- P A R E N T  P R O J E C T  D E S C R I P T I O N                      -->
     <!-- ====================================================================== -->
     <parent>
-        <groupId>com.lebara.assets</groupId>
-        <artifactId>lebara-assets</artifactId>
+        <groupId>com.lebara</groupId>
+        <artifactId>lebara</artifactId>
         <version>1.0.0-SNAPSHOT</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
@@ -15,9 +15,9 @@
     <!-- ====================================================================== -->
     <!-- P R O J E C T  D E S C R I P T I O N                                   -->
     <!-- ====================================================================== -->
-    <artifactId>lebara-assets.ui.apps.structure</artifactId>
+    <artifactId>lebara.ui.apps.structure</artifactId>
     <packaging>content-package</packaging>
-    <name>Lebara Assets - Repository Structure Package</name>
+    <name>Lebara - Repository Structure Package</name>
     <description>
         Empty package that defines the structure of the Adobe Experience Manager repository the Code packages in this project deploy into.
         Any roots in the Code packages of this project should have their parent enumerated in the Filters list below.
@@ -35,7 +35,7 @@
                     <filters>
                         <!-- /apps root -->
                         <filter><root>/apps</root></filter>
-                        <filter><root>/apps/lebara-assets</root></filter>
+                        <filter><root>/apps/lebara</root></filter>
 
                         <!-- Common overlay roots -->
                         <filter><root>/apps/sling</root></filter>
@@ -48,7 +48,7 @@
                         <filter><root>/apps/settings</root></filter>
 
                         <!-- DAM folder root, will be created via repoinit -->
-                        <filter><root>/content/dam/lebara-assets</root></filter>
+                        <filter><root>/content/dam/lebara</root></filter>
 
                     </filters>
                 </configuration>

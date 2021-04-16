@@ -15,6 +15,6 @@
   ~ limitations under the License.
   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 <workspaceFilter version="1.0">
-    <filter root="/apps/lebara-assets-packages"/>
-    <filter root="/apps/lebara-assets-vendor-packages"/>
+    <filter root="/apps/lebara-packages"/>
+    <filter root="/apps/lebara-vendor-packages"/>
 </workspaceFilter>
