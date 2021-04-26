@@ -23,15 +23,15 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>com.lebara.assets</groupId>
-        <artifactId>lebara-assets</artifactId>
+        <groupId>com.lebara</groupId>
+        <artifactId>lebara</artifactId>
         <version>1.0.0-SNAPSHOT</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
 
-    <artifactId>lebara-assets.ui.tests</artifactId>
-    <name>Lebara Assets - UI Tests</name>
-    <description>UI Tests for Lebara Assets</description>
+    <artifactId>lebara.ui.tests</artifactId>
+    <name>Lebara - UI Tests</name>
+    <description>UI Tests for Lebara</description>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

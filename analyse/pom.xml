@@ -21,8 +21,8 @@
         <!-- P A R E N T  P R O J E C T  D E S C R I P T I O N                      -->
         <!-- ====================================================================== -->
     <parent>
-        <groupId>com.lebara.assets</groupId>
-        <artifactId>lebara-assets</artifactId>
+        <groupId>com.lebara</groupId>
+        <artifactId>lebara</artifactId>
         <version>1.0.0-SNAPSHOT</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
@@ -30,9 +30,9 @@
     <!-- ====================================================================== -->
     <!-- P R O J E C T  D E S C R I P T I O N                                   -->
     <!-- ====================================================================== -->
-    <artifactId>lebara-assets.analyse</artifactId>
-    <name>Lebara Assets - Project Analyser</name>
-    <description>Project analysis for Lebara Assets</description>
+    <artifactId>lebara.analyse</artifactId>
+    <name>Lebara - Project Analyser</name>
+    <description>Project analysis for Lebara</description>
     <packaging>aem-analyse</packaging>
 
     <build>
@@ -47,8 +47,8 @@
 
     <dependencies>
         <dependency>
-            <groupId>com.lebara.assets</groupId>
-            <artifactId>lebara-assets.all</artifactId>
+            <groupId>com.lebara</groupId>
+            <artifactId>lebara.all</artifactId>
             <version>${project.version}</version>
             <type>zip</type>
         </dependency>

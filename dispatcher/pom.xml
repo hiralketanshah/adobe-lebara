@@ -7,16 +7,16 @@
     <!-- P A R E N T  P R O J E C T  D E S C R I P T I O N                      -->
     <!-- ====================================================================== -->
     <parent>
-        <groupId>com.lebara.assets</groupId>
-        <artifactId>lebara-assets</artifactId>
+        <groupId>com.lebara</groupId>
+        <artifactId>lebara</artifactId>
         <version>1.0.0-SNAPSHOT</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
 
-    <artifactId>lebara-assets.dispatcher.cloud</artifactId>
+    <artifactId>lebara.dispatcher.cloud</artifactId>
     <packaging>pom</packaging>
-    <name>Lebara Assets - Dispatcher</name>
-    <description>HTTP &amp; Dispatcher configurations for Lebara Assets</description>
+    <name>Lebara - Dispatcher</name>
+    <description>HTTP &amp; Dispatcher configurations for Lebara</description>
 
     <build>
         <plugins>
