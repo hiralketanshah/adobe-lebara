@@ -1,7 +1,7 @@
 package com.lebara.core.workflow;
 
+import org.apache.sling.api.resource.ResourceResolver;
 import org.osgi.service.component.annotations.Component;
-import org.osgi.service.component.annotations.Reference;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -14,23 +14,22 @@ import com.adobe.granite.workflow.metadata.MetaDataMap;
 
 @Component(
 		service=WorkflowProcess.class,
-		property = {"process.label=Asset Approval Task - Asset Approval Task"}
+		property = {"process.label=Lebara Asset Approval Task"}
 		)
 public class AssetApprovalTask implements WorkflowProcess {
 
-	@Reference
-	AssetManager assetManager;
 
 	@Override
 	public void execute(WorkItem workItem, WorkflowSession workflowSession, MetaDataMap metaDataMap) throws WorkflowException {
 
 		final Logger LOGGER = LoggerFactory.getLogger(getClass());
-
+		ResourceResolver resourceResolver = workflowSession.adaptTo(ResourceResolver.class);
+		AssetManager assetManager = resourceResolver.adaptTo(AssetManager.class);
 		String payload = workItem.getWorkflowData().getPayload().toString();
 		String fileName = payload.substring(payload.lastIndexOf("/"), payload.length());
 		String filePath = payload.substring(0, payload.lastIndexOf("/"));
 		LOGGER.debug("fileName {} filePath {}", fileName, filePath);
-		assetManager.moveAsset(payload, filePath+"/approvedAsset/"+fileName);
+		assetManager.moveAsset(payload, "/content/dam/approvedasset"+fileName);
 
 	}
 
