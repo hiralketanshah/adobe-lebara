@@ -18,18 +18,41 @@ import com.adobe.granite.workflow.metadata.MetaDataMap;
 		)
 public class AssetApprovalTask implements WorkflowProcess {
 
-
+	final Logger LOGGER = LoggerFactory.getLogger(getClass());
 	@Override
 	public void execute(WorkItem workItem, WorkflowSession workflowSession, MetaDataMap metaDataMap) throws WorkflowException {
 
-		final Logger LOGGER = LoggerFactory.getLogger(getClass());
+
 		ResourceResolver resourceResolver = workflowSession.adaptTo(ResourceResolver.class);
 		AssetManager assetManager = resourceResolver.adaptTo(AssetManager.class);
 		String payload = workItem.getWorkflowData().getPayload().toString();
 		String fileName = payload.substring(payload.lastIndexOf("/"), payload.length());
 		String filePath = payload.substring(0, payload.lastIndexOf("/"));
 		LOGGER.debug("fileName {} filePath {}", fileName, filePath);
-		assetManager.moveAsset(payload, "/content/dam/approvedasset"+fileName);
+
+		if (metaDataMap.containsKey("PROCESS_ARGS")){
+			LOGGER.info("workflow metadata for key PROCESS_ARGS and value {}",metaDataMap.get("PROCESS_ARGS","taskType").toString());
+			String procArgs = metaDataMap.get("PROCESS_ARGS","taskType").toString();
+			if(null != procArgs) {
+				String taskType = procArgs.split("=")[1];
+				if(null != taskType && "approve".equals(taskType)) {
+					if(null != payload && payload.contains("/assets-qc/")) {
+						String newPayload = payload.replaceFirst("/assets-qc/", "/assets-approved/");
+						assetManager.moveAsset(payload, newPayload);
+					}
+				}
+				if(null != taskType && "reject".equals(taskType)) {
+					if(null != payload && payload.contains("/assets-qc/")) {
+						String newPayload = payload.replaceFirst("/assets-qc/", "/assets-rejected/");
+						assetManager.moveAsset(payload, newPayload);
+					}
+				}
+				
+			}
+		}   
+
+		
+
 
 	}
 
