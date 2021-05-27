@@ -7,6 +7,7 @@ import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -106,8 +107,9 @@ public class EmailTask implements WorkflowProcess{
 			List<InternetAddress> emailIds = new ArrayList<InternetAddress>();
 			if(authorizable.isGroup()) {
 				Group group = (Group)authorizable;
-				while(group.getMembers().hasNext()) {
-					Authorizable userOfGroup = group.getMembers().next();
+				Iterator<Authorizable> members = group.getMembers();
+				while(members.hasNext()) {
+					Authorizable userOfGroup = members.next();
 					String emailOfUserOfGroup = userOfGroup.getProperty("./profile/email")[0].getString();
 					try {
 						emailIds.add(new InternetAddress(emailOfUserOfGroup));
