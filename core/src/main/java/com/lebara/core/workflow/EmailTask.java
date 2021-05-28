@@ -88,8 +88,10 @@ public class EmailTask implements WorkflowProcess{
 
 				if(emailType.equalsIgnoreCase("approve")) {
 					templatePath = "/etc/notifications/email/html5-template-approve.txt";
+					payloadPath = payloadPath.replaceFirst("/assets-qc/", "/assets-approved/");
 				} else if(emailType.equalsIgnoreCase("reject")) {
 					templatePath = "/etc/notifications/email/html5-template-reject.txt";
+					payloadPath = payloadPath.replaceFirst("/assets-qc/", "/assets-rejected/");
 				}
 			}
 			String userToSendEmail = null;
@@ -131,9 +133,7 @@ public class EmailTask implements WorkflowProcess{
 
 			Map<String, String> emailParams = new HashMap<>();
 			emailParams.put("senderName", authorizable.getPrincipal().getName());
-			emailParams.put("emailSubject", "Asset has rejected by approver group");
-			emailParams.put("emailBody", "<p>This is the test email</p>");
-			//emailParams.put("payloadPath", payloadPath);
+			emailParams.put("payloadPath", payloadPath);
 			try {
 				send(workflowSession.adaptTo(Session.class), emailParams, templatePath, emailIds);
 			} catch (EmailException e) {
@@ -204,7 +204,6 @@ public class EmailTask implements WorkflowProcess{
 		String senderEmail = "assethub2019@gmail.com";
 		MailTemplate mailTemplate = MailTemplate.create(templatePath, session);
 		HtmlEmail email = mailTemplate.getEmail(StrLookup.mapLookup(emailParams), HtmlEmail.class);
-		email.setSubject(emailParams.get("emailSubject").toString());
 		email.setTo(emailIds);
 		email.setFrom(senderEmail);
 		MessageGateway messageGateway = messageGatewayService.getGateway(HtmlEmail.class);
