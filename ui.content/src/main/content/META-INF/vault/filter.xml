@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <workspaceFilter version="1.0">
     <filter root="/conf/lebara" mode="merge"/>
+    <filter root="/conf/global/settings/workflow/models/lebara-asset-approval-rejection-task" mode="merge"/>
+    <filter root="/etc/notifications" mode="merge"/>
     <filter root="/content/lebara" mode="merge"/>
     <filter root="/content/dam/lebara/asset.jpg" mode="merge"/>
     <filter root="/content/experience-fragments/lebara" mode="merge"/>

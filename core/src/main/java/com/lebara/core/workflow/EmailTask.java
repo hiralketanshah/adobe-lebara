@@ -176,7 +176,7 @@ public class EmailTask implements WorkflowProcess{
 			Map<String, String> groupMapping = gson.fromJson(sb.toString(), Map.class);
 
 			for (Map.Entry<String,String> entry : groupMapping.entrySet()) {
-				LOGGER.debug("Key = " + entry.getKey() +   ", Value = " + entry.getValue());
+				LOGGER.debug("Key = " + entry.getKey()	 +   ", Value = " + entry.getValue());
 				if(filePath.startsWith(entry.getKey())) {
 					groupName = entry.getValue();
 					break;

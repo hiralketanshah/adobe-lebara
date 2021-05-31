@@ -1,0 +1,7 @@
+subject:  Asset Rejected
+
+
+<br />
+Asset Path : ${payloadPath}
+
+Rejected by : ${senderName} group
