@@ -1,0 +1,7 @@
+// Configuration created by Apache Sling JCR Installer
+{
+  "service.ranking:Integer":0,
+  "user.mapping":[
+    "lebara.core:readService=[readService]"
+  ]
+}
