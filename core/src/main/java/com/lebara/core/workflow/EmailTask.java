@@ -99,6 +99,9 @@ public class EmailTask implements WorkflowProcess{
 			if(StringUtils.isNotBlank(userType)) {
 				if(userType.equals("initiator")) {
 					userToSendEmail = workItem.getWorkflow().getInitiator();
+					if(StringUtils.isNotBlank(userToSendEmail) && userToSendEmail.equals("workflow-service")) {
+						userToSendEmail = getGroupNameBasedPayloadPath(payloadPath);
+					}
 				} else {
 					userToSendEmail = getGroupNameBasedPayloadPath(payloadPath);
 				}
@@ -113,12 +116,15 @@ public class EmailTask implements WorkflowProcess{
 				Iterator<Authorizable> members = group.getMembers();
 				while(members.hasNext()) {
 					Authorizable userOfGroup = members.next();
-					String emailOfUserOfGroup = userOfGroup.getProperty("./profile/email")[0].getString();
-					try {
-						emailIds.add(new InternetAddress(emailOfUserOfGroup));
-					} catch (AddressException e) {
-						LOGGER.error("AddressException", e);
+					if(!userOfGroup.isGroup()) {
+						String emailOfUserOfGroup = userOfGroup.getProperty("./profile/email")[0].getString();
+						try {
+							emailIds.add(new InternetAddress(emailOfUserOfGroup));
+						} catch (AddressException e) {
+							LOGGER.error("AddressException", e);
+						}
 					}
+					
 				}
 			} else {
 				String emailOfUserOfGroup = authorizable.getProperty("./profile/email")[0].getString();
@@ -207,6 +213,7 @@ public class EmailTask implements WorkflowProcess{
 		HtmlEmail email = mailTemplate.getEmail(StrLookup.mapLookup(emailParams), HtmlEmail.class);
 		email.setTo(emailIds);
 		email.setFrom(senderEmail);
+		//email.setMsg("");
 		MessageGateway messageGateway = messageGatewayService.getGateway(HtmlEmail.class);
 		messageGateway.send(email);
 		LOGGER.info("send exit ");

@@ -1,2 +1,7 @@
 subject:  Asset Approved
+
+
+<br />
 Asset Path : ${payloadPath}
+
+Approved by : ${senderName} group
