@@ -28,7 +28,7 @@ public class AssetApprovalTask implements WorkflowProcess {
 		String payload = workItem.getWorkflowData().getPayload().toString();
 		String fileName = payload.substring(payload.lastIndexOf("/"), payload.length());
 		String filePath = payload.substring(0, payload.lastIndexOf("/"));
-		LOGGER.debug("fileName {} filePath {}", fileName, filePath);
+		LOGGER.info("fileName {} filePath {}", fileName, filePath);
 
 		if (metaDataMap.containsKey("PROCESS_ARGS")){
 			LOGGER.info("workflow metadata for key PROCESS_ARGS and value {}",metaDataMap.get("PROCESS_ARGS","taskType").toString());

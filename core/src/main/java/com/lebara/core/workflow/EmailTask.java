@@ -104,10 +104,11 @@ public class EmailTask implements WorkflowProcess{
 				}
 			}
 			
-			LOGGER.debug("userToSendEmail "+ userToSendEmail);
+			LOGGER.info("userToSendEmail "+ userToSendEmail);
 			authorizable = manager.getAuthorizable(userToSendEmail);
 			List<InternetAddress> emailIds = new ArrayList<InternetAddress>();
-			if(authorizable.isGroup()) {
+			LOGGER.info("autho "+ "before authorizable" );
+			if(null != authorizable && authorizable.isGroup()) {
 				Group group = (Group)authorizable;
 				Iterator<Authorizable> members = group.getMembers();
 				while(members.hasNext()) {
@@ -128,7 +129,7 @@ public class EmailTask implements WorkflowProcess{
 				}
 			}
 			
-			LOGGER.debug("email {} ", emailIds);
+			LOGGER.info("email {} ", emailIds);
 
 
 			Map<String, String> emailParams = new HashMap<>();
@@ -151,7 +152,7 @@ public class EmailTask implements WorkflowProcess{
 	}
 
 	private String getGroupNameBasedPayloadPath(String filePath) {
-		LOGGER.debug("entry into getGroupNameBasedPayloadPath");
+		LOGGER.info("entry into getGroupNameBasedPayloadPath");
 		String groupName = null;
 		ResourceResolver resolver = null;
 		HashMap<String, Object> param = new HashMap<>();
@@ -162,21 +163,21 @@ public class EmailTask implements WorkflowProcess{
 			Resource resource =  resolver.getResource("/etc/notifications/group-mapping.json");
 			Node jcnode = resource.adaptTo(Node.class).getNode("jcr:content");
 			InputStream content = jcnode.getProperty("jcr:data").getBinary().getStream();
-			LOGGER.debug("resource "+resource.getPath());
+			LOGGER.info("resource "+resource.getPath());
 			StringBuilder sb = new StringBuilder();
 			String line;            
 			BufferedReader br = new BufferedReader(new InputStreamReader(content, StandardCharsets.UTF_8));
 			while ((line = br.readLine()) != null) {
 				sb.append(line);
 			}
-			LOGGER.debug("sb" + sb.toString());
+			LOGGER.info("sb" + sb.toString());
 			//jsonObj = new JSONObject(sb.toString());
 
 			Gson gson = new Gson();
 			Map<String, String> groupMapping = gson.fromJson(sb.toString(), Map.class);
 
 			for (Map.Entry<String,String> entry : groupMapping.entrySet()) {
-				LOGGER.debug("Key = " + entry.getKey()	 +   ", Value = " + entry.getValue());
+				LOGGER.info("Key = " + entry.getKey()	 +   ", Value = " + entry.getValue());
 				if(filePath.startsWith(entry.getKey())) {
 					groupName = entry.getValue();
 					break;
@@ -184,7 +185,7 @@ public class EmailTask implements WorkflowProcess{
 			}
 
 
-			LOGGER.debug("groupMapping " + groupMapping);
+			LOGGER.info("groupMapping " + groupMapping);
 
 		} catch (LoginException e) {
 			LOGGER.error("LoginException", e);
@@ -199,7 +200,7 @@ public class EmailTask implements WorkflowProcess{
 	}
 
 	private void send(Session session, Map emailParams, String templatePath,List<InternetAddress> emailIds) throws EmailException, MessagingException, IOException {
-		LOGGER.debug("send templatePath "+templatePath);
+		LOGGER.info("send templatePath "+templatePath);
 		//String templatePath = "/apps/lebara/email/html5-template.txt";
 		String senderEmail = "assethub2019@gmail.com";
 		MailTemplate mailTemplate = MailTemplate.create(templatePath, session);
@@ -208,7 +209,7 @@ public class EmailTask implements WorkflowProcess{
 		email.setFrom(senderEmail);
 		MessageGateway messageGateway = messageGatewayService.getGateway(HtmlEmail.class);
 		messageGateway.send(email);
-		LOGGER.debug("send exit ");
+		LOGGER.info("send exit ");
 	}
 
 }
