@@ -69,6 +69,7 @@
                         <metaData
                             jcr:primaryType="nt:unstructured"
                             PROCESS="com.lebara.core.workflow.EmailTask"
+							PROCESS_ARGS="emailType=approve,userType=non-initiator"
                             PROCESS_AUTO_ADVANCE="true"/>
                     </process_copy>
                 </_x0031_>
@@ -101,6 +102,7 @@
                         <metaData
                             jcr:primaryType="nt:unstructured"
                             PROCESS="com.lebara.core.workflow.EmailTask"
+							PROCESS_ARGS="emailType=reject,userType=initiator"
                             PROCESS_AUTO_ADVANCE="true"/>
                     </process>
                 </_x0032_>

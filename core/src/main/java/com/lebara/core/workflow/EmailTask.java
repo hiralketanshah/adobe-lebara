@@ -100,10 +100,10 @@ public class EmailTask implements WorkflowProcess{
 				if(userType.equals("initiator")) {
 					userToSendEmail = workItem.getWorkflow().getInitiator();
 					if(StringUtils.isNotBlank(userToSendEmail) && userToSendEmail.equals("workflow-service")) {
-						userToSendEmail = getGroupNameBasedPayloadPath(payloadPath);
+						userToSendEmail = getGroupNameBasedPayloadPath(payloadPath, resourceResolver);
 					}
 				} else {
-					userToSendEmail = getGroupNameBasedPayloadPath(payloadPath);
+					userToSendEmail = getGroupNameBasedPayloadPath(payloadPath, resourceResolver);
 				}
 			}
 			
@@ -157,15 +157,11 @@ public class EmailTask implements WorkflowProcess{
 
 	}
 
-	private String getGroupNameBasedPayloadPath(String filePath) {
+	private String getGroupNameBasedPayloadPath(String filePath, ResourceResolver resolver) {
 		LOGGER.info("entry into getGroupNameBasedPayloadPath");
 		String groupName = null;
-		ResourceResolver resolver = null;
-		HashMap<String, Object> param = new HashMap<>();
-		param.put(ResourceResolverFactory.SUBSERVICE, "readService"); //readService is my System User.
 
 		try {
-			resolver = resolverFactory.getServiceResourceResolver(param);
 			Resource resource =  resolver.getResource("/etc/notifications/group-mapping.json");
 			Node jcnode = resource.adaptTo(Node.class).getNode("jcr:content");
 			InputStream content = jcnode.getProperty("jcr:data").getBinary().getStream();
@@ -177,7 +173,6 @@ public class EmailTask implements WorkflowProcess{
 				sb.append(line);
 			}
 			LOGGER.info("sb" + sb.toString());
-			//jsonObj = new JSONObject(sb.toString());
 
 			Gson gson = new Gson();
 			Map<String, String> groupMapping = gson.fromJson(sb.toString(), Map.class);
@@ -193,8 +188,6 @@ public class EmailTask implements WorkflowProcess{
 
 			LOGGER.info("groupMapping " + groupMapping);
 
-		} catch (LoginException e) {
-			LOGGER.error("LoginException", e);
 		} catch (PathNotFoundException e) {
 			LOGGER.error("PathNotFoundException", e);
 		} catch (RepositoryException e) {
@@ -207,13 +200,11 @@ public class EmailTask implements WorkflowProcess{
 
 	private void send(Session session, Map emailParams, String templatePath,List<InternetAddress> emailIds) throws EmailException, MessagingException, IOException {
 		LOGGER.info("send templatePath "+templatePath);
-		//String templatePath = "/apps/lebara/email/html5-template.txt";
 		String senderEmail = "assethub2019@gmail.com";
 		MailTemplate mailTemplate = MailTemplate.create(templatePath, session);
 		HtmlEmail email = mailTemplate.getEmail(StrLookup.mapLookup(emailParams), HtmlEmail.class);
 		email.setTo(emailIds);
 		email.setFrom(senderEmail);
-		//email.setMsg("");
 		MessageGateway messageGateway = messageGatewayService.getGateway(HtmlEmail.class);
 		messageGateway.send(email);
 		LOGGER.info("send exit ");
