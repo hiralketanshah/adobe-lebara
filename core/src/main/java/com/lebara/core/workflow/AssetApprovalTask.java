@@ -38,22 +38,44 @@ public class AssetApprovalTask implements WorkflowProcess {
 				if(null != taskType && "approve".equals(taskType)) {
 					if(null != payload && payload.contains("/assets-qc/")) {
 						String newPayload = payload.replaceFirst("/assets-qc/", "/assets-approved/");
-						assetManager.moveAsset(payload, newPayload);
+						/*
+						 * if(!assetManager.assetExists(newPayload)) { assetManager.moveAsset(payload,
+						 * newPayload); } else { if(newPayload.contains(".")) { String payloadv =
+						 * newPayload.substring(0, newPayload.indexOf(".")) +"-"+
+						 * System.currentTimeMillis() + newPayload.substring(newPayload.indexOf("."),
+						 * newPayload.length()); assetManager.moveAsset(payload, payloadv); } }
+						 */
+						moveAssetTOnewPath(assetManager, payload, newPayload);
 					}
 				}
 				if(null != taskType && "reject".equals(taskType)) {
 					if(null != payload && payload.contains("/assets-qc/")) {
 						String newPayload = payload.replaceFirst("/assets-qc/", "/assets-rejected/");
-						assetManager.moveAsset(payload, newPayload);
+						/*
+						 * if(!assetManager.assetExists(newPayload)) { assetManager.moveAsset(payload,
+						 * newPayload); } else { if(newPayload.contains(".")) { String payloadv =
+						 * newPayload.substring(0, newPayload.indexOf(".")) +"-"+
+						 * System.currentTimeMillis() + newPayload.substring(newPayload.indexOf("."),
+						 * newPayload.length()); assetManager.moveAsset(payload, payloadv); } }
+						 */
+						moveAssetTOnewPath(assetManager, payload, newPayload);
 					}
 				}
 				
 			}
 		}   
 
-		
-
-
 	}
 
+	private void moveAssetTOnewPath(AssetManager assetManager, String payload, String newPayload) {
+		if(!assetManager.assetExists(newPayload)) {
+			assetManager.moveAsset(payload, newPayload);
+		} else {
+			if(newPayload.contains(".")) {
+				String payloadv = newPayload.substring(0, newPayload.indexOf(".")) +"-"+ System.currentTimeMillis() + newPayload.substring(newPayload.indexOf("."), newPayload.length());
+				assetManager.moveAsset(payload, payloadv);
+			}
+		}
+	}
+	
 }
