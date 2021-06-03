@@ -15,6 +15,7 @@ import javax.jcr.Node;
 import javax.jcr.PathNotFoundException;
 import javax.jcr.RepositoryException;
 import javax.jcr.Session;
+import javax.jcr.ValueFormatException;
 import javax.mail.MessagingException;
 import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;
@@ -83,7 +84,7 @@ public class EmailTask implements WorkflowProcess{
 				}
 			}
 			String templatePath = "";
-			//email type
+			/**email type**/
 			if(StringUtils.isNotBlank(emailType)) {
 
 				if(emailType.equalsIgnoreCase("approve")) {
@@ -95,18 +96,18 @@ public class EmailTask implements WorkflowProcess{
 				}
 			}
 			String userToSendEmail = null;
-			//user type
+			/**user type **/
 			if(StringUtils.isNotBlank(userType)) {
 				if(userType.equals("initiator")) {
 					userToSendEmail = workItem.getWorkflow().getInitiator();
 					if(StringUtils.isNotBlank(userToSendEmail) && userToSendEmail.equals("workflow-service")) {
-						userToSendEmail = getGroupNameBasedPayloadPath(payloadPath, resourceResolver);
+						userToSendEmail = getAssetOwner(payloadPath, resourceResolver);
 					}
 				} else {
 					userToSendEmail = getGroupNameBasedPayloadPath(payloadPath, resourceResolver);
 				}
 			}
-			
+
 			LOGGER.info("userToSendEmail "+ userToSendEmail);
 			authorizable = manager.getAuthorizable(userToSendEmail);
 			List<InternetAddress> emailIds = new ArrayList<InternetAddress>();
@@ -124,7 +125,7 @@ public class EmailTask implements WorkflowProcess{
 							LOGGER.error("AddressException", e);
 						}
 					}
-					
+
 				}
 			} else {
 				String emailOfUserOfGroup = authorizable.getProperty("./profile/email")[0].getString();
@@ -134,27 +135,34 @@ public class EmailTask implements WorkflowProcess{
 					LOGGER.error("AddressException", e);
 				}
 			}
-			
+
 			LOGGER.info("email {} ", emailIds);
 
 
 			Map<String, String> emailParams = new HashMap<>();
 			emailParams.put("senderName", authorizable.getPrincipal().getName());
 			emailParams.put("payloadPath", payloadPath);
-			try {
-				send(workflowSession.adaptTo(Session.class), emailParams, templatePath, emailIds);
-			} catch (EmailException e) {
-				LOGGER.error("EmailException", e);
-			} catch (MessagingException e) {
-				LOGGER.error("MessagingException", e);
-			} catch (IOException e) {
-				LOGGER.error("IOException", e);
-			}
+			send(workflowSession.adaptTo(Session.class), emailParams, templatePath, emailIds);
 
 		} catch (RepositoryException e) {
 			LOGGER.error("RepositoryException", e);
 		}
 
+	}
+
+	private String getAssetOwner(String payloadPath, ResourceResolver resourceResolver) {
+		Resource payloadResource = resourceResolver.getResource(payloadPath);
+		String jcrCreatedBy = null;
+		try {
+			jcrCreatedBy = payloadResource.adaptTo(Node.class).getProperty("jcr:createdBy").getString();
+		} catch (ValueFormatException e) {
+			LOGGER.error("ValueFormatException", e);
+		} catch (PathNotFoundException e) {
+			LOGGER.error("PathNotFoundException", e);
+		} catch (RepositoryException e) {
+			LOGGER.error("RepositoryException", e);
+		}
+		return jcrCreatedBy;
 	}
 
 	private String getGroupNameBasedPayloadPath(String filePath, ResourceResolver resolver) {
@@ -198,15 +206,25 @@ public class EmailTask implements WorkflowProcess{
 		return groupName;
 	}
 
-	private void send(Session session, Map emailParams, String templatePath,List<InternetAddress> emailIds) throws EmailException, MessagingException, IOException {
+	private void send(Session session, Map emailParams, String templatePath,List<InternetAddress> emailIds) {
 		LOGGER.info("send templatePath "+templatePath);
 		String senderEmail = "assethub2019@gmail.com";
 		MailTemplate mailTemplate = MailTemplate.create(templatePath, session);
-		HtmlEmail email = mailTemplate.getEmail(StrLookup.mapLookup(emailParams), HtmlEmail.class);
-		email.setTo(emailIds);
-		email.setFrom(senderEmail);
-		MessageGateway messageGateway = messageGatewayService.getGateway(HtmlEmail.class);
-		messageGateway.send(email);
+		HtmlEmail email;
+		try {
+			email = mailTemplate.getEmail(StrLookup.mapLookup(emailParams), HtmlEmail.class);
+			email.setTo(emailIds);
+			email.setFrom(senderEmail);
+			MessageGateway messageGateway = messageGatewayService.getGateway(HtmlEmail.class);
+			messageGateway.send(email);
+		} catch (IOException e) {
+			LOGGER.error("IOException", e);
+		} catch (MessagingException e) {
+			LOGGER.error("MessagingException", e);
+		} catch (EmailException e) {
+			LOGGER.error("EmailException", e);
+		}
+
 		LOGGER.info("send exit ");
 	}
 

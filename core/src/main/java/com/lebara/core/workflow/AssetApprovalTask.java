@@ -1,5 +1,8 @@
 package com.lebara.core.workflow;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
 import org.apache.sling.api.resource.ResourceResolver;
 import org.osgi.service.component.annotations.Component;
 import org.slf4j.Logger;
@@ -38,30 +41,16 @@ public class AssetApprovalTask implements WorkflowProcess {
 				if(null != taskType && "approve".equals(taskType)) {
 					if(null != payload && payload.contains("/assets-qc/")) {
 						String newPayload = payload.replaceFirst("/assets-qc/", "/assets-approved/");
-						/*
-						 * if(!assetManager.assetExists(newPayload)) { assetManager.moveAsset(payload,
-						 * newPayload); } else { if(newPayload.contains(".")) { String payloadv =
-						 * newPayload.substring(0, newPayload.indexOf(".")) +"-"+
-						 * System.currentTimeMillis() + newPayload.substring(newPayload.indexOf("."),
-						 * newPayload.length()); assetManager.moveAsset(payload, payloadv); } }
-						 */
 						moveAssetTOnewPath(assetManager, payload, newPayload);
 					}
 				}
 				if(null != taskType && "reject".equals(taskType)) {
 					if(null != payload && payload.contains("/assets-qc/")) {
 						String newPayload = payload.replaceFirst("/assets-qc/", "/assets-rejected/");
-						/*
-						 * if(!assetManager.assetExists(newPayload)) { assetManager.moveAsset(payload,
-						 * newPayload); } else { if(newPayload.contains(".")) { String payloadv =
-						 * newPayload.substring(0, newPayload.indexOf(".")) +"-"+
-						 * System.currentTimeMillis() + newPayload.substring(newPayload.indexOf("."),
-						 * newPayload.length()); assetManager.moveAsset(payload, payloadv); } }
-						 */
 						moveAssetTOnewPath(assetManager, payload, newPayload);
 					}
 				}
-				
+
 			}
 		}   
 
@@ -72,10 +61,15 @@ public class AssetApprovalTask implements WorkflowProcess {
 			assetManager.moveAsset(payload, newPayload);
 		} else {
 			if(newPayload.contains(".")) {
-				String payloadv = newPayload.substring(0, newPayload.indexOf(".")) +"-"+ System.currentTimeMillis() + newPayload.substring(newPayload.indexOf("."), newPayload.length());
+				DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd_HH-mm-ss");  
+				LocalDateTime now = LocalDateTime.now();  
+				String currentDateTime = dtf.format(now);
+				String payloadv = newPayload.substring(0, newPayload.indexOf(".")) +"-"+currentDateTime+ newPayload.substring(newPayload.indexOf("."), newPayload.length());
 				assetManager.moveAsset(payload, payloadv);
 			}
 		}
 	}
+
 	
+
 }
