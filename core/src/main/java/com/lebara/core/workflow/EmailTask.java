@@ -1,33 +1,28 @@
 package com.lebara.core.workflow;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-import javax.jcr.Node;
-import javax.jcr.PathNotFoundException;
 import javax.jcr.RepositoryException;
 import javax.jcr.Session;
+import javax.jcr.Value;
 import javax.mail.MessagingException;
 import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;
 
 import com.lebara.core.utils.AemUtils;
 import org.apache.commons.lang.text.StrLookup;
+import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.mail.EmailException;
 import org.apache.commons.mail.HtmlEmail;
 import org.apache.jackrabbit.api.security.user.Authorizable;
 import org.apache.jackrabbit.api.security.user.Group;
 import org.apache.jackrabbit.api.security.user.UserManager;
-import org.apache.sling.api.resource.Resource;
 import org.apache.sling.api.resource.ResourceResolver;
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Reference;
@@ -39,9 +34,7 @@ import com.adobe.granite.workflow.exec.WorkItem;
 import com.adobe.granite.workflow.exec.WorkflowProcess;
 import com.adobe.granite.workflow.metadata.MetaDataMap;
 import com.day.cq.commons.mail.MailTemplate;
-import com.day.cq.mailer.MessageGateway;
 import com.day.cq.mailer.MessageGatewayService;
-import com.google.gson.Gson;
 
 @Component(
         service = WorkflowProcess.class,
@@ -52,70 +45,88 @@ public class EmailTask implements WorkflowProcess {
     @Reference
     MessageGatewayService messageGatewayService;
 
-	final Logger LOGGER = LoggerFactory.getLogger(getClass());
-	static final String PROCESS_ARGS = "PROCESS_ARGS";
+    final Logger LOGGER = LoggerFactory.getLogger(getClass());
+    static final String PROCESS_ARGS = "PROCESS_ARGS";
+    static Map<String, String> groupMapping = new HashMap<>();
+
+    static {
+        groupMapping = new HashMap<>();
+        groupMapping.put("/content/dam/lebara/markets/de", "lebara-publisher-de");
+        groupMapping.put("/content/dam/lebara/markets/fr", "lebara-publisher-fr");
+        groupMapping.put("/content/dam/lebara/markets/uk", "lebara-publisher-uk");
+        groupMapping.put("/content/dam/lebara/markets/dk", "lebara-publisher-dk");
+        groupMapping.put("/content/dam/lebara/markets/nl", "lebara-publisher-nl");
+    }
 
     @Override
     public void execute(WorkItem workItem, WorkflowSession workflowSession, MetaDataMap metaDataMap) {
         ResourceResolver resourceResolver = workflowSession.adaptTo(ResourceResolver.class);
-        if(null == resourceResolver){
-        	return;
-		}
+        if (null == resourceResolver) {
+            return;
+        }
+
+        String payloadPath = workItem.getWorkflow().getWorkflowData().getMetaDataMap().get("newPayloadPath", StringUtils.EMPTY);
+        String emailType = StringUtils.EMPTY;
+        String userType = StringUtils.EMPTY;
+
+        if (metaDataMap.containsKey(PROCESS_ARGS)) {
+            final String processArgs = metaDataMap.get(PROCESS_ARGS, StringUtils.EMPTY);
+            //processArgs type 1 : emailType=approve,userType=non-initiator
+            //processArgs type 2 : emailType=reject,userType=initiator
+            LOGGER.debug("workflow metadata for key PROCESS_ARGS and value {}", processArgs);
+            if (StringUtils.isBlank(processArgs)) {
+                return;
+            }
+            if (processArgs.contains(",")) {
+                String[] processArgsVal = processArgs.split(",");
+                emailType = processArgsVal[0].split("=")[1];
+                userType = processArgsVal[1].split("=")[1];
+            }
+        }
+        String templatePath = StringUtils.EMPTY;
+
+        //emailtype can be approve or reject.
+        if (StringUtils.isBlank(emailType)) {
+            return;
+        }
+        if (emailType.equalsIgnoreCase("approve")) {
+            templatePath = "/etc/notifications/email/html5-template-approve.txt";
+        } else if (emailType.equalsIgnoreCase("reject")) {
+            templatePath = "/etc/notifications/email/html5-template-reject.txt";
+        }
+
+        //user type can be initiator(for rejected Asset scenario) or non-initiator(for Approved Asset scenario)
+        //if asset is rejected, email sent to original creators of asset,
+        // if approved, email to be sent to publisher group of that country
+        if (StringUtils.isBlank(userType)) {
+            return;
+        }
+        String emailRecepientUserOrGroupName = StringUtils.EMPTY;
+        if (userType.equals("initiator")) {
+            //asset rejected, email to be sent to the original creator of the asset.
+            emailRecepientUserOrGroupName = workItem.getWorkflow().getInitiator();
+            if (StringUtils.isNotBlank(emailRecepientUserOrGroupName) && emailRecepientUserOrGroupName.equals("workflow-service")) {
+                emailRecepientUserOrGroupName = AemUtils.getStringProperty(resourceResolver.getResource(payloadPath), "jcr:createdBy");
+            }
+        } else if (userType.equals("non-initiator")) {
+            emailRecepientUserOrGroupName = getPublisherGroupNameFromPayloadPath(payloadPath);
+        }
+
+        LOGGER.debug("userToSendEmail {}", emailRecepientUserOrGroupName);
+        UserManager manager = resourceResolver.adaptTo(UserManager.class);
+        if (null == manager || StringUtils.isBlank(emailRecepientUserOrGroupName)) {
+            return;
+        }
         try {
-            String payloadPath = workItem.getWorkflow().getWorkflowData().getPayload().toString();
-            String emailType = StringUtils.EMPTY;
-            String userType = StringUtils.EMPTY;
-
-            if (metaDataMap.containsKey(PROCESS_ARGS)) {
-				String processArgs = metaDataMap.get(PROCESS_ARGS, StringUtils.EMPTY).toString();
-				LOGGER.debug("workflow metadata for key PROCESS_ARGS and value {}", processArgs);
-				if (StringUtils.isNotBlank(processArgs) && processArgs.contains(",")) {
-					String[] processArgsVal = processArgs.split(",");
-					emailType = processArgsVal[0].split("=")[1];
-					userType = processArgsVal[1].split("=")[1];
-				} else if (StringUtils.isNotBlank(processArgs) && processArgs.contains("=")) {
-					String[] processArgsVal = processArgs.split("=");
-					emailType = processArgsVal[1];
-				}
-			}
-            String templatePath = StringUtils.EMPTY;
-
-            //email type
-            if (StringUtils.isNotBlank(emailType)) {
-                if (emailType.equalsIgnoreCase("approve")) {
-                    templatePath = "/etc/notifications/email/html5-template-approve.txt";
-                    payloadPath = payloadPath.replaceFirst("/assets-qc/", "/assets-approved/");
-                } else if (emailType.equalsIgnoreCase("reject")) {
-                    templatePath = "/etc/notifications/email/html5-template-reject.txt";
-                    payloadPath = payloadPath.replaceFirst("/assets-qc/", "/assets-rejected/");
-                }
+            Authorizable authorizable = manager.getAuthorizable(emailRecepientUserOrGroupName);
+            if (null == authorizable) {
+                return;
             }
-            String userToSendEmail = StringUtils.EMPTY;
-
-            //user type
-            if (StringUtils.isNotBlank(userType)) {
-                if (userType.equals("initiator")) {
-                    userToSendEmail = workItem.getWorkflow().getInitiator();
-                    if (StringUtils.isNotBlank(userToSendEmail) && userToSendEmail.equals("workflow-service")) {
-                        userToSendEmail = AemUtils.getStringProperty(resourceResolver.getResource(payloadPath), "jcr:createdBy");
-                    }
-                } else {
-                    userToSendEmail = getGroupNameBasedPayloadPath(payloadPath, resourceResolver);
-                }
-            }
-
-			LOGGER.debug("userToSendEmail {}", userToSendEmail);
-			UserManager manager = resourceResolver.adaptTo(UserManager.class);
-			if (null != manager && StringUtils.isNotBlank(userToSendEmail)) {
-				Authorizable authorizable = manager.getAuthorizable(userToSendEmail);
-				List<InternetAddress> emailIds = setEmailIdList(authorizable);
-				LOGGER.info("email {} ", emailIds);
-				Map<String, String> emailParams = new HashMap<>();
-				emailParams.put("senderName", authorizable.getPrincipal().getName());
-				emailParams.put("payloadPath", payloadPath);
-				send(workflowSession.adaptTo(Session.class), emailParams, templatePath, emailIds);
-			}
-
+            List<InternetAddress> emailIds = getEmailIdList(authorizable);
+            Map<String, String> emailParams = new HashMap<>();
+            emailParams.put("senderName", authorizable.getPrincipal().getName());
+            emailParams.put("payloadPath", payloadPath);
+            sendEmail(workflowSession.adaptTo(Session.class), emailParams, templatePath, emailIds);
 
         } catch (RepositoryException e) {
             LOGGER.error("RepositoryException {}", e);
@@ -123,78 +134,88 @@ public class EmailTask implements WorkflowProcess {
 
     }
 
-	private List<InternetAddress> setEmailIdList(Authorizable authorizable) throws RepositoryException {
-		List<InternetAddress> emailIds = new ArrayList<>();
-		if (null != authorizable && authorizable.isGroup()) {
-			Group group = (Group) authorizable;
-			Iterator<Authorizable> members = group.getMembers();
-			while (members.hasNext()) {
-				Authorizable userOfGroup = members.next();
-				if (!userOfGroup.isGroup()) {
-					String emailOfUserOfGroup = userOfGroup.getProperty("./profile/email")[0].getString();
-					try {
-						emailIds.add(new InternetAddress(emailOfUserOfGroup));
-					} catch (AddressException e) {
-						LOGGER.error("AddressException", e);
-					}
-				}
+    /**
+     * This method sets the list of emailids to whom the emails will be sent.
+     */
+    private List<InternetAddress> getEmailIdList(Authorizable authorizable) throws RepositoryException {
+        List<InternetAddress> emailIds = new ArrayList<>();
+        //if authorizable is a group type, send email to all its member users.
+        if (null == authorizable) {
+            return emailIds;
+        }
+        if (authorizable.isGroup()) {
+            Group group = (Group) authorizable;
+            Iterator<Authorizable> members = group.getMembers();
+            while (members.hasNext()) {
+                Authorizable userOfGroup = members.next();
 
-			}
-		} else {
-			String emailOfUserOfGroup = authorizable.getProperty("./profile/email")[0].getString();
-			try {
-				emailIds.add(new InternetAddress(emailOfUserOfGroup));
-			} catch (AddressException e) {
-				LOGGER.error("AddressException", e);
-			}
-		}
-		return emailIds;
-	}
-
-
-    private String getGroupNameBasedPayloadPath(String filePath, ResourceResolver resolver) {
-        LOGGER.info("entry into getGroupNameBasedPayloadPath");
-        String groupName = null;
-
-        try {
-            Resource resource = resolver.getResource("/etc/notifications/group-mapping.json");
-            Node jcnode = resource.adaptTo(Node.class).getNode("jcr:content");
-            InputStream content = jcnode.getProperty("jcr:data").getBinary().getStream();
-            LOGGER.info("resource " + resource.getPath());
-            StringBuilder sb = new StringBuilder();
-            String line;
-            BufferedReader br = new BufferedReader(new InputStreamReader(content, StandardCharsets.UTF_8));
-            while ((line = br.readLine()) != null) {
-                sb.append(line);
-            }
-            LOGGER.info("sb" + sb.toString());
-
-            Gson gson = new Gson();
-            Map<String, String> groupMapping = gson.fromJson(sb.toString(), Map.class);
-
-            for (Map.Entry<String, String> entry : groupMapping.entrySet()) {
-                LOGGER.info("Key = " + entry.getKey() + ", Value = " + entry.getValue());
-                if (filePath.startsWith(entry.getKey())) {
-                    groupName = entry.getValue();
-                    break;
+                //rejecting the groups which are members of the parent group
+                // only considering the user members of the parent group
+                if (!userOfGroup.isGroup()) {
+                    InternetAddress internetAddress = setUserDetails(userOfGroup);
+                    if (null != internetAddress) {
+                        emailIds.add(internetAddress);
+                    }
                 }
+
+            }
+        } else {
+            InternetAddress internetAddress = setUserDetails(authorizable);
+            if (null != internetAddress) {
+                emailIds.add(internetAddress);
+            }
+        }
+        return emailIds;
+    }
+
+    /**
+     * this method returns the email details of user authorizables and not group authorizables
+     * this method returns null if email is not present for that user.
+     */
+    private InternetAddress setUserDetails(Authorizable userOfGroup) throws RepositoryException {
+        //not every authorizable has ./profile/email in it, eg admin.
+        Value[] userArray = userOfGroup.getProperty("./profile/email");
+        String emailOfUserOfGroup = StringUtils.EMPTY;
+        if (ArrayUtils.isNotEmpty(userArray)) {
+            emailOfUserOfGroup = userArray[0].getString();
+        }
+        try {
+            if (StringUtils.isNotBlank(emailOfUserOfGroup)) {
+                return new InternetAddress(emailOfUserOfGroup);
             }
 
+        } catch (AddressException e) {
+            LOGGER.error("AddressException", e);
+        }
+        return null;
+    }
 
-            LOGGER.info("groupMapping " + groupMapping);
-
-        } catch (PathNotFoundException e) {
-            LOGGER.error("PathNotFoundException", e);
-        } catch (RepositoryException e) {
-            LOGGER.error("RepositoryException", e);
-        } catch (IOException e) {
-            LOGGER.error("IOException", e);
+    /**
+     * this method checks country name in the path of the asset and returns the name
+     * of that country's publisher group name
+     *
+     * @param filePath path of the asset containing the country code
+     * @return publisher group name for that country
+     */
+    private String getPublisherGroupNameFromPayloadPath(final String filePath) {
+        String groupName = StringUtils.EMPTY;
+        for (Map.Entry<String, String> entry : EmailTask.groupMapping.entrySet()) {
+            if (filePath.startsWith(entry.getKey())) {
+                groupName = entry.getValue();
+                break;
+            }
         }
         return groupName;
     }
 
-    private void send(Session session, Map emailParams, String templatePath, List<InternetAddress> emailIds) {
-        LOGGER.debug("send templatePath {}" , templatePath);
+    /**
+     * this method is responsible for sending the emails.
+     */
+    private void sendEmail(Session session, Map<String, String> emailParams, String templatePath, List<InternetAddress> emailIds) {
+        if (emailIds.isEmpty()) {
+            return;
+        }
+        LOGGER.debug("send templatePath {}", templatePath);
         String senderEmail = "assethub2019@gmail.com";
         MailTemplate mailTemplate = MailTemplate.create(templatePath, session);
         HtmlEmail email;
@@ -202,17 +223,15 @@ public class EmailTask implements WorkflowProcess {
             email = mailTemplate.getEmail(StrLookup.mapLookup(emailParams), HtmlEmail.class);
             email.setTo(emailIds);
             email.setFrom(senderEmail);
-            MessageGateway messageGateway = messageGatewayService.getGateway(HtmlEmail.class);
-            messageGateway.send(email);
+            messageGatewayService.getGateway(HtmlEmail.class).send(email);
         } catch (IOException e) {
-            LOGGER.error("IOException", e);
+            LOGGER.error("IOException {}", e);
         } catch (MessagingException e) {
-            LOGGER.error("MessagingException", e);
+            LOGGER.error("MessagingException {}", e);
         } catch (EmailException e) {
-            LOGGER.error("EmailException", e);
+            LOGGER.error("EmailException {}", e);
         }
 
-        LOGGER.info("send exit ");
+        LOGGER.debug("send exit ");
     }
-
 }

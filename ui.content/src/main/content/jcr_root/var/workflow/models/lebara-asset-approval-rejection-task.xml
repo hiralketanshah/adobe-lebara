@@ -126,7 +126,7 @@
             <metaData
                 jcr:primaryType="nt:unstructured"
                 PROCESS="com.lebara.core.workflow.EmailTask"
-                PROCESS_ARGS="emailType=approve,userType=initiator"
+                PROCESS_ARGS="emailType=reject,userType=initiator"
                 PROCESS_AUTO_ADVANCE="true"/>
         </node13>
         <node14

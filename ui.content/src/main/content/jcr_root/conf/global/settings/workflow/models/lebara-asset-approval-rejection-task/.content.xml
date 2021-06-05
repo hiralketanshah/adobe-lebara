@@ -9,7 +9,7 @@
         jcr:primaryType="cq:PageContent"
         jcr:title="Lebara - Asset Approval-Rejection Workflow"
         sling:resourceType="cq/workflow/components/pages/model"
-        editable="{Boolean}true"
+        editable="{Boolean}false"
         lastSynced="{Date}2021-06-05T15:00:30.720+05:30">
         <flow
             jcr:primaryType="nt:unstructured"
@@ -155,7 +155,6 @@
                         jcr:created="{Date}2021-05-25T11:57:15.416+05:30"
                         jcr:createdBy="admin"
                         jcr:lastModified="{Date}2021-06-01T13:34:12.502Z"
-                        jcr:lastModifiedBy="ankumari@adobe.com"
                         jcr:primaryType="nt:unstructured"
                         jcr:title="Send Email to publisher"
                         sling:resourceType="cq/workflow/components/model/process">
@@ -187,14 +186,13 @@
                         jcr:created="{Date}2021-05-25T11:57:15.416+05:30"
                         jcr:createdBy="admin"
                         jcr:lastModified="{Date}2021-06-01T13:34:29.596Z"
-                        jcr:lastModifiedBy="ankumari@adobe.com"
                         jcr:primaryType="nt:unstructured"
                         jcr:title="Reject- Send email to Initiator"
                         sling:resourceType="cq/workflow/components/model/process">
                         <metaData
                             jcr:primaryType="nt:unstructured"
                             PROCESS="com.lebara.core.workflow.EmailTask"
-                            PROCESS_ARGS="emailType=approve,userType=initiator"
+                            PROCESS_ARGS="emailType=reject,userType=initiator"
                             PROCESS_AUTO_ADVANCE="true"/>
                     </process>
                 </_x0032_>
