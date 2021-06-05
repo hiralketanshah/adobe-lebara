@@ -43,22 +43,21 @@ public class AssetApprovalTask implements WorkflowProcess {
 		}
 		String fileName = payload.substring(payload.lastIndexOf("/"), payload.length());
 		String filePath = payload.substring(0, payload.lastIndexOf("/"));
-		LOGGER.info("fileName {} filePath {}", fileName, filePath);
+		LOGGER.debug("fileName {} filePath {}", fileName, filePath);
 
 		if (metaDataMap.containsKey(PROCESS_ARGS)) {
 			String procArgs = metaDataMap.get(PROCESS_ARGS, "taskType");
-			LOGGER.info("workflow metadata for key PROCESS_ARGS and value {}", procArgs);
-			if (StringUtils.isNotBlank(procArgs)) {
-				String taskType = procArgs.split("=")[1];
-				if (StringUtils.isNotBlank(taskType) && "approve".equals(taskType) && payload.contains("/assets-qc/")) {
-					String newPayload = payload.replaceFirst("/assets-qc/", "/assets-approved/");
-					moveAssetTONewPath(assetManager, payload, newPayload);
-				}
-				if (StringUtils.isNotBlank(taskType) && "reject".equals(taskType) && payload.contains("/assets-qc/")) {
-					String newPayload = payload.replaceFirst("/assets-qc/", "/assets-rejected/");
-					moveAssetTONewPath(assetManager, payload, newPayload);
-				}
-
+			LOGGER.debug("workflow metadata for key PROCESS_ARGS and value {}", procArgs);
+			if (StringUtils.isBlank(procArgs)) {
+				return;
+			}
+			String taskType = procArgs.split("=")[1];
+			if (StringUtils.isNotBlank(taskType) && StringUtils.equalsIgnoreCase(taskType, "approve") && payload.contains("/assets-qc/")) {
+				String newPayload = payload.replaceFirst("/assets-qc/", "/assets-approved/");
+				moveAssetTONewPath(assetManager, payload, newPayload);
+			} else if (StringUtils.isNotBlank(taskType) && StringUtils.equalsIgnoreCase(taskType, "reject") && payload.contains("/assets-qc/")) {
+				String newPayload = payload.replaceFirst("/assets-qc/", "/assets-rejected/");
+				moveAssetTONewPath(assetManager, payload, newPayload);
 			}
 		}
 
