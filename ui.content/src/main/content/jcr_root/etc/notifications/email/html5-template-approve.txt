@@ -4,4 +4,4 @@ subject:  Asset Approved
 <br />
 Asset Path : ${payloadPath}
 
-Approved by : ${senderName} group
+Approved by: ${senderName} group
