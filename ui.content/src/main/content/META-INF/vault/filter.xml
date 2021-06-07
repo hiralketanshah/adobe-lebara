@@ -2,9 +2,7 @@
 <workspaceFilter version="1.0">
     <filter root="/conf/lebara" mode="merge"/>
     <filter root="/conf/global/settings/workflow/launcher/config" mode="replace"/>
-    <filter root="/var/workflow/models" mode="merge"/>
-    <filter root="/var/workflow/models/lebara-asset-approval-rejection-task" mode="replace"/>
-    <filter root="/conf/global/settings/workflow/models" mode="merge"/>
+    <filter root="/var/workflow/models/lebara-asset-approval-rejection-task" mode="replace"/>    
     <filter root="/conf/global/settings/workflow/models/lebara-asset-approval-rejection-task" mode="replace"/>
     <filter root="/etc/notifications/email" mode="replace"/>
     <filter root="/etc/notifications" mode="merge"/>
