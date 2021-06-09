@@ -1,7 +1,10 @@
 subject:  Asset Approved
 
+<br />
+Hi ${senderName} team,
 
 <br />
-Asset Path : ${payloadPath}
+This asset has been approved and moved to this path  ${payloadPath}.
 
-Approved by: ${senderName} group
+<br />
+Reviewer Comment : ${userComment}

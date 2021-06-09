@@ -1,7 +1,10 @@
 subject:  Asset Rejected
 
+<br />
+Hi ${senderName}
 
 <br />
-Asset Path : ${payloadPath}
+This asset has been rejected. Please validate in this path ${payloadPath}
 
-Rejected by : ${senderName} group
+<br />
+Reviewer Comment : ${userComment}
