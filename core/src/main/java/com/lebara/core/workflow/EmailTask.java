@@ -15,6 +15,7 @@ import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;
 
 import com.lebara.core.utils.AemUtils;
+import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.lang.text.StrLookup;
 import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.StringUtils;
@@ -124,16 +125,18 @@ public class EmailTask implements WorkflowProcess {
 		List<HistoryItem> historyList;
 		String userComment = StringUtils.EMPTY;
 		try {
-			historyList = workflowSession.getHistory(workItem.getWorkflow());
-			int listSize = historyList.size();
-			HistoryItem lastItem = historyList.get(listSize-1);
-			userComment = lastItem.getComment();
-			if(userComment != null && userComment.length() > 0) {
-				LOGGER.debug("Previous Workflow Comment = " + userComment);
-			} else {
-				LOGGER.debug("Previous Workflow Comment = null or ''");
-			}
-		} catch (WorkflowException e) {
+            historyList = workflowSession.getHistory(workItem.getWorkflow());
+            if (CollectionUtils.isNotEmpty(historyList)) {
+                HistoryItem lastItem = historyList.get(historyList.size() - 1);
+                userComment = lastItem.getComment();
+            }
+
+            if (userComment != null && userComment.length() > 0) {
+                LOGGER.debug("Previous Workflow Comment = " + userComment);
+            } else {
+                LOGGER.debug("Previous Workflow Comment = null or ''");
+            }
+        } catch (WorkflowException e) {
 			LOGGER.error("WorkflowException {}", e);
 		}
 
