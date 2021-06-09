@@ -34,6 +34,7 @@ import com.adobe.granite.workflow.exec.WorkItem;
 import com.adobe.granite.workflow.exec.WorkflowProcess;
 import com.adobe.granite.workflow.metadata.MetaDataMap;
 import com.day.cq.commons.mail.MailTemplate;
+import com.day.cq.mailer.MailingException;
 import com.day.cq.mailer.MessageGatewayService;
 
 @Component(
@@ -216,7 +217,7 @@ public class EmailTask implements WorkflowProcess {
             return;
         }
         LOGGER.debug("send templatePath {}", templatePath);
-        String senderEmail = "assethub2019@gmail.com";
+        String senderEmail = "ankita.kumari@lebara.com";
         MailTemplate mailTemplate = MailTemplate.create(templatePath, session);
         HtmlEmail email;
         try {
@@ -230,7 +231,11 @@ public class EmailTask implements WorkflowProcess {
             LOGGER.error("MessagingException {}", e);
         } catch (EmailException e) {
             LOGGER.error("EmailException {}", e);
-        }
+        } catch (MailingException e) {
+        	LOGGER.error("MailingException {}", e);
+		} catch (Exception e) {
+        	LOGGER.error("MailingException {}", e);
+		}
 
         LOGGER.debug("send exit ");
     }
