@@ -14,6 +14,7 @@ import javax.mail.MessagingException;
 import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;
 
+import com.day.cq.commons.Externalizer;
 import com.lebara.core.utils.AemUtils;
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.lang.text.StrLookup;
@@ -128,7 +129,10 @@ public class EmailTask implements WorkflowProcess {
         if (null == manager || StringUtils.isBlank(emailRecepientUserOrGroupName)) {
             return;
         }
-
+        final Externalizer externalizer = resourceResolver.adaptTo(Externalizer.class);
+        if (null != externalizer) {
+            payloadPath = externalizer.authorLink(resourceResolver, payloadPath);
+        }
         try {
             Authorizable authorizable = manager.getAuthorizable(emailRecepientUserOrGroupName);
             if (null == authorizable) {
