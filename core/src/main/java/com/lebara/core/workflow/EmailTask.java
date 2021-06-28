@@ -263,7 +263,7 @@ public class EmailTask implements WorkflowProcess {
             return;
         }
         LOGGER.debug("send templatePath {}", templatePath);
-        String senderEmail = "ankita.kumari@lebara.com";
+        String senderEmail = "Digital.Assets@lebara.com";
         MailTemplate mailTemplate = MailTemplate.create(templatePath, session);
         HtmlEmail email;
         try {
