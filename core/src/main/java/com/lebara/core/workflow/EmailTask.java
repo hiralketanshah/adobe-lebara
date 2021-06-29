@@ -1,29 +1,16 @@
 package com.lebara.core.workflow;
 
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import javax.jcr.RepositoryException;
 import javax.jcr.Session;
-import javax.jcr.Value;
-import javax.mail.MessagingException;
-import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;
 
 import com.day.cq.commons.Externalizer;
 import com.lebara.core.utils.AemUtils;
 import org.apache.commons.collections4.CollectionUtils;
-import org.apache.commons.lang.text.StrLookup;
-import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.StringUtils;
-import org.apache.commons.mail.EmailException;
-import org.apache.commons.mail.HtmlEmail;
 import org.apache.jackrabbit.api.security.user.Authorizable;
-import org.apache.jackrabbit.api.security.user.Group;
 import org.apache.jackrabbit.api.security.user.UserManager;
 import org.apache.sling.api.resource.ResourceResolver;
 import org.osgi.service.component.annotations.Component;
@@ -37,8 +24,6 @@ import com.adobe.granite.workflow.exec.HistoryItem;
 import com.adobe.granite.workflow.exec.WorkItem;
 import com.adobe.granite.workflow.exec.WorkflowProcess;
 import com.adobe.granite.workflow.metadata.MetaDataMap;
-import com.day.cq.commons.mail.MailTemplate;
-import com.day.cq.mailer.MailingException;
 import com.day.cq.mailer.MessageGatewayService;
 
 @Component(
@@ -54,7 +39,7 @@ public class EmailTask implements WorkflowProcess {
     static final String PROCESS_ARGS = "PROCESS_ARGS";
     static Map<String, String> groupMapping = new HashMap<>();
 
-    List<InternetAddress> emailIds = new ArrayList<>();
+    Set<InternetAddress> emailIds = new HashSet<>();
 
     static {
         groupMapping = new HashMap<>();
@@ -138,12 +123,12 @@ public class EmailTask implements WorkflowProcess {
             if (null == authorizable) {
                 return;
             }
-            List<InternetAddress> emailIdList = getEmailIdList(authorizable);
+            Set<InternetAddress> emailIdList = getEmailIdList(authorizable);
             Map<String, String> emailParams = new HashMap<>();
             emailParams.put("senderName", authorizable.getPrincipal().getName());
             emailParams.put("payloadPath", payloadPath);
             emailParams.put("userComment", getUserComment(workItem, workflowSession));
-            sendEmail(workflowSession.adaptTo(Session.class), emailParams, templatePath, emailIdList);
+            AemUtils.sendEmail(workflowSession.adaptTo(Session.class), emailParams, templatePath, emailIdList, messageGatewayService);
 
         } catch (RepositoryException e) {
             LOGGER.error("RepositoryException {}", e);
@@ -174,68 +159,16 @@ public class EmailTask implements WorkflowProcess {
     /**
      * This method sets the list of emailids to whom the emails will be sent.
      */
-    private List<InternetAddress> getEmailIdList(Authorizable authorizable) throws RepositoryException {
-        emailIds = new ArrayList<>();
+    private Set<InternetAddress> getEmailIdList(Authorizable authorizable) throws RepositoryException {
+        emailIds = new HashSet<>();
         //if authorizable is a group type, send email to all its member users.
         if (null == authorizable) {
             return emailIds;
         }
-        getEmailIdFromGroupOrUser(authorizable);
+        emailIds = AemUtils.getEmailIdFromGroupOrUser(authorizable);
         return emailIds;
     }
 
-    /**
-     * This method recursively finds all the users inside subgroups as well.
-     */
-    private void getEmailIdFromGroupOrUser(Authorizable authorizable) throws RepositoryException {
-        if (authorizable.isGroup()) {
-            Group group = (Group) authorizable;
-            Iterator<Authorizable> members = group.getMembers();
-            while (members.hasNext()) {
-                Authorizable userOfGroup = members.next();
-
-                //rejecting the groups which are members of the parent group
-                // only considering the user members of the parent group
-                if (!userOfGroup.isGroup()) {
-                    InternetAddress internetAddress = setUserDetails(userOfGroup);
-                    if (null != internetAddress) {
-                        emailIds.add(internetAddress);
-                    }
-                } else {
-                    getEmailIdFromGroupOrUser(userOfGroup);
-                }
-
-            }
-        } else {
-            InternetAddress internetAddress = setUserDetails(authorizable);
-            if (null != internetAddress) {
-                emailIds.add(internetAddress);
-            }
-        }
-    }
-
-    /**
-     * this method returns the email details of user authorizables and not group authorizables
-     * this method returns null if email is not present for that user.
-     */
-    private InternetAddress setUserDetails(Authorizable userOfGroup) throws RepositoryException {
-        //not every authorizable has ./profile/email in it, eg admin.
-        LOGGER.debug("principal name of authorizable getting the email {}", userOfGroup.getPrincipal().getName());
-        Value[] userArray = userOfGroup.getProperty("./profile/email");
-        String emailOfUserOfGroup = StringUtils.EMPTY;
-        if (ArrayUtils.isNotEmpty(userArray)) {
-            emailOfUserOfGroup = userArray[0].getString();
-        }
-        try {
-            if (StringUtils.isNotBlank(emailOfUserOfGroup)) {
-                return new InternetAddress(emailOfUserOfGroup);
-            }
-
-        } catch (AddressException e) {
-            LOGGER.error("AddressException", e);
-        }
-        return null;
-    }
 
     /**
      * this method checks country name in the path of the asset and returns the name
@@ -255,34 +188,4 @@ public class EmailTask implements WorkflowProcess {
         return groupName;
     }
 
-    /**
-     * this method is responsible for sending the emails.
-     */
-    private void sendEmail(Session session, Map<String, String> emailParams, String templatePath, List<InternetAddress> emailIds) {
-        if (emailIds.isEmpty()) {
-            return;
-        }
-        LOGGER.debug("send templatePath {}", templatePath);
-        String senderEmail = "Digital.Assets@lebara.com";
-        MailTemplate mailTemplate = MailTemplate.create(templatePath, session);
-        HtmlEmail email;
-        try {
-            email = mailTemplate.getEmail(StrLookup.mapLookup(emailParams), HtmlEmail.class);
-            email.setTo(emailIds);
-            email.setFrom(senderEmail);
-            messageGatewayService.getGateway(HtmlEmail.class).send(email);
-        } catch (IOException e) {
-            LOGGER.error("IOException {}", e);
-        } catch (MessagingException e) {
-            LOGGER.error("MessagingException {}", e);
-        } catch (EmailException e) {
-            LOGGER.error("EmailException {}", e);
-        } catch (MailingException e) {
-            LOGGER.error("MailingException {}", e);
-        } catch (Exception e) {
-            LOGGER.error("MailingException {}", e);
-        }
-
-        LOGGER.debug("send exit ");
-    }
 }

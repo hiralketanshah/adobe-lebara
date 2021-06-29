@@ -1,7 +1,27 @@
 package com.lebara.core.utils;
 
 
+import com.day.cq.commons.mail.MailTemplate;
+import com.day.cq.mailer.MailingException;
+import com.day.cq.mailer.MessageGatewayService;
+import org.apache.commons.lang.text.StrLookup;
+import org.apache.commons.lang3.ArrayUtils;
+import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.mail.EmailException;
+import org.apache.commons.mail.HtmlEmail;
+import org.apache.jackrabbit.api.security.user.Authorizable;
+import org.apache.jackrabbit.api.security.user.Group;
 import org.apache.sling.api.resource.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import javax.jcr.RepositoryException;
+import javax.jcr.Session;
+import javax.jcr.Value;
+import javax.mail.MessagingException;
+import javax.mail.internet.AddressException;
+import javax.mail.internet.InternetAddress;
+import java.io.IOException;
 import java.util.*;
 
 
@@ -14,7 +34,7 @@ public class AemUtils {
 
   }
 
-
+  final static Logger LOGGER = LoggerFactory.getLogger(AemUtils.class);
   /**
    * Gets property.
    *
@@ -56,5 +76,89 @@ public class AemUtils {
     return Arrays.asList(result);
   }
 
+  /**
+   * This method recursively finds all the users inside subgroups as well.
+   */
+  public static Set<InternetAddress> getEmailIdFromGroupOrUser(Authorizable authorizable) throws RepositoryException {
+    Set<InternetAddress> emailIds = new HashSet<>();
+    if (authorizable.isGroup()) {
+      Group group = (Group) authorizable;
+      Iterator<Authorizable> members = group.getMembers();
+      while (members.hasNext()) {
+        Authorizable userOfGroup = members.next();
 
+        //rejecting the groups which are members of the parent group
+        // only considering the user members of the parent group
+        if (!userOfGroup.isGroup()) {
+          InternetAddress internetAddress = setUserDetails(userOfGroup);
+          if (null != internetAddress) {
+            emailIds.add(internetAddress);
+          }
+        } else {
+          getEmailIdFromGroupOrUser(userOfGroup);
+        }
+
+      }
+    } else {
+      InternetAddress internetAddress = setUserDetails(authorizable);
+      if (null != internetAddress) {
+        emailIds.add(internetAddress);
+      }
+    }
+    return emailIds;
+  }
+
+  /**
+   * this method returns the email details of user authorizables and not group authorizables
+   * this method returns null if email is not present for that user.
+   */
+  public static InternetAddress setUserDetails(Authorizable userOfGroup) throws RepositoryException {
+    //not every authorizable has ./profile/email in it, eg admin.
+    LOGGER.debug("principal name of authorizable getting the email {}", userOfGroup.getPrincipal().getName());
+    Value[] userArray = userOfGroup.getProperty("./profile/email");
+    String emailOfUserOfGroup = StringUtils.EMPTY;
+    if (ArrayUtils.isNotEmpty(userArray)) {
+      emailOfUserOfGroup = userArray[0].getString();
+    }
+    try {
+      if (StringUtils.isNotBlank(emailOfUserOfGroup)) {
+        return new InternetAddress(emailOfUserOfGroup);
+      }
+
+    } catch (AddressException e) {
+      LOGGER.error("AddressException", e);
+    }
+    return null;
+  }
+
+  /**
+   * this method is responsible for sending the emails.
+   */
+  public static void sendEmail(Session session, Map<String, String> emailParams, String templatePath, Set<InternetAddress> emailIds, MessageGatewayService messageGatewayService ) {
+    if (emailIds.isEmpty()) {
+      return;
+    }
+    LOGGER.debug("send templatePath {}", templatePath);
+    String senderEmail = "Digital.Assets@lebara.com";
+    MailTemplate mailTemplate = MailTemplate.create(templatePath, session);
+    HtmlEmail email;
+    try {
+      email = mailTemplate.getEmail(StrLookup.mapLookup(emailParams), HtmlEmail.class);
+      email.setTo(emailIds);
+      email.setFrom(senderEmail);
+      messageGatewayService.getGateway(HtmlEmail.class).send(email);
+    } catch (IOException e) {
+      LOGGER.error("IOException {}", e);
+    } catch (MessagingException e) {
+      LOGGER.error("MessagingException {}", e);
+    } catch (EmailException e) {
+      LOGGER.error("EmailException {}", e);
+    } catch (MailingException e) {
+      LOGGER.error("MailingException {}", e);
+    } catch (Exception e) {
+      LOGGER.error("MailingException {}", e);
+    }
+
+    LOGGER.debug("send exit ");
+  }
 }

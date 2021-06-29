@@ -1,0 +1,7 @@
+subject:  Asset Uploaded
+
+<br />
+Hi Reviewer team,
+
+<br />
+An asset has been uploaded to review at path  ${payloadPath}.
