@@ -118,6 +118,16 @@
             <type>zip</type>
         </dependency>
 
+        <!-- SPA Project Core (includes hierarchy page) -->
+        <dependency>
+            <groupId>com.adobe.aem</groupId>
+            <artifactId>spa.project.core.ui.apps</artifactId>
+            <type>zip</type>
+        </dependency>
+        <dependency>
+            <groupId>com.adobe.aem</groupId>
+            <artifactId>spa.project.core.core</artifactId>
+        </dependency>
         <dependency>
             <groupId>com.lebara</groupId>
             <artifactId>lebara.ui.apps.structure</artifactId>
