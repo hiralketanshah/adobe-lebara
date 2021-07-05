@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+          jcr:primaryType="cq:Page">
+    <jcr:content
+            cq:designPath="/libs/settings/wcm/designs/default"
+            cq:lastModified="{Date}2021-06-29T16:28:55.662+05:30"
+            cq:lastModifiedBy="admin"
+            cq:template="/libs/cq/workflow/templates/model"
+            jcr:primaryType="cq:PageContent"
+            jcr:title="Lebara - Asset Approval-Rejection Workflow"
+            sling:resourceType="cq/workflow/components/pages/model"
+            editable="{Boolean}false"
+            lastSynced="{Date}2021-06-29T16:29:13.249+05:30">
+        <flow
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="foundation/components/parsys">
+            <process
+                    jcr:created="{Date}2021-06-29T16:23:55.419+05:30"
+                    jcr:createdBy="admin"
+                    jcr:lastModified="{Date}2021-06-29T16:24:47.805+05:30"
+                    jcr:lastModifiedBy="admin"
+                    jcr:primaryType="nt:unstructured"
+                    jcr:title="Send Email To Reviewer"
+                    sling:resourceType="cq/workflow/components/model/process">
+                <metaData
+                        jcr:primaryType="nt:unstructured"
+                        PROCESS="com.lebara.core.workflow.SendEmailToReviewers"
+                        PROCESS_AUTO_ADVANCE="true"/>
+            </process>
+            <or_1452127199
+                    jcr:created="{Date}2021-06-05T14:35:40.660+05:30"
+                    jcr:createdBy="admin"
+                    jcr:lastModified="{Date}2021-06-05T14:46:16.073+05:30"
+                    jcr:lastModifiedBy="admin"
+                    jcr:primaryType="nt:unstructured"
+                    jcr:title="regions"
+                    sling:resourceType="cq/workflow/components/model/or"
+                    branches="5"
+                    branchName1="NL"
+                    branchName2="FR"
+                    branchName3="DE"
+                    branchName4="DK"
+                    branchName5="UK"
+                    branchOrder="[0,1,2,3,4]"
+                    orSplit="true"
+                    script1="function check(){&#xd;&#xa;   var payload = workflowData.getPayload().toString();&#xd;&#xa;//log.info(payload);&#xd;&#xa;if(payload.includes('/nl/') ){&#xd;&#xa;&#x9;&#x9;return true;&#xd;&#xa;   }   &#xd;&#xa;return false;&#xd;&#xa;}"
+                    script2="function check(){&#xd;&#xa;   var payload = workflowData.getPayload().toString();&#xd;&#xa;if(payload.includes('/fr/') ){&#xd;&#xa;&#x9;&#x9;return true;&#xd;&#xa;   }   &#xd;&#xa;return false;&#xd;&#xa;}"
+                    script3="function check(){&#xd;&#xa;   var payload = workflowData.getPayload().toString();&#xd;&#xa;if(payload.includes('/de/') ){&#xd;&#xa;&#x9;&#x9;return true;&#xd;&#xa;   }   &#xd;&#xa;return false;&#xd;&#xa;}"
+                    script4="function check(){&#xd;&#xa;   var payload = workflowData.getPayload().toString();&#xd;&#xa;if(payload.includes('/dk/') ){&#xd;&#xa;&#x9;&#x9;return true;&#xd;&#xa;   }   &#xd;&#xa;return false;&#xd;&#xa;}"
+                    script5="function check(){&#xd;&#xa;   var payload = workflowData.getPayload().toString();&#xd;&#xa;if(payload.includes('/uk/') ){&#xd;&#xa;&#x9;&#x9;return true;&#xd;&#xa;   }   &#xd;&#xa;return false;&#xd;&#xa;}">
+                <_x0031_
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="cq/flow/components/parsys">
+                    <participant
+                            jcr:created="{Date}2021-06-05T14:41:37.074+05:30"
+                            jcr:createdBy="admin"
+                            jcr:lastModified="{Date}2021-06-29T16:23:46.179+05:30"
+                            jcr:lastModifiedBy="admin"
+                            jcr:primaryType="nt:unstructured"
+                            jcr:title="NL ASSETS"
+                            sling:resourceType="cq/workflow/components/model/participant">
+                        <metaData
+                                jcr:primaryType="nt:unstructured"
+                                PARTICIPANT="lebara-reviewer-nl"/>
+                    </participant>
+                </_x0031_>
+                <_x0032_
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="cq/flow/components/parsys">
+                    <participant
+                            jcr:created="{Date}2021-06-05T14:42:29.686+05:30"
+                            jcr:createdBy="admin"
+                            jcr:lastModified="{Date}2021-06-29T16:28:21.333+05:30"
+                            jcr:lastModifiedBy="admin"
+                            jcr:primaryType="nt:unstructured"
+                            jcr:title="FR ASSETS"
+                            sling:resourceType="cq/workflow/components/model/participant">
+                        <metaData
+                                jcr:primaryType="nt:unstructured"
+                                PARTICIPANT="lebara-reviewer-fr"/>
+                    </participant>
+                </_x0032_>
+                <_x0033_
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="cq/flow/components/parsys">
+                    <participant
+                            jcr:created="{Date}2021-06-05T14:42:57.049+05:30"
+                            jcr:createdBy="admin"
+                            jcr:lastModified="{Date}2021-06-29T16:28:31.974+05:30"
+                            jcr:lastModifiedBy="admin"
+                            jcr:primaryType="nt:unstructured"
+                            jcr:title="DE ASSETS"
+                            sling:resourceType="cq/workflow/components/model/participant">
+                        <metaData
+                                jcr:primaryType="nt:unstructured"
+                                PARTICIPANT="lebara-reviewer-de"/>
+                    </participant>
+                </_x0033_>
+                <_x0034_
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="cq/flow/components/parsys">
+                    <participant
+                            jcr:created="{Date}2021-06-05T14:43:36.547+05:30"
+                            jcr:createdBy="admin"
+                            jcr:lastModified="{Date}2021-06-29T16:28:43.823+05:30"
+                            jcr:lastModifiedBy="admin"
+                            jcr:primaryType="nt:unstructured"
+                            jcr:title="DK ASSETS"
+                            sling:resourceType="cq/workflow/components/model/participant">
+                        <metaData
+                                jcr:primaryType="nt:unstructured"
+                                PARTICIPANT="lebara-reviewer-dk"/>
+                    </participant>
+                </_x0034_>
+                <_x0035_
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="cq/flow/components/parsys">
+                    <participant
+                            jcr:created="{Date}2021-06-05T14:44:07.022+05:30"
+                            jcr:createdBy="admin"
+                            jcr:lastModified="{Date}2021-06-29T16:28:55.489+05:30"
+                            jcr:lastModifiedBy="admin"
+                            jcr:primaryType="nt:unstructured"
+                            jcr:title="UK ASSETS"
+                            sling:resourceType="cq/workflow/components/model/participant">
+                        <metaData
+                                jcr:primaryType="nt:unstructured"
+                                PARTICIPANT="lebara-reviewer-uk"/>
+                    </participant>
+                </_x0035_>
+            </or_1452127199>
+            <or
+                    jcr:created="{Date}2021-05-25T11:05:22.204+05:30"
+                    jcr:createdBy="admin"
+                    jcr:lastModified="{Date}2021-05-25T11:10:15.932+05:30"
+                    jcr:lastModifiedBy="admin"
+                    jcr:primaryType="nt:unstructured"
+                    jcr:title="Asset Approval and Rejection"
+                    sling:resourceType="cq/workflow/components/model/or"
+                    branches="2"
+                    branchName1="Branch 1"
+                    branchName2="Branch 2"
+                    branchOrder="[0,1]"
+                    orSplit="true">
+                <_x0031_
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="cq/flow/components/parsys">
+                    <process
+                            jcr:created="{Date}2021-05-24T19:15:27.342+05:30"
+                            jcr:createdBy="admin"
+                            jcr:lastModified="{Date}2021-06-05T09:50:09.751+05:30"
+                            jcr:lastModifiedBy="admin"
+                            jcr:primaryType="nt:unstructured"
+                            jcr:title="Approve Asset"
+                            sling:resourceType="cq/workflow/components/model/process">
+                        <metaData
+                                jcr:primaryType="nt:unstructured"
+                                PROCESS="com.lebara.core.workflow.AssetApprovalTask"
+                                PROCESS_ARGS="taskType=approve"
+                                PROCESS_AUTO_ADVANCE="true"/>
+                    </process>
+                    <process_copy
+                            jcr:created="{Date}2021-05-25T11:57:15.416+05:30"
+                            jcr:createdBy="admin"
+                            jcr:lastModified="{Date}2021-06-01T13:34:12.502Z"
+                            jcr:primaryType="nt:unstructured"
+                            jcr:title="Send Email to publisher"
+                            sling:resourceType="cq/workflow/components/model/process">
+                        <metaData
+                                jcr:primaryType="nt:unstructured"
+                                PROCESS="com.lebara.core.workflow.EmailTask"
+                                PROCESS_ARGS="emailType=approve,userType=non-initiator"
+                                PROCESS_AUTO_ADVANCE="true"/>
+                    </process_copy>
+                </_x0031_>
+                <_x0032_
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="cq/flow/components/parsys">
+                    <process_copy
+                            jcr:created="{Date}2021-05-24T19:15:27.342+05:30"
+                            jcr:createdBy="admin"
+                            jcr:lastModified="{Date}2021-06-05T09:50:47.198+05:30"
+                            jcr:lastModifiedBy="admin"
+                            jcr:primaryType="nt:unstructured"
+                            jcr:title="Reject Asset"
+                            sling:resourceType="cq/workflow/components/model/process">
+                        <metaData
+                                jcr:primaryType="nt:unstructured"
+                                PROCESS="com.lebara.core.workflow.AssetApprovalTask"
+                                PROCESS_ARGS="taskType=reject"
+                                PROCESS_AUTO_ADVANCE="true"/>
+                    </process_copy>
+                    <process
+                            jcr:created="{Date}2021-05-25T11:57:15.416+05:30"
+                            jcr:createdBy="admin"
+                            jcr:lastModified="{Date}2021-06-01T13:34:29.596Z"
+                            jcr:primaryType="nt:unstructured"
+                            jcr:title="Reject- Send email to Initiator"
+                            sling:resourceType="cq/workflow/components/model/process">
+                        <metaData
+                                jcr:primaryType="nt:unstructured"
+                                PROCESS="com.lebara.core.workflow.EmailTask"
+                                PROCESS_ARGS="emailType=reject,userType=initiator"
+                                PROCESS_AUTO_ADVANCE="true"/>
+                    </process>
+                </_x0032_>
+            </or>
+        </flow>
+    </jcr:content>
+</jcr:root>
