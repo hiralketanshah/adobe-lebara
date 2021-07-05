@@ -161,4 +161,16 @@ public class AemUtils {
 
     LOGGER.debug("send exit ");
   }
+
+  /**
+   * this method takes the payloadpath and appends /assetdetails.html beofre the /content
+   * @param payloadPath path of image
+   * @return payloadpath with assetsdetails in url
+   */
+  public static String getPathWithAssetDetails(String payloadPath) {
+    if (StringUtils.contains(payloadPath, "/content/")) {
+      return payloadPath.replace("/content/", "/assetdetails.html/content/");
+    }
+    return payloadPath;
+  }
 }

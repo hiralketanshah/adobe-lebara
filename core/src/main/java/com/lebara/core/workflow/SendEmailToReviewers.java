@@ -75,7 +75,7 @@ public class SendEmailToReviewers implements WorkflowProcess {
             }
             Set<InternetAddress> emailIdList = getEmailIdList(authorizable);
             Map<String, String> emailParams = new HashMap<>();
-            emailParams.put("payloadPath", payloadPath);
+            emailParams.put("payloadPath", AemUtils.getPathWithAssetDetails(payloadPath));
             if (!emailIdList.isEmpty()) {
                 AemUtils.sendEmail(workflowSession.adaptTo(Session.class), emailParams, templatePath, emailIdList, messageGatewayService);
             }
