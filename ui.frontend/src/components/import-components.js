@@ -18,6 +18,7 @@ import withAsyncImport from "../utils/withAsyncImport";
 import './Page/Page';
 import './Container/Container';
 import './ExperienceFragment/ExperienceFragment';
+import Teaser from './Teaser/Teaser'
 
 import {MapTo} from '@adobe/aem-react-editable-components';
 
@@ -60,7 +61,7 @@ MapTo('lebara/components/list')(ListV2, {isEmpty: ListV2IsEmptyFn});
 MapTo('lebara/components/separator')(SeparatorV1, {isEmpty: SeparatorV1IsEmptyFn});
 
 MapTo('lebara/components/button')(ButtonV1, {isEmpty: ButtonV1IsEmptyFn});
-MapTo('lebara/components/teaser')(TeaserV1, {isEmpty: TeaserV1IsEmptyFn});
+MapTo('lebara/components/teaser')(Teaser, {isEmpty: TeaserV1IsEmptyFn});
 MapTo('lebara/components/image')(ImageV2, {isEmpty: ImageV2IsEmptyFn});
 MapTo('lebara/components/title')(TitleV2, {isEmpty: TitleV2IsEmptyFn});
 
