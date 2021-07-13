@@ -40,15 +40,9 @@ const Teaser: React.FC<TeaserV1Model> = ({
       </Heading>
 
       {description && (
-        <Box
-          fontSize="16px"
-          lineHeight="tall"
-          color="white"
-          data-rte-editelement
-          dangerouslySetInnerHTML={{
-            __html: sanitizeHtml(description, sanitizeWhiteList),
-          }}
-        />
+        <Text fontSize="16px" lineHeight="tall" color="white">
+          {description}
+        </Text>
       )}
     </Box>
   </Box>
