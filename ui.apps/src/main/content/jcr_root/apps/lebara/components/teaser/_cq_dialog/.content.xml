@@ -35,7 +35,6 @@
                                         <items jcr:primaryType="nt:unstructured">
                                             <file
                                                 jcr:primaryType="nt:unstructured"
-                                                required="{Boolean}true"
                                                 sling:resourceType="cq/gui/components/authoring/dialog/fileupload"
                                                 allowUpload="{Boolean}false"
                                                 autoStart="{Boolean}false"
