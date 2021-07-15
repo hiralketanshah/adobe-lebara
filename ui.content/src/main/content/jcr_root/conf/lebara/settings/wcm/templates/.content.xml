@@ -5,6 +5,6 @@
     <page-content/>
     <xf-web-variation/>
     <spa-app-template />
-    <spa-page-template />
+    <lebara-page-template />
     <rep:policy/>
 </jcr:root>
