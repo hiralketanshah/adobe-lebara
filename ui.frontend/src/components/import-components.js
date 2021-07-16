@@ -93,7 +93,7 @@ const TextEditConfig = {
 };
 
 const PlanCardConfig = {
-    emptyLabel: 'Plan card',
+    emptyLabel: 'Plancard',
 
     isEmpty: function (props) {
         return !props ;
