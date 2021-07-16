@@ -19,6 +19,7 @@ import './Page/Page';
 import './Container/Container';
 import './ExperienceFragment/ExperienceFragment';
 import Teaser from './Teaser/Teaser'
+import PlanCard from './PlanCard/PlanCard';
 
 import {MapTo} from '@adobe/aem-react-editable-components';
 
@@ -55,7 +56,6 @@ const LazyTextComponent = withAsyncImport(() => import(`./Text/Text`));
 const TitleV2 = withAsyncImport(() => import(`@adobe/aem-core-components-react-base/dist/authoring/title/v2/TitleV2`));
 const CarouselV1 = withAsyncImport(() => import(`@adobe/aem-core-components-react-spa/dist/container/carousel/v1/CarouselV1`));
 
-
 MapTo('lebara/components/download')(DownloadV1, {isEmpty: DownloadV1IsEmptyFn});
 MapTo('lebara/components/list')(ListV2, {isEmpty: ListV2IsEmptyFn});
 MapTo('lebara/components/separator')(SeparatorV1, {isEmpty: SeparatorV1IsEmptyFn});
@@ -76,7 +76,7 @@ MapTo('lebara/components/accordion')(AccordionV1, {isEmpty: AccordionV1IsEmptyFn
 MapTo('lebara/components/carousel')(CarouselV1, {isEmpty: CarouselV1IsEmptyFn});
 MapTo('lebara/components/container')(ContainerV1, {isEmpty: ContainerV1IsEmptyFn});
 
-
+MapTo('lebara/components/plancard')(PlanCard,{isEmpty: PlanCardConfig})
 //lazy load of internal component (hello world)
 
 /**
@@ -89,6 +89,14 @@ const TextEditConfig = {
 
     isEmpty: function (props) {
         return !props || !props.text || props.text.trim().length < 1;
+    }
+};
+
+const PlanCardConfig = {
+    emptyLabel: 'Plan card',
+
+    isEmpty: function (props) {
+        return !props ;
     }
 };
 
