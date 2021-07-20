@@ -66,15 +66,15 @@
 		# page /foo/bar is activated, all /foo/bar.* files are removed from the
 		# cache.
 		/invalidate {
-			/0000 {
-				/glob "*"
-				/type "deny"
-			}
-			/0001 {
-				/glob "*.html"
-				/type "allow"
-			}
-			/0001 {
+            /0000 {
+                /glob "*"
+                /type "deny"
+            }
+            /0001 {
+                /glob "*.html"
+                /type "allow"
+            }
+            /0001 {
                 /glob "*.json"
                 /type "allow"
             }
