@@ -6,6 +6,6 @@
         cq:createdBy="admin"
         jcr:primaryType="cq:PageContent"
         jcr:description="Lebara Page Template"
-        jcr:title="SPA Page"
+        jcr:title="Lebara Page Template"
         status="enabled"/>
 </jcr:root>

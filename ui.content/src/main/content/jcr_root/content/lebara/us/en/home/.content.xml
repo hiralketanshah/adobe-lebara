@@ -4,7 +4,7 @@
     <jcr:content
         cq:lastModified="{Date}2018-10-04T09:50:29.650+02:00"
         cq:lastModifiedBy="admin"
-        cq:template="/conf/lebara/settings/wcm/templates/spa-page-template"
+        cq:template="/conf/lebara/settings/wcm/templates/lebara-page-template"
         jcr:primaryType="cq:PageContent"
         jcr:title="Lebara Home Page"
         sling:resourceType="lebara/components/page">

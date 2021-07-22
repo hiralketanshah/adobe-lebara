@@ -1,6 +1,4 @@
 import React from "react";
-import sanitizeHtml from "sanitize-html";
-import sanitizeWhiteList from "../sanitize-html.whitelist";
 import { Box, Text, Heading } from "@chakra-ui/react";
 
 import { TeaserV1Model } from "@adobe/aem-core-components-react-base/dist/authoring/teaser/v1/TeaserV1";
@@ -40,15 +38,9 @@ const Teaser: React.FC<TeaserV1Model> = ({
       </Heading>
 
       {description && (
-        <Box
-          fontSize="16px"
-          lineHeight="tall"
-          color="white"
-          data-rte-editelement
-          dangerouslySetInnerHTML={{
-            __html: sanitizeHtml(description, sanitizeWhiteList),
-          }}
-        />
+        <Text fontSize="16px" lineHeight="tall" color="white">
+          {description}
+        </Text>
       )}
     </Box>
   </Box>
