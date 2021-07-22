@@ -41,7 +41,7 @@ public class CrudOperationEpc {
 
 	@Activate
 	public void init(CFDestinationDomain config) {
-		aemApiAssetPath = config.getConfigDoaminName();
+		aemApiAssetPath = config.getConfigDomainName();
 		aemApiAssetPath = aemApiAssetPath + LebaraConstants.API_PATH;
 		apiEndPointUrl = config.getApiPath();
 		encodingKey = config.getEncodingText();
