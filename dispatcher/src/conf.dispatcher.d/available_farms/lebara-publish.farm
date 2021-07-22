@@ -8,7 +8,7 @@
 # link for default_farm.any and create a symbolic link to your copy.
 #
 
-/publishfarm {
+/lebarapublishfarm {
 	# client headers which should be passed through to the render instances
 	# (feature supported since dispatcher build 2.6.3.5222)
 	/clientheaders {
@@ -66,14 +66,18 @@
 		# page /foo/bar is activated, all /foo/bar.* files are removed from the
 		# cache.
 		/invalidate {
-			/0000 {
-				/glob "*"
-				/type "deny"
-			}
-			/0001 {
-				/glob "*.html"
-				/type "allow"
-			}
+            /0000 {
+                /glob "*"
+                /type "deny"
+            }
+            /0001 {
+                /glob "*.html"
+                /type "allow"
+            }
+            /0002 {
+                /glob "*.json"
+                /type "allow"
+            }
 		}
 		/allowedClients {
 			$include "../cache/default_invalidate.any"
