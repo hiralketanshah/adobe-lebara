@@ -74,7 +74,7 @@
                 /glob "*.html"
                 /type "allow"
             }
-            /0001 {
+            /0002 {
                 /glob "*.json"
                 /type "allow"
             }
