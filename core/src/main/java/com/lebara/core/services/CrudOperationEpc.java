@@ -19,6 +19,8 @@ import javax.net.ssl.TrustManager;
 import javax.net.ssl.X509TrustManager;
 
 import com.lebara.core.dto.*;
+import org.apache.commons.lang3.StringUtils;
+import org.apache.sling.api.resource.ResourceResolver;
 import org.osgi.service.component.annotations.Activate;
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.metatype.annotations.Designate;
@@ -53,7 +55,7 @@ public class CrudOperationEpc {
 
     }
 
-    public void readEPCAndCreateCF(String cfDamPath) {
+    public void readEPCAndCreateCF(String cfDamPath, ResourceResolver resourceResolver) {
         try {
             // Create a trust manager that does not validate certificate chains
             TrustManager[] trustAllCerts = new TrustManager[]{new X509TrustManager() {
@@ -100,7 +102,7 @@ public class CrudOperationEpc {
          */
         // Read data from EPC
         String epcJsonString = getJsonFromEPC();
-        createContentFragment(epcJsonString, aemApiAssetPath + cfDamPath);
+        createContentFragment(epcJsonString, cfDamPath, resourceResolver);
     }
 
     /**
@@ -139,14 +141,14 @@ public class CrudOperationEpc {
         return sb.toString();
     }
 
-    void createContentFragment(String epcJsonString, String cfDamPath) {
+    void createContentFragment(String epcJsonString, String cfDamPath, ResourceResolver resourceResolver) {
         RootRead convertedEpcJsonObject = new Gson().fromJson(epcJsonString, RootRead.class);
         List<Offer> offers = convertedEpcJsonObject.getData().getOffers();
         logger.debug("total offers returned from epc is {}", offers.size());
         for (Offer offer : offers) {
-            logger.debug(offer.name);
-            if (!isCFOfferExists(offer, cfDamPath)) {
-                writeJsonToCf(offer, cfDamPath);
+            String cfPath = cfDamPath + "/" + offer.offerId;
+            if (resourceResolver.getResource(cfPath) == null) {
+                writeJsonToCf(offer, aemApiAssetPath + getCfPath(cfPath));
             } else {
                 logger.debug(" CF already exist with name {} and offer id {}", offer.name, offer.offerId);
             }
@@ -157,30 +159,8 @@ public class CrudOperationEpc {
     /**
      * this method returns true if the content fragment node at cfDamPath already exists
      */
-    boolean isCFOfferExists(Offer offer, String cfDamPath) {
-        URL url;
-        String cfJsonPath = cfDamPath + offer.offerId + LebaraConstants.EXTENSION_JSON;
-        try {
-            url = new URL(cfJsonPath);
-            String encoding = Base64.getEncoder().encodeToString(("admin:admin").getBytes("UTF-8"));
-            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-            connection.setRequestMethod("GET");
-            connection.setRequestProperty("Content-Type", LebaraConstants.CONTENT_TYPE_JSON);
-            connection.setRequestProperty("Authorization", "Basic " + encoding);
-            logger.debug("getResponseMessage {}", connection.getResponseMessage());
-            if (null != connection.getResponseMessage() && connection.getResponseMessage().equalsIgnoreCase("ok")) {
-                return true;
-            }
-
-        } catch (FileNotFoundException fne) {
-            logger.debug("content fragment not found for {} ", cfJsonPath);
-            logger.error(fne.getMessage(), fne);
-            return false;
-        } catch (Exception e) {
-            logger.error(e.getMessage(), e);
-            return false;
-        }
-        return false;
+    boolean isCFOfferExists(String cfDamPath, ResourceResolver resourceResolver) {
+        return resourceResolver.getResource(cfDamPath) != null;
     }
 
     void writeJsonToCf(Offer offer, String cfDamPath) {
@@ -191,11 +171,9 @@ public class CrudOperationEpc {
         if (jsonInput.contains("cqModel")) {
             jsonInput = jsonInput.replace("cqModel", "cq:model");
         }
-        String jsonInputString = jsonInput;
-        logger.debug("out put " + jsonInputString);
         URL url;
         try {
-            url = new URL(cfDamPath + offer.offerId);
+            url = new URL(cfDamPath);
             //compare - offer id with same plan and ignore if exists.
             String encoding = Base64.getEncoder().encodeToString(("admin:admin").getBytes("UTF-8"));
 
@@ -205,7 +183,7 @@ public class CrudOperationEpc {
             connection.setRequestProperty("Content-Type", "application/json");
             connection.setRequestProperty("Authorization", "Basic " + encoding);
             try (OutputStream os = connection.getOutputStream()) {
-                byte[] input = jsonInputString.getBytes("utf-8");
+                byte[] input = jsonInput.getBytes("utf-8");
                 os.write(input, 0, input.length);
             }
 
@@ -305,6 +283,14 @@ public class CrudOperationEpc {
 
         return root;
 
+    }
+
+    private String getCfPath(String payload) {
+        if (StringUtils.isNotBlank(payload) && payload.startsWith(LebaraConstants.DAM_PATH)) {
+            payload = payload.replaceFirst(LebaraConstants.DAM_PATH, LebaraConstants.EMPTY_STRING);
+            return payload;
+        }
+        return StringUtils.EMPTY;
     }
 }
 
