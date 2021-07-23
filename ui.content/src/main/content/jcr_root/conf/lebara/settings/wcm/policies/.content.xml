@@ -303,6 +303,16 @@
                         </assetToComponentMapping>
                     </cq:authoring>
                 </policy_1575040440977>
+                <lebara-container
+                    jcr:primaryType="nt:unstructured"
+                    jcr:title="Lebara Container Policy"
+                    sling:resourceType="wcm/core/components/policy/policy"
+                    backgroundColorEnabled="true"
+                    backgroundImageEnabled="true"
+                    components="[/apps/lebara/components/container,/apps/lebara/components/teaser,/apps/lebara/components/text]"
+                    layoutDisabled="false">
+                    <jcr:content jcr:primaryType="nt:unstructured"/>
+                </lebara-container>
             </container>
             <teaser jcr:primaryType="nt:unstructured">
                 <policy_1575031387650
@@ -367,7 +377,7 @@
                             jcr:primaryType="nt:unstructured"
                             jcr:title="SPA Content"
                             sling:resourceType="wcm/core/components/policy/policy"
-                            components="[/libs/wcm/foundation/components/responsivegrid,/apps/lebara/components/teaser,/apps/lebara/components/text]">
+                            components="[/libs/wcm/foundation/components/responsivegrid,/apps/lebara/components/container,/apps/lebara/components/teaser,/apps/lebara/components/text]">
                         <jcr:content jcr:primaryType="nt:unstructured"/>
                     </spa-default>
                 </responsivegrid>
