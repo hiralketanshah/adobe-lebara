@@ -309,7 +309,7 @@
                     sling:resourceType="wcm/core/components/policy/policy"
                     backgroundColorEnabled="true"
                     backgroundImageEnabled="true"
-                    components="[/apps/lebara/components/container,/apps/lebara/components/teaser,/apps/lebara/components/text]"
+                    components="[/libs/wcm/foundation/components/responsivegrid,/apps/lebara/components/container,/apps/lebara/components/teaser,/apps/lebara/components/text]"
                     layoutDisabled="false">
                     <jcr:content jcr:primaryType="nt:unstructured"/>
                 </lebara-container>
