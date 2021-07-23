@@ -29,6 +29,10 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.lebara.core.utils.LebaraConstants;
 
+/**
+ * This service class is responsible for connecting to EPC and fetching the plans information as json from EPC.
+ * Then this service creates a content fragment for each plan.
+ */
 @Component(service = CrudOperationEpc.class, immediate=true, property = {"process.label=Lebara EPC data operation Service"}, configurationPid = "com.lebara.core.services.CrudOperationEpc")
 @Designate(ocd=CFDestinationDomain.class)
 public class CrudOperationEpc {
