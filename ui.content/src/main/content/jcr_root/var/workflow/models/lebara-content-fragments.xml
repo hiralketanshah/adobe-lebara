@@ -5,7 +5,7 @@
     jcr:uuid="12d607d5-c1f5-4f2f-b9e0-61ae229a399a"
     sling:resourceType="cq/workflow/components/model"
     description="No Description"
-    title="Lebara Content Fragments">
+    title="Lebara : Import or create Plan content Fragment">
     <metaData
         cq:generatingPage="/conf/global/settings/workflow/models/lebara-content-fragments/jcr:content"
         cq:lastModified="{Long}1626004615891"

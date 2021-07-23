@@ -1,12 +1,12 @@
 package com.lebara.core.services;
 
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.OutputStream;
+import java.io.*;
 import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.ProtocolException;
 import java.net.URL;
+import java.security.KeyManagementException;
+import java.security.NoSuchAlgorithmException;
 import java.security.cert.CertificateException;
 import java.util.Base64;
 import java.util.List;
@@ -55,7 +55,6 @@ public class CrudOperationEpc {
 
     public void readEPCAndCreateCF(String cfDamPath) {
         try {
-            cfDamPath = aemApiAssetPath + cfDamPath;
             // Create a trust manager that does not validate certificate chains
             TrustManager[] trustAllCerts = new TrustManager[]{new X509TrustManager() {
                 public java.security.cert.X509Certificate[] getAcceptedIssuers() {
@@ -86,26 +85,30 @@ public class CrudOperationEpc {
                 }
             };
 
-            /**
-             * Actual business logic starts from here
-             */
 
-            // Red data from EPC
-            String epcJsonString = readJsonFromEPC();
-            getOffer(epcJsonString, cfDamPath);
-
-
+        } catch (NoSuchAlgorithmException e) {
+            logger.error("NoSuchAlgorithmException error while creating a trust all certificate {}", e);
+        } catch (KeyManagementException e) {
+            logger.error("KeyManagementException error while creating a trust all certificate {}", e);
         } catch (Exception e) {
-            logger.error(e.getMessage(), e);
+            logger.error("Exception error while creating a trust all certificate {}", e);
         }
+
+
+        /**
+         * Actual business logic starts from here
+         */
+        // Read data from EPC
+        String epcJsonString = getJsonFromEPC();
+        createContentFragment(epcJsonString, aemApiAssetPath + cfDamPath);
     }
 
     /**
-     * Read EPC Data
+     * Read EPC Data and return the epc json data as String.
      */
-    static String readJsonFromEPC() {
+    static String getJsonFromEPC() {
         URL url;
-        StringBuffer sb = new StringBuffer();
+        StringBuilder sb = new StringBuilder();
         try {
 
             url = new URL(apiEndPointUrl);
@@ -121,7 +124,7 @@ public class CrudOperationEpc {
                 byte[] input = jsonInputString.getBytes("utf-8");
                 os.write(input, 0, input.length);
             }
-            InputStream content = (InputStream) connection.getInputStream();
+            InputStream content = connection.getInputStream();
             BufferedReader in = new BufferedReader(new InputStreamReader(content));
             logger.debug("response from EPC");
             String line;
@@ -129,44 +132,42 @@ public class CrudOperationEpc {
             while ((line = in.readLine()) != null) {
                 sb.append(line);
             }
-
-            logger.debug("response from EPC" + sb.toString());
         } catch (Exception e) {
             logger.error(e.getMessage(), e);
         }
+        logger.debug("response from EPC {}", sb);
         return sb.toString();
     }
 
-    void getOffer(String epcJsonString, String cfDamPath) {
-        RootRead convertedepcJsonObject = new Gson().fromJson(epcJsonString, RootRead.class);
-        logger.debug("" + convertedepcJsonObject.getData().getOffers().size());
-        List<Offer> offers = convertedepcJsonObject.getData().getOffers();
-
+    void createContentFragment(String epcJsonString, String cfDamPath) {
+        RootRead convertedEpcJsonObject = new Gson().fromJson(epcJsonString, RootRead.class);
+        List<Offer> offers = convertedEpcJsonObject.getData().getOffers();
+        logger.debug("total offers returned from epc is {}", offers.size());
         for (Offer offer : offers) {
             logger.debug(offer.name);
             if (!isCFOfferExists(offer, cfDamPath)) {
                 writeJsonToCf(offer, cfDamPath);
             } else {
-                logger.debug(offer.name + " " + offer.offerId + " CF already exist");
+                logger.debug(" CF already exist with name {} and offer id {}", offer.name, offer.offerId);
             }
         }
 
     }
 
+    /**
+     * this method returns true if the content fragment node at cfDamPath already exists
+     */
     boolean isCFOfferExists(Offer offer, String cfDamPath) {
         URL url;
         String cfJsonPath = cfDamPath + offer.offerId + LebaraConstants.EXTENSION_JSON;
         try {
             url = new URL(cfJsonPath);
             String encoding = Base64.getEncoder().encodeToString(("admin:admin").getBytes("UTF-8"));
-
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
             connection.setRequestMethod("GET");
             connection.setRequestProperty("Content-Type", LebaraConstants.CONTENT_TYPE_JSON);
             connection.setRequestProperty("Authorization", "Basic " + encoding);
-            InputStream content = (InputStream) connection.getInputStream();
-            BufferedReader in = new BufferedReader(new InputStreamReader(content));
-            logger.debug("getResponseMessage " + connection.getResponseMessage());
+            logger.debug("getResponseMessage {}", connection.getResponseMessage());
             if (null != connection.getResponseMessage() && connection.getResponseMessage().equalsIgnoreCase("ok")) {
                 return true;
             }
@@ -208,17 +209,23 @@ public class CrudOperationEpc {
                 os.write(input, 0, input.length);
             }
 
-            InputStream content = (InputStream) connection.getInputStream();
+            InputStream content = connection.getInputStream();
             BufferedReader in = new BufferedReader(new InputStreamReader(content));
             String line;
             while ((line = in.readLine()) != null) {
                 logger.debug(line);
             }
+        } catch (ProtocolException e) {
+            logger.error("ProtocolException {}", e);
+        } catch (MalformedURLException e) {
+            logger.error("MalformedURLException {}", e);
+        } catch (UnsupportedEncodingException e) {
+            logger.error("UnsupportedEncodingException {}", e);
+        } catch (IOException e) {
+            logger.error("IOException {}", e);
         } catch (Exception e) {
-            logger.error(e.getMessage(), e);
+            logger.error("Exception {}", e);
         }
-
-
     }
 
     static Root getJsonforCF(Offer offer) {
