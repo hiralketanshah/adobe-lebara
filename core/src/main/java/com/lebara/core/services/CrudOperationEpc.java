@@ -17,6 +17,7 @@ import javax.net.ssl.X509TrustManager;
 
 import com.adobe.cq.dam.cfm.*;
 import com.lebara.core.dto.*;
+import org.apache.sling.api.resource.Resource;
 import org.apache.sling.api.resource.ResourceResolver;
 import org.osgi.service.component.annotations.Activate;
 import org.osgi.service.component.annotations.Component;
@@ -37,7 +38,6 @@ import com.lebara.core.utils.LebaraConstants;
 public class CrudOperationEpc {
     private static final Logger logger = LoggerFactory.getLogger(CrudOperationEpc.class);
 
-    String aemApiAssetPath = null;
     static String apiEndPointUrl = null;
     static String encodingKey = null;
     static String subscriptionKey = null;
@@ -45,8 +45,6 @@ public class CrudOperationEpc {
 
     @Activate
     public void init(CFDestinationDomain config) {
-        aemApiAssetPath = config.getConfigDomainName();
-        aemApiAssetPath = aemApiAssetPath + LebaraConstants.API_PATH;
         apiEndPointUrl = config.getApiPath();
         encodingKey = config.getEncodingText();
         subscriptionKey = config.getSubscriptionKey();
@@ -106,7 +104,7 @@ public class CrudOperationEpc {
     /**
      * Read EPC Data and return the epc json data as String.
      */
-    static String getJsonFromEPC() {
+    String getJsonFromEPC() {
         URL url;
         StringBuilder sb = new StringBuilder();
         try {
@@ -159,21 +157,28 @@ public class CrudOperationEpc {
         Gson gson = builder.create();
 
         try {
-            ContentFragment newFragment = resourceResolver.getResource(LebaraConstants.CONTENT_FRAGMENT_MODEL_PATH).
-                    adaptTo(FragmentTemplate.class).createFragment(resourceResolver.getResource(cfDamPath), offerId, offer.reportingName);
+            Resource contentFragmentModelResource = resourceResolver.getResource(LebaraConstants.CONTENT_FRAGMENT_MODEL_PATH);
+            if (contentFragmentModelResource == null) {
+                return;
+            }
+            FragmentTemplate fragmentTemplate = contentFragmentModelResource.adaptTo(FragmentTemplate.class);
+            if (fragmentTemplate == null) {
+                return;
+            }
+            ContentFragment newFragment = fragmentTemplate.createFragment(resourceResolver.getResource(cfDamPath), offerId, offer.reportingName);
 
-            newFragment.getElement("offerid").setContent(offer.offerId, "text/plain");
-            newFragment.getElement("type").setContent(offer.type, "text/plain");
-            newFragment.getElement("billingtype").setContent(offer.billingType, "text/plain");
-            newFragment.getElement("name").setContent(offer.name, "text/plain");
-            newFragment.getElement("reportingname").setContent(offer.reportingName, "text/plain");
-            newFragment.getElement("validity").setContent(String.valueOf(offer.validity), "text/plain");
-            newFragment.getElement("active").setContent(String.valueOf(offer.isActive), "text/plain");
-            newFragment.getElement("validitytype").setContent(offer.validityType, "text/plain");
-            newFragment.getElement("cost").setContent(String.valueOf(offer.cost), "text/plain");
-            newFragment.getElement("channels").setContent(gson.toJson(offer.channels), "text/plain");
-            newFragment.getElement("allowances").setContent(gson.toJson(offer.allowances), "text/plain");
-            newFragment.getElement("typename").setContent(String.valueOf(offer.__typename), "text/plain");
+            newFragment.getElement("offerid").setContent(offer.offerId, LebaraConstants.CONTENT_TYPE_TEXT_PLAIN);
+            newFragment.getElement("type").setContent(offer.type, LebaraConstants.CONTENT_TYPE_TEXT_PLAIN);
+            newFragment.getElement("billingtype").setContent(offer.billingType, LebaraConstants.CONTENT_TYPE_TEXT_PLAIN);
+            newFragment.getElement("name").setContent(offer.name, LebaraConstants.CONTENT_TYPE_TEXT_PLAIN);
+            newFragment.getElement("reportingname").setContent(offer.reportingName, LebaraConstants.CONTENT_TYPE_TEXT_PLAIN);
+            newFragment.getElement("validity").setContent(String.valueOf(offer.validity), LebaraConstants.CONTENT_TYPE_TEXT_PLAIN);
+            newFragment.getElement("active").setContent(String.valueOf(offer.isActive), LebaraConstants.CONTENT_TYPE_TEXT_PLAIN);
+            newFragment.getElement("validitytype").setContent(offer.validityType, LebaraConstants.CONTENT_TYPE_TEXT_PLAIN);
+            newFragment.getElement("cost").setContent(String.valueOf(offer.cost), LebaraConstants.CONTENT_TYPE_TEXT_PLAIN);
+            newFragment.getElement("channels").setContent(gson.toJson(offer.channels), LebaraConstants.CONTENT_TYPE_TEXT_PLAIN);
+            newFragment.getElement("allowances").setContent(gson.toJson(offer.allowances), LebaraConstants.CONTENT_TYPE_TEXT_PLAIN);
+            newFragment.getElement("typename").setContent(String.valueOf(offer.__typename), LebaraConstants.CONTENT_TYPE_TEXT_PLAIN);
 
         } catch (ContentFragmentException e) {
             e.printStackTrace();
