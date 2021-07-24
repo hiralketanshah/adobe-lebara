@@ -2,13 +2,10 @@ package com.lebara.core.services;
 
 import java.io.*;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.ProtocolException;
 import java.net.URL;
 import java.security.KeyManagementException;
 import java.security.NoSuchAlgorithmException;
 import java.security.cert.CertificateException;
-import java.util.Base64;
 import java.util.List;
 
 import javax.net.ssl.HostnameVerifier;
@@ -18,8 +15,8 @@ import javax.net.ssl.SSLSession;
 import javax.net.ssl.TrustManager;
 import javax.net.ssl.X509TrustManager;
 
+import com.adobe.cq.dam.cfm.*;
 import com.lebara.core.dto.*;
-import org.apache.commons.lang3.StringUtils;
 import org.apache.sling.api.resource.ResourceResolver;
 import org.osgi.service.component.annotations.Activate;
 import org.osgi.service.component.annotations.Component;
@@ -44,6 +41,7 @@ public class CrudOperationEpc {
     static String apiEndPointUrl = null;
     static String encodingKey = null;
     static String subscriptionKey = null;
+
 
     @Activate
     public void init(CFDestinationDomain config) {
@@ -114,7 +112,6 @@ public class CrudOperationEpc {
         try {
 
             url = new URL(apiEndPointUrl);
-            //String encoding = "ZXBjX3VpX2Rldl90ZWFtOmJVejgkRldZKSNIYzJNP0o=";
             String jsonInputString = "{\"operationName\":\"Offers\",\"variables\":{\"country\":\"GB\"},\"query\":\"query Offers($country: String!) { offers(country: $country) { offerId type billingType name reportingName isActive validityType validity cost channels { name __typename } allowances { allowanceValue account { name unit { abbreviation __typename } __typename } __typename } __typename }}\"}";
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
             connection.setRequestMethod("POST");
@@ -148,7 +145,7 @@ public class CrudOperationEpc {
         for (Offer offer : offers) {
             String cfPath = cfDamPath + "/" + offer.offerId;
             if (resourceResolver.getResource(cfPath) == null) {
-                writeJsonToCf(offer, aemApiAssetPath + getCfPath(cfPath));
+                writeJsonToCf(offer, cfDamPath, offer.offerId, resourceResolver);
             } else {
                 logger.debug(" CF already exist with name {} and offer id {}", offer.name, offer.offerId);
             }
@@ -156,142 +153,35 @@ public class CrudOperationEpc {
 
     }
 
-    /**
-     * this method returns true if the content fragment node at cfDamPath already exists
-     */
-    boolean isCFOfferExists(String cfDamPath, ResourceResolver resourceResolver) {
-        return resourceResolver.getResource(cfDamPath) != null;
-    }
 
-    void writeJsonToCf(Offer offer, String cfDamPath) {
+    void writeJsonToCf(Offer offer, String cfDamPath, String offerId, ResourceResolver resourceResolver) {
         GsonBuilder builder = new GsonBuilder();
         Gson gson = builder.create();
-        String jsonInput = gson.toJson(getJsonforCF(offer));
 
-        if (jsonInput.contains("cqModel")) {
-            jsonInput = jsonInput.replace("cqModel", "cq:model");
-        }
-        URL url;
         try {
-            url = new URL(cfDamPath);
-            //compare - offer id with same plan and ignore if exists.
-            String encoding = Base64.getEncoder().encodeToString(("admin:admin").getBytes("UTF-8"));
+            ContentFragment newFragment = resourceResolver.getResource(LebaraConstants.CONTENT_FRAGMENT_MODEL_PATH).
+                    adaptTo(FragmentTemplate.class).createFragment(resourceResolver.getResource(cfDamPath), offerId, offer.reportingName);
 
-            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-            connection.setRequestMethod("POST");
-            connection.setDoOutput(true);
-            connection.setRequestProperty("Content-Type", "application/json");
-            connection.setRequestProperty("Authorization", "Basic " + encoding);
-            try (OutputStream os = connection.getOutputStream()) {
-                byte[] input = jsonInput.getBytes("utf-8");
-                os.write(input, 0, input.length);
-            }
+            newFragment.getElement("offerid").setContent(offer.offerId, "text/plain");
+            newFragment.getElement("type").setContent(offer.type, "text/plain");
+            newFragment.getElement("billingtype").setContent(offer.billingType, "text/plain");
+            newFragment.getElement("name").setContent(offer.name, "text/plain");
+            newFragment.getElement("reportingname").setContent(offer.reportingName, "text/plain");
+            newFragment.getElement("validity").setContent(String.valueOf(offer.validity), "text/plain");
+            newFragment.getElement("active").setContent(String.valueOf(offer.isActive), "text/plain");
+            newFragment.getElement("validitytype").setContent(offer.validityType, "text/plain");
+            newFragment.getElement("cost").setContent(String.valueOf(offer.cost), "text/plain");
+            newFragment.getElement("channels").setContent(gson.toJson(offer.channels), "text/plain");
+            newFragment.getElement("allowances").setContent(gson.toJson(offer.allowances), "text/plain");
+            newFragment.getElement("typename").setContent(String.valueOf(offer.__typename), "text/plain");
 
-            InputStream content = connection.getInputStream();
-            BufferedReader in = new BufferedReader(new InputStreamReader(content));
-            String line;
-            while ((line = in.readLine()) != null) {
-                logger.debug(line);
-            }
-        } catch (ProtocolException e) {
-            logger.error("ProtocolException {}", e);
-        } catch (MalformedURLException e) {
-            logger.error("MalformedURLException {}", e);
-        } catch (UnsupportedEncodingException e) {
-            logger.error("UnsupportedEncodingException {}", e);
-        } catch (IOException e) {
-            logger.error("IOException {}", e);
-        } catch (Exception e) {
-            logger.error("Exception {}", e);
+        } catch (ContentFragmentException e) {
+            e.printStackTrace();
         }
-    }
-
-    static Root getJsonforCF(Offer offer) {
-
-        Elements elements = new Elements();
-        Reportingname reportingname = new Reportingname();
-        reportingname.setTitle("reportingName");
-        reportingname.setValue(offer.reportingName);
-        elements.setReportingname(reportingname);
-
-        Offerid offerid = new Offerid();
-        offerid.setTitle("offerId");
-        offerid.setValue(offer.offerId);
-        elements.setOfferid(offerid);
-
-        Name name = new Name();
-        name.setTitle("name");
-        name.setValue(offer.name);
-        elements.setName(name);
-
-        Validity validity = new Validity();
-        validity.setTitle("validity");
-        validity.setValue("" + offer.validity);
-        elements.setValidity(validity);
-
-        Billingtype billingtype = new Billingtype();
-        billingtype.setTitle("billingType");
-        billingtype.setValue(offer.billingType);
-        elements.setBillingtype(billingtype);
-
-        Channels channels = new Channels();
-        channels.setTitle("channels");
-        if (null != offer.channels) {
-            channels.setValue(new GsonBuilder().create().toJson(offer.channels));
-        }
-        elements.setChannels(channels);
-
-        Allowances allowance = new Allowances();
-        allowance.setTitle("allowances");
-        if (null != offer.allowances) {
-            allowance.setValue(new GsonBuilder().create().toJson(offer.allowances));
-        }
-        elements.setAllowances(allowance);
-
-        Cost cost = new Cost();
-        cost.setTitle("cost");
-        cost.setValue(offer.cost);
-        elements.setCost(cost);
-
-        Type type = new Type();
-        type.setTitle("type");
-        type.setValue(offer.type);
-        elements.setType(type);
-
-        Validitytype validitytype = new Validitytype();
-        validitytype.setTitle("validitytype");
-        validitytype.setValue(offer.validityType);
-        elements.setValiditytype(validitytype);
-
-        Active active = new Active();
-        active.setTitle("isActive");
-        active.setValue(offer.isActive);
-        elements.setActive(active);
-
-        Typename typename = new Typename();
-        typename.setTitle("typename");
-        typename.setValue(offer.__typename);
-        elements.setTypename(typename);
-
-        Properties properties = new Properties();
-        properties.setCqModel(LebaraConstants.CONTENT_FRAGMENT_MODEL_PATH);
-        properties.setTitle(offer.name);
-        properties.setDescription(offer.reportingName);
-        properties.setElements(elements);
-        Root root = new Root();
-        root.setProperties(properties);
-
-        return root;
 
     }
 
-    private String getCfPath(String payload) {
-        if (StringUtils.isNotBlank(payload) && payload.startsWith(LebaraConstants.DAM_PATH)) {
-            payload = payload.replaceFirst(LebaraConstants.DAM_PATH, LebaraConstants.EMPTY_STRING);
-            return payload;
-        }
-        return StringUtils.EMPTY;
-    }
+
 }
 
 
