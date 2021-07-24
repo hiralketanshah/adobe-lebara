@@ -1,19 +1,11 @@
 package com.lebara.core.services;
 
 import java.io.*;
-import java.net.HttpURLConnection;
 import java.net.URL;
-import java.security.KeyManagementException;
-import java.security.NoSuchAlgorithmException;
-import java.security.cert.CertificateException;
+import java.nio.charset.StandardCharsets;
 import java.util.List;
 
-import javax.net.ssl.HostnameVerifier;
 import javax.net.ssl.HttpsURLConnection;
-import javax.net.ssl.SSLContext;
-import javax.net.ssl.SSLSession;
-import javax.net.ssl.TrustManager;
-import javax.net.ssl.X509TrustManager;
 
 import com.adobe.cq.dam.cfm.*;
 import com.lebara.core.dto.*;
@@ -52,46 +44,6 @@ public class CrudOperationEpc {
     }
 
     public void readEPCAndCreateCF(String cfDamPath, ResourceResolver resourceResolver) {
-        try {
-            // Create a trust manager that does not validate certificate chains
-            TrustManager[] trustAllCerts = new TrustManager[]{new X509TrustManager() {
-                public java.security.cert.X509Certificate[] getAcceptedIssuers() {
-                    return null;
-                }
-
-                @Override
-                public void checkClientTrusted(java.security.cert.X509Certificate[] arg0, String arg1)
-                        throws CertificateException {
-                }
-
-                @Override
-                public void checkServerTrusted(java.security.cert.X509Certificate[] arg0, String arg1)
-                        throws CertificateException {
-                }
-            }
-            };
-
-            // Install the all-trusting trust manager
-            SSLContext sc = SSLContext.getInstance("SSL");
-            sc.init(null, trustAllCerts, new java.security.SecureRandom());
-            HttpsURLConnection.setDefaultSSLSocketFactory(sc.getSocketFactory());
-
-            // Create all-trusting host name verifier
-            HostnameVerifier allHostsValid = new HostnameVerifier() {
-                public boolean verify(String hostname, SSLSession session) {
-                    return true;
-                }
-            };
-
-
-        } catch (NoSuchAlgorithmException e) {
-            logger.error("NoSuchAlgorithmException error while creating a trust all certificate {}", e);
-        } catch (KeyManagementException e) {
-            logger.error("KeyManagementException error while creating a trust all certificate {}", e);
-        } catch (Exception e) {
-            logger.error("Exception error while creating a trust all certificate {}", e);
-        }
-
 
         /**
          * Actual business logic starts from here
@@ -111,14 +63,14 @@ public class CrudOperationEpc {
 
             url = new URL(apiEndPointUrl);
             String jsonInputString = "{\"operationName\":\"Offers\",\"variables\":{\"country\":\"GB\"},\"query\":\"query Offers($country: String!) { offers(country: $country) { offerId type billingType name reportingName isActive validityType validity cost channels { name __typename } allowances { allowanceValue account { name unit { abbreviation __typename } __typename } __typename } __typename }}\"}";
-            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+            HttpsURLConnection connection = (HttpsURLConnection) url.openConnection();
             connection.setRequestMethod("POST");
             connection.setDoOutput(true);
             connection.setRequestProperty("Content-Type", LebaraConstants.CONTENT_TYPE_JSON);
             connection.setRequestProperty("Ocp-Apim-Subscription-Key", subscriptionKey);
             connection.setRequestProperty("Authorization", "Basic " + encodingKey);
             try (OutputStream os = connection.getOutputStream()) {
-                byte[] input = jsonInputString.getBytes("utf-8");
+                byte[] input = jsonInputString.getBytes(StandardCharsets.UTF_8);
                 os.write(input, 0, input.length);
             }
             InputStream content = connection.getInputStream();
@@ -130,7 +82,7 @@ public class CrudOperationEpc {
                 sb.append(line);
             }
         } catch (Exception e) {
-            logger.error(e.getMessage(), e);
+            logger.error("error while fetching EPC data {}, {}", e.getMessage(), e);
         }
         logger.debug("response from EPC {}", sb);
         return sb.toString();
