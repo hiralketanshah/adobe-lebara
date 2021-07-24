@@ -1,6 +1,8 @@
 package com.lebara.core.services;
 
 import java.io.*;
+import java.net.MalformedURLException;
+import java.net.ProtocolException;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import java.util.List;
@@ -9,6 +11,7 @@ import javax.net.ssl.HttpsURLConnection;
 
 import com.adobe.cq.dam.cfm.*;
 import com.lebara.core.dto.*;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.api.resource.ResourceResolver;
 import org.osgi.service.component.annotations.Activate;
@@ -30,9 +33,9 @@ import com.lebara.core.utils.LebaraConstants;
 public class CrudOperationEpc {
     private static final Logger logger = LoggerFactory.getLogger(CrudOperationEpc.class);
 
-    static String apiEndPointUrl = null;
-    static String encodingKey = null;
-    static String subscriptionKey = null;
+    static String apiEndPointUrl = StringUtils.EMPTY;
+    static String encodingKey = StringUtils.EMPTY;
+    static String subscriptionKey = StringUtils.EMPTY;
 
 
     @Activate
@@ -44,23 +47,18 @@ public class CrudOperationEpc {
     }
 
     public void readEPCAndCreateCF(String cfDamPath, ResourceResolver resourceResolver) {
-
-        /**
-         * Actual business logic starts from here
-         */
         // Read data from EPC
-        String epcJsonString = getJsonFromEPC();
+        String epcJsonString = getJsonFromEPC(apiEndPointUrl, subscriptionKey, encodingKey);
         createContentFragment(epcJsonString, cfDamPath, resourceResolver);
     }
 
     /**
      * Read EPC Data and return the epc json data as String.
      */
-    String getJsonFromEPC() {
+    String getJsonFromEPC(String apiEndPointUrl, String subscriptionKey, String encodingKey) {
         URL url;
         StringBuilder sb = new StringBuilder();
         try {
-
             url = new URL(apiEndPointUrl);
             String jsonInputString = "{\"operationName\":\"Offers\",\"variables\":{\"country\":\"GB\"},\"query\":\"query Offers($country: String!) { offers(country: $country) { offerId type billingType name reportingName isActive validityType validity cost channels { name __typename } allowances { allowanceValue account { name unit { abbreviation __typename } __typename } __typename } __typename }}\"}";
             HttpsURLConnection connection = (HttpsURLConnection) url.openConnection();
@@ -81,6 +79,12 @@ public class CrudOperationEpc {
             while ((line = in.readLine()) != null) {
                 sb.append(line);
             }
+        } catch (ProtocolException e) {
+            logger.error("ProtocolException error while fetching EPC data {}, {}", e.getMessage(), e);
+        } catch (MalformedURLException e) {
+            logger.error("MalformedURLException error while fetching EPC data {}, {}", e.getMessage(), e);
+        } catch (IOException e) {
+            logger.error("IOException error while fetching EPC data {}, {}", e.getMessage(), e);
         } catch (Exception e) {
             logger.error("error while fetching EPC data {}, {}", e.getMessage(), e);
         }
