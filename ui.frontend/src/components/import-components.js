@@ -20,7 +20,7 @@ import './Container/Container';
 import './ExperienceFragment/ExperienceFragment';
 import Teaser from './Teaser/Teaser'
 import PlanCard from './PlanCard/PlanCard';
-
+import Button from './Button/Button'
 import {MapTo} from '@adobe/aem-react-editable-components';
 
 import {
@@ -60,7 +60,7 @@ MapTo('lebara/components/download')(DownloadV1, {isEmpty: DownloadV1IsEmptyFn});
 MapTo('lebara/components/list')(ListV2, {isEmpty: ListV2IsEmptyFn});
 MapTo('lebara/components/separator')(SeparatorV1, {isEmpty: SeparatorV1IsEmptyFn});
 
-MapTo('lebara/components/button')(ButtonV1, {isEmpty: ButtonV1IsEmptyFn});
+MapTo('lebara/components/button')(Button, {isEmpty: ButtonV1IsEmptyFn});
 MapTo('lebara/components/teaser')(Teaser, {isEmpty: TeaserV1IsEmptyFn});
 MapTo('lebara/components/image')(ImageV2, {isEmpty: ImageV2IsEmptyFn});
 MapTo('lebara/components/title')(TitleV2, {isEmpty: TitleV2IsEmptyFn});

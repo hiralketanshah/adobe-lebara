@@ -1,8 +1,8 @@
 import React from "react";
-import { Box, Divider, Grid, GridItem } from "@chakra-ui/react";
+import { Box, Divider, Grid, GridItem, Text } from "@chakra-ui/react";
 import { PlanCardProps } from "./types";
 import Button from "../Button/Button";
-import LebaraText from "../Text/Text";
+import lebaraColor from "../../color";
 
 const PlanCard: React.FC<PlanCardProps> = ({
   price,
@@ -10,58 +10,26 @@ const PlanCard: React.FC<PlanCardProps> = ({
   description,
   data,
   color,
-}) => (
-  <Grid
-    boxShadow="md"
-    templateColumns="repeat(12, 1fr)"
-    gap={0}
-    paddingInline={2.5}
-    bg="white"
-    borderRadius={8}
-    alignItems="center"
-    w={{ md: "460px" }}
-    mb="20px"
-    color={color}
-  >
-    <GridItem
-      colSpan={{ base: 7, md: 4 }}
-      display="flex"
-      justifyContent="space-evenly"
+}) => {
+  return (
+    <Box
+      boxShadow="md"
+      gap={0}
+      paddingInline={2.5}
+      bg="#e2d7d7"
+      borderRadius={8}
       alignItems="center"
+      mb="20px"
+      h="92px"
+      display="flex"
+      flexDirection="row"
     >
-      <Box>
-        <Box
-          d={{ base: "flex", md: "none" }}
-          alignItems="baseline"
-          color="lebaraChambray.600"
-        >
-          <Box
-            as="p"
-            fontSize={{ base: "14px", md: "30px" }}
-            alignItems="baseline"
-            pos="relative"
-            top={{ base: "-12px", md: "0" }}
-            fontWeight="bold"
-          >
-            £
-          </Box>
-          <Box as="h3" fontSize="30px" pr="4px" pl="2px" fontWeight="bold">
-            {price}
-          </Box>
-          <Box as="p" fontSize="13px" fontWeight="semibold">
-            {" "}
-            / {duration}
-          </Box>
-        </Box>
-        <LebaraText
-          color="lebaraBlue.600"
-          type="caption"
-          display={{ base: "block", md: "none" }}
-        >
-          {data} {description}
-        </LebaraText>
-      </Box>
-      <Box>
+      <Box
+        display="flex"
+        marginLeft="23px"
+        alignItems="start"
+        flexDirection="column"
+      >
         <Box
           d={{ base: "none", md: "flex" }}
           alignItems="baseline"
@@ -70,54 +38,67 @@ const PlanCard: React.FC<PlanCardProps> = ({
           <Box
             as="h3"
             fontSize="30px"
-            pr="4px"
-            pl="2px"
+            padding="0px 4px 0px 2px"
             fontWeight="bold"
-            color="black"
+            color={lebaraColor.fuschia[500]}
           >
             {data}
           </Box>
         </Box>
-        <LebaraText
-          color="lebaraBlue.600"
-          type="caption"
-          d={{ base: "none", md: "flex" }}
+        <Box>
+          <Text
+            color={lebaraColor.bodyCopy}
+            type="caption"
+            fontSize="14px"
+            fontWeight="bold"
+          >
+            {description}
+          </Text>
+        </Box>
+      </Box>
+
+      <Divider
+        my={3.5}
+        orientation="vertical"
+        borderWidth="0.5px"
+        borderColor={lebaraColor.border}
+        borderStyle="solid"
+        h="50px"
+        ml="30px"
+      />
+
+      <Box d="flex" mr="26px" alignItems="center">
+        <Box
+          d="flex"
+          as="h3"
+          fontSize="30px"
+          pr="4px"
+          pl="2px"
+          fontWeight="bold"
+          mr="32px"
+          color={lebaraColor.navy}
         >
-          {description}
-        </LebaraText>
+          €{price}
+        </Box>
+        <Button
+          variant="solid"
+          w="134px"
+          background={lebaraColor.lebaraChambray[500]}
+          borderRadius="12px"
+          border="0px"
+          color={lebaraColor.white}
+        >
+          Buy Plan
+        </Button>
       </Box>
-
-      <Divider my={3.5} orientation="vertical" color="black" h="50px" w="1px" />
-    </GridItem>
-
-    <GridItem
-      colSpan={{ base: 5, md: 8 }}
-      d="flex"
-      justifyContent={{ base: "space-around", md: "space-around" }}
-    >
-      <Box
-        d={{ base: "none", md: "flex" }}
-        as="h3"
-        fontSize="30px"
-        pr="4px"
-        pl="2px"
-        fontWeight="bold"
-      >
-        £{price}
-      </Box>
-      <Button variant="solid" w="134px">
-        Buy Plan
-      </Button>
-    </GridItem>
-  </Grid>
-);
-
+    </Box>
+  );
+};
 export default PlanCard;
-
 PlanCard.defaultProps = {
   price: 10,
   duration: "7 Days",
   description: "+ Unlimited calls",
   data: "3GB",
-  color: "blue",
+  color: "red",
 };
