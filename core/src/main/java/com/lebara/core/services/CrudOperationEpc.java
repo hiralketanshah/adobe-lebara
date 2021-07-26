@@ -1,8 +1,6 @@
 package com.lebara.core.services;
 
 import java.io.*;
-import java.net.MalformedURLException;
-import java.net.ProtocolException;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import java.util.List;
@@ -33,9 +31,9 @@ import com.lebara.core.utils.LebaraConstants;
 public class CrudOperationEpc {
     private static final Logger logger = LoggerFactory.getLogger(CrudOperationEpc.class);
 
-    static String apiEndPointUrl = StringUtils.EMPTY;
-    static String encodingKey = StringUtils.EMPTY;
-    static String subscriptionKey = StringUtils.EMPTY;
+    String apiEndPointUrl = StringUtils.EMPTY;
+    String encodingKey = StringUtils.EMPTY;
+    String subscriptionKey = StringUtils.EMPTY;
 
 
     @Activate
@@ -75,14 +73,9 @@ public class CrudOperationEpc {
             BufferedReader in = new BufferedReader(new InputStreamReader(content));
             logger.debug("response from EPC");
             String line;
-
             while ((line = in.readLine()) != null) {
                 sb.append(line);
             }
-        } catch (ProtocolException e) {
-            logger.error("ProtocolException error while fetching EPC data {}, {}", e.getMessage(), e);
-        } catch (MalformedURLException e) {
-            logger.error("MalformedURLException error while fetching EPC data {}, {}", e.getMessage(), e);
         } catch (IOException e) {
             logger.error("IOException error while fetching EPC data {}, {}", e.getMessage(), e);
         } catch (Exception e) {
@@ -134,7 +127,7 @@ public class CrudOperationEpc {
             newFragment.getElement("cost").setContent(String.valueOf(offer.cost), LebaraConstants.CONTENT_TYPE_TEXT_PLAIN);
             newFragment.getElement("channels").setContent(gson.toJson(offer.channels), LebaraConstants.CONTENT_TYPE_TEXT_PLAIN);
             newFragment.getElement("allowances").setContent(gson.toJson(offer.allowances), LebaraConstants.CONTENT_TYPE_TEXT_PLAIN);
-            newFragment.getElement("typename").setContent(String.valueOf(offer.typename), LebaraConstants.CONTENT_TYPE_TEXT_PLAIN);
+            newFragment.getElement("typename").setContent(String.valueOf(offer.typeName), LebaraConstants.CONTENT_TYPE_TEXT_PLAIN);
 
         } catch (ContentFragmentException e) {
             logger.error("ContentFragmentException {}", e);

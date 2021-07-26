@@ -18,5 +18,5 @@ public class Offer {
     public List<Allowance> allowances;
 
     @JsonProperty("__typename")
-    public String typename;
+    public String typeName;
 }

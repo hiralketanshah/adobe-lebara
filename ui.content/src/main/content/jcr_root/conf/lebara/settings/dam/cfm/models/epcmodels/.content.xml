@@ -47,7 +47,7 @@
                         <_x0031_626007556027
                             jcr:primaryType="nt:unstructured"
                             sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                            fieldLabel="type"
+                            fieldLabel="Type"
                             listOrder="1"
                             maxlength="255"
                             metaType="text-single"
@@ -60,7 +60,7 @@
                         <_x0031_626007586097
                             jcr:primaryType="nt:unstructured"
                             sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                            fieldLabel="billingtype"
+                            fieldLabel="Billing Type"
                             listOrder="1"
                             maxlength="255"
                             metaType="text-single"
@@ -73,7 +73,7 @@
                         <_x0031_626007604231
                             jcr:primaryType="nt:unstructured"
                             sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                            fieldLabel="name"
+                            fieldLabel="Name"
                             listOrder="1"
                             maxlength="255"
                             metaType="text-single"
@@ -86,7 +86,7 @@
                         <_x0031_626007648234
                             jcr:primaryType="nt:unstructured"
                             sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                            fieldLabel="reportingname"
+                            fieldLabel="Reporting Name"
                             listOrder="1"
                             maxlength="255"
                             metaType="text-single"
@@ -99,7 +99,7 @@
                         <_x0031_626007922345
                             jcr:primaryType="nt:unstructured"
                             sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                            fieldLabel="validity"
+                            fieldLabel="Validity"
                             listOrder="1"
                             maxlength="255"
                             metaType="text-single"
@@ -124,7 +124,7 @@
                         <_x0031_626007867185
                             jcr:primaryType="nt:unstructured"
                             sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                            fieldLabel="validitytype"
+                            fieldLabel="Validity Type"
                             listOrder="1"
                             maxlength="255"
                             metaType="text-single"
@@ -137,7 +137,7 @@
                         <_x0031_626007982326
                             jcr:primaryType="nt:unstructured"
                             sling:resourceType="granite/ui/components/coral/foundation/form/numberfield"
-                            fieldLabel="cost"
+                            fieldLabel="Cost"
                             listOrder="3"
                             metaType="number"
                             name="cost"
@@ -171,7 +171,7 @@
                         <_x0031_626009679381
                             jcr:primaryType="nt:unstructured"
                             sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                            fieldLabel="typename"
+                            fieldLabel="Type Name"
                             listOrder="21"
                             maxlength="255"
                             metaType="text-single"

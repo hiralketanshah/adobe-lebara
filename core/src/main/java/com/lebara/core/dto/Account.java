@@ -7,7 +7,7 @@ public class Account {
     private Unit unit;
 
     @JsonProperty("__typename")
-    private String typename;
+    private String typeName;
 
     public String getName() {
         return name;
@@ -25,11 +25,11 @@ public class Account {
         this.unit = unit;
     }
 
-    public String getTypename() {
-        return typename;
+    public String getTypeName() {
+        return typeName;
     }
 
-    public void setTypename(String typename) {
-        this.typename = typename;
+    public void setTypeName(String typeName) {
+        this.typeName = typeName;
     }
 }

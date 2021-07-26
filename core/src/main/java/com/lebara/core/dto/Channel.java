@@ -6,7 +6,7 @@ public class Channel {
     private String name;
 
     @JsonProperty("__typename")
-    private String typename;
+    private String typeName;
 
     public String getName() {
         return name;
@@ -16,11 +16,11 @@ public class Channel {
         this.name = name;
     }
 
-    public String getTypename() {
-        return typename;
+    public String getTypeName() {
+        return typeName;
     }
 
-    public void setTypename(String typename) {
-        this.typename = typename;
+    public void setTypeName(String typeName) {
+        this.typeName = typeName;
     }
 }

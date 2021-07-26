@@ -7,7 +7,7 @@ public class Allowance {
     private Account account;
 
     @JsonProperty("__typename")
-    private String typename;
+    private String typeName;
 
     public int getAllowanceValue() {
         return allowanceValue;
@@ -25,11 +25,11 @@ public class Allowance {
         this.account = account;
     }
 
-    public String getTypename() {
-        return typename;
+    public String getTypeName() {
+        return typeName;
     }
 
-    public void setTypename(String typename) {
-        this.typename = typename;
+    public void setTypeName(String typeName) {
+        this.typeName = typeName;
     }
 }

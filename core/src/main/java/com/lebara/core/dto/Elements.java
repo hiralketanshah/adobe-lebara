@@ -1,72 +1,72 @@
 package com.lebara.core.dto;
 public class Elements {
-    private ReportingName reportingname;
-    private OfferId offerid;
-    private Name name;
-    private Validity validity;
-    private BillingType billingtype;
-    private Channels channels;
-    private Allowances allowances;
+    private StringValueBean reportingname;
+    private StringValueBean offerId;
+    private StringValueBean name;
+    private StringValueBean validity;
+    private StringValueBean billingtype;
+    private StringValueBean channels;
+    private StringValueBean allowances;
     private Cost cost;
-    private Type type;
-    private ValidityType validitytype;
+    private StringValueBean type;
+    private StringValueBean validitytype;
     private Active active;
-    private Typename typename;
+    private StringValueBean typeName;
 
 
-    public ReportingName getReportingname() {
+    public StringValueBean getReportingname() {
         return reportingname;
     }
 
-    public void setReportingname(ReportingName reportingname) {
+    public void setReportingname(StringValueBean reportingname) {
         this.reportingname = reportingname;
     }
 
-    public OfferId getOfferid() {
-        return offerid;
+    public StringValueBean getOfferId() {
+        return offerId;
     }
 
-    public void setOfferid(OfferId offerid) {
-        this.offerid = offerid;
+    public void setOfferId(StringValueBean offerId) {
+        this.offerId = offerId;
     }
 
-    public Name getName() {
+    public StringValueBean getName() {
         return name;
     }
 
-    public void setName(Name name) {
+    public void setName(StringValueBean name) {
         this.name = name;
     }
 
-    public Validity getValidity() {
+    public StringValueBean getValidity() {
         return validity;
     }
 
-    public void setValidity(Validity validity) {
+    public void setValidity(StringValueBean validity) {
         this.validity = validity;
     }
 
-    public BillingType getBillingtype() {
+    public StringValueBean getBillingtype() {
         return billingtype;
     }
 
-    public void setBillingtype(BillingType billingtype) {
+    public void setBillingtype(StringValueBean billingtype) {
         this.billingtype = billingtype;
     }
 
-    public Channels getChannels() {
+    public StringValueBean getChannels() {
         return channels;
     }
 
-    public void setChannels(Channels channels) {
+    public void setChannels(StringValueBean channels) {
         this.channels = channels;
     }
 
-    public Allowances getAllowances() {
+    public StringValueBean getAllowances() {
         return allowances;
     }
 
-    public void setAllowances(Allowances allowances) {
+    public void setAllowances(StringValueBean allowances) {
         this.allowances = allowances;
     }
 
@@ -78,19 +78,19 @@ public class Elements {
         this.cost = cost;
     }
 
-    public Type getType() {
+    public StringValueBean getType() {
         return type;
     }
 
-    public void setType(Type type) {
+    public void setType(StringValueBean type) {
         this.type = type;
     }
 
-    public ValidityType getValiditytype() {
+    public StringValueBean getValiditytype() {
         return validitytype;
     }
 
-    public void setValiditytype(ValidityType validitytype) {
+    public void setValiditytype(StringValueBean validitytype) {
         this.validitytype = validitytype;
     }
 
@@ -102,11 +102,11 @@ public class Elements {
         this.active = active;
     }
 
-    public Typename getTypename() {
-        return typename;
+    public StringValueBean getTypeName() {
+        return typeName;
     }
 
-    public void setTypename(Typename typename) {
-        this.typename = typename;
+    public void setTypeName(StringValueBean typeName) {
+        this.typeName = typeName;
     }
 }

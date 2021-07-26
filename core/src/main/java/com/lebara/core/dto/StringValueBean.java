@@ -1,6 +1,6 @@
 package com.lebara.core.dto;
 
-public class BillingType {
+public class StringValueBean {
     private String title;
     private String value;
 
