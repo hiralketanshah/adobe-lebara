@@ -1,6 +1,6 @@
 package com.lebara.core.dto;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
+import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
@@ -17,6 +17,6 @@ public class Offer {
     public List<Channel> channels;
     public List<Allowance> allowances;
 
-    @JsonProperty("__typename")
+    @SerializedName("__typename")
     public String typeName;
 }

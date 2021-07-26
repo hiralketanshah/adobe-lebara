@@ -20,5 +20,6 @@ public class CrudOperationEpcTest {
     @Test
     public void testGetJsonFromEPC() {
         String json = crudOperationEpc.getJsonFromEPC("https://sit-omni.lebara.com/sit/epc-configuration/","4cbbb29f41e346bbb52a02c6bafaffef", "ZXBjX3VpX2Rldl90ZWFtOmJVejgkRldZKSNIYzJNP0o=");
+        assert (json != null);
     }
 }

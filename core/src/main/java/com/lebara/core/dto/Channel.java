@@ -1,11 +1,11 @@
 package com.lebara.core.dto;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
+import com.google.gson.annotations.SerializedName;
 
 public class Channel {
     private String name;
 
-    @JsonProperty("__typename")
+    @SerializedName("__typename")
     private String typeName;
 
     public String getName() {
