@@ -99,7 +99,7 @@ public class CrudOperationEpc {
         for (Offer offer : offers) {
             String cfPath = cfDamPath + "/" + offer.offerId;
             if (resourceResolver.getResource(cfPath) == null) {
-                writeJsonToCf(offer, cfDamPath, offer.offerId, resourceResolver);
+                writeJsonToCf(offer, cfDamPath, resourceResolver);
             } else {
                 logger.debug(" CF already exist with name {} and offer id {}", offer.name, offer.offerId);
             }
@@ -108,7 +108,7 @@ public class CrudOperationEpc {
     }
 
 
-    void writeJsonToCf(Offer offer, String cfDamPath, String offerId, ResourceResolver resourceResolver) {
+    void writeJsonToCf(Offer offer, String cfDamPath, ResourceResolver resourceResolver) {
         GsonBuilder builder = new GsonBuilder();
         Gson gson = builder.create();
 
@@ -121,7 +121,7 @@ public class CrudOperationEpc {
             if (fragmentTemplate == null) {
                 return;
             }
-            ContentFragment newFragment = fragmentTemplate.createFragment(resourceResolver.getResource(cfDamPath), offerId, offer.reportingName);
+            ContentFragment newFragment = fragmentTemplate.createFragment(resourceResolver.getResource(cfDamPath), offer.offerId, offer.reportingName);
 
             newFragment.getElement("offerid").setContent(offer.offerId, LebaraConstants.CONTENT_TYPE_TEXT_PLAIN);
             newFragment.getElement("type").setContent(offer.type, LebaraConstants.CONTENT_TYPE_TEXT_PLAIN);
@@ -137,7 +137,7 @@ public class CrudOperationEpc {
             newFragment.getElement("typename").setContent(String.valueOf(offer.__typename), LebaraConstants.CONTENT_TYPE_TEXT_PLAIN);
 
         } catch (ContentFragmentException e) {
-            e.printStackTrace();
+            logger.error("ContentFragmentException {}", e);
         }
 
     }
