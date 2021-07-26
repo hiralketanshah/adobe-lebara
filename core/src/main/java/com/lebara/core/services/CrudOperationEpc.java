@@ -70,11 +70,12 @@ public class CrudOperationEpc {
                 os.write(input, 0, input.length);
             }
             InputStream content = connection.getInputStream();
-            BufferedReader in = new BufferedReader(new InputStreamReader(content));
-            logger.debug("response from EPC");
-            String line;
-            while ((line = in.readLine()) != null) {
-                sb.append(line);
+            try (BufferedReader in = new BufferedReader(new InputStreamReader(content))) {
+                logger.debug("response from EPC");
+                String line;
+                while ((line = in.readLine()) != null) {
+                    sb.append(line);
+                }
             }
         } catch (IOException e) {
             logger.error("IOException error while fetching EPC data {}, {}", e.getMessage(), e);
@@ -94,7 +95,7 @@ public class CrudOperationEpc {
             if (resourceResolver.getResource(cfPath) == null) {
                 writeJsonToCf(offer, cfDamPath, resourceResolver);
             } else {
-                logger.debug(" CF already exist with name {} and offer id {}", offer.name, offer.offerId);
+                logger.debug("CF already exist with name {} and offer id {} at {}", offer.name, offer.offerId, cfPath);
             }
         }
 
