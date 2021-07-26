@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <workspaceFilter version="1.0">
     <filter root="/conf/lebara/settings/wcm" mode="replace"/>
+    <filter root="/conf/lebara/settings/dam/cfm/models/epcmodels" mode="replace"/>
     <filter root="/conf/lebara" mode="merge"/>
     <filter root="/conf/global/settings/workflow/launcher/config" mode="replace"/>
     <filter root="/var/workflow/models/lebara-asset-approval-rejection-task" mode="replace"/>  

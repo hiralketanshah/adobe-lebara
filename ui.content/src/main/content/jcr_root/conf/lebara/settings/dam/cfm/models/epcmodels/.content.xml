@@ -117,7 +117,7 @@
                             name="active"
                             renderReadOnly="false"
                             showEmptyInReadOnly="true"
-                            text="active"
+                            text="Active"
                             valueType="boolean">
                             <granite:data jcr:primaryType="nt:unstructured"/>
                         </_x0031_626007775688>
@@ -151,7 +151,7 @@
                         <_x0031_626008173031
                             jcr:primaryType="nt:unstructured"
                             sling:resourceType="dam/cfm/admin/components/authoring/contenteditor/jsoneditor"
-                            cfm-element="channels"
+                            cfm-element="Channels"
                             listOrder="11"
                             metaType="json"
                             name="channels"
@@ -161,7 +161,7 @@
                         <_x0031_626008217644
                             jcr:primaryType="nt:unstructured"
                             sling:resourceType="dam/cfm/admin/components/authoring/contenteditor/jsoneditor"
-                            cfm-element="allowances"
+                            cfm-element="Allowances"
                             listOrder="11"
                             metaType="json"
                             name="allowances"
