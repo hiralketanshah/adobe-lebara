@@ -1,9 +1,13 @@
 package com.lebara.core.dto;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class Account {
     private String name;
     private Unit unit;
-    private String __typename;
+
+    @JsonProperty("__typename")
+    private String typename;
 
     public String getName() {
         return name;
@@ -21,11 +25,11 @@ public class Account {
         this.unit = unit;
     }
 
-    public String get__typename() {
-        return __typename;
+    public String getTypename() {
+        return typename;
     }
 
-    public void set__typename(String __typename) {
-        this.__typename = __typename;
+    public void setTypename(String typename) {
+        this.typename = typename;
     }
 }

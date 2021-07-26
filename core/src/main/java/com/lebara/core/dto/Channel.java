@@ -1,8 +1,12 @@
 package com.lebara.core.dto;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class Channel {
     private String name;
-    private String __typename;
+
+    @JsonProperty("__typename")
+    private String typename;
 
     public String getName() {
         return name;
@@ -12,11 +16,11 @@ public class Channel {
         this.name = name;
     }
 
-    public String get__typename() {
-        return __typename;
+    public String getTypename() {
+        return typename;
     }
 
-    public void set__typename(String __typename) {
-        this.__typename = __typename;
+    public void setTypename(String typename) {
+        this.typename = typename;
     }
 }

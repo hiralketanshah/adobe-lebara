@@ -134,7 +134,7 @@ public class CrudOperationEpc {
             newFragment.getElement("cost").setContent(String.valueOf(offer.cost), LebaraConstants.CONTENT_TYPE_TEXT_PLAIN);
             newFragment.getElement("channels").setContent(gson.toJson(offer.channels), LebaraConstants.CONTENT_TYPE_TEXT_PLAIN);
             newFragment.getElement("allowances").setContent(gson.toJson(offer.allowances), LebaraConstants.CONTENT_TYPE_TEXT_PLAIN);
-            newFragment.getElement("typename").setContent(String.valueOf(offer.__typename), LebaraConstants.CONTENT_TYPE_TEXT_PLAIN);
+            newFragment.getElement("typename").setContent(String.valueOf(offer.typename), LebaraConstants.CONTENT_TYPE_TEXT_PLAIN);
 
         } catch (ContentFragmentException e) {
             logger.error("ContentFragmentException {}", e);

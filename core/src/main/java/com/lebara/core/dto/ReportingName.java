@@ -1,6 +1,6 @@
 package com.lebara.core.dto;
 
-public class Billingtype {
+public class ReportingName {
     private String title;
     private String value;
 

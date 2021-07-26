@@ -12,7 +12,6 @@ import com.adobe.granite.workflow.exec.WorkItem;
 import com.adobe.granite.workflow.exec.WorkflowProcess;
 import com.adobe.granite.workflow.metadata.MetaDataMap;
 import com.lebara.core.services.CrudOperationEpc;
-import com.lebara.core.utils.LebaraConstants;
 
 @Component(service = WorkflowProcess.class, immediate = true, property = {"process.label=Lebara EPC data Store Task"}, configurationPid = "com.lebara.core.workflow.LebaraOfferCFStep")
 public class LebaraOfferCFStep implements WorkflowProcess {

@@ -1,6 +1,6 @@
 package com.lebara.core.dto;
 
-public class Offerid {
+public class ValidityType {
     private String title;
     private String value;
 
@@ -19,4 +19,5 @@ public class Offerid {
     public void setValue(String value) {
         this.value = value;
     }
+
 }

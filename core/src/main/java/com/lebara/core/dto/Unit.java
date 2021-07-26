@@ -1,8 +1,12 @@
 package com.lebara.core.dto;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 class Unit {
     private String abbreviation;
-    private String __typename;
+
+    @JsonProperty("__typename")
+    private String typename;
 
     public String getAbbreviation() {
         return abbreviation;
@@ -12,11 +16,11 @@ class Unit {
         this.abbreviation = abbreviation;
     }
 
-    public String get__typename() {
-        return __typename;
+    public String getTypename() {
+        return typename;
     }
 
-    public void set__typename(String __typename) {
-        this.__typename = __typename;
+    public void setTypename(String typename) {
+        this.typename = typename;
     }
 }

@@ -1,32 +1,32 @@
 package com.lebara.core.dto;
 public class Elements {
-    private Reportingname reportingname;
-    private Offerid offerid;
+    private ReportingName reportingname;
+    private OfferId offerid;
     private Name name;
     private Validity validity;
-    private Billingtype billingtype;
+    private BillingType billingtype;
     private Channels channels;
     private Allowances allowances;
     private Cost cost;
     private Type type;
-    private Validitytype validitytype;
+    private ValidityType validitytype;
     private Active active;
     private Typename typename;
 
 
-    public Reportingname getReportingname() {
+    public ReportingName getReportingname() {
         return reportingname;
     }
 
-    public void setReportingname(Reportingname reportingname) {
+    public void setReportingname(ReportingName reportingname) {
         this.reportingname = reportingname;
     }
 
-    public Offerid getOfferid() {
+    public OfferId getOfferid() {
         return offerid;
     }
 
-    public void setOfferid(Offerid offerid) {
+    public void setOfferid(OfferId offerid) {
         this.offerid = offerid;
     }
 
@@ -46,11 +46,11 @@ public class Elements {
         this.validity = validity;
     }
 
-    public Billingtype getBillingtype() {
+    public BillingType getBillingtype() {
         return billingtype;
     }
 
-    public void setBillingtype(Billingtype billingtype) {
+    public void setBillingtype(BillingType billingtype) {
         this.billingtype = billingtype;
     }
 
@@ -86,11 +86,11 @@ public class Elements {
         this.type = type;
     }
 
-    public Validitytype getValiditytype() {
+    public ValidityType getValiditytype() {
         return validitytype;
     }
 
-    public void setValiditytype(Validitytype validitytype) {
+    public void setValiditytype(ValidityType validitytype) {
         this.validitytype = validitytype;
     }
 

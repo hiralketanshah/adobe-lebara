@@ -1,5 +1,7 @@
 package com.lebara.core.dto;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.util.List;
 
 public class Offer {
@@ -14,5 +16,7 @@ public class Offer {
     public int cost;
     public List<Channel> channels;
     public List<Allowance> allowances;
-    public String __typename;
+
+    @JsonProperty("__typename")
+    public String typename;
 }

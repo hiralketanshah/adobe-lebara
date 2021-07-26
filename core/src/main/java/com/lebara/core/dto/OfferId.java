@@ -1,6 +1,6 @@
 package com.lebara.core.dto;
 
-public class Reportingname {
+public class OfferId {
     private String title;
     private String value;
 

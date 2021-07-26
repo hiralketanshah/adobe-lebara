@@ -1,6 +1,6 @@
 package com.lebara.core.dto;
 
-public class Validitytype {
+public class BillingType {
     private String title;
     private String value;
 
@@ -19,5 +19,4 @@ public class Validitytype {
     public void setValue(String value) {
         this.value = value;
     }
-
 }
