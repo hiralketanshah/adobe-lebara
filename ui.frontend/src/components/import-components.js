@@ -15,68 +15,92 @@
  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 import withAsyncImport from "../utils/withAsyncImport";
 
-import './Page/Page';
-import './Container/Container';
-import './ExperienceFragment/ExperienceFragment';
-import Teaser from './Teaser/Teaser'
-import PlanCard from './PlanCard/PlanCard';
-import Button from './Button/Button'
-import {MapTo} from '@adobe/aem-react-editable-components';
+import "./Page/Page";
+import "./Container/Container";
+import "./ExperienceFragment/ExperienceFragment";
+import Teaser from "./Teaser/Teaser";
+import PlanCard from "./PlanCard/PlanCard";
+import Button from "./Button/Button";
+import { MapTo } from "@adobe/aem-react-editable-components";
+
+import { CarouselV1IsEmptyFn } from "@adobe/aem-core-components-react-spa/dist/isEmptyFunctions";
+
+import { TitleV2IsEmptyFn } from "@adobe/aem-core-components-react-base/dist/isEmptyFunctions";
 
 import {
-    CarouselV1IsEmptyFn
-} from '@adobe/aem-core-components-react-spa/dist/isEmptyFunctions';
+  ContainerV1,
+  ContainerV1IsEmptyFn,
+  TabsV1,
+  TabsV1IsEmptyFn,
+  AccordionV1,
+  AccordionV1IsEmptyFn,
+} from "@adobe/aem-core-components-react-spa";
 
 import {
-    TitleV2IsEmptyFn
-} from '@adobe/aem-core-components-react-base/dist/isEmptyFunctions';
-
-import {
-    ContainerV1, ContainerV1IsEmptyFn,
-    TabsV1, TabsV1IsEmptyFn,
-    AccordionV1,AccordionV1IsEmptyFn,
-} from '@adobe/aem-core-components-react-spa';
-
-import {
-    BreadCrumbV2,BreadCrumbV2IsEmptyFn,
-    ButtonV1,ButtonV1IsEmptyFn,
-    ImageV2,ImageV2IsEmptyFn,
-    LanguageNavigationV1,
-    NavigationV1,
-    TeaserV1,TeaserV1IsEmptyFn,
-    DownloadV1,DownloadV1IsEmptyFn,
-    SeparatorV1,SeparatorV1IsEmptyFn,
-    ListV2,ListV2IsEmptyFn
-} from '@adobe/aem-core-components-react-base';
+  BreadCrumbV2,
+  BreadCrumbV2IsEmptyFn,
+  ButtonV1,
+  ButtonV1IsEmptyFn,
+  ImageV2,
+  ImageV2IsEmptyFn,
+  LanguageNavigationV1,
+  NavigationV1,
+  TeaserV1,
+  TeaserV1IsEmptyFn,
+  DownloadV1,
+  DownloadV1IsEmptyFn,
+  SeparatorV1,
+  SeparatorV1IsEmptyFn,
+  ListV2,
+  ListV2IsEmptyFn,
+} from "@adobe/aem-core-components-react-base";
 
 //lazyload / code splitting example of an internal component
 const LazyTextComponent = withAsyncImport(() => import(`./Text/Text`));
 
 //lazyload / code splitting examples of external components
-const TitleV2 = withAsyncImport(() => import(`@adobe/aem-core-components-react-base/dist/authoring/title/v2/TitleV2`));
-const CarouselV1 = withAsyncImport(() => import(`@adobe/aem-core-components-react-spa/dist/container/carousel/v1/CarouselV1`));
+const TitleV2 = withAsyncImport(() =>
+  import(
+    `@adobe/aem-core-components-react-base/dist/authoring/title/v2/TitleV2`
+  )
+);
+const CarouselV1 = withAsyncImport(() =>
+  import(
+    `@adobe/aem-core-components-react-spa/dist/container/carousel/v1/CarouselV1`
+  )
+);
 
-MapTo('lebara/components/download')(DownloadV1, {isEmpty: DownloadV1IsEmptyFn});
-MapTo('lebara/components/list')(ListV2, {isEmpty: ListV2IsEmptyFn});
-MapTo('lebara/components/separator')(SeparatorV1, {isEmpty: SeparatorV1IsEmptyFn});
+MapTo("lebara/components/download")(DownloadV1, {
+  isEmpty: DownloadV1IsEmptyFn,
+});
+MapTo("lebara/components/list")(ListV2, { isEmpty: ListV2IsEmptyFn });
+MapTo("lebara/components/separator")(SeparatorV1, {
+  isEmpty: SeparatorV1IsEmptyFn,
+});
 
-MapTo('lebara/components/button')(Button, {isEmpty: ButtonV1IsEmptyFn});
-MapTo('lebara/components/teaser')(Teaser, {isEmpty: TeaserV1IsEmptyFn});
-MapTo('lebara/components/image')(ImageV2, {isEmpty: ImageV2IsEmptyFn});
-MapTo('lebara/components/title')(TitleV2, {isEmpty: TitleV2IsEmptyFn});
+MapTo("lebara/components/button")(ButtonV1, { isEmpty: ButtonV1IsEmptyFn });
+MapTo("lebara/components/teaser")(Teaser, { isEmpty: TeaserV1IsEmptyFn });
+MapTo("lebara/components/image")(ImageV2, { isEmpty: ImageV2IsEmptyFn });
+MapTo("lebara/components/title")(TitleV2, { isEmpty: TitleV2IsEmptyFn });
 
+MapTo("lebara/components/breadcrumb")(BreadCrumbV2, {
+  isEmpty: BreadCrumbV2IsEmptyFn,
+});
+MapTo("lebara/components/navigation")(NavigationV1);
+MapTo("lebara/components/languagenavigation")(LanguageNavigationV1);
 
-MapTo('lebara/components/breadcrumb')(BreadCrumbV2, {isEmpty: BreadCrumbV2IsEmptyFn});
-MapTo('lebara/components/navigation')(NavigationV1);
-MapTo('lebara/components/languagenavigation')(LanguageNavigationV1);
+MapTo("lebara/components/tabs")(TabsV1, { isEmpty: TabsV1IsEmptyFn });
+MapTo("lebara/components/accordion")(AccordionV1, {
+  isEmpty: AccordionV1IsEmptyFn,
+});
+MapTo("lebara/components/carousel")(CarouselV1, {
+  isEmpty: CarouselV1IsEmptyFn,
+});
+MapTo("lebara/components/container")(ContainerV1, {
+  isEmpty: ContainerV1IsEmptyFn,
+});
 
-
-MapTo('lebara/components/tabs')(TabsV1, {isEmpty: TabsV1IsEmptyFn});
-MapTo('lebara/components/accordion')(AccordionV1, {isEmpty: AccordionV1IsEmptyFn});
-MapTo('lebara/components/carousel')(CarouselV1, {isEmpty: CarouselV1IsEmptyFn});
-MapTo('lebara/components/container')(ContainerV1, {isEmpty: ContainerV1IsEmptyFn});
-
-MapTo('lebara/components/plancard')(PlanCard,{isEmpty: PlanCardConfig})
+MapTo("lebara/components/plancard")(PlanCard, { isEmpty: PlanCardConfig });
 //lazy load of internal component (hello world)
 
 /**
@@ -85,19 +109,19 @@ MapTo('lebara/components/plancard')(PlanCard,{isEmpty: PlanCardConfig})
  * @type EditConfig
  */
 const TextEditConfig = {
-    emptyLabel: 'Text',
+  emptyLabel: "Text",
 
-    isEmpty: function (props) {
-        return !props || !props.text || props.text.trim().length < 1;
-    }
+  isEmpty: function (props) {
+    return !props || !props.text || props.text.trim().length < 1;
+  },
 };
 
 const PlanCardConfig = {
-    emptyLabel: 'Plancard',
+  emptyLabel: "Plancard",
 
-    isEmpty: function (props) {
-        return !props ;
-    }
+  isEmpty: function (props) {
+    return !props;
+  },
 };
 
-MapTo('lebara/components/text')(LazyTextComponent, TextEditConfig);
+MapTo("lebara/components/text")(LazyTextComponent, TextEditConfig);
