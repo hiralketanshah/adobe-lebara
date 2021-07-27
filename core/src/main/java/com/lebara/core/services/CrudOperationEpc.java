@@ -93,7 +93,8 @@ public class CrudOperationEpc {
         for (Offer offer : offers) {
             String cfPath = cfDamPath + "/" + offer.offerId;
             if (resourceResolver.getResource(cfPath) == null) {
-                writeJsonToCf(offer, cfDamPath, resourceResolver);
+                String offerId = writeJsonToCf(offer, cfDamPath, resourceResolver);
+                logger.debug("content fragment created for offer id {}", offerId);
             } else {
                 logger.debug("CF already exist with name {} and offer id {} at {}", offer.name, offer.offerId, cfPath);
             }
@@ -102,18 +103,18 @@ public class CrudOperationEpc {
     }
 
 
-    void writeJsonToCf(Offer offer, String cfDamPath, ResourceResolver resourceResolver) {
+    String writeJsonToCf(Offer offer, String cfDamPath, ResourceResolver resourceResolver) {
         GsonBuilder builder = new GsonBuilder();
         Gson gson = builder.create();
 
         try {
             Resource contentFragmentModelResource = resourceResolver.getResource(LebaraConstants.CONTENT_FRAGMENT_MODEL_PATH);
             if (contentFragmentModelResource == null) {
-                return;
+                return StringUtils.EMPTY;
             }
             FragmentTemplate fragmentTemplate = contentFragmentModelResource.adaptTo(FragmentTemplate.class);
             if (fragmentTemplate == null) {
-                return;
+                return StringUtils.EMPTY;
             }
             ContentFragment newFragment = fragmentTemplate.createFragment(resourceResolver.getResource(cfDamPath), offer.offerId, offer.reportingName);
 
@@ -133,6 +134,7 @@ public class CrudOperationEpc {
         } catch (ContentFragmentException e) {
             logger.error("ContentFragmentException {}", e);
         }
+        return offer.offerId;
 
     }
 
