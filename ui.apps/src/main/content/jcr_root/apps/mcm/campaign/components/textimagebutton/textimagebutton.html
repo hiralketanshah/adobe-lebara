@@ -85,7 +85,7 @@
         <div data-sly-test="${properties.show}" data-sly-resource="${'image' @ resourceType='mcm/campaign/components/image', wcmmode='disabled'}" data-sly-unwrap></div>            
     </div>   
     </div>
-     <div data-sly-use.textImage="textimagebutton.js" data-sly-test="${!wcmmode.disabled && !textImage.isTouch}" data-sly-use.clientLib="${'/libs/granite/sightly/templates/clientlib.html'} data-sly-unwrap>
+     <div data-sly-use.textImage="textimagebutton.js" data-sly-test="${!wcmmode.disabled && !textImage.isTouch}" data-sly-use.clientLib="${'/libs/granite/sightly/templates/clientlib.html'}" data-sly-unwrap>
         <meta data-sly-call="${clientLib.all @ categories='cq.personalization'}" data-sly-unwrap></meta>
         <script type="text/javascript">
             CQ.personalization.variables.Variables.applyToEditComponent("${resource.path @ context='scriptString'}");
