@@ -11,12 +11,8 @@ import org.apache.sling.api.resource.ResourceResolver;
 import org.apache.sling.models.annotations.DefaultInjectionStrategy;
 import org.apache.sling.models.annotations.Exporter;
 import org.apache.sling.models.annotations.Model;
-import org.apache.sling.models.annotations.Optional;
-import org.apache.sling.models.annotations.injectorspecific.ChildResource;
-import org.apache.sling.models.annotations.injectorspecific.Self;
-import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
+import org.apache.sling.models.annotations.injectorspecific.*;
 
-import javax.annotation.PostConstruct;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,10 +26,11 @@ public class ViewPlanExporter implements ComponentExporter {
      */
     protected static final String RESOURCE_TYPE = "lebara/components/viewplans";
 
-    @Self
-    private SlingHttpServletRequest request;
+    @SlingObject
+    private ResourceResolver resourceResolver;
 
-    private Resource currentResource;
+    @ScriptVariable
+    private Resource resource;
 
     @ChildResource
     private Resource phases;
@@ -49,14 +46,6 @@ public class ViewPlanExporter implements ComponentExporter {
 
     @ValueMapValue
     private String unlimitedTextField;
-
-    private ResourceResolver resourceResolver;
-
-    @PostConstruct
-    protected void init() {
-        currentResource = request.getResource();
-        resourceResolver = request.getResourceResolver();
-    }
 
     public String getButtonLabel() {
         return buttonLabel;
@@ -101,6 +90,6 @@ public class ViewPlanExporter implements ComponentExporter {
 
     @Override
     public String getExportedType() {
-        return currentResource.getResourceType();
+        return resource.getResourceType();
     }
 }
