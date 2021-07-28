@@ -3,4 +3,5 @@
     <filter root="/apps/lebara/clientlibs"/>
     <filter root="/apps/lebara/components"/>
     <filter root="/apps/lebara/i18n"/>
+    <filter root="/apps/mcm/campaign/components"/>
 </workspaceFilter>
