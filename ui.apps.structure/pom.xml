@@ -44,7 +44,6 @@
                         <filter><root>/apps/wcm</root></filter>
                         <filter><root>/apps/msm</root></filter>
                         <filter><root>/apps/mcm/campaign</root></filter>
-                        <!-- <filter><root>/apps/mcm/campaign/components</root></filter> -->
                        
 
                         <!-- Immutable context-aware configurations -->
