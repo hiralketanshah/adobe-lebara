@@ -27,8 +27,18 @@
                             <buttonlabel
                                     jcr:primaryType="nt:unstructured"
                                     sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                    fieldLabel="View Plan Button Label"
+                                    fieldLabel="Buy Plan Button Label"
                                     name="./buttonlabel"/>
+                            <unlimitedtextfield
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                    fieldLabel="Buy Plan Unlimited Text Field"
+                                    name="./unlimitedtextfield"/>
+                            <minutesfield
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                    fieldLabel="Buy Plan Unlimited Minutes Field"
+                                    name="./minutesfield"/>
                             <plans
                                     jcr:primaryType="nt:unstructured"
                                     jcr:title="Plans"

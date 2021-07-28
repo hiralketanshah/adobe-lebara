@@ -100,7 +100,7 @@ MapTo("lebara/components/container")(ContainerV1, {
   isEmpty: ContainerV1IsEmptyFn,
 });
 
-MapTo("lebara/components/plancard")(PlanCard, { isEmpty: PlanCardConfig });
+MapTo("lebara/components/viewplans")(PlanCard, { isEmpty: PlanCardConfig });
 //lazy load of internal component (hello world)
 
 /**
