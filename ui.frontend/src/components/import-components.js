@@ -79,7 +79,7 @@ MapTo("lebara/components/separator")(SeparatorV1, {
 });
 
 MapTo("lebara/components/button")(ButtonV1, { isEmpty: ButtonV1IsEmptyFn });
-MapTo("lebara/components/teaser")(Teaser, { isEmpty: TeaserV1IsEmptyFn });
+MapTo("lebara/components/teaser")(Teaser, { isEmpty: TeaserEditConfig });
 MapTo("lebara/components/image")(ImageV2, { isEmpty: ImageV2IsEmptyFn });
 MapTo("lebara/components/title")(TitleV2, { isEmpty: TitleV2IsEmptyFn });
 
@@ -115,7 +115,13 @@ const TextEditConfig = {
     return !props || !props.text || props.text.trim().length < 1;
   },
 };
+const TeaserEditConfig = {
+  emptyLabel: "Teaser",
 
+  isEmpty: function (props) {
+    return !props || !props.title || !props.description || !props.pretitle;
+  },
+};
 const PlanCardConfig = {
   emptyLabel: "Plancard",
 

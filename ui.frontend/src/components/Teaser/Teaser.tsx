@@ -47,9 +47,3 @@ const Teaser: React.FC<TeaserV1Model> = ({
 );
 
 export default Teaser;
-
-Teaser.defaultProps = {
-  title: "Title",
-  description: "description",
-  pretitle: "pretitle",
-};
