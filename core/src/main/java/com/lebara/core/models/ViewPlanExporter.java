@@ -39,9 +39,6 @@ public class ViewPlanExporter implements ComponentExporter {
     private String buttonLabel;
 
     @ValueMapValue
-    private String preTitle;
-
-    @ValueMapValue
     private String minutesField;
 
     @ValueMapValue
@@ -49,10 +46,6 @@ public class ViewPlanExporter implements ComponentExporter {
 
     public String getButtonLabel() {
         return buttonLabel;
-    }
-
-    public String getPreTitle() {
-        return preTitle;
     }
 
     public String getMinutesField() {

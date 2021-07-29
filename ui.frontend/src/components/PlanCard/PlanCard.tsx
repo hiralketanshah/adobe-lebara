@@ -1,6 +1,6 @@
 import React from "react";
 import { Divider } from "@chakra-ui/react";
-import { PlanCardProps } from "./types";
+import { PlanCardProps, PlanCardItem, Allowance, Account, Unit } from "./types";
 
 import {
   PlanCardWrapper,
@@ -24,23 +24,42 @@ const PlanCard: React.FC<PlanCardProps> = ({
   duration,
   description,
   data,
+  offers,
+  buttonLabel,
+  minutesField,
+  unlimitedTextField,
 }) => {
+    const AllowanceObj = (allowances: string, allowanceType: string) => {
+        let allowancesArray = JSON.parse(allowances);
+
+        let value;
+        allowancesArray.forEach((allowance: Allowance) => {
+          if(allowance.account.name == "Data" && allowanceType == "Data") {
+            value = allowance.allowanceValue >= 1024 ? allowance.allowanceValue / 1024 + 'GB' : allowance.allowanceValue + 'MB';
+          } else if(allowance.account.name == "UK_Plan_National" && allowanceType == "UK_Plan_National") {
+            value = allowance.allowanceValue + " " + minutesField;
+          }
+        });
+        return value;
+    }
   return (
+  <>
+    {offers?.map((offer: PlanCardItem) => (
     <PlanCardWrapper>
       <MobileLeftBox>
         <PlanWrap>
           <CurrencyText>£</CurrencyText>
-          <MobilePriceWrap>{price}</MobilePriceWrap>
-          <Duration> / {duration}</Duration>
+          <MobilePriceWrap>{parseFloat(offer.cost)/100}</MobilePriceWrap>
+          <Duration> / {offer.validity}</Duration>
         </PlanWrap>
         <LebaraText>
-          {data} {description}
+          {data} {unlimitedTextField}
         </LebaraText>
       </MobileLeftBox>
 
       <LeftSideBox>
-        <DataText>{data}</DataText>
-        <DescriptionText>{description}</DescriptionText>
+        <DataText>{AllowanceObj(offer.allowances, 'Data')}</DataText>
+        <DescriptionText>{AllowanceObj(offer.allowances, 'UK_Plan_National')}</DescriptionText>
       </LeftSideBox>
 
       <Divider
@@ -54,10 +73,12 @@ const PlanCard: React.FC<PlanCardProps> = ({
       />
 
       <RightSideBox>
-        <PriceText>€{price}</PriceText>
-        <BuyPlanButton w="116px">Buy Plan</BuyPlanButton>
+        <PriceText>€{parseFloat(offer.cost)/100}</PriceText>
+        <BuyPlanButton w="116px">{buttonLabel}</BuyPlanButton>
       </RightSideBox>
     </PlanCardWrapper>
+    ))}
+    </>
   );
 };
 export default PlanCard;
@@ -67,4 +88,5 @@ PlanCard.defaultProps = {
   description: "+ Unlimited calls",
   data: "3GB",
   color: "red",
+  offers: [],
 };
