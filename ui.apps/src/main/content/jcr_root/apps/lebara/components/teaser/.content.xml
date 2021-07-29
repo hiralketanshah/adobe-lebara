@@ -3,5 +3,5 @@
     jcr:primaryType="cq:Component"
     jcr:title="Teaser Component"
     sling:resourceSuperType="core/wcm/components/teaser/v1/teaser"
-    componentGroup="Lebara - Content"
+    componentGroup="Lebara - Content SPA"
     imageDelegate="lebara/components/image"/>
