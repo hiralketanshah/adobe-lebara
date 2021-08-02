@@ -76,7 +76,6 @@ MapTo("lebara/components/separator")(SeparatorV1, {
 });
 
 MapTo("lebara/components/button")(ButtonV1, { isEmpty: ButtonV1IsEmptyFn });
-MapTo("lebara/components/teaser")(Teaser, { isEmpty: TeaserEditConfig });
 MapTo("lebara/components/image")(ImageV2, { isEmpty: ImageV2IsEmptyFn });
 MapTo("lebara/components/title")(TitleV2, { isEmpty: TitleV2IsEmptyFn });
 
@@ -97,7 +96,6 @@ MapTo("lebara/components/container")(ContainerV1, {
   isEmpty: ContainerV1IsEmptyFn,
 });
 
-MapTo("lebara/components/viewplans")(ViewPlans, { isEmpty:ViewPlansConfig });
 //lazy load of internal component (hello world)
 
 /**
@@ -123,8 +121,10 @@ const ViewPlansConfig = {
   emptyLabel: "ViewPlans",
 
   isEmpty: function (props) {
-    return !props;
+    return !props || !props.offers || !props.buttonLabel;
   },
 };
 
 MapTo("lebara/components/text")(LazyTextComponent, TextEditConfig);
+MapTo("lebara/components/teaser")(Teaser, TeaserEditConfig);
+MapTo("lebara/components/viewplans")(ViewPlans, ViewPlansConfig);

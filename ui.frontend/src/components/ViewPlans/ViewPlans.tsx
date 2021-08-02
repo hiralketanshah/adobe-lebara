@@ -1,7 +1,7 @@
 import React from "react";
 import { Divider } from "@chakra-ui/react";
-import { PlanCardProps, PlanCardItem, Allowance, Account, Unit } from "./types";
-
+import { PlanCardProps, PlanCardItem } from "./types";
+import { getAllowanceDetails } from "./viewPlansUtil";
 import {
   PlanCardWrapper,
   LeftSideBox,
@@ -25,25 +25,6 @@ const ViewPlans: React.FC<PlanCardProps> = ({
   minutesField,
   unlimitedTextField,
 }) => {
-  const AllowanceObj = (allowances: string, allowanceType: string) => {
-    let allowancesArray = JSON.parse(allowances);
-
-    let value;
-    allowancesArray.forEach((allowance: Allowance) => {
-      if (allowance.account.name == "Data" && allowanceType == "Data") {
-        value =
-          allowance.allowanceValue >= 1024
-            ? allowance.allowanceValue / 1024 + "GB"
-            : allowance.allowanceValue + "MB";
-      } else if (
-        allowance.account.name == "UK_Plan_National" &&
-        allowanceType == "UK_Plan_National"
-      ) {
-        value = allowance.allowanceValue + " " + minutesField;
-      }
-    });
-    return value;
-  };
   return (
     <>
       {offers?.map((offer: PlanCardItem) => (
@@ -55,14 +36,16 @@ const ViewPlans: React.FC<PlanCardProps> = ({
               <Duration> / {offer.validity}</Duration>
             </PlanWrap>
             <LebaraText>
-              {AllowanceObj(offer.allowances, "Data")} {unlimitedTextField}
+              {getAllowanceDetails(offer.allowances, "Data")}{" "}
+              {unlimitedTextField}
             </LebaraText>
           </MobileLeftBox>
 
           <LeftSideBox>
-            <DataText>{AllowanceObj(offer.allowances, "Data")}</DataText>
+            <DataText>{getAllowanceDetails(offer.allowances, "Data")}</DataText>
             <DescriptionText>
-              {AllowanceObj(offer.allowances, "UK_Plan_National")}
+              {getAllowanceDetails(offer.allowances, "UK_Plan_National")}
+              {minutesField}
             </DescriptionText>
           </LeftSideBox>
 

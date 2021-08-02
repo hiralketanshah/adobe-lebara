@@ -8,42 +8,45 @@ const Teaser: React.FC<TeaserV1Model> = ({
   description,
   pretitle,
   imagePath,
-}) => (
-  <Box w="100%" p="20px" bgImage={imagePath} bgSize="cover">
-    <Box d="flex" flexDir="column">
-      {pretitle && (
-        <Text
-          fontSize="14px"
-          lineHeight="tall"
-          textTransform="uppercase"
-          fontWeight="bold"
-          letterSpacing="0.1em"
+}) =>
+  title ? (
+    <Box w="100%" p="20px" bgImage={imagePath} bgSize="cover">
+      <Box d="flex" flexDir="column">
+        {pretitle && (
+          <Text
+            fontSize="14px"
+            lineHeight="tall"
+            textTransform="uppercase"
+            fontWeight="bold"
+            letterSpacing="0.1em"
+            color="white"
+          >
+            {pretitle}
+          </Text>
+        )}
+        <Heading
           color="white"
+          as="h1"
+          letterSpacing="0px"
+          fontSize="38px"
+          fontWeight="bold"
+          pb="15px"
+          pt="8px"
+          lineHeight="48px"
+          textAlign="left"
         >
-          {pretitle}
-        </Text>
-      )}
-      <Heading
-        color="white"
-        as="h1"
-        letterSpacing="0px"
-        fontSize="38px"
-        fontWeight="bold"
-        pb="15px"
-        pt="8px"
-        lineHeight="48px"
-        textAlign="left"
-      >
-        {title}
-      </Heading>
+          {title}
+        </Heading>
 
-      {description && (
-        <Text fontSize="16px" lineHeight="tall" color="white">
-          {description}
-        </Text>
-      )}
+        {description && (
+          <Text fontSize="16px" lineHeight="tall" color="white">
+            {description}
+          </Text>
+        )}
+      </Box>
     </Box>
-  </Box>
-);
+  ) : (
+    <></>
+  );
 
 export default Teaser;
