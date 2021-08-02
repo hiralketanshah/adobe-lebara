@@ -44,7 +44,7 @@ const ViewPlans: React.FC<PlanCardProps> = ({
           <LeftSideBox>
             <DataText>{getAllowanceDetails(offer.allowances, "Data")}</DataText>
             <DescriptionText>
-              {getAllowanceDetails(offer.allowances, "UK_Plan_National")}
+              + {getAllowanceDetails(offer.allowances, "UK_Plan_National")}{" "}
               {minutesField}
             </DescriptionText>
           </LeftSideBox>

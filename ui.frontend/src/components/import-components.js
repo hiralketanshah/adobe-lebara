@@ -114,7 +114,7 @@ const TeaserEditConfig = {
   emptyLabel: "Teaser",
 
   isEmpty: function (props) {
-    return !props || !props.title || !props.description || !props.pretitle;
+    return !props || !props.title || !props.description;
   },
 };
 const ViewPlansConfig = {
