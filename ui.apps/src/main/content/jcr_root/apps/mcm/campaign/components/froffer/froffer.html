@@ -1,0 +1,84 @@
+
+
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,400i,700,700i" rel="stylesheet"> 
+<style>
+
+.containeroffer {
+    display: flex;
+    padding :0px;
+    margin:0px;
+}
+
+@media only screen and (max-width:600px) {
+    .container  {  flex-direction: column;}
+    }
+
+
+		.paragraph {
+			font-family: arial, 'helvetica neue', helvetica, sans-serif;
+    		line-height: 24px;
+    		color: #d03563;
+    		font-size: 16px;
+    		
+    	}
+    	.right-container { 
+    		background: rgb(0, 134, 205); 
+    		color: #ffffff;
+    		padding-right: 40px;
+    		width: 45%;
+}
+@media only screen and (max-width:600px) {
+    .right-container { width: 100%; margin-top: 20px;}
+    }
+
+    	.left-container {
+    		width: 45%;
+    		padding-right: 40px;
+    	}@media only screen and (max-width:600px) {
+    .left-container { width: 100%;}
+    }
+    	.btn {
+    		color: #FFFFFF;
+		    font-size: 22px;
+		    border-style: solid;
+		    border-color: #1a114b;
+		    border-width: 10px 20px 10px 20px;
+		    display: inline-block;
+		    background: #1a114b;
+		    border-radius: 30px;
+		    font-family: arial, 'helvetica neue', helvetica, sans-serif;
+		    font-weight: normal;
+		    font-style: normal;
+		    line-height: 26px;
+		    width: auto;
+		    text-align: center;
+    	}
+
+
+	</style>
+
+<body>
+
+<div>
+	<div class="containeroffer">
+		<div class="left-container">
+			<p class="paragraph" style= "font-weight: bold;">${properties.leftheading}</p>
+			<div data-sly-resource="${'text1' @ resourceType='wcm/foundation/components/text'}" data-sly-unwrap="${wcmmode.disabled}" class="ac-personalize"></div>    
+			<div style="display: flex;justify-content: center;">
+				<button class="btn"><a href="${properties.buttonurl}" style="text-decoration:none;color:white;">${properties.button}</a></button>
+				</div>
+
+		</div>
+		<div class="right-container">
+		<p class="paragraph" style="color: white;font-weight: bold;">${properties.rightheading}</p>
+			<div data-sly-resource="${'text2' @ resourceType='wcm/foundation/components/text'}" data-sly-unwrap="${wcmmode.disabled}" class="ac-personalize"></div>    
+
+
+		</div>
+	</div>
+	<div style="text-align: center; font-weight: bold;">
+		<p class="paragraph">${properties.bottomtext}</p>
+	</div>
+</div>
+</body>
+</html>

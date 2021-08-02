@@ -48,6 +48,10 @@
                                         jcr:primaryType="nt:unstructured"
                                         text="Blue"
                                         value="bold-blue"/>
+                                    <pink
+                                        jcr:primaryType="nt:unstructured"
+                                        text="Magenta Pink"
+                                        value="pink"/>
                                 </items>
                             </color>
                             <showimage

@@ -1,0 +1,115 @@
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,400i,700,700i" rel="stylesheet">
+
+
+        <style type="text/css">
+            .left-containerimagelink {
+                display: flex;
+                flex-direction: column;
+            }
+
+            @media only screen and (max-width:600px) {
+                .inner-dev {
+                    flex-direction: column;
+                }
+            }
+            @media only screen and (max-width:600px) {
+                .icon-image-link {
+                    padding-bottom: 15px !important;
+                }
+            }
+
+            .text-image-link {
+                margin: 0px 0px 0px 10px;
+                font-family: roboto, 'helvetica neue', helvetica, arial, sans-serif;
+                line-height: 21px;
+                color: #000000;
+                font-size: 14px;
+            }
+
+            .icon-image-link {
+                display: flex;
+                align-items: center;
+                 margin-bottom:-7px;
+
+
+
+            }
+
+            .h3text-image-link {
+                Margin: 0;
+                line-height: 24px;
+                font-family: roboto, 'helvetica neue', helvetica, arial, sans-serif;
+                font-size: 20px;
+                font-style: normal;
+                font-weight: normal;
+                color: #000000;
+                padding-bottom: 20px;
+            }
+
+            .root-image-link {
+                display: flex;
+                flex-direction: column;
+                align-items: start;
+                Margin: 0;
+                padding-top: 25px;
+                padding-bottom: 25px;
+                padding-left: 40px;
+                padding-right: 40px;
+                background-color: #f6f8ff;
+            }
+
+            .inner-dev {
+                display: flex;
+                width: 100%;
+                justify-content: space-between;
+            }
+        </style>
+
+    <div class="root-image-link">
+        <div>
+		 <h3 class="h3text-image-link"><b>${properties.heading}</b></h3>
+        </div>
+        <div class="inner-dev">
+            <div class="left-containerimagelink">
+                <div class="icon-image-link">
+					<a href="${properties.image1LinkUrl}" > 
+						<img src="${properties.image1}" alt="" width="25px" height="25px">
+					</a>
+					<span class="text-image-link">${properties.normaltext1 @context='unsafe'}</span>
+                </div>
+                <div class="icon-image-link">
+					<a href="${properties.image2LinkUrl}" >
+						<img src="${properties.image2}" alt="" width="25px" height="25px">
+					</a>
+                    <span class="text-image-link">${properties.normaltext2 @context='unsafe'}</span>
+                </div>
+                <div class="icon-image-link">
+                    <a href="${properties.image3LinkUrl}" > 
+						<img src="${properties.image3}" alt="" width="25px" height="25px">
+					</a>
+                   <span class="text-image-link">${properties.normaltext3 @context='unsafe'}</span>
+                </div>
+            </div>
+            <div class="left-containerimagelink">
+                <div class="icon-image-link">
+					<a href="${properties.image4LinkUrl}" > 
+						<img src="${properties.image4}" alt="" width="25px" height="25px">
+					</a>
+                    <span class="text-image-link">${properties.normaltext4 @context='unsafe'}</span>
+                </div>
+                <div class="icon-image-link">
+					<a href="${properties.image5LinkUrl}"> 
+					  <img src="${properties.image5}" alt="" width="25px" height="25px">
+					</a>
+                    <span class="text-image-link">${properties.normaltext5 @context='unsafe'}</span>
+				</div>
+                <div class="icon-image-link">
+                   <a href="${properties.image6LinkUrl}" > 
+					<img src="${properties.image6}" alt="" width="25px" height="25px"></a>
+                    <span class="text-image-link">${properties.normaltext6 @context='unsafe'}</span>
+                </div>
+
+            </div>
+		</div>
+    </div>
