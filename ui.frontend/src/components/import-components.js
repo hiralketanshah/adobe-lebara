@@ -19,8 +19,7 @@ import "./Page/Page";
 import "./Container/Container";
 import "./ExperienceFragment/ExperienceFragment";
 import Teaser from "./Teaser/Teaser";
-import PlanCard from "./PlanCard/PlanCard";
-import Button from "./Button/Button";
+import ViewPlans from "./ViewPlans/ViewPlans";
 import { MapTo } from "@adobe/aem-react-editable-components";
 
 import { CarouselV1IsEmptyFn } from "@adobe/aem-core-components-react-spa/dist/isEmptyFunctions";
@@ -45,8 +44,6 @@ import {
   ImageV2IsEmptyFn,
   LanguageNavigationV1,
   NavigationV1,
-  TeaserV1,
-  TeaserV1IsEmptyFn,
   DownloadV1,
   DownloadV1IsEmptyFn,
   SeparatorV1,
@@ -79,7 +76,6 @@ MapTo("lebara/components/separator")(SeparatorV1, {
 });
 
 MapTo("lebara/components/button")(ButtonV1, { isEmpty: ButtonV1IsEmptyFn });
-MapTo("lebara/components/teaser")(Teaser, { isEmpty: TeaserV1IsEmptyFn });
 MapTo("lebara/components/image")(ImageV2, { isEmpty: ImageV2IsEmptyFn });
 MapTo("lebara/components/title")(TitleV2, { isEmpty: TitleV2IsEmptyFn });
 
@@ -100,7 +96,6 @@ MapTo("lebara/components/container")(ContainerV1, {
   isEmpty: ContainerV1IsEmptyFn,
 });
 
-MapTo("lebara/components/viewplans")(PlanCard, { isEmpty: PlanCardConfig });
 //lazy load of internal component (hello world)
 
 /**
@@ -115,13 +110,21 @@ const TextEditConfig = {
     return !props || !props.text || props.text.trim().length < 1;
   },
 };
-
-const PlanCardConfig = {
-  emptyLabel: "Plancard",
+const TeaserEditConfig = {
+  emptyLabel: "Teaser",
 
   isEmpty: function (props) {
-    return !props;
+    return !props || !props.title || !props.description;
+  },
+};
+const ViewPlansConfig = {
+  emptyLabel: "ViewPlans",
+
+  isEmpty: function (props) {
+    return !props || !props.offers || !props.buttonLabel;
   },
 };
 
 MapTo("lebara/components/text")(LazyTextComponent, TextEditConfig);
+MapTo("lebara/components/teaser")(Teaser, TeaserEditConfig);
+MapTo("lebara/components/viewplans")(ViewPlans, ViewPlansConfig);
