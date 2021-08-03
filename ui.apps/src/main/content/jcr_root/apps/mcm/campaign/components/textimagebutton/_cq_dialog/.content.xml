@@ -52,6 +52,10 @@
                                         jcr:primaryType="nt:unstructured"
                                         text="Magenta Pink"
                                         value="pink"/>
+                                    <white
+                                        jcr:primaryType="nt:unstructured"
+                                        text="White"
+                                        value="white-bg"/>
                                 </items>
                             </color>
                             <showimage

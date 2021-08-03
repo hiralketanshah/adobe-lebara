@@ -13,7 +13,7 @@
         <items jcr:primaryType="nt:unstructured">
             <heading
                 jcr:primaryType="nt:unstructured"
-                jcr:title="Item 1"
+                jcr:title="Heading Text"
                 sling:resourceType="granite/ui/components/foundation/section">
                 <layout
                     jcr:primaryType="nt:unstructured"
@@ -61,6 +61,7 @@
                                 sling:resourceType="/libs/cq/gui/components/authoring/dialog/richtext"
                                 fieldLabel="Text"
                                 name="./normaltext1"
+                                showBreadcrumb="{Boolean}true"
                                 useFixedInlineToolbar="{Boolean}true">
                                 <rtePlugins jcr:primaryType="nt:unstructured">
                                     <format
