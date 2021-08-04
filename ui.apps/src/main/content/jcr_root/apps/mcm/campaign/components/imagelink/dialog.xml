@@ -15,6 +15,7 @@
                     editElementQuery="div.textimage-text"
                     hideLabel="{Boolean}true"
                     name="./text"
+                    removeSingleParagraphContainer="{Boolean}true"
                     xtype="richtext">
                     <rtePlugins jcr:primaryType="nt:unstructured">
                         <personalizationplugin

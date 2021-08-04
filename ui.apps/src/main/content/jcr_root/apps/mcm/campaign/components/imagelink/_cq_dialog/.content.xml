@@ -51,11 +51,11 @@
                                 sling:resourceType="granite/ui/components/foundation/form/pathbrowser"
                                 fieldLabel="Link To Image Icon "
                                 name="./image1"/>
-                            <image1URL
+                            <alt1
                                 jcr:primaryType="nt:unstructured"
-                                sling:resourceType="granite/ui/components/foundation/form/pathbrowser"
-                                fieldLabel="Link to"
-                                name="./image1LinkUrl"/>
+                                sling:resourceType="granite/ui/components/foundation/form/textfield"
+                                fieldLabel="Alt Text"
+                                name="./alt1"/>
                             <normaltxt1
                                 jcr:primaryType="nt:unstructured"
                                 sling:resourceType="/libs/cq/gui/components/authoring/dialog/richtext"
@@ -143,11 +143,11 @@
                                 sling:resourceType="granite/ui/components/foundation/form/pathbrowser"
                                 fieldLabel="Link To Image Icon "
                                 name="./image2"/>
-                            <image2URL
+                            <alt2
                                 jcr:primaryType="nt:unstructured"
-                                sling:resourceType="granite/ui/components/foundation/form/pathbrowser"
-                                fieldLabel="Link to"
-                                name="./image2LinkUrl"/>
+                                sling:resourceType="granite/ui/components/foundation/form/textfield"
+                                fieldLabel="Alt Text"
+                                name="./alt2"/>
                             <normaltxt2
                                 jcr:primaryType="nt:unstructured"
                                 sling:resourceType="/libs/cq/gui/components/authoring/dialog/richtext"
@@ -234,11 +234,11 @@
                                 sling:resourceType="granite/ui/components/foundation/form/pathbrowser"
                                 fieldLabel="Link To Image Icon "
                                 name="./image3"/>
-                            <image3URL
+                            <alt3
                                 jcr:primaryType="nt:unstructured"
-                                sling:resourceType="granite/ui/components/foundation/form/pathbrowser"
-                                fieldLabel="Link to"
-                                name="./image3LinkUrl"/>
+                                sling:resourceType="granite/ui/components/foundation/form/textfield"
+                                fieldLabel="Alt Text"
+                                name="./alt3"/>
                             <normaltxt3
                                 jcr:primaryType="nt:unstructured"
                                 sling:resourceType="/libs/cq/gui/components/authoring/dialog/richtext"
@@ -325,11 +325,11 @@
                                 sling:resourceType="granite/ui/components/foundation/form/pathbrowser"
                                 fieldLabel="Link To Image Icon "
                                 name="./image4"/>
-                            <image4URL
+                            <alt4
                                 jcr:primaryType="nt:unstructured"
-                                sling:resourceType="granite/ui/components/foundation/form/pathbrowser"
-                                fieldLabel="Link to"
-                                name="./image4LinkUrl"/>
+                                sling:resourceType="granite/ui/components/foundation/form/textfield"
+                                fieldLabel="Alt Text"
+                                name="./alt4"/>
                             <normaltxt4
                                 jcr:primaryType="nt:unstructured"
                                 sling:resourceType="/libs/cq/gui/components/authoring/dialog/richtext"
@@ -416,11 +416,11 @@
                                 sling:resourceType="granite/ui/components/foundation/form/pathbrowser"
                                 fieldLabel="Link To Image Icon "
                                 name="./image5"/>
-                            <image5URL
+                            <alt5
                                 jcr:primaryType="nt:unstructured"
-                                sling:resourceType="granite/ui/components/foundation/form/pathbrowser"
-                                fieldLabel="Link to"
-                                name="./image5LinkUrl"/>
+                                sling:resourceType="granite/ui/components/foundation/form/textfield"
+                                fieldLabel="Alt Text"
+                                name="./alt5"/>
                             <normaltxt5
                                 jcr:primaryType="nt:unstructured"
                                 sling:resourceType="/libs/cq/gui/components/authoring/dialog/richtext"
@@ -507,11 +507,11 @@
                                 sling:resourceType="granite/ui/components/foundation/form/pathbrowser"
                                 fieldLabel="Link To Image Icon "
                                 name="./image6"/>
-                            <image6URL
+                            <alt6
                                 jcr:primaryType="nt:unstructured"
-                                sling:resourceType="granite/ui/components/foundation/form/pathbrowser"
-                                fieldLabel="Link to"
-                                name="./image6LinkUrl"/>
+                                sling:resourceType="granite/ui/components/foundation/form/textfield"
+                                fieldLabel="Alt Text"
+                                name="./alt6"/>
                             <normaltxt6
                                 jcr:primaryType="nt:unstructured"
                                 sling:resourceType="/libs/cq/gui/components/authoring/dialog/richtext"
