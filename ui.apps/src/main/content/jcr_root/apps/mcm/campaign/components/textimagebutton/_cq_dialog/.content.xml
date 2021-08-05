@@ -39,15 +39,23 @@
                                     <navy
                                         jcr:primaryType="nt:unstructured"
                                         text="Pale Navy"
-                                        value="pale-navy"/>
+                                        value="#f6f8ff"/>
                                     <aliceblue
                                         jcr:primaryType="nt:unstructured"
                                         text="Alice Blue"
-                                        value="alice-blue"/>
+                                        value="#f6f8fb"/>
                                     <boldblue
                                         jcr:primaryType="nt:unstructured"
                                         text="Blue"
-                                        value="bold-blue"/>
+                                        value="#0094f6"/>
+                                    <pink
+                                        jcr:primaryType="nt:unstructured"
+                                        text="Magenta Pink"
+                                        value="#d5367a"/>
+                                    <white
+                                        jcr:primaryType="nt:unstructured"
+                                        text="White"
+                                        value="#ffffff"/>
                                 </items>
                             </color>
                             <showimage
@@ -75,7 +83,7 @@
                                     <left
                                         jcr:primaryType="nt:unstructured"
                                         text="Left"
-                                        value="left-move-image"/>
+                                        value="row-reverse"/>
                                 </items>
                             </position>
                         </items>
