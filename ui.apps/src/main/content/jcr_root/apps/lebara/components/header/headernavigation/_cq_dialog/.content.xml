@@ -93,7 +93,7 @@
                                             <mylebaralink
                                                     jcr:primaryType="nt:unstructured"
                                                     sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
-                                                    fieldDescription="My Lebara Account Link"
+                                                    fieldDescription="My Lebara Account Dashboard Link"
                                                     fieldLabel="Path to redirect to when My Lebara Account icon is clicked"
                                                     name="./accountLink"/>
                                         </items>
