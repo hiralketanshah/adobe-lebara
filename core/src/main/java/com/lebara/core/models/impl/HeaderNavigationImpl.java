@@ -30,6 +30,15 @@ public class HeaderNavigationImpl implements HeaderNavigation {
     @ValueMapValue
     private String fileReference;
 
+    @ValueMapValue
+    private String ctaText;
+
+    @ValueMapValue
+    private String ctaLink;
+
+    @ValueMapValue
+    private String accountLink;
+
     @Self
     @Via(type = ResourceSuperType.class)
     private Navigation delegate;
@@ -67,5 +76,17 @@ public class HeaderNavigationImpl implements HeaderNavigation {
     @Override
     public String getLogoPath() {
         return fileReference;
+    }
+
+    public String getCtaText() {
+        return ctaText;
+    }
+
+    public String getCtaLink() {
+        return ctaLink;
+    }
+
+    public String getAccountLink() {
+        return accountLink;
     }
 }

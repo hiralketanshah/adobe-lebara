@@ -63,6 +63,45 @@
                         sling:resourceType="granite/ui/components/coral/foundation/container"
                         margin="{Boolean}true">
                     </accessibility>
+                    <additionalLinks
+                            jcr:primaryType="nt:unstructured"
+                            jcr:title="Additional Links"
+                            sling:resourceType="granite/ui/components/coral/foundation/container"
+                            margin="{Boolean}true">
+                        <items jcr:primaryType="nt:unstructured">
+                            <columns
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+                                    margin="{Boolean}true">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <column
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/container">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <ctatext
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                    fieldDescription="Top Up CTA text"
+                                                    fieldLabel="Top Up CTA text"
+                                                    name="./ctaText"/>
+                                            <ctalink
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                                    fieldDescription="Top Up CTA Link"
+                                                    fieldLabel="Top Up CTA Link"
+                                                    name="./ctaLink"/>
+                                            <mylebaralink
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                                    fieldDescription="My Lebara Account Link"
+                                                    fieldLabel="Path to redirect to when My Lebara Account icon is clicked"
+                                                    name="./accountLink"/>
+                                        </items>
+                                    </column>
+                                </items>
+                            </columns>
+                        </items>
+                    </additionalLinks>
                 </items>
             </tabs>
         </items>
