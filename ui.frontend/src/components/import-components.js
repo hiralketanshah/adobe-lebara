@@ -83,7 +83,7 @@ MapTo("lebara/components/title")(TitleV2, { isEmpty: TitleV2IsEmptyFn });
 MapTo("lebara/components/breadcrumb")(BreadCrumbV2, {
   isEmpty: BreadCrumbV2IsEmptyFn,
 });
-// MapTo("lebara/components/header/headernavigation")(NavigationV1);
+MapTo("lebara/components/header/headernavigation")(NavigationV1);
 // MapTo("lebara/components/header/languagenavigation")(LanguageNavigationV1);
 
 MapTo("lebara/components/tabs")(TabsV1, { isEmpty: TabsV1IsEmptyFn });
