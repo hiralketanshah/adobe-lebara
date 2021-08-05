@@ -36,7 +36,7 @@
                                                 fieldLabel="Language Root Page Path"
                                                 name="./navigationRoot"
                                                 required="{Boolean}true"
-                                                rootPath="/content"
+                                                rootPath="/content/lebara"
                                                 value="${not empty cqDesign.navigationRoot ? cqDesign.navigationRoot : ''}"/>
                                             <structureDepth
                                                 jcr:primaryType="nt:unstructured"
