@@ -31,10 +31,10 @@ public class HeaderNavigationImpl implements HeaderNavigation {
     private String fileReference;
 
     @ValueMapValue
-    private String ctaText;
+    private String topupCtaText;
 
     @ValueMapValue
-    private String ctaLink;
+    private String topupCtaLink;
 
     @ValueMapValue
     private String accountLink;
@@ -78,12 +78,14 @@ public class HeaderNavigationImpl implements HeaderNavigation {
         return fileReference;
     }
 
-    public String getCtaText() {
-        return ctaText;
+    @Override
+    public String getTopupCtaText() {
+        return topupCtaText;
     }
 
-    public String getCtaLink() {
-        return ctaLink;
+    @Override
+    public String getTopupCtaLink() {
+        return topupCtaLink;
     }
 
     public String getAccountLink() {
