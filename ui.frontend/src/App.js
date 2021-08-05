@@ -1,7 +1,7 @@
 import { Page, withModel } from "@adobe/aem-react-editable-components";
 import React from "react";
 import { ChakraProvider } from "@chakra-ui/react";
-import colors from "./theme/colors";
+
 // This component is the application entry point
 
 class App extends Page {

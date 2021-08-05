@@ -21,7 +21,6 @@ import "./ExperienceFragment/ExperienceFragment";
 import Teaser from "./Teaser/Teaser";
 import ViewPlans from "./ViewPlans/ViewPlans";
 import LanguageHeader from "./LanguageHeader/LanguageHeader";
-// import Header from "./Header/Header";
 import { MapTo } from "@adobe/aem-react-editable-components";
 
 import { CarouselV1IsEmptyFn } from "@adobe/aem-core-components-react-spa/dist/isEmptyFunctions";
@@ -131,4 +130,3 @@ MapTo("lebara/components/text")(LazyTextComponent, TextEditConfig);
 MapTo("lebara/components/teaser")(Teaser, TeaserEditConfig);
 MapTo("lebara/components/viewplans")(ViewPlans, ViewPlansConfig);
 MapTo("lebara/components/header/languagenavigation")(LanguageHeader);
-// MapTo("lebara/components/header/headernavigation")(Header);
