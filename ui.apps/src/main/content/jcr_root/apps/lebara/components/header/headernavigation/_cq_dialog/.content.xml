@@ -82,12 +82,14 @@
                                                     jcr:primaryType="nt:unstructured"
                                                     sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
                                                     fieldDescription="Top Up CTA Link"
+                                                    rootPath="/content/lebara"
                                                     fieldLabel="Top Up CTA Link"
                                                     name="./topupCtaLink"/>
                                             <mylebaralink
                                                     jcr:primaryType="nt:unstructured"
                                                     sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
                                                     fieldDescription="Path to redirect to when My Lebara Account icon is clicked"
+                                                    rootPath="/content/lebara"
                                                     fieldLabel="My Lebara Account Dashboard Link"
                                                     name="./accountLink"/>
                                         </items>
