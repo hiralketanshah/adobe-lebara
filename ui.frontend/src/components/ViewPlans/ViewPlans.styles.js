@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import mediaquery from "../../mediaquery";
-import { Box, Text, Button } from "@chakra-ui/react";
-
+import { Box, Text } from "@chakra-ui/react";
+import Button from "../Button/Button";
 import lebaraColor from "../../color";
 
 export const PlanCardWrapper = styled(Box)`
@@ -14,7 +14,7 @@ export const PlanCardWrapper = styled(Box)`
   display: flex;
   flex-direction: row;
   padding-inline: 2.5px;
-  min-width:330px;
+  min-width: 330px;
 `;
 
 export const LeftSideBox = styled(Box)`
@@ -75,28 +75,21 @@ export const BuyPlanButton = styled(Button)`
   border-radius: 12px;
   border: 0px;
   color: ${lebaraColor.white};
-  font-size: 14px;
-  text-transform: uppercase;
-  font-weight: bold;
-  letter-spacing: 1.25px;
-  height: 45px;
   ${mediaquery.tablet`
     width: 105px;
     height: 40px;
-    font-size: 12px;
   `}
-  
 `;
 
 export const LebaraText = styled(Text)`
-  color:${lebaraColor.lebaraBlue[600]};
-  font-size:12px;
+  color: ${lebaraColor.lebaraBlue[600]};
+  font-size: 12px;
   font-weight: 200;
   line-height: 32px;
 `;
 
-export const MobileLeftBox  = styled(Box)`
-  margin-left:18px;
+export const MobileLeftBox = styled(Box)`
+  margin-left: 18px;
   ${mediaquery.desktop`
     display:none;
   `}
@@ -106,32 +99,31 @@ export const MobileLeftBox  = styled(Box)`
   ${mediaquery.tablet`
     display:none;
   `}
-`
+`;
 
 export const PlanWrap = styled(Box)`
   display: flex;
-  align-items:baseline;
-`
+  align-items: baseline;
+`;
 
 export const CurrencyText = styled(Text)`
-  fontSize:14px;
-  alignItems:baseline;
-  position:relative;
-  font-weight:bold;
+  fontsize: 14px;
+  alignitems: baseline;
+  position: relative;
+  font-weight: bold;
   top: -12px;
-  color:${lebaraColor.lebaraChambray[600]};
-`
+  color: ${lebaraColor.lebaraChambray[600]};
+`;
 
 export const MobilePriceWrap = styled(Text)`
-font-size:30px; 
-padding-right:4px; 
-pading-left:2px; 
-font-weight:bold;
-color:${lebaraColor.lebaraChambray[600]};
-`
+  font-size: 30px;
+  padding-right: 4px;
+  pading-left: 2px;
+  font-weight: bold;
+  color: ${lebaraColor.lebaraChambray[600]};
+`;
 export const Duration = styled(Text)`
-  font-size:13px; 
-  font-weight:600;
-  color:${lebaraColor.lebaraChambray[600]};
-`
-
+  font-size: 13px;
+  font-weight: 600;
+  color: ${lebaraColor.lebaraChambray[600]};
+`;

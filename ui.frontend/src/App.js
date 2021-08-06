@@ -1,14 +1,20 @@
-import { Page, withModel } from '@adobe/aem-react-editable-components';
-import React from 'react';
+import { Page, withModel } from "@adobe/aem-react-editable-components";
+import React from "react";
+import { ChakraProvider } from "@chakra-ui/react";
 
 // This component is the application entry point
+
 class App extends Page {
   render() {
     return (
-      <div>
-        {this.childComponents}
-        {this.childPages}
-      </div>
+      <>
+        <ChakraProvider>
+          <div>
+            {this.childComponents}
+            {this.childPages}
+          </div>
+        </ChakraProvider>
+      </>
     );
   }
 }
