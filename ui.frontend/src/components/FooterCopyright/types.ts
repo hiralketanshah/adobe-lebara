@@ -1,5 +1,6 @@
 export interface FooterCopyrightProps {
     copyrightInfo : CtaOption[];
+    copyrightText?: string;
 }
 
 export interface CtaOption {
