@@ -20,6 +20,7 @@ import "./Container/Container";
 import "./ExperienceFragment/ExperienceFragment";
 import Teaser from "./Teaser/Teaser";
 import ViewPlans from "./ViewPlans/ViewPlans";
+import FooterCopyright from "./FooterCopyright/FooterCopyright";
 import { MapTo } from "@adobe/aem-react-editable-components";
 
 import { CarouselV1IsEmptyFn } from "@adobe/aem-core-components-react-spa/dist/isEmptyFunctions";
@@ -125,6 +126,14 @@ const ViewPlansConfig = {
   },
 };
 
+const FooterCopyrightConfig = {
+  emptyLabel: "Footer Copyright",
+  isEmpty: function (props) {
+    return !props.copyrightInfo;
+  },
+};
+
 MapTo("lebara/components/text")(LazyTextComponent, TextEditConfig);
 MapTo("lebara/components/teaser")(Teaser, TeaserEditConfig);
 MapTo("lebara/components/viewplans")(ViewPlans, ViewPlansConfig);
+MapTo("lebara/components/footer/footercopyright")(FooterCopyright, FooterCopyrightConfig);
