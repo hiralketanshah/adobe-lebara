@@ -1,3 +1,8 @@
 export interface FooterCopyrightProps {
-    copyrightInfo : string;
+    copyrightInfo : CtaOption[];
+}
+
+export interface CtaOption {
+  label: string;
+  link: string;
 }
