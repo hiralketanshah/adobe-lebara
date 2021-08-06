@@ -3,8 +3,10 @@ import mediaquery from "../../mediaquery";
 import Select from "../Select/Select";
 
 export const SelectWrapper = styled(Select)`
-  height: 2em;
+  ${mediaquery.desktop`
+  height: 32px !important;
+`}
   ${mediaquery.mobile`
-    height:49px;
+    height:49px !important;
   `}
 `;
