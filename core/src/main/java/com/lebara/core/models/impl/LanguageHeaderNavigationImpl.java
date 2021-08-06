@@ -34,6 +34,12 @@ public class LanguageHeaderNavigationImpl implements LanguageHeaderNavigation {
     @ValueMapValue
     private String helpLink;
 
+    @ValueMapValue
+    private String storeTitle;
+
+    @ValueMapValue
+    private String helpTitle;
+
     @Self
     @Via(type = ResourceSuperType.class)
     private LanguageNavigation delegate;
@@ -72,5 +78,15 @@ public class LanguageHeaderNavigationImpl implements LanguageHeaderNavigation {
     @Override
     public String getHelpLink() {
         return helpLink;
+    }
+
+    @Override
+    public String getStoreTitle() {
+        return storeTitle;
+    }
+
+    @Override
+    public String getHelpTitle() {
+        return helpTitle;
     }
 }

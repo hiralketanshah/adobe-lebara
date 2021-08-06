@@ -6,5 +6,7 @@ public interface LanguageHeaderNavigation extends LanguageNavigation {
 
     public String getStoreLink();
     public String getHelpLink();
+    public String getStoreTitle();
+    public String getHelpTitle();
 
 }
