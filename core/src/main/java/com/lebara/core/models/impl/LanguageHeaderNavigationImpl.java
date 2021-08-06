@@ -19,9 +19,11 @@ import org.apache.sling.models.annotations.via.ResourceSuperType;
 
 import java.util.List;
 
-
-@Model(adaptables = SlingHttpServletRequest.class, adapters = {LanguageHeaderNavigation.class, ComponentExporter.class},
-        resourceType = LanguageHeaderNavigationImpl.RESOURCE_TYPE, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
+@Model(
+    adaptables = SlingHttpServletRequest.class,
+    adapters = {LanguageHeaderNavigation.class, ComponentExporter.class},
+    resourceType = LanguageHeaderNavigationImpl.RESOURCE_TYPE, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL
+)
 @Exporter(name = ExporterConstants.SLING_MODEL_EXPORTER_NAME, extensions = ExporterConstants.SLING_MODEL_EXTENSION)
 public class LanguageHeaderNavigationImpl implements LanguageHeaderNavigation {
 

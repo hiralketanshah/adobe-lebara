@@ -60,30 +60,30 @@
                                         sling:resourceType="granite/ui/components/coral/foundation/container">
                                         <items jcr:primaryType="nt:unstructured">
                                             <findstoretitle
-                                                    jcr:primaryType="nt:unstructured"
-                                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                                    fieldDescription="Label for Find a Store"
-                                                    fieldLabel="Label for Find a Store"
-                                                    name="./storeTitle"/>
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="Label for Find a Store"
+                                                fieldLabel="Find a Store Label"
+                                                name="./storeTitle"/>
                                             <findastorelink
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
-                                                fieldDescription="Lebara Find Store Link"
+                                                fieldDescription="Path to redirect to when Find a Store icon is clicked"
                                                 rootPath="/content/lebara"
-                                                fieldLabel="Path to redirect to when Find a Store icon is clicked"
+                                                fieldLabel="Find a Store Link"
                                                 name="./storeLink"/>
                                             <helptitle
-                                                    jcr:primaryType="nt:unstructured"
-                                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                                    fieldDescription="Label for Help"
-                                                    fieldLabel="Label for Help"
-                                                    name="./helpTitle"/>
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="Label for Help"
+                                                fieldLabel="Help Label"
+                                                name="./helpTitle"/>
                                             <helplink
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
                                                 rootPath="/content/lebara"
-                                                fieldDescription="Lebara Header Help Link"
-                                                fieldLabel="Path to redirect to when Help icon is clicked"
+                                                fieldDescription="Path to redirect to when Help icon is clicked"
+                                                fieldLabel="Help Link"
                                                 name="./helpLink"/>
                                         </items>
                                     </column>
