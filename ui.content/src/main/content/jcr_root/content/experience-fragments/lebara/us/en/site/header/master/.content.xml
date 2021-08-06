@@ -13,17 +13,17 @@
             jcr:primaryType="nt:unstructured"
             sling:resourceType="lebara/components/container"
             layout="simple">
+            <languagenavigation
+                 jcr:primaryType="nt:unstructured"
+                 sling:resourceType="lebara/components/header/languagenavigation"
+                 navigationRoot="/content/lebara/us"
+                 structureDepth="1"/>
             <headernavigation
                 jcr:primaryType="nt:unstructured"
                 sling:resourceType="lebara/components/header/headernavigation"
                 collectAllPages="false"
                 navigationRoot="/content/lebara/us/en"
                 skipNavigationRoot="false"
-                structureDepth="1"/>
-            <languagenavigation
-                jcr:primaryType="nt:unstructured"
-                sling:resourceType="lebara/components/header/languagenavigation"
-                navigationRoot="/content/lebara/us"
                 structureDepth="2"/>
             <search
                 jcr:primaryType="nt:unstructured"
