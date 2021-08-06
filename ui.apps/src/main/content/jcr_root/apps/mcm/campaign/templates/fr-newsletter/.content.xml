@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
-    jcr:description="Lebara Campaign NL template"
+    jcr:description="Lebara Campaign FR newsletter"
     jcr:primaryType="cq:Template"
-    jcr:title="Lebara Campaign NL newsletter V1"
+    jcr:title="Lebara Campaign FR newsletter"
     allowedParents="/libs/cq/personalization/templates/campaign"
     ranking="{Long}1003">
     <jcr:content
         cq:designPath="/libs/settings/wcm/designs/default"
         cq:targetEngine="cq_campaign"
         jcr:primaryType="cq:PageContent"
-        sling:resourceType="/apps/mcm/campaign/components/campaign_newsletterpagenl"
+        sling:resourceType="/apps/mcm/campaign/components/campaign_newsletterpagefr"
         acMapping="mapRecipient"
         acTemplateId="mailAEMContent"
         acTemplateLabel="Email delivery with AEM content"
