@@ -33,19 +33,23 @@ public class FooterCopyrightExporter implements ComponentExporter {
     private Resource copyrightInfo;
 
     @ValueMapValue
-    private String unlimitedTextField;
+    private String copyrightText;
 
     private List<Cta> copyrightFooterInfo;
 
     public List<Cta> getCopyrightInfo() {
         copyrightFooterInfo = new ArrayList<>();
         for (Resource copyrightRes : copyrightInfo.getChildren()) {
-            String label = AemUtils.getStringProperty(copyrightRes, "footerLabel");
-            String link = AemUtils.getStringProperty(copyrightRes, "footerLabelLink");
+            String label = AemUtils.getStringProperty(copyrightRes, "label");
+            String link = AemUtils.getStringProperty(copyrightRes, "labelLink");
             Cta cta = new Cta(label, link);
             copyrightFooterInfo.add(cta);
         }
         return copyrightFooterInfo;
+    }
+
+    public String getCopyrightText() {
+        return copyrightText;
     }
 
     @Override

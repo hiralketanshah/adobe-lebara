@@ -31,6 +31,12 @@
                                             jcr:primaryType="nt:unstructured"
                                             sling:resourceType="granite/ui/components/coral/foundation/container">
                                         <items jcr:primaryType="nt:unstructured">
+                                            <copyrighttext
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                    fieldDescription="Copyright Text"
+                                                    fieldLabel="Copyright Text"
+                                                    name="./copyrightText"/>
                                             <footercopyright
                                                     jcr:primaryType="nt:unstructured"
                                                     jcr:title="Plans"
@@ -49,19 +55,19 @@
                                                                 jcr:primaryType="nt:unstructured"
                                                                 sling:resourceType="granite/ui/components/coral/foundation/container">
                                                             <items jcr:primaryType="nt:unstructured">
-                                                                <footerlabel
+                                                                <label
                                                                         jcr:primaryType="nt:unstructured"
                                                                         sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                                                        fieldDescription="Enter Footer label"
-                                                                        fieldLabel="Footer label"
-                                                                        name="./footerLabel"/>
-                                                                <footerlabellink
+                                                                        fieldDescription="Enter Label"
+                                                                        fieldLabel="Link label"
+                                                                        name="./label"/>
+                                                                <labellink
                                                                         jcr:primaryType="nt:unstructured"
                                                                         sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
-                                                                        fieldDescription="Enter Footer label link"
+                                                                        fieldDescription="Enter Label link"
                                                                         rootPath="/content/lebara"
-                                                                        fieldLabel="Footer label link"
-                                                                        name="./footerLabelLink"/>
+                                                                        fieldLabel="Link"
+                                                                        name="./labelLink"/>
                                                             </items>
                                                         </column>
                                                     </items>
