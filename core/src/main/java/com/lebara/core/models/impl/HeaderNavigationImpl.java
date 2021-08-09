@@ -9,14 +9,12 @@ import com.lebara.core.models.HeaderNavigation;
 import com.lebara.core.utils.AemUtils;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;
-import org.apache.sling.api.resource.ResourceResolver;
 import org.apache.sling.models.annotations.DefaultInjectionStrategy;
 import org.apache.sling.models.annotations.Exporter;
 import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.Via;
 import org.apache.sling.models.annotations.injectorspecific.ScriptVariable;
 import org.apache.sling.models.annotations.injectorspecific.Self;
-import org.apache.sling.models.annotations.injectorspecific.SlingObject;
 import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
 import org.apache.sling.models.annotations.via.ResourceSuperType;
 
@@ -29,9 +27,6 @@ public class HeaderNavigationImpl implements HeaderNavigation {
 
     @ScriptVariable
     protected Resource resource;
-
-    @SlingObject
-    private ResourceResolver resourceResolver;
 
     @ValueMapValue
     private String fileReference;
@@ -91,10 +86,10 @@ public class HeaderNavigationImpl implements HeaderNavigation {
 
     @Override
     public String getTopupCtaLink() {
-        return AemUtils.getExternalizedPublishUrl(resourceResolver, topupCtaLink);
+        return AemUtils.getLinkWithExtension(topupCtaLink);
     }
 
     public String getAccountLink() {
-        return AemUtils.getExternalizedPublishUrl(resourceResolver, accountLink);
+        return AemUtils.getLinkWithExtension(accountLink);
     }
 }

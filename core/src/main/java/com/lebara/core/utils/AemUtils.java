@@ -1,7 +1,6 @@
 package com.lebara.core.utils;
 
 
-import com.day.cq.commons.Externalizer;
 import com.day.cq.commons.mail.MailTemplate;
 import com.day.cq.mailer.MailingException;
 import com.day.cq.mailer.MessageGatewayService;
@@ -180,18 +179,13 @@ public class AemUtils {
      * this method takes the resolver and path as input and returns an externalized path.
      * this method is to be utilized for every pathfield.
      *
-     * @param resourceResolver Resourceresolver object.
      * @param payloadPath      path to be externalized.
      * @return externalized path.
      */
-    public static String getExternalizedPublishUrl(final ResourceResolver resourceResolver, String payloadPath) {
-        if (StringUtils.endsWith(payloadPath, LebaraConstants.DOT_HTML) || resourceResolver == null) {
+    public static String getLinkWithExtension(String payloadPath) {
+        if (StringUtils.isBlank(payloadPath) || StringUtils.endsWith(payloadPath, LebaraConstants.HTML_EXTENSION)) {
             return payloadPath;
         }
-        final Externalizer externalizer = resourceResolver.adaptTo(Externalizer.class);
-        if (null != externalizer) {
-            payloadPath = externalizer.publishLink(resourceResolver, payloadPath) + LebaraConstants.DOT_HTML;
-        }
-        return payloadPath;
+        return payloadPath + LebaraConstants.HTML_EXTENSION;
     }
 }

@@ -9,14 +9,12 @@ import com.lebara.core.models.LanguageHeaderNavigation;
 import com.lebara.core.utils.AemUtils;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;
-import org.apache.sling.api.resource.ResourceResolver;
 import org.apache.sling.models.annotations.DefaultInjectionStrategy;
 import org.apache.sling.models.annotations.Exporter;
 import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.Via;
 import org.apache.sling.models.annotations.injectorspecific.ScriptVariable;
 import org.apache.sling.models.annotations.injectorspecific.Self;
-import org.apache.sling.models.annotations.injectorspecific.SlingObject;
 import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
 import org.apache.sling.models.annotations.via.ResourceSuperType;
 
@@ -32,9 +30,6 @@ public class LanguageHeaderNavigationImpl implements LanguageHeaderNavigation {
 
     @ScriptVariable
     protected Resource resource;
-
-    @SlingObject
-    private ResourceResolver resourceResolver;
 
     @ValueMapValue
     private String storeLink;
@@ -80,12 +75,12 @@ public class LanguageHeaderNavigationImpl implements LanguageHeaderNavigation {
 
     @Override
     public String getStoreLink() {
-        return AemUtils.getExternalizedPublishUrl(resourceResolver, storeLink);
+        return AemUtils.getLinkWithExtension(storeLink);
     }
 
     @Override
     public String getHelpLink() {
-        return AemUtils.getExternalizedPublishUrl(resourceResolver, helpLink);
+        return AemUtils.getLinkWithExtension(helpLink);
     }
 
     @Override
