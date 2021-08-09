@@ -1,6 +1,6 @@
 import React from "react";
 import { HeaderProps } from "./types";
-import Logo from "../Logo/Logo";
+import Logo from "./Logo/Logo";
 import { MenuWrapper, HeaderWrapper } from "./Header.styles";
 
 const Header: React.FC<HeaderProps> = ({ logoPath }) => (
