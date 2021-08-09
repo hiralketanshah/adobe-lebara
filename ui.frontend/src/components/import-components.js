@@ -130,7 +130,7 @@ const ViewPlansConfig = {
 const FooterCopyrightConfig = {
   emptyLabel: "Footer Copyright",
   isEmpty: function (props) {
-    return !props.copyrightInfo;
+    return !props.links;
   },
 };
 

@@ -20,7 +20,7 @@
                 jcr:primaryType="nt:unstructured"
                 copyrightText="Copyright"
                 sling:resourceType="lebara/components/footer/footercopyright">
-                <copyrightInfo jcr:primaryType="nt:unstructured">
+                <links jcr:primaryType="nt:unstructured">
                     <item0
                         jcr:primaryType="nt:unstructured"
                         label="Terms and Conditions"
@@ -33,7 +33,7 @@
                         jcr:primaryType="nt:unstructured"
                         label="Copyright Lebara"
                         labelLink="/content/lebara/us"/>
-                </copyrightInfo>
+                </links>
             </footercopyright>
         </root>
     </jcr:content>
