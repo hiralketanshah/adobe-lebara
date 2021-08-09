@@ -6,6 +6,7 @@ import com.adobe.cq.wcm.core.components.models.Navigation;
 import com.adobe.cq.wcm.core.components.models.NavigationItem;
 import com.adobe.cq.wcm.core.components.models.datalayer.ComponentData;
 import com.lebara.core.models.HeaderNavigation;
+import com.lebara.core.utils.AemUtils;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.models.annotations.DefaultInjectionStrategy;
@@ -85,10 +86,10 @@ public class HeaderNavigationImpl implements HeaderNavigation {
 
     @Override
     public String getTopupCtaLink() {
-        return topupCtaLink;
+        return AemUtils.getLinkWithExtension(topupCtaLink);
     }
 
     public String getAccountLink() {
-        return accountLink;
+        return AemUtils.getLinkWithExtension(accountLink);
     }
 }

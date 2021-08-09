@@ -6,6 +6,7 @@ import com.adobe.cq.wcm.core.components.models.LanguageNavigation;
 import com.adobe.cq.wcm.core.components.models.NavigationItem;
 import com.adobe.cq.wcm.core.components.models.datalayer.ComponentData;
 import com.lebara.core.models.LanguageHeaderNavigation;
+import com.lebara.core.utils.AemUtils;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.models.annotations.DefaultInjectionStrategy;
@@ -74,12 +75,12 @@ public class LanguageHeaderNavigationImpl implements LanguageHeaderNavigation {
 
     @Override
     public String getStoreLink() {
-        return storeLink;
+        return AemUtils.getLinkWithExtension(storeLink);
     }
 
     @Override
     public String getHelpLink() {
-        return helpLink;
+        return AemUtils.getLinkWithExtension(helpLink);
     }
 
     @Override

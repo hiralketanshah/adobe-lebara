@@ -1,5 +1,6 @@
 package com.lebara.core.models;
 
+import com.lebara.core.utils.AemUtils;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.models.annotations.DefaultInjectionStrategy;
 import org.apache.sling.models.annotations.Model;
@@ -26,7 +27,7 @@ public class Cta {
     }
 
     public String getLink() {
-        return link;
+        return AemUtils.getLinkWithExtension(link);
     }
 
     public void setLink(String link) {
