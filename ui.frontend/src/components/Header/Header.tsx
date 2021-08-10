@@ -33,11 +33,13 @@ const Header: React.FC<HeaderProps> = ({
         />
       </IconContainer>
       {logoPath && <Logo logoPath={logoPath} />}
-      <MenuWrapper>
+      <MenuWrapper items={items}>
         {items?.length ? <HeaderMenu menuList={items} /> : <></>}
         {topupCtaText && (
           <HeaderButtonWrapper>
-            <ButtonWrapper width="102px">{topupCtaText}</ButtonWrapper>
+            <a href={topupCtaLink} style={{ textDecoration: "none" }}>
+              <ButtonWrapper width="102px">{topupCtaText}</ButtonWrapper>
+            </a>
           </HeaderButtonWrapper>
         )}
         <HeaderIcon />

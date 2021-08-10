@@ -24,8 +24,9 @@ export const MenuWrapper = styled(Box)`
   padding-right: 20px;
   padding-left: 20px;
   display: flex;
-  width: 85%;
-  justify-content: space-between;
+  width: 100%;
+  justify-content: ${(props) =>
+    props?.items?.length ? "space-between" : "flex-end"};
   ${mediaquery.mobile`
     justify-content: flex-end;
   `}
@@ -66,5 +67,5 @@ export const HeaderButtonWrapper = styled(Box)`
   display: flex;
   ${mediaquery.mobile`
     display:none;
-`}
+  `}
 `;
