@@ -4,7 +4,7 @@ import { FooterCopyrightProps } from "./types";
 const FooterCopyright : React.FC<FooterCopyrightProps> = ({ links, copyrightText } ) => {
     return (
         <div> 
-            {links.map(item => <div> label : {item.label}  link : {item.link} </div>)}
+            {links?.map(item => <div> label : {item?.label}  link : {item?.link} </div>)}
             <div>copyrightText is {copyrightText}</div>
         </div>
     );

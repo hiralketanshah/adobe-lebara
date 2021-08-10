@@ -1,5 +1,6 @@
 package com.lebara.core.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.lebara.core.utils.AemUtils;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.models.annotations.DefaultInjectionStrategy;
@@ -8,8 +9,8 @@ import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
 
 import javax.inject.Named;
 
-@Model(adapters = {Cta.class}, adaptables = {Resource.class}, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
-public class Cta {
+@Model(adapters = {Links.class}, adaptables = {Resource.class}, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
+public class Links {
 
     @ValueMapValue
     private String label;
@@ -17,6 +18,16 @@ public class Cta {
     @ValueMapValue
     @Named("labelLink")
     private String link;
+
+    @JsonIgnore
+    @ValueMapValue
+    @Named("labelLink")
+    private String extensionlessLink;
+
+    @JsonIgnore
+    public String getExtensionlessLink() {
+        return extensionlessLink;
+    }
 
     public String getLabel() {
         return label;
