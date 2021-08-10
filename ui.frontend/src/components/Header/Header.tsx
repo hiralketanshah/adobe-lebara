@@ -13,7 +13,12 @@ import HeaderMenu from "./HeaderMenu/HeaderMenu";
 import HeaderIcon from "./HeaderIcon/HeaderIcon";
 import { GiHamburgerMenu } from "react-icons/all";
 
-const Header: React.FC<HeaderProps> = ({ items, logoPath }) => {
+const Header: React.FC<HeaderProps> = ({
+  items,
+  logoPath,
+  topupCtaText,
+  topupCtaLink,
+}) => {
   return (
     <HeaderWrapper>
       <IconContainer>
@@ -30,9 +35,11 @@ const Header: React.FC<HeaderProps> = ({ items, logoPath }) => {
       {logoPath && <Logo logoPath={logoPath} />}
       <MenuWrapper>
         {items?.length ? <HeaderMenu menuList={items} /> : <></>}
-        <HeaderButtonWrapper>
-          <ButtonWrapper width="102px">Top Up +</ButtonWrapper>
-        </HeaderButtonWrapper>
+        {topupCtaText && (
+          <HeaderButtonWrapper>
+            <ButtonWrapper width="102px">{topupCtaText}</ButtonWrapper>
+          </HeaderButtonWrapper>
+        )}
         <HeaderIcon />
       </MenuWrapper>
     </HeaderWrapper>
