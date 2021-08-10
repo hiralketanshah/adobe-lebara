@@ -86,8 +86,6 @@ MapTo("lebara/components/title")(TitleV2, { isEmpty: TitleV2IsEmptyFn });
 MapTo("lebara/components/breadcrumb")(BreadCrumbV2, {
   isEmpty: BreadCrumbV2IsEmptyFn,
 });
-MapTo("lebara/components/header/headernavigation")(NavigationV1);
-// MapTo("lebara/components/header/languagenavigation")(LanguageNavigationV1);
 
 MapTo("lebara/components/tabs")(TabsV1, { isEmpty: TabsV1IsEmptyFn });
 MapTo("lebara/components/accordion")(AccordionV1, {
@@ -141,5 +139,7 @@ MapTo("lebara/components/teaser")(Teaser, TeaserEditConfig);
 MapTo("lebara/components/viewplans")(ViewPlans, ViewPlansConfig);
 MapTo("lebara/components/header/languagenavigation")(LanguageHeader);
 MapTo("lebara/components/header/headernavigation")(Header);
-MapTo("lebara/components/footer/footercopyright")(FooterCopyright, FooterCopyrightConfig);
-
+MapTo("lebara/components/footer/footercopyright")(
+  FooterCopyright,
+  FooterCopyrightConfig
+);
