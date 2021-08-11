@@ -1,8 +1,13 @@
 export interface FooterUpperLinksProps {
-    footerUpperLinks ?: Links[];
+    links : Links[];
 }
 
 export interface Links {
+  parentLinks: ParentLinks;
+  childLinks: string[];
+}
+export interface ParentLinks {
   label: string;
   link: string;
 }
+

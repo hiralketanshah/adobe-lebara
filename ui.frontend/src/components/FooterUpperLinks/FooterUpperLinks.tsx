@@ -1,10 +1,13 @@
 import React from "react";
 import { FooterUpperLinksProps } from "./types";
 
-const FooterUpperLinks : React.FC<FooterUpperLinksProps> = ({ footerUpperLinks } ) => {
+const FooterUpperLinks : React.FC<FooterUpperLinksProps> = ({ links } ) => {
     return (
         <div>
-            {footerUpperLinks?.map(item => <div> label : {item?.label}  link : {item?.link} </div>)}
+            {links?.map(item => 
+                <div> parentlinkLabel : {item?.parentLinks.label} parentlink : {item?.parentLinks.link} childlinks : {item?.childLinks?.map(item => <p>  childlink : {item} </p>)}
+            </div>            
+            )}
         </div>
     );
 };

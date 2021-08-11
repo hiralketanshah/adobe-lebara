@@ -2,8 +2,11 @@ package com.lebara.core.models;
 
 import com.adobe.cq.export.json.ComponentExporter;
 import com.adobe.cq.export.json.ExporterConstants;
+import com.day.cq.wcm.api.Page;
+import com.day.cq.wcm.api.PageFilter;
 import com.day.cq.wcm.api.PageManager;
-import org.apache.commons.collections.ListUtils;
+import com.lebara.core.dto.PageLinks;
+import com.lebara.core.utils.AemUtils;
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.sling.api.SlingHttpServletRequest;
@@ -15,6 +18,7 @@ import org.apache.sling.models.annotations.injectorspecific.ChildResource;
 import org.apache.sling.models.annotations.injectorspecific.ScriptVariable;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 @Model(adaptables = SlingHttpServletRequest.class, adapters = {FooterUpperLinksExporter.class, ComponentExporter.class},
@@ -30,22 +34,37 @@ public class FooterUpperLinksExporter implements ComponentExporter {
     @ScriptVariable
     private Resource resource;
 
+    @ScriptVariable
+    private PageManager pageManager;
+
     @ChildResource
     private List<Links> footerUpperLinks;
 
-    public List<Links> getLinks() {
-        if (CollectionUtils.isEmpty(footerUpperLinks)) {
-            return ListUtils.EMPTY_LIST;
+    public List<PageLinks> getLinks() {
+        List<PageLinks> pageLinkList = new ArrayList<>();
+        if (CollectionUtils.isEmpty(footerUpperLinks) || pageManager == null) {
+            return pageLinkList;
         }
-        for (Links link : footerUpperLinks) {
-            if (StringUtils.isBlank(link.getLabel())) {
-                PageManager pageManager = resource.getResourceResolver().adaptTo(PageManager.class);
-                //link.setLabel(pageManager.getContainingPage(link.getExtensionlessLink()).getPageTitle());
-                //todo: add correct logic
-                link.setLabel("title of page");
+        for (Links parentLink : footerUpperLinks) {
+            Page linkPage = pageManager.getContainingPage(parentLink.getExtensionlessLink());
+            List<String> childPagesList = new ArrayList<>();
+            PageLinks pageLinks = new PageLinks();
+            if (linkPage == null) {
+                continue;
             }
+            if (StringUtils.isBlank(parentLink.getLabel())) {
+                parentLink.setLabel(linkPage.getTitle());
+            }
+            pageLinks.setParentLinks(parentLink);
+            Iterator<Page> childPath = linkPage.listChildren(new PageFilter());
+            while (childPath.hasNext()) {
+                childPagesList.add(AemUtils.getLinkWithExtension(childPath.next().getPath()));
+            }
+            pageLinks.setChildLinks(childPagesList);
+            pageLinkList.add(pageLinks);
+
         }
-        return footerUpperLinks;
+        return pageLinkList;
     }
 
     @Override
