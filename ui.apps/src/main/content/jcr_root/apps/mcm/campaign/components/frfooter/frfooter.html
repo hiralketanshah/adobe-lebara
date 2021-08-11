@@ -1,61 +1,15 @@
-
-
-  <link href="https://fonts.googleapis.com/css?family=Roboto:400,400i,700,700i" rel="stylesheet"> 
-	<style type="text/css">
-
-
-
-		.footer-container {
-			font-family: arial, 'helvetica neue', helvetica, sans-serif;
-    		color: white;
-    		font-size: 8px;
-			text-align: center;
-			padding-bottom: 16px;
-    		
-    	}
-
-		@media only screen and (max-width:600px) {
-    .footer-container  { font-size: 16px; padding-left: 12px;
-    padding-right: 12px;}
-    }
-    	.icon-container { 
-    		display: flex;
-    		justify-content: center;
-}
-.icon {
-	margin-right: 16px;
-	margin-top: 16px;
-}
-
-		
-	</style>
-
-
-
-<div style="background-color: #0086cd;">
-	<div class="icon-container">
-		<div class="icon">
- <a href="${properties.facebookLinkUrl}" style="text-decoration: none">
-<img src="${properties.facebookImage}" height="32px" width="32px" alt="facebook">
-
-</a>
-
-</div>
-		<div class="icon">
-<a href="${properties.youtubeLinkUrl}" style="text-decoration: none">
-<img src="${properties.youtubeImage}" height="32px" width="32px" alt="youtube">
-</a>
-</div>
-		<div class="icon">
-<a href="${properties.instaLinkUrl}" style="text-decoration: none">
-<img src="${properties.instaImage}" height="32px" width="32px" alt="instagram">
-</a>
-</div>
-	</div>
-	<div class="footer-container">
-	<div data-sly-resource="${'textfooter' @ resourceType='wcm/foundation/components/text'}" data-sly-unwrap="${wcmmode.disabled}" class="ac-personalize"></div> 
-	</div>
-	
-</div>
-
-</html>
+<td valign="top" align="center" style="padding:0;Margin:0;padding-right:15px">
+	<a target="_blank" href="${properties.facebookLinkUrl}" style="-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;text-decoration:underline;color:#FFFFFF;font-size:14px">
+		<img title="Facebook" src="${properties.facebookImage}" alt="Fb" width="32" height="32" style="display:block;border:0;outline:none;text-decoration:none;-ms-interpolation-mode:bicubic">
+	</a>
+</td> 
+<td valign="top" align="center" style="padding:0;Margin:0;padding-right:15px">
+	<a target="_blank" href="${properties.youtubeLinkUrl}" style="-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;text-decoration:underline;color:#FFFFFF;font-size:14px">
+		<img title="Youtube" src="${properties.youtubeImage}" alt="Yt" width="32" height="32" style="display:block;border:0;outline:none;text-decoration:none;-ms-interpolation-mode:bicubic">
+	</a>
+</td> 
+<td valign="top" align="center" style="padding:0;Margin:0">
+	<a target="_blank" href="{properties.instaLinkUrl}" style="-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;text-decoration:underline;color:#FFFFFF;font-size:14px">
+		<img title="Instagram" src="${properties.instaImage}" alt="Ig" width="32" height="32" style="display:block;border:0;outline:none;text-decoration:none;-ms-interpolation-mode:bicubic">
+	</a>
+</td> 
