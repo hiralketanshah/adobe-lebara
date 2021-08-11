@@ -3,7 +3,7 @@
     jcr:primaryType="nt:unstructured"
     jcr:title="Footer Copyright Component"
     sling:resourceType="cq/gui/components/authoring/dialog"
-    extraClientlibs="[core.wcm.components.navigation.v1.editor]"
+    extraClientlibs="[lebara.touchui]"
     helpPath="https://www.adobe.com/go/aem_cmp_navigation_v1"
     trackingFeature="core-components:navigation:v1">
     <content
@@ -17,57 +17,59 @@
                 maximized="{Boolean}true">
                 <items jcr:primaryType="nt:unstructured">
                     <additionalLinks
-                            jcr:primaryType="nt:unstructured"
-                            jcr:title="Additional Links"
-                            sling:resourceType="granite/ui/components/coral/foundation/container"
-                            margin="{Boolean}true">
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Additional Links"
+                        sling:resourceType="granite/ui/components/coral/foundation/container"
+                        margin="{Boolean}true">
                         <items jcr:primaryType="nt:unstructured">
                             <columns
-                                    jcr:primaryType="nt:unstructured"
-                                    sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
-                                    margin="{Boolean}true">
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+                                margin="{Boolean}true">
                                 <items jcr:primaryType="nt:unstructured">
                                     <column
-                                            jcr:primaryType="nt:unstructured"
-                                            sling:resourceType="granite/ui/components/coral/foundation/container">
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/container">
                                         <items jcr:primaryType="nt:unstructured">
                                             <copyrighttext
-                                                    jcr:primaryType="nt:unstructured"
-                                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                                    fieldDescription="Copyright Text"
-                                                    fieldLabel="Copyright Text"
-                                                    name="./copyrightText"/>
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="Copyright Text"
+                                                fieldLabel="Copyright Text"
+                                                name="./copyrightText"/>
                                             <footercopyright
+                                                granite:class="lebara-multifield__editor"
+                                                jcr:primaryType="nt:unstructured"
+                                                jcr:title="Plans"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
+                                                composite="{Boolean}true"
+                                                fieldDescription="Add the footer copyright section"
+                                                fieldLabel="Footer">
+                                                <granite:data
                                                     jcr:primaryType="nt:unstructured"
-                                                    jcr:title="Plans"
-                                                    sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
-                                                    composite="{Boolean}true"
-                                                    fieldDescription="Add the footer copyright section"
-                                                    fieldLabel="Footer">
+                                                    maxItems="{Long}3"/>
                                                 <field
-                                                        jcr:primaryType="nt:unstructured"
-                                                        sling:resourceType="granite/ui/components/coral/foundation/container"
-                                                        name="./links">
-                                                    <granite:data
-                                                            jcr:primaryType="nt:unstructured"/>
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/container"
+                                                    name="./links">
                                                     <items jcr:primaryType="nt:unstructured">
                                                         <column
-                                                                jcr:primaryType="nt:unstructured"
-                                                                sling:resourceType="granite/ui/components/coral/foundation/container">
+                                                            jcr:primaryType="nt:unstructured"
+                                                            sling:resourceType="granite/ui/components/coral/foundation/container">
                                                             <items jcr:primaryType="nt:unstructured">
                                                                 <label
-                                                                        jcr:primaryType="nt:unstructured"
-                                                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                                                        fieldDescription="Enter Label"
-                                                                        fieldLabel="Link label"
-                                                                        name="./label"/>
+                                                                    jcr:primaryType="nt:unstructured"
+                                                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                                    fieldDescription="Enter Label"
+                                                                    fieldLabel="Link label"
+                                                                    name="./label"/>
                                                                 <labellink
-                                                                        jcr:primaryType="nt:unstructured"
-                                                                        sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
-                                                                        fieldDescription="Enter Label link"
-                                                                        rootPath="/content/lebara"
-                                                                        fieldLabel="Link"
-                                                                        name="./labelLink"/>
+                                                                    jcr:primaryType="nt:unstructured"
+                                                                    sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                                                    fieldDescription="Enter Label link"
+                                                                    fieldLabel="Link"
+                                                                    name="./labelLink"
+                                                                    rootPath="/content/lebara"/>
                                                             </items>
                                                         </column>
                                                     </items>
