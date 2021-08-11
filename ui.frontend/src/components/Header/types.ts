@@ -3,9 +3,11 @@ export interface HeaderProps {
   items?: Menu[];
   topupCtaText ?: string;
   topupCtaLink?: string;
+  accountLink?: string;
 }
 
 export interface HeaderIconProps {
+  accountLink?: string;
 
 }
 
