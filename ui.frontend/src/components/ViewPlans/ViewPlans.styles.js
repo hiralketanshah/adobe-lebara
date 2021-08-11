@@ -15,6 +15,7 @@ export const PlanCardWrapper = styled(Box)`
   flex-direction: row;
   padding-inline: 2.5px;
   min-width: 330px;
+  justify-content: space-between;
 `;
 
 export const LeftSideBox = styled(Box)`
