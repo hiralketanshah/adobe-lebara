@@ -18,6 +18,7 @@ const Header: React.FC<HeaderProps> = ({
   logoPath,
   topupCtaText,
   topupCtaLink,
+  accountLink,
 }) => {
   return (
     <HeaderWrapper>
@@ -42,7 +43,7 @@ const Header: React.FC<HeaderProps> = ({
             </a>
           </HeaderButtonWrapper>
         )}
-        <HeaderIcon />
+        <HeaderIcon accountLink={accountLink} />
       </MenuWrapper>
     </HeaderWrapper>
   );
