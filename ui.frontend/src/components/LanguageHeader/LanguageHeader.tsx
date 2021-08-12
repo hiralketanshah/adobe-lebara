@@ -8,7 +8,13 @@ import lebaraColor from "../../color";
 
 import { MenuWrapper, HeaderWrapper } from "./LanguageHeader.styles";
 
-const LanguageHeader: React.FC<LanguageHeaderProps> = ({ items }) => (
+const LanguageHeader: React.FC<LanguageHeaderProps> = ({
+  items,
+  storeLink,
+  storeTitle,
+  helpLink,
+  helpTitle,
+}) => (
   <HeaderWrapper
     alignItems="center"
     px={10}
@@ -30,7 +36,7 @@ const LanguageHeader: React.FC<LanguageHeaderProps> = ({ items }) => (
           color="white"
         />
         <Text fontSize="12px" marginLeft="10px" color="white">
-          Find a store
+          {storeTitle}
         </Text>
       </Flex>
       <Flex alignItems="center" marginRight="12px">
@@ -43,7 +49,7 @@ const LanguageHeader: React.FC<LanguageHeaderProps> = ({ items }) => (
           color="white"
         />
         <Text fontSize="12px" marginLeft="8px" color="white">
-          Help
+          {helpTitle}
         </Text>
       </Flex>
     </MenuWrapper>
