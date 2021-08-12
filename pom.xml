@@ -293,6 +293,14 @@ Bundle-DocURL:
                     <artifactId>aemanalyser-maven-plugin</artifactId>
                     <version>${aemanalyser.version}</version>
                     <extensions>true</extensions>
+                    <!--https://github.com/adobe/aemanalyser-maven-plugin/issues/91 -->
+                    <dependencies>
+                        <dependency>
+                            <groupId>org.apache.johnzon</groupId>
+                            <artifactId>johnzon-core</artifactId>
+                            <version>1.2.14</version>
+                        </dependency>
+                    </dependencies>
                 </plugin>
                 <!-- Content Package Plugin -->
                 <plugin>
