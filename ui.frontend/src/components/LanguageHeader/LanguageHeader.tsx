@@ -26,32 +26,40 @@ const LanguageHeader: React.FC<LanguageHeaderProps> = ({
       <LanguageDropDown options={items} />
     </Box>
     <MenuWrapper>
-      <Flex alignItems="center" marginRight="12px" marginLeft="8px">
-        <IconButton
-          icon={<IoLocationOutline />}
-          aria-label="Search"
-          variant="ghost"
-          size="sm"
-          colorScheme="dark"
-          color="white"
-        />
-        <Text fontSize="12px" marginLeft="10px" color="white">
-          {storeTitle}
-        </Text>
-      </Flex>
-      <Flex alignItems="center" marginRight="12px">
-        <IconButton
-          icon={<RiHeadphoneFill />}
-          aria-label="Search"
-          variant="ghost"
-          size="sm"
-          colorScheme="dark"
-          color="white"
-        />
-        <Text fontSize="12px" marginLeft="8px" color="white">
-          {helpTitle}
-        </Text>
-      </Flex>
+      {storeTitle && (
+        <Flex alignItems="center" marginRight="12px" marginLeft="8px">
+          <IconButton
+            icon={<IoLocationOutline />}
+            aria-label="Search"
+            variant="ghost"
+            size="sm"
+            colorScheme="dark"
+            color="white"
+          />
+          <a href={storeLink} style={{ textDecoration: "none" }}>
+            <Text fontSize="12px" marginLeft="10px" color="white">
+              {storeTitle}
+            </Text>
+          </a>
+        </Flex>
+      )}
+      {helpTitle && (
+        <Flex alignItems="center" marginRight="12px">
+          <IconButton
+            icon={<RiHeadphoneFill />}
+            aria-label="Search"
+            variant="ghost"
+            size="sm"
+            colorScheme="dark"
+            color="white"
+          />
+          <a href={helpLink} style={{ textDecoration: "none" }}>
+            <Text fontSize="12px" marginLeft="8px" color="white">
+              {helpTitle}
+            </Text>
+          </a>
+        </Flex>
+      )}
     </MenuWrapper>
   </HeaderWrapper>
 );
