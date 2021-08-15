@@ -22,6 +22,7 @@ import Teaser from "./Teaser/Teaser";
 import ViewPlans from "./ViewPlans/ViewPlans";
 import LanguageHeader from "./LanguageHeader/LanguageHeader";
 import Header from "./Header/Header";
+import LebaraText from "./LebaraText/LebaraText";
 
 import { MapTo } from "@adobe/aem-react-editable-components";
 import FooterCopyright from "./FooterCopyright/FooterCopyright";
@@ -127,6 +128,14 @@ const ViewPlansConfig = {
   },
 };
 
+const TitleEditConfig = {
+  emptyLabel: "Title",
+
+  isEmpty: function (props) {
+    return !props || !props.text;
+  },
+};
+
 const FooterCopyrightConfig = {
   emptyLabel: "Footer Copyright",
   isEmpty: function (props) {
@@ -139,6 +148,7 @@ MapTo("lebara/components/teaser")(Teaser, TeaserEditConfig);
 MapTo("lebara/components/viewplans")(ViewPlans, ViewPlansConfig);
 MapTo("lebara/components/header/languagenavigation")(LanguageHeader);
 MapTo("lebara/components/header/headernavigation")(Header);
+MapTo("lebara/components/title")(LebaraText, TitleEditConfig);
 MapTo("lebara/components/footer/footercopyright")(
   FooterCopyright,
   FooterCopyrightConfig

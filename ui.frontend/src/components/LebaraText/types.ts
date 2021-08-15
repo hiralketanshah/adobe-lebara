@@ -83,5 +83,8 @@ export const fontTypeDetails = {
 };
 
 export interface LebaraTextProps extends TextProps {
-  type: FontType;
-}
+    type: FontType;
+    text: string;
+    linkURL?: string;
+  }
+
