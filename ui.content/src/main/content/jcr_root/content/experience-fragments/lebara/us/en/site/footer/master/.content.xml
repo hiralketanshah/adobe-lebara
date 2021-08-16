@@ -24,15 +24,15 @@
                     <item0
                         jcr:primaryType="nt:unstructured"
                         label="Terms and Conditions"
-                        labelLink="/content/lebara/us"/>
+                        link="/content/lebara/us"/>
                     <item1
                         jcr:primaryType="nt:unstructured"
                         label="Privacy Policy"
-                        labelLink="/content/lebara/us"/>
+                        link="/content/lebara/us"/>
                     <item2
                         jcr:primaryType="nt:unstructured"
                         label="Copyright Lebara"
-                        labelLink="/content/lebara/us"/>
+                        link="/content/lebara/us"/>
                 </links>
             </footercopyright>
         </root>

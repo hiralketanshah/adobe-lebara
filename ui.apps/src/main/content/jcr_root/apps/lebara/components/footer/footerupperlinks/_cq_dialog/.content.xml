@@ -60,7 +60,7 @@
                                                                     sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
                                                                     fieldDescription="Select Parent Page Path for footer Upper Links"
                                                                     fieldLabel="Link"
-                                                                    name="./labelLink"
+                                                                    name="./link"
                                                                     rootPath="/content/lebara"/>
                                                             </items>
                                                         </column>

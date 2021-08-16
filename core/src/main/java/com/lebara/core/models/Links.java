@@ -16,12 +16,11 @@ public class Links {
     private String label;
 
     @ValueMapValue
-    @Named("labelLink")
     private String link;
 
     @JsonIgnore
     @ValueMapValue
-    @Named("labelLink")
+    @Named("link")
     private String extensionlessLink;
 
     @JsonIgnore

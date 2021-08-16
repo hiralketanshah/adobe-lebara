@@ -68,7 +68,7 @@
                                                                     sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
                                                                     fieldDescription="Enter Label link"
                                                                     fieldLabel="Link"
-                                                                    name="./labelLink"
+                                                                    name="./link"
                                                                     rootPath="/content/lebara"/>
                                                             </items>
                                                         </column>
