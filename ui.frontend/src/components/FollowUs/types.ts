@@ -1,9 +1,9 @@
 export interface FollowUSProps {
-    links : CtaFollowUsOption[];
+    links: LinkOption[];
     followUsText?: string;
 }
 
-export interface CtaFollowUsOption {
-  iconImage: string;
+export interface LinkOption {
+  label: string;
   link: string;
 }

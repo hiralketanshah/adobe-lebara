@@ -27,12 +27,12 @@ public class FollowUsExporter implements ComponentExporter {
     private Resource resource;
 
     @ChildResource
-    private List<CtaFollowUs> links;
+    private List<Link> links;
 
     @ValueMapValue
     private String followUsText;
 
-    public List<CtaFollowUs> getLinks() {
+    public List<Link> getLinks() {
         return links;
     }
 

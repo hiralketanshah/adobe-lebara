@@ -60,13 +60,13 @@
                                                                     sling:resourceType="granite/ui/components/coral/foundation/form/pathbrowser"
                                                                     fieldDescription="Enter Label"
                                                                     fieldLabel="Link Image"
-                                                                    name="./iconImage"/>
+                                                                    name="./label"/>
                                                                 <labellink
                                                                     jcr:primaryType="nt:unstructured"
                                                                     sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
                                                                     fieldDescription="Enter Label link"
                                                                     fieldLabel="Link"
-                                                                    name="./iconLink"
+                                                                    name="./link"
                                                                     rootPath="/content/lebara"/>
                                                             </items>
                                                         </column>

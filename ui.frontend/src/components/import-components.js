@@ -137,7 +137,7 @@ const FooterCopyrightConfig = {
 const FollowUsEditConfig ={
   emptyLabel: "Follow US",
     isEmpty : function(props){
-    return !props.links;
+    return !props.followUsText;
     },
 };
 
