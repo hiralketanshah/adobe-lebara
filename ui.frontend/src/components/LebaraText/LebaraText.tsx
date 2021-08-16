@@ -3,6 +3,7 @@
 import React from "react";
 import { Text } from "@chakra-ui/react";
 import { fontTypeDetails, LebaraTextProps } from "./types";
+import color from "../../color";
 
 const LebaraText: React.FC<LebaraTextProps> = ({
   text,
@@ -17,6 +18,8 @@ const LebaraText: React.FC<LebaraTextProps> = ({
         <a href={linkURL} style={{ textDecoration: "none" }}>
           <Text
             as={type}
+            color={color.lebaraChambray[600]}
+            mb="40px"
             fontWeight={fontDetails?.weight}
             fontSize={fontDetails?.size}
             letterSpacing={fontDetails?.letterSpacing}
@@ -29,6 +32,8 @@ const LebaraText: React.FC<LebaraTextProps> = ({
       {!linkURL && text && (
         <Text
           as={type}
+          color={color.lebaraChambray[600]}
+          mb="40px"
           fontWeight={fontDetails?.weight}
           fontSize={fontDetails?.size}
           letterSpacing={fontDetails?.letterSpacing}
