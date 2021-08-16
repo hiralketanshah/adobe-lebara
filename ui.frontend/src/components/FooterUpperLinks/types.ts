@@ -4,7 +4,7 @@ export interface FooterUpperLinksProps {
 
 export interface Links {
   parentLinks: ParentLinks;
-  childLinks: string[];
+  childLinks: ParentLinks[];
 }
 export interface ParentLinks {
   label: string;

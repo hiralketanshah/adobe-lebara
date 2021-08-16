@@ -1,26 +1,26 @@
 package com.lebara.core.dto;
 
-import com.lebara.core.models.Links;
+import com.lebara.core.models.Link;
 
 import java.util.List;
 
 public class PageLinks {
-    private Links parentLinks;
-    private List<String> childLinks;
+    private Link parentLinks;
+    private List<Link> childLinks;
 
-    public Links getParentLinks() {
+    public Link getParentLinks() {
         return parentLinks;
     }
 
-    public void setParentLinks(Links parentLinks) {
+    public void setParentLinks(Link parentLinks) {
         this.parentLinks = parentLinks;
     }
 
-    public List<String> getChildLinks() {
+    public List<Link> getChildLinks() {
         return childLinks;
     }
 
-    public void setChildLinks(List<String> childLinks) {
+    public void setChildLinks(List<Link> childLinks) {
         this.childLinks = childLinks;
     }
 }

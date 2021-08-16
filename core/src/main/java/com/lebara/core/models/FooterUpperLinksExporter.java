@@ -38,16 +38,16 @@ public class FooterUpperLinksExporter implements ComponentExporter {
     private PageManager pageManager;
 
     @ChildResource
-    private List<Links> footerUpperLinks;
+    private List<Link> footerUpperLinks;
 
     public List<PageLinks> getLinks() {
         List<PageLinks> pageLinkList = new ArrayList<>();
         if (CollectionUtils.isEmpty(footerUpperLinks) || pageManager == null) {
             return pageLinkList;
         }
-        for (Links parentLink : footerUpperLinks) {
+        for (Link parentLink : footerUpperLinks) {
             Page linkPage = pageManager.getContainingPage(parentLink.getExtensionlessLink());
-            List<String> childPagesList = new ArrayList<>();
+            List<Link> childPagesList = new ArrayList<>();
             PageLinks pageLinks = new PageLinks();
             if (linkPage == null) {
                 continue;
@@ -58,7 +58,11 @@ public class FooterUpperLinksExporter implements ComponentExporter {
             pageLinks.setParentLinks(parentLink);
             Iterator<Page> childPath = linkPage.listChildren(new PageFilter());
             while (childPath.hasNext()) {
-                childPagesList.add(AemUtils.getLinkWithExtension(childPath.next().getPath()));
+                Link links = new Link();
+                Page childPage = childPath.next();
+                links.setLink(AemUtils.getLinkWithExtension(childPage.getPath()));
+                links.setLabel(childPage.getTitle());
+                childPagesList.add(links);
             }
             pageLinks.setChildLinks(childPagesList);
             pageLinkList.add(pageLinks);

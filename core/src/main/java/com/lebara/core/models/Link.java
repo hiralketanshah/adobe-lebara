@@ -9,8 +9,8 @@ import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
 
 import javax.inject.Named;
 
-@Model(adapters = {Links.class}, adaptables = {Resource.class}, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
-public class Links {
+@Model(adapters = {Link.class}, adaptables = {Resource.class}, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
+public class Link {
 
     @ValueMapValue
     private String label;
