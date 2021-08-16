@@ -4,7 +4,7 @@ import com.lebara.core.models.Link;
 
 import java.util.List;
 
-public class PageLinks {
+public class PageLink {
     private Link parentLinks;
     private List<Link> childLinks;
 

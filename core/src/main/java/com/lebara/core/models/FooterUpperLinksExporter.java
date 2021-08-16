@@ -5,7 +5,7 @@ import com.adobe.cq.export.json.ExporterConstants;
 import com.day.cq.wcm.api.Page;
 import com.day.cq.wcm.api.PageFilter;
 import com.day.cq.wcm.api.PageManager;
-import com.lebara.core.dto.PageLinks;
+import com.lebara.core.dto.PageLink;
 import com.lebara.core.utils.AemUtils;
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.lang3.StringUtils;
@@ -40,15 +40,15 @@ public class FooterUpperLinksExporter implements ComponentExporter {
     @ChildResource
     private List<Link> footerUpperLinks;
 
-    public List<PageLinks> getLinks() {
-        List<PageLinks> pageLinkList = new ArrayList<>();
+    public List<PageLink> getLinks() {
+        List<PageLink> pageLinkList = new ArrayList<>();
         if (CollectionUtils.isEmpty(footerUpperLinks) || pageManager == null) {
             return pageLinkList;
         }
         for (Link parentLink : footerUpperLinks) {
             Page linkPage = pageManager.getContainingPage(parentLink.getExtensionlessLink());
             List<Link> childPagesList = new ArrayList<>();
-            PageLinks pageLinks = new PageLinks();
+            PageLink pageLinks = new PageLink();
             if (linkPage == null) {
                 continue;
             }
