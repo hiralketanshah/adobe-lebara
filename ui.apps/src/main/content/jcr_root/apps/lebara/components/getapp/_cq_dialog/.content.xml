@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:granite="http://www.adobe.com/jcr/granite/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
     jcr:primaryType="nt:unstructured"
-    jcr:title="Follow Us Component"
+    jcr:title="Get App Component"
     sling:resourceType="cq/gui/components/authoring/dialog"
     extraClientlibs="[lebara.touchui]">
     <content
@@ -14,9 +14,9 @@
                 sling:resourceType="granite/ui/components/coral/foundation/tabs"
                 maximized="{Boolean}true">
                 <items jcr:primaryType="nt:unstructured">
-                    <followusLinks
+                    <additionalLinks
                         jcr:primaryType="nt:unstructured"
-                        jcr:title="Follow Us Links"
+                        jcr:title="Additional Links"
                         sling:resourceType="granite/ui/components/coral/foundation/container"
                         margin="{Boolean}true">
                         <items jcr:primaryType="nt:unstructured">
@@ -29,23 +29,23 @@
                                         jcr:primaryType="nt:unstructured"
                                         sling:resourceType="granite/ui/components/coral/foundation/container">
                                         <items jcr:primaryType="nt:unstructured">
-                                            <followustext
-                                                    jcr:primaryType="nt:unstructured"
-                                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                                    fieldDescription="Follow US Text"
-                                                    fieldLabel="Follow US Text"
-                                                    name="./followUsText"/>
-                                            <followus
+                                            <getapptitle
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="Title Text"
+                                                fieldLabel="Title"
+                                                name="./appTitle"/>
+                                            <getapplink
                                                 granite:class="lebara-multifield__editor"
                                                 jcr:primaryType="nt:unstructured"
                                                 jcr:title="Plans"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
                                                 composite="{Boolean}true"
-                                                fieldDescription="Add the Follow Us icon and link"
-                                                fieldLabel="Follow Us">
+                                                fieldDescription="Add the Get APP section"
+                                                fieldLabel="Get APP">
                                                 <granite:data
                                                     jcr:primaryType="nt:unstructured"
-                                                    maxItems="{Long}5"/>
+                                                    maxItems="{Long}2"/>
                                                 <field
                                                     jcr:primaryType="nt:unstructured"
                                                     sling:resourceType="granite/ui/components/coral/foundation/container"
@@ -57,7 +57,7 @@
                                                             <items jcr:primaryType="nt:unstructured">
                                                                 <label
                                                                     jcr:primaryType="nt:unstructured"
-                                                                    sling:resourceType="granite/ui/components/coral/foundation/form/pathbrowser"
+                                                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                                                     fieldDescription="Choose Image"
                                                                     fieldLabel="Link Image"
                                                                     name="./label"/>
@@ -72,13 +72,13 @@
                                                         </column>
                                                     </items>
                                                 </field>
-                                            </followus>
+                                            </getapplink>
                                         </items>
                                     </column>
                                 </items>
                             </columns>
                         </items>
-                    </followusLinks>
+                    </additionalLinks>
                 </items>
             </tabs>
         </items>
