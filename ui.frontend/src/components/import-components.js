@@ -24,7 +24,7 @@ import LanguageHeader from "./LanguageHeader/LanguageHeader";
 import Header from "./Header/Header";
 
 import { MapTo } from "@adobe/aem-react-editable-components";
-import FooterCopyright from "./FooterCopyright/FooterCopyright";
+import FooterCopyright from "./Footer/FooterCopyright/FooterCopyright";
 
 import { CarouselV1IsEmptyFn } from "@adobe/aem-core-components-react-spa/dist/isEmptyFunctions";
 
