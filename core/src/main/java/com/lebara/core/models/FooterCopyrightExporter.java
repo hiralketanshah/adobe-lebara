@@ -27,12 +27,12 @@ public class FooterCopyrightExporter implements ComponentExporter {
     private Resource resource;
 
     @ChildResource
-    private List<Cta> links;
+    private List<Link> links;
 
     @ValueMapValue
     private String copyrightText;
 
-    public List<Cta> getLinks() {
+    public List<Link> getLinks() {
         return links;
     }
 
