@@ -147,7 +147,4 @@ MapTo("lebara/components/viewplans")(ViewPlans, ViewPlansConfig);
 MapTo("lebara/components/header/languagenavigation")(LanguageHeader);
 MapTo("lebara/components/followus")(FollowUs, FollowUsEditConfig);
 MapTo("lebara/components/header/headernavigation")(Header);
-MapTo("lebara/components/footer/footercopyright")(
-  FooterCopyright,
-  FooterCopyrightConfig
-);
+MapTo("lebara/components/footer/footercopyright")(FooterCopyright,FooterCopyrightConfig);
