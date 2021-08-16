@@ -56,7 +56,7 @@ public class FooterUpperLinksExporter implements ComponentExporter {
                 continue;
             }
             if (StringUtils.isBlank(parentLink.getLabel())) {
-                parentLink.setLabel(linkPage.getTitle());
+                parentLink.setLabel(AemUtils.getTitle(linkPage));
             }
             pageLinks.setParentLinks(parentLink);
             Iterator<Page> childPath = linkPage.listChildren(new PageFilter());
@@ -64,7 +64,7 @@ public class FooterUpperLinksExporter implements ComponentExporter {
                 Link links = new Link();
                 Page childPage = childPath.next();
                 links.setLink(AemUtils.getLinkWithExtension(childPage.getPath()));
-                links.setLabel(childPage.getTitle());
+                links.setLabel(AemUtils.getTitle(childPage));
                 childPagesList.add(links);
             }
             pageLinks.setChildLinks(childPagesList);
