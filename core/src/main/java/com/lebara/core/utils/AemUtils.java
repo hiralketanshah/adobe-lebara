@@ -4,6 +4,7 @@ package com.lebara.core.utils;
 import com.day.cq.commons.mail.MailTemplate;
 import com.day.cq.mailer.MailingException;
 import com.day.cq.mailer.MessageGatewayService;
+import com.day.cq.wcm.api.Page;
 import org.apache.commons.lang.text.StrLookup;
 import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.StringUtils;
@@ -187,5 +188,26 @@ public class AemUtils {
             return payloadPath;
         }
         return payloadPath + LebaraConstants.HTML_EXTENSION;
+    }
+
+
+    /**
+     * priority of display of title is navigationtitle > pagetitle > title
+     */
+    public static String getTitle(final Page page) {
+        if (page == null) {
+            return StringUtils.EMPTY;
+        }
+        String title = page.getNavigationTitle();
+        if (title == null) {
+            title = page.getPageTitle();
+        }
+        if (title == null) {
+            title = page.getTitle();
+        }
+        if (title == null) {
+            title = page.getName();
+        }
+        return title;
     }
 }

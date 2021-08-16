@@ -17,6 +17,7 @@ import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.injectorspecific.ChildResource;
 import org.apache.sling.models.annotations.injectorspecific.ScriptVariable;
 
+import javax.annotation.PostConstruct;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -40,10 +41,12 @@ public class FooterUpperLinksExporter implements ComponentExporter {
     @ChildResource
     private List<Link> footerUpperLinks;
 
-    public List<PageLink> getLinks() {
-        List<PageLink> pageLinkList = new ArrayList<>();
+    private List<PageLink> pageLinkList = new ArrayList<>();
+
+    @PostConstruct
+    public void init() {
         if (CollectionUtils.isEmpty(footerUpperLinks) || pageManager == null) {
-            return pageLinkList;
+            return;
         }
         for (Link parentLink : footerUpperLinks) {
             Page linkPage = pageManager.getContainingPage(parentLink.getExtensionlessLink());
@@ -68,6 +71,9 @@ public class FooterUpperLinksExporter implements ComponentExporter {
             pageLinkList.add(pageLinks);
 
         }
+    }
+
+    public List<PageLink> getLinks() {
         return pageLinkList;
     }
 
