@@ -23,7 +23,8 @@ import ViewPlans from "./ViewPlans/ViewPlans";
 import LanguageHeader from "./LanguageHeader/LanguageHeader";
 import Header from "./Header/Header";
 import LebaraText from "./LebaraText/LebaraText";
-
+import GetApp from "./GetApp/GetApp";
+import FollowUs from "./FollowUs/FollowUs";
 import { MapTo } from "@adobe/aem-react-editable-components";
 import FooterCopyright from "./Footer/FooterCopyright/FooterCopyright";
 
@@ -143,6 +144,21 @@ const FooterCopyrightConfig = {
   },
 };
 
+const FollowUsEditConfig ={
+  emptyLabel: "Follow US",
+    isEmpty : function(props){
+    return !props.followUsText;
+    },
+};
+const GetAppEditConfig = {
+  emptyLabel: "Get APP",
+  isEmpty: function (props) {
+    return !props.appTitle;
+  },
+};
+
+MapTo("lebara/components/followus")(FollowUs, FollowUsEditConfig);
+MapTo("lebara/components/getapp")(GetApp, GetAppEditConfig);
 MapTo("lebara/components/text")(LazyTextComponent, TextEditConfig);
 MapTo("lebara/components/teaser")(Teaser, TeaserEditConfig);
 MapTo("lebara/components/viewplans")(ViewPlans, ViewPlansConfig);
