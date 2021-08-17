@@ -183,9 +183,13 @@ public class AemUtils {
      * @return externalized path.
      */
     public static String getLinkWithExtension(String payloadPath) {
-        if (payloadPath.startsWith("http") || payloadPath.startsWith("www") || StringUtils.isBlank(payloadPath) || StringUtils.endsWith(payloadPath, LebaraConstants.HTML_EXTENSION)) {
+        if (StringUtils.isBlank(payloadPath) || isExternalLink(payloadPath)) {
             return payloadPath;
         }
         return payloadPath + LebaraConstants.HTML_EXTENSION;
+    }
+
+    private static boolean isExternalLink(String payloadPath) {
+        return payloadPath.startsWith("http") || payloadPath.startsWith("www");
     }
 }
