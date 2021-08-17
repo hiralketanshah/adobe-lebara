@@ -3,10 +3,10 @@ export interface FooterUpperLinksProps {
 }
 
 export interface Links {
-  parentLinks: ParentLinks;
-  childLinks: ParentLinks[];
+  parentLinks: PageLinks;
+  childLinks: PageLinks[];
 }
-export interface ParentLinks {
+export interface PageLinks {
   label: string;
   link: string;
 }

@@ -27,6 +27,7 @@ import GetApp from "./GetApp/GetApp";
 import FollowUs from "./FollowUs/FollowUs";
 import { MapTo } from "@adobe/aem-react-editable-components";
 import FooterCopyright from "./Footer/FooterCopyright/FooterCopyright";
+import FooterUpperLinks from "./Footer/FooterUpperLinks/FooterUpperLinks";
 
 import { CarouselV1IsEmptyFn } from "@adobe/aem-core-components-react-spa/dist/isEmptyFunctions";
 
@@ -157,6 +158,13 @@ const GetAppEditConfig = {
   },
 };
 
+const FooterUpperLinksConfig = {
+  emptyLabel: "Footer Upper Navigation Links",
+  isEmpty: function (props) {
+    return !props.links;
+  },
+};
+
 MapTo("lebara/components/followus")(FollowUs, FollowUsEditConfig);
 MapTo("lebara/components/getapp")(GetApp, GetAppEditConfig);
 MapTo("lebara/components/text")(LazyTextComponent, TextEditConfig);
@@ -168,4 +176,8 @@ MapTo("lebara/components/title")(LebaraText, TitleEditConfig);
 MapTo("lebara/components/footer/footercopyright")(
   FooterCopyright,
   FooterCopyrightConfig
+);
+MapTo("lebara/components/footer/footerupperlinks")(
+  FooterUpperLinks,
+  FooterUpperLinksConfig
 );
