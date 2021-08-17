@@ -177,17 +177,21 @@ public class AemUtils {
     }
 
     /**
-     * this method takes the resolver and path as input and returns an externalized path.
+     * this method takes the path as input and returns an externalized path.
      * this method is to be utilized for every pathfield.
      *
      * @param payloadPath      path to be externalized.
      * @return externalized path.
      */
     public static String getLinkWithExtension(String payloadPath) {
-        if (payloadPath.startsWith("http") || payloadPath.startsWith("www") || StringUtils.isBlank(payloadPath) || StringUtils.endsWith(payloadPath, LebaraConstants.HTML_EXTENSION)) {
+        if (StringUtils.isBlank(payloadPath) || isExternalLink(payloadPath)) {
             return payloadPath;
         }
         return payloadPath + LebaraConstants.HTML_EXTENSION;
+    }
+
+    private static boolean isExternalLink(String payloadPath) {
+        return payloadPath.startsWith("http") || payloadPath.startsWith("www");
     }
 
     /**
