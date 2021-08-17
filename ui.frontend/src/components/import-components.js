@@ -22,7 +22,9 @@ import Teaser from "./Teaser/Teaser";
 import ViewPlans from "./ViewPlans/ViewPlans";
 import LanguageHeader from "./LanguageHeader/LanguageHeader";
 import Header from "./Header/Header";
-
+import LebaraText from "./LebaraText/LebaraText";
+import GetApp from "./GetApp/GetApp";
+import FollowUs from "./FollowUs/FollowUs";
 import { MapTo } from "@adobe/aem-react-editable-components";
 import FooterCopyright from "./Footer/FooterCopyright/FooterCopyright";
 import FooterUpperLinks from "./Footer/FooterUpperLinks/FooterUpperLinks";
@@ -128,10 +130,31 @@ const ViewPlansConfig = {
   },
 };
 
+const TitleEditConfig = {
+  emptyLabel: "Title",
+
+  isEmpty: function (props) {
+    return !props || !props.text;
+  },
+};
+
 const FooterCopyrightConfig = {
   emptyLabel: "Footer Copyright",
   isEmpty: function (props) {
     return !props.links;
+  },
+};
+
+const FollowUsEditConfig ={
+  emptyLabel: "Follow US",
+    isEmpty : function(props){
+    return !props.followUsText;
+    },
+};
+const GetAppEditConfig = {
+  emptyLabel: "Get APP",
+  isEmpty: function (props) {
+    return !props.appTitle;
   },
 };
 
@@ -142,11 +165,14 @@ const FooterUpperLinksConfig = {
   },
 };
 
+MapTo("lebara/components/followus")(FollowUs, FollowUsEditConfig);
+MapTo("lebara/components/getapp")(GetApp, GetAppEditConfig);
 MapTo("lebara/components/text")(LazyTextComponent, TextEditConfig);
 MapTo("lebara/components/teaser")(Teaser, TeaserEditConfig);
 MapTo("lebara/components/viewplans")(ViewPlans, ViewPlansConfig);
 MapTo("lebara/components/header/languagenavigation")(LanguageHeader);
 MapTo("lebara/components/header/headernavigation")(Header);
+MapTo("lebara/components/title")(LebaraText, TitleEditConfig);
 MapTo("lebara/components/footer/footercopyright")(
   FooterCopyright,
   FooterCopyrightConfig

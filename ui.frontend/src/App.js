@@ -7,14 +7,10 @@ import { ChakraProvider } from "@chakra-ui/react";
 class App extends Page {
   render() {
     return (
-      <>
-        <ChakraProvider>
-          <div>
-            {this.childComponents}
-            {this.childPages}
-          </div>
-        </ChakraProvider>
-      </>
+      <ChakraProvider>
+        {this.childComponents}
+        {this.childPages}
+      </ChakraProvider>
     );
   }
 }
