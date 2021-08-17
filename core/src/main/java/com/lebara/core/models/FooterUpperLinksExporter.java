@@ -17,6 +17,7 @@ import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.injectorspecific.ChildResource;
 import org.apache.sling.models.annotations.injectorspecific.ScriptVariable;
 
+import javax.annotation.PostConstruct;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -40,10 +41,12 @@ public class FooterUpperLinksExporter implements ComponentExporter {
     @ChildResource
     private List<Link> footerUpperLinks;
 
-    public List<PageLink> getLinks() {
-        List<PageLink> pageLinkList = new ArrayList<>();
+    private List<PageLink> pageLinkList = new ArrayList<>();
+
+    @PostConstruct
+    public void init() {
         if (CollectionUtils.isEmpty(footerUpperLinks) || pageManager == null) {
-            return pageLinkList;
+            return;
         }
         for (Link parentLink : footerUpperLinks) {
             Page linkPage = pageManager.getContainingPage(parentLink.getExtensionlessLink());
@@ -53,7 +56,7 @@ public class FooterUpperLinksExporter implements ComponentExporter {
                 continue;
             }
             if (StringUtils.isBlank(parentLink.getLabel())) {
-                parentLink.setLabel(linkPage.getTitle());
+                parentLink.setLabel(AemUtils.getTitle(linkPage));
             }
             pageLinks.setParentLinks(parentLink);
             Iterator<Page> childPath = linkPage.listChildren(new PageFilter());
@@ -61,13 +64,16 @@ public class FooterUpperLinksExporter implements ComponentExporter {
                 Link links = new Link();
                 Page childPage = childPath.next();
                 links.setLink(AemUtils.getLinkWithExtension(childPage.getPath()));
-                links.setLabel(childPage.getTitle());
+                links.setLabel(AemUtils.getTitle(childPage));
                 childPagesList.add(links);
             }
             pageLinks.setChildLinks(childPagesList);
             pageLinkList.add(pageLinks);
 
         }
+    }
+
+    public List<PageLink> getLinks() {
         return pageLinkList;
     }
 
