@@ -2,6 +2,7 @@ import React from "react";
 
 import { Box, Divider, Flex, Spacer, Text } from "@chakra-ui/react";
 import { FooterCopyrightProps } from "./types";
+import color from "../../../color";
 
 const FooterCopyright: React.FC<FooterCopyrightProps> = ({
   links,
@@ -11,7 +12,7 @@ const FooterCopyright: React.FC<FooterCopyrightProps> = ({
     <>
       <Divider mt="2em" />
       <Box>
-        <Flex py="25px" color="grey.300">
+        <Flex py="25px" color={color.grey[300]}>
           {links?.map((item) => (
             <a href={item?.link} style={{ textDecoration: "none" }}>
               <Text fontSize={12} textAlign="left" ml="60px">
