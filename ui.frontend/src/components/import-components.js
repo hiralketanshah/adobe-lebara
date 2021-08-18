@@ -24,7 +24,7 @@ import LanguageHeader from "./LanguageHeader/LanguageHeader";
 import Header from "./Header/Header";
 import LebaraText from "./LebaraText/LebaraText";
 import GetApp from "./GetApp/GetApp";
-import FollowUs from "./FollowUs/FollowUs";
+import FollowUs from "./Footer/FollowUs/FollowUs";
 import { MapTo } from "@adobe/aem-react-editable-components";
 import FooterCopyright from "./Footer/FooterCopyright/FooterCopyright";
 import FooterUpperLinks from "./Footer/FooterUpperLinks/FooterUpperLinks";
@@ -145,11 +145,11 @@ const FooterCopyrightConfig = {
   },
 };
 
-const FollowUsEditConfig ={
+const FollowUsEditConfig = {
   emptyLabel: "Follow US",
-    isEmpty : function(props){
+  isEmpty: function (props) {
     return !props.followUsText;
-    },
+  },
 };
 const GetAppEditConfig = {
   emptyLabel: "Get APP",
