@@ -73,6 +73,20 @@
                                                     </items>
                                                 </field>
                                             </getapplink>
+                                            <backgroundimage
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/form/pathbrowser"
+                                                    fieldDescription="Choose Background Image for Desktop View"
+                                                    fieldLabel="Background Image(Desktop)"
+                                                    name="./backgroundImageDesktop"
+                                                    rootPath="/content/dam/lebara"/>
+                                            <backgroundimagemobile
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/form/pathbrowser"
+                                                    fieldDescription="Choose Background Image for Mobile View"
+                                                    fieldLabel="Background Image(Mobile)"
+                                                    name="./backgroundImageMobile"
+                                                    rootPath="/content/dam/lebara"/>
                                         </items>
                                     </column>
                                 </items>
