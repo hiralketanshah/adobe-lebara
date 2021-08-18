@@ -38,6 +38,19 @@ public class GetAppExporter implements ComponentExporter {
     @ValueMapValue
     private String backgroundImageMobile;
 
+    @ValueMapValue
+    private String textDescription ;
+    @ValueMapValue
+    private boolean show;
+
+    public String getTextDescription() {
+        return textDescription;
+    }
+
+    public boolean isShow() {
+        return show;
+    }
+
     public String getBackgroundImageDesktop() {
         return backgroundImageDesktop;
     }
