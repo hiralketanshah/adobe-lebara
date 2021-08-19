@@ -2,6 +2,13 @@ import React from "react";
 import { Flex, Text, Heading, Image, Box } from "@chakra-ui/react";
 import { GetAppProps } from "./types";
 import color from "../../color";
+import {
+  DesktopGetApp,
+  MobileGetApp,
+  DesktopGetAppHeading,
+  MobileGetAppHeading,
+  DesktopWrapper,
+} from "./GetAppPromo.styles";
 
 const AppPromo: React.FC<GetAppProps> = ({
   appTitle,
@@ -17,29 +24,29 @@ const AppPromo: React.FC<GetAppProps> = ({
     pt="51px"
     pb="32px"
   >
-    <Heading
+    <MobileGetAppHeading
       d={{ base: "block", md: "none" }}
       color={color.lebaraChambray[600]}
       fontSize={32}
       fontWeight="bold"
     >
       {appTitle}
-    </Heading>
+    </MobileGetAppHeading>
 
-    <Image
+    <MobileGetApp
       d={{ base: "block", md: "none" }}
       src={backgroundImageMobile}
       alt="Get the App"
     />
 
-    <Box d={{ md: "flex" }} alignItems={{ md: "center" }}>
-      <Image
+    <DesktopWrapper>
+      <DesktopGetApp
         d={{ base: "none", md: "block" }}
         src={backgroundImageDesktop}
         alt="Get the App"
       />
       <Box>
-        <Heading
+        <DesktopGetAppHeading
           d={{ base: "none", md: "block" }}
           ml={{ md: "14px" }}
           mb={{ md: "10px" }}
@@ -48,7 +55,7 @@ const AppPromo: React.FC<GetAppProps> = ({
           fontWeight="bold"
         >
           {appTitle}
-        </Heading>
+        </DesktopGetAppHeading>
         <Text
           w={{ md: "236px" }}
           ml={{ md: "14px" }}
@@ -69,7 +76,7 @@ const AppPromo: React.FC<GetAppProps> = ({
           ))}
         </Flex>
       </Box>
-    </Box>
+    </DesktopWrapper>
   </Flex>
 );
 
