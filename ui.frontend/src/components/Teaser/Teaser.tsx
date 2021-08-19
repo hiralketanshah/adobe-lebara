@@ -11,7 +11,7 @@ const Teaser: React.FC<TeaserV1Model> = ({
 }) =>
   title ? (
     <Box w="100%" p="20px" bgImage={imagePath} bgSize="cover">
-      <Box d="flex" flexDir="column">
+      <Box d="flex" flexDir="column" style={{ padding: "50px 15px" }}>
         {pretitle && (
           <Text
             fontSize="14px"
@@ -39,7 +39,12 @@ const Teaser: React.FC<TeaserV1Model> = ({
         </Heading>
 
         {description && (
-          <Text fontSize="16px" lineHeight="tall" color="white">
+          <Text
+            fontSize="16px"
+            lineHeight="tall"
+            color="white"
+            style={{ whiteSpace: "pre-line" }}
+          >
             {description}
           </Text>
         )}
