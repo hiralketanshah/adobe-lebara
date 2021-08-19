@@ -97,12 +97,12 @@
                                             <showimage
                                                     jcr:primaryType="nt:unstructured"
                                                     sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
-                                                    defaultChecked="{Boolean}true"
+                                                    defaultChecked="{Boolean}false"
                                                     fieldDescription="Check -'Advance Get App' checkbox to Display the image and description."
                                                     fieldLabel="Advance Get App"
                                                     name="./show"
                                                     text="Advance Get App"
-                                                    value="{Boolean}false"/>
+                                                    value="{Boolean}true"/>
                                             <backgroundimage
                                                     jcr:primaryType="nt:unstructured"
                                                     sling:resourceType="granite/ui/components/coral/foundation/form/pathbrowser"
