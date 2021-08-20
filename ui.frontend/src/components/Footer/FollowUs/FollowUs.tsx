@@ -8,10 +8,7 @@ const FollowUS: React.FC<FollowUSProps> = ({ followUsText, links }) => {
   return (
     <>
       <Box>
-        <Box
-          pl={{ lg: "5em", md: "initial" }}
-          mt={{ lg: "initial", md: "2em" }}
-        >
+        <Box pt="50px" mt={{ lg: "initial", md: "2em" }}>
           <Text
             fontSize={14}
             color={color.lebaraChambray[500]}
