@@ -5,18 +5,6 @@
     <rep:policy/>
     <lebara jcr:primaryType="nt:unstructured">
         <components jcr:primaryType="nt:unstructured">
-            <form jcr:primaryType="nt:unstructured">
-                <container jcr:primaryType="nt:unstructured">
-                    <form-container
-                            jcr:description="Allows the form components to be dropped into this core form container."
-                            jcr:primaryType="nt:unstructured"
-                            jcr:title="Content Form"
-                            sling:resourceType="wcm/core/components/policy/policy"
-                            components="[/apps/lebara/components/form/button,/apps/lebara/components/form/hidden,/apps/lebara/components/form/options,/apps/lebara/components/form/text]">
-                        <jcr:content jcr:primaryType="nt:unstructured"/>
-                    </form-container>
-                </container>
-            </form>
             <languagenavigation jcr:primaryType="nt:unstructured">
                 <policy_xfm
                         jcr:primaryType="nt:unstructured"
@@ -278,7 +266,7 @@
                         jcr:primaryType="nt:unstructured"
                         jcr:title="XF Root"
                         sling:resourceType="wcm/core/components/policy/policy"
-                        components="[group:Lebara - Content,/apps/lebara/components/form/container]">
+                        components="[/libs/wcm/foundation/components/responsivegrid,group:Lebara - Content SPA,group:Lebara - Structure]">
                     <jcr:content jcr:primaryType="nt:unstructured"/>
                     <cq:authoring jcr:primaryType="nt:unstructured">
                         <assetToComponentMapping jcr:primaryType="nt:unstructured">
@@ -363,7 +351,7 @@
                         sling:resourceType="wcm/core/components/policy/policy"
                         clientlibs="[lebara.react]"
                         isRoot="{Boolean}true"
-                        structureDepth="3"
+                        structureDepth="2"
                 />
             </spa>
         </components>
