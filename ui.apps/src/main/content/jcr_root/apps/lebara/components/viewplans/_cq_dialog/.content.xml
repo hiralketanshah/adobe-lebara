@@ -59,6 +59,14 @@
                                                         name="./cfPath"
                                                         required="{Boolean}true"
                                                         rootPath="/content/dam/lebara"/>
+                                                <applicationformpathplan
+                                                        cq:showOnCreate="{Boolean}true"
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="dam/cfm/components/cfpicker"
+                                                        fieldLabel="Select Plan"
+                                                        name="./cfPlanPath"
+                                                        required="{Boolean}true"
+                                                        rootPath="/content/dam/lebara"/>
                                             </items>
                                         </column>
                                     </items>

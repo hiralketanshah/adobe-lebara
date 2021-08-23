@@ -2,7 +2,7 @@ package com.lebara.core.dto;
 
 import com.google.gson.annotations.SerializedName;
 
-class Unit {
+public class Unit {
     private String abbreviation;
 
     @SerializedName("__typename")

@@ -4,6 +4,7 @@ import com.adobe.cq.dam.cfm.ContentFragment;
 import com.adobe.cq.export.json.ComponentExporter;
 import com.adobe.cq.export.json.ExporterConstants;
 import com.lebara.core.dto.OfferFragmentBean;
+import com.lebara.core.dto.PlanInfo;
 import com.lebara.core.utils.AemUtils;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;
@@ -62,13 +63,16 @@ public class ViewPlanExporter implements ComponentExporter {
             for (Resource offer : phases.getChildren()) {
                 String cfPath = AemUtils.getStringProperty(offer, "cfPath");
                 Resource cfResource = resourceResolver.getResource(cfPath);
-                populateOffer(offers, cfResource);
+
+                String cfPlanPath = AemUtils.getStringProperty(offer, "cfPlanPath");
+                Resource cfPlanResource = resourceResolver.getResource(cfPlanPath);
+                populateOffer(offers, cfResource, cfPlanResource);
             }
         }
         return offers;
     }
 
-    private void populateOffer(List<OfferFragmentBean> offers, Resource cfResource) {
+    private void populateOffer(List<OfferFragmentBean> offers, Resource cfResource, Resource cfPlanResource) {
         if (null != cfResource) {
             ContentFragment offerFragment = cfResource.adaptTo(ContentFragment.class);
             if (null != offerFragment) {
@@ -76,6 +80,15 @@ public class ViewPlanExporter implements ComponentExporter {
                 offerFragmentBean.setCost(offerFragment.getElement("cost").getContent());
                 offerFragmentBean.setValidity(offerFragment.getElement("validity").getContent());
                 offerFragmentBean.setAllowances(offerFragment.getElement("allowances").getContent());
+                if (null != cfPlanResource) {
+                    ContentFragment cfPlanFragment = cfPlanResource.adaptTo(ContentFragment.class);
+                    if(null != cfPlanFragment){
+                        PlanInfo planInfo = new PlanInfo();
+                        planInfo.setTitle(cfPlanFragment.getElement("title").getContent());
+                        planInfo.setListPlanItem(new String[]{cfPlanFragment.getElement("listPlanItem").getContent()});  ;
+                        offerFragmentBean.setPlanInfo(planInfo);
+                    }
+                }
                 offers.add(offerFragmentBean);
             }
         }

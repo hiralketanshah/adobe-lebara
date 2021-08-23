@@ -3,6 +3,7 @@ package com.lebara.core.services;
 import java.io.*;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.net.ssl.HttpsURLConnection;
@@ -128,7 +129,16 @@ public class CrudOperationEpc {
             newFragment.getElement("validitytype").setContent(offer.validityType, LebaraConstants.CONTENT_TYPE_TEXT_PLAIN);
             newFragment.getElement("cost").setContent(String.valueOf(offer.cost), LebaraConstants.CONTENT_TYPE_TEXT_PLAIN);
             newFragment.getElement("channels").setContent(gson.toJson(offer.channels), LebaraConstants.CONTENT_TYPE_TEXT_PLAIN);
-            newFragment.getElement("allowances").setContent(gson.toJson(offer.allowances), LebaraConstants.CONTENT_TYPE_TEXT_PLAIN);
+            //newFragment.getElement("allowances").setContent(gson.toJson(offer.allowances), LebaraConstants.CONTENT_TYPE_TEXT_PLAIN);
+            List <CFAllowance> cfAllowanceList = new ArrayList<>();
+            for (Allowance allowances : offer.allowances) {
+                CFAllowance cfAllowance = new CFAllowance();
+                cfAllowance.setValue(allowances.getAllowanceValue());
+                cfAllowance.setName(allowances.getAccount().getName());
+                cfAllowance.setUnit(allowances.getAccount().getUnit().getAbbreviation());
+                cfAllowanceList.add(cfAllowance);
+            }
+            newFragment.getElement("allowances").setContent(gson.toJson(cfAllowanceList), LebaraConstants.CONTENT_TYPE_TEXT_PLAIN);
             newFragment.getElement("typename").setContent(String.valueOf(offer.typeName), LebaraConstants.CONTENT_TYPE_TEXT_PLAIN);
 
         } catch (ContentFragmentException e) {
