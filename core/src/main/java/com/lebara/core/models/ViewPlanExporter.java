@@ -85,7 +85,9 @@ public class ViewPlanExporter implements ComponentExporter {
                     if(null != cfPlanFragment){
                         PlanInfo planInfo = new PlanInfo();
                         planInfo.setTitle(cfPlanFragment.getElement("title").getContent());
-                        planInfo.setListPlanItem(new String[]{cfPlanFragment.getElement("listPlanItem").getContent()});  ;
+                        planInfo.setCountryTitle(cfPlanFragment.getElement("countryTitle").getContent());
+                        planInfo.setListPlanItem(new String[]{cfPlanFragment.getElement("listPlanItem").getContent()});
+                        planInfo.setCountryList(new String[]{cfPlanFragment.getElement("countryList").getContent()});
                         offerFragmentBean.setPlanInfo(planInfo);
                     }
                 }
