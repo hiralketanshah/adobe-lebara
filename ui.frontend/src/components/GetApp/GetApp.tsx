@@ -42,7 +42,7 @@ const GetApp: React.FC<GetAppProps> = ({
                 style={{ textDecoration: "none", marginRight: "60px" }}
                 aria-label="Available on the App Store"
               >
-                <img src={item?.label} width="156px" height="46px" />
+                <img src={item?.label} width="156" height="46" />
               </a>
             ))}
           </Flex>
