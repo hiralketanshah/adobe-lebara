@@ -72,6 +72,9 @@ public class ViewPlanExporter implements ComponentExporter {
     @ValueMapValue
     private String unlimitedTextField;
 
+    @ValueMapValue
+    private String showViewPlan;
+
     public String getButtonLabel() {
         return buttonLabel;
     }
@@ -82,6 +85,10 @@ public class ViewPlanExporter implements ComponentExporter {
 
     public String getUnlimitedTextField() {
         return unlimitedTextField;
+    }
+
+    public String getShowViewPlan() {
+        return showViewPlan;
     }
 
     public String getTitle() {
@@ -145,7 +152,7 @@ public class ViewPlanExporter implements ComponentExporter {
                 offerFragmentBean.setAllowances(offerFragment.getElement("allowances").getContent());
                 if (null != cfPlanResource) {
                     ContentFragment cfPlanFragment = cfPlanResource.adaptTo(ContentFragment.class);
-                    if(null != cfPlanFragment){
+                    if (null != cfPlanFragment) {
                         PlanInfo planInfo = new PlanInfo();
                         planInfo.setTitle(cfPlanFragment.getElement("title").getContent());
                         planInfo.setCountryTitle(cfPlanFragment.getElement("countryTitle").getContent());
