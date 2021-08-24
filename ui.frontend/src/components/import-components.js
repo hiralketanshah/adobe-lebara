@@ -18,7 +18,6 @@ import withAsyncImport from "../utils/withAsyncImport";
 import "./Page/Page";
 import "./Container/Container";
 import "./ExperienceFragment/ExperienceFragment";
-import "./ContentFragment/ContentFragment"
 import Teaser from "./Teaser/Teaser";
 import ViewPlans from "./ViewPlans/ViewPlans";
 import LanguageHeader from "./LanguageHeader/LanguageHeader";
