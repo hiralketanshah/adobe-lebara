@@ -71,7 +71,7 @@ const AppPromo: React.FC<GetAppProps> = ({
               style={{ textDecoration: "none", marginRight: "12px" }}
               aria-label="Available on the App Store"
             >
-              <img src={item?.label} width="160px" height="100%" />
+              <img src={item?.label} width="160" height="100%" />
             </a>
           ))}
         </Flex>
