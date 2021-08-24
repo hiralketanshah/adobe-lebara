@@ -18,7 +18,7 @@ const LebaraText: React.FC<LebaraTextProps> = ({
         <a href={linkURL} style={{ textDecoration: "none" }}>
           <Text
             as={type}
-            color={color.lebaraChambray[600]}
+            color="lebaraChambray.600"
             mb="40px"
             fontWeight={fontDetails?.weight}
             fontSize={fontDetails?.size}
@@ -32,7 +32,7 @@ const LebaraText: React.FC<LebaraTextProps> = ({
       {!linkURL && text && (
         <Text
           as={type}
-          color={color.lebaraChambray[600]}
+          color="lebaraChambray.600"
           mb="40px"
           fontWeight={fontDetails?.weight}
           fontSize={fontDetails?.size}

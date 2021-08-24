@@ -19,7 +19,6 @@
 html,
 body {
   border: 0;
-  font-family: "Roboto !important";
   font-size: 100%;
   margin: 0;
   padding: 0;
@@ -28,16 +27,4 @@ body {
 
 body {
   background-color: #ffffff;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-p,
-.nav-container,
-.rw-box {
-  font-family: "Roboto !important";
-  color: #000000;
 }
