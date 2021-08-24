@@ -10,24 +10,24 @@ import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
 public class ImageProperties {
 
 	@ValueMapValue
-	private String imagedec;
+	private String imageDescription;
 
 	@ValueMapValue
-	private String imagealt;
+	private String imageAlt;
 
 	@ValueMapValue
-	private String imagepath;
+	private String imagePath;
 
-	public String getImagedec() {
-		return imagedec;
+	public String getImageDescription() {
+		return imageDescription;
 	}
 
-	public String getImagealt() {
-		return imagealt;
+	public String getImageAlt() {
+		return imageAlt;
 	}
 
-	public String getImagepath() {
-		return imagepath;
+	public String getImagePath() {
+		return imagePath;
 	}
 
 }

@@ -38,7 +38,7 @@ public class UspExporter implements ComponentExporter {
     private Resource resource;
 
     @ChildResource
-    private List<ImageProperties> uspdescription;
+    private List<ImageProperties> uspDescription;
 
     @Override
     public String getExportedType() {
@@ -57,8 +57,8 @@ public class UspExporter implements ComponentExporter {
         return alt;
     }
 
-    public List<ImageProperties> getUsadescription() {
-        return uspdescription;
+    public List<ImageProperties> getUspDescription() {
+        return uspDescription;
     }
 
 

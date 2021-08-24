@@ -8,7 +8,7 @@ import { GetAppPropss } from "./types";
 
 const usp: React.FC<GetAppPropss> = ({
  backgroundimage,
-usadescription,
+uspDescription,
 alt,
 title
 
