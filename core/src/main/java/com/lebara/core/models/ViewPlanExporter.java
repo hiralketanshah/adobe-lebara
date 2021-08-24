@@ -40,6 +40,33 @@ public class ViewPlanExporter implements ComponentExporter {
     private String buttonLabel;
 
     @ValueMapValue
+    private String title;
+
+    @ValueMapValue
+    private String subTitle;
+
+    @ValueMapValue
+    private String description;
+
+    @ValueMapValue
+    private String showLabel;
+
+    @ValueMapValue
+    private String hideLabel;
+
+    @ValueMapValue
+    private String ctaTopLabel;
+
+    @ValueMapValue
+    private String ctaTopLink;
+
+    @ValueMapValue
+    private String ctaBottomLabel;
+
+    @ValueMapValue
+    private String ctaBottomLink;
+
+    @ValueMapValue
     private String minutesField;
 
     @ValueMapValue
@@ -55,6 +82,42 @@ public class ViewPlanExporter implements ComponentExporter {
 
     public String getUnlimitedTextField() {
         return unlimitedTextField;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public String getSubTitle() {
+        return subTitle;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public String getShowLabel() {
+        return showLabel;
+    }
+
+    public String getHideLabel() {
+        return hideLabel;
+    }
+
+    public String getCtaTopLabel() {
+        return ctaTopLabel;
+    }
+
+    public String getCtaTopLink() {
+        return ctaTopLink;
+    }
+
+    public String getCtaBottomLabel() {
+        return ctaBottomLabel;
+    }
+
+    public String getCtaBottomLink() {
+        return ctaBottomLink;
     }
 
     public List<OfferFragmentBean> getOffers() {
