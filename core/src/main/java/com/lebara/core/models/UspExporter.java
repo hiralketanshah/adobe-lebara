@@ -27,9 +27,7 @@ public class UspExporter implements ComponentExporter {
     @ValueMapValue
     private String backgroundimage;
 
-    @ValueMapValue
-
-    private String alt;
+  
 
     @ValueMapValue
     private String title;
@@ -53,10 +51,7 @@ public class UspExporter implements ComponentExporter {
         return backgroundimage;
     }
 
-    public String getAlt() {
-        return alt;
-    }
-
+  
     public List<ImageProperties> getUspDescription() {
         return uspDescription;
     }

@@ -1,7 +1,6 @@
 export interface GetAppPropss {
 	backgroundimage?: string;
 	uspDescription?: getImageProperties[];
-	alt?: string;
 	title?: string;
 }
 
