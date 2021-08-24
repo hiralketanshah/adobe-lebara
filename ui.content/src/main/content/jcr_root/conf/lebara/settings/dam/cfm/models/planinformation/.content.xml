@@ -83,6 +83,7 @@
                                 jcr:primaryType="nt:unstructured"
                                 sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
                                 fieldLabel="Country List"
+                                composite="{Boolean}true"
                                 listOrder="21"
                                 maxlength="255"
                                 metaType="text-single"
@@ -92,10 +93,28 @@
                                 valueType="string[]">
                             <field
                                     jcr:primaryType="nt:unstructured"
-                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                    sling:resourceType="granite/ui/components/coral/foundation/container"
                                     maxlength="255"
-                                    name="countryList"
+                                    name="./countryList"
                                     renderReadOnly="false">
+                                    <items jcr:primaryType="nt:unstructured">
+                                        <column
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/container">
+                                            <items jcr:primaryType="nt:unstructured">
+                                                <countryname
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                    fieldLabel="Country Name"
+                                                    name="./countryname"/>
+                                                <countrycode
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                    fieldLabel="Country Code"
+                                                    name="./countrycode"/>
+                                            </items>
+                                        </column>
+                                    </items>
                                 <granite:data jcr:primaryType="nt:unstructured"/>
                             </field>
                             <granite:data jcr:primaryType="nt:unstructured"/>
