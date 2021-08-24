@@ -2,11 +2,19 @@ import React from "react";
 import { Box, Text } from "@chakra-ui/react";
 import { FooterUpperLinksProps, Links, PageLinks } from "./types";
 import color from "../../../color";
+import FooterMobileView from "../FooterMobileView/FooterMobileView";
+
+import { FooterWebViewWrapper } from "./FooterUpperLinks.styles";
 
 const FooterUpperLinks: React.FC<FooterUpperLinksProps> = ({ links }) => {
   return (
     <>
-      <Box px="50px" py="50px" display={{ md: "block", base: "none" }}>
+      <FooterMobileView links={links} />
+      <FooterWebViewWrapper
+        px="50px"
+        py="50px"
+        display={{ md: "block", base: "none" }}
+      >
         <Box
           height={{ lg: "50vh", md: "initial" }}
           display={{ lg: "flex", md: "block" }}
@@ -44,7 +52,7 @@ const FooterUpperLinks: React.FC<FooterUpperLinksProps> = ({ links }) => {
             ))}
           </Box>
         </Box>
-      </Box>
+      </FooterWebViewWrapper>
     </>
   );
 };
