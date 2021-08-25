@@ -1,6 +1,5 @@
 import React from "react";
-import { Box, Flex, Text } from "@chakra-ui/react";
-import color from "../../color";
+import { Box, Flex, Text, Image, Link } from "@chakra-ui/react";
 import AppPromo from "./GetAppPromo";
 
 import { GetAppProps } from "./types";
@@ -27,7 +26,7 @@ const GetApp: React.FC<GetAppProps> = ({
         <Box px="10px">
           <Text
             fontSize={22}
-            color={color.lebaraChambray[600]}
+            color="lebaraChambray.600"
             fontWeight="bold"
             textTransform="uppercase"
             mt="30px"
@@ -35,15 +34,16 @@ const GetApp: React.FC<GetAppProps> = ({
           >
             {appTitle}
           </Text>
-          <Flex>
+          <Flex justifyContent="space-between">
             {links?.map((item) => (
-              <a
-                href={item?.link}
-                style={{ textDecoration: "none", marginRight: "60px" }}
-                aria-label="Available on the App Store"
-              >
-                <img src={item?.label} width="156" height="46" />
-              </a>
+              <Link href={item?.link} style={{ textDecoration: "none" }}>
+                <Image
+                  src={item?.label}
+                  aria-label="Available on the App Store"
+                  width="156"
+                  height="46"
+                />
+              </Link>
             ))}
           </Flex>
         </Box>
@@ -51,5 +51,4 @@ const GetApp: React.FC<GetAppProps> = ({
     </>
   );
 };
-
 export default GetApp;
