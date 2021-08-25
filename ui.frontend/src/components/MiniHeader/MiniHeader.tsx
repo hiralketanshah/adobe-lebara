@@ -24,19 +24,21 @@ const MiniHeader: React.FC<MiniHeaderProps> = ({ accountLink, logoPath }) => {
         background="lebaraBlue.500"
         color="white"
       >
-        <Flex alignItems="center">
-          <IconButton
-            pr="16px"
-            icon={<GiHamburgerMenu />}
-            aria-label="Search"
-            variant="ghost"
-            colorScheme="dark"
-            onClick={() => {}}
-          />
-          <Link href="#">
-            <img src={logoPath} alt="Logo" />
-          </Link>
-        </Flex>
+        {logoPath && (
+          <Flex alignItems="center">
+            <IconButton
+              pr="16px"
+              icon={<GiHamburgerMenu />}
+              aria-label="Search"
+              variant="ghost"
+              colorScheme="dark"
+              onClick={() => {}}
+            />
+            <Link href="#">
+              <img src={logoPath} alt="Logo" />
+            </Link>
+          </Flex>
+        )}
         <Flex>
           <IconButton
             icon={<BiSearch />}

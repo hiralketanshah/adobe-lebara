@@ -31,12 +31,13 @@ const Header: React.FC<HeaderProps> = ({
           background="lebaraBlue.500"
           color="white"
         >
-          <Flex alignItems="center">
-            <Link to="/" style={{ textDecoration: "none" }}>
-              <img src={logoPath} alt="Logo" />
-            </Link>
-          </Flex>
-
+          {logoPath && (
+            <Flex alignItems="center">
+              <Link to="/" style={{ textDecoration: "none" }}>
+                <img src={logoPath} alt="Logo" />
+              </Link>
+            </Flex>
+          )}
           <Flex alignItems="left" ml={{ lg: "30px", md: "15px" }}>
             <Box px={{ lg: "2px", md: "initial" }}>
               {items?.map(({ title, url }) => (
@@ -46,7 +47,7 @@ const Header: React.FC<HeaderProps> = ({
                   _hover={{ color: "white", bg: "lebaraBlue.500" }}
                   size="sm"
                   pl="initial"
-                  onClick={() => history.push("/postpaid")}
+                  onClick={() => history.push("/")}
                 >
                   <Link href={url} style={{ textDecoration: "none" }}>
                     <Text
@@ -65,13 +66,15 @@ const Header: React.FC<HeaderProps> = ({
             </Box>
           </Flex>
           <Spacer />
-          <Box>
-            <Link href={topupCtaLink} style={{ textDecoration: "none" }}>
-              <Button fontSize={{ lg: "14px", md: "12px" }}>
-                {topupCtaText}
-              </Button>
-            </Link>
-          </Box>
+          {topupCtaText && (
+            <Box>
+              <Link href={topupCtaLink} style={{ textDecoration: "none" }}>
+                <Button fontSize={{ lg: "14px", md: "12px" }}>
+                  {topupCtaText}
+                </Button>
+              </Link>
+            </Box>
+          )}
           <Spacer />
           <Flex>
             <IconButton
