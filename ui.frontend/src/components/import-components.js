@@ -28,7 +28,7 @@ import FollowUs from "./Footer/FollowUs/FollowUs";
 import { MapTo } from "@adobe/aem-react-editable-components";
 import FooterCopyright from "./Footer/FooterCopyright/FooterCopyright";
 import FooterUpperLinks from "./Footer/FooterUpperLinks/FooterUpperLinks";
-import Usp from "./USP/usp";
+import Usp from "./usp/usp";
 
 import { CarouselV1IsEmptyFn } from "@adobe/aem-core-components-react-spa/dist/isEmptyFunctions";
 
