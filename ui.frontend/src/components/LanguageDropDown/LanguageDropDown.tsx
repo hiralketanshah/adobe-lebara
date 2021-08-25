@@ -1,12 +1,15 @@
 import React from "react";
 import { IoChevronDownCircleSharp } from "react-icons/all";
 import { LanguageDropDownProps } from "./types";
-import { SelectWrapper } from "./LanguageDropDown.styles";
+import Select from "../Select/Select";
 
-const LanguageDropDown: React.FC<LanguageDropDownProps> = ({ options }) => (
-  <SelectWrapper
+const LanguageDropDown: React.FC<LanguageDropDownProps> = ({
+  options,
+  selectProps,
+}) => (
+  <Select
     backgroundColor="white"
-    fontWeight={500}
+    fontWeight="medium"
     color="lebaraChambray.600"
     border={0}
     borderRadius={0}
@@ -15,6 +18,7 @@ const LanguageDropDown: React.FC<LanguageDropDownProps> = ({ options }) => (
     icon={<IoChevronDownCircleSharp fill="#BE2075" />}
     placeholder="English"
     options={options}
+    {...selectProps}
   />
 );
 

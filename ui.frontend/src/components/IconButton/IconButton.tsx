@@ -1,5 +1,5 @@
 import React from "react";
-import { IconButton as ChakraIconButton, Text } from "@chakra-ui/react";
+import { IconButton as ChakraIconButton } from "@chakra-ui/react";
 import { IconButtonProps } from "./types";
 import { fontTypeDetails } from "../LebaraText/types";
 

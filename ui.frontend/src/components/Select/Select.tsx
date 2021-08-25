@@ -5,10 +5,10 @@ import {
   FormLabel,
 } from "@chakra-ui/react";
 import { SelectProps } from "./types";
-import lebaraColor from "../../color";
 
 const Select: React.FC<SelectProps> = ({ options, width, label, ...rest }) => {
   const lockSelect = options.length < 2;
+
   return (
     <FormControl flexDirection="column" gridGap={2.5} width={width}>
       {label && (
@@ -17,8 +17,9 @@ const Select: React.FC<SelectProps> = ({ options, width, label, ...rest }) => {
         </FormLabel>
       )}
       <ChakraSelect
+        height="49px"
         fontSize="16px"
-        fontWeight={500}
+        fontWeight="bold"
         background="white"
         borderRadius="lg"
         {...rest}
