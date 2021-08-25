@@ -28,7 +28,7 @@ import FollowUs from "./Footer/FollowUs/FollowUs";
 import { MapTo } from "@adobe/aem-react-editable-components";
 import FooterCopyright from "./Footer/FooterCopyright/FooterCopyright";
 import FooterUpperLinks from "./Footer/FooterUpperLinks/FooterUpperLinks";
-import usp from "./USP/usp";
+import Usp from "./USP/usp";
 
 import { CarouselV1IsEmptyFn } from "@adobe/aem-core-components-react-spa/dist/isEmptyFunctions";
 
@@ -189,4 +189,4 @@ MapTo("lebara/components/footer/footerupperlinks")(
   FooterUpperLinks,
   FooterUpperLinksConfig
 );
-MapTo("lebara/components/usp")(usp, uspEditConfig);
+MapTo("lebara/components/usp")(Usp, uspEditConfig);
