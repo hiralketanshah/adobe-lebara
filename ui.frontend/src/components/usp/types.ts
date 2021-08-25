@@ -1,12 +1,8 @@
-export interface GetAppPropss {
+import {IconListItem} from '../IconList/types';
+
+export interface UspProps {
 	backgroundimage?: string;
-	uspDescription?: getImageProperties[];
+	uspDescription?: IconListItem[];
 	title?: string;
 }
 
-
-export interface getImageProperties {
-	imageDescription?: string;
-	imagePath?: string;
-	 imageAlt?: string;
-}

@@ -52,7 +52,7 @@
                                                 fieldLabel="USP Properties ">
                                                 <granite:data
                                                     jcr:primaryType="nt:unstructured"
-                                                    maxItems="{Long}2"/>
+                                                    maxItems="{Long}4"/>
                                                 <field
                                                     jcr:primaryType="nt:unstructured"
                                                     sling:resourceType="granite/ui/components/coral/foundation/container"
