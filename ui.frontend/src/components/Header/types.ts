@@ -15,3 +15,6 @@ export interface Menu {
   title: string;
   url: string;
 }
+export interface SelectOption {
+  title: string;
+}
