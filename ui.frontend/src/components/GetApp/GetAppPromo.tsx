@@ -1,14 +1,9 @@
+// @ts-nocheck
 import React from "react";
-import { Flex, Text, Heading, Image, Box } from "@chakra-ui/react";
+import { Flex, Heading, Image, Box, Link } from "@chakra-ui/react";
 import { GetAppProps } from "./types";
-import color from "../../color";
-import {
-  DesktopGetApp,
-  MobileGetApp,
-  DesktopGetAppHeading,
-  MobileGetAppHeading,
-  DesktopWrapper,
-} from "./GetAppPromo.styles";
+import sanitizeHtml from "sanitize-html";
+import sanitizeWhiteList from "../sanitize-html.whitelist";
 
 const AppPromo: React.FC<GetAppProps> = ({
   appTitle,
@@ -24,59 +19,63 @@ const AppPromo: React.FC<GetAppProps> = ({
     pt="51px"
     pb="32px"
   >
-    <MobileGetAppHeading
+    <Heading
       d={{ base: "block", md: "none" }}
-      color={color.lebaraChambray[600]}
+      color="lebaraChambray.600"
       fontSize={32}
       fontWeight="bold"
     >
       {appTitle}
-    </MobileGetAppHeading>
+    </Heading>
 
-    <MobileGetApp
+    <Image
       d={{ base: "block", md: "none" }}
       src={backgroundImageMobile}
       alt="Get the App"
     />
 
-    <DesktopWrapper>
-      <DesktopGetApp
+    <Box d={{ md: "flex" }} alignItems={{ md: "center" }}>
+      <Image
         d={{ base: "none", md: "block" }}
         src={backgroundImageDesktop}
         alt="Get the App"
       />
       <Box>
-        <DesktopGetAppHeading
+        <Heading
           d={{ base: "none", md: "block" }}
           ml={{ md: "14px" }}
           mb={{ md: "10px" }}
-          color={color.lebaraChambray[600]}
+          color="lebaraChambray.600"
           fontSize={32}
           fontWeight="bold"
         >
           {appTitle}
-        </DesktopGetAppHeading>
-        <Text
-          w={{ md: "236px" }}
-          ml={{ md: "14px" }}
-          mb={{ md: "20px" }}
-          px="17px"
-        >
-          {textDescription}
-        </Text>
+        </Heading>
+        {textDescription && (
+          <Box
+            w={{ md: "236px" }}
+            ml={{ md: "14px" }}
+            mb={{ md: "20px" }}
+            px="17px"
+            dangerouslySetInnerHTML={{
+              __html: sanitizeHtml(textDescription, sanitizeWhiteList),
+            }}
+          />
+        )}
         <Flex justifyContent="center" gridGap={8} pt="32px">
           {links?.map((item) => (
-            <a
-              href={item?.link}
-              style={{ textDecoration: "none", marginRight: "12px" }}
-              aria-label="Available on the App Store"
-            >
-              <img src={item?.label} width="160" height="100%" />
-            </a>
+            <Link href={item?.link} style={{ textDecoration: "none" }}>
+              <Image
+                src={item?.label}
+                aria-label="Available on the App Store"
+                width="160"
+                height="100%"
+              />
+            </Link>
           ))}
         </Flex>
       </Box>
-    </DesktopWrapper>
+    </Box>
   </Flex>
 );
 
