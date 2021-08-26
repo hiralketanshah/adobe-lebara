@@ -130,7 +130,7 @@ public class CrudOperationEpc {
             newFragment.getElement("cost").setContent(String.valueOf(offer.cost), LebaraConstants.CONTENT_TYPE_TEXT_PLAIN);
             newFragment.getElement("channels").setContent(gson.toJson(offer.channels), LebaraConstants.CONTENT_TYPE_TEXT_PLAIN);
             //newFragment.getElement("allowances").setContent(gson.toJson(offer.allowances), LebaraConstants.CONTENT_TYPE_TEXT_PLAIN);
-            List <CFAllowance> cfAllowanceList = new ArrayList<>();
+            List<CFAllowance> cfAllowanceList = new ArrayList<>();
             for (Allowance allowances : offer.allowances) {
                 CFAllowance cfAllowance = new CFAllowance();
                 cfAllowance.setValue(allowances.getAllowanceValue());
