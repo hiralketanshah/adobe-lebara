@@ -14,28 +14,22 @@ import {
   Links,
   PageLinks,
 } from "../FooterUpperLinks/types";
-import color from "../../../color";
-
-import {
-  FooterMobileWrapper,
-  AccordionButtonWrapper,
-} from "./FooterMobileView.styles";
 
 const Footer: React.FC<FooterUpperLinksProps> = ({ links }) => (
-  <FooterMobileWrapper>
+  <Box display={{ base: "block", md: "none" }}>
     <Accordion defaultIndex={[0]} allowMultiple>
-      {links?.map((menuItem: Links) => (
+      {links.map((menuItem: Links) => (
         <AccordionItem borderTop="none" borderBottomWidth="1px">
           {({ isExpanded }) => (
             <>
               <Text as="h3" fontSize={14} fontWeight="bold">
-                <AccordionButtonWrapper py="8px" px="16px">
+                <AccordionButton>
                   <Box
                     flex="1"
                     textAlign="left"
                     fontSize={14}
                     letterSpacing="0.11em"
-                    color={color.lebaraChambray[600]}
+                    color="lebaraChambray.600"
                     fontWeight="bold"
                     textTransform="uppercase"
                     py="15px"
@@ -45,21 +39,21 @@ const Footer: React.FC<FooterUpperLinksProps> = ({ links }) => (
                   {isExpanded ? (
                     <FcMinus
                       fontSize="12px"
-                      color={color.lebaraChambray[600]}
+                      color="lebaraChambray.600"
                       fontWeight="bold"
                     />
                   ) : (
                     <GoPlus
                       fontSize="12px"
-                      color={color.lebaraChambray[600]}
+                      color="lebaraChambray.600"
                       fontWeight="bold"
                     />
                   )}
-                </AccordionButtonWrapper>
+                </AccordionButton>
               </Text>
               <AccordionPanel pb={4}>
                 {menuItem?.childLinks?.map((subMenuItem: PageLinks) => (
-                  <Box px="16px">
+                  <Box key={subMenuItem?.label}>
                     <Link href={subMenuItem?.link} py="10px" display="block">
                       {subMenuItem?.label}
                     </Link>
@@ -71,7 +65,7 @@ const Footer: React.FC<FooterUpperLinksProps> = ({ links }) => (
         </AccordionItem>
       ))}
     </Accordion>
-  </FooterMobileWrapper>
+  </Box>
 );
 
 export default Footer;
