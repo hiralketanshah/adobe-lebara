@@ -30,6 +30,7 @@ import FooterCopyright from "./Footer/FooterCopyright/FooterCopyright";
 import FooterUpperLinks from "./Footer/FooterUpperLinks/FooterUpperLinks";
 import Usp from "./usp/usp";
 import aboutlebara from "./aboutlebara/aboutlebara";
+import trustpilotrating from "./trustpilotrating/trustpilotrating";
 
 import { CarouselV1IsEmptyFn } from "@adobe/aem-core-components-react-spa/dist/isEmptyFunctions";
 
@@ -174,6 +175,7 @@ const uspEditConfig = {
   },
 };
 
+
 const aboutlebaraEditConfig = {
   emptyLabel: "aboutlebara",
   isEmpty: function (props) {
@@ -181,6 +183,13 @@ const aboutlebaraEditConfig = {
   },
 };
 
+
+const trustpilotratingEditConfig = {
+  emptyLabel: "trustpilotrating",
+  isEmpty: function (props) {
+    return !props.fileReferenceBackground;
+  },
+};
 MapTo("lebara/components/followus")(FollowUs, FollowUsEditConfig);
 MapTo("lebara/components/getapp")(GetApp, GetAppEditConfig);
 MapTo("lebara/components/text")(LazyTextComponent, TextEditConfig);
@@ -199,3 +208,6 @@ MapTo("lebara/components/footer/footerupperlinks")(
 );
 MapTo("lebara/components/usp")(Usp, uspEditConfig);
 MapTo("lebara/components/aboutlebara")(aboutlebara, aboutlebaraEditConfig);
+MapTo("lebara/components/trustpilotrating")(trustpilotrating, trustpilotratingEditConfig);
+
+
