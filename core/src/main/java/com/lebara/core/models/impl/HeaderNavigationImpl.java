@@ -3,8 +3,9 @@ package com.lebara.core.models.impl;
 import com.adobe.cq.export.json.ComponentExporter;
 import com.adobe.cq.export.json.ExporterConstants;
 import com.adobe.cq.wcm.core.components.models.Navigation;
-import com.adobe.cq.wcm.core.components.models.NavigationItem;
 import com.adobe.cq.wcm.core.components.models.datalayer.ComponentData;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.lebara.core.models.CustomNavigationItem;
 import com.lebara.core.models.HeaderNavigation;
 import com.lebara.core.utils.AemUtils;
 import org.apache.sling.api.SlingHttpServletRequest;
@@ -19,6 +20,7 @@ import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
 import org.apache.sling.models.annotations.via.ResourceSuperType;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Model(adaptables = SlingHttpServletRequest.class, adapters = {HeaderNavigation.class, ComponentExporter.class},
         resourceType = HeaderNavigationImpl.RESOURCE_TYPE, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
@@ -48,11 +50,6 @@ public class HeaderNavigationImpl implements HeaderNavigation {
      * The resource type.
      */
     protected static final String RESOURCE_TYPE = "lebara/components/header/headernavigation";
-
-    @Override
-    public List<NavigationItem> getItems() {
-        return delegate.getItems();
-    }
 
     @Override
     public String getAccessibilityLabel() {
@@ -91,5 +88,16 @@ public class HeaderNavigationImpl implements HeaderNavigation {
 
     public String getAccountLink() {
         return AemUtils.getLinkWithExtension(accountLink);
+    }
+
+    /** Navigation Items from resourceSuperType
+     *  with additional custom properties
+     * @return List of custom navigation items
+     */
+    @JsonProperty("items")
+    public List<CustomNavigationItem> getCustomItems() {
+        return delegate.getItems().stream()
+                .map(navItem -> new CustomNavigationItem(resource, navItem))
+                .collect(Collectors.toList());
     }
 }
