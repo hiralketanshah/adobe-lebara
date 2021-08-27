@@ -33,7 +33,7 @@ public class ViewPlanExporter implements ComponentExporter {
     private Resource resource;
 
     @ChildResource
-    private Resource phases;
+    protected Resource phases;
 
     @ValueMapValue
     private String buttonLabel;

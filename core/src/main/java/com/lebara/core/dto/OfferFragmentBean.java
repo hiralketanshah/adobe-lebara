@@ -4,6 +4,7 @@ public class OfferFragmentBean {
     private String cost;
     private String validity;
     private String allowances;
+    private PlanInfo planInfo;
 
     public String getCost() {
         return cost;
@@ -27,5 +28,11 @@ public class OfferFragmentBean {
 
     public void setAllowances(String allowances) {
         this.allowances = allowances;
+    }
+
+    public PlanInfo getPlanInfo() { return planInfo; }
+
+    public void setPlanInfo(PlanInfo planInfo) {
+        this.planInfo = planInfo;
     }
 }
