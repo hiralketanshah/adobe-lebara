@@ -1,12 +1,13 @@
 import React from "react";
 import { Box, Flex, Text } from "@chakra-ui/react";
 import color from "../../color";
+import { TrustpiloRrating } from "./types";
 
 
-import { GetAppPropss } from "./types";
 
 
-const trustpilotrating: React.FC<GetAppPropss> = ({
+
+const trustpilotrating: React.FC<TrustpiloRrating> = ({
 
 
 

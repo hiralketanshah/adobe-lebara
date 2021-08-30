@@ -1,4 +1,4 @@
-export interface GetAppPropss {
-	fileReferenceBackground?: string;
+export interface TrustpiloRrating {
+	
 	
 }
