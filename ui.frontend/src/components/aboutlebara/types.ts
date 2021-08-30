@@ -11,6 +11,7 @@ export interface AboutLebaraProps {
 
 export interface ButtonActionProps {
 	title?: string;
+	url?: string;
 }
 
 export interface TextBlockProps {

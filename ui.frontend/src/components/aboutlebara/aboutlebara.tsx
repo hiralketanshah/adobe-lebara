@@ -41,7 +41,7 @@ const Aboutlebara: React.FC<AboutLebaraProps> = ({
             slogan={pretitle}
             buttonText={actionsEnabled ? actions[0]?.title : ""}
             header={title}
-            linkURL={linkURL}
+            linkURL={actionsEnabled ? actions[0]?.url : "#"}
             imagePath={imagePath}
             subHeader={description}
           />
