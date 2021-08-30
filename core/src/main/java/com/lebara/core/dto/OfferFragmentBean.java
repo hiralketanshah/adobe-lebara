@@ -1,10 +1,13 @@
 package com.lebara.core.dto;
 
+import java.util.List;
+
 public class OfferFragmentBean {
     private String cost;
     private String validity;
     private String allowances;
     private PlanInfo planInfo;
+    private List<CFAllowance> allowanceList;
 
     public String getCost() {
         return cost;
@@ -30,9 +33,20 @@ public class OfferFragmentBean {
         this.allowances = allowances;
     }
 
-    public PlanInfo getPlanInfo() { return planInfo; }
+    public PlanInfo getPlanInfo() {
+        return planInfo;
+    }
 
     public void setPlanInfo(PlanInfo planInfo) {
         this.planInfo = planInfo;
     }
+
+    public List<CFAllowance> getAllowanceList() {
+        return allowanceList;
+    }
+
+    public void setAllowanceList(List<CFAllowance> allowanceList) {
+        this.allowanceList = allowanceList;
+    }
+
 }

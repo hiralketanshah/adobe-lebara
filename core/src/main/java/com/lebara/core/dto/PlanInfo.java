@@ -1,10 +1,12 @@
 package com.lebara.core.dto;
 
+import java.util.List;
+
 public class PlanInfo {
     private String title;
     private String countryTitle;
-    private String [] listPlanItem;
-    private String [] countryList;
+    private String[] listPlanItem;
+    private List<CountryInfo> countryList;
 
     public String getTitle() {
         return title;
@@ -22,11 +24,11 @@ public class PlanInfo {
         this.listPlanItem = listPlanItem;
     }
 
-    public String[] getCountryList() {
+    public List<CountryInfo> getCountryList() {
         return countryList;
     }
 
-    public void setCountryList(String[] countryList) {
+    public void setCountryList(List<CountryInfo> countryList) {
         this.countryList = countryList;
     }
 
