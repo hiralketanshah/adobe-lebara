@@ -28,7 +28,8 @@ import FollowUs from "./Footer/FollowUs/FollowUs";
 import { MapTo } from "@adobe/aem-react-editable-components";
 import FooterCopyright from "./Footer/FooterCopyright/FooterCopyright";
 import FooterUpperLinks from "./Footer/FooterUpperLinks/FooterUpperLinks";
-import usp from "./usp/usp";
+import Usp from "./usp/usp";
+import Aboutlebara from "./aboutlebara/aboutlebara";
 
 import { CarouselV1IsEmptyFn } from "@adobe/aem-core-components-react-spa/dist/isEmptyFunctions";
 
@@ -65,14 +66,14 @@ const LazyTextComponent = withAsyncImport(() => import(`./Text/Text`));
 
 //lazyload / code splitting examples of external components
 const TitleV2 = withAsyncImport(() =>
-    import(
-        `@adobe/aem-core-components-react-base/dist/authoring/title/v2/TitleV2`
-        )
+  import(
+    `@adobe/aem-core-components-react-base/dist/authoring/title/v2/TitleV2`
+  )
 );
 const CarouselV1 = withAsyncImport(() =>
-    import(
-        `@adobe/aem-core-components-react-spa/dist/container/carousel/v1/CarouselV1`
-        )
+  import(
+    `@adobe/aem-core-components-react-spa/dist/container/carousel/v1/CarouselV1`
+  )
 );
 
 MapTo("lebara/components/download")(DownloadV1, {
@@ -159,7 +160,6 @@ const GetAppEditConfig = {
   },
 };
 
-
 const FooterUpperLinksConfig = {
   emptyLabel: "Footer Upper Navigation Links",
   isEmpty: function (props) {
@@ -174,6 +174,21 @@ const uspEditConfig = {
   },
 };
 
+
+const aboutlebaraEditConfig = {
+  emptyLabel: "aboutlebara",
+  isEmpty: function (props) {
+    return !props.fileReferenceBackground;
+  },
+};
+
+
+const trustpilotratingEditConfig = {
+  emptyLabel: "trustpilotrating",
+  isEmpty: function (props) {
+    return !props.fileReferenceBackground;
+  },
+};
 MapTo("lebara/components/followus")(FollowUs, FollowUsEditConfig);
 MapTo("lebara/components/getapp")(GetApp, GetAppEditConfig);
 MapTo("lebara/components/text")(LazyTextComponent, TextEditConfig);
@@ -184,11 +199,12 @@ MapTo("lebara/components/header/languagenavigation")(LanguageHeader);
 MapTo("lebara/components/header/headernavigation")(Header);
 MapTo("lebara/components/title")(LebaraText, TitleEditConfig);
 MapTo("lebara/components/footer/footercopyright")(
-    FooterCopyright,
-    FooterCopyrightConfig
+  FooterCopyright,
+  FooterCopyrightConfig
 );
 MapTo("lebara/components/footer/footerupperlinks")(
-    FooterUpperLinks,
-    FooterUpperLinksConfig
+  FooterUpperLinks,
+  FooterUpperLinksConfig
 );
-MapTo("lebara/components/usp")(usp, uspEditConfig);
+MapTo("lebara/components/usp")(Usp, uspEditConfig);
+MapTo("lebara/components/aboutlebara")(Aboutlebara, aboutlebaraEditConfig);

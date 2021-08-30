@@ -1,15 +1,5 @@
-// .icon-button-wrapper {
-//   display: flex;
-//   align-items: center;
-//   flex-direction: column;
-// }
-
-// .icon-button-bottom-text {
-//   margin-top: 8px;
-// }
-
 import styled from "styled-components";
-import { Box, Text, Button } from "@chakra-ui/react";
+import { Box, Text } from "@chakra-ui/react";
 
 export const IconButtonWrapper = styled(Box)`
   display: flex;
