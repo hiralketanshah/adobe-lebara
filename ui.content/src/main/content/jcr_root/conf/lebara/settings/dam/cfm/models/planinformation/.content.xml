@@ -106,12 +106,12 @@
                                                     jcr:primaryType="nt:unstructured"
                                                     sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                                     fieldLabel="Country Name"
-                                                    name="./countryname"/>
+                                                    name="./countryName"/>
                                                 <countrycode
                                                     jcr:primaryType="nt:unstructured"
                                                     sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                                     fieldLabel="Country Code"
-                                                    name="./countrycode"/>
+                                                    name="./countryCode"/>
                                             </items>
                                         </column>
                                     </items>

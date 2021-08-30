@@ -3,9 +3,13 @@ package com.lebara.core.models;
 import com.adobe.cq.dam.cfm.ContentFragment;
 import com.adobe.cq.export.json.ComponentExporter;
 import com.adobe.cq.export.json.ExporterConstants;
+import com.google.gson.Gson;
+import com.lebara.core.dto.CFAllowance;
+import com.lebara.core.dto.CountryInfo;
 import com.lebara.core.dto.OfferFragmentBean;
 import com.lebara.core.dto.PlanInfo;
 import com.lebara.core.utils.AemUtils;
+import com.lebara.core.utils.CFUtils;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.api.resource.ResourceResolver;
@@ -13,9 +17,13 @@ import org.apache.sling.models.annotations.DefaultInjectionStrategy;
 import org.apache.sling.models.annotations.Exporter;
 import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.injectorspecific.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Model(adaptables = SlingHttpServletRequest.class, adapters = {DetailedViewPlanExporter.class, ComponentExporter.class},
         resourceType = DetailedViewPlanExporter.RESOURCE_TYPE, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
@@ -26,6 +34,8 @@ public class DetailedViewPlanExporter extends ViewPlanExporter implements Compon
      * The resource type.
      */
     protected static final String RESOURCE_TYPE = "lebara/components/detailedviewplans";
+
+    private static final Logger LOGGER = LoggerFactory.getLogger(DetailedViewPlanExporter.class);
 
     @SlingObject
     private ResourceResolver resourceResolver;
@@ -117,17 +127,24 @@ public class DetailedViewPlanExporter extends ViewPlanExporter implements Compon
             ContentFragment offerFragment = cfResource.adaptTo(ContentFragment.class);
             if (null != offerFragment) {
                 OfferFragmentBean offerFragmentBean = new OfferFragmentBean();
-                offerFragmentBean.setCost(offerFragment.getElement("cost").getContent());
-                offerFragmentBean.setValidity(offerFragment.getElement("validity").getContent());
-                offerFragmentBean.setAllowances(offerFragment.getElement("allowances").getContent());
+                offerFragmentBean.setCost(CFUtils.getElementValue(offerFragment, "cost"));
+                offerFragmentBean.setValidity(CFUtils.getElementValue(offerFragment, "validity"));
+                offerFragmentBean.setAllowances(CFUtils.getElementValue(offerFragment, "allowances"));
+
+                if(offerFragment.getElement("allowances") != null) {
+                    String[] allowanceArray = CFUtils.getElementArrayValue(offerFragment, "allowances");
+                    List<CFAllowance> allowanceList = CFUtils.convertStringArrayToList(allowanceArray, CFAllowance.class);
+                    offerFragmentBean.setAllowanceList(allowanceList);
+                }
+
                 if (null != cfPlanResource) {
                     ContentFragment cfPlanFragment = cfPlanResource.adaptTo(ContentFragment.class);
                     if (null != cfPlanFragment) {
                         PlanInfo planInfo = new PlanInfo();
                         planInfo.setTitle(cfPlanFragment.getElement("title").getContent());
                         planInfo.setCountryTitle(cfPlanFragment.getElement("countryTitle").getContent());
-                        planInfo.setListPlanItem(new String[]{cfPlanFragment.getElement("listPlanItem").getContent()});
-                        planInfo.setCountryList(new String[]{cfPlanFragment.getElement("countryList").getContent()});
+                        planInfo.setListPlanItem(CFUtils.getElementArrayValue(cfPlanFragment, "listPlanItem"));
+                        planInfo.setCountryList(CFUtils.convertStringArrayToList(CFUtils.getElementArrayValue( cfPlanFragment, "countryList"), CountryInfo.class));
                         offerFragmentBean.setPlanInfo(planInfo);
                     }
                 }
