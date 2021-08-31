@@ -30,7 +30,7 @@ import FooterCopyright from "./Footer/FooterCopyright/FooterCopyright";
 import FooterUpperLinks from "./Footer/FooterUpperLinks/FooterUpperLinks";
 import Usp from "./usp/usp";
 import Aboutlebara from "./aboutlebara/aboutlebara";
-
+import Trustpilot from "./Trustpilot/Trustpilot";
 import { CarouselV1IsEmptyFn } from "@adobe/aem-core-components-react-spa/dist/isEmptyFunctions";
 
 import { TitleV2IsEmptyFn } from "@adobe/aem-core-components-react-base/dist/isEmptyFunctions";
@@ -174,14 +174,12 @@ const uspEditConfig = {
   },
 };
 
-
 const aboutlebaraEditConfig = {
   emptyLabel: "aboutlebara",
   isEmpty: function (props) {
     return !props.fileReferenceBackground;
   },
 };
-
 
 const trustpilotratingEditConfig = {
   emptyLabel: "trustpilotrating",
@@ -208,3 +206,4 @@ MapTo("lebara/components/footer/footerupperlinks")(
 );
 MapTo("lebara/components/usp")(Usp, uspEditConfig);
 MapTo("lebara/components/aboutlebara")(Aboutlebara, aboutlebaraEditConfig);
+MapTo("lebara/components/trustpilotrating")(Trustpilot);
