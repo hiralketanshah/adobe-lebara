@@ -166,7 +166,7 @@
                             listOrder="22"
                             maxlength="255"
                             metaType="text-single"
-                            name="allowances"
+                            name="allowancesList"
                             renderReadOnly="false"
                             showEmptyInReadOnly="true"
                             valueType="string[]">
@@ -174,7 +174,7 @@
                                     jcr:primaryType="nt:unstructured"
                                     sling:resourceType="granite/ui/components/coral/foundation/container"
                                     maxlength="255"
-                                    name="./allowances"
+                                    name="./allowancesList"
                                     renderReadOnly="false">
                                 <items jcr:primaryType="nt:unstructured">
                                     <column

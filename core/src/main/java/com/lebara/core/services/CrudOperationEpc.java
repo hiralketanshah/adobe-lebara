@@ -138,7 +138,7 @@ public class CrudOperationEpc {
                 cfAllowance.setUnit(allowances.getAccount().getUnit().getAbbreviation());
                 cfAllowanceList.add(cfAllowance);
             }
-            newFragment.getElement("allowances").setContent(gson.toJson(cfAllowanceList), LebaraConstants.CONTENT_TYPE_TEXT_PLAIN);
+            newFragment.getElement("allowancesList").setContent(gson.toJson(cfAllowanceList), LebaraConstants.CONTENT_TYPE_TEXT_PLAIN);
             newFragment.getElement("typename").setContent(String.valueOf(offer.typeName), LebaraConstants.CONTENT_TYPE_TEXT_PLAIN);
 
         } catch (ContentFragmentException e) {
