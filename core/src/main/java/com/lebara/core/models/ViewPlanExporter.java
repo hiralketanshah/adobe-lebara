@@ -5,6 +5,7 @@ import com.adobe.cq.export.json.ComponentExporter;
 import com.adobe.cq.export.json.ExporterConstants;
 import com.lebara.core.dto.OfferFragmentBean;
 import com.lebara.core.utils.AemUtils;
+import com.lebara.core.utils.CFUtils;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.api.resource.ResourceResolver;
@@ -73,9 +74,9 @@ public class ViewPlanExporter implements ComponentExporter {
             ContentFragment offerFragment = cfResource.adaptTo(ContentFragment.class);
             if (null != offerFragment) {
                 OfferFragmentBean offerFragmentBean = new OfferFragmentBean();
-                offerFragmentBean.setCost(offerFragment.getElement("cost").getContent());
-                offerFragmentBean.setValidity(offerFragment.getElement("validity").getContent());
-                offerFragmentBean.setAllowances(offerFragment.getElement("allowances").getContent());
+                offerFragmentBean.setCost(CFUtils.getElementValue(offerFragment, "cost"));
+                offerFragmentBean.setValidity(CFUtils.getElementValue(offerFragment, "validity"));
+                offerFragmentBean.setAllowances(CFUtils.getElementValue(offerFragment, "allowances"));
                 offers.add(offerFragmentBean);
             }
         }

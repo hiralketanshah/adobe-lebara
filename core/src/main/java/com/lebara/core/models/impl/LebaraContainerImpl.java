@@ -68,4 +68,8 @@ public class LebaraContainerImpl implements LebaraContainer {
         return delegate.getExportedItemsOrder();
     }
 
+    @Override
+    public String getId() {
+        return delegate.getId();
+    }
 }
