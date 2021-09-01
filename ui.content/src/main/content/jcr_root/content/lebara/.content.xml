@@ -4,7 +4,7 @@
     <jcr:content
         cq:allowedTemplates="[/conf/lebara/settings/wcm/templates/(?!xf-).*]"
         cq:conf="/conf/lebara"
-        cq:redirectTarget="/content/lebara/us/en"
+        cq:redirectTarget="/content/lebara/de/en"
         cq:template="/conf/lebara/settings/wcm/templates/spa-app-template"
         jcr:primaryType="cq:PageContent"
         jcr:title="Lebara"
@@ -16,5 +16,5 @@
             <file/>
         </image>
     </jcr:content>
-    <us/>
+    <de/>
 </jcr:root>
