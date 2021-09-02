@@ -7,7 +7,6 @@
     helpPath="https://www.adobe.com/go/aem_cmp_navigation_v1"
     trackingFeature="core-components:navigation:v1">
     <content
-        granite:class="cmp-navigation__editor"
         jcr:primaryType="nt:unstructured"
         sling:resourceType="granite/ui/components/coral/foundation/container">
         <items jcr:primaryType="nt:unstructured">
@@ -92,6 +91,19 @@
                                                     rootPath="/content/lebara"
                                                     fieldLabel="My Lebara Account Dashboard Link"
                                                     name="./accountLink"/>
+                                            <viewAllButtonText
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                    fieldDescription="View All Button text"
+                                                    fieldLabel="View All Button text"
+                                                    name="./viewAllButtonText"/>
+                                            <viewAllButtonLink
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                                    fieldDescription="View All Button Link"
+                                                    rootPath="/content/lebara"
+                                                    fieldLabel="View All Button Link"
+                                                    name="./viewAllButtonLink"/>
                                         </items>
                                     </column>
                                 </items>
