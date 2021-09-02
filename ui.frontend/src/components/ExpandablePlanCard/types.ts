@@ -35,5 +35,6 @@ export interface allowanceListProps {
   name?: string;
   unit?: string;
   value?: string;
+  formatedValue?: string;
 }
 

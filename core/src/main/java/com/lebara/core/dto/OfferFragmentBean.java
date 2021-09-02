@@ -1,5 +1,6 @@
 package com.lebara.core.dto;
 
+import java.text.DecimalFormat;
 import java.util.List;
 
 public class OfferFragmentBean {
@@ -18,7 +19,7 @@ public class OfferFragmentBean {
     }
 
     public String getCost() {
-        return cost;
+        return new DecimalFormat("##.##").format(Float.parseFloat(cost) / 100);
     }
 
     public void setCost(String cost) {
@@ -26,7 +27,8 @@ public class OfferFragmentBean {
     }
 
     public String getValidity() {
-        return validity;
+        // Todo convert this as i18n based
+        return validity + " Days";
     }
 
     public void setValidity(String validity) {
