@@ -68,7 +68,7 @@ const ExpandablePlanCard: React.FC<ExpandablePlanCardProps> = ({
           >
             <Text fontSize={16} mr="30px">
               <Text fontSize={16} fontWeight="bold" as="span" mr="15px">
-                {"12GB"}
+                {allowanceList[0]?.formatedValue}
               </Text>
               {allowanceList[0]?.name}
             </Text>
@@ -152,7 +152,7 @@ const ExpandablePlanCard: React.FC<ExpandablePlanCardProps> = ({
           {allowanceList[0]?.name}
           <br />
           <Text fontSize={16} fontWeight="bold" as="span">
-            {"12GB"}
+            {allowanceList[0]?.formatedValue}
           </Text>
         </Text>
         <Text fontSize={16} w="90px">
