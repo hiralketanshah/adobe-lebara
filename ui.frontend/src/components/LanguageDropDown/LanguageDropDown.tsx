@@ -8,14 +8,19 @@ const LanguageDropDown: React.FC<LanguageDropDownProps> = ({
   selectProps,
 }) => (
   <Select
+    h="25px"
+    fontSize="10px"
     backgroundColor="white"
     fontWeight="medium"
     color="lebaraChambray.600"
     border={0}
     borderRadius={0}
     maxW="120px"
+    iconSize="14px"
     width="auto"
-    icon={<IoChevronDownCircleSharp fill="#BE2075" />}
+    icon={
+      <IoChevronDownCircleSharp fill="#BE2075" width="14px" height="14px" />
+    }
     placeholder="English"
     options={options}
     {...selectProps}
