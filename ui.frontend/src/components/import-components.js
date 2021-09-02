@@ -192,9 +192,10 @@ const trustpilotratingEditConfig = {
 const PostpaidPlansEditConfig = {
   emptyLabel: "PostpaidPlans",
   isEmpty: function (props) {
-    return !props.fileReferenceBackground;
+    return !props.durationTitle;
   },
 };
+
 
 MapTo("lebara/components/followus")(FollowUs, FollowUsEditConfig);
 MapTo("lebara/components/getapp")(GetApp, GetAppEditConfig);
