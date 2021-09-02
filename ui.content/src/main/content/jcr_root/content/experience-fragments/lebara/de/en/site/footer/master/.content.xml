@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="cq:Page">
+    <jcr:content
+        cq:tags="[]"
+        cq:template="/conf/lebara/settings/wcm/templates/xf-web-variation"
+        cq:xfMasterVariation="{Boolean}true"
+        cq:xfVariantType="web"
+        jcr:primaryType="cq:PageContent"
+        jcr:title="Footer"
+        sling:resourceType="lebara/components/xfpage">
+        <root
+            jcr:primaryType="nt:unstructured"
+            sling:resourceType="lebara/components/container"
+            layout="responsiveGrid">
+            <responsivegrid
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="wcm/foundation/components/responsivegrid">
+                <cq:responsive jcr:primaryType="nt:unstructured"/>
+                <responsivegrid-left
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="wcm/foundation/components/responsivegrid">
+                    <cq:responsive jcr:primaryType="nt:unstructured">
+                        <default
+                            jcr:primaryType="nt:unstructured"
+                            offset="0"
+                            width="7"/>
+                    </cq:responsive>
+                    <footerupperlinks
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="lebara/components/footer/footerupperlinks">
+                    </footerupperlinks>
+                </responsivegrid-left>
+                <responsivegrid-right
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="wcm/foundation/components/responsivegrid">
+                    <cq:responsive jcr:primaryType="nt:unstructured">
+                        <default
+                            jcr:primaryType="nt:unstructured"
+                            offset="0"
+                            width="4"/>
+                    </cq:responsive>
+                    <followus
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="lebara/components/followus"
+                        followUsText="Follow Us">
+                    </followus>
+                    <getapp
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="lebara/components/getapp"
+                        appTitle="Get the app"
+                        textIsRich="true">
+                    </getapp>
+                </responsivegrid-right>
+            </responsivegrid>
+            <footercopyright
+                jcr:primaryType="nt:unstructured"
+                copyrightText="Copyright"
+                sling:resourceType="lebara/components/footer/footercopyright">
+                <links jcr:primaryType="nt:unstructured">
+                    <item0
+                        jcr:primaryType="nt:unstructured"
+                        label="Terms and Conditions"
+                        link="/content/lebara/de"/>
+                    <item1
+                        jcr:primaryType="nt:unstructured"
+                        label="Privacy Policy"
+                        link="/content/lebara/de"/>
+                    <item2
+                        jcr:primaryType="nt:unstructured"
+                        label="Copyright Lebara"
+                        link="/content/lebara/de"/>
+                </links>
+            </footercopyright>
+        </root>
+    </jcr:content>
+</jcr:root>
