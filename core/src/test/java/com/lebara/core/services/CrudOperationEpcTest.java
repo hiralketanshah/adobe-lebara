@@ -1,9 +1,6 @@
 package com.lebara.core.services;
 
-import com.adobe.cq.dam.cfm.ContentElement;
-import com.adobe.cq.dam.cfm.ContentFragment;
-import com.adobe.cq.dam.cfm.ContentFragmentException;
-import com.adobe.cq.dam.cfm.FragmentTemplate;
+import com.adobe.cq.dam.cfm.*;
 import com.google.gson.Gson;
 import com.lebara.core.dto.Offer;
 import com.lebara.core.dto.RootRead;
@@ -42,6 +39,9 @@ public class CrudOperationEpcTest {
     @Mock
     private ContentElement contentElement;
 
+    @Mock
+    private FragmentData fragmentData;
+
     static String json;
 
     @BeforeEach
@@ -71,6 +71,7 @@ public class CrudOperationEpcTest {
             Offer offer = offers.get(0);
             Mockito.when(fragmentTemplate.createFragment(resource, offer.offerId, offer.reportingName)).thenReturn(newFragment);
             Mockito.when(newFragment.getElement(anyString())).thenReturn(contentElement);
+            Mockito.when(contentElement.getValue()).thenReturn(fragmentData);
             assert (offer.offerId == crudOperationEpc.writeJsonToCf(offers.get(0), "", resourceResolver));
         }
     }
