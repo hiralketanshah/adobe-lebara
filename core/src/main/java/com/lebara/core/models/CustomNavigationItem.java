@@ -15,7 +15,7 @@ import java.util.stream.Collectors;
  * Custom Navigation Item
  * Add Custom Properties to NavigationItem Properties
  */
-public class CustomNavigationItem {
+public class CustomNavigationItem implements NavigationItem {
 
     // Constants
     public static final String PROP_PAGE_ICON = "pageIcon";
@@ -23,66 +23,55 @@ public class CustomNavigationItem {
     public static final String PROP_IMAGE_TEXT = "imageText";
     public static final String PROP_IMAGE_PATH = "imagePath";
 
+    private Resource resource;
     private Page page;
     private ValueMap properties;
-
-    // Property Variables
-    private String id;
-    private String path;
-    private List<CustomNavigationItem> children;
-    private int level;
-    private boolean active;
-    private String url;
-    private String title;
-    private String type;
+    private NavigationItem item;
 
     /** Constructor
      * @param resource
      * @param item
      */
     public CustomNavigationItem(@NotNull Resource resource, @NotNull NavigationItem item) {
-        this.id = item.getId();
-        this.path = item.getPath();
-        this.children = item.getChildren().stream().map(p-> new CustomNavigationItem(resource, p)).collect(Collectors.toList());
-        this.level = item.getLevel();
-        this.active = item.isActive();
-        this.url = item.getURL();
-        this.title = item.getTitle();
-        this.type = item.getExportedType();
-        this.page = Objects.requireNonNull(Objects.requireNonNull(resource.getResourceResolver().getResource(path)).adaptTo(Page.class));
+        this.resource = resource;
+        this.item = item;
+        this.page = Objects.requireNonNull(Objects.requireNonNull(resource.getResourceResolver().getResource(item.getPath())).adaptTo(Page.class));
         this.properties = page.getContentResource().getValueMap();
     }
 
+    /** Default Property getters **/
+
     public String getId() {
-        return id;
+        return item.getId();
     }
     public String getPath() {
-        return path;
+        return item.getPath();
     }
 
-    public List<CustomNavigationItem> getChildren() {
-        return children;
+    @JsonProperty("children")
+    public List<CustomNavigationItem> getNavChildren() {
+        return item.getChildren().stream().map(p-> new CustomNavigationItem(resource, p)).collect(Collectors.toList());
     }
 
     public int getLevel() {
-        return level;
+        return item.getLevel();
     }
 
     public boolean isActive() {
-        return active;
+        return item.isActive();
     }
 
     public String getUrl() {
-        return url;
+        return item.getURL();
     }
 
     public String getTitle() {
-        return title;
+        return item.getTitle();
     }
 
     @JsonProperty(":type")
     public String getType() {
-        return type;
+        return item.getExportedType();
     }
 
     /** Custom Property getters **/

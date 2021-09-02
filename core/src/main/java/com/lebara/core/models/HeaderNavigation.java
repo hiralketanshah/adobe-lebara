@@ -8,5 +8,7 @@ public interface HeaderNavigation extends Navigation {
     public String getTopupCtaText();
     public String getTopupCtaLink();
     public String getAccountLink();
+    String getViewAllButtonText();
+    String getViewAllButtonLink();
 
 }

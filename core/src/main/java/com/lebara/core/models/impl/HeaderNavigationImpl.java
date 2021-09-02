@@ -42,6 +42,12 @@ public class HeaderNavigationImpl implements HeaderNavigation {
     @ValueMapValue
     private String accountLink;
 
+    @ValueMapValue
+    private String viewAllButtonText;
+
+    @ValueMapValue
+    private String viewAllButtonLink;
+
     @Self
     @Via(type = ResourceSuperType.class)
     private Navigation delegate;
@@ -88,6 +94,16 @@ public class HeaderNavigationImpl implements HeaderNavigation {
 
     public String getAccountLink() {
         return AemUtils.getLinkWithExtension(accountLink);
+    }
+
+    @Override
+    public String getViewAllButtonText() {
+        return viewAllButtonText;
+    }
+
+    @Override
+    public String getViewAllButtonLink() {
+        return viewAllButtonLink;
     }
 
     /** Navigation Items from resourceSuperType
