@@ -3,6 +3,7 @@ package com.lebara.core.models;
 import com.adobe.cq.dam.cfm.ContentFragment;
 import com.adobe.cq.export.json.ComponentExporter;
 import com.adobe.cq.export.json.ExporterConstants;
+import com.lebara.core.dto.CFAllowance;
 import com.lebara.core.dto.OfferFragmentBean;
 import com.lebara.core.utils.AemUtils;
 import com.lebara.core.utils.CFUtils;
@@ -74,9 +75,14 @@ public class ViewPlanExporter implements ComponentExporter {
             ContentFragment offerFragment = cfResource.adaptTo(ContentFragment.class);
             if (null != offerFragment) {
                 OfferFragmentBean offerFragmentBean = new OfferFragmentBean();
+                offerFragmentBean.setId(CFUtils.getElementValue(offerFragment, "offerid"));
                 offerFragmentBean.setCost(CFUtils.getElementValue(offerFragment, "cost"));
                 offerFragmentBean.setValidity(CFUtils.getElementValue(offerFragment, "validity"));
-                offerFragmentBean.setAllowances(CFUtils.getElementValue(offerFragment, "allowances"));
+                if(offerFragment.getElement("allowancesList") != null) {
+                    String[] allowanceArray = CFUtils.getElementArrayValue(offerFragment, "allowancesList");
+                    List<CFAllowance> allowanceList = CFUtils.convertStringArrayToList(allowanceArray, CFAllowance.class);
+                    offerFragmentBean.setAllowanceList(allowanceList);
+                }
                 offers.add(offerFragmentBean);
             }
         }

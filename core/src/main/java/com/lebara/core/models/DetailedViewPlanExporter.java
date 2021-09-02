@@ -127,9 +127,9 @@ public class DetailedViewPlanExporter extends ViewPlanExporter implements Compon
             ContentFragment offerFragment = cfResource.adaptTo(ContentFragment.class);
             if (null != offerFragment) {
                 OfferFragmentBean offerFragmentBean = new OfferFragmentBean();
+                offerFragmentBean.setId(CFUtils.getElementValue(offerFragment, "offerid"));
                 offerFragmentBean.setCost(CFUtils.getElementValue(offerFragment, "cost"));
                 offerFragmentBean.setValidity(CFUtils.getElementValue(offerFragment, "validity"));
-                offerFragmentBean.setAllowances(CFUtils.getElementValue(offerFragment, "allowances"));
 
                 if(offerFragment.getElement("allowancesList") != null) {
                     String[] allowanceArray = CFUtils.getElementArrayValue(offerFragment, "allowancesList");
