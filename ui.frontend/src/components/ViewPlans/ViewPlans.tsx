@@ -1,71 +1,122 @@
 import React from "react";
-import { Divider } from "@chakra-ui/react";
-import { PlanCardProps, PlanCardItem } from "./types";
-import { getAllowanceDetails } from "./viewPlansUtil";
-import {
-  PlanCardWrapper,
-  LeftSideBox,
-  DataText,
-  DescriptionText,
-  RightSideBox,
-  PriceText,
-  BuyPlanButton,
-  LebaraText,
-  MobileLeftBox,
-  PlanWrap,
-  CurrencyText,
-  MobilePriceWrap,
-  Duration,
-} from "./ViewPlans.styles";
-import lebaraColor from "../../color";
+import { Box, Divider, Grid, GridItem } from "@chakra-ui/react";
+import { PlanCardProps } from "./types";
+import Title from "../Title/Title";
+import Button from "../Button/Button";
 
 const ViewPlans: React.FC<PlanCardProps> = ({
-  offers,
+  offer,
   buttonLabel,
-  minutesField,
   unlimitedTextField,
+  minutesField,
 }) => {
   return (
-    <>
-      {offers?.map((offer: PlanCardItem) => (
-        <PlanCardWrapper>
-          <MobileLeftBox>
-            <PlanWrap>
-              <CurrencyText>£</CurrencyText>
-              <MobilePriceWrap>{parseFloat(offer.cost) / 100}</MobilePriceWrap>
-              <Duration> / {offer.validity}</Duration>
-            </PlanWrap>
-            <LebaraText>
-              {getAllowanceDetails(offer.allowances, "Data")}{" "}
-              {unlimitedTextField}
-            </LebaraText>
-          </MobileLeftBox>
+    <Grid
+      boxShadow="md"
+      templateColumns="repeat(12, 1fr)"
+      gap={0}
+      paddingInline={2.5}
+      bg="white"
+      borderRadius={8}
+      alignItems="center"
+      w={{ md: "460px" }}
+      mb="20px"
+    >
+      <GridItem
+        colSpan={{ base: 7, md: 4 }}
+        display="flex"
+        justifyContent="space-evenly"
+        alignItems="center"
+      >
+        <Box>
+          <Box
+            d={{ base: "flex", md: "none" }}
+            alignItems="baseline"
+            color="lebaraChambray.600"
+          >
+            <Box
+              as="p"
+              fontSize={{ base: "14px", md: "30px" }}
+              alignItems="baseline"
+              pos="relative"
+              top={{ base: "-12px", md: "0" }}
+              fontWeight="bold"
+            >
+              £
+            </Box>
+            <Box as="h3" fontSize="30px" pr="4px" pl="2px" fontWeight="bold">
+              {offer?.cost}
+            </Box>
+            <Box as="p" fontSize="13px" fontWeight="semibold">
+              / {offer?.validity}
+            </Box>
+          </Box>
+          <Title
+            color="lebaraBlue.600"
+            type="caption"
+            display={{ base: "block", md: "none" }}
+          >
+            {"3GB"} {minutesField}
+          </Title>
+        </Box>
+        <Box>
+          <Box
+            d={{ base: "none", md: "flex" }}
+            alignItems="baseline"
+            color="lebaraChambray.600"
+          >
+            <Box
+              as="h3"
+              fontSize="30px"
+              pr="4px"
+              pl="2px"
+              fontWeight="bold"
+              color="fuschia.500"
+            >
+              {"3GB"}
+            </Box>
+          </Box>
+          <Title
+            color="bodyCopy"
+            type="caption"
+            fontSize="14px"
+            d={{ base: "none", md: "flex" }}
+          >
+            {minutesField}
+          </Title>
+        </Box>
 
-          <LeftSideBox>
-            <DataText>{getAllowanceDetails(offer.allowances, "Data")}</DataText>
-            <DescriptionText>
-              + {getAllowanceDetails(offer.allowances, "UK_Plan_National")}{" "}
-              {minutesField}
-            </DescriptionText>
-          </LeftSideBox>
+        <Divider
+          my={3.5}
+          orientation="vertical"
+          color="black"
+          h="50px"
+          w="1px"
+          ml="30px"
+        />
+      </GridItem>
 
-          <Divider
-            my={3.5}
-            orientation="vertical"
-            borderWidth="0.5px"
-            borderColor={lebaraColor.border}
-            borderStyle="solid"
-            h="50px"
-            mr="19px"
-          />
-
-          <RightSideBox>
-            <PriceText>€{parseFloat(offer.cost) / 100}</PriceText>
-            <BuyPlanButton w="116px">{buttonLabel}</BuyPlanButton>
-          </RightSideBox>
-        </PlanCardWrapper>
-      ))}
-    </>
+      <GridItem
+        colSpan={{ base: 5, md: 8 }}
+        d="flex"
+        justifyContent={{ base: "space-around", md: "space-around" }}
+      >
+        <Box
+          d={{ base: "none", md: "flex" }}
+          as="h3"
+          fontSize="30px"
+          pr="4px"
+          pl="2px"
+          fontWeight="bold"
+        >
+          €{offer?.cost}
+        </Box>
+        <Button variant="solid" w="134px" onClick={() => {}}>
+          {buttonLabel}
+        </Button>
+      </GridItem>
+    </Grid>
   );
 };
+
 export default ViewPlans;

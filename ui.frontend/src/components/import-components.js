@@ -19,7 +19,7 @@ import "./Page/Page";
 import "./Container/Container";
 import "./ExperienceFragment/ExperienceFragment";
 import Teaser from "./Teaser/Teaser";
-import ViewPlans from "./ViewPlans/ViewPlans";
+import ViewPlans from "./ViewPlans/PlanCardWrapper";
 import LanguageHeader from "./LanguageHeader/LanguageHeader";
 import Header from "./Header/Header";
 import LebaraText from "./LebaraText/LebaraText";
