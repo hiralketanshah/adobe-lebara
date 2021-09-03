@@ -11,7 +11,7 @@ const Teaser: React.FC<TeaserV1Model> = ({
 }) =>
   title ? (
     <Box w="100%" p="20px" bgImage={imagePath} bgSize="cover">
-      <Box d="flex" flexDir="column" style={{ padding: "50px 15px" }}>
+      <Box d="flex" flexDir="column">
         {pretitle && (
           <Text
             fontSize="14px"
