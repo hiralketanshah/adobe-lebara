@@ -51,7 +51,6 @@ public class CFUtils {
 				OfferFragmentBean offerFragmentBean = new OfferFragmentBean();
 				offerFragmentBean.setCost(CFUtils.getElementValue(offerFragment, "cost"));
 				offerFragmentBean.setValidity(CFUtils.getElementValue(offerFragment, "validity"));
-				offerFragmentBean.setAllowances(CFUtils.getElementValue(offerFragment, "allowances"));
 				if (offerFragment.getElement("allowancesList") != null) {
 					String[] allowanceArray = CFUtils.getElementArrayValue(offerFragment, "allowancesList");
 					List<CFAllowance> allowanceList = CFUtils.convertStringArrayToList(allowanceArray,
