@@ -24,187 +24,187 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Model(adaptables = SlingHttpServletRequest.class, adapters = { PostPaidPlansExporter.class,
-		ComponentExporter.class }, resourceType = PostPaidPlansExporter.RESOURCE_TYPE, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
+        ComponentExporter.class }, resourceType = PostPaidPlansExporter.RESOURCE_TYPE, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
 @Exporter(name = ExporterConstants.SLING_MODEL_EXPORTER_NAME, extensions = ExporterConstants.SLING_MODEL_EXTENSION)
 public class PostPaidPlansExporter implements ComponentExporter {
 
-	/**
-	 * The resource type.
-	 */
-	protected static final String RESOURCE_TYPE = "lebara/components/postpaidPlans";
+    /**
+     * The resource type.
+     */
+    protected static final String RESOURCE_TYPE = "lebara/components/postpaidPlans";
 
-	@SlingObject
-	private ResourceResolver resourceResolver;
+    @SlingObject
+    private ResourceResolver resourceResolver;
 
-	@ScriptVariable
-	private Resource resource;
+    @ScriptVariable
+    private Resource resource;
 
-	@ValueMapValue
-	private String durationTitle;
+    @ValueMapValue
+    private String durationTitle;
 
-	@ChildResource
-	private Resource duration;
+    @ChildResource
+    private Resource duration;
 
-	@ValueMapValue
-	private String bundleTitle;
+    @ValueMapValue
+    private String bundleTitle;
 
-	@ValueMapValue
-	private String bundleDescription;
+    @ValueMapValue
+    private String bundleDescription;
 
-	@ChildResource
-	private Resource bundle;
+    @ChildResource
+    private Resource bundle;
 
-	@ValueMapValue
-	private String callingTexting;
+    @ValueMapValue
+    private String callingTexting;
 
-	@ValueMapValue
-	private String cfPathCalling;
+    @ValueMapValue
+    private String cfPathCalling;
 
-	@ValueMapValue
-	private String speedTitle;
+    @ValueMapValue
+    private String speedTitle;
 
-	@ValueMapValue
-	private String cfPathSpeed;
+    @ValueMapValue
+    private String cfPathSpeed;
 
-	@ValueMapValue
-	private String extraOptionsTitle;
+    @ValueMapValue
+    private String extraOptionsTitle;
 
-	@ValueMapValue
-	private String extraOptionsDescription;
+    @ValueMapValue
+    private String extraOptionsDescription;
 
-	@ValueMapValue
-	private String cfPathExtraOption;
+    @ValueMapValue
+    private String cfPathExtraOption;
 
-	@ValueMapValue
-	private String grandTotalTitle;
+    @ValueMapValue
+    private String grandTotalTitle;
 
-	@ValueMapValue
-	private String activationTitle;
+    @ValueMapValue
+    private String activationTitle;
 
-	@ValueMapValue
-	private String totalTitle;
+    @ValueMapValue
+    private String totalTitle;
 
-	@ValueMapValue
-	private String subscriptionTitle;
+    @ValueMapValue
+    private String subscriptionTitle;
 
-	/// plan details another cf
-	@ValueMapValue
-	private String cfPathOptionDetails;
+    /// plan details another cf
+    @ValueMapValue
+    private String cfPathOptionDetails;
 
-	@ValueMapValue
-	private String orderNowTitle;
+    @ValueMapValue
+    private String orderNowTitle;
 
-	public List<PlanInfo> getPlanDetail() {
-		List<PlanInfo> plans = new ArrayList<>();
-		if (StringUtils.isNotBlank(cfPathOptionDetails)) {
-			Resource cfPlanResource = resourceResolver.getResource(cfPathOptionDetails);
-			populateOffer(plans, cfPlanResource);
+    public List<PlanInfo> getPlanDetail() {
+        List<PlanInfo> plans = new ArrayList<>();
+        if (StringUtils.isNotBlank(cfPathOptionDetails)) {
+            Resource cfPlanResource = resourceResolver.getResource(cfPathOptionDetails);
+            populateOffer(plans, cfPlanResource);
 
-		}
-		return plans;
-	}
+        }
+        return plans;
+    }
 
-	private void populateOffer(List<PlanInfo> plans, Resource cfPlanResource) {
-		if (null != cfPlanResource) {
-			ContentFragment cfPlanFragment = cfPlanResource.adaptTo(ContentFragment.class);
-			if (null != cfPlanFragment) {
-				PlanInfo planInfo = new PlanInfo();
-				planInfo.setTitle(cfPlanFragment.getElement("title").getContent());
-				planInfo.setCountryTitle(cfPlanFragment.getElement("countryTitle").getContent());
-				planInfo.setListPlanItem(CFUtils.getElementArrayValue(cfPlanFragment, "listPlanItem"));
-				planInfo.setCountryList(CFUtils.convertStringArrayToList(
-						CFUtils.getElementArrayValue(cfPlanFragment, "countryList"), CountryInfo.class));
-				plans.add(planInfo);
-			}
-		}
-	}
+    private void populateOffer(List<PlanInfo> plans, Resource cfPlanResource) {
+        if (null != cfPlanResource) {
+            ContentFragment cfPlanFragment = cfPlanResource.adaptTo(ContentFragment.class);
+            if (null != cfPlanFragment) {
+                PlanInfo planInfo = new PlanInfo();
+                planInfo.setTitle(cfPlanFragment.getElement("title").getContent());
+                planInfo.setCountryTitle(cfPlanFragment.getElement("countryTitle").getContent());
+                planInfo.setListPlanItem(CFUtils.getElementArrayValue(cfPlanFragment, "listPlanItem"));
+                planInfo.setCountryList(CFUtils.convertStringArrayToList(
+                        CFUtils.getElementArrayValue(cfPlanFragment, "countryList"), CountryInfo.class));
+                plans.add(planInfo);
+            }
+        }
+    }
 
-	public List<Duration> getDurationDetails() {
-		List<Duration> durationList = new ArrayList<>();
-		if (null != duration) {
-			for (Resource durationResource : duration.getChildren()) {
-				Duration durationDetails = durationResource.adaptTo(Duration.class);
-				durationList.add(durationDetails);
-			}
-		}
-		return durationList;
-	}
+    public List<Duration> getDurationDetails() {
+        List<Duration> durationList = new ArrayList<>();
+        if (null != duration) {
+            for (Resource durationResource : duration.getChildren()) {
+                Duration durationDetails = durationResource.adaptTo(Duration.class);
+                durationList.add(durationDetails);
+            }
+        }
+        return durationList;
+    }
 
-	public List<OfferFragmentBean> getCallingAndTexting() {
-		return CFUtils.getCfDetails(cfPathCalling, resourceResolver);
-	}
+    public List<OfferFragmentBean> getCallingAndTexting() {
+        return CFUtils.getCfDetails(cfPathCalling, resourceResolver);
+    }
 
-	public List<OfferFragmentBean> getExtraOption() {
-		return CFUtils.getCfDetails(cfPathExtraOption, resourceResolver);
-	}
+    public List<OfferFragmentBean> getExtraOption() {
+        return CFUtils.getCfDetails(cfPathExtraOption, resourceResolver);
+    }
 
-	public List<OfferFragmentBean> getSpeeds() {
-		return CFUtils.getCfDetails(cfPathSpeed, resourceResolver);
-	}
+    public List<OfferFragmentBean> getSpeeds() {
+        return CFUtils.getCfDetails(cfPathSpeed, resourceResolver);
+    }
 
-	public List<OfferFragmentBean> getBundles() {
-		List<OfferFragmentBean> bundlesList = new ArrayList<>();
-		if (null != bundle) {
-			for (Resource offer : bundle.getChildren()) {
-				String cfPath = AemUtils.getStringProperty(offer, "cfPath");
-				bundlesList.addAll(CFUtils.getCfDetails(cfPath, resourceResolver));
+    public List<OfferFragmentBean> getBundles() {
+        List<OfferFragmentBean> bundlesList = new ArrayList<>();
+        if (null != bundle) {
+            for (Resource offer : bundle.getChildren()) {
+                String cfPath = AemUtils.getStringProperty(offer, "cfPath");
+                bundlesList.addAll(CFUtils.getCfDetails(cfPath, resourceResolver));
 
-			}
-		}
-		return bundlesList;
-	}
+            }
+        }
+        return bundlesList;
+    }
 
-	@Override
-	public String getExportedType() {
+    @Override
+    public String getExportedType() {
 
-		return resource.getResourceType();
-	}
+        return resource.getResourceType();
+    }
 
-	public String getDurationTitle() {
-		return durationTitle;
-	}
+    public String getDurationTitle() {
+        return durationTitle;
+    }
 
-	public String getBundleTitle() {
-		return bundleTitle;
-	}
+    public String getBundleTitle() {
+        return bundleTitle;
+    }
 
-	public String getBundleDescription() {
-		return bundleDescription;
-	}
+    public String getBundleDescription() {
+        return bundleDescription;
+    }
 
-	public String getCallingTexting() {
-		return callingTexting;
-	}
+    public String getCallingTexting() {
+        return callingTexting;
+    }
 
-	public String getSpeedTitle() {
-		return speedTitle;
-	}
+    public String getSpeedTitle() {
+        return speedTitle;
+    }
 
-	public String getExtraOptionsTitle() {
-		return extraOptionsTitle;
-	}
+    public String getExtraOptionsTitle() {
+        return extraOptionsTitle;
+    }
 
-	public String getExtraOptionsDescription() {
-		return extraOptionsDescription;
-	}
+    public String getExtraOptionsDescription() {
+        return extraOptionsDescription;
+    }
 
-	public String getGrandTotalTitle() {
-		return grandTotalTitle;
-	}
+    public String getGrandTotalTitle() {
+        return grandTotalTitle;
+    }
 
-	public String getActivationTitle() {
-		return activationTitle;
-	}
+    public String getActivationTitle() {
+        return activationTitle;
+    }
 
-	public String getTotalTitle() {
-		return totalTitle;
-	}
+    public String getTotalTitle() {
+        return totalTitle;
+    }
 
-	public String getSubscriptionTitle() {
-		return subscriptionTitle;
-	}
+    public String getSubscriptionTitle() {
+        return subscriptionTitle;
+    }
 
-	public String getOrderNowTitle() {
-		return orderNowTitle;
-	}
+    public String getOrderNowTitle() {
+        return orderNowTitle;
+    }
 }

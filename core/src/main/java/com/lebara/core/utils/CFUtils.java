@@ -38,17 +38,20 @@ public class CFUtils {
 		List<OfferFragmentBean> resultList = new ArrayList<>();
 		if (StringUtils.isNotBlank(cfPath)) {
 			Resource cfResource = resourceResolver.getResource(cfPath);
-			populateOffers(resultList, cfResource);
+			OfferFragmentBean offerFragmentBean=populateOffers(cfResource);
+			if(offerFragmentBean !=null)
+			resultList.add(offerFragmentBean);
 
 		}
 		return resultList;
 	}
 
-	public static void populateOffers(List<OfferFragmentBean> offers, Resource cfResource) {
+	public static OfferFragmentBean populateOffers( Resource cfResource) {
+		OfferFragmentBean offerFragmentBean=null;
 		if (null != cfResource) {
 			ContentFragment offerFragment = cfResource.adaptTo(ContentFragment.class);
 			if (null != offerFragment) {
-				OfferFragmentBean offerFragmentBean = new OfferFragmentBean();
+				 offerFragmentBean = new OfferFragmentBean();
 				offerFragmentBean.setCost(CFUtils.getElementValue(offerFragment, "cost"));
 				offerFragmentBean.setValidity(CFUtils.getElementValue(offerFragment, "validity"));
 				if (offerFragment.getElement("allowancesList") != null) {
@@ -57,9 +60,10 @@ public class CFUtils {
 							CFAllowance.class);
 					offerFragmentBean.setAllowanceList(allowanceList);
 				}
-				offers.add(offerFragmentBean);
+				
 			}
 		}
+		return offerFragmentBean;
 	}
 
 }
