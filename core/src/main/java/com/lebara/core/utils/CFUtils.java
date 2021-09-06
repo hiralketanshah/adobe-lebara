@@ -39,9 +39,9 @@ public class CFUtils {
         if (StringUtils.isNotBlank(cfPath)) {
             Resource cfResource = resourceResolver.getResource(cfPath);
             OfferFragmentBean offerFragmentBean=populateOffers(cfResource);
-            if(offerFragmentBean !=null)
+            if(offerFragmentBean !=null) {
             resultList.add(offerFragmentBean);
-
+            }
         }
         return resultList;
     }
@@ -54,6 +54,7 @@ public class CFUtils {
                 offerFragmentBean = new OfferFragmentBean();
                 offerFragmentBean.setCost(CFUtils.getElementValue(offerFragment, "cost"));
                 offerFragmentBean.setValidity(CFUtils.getElementValue(offerFragment, "validity"));
+                offerFragmentBean.setId(CFUtils.getElementValue(offerFragment, "offerid"));
                 if (offerFragment.getElement("allowancesList") != null) {
                     String[] allowanceArray = CFUtils.getElementArrayValue(offerFragment, "allowancesList");
                     List<CFAllowance> allowanceList = CFUtils.convertStringArrayToList(allowanceArray,
@@ -66,14 +67,15 @@ public class CFUtils {
         return offerFragmentBean;
     }
     
-   public static void  getCfList( List<OfferFragmentBean> bundlesList, Resource cfResource,  ResourceResolver resourceResolver) {
+   public static  List<OfferFragmentBean>  getCfList( Resource cfResource,  ResourceResolver resourceResolver) {
+       List<OfferFragmentBean> bundlesList =  new ArrayList<OfferFragmentBean>();
        if (null != cfResource) {
            for (Resource offer : cfResource.getChildren()) {
                String cfPath = AemUtils.getStringProperty(offer, "cfPath");
                bundlesList.addAll(CFUtils.getCfDetails(cfPath, resourceResolver));
-
            }
        }
+    return bundlesList;
    }
 
 }

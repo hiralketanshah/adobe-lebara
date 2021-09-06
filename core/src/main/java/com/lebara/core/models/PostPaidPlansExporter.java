@@ -88,22 +88,17 @@ public class PostPaidPlansExporter implements ComponentExporter {
     private String subscriptionTitle;
 
     /// plan details another cf
-    @ChildResource
-    private Resource cfPathOption;
+    @ValueMapValue
+    private String cfPathOtherDetails;
 
     @ValueMapValue
     private String orderNowTitle;
 
     public List<PlanInfo> getPlanDetail() {
         List<PlanInfo> plans = new ArrayList<>();
-        if (null != cfPathOption) {
-            for (Resource offer : cfPathOption.getChildren()) {
-                String cfPath = AemUtils.getStringProperty(offer, "cfPath");
-                Resource cfPathrResource = resourceResolver.getResource(cfPath);
-                if(cfPathrResource!=null) {
+        if (StringUtils.isNotBlank(cfPathOtherDetails)) {
+                Resource cfPathrResource = resourceResolver.getResource(cfPathOtherDetails);
                 populateOffer(plans, cfPathrResource);
-                }
-            }
         }
        
         return plans;
@@ -136,27 +131,19 @@ public class PostPaidPlansExporter implements ComponentExporter {
     }
 
     public List<OfferFragmentBean> getCallingAndTexting() {
-        List<OfferFragmentBean> callingList = new ArrayList<>();
-        CFUtils.getCfList(callingList,calling,resourceResolver);
-        return callingList;
+        return CFUtils.getCfList(calling,resourceResolver);
     }
 
     public List<OfferFragmentBean> getExtraOption() {
-        List<OfferFragmentBean> extraOptionList = new ArrayList<>();
-        CFUtils.getCfList(extraOptionList,cfPathExtra,resourceResolver);
-        return extraOptionList;
+        return CFUtils.getCfList(cfPathExtra,resourceResolver);
     }
 
     public List<OfferFragmentBean> getSpeeds() {
-        List<OfferFragmentBean> speedList = new ArrayList<>();
-        CFUtils.getCfList(speedList,cfPathSpeedPlan,resourceResolver);
-        return speedList;
+        return CFUtils.getCfList(cfPathSpeedPlan,resourceResolver);
     }
 
     public List<OfferFragmentBean> getBundles() {
-        List<OfferFragmentBean> bundlesList = new ArrayList<>();
-        CFUtils.getCfList(bundlesList,bundle,resourceResolver);
-        return bundlesList;
+        return CFUtils.getCfList(bundle,resourceResolver);
     }
 
     @Override

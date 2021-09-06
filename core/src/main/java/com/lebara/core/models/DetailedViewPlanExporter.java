@@ -130,6 +130,7 @@ public class DetailedViewPlanExporter extends ViewPlanExporter implements Compon
                 offerFragmentBean.setId(CFUtils.getElementValue(offerFragment, "offerid"));
                 offerFragmentBean.setCost(CFUtils.getElementValue(offerFragment, "cost"));
                 offerFragmentBean.setValidity(CFUtils.getElementValue(offerFragment, "validity"));
+                offerFragmentBean.setId(CFUtils.getElementValue(offerFragment, "offerid"));
 
                 if(offerFragment.getElement("allowancesList") != null) {
                     String[] allowanceArray = CFUtils.getElementArrayValue(offerFragment, "allowancesList");
