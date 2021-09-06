@@ -36,7 +36,6 @@ import PostpaidPlans from "./PostpaidPlans/PostpaidPlans";
 import { CarouselV1IsEmptyFn } from "@adobe/aem-core-components-react-spa/dist/isEmptyFunctions";
 
 import { TitleV2IsEmptyFn } from "@adobe/aem-core-components-react-base/dist/isEmptyFunctions";
-import Porting from "./Porting/Porting";
 
 import {
   ContainerV1,
@@ -216,12 +215,6 @@ const PostpaidPlansEditConfig = {
     return !props.durationTitle;
   },
 };
-const PortingEditConfig = {
-  emptyLabel: "Porting",
-  isEmpty: function (props) {
-    return !props.description;
-  },
-};
 
 MapTo("lebara/components/followus")(FollowUs, FollowUsEditConfig);
 MapTo("lebara/components/getapp")(GetApp, GetAppEditConfig);
@@ -244,4 +237,3 @@ MapTo("lebara/components/usp")(Usp, uspEditConfig);
 MapTo("lebara/components/aboutlebara")(Aboutlebara, aboutlebaraEditConfig);
 MapTo("lebara/components/trustpilotrating")(Trustpilot);
 MapTo("lebara/components/postpaidPlans")(PostpaidPlans, PostpaidPlansEditConfig);
-MapTo("lebara/components/porting")(Porting, PortingEditConfig);
