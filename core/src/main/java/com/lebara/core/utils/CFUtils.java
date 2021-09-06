@@ -65,5 +65,15 @@ public class CFUtils {
         }
         return offerFragmentBean;
     }
+    
+   public static void  getCfList( List<OfferFragmentBean> bundlesList, Resource cfResource,  ResourceResolver resourceResolver) {
+       if (null != cfResource) {
+           for (Resource offer : cfResource.getChildren()) {
+               String cfPath = AemUtils.getStringProperty(offer, "cfPath");
+               bundlesList.addAll(CFUtils.getCfDetails(cfPath, resourceResolver));
+
+           }
+       }
+   }
 
 }

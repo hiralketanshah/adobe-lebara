@@ -57,14 +57,14 @@ public class PostPaidPlansExporter implements ComponentExporter {
     @ValueMapValue
     private String callingTexting;
 
-    @ValueMapValue
-    private String cfPathCalling;
+    @ChildResource
+    private Resource calling;
 
     @ValueMapValue
     private String speedTitle;
 
-    @ValueMapValue
-    private String cfPathSpeed;
+    @ChildResource
+    private Resource cfPathSpeedPlan;
 
     @ValueMapValue
     private String extraOptionsTitle;
@@ -72,8 +72,8 @@ public class PostPaidPlansExporter implements ComponentExporter {
     @ValueMapValue
     private String extraOptionsDescription;
 
-    @ValueMapValue
-    private String cfPathExtraOption;
+    @ChildResource
+    private Resource cfPathExtra;
 
     @ValueMapValue
     private String grandTotalTitle;
@@ -88,19 +88,24 @@ public class PostPaidPlansExporter implements ComponentExporter {
     private String subscriptionTitle;
 
     /// plan details another cf
-    @ValueMapValue
-    private String cfPathOptionDetails;
+    @ChildResource
+    private Resource cfPathOption;
 
     @ValueMapValue
     private String orderNowTitle;
 
     public List<PlanInfo> getPlanDetail() {
         List<PlanInfo> plans = new ArrayList<>();
-        if (StringUtils.isNotBlank(cfPathOptionDetails)) {
-            Resource cfPlanResource = resourceResolver.getResource(cfPathOptionDetails);
-            populateOffer(plans, cfPlanResource);
-
+        if (null != cfPathOption) {
+            for (Resource offer : cfPathOption.getChildren()) {
+                String cfPath = AemUtils.getStringProperty(offer, "cfPath");
+                Resource cfPathrResource = resourceResolver.getResource(cfPath);
+                if(cfPathrResource!=null) {
+                populateOffer(plans, cfPathrResource);
+                }
+            }
         }
+       
         return plans;
     }
 
@@ -131,26 +136,26 @@ public class PostPaidPlansExporter implements ComponentExporter {
     }
 
     public List<OfferFragmentBean> getCallingAndTexting() {
-        return CFUtils.getCfDetails(cfPathCalling, resourceResolver);
+        List<OfferFragmentBean> callingList = new ArrayList<>();
+        CFUtils.getCfList(callingList,calling,resourceResolver);
+        return callingList;
     }
 
     public List<OfferFragmentBean> getExtraOption() {
-        return CFUtils.getCfDetails(cfPathExtraOption, resourceResolver);
+        List<OfferFragmentBean> extraOptionList = new ArrayList<>();
+        CFUtils.getCfList(extraOptionList,cfPathExtra,resourceResolver);
+        return extraOptionList;
     }
 
     public List<OfferFragmentBean> getSpeeds() {
-        return CFUtils.getCfDetails(cfPathSpeed, resourceResolver);
+        List<OfferFragmentBean> speedList = new ArrayList<>();
+        CFUtils.getCfList(speedList,cfPathSpeedPlan,resourceResolver);
+        return speedList;
     }
 
     public List<OfferFragmentBean> getBundles() {
         List<OfferFragmentBean> bundlesList = new ArrayList<>();
-        if (null != bundle) {
-            for (Resource offer : bundle.getChildren()) {
-                String cfPath = AemUtils.getStringProperty(offer, "cfPath");
-                bundlesList.addAll(CFUtils.getCfDetails(cfPath, resourceResolver));
-
-            }
-        }
+        CFUtils.getCfList(bundlesList,bundle,resourceResolver);
         return bundlesList;
     }
 

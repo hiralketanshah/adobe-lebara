@@ -155,13 +155,34 @@
                                                 fieldDescription="Calling&amp;Textin Text"
                                                 fieldLabel="Calling &amp; Texting Title"
                                                 name="./callingTexting"/>
-                                            <callingTitlePlan
+                                            <plans
                                                 jcr:primaryType="nt:unstructured"
-                                                sling:resourceType="dam/cfm/components/cfpicker"
-                                                fieldDescription="Calling&amp;Textin Text"
-                                                fieldLabel="Calling &amp; Texting Plan"
-                                                name="./cfPathCalling"
-                                                rootPath="/content/dam/lebara"/>
+                                                jcr:title="Calling Plans"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
+                                                composite="{Boolean}true"
+                                                fieldDescription="Select plans to display on the view plan component"
+                                                fieldLabel="Calling Plans">
+                                                <field
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/container"
+                                                    name="./calling">
+                                                    <items jcr:primaryType="nt:unstructured">
+                                                        <column
+                                                            jcr:primaryType="nt:unstructured"
+                                                            sling:resourceType="granite/ui/components/coral/foundation/container">
+                                                            <items jcr:primaryType="nt:unstructured">
+                                                                <callingTitlePlan
+                                                                    jcr:primaryType="nt:unstructured"
+                                                                    sling:resourceType="dam/cfm/components/cfpicker"
+                                                                    fieldDescription="Calling&amp;Textin Text"
+                                                                    fieldLabel="Calling &amp; Texting Plan"
+                                                                    name="./cfPath"
+                                                                    rootPath="/content/dam/lebara"/>
+                                                            </items>
+                                                        </column>
+                                                    </items>
+                                                </field>
+                                            </plans>
                                         </items>
                                     </column>
                                 </items>
@@ -189,13 +210,34 @@
                                                 fieldDescription="Speed Text"
                                                 fieldLabel="Speed Title"
                                                 name="./speedTitle"/>
-                                            <speedPlan
+                                            <plans
                                                 jcr:primaryType="nt:unstructured"
-                                                sling:resourceType="dam/cfm/components/cfpicker"
-                                                fieldDescription="Speed Plan"
-                                                fieldLabel="Speed Plan"
-                                                name="./cfPathSpeed"
-                                                rootPath="/content/dam/lebara"/>
+                                                jcr:title="Speed"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
+                                                composite="{Boolean}true"
+                                                fieldDescription="Select plans to display on the view plan component"
+                                                fieldLabel="Speed Plans">
+                                                <field
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/container"
+                                                    name="./cfPathSpeedPlan">
+                                                    <items jcr:primaryType="nt:unstructured">
+                                                        <column
+                                                            jcr:primaryType="nt:unstructured"
+                                                            sling:resourceType="granite/ui/components/coral/foundation/container">
+                                                            <items jcr:primaryType="nt:unstructured">
+                                                                <speedPlan
+                                                                    jcr:primaryType="nt:unstructured"
+                                                                    sling:resourceType="dam/cfm/components/cfpicker"
+                                                                    fieldDescription="Speed Plan"
+                                                                    fieldLabel="Speed Plan"
+                                                                    name="./cfPath"
+                                                                    rootPath="/content/dam/lebara"/>
+                                                            </items>
+                                                        </column>
+                                                    </items>
+                                                </field>
+                                            </plans>
                                         </items>
                                     </column>
                                 </items>
@@ -229,13 +271,34 @@
                                                 fieldDescription="Extra Options Description Text"
                                                 fieldLabel="Extra Options Description"
                                                 name="./extraOptionsDescription"/>
-                                            <extraOptionPlan
+                                            <plans
                                                 jcr:primaryType="nt:unstructured"
-                                                sling:resourceType="dam/cfm/components/cfpicker"
-                                                fieldDescription="Extar Option  Plans"
-                                                fieldLabel="Extra Option Plans"
-                                                name="./cfPathExtraOption"
-                                                rootPath="/content/dam/lebara"/>
+                                                jcr:title="Extrab Option"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
+                                                composite="{Boolean}true"
+                                                fieldDescription="Select plans to display on the view plan component"
+                                                fieldLabel="Extra Option Plans">
+                                                <field
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/container"
+                                                    name="./cfPathExtra">
+                                                    <items jcr:primaryType="nt:unstructured">
+                                                        <column
+                                                            jcr:primaryType="nt:unstructured"
+                                                            sling:resourceType="granite/ui/components/coral/foundation/container">
+                                                            <items jcr:primaryType="nt:unstructured">
+                                                                <extraOptionPlan
+                                                                    jcr:primaryType="nt:unstructured"
+                                                                    sling:resourceType="dam/cfm/components/cfpicker"
+                                                                    fieldDescription="Extar Option  Plans"
+                                                                    fieldLabel="Extra Option Plans"
+                                                                    name="./cfPath"
+                                                                    rootPath="/content/dam/lebara"/>
+                                                            </items>
+                                                        </column>
+                                                    </items>
+                                                </field>
+                                            </plans>
                                         </items>
                                     </column>
                                 </items>
@@ -281,13 +344,34 @@
                                                 fieldDescription="subscription Button Text"
                                                 fieldLabel="Subscription Button Title"
                                                 name="./subscriptionTitle"/>
-                                            <plansOutherDetails
+                                            <plans
                                                 jcr:primaryType="nt:unstructured"
-                                                sling:resourceType="dam/cfm/components/cfpicker"
-                                                fieldDescription="Plan Option Details"
-                                                fieldLabel="Plan Option Details"
-                                                name="./cfPathOptionDetails"
-                                                rootPath="/content/dam/lebara"/>
+                                                jcr:title="OptionDetails"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
+                                                composite="{Boolean}true"
+                                                fieldDescription="Select plans to display on the view plan component"
+                                                fieldLabel="Option Details">
+                                                <field
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/container"
+                                                    name="./cfPathOption">
+                                                    <items jcr:primaryType="nt:unstructured">
+                                                        <column
+                                                            jcr:primaryType="nt:unstructured"
+                                                            sling:resourceType="granite/ui/components/coral/foundation/container">
+                                                            <items jcr:primaryType="nt:unstructured">
+                                                                <plansOutherDetails
+                                                                    jcr:primaryType="nt:unstructured"
+                                                                    sling:resourceType="dam/cfm/components/cfpicker"
+                                                                    fieldDescription="Plan Option Details"
+                                                                    fieldLabel="Plan Option Details"
+                                                                    name="./cfPath"
+                                                                    rootPath="/content/dam/lebara"/>
+                                                            </items>
+                                                        </column>
+                                                    </items>
+                                                </field>
+                                            </plans>
                                             <orderNowButton
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
