@@ -11,17 +11,16 @@ const PlanCardWrapper: React.FC<PlanCardProps> = ({
   unlimitedTextField,
 }) => {
   return (
-    <Box py={{ md: "50px", sm: "0px" }} px="15px">
-      <Box mt="20px">
-        {offers?.map((item: offerProps) => (
-          <ViewPlans
-            offer={item}
-            buttonLabel={buttonLabel}
-            unlimitedTextField={unlimitedTextField}
-            minutesField={minutesField}
-          />
-        ))}
-      </Box>
+    <Box mt="20px">
+      {offers?.map((item: offerProps) => (
+        <ViewPlans
+          offer={item}
+          buttonLabel={buttonLabel}
+          unlimitedTextField={unlimitedTextField}
+          minutesField={minutesField}
+          allowanceList={item?.allowanceList}
+        />
+      ))}
     </Box>
   );
 };

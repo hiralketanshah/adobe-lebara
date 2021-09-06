@@ -10,6 +10,7 @@ import SideBubbleBG from "./Responsive_Homebackground_element.svg";
 
 const PlanOffers: React.FC<PlanOffersProps> = ({
   offers,
+  heading,
   title,
   subTitle,
   description,
@@ -81,6 +82,15 @@ const PlanOffers: React.FC<PlanOffersProps> = ({
       py="50px"
       px="15px"
     >
+      <Text
+        color="lebaraChambray.600"
+        as="h2"
+        fontWeight="bold"
+        fontSize={38}
+        mb="40px"
+      >
+        {heading}
+      </Text>
       <Flex flexDir="column" align="stretch">
         <Text as="h3" mb="10px" {...headingStyles}>
           {title}

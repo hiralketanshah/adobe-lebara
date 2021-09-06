@@ -3,6 +3,7 @@ import { ExpandablePlanCardProps } from "../ExpandablePlanCard/types";
 
 export interface PlanOffersProps {
   title?: string;
+  heading?: string;
   subTitle?: string;
   description?: string;
   hideLabel?: string;
