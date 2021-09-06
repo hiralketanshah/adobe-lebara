@@ -1,0 +1,370 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="nt:unstructured"
+    jcr:title="Postpaid Plans Component"
+    sling:resourceType="cq/gui/components/authoring/dialog"
+    extraClientlibs="[lebara.touchui]">
+    <content
+        jcr:primaryType="nt:unstructured"
+        sling:resourceType="granite/ui/components/coral/foundation/container">
+        <items jcr:primaryType="nt:unstructured">
+            <tabs
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="granite/ui/components/coral/foundation/tabs"
+                maximized="{Boolean}true">
+                <items jcr:primaryType="nt:unstructured">
+                    <plamDuration
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Duration"
+                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                        <items jcr:primaryType="nt:unstructured">
+                            <columns
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+                                margin="{Boolean}true">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <column
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <durationTitle
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="Duration Title Text"
+                                                fieldLabel="Duration Title"
+                                                name="./durationTitle"/>
+                                            <plans
+                                                jcr:primaryType="nt:unstructured"
+                                                jcr:title="Duration Plans Name"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
+                                                composite="{Boolean}true"
+                                                fieldDescription="Select plans to display on the Postpaid plan component"
+                                                fieldLabel="Duration Plans Name">
+                                                <field
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/container"
+                                                    name="./duration">
+                                                    <items jcr:primaryType="nt:unstructured">
+                                                        <column
+                                                            jcr:primaryType="nt:unstructured"
+                                                            sling:resourceType="granite/ui/components/coral/foundation/container">
+                                                            <items jcr:primaryType="nt:unstructured">
+                                                                <durationPlan
+                                                                    jcr:primaryType="nt:unstructured"
+                                                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                                    fieldDescription="Duration Plan Name Text"
+                                                                    fieldLabel="Duration Plan Name"
+                                                                    name="./durationPlan"/>
+                                                                <durationPlanCost
+                                                                    jcr:primaryType="nt:unstructured"
+                                                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                                    fieldDescription="Duration Plan Name Text"
+                                                                    fieldLabel="Duration Plan Cost"
+                                                                    name="./durationPlanCost"/>
+                                                            </items>
+                                                        </column>
+                                                    </items>
+                                                </field>
+                                            </plans>
+                                        </items>
+                                    </column>
+                                </items>
+                            </columns>
+                        </items>
+                    </plamDuration>
+                    <planBundle
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Bundle"
+                        sling:resourceType="granite/ui/components/coral/foundation/container"
+                        margin="{Boolean}true">
+                        <items jcr:primaryType="nt:unstructured">
+                            <columns
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+                                margin="{Boolean}true">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <column
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <bundleTitle
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription=" Bundle Title Text"
+                                                fieldLabel="Bundle Title"
+                                                name="./bundleTitle"/>
+                                            <dundleDescription
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="Bundle Description Text"
+                                                fieldLabel="Bundle Description"
+                                                name="./bundleDescription"/>
+                                            <plans
+                                                jcr:primaryType="nt:unstructured"
+                                                jcr:title="Bundle Plans"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
+                                                composite="{Boolean}true"
+                                                fieldDescription="Select plans to display on the view plan component"
+                                                fieldLabel="Bundle  Plans">
+                                                <field
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/container"
+                                                    name="./bundle">
+                                                    <items jcr:primaryType="nt:unstructured">
+                                                        <column
+                                                            jcr:primaryType="nt:unstructured"
+                                                            sling:resourceType="granite/ui/components/coral/foundation/container">
+                                                            <items jcr:primaryType="nt:unstructured">
+                                                                <applicationformpath
+                                                                    cq:showOnCreate="{Boolean}true"
+                                                                    jcr:primaryType="nt:unstructured"
+                                                                    sling:resourceType="dam/cfm/components/cfpicker"
+                                                                    fieldLabel="Content Frament path"
+                                                                    name="./cfPath"
+                                                                    required="{Boolean}true"
+                                                                    rootPath="/content/dam/lebara"/>
+                                                            </items>
+                                                        </column>
+                                                    </items>
+                                                </field>
+                                            </plans>
+                                        </items>
+                                    </column>
+                                </items>
+                            </columns>
+                        </items>
+                    </planBundle>
+                    <calling_x0026_texting
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Calling"
+                        sling:resourceType="granite/ui/components/coral/foundation/container"
+                        margin="{Boolean}true">
+                        <items jcr:primaryType="nt:unstructured">
+                            <columns
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+                                margin="{Boolean}true">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <column
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <callingTitle
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="Calling&amp;Textin Text"
+                                                fieldLabel="Calling &amp; Texting Title"
+                                                name="./callingTexting"/>
+                                            <plans
+                                                jcr:primaryType="nt:unstructured"
+                                                jcr:title="Calling Plans"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
+                                                composite="{Boolean}true"
+                                                fieldDescription="Select plans to display on the view plan component"
+                                                fieldLabel="Calling Plans">
+                                                <field
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/container"
+                                                    name="./calling">
+                                                    <items jcr:primaryType="nt:unstructured">
+                                                        <column
+                                                            jcr:primaryType="nt:unstructured"
+                                                            sling:resourceType="granite/ui/components/coral/foundation/container">
+                                                            <items jcr:primaryType="nt:unstructured">
+                                                                <callingTitlePlan
+                                                                    jcr:primaryType="nt:unstructured"
+                                                                    sling:resourceType="dam/cfm/components/cfpicker"
+                                                                    fieldDescription="Calling&amp;Textin Text"
+                                                                    fieldLabel="Calling &amp; Texting Plan"
+                                                                    name="./cfPath"
+                                                                    rootPath="/content/dam/lebara"/>
+                                                            </items>
+                                                        </column>
+                                                    </items>
+                                                </field>
+                                            </plans>
+                                        </items>
+                                    </column>
+                                </items>
+                            </columns>
+                        </items>
+                    </calling_x0026_texting>
+                    <speed
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Speed"
+                        sling:resourceType="granite/ui/components/coral/foundation/container"
+                        margin="{Boolean}true">
+                        <items jcr:primaryType="nt:unstructured">
+                            <columns
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+                                margin="{Boolean}true">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <column
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <speedTitle
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="Speed Text"
+                                                fieldLabel="Speed Title"
+                                                name="./speedTitle"/>
+                                            <plans
+                                                jcr:primaryType="nt:unstructured"
+                                                jcr:title="Speed"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
+                                                composite="{Boolean}true"
+                                                fieldDescription="Select plans to display on the view plan component"
+                                                fieldLabel="Speed Plans">
+                                                <field
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/container"
+                                                    name="./cfPathSpeedPlan">
+                                                    <items jcr:primaryType="nt:unstructured">
+                                                        <column
+                                                            jcr:primaryType="nt:unstructured"
+                                                            sling:resourceType="granite/ui/components/coral/foundation/container">
+                                                            <items jcr:primaryType="nt:unstructured">
+                                                                <speedPlan
+                                                                    jcr:primaryType="nt:unstructured"
+                                                                    sling:resourceType="dam/cfm/components/cfpicker"
+                                                                    fieldDescription="Speed Plan"
+                                                                    fieldLabel="Speed Plan"
+                                                                    name="./cfPath"
+                                                                    rootPath="/content/dam/lebara"/>
+                                                            </items>
+                                                        </column>
+                                                    </items>
+                                                </field>
+                                            </plans>
+                                        </items>
+                                    </column>
+                                </items>
+                            </columns>
+                        </items>
+                    </speed>
+                    <extraOptions
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Extra Options"
+                        sling:resourceType="granite/ui/components/coral/foundation/container"
+                        margin="{Boolean}true">
+                        <items jcr:primaryType="nt:unstructured">
+                            <columns
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+                                margin="{Boolean}true">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <column
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <extraOptionTitle
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="Extra Options Title Text"
+                                                fieldLabel="Extra Options Title"
+                                                name="./extraOptionsTitle"/>
+                                            <extraOptionDescription
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="Extra Options Description Text"
+                                                fieldLabel="Extra Options Description"
+                                                name="./extraOptionsDescription"/>
+                                            <plans
+                                                jcr:primaryType="nt:unstructured"
+                                                jcr:title="Extrab Option"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
+                                                composite="{Boolean}true"
+                                                fieldDescription="Select plans to display on the view plan component"
+                                                fieldLabel="Extra Option Plans">
+                                                <field
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/container"
+                                                    name="./cfPathExtra">
+                                                    <items jcr:primaryType="nt:unstructured">
+                                                        <column
+                                                            jcr:primaryType="nt:unstructured"
+                                                            sling:resourceType="granite/ui/components/coral/foundation/container">
+                                                            <items jcr:primaryType="nt:unstructured">
+                                                                <extraOptionPlan
+                                                                    jcr:primaryType="nt:unstructured"
+                                                                    sling:resourceType="dam/cfm/components/cfpicker"
+                                                                    fieldDescription="Extar Option  Plans"
+                                                                    fieldLabel="Extra Option Plans"
+                                                                    name="./cfPath"
+                                                                    rootPath="/content/dam/lebara"/>
+                                                            </items>
+                                                        </column>
+                                                    </items>
+                                                </field>
+                                            </plans>
+                                        </items>
+                                    </column>
+                                </items>
+                            </columns>
+                        </items>
+                    </extraOptions>
+                    <additionalProporty
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Additional Property"
+                        sling:resourceType="granite/ui/components/coral/foundation/container"
+                        margin="{Boolean}true">
+                        <items jcr:primaryType="nt:unstructured">
+                            <columns
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+                                margin="{Boolean}true">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <column
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <grandTitle
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="Grand Total Text"
+                                                fieldLabel="Grand Total Title"
+                                                name="./grandTotalTitle"/>
+                                            <activation
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="Activation Text"
+                                                fieldLabel="Activation Title"
+                                                name="./activationTitle"/>
+                                            <total
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="Total Text"
+                                                fieldLabel="Total Title"
+                                                name="./totalTitle"/>
+                                            <subscriptionButton
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="subscription Button Text"
+                                                fieldLabel="Subscription Button Title"
+                                                name="./subscriptionTitle"/>
+                                            <plansOtherDetails
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="dam/cfm/components/cfpicker"
+                                                fieldDescription="Plan Option Details"
+                                                fieldLabel="Other Details"
+                                                name="./cfPathOtherDetails"
+                                                rootPath="/content/dam/lebara"/>
+                                            <orderNowButton
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="Order Now Button Text"
+                                                fieldLabel="Order Now Button Title"
+                                                name="./orderNowTitle"/>
+                                        </items>
+                                    </column>
+                                </items>
+                            </columns>
+                        </items>
+                    </additionalProporty>
+                </items>
+            </tabs>
+        </items>
+    </content>
+</jcr:root>

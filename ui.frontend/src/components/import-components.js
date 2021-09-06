@@ -32,6 +32,7 @@ import Usp from "./usp/usp";
 import Aboutlebara from "./aboutlebara/aboutlebara";
 import Trustpilot from "./Trustpilot/Trustpilot";
 import PlanOffers from "./PlanOffers/PlanOffers";
+import PostpaidPlans from "./PostpaidPlans/PostpaidPlans";
 import { CarouselV1IsEmptyFn } from "@adobe/aem-core-components-react-spa/dist/isEmptyFunctions";
 
 import { TitleV2IsEmptyFn } from "@adobe/aem-core-components-react-base/dist/isEmptyFunctions";
@@ -207,6 +208,14 @@ const trustpilotratingEditConfig = {
     return !props.fileReferenceBackground;
   },
 };
+
+const PostpaidPlansEditConfig = {
+  emptyLabel: "PostpaidPlans",
+  isEmpty: function (props) {
+    return !props.durationTitle;
+  },
+};
+
 MapTo("lebara/components/followus")(FollowUs, FollowUsEditConfig);
 MapTo("lebara/components/getapp")(GetApp, GetAppEditConfig);
 MapTo("lebara/components/text")(LazyTextComponent, TextEditConfig);
@@ -227,3 +236,4 @@ MapTo("lebara/components/footer/footerupperlinks")(
 MapTo("lebara/components/usp")(Usp, uspEditConfig);
 MapTo("lebara/components/aboutlebara")(Aboutlebara, aboutlebaraEditConfig);
 MapTo("lebara/components/trustpilotrating")(Trustpilot);
+MapTo("lebara/components/postpaidPlans")(PostpaidPlans, PostpaidPlansEditConfig);
