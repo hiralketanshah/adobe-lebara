@@ -29,6 +29,7 @@ import { MapTo } from "@adobe/aem-react-editable-components";
 import FooterCopyright from "./Footer/FooterCopyright/FooterCopyright";
 import FooterUpperLinks from "./Footer/FooterUpperLinks/FooterUpperLinks";
 import Usp from "./usp/usp";
+import Porting from "./Porting/Porting";
 import Aboutlebara from "./aboutlebara/aboutlebara";
 import Trustpilot from "./Trustpilot/Trustpilot";
 import PlanOffers from "./PlanOffers/PlanOffers";
@@ -195,6 +196,12 @@ const uspEditConfig = {
   },
 };
 
+const PortingEditConfig = {
+  emptyLabel: "Porting",
+  isEmpty: function (props) {
+    return !props.title;
+  },
+};
 const aboutlebaraEditConfig = {
   emptyLabel: "aboutlebara",
   isEmpty: function (props) {
@@ -237,3 +244,4 @@ MapTo("lebara/components/usp")(Usp, uspEditConfig);
 MapTo("lebara/components/aboutlebara")(Aboutlebara, aboutlebaraEditConfig);
 MapTo("lebara/components/trustpilotrating")(Trustpilot);
 MapTo("lebara/components/postpaidPlans")(PostpaidPlans, PostpaidPlansEditConfig);
+MapTo("lebara/components/porting")(Porting, PortingEditConfig);
