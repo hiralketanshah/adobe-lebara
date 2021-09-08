@@ -10,13 +10,11 @@ import com.lebara.core.utils.AemUtils;
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.sling.api.SlingHttpServletRequest;
-import org.apache.sling.api.resource.Resource;
 import org.apache.sling.models.annotations.DefaultInjectionStrategy;
 import org.apache.sling.models.annotations.Exporter;
 import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.injectorspecific.ChildResource;
 import org.apache.sling.models.annotations.injectorspecific.ScriptVariable;
-import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
 
 import javax.annotation.PostConstruct;
 import javax.inject.Named;
@@ -35,9 +33,6 @@ public class FooterExporter implements ComponentExporter {
     protected static final String RESOURCE_TYPE = "lebara/components/footer";
 
     @ScriptVariable
-    private Resource resource;
-
-    @ScriptVariable
     private PageManager pageManager;
 
     @ChildResource
@@ -51,6 +46,12 @@ public class FooterExporter implements ComponentExporter {
     @Named("footercopyright/copyrightText")
     private String copyrightText;
 
+    @ChildResource
+    private GetAppExporter getapp;
+
+    @ChildResource
+    private FollowUsExporter followus;
+
     public List<Link> getCopyrightLinks() {
         return copyrightLinks;
     }
@@ -63,7 +64,10 @@ public class FooterExporter implements ComponentExporter {
 
     @PostConstruct
     public void init() {
-        if (CollectionUtils.isEmpty(footerUpperLinks) || pageManager == null) {
+        if(getapp !=null){
+
+        }
+        if (CollectionUtils.isEmpty(footerUpperLinks) && pageManager == null) {
             return;
         }
         for (Link parentLink : footerUpperLinks) {
@@ -91,12 +95,20 @@ public class FooterExporter implements ComponentExporter {
         }
     }
 
-    public List<PageLink> getLinks() {
+    public List<PageLink> getFooterUpperLinks() {
         return pageLinkList;
+    }
+
+    public FollowUsExporter getFollowus() {
+        return followus;
+    }
+
+    public GetAppExporter getGetapp() {
+        return getapp;
     }
 
     @Override
     public String getExportedType() {
-        return resource.getResourceType();
+        return RESOURCE_TYPE;
     }
 }
