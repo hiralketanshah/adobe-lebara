@@ -1,12 +1,14 @@
 import React from "react";
 import { Box, Text } from "@chakra-ui/react";
 import { FooterUpperLinksProps, Links, PageLinks } from "./types";
-import FooterMobileView from "../FooterMobileView/FooterMobileView";
+//import FooterMobileView from "../FooterMobileView/FooterMobileView";
 
-const FooterUpperLinks: React.FC<FooterUpperLinksProps> = ({ links }) => {
+const FooterUpperLinks: React.FC<FooterUpperLinksProps> = ({ footerUpperLinks }) => {
   return (
-    <>
+  <></>
+    /*<>
       <FooterMobileView links={links} />
+
       <Box px="50px" py="50px" display={{ md: "block", base: "none" }}>
         <Box
           height={{ lg: "50vh", md: "initial" }}
@@ -50,6 +52,7 @@ const FooterUpperLinks: React.FC<FooterUpperLinksProps> = ({ links }) => {
         </Box>
       </Box>
     </>
+  */
   );
 };
 

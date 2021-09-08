@@ -64,10 +64,7 @@ public class FooterExporter implements ComponentExporter {
 
     @PostConstruct
     public void init() {
-        if(getapp !=null){
-
-        }
-        if (CollectionUtils.isEmpty(footerUpperLinks) && pageManager == null) {
+        if (CollectionUtils.isEmpty(footerUpperLinks) || pageManager == null) {
             return;
         }
         for (Link parentLink : footerUpperLinks) {
