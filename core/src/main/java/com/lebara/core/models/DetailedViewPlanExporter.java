@@ -101,7 +101,7 @@ public class DetailedViewPlanExporter extends ViewPlanExporter implements Compon
     }
 
     public String getCtaTopLink() {
-        return AemUtils.getLinkWithExtension(ctaTopLink);
+        return ctaTopLink;
     }
 
     public String getCtaBottomLabel() {
@@ -109,7 +109,7 @@ public class DetailedViewPlanExporter extends ViewPlanExporter implements Compon
     }
 
     public String getCtaBottomLink() {
-        return AemUtils.getLinkWithExtension(ctaBottomLink);
+        return ctaBottomLink;
     }
 
     @Override
