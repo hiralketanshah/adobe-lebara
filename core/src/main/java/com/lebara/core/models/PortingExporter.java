@@ -10,6 +10,7 @@ import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
 
 import com.adobe.cq.export.json.ComponentExporter;
 import com.adobe.cq.export.json.ExporterConstants;
+import com.lebara.core.utils.AemUtils;
 
 @Model(adaptables = SlingHttpServletRequest.class, adapters = { PortingExporter.class,
 		ComponentExporter.class }, resourceType = PortingExporter.RESOURCE_TYPE, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
@@ -53,7 +54,7 @@ public class PortingExporter implements ComponentExporter {
 	}
 
 	public String getCtaOneLink() {
-		return ctaOneLink;
+		return AemUtils.getLinkWithExtension(ctaOneLink);
 	}
 
 	public String getCtaTwoLable() {
@@ -61,7 +62,7 @@ public class PortingExporter implements ComponentExporter {
 	}
 
 	public String getCtaTwoLink() {
-		return ctaTwoLink;
+		return AemUtils.getLinkWithExtension(ctaTwoLink);
 	}
 
 }
