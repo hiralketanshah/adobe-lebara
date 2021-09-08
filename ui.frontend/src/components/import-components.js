@@ -236,7 +236,7 @@ MapTo("lebara/components/footer/footercopyright")(
   FooterCopyright,
   FooterCopyrightConfig
 );
-MapTo("lebara/components/footer/footerupperlinks")(
+MapTo("lebara/components/footer")(
   FooterUpperLinks,
   FooterUpperLinksConfig
 );

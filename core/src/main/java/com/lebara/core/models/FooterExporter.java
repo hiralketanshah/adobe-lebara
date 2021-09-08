@@ -16,21 +16,23 @@ import org.apache.sling.models.annotations.Exporter;
 import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.injectorspecific.ChildResource;
 import org.apache.sling.models.annotations.injectorspecific.ScriptVariable;
+import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
 
 import javax.annotation.PostConstruct;
+import javax.inject.Named;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-@Model(adaptables = SlingHttpServletRequest.class, adapters = {FooterUpperLinksExporter.class, ComponentExporter.class},
-        resourceType = FooterUpperLinksExporter.RESOURCE_TYPE, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
+@Model(adaptables = SlingHttpServletRequest.class, adapters = {FooterExporter.class, ComponentExporter.class},
+        resourceType = FooterExporter.RESOURCE_TYPE, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
 @Exporter(name = ExporterConstants.SLING_MODEL_EXPORTER_NAME, extensions = ExporterConstants.SLING_MODEL_EXTENSION)
-public class FooterUpperLinksExporter implements ComponentExporter {
+public class FooterExporter implements ComponentExporter {
 
     /**
      * The resource type.
      */
-    protected static final String RESOURCE_TYPE = "lebara/components/footer/footerupperlinks";
+    protected static final String RESOURCE_TYPE = "lebara/components/footer";
 
     @ScriptVariable
     private Resource resource;
@@ -40,6 +42,22 @@ public class FooterUpperLinksExporter implements ComponentExporter {
 
     @ChildResource
     private List<Link> footerUpperLinks;
+
+    @ChildResource
+    @Named("footercopyright/links")
+    private List<Link> copyrightLinks;
+
+    @ChildResource
+    @Named("footercopyright/copyrightText")
+    private String copyrightText;
+
+    public List<Link> getCopyrightLinks() {
+        return copyrightLinks;
+    }
+
+    public String getCopyrightText() {
+        return copyrightText;
+    }
 
     private List<PageLink> pageLinkList = new ArrayList<>();
 
