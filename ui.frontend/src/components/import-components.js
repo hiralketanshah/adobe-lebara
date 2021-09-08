@@ -32,6 +32,7 @@ import Usp from "./usp/usp";
 import Aboutlebara from "./aboutlebara/aboutlebara";
 import Trustpilot from "./Trustpilot/Trustpilot";
 import PlanOffers from "./PlanOffers/PlanOffers";
+import ProgressStepLinks from "./ProgressStepLinks/ProgressStepLinks";
 import { CarouselV1IsEmptyFn } from "@adobe/aem-core-components-react-spa/dist/isEmptyFunctions";
 
 import { TitleV2IsEmptyFn } from "@adobe/aem-core-components-react-base/dist/isEmptyFunctions";
@@ -173,6 +174,12 @@ const FollowUsEditConfig = {
     return !props.followUsText;
   },
 };
+const ProgressStepLinksEditConfig = {
+  emptyLabel: "Progress Step Links",
+  isEmpty: function (props) {
+    return !props.links;
+  },
+};
 const GetAppEditConfig = {
   emptyLabel: "Get APP",
   isEmpty: function (props) {
@@ -213,6 +220,7 @@ MapTo("lebara/components/text")(LazyTextComponent, TextEditConfig);
 MapTo("lebara/components/teaser")(Teaser, TeaserEditConfig);
 MapTo("lebara/components/viewplans")(ViewPlans, ViewPlansConfig);
 MapTo("lebara/components/detailedviewplans")(PlanOffers, detailViewPlansConfig);
+MapTo("lebara/components/progressstep")(ProgressStepLinks, ProgressStepLinksEditConfig);
 MapTo("lebara/components/header/languagenavigation")(LanguageHeader);
 MapTo("lebara/components/header/headernavigation")(Header);
 MapTo("lebara/components/title")(LebaraText, TitleEditConfig);
