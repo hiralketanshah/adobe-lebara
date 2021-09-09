@@ -183,7 +183,7 @@ const GetAppEditConfig = {
 };
 
 const FooterUpperLinksConfig = {
-  emptyLabel: "Footer Upper Navigation Links",
+  emptyLabel: "Footer Component",
   isEmpty: function (props) {
     return !props.links;
   },
@@ -236,7 +236,7 @@ MapTo("lebara/components/footer/footercopyright")(
   FooterCopyright,
   FooterCopyrightConfig
 );
-MapTo("lebara/components/footer/footerupperlinks")(
+MapTo("lebara/components/footer")(
   FooterUpperLinks,
   FooterUpperLinksConfig
 );

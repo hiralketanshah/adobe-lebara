@@ -13,7 +13,7 @@ import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
 
 import java.util.List;
 
-@Model(adaptables = SlingHttpServletRequest.class, adapters = {FollowUsExporter.class, ComponentExporter.class},
+@Model(adaptables = {SlingHttpServletRequest.class, Resource.class}, adapters = {FollowUsExporter.class, ComponentExporter.class},
         resourceType = FollowUsExporter.RESOURCE_TYPE, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
 @Exporter(name = ExporterConstants.SLING_MODEL_EXPORTER_NAME, extensions = ExporterConstants.SLING_MODEL_EXTENSION)
 public class FollowUsExporter implements ComponentExporter {
@@ -42,6 +42,6 @@ public class FollowUsExporter implements ComponentExporter {
 
     @Override
     public String getExportedType() {
-        return resource.getResourceType();
+        return RESOURCE_TYPE;
     }
 }

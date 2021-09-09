@@ -1,5 +1,5 @@
 export interface FooterUpperLinksProps {
-    links : Links[];
+    footerUpperLinks : Links[];
 }
 
 export interface Links {

@@ -10,7 +10,6 @@ import com.lebara.core.utils.AemUtils;
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.sling.api.SlingHttpServletRequest;
-import org.apache.sling.api.resource.Resource;
 import org.apache.sling.models.annotations.DefaultInjectionStrategy;
 import org.apache.sling.models.annotations.Exporter;
 import org.apache.sling.models.annotations.Model;
@@ -18,28 +17,48 @@ import org.apache.sling.models.annotations.injectorspecific.ChildResource;
 import org.apache.sling.models.annotations.injectorspecific.ScriptVariable;
 
 import javax.annotation.PostConstruct;
+import javax.inject.Named;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-@Model(adaptables = SlingHttpServletRequest.class, adapters = {FooterUpperLinksExporter.class, ComponentExporter.class},
-        resourceType = FooterUpperLinksExporter.RESOURCE_TYPE, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
+@Model(adaptables = SlingHttpServletRequest.class, adapters = {FooterExporter.class, ComponentExporter.class},
+        resourceType = FooterExporter.RESOURCE_TYPE, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
 @Exporter(name = ExporterConstants.SLING_MODEL_EXPORTER_NAME, extensions = ExporterConstants.SLING_MODEL_EXTENSION)
-public class FooterUpperLinksExporter implements ComponentExporter {
+public class FooterExporter implements ComponentExporter {
 
     /**
      * The resource type.
      */
-    protected static final String RESOURCE_TYPE = "lebara/components/footer/footerupperlinks";
-
-    @ScriptVariable
-    private Resource resource;
+    protected static final String RESOURCE_TYPE = "lebara/components/footer";
 
     @ScriptVariable
     private PageManager pageManager;
 
     @ChildResource
     private List<Link> footerUpperLinks;
+
+    @ChildResource
+    @Named("footercopyright/links")
+    private List<Link> copyrightLinks;
+
+    @ChildResource
+    @Named("footercopyright/copyrightText")
+    private String copyrightText;
+
+    @ChildResource
+    private GetAppExporter getapp;
+
+    @ChildResource
+    private FollowUsExporter followus;
+
+    public List<Link> getCopyrightLinks() {
+        return copyrightLinks;
+    }
+
+    public String getCopyrightText() {
+        return copyrightText;
+    }
 
     private List<PageLink> pageLinkList = new ArrayList<>();
 
@@ -73,12 +92,20 @@ public class FooterUpperLinksExporter implements ComponentExporter {
         }
     }
 
-    public List<PageLink> getLinks() {
+    public List<PageLink> getFooterUpperLinks() {
         return pageLinkList;
+    }
+
+    public FollowUsExporter getFollowus() {
+        return followus;
+    }
+
+    public GetAppExporter getGetapp() {
+        return getapp;
     }
 
     @Override
     public String getExportedType() {
-        return resource.getResourceType();
+        return RESOURCE_TYPE;
     }
 }
