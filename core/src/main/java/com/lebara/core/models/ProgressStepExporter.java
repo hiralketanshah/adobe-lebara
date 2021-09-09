@@ -53,7 +53,7 @@ public class ProgressStepExporter implements ComponentExporter {
     @PostConstruct
     public void init() {
         if (CollectionUtils.isEmpty(progressStepLinks) || pageManager == null) {
-            LOG.info("Progress Step Links Component is Empty");
+            LOG.debug("Progress Step Links Component is Empty");
             return;
         }
         for (int i = 0; i < progressStepLinks.size(); i++) {
@@ -61,15 +61,15 @@ public class ProgressStepExporter implements ComponentExporter {
             Optional<Page> validPage = Optional.ofNullable(linkPage);
             Link pgLink = new Link();
             if (validPage.isPresent()) {
-                LOG.info("Valid Link Page URL is {} ", linkPage.getPath());
+                LOG.debug("Valid Link Page URL is {} ", linkPage.getPath());
                 pgLink.setLink(linkPage.getPath());
                 pgLink.setLabel(Optional.ofNullable(progressStepLinks.get(i).getLabel()).orElseGet(() -> AemUtils.getTitle(linkPage)));
                 if (isActive(linkPage)) {
                     activeStepIndex = i;
                 }
-                LOG.info("Active Step Index {} ", activeStepIndex);
+                LOG.debug("Active Step Index {} ", activeStepIndex);
             } else {
-                LOG.info("Link Page URL is Invalid or empty : {}", progressStepLinks.get(i).getLink());
+                LOG.debug("Link Page URL is Invalid or empty : {}", progressStepLinks.get(i).getLink());
             }
             pageLinks.add(pgLink);
         }
