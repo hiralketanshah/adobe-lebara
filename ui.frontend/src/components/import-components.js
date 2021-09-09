@@ -183,7 +183,7 @@ const GetAppEditConfig = {
 };
 
 const FooterUpperLinksConfig = {
-  emptyLabel: "Footer Upper Navigation Links",
+  emptyLabel: "Footer Component",
   isEmpty: function (props) {
     return !props.links;
   },
