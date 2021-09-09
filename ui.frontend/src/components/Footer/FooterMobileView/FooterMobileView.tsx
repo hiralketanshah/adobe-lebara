@@ -15,8 +15,8 @@ import {
   PageLinks,
 } from "../FooterUpperLinks/types";
 
-const Footer: React.FC<FooterUpperLinksProps> = ({ links }) => (
-  <Box display={{ base: "block", md: "none" }}>
+const Footer: React.FC<FooterUpperLinksProps> = ({ footerUpperLinks }) => (
+  /*<Box display={{ base: "block", md: "none" }}>
     <Accordion defaultIndex={[0]} allowMultiple>
       {links.map((menuItem: Links) => (
         <AccordionItem borderTop="none" borderBottomWidth="1px">
@@ -66,6 +66,8 @@ const Footer: React.FC<FooterUpperLinksProps> = ({ links }) => (
       ))}
     </Accordion>
   </Box>
+  */
+ <></>
 );
 
 export default Footer;

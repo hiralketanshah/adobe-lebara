@@ -1,3 +1,4 @@
+//@ts-nocheck
 import React from "react";
 import { Box, Divider, Grid, GridItem } from "@chakra-ui/react";
 import { PlanCardProps } from "./types";
@@ -9,6 +10,7 @@ const ViewPlans: React.FC<PlanCardProps> = ({
   buttonLabel,
   unlimitedTextField,
   minutesField,
+  allowanceList,
 }) => {
   return (
     <Grid
@@ -56,7 +58,7 @@ const ViewPlans: React.FC<PlanCardProps> = ({
             type="caption"
             display={{ base: "block", md: "none" }}
           >
-            {"3GB"} {minutesField}
+            {allowanceList[0]?.formatedValue} {minutesField}
           </Title>
         </Box>
         <Box>
@@ -73,7 +75,7 @@ const ViewPlans: React.FC<PlanCardProps> = ({
               fontWeight="bold"
               color="fuschia.500"
             >
-              {"3GB"}
+              {allowanceList[0]?.formatedValue}
             </Box>
           </Box>
           <Title

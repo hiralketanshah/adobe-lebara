@@ -29,9 +29,11 @@ import { MapTo } from "@adobe/aem-react-editable-components";
 import FooterCopyright from "./Footer/FooterCopyright/FooterCopyright";
 import FooterUpperLinks from "./Footer/FooterUpperLinks/FooterUpperLinks";
 import Usp from "./usp/usp";
+import Porting from "./Porting/Porting";
 import Aboutlebara from "./aboutlebara/aboutlebara";
 import Trustpilot from "./Trustpilot/Trustpilot";
 import PlanOffers from "./PlanOffers/PlanOffers";
+import PostpaidPlans from "./PostpaidPlans/PostpaidPlans";
 import ProgressStepLinks from "./ProgressStepLinks/ProgressStepLinks";
 import { CarouselV1IsEmptyFn } from "@adobe/aem-core-components-react-spa/dist/isEmptyFunctions";
 
@@ -174,12 +176,14 @@ const FollowUsEditConfig = {
     return !props.followUsText;
   },
 };
+
 const ProgressStepLinksEditConfig = {
   emptyLabel: "Progress Step Links",
   isEmpty: function (props) {
     return !props.links;
   },
 };
+
 const GetAppEditConfig = {
   emptyLabel: "Get APP",
   isEmpty: function (props) {
@@ -188,7 +192,7 @@ const GetAppEditConfig = {
 };
 
 const FooterUpperLinksConfig = {
-  emptyLabel: "Footer Upper Navigation Links",
+  emptyLabel: "Footer Component",
   isEmpty: function (props) {
     return !props.links;
   },
@@ -196,6 +200,13 @@ const FooterUpperLinksConfig = {
 
 const uspEditConfig = {
   emptyLabel: "usp",
+  isEmpty: function (props) {
+    return !props.title;
+  },
+};
+
+const PortingEditConfig = {
+  emptyLabel: "Porting",
   isEmpty: function (props) {
     return !props.title;
   },
@@ -214,6 +225,14 @@ const trustpilotratingEditConfig = {
     return !props.fileReferenceBackground;
   },
 };
+
+const PostpaidPlansEditConfig = {
+  emptyLabel: "PostpaidPlans",
+  isEmpty: function (props) {
+    return !props.durationTitle;
+  },
+};
+
 MapTo("lebara/components/followus")(FollowUs, FollowUsEditConfig);
 MapTo("lebara/components/getapp")(GetApp, GetAppEditConfig);
 MapTo("lebara/components/text")(LazyTextComponent, TextEditConfig);
@@ -228,10 +247,12 @@ MapTo("lebara/components/footer/footercopyright")(
   FooterCopyright,
   FooterCopyrightConfig
 );
-MapTo("lebara/components/footer/footerupperlinks")(
+MapTo("lebara/components/footer")(
   FooterUpperLinks,
   FooterUpperLinksConfig
 );
 MapTo("lebara/components/usp")(Usp, uspEditConfig);
 MapTo("lebara/components/aboutlebara")(Aboutlebara, aboutlebaraEditConfig);
 MapTo("lebara/components/trustpilotrating")(Trustpilot);
+MapTo("lebara/components/postpaidPlans")(PostpaidPlans, PostpaidPlansEditConfig);
+MapTo("lebara/components/porting")(Porting, PortingEditConfig);
