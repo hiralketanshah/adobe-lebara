@@ -36,6 +36,7 @@ import PlanOffers from "./PlanOffers/PlanOffers";
 import PostpaidPlans from "./PostpaidPlans/PostpaidPlans";
 import ProgressStepLinks from "./ProgressStepLinks/ProgressStepLinks";
 import { CarouselV1IsEmptyFn } from "@adobe/aem-core-components-react-spa/dist/isEmptyFunctions";
+import Banner from "./Banner/Banner";
 
 import { TitleV2IsEmptyFn } from "@adobe/aem-core-components-react-base/dist/isEmptyFunctions";
 
@@ -233,6 +234,13 @@ const PostpaidPlansEditConfig = {
   },
 };
 
+const BannerConfig = {
+  emptyLabel: "Banner Component",
+  isEmpty: function (props) {
+    return !props.title;
+  },
+};
+
 MapTo("lebara/components/followus")(FollowUs, FollowUsEditConfig);
 MapTo("lebara/components/getapp")(GetApp, GetAppEditConfig);
 MapTo("lebara/components/text")(LazyTextComponent, TextEditConfig);
@@ -256,3 +264,4 @@ MapTo("lebara/components/aboutlebara")(Aboutlebara, aboutlebaraEditConfig);
 MapTo("lebara/components/trustpilotrating")(Trustpilot);
 MapTo("lebara/components/postpaidPlans")(PostpaidPlans, PostpaidPlansEditConfig);
 MapTo("lebara/components/porting")(Porting, PortingEditConfig);
+MapTo("lebara/components/banner")(Banner, BannerConfig);
