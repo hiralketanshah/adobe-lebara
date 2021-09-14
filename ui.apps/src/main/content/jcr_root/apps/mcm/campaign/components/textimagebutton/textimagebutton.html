@@ -1,0 +1,52 @@
+<style type="text/css">
+
+    @media only screen and (max-width:600px) {
+        .footer-container  {  flex-direction: column;}
+        }
+  
+   </style> 
+
+<div data-sly-use.textImage="textimagebutton.js"
+     data-sly-use.emptyRenderer="emptytextimage.html"
+     data-sly-call="${emptyRenderer.emptyTextImageTemplate @ textImageButton=textImage}" data-sly-unwrap></div>
+    <div style="width:100%;font-family:roboto, 'helvetica neue', helvetica, arial, sans-serif;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;padding:0;Margin:0">
+    <div style="display: flex;padding-right:40px;padding-left:40px;align-items: center;  Margin: 0; padding-top: 30px; padding-bottom: 30px; background-color: ${properties.bckcolor @ context='styleToken'} ; flex-direction: ${properties.imgposition @ context='styleToken'} ;" >
+            <div>
+                <h3 data-sly-test="${properties.bckcolor !='#d5367a'}" style="color:${properties.bckcolor == '#0094f6' ? '#ffffff' : '#000000' @ context='styleToken'}; Margin: 0; line-height: 24px; font-family: roboto, 'helvetica neue', helvetica, arial, sans-serif; font-size: 20px; font-style: normal; font-weight: bold; ">${properties.headingtext}</h3>
+
+				<h3 data-sly-test="${properties.bckcolor =='#d5367a'}" style=" color :#ffffff; Margin: 0; line-height: 24px; font-family: roboto, 'helvetica neue', helvetica, arial, sans-serif; font-size: 20px; font-style: normal; font-weight: bold;"><u>${properties.headingtext}</u></h3>
+                <div style="color :${properties.bckcolor =='#0094f6' || properties.bckcolor =='#d5367a' ? '#ffffff' : '#000000' @ context='styleToken'};display: flex; align-items: center;">
+					<div data-sly-resource="${'.' @ resourceType='wcm/foundation/components/text', wcmmode='disabled'}" data-sly-unwrap="${wcmmode.disabled || !textImage.isTouch}">  </div>    
+                </div>
+				
+                <button  data-sly-test="${properties.bckcolor != '#d5367a'}" style="color: #FFFFFF;  font-size: 18px; border-style: solid;  border-color: #FF3182;  border-width: 15px 25px;  display: inline-block;  background: #FF3182;  border-radius: 9px;  font-family: roboto, 'helvetica neue', helvetica, arial, sans-serif;  font-weight: normal;  font-style: normal;  line-height: 22px;  width: auto;  text-align: center;"><a href="${properties.buttonUrl}" target="_blank" style="text-decoration :none ;color:white;">
+                ${properties.buttontext}
+                    </a>
+
+            </button>
+
+			 <button  data-sly-test="${properties.bckcolor == '#d5367a'}" style="border-style:solid;border-color:#e69138;background:#f1c232;border-width:0px;display:inline-block;border-radius:30px;width:auto"><a href="${properties.buttonUrl}" target="_blank" style="mso-style-priority:100 !important;text-decoration:none;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;color:#FFFFFF;font-size:11px;border-style:solid;border-color:#f1c232;border-width:10px 20px;display:inline-block;background:#f1c232;border-radius:30px;font-family:arial, 'helvetica neue', helvetica, sans-serif;font-weight:bold;font-style:normal;line-height:13px;width:auto;text-align:center">
+                ${properties.buttontext}
+                    </a>
+
+            </button>
+
+
+            </div>
+
+    
+
+              <div data-sly-test="${properties.show}"
+            data-sly-resource="${'image' @ resourceType='mcm/campaign/components/image', wcmmode='disabled'}" data-sly-unwrap>
+    
+
+            </div>
+        </div>
+    
+    </div>
+     <div data-sly-use.textImage="textimagebutton.js" data-sly-test="${!wcmmode.disabled && !textImage.isTouch}" data-sly-use.clientLib="${'/libs/granite/sightly/templates/clientlib.html'}" data-sly-unwrap>
+        <meta data-sly-call="${clientLib.all @ categories='cq.personalization'}" data-sly-unwrap></meta>
+        <script type="text/javascript">
+            CQ.personalization.variables.Variables.applyToEditComponent("${resource.path @ context='scriptString'}");
+        </script>
+    </div>
