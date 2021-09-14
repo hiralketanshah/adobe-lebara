@@ -34,42 +34,36 @@ public class CrudOperationEpc {
     private static final Logger logger = LoggerFactory.getLogger(CrudOperationEpc.class);
 
     String apiEndPointUrl = StringUtils.EMPTY;
-    String encodingKey = StringUtils.EMPTY;
-    String subscriptionKey = StringUtils.EMPTY;
 
 
     @Activate
     public void init(CFDestinationDomain config) {
         apiEndPointUrl = config.getApiPath();
-        encodingKey = config.getEncodingText();
-        subscriptionKey = config.getSubscriptionKey();
-
     }
 
     public void readEPCAndCreateCF(String cfDamPath, ResourceResolver resourceResolver) {
         // Read data from EPC
         String countryCode = CFUtils.getCountryCodeFromPayloadPath(cfDamPath);
-        String epcJsonString = getJsonFromEPC(apiEndPointUrl, subscriptionKey, encodingKey, countryCode);
+        String epcJsonString = getJsonFromEPC(apiEndPointUrl, countryCode);
         createContentFragment(epcJsonString, cfDamPath, resourceResolver);
     }
 
     /**
      * Read EPC Data and return the epc json data as String.
      */
-    String getJsonFromEPC(String apiEndPointUrl, String subscriptionKey, String encodingKey, String countryCode) {
+    String getJsonFromEPC(String apiEndPointUrl, String countryCode) {
         URL url;
         StringBuilder sb = new StringBuilder();
         try {
             url = new URL(apiEndPointUrl);
-            String jsonInputString = "{\"operationName\":\"Offers\",\"variables\":{\"country\":\"" +
+            String jsonInputString = "{\"query\":\"query {\\r\\n    getCurrentOffers(channel: \\\"App\\\", country: \\\"" +
                     countryCode +
-                    "\"},\"query\":\"query Offers($country: String!) { offers(country: $country) { offerId type billingType name reportingName isActive validityType validity cost channels { name __typename } allowances { allowanceValue account { name unit { abbreviation __typename } __typename } __typename } __typename }}\"}";
+                    "\\\") {\\r\\n          offerId\\r\\n          name\\r\\n          validity\\r\\n          cost\\r\\n          allowances \\r\\n            {\\r\\n              allowanceValue\\r\\n              account {\\r\\n                name\\r\\n                unit {\\r\\n                  abbreviation\\r\\n                }\\r\\n              }\\r\\n            }\\r\\n    }\\r\\n}\",\"variables\":{}}";
             HttpsURLConnection connection = (HttpsURLConnection) url.openConnection();
             connection.setRequestMethod("POST");
             connection.setDoOutput(true);
             connection.setRequestProperty("Content-Type", LebaraConstants.CONTENT_TYPE_JSON);
-            connection.setRequestProperty("Ocp-Apim-Subscription-Key", subscriptionKey);
-            connection.setRequestProperty("Authorization", "Basic " + encodingKey);
+            connection.setRequestProperty("Accept", LebaraConstants.CONTENT_TYPE_JSON);
             try (OutputStream os = connection.getOutputStream()) {
                 byte[] input = jsonInputString.getBytes(StandardCharsets.UTF_8);
                 os.write(input, 0, input.length);
