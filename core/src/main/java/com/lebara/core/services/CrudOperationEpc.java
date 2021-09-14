@@ -10,6 +10,7 @@ import javax.net.ssl.HttpsURLConnection;
 
 import com.adobe.cq.dam.cfm.*;
 import com.lebara.core.dto.*;
+import com.lebara.core.utils.CFUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.api.resource.ResourceResolver;
@@ -47,19 +48,22 @@ public class CrudOperationEpc {
 
     public void readEPCAndCreateCF(String cfDamPath, ResourceResolver resourceResolver) {
         // Read data from EPC
-        String epcJsonString = getJsonFromEPC(apiEndPointUrl, subscriptionKey, encodingKey);
+        String countryCode = CFUtils.getCountryCodeFromPayloadPath(cfDamPath);
+        String epcJsonString = getJsonFromEPC(apiEndPointUrl, subscriptionKey, encodingKey, countryCode);
         createContentFragment(epcJsonString, cfDamPath, resourceResolver);
     }
 
     /**
      * Read EPC Data and return the epc json data as String.
      */
-    String getJsonFromEPC(String apiEndPointUrl, String subscriptionKey, String encodingKey) {
+    String getJsonFromEPC(String apiEndPointUrl, String subscriptionKey, String encodingKey, String countryCode) {
         URL url;
         StringBuilder sb = new StringBuilder();
         try {
             url = new URL(apiEndPointUrl);
-            String jsonInputString = "{\"operationName\":\"Offers\",\"variables\":{\"country\":\"GB\"},\"query\":\"query Offers($country: String!) { offers(country: $country) { offerId type billingType name reportingName isActive validityType validity cost channels { name __typename } allowances { allowanceValue account { name unit { abbreviation __typename } __typename } __typename } __typename }}\"}";
+            String jsonInputString = "{\"operationName\":\"Offers\",\"variables\":{\"country\":\"" +
+                    countryCode +
+                    "\"},\"query\":\"query Offers($country: String!) { offers(country: $country) { offerId type billingType name reportingName isActive validityType validity cost channels { name __typename } allowances { allowanceValue account { name unit { abbreviation __typename } __typename } __typename } __typename }}\"}";
             HttpsURLConnection connection = (HttpsURLConnection) url.openConnection();
             connection.setRequestMethod("POST");
             connection.setDoOutput(true);

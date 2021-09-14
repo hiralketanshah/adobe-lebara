@@ -1,5 +1,6 @@
 package com.lebara.core.workflow;
 
+import com.lebara.core.utils.CFUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.sling.api.resource.ResourceResolver;
 import org.osgi.service.component.annotations.Component;
@@ -28,7 +29,7 @@ public class LebaraOfferCFStep implements WorkflowProcess {
         if (null == resourceResolver) {
             return;
         }
-        if (StringUtils.isNotBlank(payloadPath)) {
+        if (StringUtils.isNotBlank(CFUtils.getCountryCodeFromPayloadPath(payloadPath))) {
             crudOperationEpc.readEPCAndCreateCF(payloadPath, resourceResolver);
             logger.debug("bulk content fragment creation triggered at {}", payloadPath);
         }

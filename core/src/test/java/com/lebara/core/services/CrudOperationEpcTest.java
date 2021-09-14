@@ -5,6 +5,7 @@ import com.google.gson.Gson;
 import com.lebara.core.dto.Offer;
 import com.lebara.core.dto.RootRead;
 import org.apache.commons.io.IOUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.sling.api.resource.ResourceResolver;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.BeforeEach;
@@ -75,4 +76,12 @@ public class CrudOperationEpcTest {
             assert (offer.offerId == crudOperationEpc.writeJsonToCf(offers.get(0), "", resourceResolver));
         }
     }
+
+    @Test
+    public void testConnection() {
+        String json = crudOperationEpc.getJsonFromEPC("https://sit-omni.lebara.com/sit/epc-configuration/", "4cbbb29f41e346bbb52a02c6bafaffef", "ZXBjX3VpX2Rldl90ZWFtOmJVejgkRldZKSNIYzJNP0o=", "GB");
+        //String json = crudOperationEpc.getJsonFromEPC("https://dev-api-aggregator.lebara.com/api-aggregator/", "", "","");
+        assert (json != StringUtils.EMPTY);
+    }
+
 }
