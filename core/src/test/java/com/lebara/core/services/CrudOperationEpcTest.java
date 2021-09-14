@@ -70,17 +70,17 @@ public class CrudOperationEpcTest {
         Mockito.when(resource.adaptTo(FragmentTemplate.class)).thenReturn(fragmentTemplate);
         if (!offers.isEmpty()) {
             Offer offer = offers.get(0);
-            Mockito.when(fragmentTemplate.createFragment(resource, offer.offerId, offer.reportingName)).thenReturn(newFragment);
+            Mockito.when(fragmentTemplate.createFragment(resource,  offer.name, offer.name)).thenReturn(newFragment);
             Mockito.when(newFragment.getElement(anyString())).thenReturn(contentElement);
             Mockito.when(contentElement.getValue()).thenReturn(fragmentData);
-            assert (offer.offerId == crudOperationEpc.writeJsonToCf(offers.get(0), "", resourceResolver));
+            assert (offer.offerId == crudOperationEpc.writeJsonToCf(offers.get(0), "", resourceResolver,""));
         }
     }
 
-    @Test
+    //this code comes handy to get json response from api-aggregator quickly.
+    //@Test
     public void testConnection() {
-        String json = crudOperationEpc.getJsonFromEPC("https://sit-omni.lebara.com/sit/epc-configuration/", "4cbbb29f41e346bbb52a02c6bafaffef", "ZXBjX3VpX2Rldl90ZWFtOmJVejgkRldZKSNIYzJNP0o=", "GB");
-        //String json = crudOperationEpc.getJsonFromEPC("https://dev-api-aggregator.lebara.com/api-aggregator/", "", "","");
+        String json = crudOperationEpc.getJsonFromEPC("https://dev-api-aggregator.lebara.com/api-aggregator/", "GB","getCurrentOffers");
         assert (json != StringUtils.EMPTY);
     }
 

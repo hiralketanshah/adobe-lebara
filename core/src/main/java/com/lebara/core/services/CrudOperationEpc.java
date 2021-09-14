@@ -4,11 +4,16 @@ import java.io.*;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
+import javax.jcr.RepositoryException;
+import javax.jcr.Session;
 import javax.net.ssl.HttpsURLConnection;
 
 import com.adobe.cq.dam.cfm.*;
+import com.day.cq.commons.jcr.JcrUtil;
 import com.lebara.core.dto.*;
 import com.lebara.core.utils.CFUtils;
 import org.apache.commons.lang3.StringUtils;
@@ -44,21 +49,35 @@ public class CrudOperationEpc {
     public void readEPCAndCreateCF(String cfDamPath, ResourceResolver resourceResolver) {
         // Read data from EPC
         String countryCode = CFUtils.getCountryCodeFromPayloadPath(cfDamPath);
-        String epcJsonString = getJsonFromEPC(apiEndPointUrl, countryCode);
-        createContentFragment(epcJsonString, cfDamPath, resourceResolver);
+        String fragmentPathInDam;
+        Map<String, String> offerTypes = new HashMap<>();
+        //getCurrentOffers for prepaid offers
+        offerTypes.put("getCurrentOffers", "prepaid");
+        //getSimOnlyOffers for postpaid offers
+        offerTypes.put("getSimOnlyOffers", "postpaid");
+        //getAddOns for Boltons
+        offerTypes.put("getAddOns", "bolton");
+        for (String offerType : offerTypes.keySet()) {
+            String epcJsonString = getJsonFromEPC(apiEndPointUrl, countryCode, offerType);
+            fragmentPathInDam = cfDamPath + "/" + offerTypes.get(offerType);
+            try {
+                JcrUtil.createPath(fragmentPathInDam, "sling:Folder", resourceResolver.adaptTo(Session.class));
+            } catch (RepositoryException e) {
+                logger.error("errow while creating the folder {} {}", fragmentPathInDam, e);
+            }
+            createContentFragment(epcJsonString, fragmentPathInDam, resourceResolver);
+        }
     }
 
     /**
      * Read EPC Data and return the epc json data as String.
      */
-    String getJsonFromEPC(String apiEndPointUrl, String countryCode) {
+    String getJsonFromEPC(String apiEndPointUrl, String countryCode, String OfferType) {
         URL url;
         StringBuilder sb = new StringBuilder();
         try {
             url = new URL(apiEndPointUrl);
-            String jsonInputString = "{\"query\":\"query {\\r\\n    getCurrentOffers(channel: \\\"App\\\", country: \\\"" +
-                    countryCode +
-                    "\\\") {\\r\\n          offerId\\r\\n          name\\r\\n          validity\\r\\n          cost\\r\\n          allowances \\r\\n            {\\r\\n              allowanceValue\\r\\n              account {\\r\\n                name\\r\\n                unit {\\r\\n                  abbreviation\\r\\n                }\\r\\n              }\\r\\n            }\\r\\n    }\\r\\n}\",\"variables\":{}}";
+            String jsonInputString = "{\"query\":\"query {\\r\\n  offers : " + OfferType + "(channel: \\\"Web\\\", country: \\\"" + countryCode + "\\\") {\\r\\n    offerId\\r\\n    name\\r\\n    validity\\r\\n    cost\\r\\n    allowances {\\r\\n      allowanceValue\\r\\n      account {\\r\\n        name\\r\\n        unit {\\r\\n          abbreviation\\r\\n        }\\r\\n      }\\r\\n    }\\r\\n  }\\r\\n}\",\"variables\":{}}";
             HttpsURLConnection connection = (HttpsURLConnection) url.openConnection();
             connection.setRequestMethod("POST");
             connection.setDoOutput(true);
@@ -90,9 +109,10 @@ public class CrudOperationEpc {
         List<Offer> offers = convertedEpcJsonObject.getData().getOffers();
         logger.debug("total offers returned from epc is {}", offers.size());
         for (Offer offer : offers) {
-            String cfPath = cfDamPath + "/" + offer.offerId;
+            String validOfferName = JcrUtil.createValidName(offer.name);
+            String cfPath = cfDamPath + "/" + validOfferName;
             if (resourceResolver.getResource(cfPath) == null) {
-                String offerId = writeJsonToCf(offer, cfDamPath, resourceResolver);
+                String offerId = writeJsonToCf(offer, cfDamPath, resourceResolver,validOfferName);
                 logger.debug("content fragment created for offer id {}", offerId);
             } else {
                 logger.debug("CF already exist with name {} and offer id {} at {}", offer.name, offer.offerId, cfPath);
@@ -102,7 +122,7 @@ public class CrudOperationEpc {
     }
 
 
-    String writeJsonToCf(Offer offer, String cfDamPath, ResourceResolver resourceResolver) {
+    String writeJsonToCf(Offer offer, String cfDamPath, ResourceResolver resourceResolver, String validOfferName) {
         GsonBuilder builder = new GsonBuilder();
         Gson gson = builder.create();
 
@@ -115,18 +135,12 @@ public class CrudOperationEpc {
             if (fragmentTemplate == null) {
                 return StringUtils.EMPTY;
             }
-            ContentFragment newFragment = fragmentTemplate.createFragment(resourceResolver.getResource(cfDamPath), offer.offerId, offer.reportingName);
+            ContentFragment newFragment = fragmentTemplate.createFragment(resourceResolver.getResource(cfDamPath), validOfferName, offer.name);
 
             newFragment.getElement("offerid").setContent(offer.offerId, LebaraConstants.CONTENT_TYPE_TEXT_PLAIN);
-            newFragment.getElement("type").setContent(offer.type, LebaraConstants.CONTENT_TYPE_TEXT_PLAIN);
-            newFragment.getElement("billingtype").setContent(offer.billingType, LebaraConstants.CONTENT_TYPE_TEXT_PLAIN);
             newFragment.getElement("name").setContent(offer.name, LebaraConstants.CONTENT_TYPE_TEXT_PLAIN);
-            newFragment.getElement("reportingname").setContent(offer.reportingName, LebaraConstants.CONTENT_TYPE_TEXT_PLAIN);
             newFragment.getElement("validity").setContent(String.valueOf(offer.validity), LebaraConstants.CONTENT_TYPE_TEXT_PLAIN);
-            newFragment.getElement("active").setContent(String.valueOf(offer.isActive), LebaraConstants.CONTENT_TYPE_TEXT_PLAIN);
-            newFragment.getElement("validitytype").setContent(offer.validityType, LebaraConstants.CONTENT_TYPE_TEXT_PLAIN);
             newFragment.getElement("cost").setContent(String.valueOf(offer.cost), LebaraConstants.CONTENT_TYPE_TEXT_PLAIN);
-            newFragment.getElement("channels").setContent(gson.toJson(offer.channels), LebaraConstants.CONTENT_TYPE_TEXT_PLAIN);
 
             List<String> cfAllowanceArray = new ArrayList<>();
             for (Allowance allowances : offer.allowances) {
@@ -142,7 +156,6 @@ public class CrudOperationEpc {
                 fd.setValue(cfAllowanceArray.toArray(new String[0]));
                 newFragment.getElement("allowancesList").setValue(fd);
             }
-            newFragment.getElement("typename").setContent(String.valueOf(offer.typeName), LebaraConstants.CONTENT_TYPE_TEXT_PLAIN);
         } catch (ContentFragmentException e) {
             logger.error("ContentFragmentException {}", e);
         }
