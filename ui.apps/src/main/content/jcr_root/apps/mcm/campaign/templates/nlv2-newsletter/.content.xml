@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:description="Lebara Campaign NL V2 newsletter"
+    jcr:primaryType="cq:Template"
+    jcr:title="Lebara Campaign NL V2 newsletter"
+    allowedParents="/libs/cq/personalization/templates/campaign"
+    ranking="{Long}1003">
+    <jcr:content
+        cq:designPath="/libs/settings/wcm/designs/default"
+        cq:targetEngine="cq_campaign"
+        jcr:primaryType="cq:PageContent"
+        sling:resourceType="/apps/mcm/campaign/components/campaign_newsletterpagenl2"
+        acMapping="mapRecipient"
+        acTemplateId="mailAEMContent"
+        acTemplateLabel="Email delivery with AEM content"
+        teaserPageType="newsletter">
+        <par
+            jcr:primaryType="nt:unstructured"
+            sling:resourceType="mcm/campaign/components/parsys"/>
+        <footer
+            jcr:primaryType="nt:unstructured"
+            sling:resourceType="mcm/campaign/components/parsys">
+            <copyright
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="mcm/campaign/components/personalization"
+                text="&lt;p style=&quot;text-align: center;&quot;>Copyright &amp;copy; 2021 Lebara. All rights reserved.&lt;/p>"
+                textIsRich="true"/>
+            <unsubscribe
+                jcr:lastModified="{Date}2013-12-11T18:12:45.047+01:00"
+                jcr:lastModifiedBy="admin"
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="mcm/campaign/components/personalization"
+                text="&lt;p style=&quot;text-align: center;&quot;>&amp;lt;%@ include view=&amp;quot;UnsubscriptionLink&amp;quot; %&amp;gt;&lt;/p>"
+                textIsRich="true"/>
+        </footer>
+    </jcr:content>
+</jcr:root>
