@@ -31,6 +31,7 @@ import FooterUpperLinks from "./Footer/FooterUpperLinks/FooterUpperLinks";
 import Usp from "./usp/usp";
 import Porting from "./Porting/Porting";
 import Aboutlebara from "./aboutlebara/aboutlebara";
+import Carousel from "./Carousel/Carousel";
 import Trustpilot from "./Trustpilot/Trustpilot";
 import PlanOffers from "./PlanOffers/PlanOffers";
 import PostpaidPlans from "./PostpaidPlans/PostpaidPlans";
@@ -220,6 +221,13 @@ const aboutlebaraEditConfig = {
   },
 };
 
+const carouselEditConfig = {
+  emptyLabel: "carousel",
+  isEmpty: function (props) {
+    return !props.items;
+  },
+};
+
 const trustpilotratingEditConfig = {
   emptyLabel: "trustpilotrating",
   isEmpty: function (props) {
@@ -261,6 +269,7 @@ MapTo("lebara/components/footer")(
 );
 MapTo("lebara/components/usp")(Usp, uspEditConfig);
 MapTo("lebara/components/aboutlebara")(Aboutlebara, aboutlebaraEditConfig);
+MapTo("lebara/components/carousel")(Carousel, carouselEditConfig);
 MapTo("lebara/components/trustpilotrating")(Trustpilot);
 MapTo("lebara/components/postpaidPlans")(PostpaidPlans, PostpaidPlansEditConfig);
 MapTo("lebara/components/porting")(Porting, PortingEditConfig);

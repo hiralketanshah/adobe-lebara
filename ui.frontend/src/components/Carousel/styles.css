@@ -1,0 +1,23 @@
+.slick-list ul {
+    list-style-type: none;
+    margin-left: 10px;
+}
+
+.slick-list ul li {
+    margin-bottom: 12px;
+    margin-left: -10px;
+    display: flex;
+    align-items: center;
+}
+
+.slick-list ul li::before {
+    color: transparent;
+    font-size: 1px;
+    content: " ";
+    margin-left: -1.3em;
+    margin-right: 15px;
+    padding: 10px;
+    background-color: white;
+    -webkit-mask-image: url("./tick_in_circle.jpg");
+    -webkit-mask-size: cover;
+}

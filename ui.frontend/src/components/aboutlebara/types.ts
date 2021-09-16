@@ -7,6 +7,8 @@ export interface AboutLebaraProps {
 	linkURL?: string;
 	actionsEnabled?: string;
 	actions?: ButtonActionProps[];
+	isFullWidthButton?: boolean;
+	noBgColor?: boolean;
 }
 
 export interface ButtonActionProps {
@@ -20,4 +22,5 @@ export interface TextBlockProps {
   subHeader?: string;
   buttonText?: string;
   linkURL?: string;
+  imagePath?: string;
 }

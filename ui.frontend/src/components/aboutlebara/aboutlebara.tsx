@@ -1,54 +1,12 @@
 // @ts-nocheck
 import React from "react";
-import { Flex, Box, Image } from "@chakra-ui/react";
-import TextBlock from "./TextBlock";
+import { Box } from "@chakra-ui/react";
+import TextFeature from "./TextFeature";
 import { AboutLebaraProps } from "./types";
-
-const Aboutlebara: React.FC<AboutLebaraProps> = ({
-  fileReferenceBackground,
-  imagePath,
-  pretitle,
-  description,
-  title,
-  linkURL,
-  actionsEnabled,
-  actions,
-}) => {
-  return (
-    <Box>
-      <Flex
-        flexDirection={["column", "row"]}
-        justifyContent="space-between"
-        backgroundRepeat="no-repeat"
-        backgroundPosition={{ base: "60%", md: "unset" }}
-        backgroundSize="cover"
-        backgroundImage={fileReferenceBackground}
-        pt={{ base: "240px", md: "140px" }}
-        pl={{ md: "40px" }}
-      >
-        <Flex w={{ md: "50%" }} justifyContent="center">
-          {imagePath && (
-            <Image src={imagePath} height="100%" alt="About lebara" />
-          )}
-        </Flex>
-        <Flex
-          flexDirection="column"
-          w={{ md: "40%" }}
-          pt={{ md: "140px" }}
-          pr={{ md: "80px" }}
-        >
-          <TextBlock
-            slogan={pretitle}
-            buttonText={actionsEnabled ? actions[0]?.title : ""}
-            header={title}
-            linkURL={actionsEnabled ? actions[0]?.url : "#"}
-            imagePath={imagePath}
-            subHeader={description}
-          />
-        </Flex>
-      </Flex>
-    </Box>
-  );
-};
+const Aboutlebara: React.FC<AboutLebaraProps> = (props) => (
+  <Box {...(!props.noBgColor ? { backgroundColor: '#3D4998' } : {})} py={{ lg: "47px" }} px={{ lg: "70px" }}>
+    <TextFeature {...props} />
+  </Box>
+);
 
 export default Aboutlebara;
