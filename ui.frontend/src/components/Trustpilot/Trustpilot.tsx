@@ -25,7 +25,7 @@ const Trustpilot: React.FC<TrustpilotProps> = () => {
         <a
           href="https://trustpilot.com/review/lebara.com"
           target="_blank"
-          rel="noreferrer"
+          rel="noopener noreferrer"
         >
           {" "}
           Trustpilot{" "}

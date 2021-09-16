@@ -29,7 +29,7 @@ const Footer: React.FC<FooterUpperLinksProps> = ({ footerUpperLinks }) => (
                     textAlign="left"
                     fontSize={14}
                     letterSpacing="0.11em"
-                    color="lebaraChambray.600"
+                    color="lightenPrimary.600"
                     fontWeight="bold"
                     textTransform="uppercase"
                     py="15px"
@@ -39,13 +39,13 @@ const Footer: React.FC<FooterUpperLinksProps> = ({ footerUpperLinks }) => (
                   {isExpanded ? (
                     <FcMinus
                       fontSize="12px"
-                      color="lebaraChambray.600"
+                      color="lightenPrimary.600"
                       fontWeight="bold"
                     />
                   ) : (
                     <GoPlus
                       fontSize="12px"
-                      color="lebaraChambray.600"
+                      color="lightenPrimary.600"
                       fontWeight="bold"
                     />
                   )}

@@ -15,7 +15,7 @@ const TextBlock: React.FC<TextBlockProps> = ({
 }) => (
   <Box
     padding="16px"
-    bg="lebaraChambray.800"
+    bg="lightenPrimary.800"
     bgImage={{ md: desktopBgImage }}
     backgroundRepeat="no-repeat"
     backgroundPosition="100%"

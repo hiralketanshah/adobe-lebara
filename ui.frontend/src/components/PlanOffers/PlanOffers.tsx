@@ -33,7 +33,7 @@ const PlanOffers: React.FC<PlanOffersProps> = ({
     fontSize: "22px",
     letterSpacing: "0.01em",
     fontWeight: "bold",
-    color: "lebaraChambray.600",
+    color: "lightenPrimary.600",
     lineHeight: "1.5",
   };
   const textStyles = {
@@ -61,6 +61,7 @@ const PlanOffers: React.FC<PlanOffersProps> = ({
       ...offer,
       id: index,
     }));
+    // eslint-disable-next-line
   }, []);
   const handleDetailsClick = (id: number, status: boolean) => {
     const result = { ...planCardStatuses };
@@ -83,7 +84,7 @@ const PlanOffers: React.FC<PlanOffersProps> = ({
       px="15px"
     >
       <Text
-        color="lebaraChambray.600"
+        color="lightenPrimary.600"
         as="h2"
         fontWeight="bold"
         fontSize={38}

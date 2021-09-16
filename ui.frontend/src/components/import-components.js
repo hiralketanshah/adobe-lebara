@@ -56,8 +56,8 @@ import {
   ButtonV1IsEmptyFn,
   ImageV2,
   ImageV2IsEmptyFn,
-  LanguageNavigationV1,
-  NavigationV1,
+ // LanguageNavigationV1,
+ // NavigationV1,
   DownloadV1,
   DownloadV1IsEmptyFn,
   SeparatorV1,
@@ -220,12 +220,12 @@ const aboutlebaraEditConfig = {
   },
 };
 
-const trustpilotratingEditConfig = {
-  emptyLabel: "trustpilotrating",
-  isEmpty: function (props) {
-    return !props.fileReferenceBackground;
-  },
-};
+// const trustpilotratingEditConfig = {
+//   emptyLabel: "trustpilotrating",
+//   isEmpty: function (props) {
+//     return !props.fileReferenceBackground;
+//   },
+// };
 
 const PostpaidPlansEditConfig = {
   emptyLabel: "PostpaidPlans",

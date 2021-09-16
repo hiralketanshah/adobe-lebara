@@ -1,21 +1,61 @@
 import React from "react";
-import { Box, Flex, Spacer, Text, Link } from "@chakra-ui/react";
-import { AiOutlineUser, BiSearch, RiShoppingBagLine } from "react-icons/all";
-import { useHistory } from "react-router-dom";
+import {
+  Box,
+  Flex,
+  Spacer,
+  Text,
+  Menu,
+  MenuButton,
+  MenuList,
+  Link as ChakraLink,
+  MenuGroup,
+  MenuItem,
+  Tag,
+  TagLabel,
+} from "@chakra-ui/react";
+import {
+  AiOutlineUser,
+  BiSearch,
+  IoLocationOutline,
+  RiHeadphoneFill,
+  // RiShoppingBagLine,
+} from "react-icons/all";
+import { Link, useHistory } from "react-router-dom";
+// import { useSelector } from "react-redux";
+// import { useLocalStorage } from "@rehooks/local-storage";
+import {
+  HeaderProps,
+  itemList,
+  Childrens,
+  SubChildrens
+} from "./types";
+
 import IconButton from "../IconButton/IconButton";
+import LanguageDropDown from "../LanguageDropDown/LanguageDropDown";
 import Button from "../Button/Button";
 import MiniHeader from "../MiniHeader/MiniHeader";
+// import { ReduxState } from "../../redux/types";import LebaraLogo from "../../assets/images/lebara-logo.svg";
+// import NewSIMOfferCard from "../NewSImOfferCard/NewSImOfferCard";
 
-import { HeaderProps } from "./types";
-
-const Header: React.FC<HeaderProps> = ({
-  items,
-  logoPath,
-  topupCtaText,
-  topupCtaLink,
-  accountLink,
-}) => {
+const Header: React.FC<HeaderProps> = ({ items }) => {
+  // const cartItems = useSelector((state: ReduxState) => state.cart.items);
   const history = useHistory();
+  // const [userToken] = useLocalStorage("userToken");
+
+  // const handleCartClick = () => {
+  //   const hasDataPlan =
+  //     cartItems.filter((t) => !t.isAddon && !t.duration.startsWith("Top-up"))
+  //       .length > 0;
+  //   history.push(
+  //     cartItems.length === 0
+  //       ? "/empty-cart"
+  //       : userToken || !hasDataPlan
+  //       ? userToken
+  //         ? "/order-details"
+  //         : "/login"
+  //       : "/lebara-sim-choice"
+  //   );
+  // };
   return (
     <Flex
       flexDirection="column"
@@ -26,55 +66,177 @@ const Header: React.FC<HeaderProps> = ({
       <Flex display={{ base: "none", md: "block" }}>
         <Flex
           alignItems="center"
+          px={10}
+          justifyContent="flex-end"
+          background="lightenPrimary.200"
+          color="white"
+          display={{ base: "none", md: "flex" }}
+        >
+          <Box>
+            <LanguageDropDown
+              options={[]}
+              selectProps={{
+                height: "2em",
+              }}
+            />
+          </Box>
+          <Flex alignItems="center">
+            <IconButton
+              icon={<IoLocationOutline />}
+              aria-label="Search"
+              variant="ghost"
+              size="sm"
+              colorScheme="dark"
+            />
+            <Text fontSize="12px">Find a store</Text>
+          </Flex>
+          <Flex alignItems="center">
+            <IconButton
+              icon={<RiHeadphoneFill />}
+              aria-label="Search"
+              variant="ghost"
+              size="sm"
+              colorScheme="dark"
+            />
+            <Text fontSize="12px">Help</Text>
+          </Flex>
+        </Flex>
+
+        <Flex
+          alignItems="center"
           px={{ lg: "30px", md: "11px" }}
           py={{ lg: "12px", md: "6px" }}
-          background="lebaraBlue.500"
+          background="lightenPrimary.500"
           color="white"
         >
-          {logoPath && (
-            <Flex alignItems="center">
-              <Link to="/" style={{ textDecoration: "none" }}>
-                <img src={logoPath} alt="Logo" />
-              </Link>
-            </Flex>
-          )}
+          <ChakraLink>
+            <Link to="/">
+              {/* <img src={LebaraLogo} alt="Logo" /> */}
+            </Link>
+          </ChakraLink>
+
           <Flex alignItems="left" ml={{ lg: "30px", md: "15px" }}>
-            <Box px={{ lg: "2px", md: "initial" }}>
-              {items?.map(({ title, url }) => (
-                <Button
-                  colorScheme="teal"
-                  variant="ghost"
-                  _hover={{ color: "white", bg: "lebaraBlue.500" }}
-                  size="sm"
-                  pl="initial"
-                  onClick={() => history.push("/")}
+            {items?.map((menuItem: itemList) => (
+              <Menu>
+                <MenuButton
+                  _active={{
+                    borderBottom: "1px solid white",
+                  }}
                 >
-                  <Link href={url} style={{ textDecoration: "none" }}>
-                    <Text
-                      textTransform="capitalize"
-                      fontSize={{ lg: "14px", md: "12px" }}
-                      lineHeight="20px"
-                      align="left"
-                      color="white"
-                      fontWeight="normal"
+                  <Box px={{ lg: "2px", md: "initial" }}>
+                    <Button
+                      colorScheme="teal"
+                      variant="ghost"
+                      _focus={{ borderBottom: "1px solid white" }}
+                      _hover={{ color: "white", bg: "lightenPrimary.500" }}
+                      size="sm"
+                      pl="initial"
+                      onClick={() => history.push(`"/"${menuItem.title}`)}
+                      isDisabled={menuItem.isDisabled}
                     >
-                      {title}
-                    </Text>
-                  </Link>
-                </Button>
-              ))}
-            </Box>
+                      <Text
+                        textTransform="capitalize"
+                        fontSize={{ lg: "14px", md: "12px" }}
+                        lineHeight="20px"
+                        align="left"
+                        color="white"
+                        fontWeight="normal"
+                      >
+                        {menuItem.title}
+                      </Text>
+                    </Button>
+                  </Box>
+                </MenuButton>
+                <MenuList marginLeft="-135px" marginTop="5px">
+                  <Box
+                    display="flex"
+                    justifyContent="space-between"
+                    width="calc(100vw - 0px)"
+                    padding="45px"
+                  >
+                    <Box
+                      width="75%"
+                      display="flex"
+                      justifyContent="space-between"
+                    >
+                      {menuItem.children?.map(
+                        (subMenuOption: Childrens) => (
+                          <Box>
+                            <MenuGroup
+                              defaultValue="asc"
+                              fontSize={14}
+                              color="primary.500"
+                              fontWeight="bold"
+                              textTransform="uppercase"
+                              marginLeft="12px"
+                              title={subMenuOption.title}
+                            >
+                              <Box>
+                                {subMenuOption.children?.map(
+                                  (menuProps: SubChildrens) => (
+                                    <MenuItem
+                                      isDisabled={menuProps.isDisabled}
+                                      onClick={() =>
+                                        menuProps.path
+                                          ? history.push(menuProps.path)
+                                          : null
+                                      }
+                                    >
+                                      <Text
+                                        fontSize="14px"
+                                        fontWeight="500"
+                                        lineHeight="14.06px"
+                                        color="black"
+                                      >
+                                        {menuProps.title}
+                                      </Text>
+                                      {menuProps.showNewText ? (
+                                        <Tag
+                                          size="md"
+                                          borderRadius="full"
+                                          variant="solid"
+                                          colorScheme="blue"
+                                          marginLeft="20px"
+                                        >
+                                          <TagLabel
+                                            fontSize="14px"
+                                            fontWeight="700"
+                                          >
+                                            New
+                                          </TagLabel>
+                                        </Tag>
+                                      ) : (
+                                        <></>
+                                      )}
+                                    </MenuItem>
+                                  )
+                                )}
+                              </Box>
+                            </MenuGroup>
+                          </Box>
+                        )
+                      )}
+                    </Box>
+                    <Box width="12%">
+                      <></>
+                    </Box>
+                    <Box position="relative">
+                      {/* <NewSIMOfferCard /> */}
+                    </Box>
+                  </Box>
+                </MenuList>
+              </Menu>
+            ))}
           </Flex>
           <Spacer />
-          {topupCtaText && (
-            <Box>
-              <Link href={topupCtaLink} style={{ textDecoration: "none" }}>
-                <Button fontSize={{ lg: "14px", md: "12px" }}>
-                  {topupCtaText}
-                </Button>
-              </Link>
-            </Box>
-          )}
+          <Box>
+            <Button
+              fontSize={{ lg: "14px", md: "12px" }}
+              onClick={() => history.push("/top-up")}
+            >
+              Top Up +
+            </Button>
+          </Box>
           <Spacer />
           <Flex>
             <IconButton
@@ -84,27 +246,44 @@ const Header: React.FC<HeaderProps> = ({
               size="md"
               colorScheme="dark"
             />
-            <Link href={accountLink} style={{ textDecoration: "none" }}>
-              <IconButton
-                colorScheme="dark"
-                icon={<AiOutlineUser />}
-                aria-label="Profile"
-                size="md"
-                variant="ghost"
-              />
-            </Link>
             <IconButton
               colorScheme="dark"
-              icon={<RiShoppingBagLine />}
-              aria-label="Cart"
+              icon={<AiOutlineUser />}
+              aria-label="Profile"
               size="md"
               variant="ghost"
             />
+            {/* <Box pos="relative" onClick={handleCartClick}>
+              <IconButton
+                p="absolute"
+                colorScheme="dark"
+                icon={<RiShoppingBagLine />}
+                aria-label="Cart"
+                variant="ghost"
+              />
+              {cartItems.length > 0 && (
+                <Text
+                  pos="absolute"
+                  bottom="4px"
+                  right="12px"
+                  fontWeight="bold"
+                  color="white"
+                  fontSize="10px"
+                  backgroundColor="secondary.500"
+                  borderRadius="24px"
+                  w="12px"
+                  textAlign="center"
+                >
+                  {cartItems.length}
+                </Text>
+              )}
+            </Box> */}
           </Flex>
         </Flex>
       </Flex>
+
       <Flex display={{ md: "none", sm: "flex" }} mx={{ md: "27px" }}>
-        <MiniHeader logoPath={logoPath} accountLink={accountLink} />
+        <MiniHeader />
       </Flex>
     </Flex>
   );

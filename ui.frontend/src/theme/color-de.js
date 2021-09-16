@@ -55,6 +55,7 @@ export default {
   border: "#8C8FA2",
   bossanova: "#49255E",
   greySilver: "#C8C8C8",
+  buttonTextColor: "#EA4984",
   grey: {
     50: "#F4F4F4",
     100: "#C8C8C8",
@@ -65,5 +66,4 @@ export default {
     600: "#EBEBEB",
     700: "#BCB7B7",
   },
-  bannerBg: "#22407C",
 };

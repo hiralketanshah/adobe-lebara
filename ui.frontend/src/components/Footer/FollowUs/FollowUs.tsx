@@ -11,7 +11,7 @@ const FollowUS: React.FC<FollowUSProps> = ({ followUsText, links }) => {
         <Box pt="50px" mt={{ lg: "initial", md: "2em" }}>
           <Text
             fontSize={14}
-            color={color.lebaraChambray[500]}
+            color={color.lightenPrimary[500]}
             fontWeight="bold"
             textTransform="uppercase"
             pb="10px"

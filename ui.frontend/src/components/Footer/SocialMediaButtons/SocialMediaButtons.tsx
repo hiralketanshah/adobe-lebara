@@ -10,11 +10,11 @@ const SocialMediaButtons: React.FC<SocialMediaButtonsProps> = ({ buttons }) => {
         <a
           href={buttonInfo?.link}
           style={{
-            color: color.lebaraChambray[500],
+            color: color.lightenPrimary[500],
           }}
         >
           <SocialMediaButtonsWrapper h="48px" w="48px">
-            <img src={buttonInfo?.label} height="16" width="16" />
+            <img src={buttonInfo?.label} height="16" width="16" alt="Alt text" />
           </SocialMediaButtonsWrapper>
         </a>
       ))}
