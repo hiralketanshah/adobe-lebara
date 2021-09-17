@@ -16,6 +16,7 @@ import com.adobe.cq.dam.cfm.*;
 import com.day.cq.commons.jcr.JcrUtil;
 import com.lebara.core.dto.*;
 import com.lebara.core.utils.CFUtils;
+import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.api.resource.ResourceResolver;
@@ -57,6 +58,8 @@ public class CrudOperationEpc {
         offerTypes.put("getSimOnlyOffers", "postpaid");
         //getAddOns for Boltons
         offerTypes.put("getAddOns", "bolton");
+        //getAddOns for TopUp
+        offerTypes.put("getTopUps", "topup");
         for (String offerType : offerTypes.keySet()) {
             String epcJsonString = getJsonFromEPC(apiEndPointUrl, countryCode, offerType);
             fragmentPathInDam = cfDamPath + "/" + offerTypes.get(offerType);
@@ -106,16 +109,21 @@ public class CrudOperationEpc {
 
     void createContentFragment(String epcJsonString, String cfDamPath, ResourceResolver resourceResolver) {
         RootRead convertedEpcJsonObject = new Gson().fromJson(epcJsonString, RootRead.class);
+        if (convertedEpcJsonObject == null || convertedEpcJsonObject.getData() == null) {
+            return;
+        }
         List<Offer> offers = convertedEpcJsonObject.getData().getOffers();
-        logger.debug("total offers returned from epc is {}", offers.size());
-        for (Offer offer : offers) {
-            String validOfferName = JcrUtil.createValidName(offer.name);
-            String cfPath = cfDamPath + "/" + validOfferName;
-            if (resourceResolver.getResource(cfPath) == null) {
-                String offerId = writeJsonToCf(offer, cfDamPath, resourceResolver,validOfferName);
-                logger.debug("content fragment created for offer id {}", offerId);
-            } else {
-                logger.debug("CF already exist with name {} and offer id {} at {}", offer.name, offer.offerId, cfPath);
+        if (CollectionUtils.isEmpty(offers)) {
+            logger.debug("total offers returned from epc is {}", offers.size());
+            for (Offer offer : offers) {
+                String validOfferName = JcrUtil.createValidName(offer.name);
+                String cfPath = cfDamPath + "/" + validOfferName;
+                if (resourceResolver.getResource(cfPath) == null) {
+                    String offerId = writeJsonToCf(offer, cfDamPath, resourceResolver, validOfferName);
+                    logger.debug("content fragment created for offer id {}", offerId);
+                } else {
+                    logger.debug("CF already exist with name {} and offer id {} at {}", offer.name, offer.offerId, cfPath);
+                }
             }
         }
 
@@ -140,6 +148,7 @@ public class CrudOperationEpc {
             newFragment.getElement("offerid").setContent(offer.offerId, LebaraConstants.CONTENT_TYPE_TEXT_PLAIN);
             newFragment.getElement("name").setContent(offer.name, LebaraConstants.CONTENT_TYPE_TEXT_PLAIN);
             newFragment.getElement("validity").setContent(String.valueOf(offer.validity), LebaraConstants.CONTENT_TYPE_TEXT_PLAIN);
+            newFragment.getElement("active").setContent(String.valueOf(true), LebaraConstants.CONTENT_TYPE_TEXT_PLAIN);
             newFragment.getElement("cost").setContent(String.valueOf(offer.cost), LebaraConstants.CONTENT_TYPE_TEXT_PLAIN);
 
             List<String> cfAllowanceArray = new ArrayList<>();

@@ -51,18 +51,18 @@ public class CrudOperationEpcTest {
 
     }
 
-    @Test
+    //@Test
     public void testGetJsonFromEPC() {
         assert (json != null);
     }
 
-    @Test
+    //@Test
     public void testcreateContentFragment() {
         Mockito.when(resourceResolver.getResource(anyString())).thenReturn(resource);
         crudOperationEpc.createContentFragment(json, "", resourceResolver);
     }
 
-    @Test
+    //@Test
     public void testcreateContentFragment2() throws ContentFragmentException {
         RootRead convertedEpcJsonObject = new Gson().fromJson(json, RootRead.class);
         List<Offer> offers = convertedEpcJsonObject.getData().getOffers();

@@ -5,6 +5,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import com.day.cq.commons.LanguageUtil;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.api.resource.ResourceResolver;
@@ -22,19 +23,19 @@ public class CFUtils {
 
     public static String getCountryCodeFromPayloadPath(String payloadPath) {
         if (StringUtils.containsIgnoreCase(payloadPath, "markets/de")) {
-            return "DE";
+            return LanguageUtil.getLanguage("DE").getLanguageCode();
         }
         if (StringUtils.containsIgnoreCase(payloadPath, "markets/dk")) {
-            return "DK";
+            return LanguageUtil.getLanguage("DK").getLanguageCode();
         }
         if (StringUtils.containsIgnoreCase(payloadPath, "markets/uk")) {
-            return "GB";
+            return LanguageUtil.getLanguage("GB").getLanguageCode();
         }
         if (StringUtils.containsIgnoreCase(payloadPath, "markets/fr")) {
-            return "FR";
+            return LanguageUtil.getLanguage("FR").getLanguageCode();
         }
         if (StringUtils.containsIgnoreCase(payloadPath, "markets/nl")) {
-            return "NL";
+            return LanguageUtil.getLanguage("NL").getLanguageCode();
         }
         return StringUtils.EMPTY;
     }
