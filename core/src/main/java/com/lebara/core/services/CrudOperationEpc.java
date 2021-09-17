@@ -113,7 +113,7 @@ public class CrudOperationEpc {
             return;
         }
         List<Offer> offers = convertedEpcJsonObject.getData().getOffers();
-        if (CollectionUtils.isEmpty(offers)) {
+        if (!CollectionUtils.isEmpty(offers)) {
             logger.debug("total offers returned from epc is {}", offers.size());
             for (Offer offer : offers) {
                 String validOfferName = JcrUtil.createValidName(offer.name);
@@ -122,7 +122,7 @@ public class CrudOperationEpc {
                     String offerId = writeJsonToCf(offer, cfDamPath, resourceResolver, validOfferName);
                     logger.debug("content fragment created for offer id {}", offerId);
                 } else {
-                    logger.debug("CF already exist with name {} and offer id {} at {}", offer.name, offer.offerId, cfPath);
+                    logger.debug("CF already exist with name {} and offer id {} at {}", validOfferName, offer.offerId, cfPath);
                 }
             }
         }

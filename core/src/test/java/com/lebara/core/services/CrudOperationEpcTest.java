@@ -80,7 +80,7 @@ public class CrudOperationEpcTest {
     //this code comes handy to get json response from api-aggregator quickly.
     //@Test
     public void testConnection() {
-        String json = crudOperationEpc.getJsonFromEPC("https://dev-api-aggregator.lebara.com/api-aggregator/", "GB","getCurrentOffers");
+        String json = crudOperationEpc.getJsonFromEPC("https://dev-api-aggregator.lebara.com/api-aggregator", "GB","getCurrentOffers");
         assert (json != StringUtils.EMPTY);
     }
 
