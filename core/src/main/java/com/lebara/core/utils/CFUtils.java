@@ -20,6 +20,25 @@ public class CFUtils {
         // Private Constructor
     }
 
+    public static String getCountryCodeFromPayloadPath(String payloadPath) {
+        if (StringUtils.containsIgnoreCase(payloadPath, "markets/de")) {
+            return "DE";
+        }
+        if (StringUtils.containsIgnoreCase(payloadPath, "markets/dk")) {
+            return "DK";
+        }
+        if (StringUtils.containsIgnoreCase(payloadPath, "markets/uk")) {
+            return "GB";
+        }
+        if (StringUtils.containsIgnoreCase(payloadPath, "markets/fr")) {
+            return "FR";
+        }
+        if (StringUtils.containsIgnoreCase(payloadPath, "markets/nl")) {
+            return "NL";
+        }
+        return StringUtils.EMPTY;
+    }
+
     public static <T> List<T> convertStringArrayToList(String[] stringArray, Class<T> T) {
         Gson gson = new Gson();
         return Arrays.stream(stringArray).map(al -> gson.fromJson(al, T)).collect(Collectors.toList());
