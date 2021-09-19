@@ -217,7 +217,7 @@ const PortingEditConfig = {
 const aboutlebaraEditConfig = {
   emptyLabel: "aboutlebara",
   isEmpty: function (props) {
-    return !props.fileReferenceBackground;
+    return !props.title;
   },
 };
 

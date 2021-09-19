@@ -12,6 +12,7 @@ const TextBlock: React.FC<TextBlockProps> = ({
   buttonText,
   imagePath,
   linkURL,
+  noBgColor
 }) => (
     <Box
       px={{ base: "20px" }}
@@ -52,7 +53,7 @@ const TextBlock: React.FC<TextBlockProps> = ({
             mt={{ base: "20px", lg: "40px" }}
             color="white"
             maxW={{ lg: "306px" }}
-            variant="outline"
+            variant={noBgColor? "solid" : "outline"}
           >
             {buttonText}
           </Button>

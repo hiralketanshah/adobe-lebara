@@ -1,5 +1,5 @@
 export interface AboutLebaraProps {
-	fileReferenceBackground?: string;
+	backgroundColor?: string;
 	imagePath?: string;
 	pretitle?: string;
 	description?: string;
@@ -23,4 +23,5 @@ export interface TextBlockProps {
   buttonText?: string;
   linkURL?: string;
   imagePath?: string;
+  noBgColor?: boolean;
 }

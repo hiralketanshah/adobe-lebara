@@ -1,23 +1,34 @@
-.slick-list ul {
-    list-style-type: none;
-    margin-left: 10px;
-}
 
-.slick-list ul li {
-    margin-bottom: 12px;
-    margin-left: -10px;
-    display: flex;
-    align-items: center;
-}
+    #about-lebara ul {
+        list-style:none;
+      }
+      #about-lebara ul li:before{
+          content: '';
+          display: inline-block;
+          height: 1em;
+          width: 1em;
+          background-color: white;
+          mask: url('./tick-in-circle.svg') no-repeat center;
+          background-size: contain;
+          background-repeat: no-repeat;
+          line-height: 1em;
+          flex-shrink: 0;
+          vertical-align: middle;
+          margin-right: 10.92px;
+          fill: var(--chakra-colors-white);
+          font-size: 14px;
+        }
+        @media screen and (min-width: 62em){
+        #about-lebara ul li {
+            color: var(--chakra-colors-grey-50);
+            font-size: 24px;
+            margin-bottom: 24px;
+            font-weight: 500;
+        }
+        #about-lebara ul li:before {
+            font-size: 24px;
+            font-weight: 500;
+    }
+    }
 
-.slick-list ul li::before {
-    color: transparent;
-    font-size: 1px;
-    content: " ";
-    margin-left: -1.3em;
-    margin-right: 15px;
-    padding: 10px;
-    background-color: white;
-    -webkit-mask-image: url("./tick_in_circle.jpg");
-    -webkit-mask-size: cover;
-}
+      

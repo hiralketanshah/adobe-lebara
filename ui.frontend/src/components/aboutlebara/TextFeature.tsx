@@ -3,6 +3,7 @@ import { Flex, Spacer } from "@chakra-ui/react";
 import { AboutLebaraProps } from "./types";
 import TextBlock from "./TextBlock";
 import { Image } from "../Image/Image";
+import { FiDivideCircle } from "react-icons/fi";
 
 const TextFeature: React.FC<AboutLebaraProps> = ({
   pretitle,
@@ -11,7 +12,8 @@ const TextFeature: React.FC<AboutLebaraProps> = ({
   actions,
   description,
   isFullWidthButton,
-  imagePath
+  imagePath,
+  noBgColor
 }) => (
     <Flex
       flexDirection={{ base: "column", lg: "row" }}
@@ -35,6 +37,7 @@ const TextFeature: React.FC<AboutLebaraProps> = ({
           slogan={pretitle}
           header={title}
           subHeader={description}
+          noBgColor={noBgColor}
         />
       </Flex>
     </Flex>
