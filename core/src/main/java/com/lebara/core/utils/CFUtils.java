@@ -77,14 +77,33 @@ public class CFUtils {
                 offerFragmentBean.setId(CFUtils.getElementValue(offerFragment, "offerid"));
                 if (offerFragment.getElement("allowancesList") != null) {
                     String[] allowanceArray = CFUtils.getElementArrayValue(offerFragment, "allowancesList");
-                    List<CFAllowance> allowanceList = CFUtils.convertStringArrayToList(allowanceArray,
-                            CFAllowance.class);
+                    List<CFAllowance> allowanceList = CFUtils.convertStringArrayToList(allowanceArray, CFAllowance.class);
+                    for (CFAllowance allowance : allowanceList) {
+                        allowance.setFormatedValue(FormatedValue(allowance.getUnit(), allowance.getValue(), i18n));
+                    }
                     offerFragmentBean.setAllowanceList(allowanceList);
                 }
-
             }
         }
         return offerFragmentBean;
+    }
+
+    private static String FormatedValue(String unit, int value, I18n i18n) {
+        String formattedValue = StringUtils.EMPTY;
+        if (StringUtils.isNotBlank(unit)) {
+            switch (unit) {
+                case "MB":
+                    formattedValue = value >= 1024 ? (value / 1024) + " GB" : value + " MB";
+                    break;
+                case "sms":
+                    formattedValue = value + " SMS";
+                    break;
+                case "mins":
+                    formattedValue = value + " " + i18n.get("Minutes");
+                    break;
+            }
+        }
+        return formattedValue;
     }
 
     public static PlanInfo populatePlans( Resource cfPlanResource) {

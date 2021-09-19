@@ -1,11 +1,10 @@
 package com.lebara.core.dto;
 
-import org.apache.commons.lang3.StringUtils;
-
 public class CFAllowance {
     String name;
     int value;
     String unit;
+    String formatedValue;
 
     public String getName() {
         return name;
@@ -32,20 +31,10 @@ public class CFAllowance {
     }
 
     public String getFormatedValue() {
-        String value = StringUtils.EMPTY;
-        if (StringUtils.isNotBlank(this.unit)) {
-            switch (this.unit) {
-                case "MB":
-                    value = this.value >= 1024 ? (this.value / 1024) + " GB" : this.value + " MB";
-                    break;
-                case "sms":
-                    value = this.value + " SMS";
-                    break;
-                case "mins":
-                    value = this.value + " Minutes";
-                    break;
-            }
-        }
-        return value;
+        return formatedValue;
+    }
+
+    public void setFormatedValue(String formatedValue) {
+        this.formatedValue = formatedValue;
     }
 }
