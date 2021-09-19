@@ -1,5 +1,8 @@
 package com.lebara.core.models;
 
+import com.day.cq.i18n.I18n;
+import com.day.cq.wcm.api.Page;
+import com.day.cq.wcm.api.PageManager;
 import com.lebara.core.dto.*;
 import com.lebara.core.utils.CFUtils;
 
@@ -18,8 +21,11 @@ import com.adobe.cq.export.json.ComponentExporter;
 import com.adobe.cq.export.json.ExporterConstants;
 import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
 
+import javax.annotation.PostConstruct;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
+import java.util.ResourceBundle;
 
 @Model(adaptables = SlingHttpServletRequest.class, adapters = { PostPaidPlansExporter.class,
         ComponentExporter.class }, resourceType = PostPaidPlansExporter.RESOURCE_TYPE, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
@@ -33,6 +39,9 @@ public class PostPaidPlansExporter implements ComponentExporter {
 
     @SlingObject
     private ResourceResolver resourceResolver;
+
+    @SlingObject
+    private SlingHttpServletRequest slingRequest;
 
     @ScriptVariable
     private Resource resource;
@@ -92,6 +101,17 @@ public class PostPaidPlansExporter implements ComponentExporter {
     @ValueMapValue
     private String orderNowTitle;
 
+    private I18n i18n;
+
+    @PostConstruct
+    private void init(){
+        PageManager pageManager = resourceResolver.adaptTo(PageManager.class);
+        Page currentPage = pageManager.getContainingPage(resource);
+        Locale pageLang = currentPage.getLanguage(false);
+        ResourceBundle resourceBundle = slingRequest.getResourceBundle(pageLang);
+        i18n = new I18n(resourceBundle);
+    }
+
     public List<PlanInfo> getPlanDetail() {
         List<PlanInfo> plans = new ArrayList<>();
         if (StringUtils.isNotBlank(cfPathOtherDetails)) {
@@ -116,19 +136,19 @@ public class PostPaidPlansExporter implements ComponentExporter {
     }
 
     public List<OfferFragmentBean> getCallingAndTexting() {
-        return CFUtils.getCfList(calling,resourceResolver);
+        return CFUtils.getCfList(calling,resourceResolver, i18n);
     }
 
     public List<OfferFragmentBean> getExtraOption() {
-        return CFUtils.getCfList(cfPathExtra,resourceResolver);
+        return CFUtils.getCfList(cfPathExtra,resourceResolver, i18n);
     }
 
     public List<OfferFragmentBean> getSpeeds() {
-        return CFUtils.getCfList(cfPathSpeedPlan,resourceResolver);
+        return CFUtils.getCfList(cfPathSpeedPlan,resourceResolver, i18n);
     }
 
     public List<OfferFragmentBean> getBundles() {
-        return CFUtils.getCfList(bundle,resourceResolver);
+        return CFUtils.getCfList(bundle,resourceResolver, i18n);
     }
 
     @Override

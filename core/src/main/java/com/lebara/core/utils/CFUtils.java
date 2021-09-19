@@ -1,13 +1,15 @@
 package com.lebara.core.utils;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
+import com.day.cq.i18n.I18n;
+import com.day.cq.wcm.api.Page;
+import com.day.cq.wcm.api.PageManager;
 import com.lebara.core.dto.CountryInfo;
 import com.lebara.core.dto.PlanInfo;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.api.resource.ResourceResolver;
 
@@ -55,11 +57,11 @@ public class CFUtils {
                 : cf.getElement(elementName).getValue().getValue(String[].class);
     }
 
-    public static List<OfferFragmentBean> getCfDetails(String cfPath, ResourceResolver resourceResolver) {
+    public static List<OfferFragmentBean> getCfDetails(String cfPath, ResourceResolver resourceResolver, I18n i18n) {
         List<OfferFragmentBean> resultList = new ArrayList<>();
         if (StringUtils.isNotBlank(cfPath)) {
             Resource cfResource = resourceResolver.getResource(cfPath);
-            OfferFragmentBean offerFragmentBean=populateOffers(cfResource);
+            OfferFragmentBean offerFragmentBean=populateOffers(cfResource, i18n);
             if(offerFragmentBean !=null) {
             resultList.add(offerFragmentBean);
             }
@@ -67,14 +69,14 @@ public class CFUtils {
         return resultList;
     }
 
-    public static OfferFragmentBean populateOffers( Resource cfResource) {
+    public static OfferFragmentBean populateOffers( Resource cfResource, I18n i18n) {
         OfferFragmentBean offerFragmentBean = null;
         if (null != cfResource) {
             ContentFragment offerFragment = cfResource.adaptTo(ContentFragment.class);
             if (null != offerFragment) {
                 offerFragmentBean = new OfferFragmentBean();
                 offerFragmentBean.setCost(CFUtils.getElementValue(offerFragment, "cost"));
-                offerFragmentBean.setValidity(CFUtils.getElementValue(offerFragment, "validity"));
+                offerFragmentBean.setValidity(CFUtils.getElementValue(offerFragment, "validity") + " " + i18n.get("Days"));
                 offerFragmentBean.setId(CFUtils.getElementValue(offerFragment, "offerid"));
                 if (offerFragment.getElement("allowancesList") != null) {
                     String[] allowanceArray = CFUtils.getElementArrayValue(offerFragment, "allowancesList");
@@ -82,7 +84,7 @@ public class CFUtils {
                             CFAllowance.class);
                     offerFragmentBean.setAllowanceList(allowanceList);
                 }
-                
+
             }
         }
         return offerFragmentBean;
@@ -104,12 +106,12 @@ public class CFUtils {
     }
 
     
-   public static  List<OfferFragmentBean>  getCfList( Resource cfResource,  ResourceResolver resourceResolver) {
+   public static  List<OfferFragmentBean>  getCfList( Resource cfResource,  ResourceResolver resourceResolver, I18n i18n) {
        List<OfferFragmentBean> bundlesList =  new ArrayList<OfferFragmentBean>();
        if (null != cfResource) {
            for (Resource offer : cfResource.getChildren()) {
                String cfPath = AemUtils.getStringProperty(offer, "cfPath");
-               bundlesList.addAll(CFUtils.getCfDetails(cfPath, resourceResolver));
+               bundlesList.addAll(CFUtils.getCfDetails(cfPath, resourceResolver, i18n));
            }
        }
     return bundlesList;

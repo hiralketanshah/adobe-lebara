@@ -36,7 +36,7 @@ public class CFAllowance {
         if (StringUtils.isNotBlank(this.unit)) {
             switch (this.unit) {
                 case "MB":
-                    value = this.value >= 1024 ? (this.value / 1024) + "GB" : this.value + "MB";
+                    value = this.value >= 1024 ? (this.value / 1024) + " GB" : this.value + " MB";
                     break;
                 case "sms":
                     value = this.value + " SMS";

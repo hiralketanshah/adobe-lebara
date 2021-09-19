@@ -27,8 +27,7 @@ public class OfferFragmentBean {
     }
 
     public String getValidity() {
-        // Todo convert this as i18n based
-        return validity + " Days";
+        return validity;
     }
 
     public void setValidity(String validity) {

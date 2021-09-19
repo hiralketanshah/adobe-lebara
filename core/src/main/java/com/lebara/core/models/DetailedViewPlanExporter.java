@@ -2,6 +2,9 @@ package com.lebara.core.models;
 
 import com.adobe.cq.export.json.ComponentExporter;
 import com.adobe.cq.export.json.ExporterConstants;
+import com.day.cq.i18n.I18n;
+import com.day.cq.wcm.api.Page;
+import com.day.cq.wcm.api.PageManager;
 import com.lebara.core.dto.OfferFragmentBean;
 import com.lebara.core.dto.PlanInfo;
 import com.lebara.core.utils.AemUtils;
@@ -18,8 +21,11 @@ import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import javax.annotation.PostConstruct;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
+import java.util.ResourceBundle;
 
 @Model(adaptables = SlingHttpServletRequest.class, adapters = {DetailedViewPlanExporter.class, ComponentExporter.class},
         resourceType = DetailedViewPlanExporter.RESOURCE_TYPE, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
@@ -38,6 +44,9 @@ public class DetailedViewPlanExporter extends ViewPlanExporter implements Compon
 
     @ScriptVariable
     private Resource resource;
+
+    @SlingObject
+    private SlingHttpServletRequest slingRequest;
 
     @ValueMapValue
     private String heading;
@@ -109,6 +118,17 @@ public class DetailedViewPlanExporter extends ViewPlanExporter implements Compon
     	return AemUtils.getLinkWithExtension(ctaBottomLink);
     }
 
+    private I18n i18n;
+
+    @PostConstruct
+    private void init(){
+        PageManager pageManager = resourceResolver.adaptTo(PageManager.class);
+        Page currentPage = pageManager.getContainingPage(resource);
+        Locale pageLang = currentPage.getLanguage(false);
+        ResourceBundle resourceBundle = slingRequest.getResourceBundle(pageLang);
+        i18n = new I18n(resourceBundle);
+    }
+
     @Override
     public List<OfferFragmentBean> getOffers() {
         List<OfferFragmentBean> offers = new ArrayList<>();
@@ -119,7 +139,7 @@ public class DetailedViewPlanExporter extends ViewPlanExporter implements Compon
 
                 String cfPlanPath = AemUtils.getStringProperty(offer, "cfPlanPath");
                 Resource cfPlanResource = resourceResolver.getResource(cfPlanPath);
-                OfferFragmentBean offerFragmentBean = CFUtils.populateOffers(cfResource);
+                OfferFragmentBean offerFragmentBean = CFUtils.populateOffers(cfResource, i18n);
                 if (offerFragmentBean == null) {
                     continue;
                 }
