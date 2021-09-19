@@ -5,6 +5,8 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import com.lebara.core.dto.CountryInfo;
+import com.lebara.core.dto.PlanInfo;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.api.resource.ResourceResolver;
@@ -85,6 +87,22 @@ public class CFUtils {
         }
         return offerFragmentBean;
     }
+
+    public static PlanInfo populatePlans( Resource cfPlanResource) {
+        PlanInfo planInfo = null;
+        if (null != cfPlanResource) {
+            ContentFragment cfPlanFragment = cfPlanResource.adaptTo(ContentFragment.class);
+            if (null != cfPlanFragment) {
+                planInfo = new PlanInfo();
+                planInfo.setTitle(cfPlanFragment.getElement("title").getContent());
+                planInfo.setCountryTitle(cfPlanFragment.getElement("countryTitle").getContent());
+                planInfo.setListPlanItem(CFUtils.getElementArrayValue(cfPlanFragment, "listPlanItem"));
+                planInfo.setCountryList(CFUtils.convertStringArrayToList(CFUtils.getElementArrayValue( cfPlanFragment, "countryList"), CountryInfo.class));
+            }
+        }
+        return planInfo;
+    }
+
     
    public static  List<OfferFragmentBean>  getCfList( Resource cfResource,  ResourceResolver resourceResolver) {
        List<OfferFragmentBean> bundlesList =  new ArrayList<OfferFragmentBean>();

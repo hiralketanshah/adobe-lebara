@@ -1,8 +1,6 @@
 package com.lebara.core.models;
 
-import com.adobe.cq.dam.cfm.ContentFragment;
 import com.lebara.core.dto.*;
-import com.lebara.core.utils.AemUtils;
 import com.lebara.core.utils.CFUtils;
 
 import org.apache.commons.lang3.StringUtils;
@@ -97,26 +95,13 @@ public class PostPaidPlansExporter implements ComponentExporter {
     public List<PlanInfo> getPlanDetail() {
         List<PlanInfo> plans = new ArrayList<>();
         if (StringUtils.isNotBlank(cfPathOtherDetails)) {
-                Resource cfPathrResource = resourceResolver.getResource(cfPathOtherDetails);
-                populateOffer(plans, cfPathrResource);
-        }
-       
-        return plans;
-    }
-
-    private void populateOffer(List<PlanInfo> plans, Resource cfPlanResource) {
-        if (null != cfPlanResource) {
-            ContentFragment cfPlanFragment = cfPlanResource.adaptTo(ContentFragment.class);
-            if (null != cfPlanFragment) {
-                PlanInfo planInfo = new PlanInfo();
-                planInfo.setTitle(cfPlanFragment.getElement("title").getContent());
-                planInfo.setCountryTitle(cfPlanFragment.getElement("countryTitle").getContent());
-                planInfo.setListPlanItem(CFUtils.getElementArrayValue(cfPlanFragment, "listPlanItem"));
-                planInfo.setCountryList(CFUtils.convertStringArrayToList(
-                        CFUtils.getElementArrayValue(cfPlanFragment, "countryList"), CountryInfo.class));
+            PlanInfo planInfo = CFUtils.populatePlans(resourceResolver.getResource(cfPathOtherDetails));
+            if (planInfo != null) {
                 plans.add(planInfo);
             }
         }
+
+        return plans;
     }
 
     public List<Duration> getDurationDetails() {

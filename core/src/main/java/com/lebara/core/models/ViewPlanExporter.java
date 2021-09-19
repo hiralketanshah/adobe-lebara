@@ -64,28 +64,13 @@ public class ViewPlanExporter implements ComponentExporter {
             for (Resource offer : phases.getChildren()) {
                 String cfPath = AemUtils.getStringProperty(offer, "cfPath");
                 Resource cfResource = resourceResolver.getResource(cfPath);
-                populateOffer(offers, cfResource);
+                OfferFragmentBean offerFragmentBean = CFUtils.populateOffers(cfResource);
+                if(offerFragmentBean != null){
+                    offers.add(offerFragmentBean);
+                }
             }
         }
         return offers;
-    }
-
-    private void populateOffer(List<OfferFragmentBean> offers, Resource cfResource) {
-        if (null != cfResource) {
-            ContentFragment offerFragment = cfResource.adaptTo(ContentFragment.class);
-            if (null != offerFragment) {
-                OfferFragmentBean offerFragmentBean = new OfferFragmentBean();
-                offerFragmentBean.setId(CFUtils.getElementValue(offerFragment, "offerid"));
-                offerFragmentBean.setCost(CFUtils.getElementValue(offerFragment, "cost"));
-                offerFragmentBean.setValidity(CFUtils.getElementValue(offerFragment, "validity"));
-                if(offerFragment.getElement("allowancesList") != null) {
-                    String[] allowanceArray = CFUtils.getElementArrayValue(offerFragment, "allowancesList");
-                    List<CFAllowance> allowanceList = CFUtils.convertStringArrayToList(allowanceArray, CFAllowance.class);
-                    offerFragmentBean.setAllowanceList(allowanceList);
-                }
-                offers.add(offerFragmentBean);
-            }
-        }
     }
 
     @Override
