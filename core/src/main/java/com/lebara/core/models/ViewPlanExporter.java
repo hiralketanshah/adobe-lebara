@@ -61,14 +61,7 @@ public class ViewPlanExporter implements ComponentExporter {
     public List<OfferFragmentBean> getOffers() {
         List<OfferFragmentBean> offers = new ArrayList<>();
         if (null != phases) {
-            for (Resource offer : phases.getChildren()) {
-                String cfPath = AemUtils.getStringProperty(offer, "cfPath");
-                Resource cfResource = resourceResolver.getResource(cfPath);
-                OfferFragmentBean offerFragmentBean = CFUtils.populateOffers(cfResource);
-                if(offerFragmentBean != null){
-                    offers.add(offerFragmentBean);
-                }
-            }
+            offers = CFUtils.getCfList(phases, resourceResolver);
         }
         return offers;
     }
