@@ -4,12 +4,9 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 import com.day.cq.i18n.I18n;
-import com.day.cq.wcm.api.Page;
-import com.day.cq.wcm.api.PageManager;
 import com.lebara.core.dto.CountryInfo;
 import com.lebara.core.dto.PlanInfo;
 import org.apache.commons.lang3.StringUtils;
-import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.api.resource.ResourceResolver;
 
