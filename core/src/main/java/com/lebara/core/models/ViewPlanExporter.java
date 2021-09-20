@@ -6,6 +6,7 @@ import com.day.cq.i18n.I18n;
 import com.day.cq.wcm.api.Page;
 import com.day.cq.wcm.api.PageManager;
 import com.lebara.core.dto.OfferFragmentBean;
+import com.lebara.core.utils.AemUtils;
 import com.lebara.core.utils.CFUtils;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;
@@ -55,12 +56,8 @@ public class ViewPlanExporter implements ComponentExporter {
     private I18n i18n;
 
     @PostConstruct
-    private void init(){
-        PageManager pageManager = resourceResolver.adaptTo(PageManager.class);
-        Page currentPage = pageManager.getContainingPage(resource);
-        Locale pageLang = currentPage.getLanguage(false);
-        ResourceBundle resourceBundle = slingRequest.getResourceBundle(pageLang);
-        i18n = new I18n(resourceBundle);
+    private void init() {
+        i18n = AemUtils.geti18n(resourceResolver, resource, slingRequest);
     }
 
     public String getButtonLabel() {

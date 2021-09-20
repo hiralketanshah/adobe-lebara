@@ -73,7 +73,7 @@ public class CFUtils {
             if (null != offerFragment) {
                 offerFragmentBean = new OfferFragmentBean();
                 offerFragmentBean.setCost(CFUtils.getElementValue(offerFragment, "cost"));
-                offerFragmentBean.setValidity(CFUtils.getElementValue(offerFragment, "validity") + " " + i18n.get("Days"));
+                offerFragmentBean.setValidity(CFUtils.getElementValue(offerFragment, "validity") + " " + (i18n == null ? "Days" : i18n.get("Days")));
                 offerFragmentBean.setId(CFUtils.getElementValue(offerFragment, "offerid"));
                 if (offerFragment.getElement("allowancesList") != null) {
                     String[] allowanceArray = CFUtils.getElementArrayValue(offerFragment, "allowancesList");
@@ -99,7 +99,7 @@ public class CFUtils {
                     formattedValue = value + " SMS";
                     break;
                 case "mins":
-                    formattedValue = value + " " + i18n.get("Minutes");
+                    formattedValue = value + " " + (i18n == null ? "Minutes" : i18n.get("Minutes"));
                     break;
             }
         }

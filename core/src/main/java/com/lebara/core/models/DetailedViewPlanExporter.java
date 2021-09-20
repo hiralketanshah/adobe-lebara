@@ -121,12 +121,8 @@ public class DetailedViewPlanExporter extends ViewPlanExporter implements Compon
     private I18n i18n;
 
     @PostConstruct
-    private void init(){
-        PageManager pageManager = resourceResolver.adaptTo(PageManager.class);
-        Page currentPage = pageManager.getContainingPage(resource);
-        Locale pageLang = currentPage.getLanguage(false);
-        ResourceBundle resourceBundle = slingRequest.getResourceBundle(pageLang);
-        i18n = new I18n(resourceBundle);
+    private void init() {
+        i18n = AemUtils.geti18n(resourceResolver, resource, slingRequest);
     }
 
     @Override
