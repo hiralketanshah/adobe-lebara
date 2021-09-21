@@ -10,6 +10,7 @@ public class OfferFragmentBean {
     private String cost;
     private String validity;
     private PlanInfo planInfo;
+    private List<String> additionalOffers;
     private List<CFAllowance> allowanceList;
 
     public String getId() {
@@ -55,4 +56,11 @@ public class OfferFragmentBean {
         this.allowanceList = allowanceList;
     }
 
+    public List<String> getAdditionalOffers() {
+        return additionalOffers;
+    }
+
+    public void setAdditionalOffers(List<String> additionalOffers) {
+        this.additionalOffers = additionalOffers;
+    }
 }

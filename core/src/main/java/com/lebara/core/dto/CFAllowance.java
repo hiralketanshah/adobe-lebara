@@ -2,7 +2,7 @@ package com.lebara.core.dto;
 
 public class CFAllowance {
     String name;
-    int value;
+    String value;
     String unit;
     String formatedValue;
 
@@ -14,11 +14,11 @@ public class CFAllowance {
         this.name = name;
     }
 
-    public int getValue() {
+    public String getValue() {
         return value;
     }
 
-    public void setValue(int value) {
+    public void setValue(String value) {
         this.value = value;
     }
 

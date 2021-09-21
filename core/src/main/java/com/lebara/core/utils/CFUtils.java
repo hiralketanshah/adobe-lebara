@@ -6,6 +6,8 @@ import java.util.stream.Collectors;
 import com.day.cq.i18n.I18n;
 import com.lebara.core.dto.CountryInfo;
 import com.lebara.core.dto.PlanInfo;
+import org.apache.commons.collections.ListUtils;
+import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.api.resource.ResourceResolver;
@@ -41,6 +43,9 @@ public class CFUtils {
     }
 
     public static <T> List<T> convertStringArrayToList(String[] stringArray, Class<T> T) {
+        if (stringArray == null || ArrayUtils.isEmpty(stringArray)) {
+            return ListUtils.EMPTY_LIST;
+        }
         Gson gson = new Gson();
         return Arrays.stream(stringArray).map(al -> gson.fromJson(al, T)).collect(Collectors.toList());
     }
@@ -50,7 +55,7 @@ public class CFUtils {
     }
 
     public static String[] getElementArrayValue(ContentFragment cf, String elementName) {
-        return cf.getElement(elementName) == null ? new String[0]
+        return StringUtils.isBlank(cf.getElement(elementName).getContent()) ? new String[0]
                 : cf.getElement(elementName).getValue().getValue(String[].class);
     }
 
@@ -75,6 +80,9 @@ public class CFUtils {
                 offerFragmentBean.setCost(CFUtils.getElementValue(offerFragment, "cost"));
                 offerFragmentBean.setValidity(CFUtils.getElementValue(offerFragment, "validity") + " " + (i18n == null ? "Days" : i18n.get("Days")));
                 offerFragmentBean.setId(CFUtils.getElementValue(offerFragment, "offerid"));
+                if (offerFragment.getElement("additionalOffers") != null) {
+                    offerFragmentBean.setAdditionalOffers(Arrays.asList(CFUtils.getElementArrayValue(offerFragment, "additionalOffers")));
+                }
                 if (offerFragment.getElement("allowancesList") != null) {
                     String[] allowanceArray = CFUtils.getElementArrayValue(offerFragment, "allowancesList");
                     List<CFAllowance> allowanceList = CFUtils.convertStringArrayToList(allowanceArray, CFAllowance.class);
@@ -88,11 +96,12 @@ public class CFUtils {
         return offerFragmentBean;
     }
 
-    private static String formatedValue(String unit, int value, I18n i18n) {
+    private static String formatedValue(String unit, String val, I18n i18n) {
         String formattedValue = StringUtils.EMPTY;
-        if (StringUtils.isNotBlank(unit)) {
-            switch (unit) {
-                case "MB":
+        if (StringUtils.isNotBlank(unit) && StringUtils.isNumeric(val)) {
+            int value = Integer.parseInt(val);
+            switch (unit.toLowerCase()) {
+                case "mb":
                     formattedValue = value >= 1024 ? (value / 1024) + " GB" : value + " MB";
                     break;
                 case "sms":
