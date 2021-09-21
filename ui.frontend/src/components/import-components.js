@@ -34,9 +34,9 @@ import Aboutlebara from "./aboutlebara/aboutlebara";
 import Trustpilot from "./Trustpilot/Trustpilot";
 import PlanOffers from "./PlanOffers/PlanOffers";
 import PostpaidPlans from "./PostpaidPlans/PostpaidPlans";
-import ProgressStepLinks from "./ProgressStepLinks/ProgressStepLinks";
 import { CarouselV1IsEmptyFn } from "@adobe/aem-core-components-react-spa/dist/isEmptyFunctions";
 import Banner from "./Banner/Banner";
+import ProgressStep from "./ProgressStep/ProgressStep";
 
 import { TitleV2IsEmptyFn } from "@adobe/aem-core-components-react-base/dist/isEmptyFunctions";
 
@@ -181,7 +181,7 @@ const FollowUsEditConfig = {
 const ProgressStepLinksEditConfig = {
   emptyLabel: "Progress Step Links",
   isEmpty: function (props) {
-    return !props.links;
+    return !props.pageLinks?.length;
   },
 };
 
@@ -247,7 +247,10 @@ MapTo("lebara/components/text")(LazyTextComponent, TextEditConfig);
 MapTo("lebara/components/teaser")(Teaser, TeaserEditConfig);
 MapTo("lebara/components/viewplans")(ViewPlans, ViewPlansConfig);
 MapTo("lebara/components/detailedviewplans")(PlanOffers, detailViewPlansConfig);
-MapTo("lebara/components/progressstep")(ProgressStepLinks, ProgressStepLinksEditConfig);
+MapTo("lebara/components/progressstep")(
+  ProgressStep,
+  ProgressStepLinksEditConfig
+);
 MapTo("lebara/components/header/languagenavigation")(LanguageHeader);
 MapTo("lebara/components/header/headernavigation")(Header);
 MapTo("lebara/components/title")(LebaraText, TitleEditConfig);
@@ -255,13 +258,13 @@ MapTo("lebara/components/footer/footercopyright")(
   FooterCopyright,
   FooterCopyrightConfig
 );
-MapTo("lebara/components/footer")(
-  FooterUpperLinks,
-  FooterUpperLinksConfig
-);
+MapTo("lebara/components/footer")(FooterUpperLinks, FooterUpperLinksConfig);
 MapTo("lebara/components/usp")(Usp, uspEditConfig);
 MapTo("lebara/components/aboutlebara")(Aboutlebara, aboutlebaraEditConfig);
 MapTo("lebara/components/trustpilotrating")(Trustpilot);
-MapTo("lebara/components/postpaidPlans")(PostpaidPlans, PostpaidPlansEditConfig);
+MapTo("lebara/components/postpaidPlans")(
+  PostpaidPlans,
+  PostpaidPlansEditConfig
+);
 MapTo("lebara/components/porting")(Porting, PortingEditConfig);
 MapTo("lebara/components/banner")(Banner, BannerConfig);
