@@ -1,10 +1,10 @@
 package com.lebara.core.models;
 
-import com.adobe.cq.dam.cfm.ContentFragment;
 import com.adobe.cq.export.json.ComponentExporter;
 import com.adobe.cq.export.json.ExporterConstants;
-import com.lebara.core.dto.CFAllowance;
-import com.lebara.core.dto.CountryInfo;
+import com.day.cq.i18n.I18n;
+import com.day.cq.wcm.api.Page;
+import com.day.cq.wcm.api.PageManager;
 import com.lebara.core.dto.OfferFragmentBean;
 import com.lebara.core.dto.PlanInfo;
 import com.lebara.core.utils.AemUtils;
@@ -21,8 +21,11 @@ import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import javax.annotation.PostConstruct;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
+import java.util.ResourceBundle;
 
 @Model(adaptables = SlingHttpServletRequest.class, adapters = {DetailedViewPlanExporter.class, ComponentExporter.class},
         resourceType = DetailedViewPlanExporter.RESOURCE_TYPE, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
@@ -41,6 +44,9 @@ public class DetailedViewPlanExporter extends ViewPlanExporter implements Compon
 
     @ScriptVariable
     private Resource resource;
+
+    @SlingObject
+    private SlingHttpServletRequest slingRequest;
 
     @ValueMapValue
     private String heading;
@@ -112,6 +118,13 @@ public class DetailedViewPlanExporter extends ViewPlanExporter implements Compon
     	return AemUtils.getLinkWithExtension(ctaBottomLink);
     }
 
+    private I18n i18n;
+
+    @PostConstruct
+    private void init() {
+        i18n = AemUtils.geti18n(resourceResolver, resource, slingRequest);
+    }
+
     @Override
     public List<OfferFragmentBean> getOffers() {
         List<OfferFragmentBean> offers = new ArrayList<>();
@@ -122,42 +135,18 @@ public class DetailedViewPlanExporter extends ViewPlanExporter implements Compon
 
                 String cfPlanPath = AemUtils.getStringProperty(offer, "cfPlanPath");
                 Resource cfPlanResource = resourceResolver.getResource(cfPlanPath);
-                populateOffer(offers, cfResource, cfPlanResource);
-            }
-        }
-        return offers;
-    }
-
-    private void populateOffer(List<OfferFragmentBean> offers, Resource cfResource, Resource cfPlanResource) {
-        if (null != cfResource) {
-            ContentFragment offerFragment = cfResource.adaptTo(ContentFragment.class);
-            if (null != offerFragment) {
-                OfferFragmentBean offerFragmentBean = new OfferFragmentBean();
-                offerFragmentBean.setId(CFUtils.getElementValue(offerFragment, "offerid"));
-                offerFragmentBean.setCost(CFUtils.getElementValue(offerFragment, "cost"));
-                offerFragmentBean.setValidity(CFUtils.getElementValue(offerFragment, "validity"));
-                offerFragmentBean.setId(CFUtils.getElementValue(offerFragment, "offerid"));
-
-                if(offerFragment.getElement("allowancesList") != null) {
-                    String[] allowanceArray = CFUtils.getElementArrayValue(offerFragment, "allowancesList");
-                    List<CFAllowance> allowanceList = CFUtils.convertStringArrayToList(allowanceArray, CFAllowance.class);
-                    offerFragmentBean.setAllowanceList(allowanceList);
+                OfferFragmentBean offerFragmentBean = CFUtils.populateOffers(cfResource, i18n);
+                if (offerFragmentBean == null) {
+                    continue;
                 }
-
-                if (null != cfPlanResource) {
-                    ContentFragment cfPlanFragment = cfPlanResource.adaptTo(ContentFragment.class);
-                    if (null != cfPlanFragment) {
-                        PlanInfo planInfo = new PlanInfo();
-                        planInfo.setTitle(cfPlanFragment.getElement("title").getContent());
-                        planInfo.setCountryTitle(cfPlanFragment.getElement("countryTitle").getContent());
-                        planInfo.setListPlanItem(CFUtils.getElementArrayValue(cfPlanFragment, "listPlanItem"));
-                        planInfo.setCountryList(CFUtils.convertStringArrayToList(CFUtils.getElementArrayValue( cfPlanFragment, "countryList"), CountryInfo.class));
-                        offerFragmentBean.setPlanInfo(planInfo);
-                    }
+                PlanInfo planInfo = CFUtils.populatePlans(cfPlanResource);
+                if (planInfo != null) {
+                    offerFragmentBean.setPlanInfo(planInfo);
                 }
                 offers.add(offerFragmentBean);
             }
         }
+        return offers;
     }
 
     @Override

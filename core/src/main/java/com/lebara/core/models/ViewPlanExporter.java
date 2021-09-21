@@ -1,9 +1,10 @@
 package com.lebara.core.models;
 
-import com.adobe.cq.dam.cfm.ContentFragment;
 import com.adobe.cq.export.json.ComponentExporter;
 import com.adobe.cq.export.json.ExporterConstants;
-import com.lebara.core.dto.CFAllowance;
+import com.day.cq.i18n.I18n;
+import com.day.cq.wcm.api.Page;
+import com.day.cq.wcm.api.PageManager;
 import com.lebara.core.dto.OfferFragmentBean;
 import com.lebara.core.utils.AemUtils;
 import com.lebara.core.utils.CFUtils;
@@ -15,8 +16,11 @@ import org.apache.sling.models.annotations.Exporter;
 import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.injectorspecific.*;
 
+import javax.annotation.PostConstruct;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
+import java.util.ResourceBundle;
 
 @Model(adaptables = SlingHttpServletRequest.class, adapters = {ViewPlanExporter.class, ComponentExporter.class},
         resourceType = ViewPlanExporter.RESOURCE_TYPE, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
@@ -34,6 +38,9 @@ public class ViewPlanExporter implements ComponentExporter {
     @ScriptVariable
     private Resource resource;
 
+    @SlingObject
+    private SlingHttpServletRequest slingRequest;
+
     @ChildResource
     protected Resource phases;
 
@@ -45,6 +52,13 @@ public class ViewPlanExporter implements ComponentExporter {
 
     @ValueMapValue
     private String unlimitedTextField;
+
+    private I18n i18n;
+
+    @PostConstruct
+    private void init() {
+        i18n = AemUtils.geti18n(resourceResolver, resource, slingRequest);
+    }
 
     public String getButtonLabel() {
         return buttonLabel;
@@ -61,31 +75,9 @@ public class ViewPlanExporter implements ComponentExporter {
     public List<OfferFragmentBean> getOffers() {
         List<OfferFragmentBean> offers = new ArrayList<>();
         if (null != phases) {
-            for (Resource offer : phases.getChildren()) {
-                String cfPath = AemUtils.getStringProperty(offer, "cfPath");
-                Resource cfResource = resourceResolver.getResource(cfPath);
-                populateOffer(offers, cfResource);
-            }
+            offers = CFUtils.getCfList(phases, resourceResolver, i18n);
         }
         return offers;
-    }
-
-    private void populateOffer(List<OfferFragmentBean> offers, Resource cfResource) {
-        if (null != cfResource) {
-            ContentFragment offerFragment = cfResource.adaptTo(ContentFragment.class);
-            if (null != offerFragment) {
-                OfferFragmentBean offerFragmentBean = new OfferFragmentBean();
-                offerFragmentBean.setId(CFUtils.getElementValue(offerFragment, "offerid"));
-                offerFragmentBean.setCost(CFUtils.getElementValue(offerFragment, "cost"));
-                offerFragmentBean.setValidity(CFUtils.getElementValue(offerFragment, "validity"));
-                if(offerFragment.getElement("allowancesList") != null) {
-                    String[] allowanceArray = CFUtils.getElementArrayValue(offerFragment, "allowancesList");
-                    List<CFAllowance> allowanceList = CFUtils.convertStringArrayToList(allowanceArray, CFAllowance.class);
-                    offerFragmentBean.setAllowanceList(allowanceList);
-                }
-                offers.add(offerFragmentBean);
-            }
-        }
     }
 
     @Override

@@ -1,6 +1,8 @@
 package com.lebara.core.models;
 
-import com.adobe.cq.dam.cfm.ContentFragment;
+import com.day.cq.i18n.I18n;
+import com.day.cq.wcm.api.Page;
+import com.day.cq.wcm.api.PageManager;
 import com.lebara.core.dto.*;
 import com.lebara.core.utils.AemUtils;
 import com.lebara.core.utils.CFUtils;
@@ -20,8 +22,11 @@ import com.adobe.cq.export.json.ComponentExporter;
 import com.adobe.cq.export.json.ExporterConstants;
 import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
 
+import javax.annotation.PostConstruct;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
+import java.util.ResourceBundle;
 
 @Model(adaptables = SlingHttpServletRequest.class, adapters = { PostPaidPlansExporter.class,
         ComponentExporter.class }, resourceType = PostPaidPlansExporter.RESOURCE_TYPE, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
@@ -35,6 +40,9 @@ public class PostPaidPlansExporter implements ComponentExporter {
 
     @SlingObject
     private ResourceResolver resourceResolver;
+
+    @SlingObject
+    private SlingHttpServletRequest slingRequest;
 
     @ScriptVariable
     private Resource resource;
@@ -94,29 +102,23 @@ public class PostPaidPlansExporter implements ComponentExporter {
     @ValueMapValue
     private String orderNowTitle;
 
+    private I18n i18n;
+
+    @PostConstruct
+    private void init() {
+        i18n = AemUtils.geti18n(resourceResolver, resource, slingRequest);
+    }
+
     public List<PlanInfo> getPlanDetail() {
         List<PlanInfo> plans = new ArrayList<>();
         if (StringUtils.isNotBlank(cfPathOtherDetails)) {
-                Resource cfPathrResource = resourceResolver.getResource(cfPathOtherDetails);
-                populateOffer(plans, cfPathrResource);
-        }
-       
-        return plans;
-    }
-
-    private void populateOffer(List<PlanInfo> plans, Resource cfPlanResource) {
-        if (null != cfPlanResource) {
-            ContentFragment cfPlanFragment = cfPlanResource.adaptTo(ContentFragment.class);
-            if (null != cfPlanFragment) {
-                PlanInfo planInfo = new PlanInfo();
-                planInfo.setTitle(cfPlanFragment.getElement("title").getContent());
-                planInfo.setCountryTitle(cfPlanFragment.getElement("countryTitle").getContent());
-                planInfo.setListPlanItem(CFUtils.getElementArrayValue(cfPlanFragment, "listPlanItem"));
-                planInfo.setCountryList(CFUtils.convertStringArrayToList(
-                        CFUtils.getElementArrayValue(cfPlanFragment, "countryList"), CountryInfo.class));
+            PlanInfo planInfo = CFUtils.populatePlans(resourceResolver.getResource(cfPathOtherDetails));
+            if (planInfo != null) {
                 plans.add(planInfo);
             }
         }
+
+        return plans;
     }
 
     public List<Duration> getDurationDetails() {
@@ -131,19 +133,19 @@ public class PostPaidPlansExporter implements ComponentExporter {
     }
 
     public List<OfferFragmentBean> getCallingAndTexting() {
-        return CFUtils.getCfList(calling,resourceResolver);
+        return CFUtils.getCfList(calling,resourceResolver, i18n);
     }
 
     public List<OfferFragmentBean> getExtraOption() {
-        return CFUtils.getCfList(cfPathExtra,resourceResolver);
+        return CFUtils.getCfList(cfPathExtra,resourceResolver, i18n);
     }
 
     public List<OfferFragmentBean> getSpeeds() {
-        return CFUtils.getCfList(cfPathSpeedPlan,resourceResolver);
+        return CFUtils.getCfList(cfPathSpeedPlan,resourceResolver, i18n);
     }
 
     public List<OfferFragmentBean> getBundles() {
-        return CFUtils.getCfList(bundle,resourceResolver);
+        return CFUtils.getCfList(bundle,resourceResolver, i18n);
     }
 
     @Override
