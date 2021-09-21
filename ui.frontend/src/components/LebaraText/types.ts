@@ -16,44 +16,44 @@ type FontType =
   | "formLabel";
 export const fontTypeDetails = {
   h1: {
-    weight: "bold",
-    size: "48px",
-    letterSpacing: "0",
+    weight: "light",
+    size: "96px",
+    letterSpacing: "-1.5px",
   },
   h2: {
-    weight: "bold",
-    size: "38px",
-    letterSpacing: "0",
+    weight: "light",
+    size: "60px",
+    letterSpacing: "-0.5px",
   },
   h3: {
-    weight: "bold",
-    size: "32px",
+    weight: "normal",
+    size: "48px",
     letterSpacing: "0",
   },
   h4: {
     weight: "normal",
-    size: "28px",
-    letterSpacing: "0",
+    size: "34px",
+    letterSpacing: "0.25px",
   },
   h5: {
     weight: "normal",
     size: "24px",
-    letterSpacing: "0",
+    letterSpacing: "0.25px",
   },
   h6: {
     weight: "medium",
     size: "20px",
-    letterSpacing: "0",
+    letterSpacing: "0.15px",
   },
   subtitle1: {
     weight: "normal",
     size: "16px",
-    letterSpacing: "0",
+    letterSpacing: "0.15px",
   },
   subtitle2: {
     weight: "medium",
     size: "14px",
-    letterSpacing: "0",
+    letterSpacing: "0.1px",
   },
   body1: {
     weight: "normal",
@@ -83,7 +83,5 @@ export const fontTypeDetails = {
 };
 
 export interface LebaraTextProps extends TextProps {
-    type: FontType;
-    text: string;
-    linkURL?: string;
+  type: FontType;
 }

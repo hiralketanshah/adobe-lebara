@@ -34,10 +34,11 @@ import IconButton from "../IconButton/IconButton";
 import LanguageDropDown from "../LanguageDropDown/LanguageDropDown";
 import Button from "../Button/Button";
 import MiniHeader from "../MiniHeader/MiniHeader";
-// import { ReduxState } from "../../redux/types";import LebaraLogo from "../../assets/images/lebara-logo.svg";
+// import { ReduxState } from "../../redux/types";
+//import LebaraLogo from "../../assets/images/lebara-logo.svg";
 // import NewSIMOfferCard from "../NewSImOfferCard/NewSImOfferCard";
 
-const Header: React.FC<HeaderProps> = ({ items }) => {
+const Header: React.FC<HeaderProps> = ({ logoPath, items }) => {
   // const cartItems = useSelector((state: ReduxState) => state.cart.items);
   const history = useHistory();
   // const [userToken] = useLocalStorage("userToken");
@@ -111,7 +112,7 @@ const Header: React.FC<HeaderProps> = ({ items }) => {
         >
           <ChakraLink>
             <Link to="/">
-              {/* <img src={LebaraLogo} alt="Logo" /> */}
+              <img src={logoPath} alt="Logo" />
             </Link>
           </ChakraLink>
 
