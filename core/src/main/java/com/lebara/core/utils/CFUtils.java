@@ -81,7 +81,7 @@ public class CFUtils {
                 offerFragmentBean.setValidity(CFUtils.getElementValue(offerFragment, "validity") + " " + (i18n == null ? "Days" : i18n.get("Days")));
                 offerFragmentBean.setId(CFUtils.getElementValue(offerFragment, "offerid"));
                 if (offerFragment.getElement("additionalOffers") != null) {
-                    offerFragmentBean.setAdditionalOffers(Arrays.asList(CFUtils.getElementArrayValue(offerFragment, "additionalOffers")));
+                    offerFragmentBean.setAdditionalOffers(CFUtils.getElementValue(offerFragment, "additionalOffers"));
                 }
                 if (offerFragment.getElement("allowancesList") != null) {
                     String[] allowanceArray = CFUtils.getElementArrayValue(offerFragment, "allowancesList");

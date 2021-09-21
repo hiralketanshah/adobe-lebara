@@ -98,7 +98,7 @@
                         </_x0031_626007982326>
                         <_x0031_632203187642
                                 jcr:primaryType="nt:unstructured"
-                                sling:resourceType="dam/cfm/admin/components/authoring/contenteditor/cfmmultifield"
+                                sling:resourceType="dam/cfm/admin/components/authoring/contenteditor/multieditor"
                                 cfm-element="Additional Offer Information"
                                 checked="false"
                                 default-mime-type="text/html"
@@ -107,13 +107,7 @@
                                 name="additionalOffers"
                                 renderReadOnly="false"
                                 showEmptyInReadOnly="true"
-                                valueType="string/multiline[]">
-                            <field
-                                    jcr:primaryType="nt:unstructured"
-                                    sling:resourceType="dam/cfm/admin/components/authoring/contenteditor/multieditor"
-                                    name="additionalOffers"
-                                    renderReadOnly="false"/>
-                        </_x0031_632203187642>
+                                valueType="string/multiline"/>
                         <_x0031_626008217644
                             jcr:primaryType="nt:unstructured"
                             sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
