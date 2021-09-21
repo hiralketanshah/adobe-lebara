@@ -2,9 +2,11 @@ package com.lebara.core.utils;
 
 
 import com.day.cq.commons.mail.MailTemplate;
+import com.day.cq.i18n.I18n;
 import com.day.cq.mailer.MailingException;
 import com.day.cq.mailer.MessageGatewayService;
 import com.day.cq.wcm.api.Page;
+import com.day.cq.wcm.api.PageManager;
 import org.apache.commons.lang.text.StrLookup;
 import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.StringUtils;
@@ -12,6 +14,7 @@ import org.apache.commons.mail.EmailException;
 import org.apache.commons.mail.HtmlEmail;
 import org.apache.jackrabbit.api.security.user.Authorizable;
 import org.apache.jackrabbit.api.security.user.Group;
+import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -212,5 +215,23 @@ public class AemUtils {
             title = page.getName();
         }
         return title;
+    }
+
+    /**
+     * this method returns the I18n locale based object
+     * @param resourceResolver resourceresolver
+     * @param resource resource
+     * @param slingRequest SlingHttpServletRequest request
+     * @return locale based i18n object
+     */
+    public static I18n geti18n(ResourceResolver resourceResolver, Resource resource, SlingHttpServletRequest slingRequest) {
+        PageManager pageManager = resourceResolver.adaptTo(PageManager.class);
+        if (pageManager != null) {
+            Page currentPage = pageManager.getContainingPage(resource);
+            Locale pageLang = currentPage.getLanguage(false);
+            ResourceBundle resourceBundle = slingRequest.getResourceBundle(pageLang);
+            return new I18n(resourceBundle);
+        }
+        return null;
     }
 }
