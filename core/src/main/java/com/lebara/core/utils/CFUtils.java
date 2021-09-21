@@ -79,7 +79,7 @@ public class CFUtils {
                     String[] allowanceArray = CFUtils.getElementArrayValue(offerFragment, "allowancesList");
                     List<CFAllowance> allowanceList = CFUtils.convertStringArrayToList(allowanceArray, CFAllowance.class);
                     for (CFAllowance allowance : allowanceList) {
-                        allowance.setFormatedValue(FormatedValue(allowance.getUnit(), allowance.getValue(), i18n));
+                        allowance.setFormatedValue(formatedValue(allowance.getUnit(), allowance.getValue(), i18n));
                     }
                     offerFragmentBean.setAllowanceList(allowanceList);
                 }
@@ -88,7 +88,7 @@ public class CFUtils {
         return offerFragmentBean;
     }
 
-    private static String FormatedValue(String unit, int value, I18n i18n) {
+    private static String formatedValue(String unit, int value, I18n i18n) {
         String formattedValue = StringUtils.EMPTY;
         if (StringUtils.isNotBlank(unit)) {
             switch (unit) {
