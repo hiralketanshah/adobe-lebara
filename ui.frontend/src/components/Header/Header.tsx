@@ -16,8 +16,8 @@ import {
 import {
   AiOutlineUser,
   BiSearch,
-  IoLocationOutline,
-  RiHeadphoneFill,
+  // IoLocationOutline,
+  // RiHeadphoneFill,
   // RiShoppingBagLine,
 } from "react-icons/all";
 import { Link, useHistory } from "react-router-dom";
@@ -31,12 +31,12 @@ import {
 } from "./types";
 
 import IconButton from "../IconButton/IconButton";
-import LanguageDropDown from "../LanguageDropDown/LanguageDropDown";
+// import LanguageDropDown from "../LanguageDropDown/LanguageDropDown";
 import Button from "../Button/Button";
 import MiniHeader from "../MiniHeader/MiniHeader";
 // import { ReduxState } from "../../redux/types";
-//import LebaraLogo from "../../assets/images/lebara-logo.svg";
-// import NewSIMOfferCard from "../NewSImOfferCard/NewSImOfferCard";
+// import LebaraLogo from "../../assets/images/lebara-logo.svg";
+import NewSIMOfferCard from "../NewSImOfferCard/NewSImOfferCard";
 
 const Header: React.FC<HeaderProps> = ({ logoPath, items }) => {
   // const cartItems = useSelector((state: ReduxState) => state.cart.items);
@@ -65,7 +65,7 @@ const Header: React.FC<HeaderProps> = ({ logoPath, items }) => {
       borderRadius={{ md: "8px" }}
     >
       <Flex display={{ base: "none", md: "block" }}>
-        <Flex
+        {/* <Flex
           alignItems="center"
           px={10}
           justifyContent="flex-end"
@@ -101,7 +101,7 @@ const Header: React.FC<HeaderProps> = ({ logoPath, items }) => {
             />
             <Text fontSize="12px">Help</Text>
           </Flex>
-        </Flex>
+        </Flex> */}
 
         <Flex
           alignItems="center"
@@ -133,7 +133,7 @@ const Header: React.FC<HeaderProps> = ({ logoPath, items }) => {
                       size="sm"
                       pl="initial"
                       onClick={() => history.push(`"/"${menuItem.title}`)}
-                      isDisabled={menuItem.isDisabled}
+                      isDisabled={menuItem.active}
                     >
                       <Text
                         textTransform="capitalize"
@@ -148,7 +148,7 @@ const Header: React.FC<HeaderProps> = ({ logoPath, items }) => {
                     </Button>
                   </Box>
                 </MenuButton>
-                <MenuList marginLeft="-135px" marginTop="5px">
+                <MenuList marginLeft="-135px" marginTop="5px" zIndex={2}>
                   <Box
                     display="flex"
                     justifyContent="space-between"
@@ -176,7 +176,7 @@ const Header: React.FC<HeaderProps> = ({ logoPath, items }) => {
                                 {subMenuOption.children?.map(
                                   (menuProps: SubChildrens) => (
                                     <MenuItem
-                                      isDisabled={menuProps.isDisabled}
+                                      isDisabled={menuProps.active}
                                       onClick={() =>
                                         menuProps.path
                                           ? history.push(menuProps.path)
@@ -222,7 +222,7 @@ const Header: React.FC<HeaderProps> = ({ logoPath, items }) => {
                       <></>
                     </Box>
                     <Box position="relative">
-                      {/* <NewSIMOfferCard /> */}
+                      <NewSIMOfferCard />
                     </Box>
                   </Box>
                 </MenuList>

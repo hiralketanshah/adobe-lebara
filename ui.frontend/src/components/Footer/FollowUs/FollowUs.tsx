@@ -1,8 +1,8 @@
 import React from "react";
 import { Box, Text } from "@chakra-ui/react";
-import SocialMediaButtons from "../SocialMediaButtons/SocialMediaButtons";
+// import SocialMediaButtons from "../SocialMediaButtons/SocialMediaButtons";
 import { FollowUSProps } from "./types";
-import color from "../../../color";
+import color from "../../../theme/colors";
 
 const FollowUS: React.FC<FollowUSProps> = ({ followUsText, links }) => {
   return (
@@ -20,7 +20,7 @@ const FollowUS: React.FC<FollowUSProps> = ({ followUsText, links }) => {
             {followUsText}
           </Text>
           <Box width="350px">
-            <SocialMediaButtons buttons={links} />
+            {/* <SocialMediaButtons buttons={links} /> */}
           </Box>
         </Box>
       </Box>

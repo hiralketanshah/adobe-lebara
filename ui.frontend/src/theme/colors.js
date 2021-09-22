@@ -1,3 +1,4 @@
+// eslint-disable-next-line
 export default {
   lightenPrimary: {
     50: "#CBEFFF",
@@ -55,6 +56,8 @@ export default {
   border: "#8C8FA2",
   bossanova: "#49255E",
   greySilver: "#C8C8C8",
+  linkButton: "#EA4984",
+  explainerColor: "#535353",
   grey: {
     50: "#F4F4F4",
     100: "#C8C8C8",
