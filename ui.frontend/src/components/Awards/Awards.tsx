@@ -4,9 +4,7 @@ import { AwardsProps } from "./types";
 const Award: React.FC<AwardsProps> = () => {
 console.log("Awards Component")
   return (
-    <>Awards Component
-    {awardTitle}
-    </>
+    <>Awards Component</>
   );
 };
 
