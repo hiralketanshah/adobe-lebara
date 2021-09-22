@@ -18,11 +18,11 @@ import {
   BiSearch,
   // IoLocationOutline,
   // RiHeadphoneFill,
-  // RiShoppingBagLine,
+  RiShoppingBagLine,
 } from "react-icons/all";
 import { Link, useHistory } from "react-router-dom";
-// import { useSelector } from "react-redux";
-// import { useLocalStorage } from "@rehooks/local-storage";
+import { useSelector } from "react-redux";
+import { useLocalStorage } from "@rehooks/local-storage";
 import {
   HeaderProps,
   itemList,
@@ -34,29 +34,29 @@ import IconButton from "../IconButton/IconButton";
 // import LanguageDropDown from "../LanguageDropDown/LanguageDropDown";
 import Button from "../Button/Button";
 import MiniHeader from "../MiniHeader/MiniHeader";
-// import { ReduxState } from "../../redux/types";
+import { ReduxState } from "../../redux/types";
 // import LebaraLogo from "../../assets/images/lebara-logo.svg";
 import NewSIMOfferCard from "../NewSImOfferCard/NewSImOfferCard";
 
 const Header: React.FC<HeaderProps> = ({ logoPath, items }) => {
-  // const cartItems = useSelector((state: ReduxState) => state.cart.items);
+  const cartItems = useSelector((state: ReduxState) => state.cart.items);
   const history = useHistory();
-  // const [userToken] = useLocalStorage("userToken");
+  const [userToken] = useLocalStorage("userToken");
 
-  // const handleCartClick = () => {
-  //   const hasDataPlan =
-  //     cartItems.filter((t) => !t.isAddon && !t.duration.startsWith("Top-up"))
-  //       .length > 0;
-  //   history.push(
-  //     cartItems.length === 0
-  //       ? "/empty-cart"
-  //       : userToken || !hasDataPlan
-  //       ? userToken
-  //         ? "/order-details"
-  //         : "/login"
-  //       : "/lebara-sim-choice"
-  //   );
-  // };
+  const handleCartClick = () => {
+    const hasDataPlan =
+      cartItems.filter((t) => !t.isAddon && !t.duration.startsWith("Top-up"))
+        .length > 0;
+    history.push(
+      cartItems.length === 0
+        ? "/empty-cart"
+        : userToken || !hasDataPlan
+        ? userToken
+          ? "/order-details"
+          : "/login"
+        : "/lebara-sim-choice"
+    );
+  };
   return (
     <Flex
       flexDirection="column"
@@ -254,7 +254,7 @@ const Header: React.FC<HeaderProps> = ({ logoPath, items }) => {
               size="md"
               variant="ghost"
             />
-            {/* <Box pos="relative" onClick={handleCartClick}>
+            <Box pos="relative" onClick={handleCartClick}>
               <IconButton
                 p="absolute"
                 colorScheme="dark"
@@ -278,7 +278,7 @@ const Header: React.FC<HeaderProps> = ({ logoPath, items }) => {
                   {cartItems.length}
                 </Text>
               )}
-            </Box> */}
+            </Box>
           </Flex>
         </Flex>
       </Flex>
