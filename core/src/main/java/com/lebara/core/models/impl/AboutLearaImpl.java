@@ -25,7 +25,7 @@ import com.lebara.core.models.AboutLebara;
 public class AboutLearaImpl  implements AboutLebara {
 
 	@ValueMapValue
-	private String fileReferenceBackground;
+	private String backgroundColor;
 
 	@ScriptVariable
 	protected Resource resource;
@@ -43,8 +43,8 @@ public class AboutLearaImpl  implements AboutLebara {
 	private Teaser delegate;
 
 	@Override
-	public String getFileReferenceBackground() {
-		return fileReferenceBackground;
+	public String getBackgroundColor() {
+		return backgroundColor;
 	}
 
 	@Override
