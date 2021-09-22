@@ -1,19 +1,14 @@
 package com.lebara.core.dto;
 
-import com.google.gson.annotations.SerializedName;
-
 public class Allowance {
-    private int allowanceValue;
+    private String allowanceValue;
     private Account account;
 
-    @SerializedName("__typename")
-    private String typeName;
-
-    public int getAllowanceValue() {
+    public String getAllowanceValue() {
         return allowanceValue;
     }
 
-    public void setAllowanceValue(int allowanceValue) {
+    public void setAllowanceValue(String allowanceValue) {
         this.allowanceValue = allowanceValue;
     }
 
@@ -25,11 +20,4 @@ public class Allowance {
         this.account = account;
     }
 
-    public String getTypeName() {
-        return typeName;
-    }
-
-    public void setTypeName(String typeName) {
-        this.typeName = typeName;
-    }
 }

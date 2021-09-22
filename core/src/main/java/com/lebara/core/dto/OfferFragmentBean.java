@@ -1,5 +1,7 @@
 package com.lebara.core.dto;
 
+import org.apache.commons.lang3.StringUtils;
+
 import java.text.DecimalFormat;
 import java.util.List;
 
@@ -8,6 +10,7 @@ public class OfferFragmentBean {
     private String cost;
     private String validity;
     private PlanInfo planInfo;
+    private String additionalOffers;
     private List<CFAllowance> allowanceList;
 
     public String getId() {
@@ -19,7 +22,10 @@ public class OfferFragmentBean {
     }
 
     public String getCost() {
-        return new DecimalFormat("##.##").format(Float.parseFloat(cost) / 100);
+        if (StringUtils.isNumeric(cost)) {
+            return new DecimalFormat("##.##").format(Float.parseFloat(cost) / 100);
+        }
+        return StringUtils.EMPTY;
     }
 
     public void setCost(String cost) {
@@ -27,8 +33,7 @@ public class OfferFragmentBean {
     }
 
     public String getValidity() {
-        // Todo convert this as i18n based
-        return validity + " Days";
+        return validity;
     }
 
     public void setValidity(String validity) {
@@ -51,4 +56,11 @@ public class OfferFragmentBean {
         this.allowanceList = allowanceList;
     }
 
+    public String getAdditionalOffers() {
+        return additionalOffers;
+    }
+
+    public void setAdditionalOffers(String additionalOffers) {
+        this.additionalOffers = additionalOffers;
+    }
 }
