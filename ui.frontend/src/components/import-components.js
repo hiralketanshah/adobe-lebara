@@ -245,7 +245,7 @@ const BannerConfig = {
 const AwardConfig = {
   emptyLabel: "Award Component",
   isEmpty: function (props) {
-    return !props.awardTitle;
+    return !props.title;
   },
 };
 MapTo("lebara/components/followus")(FollowUs, FollowUsEditConfig);

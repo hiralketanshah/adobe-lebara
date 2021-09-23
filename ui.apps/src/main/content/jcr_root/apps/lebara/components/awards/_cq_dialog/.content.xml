@@ -34,14 +34,14 @@
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                                 fieldDescription="Awards Title"
                                                 fieldLabel="Title"
-                                                name="./awardTitle"/>
-                                            <awards
+                                                name="./title"/>
+                                            <awardsList
                                                 granite:class="lebara-multifield__editor"
                                                 jcr:primaryType="nt:unstructured"
                                                 jcr:title="Plans"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
                                                 composite="{Boolean}true"
-                                                fieldDescription="Add the Awards icon and link"
+                                                fieldDescription="Add the Awards icon"
                                                 fieldLabel="Awards">
                                                 <granite:data
                                                     jcr:primaryType="nt:unstructured"
@@ -49,30 +49,31 @@
                                                 <field
                                                     jcr:primaryType="nt:unstructured"
                                                     sling:resourceType="granite/ui/components/coral/foundation/container"
-                                                    name="./links">
+                                                    name="./awards">
                                                     <items jcr:primaryType="nt:unstructured">
                                                         <column
                                                             jcr:primaryType="nt:unstructured"
                                                             sling:resourceType="granite/ui/components/coral/foundation/container">
                                                             <items jcr:primaryType="nt:unstructured">
-                                                                <label
+                                                                <image
                                                                     jcr:primaryType="nt:unstructured"
                                                                     sling:resourceType="granite/ui/components/coral/foundation/form/pathbrowser"
                                                                     fieldDescription="Choose Image"
                                                                     fieldLabel="Link Image"
-                                                                    name="./label"
+                                                                    name="./image"
                                                                     rootPath="/content/dam/lebara"/>
-                                                                <labellink
-                                                                    jcr:primaryType="nt:unstructured"
-                                                                    sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
-                                                                    fieldDescription="Choose Image link"
-                                                                    fieldLabel="Link"
-                                                                    name="./link"/>
+                                                                <name
+                                                                        jcr:primaryType="nt:unstructured"
+                                                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                                        fieldDescription="Awards Name"
+                                                                        fieldLabel="AlT Text"
+                                                                        required="true"
+                                                                        name="./name"/>
                                                             </items>
                                                         </column>
                                                     </items>
                                                 </field>
-                                            </awards>
+                                            </awardsList>
                                         </items>
                                     </column>
                                 </items>

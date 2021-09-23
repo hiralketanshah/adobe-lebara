@@ -1,3 +1,3 @@
 export interface AwardsProps {
- awardTitle?: string;
+ title?: string;
 }

@@ -25,19 +25,17 @@ public class AwardExporter implements ComponentExporter {
 
     @ScriptVariable
     private Resource resource;
-
-    @ChildResource
-    private List<Link> links;
-
     @ValueMapValue
-    private String awardTitle;
+    private String title;
+    @ChildResource
+    private List<ImageIcon> awards;
 
-    public List<Link> getLinks() {
-        return links;
+    public String getTitle() {
+        return title;
     }
 
-    public String getAwardTitle() {
-        return awardTitle;
+    public List<ImageIcon> getAwards() {
+        return awards;
     }
 
     @Override
