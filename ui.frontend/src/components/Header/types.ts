@@ -18,3 +18,21 @@ export interface Menu {
 export interface SelectOption {
   title: string;
 }
+
+export interface MenuOption {
+  menuName: string;
+  isDisabled: boolean;
+  subMenuOption?: SubMenuOptions[];
+}
+
+export interface SubMenuOptions {
+  menuOptionName: string;
+  subMenuOptions: MenuProperties[];
+}
+
+export interface MenuProperties {
+  path?: string;
+  subMenuOptionName: string;
+  isDisabled: boolean;
+  isNewPlan: boolean;
+}

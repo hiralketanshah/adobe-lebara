@@ -52,6 +52,7 @@ export default {
     border: "#8C8FA2",
     white: '#ffffff',
     navy:'#1A1F45',
+    explainerColor: "#535353",
     grey: {
       50: "#F4F4F4",
       100: "#C8C8C8",

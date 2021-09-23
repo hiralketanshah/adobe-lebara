@@ -6,11 +6,11 @@ import {
 } from "@chakra-ui/react";
 import { SelectProps } from "./types";
 
-const Select: React.FC<SelectProps> = ({ options, width, label, ...rest }) => {
+const Select: React.FC<SelectProps> = ({ options, width, label, formControlBorderRadius, ...rest }) => {
   const lockSelect = options.length < 2;
 
   return (
-    <FormControl flexDirection="column" gridGap={2.5} width={width}>
+    <FormControl flexDirection="column" gridGap={2.5} width={width} borderRadius={formControlBorderRadius}>
       {label && (
         <FormLabel color="bodyCopy" fontSize={16} fontWeight="bold">
           {label}
@@ -26,8 +26,8 @@ const Select: React.FC<SelectProps> = ({ options, width, label, ...rest }) => {
         pointerEvents={lockSelect ? "none" : "auto"}
         iconColor={lockSelect ? "white" : "default"}
       >
-        {options.map((option) => (
-          <option value={option.value} key={option.key}>
+        {options.map((option, index) => (
+          <option value={option.value} key={option.key || index}>
             {option.name}
           </option>
         ))}
