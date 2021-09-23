@@ -71,6 +71,16 @@ public class CFUtils {
         return resultList;
     }
 
+    public static List<String> populateCountryInfo(Resource cfResource) {
+        if (null != cfResource) {
+            ContentFragment countryFragment = cfResource.adaptTo(ContentFragment.class);
+            if (null != countryFragment) {
+                return Arrays.asList(CFUtils.getElementArrayValue(countryFragment, "countryInfo"));
+            }
+        }
+        return new ArrayList<>();
+    }
+
     public static OfferFragmentBean populateOffers( Resource cfResource, I18n i18n) {
         OfferFragmentBean offerFragmentBean = null;
         if (null != cfResource) {
