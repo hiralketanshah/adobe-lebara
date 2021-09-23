@@ -36,11 +36,8 @@ import Trustpilot from "./Trustpilot/Trustpilot";
 import PlanOffers from "./PlanOffers/PlanOffers";
 import PostpaidPlans from "./PostpaidPlans/PostpaidPlans";
 import Banner from "./Banner/Banner";
-<<<<<<< HEAD
-import Awards from "./Awards/Awards";
-=======
 import ProgressStep from "./ProgressStep/ProgressStep";
->>>>>>> d32eaefa7ed28bf8a7410da69dfdb923a30386e3
+import Awards from "./Awards/Awards";
 
 import { TitleV2IsEmptyFn } from "@adobe/aem-core-components-react-base/dist/isEmptyFunctions";
 
@@ -250,6 +247,7 @@ const AwardConfig = {
     return !props.title;
   },
 };
+
 MapTo("lebara/components/followus")(FollowUs, FollowUsEditConfig);
 MapTo("lebara/components/getapp")(GetApp, GetAppEditConfig);
 MapTo("lebara/components/text")(LazyTextComponent, TextEditConfig);
@@ -278,8 +276,5 @@ MapTo("lebara/components/postpaidPlans")(
 );
 MapTo("lebara/components/porting")(Porting, PortingEditConfig);
 MapTo("lebara/components/banner")(Banner, BannerConfig);
-<<<<<<< HEAD
 MapTo("lebara/components/awards")(Awards, AwardConfig);
 
-=======
->>>>>>> d32eaefa7ed28bf8a7410da69dfdb923a30386e3
