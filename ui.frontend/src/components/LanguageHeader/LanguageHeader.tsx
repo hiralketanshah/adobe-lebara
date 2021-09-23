@@ -12,23 +12,12 @@ const LanguageHeader: React.FC<LanguageHeaderProps> = ({
   helpLink,
   helpTitle,
 }) => (
-  <>
-    <Flex display={{ md: "none", sm: "flex" }} mx={{ md: "27px" }}>
-      <Flex
-        alignItems="center"
-        px={4}
-        justifyContent="flex-end"
-        background="lebaraBlue.200"
-        color="white"
-      >
-        <LanguageDropDown options={items} selectProps={{}} />
-      </Flex>
-    </Flex>
+  <Flex display={{ base: "none", md: "block" }}>
     <Flex
       alignItems="center"
       px={10}
       justifyContent="flex-end"
-      background="lebaraBlue.200"
+      background="lightenPrimary.200"
       color="white"
       display={{ base: "none", md: "flex" }}
     >
@@ -40,40 +29,38 @@ const LanguageHeader: React.FC<LanguageHeaderProps> = ({
           }}
         />
       </Box>
+
       {storeTitle && (
         <Flex alignItems="center">
-          <Link href={storeLink} style={{ textDecoration: "none" }}>
-            <Flex alignItems="center">
-              <IconButton
-                icon={<IoLocationOutline />}
-                aria-label="Search"
-                variant="ghost"
-                size="sm"
-                colorScheme="dark"
-              />
-              <Text fontSize="12px">{storeTitle}</Text>
-            </Flex>
-          </Link>
+          <IconButton
+            icon={<IoLocationOutline />}
+            aria-label="Search"
+            variant="ghost"
+            size="sm"
+            colorScheme="dark"
+            as={Link}
+            href={storeLink}
+          />
+          <Text fontSize="12px">{storeTitle}</Text>
         </Flex>
       )}
+
       {helpTitle && (
         <Flex alignItems="center">
-          <Link href={helpLink} style={{ textDecoration: "none" }}>
-            <Flex alignItems="center">
-              <IconButton
-                icon={<RiHeadphoneFill />}
-                aria-label="Search"
-                variant="ghost"
-                size="sm"
-                colorScheme="dark"
-              />
-              <Text fontSize="12px">{helpTitle}</Text>
-            </Flex>
-          </Link>
+          <IconButton
+            icon={<RiHeadphoneFill />}
+            aria-label="Search"
+            variant="ghost"
+            size="sm"
+            colorScheme="dark"
+            as={Link}
+            href={helpLink}
+          />
+          <Text fontSize="12px">{helpTitle}</Text>
         </Flex>
       )}
     </Flex>
-  </>
+  </Flex>
 );
 
 export default LanguageHeader;
