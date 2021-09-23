@@ -6,6 +6,7 @@ import org.apache.commons.lang3.StringUtils;
 public class CountryInfo {
     private String countryName;
     private String countryCode;
+    private String countryPageUrl;
 
     public String getCountryName() {
         return countryName;
@@ -15,9 +16,26 @@ public class CountryInfo {
         return countryCode;
     }
 
+    public String getCountryPageUrl() {
+        return countryPageUrl;
+    }
+
+    public void setCountryName(String countryName) {
+        this.countryName = countryName;
+    }
+
+    public void setCountryCode(String countryCode) {
+        this.countryCode = countryCode;
+    }
+
+    public void setCountryPageUrl(String countryPageUrl) {
+        this.countryPageUrl = countryPageUrl;
+    }
+
     public String getCountryFlag() {
         return StringUtils.isNotBlank(countryCode) ?
                 LebaraConstants.COUNTRY_FLAG_DAM_PATH.concat(countryCode).concat(".png") : StringUtils.EMPTY;
     }
+
 
 }

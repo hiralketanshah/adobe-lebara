@@ -55,13 +55,13 @@
                                                     sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                                     fieldLabel="Name of the Country"
                                                     required="on"
-                                                    name="./name"/>
+                                                    name="./countryName"/>
                                             <url
                                                     jcr:primaryType="nt:unstructured"
-                                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                    sling:resourceType="granite/ui/components/foundation/form/pathbrowser"
                                                     fieldLabel="Anchor Url"
                                                     required="on"
-                                                    name="./url"/>
+                                                    name="./countryPageUrl"/>
                                         </items>
                                     </column>
                                 </items>

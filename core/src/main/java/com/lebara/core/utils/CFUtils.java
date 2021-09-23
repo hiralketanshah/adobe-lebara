@@ -71,11 +71,11 @@ public class CFUtils {
         return resultList;
     }
 
-    public static List<String> populateCountryInfo(Resource cfResource) {
+    public static List<CountryInfo> populateCountryInfo(Resource cfResource) {
         if (null != cfResource) {
             ContentFragment countryFragment = cfResource.adaptTo(ContentFragment.class);
             if (null != countryFragment) {
-                return Arrays.asList(CFUtils.getElementArrayValue(countryFragment, "countryInfo"));
+                return convertStringArrayToList(CFUtils.getElementArrayValue(countryFragment, "countryInfo"), CountryInfo.class);
             }
         }
         return new ArrayList<>();

@@ -45,7 +45,7 @@ public class WhereToCallExporter implements ComponentExporter {
         return title;
     }
 
-    public List<String> getCountryInfo(){
+    public List<CountryInfo> getCountryInfo(){
         return CFUtils.populateCountryInfo(resourceResolver.getResource(cfPath));
     }
 
