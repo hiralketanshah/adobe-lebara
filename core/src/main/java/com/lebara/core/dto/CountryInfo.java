@@ -1,8 +1,10 @@
 package com.lebara.core.dto;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.lebara.core.utils.LebaraConstants;
 import org.apache.commons.lang3.StringUtils;
 
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class CountryInfo {
     private String countryName;
     private String countryCode;
