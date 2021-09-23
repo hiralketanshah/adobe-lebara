@@ -66,7 +66,7 @@
                                                                         jcr:primaryType="nt:unstructured"
                                                                         sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                                                         fieldDescription="Awards Name"
-                                                                        fieldLabel="AlT Text"
+                                                                        fieldLabel="Alt Text"
                                                                         required="true"
                                                                         name="./name"/>
                                                             </items>
