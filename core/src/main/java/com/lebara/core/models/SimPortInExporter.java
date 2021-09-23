@@ -220,10 +220,12 @@ public class SimPortInExporter implements ComponentExporter {
     public String getMobileNumberFieldPattern() { return mobileNumberFieldPattern; }
 
     public List<Object> getCurrentProvidersOptions() {
-        Resource currentProvidersResource= resourceResolver.getResource(currentProvidersOptions);
-        ContentFragment currentProvidersFragment = currentProvidersResource.adaptTo(ContentFragment.class);
-        if (null != currentProvidersFragment) {
-            return CFUtils.convertStringArrayToList(CFUtils.getElementArrayValue(currentProvidersFragment, "currentProvidersOptions"), Object.class);
+        if(currentProvidersOptions != null) {
+            Resource currentProvidersResource = resourceResolver.getResource(currentProvidersOptions);
+            ContentFragment currentProvidersFragment = currentProvidersResource.adaptTo(ContentFragment.class);
+            if (null != currentProvidersFragment) {
+                return CFUtils.convertStringArrayToList(CFUtils.getElementArrayValue(currentProvidersFragment, "currentProvidersOptions"), Object.class);
+            }
         }
         return new ArrayList<>();
     }
