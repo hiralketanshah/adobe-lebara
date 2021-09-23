@@ -35,7 +35,7 @@ const ExpandablePlanCard: React.FC<ExpandablePlanCardProps> = ({
         <Box d={{ md: "flex" }}>
           <Flex
             alignItems="center"
-            color="lebaraChambray.600"
+            color="lightenPrimary.600"
             mx={{ md: "20px" }}
           >
             <Text
@@ -63,7 +63,7 @@ const ExpandablePlanCard: React.FC<ExpandablePlanCardProps> = ({
           <Box
             justifyContent="space-between"
             alignItems="center"
-            color="lebaraChambray"
+            color="lightenPrimary"
             d={{ md: "flex", base: "none" }}
           >
             <Text fontSize={16} mr="30px">
@@ -145,7 +145,7 @@ const ExpandablePlanCard: React.FC<ExpandablePlanCardProps> = ({
       <Flex
         justifyContent="space-between"
         alignItems="center"
-        color="lebaraChambray"
+        color="lightenPrimary"
         d={{ md: "none", base: "flex" }}
       >
         <Text fontSize={16}>

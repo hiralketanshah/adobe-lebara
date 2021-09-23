@@ -1,48 +1,16 @@
-// @ts-nocheck
-
 import React from "react";
 import { Text } from "@chakra-ui/react";
 import { fontTypeDetails, LebaraTextProps } from "./types";
-import color from "../../color";
 
-const LebaraText: React.FC<LebaraTextProps> = ({
-  text,
-  type,
-  linkURL,
-  ...rest
-}) => {
+const LebaraText: React.FC<LebaraTextProps> = ({ type, ...rest }) => {
   const fontDetails = fontTypeDetails[type];
   return (
-    <>
-      {linkURL && text && (
-        <a href={linkURL} style={{ textDecoration: "none" }}>
-          <Text
-            as={type}
-            color="lebaraChambray.600"
-            mb="40px"
-            fontWeight={fontDetails?.weight}
-            fontSize={fontDetails?.size}
-            letterSpacing={fontDetails?.letterSpacing}
-            {...rest}
-          >
-            {text}
-          </Text>
-        </a>
-      )}
-      {!linkURL && text && (
-        <Text
-          as={type}
-          color="lebaraChambray.600"
-          mb="40px"
-          fontWeight={fontDetails?.weight}
-          fontSize={fontDetails?.size}
-          letterSpacing={fontDetails?.letterSpacing}
-          {...rest}
-        >
-          {text}
-        </Text>
-      )}
-    </>
+    <Text
+      fontWeight={fontDetails.weight}
+      fontSize={fontDetails.size}
+      letterSpacing={fontDetails.letterSpacing}
+      {...rest}
+    />
   );
 };
 

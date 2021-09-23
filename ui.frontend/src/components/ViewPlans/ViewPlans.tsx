@@ -34,7 +34,7 @@ const ViewPlans: React.FC<PlanCardProps> = ({
           <Box
             d={{ base: "flex", md: "none" }}
             alignItems="baseline"
-            color="lebaraChambray.600"
+            color="lightenPrimary.600"
           >
             <Box
               as="p"
@@ -65,7 +65,7 @@ const ViewPlans: React.FC<PlanCardProps> = ({
           <Box
             d={{ base: "none", md: "flex" }}
             alignItems="baseline"
-            color="lebaraChambray.600"
+            color="lightenPrimary.600"
           >
             <Box
               as="h3"

@@ -21,7 +21,7 @@ const AppPromo: React.FC<GetAppProps> = ({
   >
     <Heading
       d={{ base: "block", md: "none" }}
-      color="lebaraChambray.600"
+      color="lightenPrimary.600"
       fontSize={32}
       fontWeight="bold"
     >
@@ -45,7 +45,7 @@ const AppPromo: React.FC<GetAppProps> = ({
           d={{ base: "none", md: "block" }}
           ml={{ md: "14px" }}
           mb={{ md: "10px" }}
-          color="lebaraChambray.600"
+          color="lightenPrimary.600"
           fontSize={32}
           fontWeight="bold"
         >
