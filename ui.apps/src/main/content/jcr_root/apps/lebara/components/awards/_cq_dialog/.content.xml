@@ -38,11 +38,11 @@
                                             <awardsList
                                                 granite:class="lebara-multifield__editor"
                                                 jcr:primaryType="nt:unstructured"
-                                                jcr:title="Plans"
+                                                jcr:title="AwardsList"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
                                                 composite="{Boolean}true"
                                                 fieldDescription="Add the Awards icon"
-                                                fieldLabel="Awards">
+                                                fieldLabel="AwardsList">
                                                 <granite:data
                                                     jcr:primaryType="nt:unstructured"
                                                     maxItems="{Long}10"/>
