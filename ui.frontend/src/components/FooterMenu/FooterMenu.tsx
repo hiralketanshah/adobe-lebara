@@ -16,6 +16,7 @@ import Footer from "../Footer/Footer";
 const FooterMenu: React.FC<FooterMenuProps> = ({
   footerUpperLinks,
   copyrightText,
+  copyrightLinks,
   getapp,
   followus,
 }) => (
@@ -108,12 +109,16 @@ const FooterMenu: React.FC<FooterMenuProps> = ({
       <Divider mt="2em" />
       <Box>
         <Flex py="25px">
-          <Text fontSize={12} textAlign="left">
-            {"terms & condition"}
-          </Text>
-          <Text fontSize={12} ml="60px" textAlign="left">
-            {"privacy policy"}
-          </Text>
+          {copyrightLinks && (
+            <Text fontSize={12} textAlign="left">
+              {copyrightLinks[0]?.label}
+            </Text>
+          )}
+          {copyrightLinks && (
+            <Text fontSize={12} ml="60px" textAlign="left">
+              {copyrightLinks[1]?.label}
+            </Text>
+          )}
           <Spacer />
           <Text fontSize={12} textAlign="right">
             {copyrightText}

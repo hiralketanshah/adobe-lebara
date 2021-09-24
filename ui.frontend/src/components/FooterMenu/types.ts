@@ -4,6 +4,7 @@ export interface FooterMenuProps {
   followus: FollowusProps;
   getapp: GetAppProps;
   copyrightText: string;
+  copyrightLinks: SubMenuProps[];
 }
 
 export interface MenuProps {
