@@ -87,14 +87,14 @@ const FooterMenu: React.FC<FooterMenuProps> = ({
               <Flex>
                 <IconButton
                   as={Link}
-                  href="/"
+                  href={getapp?.links[0].link}
                   aria-label="Available on the App Store"
                 >
                   <Image src={getapp?.links[0].label} height="46" width="156" />
                 </IconButton>
                 <IconButton
                   as={Link}
-                  href="/"
+                  href={getapp?.links[1].link}
                   ml="2em"
                   aria-label="Get it on google Play"
                 >
