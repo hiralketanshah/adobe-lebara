@@ -1,14 +1,14 @@
 
-#about-lebara ul {
+.about-lebara ul {
 	list-style:none;
 }
-#about-lebara ul li:before{
+.about-lebara ul li:before{
 	content: '';
 	display: inline-block;
 	height: 1em;
 	width: 1em;
 	background-color: white;
-	mask: url('./tick-in-circle.svg') no-repeat center;
+	mask: url('../../icons/tick-in-circle.svg') no-repeat center;
 	background-size: contain;
 	background-repeat: no-repeat;
 	line-height: 1em;
@@ -19,13 +19,13 @@
 	font-size: 14px;
 }
 @media screen and (min-width: 62em){
-	#about-lebara ul li {
+	.about-lebara ul li {
 		color: var(--chakra-colors-grey-50);
 		font-size: 24px;
 		margin-bottom: 24px;
 		font-weight: 500;
 	}
-	#about-lebara ul li:before {
+	.about-lebara ul li:before {
 		font-size: 24px;
 		font-weight: 500;
 	}

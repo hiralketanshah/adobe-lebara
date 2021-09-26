@@ -12,7 +12,7 @@ const TextBlock: React.FC<TextBlockProps> = ({
   buttonText,
   imagePath,
   linkURL,
-  noBgColor
+  buttonStyle
 }) => (
     <Box
       px={{ base: "20px" }}
@@ -37,9 +37,9 @@ const TextBlock: React.FC<TextBlockProps> = ({
         </Heading>
         {subHeader && (
           <Box
-            color="grey.600"
             fontSize={16}
             mt="12px"
+            textColor="white"
             dangerouslySetInnerHTML={{
               __html: sanitizeHtml(subHeader, sanitizeWhiteList),
             }}
@@ -53,7 +53,8 @@ const TextBlock: React.FC<TextBlockProps> = ({
             mt={{ base: "20px", lg: "40px" }}
             color="white"
             maxW={{ lg: "306px" }}
-            variant={noBgColor? "solid" : "outline"}
+            variant={buttonStyle? buttonStyle : "outline"}
+            onClick={() => window.open(linkURL ,"_self")}
           >
             {buttonText}
           </Button>

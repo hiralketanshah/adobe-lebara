@@ -7,7 +7,7 @@ import {
 } from "@adobe/aem-core-components-react-spa";
 import { Box } from '@chakra-ui/react';
 import Slider from "react-slick";
-import CarouselPagingCircle from './CarouselPagingCircle';
+import CarouselPagingCircle from '../../icons/CarouselPagingCircle';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "./styles.css";
@@ -108,7 +108,6 @@ class Carousel extends Container<CarouselV1Properties, CarouselV1State> {
     const { activeIndex } = this.state;
     const { cqItems } = this.props;
     const adaptedcqItems = cqItems as CarouselItemOptions;
-    console.log(this.childComponents);
     const settings = {
       dots: true,
       arrows: false,
@@ -128,7 +127,7 @@ class Carousel extends Container<CarouselV1Properties, CarouselV1State> {
     };
     return (
       <div className={this.props.baseCssClass + '__content'} >
-        <Box bg="lebaraBlue.500" pb={{ base: "40px", lg: "70px" }}>
+        <Box bg={activeIndex >=0 && adaptedcqItems && adaptedcqItems[Object.keys(adaptedcqItems)[activeIndex]]?.backgroundColor ? adaptedcqItems[Object.keys(adaptedcqItems)[activeIndex]].backgroundColor : "lightenPrimary.500"} pb={{ base: "40px", lg: "70px" }}>
           <Slider {...settings} beforeChange={(_: number, next: number) => this.setState({ activeIndex: next })}>
             {
               this.childComponents.map((childComponent, index) => this.displayItem(childComponent, index))

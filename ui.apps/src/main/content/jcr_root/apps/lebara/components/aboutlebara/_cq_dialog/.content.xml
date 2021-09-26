@@ -25,6 +25,47 @@
                             </columns>
                         </items>
                     </image>
+					<actions jcr:primaryType="nt:unstructured">
+                        <items jcr:primaryType="nt:unstructured">
+                            <columns jcr:primaryType="nt:unstructured">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <column jcr:primaryType="nt:unstructured">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <buttonstyle
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                                fieldDescription="By default, button style will be &quot;outline&quot;"
+                                                fieldLabel="Button Style"
+                                                name="./buttonStyle">
+                                                <items jcr:primaryType="nt:unstructured">
+                                                    <default
+                                                        jcr:primaryType="nt:unstructured"
+                                                        text="(Default)"
+                                                        value=""/>
+                                                    <solid
+                                                        jcr:primaryType="nt:unstructured"
+                                                        text="Solid"
+                                                        value="solid"/>
+                                                    <link
+                                                        jcr:primaryType="nt:unstructured"
+                                                        text="Link"
+                                                        value="link"/>
+                                                    <ghost
+                                                        jcr:primaryType="nt:unstructured"
+                                                        text="Ghost"
+                                                        value="ghost"/>
+                                                    <unstyled
+                                                        jcr:primaryType="nt:unstructured"
+                                                        text="Unstyled"
+                                                        value="unstyled"/>
+                                                </items>
+                                            </buttonstyle>
+                                        </items>
+                                    </column>
+                                </items>
+                            </columns>
+                        </items>
+                    </actions>
                 </items>
             </tabs>
         </items>
