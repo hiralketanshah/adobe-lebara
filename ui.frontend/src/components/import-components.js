@@ -33,6 +33,7 @@ import Trustpilot from "./Trustpilot/Trustpilot";
 import PlanOffers from "./PlanOffers/PlanOffers";
 import PostpaidPlans from "./PostpaidPlans/PostpaidPlans";
 import Banner from "./Banner/Banner";
+import Faq from "./Faq/Faq";
 import ProgressStep from "./ProgressStep/ProgressStep";
 import FooterMenu from "./FooterMenu/FooterMenu";
 import { TitleV2IsEmptyFn } from "@adobe/aem-core-components-react-base/dist/isEmptyFunctions";
@@ -216,6 +217,14 @@ const BannerConfig = {
   },
 };
 
+const FaqConfig = {
+  emptyLabel: "Faq Component",
+  isEmpty: function (props) {
+    return !props.title;
+  },
+};
+
+
 MapTo("lebara/components/getapp")(GetApp, GetAppEditConfig);
 MapTo("lebara/components/text")(LazyTextComponent, TextEditConfig);
 MapTo("lebara/components/teaser")(Teaser, TeaserEditConfig);
@@ -239,3 +248,5 @@ MapTo("lebara/components/postpaidPlans")(
 );
 MapTo("lebara/components/porting")(Porting, PortingEditConfig);
 MapTo("lebara/components/banner")(Banner, BannerConfig);
+MapTo("lebara/components/faq")(Faq, FaqConfig);
+
