@@ -1,14 +1,14 @@
 package com.lebara.core.dto;
 
 public class Allowance {
-    private int allowanceValue;
+    private String allowanceValue;
     private Account account;
 
-    public int getAllowanceValue() {
+    public String getAllowanceValue() {
         return allowanceValue;
     }
 
-    public void setAllowanceValue(int allowanceValue) {
+    public void setAllowanceValue(String allowanceValue) {
         this.allowanceValue = allowanceValue;
     }
 
