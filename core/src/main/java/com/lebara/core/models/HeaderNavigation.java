@@ -10,6 +10,6 @@ public interface HeaderNavigation extends Navigation {
     public String getAccountLink();
     String getViewAllButtonText();
     String getViewAllButtonLink();
-    public String getSimImage();
+    public String getNewText();
 
 }

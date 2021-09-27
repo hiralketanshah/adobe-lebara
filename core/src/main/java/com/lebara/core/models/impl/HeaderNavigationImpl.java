@@ -43,7 +43,7 @@ public class HeaderNavigationImpl implements HeaderNavigation {
     private String accountLink;
 
     @ValueMapValue
-    private String simImageFile;
+    private String newText;
 
     @ValueMapValue
     private String viewAllButtonText;
@@ -100,8 +100,8 @@ public class HeaderNavigationImpl implements HeaderNavigation {
     }
 
     @Override
-    public String getSimImage() {
-        return simImageFile;
+    public String getNewText(){
+        return newText;
     }
 
     @Override
