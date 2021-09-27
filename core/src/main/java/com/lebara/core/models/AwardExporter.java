@@ -10,7 +10,6 @@ import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.injectorspecific.ChildResource;
 import org.apache.sling.models.annotations.injectorspecific.ScriptVariable;
 import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
-
 import java.util.List;
 
 @Model(adaptables = {SlingHttpServletRequest.class, Resource.class}, adapters = {AwardExporter.class, ComponentExporter.class},
