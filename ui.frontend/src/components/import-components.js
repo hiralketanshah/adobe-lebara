@@ -24,10 +24,7 @@ import LanguageHeader from "./LanguageHeader/LanguageHeader";
 import Header from "./Header/Header";
 import LebaraText from "./LebaraText/LebaraText";
 import GetApp from "./GetApp/GetApp";
-import FollowUs from "./Footer/FollowUs/FollowUs";
 import { MapTo } from "@adobe/aem-react-editable-components";
-import FooterCopyright from "./Footer/FooterCopyright/FooterCopyright";
-import FooterUpperLinks from "./Footer/FooterUpperLinks/FooterUpperLinks";
 import Usp from "./usp/usp";
 import Porting from "./Porting/Porting";
 import Aboutlebara from "./aboutlebara/aboutlebara";
@@ -37,7 +34,7 @@ import PlanOffers from "./PlanOffers/PlanOffers";
 import PostpaidPlans from "./PostpaidPlans/PostpaidPlans";
 import Banner from "./Banner/Banner";
 import ProgressStep from "./ProgressStep/ProgressStep";
-
+import FooterMenu from "./FooterMenu/FooterMenu";
 import { TitleV2IsEmptyFn } from "@adobe/aem-core-components-react-base/dist/isEmptyFunctions";
 
 import {
@@ -56,8 +53,8 @@ import {
   ButtonV1IsEmptyFn,
   ImageV2,
   ImageV2IsEmptyFn,
- // LanguageNavigationV1,
- // NavigationV1,
+  // LanguageNavigationV1,
+  // NavigationV1,
   DownloadV1,
   DownloadV1IsEmptyFn,
   SeparatorV1,
@@ -156,20 +153,6 @@ const TitleEditConfig = {
   },
 };
 
-const FooterCopyrightConfig = {
-  emptyLabel: "Footer Copyright",
-  isEmpty: function (props) {
-    return !props.links;
-  },
-};
-
-const FollowUsEditConfig = {
-  emptyLabel: "Follow US",
-  isEmpty: function (props) {
-    return !props.followUsText;
-  },
-};
-
 const ProgressStepLinksEditConfig = {
   emptyLabel: "Progress Step Links",
   isEmpty: function (props) {
@@ -181,13 +164,6 @@ const GetAppEditConfig = {
   emptyLabel: "Get APP",
   isEmpty: function (props) {
     return !props.appTitle;
-  },
-};
-
-const FooterUpperLinksConfig = {
-  emptyLabel: "Footer Component",
-  isEmpty: function (props) {
-    return !props.links;
   },
 };
 
@@ -240,7 +216,6 @@ const BannerConfig = {
   },
 };
 
-MapTo("lebara/components/followus")(FollowUs, FollowUsEditConfig);
 MapTo("lebara/components/getapp")(GetApp, GetAppEditConfig);
 MapTo("lebara/components/text")(LazyTextComponent, TextEditConfig);
 MapTo("lebara/components/teaser")(Teaser, TeaserEditConfig);
@@ -253,11 +228,7 @@ MapTo("lebara/components/progressstep")(
 MapTo("lebara/components/header/languagenavigation")(LanguageHeader);
 MapTo("lebara/components/header/headernavigation")(Header);
 MapTo("lebara/components/title")(LebaraText, TitleEditConfig);
-MapTo("lebara/components/footer/footercopyright")(
-  FooterCopyright,
-  FooterCopyrightConfig
-);
-MapTo("lebara/components/footer")(FooterUpperLinks, FooterUpperLinksConfig);
+MapTo("lebara/components/footer")(FooterMenu);
 MapTo("lebara/components/usp")(Usp, uspEditConfig);
 MapTo("lebara/components/aboutlebara")(Aboutlebara, AboutLebaraEditConfig);
 MapTo("lebara/components/carousel")(Carousel);
