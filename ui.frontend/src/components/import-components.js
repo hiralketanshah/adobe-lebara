@@ -36,6 +36,7 @@ import Banner from "./Banner/Banner";
 import ProgressStep from "./ProgressStep/ProgressStep";
 import FooterMenu from "./FooterMenu/FooterMenu";
 import { TitleV2IsEmptyFn } from "@adobe/aem-core-components-react-base/dist/isEmptyFunctions";
+import WhereToCall from "./CallPrices/CallPrices";
 
 import {
   ContainerV1,
@@ -188,6 +189,12 @@ const AboutLebaraEditConfig = {
   },
 };
 
+const WhereToCallEditConfig = {
+  emptyLabel: "Where To Call",
+  isEmpty: function (props) {
+    return !props.title;
+  },
+};
 const CarouselEditConfig = {
   emptyLabel: "Carousel",
   isEmpty: function (props) {
@@ -239,3 +246,4 @@ MapTo("lebara/components/postpaidPlans")(
 );
 MapTo("lebara/components/porting")(Porting, PortingEditConfig);
 MapTo("lebara/components/banner")(Banner, BannerConfig);
+MapTo("lebara/components/wheretocall")(WhereToCall, WhereToCallEditConfig);
