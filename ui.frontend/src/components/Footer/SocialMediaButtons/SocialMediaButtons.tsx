@@ -1,24 +1,24 @@
 import React from "react";
-import { Flex } from "@chakra-ui/react";
+import { Flex, Link } from "@chakra-ui/react";
 import { SocialMediaButtonsProps } from "./types";
-import color from "../../../color";
-import { SocialMediaButtonsWrapper } from "./SocialMediaButtons.styles";
-const SocialMediaButtons: React.FC<SocialMediaButtonsProps> = ({ buttons }) => {
-  return (
-    <Flex justifyContent="space-between">
-      {buttons?.map((buttonInfo) => (
-        <a
-          href={buttonInfo?.link}
-          style={{
-            color: color.lebaraChambray[500],
-          }}
-        >
-          <SocialMediaButtonsWrapper h="48px" w="48px">
-            <img src={buttonInfo?.label} height="16" width="16" />
-          </SocialMediaButtonsWrapper>
-        </a>
-      ))}
-    </Flex>
-  );
-};
+import IconButton from "../../IconButton/IconButton";
+
+const SocialMediaButtons: React.FC<SocialMediaButtonsProps> = ({ buttons }) => (
+  <Flex justifyContent="space-between">
+    {buttons.map((buttonInfo) => (
+      <IconButton
+        color="white"
+        key={buttonInfo.ariaLabel}
+        aria-label={buttonInfo.ariaLabel}
+        icon={buttonInfo.icon}
+        variant="ghost"
+        size="lg"
+        as={Link}
+        href={buttonInfo.href}
+        fontSize={buttonInfo.fontSize}
+      />
+    ))}
+  </Flex>
+);
+
 export default SocialMediaButtons;

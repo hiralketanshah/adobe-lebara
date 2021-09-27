@@ -1,7 +1,10 @@
 package com.lebara.core.dto;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+
 import java.util.List;
 
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class PlanInfo {
     private String title;
     private String countryTitle;

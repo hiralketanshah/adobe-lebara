@@ -33,6 +33,9 @@ public class AboutLearaImpl  implements AboutLebara {
 	@ValueMapValue
 	private String fileReference;
 
+	@ValueMapValue
+	private String buttonStyle;
+
 	/**
 	 * The resource type.
 	 */
@@ -45,6 +48,10 @@ public class AboutLearaImpl  implements AboutLebara {
 	@Override
 	public String getBackgroundColor() {
 		return backgroundColor;
+	}
+
+	public String getButtonStyle() {
+		return buttonStyle;
 	}
 
 	@Override

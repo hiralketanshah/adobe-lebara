@@ -1,9 +1,8 @@
 import React from "react";
 import { Flex, Spacer } from "@chakra-ui/react";
 import { AboutLebaraProps } from "./types";
-import TextBlock from "./TextBlock";
+import TextBlock from "../TextBlock/TextBlock";
 import { Image } from "../Image/Image";
-import { FiDivideCircle } from "react-icons/fi";
 
 const TextFeature: React.FC<AboutLebaraProps> = ({
   pretitle,
@@ -13,7 +12,8 @@ const TextFeature: React.FC<AboutLebaraProps> = ({
   description,
   isFullWidthButton,
   imagePath,
-  noBgColor
+  linkURL,
+  buttonStyle
 }) => (
     <Flex
       flexDirection={{ base: "column", lg: "row" }}
@@ -22,22 +22,22 @@ const TextFeature: React.FC<AboutLebaraProps> = ({
     >
       <Flex w={{ md: "50%" }} justifyContent="center">
         {imagePath && (
-          <Image src={imagePath} height="100%" alt="About lebara" />
+          <Image src={imagePath}  w={{lg: 398 }} alt="About lebara" />
         )}
       </Flex>
       <Spacer />
       <Flex
         maxW={{ lg: "50%" }}
         flexDirection="column"
-        backgroundColor="primary.500"
+        w="100%"
       >
         <TextBlock
           buttonText={actionsEnabled ? actions && actions[0]?.title : ""}
-          linkURL={actionsEnabled ? actions && actions[0]?.url : "#"}
+          linkURL={linkURL ? linkURL : actionsEnabled ? actions && actions[0]?.url : "#"}
           slogan={pretitle}
           header={title}
           subHeader={description}
-          noBgColor={noBgColor}
+          buttonStyle={buttonStyle}
         />
       </Flex>
     </Flex>

@@ -1,7 +1,8 @@
 import React from "react";
-import { Box, Text } from "@chakra-ui/react";
-import { FooterUpperLinksProps, Links, PageLinks } from "./types";
-//import FooterMobileView from "../FooterMobileView/FooterMobileView";
+// import { Box, Text } from "@chakra-ui/react";
+// import { FooterUpperLinksProps, Links, PageLinks } from "./types";
+// import FooterMobileView from "../FooterMobileView/FooterMobileView";
+import { FooterUpperLinksProps } from "./types";
 
 const FooterUpperLinks: React.FC<FooterUpperLinksProps> = ({ footerUpperLinks }) => {
   return (
@@ -19,7 +20,7 @@ const FooterUpperLinks: React.FC<FooterUpperLinksProps> = ({ footerUpperLinks })
               <Box background="white">
                 <Text
                   fontSize={14}
-                  color="lebaraChambray.500"
+                  color="lightenPrimary.500"
                   fontWeight="bold"
                   textTransform="uppercase"
                 >

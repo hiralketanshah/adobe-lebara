@@ -1,12 +1,7 @@
 import React from "react";
-import { IconButton as ChakraIconButton } from "@chakra-ui/react";
+import { Flex, IconButton as ChakraIconButton, Text } from "@chakra-ui/react";
 import { IconButtonProps } from "./types";
 import { fontTypeDetails } from "../LebaraText/types";
-
-import {
-  IconButtonWrapper,
-  IconButtonBottomText,
-} from "./IconButton.styles.js";
 
 const IconButton: React.FC<IconButtonProps> = ({
   bottomText,
@@ -18,15 +13,21 @@ const IconButton: React.FC<IconButtonProps> = ({
 
   const style = bottomText ? { padding: 26 } : {};
   const iconWithBottomText = (
-    <IconButtonWrapper>
+    <Flex
+      className="icon-button-wrapper"
+      alignItems="center"
+      flexDirection="column"
+    >
       {icon}
-      <IconButtonBottomText
+      <Text
+        mt="8px"
         fontSize={fontDetails.size}
+        className="icon-button-bottom-text"
         fontWeight={fontDetails.weight}
       >
         {bottomText}
-      </IconButtonBottomText>
-    </IconButtonWrapper>
+      </Text>
+    </Flex>
   );
 
   return (

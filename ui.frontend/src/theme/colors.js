@@ -1,5 +1,6 @@
+// eslint-disable-next-line
 export default {
-  lebaraBlue: {
+  lightenPrimary: {
     50: "#CBEFFF",
     100: "#b3e7ff",
     150: "#13357A",
@@ -12,11 +13,11 @@ export default {
     800: "#044374",
     900: "#002848",
   },
-  lebaraChambray: {
+  primary: {
     50: "#ebedff",
     100: "#c7cdee",
     200: "#a3abdc",
-    300: "#808acd",
+    300: "#2b2b2c",
     400: "#5b68bd",
     500: "#3D4998",
     600: "#323d80",
@@ -24,7 +25,7 @@ export default {
     800: "#1A1F45",
     900: "#060817",
   },
-  fuschia: {
+  secondary: {
     50: "#ffe3f0",
     100: "#ffb3cf",
     200: "#fd82af",
@@ -45,6 +46,7 @@ export default {
   lebaraGreen: "#00C800",
   cta: "#B91866",
   success: "#00C800",
+  greySuccess: "#C8C8C8",
   unsuccessful: "#E1001E",
   warning: "#FFC800",
   accessibilityOrange: "#FF5400",
@@ -53,6 +55,9 @@ export default {
   wispPink: "#FCE5E8",
   border: "#8C8FA2",
   bossanova: "#49255E",
+  greySilver: "#C8C8C8",
+  linkButton: "#EA4984",
+  explainerColor: "#535353",
   grey: {
     50: "#F4F4F4",
     100: "#C8C8C8",
@@ -63,4 +68,5 @@ export default {
     600: "#EBEBEB",
     700: "#BCB7B7",
   },
+  bannerBg: "#22407C",
 };
