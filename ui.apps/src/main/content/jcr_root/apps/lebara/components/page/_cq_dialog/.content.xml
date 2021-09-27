@@ -35,6 +35,12 @@
                                                 renderReadOnly="{Boolean}true"
                                                 text="Show New Text"
                                                 value="true"/>
+                                            <newText
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                    fieldDescription="Label for New Text"
+                                                    fieldLabel="New Text Label"
+                                                    name="./newText"/>
                                         </items>
                                     </pageNav>
                                 </items>
