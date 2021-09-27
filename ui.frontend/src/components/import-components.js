@@ -37,6 +37,8 @@ import ProgressStep from "./ProgressStep/ProgressStep";
 import FooterMenu from "./FooterMenu/FooterMenu";
 import { TitleV2IsEmptyFn } from "@adobe/aem-core-components-react-base/dist/isEmptyFunctions";
 import Awards from "./Awards/Awards";
+import TrustShopSlider from "./TrustedShopSlider/TrustedShopSlider";
+
 import {
   ContainerV1,
   ContainerV1IsEmptyFn,
@@ -195,8 +197,8 @@ const CarouselEditConfig = {
   },
 };
 
-// const trustpilotratingEditConfig = {
-//   emptyLabel: "trustpilotrating",
+// const trustRatingEditConfig = {
+//   emptyLabel: "trust Rating",
 //   isEmpty: function (props) {
 //     return !props.fileReferenceBackground;
 //   },
@@ -223,7 +225,6 @@ const AwardConfig = {
   },
 };
 
-
 MapTo("lebara/components/getapp")(GetApp, GetAppEditConfig);
 MapTo("lebara/components/text")(LazyTextComponent, TextEditConfig);
 MapTo("lebara/components/teaser")(Teaser, TeaserEditConfig);
@@ -248,3 +249,4 @@ MapTo("lebara/components/postpaidPlans")(
 MapTo("lebara/components/porting")(Porting, PortingEditConfig);
 MapTo("lebara/components/banner")(Banner, BannerConfig);
 MapTo("lebara/components/awards")(Awards, AwardConfig);
+MapTo("lebara/components/review")(TrustShopSlider);
