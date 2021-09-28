@@ -1,4 +1,3 @@
-// @ts-nocheck
 import React from "react";
 import {
   Box,
@@ -52,13 +51,13 @@ const MiniHeader: React.FC<MiniHeaderProps> = ({
   };
   const { isOpen, onClose, onOpen } = useDisclosure();
 
-  const remapToSideMenuArr = (arr, parent) => {
-    return arr?.map(k => {
+  const remapToSideMenuArr = (arr: any, parent: boolean) => {
+    return arr?.map((k:any) => {
       let subItems = {};
       const icon = parent ? BiShoppingBag : <BiMessageSquareDetail color="secondary.600" />;
 
       if(k && k.children) {
-        subItems = remapToSideMenuArr(k.children);
+        subItems = remapToSideMenuArr(k.children, false);
       }
 
       return {
