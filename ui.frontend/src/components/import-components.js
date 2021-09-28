@@ -197,13 +197,6 @@ const CarouselEditConfig = {
   },
 };
 
-// const trustRatingEditConfig = {
-//   emptyLabel: "trust Rating",
-//   isEmpty: function (props) {
-//     return !props.fileReferenceBackground;
-//   },
-// };
-
 const PostpaidPlansEditConfig = {
   emptyLabel: "PostpaidPlans",
   isEmpty: function (props) {
