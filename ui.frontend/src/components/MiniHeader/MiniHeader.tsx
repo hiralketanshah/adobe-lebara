@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React from "react";
 import {
   Box,
@@ -14,7 +15,7 @@ import {
   BiSearch,
   GiHamburgerMenu,
   RiShoppingBagLine,
-  BiMessageSquareDetail,
+  // BiMessageSquareDetail,
   // BiShoppingBag,
 } from "react-icons/all";
 import { Link, useHistory } from "react-router-dom";
@@ -52,13 +53,13 @@ const MiniHeader: React.FC<MiniHeaderProps> = ({
   const { isOpen, onClose, onOpen } = useDisclosure();
 
   const remappedItems = items?.map((k) => ({
-    icon: <BiMessageSquareDetail color="secondary.600" />,
+    icon: '<BiMessageSquareDetail color="secondary.600" />',
     title: k.title,
     linkUrl: k.path, 
     items: k.children
   }));
 
-  // const itemss = [
+  // const items = [
   //   {
   //     title: "Shop",
   //     icon: BiShoppingBag,
