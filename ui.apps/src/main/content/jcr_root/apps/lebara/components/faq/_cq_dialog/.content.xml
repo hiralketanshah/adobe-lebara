@@ -41,11 +41,11 @@
                                                 jcr:title="Plans"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
                                                 composite="{Boolean}true"
-                                                fieldDescription="FAQ component for question -answer"
+                                                fieldDescription="FAQ component for question and answer"
                                                 fieldLabel="FAQ">
                                                 <granite:data
                                                     jcr:primaryType="nt:unstructured"
-                                                    maxItems="{Long}5"/>
+                                                    maxItems="{Long}10"/>
                                                 <field
                                                     jcr:primaryType="nt:unstructured"
                                                     sling:resourceType="granite/ui/components/coral/foundation/container"
@@ -59,13 +59,13 @@
                                                                     jcr:primaryType="nt:unstructured"
                                                                     sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                                                     fieldDescription="Put your question here"
-                                                                    fieldLabel="Question / Label"
+                                                                    fieldLabel="Question"
                                                                     name="./question"/>
                                                                 <answer
                                                                     jcr:primaryType="nt:unstructured"
                                                                     sling:resourceType="/libs/cq/gui/components/authoring/dialog/richtext"
                                                                     fieldDescription="Put your  text Content here"
-                                                                    fieldLabel="Answer / Content"
+                                                                    fieldLabel="Answer"
                                                                     name="./answer"
                                                                     showBreadcrumb="{Boolean}true"
                                                                     useFixedInlineToolbar="{Boolean}true">
