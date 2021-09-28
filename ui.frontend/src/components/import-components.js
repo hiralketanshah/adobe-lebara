@@ -219,7 +219,6 @@ const SimPortInConfig = {
   },
 }
 
-MapTo("lebara/components/followus")(FollowUs, FollowUsEditConfig);
 const AwardConfig = {
   emptyLabel: "Award Component",
   isEmpty: function (props) {

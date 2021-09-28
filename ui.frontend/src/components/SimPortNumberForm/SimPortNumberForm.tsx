@@ -452,7 +452,7 @@ const SimPortNumberForm: React.FC<SimPortNumberFormProps> = ({
         </Button>
         <Button
           variant="link"
-          colorScheme="fuschia"
+          colorScheme="secondary"
           fontSize="16px"
           fontWeight="800"
           onClick={onWillDoItLater}

@@ -1,4 +1,3 @@
-import { MenuOption } from "../components/Header/types";
 
 // Regex for input fields
 export const ADDRESS_FIELD_PATTERN = /^[a-zA-Z0-9]+[a-zA-Z0-9 ]*$/;
