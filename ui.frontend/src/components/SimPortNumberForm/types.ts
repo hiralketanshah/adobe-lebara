@@ -1,6 +1,6 @@
 import { NumberInputProps } from "../Input/types";
 import { SelectOption } from "../Select/types";
-import { SimPortInProps } from "../SimPortIn/types";
+import { SimPortInProps } from "../../layouts/types";
 
 export interface SimPortNumberFormProps extends SimPortInProps{
   confirm: string;

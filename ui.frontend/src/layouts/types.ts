@@ -1,31 +1,12 @@
-import { SelectOption } from "../Select/types";
-
-export interface AboutLebaraProps {
-	fileReferenceBackground?: string;
-	imagePath?: string;
-	pretitle?: string;
-	description?: string;
-	title?: string;
-	linkURL?: string;
-	actionsEnabled?: string;
-	actions?: ButtonActionProps[];
-}
-
-export interface ButtonActionProps {
-	title?: string;
-	url?: string;
-}
-
-export interface TextBlockProps {
-  slogan?: string;
-  header?: string;
-  subHeader?: string;
-  buttonText?: string;
-  linkURL?: string;
-}
-
+import { SelectOption } from "../components/Select/types";
 export interface SelectNumberAndOrderDetailsLayoutProps {
-	heading?: string;
+  heading?: string;
+}
+export interface BuyPlanLayoutProps {
+  hideButton?: boolean;
+  noPadding?: boolean;
+  fullWidth?: boolean;
+  maxW?: string;
 }
 
 export interface SimPortInProps {
@@ -57,4 +38,5 @@ export interface SimPortInProps {
 	mobileNumberMaxLength?: string,
 	mobileNumberFieldPattern?: string,
 	currentProvidersOptions?: SelectOption[];
+  currentProviderDefaultSelectValue?: string;
 }

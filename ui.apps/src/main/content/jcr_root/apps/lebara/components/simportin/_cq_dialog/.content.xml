@@ -110,6 +110,11 @@
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                                 fieldLabel="Current Provider Description"
                                                 name="./currentProviderDesc"/>
+											<currentproviderdefaultselectvalue
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="Current Provider Default Select Value"
+                                                name="./currentProviderDefaultSelectValue"/>
                                             <currentprovideroptionspath
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="dam/cfm/components/cfpicker"

@@ -4,14 +4,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { BiEdit } from "react-icons/bi";
 import { useHistory } from "react-router-dom";
 import { useMutation } from "@apollo/client";
-import NeedHelpFooter from "../NeedHelpFooter/NeedHelpFooter";
 import { SelectNumberAndOrderDetailsLayoutProps } from "./types";
-import Button from "../Button/Button";
-import { ReduxState } from "../../redux/types";
-import REMOVE_FROM_CART from "../../graphql/REMOVE_FROM_CART";
-import { loadInitialCart } from "../../redux/actions/cartActions";
-import mapMagentoProductToCartItem from "../../utils/mapMagentoProductToCartItem";
-import { CartItem } from "../../redux/types/cartTypes";
+import Button from "../components/Button/Button";
+import { ReduxState } from "../redux/types";
+import REMOVE_FROM_CART from "../graphql/REMOVE_FROM_CART";
+import { loadInitialCart } from "../redux/actions/cartActions";
+import mapMagentoProductToCartItem from "../utils/mapMagentoProductToCartItem";
+import { CartItem } from "../redux/types/cartTypes";
 
 const SelectNumberAndOrderDetailsLayout: React.FC<SelectNumberAndOrderDetailsLayoutProps> =
   ({ heading, children }) => {
@@ -26,7 +25,7 @@ const SelectNumberAndOrderDetailsLayout: React.FC<SelectNumberAndOrderDetailsLay
     return (
       <Box>
         <Flex
-          backgroundColor="lebaraChambray.800"
+          backgroundColor="primary.800"
           px="20px"
           py="13px"
           justifyContent="space-between"
@@ -41,7 +40,6 @@ const SelectNumberAndOrderDetailsLayout: React.FC<SelectNumberAndOrderDetailsLay
                 whiteSpace="pre-line"
               >
                 {selectedProduct?.product} <br />
-                +Free Sim
               </Text>
             </>
           )}
@@ -58,7 +56,7 @@ const SelectNumberAndOrderDetailsLayout: React.FC<SelectNumberAndOrderDetailsLay
               <Button
                 leftIcon={<BiEdit color="bodyCopy" />}
                 variant="ghost"
-                color="fuschia.500"
+                color="secondary.500"
                 onClick={() => {
                   const cartItem = cartItems?.find(
                     (t: CartItem) => t.id === Number(selectedProduct?.id)
@@ -79,16 +77,15 @@ const SelectNumberAndOrderDetailsLayout: React.FC<SelectNumberAndOrderDetailsLay
                   });
                 }}
               >
-                Edit
               </Button>
             </>
           )}
         </Flex>
-        <Box backgroundColor="lebaraBlue.50" px="20px" pt="15px" pb="15px">
+        <Box backgroundColor="lightenPrimary.50" px="20px" pt="15px" pb="15px">
           {heading && (
             <Text
               as="h3"
-              color="lebaraChambray.500"
+              color="primary.500"
               fontSize={22}
               fontWeight="bold"
               pb="15px"
@@ -108,7 +105,6 @@ const SelectNumberAndOrderDetailsLayout: React.FC<SelectNumberAndOrderDetailsLay
             </Box>
           </Center>
         </Box>
-        <NeedHelpFooter />
       </Box>
     );
   };

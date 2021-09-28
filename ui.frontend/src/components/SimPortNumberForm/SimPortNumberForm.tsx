@@ -25,9 +25,10 @@ import {
   DAY_RANGE,
   MONTH_RANGE,
   NUMBER_FIELD_PATTERN,
-  YEAR_RANGE,
+  DATE_OF_BIRTH_YEAR_RANGE,
 } from "../../utils/lebara.constants";
 import Select from "../Select/Select";
+import { useHistory } from "react-router-dom";
 
 const SimPortNumberForm: React.FC<SimPortNumberFormProps> = ({
   confirm,
@@ -35,9 +36,9 @@ const SimPortNumberForm: React.FC<SimPortNumberFormProps> = ({
   maxLengthMobileNumber,
   multiFieldOptions,
   currentProviderSelectOptions,
+  currentProviderDefaultSelectValue,
   consent,
   dataProtectionDeclation,
-  onContinue,
   onCancel,
   onWillDoItLater,
   title,
@@ -61,7 +62,9 @@ const SimPortNumberForm: React.FC<SimPortNumberFormProps> = ({
   const [mobileNoFieldPattern] = useState(NUMBER_FIELD_PATTERN);
   const [dayRange] = useState(DAY_RANGE);
   const [monthRange] = useState(MONTH_RANGE);
-  const [yearRange] = useState(YEAR_RANGE);
+  const [yearRange] = useState(DATE_OF_BIRTH_YEAR_RANGE);
+  const history = useHistory();
+
   const validationSchema = yup.object({
     mobileNumber: yup
       .string()
@@ -70,12 +73,10 @@ const SimPortNumberForm: React.FC<SimPortNumberFormProps> = ({
       .matches(mobileNoFieldPattern, mobileNumberFieldPattern),
     day: yup
       .string()
-      .max(2, dayFieldErrorMessage)
       .required(dayFieldErrorMessage)
       .matches(dayRange, dayFieldErrorMessage),
     month: yup
       .string()
-      .max(2, monthFieldErrorMessage)
       .required(monthFieldErrorMessage)
       .matches(monthRange, monthFieldErrorMessage),
     year: yup
@@ -96,10 +97,13 @@ const SimPortNumberForm: React.FC<SimPortNumberFormProps> = ({
     },
     validationSchema,
     onSubmit: (values) => {
-      console.log(JSON.stringify(values, null, 2));
-      if (onContinue) {
-        onContinue();
-      }
+      history.push("/personal-details", {
+        portIn: {
+          dob: `${values.month}/${values.day}/${values.year}`,
+          msisdn: values.mobileNumber,
+          previousProvider: values.currentProvider,
+        },
+      });
     },
   });
   return (
@@ -115,7 +119,7 @@ const SimPortNumberForm: React.FC<SimPortNumberFormProps> = ({
           fontSize="20px"
           lineHeight="1.6"
           fontWeight="bold"
-          color="lebaraChambray.600"
+          color="primary.600"
           mb="15px"
         >
           {title}
@@ -376,7 +380,7 @@ const SimPortNumberForm: React.FC<SimPortNumberFormProps> = ({
               }
               formControlBorderRadius="12px"
               options={currentProviderSelectOptions}
-              placeholder="Select an option"
+              placeholder={currentProviderDefaultSelectValue}
               _placeholder={{ color: "#969696" }}
               color="greySuccess"
               fontWeight="normal"

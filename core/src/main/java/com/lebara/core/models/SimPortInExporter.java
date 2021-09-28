@@ -70,6 +70,9 @@ public class SimPortInExporter implements ComponentExporter {
     private String currentProviderDesc;
 
     @ValueMapValue
+    private String currentProviderDefaultSelectValue;
+
+    @ValueMapValue
     private String contractInfo;
 
     @ValueMapValue
@@ -159,6 +162,10 @@ public class SimPortInExporter implements ComponentExporter {
 
     public String getCurrentProviderDesc() {
         return currentProviderDesc;
+    }
+
+    public String getCurrentProviderDefaultSelectValue() {
+        return currentProviderDefaultSelectValue;
     }
 
     public String getContractInfo() {

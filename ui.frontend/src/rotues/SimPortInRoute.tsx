@@ -2,13 +2,13 @@ import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { Flex, Heading } from "@chakra-ui/react";
 import { useHistory } from "react-router-dom";
-import SelectNumberAndOrderDetailsLayout from "./SelectNumberAndOrderDetailsLayout";
-import { highlightButton } from "../../redux/actions/highlightActions";
-import SimPortNumberForm from "../SimPortNumberForm/SimPortNumberForm";
-import Button from "../Button/Button";
-import { SimPortInProps } from "./types";
+import SelectNumberAndOrderDetailsLayout from "../layouts/SelectNumberAndOrderDetailsLayout";
+import { highlightButton } from "../redux/actions/highlightActions";
+import SimPortNumberForm from "../components/SimPortNumberForm/SimPortNumberForm";
+import Button from "../components/Button/Button";
+import { SimPortInProps } from "../layouts/types";
 
-const SimPortIn: React.FC<SimPortInProps> = ({
+const SimPortInRoute: React.FC<SimPortInProps> = ({
   ...props
 }) => {
   const { pretitle, doitLaterButtonLabel, consentTwo, dataProtectionMessage, portingInfo, consentOne, dobTitle, dobDesc, dayFieldLabel, monthFieldLabel, yearFieldLabel, currentProvidersOptions } = props;
@@ -32,13 +32,13 @@ const SimPortIn: React.FC<SimPortInProps> = ({
   return (
     <SelectNumberAndOrderDetailsLayout>
       <Flex pb="15px" alignItems="center" justifyContent="space-between">
-        {pretitle ? <Heading color="lebaraChambray.500" fontSize="20px" fontWeight="bold">
+        {pretitle ? <Heading color="primary.500" fontSize="20px" fontWeight="bold">
           {pretitle}
         </Heading> : null}
         {doitLaterButtonLabel ? <Button
           variant="link"
           textTransform="none"
-          colorScheme="lebaraChambray"
+          colorScheme="secondary"
           onClick={handleWillDoItLaterClick}
         >
           {doitLaterButtonLabel}
@@ -60,7 +60,6 @@ const SimPortIn: React.FC<SimPortInProps> = ({
           },
           currentProviderSelectOptions: currentProvidersOptions || []
         }}
-        onContinue={() => history.push("/order-details")}
         onCancel={() => history.goBack()}
         onWillDoItLater={handleWillDoItLaterClick}
         {...props}
@@ -69,4 +68,5 @@ const SimPortIn: React.FC<SimPortInProps> = ({
   );
 };
 
-export default SimPortIn;
+export default SimPortInRoute;
+

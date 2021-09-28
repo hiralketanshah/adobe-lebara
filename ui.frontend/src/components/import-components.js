@@ -37,7 +37,7 @@ import PostpaidPlans from "./PostpaidPlans/PostpaidPlans";
 import ProgressStepLinks from "./ProgressStepLinks/ProgressStepLinks";
 import { CarouselV1IsEmptyFn } from "@adobe/aem-core-components-react-spa/dist/isEmptyFunctions";
 import Banner from "./Banner/Banner";
-import SimPortIn from "./SimPortIn/SimPortIn";
+import SimPortInRoute from "../rotues/SimPortInRoute";
 
 import { TitleV2IsEmptyFn } from "@adobe/aem-core-components-react-base/dist/isEmptyFunctions";
 
@@ -273,4 +273,4 @@ MapTo("lebara/components/trustpilotrating")(Trustpilot);
 MapTo("lebara/components/postpaidPlans")(PostpaidPlans, PostpaidPlansEditConfig);
 MapTo("lebara/components/porting")(Porting, PortingEditConfig);
 MapTo("lebara/components/banner")(Banner, BannerConfig);
-MapTo("lebara/components/simportin")(SimPortIn, SimPortInConfig);
+MapTo("lebara/components/simportin")(SimPortInRoute, SimPortInConfig);

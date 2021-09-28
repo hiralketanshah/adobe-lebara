@@ -26,8 +26,8 @@ const Select: React.FC<SelectProps> = ({ options, width, label, formControlBorde
         pointerEvents={lockSelect ? "none" : "auto"}
         iconColor={lockSelect ? "white" : "default"}
       >
-        {options.map((option, index) => (
-          <option value={option.value} key={option.key || index}>
+        {options.map((option) => (
+          <option value={option.value} key={option.key || option.value}>
             {option.name}
           </option>
         ))}
