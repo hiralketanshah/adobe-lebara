@@ -17,7 +17,7 @@ const SideMenu: React.FC<SideMenuProps> = ({ items }) => {
   const history = useHistory();
   return (
     <ChakraAccordion>
-      {items.map((item) => (
+      {items?.map((item) => (
         <AccordionItem key={item.title}>
           <h2>
             <AccordionButton h="52px">
