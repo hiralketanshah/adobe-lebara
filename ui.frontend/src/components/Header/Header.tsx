@@ -23,12 +23,7 @@ import {
 import { Link, useHistory } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { useLocalStorage } from "@rehooks/local-storage";
-import {
-  HeaderProps,
-  itemList,
-  Childrens,
-  SubChildrens
-} from "./types";
+import { HeaderProps, itemList, Childrens, SubChildrens } from "./types";
 
 import IconButton from "../IconButton/IconButton";
 // import LanguageDropDown from "../LanguageDropDown/LanguageDropDown";
@@ -38,7 +33,13 @@ import { ReduxState } from "../../redux/types";
 // import LebaraLogo from "../../assets/images/lebara-logo.svg";
 import NewSIMOfferCard from "../NewSImOfferCard/NewSImOfferCard";
 
-const Header: React.FC<HeaderProps> = ({ logoPath, items }) => {
+const Header: React.FC<HeaderProps> = ({
+  logoPath,
+  items,
+  topupCtaText,
+  topupCtaLink,
+  accountLink,
+}) => {
   const cartItems = useSelector((state: ReduxState) => state.cart.items);
   const history = useHistory();
   const [userToken] = useLocalStorage("userToken");
@@ -160,63 +161,61 @@ const Header: React.FC<HeaderProps> = ({ logoPath, items }) => {
                       display="flex"
                       justifyContent="space-between"
                     >
-                      {menuItem.children?.map(
-                        (subMenuOption: Childrens) => (
-                          <Box>
-                            <MenuGroup
-                              defaultValue="asc"
-                              fontSize={14}
-                              color="primary.500"
-                              fontWeight="bold"
-                              textTransform="uppercase"
-                              marginLeft="12px"
-                              title={subMenuOption.title}
-                            >
-                              <Box>
-                                {subMenuOption.children?.map(
-                                  (menuProps: SubChildrens) => (
-                                    <MenuItem
-                                      isDisabled={menuProps.active}
-                                      onClick={() =>
-                                        menuProps.path
-                                          ? history.push(menuProps.path)
-                                          : null
-                                      }
+                      {menuItem.children?.map((subMenuOption: Childrens) => (
+                        <Box>
+                          <MenuGroup
+                            defaultValue="asc"
+                            fontSize={14}
+                            color="primary.500"
+                            fontWeight="bold"
+                            textTransform="uppercase"
+                            marginLeft="12px"
+                            title={subMenuOption.title}
+                          >
+                            <Box>
+                              {subMenuOption.children?.map(
+                                (menuProps: SubChildrens) => (
+                                  <MenuItem
+                                    isDisabled={menuProps.active}
+                                    onClick={() =>
+                                      menuProps.path
+                                        ? history.push(menuProps.path)
+                                        : null
+                                    }
+                                  >
+                                    <Text
+                                      fontSize="14px"
+                                      fontWeight="500"
+                                      lineHeight="14.06px"
+                                      color="black"
                                     >
-                                      <Text
-                                        fontSize="14px"
-                                        fontWeight="500"
-                                        lineHeight="14.06px"
-                                        color="black"
+                                      {menuProps.title}
+                                    </Text>
+                                    {menuProps.showNewText ? (
+                                      <Tag
+                                        size="md"
+                                        borderRadius="full"
+                                        variant="solid"
+                                        colorScheme="blue"
+                                        marginLeft="20px"
                                       >
-                                        {menuProps.title}
-                                      </Text>
-                                      {menuProps.showNewText ? (
-                                        <Tag
-                                          size="md"
-                                          borderRadius="full"
-                                          variant="solid"
-                                          colorScheme="blue"
-                                          marginLeft="20px"
+                                        <TagLabel
+                                          fontSize="14px"
+                                          fontWeight="700"
                                         >
-                                          <TagLabel
-                                            fontSize="14px"
-                                            fontWeight="700"
-                                          >
-                                            New
-                                          </TagLabel>
-                                        </Tag>
-                                      ) : (
-                                        <></>
-                                      )}
-                                    </MenuItem>
-                                  )
-                                )}
-                              </Box>
-                            </MenuGroup>
-                          </Box>
-                        )
-                      )}
+                                          New
+                                        </TagLabel>
+                                      </Tag>
+                                    ) : (
+                                      <></>
+                                    )}
+                                  </MenuItem>
+                                )
+                              )}
+                            </Box>
+                          </MenuGroup>
+                        </Box>
+                      ))}
                     </Box>
                     <Box width="12%">
                       <></>
@@ -233,9 +232,9 @@ const Header: React.FC<HeaderProps> = ({ logoPath, items }) => {
           <Box>
             <Button
               fontSize={{ lg: "14px", md: "12px" }}
-              onClick={() => history.push("/top-up")}
+              onClick={() => history.push(`/${topupCtaLink}`)}
             >
-              Top Up +
+              {topupCtaText}
             </Button>
           </Box>
           <Spacer />
@@ -253,6 +252,7 @@ const Header: React.FC<HeaderProps> = ({ logoPath, items }) => {
               aria-label="Profile"
               size="md"
               variant="ghost"
+              onClick={() => history.push(`/${accountLink}`)}
             />
             <Box pos="relative" onClick={handleCartClick}>
               <IconButton
