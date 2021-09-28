@@ -15,8 +15,8 @@ import {
   BiSearch,
   GiHamburgerMenu,
   RiShoppingBagLine,
-  // BiMessageSquareDetail,
-  // BiShoppingBag,
+  BiMessageSquareDetail,
+  BiShoppingBag,
 } from "react-icons/all";
 import { Link, useHistory } from "react-router-dom";
 import { useSelector } from "react-redux";
@@ -52,12 +52,25 @@ const MiniHeader: React.FC<MiniHeaderProps> = ({
   };
   const { isOpen, onClose, onOpen } = useDisclosure();
 
-  const remappedItems = items?.map((k) => ({
-    icon: '<BiMessageSquareDetail color="secondary.600" />',
-    title: k.title,
-    linkUrl: k.path, 
-    items: k.children
-  }));
+  const remapToSideMenuArr = (arr, parent) => {
+    return arr?.map(k => {
+      let subItems = {};
+      const icon = parent ? BiShoppingBag : <BiMessageSquareDetail color="secondary.600" />;
+
+      if(k && k.children) {
+        subItems = remapToSideMenuArr(k.children);
+      }
+
+      return {
+        icon: icon,
+        title: k.title,
+        linkUrl: k.path, 
+        items: subItems,
+      };
+    });
+  };
+
+  const remappedItems = remapToSideMenuArr(items, true);
 
   // const items = [
   //   {
