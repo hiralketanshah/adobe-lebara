@@ -28,8 +28,7 @@ import { ReduxState } from "../../redux/types";
 // import LebaraLogo from "../../assets/images/lebara-logo.svg";
 
 const MiniHeader: React.FC<MiniHeaderProps> = ({
-  logoPath,
-  items
+  logoPath
 }) => {
   const cartItems = useSelector((state: ReduxState) => state.cart.items);
   const history = useHistory();
@@ -50,89 +49,89 @@ const MiniHeader: React.FC<MiniHeaderProps> = ({
     );
   };
   const { isOpen, onClose, onOpen } = useDisclosure();
-  // const items = [
-  //   {
-  //     title: "Shop",
-  //     icon: BiShoppingBag,
-  //     items: [
-  //       {
-  //         icon: <BiMessageSquareDetail color="secondary.600" />,
-  //         title: "Sim Only",
-  //         linkUrl: "/postpaid",
-  //       },
-  //       {
-  //         icon: <BiMessageSquareDetail color="secondary.600" />,
-  //         title: "Add On",
-  //         linkUrl: "/add-ons",
-  //       },
-  //       {
-  //         icon: <BiMessageSquareDetail color="secondary.600" />,
-  //         title: "Top Up",
-  //         linkUrl: "/top-up",
-  //       },
-  //       {
-  //         icon: <BiMessageSquareDetail color="secondary.600" />,
-  //         title: "Phones",
-  //         linkUrl: "/",
-  //       },
-  //     ],
-  //   },
-  //   {
-  //     title: "My Lebara",
-  //     icon: BiShoppingBag,
-  //     items: [
-  //       {
-  //         icon: <BiMessageSquareDetail color="secondary.600" />,
-  //         title: "Sim Only",
-  //         linkUrl: "/",
-  //       },
-  //     ],
-  //   },
-  //   {
-  //     title: "Help",
-  //     icon: BiShoppingBag,
-  //     items: [
-  //       {
-  //         icon: <BiMessageSquareDetail color="secondary.600" />,
-  //         title: "Sim Only",
-  //         linkUrl: "/",
-  //       },
-  //     ],
-  //   },
-  //   {
-  //     title: "Refer & Earn",
-  //     icon: BiShoppingBag,
-  //     items: [
-  //       {
-  //         icon: <BiMessageSquareDetail color="secondary.600" />,
-  //         title: "Sim Only",
-  //         linkUrl: "/",
-  //       },
-  //     ],
-  //   },
-  //   {
-  //     title: "Store Locator",
-  //     icon: BiShoppingBag,
-  //     items: [
-  //       {
-  //         icon: <BiMessageSquareDetail color="secondary.600" />,
-  //         title: "Sim Only",
-  //         linkUrl: "/",
-  //       },
-  //     ],
-  //   },
-  //   {
-  //     title: "About Us",
-  //     icon: BiShoppingBag,
-  //     items: [
-  //       {
-  //         icon: <BiMessageSquareDetail color="secondary.600" />,
-  //         title: "Sim Only",
-  //         linkUrl: "/",
-  //       },
-  //     ],
-  //   },
-  // ];
+  const items = [
+    {
+      title: "Shop",
+      icon: BiShoppingBag,
+      items: [
+        {
+          icon: <BiMessageSquareDetail color="secondary.600" />,
+          title: "Sim Only",
+          linkUrl: "/postpaid",
+        },
+        {
+          icon: <BiMessageSquareDetail color="secondary.600" />,
+          title: "Add On",
+          linkUrl: "/add-ons",
+        },
+        {
+          icon: <BiMessageSquareDetail color="secondary.600" />,
+          title: "Top Up",
+          linkUrl: "/top-up",
+        },
+        {
+          icon: <BiMessageSquareDetail color="secondary.600" />,
+          title: "Phones",
+          linkUrl: "/",
+        },
+      ],
+    },
+    {
+      title: "My Lebara",
+      icon: BiShoppingBag,
+      items: [
+        {
+          icon: <BiMessageSquareDetail color="secondary.600" />,
+          title: "Sim Only",
+          linkUrl: "/",
+        },
+      ],
+    },
+    {
+      title: "Help",
+      icon: BiShoppingBag,
+      items: [
+        {
+          icon: <BiMessageSquareDetail color="secondary.600" />,
+          title: "Sim Only",
+          linkUrl: "/",
+        },
+      ],
+    },
+    {
+      title: "Refer & Earn",
+      icon: BiShoppingBag,
+      items: [
+        {
+          icon: <BiMessageSquareDetail color="secondary.600" />,
+          title: "Sim Only",
+          linkUrl: "/",
+        },
+      ],
+    },
+    {
+      title: "Store Locator",
+      icon: BiShoppingBag,
+      items: [
+        {
+          icon: <BiMessageSquareDetail color="secondary.600" />,
+          title: "Sim Only",
+          linkUrl: "/",
+        },
+      ],
+    },
+    {
+      title: "About Us",
+      icon: BiShoppingBag,
+      items: [
+        {
+          icon: <BiMessageSquareDetail color="secondary.600" />,
+          title: "Sim Only",
+          linkUrl: "/",
+        },
+      ],
+    },
+  ];
   return (
     <Box w="100%">
       <Flex

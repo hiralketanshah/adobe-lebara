@@ -224,7 +224,9 @@ const Header: React.FC<HeaderProps> = ({
                       <></>
                     </Box>
                     <Box position="relative">
-                      <NewSIMOfferCard />
+                      {(menuItem.imagePath || menuItem.simImage || menuItem.imageText) && (
+                        <NewSIMOfferCard imagePath={menuItem.imagePath} simImage= {menuItem.simImage} imageText={menuItem.imageText}/>
+                      )}
                     </Box>
                   </Box>
                 </MenuList>
