@@ -23,7 +23,10 @@ import {
 import { Link, useHistory } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { useLocalStorage } from "@rehooks/local-storage";
-import { HeaderProps, itemList, Childrens, SubChildrens } from "./types";
+import {
+  HeaderProps,
+  children
+} from "./types";
 
 import IconButton from "../IconButton/IconButton";
 // import LanguageDropDown from "../LanguageDropDown/LanguageDropDown";
@@ -118,7 +121,7 @@ const Header: React.FC<HeaderProps> = ({
           </ChakraLink>
 
           <Flex alignItems="left" ml={{ lg: "30px", md: "15px" }}>
-            {items?.map((menuItem: itemList) => (
+            {items?.map((menuItem: children) => (
               <Menu>
                 <MenuButton
                   _active={{
@@ -161,7 +164,7 @@ const Header: React.FC<HeaderProps> = ({
                       display="flex"
                       justifyContent="space-between"
                     >
-                      {menuItem.children?.map((subMenuOption: Childrens) => (
+                      {menuItem.children?.map((subMenuOption: children) => (
                         <Box>
                           <MenuGroup
                             defaultValue="asc"
@@ -174,7 +177,7 @@ const Header: React.FC<HeaderProps> = ({
                           >
                             <Box>
                               {subMenuOption.children?.map(
-                                (menuProps: SubChildrens) => (
+                                (menuProps: children) => (
                                   <MenuItem
                                     isDisabled={menuProps.active}
                                     onClick={() =>

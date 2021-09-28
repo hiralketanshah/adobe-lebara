@@ -1,17 +1,5 @@
-export interface HeaderProps {
-  topupCtaText?: string;
-  topupCtaLink?: string;
-  accountLink?: string;
-  accessibilityLabel?: string;
-  id?: string;
-  logoPath?: string;
-  items?: itemList[]
-}
-
-export interface itemList {
-
+export interface children {
   isDisabled?: boolean;
-
   showNewText?: string;
   imageText?: string;
   level?: number;
@@ -21,28 +9,14 @@ export interface itemList {
   active?: boolean;
   url?: string;
   title?: string;
-  children?: Childrens[]
+  children?: children[]
 }
-
-export interface Childrens {
-  isDisabled?: boolean;
-  showNewText?: boolean;
-  level?: number;
+export interface HeaderProps {
+  topupCtaText?: string;
+  topupCtaLink?: string;
+  accountLink?: string;
+  accessibilityLabel?: string;
   id?: string;
-  path?: string;
-  active?: boolean;
-  url?: string;
-  title?: string;
-  children?: SubChildrens[];
-}
-export interface SubChildrens {
-  isDisabled?: boolean;
-  showNewText?: boolean;
-  level?: number;
-  id?: string;
-  path?: string;
-  active?: boolean;
-  url?: string;
-  title?: string;
-  children?: [];
+  logoPath?: string;
+  items?: children[]
 }
