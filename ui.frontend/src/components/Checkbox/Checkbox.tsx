@@ -9,7 +9,7 @@ const Checkbox: React.FC<CheckboxProps> = ({ ...rest }) => {
   return (
     <ChakraCheckbox
       {...rest}
-      colorScheme="fuschia"
+      colorScheme="secondary"
       sx={{
         ".chakra-checkbox__label": {
           fontSize: fontDetails.size,
