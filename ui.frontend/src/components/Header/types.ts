@@ -1,38 +1,47 @@
 export interface HeaderProps {
-  logoPath?: string;
-  items?: Menu[];
-  topupCtaText ?: string;
+  topupCtaText?: string;
   topupCtaLink?: string;
   accountLink?: string;
+  accessibilityLabel?: string;
+  id?: string;
+  logoPath?: string;
+  items?: itemList[]
 }
 
-export interface HeaderIconProps {
-  accountLink?: string;
+export interface itemList {
 
-}
-
-export interface Menu {
-  title: string;
-  url: string;
-}
-export interface SelectOption {
-  title: string;
-}
-
-export interface MenuOption {
-  menuName: string;
-  isDisabled: boolean;
-  subMenuOption?: SubMenuOptions[];
-}
-
-export interface SubMenuOptions {
-  menuOptionName: string;
-  subMenuOptions: MenuProperties[];
-}
-
-export interface MenuProperties {
+  isDisabled?: boolean;
+  showNewText?: string;
+  imageText?: string;
+  level?: number;
+  imagePath?: string;
+  id?: string;
   path?: string;
-  subMenuOptionName: string;
-  isDisabled: boolean;
-  isNewPlan: boolean;
+  active?: boolean;
+  url?: string;
+  title?: string;
+  children?: Childrens[]
+}
+
+export interface Childrens {
+  isDisabled?: boolean;
+  showNewText?: boolean;
+  level?: number;
+  id?: string;
+  path?: string;
+  active?: boolean;
+  url?: string;
+  title?: string;
+  children?: SubChildrens[];
+}
+export interface SubChildrens {
+  isDisabled?: boolean;
+  showNewText?: boolean;
+  level?: number;
+  id?: string;
+  path?: string;
+  active?: boolean;
+  url?: string;
+  title?: string;
+  children?: [];
 }

@@ -24,22 +24,21 @@ import LanguageHeader from "./LanguageHeader/LanguageHeader";
 import Header from "./Header/Header";
 import LebaraText from "./LebaraText/LebaraText";
 import GetApp from "./GetApp/GetApp";
-import FollowUs from "./Footer/FollowUs/FollowUs";
 import { MapTo } from "@adobe/aem-react-editable-components";
-import FooterCopyright from "./Footer/FooterCopyright/FooterCopyright";
-import FooterUpperLinks from "./Footer/FooterUpperLinks/FooterUpperLinks";
 import Usp from "./usp/usp";
 import Porting from "./Porting/Porting";
 import Aboutlebara from "./aboutlebara/aboutlebara";
+import Carousel from "./Carousel/Carousel";
 import Trustpilot from "./Trustpilot/Trustpilot";
 import PlanOffers from "./PlanOffers/PlanOffers";
 import PostpaidPlans from "./PostpaidPlans/PostpaidPlans";
-import ProgressStepLinks from "./ProgressStepLinks/ProgressStepLinks";
-import { CarouselV1IsEmptyFn } from "@adobe/aem-core-components-react-spa/dist/isEmptyFunctions";
 import Banner from "./Banner/Banner";
 import SimPortInRoute from "../rotues/SimPortInRoute";
-
+import ProgressStep from "./ProgressStep/ProgressStep";
+import FooterMenu from "./FooterMenu/FooterMenu";
 import { TitleV2IsEmptyFn } from "@adobe/aem-core-components-react-base/dist/isEmptyFunctions";
+import Awards from "./Awards/Awards";
+import TrustShopSlider from "./TrustedShopSlider/TrustedShopSlider";
 
 import {
   ContainerV1,
@@ -57,8 +56,8 @@ import {
   ButtonV1IsEmptyFn,
   ImageV2,
   ImageV2IsEmptyFn,
-  LanguageNavigationV1,
-  NavigationV1,
+  // LanguageNavigationV1,
+  // NavigationV1,
   DownloadV1,
   DownloadV1IsEmptyFn,
   SeparatorV1,
@@ -74,11 +73,6 @@ const LazyTextComponent = withAsyncImport(() => import(`./Text/Text`));
 const TitleV2 = withAsyncImport(() =>
   import(
     `@adobe/aem-core-components-react-base/dist/authoring/title/v2/TitleV2`
-  )
-);
-const CarouselV1 = withAsyncImport(() =>
-  import(
-    `@adobe/aem-core-components-react-spa/dist/container/carousel/v1/CarouselV1`
   )
 );
 
@@ -101,9 +95,6 @@ MapTo("lebara/components/breadcrumb")(BreadCrumbV2, {
 MapTo("lebara/components/tabs")(TabsV1, { isEmpty: TabsV1IsEmptyFn });
 MapTo("lebara/components/accordion")(AccordionV1, {
   isEmpty: AccordionV1IsEmptyFn,
-});
-MapTo("lebara/components/carousel")(CarouselV1, {
-  isEmpty: CarouselV1IsEmptyFn,
 });
 MapTo("lebara/components/container")(ContainerV1, {
   isEmpty: ContainerV1IsEmptyFn,
@@ -165,24 +156,10 @@ const TitleEditConfig = {
   },
 };
 
-const FooterCopyrightConfig = {
-  emptyLabel: "Footer Copyright",
-  isEmpty: function (props) {
-    return !props.links;
-  },
-};
-
-const FollowUsEditConfig = {
-  emptyLabel: "Follow US",
-  isEmpty: function (props) {
-    return !props.followUsText;
-  },
-};
-
 const ProgressStepLinksEditConfig = {
   emptyLabel: "Progress Step Links",
   isEmpty: function (props) {
-    return !props.links;
+    return !props.pageLinks?.length;
   },
 };
 
@@ -190,13 +167,6 @@ const GetAppEditConfig = {
   emptyLabel: "Get APP",
   isEmpty: function (props) {
     return !props.appTitle;
-  },
-};
-
-const FooterUpperLinksConfig = {
-  emptyLabel: "Footer Component",
-  isEmpty: function (props) {
-    return !props.links;
   },
 };
 
@@ -214,17 +184,17 @@ const PortingEditConfig = {
   },
 };
 
-const aboutlebaraEditConfig = {
-  emptyLabel: "aboutlebara",
+const AboutLebaraEditConfig = {
+  emptyLabel: "About Lebara",
   isEmpty: function (props) {
-    return !props.fileReferenceBackground;
+    return !props.title;
   },
 };
 
-const trustpilotratingEditConfig = {
-  emptyLabel: "trustpilotrating",
+const CarouselEditConfig = {
+  emptyLabel: "Carousel",
   isEmpty: function (props) {
-    return !props.fileReferenceBackground;
+    return !props || !props.cqItems;
   },
 };
 
@@ -250,27 +220,36 @@ const SimPortInConfig = {
 }
 
 MapTo("lebara/components/followus")(FollowUs, FollowUsEditConfig);
+const AwardConfig = {
+  emptyLabel: "Award Component",
+  isEmpty: function (props) {
+    return !props.title;
+  },
+};
+
 MapTo("lebara/components/getapp")(GetApp, GetAppEditConfig);
 MapTo("lebara/components/text")(LazyTextComponent, TextEditConfig);
 MapTo("lebara/components/teaser")(Teaser, TeaserEditConfig);
 MapTo("lebara/components/viewplans")(ViewPlans, ViewPlansConfig);
 MapTo("lebara/components/detailedviewplans")(PlanOffers, detailViewPlansConfig);
-MapTo("lebara/components/progressstep")(ProgressStepLinks, ProgressStepLinksEditConfig);
+MapTo("lebara/components/progressstep")(
+  ProgressStep,
+  ProgressStepLinksEditConfig
+);
 MapTo("lebara/components/header/languagenavigation")(LanguageHeader);
 MapTo("lebara/components/header/headernavigation")(Header);
 MapTo("lebara/components/title")(LebaraText, TitleEditConfig);
-MapTo("lebara/components/footer/footercopyright")(
-  FooterCopyright,
-  FooterCopyrightConfig
-);
-MapTo("lebara/components/footer")(
-  FooterUpperLinks,
-  FooterUpperLinksConfig
-);
+MapTo("lebara/components/footer")(FooterMenu);
 MapTo("lebara/components/usp")(Usp, uspEditConfig);
-MapTo("lebara/components/aboutlebara")(Aboutlebara, aboutlebaraEditConfig);
+MapTo("lebara/components/aboutlebara")(Aboutlebara, AboutLebaraEditConfig);
+MapTo("lebara/components/carousel")(Carousel);
 MapTo("lebara/components/trustpilotrating")(Trustpilot);
-MapTo("lebara/components/postpaidPlans")(PostpaidPlans, PostpaidPlansEditConfig);
+MapTo("lebara/components/postpaidPlans")(
+  PostpaidPlans,
+  PostpaidPlansEditConfig
+);
 MapTo("lebara/components/porting")(Porting, PortingEditConfig);
 MapTo("lebara/components/banner")(Banner, BannerConfig);
 MapTo("lebara/components/simportin")(SimPortInRoute, SimPortInConfig);
+MapTo("lebara/components/awards")(Awards, AwardConfig);
+MapTo("lebara/components/review")(TrustShopSlider);

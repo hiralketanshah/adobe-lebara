@@ -26,7 +26,7 @@ const GetApp: React.FC<GetAppProps> = ({
         <Box px="10px">
           <Text
             fontSize={22}
-            color="lebaraChambray.600"
+            color="lightenPrimary.600"
             fontWeight="bold"
             textTransform="uppercase"
             mt="30px"

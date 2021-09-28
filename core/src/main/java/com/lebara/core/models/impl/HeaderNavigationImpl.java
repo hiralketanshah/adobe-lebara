@@ -43,6 +43,9 @@ public class HeaderNavigationImpl implements HeaderNavigation {
     private String accountLink;
 
     @ValueMapValue
+    private String newText;
+
+    @ValueMapValue
     private String viewAllButtonText;
 
     @ValueMapValue
@@ -94,6 +97,11 @@ public class HeaderNavigationImpl implements HeaderNavigation {
 
     public String getAccountLink() {
         return AemUtils.getLinkWithExtension(accountLink);
+    }
+
+    @Override
+    public String getNewText(){
+        return newText;
     }
 
     @Override

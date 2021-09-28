@@ -5,11 +5,7 @@ import { PostpaidPlansProps } from "./types";
 
 
 
-const PostpaidPlans: React.FC<PostpaidPlansProps> = ({
-
-
-
-}) => {
+const PostpaidPlans: React.FC<PostpaidPlansProps> = () => {
   return (
     <>
    
