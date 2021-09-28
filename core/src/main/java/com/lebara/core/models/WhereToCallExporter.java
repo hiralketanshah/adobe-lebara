@@ -3,6 +3,7 @@ package com.lebara.core.models;
 import com.adobe.cq.export.json.ComponentExporter;
 import com.adobe.cq.export.json.ExporterConstants;
 import com.lebara.core.dto.CountryInfo;
+import com.lebara.core.dto.SelectBean;
 import com.lebara.core.utils.CFUtils;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;
@@ -45,7 +46,7 @@ public class WhereToCallExporter implements ComponentExporter {
         return title;
     }
 
-    public List<CountryInfo> getCountryInfo(){
+    public List<SelectBean> getCountryInfo(){
         return CFUtils.populateCountryInfo(resourceResolver.getResource(cfPath));
     }
 
