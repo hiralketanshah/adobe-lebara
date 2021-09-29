@@ -75,6 +75,8 @@ public class CFUtils {
                 List<SelectBean> countries = convertStringArrayToList(CFUtils.getElementArrayValue(countryFragment, "countryInfo"), SelectBean.class);
                 for (int i = 0; i < countries.size(); i++) {
                     countries.get(i).setKey(String.valueOf(i));
+                    countries.get(i).setUrl(countries.get(i).getValue());
+                    countries.get(i).setValue(countries.get(i).getName());
                 }
                 return countries;
             }

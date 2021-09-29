@@ -46,7 +46,7 @@ public class WhereToCallExporter implements ComponentExporter {
         return title;
     }
 
-    public List<SelectBean> getCountryInfo(){
+    public List<SelectBean> getCountries(){
         return CFUtils.populateCountryInfo(resourceResolver.getResource(cfPath));
     }
 
