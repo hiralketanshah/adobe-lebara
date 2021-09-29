@@ -36,7 +36,7 @@ import Banner from "./Banner/Banner";
 import ProgressStep from "./ProgressStep/ProgressStep";
 import FooterMenu from "./FooterMenu/FooterMenu";
 import { TitleV2IsEmptyFn } from "@adobe/aem-core-components-react-base/dist/isEmptyFunctions";
-import Awards from "./Awards/Awards";
+import AwardsShowCase from "./AwardsShowCase/AwardsShowCase";
 import TrustShopSlider from "./TrustedShopSlider/TrustedShopSlider";
 
 import {
@@ -211,7 +211,7 @@ const BannerConfig = {
   },
 };
 
-const AwardConfig = {
+const AwardsShowCaseConfig = {
   emptyLabel: "Award Component",
   isEmpty: function (props) {
     return !props.title;
@@ -241,5 +241,5 @@ MapTo("lebara/components/postpaidPlans")(
 );
 MapTo("lebara/components/porting")(Porting, PortingEditConfig);
 MapTo("lebara/components/banner")(Banner, BannerConfig);
-MapTo("lebara/components/awards")(Awards, AwardConfig);
+MapTo("lebara/components/awards")(AwardsShowCase, AwardsShowCaseConfig);
 MapTo("lebara/components/review")(TrustShopSlider);
