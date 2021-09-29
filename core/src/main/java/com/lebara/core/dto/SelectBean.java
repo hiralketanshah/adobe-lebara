@@ -4,6 +4,7 @@ public class SelectBean {
     private String key;
     private String name;
     private String value;
+    private String url;
 
     public String getKey() {
         return key;
@@ -27,5 +28,13 @@ public class SelectBean {
 
     public void setValue(String value) {
         this.value = value;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
     }
 }
