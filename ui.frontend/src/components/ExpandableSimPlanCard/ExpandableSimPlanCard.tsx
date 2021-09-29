@@ -6,7 +6,7 @@ import PlanDetailsDialog from "../PlanDetailsDialog/PlanDetailsDialog";
 import { allowanceListProps } from "../ExpandablePlanCard/types";
 import { useHistory } from "react-router-dom";
 const ExpandableSimPlanCard: React.FC<ExpandableSimPlanCardProps> = ({
-  name,
+  planName,
   previewIcon,
   showProductInformationButton,
   productInformationButtonLabel,
@@ -41,16 +41,16 @@ const ExpandableSimPlanCard: React.FC<ExpandableSimPlanCardProps> = ({
       pt={{ base: "15px", lg: "34px" }}
       pb={{ base: "15px", lg: "18px" }}
     >
-      {name && (
+      {planName && (
         <Text color="primary.500" fontWeight="bold">
-          {name}
+          {planName}
         </Text>
       )}
 
       <PlanDetailsDialog
         isOpen={isDialogOpen}
         onClose={() => setIsDialogOpen(false)}
-        planName={name}
+        planName={planName}
         price={parseFloat(cost || '')}
         duration={validity || ''}
         countries={(planInfo && planInfo.countryList) || []}
