@@ -9,5 +9,5 @@ export interface SelectProps extends ChakraSelectProps {
 export interface SelectOption {
   value: string;
   name: string;
-  key: number;
+  key?: number;
 }

@@ -38,7 +38,7 @@ const Select: React.FC<SelectProps> = ({
         iconColor={lockSelect ? "white" : "default"}
       >
         {options.map((option) => (
-          <option value={option.value} key={option.key}>
+          <option value={option.value} key={option.key || option.value}>
             {option.name}
           </option>
         ))}
