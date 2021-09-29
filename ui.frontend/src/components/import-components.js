@@ -37,6 +37,9 @@ import ProgressStep from "./ProgressStep/ProgressStep";
 import FooterMenu from "./FooterMenu/FooterMenu";
 import { TitleV2IsEmptyFn } from "@adobe/aem-core-components-react-base/dist/isEmptyFunctions";
 import WhereToCall from "./CallPrices/CallPrices";
+import Awards from "./Awards/Awards";
+import TrustShopSlider from "./TrustedShopSlider/TrustedShopSlider";
+
 
 import {
   ContainerV1,
@@ -202,13 +205,6 @@ const CarouselEditConfig = {
   },
 };
 
-// const trustpilotratingEditConfig = {
-//   emptyLabel: "trustpilotrating",
-//   isEmpty: function (props) {
-//     return !props.fileReferenceBackground;
-//   },
-// };
-
 const PostpaidPlansEditConfig = {
   emptyLabel: "PostpaidPlans",
   isEmpty: function (props) {
@@ -218,6 +214,13 @@ const PostpaidPlansEditConfig = {
 
 const BannerConfig = {
   emptyLabel: "Banner Component",
+  isEmpty: function (props) {
+    return !props.title;
+  },
+};
+
+const AwardConfig = {
+  emptyLabel: "Award Component",
   isEmpty: function (props) {
     return !props.title;
   },
@@ -247,3 +250,5 @@ MapTo("lebara/components/postpaidPlans")(
 MapTo("lebara/components/porting")(Porting, PortingEditConfig);
 MapTo("lebara/components/banner")(Banner, BannerConfig);
 MapTo("lebara/components/wheretocall")(WhereToCall, WhereToCallEditConfig);
+MapTo("lebara/components/awards")(Awards, AwardConfig);
+MapTo("lebara/components/review")(TrustShopSlider);

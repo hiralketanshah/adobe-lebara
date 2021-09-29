@@ -4,8 +4,7 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 import com.day.cq.i18n.I18n;
-import com.lebara.core.dto.CountryInfo;
-import com.lebara.core.dto.PlanInfo;
+import com.lebara.core.dto.*;
 import org.apache.commons.collections.ListUtils;
 import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.StringUtils;
@@ -14,8 +13,6 @@ import org.apache.sling.api.resource.ResourceResolver;
 
 import com.adobe.cq.dam.cfm.ContentFragment;
 import com.google.gson.Gson;
-import com.lebara.core.dto.CFAllowance;
-import com.lebara.core.dto.OfferFragmentBean;
 
 public class CFUtils {
 
@@ -71,11 +68,15 @@ public class CFUtils {
         return resultList;
     }
 
-    public static List<CountryInfo> populateCountryInfo(Resource cfResource) {
+    public static List<SelectBean> populateCountryInfo(Resource cfResource) {
         if (null != cfResource) {
             ContentFragment countryFragment = cfResource.adaptTo(ContentFragment.class);
             if (null != countryFragment) {
-                return convertStringArrayToList(CFUtils.getElementArrayValue(countryFragment, "countryInfo"), CountryInfo.class);
+                List<SelectBean> countries = convertStringArrayToList(CFUtils.getElementArrayValue(countryFragment, "countryInfo"), SelectBean.class);
+                for (int i = 0; i < countries.size(); i++) {
+                    countries.get(i).setKey(String.valueOf(i));
+                }
+                return countries;
             }
         }
         return new ArrayList<>();
@@ -88,6 +89,7 @@ public class CFUtils {
             if (null != offerFragment) {
                 offerFragmentBean = new OfferFragmentBean();
                 offerFragmentBean.setCost(CFUtils.getElementValue(offerFragment, "cost"));
+                offerFragmentBean.setName(CFUtils.getElementValue(offerFragment, "name"));
                 offerFragmentBean.setValidity(CFUtils.getElementValue(offerFragment, "validity") + " " + (i18n == null ? "Days" : i18n.get("Days")));
                 offerFragmentBean.setId(CFUtils.getElementValue(offerFragment, "offerid"));
                 if (offerFragment.getElement("additionalOffers") != null) {
