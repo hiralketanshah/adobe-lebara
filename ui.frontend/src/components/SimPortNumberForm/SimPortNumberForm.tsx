@@ -169,7 +169,7 @@ const SimPortNumberForm: React.FC<SimPortNumberFormProps> = ({
                   }
                   errorBorderColor="unsuccessful"
                 />
-                <InputRightElement width="3rem" height="initial" top="0.6rem">
+                <InputRightElement width="3rem" height="initial" top="2.6rem">
                   <Box>
                     {addressCardFormik.touched.day &&
                       Boolean(addressCardFormik.errors.day) ? (
@@ -203,7 +203,7 @@ const SimPortNumberForm: React.FC<SimPortNumberFormProps> = ({
                   }
                   errorBorderColor="unsuccessful"
                 />
-                <InputRightElement width="3rem" height="initial" top="0.6rem">
+                <InputRightElement width="3rem" height="initial" top="2.6rem">
                   <Box>
                     {addressCardFormik.touched.month &&
                       Boolean(addressCardFormik.errors.month) ? (
@@ -237,7 +237,7 @@ const SimPortNumberForm: React.FC<SimPortNumberFormProps> = ({
                   }
                   errorBorderColor="unsuccessful"
                 />
-                <InputRightElement width="3rem" height="initial" top="0.6rem">
+                <InputRightElement width="3rem" height="initial" top="2.6rem">
                   <Box>
                     {addressCardFormik.touched.year &&
                       Boolean(addressCardFormik.errors.year) ? (
@@ -319,7 +319,7 @@ const SimPortNumberForm: React.FC<SimPortNumberFormProps> = ({
               }
               errorBorderColor="unsuccessful"
             />
-            <InputRightElement width="3rem" height="initial" top="4.6rem">
+            <InputRightElement width="3rem" height="initial" top="5rem">
               <Box>
                 {addressCardFormik.touched.mobileNumber &&
                   Boolean(addressCardFormik.errors.mobileNumber) ? (

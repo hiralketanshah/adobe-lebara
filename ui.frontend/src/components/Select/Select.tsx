@@ -10,7 +10,13 @@ const Select: React.FC<SelectProps> = ({ options, width, label, formControlBorde
   const lockSelect = options.length < 2;
 
   return (
-    <FormControl flexDirection="column" gridGap={2.5} width={width} borderRadius={formControlBorderRadius}>
+    <FormControl
+    flexDirection="column"
+    gridGap={2.5}
+    width={width}
+    bg="white"
+    borderRadius={formControlBorderRadius}
+  >
       {label && (
         <FormLabel color="bodyCopy" fontSize={16} fontWeight="bold">
           {label}

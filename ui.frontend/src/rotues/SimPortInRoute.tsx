@@ -47,7 +47,7 @@ const SimPortInRoute: React.FC<SimPortInProps> = ({
       <SimPortNumberForm
         {...{
           portInCodeHelpline: 3179,
-          maxLengthMobileNumber: 10,
+          maxLengthMobileNumber: 12,
           maxLengthPortInCode: 5,
           consent: consentTwo || '',
           dataProtectionDeclation: dataProtectionMessage || '',
