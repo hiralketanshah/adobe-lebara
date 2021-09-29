@@ -190,12 +190,12 @@ const AboutLebaraEditConfig = {
   },
 };
 
-const CarouselEditConfig = {
-  emptyLabel: "Carousel",
-  isEmpty: function (props) {
-    return !props || !props.cqItems;
-  },
-};
+// const CarouselEditConfig = {
+//   emptyLabel: "Carousel",
+//   isEmpty: function (props) {
+//     return !props || !props.cqItems;
+//   },
+// };
 
 const PostpaidPlansEditConfig = {
   emptyLabel: "PostpaidPlans",

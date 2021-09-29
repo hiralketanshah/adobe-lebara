@@ -11,7 +11,10 @@ import CarouselPagingCircle from '../../icons/CarouselPagingCircle';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "./styles.css";
-import { CarouselItemOptions, CarouselProps } from './types';
+import { 
+  CarouselItemOptions,
+  // CarouselProps 
+} from './types';
 
 const formatFn = (value: string, args: string[]) => {
   let content = value;
