@@ -44,7 +44,7 @@ const AwardsShowCase: React.FC<AwardsShowCaseProps> = ({ title, awards }) => {
         />
         <Flex gridGap="20px">
           {awardsToRender?.map((t) => (
-            <Image src={t.image} maxW="125px" />
+          <Image src={t.image} title={t.name} alt={t.name} maxW="125px" />
           ))}
         </Flex>
         <NextIcon
@@ -65,7 +65,7 @@ const AwardsShowCase: React.FC<AwardsShowCaseProps> = ({ title, awards }) => {
         gridGap="21px"
       >
         {awards?.map((t) => (
-          <Image src={t.image} maxW="125px" />
+          <Image src={t.image} title={t.name} alt={t.name} maxW="125px" />
         ))}
       </Flex>
     </Box>

@@ -2,7 +2,7 @@ import { ImageProps } from "@chakra-ui/react";
 
 export interface AwardShowCaseOption {
   image?: string;
-  imageProps?: ImageProps;
+  name?: string;
 }
 
 export interface AwardsShowCaseProps {
