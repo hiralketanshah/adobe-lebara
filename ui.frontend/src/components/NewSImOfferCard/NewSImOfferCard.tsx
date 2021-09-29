@@ -4,7 +4,7 @@ import { NewSImOfferCard } from "./types";
 // import LebaraNewSim from "../../assets/images/lebara-new-sim.svg";
 // import LebaraSimCard from "../../assets/images/lebara-sim.svg";
 
-const NewSIMOfferCard: React.FC<NewSImOfferCard> = () => (
+const NewSIMOfferCard: React.FC<NewSImOfferCard> = ({imagePath, simImage, imageText}) => (
   <Box
     w={400}
     h={220}
@@ -13,28 +13,30 @@ const NewSIMOfferCard: React.FC<NewSImOfferCard> = () => (
     p="30px"
   >
     <Box display="flex">
-      <Box textAlign="left">
-        <Text
-          fontFamily="Chiswick Grotesque Lebara"
-          fontWeight="700"
-          fontSize="30px"
-          letterSpacing="0.25px"
-          color="white"
-          lineHeight="31px"
-        >
-          Lebara
-          <br />
-          New Sim Offer
-          <br />
-          15 - GB
-        </Text>
-        <Box mt="18px">
-          {/* <img src={LebaraSimCard} alt="LebaraNewSim" /> */}
+      <Box textAlign="left" w="50%">
+        {imageText && (
+          <Text
+            fontFamily="Chiswick Grotesque Lebara"
+            fontWeight="700"
+            fontSize="30px"
+            letterSpacing="0.25px"
+            color="white"
+            lineHeight="31px"
+          >
+            {imageText}
+          </Text>
+        )}
+        {simImage && (
+          <Box mt="18px">
+            <img src={simImage} alt="LebaraNewSim" />
+          </Box>
+        )}
+      </Box>
+      {imagePath && (
+        <Box position="absolute" top="10px" left="215px">
+          <img src={imagePath} alt="LebaraSimImage" />
         </Box>
-      </Box>
-      <Box position="absolute" top="10px" left="215px">
-        {/* <img src={LebaraNewSim} alt="LebaraSimImage" /> */}
-      </Box>
+      )}
     </Box>
   </Box>
 );
