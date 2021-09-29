@@ -4,13 +4,13 @@ import { CallPricesProps } from "./types";
 import Select from "../Select/Select";
 
 const CallPrices: React.FC<CallPricesProps> = ({
-  image,
+  fileReference,
   countries,
   title,
   placeholder,
 }) => (
   <Flex textAlign={{ base: "center", lg: "left" }}>
-    <Image src={image} w="60%" d={{ base: "none", lg: "block" }} />
+    <Image src={fileReference} w="60%" d={{ base: "none", lg: "block" }} />
     <Box
       py={{ base: "30px", lg: "84px" }}
       px={{ base: "30px", lg: "84px" }}

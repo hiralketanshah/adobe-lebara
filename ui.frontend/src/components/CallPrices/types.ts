@@ -1,7 +1,7 @@
 import { SelectOption } from "../Select/types";
 
 export interface CallPricesProps {
-  image: string;
+  fileReference: string;
   title: string;
   countries: SelectOption[];
   placeholder: string;
