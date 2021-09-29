@@ -2,7 +2,7 @@ import { CountriesListOption } from "../CountriesList/types";
 import { allowanceListProps, PlanCardOffer, planDetails } from "../ExpandablePlanCard/types";
 
 export interface ExpandableSimPlanCardProps {
-  name: string;
+  planName: string;
   price: number;
   duration: string;
   countries: CountriesList[];
