@@ -227,7 +227,12 @@ const AwardsShowCaseConfig = {
     return !props.title;
   },
 };
-
+const TrustedShopSliderConfig = {
+  emptyLabel: "Trusted Shop Slider Component",
+  isEmpty: function (props) {
+    return !props.title;
+  },
+};
 MapTo("lebara/components/getapp")(GetApp, GetAppEditConfig);
 MapTo("lebara/components/text")(LazyTextComponent, TextEditConfig);
 MapTo("lebara/components/teaser")(Teaser, TeaserEditConfig);
@@ -254,4 +259,4 @@ MapTo("lebara/components/banner")(Banner, BannerConfig);
 MapTo("lebara/components/simportin")(SimPortInRoute, SimPortInConfig);
 MapTo("lebara/components/wheretocall")(WhereToCall, WhereToCallEditConfig);;
 MapTo("lebara/components/awards")(AwardsShowCase, AwardsShowCaseConfig);
-MapTo("lebara/components/review")(TrustShopSlider);
+MapTo("lebara/components/review")(TrustShopSlider, TrustedShopSliderConfig);
