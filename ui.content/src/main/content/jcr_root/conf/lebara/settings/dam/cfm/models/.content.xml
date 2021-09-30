@@ -4,5 +4,6 @@
     <jcr:content/>
     <planinformation/>
     <epcmodels/>
+	<currentproviders/>
     <countryinformation/>
 </jcr:root>

@@ -33,11 +33,14 @@ import Trustpilot from "./Trustpilot/Trustpilot";
 import PlanOffers from "./PlanOffers/PlanOffers";
 import PostpaidPlans from "./PostpaidPlans/PostpaidPlans";
 import Banner from "./Banner/Banner";
+import SimPortInRoute from "../rotues/SimPortInRoute";
 import ProgressStep from "./ProgressStep/ProgressStep";
 import FooterMenu from "./FooterMenu/FooterMenu";
 import { TitleV2IsEmptyFn } from "@adobe/aem-core-components-react-base/dist/isEmptyFunctions";
-import Awards from "./Awards/Awards";
+import WhereToCall from "./CallPrices/CallPrices";
+import AwardsShowCase from "./AwardsShowCase/AwardsShowCase";
 import TrustShopSlider from "./TrustedShopSlider/TrustedShopSlider";
+
 
 import {
   ContainerV1,
@@ -190,10 +193,10 @@ const AboutLebaraEditConfig = {
   },
 };
 
-const CarouselEditConfig = {
-  emptyLabel: "Carousel",
+const WhereToCallEditConfig = {
+  emptyLabel: "Where To Call",
   isEmpty: function (props) {
-    return !props || !props.cqItems;
+    return !props.title;
   },
 };
 
@@ -211,7 +214,14 @@ const BannerConfig = {
   },
 };
 
-const AwardConfig = {
+const SimPortInConfig = {
+  emptyLabel: "Sim Port In Component",
+  isEmpty: function (props) {
+    return !props.title || !props.pretitle;
+  },
+}
+
+const AwardsShowCaseConfig = {
   emptyLabel: "Award Component",
   isEmpty: function (props) {
     return !props.title;
@@ -241,5 +251,7 @@ MapTo("lebara/components/postpaidPlans")(
 );
 MapTo("lebara/components/porting")(Porting, PortingEditConfig);
 MapTo("lebara/components/banner")(Banner, BannerConfig);
-MapTo("lebara/components/awards")(Awards, AwardConfig);
+MapTo("lebara/components/simportin")(SimPortInRoute, SimPortInConfig);
+MapTo("lebara/components/wheretocall")(WhereToCall, WhereToCallEditConfig);;
+MapTo("lebara/components/awards")(AwardsShowCase, AwardsShowCaseConfig);
 MapTo("lebara/components/review")(TrustShopSlider);

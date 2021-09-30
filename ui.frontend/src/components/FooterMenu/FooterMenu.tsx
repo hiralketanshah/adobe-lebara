@@ -85,23 +85,33 @@ const FooterMenu: React.FC<FooterMenuProps> = ({
               >
                 {getapp?.appTitle}
               </Text>
-              <Flex>
-                <IconButton
-                  as={Link}
-                  href={getapp?.links[0].link}
-                  aria-label="Available on the App Store"
-                >
-                  <Image src={getapp?.links[0].label} height="46" width="156" />
-                </IconButton>
-                <IconButton
-                  as={Link}
-                  href={getapp?.links[1].link}
-                  ml="2em"
-                  aria-label="Get it on google Play"
-                >
-                  <Image src={getapp?.links[1].label} height="46" width="156" />
-                </IconButton>
-              </Flex>
+              {getapp?.links?.length > 1 && (
+                <Flex>
+                  <IconButton
+                    as={Link}
+                    href={getapp?.links[0]?.link}
+                    aria-label="Available on the App Store"
+                  >
+                    <Image
+                      src={getapp?.links[0]?.label}
+                      height="46"
+                      width="156"
+                    />
+                  </IconButton>
+                  <IconButton
+                    as={Link}
+                    href={getapp?.links[1]?.link}
+                    ml="2em"
+                    aria-label="Get it on google Play"
+                  >
+                    <Image
+                      src={getapp?.links[1]?.label}
+                      height="46"
+                      width="156"
+                    />
+                  </IconButton>
+                </Flex>
+              )}
             </Box>
           </Box>
         </Box>
