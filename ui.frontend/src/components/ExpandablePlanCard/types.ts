@@ -25,7 +25,7 @@ export interface PlanCardOffer {
 }
 
 export interface planDetails {
-  listPlanItem?: ListPlanItem;
+  listPlanItem?: string[];
   title?: string;
   countryList?: CountriesListOption[];
   countryTitle?: string;
