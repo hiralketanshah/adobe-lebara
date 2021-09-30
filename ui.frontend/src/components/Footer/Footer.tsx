@@ -76,17 +76,17 @@ const Footer: React.FC<FooterProps> = ({
       <Flex justifyContent="space-between">
         <IconButton
           as={Link}
-          href={getapp?.links[0].link}
+          href={getapp?.links && getapp?.links[0]?.link}
           aria-label="Available on the App Store"
         >
-          <Image src={getapp?.links[0].label} height="46" width="156" />
+          <Image src={getapp?.links && getapp?.links[0]?.label} height="46" width="156" />
         </IconButton>
         <IconButton
           as={Link}
-          href={getapp?.links[1].link}
+          href={getapp?.links && getapp?.links[1]?.link}
           aria-label="Get it on google Play"
         >
-          <Image src={getapp?.links[1].label} height="46" width="156" />
+          <Image src={getapp?.links && getapp?.links[1]?.label} height="46" width="156" />
         </IconButton>
       </Flex>
     </Box>
@@ -102,7 +102,7 @@ const Footer: React.FC<FooterProps> = ({
       >
         {followus?.followUsText}
       </Text>
-      <SocialMediaButtons buttons={followus?.links} />
+      <SocialMediaButtons buttons={followus?.links || []} />
     </Box>
 
     <Divider pt="30px" />
