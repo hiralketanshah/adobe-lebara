@@ -10,7 +10,7 @@ import {
   Text,
 } from "@chakra-ui/react";
 import { FcMinus, GoPlus } from "react-icons/all";
-import { HomeFaqsProps, options } from "./types";
+import { HomeFaqsProps } from "./types";
 
 const HomeFaqs: React.FC<HomeFaqsProps> = ({ title, options }) => {
   const half = Math.ceil(options.length / 2);
