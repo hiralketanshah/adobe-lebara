@@ -23,7 +23,7 @@ public class ReviewExporter implements ComponentExporter {
     private String title;
 
     public String getTitle() {
-        return StringUtils.isBlank(title) ? "What Customers Say" : title;
+        return StringUtils.isBlank(title) ? StringUtils.EMPTY : title;
     }
 
     @Override
