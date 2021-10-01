@@ -1,5 +1,5 @@
 import { MapTo } from "@adobe/aem-react-editable-components";
-import AboutLebara from "../AboutLebara";
+import AboutLebara from "./AboutLebara";
 
 const AboutLebaraConfig = {
   emptyLabel: "About Lebara",
