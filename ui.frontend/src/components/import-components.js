@@ -126,24 +126,3 @@ const TextEditConfig = {
   },
 };
 MapTo("lebara/components/text")(LazyTextComponent, TextEditConfig);
-
-const detailViewPlansConfig = {
-  emptyLabel: "Detailed View Plans",
-
-  isEmpty: function (props) {
-    return (
-      !props ||
-      !props?.offers ||
-      !props.buttonLabel ||
-      !props.title ||
-      !props.subTitle ||
-      !props.description ||
-      !props.hideLabel ||
-      !props.ctaTopLink ||
-      !props.ctaTopLabel ||
-      !props.ctaBottomLink ||
-      !props.ctaBottomLabel ||
-      !props.buttonLabel
-    );
-  },
-};
