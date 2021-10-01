@@ -9,7 +9,7 @@ import org.apache.sling.models.annotations.Exporter;
 import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
 
-@Model(adaptables = {SlingHttpServletRequest.class, Resource.class}, adapters = {HeadingExporter.class, ComponentExporter.class},
+@Model(adaptables = SlingHttpServletRequest.class, adapters = {HeadingExporter.class, ComponentExporter.class},
         resourceType = HeadingExporter.RESOURCE_TYPE, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
 @Exporter(name = ExporterConstants.SLING_MODEL_EXPORTER_NAME, extensions = ExporterConstants.SLING_MODEL_EXTENSION)
 public class HeadingExporter implements ComponentExporter {

@@ -13,7 +13,7 @@ import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
 
 import java.util.List;
 
-@Model(adaptables = {SlingHttpServletRequest.class, Resource.class}, adapters = {FaqExporter.class, ComponentExporter.class},
+@Model(adaptables = SlingHttpServletRequest.class, adapters = {FaqExporter.class, ComponentExporter.class},
         resourceType = FaqExporter.RESOURCE_TYPE, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
 @Exporter(name = ExporterConstants.SLING_MODEL_EXPORTER_NAME, extensions = ExporterConstants.SLING_MODEL_EXTENSION)
 public class FaqExporter extends HeadingExporter {
