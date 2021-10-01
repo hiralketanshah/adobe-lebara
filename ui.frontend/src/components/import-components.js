@@ -42,6 +42,7 @@ import AwardsShowCase from "./AwardsShowCase/AwardsShowCase";
 import TrustShopSlider from "./TrustedShopSlider/TrustedShopSlider";
 
 
+
 import {
   ContainerV1,
   ContainerV1IsEmptyFn,
@@ -228,6 +229,7 @@ const AwardsShowCaseConfig = {
   },
 };
 
+
 MapTo("lebara/components/getapp")(GetApp, GetAppEditConfig);
 MapTo("lebara/components/text")(LazyTextComponent, TextEditConfig);
 MapTo("lebara/components/teaser")(Teaser, TeaserEditConfig);
@@ -255,3 +257,4 @@ MapTo("lebara/components/simportin")(SimPortInRoute, SimPortInConfig);
 MapTo("lebara/components/wheretocall")(WhereToCall, WhereToCallEditConfig);;
 MapTo("lebara/components/awards")(AwardsShowCase, AwardsShowCaseConfig);
 MapTo("lebara/components/review")(TrustShopSlider);
+
