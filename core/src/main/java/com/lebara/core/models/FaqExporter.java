@@ -11,6 +11,7 @@ import org.apache.sling.models.annotations.injectorspecific.ChildResource;
 import org.apache.sling.models.annotations.injectorspecific.ScriptVariable;
 import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
 
+import java.util.Collections;
 import java.util.List;
 
 @Model(adaptables = SlingHttpServletRequest.class, adapters = {FaqExporter.class, ComponentExporter.class},
@@ -28,7 +29,7 @@ public class FaqExporter extends HeadingExporter {
     @ChildResource
     private List<Option> options;
     public List<Option> getOptions() {
-        return options;
+        return (options == null) ? Collections.emptyList() : options;
     }
     @Override
     public String getExportedType() {
