@@ -228,7 +228,7 @@ const AwardsShowCaseConfig = {
   },
 };
 const TrustedShopSliderConfig = {
-  emptyLabel: "Trusted Shop Slider Component",
+  emptyLabel: "Review Component",
   isEmpty: function (props) {
     return !props.title;
   },
