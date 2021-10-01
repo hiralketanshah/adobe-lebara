@@ -4,7 +4,7 @@ import FooterMenu from "./FooterMenu";
 const FooterMenuConfig = {
     emptyLabel: "FAQ",
     isEmpty: function (props) {
-      return !props.title;
+      return !props.desktopFootertext || !props.followus || !props.getapp || !props.copyrightText || !props.copyrightLinks;
     },
 };
 

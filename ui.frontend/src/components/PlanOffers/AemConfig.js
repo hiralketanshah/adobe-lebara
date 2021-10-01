@@ -2,9 +2,9 @@ import { MapTo } from "@adobe/aem-react-editable-components";
 import PlanOffers from "./PlanOffers";
 
 const PlanOffersConfig = {
-    emptyLabel: "FAQ",
+    emptyLabel: "Plan Offers",
     isEmpty: function (props) {
-      return !props.title;
+      return !props.name;
     },
 };
 

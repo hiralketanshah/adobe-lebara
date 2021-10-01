@@ -4,8 +4,8 @@ import Carousel from "./Carousel";
 const CarouselConfig = {
     emptyLabel: "FAQ",
     isEmpty: function (props) {
-      return !props.title;
+      return !props.cqItems
     },
 };
 
-MapTo("lebara/components/faq")(Carousel, CarouselConfig);
+MapTo("lebara/components/carousel")(Carousel, CarouselConfig);

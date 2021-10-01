@@ -13,6 +13,8 @@
  ~ See the License for the specific language governing permissions and
  ~ limitations under the License.
  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+
+import { MapTo } from "@adobe/aem-react-editable-components";
 import withAsyncImport from "../utils/withAsyncImport";
 
 import {
@@ -56,7 +58,7 @@ import "./LebaraText/AemConfig.js"
 import "./GetApp/AemConfig.js"
 import "./Usp/AemConfig.js"
 import "./Porting/AemConfig.js"
-import "./aboutlebara/AemConfig.js"
+import "./AboutLebara/AemConfig.js"
 import "./Carousel/AemConfig.js"
 import "./Trustpilot/AemConfig.js"
 import "./PlanOffers/AemConfig.js"
@@ -119,6 +121,7 @@ const TextEditConfig = {
     return !props || !props.text || props.text.trim().length < 1;
   },
 };
+
 const detailViewPlansConfig = {
   emptyLabel: "Detailed View Plans",
 
@@ -140,55 +143,6 @@ const detailViewPlansConfig = {
   },
 };
 
-const TrustedShopSliderConfig = {
-  emptyLabel: "Review Component",
-  isEmpty: function (props) {
-    return !props.title;
-  },
-};
-
-const ProgressStepLinksEditConfig = {
-  emptyLabel: "Progress Step Links",
-  isEmpty: function (props) {
-    return !props.pageLinks?.length;
-  },
-};
-
-const PortingEditConfig = {
-  emptyLabel: "Porting",
-  isEmpty: function (props) {
-    return !props.title;
-  },
-};
-
-const AboutLebaraEditConfig = {
-  emptyLabel: "About Lebara",
-  isEmpty: function (props) {
-    return !props.title;
-  },
-};
-
-const WhereToCallEditConfig = {
-  emptyLabel: "Where To Call",
-  isEmpty: function (props) {
-    return !props.title;
-  },
-};
-
-const PostpaidPlansEditConfig = {
-  emptyLabel: "PostpaidPlans",
-  isEmpty: function (props) {
-    return !props.durationTitle;
-  },
-};
-
-const BannerConfig = {
-  emptyLabel: "Banner Component",
-  isEmpty: function (props) {
-    return !props.title;
-  },
-};
-
 const SimPortInConfig = {
   emptyLabel: "Sim Port In Component",
   isEmpty: function (props) {
@@ -196,31 +150,8 @@ const SimPortInConfig = {
   },
 }
 
-const AwardsShowCaseConfig = {
-  emptyLabel: "Award Component",
-  isEmpty: function (props) {
-    return !props.title;
-  },
-};
 
 MapTo("lebara/components/text")(LazyTextComponent, TextEditConfig);
-MapTo("lebara/components/detailedviewplans")(PlanOffers, detailViewPlansConfig);
-MapTo("lebara/components/progressstep")(
-  ProgressStep,
-  ProgressStepLinksEditConfig
-);
-MapTo("lebara/components/footer")(FooterMenu);
-MapTo("lebara/components/aboutlebara")(Aboutlebara, AboutLebaraEditConfig);
-MapTo("lebara/components/carousel")(Carousel);
-MapTo("lebara/components/trustpilotrating")(Trustpilot);
-MapTo("lebara/components/postpaidPlans")(
-  PostpaidPlans,
-  PostpaidPlansEditConfig
-);
-MapTo("lebara/components/porting")(Porting, PortingEditConfig);
-MapTo("lebara/components/banner")(Banner, BannerConfig);
 MapTo("lebara/components/simportin")(SimPortInRoute, SimPortInConfig);
-MapTo("lebara/components/wheretocall")(WhereToCall, WhereToCallEditConfig);;
-MapTo("lebara/components/awards")(AwardsShowCase, AwardsShowCaseConfig);
 MapTo("lebara/components/review")(TrustShopSlider);
 MapTo("lebara/components/faq")(FAQ, FAQConfig);

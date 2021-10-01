@@ -1,11 +1,11 @@
 import { MapTo } from "@adobe/aem-react-editable-components";
-import Aboutlebara from "./Aboutlebara";
+import AboutLebara from "../AboutLebara";
 
-const AboutlebaraConfig = {
-    emptyLabel: "FAQ",
-    isEmpty: function (props) {
-      return !props.title;
-    },
+const AboutLebaraConfig = {
+  emptyLabel: "About Lebara",
+  isEmpty: function (props) {
+    return !props.title;
+  },
 };
 
-MapTo("lebara/components/faq")(Aboutlebara, AboutlebaraConfig);
+MapTo("lebara/components/faq")(AboutLebara, AboutLebaraConfig);
