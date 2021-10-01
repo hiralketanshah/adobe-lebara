@@ -19,7 +19,7 @@ import TrustedShopsLogo from "./trusted-shop-logo.png.png";
 import TrustedShopsStarIcon from "../../icons/TrustedShopsStarIcon";
 import trustedShopsAxios from "../../utils/trustedShopsAxios";
 
-const TrustedShopSlider: React.FC<TrustedShopSliderProps> = (title) => {
+const TrustedShopSlider: React.FC<TrustedShopSliderProps> = ({title}) => {
   const [currentSlide, setCurrentSlide] = useState<number>(0);
   const slider = createRef<any>();
   const [reviews, setReviews] = useState([]);
@@ -135,7 +135,4 @@ const TrustedShopSlider: React.FC<TrustedShopSliderProps> = (title) => {
   );
 };
 
-TrustedShopSlider.defaultProps = {
-  title: "Our customers say",
-};
 export default TrustedShopSlider;

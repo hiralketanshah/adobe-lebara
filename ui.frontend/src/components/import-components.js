@@ -120,7 +120,7 @@ const TextEditConfig = {
   },
 };
 const detailViewPlansConfig = {
-  emptyLabel: "detailViewPlans",
+  emptyLabel: "Detailed View Plans",
 
   isEmpty: function (props) {
     return (
@@ -137,6 +137,13 @@ const detailViewPlansConfig = {
       !props.ctaBottomLabel ||
       !props.buttonLabel
     );
+  },
+};
+
+const TrustedShopSliderConfig = {
+  emptyLabel: "Review Component",
+  isEmpty: function (props) {
+    return !props.title;
   },
 };
 
@@ -216,3 +223,4 @@ MapTo("lebara/components/simportin")(SimPortInRoute, SimPortInConfig);
 MapTo("lebara/components/wheretocall")(WhereToCall, WhereToCallEditConfig);;
 MapTo("lebara/components/awards")(AwardsShowCase, AwardsShowCaseConfig);
 MapTo("lebara/components/review")(TrustShopSlider);
+MapTo("lebara/components/faq")(FAQ, FAQConfig);

@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:granite="http://www.adobe.com/jcr/granite/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+          jcr:primaryType="nt:unstructured"
+          jcr:title="Personal Details Component"
+          sling:resourceType="cq/gui/components/authoring/dialog">
+    <content
+            jcr:primaryType="nt:unstructured"
+            sling:resourceType="granite/ui/components/coral/foundation/container">
+        <items jcr:primaryType="nt:unstructured">
+            <tabs
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="granite/ui/components/coral/foundation/tabs"
+                    maximized="{Boolean}true">
+                <items jcr:primaryType="nt:unstructured">
+                    <column
+                            jcr:primaryType="nt:unstructured"
+                            jcr:title="Name Section"
+                            sling:resourceType="granite/ui/components/coral/foundation/container">
+                        <items jcr:primaryType="nt:unstructured">
+                            <firstNameLabel
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                    fieldLabel="First Name Label"
+                                    value="First Name"
+                                    name="./firstNameLabel"/>
+                            <firstNamePlaceholder
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                    fieldLabel="First Name Placeholder"
+                                    value="Enter Your First Name"
+                                    name="./firstNamePlaceholder"/>
+                            <lastNameLabel
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                    fieldLabel="Last Name Label"
+                                    value="Last Name"
+                                    name="./lastNameLabel"/>
+                            <lastNamePlaceholder
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                    fieldLabel="Last Name Placeholder"
+                                    value="Enter Your First Name"
+                                    name="./lastNamePlaceholder"/>
+                            <emailAddressLabel
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                    fieldLabel="Email Address Label"
+                                    value="Email Address"
+                                    name="./emailAddressLabel"/>
+                            <emailAddressLabelPlaceholder
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                    fieldLabel="Email Address Placeholder"
+                                    value="Enter Your Email Address"
+                                    name="./emailAddressPlaceholder"/>
+                        </items>
+                    </column>
+                    <column2
+                            jcr:primaryType="nt:unstructured"
+                            jcr:title="Address Section"
+                            sling:resourceType="granite/ui/components/coral/foundation/container">
+                        <items jcr:primaryType="nt:unstructured">
+                            <address
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                    fieldLabel="Address label"
+                                    value="Address"
+                                    name="./addressLabel"/>
+                            <addressKeyInText
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                    fieldLabel="Address key in message"
+                                    value="Key in your postal code and find your address"
+                                    name="./addressKeyInText"/>
+                            <postalcodePlaceholder
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                    fieldLabel="Search For Postal Code placeholder text"
+                                    value="Search For Postal Code"
+                                    name="./postalcodePlaceholder"/>
+                            <enterAddressManually
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                    fieldLabel="Enter Address Manually label"
+                                    value="Enter Address Manually?"
+                                    name="./enterAddressManually"/>
+                            <streetLabel
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                    fieldLabel="Street Label"
+                                    value="Street"
+                                    name="./streetLabel"/>
+                            <streetPlaceholder
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                    fieldLabel="Street Placeholder"
+                                    value="Enter Your Street Name"
+                                    name="./streetPlaceholder"/>
+                            <houseNumberLabel
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                    fieldLabel="House Number Label"
+                                    value="House Number"
+                                    name="./houseNumberLabel"/>
+                            <houseNumberPlaceholder
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                    fieldLabel="House Number Placeholder"
+                                    value="Enter Your House Number"
+                                    name="./houseNumberPlaceholder"/>
+                            <zipCodeLabel
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                    fieldLabel="Zip Code Label"
+                                    value="Zip Code"
+                                    name="./zipCodeLabel"/>
+                            <zipCodePlaceholder
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                    fieldLabel="Zip Code Placeholder"
+                                    value="Enter Your Zip Code"
+                                    name="./zipCodePlaceholder"/>
+                            <cityLabel
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                    fieldLabel="city Label"
+                                    value="City"
+                                    name="./cityLabel"/>
+                            <cityPlaceholder
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                    fieldLabel="City Placeholder"
+                                    value="Enter Your City"
+                                    name="./cityPlaceholder"/>
+                        </items>
+                    </column2>
+                    <column3
+                            jcr:primaryType="nt:unstructured"
+                            jcr:title="Order Details CTA"
+                            sling:resourceType="granite/ui/components/coral/foundation/container">
+                        <items jcr:primaryType="nt:unstructured">
+                            <orderDetailsCta
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                    fieldLabel="Order Details Cta label"
+                                    value="CONTINUE TO ORDER DETAILS"
+                                    name="./orderDetailsCta"/>
+                        </items>
+                    </column3>
+                </items>
+            </tabs>
+        </items>
+    </content>
+</jcr:root>
