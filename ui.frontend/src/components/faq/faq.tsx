@@ -52,8 +52,7 @@ const HomeFaqs: React.FC<HomeFaqsProps> = ({ title, options }) => {
                 letterSpacing="0.25px"
                 lineHeight="20px"
                 pb="8px"
-              >
-                {menuItem.answer}
+                dangerouslySetInnerHTML={{ __html: menuItem.answer }}>
               </Text>
             </AccordionPanel>
           </>
