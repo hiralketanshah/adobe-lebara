@@ -159,6 +159,13 @@ const TitleEditConfig = {
   },
 };
 
+const TrustedShopSliderConfig = {
+  emptyLabel: "Review Component",
+  isEmpty: function (props) {
+    return !props.title;
+  },
+};
+
 const ProgressStepLinksEditConfig = {
   emptyLabel: "Progress Step Links",
   isEmpty: function (props) {
@@ -256,5 +263,5 @@ MapTo("lebara/components/banner")(Banner, BannerConfig);
 MapTo("lebara/components/simportin")(SimPortInRoute, SimPortInConfig);
 MapTo("lebara/components/wheretocall")(WhereToCall, WhereToCallEditConfig);;
 MapTo("lebara/components/awards")(AwardsShowCase, AwardsShowCaseConfig);
-MapTo("lebara/components/review")(TrustShopSlider);
+MapTo("lebara/components/review")(TrustShopSlider, TrustedShopSliderConfig);
 
