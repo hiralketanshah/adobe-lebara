@@ -11,18 +11,18 @@ import java.util.List;
 public class OfferFragmentBean {
     private String id;
     private String cost;
-    private String name;
+    private String planName;
     private String validity;
     private PlanInfo planInfo;
     private String additionalOffers;
     private List<CFAllowance> allowanceList;
 
-    public String getName() {
-        return name;
+    public String getPlanName() {
+        return planName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setPlanName(String planName) {
+        this.planName = planName;
     }
 
     public String getId() {

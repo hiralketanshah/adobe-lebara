@@ -42,6 +42,7 @@ import AwardsShowCase from "./AwardsShowCase/AwardsShowCase";
 import TrustShopSlider from "./TrustedShopSlider/TrustedShopSlider";
 
 
+
 import {
   ContainerV1,
   ContainerV1IsEmptyFn,
@@ -158,6 +159,13 @@ const TitleEditConfig = {
   },
 };
 
+const TrustedShopSliderConfig = {
+  emptyLabel: "Review Component",
+  isEmpty: function (props) {
+    return !props.title;
+  },
+};
+
 const ProgressStepLinksEditConfig = {
   emptyLabel: "Progress Step Links",
   isEmpty: function (props) {
@@ -227,12 +235,8 @@ const AwardsShowCaseConfig = {
     return !props.title;
   },
 };
-const TrustedShopSliderConfig = {
-  emptyLabel: "Review Component",
-  isEmpty: function (props) {
-    return !props.title;
-  },
-};
+
+
 MapTo("lebara/components/getapp")(GetApp, GetAppEditConfig);
 MapTo("lebara/components/text")(LazyTextComponent, TextEditConfig);
 MapTo("lebara/components/teaser")(Teaser, TeaserEditConfig);
@@ -260,3 +264,4 @@ MapTo("lebara/components/simportin")(SimPortInRoute, SimPortInConfig);
 MapTo("lebara/components/wheretocall")(WhereToCall, WhereToCallEditConfig);;
 MapTo("lebara/components/awards")(AwardsShowCase, AwardsShowCaseConfig);
 MapTo("lebara/components/review")(TrustShopSlider, TrustedShopSliderConfig);
+
