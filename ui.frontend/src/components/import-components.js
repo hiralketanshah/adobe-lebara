@@ -40,7 +40,7 @@ import { TitleV2IsEmptyFn } from "@adobe/aem-core-components-react-base/dist/isE
 import WhereToCall from "./CallPrices/CallPrices";
 import AwardsShowCase from "./AwardsShowCase/AwardsShowCase";
 import TrustShopSlider from "./TrustedShopSlider/TrustedShopSlider";
-import Faq from "./Faq/Faq";
+
 
 
 import {
@@ -229,12 +229,6 @@ const AwardsShowCaseConfig = {
   },
 };
 
-const FaqConfig = {
-  emptyLabel: "Faq Component",
-  isEmpty: function (props) {
-    return !props.title;
-  },
-  }
 
 MapTo("lebara/components/getapp")(GetApp, GetAppEditConfig);
 MapTo("lebara/components/text")(LazyTextComponent, TextEditConfig);
@@ -263,4 +257,4 @@ MapTo("lebara/components/simportin")(SimPortInRoute, SimPortInConfig);
 MapTo("lebara/components/wheretocall")(WhereToCall, WhereToCallEditConfig);;
 MapTo("lebara/components/awards")(AwardsShowCase, AwardsShowCaseConfig);
 MapTo("lebara/components/review")(TrustShopSlider);
-MapTo("lebara/components/faq")(Faq, FaqConfig);
+
