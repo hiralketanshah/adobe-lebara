@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:granite="http://www.adobe.com/jcr/granite/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
     jcr:primaryType="nt:unstructured"
-    jcr:title="Usp Component"
+    jcr:title="USP"
     sling:resourceType="cq/gui/components/authoring/dialog"
     extraClientlibs="[lebara.touchui]">
     <content
@@ -14,9 +14,9 @@
                 sling:resourceType="granite/ui/components/coral/foundation/tabs"
                 maximized="{Boolean}true">
                 <items jcr:primaryType="nt:unstructured">
-                    <uspproperties
+                    <heading
                         jcr:primaryType="nt:unstructured"
-                        jcr:title="Usp Properties"
+                        jcr:title="USP"
                         sling:resourceType="granite/ui/components/coral/foundation/container"
                         margin="{Boolean}true">
                         <items jcr:primaryType="nt:unstructured">
@@ -29,19 +29,6 @@
                                         jcr:primaryType="nt:unstructured"
                                         sling:resourceType="granite/ui/components/coral/foundation/container">
                                         <items jcr:primaryType="nt:unstructured">
-                                            <backgroundimage
-                                                jcr:primaryType="nt:unstructured"
-                                                sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
-                                                fieldDescription="Choose Image"
-                                                fieldLabel="Link Background Image"
-                                                name="./backgroundimage"
-                                                rootPath="/content/dam/lebara"/>
-                                            <usptitle
-                                                jcr:primaryType="nt:unstructured"
-                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                                fieldDescription="Title Text"
-                                                fieldLabel="USP Title"
-                                                name="./title"/>
                                             <uspimageproportes
                                                 granite:class="lebara-multifield__editor"
                                                 jcr:primaryType="nt:unstructured"
@@ -56,7 +43,7 @@
                                                 <field
                                                     jcr:primaryType="nt:unstructured"
                                                     sling:resourceType="granite/ui/components/coral/foundation/container"
-                                                    name="./uspDescription">
+                                                    name="./uspList">
                                                     <items jcr:primaryType="nt:unstructured">
                                                         <column
                                                             jcr:primaryType="nt:unstructured"
@@ -67,21 +54,21 @@
                                                                     sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
                                                                     fieldDescription="Choose Image"
                                                                     fieldLabel="Link icon Image"
-                                                                    name="./imagePath"
+                                                                    name="./icon"
                                                                     required="{Boolean}true"
                                                                     rootPath="/content/dam/lebara"/>
-                                                                <alt
+                                                                <title
                                                                     jcr:primaryType="nt:unstructured"
                                                                     sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                                                     fieldDescription="Textual alternative of the meaning or function of the image, for visually impaired readers."
-                                                                    fieldLabel="Alternative Text"
-                                                                    name="./imageAlt"/>
+                                                                    fieldLabel="Card Title"
+                                                                    name="./title"/>
                                                                 <label
                                                                     jcr:primaryType="nt:unstructured"
-                                                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                                    sling:resourceType="granite/ui/components/coral/foundation/form/textarea"
                                                                     fieldDescription="Choose Image Description"
                                                                     fieldLabel="Image Description"
-                                                                    name="./imageDescription"
+                                                                    name="./body"
                                                                     rootPath="/content/dam/lebara"/>
                                                             </items>
                                                         </column>
@@ -93,11 +80,9 @@
                                 </items>
                             </columns>
                         </items>
-                    </uspproperties>
+                    </heading>
                 </items>
             </tabs>
         </items>
     </content>
 </jcr:root>
-
-
