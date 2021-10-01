@@ -8,4 +8,4 @@ const TrustpilotConfig = {
     },
 };
 
-MapTo("lebara/components/faq")(Trustpilot, TrustpilotConfig);
+MapTo("lebara/components/trustpilotrating")(Trustpilot, TrustpilotConfig);

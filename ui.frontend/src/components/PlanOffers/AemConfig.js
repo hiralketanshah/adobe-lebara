@@ -2,10 +2,10 @@ import { MapTo } from "@adobe/aem-react-editable-components";
 import PlanOffers from "./PlanOffers";
 
 const PlanOffersConfig = {
-    emptyLabel: "Plan Offers",
+    emptyLabel: "Detailed View Plans",
     isEmpty: function (props) {
       return !props.name;
     },
 };
 
-MapTo("lebara/components/faq")(PlanOffers, PlanOffersConfig);
+MapTo("lebara/components/detailedviewplans")(PlanOffers, PlanOffersConfig);

@@ -8,4 +8,4 @@ const AboutLebaraConfig = {
   },
 };
 
-MapTo("lebara/components/faq")(AboutLebara, AboutLebaraConfig);
+MapTo("lebara/components/aboutlebara")(AboutLebara, AboutLebaraConfig);

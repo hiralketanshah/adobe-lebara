@@ -8,4 +8,4 @@ const CallPricesConfig = {
   },
 };
 
-MapTo("lebara/components/faq")(CallPrices, CallPricesConfig);
+MapTo("lebara/components/wheretocall")(CallPrices, CallPricesConfig);

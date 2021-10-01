@@ -8,4 +8,4 @@ const PortingConfig = {
   },
 };
 
-MapTo("lebara/components/faq")(Porting, PortingConfig);
+MapTo("lebara/components/porting")(Porting, PortingConfig);

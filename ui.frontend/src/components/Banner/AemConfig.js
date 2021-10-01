@@ -8,4 +8,4 @@ const BannerConfig = {
   },
 };
 
-MapTo("lebara/components/faq")(Banner, BannerConfig);
+MapTo("lebara/components/banner")(Banner, BannerConfig);

@@ -8,4 +8,4 @@ const ProgressStepConfig = {
   },
 };
 
-MapTo("lebara/components/faq")(ProgressStep, ProgressStepConfig);
+MapTo("lebara/components/progressstep")(ProgressStep, ProgressStepConfig);

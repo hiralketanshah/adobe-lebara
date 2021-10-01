@@ -8,4 +8,4 @@ const FooterMenuConfig = {
     },
 };
 
-MapTo("lebara/components/faq")(FooterMenu, FooterMenuConfig);
+MapTo("lebara/components/footer")(FooterMenu, FooterMenuConfig);

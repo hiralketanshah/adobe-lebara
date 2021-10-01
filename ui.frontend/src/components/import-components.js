@@ -64,7 +64,7 @@ import "./Trustpilot/AemConfig.js"
 import "./PlanOffers/AemConfig.js"
 import "./PostpaidPlans/AemConfig.js"
 import "./Banner/AemConfig.js"
-// import "./rotues/AemConfig.js"
+import "../rotues/AemConfig.js"
 import "./ProgressStep/AemConfig.js"
 import "./FooterMenu/AemConfig.js"
 import "./CallPrices/AemConfig.js"
@@ -73,8 +73,7 @@ import "./TrustedShopSlider/AemConfig.js"
 import "./Faq/AemConfig.js"
 
 
-//lazyload / code splitting example of an internal component
-const LazyTextComponent = withAsyncImport(() => import(`./Text/Text`));
+
 
 //lazyload / code splitting examples of external components
 const TitleV2 = withAsyncImport(() =>
@@ -109,6 +108,11 @@ MapTo("lebara/components/container")(ContainerV1, {
 
 //lazy load of internal component (hello world)
 
+
+
+//lazyload / code splitting example of an internal component
+const LazyTextComponent = withAsyncImport(() => import(`./Text/Text`));
+
 /**
  * Default Edit configuration for the Text component that interact with the Core Text component and sub-types
  *
@@ -121,6 +125,7 @@ const TextEditConfig = {
     return !props || !props.text || props.text.trim().length < 1;
   },
 };
+MapTo("lebara/components/text")(LazyTextComponent, TextEditConfig);
 
 const detailViewPlansConfig = {
   emptyLabel: "Detailed View Plans",
@@ -142,16 +147,3 @@ const detailViewPlansConfig = {
     );
   },
 };
-
-const SimPortInConfig = {
-  emptyLabel: "Sim Port In Component",
-  isEmpty: function (props) {
-    return !props.title || !props.pretitle;
-  },
-}
-
-
-MapTo("lebara/components/text")(LazyTextComponent, TextEditConfig);
-MapTo("lebara/components/simportin")(SimPortInRoute, SimPortInConfig);
-MapTo("lebara/components/review")(TrustShopSlider);
-MapTo("lebara/components/faq")(FAQ, FAQConfig);

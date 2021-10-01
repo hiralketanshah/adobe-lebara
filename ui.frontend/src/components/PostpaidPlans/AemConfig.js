@@ -8,4 +8,4 @@ const PostpaidPlansConfig = {
   },
 };
 
-MapTo("lebara/components/faq")(PostpaidPlans, PostpaidPlansConfig);
+MapTo("lebara/components/postpaidPlans")(PostpaidPlans, PostpaidPlansConfig);
