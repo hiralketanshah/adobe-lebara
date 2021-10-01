@@ -134,7 +134,7 @@
                                     name="./cityPlaceholder"/>
                         </items>
                     </column2>
-                    <column2
+                    <column3
                             jcr:primaryType="nt:unstructured"
                             jcr:title="Order Details CTA"
                             sling:resourceType="granite/ui/components/coral/foundation/container">
@@ -146,7 +146,7 @@
                                     value="CONTINUE TO ORDER DETAILS"
                                     name="./orderDetailsCta"/>
                         </items>
-                    </column2>
+                    </column3>
                 </items>
             </tabs>
         </items>
