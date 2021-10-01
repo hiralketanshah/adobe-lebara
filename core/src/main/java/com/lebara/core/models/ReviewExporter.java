@@ -19,14 +19,6 @@ public class ReviewExporter extends HeadingExporter {
      */
     protected static final String RESOURCE_TYPE = "lebara/components/review";
 
-    @ValueMapValue
-    private String title;
-
-    @Override
-    public String getTitle() {
-        return title;
-    }
-
     @Override
     public String getExportedType() {
         return RESOURCE_TYPE;
