@@ -126,14 +126,14 @@ const TeaserEditConfig = {
   },
 };
 const ViewPlansConfig = {
-  emptyLabel: "ViewPlans",
+  emptyLabel: "View Plans",
 
   isEmpty: function (props) {
     return !props || !props.offers || !props.buttonLabel;
   },
 };
 const detailViewPlansConfig = {
-  emptyLabel: "detailViewPlans",
+  emptyLabel: "Detailed View Plans",
 
   isEmpty: function (props) {
     return (
