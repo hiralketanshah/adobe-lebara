@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Text, Heading, Link } from "@chakra-ui/react";
+import { Box, Text, Heading } from "@chakra-ui/react";
 import { TextBlockProps } from "./types";
 import Button from "../Button/Button";
 import sanitizeHtml from "sanitize-html";
@@ -10,7 +10,7 @@ const TextBlock: React.FC<TextBlockProps> = ({
   header,
   subHeader,
   buttonText,
-  imagePath,
+  // imagePath,
   linkURL,
   buttonStyle
 }) => (

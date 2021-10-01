@@ -2,6 +2,7 @@ package com.lebara.core.dto;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang3.math.NumberUtils;
 
 import java.text.DecimalFormat;
 import java.util.List;
@@ -10,10 +11,19 @@ import java.util.List;
 public class OfferFragmentBean {
     private String id;
     private String cost;
+    private String name;
     private String validity;
     private PlanInfo planInfo;
     private String additionalOffers;
     private List<CFAllowance> allowanceList;
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 
     public String getId() {
         return id;
@@ -24,7 +34,7 @@ public class OfferFragmentBean {
     }
 
     public String getCost() {
-        if (StringUtils.isNumeric(cost)) {
+        if (NumberUtils.isCreatable(cost)) {
             return new DecimalFormat("##.##").format(Float.parseFloat(cost) / 100);
         }
         return StringUtils.EMPTY;

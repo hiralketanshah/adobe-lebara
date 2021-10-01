@@ -20,6 +20,7 @@ public class CustomNavigationItem implements NavigationItem {
     // Constants
     public static final String PROP_PAGE_ICON = "pageIcon";
     public static final String PROP_SHOW_NEW_TEXT = "showNewText";
+    public static final String PROP_SIM_IMAGE_FILE = "simImageFile";
     public static final String PROP_IMAGE_TEXT = "imageText";
     public static final String PROP_IMAGE_PATH = "imagePath";
 
@@ -82,6 +83,10 @@ public class CustomNavigationItem implements NavigationItem {
 
     public boolean isShowNewText() {
         return Boolean.parseBoolean(properties.get(PROP_SHOW_NEW_TEXT, String.class));
+    }
+
+    public String getSimImage() {
+        return properties.get(PROP_SIM_IMAGE_FILE, String.class);
     }
 
     public String getImageText() {
