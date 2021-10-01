@@ -43,6 +43,7 @@ import TrustShopSlider from "./TrustedShopSlider/TrustedShopSlider";
 import FAQ from "./faq/faq";
 
 
+
 import {
   ContainerV1,
   ContainerV1IsEmptyFn,
@@ -156,6 +157,13 @@ const TitleEditConfig = {
 
   isEmpty: function (props) {
     return !props || !props.text;
+  },
+};
+
+const TrustedShopSliderConfig = {
+  emptyLabel: "Review Component",
+  isEmpty: function (props) {
+    return !props.title;
   },
 };
 

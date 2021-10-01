@@ -9,32 +9,29 @@ import org.apache.sling.models.annotations.Exporter;
 import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.injectorspecific.ChildResource;
 import org.apache.sling.models.annotations.injectorspecific.ScriptVariable;
+import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
 
 import java.util.List;
 
-@Model(adaptables = SlingHttpServletRequest.class, adapters = { UspExporter.class,
-        ComponentExporter.class }, resourceType = UspExporter.RESOURCE_TYPE, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
+@Model(adaptables = {SlingHttpServletRequest.class, Resource.class}, adapters = {FaqExporter.class, ComponentExporter.class},
+        resourceType = FaqExporter.RESOURCE_TYPE, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
 @Exporter(name = ExporterConstants.SLING_MODEL_EXPORTER_NAME, extensions = ExporterConstants.SLING_MODEL_EXTENSION)
-public class UspExporter extends HeadingExporter {
+public class FaqExporter extends HeadingExporter {
 
     /**
      * The resource type.
      */
-    protected static final String RESOURCE_TYPE = "lebara/components/usp";
+    protected static final String RESOURCE_TYPE = "lebara/components/faq";
 
     @ScriptVariable
     private Resource resource;
-
     @ChildResource
-    private List<ImageProperties> uspList;
-
+    private List<Option> options;
+    public List<Option> getOptions() {
+        return options;
+    }
     @Override
     public String getExportedType() {
-        return resource.getResourceType();
+        return RESOURCE_TYPE;
     }
-
-    public List<ImageProperties> getUspList() {
-        return uspList;
-    }
-
 }

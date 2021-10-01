@@ -1,1 +1,3 @@
-export interface TrustedShopSliderProps {}
+export interface TrustedShopSliderProps {
+    title?: string;
+}
