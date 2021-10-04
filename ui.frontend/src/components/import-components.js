@@ -41,9 +41,6 @@ import WhereToCall from "./CallPrices/CallPrices";
 import AwardsShowCase from "./AwardsShowCase/AwardsShowCase";
 import TrustShopSlider from "./TrustedShopSlider/TrustedShopSlider";
 import FAQ from "./faq/faq";
-import NeedHelpFooter from "./NeedHelpFooter/NeedHelpFooter";
-
-
 
 import {
   ContainerV1,
@@ -245,12 +242,7 @@ const FAQConfig = {
   },
 };
 
-const NeedHelpFooterConfig = {
-  emptyLabel: "Mini Footer",
-  isEmpty: function (props) {
-    return !props.helpText;
-  },
-};
+
 
 MapTo("lebara/components/getapp")(GetApp, GetAppEditConfig);
 MapTo("lebara/components/text")(LazyTextComponent, TextEditConfig);
@@ -280,5 +272,5 @@ MapTo("lebara/components/wheretocall")(WhereToCall, WhereToCallEditConfig);;
 MapTo("lebara/components/awards")(AwardsShowCase, AwardsShowCaseConfig);
 MapTo("lebara/components/review")(TrustShopSlider);
 MapTo("lebara/components/faq")(FAQ, FAQConfig);
-MapTo("lebara/components/mini-footer")(NeedHelpFooter, NeedHelpFooterConfig);
+
 
