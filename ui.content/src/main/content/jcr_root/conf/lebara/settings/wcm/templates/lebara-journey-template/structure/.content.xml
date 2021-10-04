@@ -21,10 +21,9 @@
                     jcr:primaryType="nt:unstructured"
                     sling:resourceType="lebara/components/progressstep"/>
             </responsivegrid>
-            <experiencefragment-footer
-                jcr:primaryType="nt:unstructured"
-                sling:resourceType="lebara/components/experiencefragment"
-                editable="{Boolean}true"/>
+            <mini_footer
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="lebara/components/mini-footer"/>
         </root>
         <cq:responsive jcr:primaryType="nt:unstructured">
             <breakpoints jcr:primaryType="nt:unstructured">
