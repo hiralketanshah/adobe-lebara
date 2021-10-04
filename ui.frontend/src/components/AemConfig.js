@@ -1,4 +1,7 @@
-
+/**
+ *  Add all AEM Core components mapping here
+ *
+ */
 import withAsyncImport from "../utils/withAsyncImport";
 import { MapTo } from "@adobe/aem-react-editable-components";
 import { TitleV2IsEmptyFn } from "@adobe/aem-core-components-react-base/dist/isEmptyFunctions";
