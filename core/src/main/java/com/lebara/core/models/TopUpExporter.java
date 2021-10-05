@@ -66,7 +66,7 @@ public class TopUpExporter extends HeadingExporter {
         return buyTopUp;
     }
 
-    public List<SelectBean> getTopupAmount() {
+    public List<String> getTopupAmount() {
         return CFUtils.populateTopupInfo(resourceResolver.getResource(cfPath));
     }
 

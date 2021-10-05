@@ -84,14 +84,11 @@ public class CFUtils {
         return new ArrayList<>();
     }
 
-    public static List<SelectBean> populateTopupInfo(Resource cfResource) {
+    public static List<String> populateTopupInfo(Resource cfResource) {
         if (null != cfResource) {
             ContentFragment topupFragment = cfResource.adaptTo(ContentFragment.class);
             if (null != topupFragment) {
-                List<SelectBean> topups = convertStringArrayToList(CFUtils.getElementArrayValue(topupFragment, "value"), SelectBean.class);
-                for (int i = 0; i < topups.size(); i++) {
-                    topups.get(i).setKey(String.valueOf(i));
-                }
+                List<String> topups = Arrays.asList(CFUtils.getElementArrayValue(topupFragment, "value"));
                 return topups;
             }
         }
