@@ -84,6 +84,20 @@ public class CFUtils {
         return new ArrayList<>();
     }
 
+    public static List<SelectBean> populateTopupInfo(Resource cfResource) {
+        if (null != cfResource) {
+            ContentFragment topupFragment = cfResource.adaptTo(ContentFragment.class);
+            if (null != topupFragment) {
+                List<SelectBean> topups = convertStringArrayToList(CFUtils.getElementArrayValue(topupFragment, "value"), SelectBean.class);
+                for (int i = 0; i < topups.size(); i++) {
+                    topups.get(i).setKey(String.valueOf(i));
+                }
+                return topups;
+            }
+        }
+        return new ArrayList<>();
+    }
+
     public static OfferFragmentBean populateOffers( Resource cfResource, I18n i18n) {
         OfferFragmentBean offerFragmentBean = null;
         if (null != cfResource) {

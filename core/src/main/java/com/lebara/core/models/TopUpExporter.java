@@ -2,11 +2,17 @@ package com.lebara.core.models;
 
 import com.adobe.cq.export.json.ComponentExporter;
 import com.adobe.cq.export.json.ExporterConstants;
+import com.lebara.core.dto.SelectBean;
+import com.lebara.core.utils.CFUtils;
 import org.apache.sling.api.SlingHttpServletRequest;
+import org.apache.sling.api.resource.ResourceResolver;
 import org.apache.sling.models.annotations.DefaultInjectionStrategy;
 import org.apache.sling.models.annotations.Exporter;
 import org.apache.sling.models.annotations.Model;
+import org.apache.sling.models.annotations.injectorspecific.SlingObject;
 import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
+
+import java.util.List;
 
 @Model(adaptables = SlingHttpServletRequest.class, adapters = {TopUpExporter.class, ComponentExporter.class},
         resourceType = TopUpExporter.RESOURCE_TYPE, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
@@ -17,7 +23,8 @@ public class TopUpExporter extends HeadingExporter {
      * The resource type.
      */
     protected static final String RESOURCE_TYPE = "lebara/components/topup";
-
+    @SlingObject
+    private ResourceResolver resourceResolver;
     @ValueMapValue
     private String leftTitle;
     @ValueMapValue
@@ -30,8 +37,10 @@ public class TopUpExporter extends HeadingExporter {
     private String addToCart;
     @ValueMapValue
     private String buyTopUp;
+    @ValueMapValue
+    private String cfPath;
 
-    private String topupAmount;
+    private List<String> topupAmount;
 
     public String getLeftTitle() {
         return leftTitle;
@@ -57,8 +66,8 @@ public class TopUpExporter extends HeadingExporter {
         return buyTopUp;
     }
 
-    public String getTopupAmount() {
-        return topupAmount;
+    public List<SelectBean> getTopupAmount() {
+        return CFUtils.populateTopupInfo(resourceResolver.getResource(cfPath));
     }
 
     @Override
