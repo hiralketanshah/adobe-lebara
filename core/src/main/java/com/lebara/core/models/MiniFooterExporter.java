@@ -27,15 +27,16 @@ public class MiniFooterExporter implements ComponentExporter {
     @ScriptVariable
     private Resource resource;
 
-
     @ValueMapValue
     private String helpText;
+
     @ValueMapValue
     private String lookText;
-    @ValueMapValue
-    private String supportText;
-    @ValueMapValue
-    private String supportLink;
+
+    @ChildResource
+    private List<Link> links;
+
+
 
     public String getHelpText() {
         return helpText;
@@ -45,12 +46,8 @@ public class MiniFooterExporter implements ComponentExporter {
         return lookText;
     }
 
-    public String getSupportText() {
-        return supportText;
-    }
-
-    public String getSupportLink() {
-        return AemUtils.getLinkWithExtension(supportLink);
+    public List<Link> getLinks() {
+        return links;
     }
 
     @Override
