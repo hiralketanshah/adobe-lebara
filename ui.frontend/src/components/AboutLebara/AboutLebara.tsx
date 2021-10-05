@@ -3,7 +3,7 @@ import React, { useEffect, useRef } from "react";
 import { Box } from "@chakra-ui/react";
 import TextFeature from "./TextFeature";
 import { AboutLebaraProps } from "./types";
-const Aboutlebara: React.FC<AboutLebaraProps> = (props) => {
+const AboutLebara: React.FC<AboutLebaraProps> = (props) => {
   const nodeRef= useRef();
   const setStyle = () => {
     if(!nodeRef.current.parentNode.parentElement.classList.contains("cmp-carousel__item")){
@@ -19,4 +19,4 @@ const Aboutlebara: React.FC<AboutLebaraProps> = (props) => {
     </Box>
   )
 }
-export default Aboutlebara;
+export default AboutLebara;

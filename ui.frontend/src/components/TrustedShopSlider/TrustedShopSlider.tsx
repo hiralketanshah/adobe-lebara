@@ -15,7 +15,7 @@ import ReviewSliderPrevIcon from "../../icons/ReviewSliderPrevIcon";
 import ReviewSliderNextIcon from "../../icons/ReviewSliderNextIcon";
 import "./style.css";
 import { Image } from "../Image/Image";
-import TrustedShopsLogo from "./trusted-shop-logo.png.png";
+import TrustedShopsLogo from "./trusted-shop-logo.png";
 import TrustedShopsStarIcon from "../../icons/TrustedShopsStarIcon";
 import trustedShopsAxios from "../../utils/trustedShopsAxios";
 

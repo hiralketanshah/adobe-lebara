@@ -58,10 +58,11 @@
                                                     name="./name"/>
                                             <url
                                                     jcr:primaryType="nt:unstructured"
-                                                    sling:resourceType="granite/ui/components/foundation/form/pathbrowser"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
                                                     fieldLabel="Anchor Url"
                                                     required="on"
-                                                    name="./value"/>
+                                                    name="./value"
+                                                    rootPath="/content/lebara"/>
                                         </items>
                                     </column>
                                 </items>
