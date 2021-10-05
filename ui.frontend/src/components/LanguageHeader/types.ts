@@ -1,5 +1,5 @@
 export interface LanguageHeaderProps {
-    items:any;
+    items: any;
     storeLink: string;
     storeTitle: string;
     helpLink: string;
