@@ -34,9 +34,7 @@ public class TopUpExporter extends HeadingExporter {
     @ValueMapValue
     private String rightSubTitle;
     @ValueMapValue
-    private String addToCart;
-    @ValueMapValue
-    private String buyTopUp;
+    private String ctaLabel;
     @ValueMapValue
     private String cfPath;
 
@@ -58,15 +56,11 @@ public class TopUpExporter extends HeadingExporter {
         return rightSubTitle;
     }
 
-    public String getAddToCart() {
-        return addToCart;
+    public String getCtaLabel() {
+        return ctaLabel;
     }
 
-    public String getBuyTopUp() {
-        return buyTopUp;
-    }
-
-    public List<String> getTopupAmount() {
+    public List<SelectBean> getTopupAmount() {
         return CFUtils.populateTopupInfo(resourceResolver.getResource(cfPath));
     }
 
