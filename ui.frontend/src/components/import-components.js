@@ -41,6 +41,7 @@ import WhereToCall from "./CallPrices/CallPrices";
 import AwardsShowCase from "./AwardsShowCase/AwardsShowCase";
 import TrustShopSlider from "./TrustedShopSlider/TrustedShopSlider";
 import FAQ from "./faq/faq";
+import "./MiniFooter/AemConfig.js"
 
 
 

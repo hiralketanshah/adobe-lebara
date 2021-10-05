@@ -1,9 +1,9 @@
 import React from "react";
 import { Flex, Text } from "@chakra-ui/react";
-import { NeedHelpFooterProps } from "./types";
+import { MiniFooterProps } from "./types";
 import Link from "../Link/Link";
 
-const NeedHelpFooter: React.FC<NeedHelpFooterProps> = ({helpText, lookText, supportText, supportLink}) => (
+const MiniFooter: React.FC<MiniFooterProps> = ({helpText, lookText, supportText, supportLink}) => (
   <Flex
     px={{ base: "20px", lg: "90px" }}
     bg="primary.800"
@@ -39,4 +39,4 @@ const NeedHelpFooter: React.FC<NeedHelpFooterProps> = ({helpText, lookText, supp
   </Flex>
 );
 
-export default NeedHelpFooter;
+export default MiniFooter;
