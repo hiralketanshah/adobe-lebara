@@ -15,6 +15,7 @@ import javax.net.ssl.HttpsURLConnection;
 import com.adobe.cq.dam.cfm.*;
 import com.day.cq.commons.jcr.JcrUtil;
 import com.lebara.core.dto.*;
+import com.lebara.core.dto.topup.Root;
 import com.lebara.core.utils.CFUtils;
 import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.lang3.StringUtils;
@@ -68,7 +69,11 @@ public class CrudOperationEpc {
             } catch (RepositoryException e) {
                 logger.error("errow while creating the folder {} {}", fragmentPathInDam, e);
             }
-            createContentFragment(epcJsonString, fragmentPathInDam, resourceResolver);
+            if (StringUtils.equalsIgnoreCase(offerType, "getTopUps")) {
+                createTopupContentFragment(epcJsonString, fragmentPathInDam, resourceResolver);
+            } else {
+                createContentFragment(epcJsonString, fragmentPathInDam, resourceResolver);
+            }
         }
     }
 
@@ -80,7 +85,13 @@ public class CrudOperationEpc {
         StringBuilder sb = new StringBuilder();
         try {
             url = new URL(apiEndPointUrl);
-            String jsonInputString = "{\"query\":\"query {\\r\\n  offers : " + OfferType + "(channel: \\\"Web\\\", country: \\\"" + countryCode + "\\\") {\\r\\n    offerId\\r\\n    name\\r\\n    validity\\r\\n    cost\\r\\n    allowances {\\r\\n      allowanceValue\\r\\n      account {\\r\\n        name\\r\\n        unit {\\r\\n          abbreviation\\r\\n        }\\r\\n      }\\r\\n    }\\r\\n  }\\r\\n}\",\"variables\":{}}";
+            String jsonInputString;
+            if (StringUtils.equalsIgnoreCase(OfferType, "getTopUps")) {
+                jsonInputString = getTopUpEpcString(countryCode);
+            } else {
+                jsonInputString = getEpcString(countryCode, OfferType);
+            }
+
             HttpsURLConnection connection = (HttpsURLConnection) url.openConnection();
             connection.setRequestMethod("POST");
             connection.setDoOutput(true);
@@ -107,6 +118,14 @@ public class CrudOperationEpc {
         return sb.toString();
     }
 
+    private String getEpcString(String countryCode, String OfferType) {
+        return "{\"query\":\"query {\\r\\n  offers : " + OfferType + "(channel: \\\"Web\\\", country: \\\"" + countryCode + "\\\") {\\r\\n    offerId\\r\\n    name\\r\\n    validity\\r\\n    cost\\r\\n    allowances {\\r\\n      allowanceValue\\r\\n      account {\\r\\n        name\\r\\n        unit {\\r\\n          abbreviation\\r\\n        }\\r\\n      }\\r\\n    }\\r\\n  }\\r\\n}\",\"variables\":{}}";
+    }
+
+    private String getTopUpEpcString(String countryCode) {
+        return "{\"query\":\"query {\\r\\n  offers: getTopUps(channel: \\\"Web\\\",country: \\\"" + countryCode + "\\\")\\r\\n}\",\"variables\":{}}";
+    }
+
     void createContentFragment(String epcJsonString, String cfDamPath, ResourceResolver resourceResolver) {
         RootRead convertedEpcJsonObject = new Gson().fromJson(epcJsonString, RootRead.class);
         if (convertedEpcJsonObject == null || convertedEpcJsonObject.getData() == null) {
@@ -127,6 +146,30 @@ public class CrudOperationEpc {
             }
         }
 
+    }
+
+    void createTopupContentFragment(String epcJsonString, String cfDamPath, ResourceResolver resourceResolver) {
+        Root convertedEpcJsonObject = new Gson().fromJson(epcJsonString, Root.class);
+        if (convertedEpcJsonObject == null || convertedEpcJsonObject.getData() == null || convertedEpcJsonObject.getData().getOffers() == null) {
+            return;
+        }
+        try {
+            Resource contentFragmentModelResource = resourceResolver.getResource(LebaraConstants.TOPUP_CONTENT_FRAGMENT_MODEL_PATH);
+            if (contentFragmentModelResource == null) {
+                return;
+            }
+            FragmentTemplate fragmentTemplate = contentFragmentModelResource.adaptTo(FragmentTemplate.class);
+            if (fragmentTemplate == null) {
+                return;
+            }
+            ContentFragment newFragment = fragmentTemplate.createFragment(resourceResolver.getResource(cfDamPath), "topup", "topup");
+            FragmentData fd = newFragment.getElement("value").getValue();
+            fd.setValue(convertedEpcJsonObject.getData().getOffers().toArray(new String[0]));
+            newFragment.getElement("value").setValue(fd);
+
+        } catch (ContentFragmentException e) {
+            logger.error("ContentFragmentException {}", e);
+        }
     }
 
 
