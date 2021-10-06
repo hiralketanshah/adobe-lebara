@@ -19,8 +19,6 @@ const PlanOffers: React.FC<PlanOffersProps> = ({
   ctaTopLabel,
   ctaBottomLabel,
   buttonLabel,
-  buyPlanLabel,
-  addtoCartLabel,
   addedtoCartLabel,
   viewCartLabel
 }) => {
@@ -99,8 +97,7 @@ const PlanOffers: React.FC<PlanOffersProps> = ({
                 key={plan.planName}
               >
                 <ExpandableSimPlanCard {...plan} showLabel={showLabel}
-                buyPlanLabel={buyPlanLabel}
-                addtoCartLabel={addtoCartLabel}
+                buttonLabel={buttonLabel}
                 addedtoCartLabel={addedtoCartLabel}
                 viewCartLabel={viewCartLabel}
                 previewIcon={<TickInCircle fill="#13357A" tickFill="#EA4984" />} />

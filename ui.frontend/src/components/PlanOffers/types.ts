@@ -18,8 +18,7 @@ export interface PlanOffersProps {
   allowanceList?: allowanceListProps;
   viewCartLabel?: string;
   addedtoCartLabel?: string;
-  buyPlanLabel?: string;
-  addtoCartLabel?: string;
+  buttonLabel?: string;
 }
 
 export interface allowanceListProps {

@@ -1,6 +1,7 @@
 import { Box, Divider, Flex, Text, useToast } from "@chakra-ui/react";
 import React from "react";
 import { ExpandableSimPlanCardProps } from "./types";
+import OfferTypes from "./types";
 import Button from "../Button/Button";
 import PlanDetailsDialog from "../PlanDetailsDialog/PlanDetailsDialog";
 import { allowanceListProps } from "../ExpandablePlanCard/types";
@@ -19,11 +20,10 @@ const ExpandableSimPlanCard: React.FC<ExpandableSimPlanCardProps> = ({
   planInfo,
   additionalOffers,
   id,
-  isAddtoCart,
-  buyPlanLabel,
-  addtoCartLabel,
+  buttonLabel,
   addedtoCartLabel,
-  viewCartLabel
+  viewCartLabel,
+  offerType
 }) => {
   const history = useHistory();
   const [addItemToCart] = useAddToCart();
@@ -36,38 +36,44 @@ const ExpandableSimPlanCard: React.FC<ExpandableSimPlanCardProps> = ({
     history.push(userToken ? "/order-details" : "/login");
   };
   const filteredAllowanceList: allowanceListProps = (allowanceList && allowanceList.find((list) => list.name && list.name.includes('Data'))) || {};
-  const handleAddToCart = async (
-    id: number,
-    name: string,
-    description: string,
-    price: number
-  ) => {
-    const updatedAddtoCart:string= addedtoCartLabel?.replace('{0}', name) || '';
+  const handleAddToCart = async () => {
     setIsButtonDisabled(true);
-    await addItemToCart(id, name, description, price, "addon");
-
-    toast({
-      position: "bottom",
-      render: () => (
-        <Flex
-          color="white"
-          p={3}
-          bg="primary.700"
-          borderRadius="4px"
-          justifyContent="space-between"
-          maxW="420px"
-        >
-          <Text py="12px">{updatedAddtoCart}</Text>
-          <Button
-            variant="ghost"
-            colorScheme="secondary"
-            onClick={handleViewCartClick}
-          >
-            {viewCartLabel}
-          </Button>
-        </Flex>
-      ),
-    });
+    switch (offerType) {
+      case OfferTypes.BOLTON:
+      case OfferTypes.TOPUP: {
+        const updatedAddtoCart: string = addedtoCartLabel?.replace('{0}', planName) || '';
+        await addItemToCart(parseInt(id || ''), planName, filteredAllowanceList as string, parseFloat(cost || ''), "addon");
+        toast({
+          position: "bottom",
+          render: () => (
+            <Flex
+              color="white"
+              p={3}
+              bg="primary.700"
+              borderRadius="4px"
+              justifyContent="space-between"
+              maxW="420px"
+            >
+              <Text py="12px">{updatedAddtoCart}</Text>
+              <Button
+                variant="ghost"
+                colorScheme="secondary"
+                onClick={handleViewCartClick}
+              >
+                {viewCartLabel}
+              </Button>
+            </Flex>
+          ),
+        });
+        break;
+      }
+      case OfferTypes.PREPAID:
+      case OfferTypes.POSTPAID: {
+        await addItemToCart(parseInt(id || ''), planName, ((allowanceList && allowanceList.join()) || ''), parseFloat(cost || ''), "plan");
+        //will be replaced once common authoring for routing decided on AEM
+        history.push(userToken ? "/order-details" : "/lebara-sim-choice");
+      }
+    }
     setIsButtonDisabled(false);
   };
   return (
@@ -99,8 +105,8 @@ const ExpandableSimPlanCard: React.FC<ExpandableSimPlanCardProps> = ({
         countryTitle={planInfo?.countryTitle}
         dataValue={filteredAllowanceList.formatedValue}
         isButtonDisabled={isButtonDisabled}
-        onActionClick={() => {handleAddToCart(parseInt(id || ''), planName,additionalOffers || '', parseFloat(cost || ''))}}
-        buttonText= {isAddtoCart? addtoCartLabel : buyPlanLabel}
+        onActionClick={handleAddToCart}
+        buttonText={buttonLabel}
       />
       <Flex justifyContent="space-between" alignItems="center">
         <Text
@@ -177,11 +183,11 @@ const ExpandableSimPlanCard: React.FC<ExpandableSimPlanCardProps> = ({
         <Button
           isFullWidth
           fontSize="16px"
-          onClick={() => {handleAddToCart(parseInt(id || ''), planName,additionalOffers || '', parseFloat(cost || ''))}}
+          onClick={handleAddToCart}
           disabled={isButtonDisabled}
           isLoading={isButtonDisabled}
         >
-          {isAddtoCart? addtoCartLabel : buyPlanLabel}
+          {buttonLabel}
         </Button>
       </Flex>
     </Flex>

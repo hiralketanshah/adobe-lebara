@@ -1,8 +1,6 @@
 {
   "Days" : "Dni",
   "Minutes" : "Minuty",
-  "lebara.buyplan.label":"Kup plan",
-  "lebara.addtocart.label":"Dodaj do koszyka",
   "lebara.viewcart.label":"Zobacz Koszyk",
   "lebara.addon.addedtocart.label":"Dodatek {0} dodany do koszyka"
 }

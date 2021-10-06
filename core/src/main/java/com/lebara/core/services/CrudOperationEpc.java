@@ -68,7 +68,7 @@ public class CrudOperationEpc {
             } catch (RepositoryException e) {
                 logger.error("errow while creating the folder {} {}", fragmentPathInDam, e);
             }
-            createContentFragment(epcJsonString, fragmentPathInDam, resourceResolver);
+            createContentFragment(epcJsonString, fragmentPathInDam, resourceResolver, offerTypes.get(offerType));
         }
     }
 
@@ -107,7 +107,7 @@ public class CrudOperationEpc {
         return sb.toString();
     }
 
-    void createContentFragment(String epcJsonString, String cfDamPath, ResourceResolver resourceResolver) {
+    void createContentFragment(String epcJsonString, String cfDamPath, ResourceResolver resourceResolver, String offerType) {
         RootRead convertedEpcJsonObject = new Gson().fromJson(epcJsonString, RootRead.class);
         if (convertedEpcJsonObject == null || convertedEpcJsonObject.getData() == null) {
             return;
@@ -119,7 +119,7 @@ public class CrudOperationEpc {
                 String validOfferName = JcrUtil.createValidName(offer.name);
                 String cfPath = cfDamPath + "/" + validOfferName;
                 if (resourceResolver.getResource(cfPath) == null) {
-                    String offerId = writeJsonToCf(offer, cfDamPath, resourceResolver, validOfferName);
+                    String offerId = writeJsonToCf(offer, cfDamPath, resourceResolver, validOfferName, offerType);
                     logger.debug("content fragment created for offer id {}", offerId);
                 } else {
                     logger.debug("CF already exist with name {} and offer id {} at {}", validOfferName, offer.offerId, cfPath);
@@ -130,7 +130,7 @@ public class CrudOperationEpc {
     }
 
 
-    String writeJsonToCf(Offer offer, String cfDamPath, ResourceResolver resourceResolver, String validOfferName) {
+    String writeJsonToCf(Offer offer, String cfDamPath, ResourceResolver resourceResolver, String validOfferName, String offerType) {
         GsonBuilder builder = new GsonBuilder();
         Gson gson = builder.create();
 
@@ -150,7 +150,7 @@ public class CrudOperationEpc {
             newFragment.getElement("validity").setContent(String.valueOf(offer.validity), LebaraConstants.CONTENT_TYPE_TEXT_PLAIN);
             newFragment.getElement("active").setContent(String.valueOf(true), LebaraConstants.CONTENT_TYPE_TEXT_PLAIN);
             newFragment.getElement("cost").setContent(String.valueOf(offer.cost), LebaraConstants.CONTENT_TYPE_TEXT_PLAIN);
-
+            newFragment.getElement("offerType").setContent(offerType, LebaraConstants.CONTENT_TYPE_TEXT_PLAIN);
             List<String> cfAllowanceArray = new ArrayList<>();
             for (Allowance allowances : offer.allowances) {
                 CFAllowance cfAllowance = new CFAllowance();
