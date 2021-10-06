@@ -18,7 +18,11 @@ const PlanOffers: React.FC<PlanOffersProps> = ({
   ctaTopLink,
   ctaTopLabel,
   ctaBottomLabel,
-  buttonLabel
+  buttonLabel,
+  buyPlanLabel,
+  addtoCartLabel,
+  addedtoCartLabel,
+  viewCartLabel
 }) => {
   const history = useHistory();
   const linkStyles = {
@@ -94,7 +98,12 @@ const PlanOffers: React.FC<PlanOffersProps> = ({
                 w="100%"
                 key={plan.planName}
               >
-                <ExpandableSimPlanCard {...plan} showLabel={showLabel} buttonLabel={buttonLabel} previewIcon={<TickInCircle fill="#13357A" tickFill="#EA4984" />} />
+                <ExpandableSimPlanCard {...plan} showLabel={showLabel}
+                buyPlanLabel={buyPlanLabel}
+                addtoCartLabel={addtoCartLabel}
+                addedtoCartLabel={addedtoCartLabel}
+                viewCartLabel={viewCartLabel}
+                previewIcon={<TickInCircle fill="#13357A" tickFill="#EA4984" />} />
               </Box>
             ))}
         </Flex>

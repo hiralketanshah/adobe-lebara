@@ -1,6 +1,9 @@
 {
 
   "Days" : "Zile",
-  "Minutes" : "Minute"
-
+  "Minutes" : "Minute",
+  "lebara.buyplan.label":"Cumpărați un plan",
+  "lebara.addtocart.label":"Adaugă în coș",
+  "lebara.viewcart.label":"Vizualizare coș",
+  "lebara.addon.addedtocart.label":"Addon {0} a fost adăugat în coș"
 }

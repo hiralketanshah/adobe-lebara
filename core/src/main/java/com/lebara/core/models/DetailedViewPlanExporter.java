@@ -148,7 +148,18 @@ public class DetailedViewPlanExporter extends ViewPlanExporter implements Compon
         }
         return offers;
     }
-
+    public String getBuyPlanLabel() {
+        return (i18n == null ? "Buy Plan" : i18n.get("lebara.buyplan.label"));
+    }
+    public String getAddtoCartLabel() {
+        return (i18n == null ? "Add to Cart" : i18n.get("lebara.addtocart.label"));
+    }
+    public String getViewCartLabel() {
+        return (i18n == null ? "View Cart" : i18n.get("lebara.viewcart.label"));
+    }
+    public String getAddedtoCartLabel() {
+        return (i18n == null ? "Addon {0} added to cart" : i18n.get("lebara.addon.addedtocart.label"));
+    }
     @Override
     public String getExportedType() {
         return resource.getResourceType();

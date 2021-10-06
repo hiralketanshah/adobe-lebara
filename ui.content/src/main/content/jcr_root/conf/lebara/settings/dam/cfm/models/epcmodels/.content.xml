@@ -154,6 +154,19 @@
                                 </items>
                             </field>
                         </_x0031_626008217644>
+						<_x0031_633455180253
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                            fieldDescription="Select this if the user has to land on add to cart instead of buy plan flow."
+                            listOrder="22"
+                            metaType="boolean"
+                            name="isAddtoCart"
+                            renderReadOnly="false"
+                            showEmptyInReadOnly="true"
+                            text="Is Addtocart Flow?"
+                            valueType="boolean">
+                            <granite:data jcr:primaryType="nt:unstructured"/>
+                        </_x0031_633455180253>
                     </items>
                 </content>
             </cq:dialog>

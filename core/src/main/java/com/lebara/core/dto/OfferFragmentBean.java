@@ -1,5 +1,6 @@
 package com.lebara.core.dto;
 
+import com.day.cq.i18n.I18n;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.math.NumberUtils;
@@ -15,6 +16,7 @@ public class OfferFragmentBean {
     private String validity;
     private PlanInfo planInfo;
     private String additionalOffers;
+    private Boolean isAddtoCart;
     private List<CFAllowance> allowanceList;
 
     public String getPlanName() {
@@ -75,4 +77,13 @@ public class OfferFragmentBean {
     public void setAdditionalOffers(String additionalOffers) {
         this.additionalOffers = additionalOffers;
     }
+
+    public void setIsAddtoCart(Boolean isAddtoCart) {
+        this.isAddtoCart = isAddtoCart;
+    }
+
+    public Boolean getIsAddtoCart() {
+        return isAddtoCart;
+    }
+
 }

@@ -1,4 +1,8 @@
 {
   "Days" : "Days",
-  "Minutes" : "Minutes"
+  "Minutes" : "Minutes",
+  "lebara.buyplan.label":"Buy Plan",
+  "lebara.addtocart.label":"Add to Cart",
+  "lebara.viewcart.label":"View Cart",
+  "lebara.addon.addedtocart.label":"Addon {0} added to cart"
 }

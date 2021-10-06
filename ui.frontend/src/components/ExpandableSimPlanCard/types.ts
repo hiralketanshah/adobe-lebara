@@ -17,9 +17,14 @@ export interface ExpandableSimPlanCardProps {
   validity?: string;
   cost?: string;
   showLabel?: string;
-  buttonLabel?: string;
   planInfo?: planDetails;
   additionalOffers?: string;
+  id?: string;
+  isAddtoCart?: boolean;
+  viewCartLabel?: string;
+  addedtoCartLabel?: string;
+  buyPlanLabel?: string;
+  addtoCartLabel?: string;
 }
 
 export interface CountriesList extends CountriesListOption {}

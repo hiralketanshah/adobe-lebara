@@ -51,6 +51,9 @@ public class CFUtils {
         return cf.getElement(elementName) == null ? StringUtils.EMPTY : cf.getElement(elementName).getContent();
     }
 
+    public static Boolean getElementBooleanValue(ContentFragment cf, String elementName) {
+        return cf.getElement(elementName) != null && cf.getElement(elementName).getContent().equalsIgnoreCase("true");
+    }
     public static String[] getElementArrayValue(ContentFragment cf, String elementName) {
         return StringUtils.isBlank(cf.getElement(elementName).getContent()) ? new String[0]
                 : cf.getElement(elementName).getValue().getValue(String[].class);
@@ -94,6 +97,7 @@ public class CFUtils {
                 offerFragmentBean.setPlanName(CFUtils.getElementValue(offerFragment, "name"));
                 offerFragmentBean.setValidity(CFUtils.getElementValue(offerFragment, "validity") + " " + (i18n == null ? "Days" : i18n.get("Days")));
                 offerFragmentBean.setId(CFUtils.getElementValue(offerFragment, "offerid"));
+                offerFragmentBean.setIsAddtoCart(CFUtils.getElementBooleanValue(offerFragment, "isAddtoCart"));
                 if (offerFragment.getElement("additionalOffers") != null) {
                     offerFragmentBean.setAdditionalOffers(CFUtils.getElementValue(offerFragment, "additionalOffers"));
                 }
