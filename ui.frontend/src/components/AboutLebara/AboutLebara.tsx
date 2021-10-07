@@ -8,7 +8,9 @@ const AboutLebara: React.FC<AboutLebaraProps> = (props) => {
   const setStyle = () => {
     if(!nodeRef.current.parentNode.parentElement.classList.contains("cmp-carousel__item")){
       nodeRef.current.style.background = props.backgroundColor;
-    }
+      nodeRef.current.firstChild.lastElementChild.style.width = "50%";
+    }else
+    nodeRef.current.firstChild.lastElementChild.style.width = "512px";
   }
   useEffect(() => {
     setStyle();
