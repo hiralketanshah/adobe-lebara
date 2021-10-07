@@ -30,9 +30,8 @@ const MiniFooter: React.FC<MiniFooterProps> = ({helpText, lookText, links}) => (
       lineHeight={{ base: "20px", lg: "30px" }}
       letterSpacing="0.25px"
       ml={{ base: "initial", md: "50px" }}
+      dangerouslySetInnerHTML={{ __html: lookText || ''}}
     >
-      {lookText}
-
       {links?.map((list) => (
         <Link href={list.link} color="deeppink">
           {list.label}
