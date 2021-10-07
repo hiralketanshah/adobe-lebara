@@ -3,7 +3,7 @@ import { Flex, Text } from "@chakra-ui/react";
 import { MiniFooterProps } from "./types";
 import Link from "../Link/Link";
 
-const MiniFooter: React.FC<MiniFooterProps> = ({helpText, lookText, supportText, supportLink}) => (
+const MiniFooter: React.FC<MiniFooterProps> = ({helpText, lookText, links}) => (
   <Flex
     px={{ base: "20px", lg: "90px" }}
     bg="primary.800"
@@ -30,11 +30,13 @@ const MiniFooter: React.FC<MiniFooterProps> = ({helpText, lookText, supportText,
       lineHeight={{ base: "20px", lg: "30px" }}
       letterSpacing="0.25px"
       ml={{ base: "initial", md: "50px" }}
+      dangerouslySetInnerHTML={{ __html: lookText || ''}}
     >
-      {lookText}
-      <Link href={supportLink} color="deeppink">
-        {supportText}
-      </Link>
+      {links?.map((list) => (
+        <Link href={list.link} color="deeppink">
+          {list.label}
+        </Link>
+      ))}
     </Text>
   </Flex>
 );
