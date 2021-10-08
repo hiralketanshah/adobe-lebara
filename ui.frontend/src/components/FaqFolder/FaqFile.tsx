@@ -16,7 +16,7 @@ const HomeFaqs: React.FC<HomeFaqsProps> = ({ title, options }) => {
   const half = Math.ceil(options.length / 2);
 
   const firstHalf = options.slice(0, half);
-  const secondHalf = options.slice(-half);
+  const secondHalf = options.slice(-options.length / 2);
 
   const renderAccordions = (items: any[]) =>
     items.map((menuItem) => (
