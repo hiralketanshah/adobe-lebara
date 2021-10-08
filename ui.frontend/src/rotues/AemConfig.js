@@ -6,6 +6,6 @@ const SimPortInConfig = {
   isEmpty: function (props) {
     return !props.title || !props.pretitle;
   },
-}
+};
 
 MapTo("lebara/components/simportin")(SimPortInRoute, SimPortInConfig);
