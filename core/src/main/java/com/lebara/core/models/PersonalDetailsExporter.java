@@ -28,6 +28,8 @@ public class PersonalDetailsExporter implements ComponentExporter {
     private ResourceResolver resourceResolver;
 
     @ValueMapValue
+    public String yourPersonalDetailsLabel;
+    @ValueMapValue
     public String firstNameLabel;
     @ValueMapValue
     public String firstNamePlaceholder;
@@ -57,6 +59,8 @@ public class PersonalDetailsExporter implements ComponentExporter {
     public String emailErrorPattern;
     @ValueMapValue
     public String emailAddressPlaceholder;
+    @ValueMapValue
+    public String keyInAddress;
     @ValueMapValue
     public String addressLabel;
     @ValueMapValue
@@ -107,6 +111,8 @@ public class PersonalDetailsExporter implements ComponentExporter {
     public String cityErrorRequired;
     @ValueMapValue
     public String cityPlaceholder;
+    @ValueMapValue
+    public String saveAddress;
     @ValueMapValue
     public String orderDetailsCta;
 

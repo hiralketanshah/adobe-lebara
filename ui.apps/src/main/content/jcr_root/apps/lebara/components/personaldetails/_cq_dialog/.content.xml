@@ -17,17 +17,26 @@
                             jcr:title="Name Section"
                             sling:resourceType="granite/ui/components/coral/foundation/container">
                         <items jcr:primaryType="nt:unstructured">
+                            <yourPersonalDetailsLabel
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                    fieldLabel="Your personal details Label"
+                                    value="Your personal details"
+                                    fieldDescription="Your personal details"
+                                    name="./yourPersonalDetailsLabel"/>
                             <firstNameLabel
                                     jcr:primaryType="nt:unstructured"
                                     sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                     fieldLabel="First Name Label"
                                     value="First Name"
+                                    fieldDescription="First Name"
                                     name="./firstNameLabel"/>
                             <firstNamePlaceholder
                                     jcr:primaryType="nt:unstructured"
                                     sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                     fieldLabel="First Name Placeholder"
                                     value="Enter Your First Name"
+                                    fieldDescription="Enter Your First Name"
                                     name="./firstNamePlaceholder"/>
                             <firstNameErrorMax
                                     jcr:primaryType="nt:unstructured"
@@ -58,6 +67,7 @@
                                     sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                     fieldLabel="Last Name Error message on character limit"
                                     value="Must be 75 characters or less"
+                                    fieldDescription="Must be 75 characters or less"
                                     name="./lastNameErrorMax"/>
                             <lastNameErrorRequired
                                     jcr:primaryType="nt:unstructured"
@@ -76,36 +86,42 @@
                                     sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                     fieldLabel="Last Name Placeholder"
                                     value="Enter Your First Name"
+                                    fieldDescription="Enter Your First Name"
                                     name="./lastNamePlaceholder"/>
                             <emailAddressLabel
                                     jcr:primaryType="nt:unstructured"
                                     sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                     fieldLabel="Email Address Label"
                                     value="Email Address"
+                                    fieldDescription="Email Address"
                                     name="./emailAddressLabel"/>
                             <emailErrorMax
                                     jcr:primaryType="nt:unstructured"
                                     sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                     fieldLabel="Email Error message on character limit"
                                     value="Must be 100 characters or less"
+                                    fieldDescription="Must be 100 characters or less"
                                     name="./emailErrorMax"/>
                             <emailErrorRequired
                                     jcr:primaryType="nt:unstructured"
                                     sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                     fieldLabel="Email Error message on Empty Email"
                                     value="The email address field cannot be empty"
+                                    fieldDescription="The email address field cannot be empty"
                                     name="./emailErrorRequired"/>
                             <emailErrorPattern
                                     jcr:primaryType="nt:unstructured"
                                     sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                     fieldLabel="Email Error message on Invalid characters"
                                     value="Please enter a valid email address. For example username@domain.com"
+                                    fieldDescription="Please enter a valid email address. For example username@domain.com"
                                     name="./emailErrorPattern"/>
                             <emailAddressLabelPlaceholder
                                     jcr:primaryType="nt:unstructured"
                                     sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                     fieldLabel="Email Address Placeholder"
                                     value="Enter Your Email Address"
+                                    fieldDescription="Enter Your Email Address"
                                     name="./emailAddressPlaceholder"/>
                         </items>
                     </column>
@@ -114,35 +130,47 @@
                             jcr:title="Address Section"
                             sling:resourceType="granite/ui/components/coral/foundation/container">
                         <items jcr:primaryType="nt:unstructured">
+                            <keyInAddress
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                    fieldLabel="Key in your address manually"
+                                    value="Key in your address manually"
+                                    fieldDescription="Key in your address manually"
+                                    name="./keyInAddress"/>
                             <address
                                     jcr:primaryType="nt:unstructured"
                                     sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                     fieldLabel="Address label"
                                     value="Address"
+                                    fieldDescription="Address"
                                     name="./addressLabel"/>
                             <addressErrorRequired
                                     jcr:primaryType="nt:unstructured"
                                     sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                     fieldLabel="Address Error message on Empty Address"
                                     value="Address is required"
+                                    fieldDescription="Address is required"
                                     name="./addressErrorRequired"/>
                             <addressKeyInText
                                     jcr:primaryType="nt:unstructured"
                                     sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                     fieldLabel="Address key in message"
                                     value="Key in your postal code and find your address"
+                                    fieldDescription="Key in your postal code and find your address"
                                     name="./addressKeyInText"/>
                             <postalcodePlaceholder
                                     jcr:primaryType="nt:unstructured"
                                     sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                     fieldLabel="Search For Postal Code placeholder text"
                                     value="Search For Postal Code"
+                                    fieldDescription="Search For Postal Code"
                                     name="./postalcodePlaceholder"/>
                             <enterAddressManually
                                     jcr:primaryType="nt:unstructured"
                                     sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                     fieldLabel="Enter Address Manually label"
                                     value="Enter Address Manually?"
+                                    fieldDescription="Enter Address Manually?"
                                     name="./enterAddressManually"/>
                             <streetLabel
                                     jcr:primaryType="nt:unstructured"
@@ -173,6 +201,7 @@
                                     sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                     fieldLabel="Street Placeholder"
                                     value="Enter Your Street Name"
+                                    fieldDescription="Enter Your Street Name"
                                     name="./streetPlaceholder"/>
                             <houseNumberLabel
                                     jcr:primaryType="nt:unstructured"
@@ -197,6 +226,7 @@
                                     sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                     fieldLabel="House Number Error message on Invalid characters"
                                     value="Invalid house number"
+                                    fieldDescription="Invalid house number"
                                     name="./houseNumberErrorPattern"/>
                             <houseNumberPlaceholder
                                     jcr:primaryType="nt:unstructured"
@@ -209,6 +239,7 @@
                                     sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                     fieldLabel="Zip Code Label"
                                     value="Zip Code"
+                                    fieldDescription="Zip Code"
                                     name="./zipCodeLabel"/>
                             <zipCodeErrorMax
                                     jcr:primaryType="nt:unstructured"
@@ -227,18 +258,21 @@
                                     sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                     fieldLabel="zipCode Error message on Empty zipCode values"
                                     value="Zip Code is required"
+                                    fieldDescription="Zip Code is required"
                                     name="./zipCodeErrorRequired"/>
                             <zipCodeErrorPattern
                                     jcr:primaryType="nt:unstructured"
                                     sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                     fieldLabel="zipCode Error message on Invalid characters"
                                     value="Invalid Zip Code"
+                                    fieldDescription="Invalid Zip Code"
                                     name="./zipCodeErrorPattern"/>
                             <zipCodePlaceholder
                                     jcr:primaryType="nt:unstructured"
                                     sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                     fieldLabel="Zip Code Placeholder"
                                     value="Enter Your Zip Code"
+                                    fieldDescription="Enter Your Zip Code"
                                     name="./zipCodePlaceholder"/>
                             <cityLabel
                                     jcr:primaryType="nt:unstructured"
@@ -257,6 +291,7 @@
                                     sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                     fieldLabel="Town/City Error message on Empty Street Names"
                                     value="Town/City is required"
+                                    fieldDescription="Town/City is required"
                                     name="./cityErrorRequired"/>
                             <cityPlaceholder
                                     jcr:primaryType="nt:unstructured"
@@ -264,6 +299,13 @@
                                     fieldLabel="City Placeholder"
                                     value="Enter Your City"
                                     name="./cityPlaceholder"/>
+                            <saveAddress
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                    fieldLabel="Save address for future label"
+                                    value="Save address for future"
+                                    fieldDescription="Save address for future"
+                                    name="./saveAddress"/>
                         </items>
                     </column2>
                     <column3
@@ -276,6 +318,7 @@
                                     jcr:primaryType="nt:unstructured"
                                     sling:resourceType="dam/cfm/components/cfpicker"
                                     fieldLabel="City Content Frament path"
+                                    fieldDescription="City Content Frament path"
                                     name="./cfPath"
                                     required="{Boolean}true"
                                     rootPath="/content/dam/lebara"/>
@@ -284,6 +327,7 @@
                                     sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                     fieldLabel="Order Details Cta label"
                                     value="CONTINUE TO ORDER DETAILS"
+                                    fieldDescription="CONTINUE TO ORDER DETAILS"
                                     name="./orderDetailsCta"/>
                         </items>
                     </column3>
