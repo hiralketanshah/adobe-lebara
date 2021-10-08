@@ -13,10 +13,15 @@ export interface PlanOffersProps {
   ctaTopLabel?: string;
   ctaBottomLink?: string;
   ctaBottomLabel?: string;
-  buttonLabel?: string;
   offers?: ExpandablePlanCardProps[];
   unlimitedTextField?: string;
   allowanceList?: allowanceListProps;
+  viewCartLabel?: string;
+  addedtoCartLabel?: string;
+  buttonLabel?: string;
+  orderDetailsLink?: string;
+  simChoiceLink?: string;
+  loginLink?: string;
 }
 
 export interface allowanceListProps {

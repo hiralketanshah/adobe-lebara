@@ -1,34 +1,80 @@
-import { Box, Divider, Flex, Text } from "@chakra-ui/react";
+import { Box, Divider, Flex, Text, useToast } from "@chakra-ui/react";
 import React from "react";
 import { ExpandableSimPlanCardProps } from "./types";
+import OfferTypes from "./types";
 import Button from "../Button/Button";
 import PlanDetailsDialog from "../PlanDetailsDialog/PlanDetailsDialog";
 import { allowanceListProps } from "../ExpandablePlanCard/types";
 import { useHistory } from "react-router-dom";
+import useAddToCart from "../../hooks/useAddToCart";
+import { useLocalStorage } from "@rehooks/local-storage";
 const ExpandableSimPlanCard: React.FC<ExpandableSimPlanCardProps> = ({
   planName,
   previewIcon,
   showProductInformationButton,
   productInformationButtonLabel,
-  onActionClick,
   allowanceList,
   validity,
   cost,
   showLabel,
-  buttonLabel,
   planInfo,
-  additionalOffers
+  additionalOffers,
+  id,
+  buttonLabel,
+  addedtoCartLabel,
+  viewCartLabel,
+  offerType,
+  orderDetailsLink,
+  simChoiceLink,
+  loginLink
 }) => {
   const history = useHistory();
+  const [addItemToCart] = useAddToCart();
+  const toast = useToast();
   const [isDialogOpen, setIsDialogOpen] = React.useState(false);
   const [isButtonDisabled, setIsButtonDisabled] = React.useState(false);
-  const filteredAllowanceList: allowanceListProps = allowanceList && allowanceList.find((list) => list.name && list.name.includes('Data')) || {};
-  const handleActionClick = async () => {
+  const [userToken] = useLocalStorage("userToken");
+  const handleViewCartClick = () => {
+    history.push(userToken ? (orderDetailsLink || '/') : (loginLink || ''));
+  };
+  const filteredAllowanceList: allowanceListProps = (allowanceList && allowanceList.find((list) => list.name && list.name.includes('Data'))) || {};
+  const handleAddToCart = async () => {
     setIsButtonDisabled(true);
-    // if (onActionClick) {
-    //   await onActionClick();
-    // }
-    history.push("/lebara-sim-choice");
+    switch (offerType) {
+      case OfferTypes.BOLTON:
+      case OfferTypes.TOPUP: {
+        const updatedAddtoCart: string = addedtoCartLabel?.replace('{0}', planName) || '';
+        await addItemToCart(parseInt(id || ''), planName, (JSON.stringify(allowanceList && allowanceList) || ''), parseFloat(cost || ''), "addon");
+        toast({
+          position: "bottom",
+          render: () => (
+            <Flex
+              color="white"
+              p={3}
+              bg="primary.700"
+              borderRadius="4px"
+              justifyContent="space-between"
+              maxW="420px"
+            >
+              <Text py="12px">{updatedAddtoCart}</Text>
+              <Button
+                variant="ghost"
+                colorScheme="secondary"
+                onClick={handleViewCartClick}
+              >
+                {viewCartLabel}
+              </Button>
+            </Flex>
+          ),
+        });
+        break;
+      }
+      case OfferTypes.PREPAID:
+      case OfferTypes.POSTPAID: {
+        await addItemToCart(parseInt(id || ''), planName, (JSON.stringify(allowanceList && allowanceList) || ''), parseFloat(cost || ''), "plan");
+        history.push(userToken ? (orderDetailsLink || '/') : (simChoiceLink || '/'));
+      }
+    }
     setIsButtonDisabled(false);
   };
   return (
@@ -60,15 +106,7 @@ const ExpandableSimPlanCard: React.FC<ExpandableSimPlanCardProps> = ({
         countryTitle={planInfo?.countryTitle}
         dataValue={filteredAllowanceList.formatedValue}
         isButtonDisabled={isButtonDisabled}
-        onActionClick={async () => {
-          setIsButtonDisabled(true);
-          // if (onActionClick) {
-          //   await onActionClick();
-          // }
-          history.push("/lebara-sim-choice");
-          setIsButtonDisabled(false);
-          setIsDialogOpen(false);
-        }}
+        onActionClick={handleAddToCart}
         buttonText={buttonLabel}
       />
       <Flex justifyContent="space-between" alignItems="center">
@@ -146,7 +184,7 @@ const ExpandableSimPlanCard: React.FC<ExpandableSimPlanCardProps> = ({
         <Button
           isFullWidth
           fontSize="16px"
-          onClick={handleActionClick}
+          onClick={handleAddToCart}
           disabled={isButtonDisabled}
           isLoading={isButtonDisabled}
         >

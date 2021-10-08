@@ -53,6 +53,19 @@
                             </field>
                             <granite:data jcr:primaryType="nt:unstructured"/>
                         </_x0031_633412491258>
+                        <_x0031_633526718213
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                            fieldLabel="Offer Type"
+                            listOrder="21"
+                            maxlength="255"
+                            metaType="text-single"
+                            name="offerType"
+                            renderReadOnly="false"
+                            showEmptyInReadOnly="true"
+                            valueType="string">
+                            <granite:data jcr:primaryType="nt:unstructured"/>
+                        </_x0031_633526718213>
                     </items>
                 </content>
             </cq:dialog>
