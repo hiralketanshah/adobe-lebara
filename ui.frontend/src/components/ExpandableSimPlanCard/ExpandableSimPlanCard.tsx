@@ -23,7 +23,10 @@ const ExpandableSimPlanCard: React.FC<ExpandableSimPlanCardProps> = ({
   buttonLabel,
   addedtoCartLabel,
   viewCartLabel,
-  offerType
+  offerType,
+  orderDetailsLink,
+  simChoiceLink,
+  loginLink
 }) => {
   const history = useHistory();
   const [addItemToCart] = useAddToCart();
@@ -32,8 +35,7 @@ const ExpandableSimPlanCard: React.FC<ExpandableSimPlanCardProps> = ({
   const [isButtonDisabled, setIsButtonDisabled] = React.useState(false);
   const [userToken] = useLocalStorage("userToken");
   const handleViewCartClick = () => {
-    //will be replaced once common authoring for routing decided on AEM
-    history.push(userToken ? "/order-details" : "/login");
+    history.push(userToken ? (orderDetailsLink || '/') : (loginLink || ''));
   };
   const filteredAllowanceList: allowanceListProps = (allowanceList && allowanceList.find((list) => list.name && list.name.includes('Data'))) || {};
   const handleAddToCart = async () => {
@@ -42,7 +44,7 @@ const ExpandableSimPlanCard: React.FC<ExpandableSimPlanCardProps> = ({
       case OfferTypes.BOLTON:
       case OfferTypes.TOPUP: {
         const updatedAddtoCart: string = addedtoCartLabel?.replace('{0}', planName) || '';
-        await addItemToCart(parseInt(id || ''), planName, filteredAllowanceList as string, parseFloat(cost || ''), "addon");
+        await addItemToCart(parseInt(id || ''), planName, (JSON.stringify(allowanceList && allowanceList) || ''), parseFloat(cost || ''), "addon");
         toast({
           position: "bottom",
           render: () => (
@@ -69,9 +71,8 @@ const ExpandableSimPlanCard: React.FC<ExpandableSimPlanCardProps> = ({
       }
       case OfferTypes.PREPAID:
       case OfferTypes.POSTPAID: {
-        await addItemToCart(parseInt(id || ''), planName, ((allowanceList && allowanceList.join()) || ''), parseFloat(cost || ''), "plan");
-        //will be replaced once common authoring for routing decided on AEM
-        history.push(userToken ? "/order-details" : "/lebara-sim-choice");
+        await addItemToCart(parseInt(id || ''), planName, (JSON.stringify(allowanceList && allowanceList) || ''), parseFloat(cost || ''), "plan");
+        history.push(userToken ? (orderDetailsLink || '/') : (simChoiceLink || '/'));
       }
     }
     setIsButtonDisabled(false);

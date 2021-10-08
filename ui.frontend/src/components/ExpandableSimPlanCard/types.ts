@@ -24,6 +24,9 @@ export interface ExpandableSimPlanCardProps {
   viewCartLabel?: string;
   addedtoCartLabel?: string;
   buttonLabel?: string;
+  orderDetailsLink?: string;
+  simChoiceLink?: string;
+  loginLink?: string;
 }
 
 const OfferTypes = {

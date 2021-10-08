@@ -19,6 +19,9 @@ export interface PlanOffersProps {
   viewCartLabel?: string;
   addedtoCartLabel?: string;
   buttonLabel?: string;
+  orderDetailsLink?: string;
+  simChoiceLink?: string;
+  loginLink?: string;
 }
 
 export interface allowanceListProps {

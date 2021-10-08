@@ -1,6 +1,5 @@
 package com.lebara.core.dto;
 
-import com.day.cq.i18n.I18n;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.math.NumberUtils;
