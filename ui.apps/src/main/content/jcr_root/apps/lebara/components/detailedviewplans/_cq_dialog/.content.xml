@@ -108,7 +108,7 @@
                                     name="./ctaBottomLink"/>
                         </items>
                     </column2>
-					<column3
+                    <column3
                         jcr:primaryType="nt:unstructured"
                         jcr:title="Routing Paths"
                         sling:resourceType="granite/ui/components/coral/foundation/container">
