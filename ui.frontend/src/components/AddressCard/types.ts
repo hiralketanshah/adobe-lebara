@@ -23,6 +23,8 @@ export interface AddressCardProps {
   cityPlaceholder:string;
   cities:SelectOption[];
   enterAddressManually: string;
+  keyInAddress: string;
+  saveAddress: string;
 }
 
 export type AddressStatus =

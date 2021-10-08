@@ -5,6 +5,7 @@ import SelectNumberAndOrderDetailsLayout from "../../layouts/SelectNumberAndOrde
 import { PersonalDetailsFormProps } from "./types";
 
 const PersonalDetailsRoute: React.FC<PersonalDetailsFormProps> = ({
+  yourPersonalDetailsLabel,
   ...rest
 }) => (
   <SelectNumberAndOrderDetailsLayout>
@@ -18,7 +19,7 @@ const PersonalDetailsRoute: React.FC<PersonalDetailsFormProps> = ({
         fontWeight="bold"
         textAlign={{ lg: "left" }}
       >
-        Your Personal Details
+        {yourPersonalDetailsLabel}
       </Text>
       <PersonalDetailsForm {...rest} />
     </Box>

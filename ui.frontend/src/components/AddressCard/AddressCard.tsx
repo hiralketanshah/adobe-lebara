@@ -44,6 +44,8 @@ const AddressCard: React.FC<AddressCardProps> = ({
   cityPlaceholder,
   cities,
   enterAddressManually,
+  keyInAddress,
+  saveAddress,
 }) => {
   const [status, setStatus] = useState<AddressStatus>(initialStatus);
 
@@ -71,7 +73,7 @@ const AddressCard: React.FC<AddressCardProps> = ({
   const newAddress = () => (
     <Flex flexDirection="column">
       <Text fontSize={14} color="bodyCopy">
-        Key in your address manually
+        {keyInAddress}
       </Text>
       <Flex flexDirection="column" mt="15px" gridGap={2}>
         {/* Street */}
@@ -354,7 +356,7 @@ const AddressCard: React.FC<AddressCardProps> = ({
         flexDirection="column"
         gridGap={3}
       >
-        <Checkbox spacing={4}>Save address for future</Checkbox>
+        <Checkbox spacing={4}>{saveAddress}</Checkbox>
       </Flex>
     </Flex>
   );

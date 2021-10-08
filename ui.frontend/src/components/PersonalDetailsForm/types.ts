@@ -44,4 +44,7 @@ export interface PersonalDetailsFormProps {
   cityErrorMax:string;
   cityErrorRequired:string;
   enterAddressManually: string;
+  keyInAddress: string;
+  saveAddress: string;
+  yourPersonalDetailsLabel?: string;
 }

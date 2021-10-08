@@ -66,6 +66,8 @@ const PersonalDetailsForm: React.FC<PersonalDetailsFormProps> = ({
   cityErrorRequired,
   cities,
   enterAddressManually,
+  keyInAddress,
+  saveAddress,
 }) => {
   const [firstNamePattern] = useState(NAME_FIELD_PATTERN);
   const [lastNamePattern] = useState(NAME_FIELD_PATTERN);
@@ -371,6 +373,8 @@ const PersonalDetailsForm: React.FC<PersonalDetailsFormProps> = ({
           cityPlaceholder={cityPlaceholder}
           cities={cities}
           enterAddressManually={enterAddressManually}
+          keyInAddress={keyInAddress}
+          saveAddress={saveAddress}
         />
         <Button
           isFullWidth
