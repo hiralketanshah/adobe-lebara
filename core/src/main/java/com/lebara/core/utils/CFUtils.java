@@ -87,20 +87,13 @@ public class CFUtils {
         return new ArrayList<>();
     }
 
-    public static List<SelectBean> populateTopupInfo(Resource cfResource) {
-        List<SelectBean> topups = new ArrayList<>();
+    public static List<String> populateTopupInfo(Resource cfResource) {
+        List<String> topups = new ArrayList<>();
         if (null != cfResource) {
             ContentFragment topupFragment = cfResource.adaptTo(ContentFragment.class);
             if (null != topupFragment) {
-                String[] topupArray = CFUtils.getElementArrayValue(topupFragment, "value");
-                for (int i = 0; i < topupArray.length; i++) {
-                    SelectBean topup = new SelectBean();
-                    topup.setValue(topupArray[i]);
-                    topup.setName(topupArray[i]);
-                    topup.setKey(String.valueOf(i));
-                    topups.add(topup);
-                }
-                return topups;
+                topups = Arrays.asList(CFUtils.getElementArrayValue(topupFragment, "value"));
+
             }
         }
         return topups;
