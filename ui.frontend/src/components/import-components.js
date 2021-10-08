@@ -26,7 +26,7 @@ import "./Header/AemConfig.js";
 import "./LebaraText/AemConfig.js";
 import "./GetApp/AemConfig.js";
 import "./UspFolder/AemConfig.js";
-import "./Porting/AemConfig.js";
+import "./SimChoice/AemConfig";
 import "./AboutLebaraFolder/AemConfig.js";
 import "./Carousel/AemConfig.js";
 import "./Trustpilot/AemConfig.js";
