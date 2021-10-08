@@ -2,6 +2,9 @@
 .about-lebara ul {
 	list-style:none;
 }
+.about-lebara ul li{
+	line-height: 0.93;
+}
 .about-lebara ul li:before{
 	content: '';
 	display: inline-block;
@@ -17,6 +20,7 @@
 	margin-right: 10.92px;
 	fill: var(--chakra-colors-white);
 	font-size: 14px;
+	line-height: 1em;
 }
 @media screen and (min-width: 62em){
 	.about-lebara ul li {
