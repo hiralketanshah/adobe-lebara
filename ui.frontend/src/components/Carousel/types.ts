@@ -1,4 +1,4 @@
-import { AboutLebaraProps } from "../AboutLebara/types";
+import { AboutLebaraProps } from "../AboutLebaraFolder/types";
 
 export interface CarouselItemOptions {
   [key: string]: AboutLebaraProps;

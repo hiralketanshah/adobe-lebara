@@ -1,5 +1,5 @@
 import { MapTo } from "@adobe/aem-react-editable-components";
-import Faq from "./Faq";
+import Faq from "./FaqFile";
 
 const FaqConfig = {
     emptyLabel: "FAQ",
