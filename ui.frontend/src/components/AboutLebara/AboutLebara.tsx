@@ -6,11 +6,12 @@ import { AboutLebaraProps } from "./types";
 const AboutLebara: React.FC<AboutLebaraProps> = (props) => {
   const nodeRef= useRef();
   const setStyle = () => {
-    if(!nodeRef.current.parentNode.parentElement.classList.contains("cmp-carousel__item")){
+    if (!nodeRef.current.parentNode.parentElement.classList.contains("cmp-carousel__item")) {
       nodeRef.current.style.background = props.backgroundColor;
       nodeRef.current.firstChild.lastElementChild.style.width = "50%";
-    }else
-    nodeRef.current.firstChild.lastElementChild.style.width = "512px";
+    } else {
+      nodeRef.current.firstChild.lastElementChild.style.width = "512px";
+    }
   }
   useEffect(() => {
     setStyle();

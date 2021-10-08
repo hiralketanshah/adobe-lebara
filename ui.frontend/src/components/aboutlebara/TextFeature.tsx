@@ -10,7 +10,6 @@ const TextFeature: React.FC<AboutLebaraProps> = ({
   actionsEnabled,
   actions,
   description,
-  isFullWidthButton,
   imagePath,
   linkURL,
   buttonStyle
@@ -27,9 +26,7 @@ const TextFeature: React.FC<AboutLebaraProps> = ({
       </Flex>
       <Spacer />
       <Flex
-        maxW={{ lg: "50%" }}
         flexDirection="column"
-        w="100%"
       >
         <TextBlock
           buttonText={actionsEnabled ? actions && actions[0]?.title : ""}
