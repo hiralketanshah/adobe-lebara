@@ -93,7 +93,6 @@ public class CFUtils {
             ContentFragment topupFragment = cfResource.adaptTo(ContentFragment.class);
             if (null != topupFragment) {
                 topups = Arrays.asList(CFUtils.getElementArrayValue(topupFragment, "value"));
-
             }
         }
         return topups;

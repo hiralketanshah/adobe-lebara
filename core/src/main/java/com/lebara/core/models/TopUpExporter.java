@@ -12,6 +12,7 @@ import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.injectorspecific.SlingObject;
 import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
 
+import javax.inject.Named;
 import java.util.List;
 
 @Model(adaptables = SlingHttpServletRequest.class, adapters = {TopUpExporter.class, ComponentExporter.class},
@@ -25,10 +26,15 @@ public class TopUpExporter extends HeadingExporter {
     protected static final String RESOURCE_TYPE = "lebara/components/topup";
     @SlingObject
     private ResourceResolver resourceResolver;
+
     @ValueMapValue
-    private String leftTitle;
+    @Named("leftTitle")
+    private String heading;
+
     @ValueMapValue
-    private String leftSubTitle;
+    @Named("leftSubTitle")
+    private String subheading;
+
     @ValueMapValue
     private String rightTitle;
     @ValueMapValue
@@ -38,14 +44,14 @@ public class TopUpExporter extends HeadingExporter {
     @ValueMapValue
     private String cfPath;
 
-    private List<String> topupAmount;
+    private List<String> topUpOptions;
 
-    public String getLeftTitle() {
-        return leftTitle;
+    public String getHeading() {
+        return heading;
     }
 
-    public String getLeftSubTitle() {
-        return leftSubTitle;
+    public String getSubheading() {
+        return subheading;
     }
 
     public String getRightTitle() {
@@ -60,7 +66,7 @@ public class TopUpExporter extends HeadingExporter {
         return ctaLabel;
     }
 
-    public List<String> getTopupAmount() {
+    public List<String> getTopUpOptions() {
         return CFUtils.populateTopupInfo(resourceResolver.getResource(cfPath));
     }
 
