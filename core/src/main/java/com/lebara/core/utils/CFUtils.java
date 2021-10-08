@@ -52,6 +52,9 @@ public class CFUtils {
     }
 
     public static String[] getElementArrayValue(ContentFragment cf, String elementName) {
+        if (cf.getElement(elementName) == null) {
+            return new String[0];
+        }
         return StringUtils.isBlank(cf.getElement(elementName).getContent()) ? new String[0]
                 : cf.getElement(elementName).getValue().getValue(String[].class);
     }
