@@ -1,5 +1,5 @@
 import { MapTo } from "@adobe/aem-react-editable-components";
-import Usp from "./Usp";
+import Usp from "./UspFile";
 
 const UspConfig = {
   emptyLabel: "Usp",
