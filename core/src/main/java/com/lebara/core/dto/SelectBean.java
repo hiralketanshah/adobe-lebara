@@ -1,5 +1,8 @@
 package com.lebara.core.dto;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class SelectBean {
     private String key;
     private String name;
