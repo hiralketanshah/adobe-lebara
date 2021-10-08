@@ -87,6 +87,17 @@ public class CFUtils {
         return new ArrayList<>();
     }
 
+    public static List<String> populateTopupInfo(Resource cfResource) {
+        List<String> topups = new ArrayList<>();
+        if (null != cfResource) {
+            ContentFragment topupFragment = cfResource.adaptTo(ContentFragment.class);
+            if (null != topupFragment) {
+                topups = Arrays.asList(CFUtils.getElementArrayValue(topupFragment, "value"));
+            }
+        }
+        return topups;
+    }
+
     public static List<SelectBean> populateCityInfo(Resource cfResource) {
         List<SelectBean> cities = new ArrayList<>();
         if (null != cfResource) {
