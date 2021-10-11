@@ -10,6 +10,7 @@ import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.injectorspecific.ChildResource;
 import org.apache.sling.models.annotations.injectorspecific.ScriptVariable;
 
+import java.util.Collections;
 import java.util.List;
 
 @Model(adaptables = SlingHttpServletRequest.class, adapters = { UspExporter.class,
@@ -34,7 +35,7 @@ public class UspExporter extends HeadingExporter {
     }
 
     public List<ImageProperties> getUspList() {
-        return uspList;
+        return (uspList == null) ? Collections.emptyList() : uspList;
     }
 
 }
