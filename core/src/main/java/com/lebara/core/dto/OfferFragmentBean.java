@@ -10,6 +10,7 @@ import java.util.List;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class OfferFragmentBean {
     private String id;
+    private String offerType;
     private String cost;
     private String planName;
     private String validity;
@@ -31,6 +32,14 @@ public class OfferFragmentBean {
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    public String getOfferType() {
+        return offerType;
+    }
+
+    public void setOfferType(String offerType) {
+        this.offerType = offerType;
     }
 
     public String getCost() {

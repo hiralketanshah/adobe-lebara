@@ -39,6 +39,8 @@ public class DetailedViewPlanExporter extends ViewPlanExporter implements Compon
 
     private static final Logger LOGGER = LoggerFactory.getLogger(DetailedViewPlanExporter.class);
 
+    private I18n i18n;
+
     @SlingObject
     private ResourceResolver resourceResolver;
 
@@ -77,6 +79,15 @@ public class DetailedViewPlanExporter extends ViewPlanExporter implements Compon
 
     @ValueMapValue
     private String ctaBottomLink;
+
+    @ValueMapValue
+    private String orderDetailsLink;
+
+    @ValueMapValue
+    private String simChoiceLink;
+
+    @ValueMapValue
+    private String loginLink;
 
     public String getTitle() {
         return title;
@@ -118,7 +129,17 @@ public class DetailedViewPlanExporter extends ViewPlanExporter implements Compon
     	return AemUtils.getLinkWithExtension(ctaBottomLink);
     }
 
-    private I18n i18n;
+    public String getOrderDetailsLink() {
+        return AemUtils.getLinkWithExtension(orderDetailsLink);
+    }
+
+    public String getSimChoiceLink() {
+        return AemUtils.getLinkWithExtension(simChoiceLink);
+    }
+
+    public String getLoginLink() {
+        return AemUtils.getLinkWithExtension(loginLink);
+    }
 
     @PostConstruct
     private void init() {
@@ -148,7 +169,12 @@ public class DetailedViewPlanExporter extends ViewPlanExporter implements Compon
         }
         return offers;
     }
-
+    public String getViewCartLabel() {
+        return (i18n == null ? "View Cart" : i18n.get("lebara.viewcart.label"));
+    }
+    public String getAddedtoCartLabel() {
+        return (i18n == null ? "Addon {0} added to cart" : i18n.get("lebara.addon.addedtocart.label"));
+    }
     @Override
     public String getExportedType() {
         return resource.getResourceType();

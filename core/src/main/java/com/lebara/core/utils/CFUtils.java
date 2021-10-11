@@ -87,6 +87,36 @@ public class CFUtils {
         return new ArrayList<>();
     }
 
+    public static List<String> populateTopupInfo(Resource cfResource) {
+        List<String> topups = new ArrayList<>();
+        if (null != cfResource) {
+            ContentFragment topupFragment = cfResource.adaptTo(ContentFragment.class);
+            if (null != topupFragment) {
+                topups = Arrays.asList(CFUtils.getElementArrayValue(topupFragment, "value"));
+            }
+        }
+        return topups;
+    }
+
+    public static List<SelectBean> populateCityInfo(Resource cfResource) {
+        List<SelectBean> cities = new ArrayList<>();
+        if (null != cfResource) {
+            ContentFragment cityFragment = cfResource.adaptTo(ContentFragment.class);
+            if (null != cityFragment) {
+                String[] cityArray = CFUtils.getElementArrayValue(cityFragment, "value");
+                for (int i = 0; i < cityArray.length; i++) {
+                    SelectBean city = new SelectBean();
+                    city.setValue(cityArray[i]);
+                    city.setName(cityArray[i]);
+                    city.setKey(String.valueOf(i));
+                    cities.add(city);
+                }
+                return cities;
+            }
+        }
+        return cities;
+    }
+
     public static OfferFragmentBean populateOffers( Resource cfResource, I18n i18n) {
         OfferFragmentBean offerFragmentBean = null;
         if (null != cfResource) {
@@ -97,6 +127,7 @@ public class CFUtils {
                 offerFragmentBean.setPlanName(CFUtils.getElementValue(offerFragment, "name"));
                 offerFragmentBean.setValidity(CFUtils.getElementValue(offerFragment, "validity") + " " + (i18n == null ? "Days" : i18n.get("Days")));
                 offerFragmentBean.setId(CFUtils.getElementValue(offerFragment, "offerid"));
+                offerFragmentBean.setOfferType(CFUtils.getElementValue(offerFragment, "offerType"));
                 if (offerFragment.getElement("additionalOffers") != null) {
                     offerFragmentBean.setAdditionalOffers(CFUtils.getElementValue(offerFragment, "additionalOffers"));
                 }

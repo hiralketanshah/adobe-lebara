@@ -1,45 +1,54 @@
 import React from "react";
-import { Box, Flex, Icon, Text, Image } from "@chakra-ui/react";
+import { Box, Flex, Image, Text } from "@chakra-ui/react";
 import { IconListProps } from "./types";
-import EllipseIcon from "./EllipseIcon";
+import PeppleImage from "./about-us-pepple.png";
 
-const IconList: React.FC<IconListProps> = ({ uspDescription }) => (
-  <Flex flexDirection={["column", "row"]} justifyContent="space-around">
-    {uspDescription?.map(({ imagePath, imageDescription, imageAlt }) => (
+const IconList: React.FC<IconListProps> = ({ items }) => (
+  <Flex
+    flexDirection={{ base: "column", lg: "row" }}
+    justifyContent="space-around"
+    alignItems="center"
+    gridGap="30px"
+  >
+    {items.map(({ icon, title, body, imageProps }) => (
       <Flex
-        flexDirection={["row", "column"]}
+        flexDirection="column"
         alignItems="center"
-        mb={23}
-        key={imageDescription}
-        maxWidth={{ md: "240px" }}
+        key={title}
+        maxWidth={{ lg: "314px" }}
       >
         <Box position="relative">
-          <Icon as={EllipseIcon} width={69} height={69} fill="white" />
+          <Image
+            src={PeppleImage}
+            width={{ base: 75, lg: 134 }}
+            height={{ base: 71, lg: 127 }}
+            fill="white"
+          />
           <Box
             position="absolute"
             left="50%"
             top="50%"
             transform="translateX(-50%) translateY(-50%)"
           >
-            <Image
-              src={imagePath}
-              color="white"
-              width="34"
-              height="33"
-              alt={imageAlt}
-            />
+            <Image src={icon} fill="white" {...imageProps} />
           </Box>
         </Box>
         <Text
-          ml={["23px", 0]}
-          mt={{ md: 3.5 }}
+          ml={{ base: "23px", lg: 0 }}
+          mt={{ base: "5px", lg: "30px" }}
+          fontWeight={{ base: 500, lg: "bold" }}
           color="white"
-          fontSize={{ sm: 16, md: 22 }}
-          lineHeight="short"
-          letterSpacing="0.07em"
-          textAlign={{ md: "center" }}
+          fontSize={{ base: 24, lg: 32 }}
+          textAlign={{ lg: "center" }}
         >
-          {imageDescription}
+          {title}
+        </Text>
+        <Text
+          mt={{ base: "8px", lg: "9px" }}
+          color="white"
+          fontSize={{ base: "14px", lg: "16px" }}
+        >
+          {body}
         </Text>
       </Flex>
     ))}

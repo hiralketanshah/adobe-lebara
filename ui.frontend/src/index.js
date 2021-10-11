@@ -27,10 +27,8 @@ import selectedProductReducer from "./redux/reducers/selectedProductReducer";
 import userReducer from "./redux/reducers/userReducer";
 import topUpsReducer from "./redux/reducers/topUpsReducer";
 
-const { REACT_APP_HOST_URI, REACT_APP_GRAPHQL_ENDPOINT } = process.env;
-
 const client = new ApolloClient({
-  uri: `${REACT_APP_HOST_URI}${REACT_APP_GRAPHQL_ENDPOINT}`,
+  uri: 'https://dev-api-aggregator.lebara.com/api-aggregator',
   credentials: "include",
   cache: new InMemoryCache(),
 });

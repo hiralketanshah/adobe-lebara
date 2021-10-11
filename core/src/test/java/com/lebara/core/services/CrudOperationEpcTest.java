@@ -59,7 +59,7 @@ public class CrudOperationEpcTest {
     //@Test
     public void testcreateContentFragment() {
         Mockito.when(resourceResolver.getResource(anyString())).thenReturn(resource);
-        crudOperationEpc.createContentFragment(json, "", resourceResolver);
+        crudOperationEpc.createContentFragment(json, "", resourceResolver, "prepaid");
     }
 
     //@Test
@@ -73,7 +73,7 @@ public class CrudOperationEpcTest {
             Mockito.when(fragmentTemplate.createFragment(resource,  offer.name, offer.name)).thenReturn(newFragment);
             Mockito.when(newFragment.getElement(anyString())).thenReturn(contentElement);
             Mockito.when(contentElement.getValue()).thenReturn(fragmentData);
-            assert (offer.offerId == crudOperationEpc.writeJsonToCf(offers.get(0), "", resourceResolver,""));
+            assert (offer.offerId == crudOperationEpc.writeJsonToCf(offers.get(0), "", resourceResolver,"", "prepaid"));
         }
     }
 
