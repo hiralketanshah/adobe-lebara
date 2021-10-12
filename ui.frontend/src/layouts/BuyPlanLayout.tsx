@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { Box, Center } from "@chakra-ui/react";
 import { BuyPlanLayoutProps } from "./types";
 import Button from "../components/Button/Button";
-import PaymentDialog from "../components/PaymentDialog/PaymentDialog";
 
 const BuyPlanLayout: React.FC<BuyPlanLayoutProps> = ({
   children,
@@ -15,10 +14,11 @@ const BuyPlanLayout: React.FC<BuyPlanLayoutProps> = ({
   const [isPaymentDialogOpen, setIsPaymentDialogOpen] = useState(false);
   return (
     <Box>
+      {/* will be added as part of payment ticket
       <PaymentDialog
         isOpen={isPaymentDialogOpen}
         onClose={() => setIsPaymentDialogOpen(false)}
-      />
+      /> */}
       <Box
         backgroundColor="lightenPrimary.50"
         px={noPadding ? 0 : "20px"}

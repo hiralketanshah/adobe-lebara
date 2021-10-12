@@ -45,7 +45,7 @@ const OrderDetailsRoute: React.FC<OrderDetailsProps> = ({ ...props }) => {
   const topUpOptions = useSelector((state: ReduxState) => state.topUps.items);
 
   let items = cartItems.map((t) => ({
-    description: t.duration.includes("Top-up") ? "Top Up Credit" : t.duration,
+    description: t.duration.includes("Top-up") ? (topUpCreditLabel || '') : t.duration,
     amount: t.price,
   }));
   const allItemsAreFree = cartItems.every((t) => t.price === 0);
@@ -235,7 +235,7 @@ const OrderDetailsRoute: React.FC<OrderDetailsProps> = ({ ...props }) => {
                   setIsDeleteDialogOpen(true);
                 }
               }}
-              //shpuld be replaced by AEM CF data
+              //should be replaced by AEM CF data
               options={[
                 [
                   {
