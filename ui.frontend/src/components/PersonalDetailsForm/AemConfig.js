@@ -8,4 +8,4 @@ const PersonalDetailsConfig = {
   },
 };
 
-MapTo("lebara/components/personaldetails")(PersonalDetailsRoute);
+MapTo("lebara/components/personaldetails")(PersonalDetailsRoute, PersonalDetailsConfig);

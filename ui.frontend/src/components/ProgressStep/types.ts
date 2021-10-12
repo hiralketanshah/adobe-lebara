@@ -1,9 +1,4 @@
 export interface ProgressStepProps {
-  pageLinks: step[];
+  steps: string[];
   activeStepIndex: number;
-}
-
-export interface step {
-  label: string;
-  link: string;
 }

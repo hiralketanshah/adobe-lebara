@@ -6,4 +6,9 @@ export interface CartItem {
   description: string;
   isAddon?: boolean;
   isFreeSim?: boolean;
+  isFreeSimTopup?: boolean;
+  isTopUp?: boolean;
+  isPrepaid?: boolean;
+  isPostPaid?: boolean;
+  details?: string[];
 }
