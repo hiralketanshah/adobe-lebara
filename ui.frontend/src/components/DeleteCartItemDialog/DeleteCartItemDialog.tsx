@@ -21,7 +21,8 @@ const DeleteCartItemDialog: React.FC<DeleteCartItemDialogProps> = ({
   deleteCartItemYesButtonLabel,
   deleteCartItemNoButtonLabel,
   deleteCartItemTitle,
-  deleteCartItemDesc
+  deleteCartItemDesc,
+  topUpCreditLabel
 }) => (
   <Modal
     blockScrollOnMount={false}
@@ -35,7 +36,7 @@ const DeleteCartItemDialog: React.FC<DeleteCartItemDialogProps> = ({
       <ModalCloseButton />
       <ModalBody>
         <Text>
-        {deleteCartItemDesc?.replace('{0}', product?.includes("Top-up") ? "Top-up" : product || '')}
+        {deleteCartItemDesc?.replace('{0}', (topUpCreditLabel && product?.includes("Top-up") ? topUpCreditLabel : (product || '')))}
         </Text>
       </ModalBody>
       <ModalFooter>

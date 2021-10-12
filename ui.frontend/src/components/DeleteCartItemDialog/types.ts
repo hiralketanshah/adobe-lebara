@@ -6,4 +6,5 @@ export interface DeleteCartItemDialogProps extends deleteCartItemCmsProps{
   type?: string;
   onClose: () => void;
   onConfirmDelete: () => void;
+  topUpCreditLabel?: string;
 }
