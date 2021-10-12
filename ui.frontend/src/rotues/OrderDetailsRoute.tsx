@@ -136,6 +136,7 @@ const OrderDetailsRoute: React.FC<OrderDetailsProps> = ({ ...props }) => {
         deleteCartItemTitle={deleteCartItemTitle}
         deleteCartItemNoButtonLabel={deleteCartItemNoButtonLabel}
         deleteCartItemYesButtonLabel={deleteCartItemYesButtonLabel}
+        topUpCreditLabel={topUpCreditLabel}
         isOpen={isDeleteDialogOpen}
         type={type}
         product={itemToRemove?.title}
