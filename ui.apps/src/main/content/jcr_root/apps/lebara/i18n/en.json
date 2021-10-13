@@ -2,5 +2,6 @@
   "Days" : "Days",
   "Minutes" : "Minutes",
   "lebara.viewcart.label":"View Cart",
-  "lebara.addon.addedtocart.label":"Addon {0} added to cart"
+  "lebara.addon.addedtocart.label":"Addon {0} added to cart",
+  "lebara.emptycart.addedtocart.label":"Top up Credit {0} added to cart"
 }

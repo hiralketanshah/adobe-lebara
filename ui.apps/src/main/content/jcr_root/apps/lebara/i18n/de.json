@@ -2,5 +2,6 @@
   "Days" : "Tage",
   "Minutes" : "Protokoll",
   "lebara.viewcart.label":"Warenkorb ansehen",
-  "lebara.addon.addedtocart.label":"Add-on {0} wurde zum Warenkorb hinzugefügt"
+  "lebara.addon.addedtocart.label":"Add-on {0} wurde zum Warenkorb hinzugefügt",
+  "lebara.emptycart.addedtocart.label":"Guthaben aufladen {0} zum Warenkorb hinzugefügt"
 }
