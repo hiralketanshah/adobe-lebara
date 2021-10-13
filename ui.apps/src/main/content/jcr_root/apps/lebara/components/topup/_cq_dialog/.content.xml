@@ -92,13 +92,6 @@
                                                     fieldLabel="Buy Top Up"
                                                     value="Buy Top Up"
                                                     name="./buyTopUpLabel"/>
-                                            <popUpCtaLabel
-                                                    jcr:primaryType="nt:unstructured"
-                                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                                    fieldDescription="View Cart Popup Label"
-                                                    fieldLabel="View Cart"
-                                                    value="View Cart"
-                                                    name="./popUpCtaLabel"/>
                                             <topupFragmentPath
                                                     cq:showOnCreate="{Boolean}true"
                                                     jcr:primaryType="nt:unstructured"

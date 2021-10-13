@@ -100,7 +100,7 @@ public class TopUpExporter extends HeadingExporter {
     }
 
     public String getPopUpCtaLabel() {
-        return popUpCtaLabel;
+        return (i18n == null ? "View Cart" : i18n.get("lebara.viewcart.label"));
     }
 
     public List<String> getTopUpOptions() {
