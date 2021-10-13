@@ -97,7 +97,7 @@
                                                     sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                                     fieldDescription="Pop Up Cart Message"
                                                     fieldLabel="Pop Up Cart Message"
-                                                    value="Top up Credit $5 added to cart"
+                                                    value="Top up Credit {0} added to cart"
                                                     name="./popUpCartMessage"/>
                                             <popUpCtaLabel
                                                     jcr:primaryType="nt:unstructured"
