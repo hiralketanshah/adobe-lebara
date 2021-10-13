@@ -92,13 +92,6 @@
                                                     fieldLabel="Buy Top Up"
                                                     value="Buy Top Up"
                                                     name="./buyTopUpLabel"/>
-                                            <popUpCartMessage
-                                                    jcr:primaryType="nt:unstructured"
-                                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                                    fieldDescription="Pop Up Cart Message"
-                                                    fieldLabel="Pop Up Cart Message"
-                                                    value="Top up Credit {0} added to cart"
-                                                    name="./popUpCartMessage"/>
                                             <popUpCtaLabel
                                                     jcr:primaryType="nt:unstructured"
                                                     sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
