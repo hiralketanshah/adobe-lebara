@@ -40,7 +40,13 @@ public class TopUpExporter extends HeadingExporter {
     @ValueMapValue
     private String rightSubTitle;
     @ValueMapValue
-    private String ctaLabel;
+    private String buyTopUpLabel;
+    @ValueMapValue
+    private String addToCartLabel;
+    @ValueMapValue
+    private String popUpCartMessage;
+    @ValueMapValue
+    private String popUpCtaLabel;
     @ValueMapValue
     private String cfPath;
 
@@ -62,8 +68,20 @@ public class TopUpExporter extends HeadingExporter {
         return rightSubTitle;
     }
 
-    public String getCtaLabel() {
-        return ctaLabel;
+    public String getBuyTopUpLabel() {
+        return buyTopUpLabel;
+    }
+
+    public String getAddToCartLabel() {
+        return addToCartLabel;
+    }
+
+    public String getPopUpCartMessage() {
+        return popUpCartMessage;
+    }
+
+    public String getPopUpCtaLabel() {
+        return popUpCtaLabel;
     }
 
     public List<String> getTopUpOptions() {
