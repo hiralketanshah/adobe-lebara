@@ -8,6 +8,10 @@ import { TopUpCreditProps } from "./types";
 const TopUpCredit: React.FC<TopUpCreditProps> = ({
   heading,
   subheading,
+  rightTitle,
+  rightSubTitle,
+  addToCartLabel,
+  buyTopUpLabel,
   topUpOptions,
   onBuyTopUp,
   onAddToCart,
@@ -69,9 +73,11 @@ const TopUpCredit: React.FC<TopUpCreditProps> = ({
         >
           <Box>
             <Text mb="5px" fontWeight="bold" {...textStyles}>
-              Quick Topup
+              {rightTitle}
             </Text>
-            <Text fontSize="16px">Choose from the below amounts</Text>
+            <Text fontSize="16px">
+              {rightSubTitle}
+            </Text>
           </Box>
           <Flex
             w="75px"
@@ -122,7 +128,7 @@ const TopUpCredit: React.FC<TopUpCreditProps> = ({
             variant="outline"
             onClick={handleBuyTopUp}
           >
-            BUY TOP UP
+            {buyTopUpLabel}
           </Button>
           <Button
             disabled={!optionSelected}
@@ -130,7 +136,7 @@ const TopUpCredit: React.FC<TopUpCreditProps> = ({
             variant="outline"
             onClick={handleAddToCart}
           >
-            ADD TO CART
+            {addToCartLabel}
           </Button>
         </Flex>
       </Box>

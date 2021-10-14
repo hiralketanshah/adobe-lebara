@@ -4,15 +4,13 @@ import {
   Text,
   Flex,
   useToast,
-  BreadcrumbItem,
-  BreadcrumbLink,
 } from "@chakra-ui/react";
 import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useMutation } from "@apollo/client";
 import { useLocalStorage } from "@rehooks/local-storage";
-import OffersBg from "../assets/Responsive_topup_credits_background.svg";
-import Breadcrumb from "../Breadcrumb/Breadcrumb";
+import OffersBg from "./Responsive_topup_credits_background.svg";
+// import Header from "../components/Header/Header";
 import TopUpCredit from "./TopUpCredit";
 import Button from "../Button/Button";
 import { loadInitialCart } from "../../redux/actions/cartActions";
@@ -20,8 +18,24 @@ import mapMagentoProductToCartItem from "../../utils/mapMagentoProductToCartItem
 import ADD_TO_CART from "../../graphql/ADD_TO_CART";
 import { ReduxState } from "../../redux/types";
 import REMOVE_FROM_CART from "../../graphql/REMOVE_FROM_CART";
+// import { menuOptions } from "../utils/lebara.constants";
+// import WhyChooseLebara from "../components/WhyChooseLebara/WhyChooseLebara";
+// import whyChooseLebaraIconItems from "../utils/whyChooseLebaraIconItems";
+// import FooterMenu from "../components/FooterMenu/FooterMenu";
+// import footerMenuProps from "../utils/footerMenuProps";
+// import TrustedShopSlider from "../components/TrustedShopSlider/TrustedShopSlider";
+// import HomeFaqs from "../components/HomeFaqs/HomeFaqs";
+// import homeFaqsProps from "../utils/homeFaqsProps";
+import { TopUpCreditProps } from "./types";
 
-const TopupRoute: React.FC = () => {
+const TopupRoute: React.FC<TopUpCreditProps> = ({
+  heading,
+  subheading,
+  rightTitle,
+  rightSubTitle,
+  addToCartLabel,
+  buyTopUpLabel,
+}) => {
   const toast = useToast();
   const dispatch = useDispatch();
   const history = useHistory();
@@ -99,43 +113,22 @@ const TopupRoute: React.FC = () => {
         backgroundImage={{ base: OffersBg, lg: "none" }}
         backgroundSize="cover"
       >
-        <Box px="15px" bg="grey.50" py="2px">
-          <Breadcrumb
-            {...{
-              separator: (
-                <Box mx="9px" color="primary.500">
-                  /
-                </Box>
-              ),
-              fontSize: "sm",
-              spacing: 0,
-              children: [
-                <BreadcrumbItem>
-                  <BreadcrumbLink href="/" color="primary.500" fontWeight="500">
-                    Home
-                  </BreadcrumbLink>
-                </BreadcrumbItem>,
-                <BreadcrumbItem isCurrentPage>
-                  <BreadcrumbLink
-                    href="#"
-                    color="secondary.500"
-                    fontWeight="500"
-                  >
-                    Top Up
-                  </BreadcrumbLink>
-                </BreadcrumbItem>,
-              ],
-            }}
-          />
-        </Box>
         <TopUpCredit
-          heading="Top Up Credits"
-          subheading="Buy credit to call, send SMS and use data"
+          heading={heading}
+          subheading={subheading}
+          rightTitle={rightTitle}
+          rightSubTitle={rightSubTitle}
+          addToCartLabel={addToCartLabel}
+          buyTopUpLabel={buyTopUpLabel}
           topUpOptions={topUpOptions}
           onAddToCart={handleAddToCart}
           onBuyTopUp={handleBuyTopUp}
         />
       </Box>
+      {/* <WhyChooseLebara iconList={whyChooseLebaraIconItems} />
+      <TrustedShopSlider />
+      <HomeFaqs {...homeFaqsProps} />
+      <FooterMenu {...footerMenuProps} /> */}
     </>
   );
 };
