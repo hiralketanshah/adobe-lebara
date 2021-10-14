@@ -30,7 +30,8 @@ const PlanDetailsDialog: React.FC<PlanDetailsDialogProps> = ({
   isButtonDisabled,
   title,
   countryTitle,
-  dataValue
+  dataValue,
+  hideButton
 }) => (
   <Modal isOpen={isOpen} onClose={onClose}>
     <ModalOverlay />
@@ -139,7 +140,7 @@ const PlanDetailsDialog: React.FC<PlanDetailsDialogProps> = ({
           ))}
         </Flex>
       </ModalBody>
-
+      {!hideButton && (
       <ModalFooter>
         <Button
           onClick={onActionClick}
@@ -150,6 +151,7 @@ const PlanDetailsDialog: React.FC<PlanDetailsDialogProps> = ({
           {buttonText}
         </Button>
       </ModalFooter>
+      )}
     </ModalContent>
   </Modal>
 );
