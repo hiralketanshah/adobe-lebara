@@ -78,13 +78,20 @@
                                                     fieldLabel="Right Side Sub Title"
                                                     value="Choose from the below amounts"
                                                     name="./rightSubTitle"/>
-                                            <ctaLabel
+                                            <addToCartLabel
                                                     jcr:primaryType="nt:unstructured"
                                                     sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                                    fieldDescription="Add to Cart or Buy Top Up"
-                                                    fieldLabel="Add to Cart or Buy Top Up Label"
+                                                    fieldDescription="Add to Cart"
+                                                    fieldLabel="Add to Cart"
                                                     value="Add to Cart"
-                                                    name="./ctaLabel"/>
+                                                    name="./addToCartLabel"/>
+                                            <buyTopUpLabel
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                    fieldDescription="Buy Top Up"
+                                                    fieldLabel="Buy Top Up"
+                                                    value="Buy Top Up"
+                                                    name="./buyTopUpLabel"/>
                                             <topupFragmentPath
                                                     cq:showOnCreate="{Boolean}true"
                                                     jcr:primaryType="nt:unstructured"
