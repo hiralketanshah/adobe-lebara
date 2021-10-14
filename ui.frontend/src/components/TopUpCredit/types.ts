@@ -6,6 +6,8 @@ export interface TopUpCreditProps {
   addToCartLabel: string;
   buyTopUpLabel: string;
   topUpOptions: number[];
+  popUpCartMessage: string;
+  popUpCtaLabel: string;
   onBuyTopUp?: (amount: number) => void;
   onAddToCart?: (amount: number) => void;
 }

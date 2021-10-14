@@ -27,6 +27,7 @@ import REMOVE_FROM_CART from "../../graphql/REMOVE_FROM_CART";
 // import HomeFaqs from "../components/HomeFaqs/HomeFaqs";
 // import homeFaqsProps from "../utils/homeFaqsProps";
 import { TopUpCreditProps } from "./types";
+import getDynamicValues from "../../utils/get-aem-dynamic-values";
 
 const TopupRoute: React.FC<TopUpCreditProps> = ({
   heading,
@@ -35,6 +36,8 @@ const TopupRoute: React.FC<TopUpCreditProps> = ({
   rightSubTitle,
   addToCartLabel,
   buyTopUpLabel,
+  popUpCartMessage,
+  popUpCtaLabel,
 }) => {
   const toast = useToast();
   const dispatch = useDispatch();
@@ -95,13 +98,15 @@ const TopupRoute: React.FC<TopUpCreditProps> = ({
           justifyContent="space-between"
           w="420px"
         >
-          <Text py="12px">Top up Credit €{amount} added to cart</Text>
+          <Text py="12px">
+            {getDynamicValues(popUpCartMessage, [`€${amount}`])}
+          </Text>
           <Button
             variant="ghost"
             colorScheme="secondary"
             onClick={handleViewCartClick}
           >
-            view cart
+            {popUpCtaLabel}
           </Button>
         </Flex>
       ),
@@ -123,6 +128,8 @@ const TopupRoute: React.FC<TopUpCreditProps> = ({
           topUpOptions={topUpOptions}
           onAddToCart={handleAddToCart}
           onBuyTopUp={handleBuyTopUp}
+          popUpCartMessage={popUpCartMessage}
+          popUpCtaLabel={popUpCtaLabel}
         />
       </Box>
       {/* <WhyChooseLebara iconList={whyChooseLebaraIconItems} />
