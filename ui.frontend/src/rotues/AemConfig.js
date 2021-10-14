@@ -10,7 +10,7 @@ const SimPortInConfig = {
 const OrderDetailsConfig = {
   emptyLabel: "Order Details Component",
   isEmpty: function (props) {
-    return !props;
+    return !props.selectedProductLabel;
   },
 };
 MapTo("lebara/components/simportin")(SimPortInRoute, SimPortInConfig);

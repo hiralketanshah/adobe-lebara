@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { Flex, Link, Text } from "@chakra-ui/react";
 import { useMutation } from "@apollo/client";
 import { useHistory, useLocation } from "react-router-dom";
-import ProgressStep from "../components/ProgressStep/ProgressStep";
 import ExpandablePlanCardCheckout from "../components/ExpandablePlanCardCheckout/ExpandablePlanCardCheckout";
 import Voucher from "../components/Voucher/Voucher";
 import Checkbox from "../components/Checkbox/Checkbox";
@@ -22,7 +21,7 @@ import DataFreeSimTopUpCreditCard from "../components/FreeSimTopUpCreditCard/Fre
 import { OrderDetailsProps } from "../layouts/types";
 
 const OrderDetailsRoute: React.FC<OrderDetailsProps> = ({ ...props }) => {
-  const { selectedProductLabel, grandTotalLabel, applyVoucherLabel, enterVoucherCodeLabel, consentLabel, steps,
+  const { selectedProductLabel, grandTotalLabel, applyVoucherLabel, enterVoucherCodeLabel, consentLabel,
     paymentButtonLabel, phoneNumberLabel, viewPlansLabel, showDetailsLabel, removeLabel, autoRenewDesc, autoRenewLabel,
     voucherCodeExpiredMessage, voucherCodeInvalidMessage, addVoucherCodeLabel, privacyPolicyLabel, privacyPolicyLink, voucherCodeDiscountLabel,
     emptyCartLink, deleteCartItemDesc, deleteCartItemTitle, deleteCartItemNoButtonLabel, deleteCartItemYesButtonLabel,
@@ -126,9 +125,6 @@ const OrderDetailsRoute: React.FC<OrderDetailsProps> = ({ ...props }) => {
       : itemToRemove?.title === "Bolt-on"
         ? "Add-on"
         : "Plan";
-  if (isCartItemsLoading) {
-    return null;
-  }
   return (
     <BuyPlanLayout maxW="846px" paymentButtonLabel={paymentButtonLabel}>
       <DeleteCartItemDialog
@@ -151,10 +147,6 @@ const OrderDetailsRoute: React.FC<OrderDetailsProps> = ({ ...props }) => {
         onClose={() => {
           setIsDeleteDialogOpen(false);
         }}
-      />
-      <ProgressStep
-        activeStepIndex={0}
-        steps={steps || []}
       />
       {phoneNumber && (
         <>
