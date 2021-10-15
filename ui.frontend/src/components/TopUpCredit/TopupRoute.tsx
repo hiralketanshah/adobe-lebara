@@ -10,7 +10,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { useMutation } from "@apollo/client";
 import { useLocalStorage } from "@rehooks/local-storage";
 import OffersBg from "./Responsive_topup_credits_background.svg";
-// import Header from "../components/Header/Header";
 import TopUpCredit from "./TopUpCredit";
 import Button from "../Button/Button";
 import { loadInitialCart } from "../../redux/actions/cartActions";
@@ -18,14 +17,6 @@ import mapMagentoProductToCartItem from "../../utils/mapMagentoProductToCartItem
 import ADD_TO_CART from "../../graphql/ADD_TO_CART";
 import { ReduxState } from "../../redux/types";
 import REMOVE_FROM_CART from "../../graphql/REMOVE_FROM_CART";
-// import { menuOptions } from "../utils/lebara.constants";
-// import WhyChooseLebara from "../components/WhyChooseLebara/WhyChooseLebara";
-// import whyChooseLebaraIconItems from "../utils/whyChooseLebaraIconItems";
-// import FooterMenu from "../components/FooterMenu/FooterMenu";
-// import footerMenuProps from "../utils/footerMenuProps";
-// import TrustedShopSlider from "../components/TrustedShopSlider/TrustedShopSlider";
-// import HomeFaqs from "../components/HomeFaqs/HomeFaqs";
-// import homeFaqsProps from "../utils/homeFaqsProps";
 import { TopUpCreditProps } from "./types";
 import getDynamicValues from "../../utils/get-aem-dynamic-values";
 
@@ -132,10 +123,6 @@ const TopupRoute: React.FC<TopUpCreditProps> = ({
           popUpCtaLabel={popUpCtaLabel}
         />
       </Box>
-      {/* <WhyChooseLebara iconList={whyChooseLebaraIconItems} />
-      <TrustedShopSlider />
-      <HomeFaqs {...homeFaqsProps} />
-      <FooterMenu {...footerMenuProps} /> */}
     </>
   );
 };
