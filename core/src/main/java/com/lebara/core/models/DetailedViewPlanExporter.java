@@ -80,15 +80,6 @@ public class DetailedViewPlanExporter extends ViewPlanExporter implements Compon
     @ValueMapValue
     private String ctaBottomLink;
 
-    @ValueMapValue
-    private String orderDetailsLink;
-
-    @ValueMapValue
-    private String simChoiceLink;
-
-    @ValueMapValue
-    private String loginLink;
-
     public String getTitle() {
         return title;
     }
@@ -127,18 +118,6 @@ public class DetailedViewPlanExporter extends ViewPlanExporter implements Compon
 
     public String getCtaBottomLink() {
     	return AemUtils.getLinkWithExtension(ctaBottomLink);
-    }
-
-    public String getOrderDetailsLink() {
-        return AemUtils.getLinkWithExtension(orderDetailsLink);
-    }
-
-    public String getSimChoiceLink() {
-        return AemUtils.getLinkWithExtension(simChoiceLink);
-    }
-
-    public String getLoginLink() {
-        return AemUtils.getLinkWithExtension(loginLink);
     }
 
     @PostConstruct

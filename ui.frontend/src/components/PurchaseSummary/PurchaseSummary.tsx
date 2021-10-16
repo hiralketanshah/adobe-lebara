@@ -1,7 +1,7 @@
 import React from "react";
 import { Divider, Flex, Text } from "@chakra-ui/react";
 import { PurchaseSummaryProps } from "./types";
-
+import {globalConfigs} from  '../../GlobalConfigs.js';
 const PurchaseSummary: React.FC<PurchaseSummaryProps> = ({ items, grandTotalLabel }) => (
   <Flex flexDirection="column" borderRadius={8} backgroundColor="white">
     {items &&
@@ -15,7 +15,7 @@ const PurchaseSummary: React.FC<PurchaseSummaryProps> = ({ items, grandTotalLabe
           >
             <Text>{item.description}</Text>
             <Text fontSize={16} fontWeight="bold">
-              {item.amount < 0 ? "-" : ""}€{Math.abs(item.amount)}
+              {item.amount < 0 ? "-" : ""}{globalConfigs.currencySymbol}{Math.abs(item.amount)}
             </Text>
           </Flex>
           <Divider color="grey.50" my={1.5} />
@@ -32,7 +32,7 @@ const PurchaseSummary: React.FC<PurchaseSummaryProps> = ({ items, grandTotalLabe
     >
       <Text>{grandTotalLabel}</Text>
       <Text>
-        €
+      {globalConfigs.currencySymbol}
         {items
           .reduce((sum, t) => sum + t.amount, 0)
           .toLocaleString("en-US", {

@@ -27,13 +27,12 @@ import selectedProductReducer from "./redux/reducers/selectedProductReducer";
 import userReducer from "./redux/reducers/userReducer";
 import topUpsReducer from "./redux/reducers/topUpsReducer";
 import paymentMethodsReducer from "./redux/reducers/paymentMethodsReducer";
-
+import {globalConfigs} from  './GlobalConfigs.js';
 const client = new ApolloClient({
-  uri: 'https://api-aggregator.lebara.com/api-aggregator',
+  uri: globalConfigs.apiAggregatorUrl,
   credentials: "include",
   cache: new InMemoryCache(),
 });
-
 const store = createStore(
   combineReducers({
     cart: cartReducer,
