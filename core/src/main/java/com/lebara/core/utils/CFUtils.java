@@ -131,6 +131,14 @@ public class CFUtils {
                 if (offerFragment.getElement("additionalOffers") != null) {
                     offerFragmentBean.setAdditionalOffers(CFUtils.getElementValue(offerFragment, "additionalOffers"));
                 }
+                if (offerFragment.getElement("planInfoPath") != null) {
+                    ResourceResolver resourceResolver = cfResource.getResourceResolver();
+                    Resource cfPlanResource = resourceResolver.getResource(CFUtils.getElementValue(offerFragment, "planInfoPath"));
+                    PlanInfo planInfo = CFUtils.populatePlans(cfPlanResource);
+                    if (planInfo != null) {
+                        offerFragmentBean.setPlanInfo(planInfo);
+                    }
+                }
                 if (offerFragment.getElement("allowancesList") != null) {
                     String[] allowanceArray = CFUtils.getElementArrayValue(offerFragment, "allowancesList");
                     List<CFAllowance> allowanceList = CFUtils.convertStringArrayToList(allowanceArray, CFAllowance.class);
