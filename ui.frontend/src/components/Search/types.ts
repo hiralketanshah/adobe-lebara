@@ -1,3 +1,5 @@
 export interface SearchProps {
-searchRoot?: string;
+	title?: string;
+	searchRoot?: string;
 }
+

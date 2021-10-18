@@ -1,10 +1,9 @@
 import React from "react";
 import { SearchProps } from "./types";
 
-const Search: React.FC<SearchProps> = ({searchRoot}) => {
-console.log("Search Component")
+const Search: React.FC<SearchProps> = (title) => {
   return (
-    {searchRoot}
+    <h3>{title}</h3>
   );
 };
 

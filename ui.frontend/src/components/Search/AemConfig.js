@@ -2,9 +2,9 @@ import { MapTo } from "@adobe/aem-react-editable-components";
 import Search from "./Search";
 
 const SearchConfig = {
-  emptyLabel: "Search Component",
+  emptyLabel: "Quick Search",
   isEmpty: function (props) {
-    return !props.searchRoot;
+    return !props.title;
   },
 };
 
