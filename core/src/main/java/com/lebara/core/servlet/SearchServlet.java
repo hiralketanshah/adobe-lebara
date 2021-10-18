@@ -29,13 +29,18 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@Component(service = Servlet.class,
+import static org.apache.sling.api.servlets.ServletResolverConstants.*;
+
+@Component(
+        service = Servlet.class,
         property = {
-                Constants.SERVICE_DESCRIPTION + "=Simple Demo Servlet",
-                "sling.servlet.methods=" + HttpConstants.METHOD_GET,
-                "sling.servlet.paths=" + "/bin/lebara/search",
-                "sling.servlet.extensions=" + "sample",
-        })
+                Constants.SERVICE_DESCRIPTION + "=Global Search Servlet",
+                SLING_SERVLET_METHODS+"="+HttpConstants.METHOD_GET,
+                SLING_SERVLET_RESOURCE_TYPES + "=lebara/components/search",
+                SLING_SERVLET_EXTENSIONS + "=json",
+
+        }
+        )
 public class SearchServlet extends SlingSafeMethodsServlet {
     @Reference
     private QueryBuilder builder;
@@ -46,13 +51,21 @@ public class SearchServlet extends SlingSafeMethodsServlet {
     protected void doGet(SlingHttpServletRequest request, SlingHttpServletResponse response)
             throws ServletException, IOException {
         String param = request.getParameter("q");
+        String searchType = request.getParameter("searchType");
         ResourceResolver resourceResolver = request.getResourceResolver();
         session = resourceResolver.adaptTo(Session.class);
 
         Map<String, String> predicate = new HashMap<>();
         predicate.put("path", "/content/lebara/de/en");
         predicate.put("type", "cq:Page");
-        predicate.put("fulltext", param);
+        if(null != searchType && searchType.equalsIgnoreCase("fulltext")){
+            predicate.put("fulltext", param);
+        } else {
+            predicate.put("1_property", "jcr:content/cq:tags");
+            predicate.put("1_property.value", "%"+param+"%");
+            predicate.put("1_property.operation", "like");
+        }
+
         predicate.put("p.limit", "-1");
         Gson json = new Gson();
         Query query = builder.createQuery(PredicateGroup.create(predicate), session);
