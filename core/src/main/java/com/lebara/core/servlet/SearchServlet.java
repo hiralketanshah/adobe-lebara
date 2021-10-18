@@ -9,6 +9,8 @@ import com.day.cq.search.result.SearchResult;
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.lebara.core.dto.SearchInfo;
+import org.apache.commons.lang3.StringUtils;
+import org.apache.sling.api.resource.Resource;
 import org.apache.sling.api.resource.ResourceResolver;
 import org.apache.sling.api.servlets.HttpConstants;
 import org.apache.sling.api.servlets.SlingSafeMethodsServlet;
@@ -38,7 +40,6 @@ import static org.apache.sling.api.servlets.ServletResolverConstants.*;
                 SLING_SERVLET_METHODS+"="+HttpConstants.METHOD_GET,
                 SLING_SERVLET_RESOURCE_TYPES + "=lebara/components/search",
                 SLING_SERVLET_EXTENSIONS + "=json",
-
         }
         )
 public class SearchServlet extends SlingSafeMethodsServlet {
@@ -55,32 +56,41 @@ public class SearchServlet extends SlingSafeMethodsServlet {
         ResourceResolver resourceResolver = request.getResourceResolver();
         session = resourceResolver.adaptTo(Session.class);
 
-        Map<String, String> predicate = new HashMap<>();
-        predicate.put("path", "/content/lebara/de/en");
-        predicate.put("type", "cq:Page");
-        if(null != searchType && searchType.equalsIgnoreCase("fulltext")){
-            predicate.put("fulltext", param);
-        } else {
-            predicate.put("1_property", "jcr:content/cq:tags");
-            predicate.put("1_property.value", "%"+param+"%");
-            predicate.put("1_property.operation", "like");
+        String pathInfo = request.getRequestPathInfo().getResourcePath();
+        Resource searchResource = request.getResourceResolver().getResource(pathInfo);
+        if(null != searchResource && null != searchResource.getValueMap().get("searchRoot")){
+            String searchRoot = searchResource.getValueMap().get("searchRoot").toString();
+            if(StringUtils.isEmpty(searchRoot)){
+                searchRoot = "/content/lebara/";
+            }
+            Map<String, String> predicate = new HashMap<>();
+            predicate.put("path", searchRoot);
+            predicate.put("type", "cq:Page");
+            if(null != searchType && searchType.equalsIgnoreCase("fulltext")){
+                predicate.put("fulltext", param);
+            } else {
+                predicate.put("1_property", "jcr:content/cq:tags");
+                predicate.put("1_property.value", "%"+param+"%");
+                predicate.put("1_property.operation", "like");
+            }
+
+            predicate.put("p.limit", "-1");
+            Gson json = new Gson();
+            Query query = builder.createQuery(PredicateGroup.create(predicate), session);
+            SearchResult searchResult = query.getResult();
+            List<SearchInfo> searchInfoList = new ArrayList<>();
+            for(Hit hit : searchResult.getHits()) {
+                try {
+                    SearchInfo searchInfo = new SearchInfo();
+                    searchInfo.setPath(hit.getPath());
+                    searchInfo.setTitle(hit.getTitle());
+                    searchInfoList.add(searchInfo);
+                } catch (RepositoryException e) {
+                    e.printStackTrace();
+                }
+            }
+            response.getWriter().println(json.toJson(searchInfoList));
         }
 
-        predicate.put("p.limit", "-1");
-        Gson json = new Gson();
-        Query query = builder.createQuery(PredicateGroup.create(predicate), session);
-        SearchResult searchResult = query.getResult();
-        List<SearchInfo> searchInfoList = new ArrayList<>();
-        for(Hit hit : searchResult.getHits()) {
-            try {
-                SearchInfo searchInfo = new SearchInfo();
-                searchInfo.setPath(hit.getPath());
-                searchInfo.setTitle(hit.getTitle());
-                searchInfoList.add(searchInfo);
-            } catch (RepositoryException e) {
-                e.printStackTrace();
-            }
-        }
-        response.getWriter().println(json.toJson(searchInfoList));
     }
 }
