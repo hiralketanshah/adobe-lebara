@@ -4,8 +4,7 @@ import Search from "./Search";
 const SearchConfig = {
   emptyLabel: "Quick Search",
   isEmpty: function (props) {
-    return !props.title;
+    return !props.searchRoot;
   },
 };
-
 MapTo("lebara/components/search")(Search, SearchConfig);
