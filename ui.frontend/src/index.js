@@ -29,7 +29,7 @@ import topUpsReducer from "./redux/reducers/topUpsReducer";
 import paymentMethodsReducer from "./redux/reducers/paymentMethodsReducer";
 import {globalConfigs} from  './GlobalConfigs.js';
 const client = new ApolloClient({
-  uri: globalConfigs.apiAggregatorUrl,
+  uri: `${globalConfigs.apiHostUri}${globalConfigs.gqlEndpoint}`,
   credentials: "include",
   cache: new InMemoryCache(),
 });

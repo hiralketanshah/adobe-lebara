@@ -6,6 +6,7 @@ import com.day.cq.wcm.api.Page;
 import com.day.cq.wcm.api.PageManager;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.net.MediaType;
+import com.lebara.core.services.GlobalOsgiService;
 import com.lebara.core.utils.AemUtils;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.SlingHttpServletResponse;
@@ -14,7 +15,7 @@ import org.apache.sling.api.servlets.HttpConstants;
 import org.apache.sling.api.servlets.SlingSafeMethodsServlet;
 import org.osgi.framework.Constants;
 import org.osgi.service.component.annotations.Component;
-
+import org.osgi.service.component.annotations.Reference;
 import javax.servlet.Servlet;
 import javax.servlet.ServletException;
 import java.io.IOException;
@@ -34,9 +35,10 @@ import java.util.Optional;
 public class GlobalConfigs extends SlingSafeMethodsServlet {
 
     private static final long serialVersionUID = 1L;
-    private static final String API_AGGREGATOR_URL = "apiAggregatorUrl";
     private static final String CURRENCY_SYMBOL = "currencySymbol";
     private static final String JOURNEY_PAGES = "journeyPages";
+    @Reference
+    private GlobalOsgiService globalOsgiService;
 
     @Override
     protected void doGet(final SlingHttpServletRequest req,
@@ -49,7 +51,10 @@ public class GlobalConfigs extends SlingSafeMethodsServlet {
         Resource res = request.getResource().getChild("jcr:content");
         InheritanceValueMap inheritedProp = new HierarchyNodeInheritanceValueMap(res);
         return (new ImmutableMap.Builder())
-                .put(API_AGGREGATOR_URL, Optional.ofNullable(inheritedProp.getInherited(API_AGGREGATOR_URL, String.class)).orElse(""))
+                .put("apiHostUri", Optional.ofNullable(globalOsgiService.getApiHostUri()).orElse(""))
+                .put("gqlEndpoint", Optional.ofNullable(globalOsgiService.getGqlEndpoint()).orElse(""))
+                .put("paymentClientKey", Optional.ofNullable(globalOsgiService.getPaymentClientKey()).orElse(""))
+                .put("paymentAdeyenEnv", Optional.ofNullable(globalOsgiService.getPaymentAdeyenEnv()).orElse(""))
                 .put(CURRENCY_SYMBOL, Optional.ofNullable(inheritedProp.getInherited(CURRENCY_SYMBOL, String.class)).orElse(""))
                 .put(JOURNEY_PAGES, getJourneyPages(request)).build();
     }

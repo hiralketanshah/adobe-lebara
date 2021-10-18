@@ -21,9 +21,8 @@ import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.api.resource.ResourceResolver;
-import org.osgi.service.component.annotations.Activate;
 import org.osgi.service.component.annotations.Component;
-import org.osgi.service.metatype.annotations.Designate;
+import org.osgi.service.component.annotations.Reference;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -36,18 +35,11 @@ import com.lebara.core.utils.LebaraConstants;
  * Then this service creates a content fragment for each plan.
  */
 @Component(service = CrudOperationEpc.class, immediate = true, property = {"process.label=Lebara EPC data operation Service"}, configurationPid = "com.lebara.core.services.CrudOperationEpc")
-@Designate(ocd = CFDestinationDomain.class)
 public class CrudOperationEpc {
     private static final Logger logger = LoggerFactory.getLogger(CrudOperationEpc.class);
-
-    String apiEndPointUrl = StringUtils.EMPTY;
-
-
-    @Activate
-    public void init(CFDestinationDomain config) {
-        apiEndPointUrl = config.getApiPath();
-    }
-
+    @Reference
+    private GlobalOsgiService globalOsgiService;
+    String apiEndPointUrl= globalOsgiService.getApiHostUri().concat(globalOsgiService.getGqlEndpoint());
     public void readEPCAndCreateCF(String cfDamPath, ResourceResolver resourceResolver) {
         // Read data from EPC
         String countryCode = CFUtils.getCountryCodeFromPayloadPath(cfDamPath);

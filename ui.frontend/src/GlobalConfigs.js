@@ -1,6 +1,9 @@
 const globalConfigs = window.lebaraGlobalConfigs ? {
-    apiAggregatorUrl: window.lebaraGlobalConfigs.apiAggregatorUrl,
+    apiHostUri: window.lebaraGlobalConfigs.apiHostUri,
+    gqlEndpoint: window.lebaraGlobalConfigs.gqlEndpoint,
     currencySymbol: window.lebaraGlobalConfigs.currencySymbol,
+    paymentClientKey: window.lebaraGlobalConfigs.paymentClientKey,
+    paymentAdeyenEnv: window.lebaraGlobalConfigs.paymentAdeyenEnv,
     journeyPages: JSON.parse(window.lebaraGlobalConfigs.journeyPages)
 } : {};
 
