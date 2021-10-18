@@ -289,7 +289,7 @@ const Header: React.FC<HeaderProps> = ({
       </Flex>
 
       <Flex display={{ md: "none", sm: "flex" }} mx={{ md: "27px" }}>
-        <MiniHeader items={items}/>
+        <MiniHeader logoPath={logoPath} items={items}/>
       </Flex>
     </Flex>
   );

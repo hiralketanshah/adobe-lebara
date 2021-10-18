@@ -1,5 +1,4 @@
 import { CountriesListOption } from "../CountriesList/types";
-import {ListPlanItem} from '../List/types'
 
 export interface ExpandablePlanCardProps {
   id?: number;

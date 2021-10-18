@@ -26,11 +26,10 @@ import highlightedButtonReducer from "./redux/reducers/highlightedButtonReducer"
 import selectedProductReducer from "./redux/reducers/selectedProductReducer";
 import userReducer from "./redux/reducers/userReducer";
 import topUpsReducer from "./redux/reducers/topUpsReducer";
-
-const { REACT_APP_HOST_URI, REACT_APP_GRAPHQL_ENDPOINT } = process.env;
+import paymentMethodsReducer from "./redux/reducers/paymentMethodsReducer";
 
 const client = new ApolloClient({
-  uri: `${REACT_APP_HOST_URI}${REACT_APP_GRAPHQL_ENDPOINT}`,
+  uri: 'https://api-aggregator.lebara.com/api-aggregator',
   credentials: "include",
   cache: new InMemoryCache(),
 });
@@ -44,6 +43,7 @@ const store = createStore(
     product: selectedProductReducer,
     user: userReducer,
     topUps: topUpsReducer,
+    paymentMethods: paymentMethodsReducer,
   }),
   // eslint-disable-next-line no-underscore-dangle
   (window).__REDUX_DEVTOOLS_EXTENSION__ &&

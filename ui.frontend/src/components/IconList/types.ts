@@ -1,11 +1,12 @@
-import React from "react";
+import { ImageProps } from "@chakra-ui/react";
 
 export interface IconListItem {
-  imageDescription?: string;
-	imagePath?: string;
-	 imageAlt?: string;
+  icon: string;
+  title: string;
+  body: string;
+  imageProps?: ImageProps;
 }
 
 export interface IconListProps {
-  uspDescription: IconListItem[];
+  items: IconListItem[];
 }

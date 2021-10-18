@@ -7,6 +7,7 @@ export interface BuyPlanLayoutProps {
   noPadding?: boolean;
   fullWidth?: boolean;
   maxW?: string;
+  paymentButtonLabel?: string;
 }
 
 export interface SimPortInProps {
@@ -40,3 +41,41 @@ export interface SimPortInProps {
 	currentProvidersOptions?: SelectOption[];
   currentProviderDefaultSelectValue?: string;
 }
+
+export interface OrderDetailsProps extends deleteCartItemCmsProps, topupCreditCmsProps{
+	consentLabel?: string;
+	viewPlansLabel?: string;
+	addVoucherCodeLabel?: string;
+	autoRenewDesc?: string;
+	applyVoucherLabel?: string;
+	autoRenewLabel?: string;
+	freeSimLabel?: string;
+	steps?: string[];
+	paymentButtonLabel?: string;
+	selectedProductLabel?: string;
+	phoneNumberLabel?: string;
+	enterVoucherCodeLabel?: string;
+	grandTotalLabel?: string;
+	removeLabel?: string;
+	showDetailsLabel?: string;
+	voucherCodeInvalidMessage?: string;
+	voucherCodeExpiredMessage?: string;
+	privacyPolicyLabel?: string;
+	privacyPolicyLink?: string;
+	voucherCodeDiscountLabel?: string;
+	emptyCartLink?: string;
+  }
+
+  export interface deleteCartItemCmsProps {
+	deleteCartItemTitle?: string;
+	deleteCartItemDesc?: string;
+	deleteCartItemYesButtonLabel?: string;
+	deleteCartItemNoButtonLabel?: string;
+  }
+
+  export interface topupCreditCmsProps {
+	topUpCreditLabel?: string;
+	topUpRecommendedLabel?: string;
+	topUpCapLabel?: string;
+	topUpCapDesc?: string;
+  }

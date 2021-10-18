@@ -1,6 +1,7 @@
 {
-
   "Days" : "Dni",
-  "Minutes" : "Minuty"
-
+  "Minutes" : "Minuty",
+  "lebara.viewcart.label":"Zobacz Koszyk",
+  "lebara.addon.addedtocart.label":"Dodatek {0} dodany do koszyka",
+  "lebara.emptycart.addedtocart.label":"Doładuj kredyt {0} dodany do koszyka"
 }

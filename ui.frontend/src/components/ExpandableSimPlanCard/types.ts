@@ -1,8 +1,9 @@
 import { CountriesListOption } from "../CountriesList/types";
-import { allowanceListProps, PlanCardOffer, planDetails } from "../ExpandablePlanCard/types";
+import { allowanceListProps, planDetails } from "../ExpandablePlanCard/types";
 
 export interface ExpandableSimPlanCardProps {
   planName: string;
+  offerType?: string;
   price: number;
   duration: string;
   countries: CountriesList[];
@@ -17,9 +18,23 @@ export interface ExpandableSimPlanCardProps {
   validity?: string;
   cost?: string;
   showLabel?: string;
-  buttonLabel?: string;
   planInfo?: planDetails;
   additionalOffers?: string;
+  id?: string;
+  viewCartLabel?: string;
+  addedtoCartLabel?: string;
+  buttonLabel?: string;
+  orderDetailsLink?: string;
+  simChoiceLink?: string;
+  loginLink?: string;
 }
+
+const OfferTypes = {
+  PREPAID: "prepaid",
+  BOLTON: "bolton",
+  POSTPAID: "postpaid",
+  TOPUP: "topup"
+}
+export default  OfferTypes;
 
 export interface CountriesList extends CountriesListOption {}
