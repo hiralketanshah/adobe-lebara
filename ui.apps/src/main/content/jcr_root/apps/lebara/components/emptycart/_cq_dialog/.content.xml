@@ -21,7 +21,7 @@
                                     jcr:primaryType="nt:unstructured"
                                     sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                     fieldDescription="Shop / Buy Label"
-                                    value="Shop  /Buy"
+                                    value="Shop / Buy"
                                     fieldLabel="shop / Buy Label"
                                     name="./shopBuyLabel"/>
                             <cartDescription
@@ -41,9 +41,9 @@
                             <dataTabLabel
                                     jcr:primaryType="nt:unstructured"
                                     sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                    fieldDescription="Data Label"
+                                    fieldDescription="Data Tab Label"
                                     value="Data"
-                                    fieldLabel="Data Label"
+                                    fieldLabel="Data Tab Label"
                                     name="./dataTabLabel"/>
                             <plansTabLabel
                                     jcr:primaryType="nt:unstructured"
