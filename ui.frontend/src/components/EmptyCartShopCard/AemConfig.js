@@ -1,11 +1,11 @@
 import { MapTo } from "@adobe/aem-react-editable-components";
-import EmptyCartShopCard from "./EmptyCartShopCard";
+import EmptyCartRoute from "./EmptyCartRoute";
 
-const EmptyCartShopCardConfig = {
+const EmptyCartRouteConfig = {
   emptyLabel: "Empty Cart Shop",
   isEmpty: function (props) {
     return !props.shopBuyLabel;
   },
 };
 
-MapTo("lebara/components/usp")(EmptyCartShopCard, EmptyCartShopCardConfig);
+MapTo("lebara/components/emptycart")(EmptyCartRoute, EmptyCartRouteConfig);

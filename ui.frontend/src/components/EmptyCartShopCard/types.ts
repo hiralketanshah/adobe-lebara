@@ -10,6 +10,11 @@ export interface EmptyCartShopCardProps {
   addOnTabLabel?: string;
   dataTabLabel?: string;
   plansTabLabel?: string;
+  showDetailsLabel?: string;
+  buyPlanLabel?: string;
+  continueBrowsingLabel?: string;
+  emptyBasketText?: string;
+  goBackText?: string;
 }
 
 export interface CountriesList extends CountriesListOption {}

@@ -21,6 +21,8 @@ const EmptyCartShopCard: React.FC<EmptyCartShopCardProps> = ({
   addOnTabLabel,
   dataTabLabel,
   plansTabLabel,
+  showDetailsLabel,
+  buyPlanLabel,
 }) => {
   const location = useLocation<{ selectedType: string }>();
   const selectedType = location.state?.selectedType || "plan";
@@ -98,13 +100,13 @@ const EmptyCartShopCard: React.FC<EmptyCartShopCardProps> = ({
           </TabList>
           <TabPanels>
             <TabPanel>
-              <ExpandableSimPlanCard {...expandableAddOnsCardProps} />
+              <ExpandableSimPlanCard {...expandableAddOnsCardProps } showLabel={showDetailsLabel} buttonLabel={buyPlanLabel}/>
             </TabPanel>
             <TabPanel color="primary.600">
-              <ExpandableSimPlanCard {...expandablePlanCardProps} />
+              <ExpandableSimPlanCard {...expandableSimPlanCardProps} showLabel={showDetailsLabel} buttonLabel={buyPlanLabel}/>
             </TabPanel>
             <TabPanel color="primary.600">
-              <ExpandableSimPlanCard {...expandableSimPlanCardProps} />
+              <ExpandableSimPlanCard {...expandablePlanCardProps} showLabel={showDetailsLabel} buttonLabel={buyPlanLabel}/>
             </TabPanel>
           </TabPanels>
         </Tabs>
