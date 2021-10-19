@@ -21,6 +21,7 @@ import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.api.resource.ResourceResolver;
+import org.osgi.service.component.annotations.Activate;
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Reference;
 import org.slf4j.Logger;
@@ -39,7 +40,13 @@ public class CrudOperationEpc {
     private static final Logger logger = LoggerFactory.getLogger(CrudOperationEpc.class);
     @Reference
     private GlobalOsgiService globalOsgiService;
-    String apiEndPointUrl= globalOsgiService.getApiHostUri().concat(globalOsgiService.getGqlEndpoint());
+    String apiEndPointUrl = StringUtils.EMPTY;
+
+    @Activate
+    public void init() {
+        apiEndPointUrl = globalOsgiService.getApiHostUri().concat(globalOsgiService.getGqlEndpoint());
+    }
+
     public void readEPCAndCreateCF(String cfDamPath, ResourceResolver resourceResolver) {
         // Read data from EPC
         String countryCode = CFUtils.getCountryCodeFromPayloadPath(cfDamPath);
