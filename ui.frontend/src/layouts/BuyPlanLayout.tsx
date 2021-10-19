@@ -10,7 +10,8 @@ const BuyPlanLayout: React.FC<BuyPlanLayoutProps> = ({
   noPadding,
   fullWidth,
   maxW,
-  paymentButtonLabel
+  paymentButtonLabel,
+  paymentMethodLabel
 }) => {
   const [isPaymentDialogOpen, setIsPaymentDialogOpen] = useState(false);
   return (
@@ -18,6 +19,7 @@ const BuyPlanLayout: React.FC<BuyPlanLayoutProps> = ({
       <PaymentDialog
         isOpen={isPaymentDialogOpen}
         onClose={() => setIsPaymentDialogOpen(false)}
+        paymentMethodLabel={paymentMethodLabel}
       />
       <Box
         backgroundColor="lightenPrimary.50"

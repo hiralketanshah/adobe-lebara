@@ -26,7 +26,7 @@ const OrderDetailsRoute: React.FC<OrderDetailsProps> = ({ ...props }) => {
     paymentButtonLabel, phoneNumberLabel, viewPlansLabel, showDetailsLabel, removeLabel, autoRenewDesc, autoRenewLabel,
     voucherCodeExpiredMessage, voucherCodeInvalidMessage, addVoucherCodeLabel, privacyPolicyLabel, privacyPolicyLink, voucherCodeDiscountLabel,
     deleteCartItemDesc, deleteCartItemTitle, deleteCartItemNoButtonLabel, deleteCartItemYesButtonLabel,
-    topUpCapDesc, topUpCapLabel, topUpCreditLabel, topUpRecommendedLabel } = props;
+    topUpCapDesc, topUpCapLabel, topUpCreditLabel, topUpRecommendedLabel, paymentMethodLabel } = props;
   const [removeFromCartApi] = useMutation(REMOVE_FROM_CART);
   const dispatch = useDispatch();
   const history = useHistory();
@@ -127,7 +127,7 @@ const OrderDetailsRoute: React.FC<OrderDetailsProps> = ({ ...props }) => {
         ? "Add-on"
         : "Plan";
   return (
-    <BuyPlanLayout maxW="846px" paymentButtonLabel={paymentButtonLabel}>
+    <BuyPlanLayout maxW="846px" paymentButtonLabel={paymentButtonLabel} paymentMethodLabel={paymentMethodLabel}>
       <DeleteCartItemDialog
         deleteCartItemDesc={deleteCartItemDesc}
         deleteCartItemTitle={deleteCartItemTitle}

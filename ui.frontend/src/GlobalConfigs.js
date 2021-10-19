@@ -1,9 +1,12 @@
+
 const globalConfigs = window.lebaraGlobalConfigs ? {
     apiHostUri: window.lebaraGlobalConfigs.apiHostUri,
     gqlEndpoint: window.lebaraGlobalConfigs.gqlEndpoint,
     currencySymbol: window.lebaraGlobalConfigs.currencySymbol,
     paymentClientKey: window.lebaraGlobalConfigs.paymentClientKey,
     paymentAdeyenEnv: window.lebaraGlobalConfigs.paymentAdeyenEnv,
+    locale: window.lebaraGlobalConfigs.locale,
+    country: window.lebaraGlobalConfigs.country,
     journeyPages: JSON.parse(window.lebaraGlobalConfigs.journeyPages)
 } : {};
 
@@ -28,4 +31,7 @@ const globalConstants = Object.freeze({
     PREPAID: 'prepaid'
   });
 
-  module.exports = {globalConfigs, globalConstants}
+  const globalCurrencies = Object.freeze({
+    EUR: '€'
+  });
+  module.exports = {globalConfigs, globalConstants, globalCurrencies}

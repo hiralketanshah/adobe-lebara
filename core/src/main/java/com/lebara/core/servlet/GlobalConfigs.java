@@ -16,6 +16,7 @@ import org.apache.sling.api.servlets.SlingSafeMethodsServlet;
 import org.osgi.framework.Constants;
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Reference;
+
 import javax.servlet.Servlet;
 import javax.servlet.ServletException;
 import java.io.IOException;
@@ -50,19 +51,24 @@ public class GlobalConfigs extends SlingSafeMethodsServlet {
     protected Object getGlobalData(SlingHttpServletRequest request) {
         Resource res = request.getResource().getChild("jcr:content");
         InheritanceValueMap inheritedProp = new HierarchyNodeInheritanceValueMap(res);
+        PageManager pageManager = (PageManager) request.getResourceResolver().adaptTo(PageManager.class);
+        Page page = null;
+        if (pageManager != null) {
+            page = pageManager.getContainingPage(request.getResource());
+        }
         return (new ImmutableMap.Builder())
+                .put("locale", Optional.ofNullable(page.getLanguage(false).toLanguageTag()).orElse(""))
+                .put("country", Optional.ofNullable( page.getLanguage(false).getCountry()).orElse(""))
                 .put("apiHostUri", Optional.ofNullable(globalOsgiService.getApiHostUri()).orElse(""))
                 .put("gqlEndpoint", Optional.ofNullable(globalOsgiService.getGqlEndpoint()).orElse(""))
                 .put("paymentClientKey", Optional.ofNullable(globalOsgiService.getPaymentClientKey()).orElse(""))
                 .put("paymentAdeyenEnv", Optional.ofNullable(globalOsgiService.getPaymentAdeyenEnv()).orElse(""))
                 .put(CURRENCY_SYMBOL, Optional.ofNullable(inheritedProp.getInherited(CURRENCY_SYMBOL, String.class)).orElse(""))
-                .put(JOURNEY_PAGES, getJourneyPages(request)).build();
+                .put(JOURNEY_PAGES, getJourneyPages(request, page)).build();
     }
 
-    protected Object getJourneyPages(SlingHttpServletRequest request) {
-        PageManager pageManager = (PageManager) request.getResourceResolver().adaptTo(PageManager.class);
-        if (pageManager != null) {
-            Page currentPage = pageManager.getContainingPage(request.getResource());
+    protected Object getJourneyPages(SlingHttpServletRequest request, Page currentPage) {
+        if (currentPage != null) {
             Map<String, String> items = new HashMap<String, String>();
             while (currentPage.getContentResource(JOURNEY_PAGES) == null && currentPage.getAbsoluteParent(1).getPath() != currentPage.getPath()) {
                 currentPage = currentPage.getParent();

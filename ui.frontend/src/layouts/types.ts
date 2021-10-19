@@ -8,6 +8,7 @@ export interface BuyPlanLayoutProps {
   fullWidth?: boolean;
   maxW?: string;
   paymentButtonLabel?: string;
+  paymentMethodLabel?: string;
 }
 
 export interface SimPortInProps {
@@ -52,6 +53,7 @@ export interface OrderDetailsProps extends deleteCartItemCmsProps, topupCreditCm
 	freeSimLabel?: string;
 	steps?: string[];
 	paymentButtonLabel?: string;
+	paymentMethodLabel?: string;
 	selectedProductLabel?: string;
 	phoneNumberLabel?: string;
 	enterVoucherCodeLabel?: string;
