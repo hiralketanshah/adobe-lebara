@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:granite="http://www.adobe.com/jcr/granite/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+          jcr:primaryType="nt:unstructured"
+          jcr:title="Empty Cart Component"
+          sling:resourceType="cq/gui/components/authoring/dialog">
+    <content
+            jcr:primaryType="nt:unstructured"
+            sling:resourceType="granite/ui/components/coral/foundation/container">
+        <items jcr:primaryType="nt:unstructured">
+            <tabs
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="granite/ui/components/coral/foundation/tabs"
+                    maximized="{Boolean}true">
+                <items jcr:primaryType="nt:unstructured">
+                    <commonColumn
+                            jcr:primaryType="nt:unstructured"
+                            jcr:title="Common"
+                            sling:resourceType="granite/ui/components/coral/foundation/container">
+                        <items jcr:primaryType="nt:unstructured">
+                            <shopBuyLabel
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                    fieldDescription="Shop / Buy Label"
+                                    value="Shop / Buy"
+                                    fieldLabel="shop / Buy Label"
+                                    name="./shopBuyLabel"/>
+                            <cartDescription
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                    fieldDescription="Cart Description"
+                                    value="No contact. Change or cancel anytime"
+                                    fieldLabel="Cart Description"
+                                    name="./cartDescription"/>
+                            <addOnTabLabel
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                    fieldDescription="Add On Label"
+                                    value="Add On"
+                                    fieldLabel="addOn Tab Label"
+                                    name="./addOnTabLabel"/>
+                            <dataTabLabel
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                    fieldDescription="Data Tab Label"
+                                    value="Data"
+                                    fieldLabel="Data Tab Label"
+                                    name="./dataTabLabel"/>
+                            <plansTabLabel
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                    fieldDescription="Plans Label"
+                                    value="Plans"
+                                    fieldLabel="Plans Tab Label"
+                                    name="./plansTabLabel"/>
+                            <showDetailsLabel
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                    fieldDescription="Show Details Label"
+                                    value="SHOW DETAILS"
+                                    fieldLabel="show Details Label"
+                                    name="./showDetailsLabel"/>
+                            <buyPlanLabel
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                    fieldDescription="Buy Plan Label"
+                                    value="BUY PLAN"
+                                    fieldLabel="Buy Plan Label"
+                                    name="./buyPlanLabel"/>
+                            <continueBrowsingLabel
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                    fieldDescription="Continue Browsing Label"
+                                    value="CONTINUE BROWSING"
+                                    fieldLabel="Continue Browsing Label"
+                                    name="./continueBrowsingLabel"/>
+                        </items>
+                    </commonColumn>
+                    <column1
+                            jcr:primaryType="nt:unstructured"
+                            jcr:title="Add ons"
+                            sling:resourceType="granite/ui/components/coral/foundation/container">
+                        <items jcr:primaryType="nt:unstructured">
+                            <applicationformpathplan
+                                    cq:showOnCreate="{Boolean}true"
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="dam/cfm/components/cfpicker"
+                                    fieldLabel="Select Add ons"
+                                    name="./addOnPath"
+                                    required="{Boolean}true"
+                                    rootPath="/content/dam/lebara"/>
+                        </items>
+                    </column1>
+                    <column2
+                            jcr:primaryType="nt:unstructured"
+                            jcr:title="Data"
+                            sling:resourceType="granite/ui/components/coral/foundation/container">
+                        <items jcr:primaryType="nt:unstructured">
+                            <applicationformpathplan
+                                    cq:showOnCreate="{Boolean}true"
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="dam/cfm/components/cfpicker"
+                                    fieldLabel="Select Data"
+                                    name="./dataPath"
+                                    required="{Boolean}true"
+                                    rootPath="/content/dam/lebara"/>
+                        </items>
+                    </column2>
+                    <column3
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Plans"
+                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                        <items jcr:primaryType="nt:unstructured">
+                            <applicationformpathplan
+                                    cq:showOnCreate="{Boolean}true"
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="dam/cfm/components/cfpicker"
+                                    fieldLabel="Select Plan"
+                                    name="./planPath"
+                                    required="{Boolean}true"
+                                    rootPath="/content/dam/lebara"/>
+                        </items>
+                    </column3>
+                </items>
+            </tabs>
+        </items>
+    </content>
+</jcr:root>
