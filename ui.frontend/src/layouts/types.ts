@@ -63,7 +63,6 @@ export interface OrderDetailsProps extends deleteCartItemCmsProps, topupCreditCm
 	privacyPolicyLabel?: string;
 	privacyPolicyLink?: string;
 	voucherCodeDiscountLabel?: string;
-	emptyCartLink?: string;
   }
 
   export interface deleteCartItemCmsProps {

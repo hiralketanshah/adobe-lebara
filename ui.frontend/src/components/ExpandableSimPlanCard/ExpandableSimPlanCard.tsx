@@ -8,6 +8,7 @@ import { allowanceListProps } from "../ExpandablePlanCard/types";
 import { useHistory } from "react-router-dom";
 import useAddToCart from "../../hooks/useAddToCart";
 import { useLocalStorage } from "@rehooks/local-storage";
+import {globalConfigs, globalConstants} from  '../../GlobalConfigs.js';
 const ExpandableSimPlanCard: React.FC<ExpandableSimPlanCardProps> = ({
   planName,
   previewIcon,
@@ -23,10 +24,7 @@ const ExpandableSimPlanCard: React.FC<ExpandableSimPlanCardProps> = ({
   buttonLabel,
   addedtoCartLabel,
   viewCartLabel,
-  offerType,
-  orderDetailsLink,
-  simChoiceLink,
-  loginLink
+  offerType
 }) => {
   const history = useHistory();
   const [addItemToCart] = useAddToCart();
@@ -35,7 +33,7 @@ const ExpandableSimPlanCard: React.FC<ExpandableSimPlanCardProps> = ({
   const [isButtonDisabled, setIsButtonDisabled] = React.useState(false);
   const [userToken] = useLocalStorage("userToken");
   const handleViewCartClick = () => {
-    history.push(userToken ? (orderDetailsLink || '/') : (loginLink || ''));
+    history.push(userToken ? (globalConfigs.journeyPages[globalConstants.ORDER_DETAILS] || '/') : (globalConfigs.journeyPages[globalConstants.LOGIN]  || ''));
   };
   const filteredAllowanceList: allowanceListProps = (allowanceList && allowanceList.find((list) => list.name && list.name.includes('Data'))) || {};
   const handleAddToCart = async () => {
@@ -72,7 +70,7 @@ const ExpandableSimPlanCard: React.FC<ExpandableSimPlanCardProps> = ({
       case OfferTypes.PREPAID:
       case OfferTypes.POSTPAID: {
         await addItemToCart(parseInt(id || ''), planName, (JSON.stringify(allowanceList && allowanceList) || ''), parseFloat(cost || ''), "plan");
-        history.push(userToken ? (orderDetailsLink || '/') : (simChoiceLink || '/'));
+        history.push(userToken ? (globalConfigs.journeyPages[globalConstants.ORDER_DETAILS]  || '/') : (globalConfigs.journeyPages[globalConstants.LEBARA_SIM_CHOICE]  || '/'));
       }
     }
     setIsButtonDisabled(false);
@@ -131,7 +129,7 @@ const ExpandableSimPlanCard: React.FC<ExpandableSimPlanCardProps> = ({
             color="secondary.500"
             fontWeight={500}
           >
-            {cost} €
+            {cost} {globalConfigs.currencySymbol}
           </Text>
           <Text as="p" fontSize={14} color="lightenPrimary.150">
             {" "}

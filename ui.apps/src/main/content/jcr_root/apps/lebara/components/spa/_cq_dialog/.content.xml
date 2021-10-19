@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="nt:unstructured"
+    sling:resourceType="cq/gui/components/authoring/dialog">
+    <content
+        jcr:primaryType="nt:unstructured"
+        sling:resourceType="granite/ui/components/coral/foundation/container">
+        <items jcr:primaryType="nt:unstructured">
+            <tabs
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="granite/ui/components/coral/foundation/tabs"
+                maximized="{Boolean}true">
+                <items jcr:primaryType="nt:unstructured">
+                    <globalconfigs
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Global Configs"
+                        sling:resourceType="granite/ui/components/coral/foundation/container"
+                        margin="{Boolean}true">
+                        <items jcr:primaryType="nt:unstructured">
+                            <columns
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+                                margin="{Boolean}true">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <column
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <currencysymbol
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                                fieldDescription="Configure in language or root level to access in all child pages. "
+                                                fieldLabel="Currency Symbol"
+                                                name="./currencySymbol">
+                                                <items jcr:primaryType="nt:unstructured">
+                                                    <default
+                                                        jcr:primaryType="nt:unstructured"
+                                                        text="(Default)"
+                                                        value=""/>
+                                                    <eur
+                                                        jcr:primaryType="nt:unstructured"
+                                                        text="EUR"
+                                                        value="€"/>
+                                                </items>
+                                            </currencysymbol>
+                                            <journeypages
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
+                                                composite="{Boolean}true"
+                                                fieldDescription="Configure in language or root level to access in all child pages. "
+                                                fieldLabel="Journey Pages">
+                                                <field
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/container"
+                                                    name="./journeyPages">
+                                                    <items jcr:primaryType="nt:unstructured">
+                                                        <column
+                                                            jcr:primaryType="nt:unstructured"
+                                                            sling:resourceType="granite/ui/components/coral/foundation/container">
+                                                            <items jcr:primaryType="nt:unstructured">
+                                                                <name
+                                                                    jcr:primaryType="nt:unstructured"
+                                                                    sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                                                    fieldDescription="By default, the name will be empty"
+                                                                    fieldLabel="Name"
+                                                                    name="./name"
+                                                                    required="{Boolean}true">
+                                                                    <items jcr:primaryType="nt:unstructured">
+                                                                        <default
+                                                                            jcr:primaryType="nt:unstructured"
+                                                                            text="(Default)"
+                                                                            value=""/>
+                                                                        <lebara-sim-choice
+                                                                            jcr:primaryType="nt:unstructured"
+                                                                            text="lebara-sim-choice"
+                                                                            value="lebara-sim-choice"/>
+                                                                        <select-number
+                                                                            jcr:primaryType="nt:unstructured"
+                                                                            text="select-number"
+                                                                            value="select-number"/>
+                                                                        <new-number-choice
+                                                                            jcr:primaryType="nt:unstructured"
+                                                                            text="new-number-choice"
+                                                                            value="new-number-choice"/>
+                                                                        <sim-port-in
+                                                                            jcr:primaryType="nt:unstructured"
+                                                                            text="sim-port-in"
+                                                                            value="sim-port-in"/>
+                                                                        <personal-details
+                                                                            jcr:primaryType="nt:unstructured"
+                                                                            text="personal-details"
+                                                                            value="personal-details"/>
+                                                                        <order-details
+                                                                            jcr:primaryType="nt:unstructured"
+                                                                            text="order-details"
+                                                                            value="order-details"/>
+                                                                        <order-submitted
+                                                                            jcr:primaryType="nt:unstructured"
+                                                                            text="order-submitted"
+                                                                            value="order-submitted"/>
+                                                                        <empty-cart
+                                                                            jcr:primaryType="nt:unstructured"
+                                                                            text="empty-cart"
+                                                                            value="empty-cart"/>
+                                                                        <login
+                                                                            jcr:primaryType="nt:unstructured"
+                                                                            text="login"
+                                                                            value="login"/>
+                                                                        <register
+                                                                            jcr:primaryType="nt:unstructured"
+                                                                            text="register"
+                                                                            value="register"/>
+                                                                        <verify-email
+                                                                            jcr:primaryType="nt:unstructured"
+                                                                            text="verify-email"
+                                                                            value="verify-email"/>
+                                                                        <reset-password
+                                                                            jcr:primaryType="nt:unstructured"
+                                                                            text="reset-password"
+                                                                            value="reset-password"/>
+                                                                        <postpaid
+                                                                            jcr:primaryType="nt:unstructured"
+                                                                            text="postpaid"
+                                                                            value="postpaid"/>
+                                                                        <manage-plan
+                                                                            jcr:primaryType="nt:unstructured"
+                                                                            text="manage-plan"
+                                                                            value="manage-plan"/>
+                                                                        <postpaid-details
+                                                                            jcr:primaryType="nt:unstructured"
+                                                                            text="postpaid-details"
+                                                                            value="postpaid-details"/>
+                                                                        <postpaid-preview
+                                                                            jcr:primaryType="nt:unstructured"
+                                                                            text="postpaid-preview"
+                                                                            value="postpaid-preview"/>
+                                                                        <add-ons
+                                                                            jcr:primaryType="nt:unstructured"
+                                                                            text="add-ons"
+                                                                            value="add-ons"/>
+                                                                        <top-up
+                                                                            jcr:primaryType="nt:unstructured"
+                                                                            text="top-up"
+                                                                            value="top-up"/>
+                                                                        <prepaid
+                                                                            jcr:primaryType="nt:unstructured"
+                                                                            text="prepaid"
+                                                                            value="prepaid"/>
+                                                                    </items>
+                                                                </name>
+                                                                <path
+                                                                    jcr:primaryType="nt:unstructured"
+                                                                    sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                                                    fieldLabel="Path"
+                                                                    name="./path"
+                                                                    required="{Boolean}true"
+                                                                    rootPath="/content/lebara"/>
+                                                            </items>
+                                                        </column>
+                                                    </items>
+                                                </field>
+                                            </journeypages>
+                                        </items>
+                                    </column>
+                                </items>
+                            </columns>
+                        </items>
+                    </globalconfigs>
+                </items>
+            </tabs>
+        </items>
+    </content>
+</jcr:root>

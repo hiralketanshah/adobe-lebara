@@ -20,7 +20,7 @@ import ThreeDots from "../../assets/images/three-dots.png";
 import PlanDetailsDialog from "../PlanDetailsDialog/PlanDetailsDialog";
 //import countries from "../../static/countries";
 import TickInCircle from "../../icons/TickInCircle";
-
+import {globalConfigs} from  '../../GlobalConfigs.js';
 const DataExpandablePlanCardCheckout: React.FC<ExpandablePlanCardCheckoutProps> =
   ({
     magentoId,
@@ -94,7 +94,7 @@ const DataExpandablePlanCardCheckout: React.FC<ExpandablePlanCardCheckoutProps> 
             <Spacer />
             <Box display="contents">
               <Text fontSize="30px" fontWeight="bold" color="bodyCopy" px={5}>
-                €{price}
+                {globalConfigs.currencySymbol}{price}
               </Text>
               {!hideViewDetails && (
                 <Menu>

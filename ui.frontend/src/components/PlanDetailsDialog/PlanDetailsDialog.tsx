@@ -15,7 +15,7 @@ import {
 } from "@chakra-ui/react";
 import { PlanDetailsDialogProps } from "./types";
 import Button from "../Button/Button";
-
+import {globalConfigs} from  '../../GlobalConfigs.js';
 const PlanDetailsDialog: React.FC<PlanDetailsDialogProps> = ({
   isOpen,
   onClose,
@@ -67,7 +67,7 @@ const PlanDetailsDialog: React.FC<PlanDetailsDialogProps> = ({
               color="secondary.500"
               fontWeight={700}
             >
-              {price} €
+              {price} {globalConfigs.currencySymbol}
             </Text>
             <Text as="p" fontSize={14} color="lightenPrimary.150">
               {" "}
