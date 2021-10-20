@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:granite="http://www.adobe.com/jcr/granite/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+          jcr:primaryType="nt:unstructured"
+          jcr:title="Postpaid Component"
+          sling:resourceType="cq/gui/components/authoring/dialog">
+    <content
+            jcr:primaryType="nt:unstructured"
+            sling:resourceType="granite/ui/components/coral/foundation/container">
+        <items jcr:primaryType="nt:unstructured">
+            <tabs
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="granite/ui/components/coral/foundation/tabs"
+                    maximized="{Boolean}true">
+                <items jcr:primaryType="nt:unstructured">
+                    <common
+                            jcr:primaryType="nt:unstructured"
+                            jcr:title="postpaidPath"
+                            sling:resourceType="granite/ui/components/coral/foundation/container">
+                        <items jcr:primaryType="nt:unstructured">
+                            <path
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                    fieldLabel="Select Root Path of Postpaid Plans"
+                                    name="./rootpath"
+                                    required="{Boolean}true"
+                                    rootPath="/content/dam/lebara/markets"/>
+                            <moreDetailsLabel
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                    fieldDescription="More Details Label"
+                                    value="More Details"
+                                    fieldLabel="More Details Label"
+                                    name="./moreDetailsLabel"/>
+                            <orderNowCtaLabel
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                    fieldDescription="Order Now Label"
+                                    value="ORDER NOW"
+                                    fieldLabel="Order Now Label"
+                                    name="./orderNowLabel"/>
+                            <orderNowUrl
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/foundation/form/pathbrowser"
+                                    fieldLabel="page to be redirected to on click of order now"
+                                    name="./orderNowUrl"/>
+                        </items>
+                    </common>
+                    <duration
+                            jcr:primaryType="nt:unstructured"
+                            jcr:title="Contract Duration"
+                            sling:resourceType="granite/ui/components/coral/foundation/container">
+                        <items jcr:primaryType="nt:unstructured">
+                            <continueBrowsingLabel
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                    fieldDescription="Contract Period Label"
+                                    value="Choose your Contract period"
+                                    fieldLabel="Contract Period Label"
+                                    name="./durationLabel"/>
+                        </items>
+                    </duration>
+                    <dataVolume
+                            jcr:primaryType="nt:unstructured"
+                            jcr:title="Contract Duration"
+                            sling:resourceType="granite/ui/components/coral/foundation/container">
+                        <items jcr:primaryType="nt:unstructured">
+                            <dataVolumeLabel
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                    fieldDescription="Data Volume Label"
+                                    value="Choose your data volume"
+                                    fieldLabel="Data Volume Label"
+                                    name="./dataVolumeLabel"/>
+                        </items>
+                    </dataVolume>
+                    <abroadMinutes
+                            jcr:primaryType="nt:unstructured"
+                            jcr:title="Contract Duration"
+                            sling:resourceType="granite/ui/components/coral/foundation/container">
+                        <items jcr:primaryType="nt:unstructured">
+                            <dataVolumeLabel
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                    fieldDescription="Abroad Minutes Label"
+                                    value="Choose minutes for calls abroad"
+                                    fieldLabel="Abroad Minutes Label"
+                                    name="./abroadMinutesLabel"/>
+                        </items>
+                    </abroadMinutes>
+                    <yourOrder
+                            jcr:primaryType="nt:unstructured"
+                            jcr:title="Contract Duration"
+                            sling:resourceType="granite/ui/components/coral/foundation/container">
+                        <items jcr:primaryType="nt:unstructured">
+                            <dataVolumeLabel
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                    fieldDescription="Your Order"
+                                    value="Your Order"
+                                    fieldLabel="Your Order Label"
+                                    name="./yourOrderLabel"/>
+                        </items>
+                    </yourOrder>
+                </items>
+            </tabs>
+        </items>
+    </content>
+</jcr:root>
