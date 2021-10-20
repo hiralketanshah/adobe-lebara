@@ -19,6 +19,8 @@ import org.apache.sling.api.SlingHttpServletResponse;
 import org.osgi.framework.Constants;
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Reference;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.jcr.RepositoryException;
 import javax.jcr.Session;
@@ -47,6 +49,7 @@ public class SearchServlet extends SlingSafeMethodsServlet {
     private QueryBuilder builder;
 
     private Session session;
+    final Logger LOGGER = LoggerFactory.getLogger(getClass());
 
     @Override
     protected void doGet(SlingHttpServletRequest request, SlingHttpServletResponse response)
@@ -73,8 +76,7 @@ public class SearchServlet extends SlingSafeMethodsServlet {
                 predicate.put("1_property.value", "%"+param+"%");
                 predicate.put("1_property.operation", "like");
             }
-
-            predicate.put("p.limit", "-1");
+           // predicate.put("p.limit", "-1");
             Gson json = new Gson();
             Query query = builder.createQuery(PredicateGroup.create(predicate), session);
             SearchResult searchResult = query.getResult();
@@ -86,11 +88,10 @@ public class SearchServlet extends SlingSafeMethodsServlet {
                     searchInfo.setTitle(hit.getTitle());
                     searchInfoList.add(searchInfo);
                 } catch (RepositoryException e) {
-                    e.printStackTrace();
+                    LOGGER.error("Error in the Search",e);
                 }
             }
             response.getWriter().println(json.toJson(searchInfoList));
         }
-
     }
 }
