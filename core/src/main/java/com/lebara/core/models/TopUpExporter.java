@@ -62,8 +62,6 @@ public class TopUpExporter extends HeadingExporter {
     @ValueMapValue
     private String cfPath;
 
-    private List<String> topUpOptions;
-
     private I18n i18n;
 
     @PostConstruct
