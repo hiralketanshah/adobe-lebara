@@ -8,14 +8,8 @@ import { Text } from "@chakra-ui/react";
 import { ReduxState } from "../../redux/types";
 import { loadInitialCart } from "../../redux/actions/cartActions";
 import { setPaymentMethods } from "../../redux/actions/paymentMethodsActions";
-import {globalConfigs, globalConstants, globalCurrencies} from  '../../GlobalConfigs.js';
+import {globalConfigs, globalConstants} from  '../../GlobalConfigs.js';
 const PaymentFrame: React.FC = () => {
-  let currency: string = "";
-  for (const [key, value] of Object.entries(globalCurrencies)) {
-    if (value == globalConfigs.currencySymbol) {
-      currency = key;
-    }
-  }
   const [address, setAddress] = useState<string>("");
   const dispatch = useDispatch();
   const loadPaymentMethods = useCallback(() => {
@@ -109,7 +103,7 @@ const PaymentFrame: React.FC = () => {
           billingAddressRequired: true,
           amount: {
             value: Number(total),
-            currency: currency,
+            currency: globalConfigs.currencyName,
           },
         },
       },

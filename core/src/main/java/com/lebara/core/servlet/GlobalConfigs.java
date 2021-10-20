@@ -36,7 +36,7 @@ import java.util.Optional;
 public class GlobalConfigs extends SlingSafeMethodsServlet {
 
     private static final long serialVersionUID = 1L;
-    private static final String CURRENCY_SYMBOL = "currencySymbol";
+    private static final String CURRENCY_NAME = "currencyName";
     private static final String JOURNEY_PAGES = "journeyPages";
     @Reference
     private GlobalOsgiService globalOsgiService;
@@ -63,7 +63,7 @@ public class GlobalConfigs extends SlingSafeMethodsServlet {
                 .put("gqlEndpoint", Optional.ofNullable(globalOsgiService.getGqlEndpoint()).orElse(""))
                 .put("paymentClientKey", Optional.ofNullable(globalOsgiService.getPaymentClientKey()).orElse(""))
                 .put("paymentAdeyenEnv", Optional.ofNullable(globalOsgiService.getPaymentAdeyenEnv()).orElse(""))
-                .put(CURRENCY_SYMBOL, Optional.ofNullable(inheritedProp.getInherited(CURRENCY_SYMBOL, String.class)).orElse(""))
+                .put(CURRENCY_NAME, Optional.ofNullable(inheritedProp.getInherited(CURRENCY_NAME, String.class)).orElse(""))
                 .put(JOURNEY_PAGES, getJourneyPages(request, page)).build();
     }
 
