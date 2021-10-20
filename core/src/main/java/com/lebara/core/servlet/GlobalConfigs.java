@@ -51,7 +51,7 @@ public class GlobalConfigs extends SlingSafeMethodsServlet {
     protected Object getGlobalData(SlingHttpServletRequest request) {
         Resource res = request.getResource().getChild("jcr:content");
         InheritanceValueMap inheritedProp = new HierarchyNodeInheritanceValueMap(res);
-        PageManager pageManager = (PageManager) request.getResourceResolver().adaptTo(PageManager.class);
+        PageManager pageManager = request.getResourceResolver().adaptTo(PageManager.class);
         Page page = null;
         if (pageManager != null) {
             page = pageManager.getContainingPage(request.getResource());

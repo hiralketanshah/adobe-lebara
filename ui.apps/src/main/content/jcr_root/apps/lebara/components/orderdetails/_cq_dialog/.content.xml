@@ -275,6 +275,7 @@
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                                 fieldLabel="Payment Method Label"
+												value="Select Payment Method"
                                                 name="./paymentMethodLabel"/>
                                             <paymentbuttonlabel
                                                 jcr:primaryType="nt:unstructured"
