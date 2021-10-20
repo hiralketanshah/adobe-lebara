@@ -14,7 +14,7 @@
                 <items jcr:primaryType="nt:unstructured">
                     <common
                             jcr:primaryType="nt:unstructured"
-                            jcr:title="postpaidPath"
+                            jcr:title="Common"
                             sling:resourceType="granite/ui/components/coral/foundation/container">
                         <items jcr:primaryType="nt:unstructured">
                             <path
@@ -61,7 +61,7 @@
                     </duration>
                     <dataVolume
                             jcr:primaryType="nt:unstructured"
-                            jcr:title="Contract Duration"
+                            jcr:title="Data Volume"
                             sling:resourceType="granite/ui/components/coral/foundation/container">
                         <items jcr:primaryType="nt:unstructured">
                             <dataVolumeLabel
@@ -75,7 +75,7 @@
                     </dataVolume>
                     <abroadMinutes
                             jcr:primaryType="nt:unstructured"
-                            jcr:title="Contract Duration"
+                            jcr:title="Abroad Minutes"
                             sling:resourceType="granite/ui/components/coral/foundation/container">
                         <items jcr:primaryType="nt:unstructured">
                             <dataVolumeLabel
@@ -89,7 +89,7 @@
                     </abroadMinutes>
                     <yourOrder
                             jcr:primaryType="nt:unstructured"
-                            jcr:title="Contract Duration"
+                            jcr:title="Your Order"
                             sling:resourceType="granite/ui/components/coral/foundation/container">
                         <items jcr:primaryType="nt:unstructured">
                             <dataVolumeLabel
@@ -99,6 +99,55 @@
                                     value="Your Order"
                                     fieldLabel="Your Order Label"
                                     name="./yourOrderLabel"/>
+                            <productInformationLabel
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                    fieldDescription="Product information Label"
+                                    value="Product information"
+                                    fieldLabel="Product information Label"
+                                    name="./productInformationLabel"/>
+                            <contractdurationLabel
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                    fieldDescription="Contract duration Label"
+                                    value="Contract duration"
+                                    fieldLabel="Contract duration Label"
+                                    name="./yourOrderContractdurationLabel"/>
+                            <data
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                    fieldDescription="Data Label"
+                                    value="Data"
+                                    fieldLabel="Data Label"
+                                    name="./yourOrderDataLabel"/>
+                            <internationalMin
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                    fieldDescription="International Min Label"
+                                    value="International Min"
+                                    fieldLabel="International Min Label"
+                                    name="./yourOrderInternationalMinLabel"/>
+                            <minutesInGermany
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                    fieldDescription="Minutes in Germany Label"
+                                    value="Minutes in Germany"
+                                    fieldLabel="Minutes in Germany Label"
+                                    name="./yourOrderMinutesInGermany"/>
+                            <perMonthOrderTotal
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                    fieldDescription="Per Month Order Total Label"
+                                    value="Per Month Order Total"
+                                    fieldLabel="Per Month Order Total Label"
+                                    name="./yourOrderPerMonthOrderTotalLabel"/>
+                            <oneTimeActivationFee
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                    fieldDescription="One-time activation fee Label"
+                                    value="One-time activation fee"
+                                    fieldLabel="One-time activation fee Label"
+                                    name="./yourOrderOneTimeActivationFeeLabel"/>
                         </items>
                     </yourOrder>
                 </items>
