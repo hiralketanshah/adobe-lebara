@@ -11,6 +11,7 @@ import {
 import { useLocation } from "react-router-dom";
 import { EmptyCartShopCardProps } from "./types";
 import ExpandableSimPlanCard from "../ExpandableSimPlanCard/ExpandableSimPlanCard";
+import TickInCircle from "../../icons/TickInCircle";
 
 const EmptyCartShopCard: React.FC<EmptyCartShopCardProps> = ({
   expandableAddOnsCardProps,
@@ -23,6 +24,7 @@ const EmptyCartShopCard: React.FC<EmptyCartShopCardProps> = ({
   plansTabLabel,
   showDetailsLabel,
   buyPlanLabel,
+  addToCartLabel,
 }) => {
   const location = useLocation<{ selectedType: string }>();
   const selectedType = location.state?.selectedType || "plan";
@@ -100,13 +102,28 @@ const EmptyCartShopCard: React.FC<EmptyCartShopCardProps> = ({
           </TabList>
           <TabPanels>
             <TabPanel>
-              <ExpandableSimPlanCard {...expandableAddOnsCardProps } showLabel={showDetailsLabel} buttonLabel={buyPlanLabel}/>
+              <ExpandableSimPlanCard
+                {...expandableAddOnsCardProps}
+                showLabel={showDetailsLabel}
+                buttonLabel={addToCartLabel}
+                previewIcon={<TickInCircle fill="#13357A" tickFill="#EA4984" />}
+              />
             </TabPanel>
             <TabPanel color="primary.600">
-              <ExpandableSimPlanCard {...expandableSimPlanCardProps} showLabel={showDetailsLabel} buttonLabel={buyPlanLabel}/>
+              <ExpandableSimPlanCard
+                {...expandableSimPlanCardProps}
+                showLabel={showDetailsLabel}
+                buttonLabel={addToCartLabel}
+                previewIcon={<TickInCircle fill="#13357A" tickFill="#EA4984" />}
+              />
             </TabPanel>
             <TabPanel color="primary.600">
-              <ExpandableSimPlanCard {...expandablePlanCardProps} showLabel={showDetailsLabel} buttonLabel={buyPlanLabel}/>
+              <ExpandableSimPlanCard
+                {...expandablePlanCardProps}
+                showLabel={showDetailsLabel}
+                buttonLabel={buyPlanLabel}
+                previewIcon={<TickInCircle fill="#13357A" tickFill="#EA4984" />}
+              />
             </TabPanel>
           </TabPanels>
         </Tabs>

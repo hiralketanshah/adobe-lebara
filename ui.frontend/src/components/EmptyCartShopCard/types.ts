@@ -15,6 +15,8 @@ export interface EmptyCartShopCardProps {
   continueBrowsingLabel?: string;
   emptyBasketText?: string;
   goBackText?: string;
+  addToCartLabel?: string;
+  continueBrowsinglink?: string;
 }
 
 export interface CountriesList extends CountriesListOption {}

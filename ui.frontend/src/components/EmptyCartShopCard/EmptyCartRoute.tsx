@@ -21,6 +21,7 @@ const EmptyCartRoute: React.FC<EmptyCartShopCardProps> = ({
   continueBrowsingLabel,
   emptyBasketText,
   goBackText,
+  continueBrowsinglink,
 }) => {
   const history = useHistory();
   
@@ -64,7 +65,7 @@ const EmptyCartRoute: React.FC<EmptyCartShopCardProps> = ({
           fontWeight="700"
           size="16px"
           color="secondary.500"
-          onClick={() => history.push("/")}
+          onClick={() => history.push(continueBrowsinglink || "/")}
         >
           {continueBrowsingLabel}
         </Button>
