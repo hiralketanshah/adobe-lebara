@@ -6,6 +6,7 @@ import SelectNumberAndOrderDetailsLayout from "../../layouts/SelectNumberAndOrde
 import { ReduxState } from "../../redux/types";
 import { highlightButton } from "../../redux/actions/highlightActions";
 import { SimChoiceProps } from "./types";
+import {globalConfigs, globalConstants} from '../../GlobalConfigs.js';
 
 const SimChoiceRoute: React.FC<SimChoiceProps> = ({
   description,
