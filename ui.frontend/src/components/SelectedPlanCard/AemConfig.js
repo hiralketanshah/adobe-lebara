@@ -8,4 +8,4 @@ const SelectedPlanCardConfig = {
   },
 };
 
-MapTo("lebara/components/usp")(SelectedPlanCard, SelectedPlanCardConfig);
+MapTo("lebara/components/dynamiccart")(SelectedPlanCard, SelectedPlanCardConfig);
