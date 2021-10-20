@@ -16,6 +16,7 @@ const globalConfigs = window.lebaraGlobalConfigs ? {
 
 const globalConstants = Object.freeze({
     LEBARA_SIM_CHOICE: 'lebara-sim-choice',
+    MOBILE_NUMBER_FROM_OPERATOR: 'mobile-number-from-another-operator-choice',
     SELECT_NUMBER: 'select-number',
     NEW_NUMBER_CHOICE: 'new-number-choice',
     SIM_PORT_IN: 'sim-port-in',

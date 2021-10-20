@@ -74,6 +74,10 @@
                                                                             jcr:primaryType="nt:unstructured"
                                                                             text="lebara-sim-choice"
                                                                             value="lebara-sim-choice"/>
+                                                                        <mobile-number-from-another-operator-choice
+                                                                            jcr:primaryType="nt:unstructured"
+                                                                            text="mobile-number-from-another-operator-choice"
+                                                                            value="mobile-number-from-another-operator-choice"/>
                                                                         <select-number
                                                                             jcr:primaryType="nt:unstructured"
                                                                             text="select-number"
