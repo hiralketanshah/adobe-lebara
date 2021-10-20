@@ -19,12 +19,13 @@ import { selectVoucher } from "../redux/actions/selectVoucherActions";
 import Select from "../components/Select/Select";
 import DataFreeSimTopUpCreditCard from "../components/FreeSimTopUpCreditCard/FreeSimTopUpCreditCard";
 import { OrderDetailsProps } from "../layouts/types";
+import { globalConfigs, globalConstants } from "../GlobalConfigs";
 
 const OrderDetailsRoute: React.FC<OrderDetailsProps> = ({ ...props }) => {
   const { selectedProductLabel, grandTotalLabel, applyVoucherLabel, enterVoucherCodeLabel, consentLabel,
     paymentButtonLabel, phoneNumberLabel, viewPlansLabel, showDetailsLabel, removeLabel, autoRenewDesc, autoRenewLabel,
     voucherCodeExpiredMessage, voucherCodeInvalidMessage, addVoucherCodeLabel, privacyPolicyLabel, privacyPolicyLink, voucherCodeDiscountLabel,
-    emptyCartLink, deleteCartItemDesc, deleteCartItemTitle, deleteCartItemNoButtonLabel, deleteCartItemYesButtonLabel,
+    deleteCartItemDesc, deleteCartItemTitle, deleteCartItemNoButtonLabel, deleteCartItemYesButtonLabel,
     topUpCapDesc, topUpCapLabel, topUpCreditLabel, topUpRecommendedLabel } = props;
   const [removeFromCartApi] = useMutation(REMOVE_FROM_CART);
   const dispatch = useDispatch();
@@ -64,7 +65,7 @@ const OrderDetailsRoute: React.FC<OrderDetailsProps> = ({ ...props }) => {
         )
       );
       if (res.data.removeProduct.items.length === 0) {
-        history.replace((emptyCartLink || ''), {
+        history.replace((globalConfigs.journeyPages[globalConstants.EMPTY_CART] || ''), {
           selectedType: type,
         });
       }
@@ -112,7 +113,7 @@ const OrderDetailsRoute: React.FC<OrderDetailsProps> = ({ ...props }) => {
   );
   React.useEffect(() => {
     if (!isCartItemsLoading && cartItems.length === 0) {
-      history.replace((emptyCartLink || ''), {
+      history.replace((globalConfigs.journeyPages[globalConstants.EMPTY_CART] || ''), {
         selectedType: "plan",
       });
     }

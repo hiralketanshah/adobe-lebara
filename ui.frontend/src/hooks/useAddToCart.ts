@@ -4,7 +4,7 @@ import { loadInitialCart } from "../redux/actions/cartActions";
 import mapMagentoProductToCartItem from "../utils/mapMagentoProductToCartItem";
 import ADD_TO_CART from "../graphql/ADD_TO_CART";
 import { selectProduct } from "../redux/actions/selectProductActions";
-
+import {globalConfigs} from  '../GlobalConfigs.js';
 function useAddToCart() {
   const [addToCartApi] = useMutation(ADD_TO_CART);
   const dispatch = useDispatch();
@@ -34,7 +34,7 @@ function useAddToCart() {
         dispatch(
           selectProduct({
             id: id.toString(),
-            product: `${name}\n €${price}`,
+            product: `${name}\n ${globalConfigs.currencySymbol}${price}`,
             isPostPaid: false,
           })
         );

@@ -6,7 +6,7 @@ import DeleteIcon from "../../icons/DeleteIcon";
 import Select from "../Select/Select";
 import Switch from "../ToggleSwitch/Switch";
 import InfoBox from "../InfoBox/InfoBox";
-
+import {globalConfigs} from  '../../GlobalConfigs.js';
 const DataSelectedTopUpCreditCard: React.FC<SelectedTopUpCreditCardProps> = ({
   onRemove,
   magentoId,
@@ -74,7 +74,7 @@ const DataSelectedTopUpCreditCard: React.FC<SelectedTopUpCreditCardProps> = ({
             options={prices.map((price) => ({
               key: price,
               value: price.toString(),
-              name: `€${price}`,
+              name: `${globalConfigs.currencySymbol}${price}`,
             }))}
           />
         </Box>
@@ -131,7 +131,7 @@ const DataSelectedTopUpCreditCard: React.FC<SelectedTopUpCreditCardProps> = ({
                 ].map((price) => ({
                   key: price,
                   value: price.toString(),
-                  name: `€${price}`,
+                  name: `${globalConfigs.currencySymbol}${price}`,
                 }))}
               />
             </Box>

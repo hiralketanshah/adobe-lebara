@@ -6,7 +6,7 @@ import Button from "../Button/Button";
 import DeleteIcon from "../../icons/DeleteIcon";
 import useAddToCart from "../../hooks/useAddToCart";
 import REMOVE_FROM_CART from "../../graphql/REMOVE_FROM_CART";
-
+import {globalConfigs} from  '../../GlobalConfigs.js';
 const DataFreeSimTopUpCreditCard: React.FC<FreeSimTopUpCreditCardProps> = ({
   magentoId,
   selectedPrice,
@@ -64,7 +64,7 @@ const DataFreeSimTopUpCreditCard: React.FC<FreeSimTopUpCreditCardProps> = ({
           fontWeight="bold"
           color="bodyCopy"
         >
-          €{selectedPrice}
+          {globalConfigs.currencySymbol}{selectedPrice}
         </Box>
       </Flex>
       <Divider my={4} />
@@ -91,7 +91,7 @@ const DataFreeSimTopUpCreditCard: React.FC<FreeSimTopUpCreditCardProps> = ({
               });
             }}
           >
-            €{price}
+            {globalConfigs.currencySymbol}{price}
           </Button>
         ))}
       </Flex>

@@ -4,7 +4,7 @@ import { Box, Divider, Grid, GridItem } from "@chakra-ui/react";
 import { PlanCardProps } from "./types";
 import Title from "../Title/Title";
 import Button from "../Button/Button";
-
+import {globalConfigs} from  '../../GlobalConfigs.js';
 const ViewPlans: React.FC<PlanCardProps> = ({
   offer,
   buttonLabel,
@@ -111,7 +111,7 @@ const ViewPlans: React.FC<PlanCardProps> = ({
           pl="2px"
           fontWeight="bold"
         >
-          €{offer?.cost}
+          {globalConfigs.currencySymbol}{offer?.cost}
         </Box>
         <Button variant="solid" w="134px" onClick={() => {}}>
           {buttonLabel}

@@ -20,10 +20,7 @@ const PlanOffers: React.FC<PlanOffersProps> = ({
   ctaBottomLabel,
   buttonLabel,
   addedtoCartLabel,
-  viewCartLabel,
-  orderDetailsLink,
-  simChoiceLink,
-  loginLink
+  viewCartLabel
 }) => {
   const history = useHistory();
   const linkStyles = {
@@ -103,9 +100,6 @@ const PlanOffers: React.FC<PlanOffersProps> = ({
                 buttonLabel={buttonLabel}
                 addedtoCartLabel={addedtoCartLabel}
                 viewCartLabel={viewCartLabel}
-                orderDetailsLink={orderDetailsLink}
-                simChoiceLink={simChoiceLink}
-                loginLink={loginLink}
                 previewIcon={<TickInCircle fill="#13357A" tickFill="#EA4984" />} />
               </Box>
             ))}
