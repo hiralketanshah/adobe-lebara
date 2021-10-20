@@ -17,6 +17,20 @@
                             jcr:title="Common"
                             sling:resourceType="granite/ui/components/coral/foundation/container">
                         <items jcr:primaryType="nt:unstructured">
+                            <emptycartheader1
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                    fieldDescription="Empty Cart Header Text"
+                                    value="Your basket is empty :’("
+                                    fieldLabel="Empty Cart Main Header Text"
+                                    name="./emptycartheader1"/>
+                            <emptycartheader2
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                    fieldDescription="Empty Cart Secondary Header Text"
+                                    value="Please go back shopping and come here when you have added a product to the basket!"
+                                    fieldLabel="Empty Cart Secondary Header Text"
+                                    name="./emptycartheader2"/>
                             <shopBuyLabel
                                     jcr:primaryType="nt:unstructured"
                                     sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
@@ -73,6 +87,11 @@
                                     value="CONTINUE BROWSING"
                                     fieldLabel="Continue Browsing Label"
                                     name="./continueBrowsingLabel"/>
+                            <continueBrowsingURL
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/foundation/form/pathbrowser"
+                                    fieldLabel="Page path to map to continue browsing"
+                                    name="./continueBrowsinglink"/>
                         </items>
                     </commonColumn>
                     <column1

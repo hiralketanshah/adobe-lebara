@@ -55,6 +55,12 @@ public class EmptyCartExporter implements ComponentExporter {
     private String cartDescription;
 
     @ValueMapValue
+    private String emptycartheader1;
+
+    @ValueMapValue
+    private String emptycartheader2;
+
+    @ValueMapValue
     private String shopBuyLabel;
     @ValueMapValue
     private String addOnTabLabel;
@@ -68,6 +74,8 @@ public class EmptyCartExporter implements ComponentExporter {
     private String buyPlanLabel;
     @ValueMapValue
     private String continueBrowsingLabel;
+    @ValueMapValue
+    private String continueBrowsinglink;
 
     private I18n i18n;
 
@@ -121,6 +129,18 @@ public class EmptyCartExporter implements ComponentExporter {
 
     public String getContinueBrowsingLabel() {
         return continueBrowsingLabel;
+    }
+
+    public String getEmptycartheader1() {
+        return emptycartheader1;
+    }
+
+    public String getEmptycartheader2() {
+        return emptycartheader2;
+    }
+
+    public String getContinueBrowsinglink() {
+        return continueBrowsinglink;
     }
 
     @Override
