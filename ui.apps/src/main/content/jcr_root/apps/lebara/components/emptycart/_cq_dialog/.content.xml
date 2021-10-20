@@ -80,6 +80,13 @@
                                     value="BUY PLAN"
                                     fieldLabel="Buy Plan Label"
                                     name="./buyPlanLabel"/>
+                            <addToCartLabel
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                    fieldDescription="Add To Cart Label"
+                                    value="ADD TO CART"
+                                    fieldLabel="Add To Cart Label"
+                                    name="./addToCartLabel"/>
                             <continueBrowsingLabel
                                     jcr:primaryType="nt:unstructured"
                                     sling:resourceType="granite/ui/components/coral/foundation/form/textfield"

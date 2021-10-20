@@ -73,6 +73,8 @@ public class EmptyCartExporter implements ComponentExporter {
     @ValueMapValue
     private String buyPlanLabel;
     @ValueMapValue
+    private String addToCartLabel;
+    @ValueMapValue
     private String continueBrowsingLabel;
     @ValueMapValue
     private String continueBrowsinglink;
@@ -125,6 +127,10 @@ public class EmptyCartExporter implements ComponentExporter {
 
     public String getBuyPlanLabel() {
         return buyPlanLabel;
+    }
+
+    public String getAddToCartLabel() {
+        return addToCartLabel;
     }
 
     public String getContinueBrowsingLabel() {
