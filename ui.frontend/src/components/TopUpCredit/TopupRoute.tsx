@@ -29,6 +29,7 @@ const TopupRoute: React.FC<TopUpCreditProps> = ({
   buyTopUpLabel,
   popUpCartMessage,
   popUpCtaLabel,
+  topUpOptions,
 }) => {
   const toast = useToast();
   const dispatch = useDispatch();
@@ -38,7 +39,6 @@ const TopupRoute: React.FC<TopUpCreditProps> = ({
   const [userToken] = useLocalStorage("userToken");
   const cartItems = useSelector((state: ReduxState) => state.cart.items);
 
-  const topUpOptions = useSelector((state: ReduxState) => state.topUps.items);
   const addTopupToCart = async (amount: number) => {
     let finalAmount = amount;
     const previousTopUp = cartItems.find((t) => t.duration.includes("Top-up"));
