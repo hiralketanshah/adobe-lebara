@@ -55,10 +55,10 @@ public class EmptyCartExporter implements ComponentExporter {
     private String cartDescription;
 
     @ValueMapValue
-    private String emptycartheader1;
+    private String goBackText;
 
     @ValueMapValue
-    private String emptycartheader2;
+    private String emptyBasketText;
 
     @ValueMapValue
     private String shopBuyLabel;
@@ -137,12 +137,12 @@ public class EmptyCartExporter implements ComponentExporter {
         return continueBrowsingLabel;
     }
 
-    public String getEmptycartheader1() {
-        return emptycartheader1;
+    public String getGoBackText() {
+        return goBackText;
     }
 
-    public String getEmptycartheader2() {
-        return emptycartheader2;
+    public String getEmptyBasketText() {
+        return emptyBasketText;
     }
 
     public String getContinueBrowsinglink() {
