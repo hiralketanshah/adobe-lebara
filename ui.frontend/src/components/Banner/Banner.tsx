@@ -49,7 +49,7 @@ const Banner: React.FC<BannerProps> = ({
         >
           {title}
         </Text>
-        {text.map((item) => (
+        {text?.map((item) => (
           <Flex alignItems="baseline">
             <Box height="12px" width="12px">
               <img src={CheckMark} alt="Check" />
