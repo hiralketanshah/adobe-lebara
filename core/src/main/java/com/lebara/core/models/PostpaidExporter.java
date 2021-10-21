@@ -8,7 +8,6 @@ import com.lebara.core.dto.OfferFragmentBean;
 import com.lebara.core.utils.AemUtils;
 import com.lebara.core.utils.CFUtils;
 import org.apache.commons.lang3.StringUtils;
-import org.apache.commons.lang3.math.NumberUtils;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.api.resource.ResourceResolver;
@@ -20,7 +19,9 @@ import org.apache.sling.models.annotations.injectorspecific.SlingObject;
 import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
 
 import javax.annotation.PostConstruct;
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Map;
 import java.util.Set;
 
 @Model(adaptables = SlingHttpServletRequest.class, adapters = {PostpaidExporter.class, ComponentExporter.class},
@@ -74,9 +75,9 @@ public class PostpaidExporter implements ComponentExporter {
     private String yourOrderOneTimeActivationFeeLabel;
 
 
-    Set<String> duration = new HashSet<>();
-    Set<String> internationalMinutes = new HashSet<>();
-    Set<String> data = new HashSet<>();
+    Map<String, String> duration = new HashMap<>();
+    Map<String, String> internationalMinutes = new HashMap<>();
+    Map<String, String> data = new HashMap<>();
 
 
     private I18n i18n;
@@ -88,28 +89,28 @@ public class PostpaidExporter implements ComponentExporter {
         if (postpaidRootPath != null && StringUtils.equalsIgnoreCase(postpaidRootPath.getName(), "postpaid")) {
             for (Resource postpaidPlan : postpaidRootPath.getChildren()) {
                 OfferFragmentBean offerFragmentBean = CFUtils.populateOffers(postpaidPlan, i18n);
-                duration.add(offerFragmentBean.getValidity());
+                duration.put(offerFragmentBean.getValidity(),offerFragmentBean.getValidityText() );
                 for (CFAllowance allowance : offerFragmentBean.getAllowanceList()) {
                     if (StringUtils.equalsIgnoreCase(allowance.getName(), "DE_Postpaid_Data")) {
-                        data.add(allowance.getFormatedValue());
+                        data.put(allowance.getFormatedValue(),offerFragmentBean.getDataVolumeText());
                     }
                     if (StringUtils.equalsIgnoreCase(allowance.getName(), "DE_Postpaid_Intl_Mins")) {
-                        internationalMinutes.add(allowance.getFormatedValue());
+                        internationalMinutes.put(allowance.getFormatedValue(),offerFragmentBean.getMinutesToCountriesText());
                     }
                 }
             }
         }
     }
 
-    public Set<String> getDuration() {
+    public Map<String, String> getDuration() {
         return duration;
     }
 
-    public Set<String> getData() {
+    public Map<String, String> getData() {
         return data;
     }
 
-    public Set<String> getInternationalMinutes() {
+    public Map<String, String> getInternationalMinutes() {
         return internationalMinutes;
     }
 

@@ -126,6 +126,9 @@ public class CFUtils {
                 offerFragmentBean.setCost(CFUtils.getElementValue(offerFragment, "cost"));
                 offerFragmentBean.setPlanName(CFUtils.getElementValue(offerFragment, "name"));
                 offerFragmentBean.setValidity(CFUtils.getElementValue(offerFragment, "validity") + " " + (i18n == null ? "Days" : i18n.get("Days")));
+                offerFragmentBean.setValidityText(CFUtils.getElementValue(offerFragment, "validityText"));
+                offerFragmentBean.setValidityText(CFUtils.getElementValue(offerFragment, "validityText"));
+                offerFragmentBean.setValidityText(CFUtils.getElementValue(offerFragment, "validityText"));
                 offerFragmentBean.setId(CFUtils.getElementValue(offerFragment, "offerid"));
                 offerFragmentBean.setOfferType(CFUtils.getElementValue(offerFragment, "offerType"));
                 if (offerFragment.getElement("additionalOffers") != null) {
