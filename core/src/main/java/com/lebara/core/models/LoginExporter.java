@@ -28,6 +28,8 @@ public class LoginExporter implements ComponentExporter {
     @ScriptVariable
     private Resource resource;
 
+    @ValueMapValue
+    private String  loginModuleType;
     /**
      * Login form fields Labels
      */
@@ -35,22 +37,33 @@ public class LoginExporter implements ComponentExporter {
     private String loginLabel;
 
     @ValueMapValue
-    private String emailAddressLabel;
+    private String loginEmailAddressLabel;
 
     @ValueMapValue
-    private String passwordLabel;
+    private String loginPasswordLabel;
 
     @ValueMapValue
-    private String forgotPassWordmsg;
+    private String loginForgotPassWordmsg;
 
     @ValueMapValue
-    private String resetLinkTextLabel;
+    private String loginResetLinkTextLabel;
 
     @ValueMapValue
-    private String resetLinkLabel;
+    private String loginResetLinkLabel;
 
     @ValueMapValue
     private String loginButton;
+
+    @ValueMapValue
+    private String loginRegistrationMessage;
+
+    @ValueMapValue
+    private String loginRegistrationCtaLabel;
+
+    @ValueMapValue
+    private String loginRegistrationCtaLink;
+
+
 
     /**
      * Registration form fields label
@@ -85,8 +98,7 @@ public class LoginExporter implements ComponentExporter {
     @ValueMapValue
     private String hideLabel;
 
-    @ValueMapValue
-    private String showRegistration;
+
 
     /**
      * Guest Login form fields labels
@@ -98,16 +110,22 @@ public class LoginExporter implements ComponentExporter {
     private String guestEmailAddressLabel;
 
     @ValueMapValue
-    private String guestPasswordLabel;
+    private String guestMobileNumberLabel;
 
     @ValueMapValue
-    private String forgotPasswordMsg;
+    private String guestForgotPasswordMsg;
+
+    @ValueMapValue
+    private String guestResetLinkTextLabel;
+
+    @ValueMapValue
+    private String guestResetLinkLabel;
 
     @ValueMapValue
     private String guestContinueLabel;
 
-    @ValueMapValue
-    private String showGuestLogin;
+
+
 
     /**
      * Error Message handling
@@ -139,29 +157,27 @@ public class LoginExporter implements ComponentExporter {
     @ValueMapValue
     private String mobileNumberFieldPattern;
 
+    public String getLoginRegistrationMessage() { return loginRegistrationMessage; }
+
+    public String getLoginRegistrationCtaLabel() { return loginRegistrationCtaLabel; }
+
+    public String getLoginRegistrationCtaLink() { return loginRegistrationCtaLink; }
+
+    public String getLoginModuleType() { return loginModuleType; }
+
     public String getLoginLabel() {
         return loginLabel;
     }
 
-    public String getEmailAddressLabel() {
-        return emailAddressLabel;
-    }
+    public String getLoginEmailAddressLabel() { return loginEmailAddressLabel; }
 
-    public String getPasswordLabel() {
-        return passwordLabel;
-    }
+    public String getLoginPasswordLabel() { return loginPasswordLabel; }
 
-    public String getForgotPassWordmsg() {
-        return forgotPassWordmsg;
-    }
+    public String getLoginForgotPassWordmsg() { return loginForgotPassWordmsg; }
 
-    public String getResetLinkTextLabel() {
-        return resetLinkTextLabel;
-    }
+    public String getLoginResetLinkTextLabel() { return loginResetLinkTextLabel; }
 
-    public String getResetLinkLabel() {
-        return resetLinkLabel;
-    }
+    public String getLoginResetLinkLabel() { return loginResetLinkLabel; }
 
     public String getLoginButton() {
         return loginButton;
@@ -207,9 +223,6 @@ public class LoginExporter implements ComponentExporter {
         return hideLabel;
     }
 
-    public String getShowRegistration() {
-        return showRegistration;
-    }
 
     public String getGuestLoginLabel() {
         return guestLoginLabel;
@@ -219,21 +232,17 @@ public class LoginExporter implements ComponentExporter {
         return guestEmailAddressLabel;
     }
 
-    public String getGuestPasswordLabel() {
-        return guestPasswordLabel;
-    }
-
-    public String getForgotPasswordMsg() {
-        return forgotPasswordMsg;
-    }
-
     public String getGuestContinueLabel() {
         return guestContinueLabel;
     }
 
-    public String getShowGuestLogin() {
-        return showGuestLogin;
-    }
+    public String getGuestMobileNumberLabel() { return guestMobileNumberLabel; }
+
+    public String getGuestForgotPasswordMsg() { return guestForgotPasswordMsg; }
+
+    public String getGuestResetLinkTextLabel() { return guestResetLinkTextLabel; }
+
+    public String getGuestResetLinkLabel() { return guestResetLinkLabel; }
 
     public String getEmailFieldErrorMessage() {
         return emailFieldErrorMessage;

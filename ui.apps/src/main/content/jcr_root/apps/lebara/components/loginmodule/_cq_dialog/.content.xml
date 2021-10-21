@@ -13,6 +13,46 @@
                 sling:resourceType="granite/ui/components/coral/foundation/tabs"
                 maximized="{Boolean}true">
                 <items jcr:primaryType="nt:unstructured">
+                    <genric
+                            jcr:primaryType="nt:unstructured"
+                            jcr:title="Genric"
+                            sling:resourceType="granite/ui/components/coral/foundation/container"
+                            margin="{Boolean}true">
+                        <items jcr:primaryType="nt:unstructured">
+                            <columns
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+                                    margin="{Boolean}true">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <column
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/container">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <selectLoginModule
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                                    fieldLabel="Select Login Module"
+                                                    name="./loginModuleType"
+                                                    required="true">
+                                                <items jcr:primaryType="nt:unstructured">
+                                                    <loginGuest
+                                                            jcr:primaryType="nt:unstructured"
+                                                    text="Login-Guest"
+                                                    value="loginGuest" />
+                                                    <loginRegistration
+                                                            jcr:primaryType="nt:unstructured"
+                                                            text="Login-Registration"
+                                                            value="loginRegistration" />
+
+                                                </items>
+                                            </selectLoginModule>
+
+                                        </items>
+                                    </column>
+                                </items>
+                            </columns>
+                        </items>
+                    </genric>
                     <login
                         jcr:primaryType="nt:unstructured"
                         jcr:title="Login Form Fields"
@@ -38,43 +78,50 @@
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                                 fieldDescription="Email Address /Mobile Number Label"
                                                 fieldLabel="Email Address /Mobile Number Label"
-                                                name="./emailAddressLabel"/>
+                                                name="./loginEmailAddressLabel"/>
                                             <passwordlabel
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                                 fieldDescription="Email Password Label"
                                                 fieldLabel="Password Label"
-                                                name="./passwordLabel"/>
+                                                name="./loginPasswordLabel"/>
                                             <forgotpasslabel
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                                 fieldDescription="Forgot password message"
                                                 fieldLabel="Forgot password message"
-                                                name="./forgotPassWordmsg"/>
+                                                name="./loginForgotPassWordmsg"/>
                                             <resetlinktextlabel
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                                 fieldLabel="Reset Text Label"
-                                                name="./resetLinkTextLabel"/>
+                                                name="./loginResetLinkTextLabel"/>
                                             <resetlinklabel
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                                 fieldLabel="Reset Link Label"
-                                                name="./resetLinkLabel"/>
+                                                name="./loginResetLinkLabel"/>
                                             <loginlabel
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                                 fieldLabel="Login button Label"
                                                 name="./loginButton"/>
-                                            <showlogin
+                                            <loginregistrationmsg
                                                     jcr:primaryType="nt:unstructured"
-                                                    sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
-                                                    defaultChecked="{Boolean}false"
-                                                    fieldDescription="Check -'Show Label' checkbox to Display the Login Module."
-                                                    fieldLabel="Show Login"
-                                                    name="./showlogin"
-                                                    text="Show Login"
-                                                    value="{Boolean}true"/>
+                                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                    fieldLabel="Registration Message Label"
+                                                    name="./loginRegistrationMessage"/>
+                                            <loginregistrationtextcta
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                    fieldLabel="Registration CTA Text Label"
+                                                    name="./loginRegistrationCtaLabel"/>
+                                            <loginregistrationctalink
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                    fieldLabel="Registration CTA Link Label"
+                                                    name="./loginRegistrationCtaLink"/>
+
                                         </items>
                                     </column>
                                 </items>
@@ -147,15 +194,7 @@
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                                 fieldLabel="Hide Label"
                                                 name="./hideLabel"/>
-                                            <showregistration
-                                                    jcr:primaryType="nt:unstructured"
-                                                    sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
-                                                    defaultChecked="{Boolean}false"
-                                                    fieldDescription="Check -'Show Registration' checkbox to Display the Registration Module."
-                                                    fieldLabel="Show Login"
-                                                    name="./showRegistration"
-                                                    text="Show Registration"
-                                                    value="{Boolean}true"/>
+
                                         </items>
                                     </column>
                                 </items>
@@ -180,7 +219,7 @@
                                         jcr:primaryType="nt:unstructured"
                                         sling:resourceType="granite/ui/components/coral/foundation/container">
                                         <items jcr:primaryType="nt:unstructured">
-                                            <logintab
+                                            <guestlogintab
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                                 fieldLabel="Guest Tab Label"
@@ -194,29 +233,34 @@
                                             <mobilenumberlabel
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                                fieldDescription="Lebara Mobile Number Label"
+                                                fieldDescription="Lebara Password / Mobile Number Label"
                                                 fieldLabel="Lebara Mobile Number Label"
-                                                name="./guestPasswordLabel"/>
-                                            <forgotpasslabel
-                                                jcr:primaryType="nt:unstructured"
-                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                                fieldDescription="Confirm Lebara Mobile Number Label"
-                                                fieldLabel="Confirm Lebara Mobile Number Label"
-                                                name="./forgotPasswordMsg"/>
+                                                name="./guestMobileNumberLabel"/>
+                                            <guestforgotpassmsg
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                    fieldDescription="Forgot password message"
+                                                    fieldLabel="Forgot password message"
+                                                    name="./guestForgotPasswordMsg"/>
+                                            <guestresetlinktextlabel
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                    fieldDescription="Guest reset text label"
+                                                    fieldLabel="Reset Text Label"
+                                                    name="./guestResetLinkTextLabel"/>
+                                            <guestresetlinklabel
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                    fieldDescription="Guest reset link label"
+                                                    fieldLabel="Reset Link Label"
+                                                    name="./guestResetLinkLabel"/>
                                             <guestcontinuebuton
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                                fieldLabel="Guest Continue button Label"
+                                                fieldDescription="Guest continue button Label"
+                                                fieldLabel="Login Button Label"
                                                 name="./guestContinueLabel"/>
-                                            <showguestlogin
-                                                    jcr:primaryType="nt:unstructured"
-                                                    sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
-                                                    defaultChecked="{Boolean}false"
-                                                    fieldDescription="Check -'Show Guest Login' checkbox to Display the Guest Login Module."
-                                                    fieldLabel="Show Login"
-                                                    name="./showGuestLogin"
-                                                    text="Show Guest Login"
-                                                    value="{Boolean}true"/>
+
                                         </items>
                                     </column>
                                 </items>
