@@ -141,13 +141,20 @@
                                     value="Per Month Order Total"
                                     fieldLabel="Per Month Order Total Label"
                                     name="./yourOrderPerMonthOrderTotalLabel"/>
-                            <oneTimeActivationFee
+                            <oneTimeActivationFeeLabel
                                     jcr:primaryType="nt:unstructured"
                                     sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                     fieldDescription="One-time activation fee Label"
                                     value="One-time activation fee"
                                     fieldLabel="One-time activation fee Label"
                                     name="./yourOrderOneTimeActivationFeeLabel"/>
+                            <oneTimeActivationFee
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                    fieldDescription="One-time activation fee"
+                                    value="15"
+                                    fieldLabel="One-time activation fee"
+                                    name="./yourOrderOneTimeActivationFee"/>
                         </items>
                     </yourOrder>
                 </items>

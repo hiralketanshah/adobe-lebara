@@ -73,11 +73,14 @@ public class PostpaidExporter implements ComponentExporter {
     private String yourOrderPerMonthOrderTotalLabel;
     @ValueMapValue
     private String yourOrderOneTimeActivationFeeLabel;
+    @ValueMapValue
+    private String yourOrderOneTimeActivationFee;
 
 
     Map<String, String> duration = new HashMap<>();
     Map<String, String> internationalMinutes = new HashMap<>();
     Map<String, String> data = new HashMap<>();
+    Map<String, String> postpaidPlans = new HashMap<>();
 
 
     private I18n i18n;
@@ -89,15 +92,21 @@ public class PostpaidExporter implements ComponentExporter {
         if (postpaidRootPath != null && StringUtils.equalsIgnoreCase(postpaidRootPath.getName(), "postpaid")) {
             for (Resource postpaidPlan : postpaidRootPath.getChildren()) {
                 OfferFragmentBean offerFragmentBean = CFUtils.populateOffers(postpaidPlan, i18n);
-                duration.put(offerFragmentBean.getValidity(),offerFragmentBean.getValidityText() );
+                String key = offerFragmentBean.getValidity();
+                String value = offerFragmentBean.getId();
+                duration.put(offerFragmentBean.getValidity(), offerFragmentBean.getValidityText());
                 for (CFAllowance allowance : offerFragmentBean.getAllowanceList()) {
-                    if (StringUtils.equalsIgnoreCase(allowance.getName(), "DE_Postpaid_Data")) {
-                        data.put(allowance.getFormatedValue(),offerFragmentBean.getDataVolumeText());
+                    if (StringUtils.endsWithIgnoreCase(allowance.getName(), "Postpaid_Data")) {
+                        data.put(allowance.getFormatedValue(), offerFragmentBean.getDataVolumeText());
+                        key += "-" + allowance.getFormatedValue();
                     }
-                    if (StringUtils.equalsIgnoreCase(allowance.getName(), "DE_Postpaid_Intl_Mins")) {
-                        internationalMinutes.put(allowance.getFormatedValue(),offerFragmentBean.getMinutesToCountriesText());
+                    if (StringUtils.endsWithIgnoreCase(allowance.getName(), "Postpaid_Intl_Mins")) {
+                        internationalMinutes.put(allowance.getFormatedValue(), offerFragmentBean.getMinutesToCountriesText());
+                        key += "-" + allowance.getFormatedValue();
                     }
                 }
+                key += "-" + offerFragmentBean.getCost();
+                postpaidPlans.put(key, value);
             }
         }
     }
@@ -168,6 +177,14 @@ public class PostpaidExporter implements ComponentExporter {
 
     public String getYourOrderOneTimeActivationFeeLabel() {
         return yourOrderOneTimeActivationFeeLabel;
+    }
+
+    public String getYourOrderOneTimeActivationFee() {
+        return yourOrderOneTimeActivationFee;
+    }
+
+    public Map<String, String> getPostpaidPlans() {
+        return postpaidPlans;
     }
 
     @Override
