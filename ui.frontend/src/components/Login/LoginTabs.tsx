@@ -19,7 +19,7 @@ import GuestTab from "./GuestTab";
 import { ReduxState } from "../../redux/types";
 import CongratulationsPopUp from "../CongratulationsPopUp/CongratulationsPopUp";
 
-const LoginTabs: React.FC<LoginTabsProps> = ({ isPasswordResetSucessfull }) => {
+const LoginTabs: React.FC<LoginTabsProps> = ({ isPasswordResetSucessfull, items }) => {
   const cartItems = useSelector((state: ReduxState) => state.cart);
   const congratsMessage: string = "Your Password has been Reset Successfully.";
   const registerBlock = (
@@ -146,7 +146,7 @@ const LoginTabs: React.FC<LoginTabsProps> = ({ isPasswordResetSucessfull }) => {
             {registerBlock}
           </TabPanel>
           <TabPanel>
-            <LoginTab />
+            <LoginTab items= {items} />
             {registerBlock}
           </TabPanel>
         </TabPanels>

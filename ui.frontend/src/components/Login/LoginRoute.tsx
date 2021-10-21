@@ -5,8 +5,9 @@ import { useDispatch } from "react-redux";
 import { highlightButton } from "../../redux/actions/highlightActions";
 import LoginTabsComponent from "./LoginTabs";
 import BuyPlanLayout from "../../layouts/BuyPlanLayout";
+import { loginModuleProps } from "./types";
 
-const LoginRoute: React.FC = () => {
+const LoginRoute: React.FC<loginModuleProps> = ({...loginModuleProps}) => {
   const history = useHistory();
   const dispatch = useDispatch();
   const location = useLocation<{ isPasswordResetSucessfull?: boolean }>();
@@ -29,6 +30,7 @@ const LoginRoute: React.FC = () => {
       <Box p={{ base: "20px", lg: 0 }} pt={{ lg: "89px" }} pb={{ lg: "164px" }}>
         <LoginTabsComponent
           isPasswordResetSucessfull={location.state?.isPasswordResetSucessfull}
+          items={{...loginModuleProps}}
         />
       </Box>
     </BuyPlanLayout>

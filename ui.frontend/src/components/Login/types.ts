@@ -10,11 +10,7 @@ export interface GuestFormSchema {
     lebaraMobile?: string;
     confirmLebaraMobile?: string;
 }
-
-export interface LoginTabsProps extends TabProps {
-  icon?: IconType;
-  isPasswordResetSucessfull?: boolean;
-
+export interface loginModuleProps {
   loginModuleType : string;
   loginLabel : string;
   loginEmailAddressLabel : string;
@@ -52,5 +48,8 @@ export interface LoginTabsProps extends TabProps {
   mobileNumberMaxLength : string;
   mobileNumberFieldPattern : string;
 }
-
-
+export interface LoginTabsProps extends TabProps {
+  icon?: IconType;
+  isPasswordResetSucessfull?: boolean;
+  items: string;
+}

@@ -9,7 +9,7 @@ import FormikInput from "../Formik/FormikInput/FormikInput";
 import Link from "../Link/Link";
 import AUTHENTICATE_USER_SPS from "../../graphql/AUTHENTICATE_USER_SPS";
 
-const LoginTab: React.FC<LoginTabsProps> = () => {
+const LoginTab: React.FC<LoginTabsProps> = ({...loginTabsProps}) => {
   const history = useHistory();
   const client = useApolloClient();
 
