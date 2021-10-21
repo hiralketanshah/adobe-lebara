@@ -69,7 +69,7 @@ public class LoginExporter implements ComponentExporter {
      * Registration form fields label
      */
     @ValueMapValue
-    private Boolean registrationLabel;
+    private String registrationLabel;
 
     @ValueMapValue
     private String registrationEmailAddress;
@@ -183,7 +183,7 @@ public class LoginExporter implements ComponentExporter {
         return loginButton;
     }
 
-    public Boolean getRegistrationLabel() {
+    public String getRegistrationLabel() {
         return registrationLabel;
     }
 
