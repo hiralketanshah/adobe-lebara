@@ -43,3 +43,6 @@ import "./FaqFolder/AemConfig.js";
 import "./MiniFooter/AemConfig.js";
 import "./PersonalDetailsForm/AemConfig.js";
 import "./TopUpCredit/AemConfig.js";
+import "./SelectedPlanCard/AemConfig.js";
+import "./EmptyCartShopCard/AemConfig.js";
+import "./Search/AemConfig.js";

@@ -6,6 +6,7 @@ import SelectNumberAndOrderDetailsLayout from "../../layouts/SelectNumberAndOrde
 import { ReduxState } from "../../redux/types";
 import { highlightButton } from "../../redux/actions/highlightActions";
 import { SimChoiceProps } from "./types";
+import {globalConfigs, globalConstants} from '../../GlobalConfigs.js';
 
 const SimChoiceRoute: React.FC<SimChoiceProps> = ({
   description,
@@ -37,13 +38,13 @@ const SimChoiceRoute: React.FC<SimChoiceProps> = ({
               key: 0,
               variant: highlightedButton === 0 ? "outline" : "solid",
               children: ctaOneLable,
-              path: "/login",
+              path: globalConfigs.journeyPages[globalConstants.LOGIN],
             },
             {
               key: 1,
               children: ctaTwoLable,
               variant: highlightedButton === 1 ? "outline" : "solid",
-              path: "/mobile-number-from-another-operator-choice",
+              path: globalConfigs.journeyPages[globalConstants.MOBILE_NUMBER_FROM_OPERATOR],
             },
           ]}
         />

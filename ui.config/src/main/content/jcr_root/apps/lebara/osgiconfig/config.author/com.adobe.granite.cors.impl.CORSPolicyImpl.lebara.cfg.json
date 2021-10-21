@@ -1,0 +1,29 @@
+{
+  "supportscredentials":true,
+  "exposedheaders":[
+    ""
+  ],
+  "supportedmethods":[
+    "GET",
+    "HEAD",
+    "POST"
+  ],
+  "alloworigin":[
+    ""
+  ],
+  "maxage:Integer":1800,
+  "alloworiginregexp":[
+    "https://.*\\.lebara\\.com"
+  ],
+  "allowedpaths":[
+    ".*"
+  ],
+  "supportedheaders":[
+    "Origin",
+    "Accept",
+    "X-Requested-With",
+    "Content-Type",
+    "Access-Control-Request-Method",
+    "Access-Control-Request-Headers"
+  ]
+}

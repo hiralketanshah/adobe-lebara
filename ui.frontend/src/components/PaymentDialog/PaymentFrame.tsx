@@ -8,11 +8,12 @@ import { Text } from "@chakra-ui/react";
 import { ReduxState } from "../../redux/types";
 import { loadInitialCart } from "../../redux/actions/cartActions";
 import { setPaymentMethods } from "../../redux/actions/paymentMethodsActions";
+import {globalConfigs, globalConstants} from  '../../GlobalConfigs.js';
 const PaymentFrame: React.FC = () => {
   const [address, setAddress] = useState<string>("");
   const dispatch = useDispatch();
   const loadPaymentMethods = useCallback(() => {
-    fetch(`https://api-aggregator.lebara.com/payments/adyen/paymentMethods`, {
+    fetch(`${globalConfigs.apiHostUri}/payments/adyen/paymentMethods`, {
       credentials: "include",
       method: "POST",
     })
@@ -48,7 +49,7 @@ const PaymentFrame: React.FC = () => {
   const [error, setError] = useState("");
   const total =
     (cartItems.reduce((sum, t) => sum + t.price, 0) * 100).toLocaleString(
-      "en-US",
+      globalConfigs.locale,
       {
         maximumFractionDigits: 2,
         useGrouping: false,
@@ -64,7 +65,7 @@ const PaymentFrame: React.FC = () => {
   const onAdditionalDetails = useCallback(
     (state: any) => {
       fetch(
-        `https://api-aggregator.lebara.com/payments/adyen/payments/details?orderRef=${orderRef.current}`,
+        `${globalConfigs.apiHostUri}/payments/adyen/payments/details?orderRef=${orderRef.current}`,
         {
           credentials: "include",
           method: "POST",
@@ -100,17 +101,16 @@ const PaymentFrame: React.FC = () => {
           hasHolderName: true,
           holderNameRequired: true,
           billingAddressRequired: true,
-          name: "Credit or debit card",
           amount: {
             value: Number(total),
-            currency: "EUR",
+            currency: globalConfigs.currencyName,
           },
         },
       },
-      locale: "en_US",
+      locale: globalConfigs.locale,
       showPayButton: true,
-      clientKey: "test_H6OSQDTUINBCDPAD2QBO2CBX2AKULOWL",
-      environment: "test",
+      clientKey: globalConfigs.paymentClientKey,
+      environment: globalConfigs.paymentAdeyenEnv,
 
       paymentMethodsResponse: paymentMethods,
       onAdditionalDetails,
@@ -118,20 +118,20 @@ const PaymentFrame: React.FC = () => {
       onSubmit: (state: any, component: any) => {
         if (state.isValid) {
           component.setStatus("loading");
-          fetch(`https://api-aggregator.lebara.com/payments/adyen/payments`, {
+          fetch(`${globalConfigs.apiHostUri}/payments/adyen/payments`, {
             credentials: "include",
             method: "POST",
             body: JSON.stringify({
               channel: "Web",
-              country: "DE",
+              country: globalConfigs.country ? globalConfigs.country : globalConfigs.locale,
               userType: "Registered",
               personalDetails: {
                 firstName:
-                  location.state?.personalDetails?.firstName || "Guest",
-                lastName: location.state?.personalDetails?.lastName || "User",
+                  location.state?.personalDetails?.firstName,
+                lastName: location.state?.personalDetails?.lastName,
                 emailId: location.state?.isGuest
                   ? location?.state.email
-                  : location.state?.personalDetails?.email || "test1@gmail.com",
+                  : location.state?.personalDetails?.email,
               },
               portIn: location.state?.portIn
                 ? {
@@ -141,13 +141,12 @@ const PaymentFrame: React.FC = () => {
               addresses: [
                 {
                   address1:
-                    location.state?.personalDetails?.streetName ||
-                    "AVENUE DE HAMBOURG",
+                    location.state?.personalDetails?.streetName,
                   address2:
-                    location.state?.personalDetails?.houseNumber || "139",
+                    location.state?.personalDetails?.houseNumber,
                   city:
-                    location.state?.personalDetails?.townCity || "MARSEILLE",
-                  postcode: location.state?.personalDetails?.zipCode || "13008",
+                    location.state?.personalDetails?.townCity,
+                  postcode: location.state?.personalDetails?.zipCode,
                   addition: location.state?.personalDetails?.addition,
                 },
               ],
@@ -192,7 +191,7 @@ const PaymentFrame: React.FC = () => {
               }
               if (res) {
                 dispatch(loadInitialCart([]));
-                history.push(`/order-submitted/${res}`, {
+                history.push(`${(globalConfigs.journeyPages[globalConstants.ORDER_SUBMITTED] || '/')}/${res}`, {
                   isGuest: location?.state?.isGuest,
                   email: location?.state?.email,
                   phoneNumber: location?.state?.phoneNumber,

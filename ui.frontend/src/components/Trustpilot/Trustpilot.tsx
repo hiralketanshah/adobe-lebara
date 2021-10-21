@@ -1,6 +1,7 @@
 import React from "react";
 import { Box } from "@chakra-ui/react";
 import { TrustpilotProps } from "./types";
+import { globalConfigs } from "../../GlobalConfigs";
 
 const Trustpilot: React.FC<TrustpilotProps> = () => {
   const ref = React.useRef(null);
@@ -12,7 +13,7 @@ const Trustpilot: React.FC<TrustpilotProps> = () => {
   return (
     <Box bg="white" d="inline-block" py="12px" borderRadius="12px" w="280px">
       <div
-        data-locale="en-GB"
+        data-locale={globalConfigs.locale || "en-GB"}
         data-theme="light"
         data-template-id="5419b6ffb0d04a076446a9af"
         data-businessunit-id="4ef7b044000064000511f816"
