@@ -204,7 +204,7 @@ public class CrudOperationEpc {
                     name = allowances.getAccount().getName();
                     unit = allowances.getAccount().getUnit().getAbbreviation();
                 }
-                if (StringUtils.isNotBlank(value) && StringUtils.isNotBlank(name) && StringUtils.isNotBlank(unit)) {
+                if (StringUtils.isNoneBlank(value, name, unit)) {
                     cfAllowance.setValue(value);
                     cfAllowance.setName(name);
                     cfAllowance.setUnit(unit);
