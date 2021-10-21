@@ -11,6 +11,7 @@ import REMOVE_FROM_CART from "../graphql/REMOVE_FROM_CART";
 import { loadInitialCart } from "../redux/actions/cartActions";
 import mapMagentoProductToCartItem from "../utils/mapMagentoProductToCartItem";
 import { CartItem } from "../redux/types/cartTypes";
+import { globalConfigs, globalConstants } from "../GlobalConfigs";
 
 const SelectNumberAndOrderDetailsLayout: React.FC<SelectNumberAndOrderDetailsLayoutProps> =
   ({ heading, children }) => {
@@ -73,7 +74,7 @@ const SelectNumberAndOrderDetailsLayout: React.FC<SelectNumberAndOrderDetailsLay
                         )
                       )
                     );
-                    history.push("/postpaid", history.location.state);
+                    history.push((globalConfigs.journeyPages[globalConstants.POSTPAID]  || '/'), history.location.state);
                   });
                 }}
               >

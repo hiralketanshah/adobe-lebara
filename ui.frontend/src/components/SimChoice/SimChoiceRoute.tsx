@@ -12,6 +12,8 @@ const SimChoiceRoute: React.FC<SimChoiceProps> = ({
   description,
   ctaOneLable,
   ctaTwoLable,
+  ctaOneLink,
+  ctaTwoLink
 }) => {
   const dispatch = useDispatch();
   const highlightedButton = useSelector(
@@ -38,13 +40,13 @@ const SimChoiceRoute: React.FC<SimChoiceProps> = ({
               key: 0,
               variant: highlightedButton === 0 ? "outline" : "solid",
               children: ctaOneLable,
-              path: globalConfigs.journeyPages[globalConstants.LOGIN],
+              path: ctaOneLink,
             },
             {
               key: 1,
               children: ctaTwoLable,
               variant: highlightedButton === 1 ? "outline" : "solid",
-              path: globalConfigs.journeyPages[globalConstants.MOBILE_NUMBER_FROM_OPERATOR],
+              path: ctaTwoLink,
             },
           ]}
         />

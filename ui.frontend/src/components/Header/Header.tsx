@@ -35,6 +35,7 @@ import MiniHeader from "../MiniHeader/MiniHeader";
 import { ReduxState } from "../../redux/types";
 // import LebaraLogo from "../../assets/images/lebara-logo.svg";
 import NewSIMOfferCard from "../NewSImOfferCard/NewSImOfferCard";
+import { globalConfigs, globalConstants } from "../../GlobalConfigs";
 
 const Header: React.FC<HeaderProps> = ({
   logoPath,
@@ -53,12 +54,12 @@ const Header: React.FC<HeaderProps> = ({
         .length > 0;
     history.push(
       cartItems.length === 0
-        ? "/empty-cart"
+        ? (globalConfigs.journeyPages[globalConstants.EMPTY_CART]  || '/')
         : userToken || !hasDataPlan
         ? userToken
-          ? "/order-details"
-          : "/login"
-        : "/lebara-sim-choice"
+          ? (globalConfigs.journeyPages[globalConstants.ORDER_DETAILS]  || '/')
+          : (globalConfigs.journeyPages[globalConstants.LOGIN]  || '/')
+        : (globalConfigs.journeyPages[globalConstants.LEBARA_SIM_CHOICE]  || '/')
     );
   };
   return (

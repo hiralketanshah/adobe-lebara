@@ -8,6 +8,7 @@ import { highlightButton } from "../../redux/actions/highlightActions";
 import { ReduxState } from "../../redux/types";
 import useAddToCart from "../../hooks/useAddToCart";
 import { MobileNumberPortProps } from "./types";
+import { globalConfigs, globalConstants } from "../../GlobalConfigs";
 
 const MobileFromAnotherOperatorChoiceRoute: React.FC<MobileNumberPortProps> = ({
   description,
@@ -49,7 +50,7 @@ const MobileFromAnotherOperatorChoiceRoute: React.FC<MobileNumberPortProps> = ({
                 if (!cartItems.find((t) => t.id === 99999999)) {
                   await addItemToCart(99999999, "Free Sim", "", 0, "free-sim");
                 }
-                history.push("/sim-port-in");
+                history.push((globalConfigs.journeyPages[globalConstants.SIM_PORT_IN]  || '/'));
               },
               variant: highlightedButton === 0 ? "outline" : "solid",
             },
@@ -61,7 +62,7 @@ const MobileFromAnotherOperatorChoiceRoute: React.FC<MobileNumberPortProps> = ({
                 if (!cartItems.find((t) => t.id === 99999999)) {
                   await addItemToCart(99999999, "Free Sim", "", 0, "free-sim");
                 }
-                history.push("/personal-details");
+                history.push((globalConfigs.journeyPages[globalConstants.PERSONAL_DETAILS]  || '/'));
               },
             },
           ]}
