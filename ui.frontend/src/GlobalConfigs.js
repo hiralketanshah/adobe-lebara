@@ -1,14 +1,22 @@
+const globalCurrencies = Object.freeze({
+  EUR: '€'
+});
+
 const globalConfigs = window.lebaraGlobalConfigs ? {
     apiHostUri: window.lebaraGlobalConfigs.apiHostUri,
     gqlEndpoint: window.lebaraGlobalConfigs.gqlEndpoint,
-    currencySymbol: window.lebaraGlobalConfigs.currencySymbol,
+    currencyName: window.lebaraGlobalConfigs.currencyName,
+    currencySymbol: window.lebaraGlobalConfigs.currencyName && globalCurrencies.hasOwnProperty(window.lebaraGlobalConfigs.currencyName)? globalCurrencies[window.lebaraGlobalConfigs.currencyName] : globalCurrencies['EUR'],
     paymentClientKey: window.lebaraGlobalConfigs.paymentClientKey,
     paymentAdeyenEnv: window.lebaraGlobalConfigs.paymentAdeyenEnv,
+    locale: window.lebaraGlobalConfigs.locale,
+    country: window.lebaraGlobalConfigs.country ? window.lebaraGlobalConfigs.country : window.lebaraGlobalConfigs.locale,
     journeyPages: JSON.parse(window.lebaraGlobalConfigs.journeyPages)
 } : {};
 
 const globalConstants = Object.freeze({
     LEBARA_SIM_CHOICE: 'lebara-sim-choice',
+    MOBILE_NUMBER_FROM_OPERATOR: 'mobile-number-from-another-operator-choice',
     SELECT_NUMBER: 'select-number',
     NEW_NUMBER_CHOICE: 'new-number-choice',
     SIM_PORT_IN: 'sim-port-in',
@@ -27,5 +35,4 @@ const globalConstants = Object.freeze({
     TOP_UP: 'top-up',
     PREPAID: 'prepaid'
   });
-
   module.exports = {globalConfigs, globalConstants}

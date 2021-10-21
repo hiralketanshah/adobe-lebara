@@ -19,7 +19,8 @@ Include conf.d/variables/custom.vars
 	DocumentRoot "${DOCROOT}"
 	# Add header breadcrumbs for help in troubleshooting
 	<IfModule mod_headers.c>
-		Header add X-Vhost "publish"
+		Header add X-Vhost "lebara-de-publish"
+		Header always set Access-Control-Allow-Origin "*"
 	</IfModule>
 	<Directory />
 		<IfModule disp_apache2.c>

@@ -35,7 +35,7 @@ const PurchaseSummary: React.FC<PurchaseSummaryProps> = ({ items, grandTotalLabe
       {globalConfigs.currencySymbol}
         {items
           .reduce((sum, t) => sum + t.amount, 0)
-          .toLocaleString("en-US", {
+          .toLocaleString(globalConfigs.locale, {
             maximumFractionDigits: 2,
             useGrouping: false,
           })}
