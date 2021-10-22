@@ -22,12 +22,12 @@ const LoginTab: React.FC<LoginTabsProps> = ({...loginModuleProps}) => {
     const errors: LoginFormSchema = {};
     const { email, password } = values;
     if (!email) {
-      errors.email = "Please enter a email address/mobile number";
+      errors.email = loginModuleProps.loginEmailMobileErrMessage;
     } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(email)) {
       if (!/^[0-9]+$/i.test(email))
-        errors.email = "Please enter a valid email address/mobile number";
+        errors.email = loginModuleProps.loginEmailMobileErrMessage;
     }
-    if (!password) errors.password = "Please enter a password";
+    if (!password) errors.password = loginModuleProps.passwordFieldErrorMessage;
 
     return errors;
   };
@@ -82,25 +82,25 @@ const LoginTab: React.FC<LoginTabsProps> = ({...loginModuleProps}) => {
           <Flex flexDirection="column" gridGap="20px">
             <FormikInput
               name="email"
-              label="Email Address/Mobile Number"
+              label={loginModuleProps.loginEmailAddressLabel}
               isRequired
             />
             <FormikInput
               name="password"
-              label="Password/Mobile Number"
+              label={loginModuleProps.loginPasswordLabel}
               inputProps={{ type: "password" }}
               isRequired
             />
             <Text fontSize={14} fontWeight="400" mb="5px">
-              Forgotten your password?{" "}
-              <Link href="/reset-password">Reset it</Link>{" "}
+              {loginModuleProps.loginForgotPassWordmsg}{" "}
+              <Link href="/reset-password">{loginModuleProps.loginResetLinkTextLabel}</Link>{" "}
             </Text>
             <Button
               isDisabled={Object.keys(errors).length > 0 || isSubmitting}
               isFullWidth
               type="submit"
             >
-              Login
+              {loginModuleProps.loginButton}
             </Button>
           </Flex>
         </form>

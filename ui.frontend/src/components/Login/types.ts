@@ -14,6 +14,7 @@ export interface loginModuleProps {
   loginModuleType : string;
   loginLabel : string;
   loginEmailAddressLabel : string;
+  loginEmailMobileErrMessage: string;
   loginPasswordLabel : string;
   loginForgotPassWordmsg : string;
   loginResetLinkTextLabel : string;
@@ -35,6 +36,7 @@ export interface loginModuleProps {
   guestLoginLabel : string;
   guestEmailAddressLabel : string;
   guestMobileNumberLabel : string;
+  guestMobileNumberConfirmLabel: string;
   guestForgotPasswordMsg : string;
   guestResetLinkTextLabel : string;
   guestResetLinkLabel : string;

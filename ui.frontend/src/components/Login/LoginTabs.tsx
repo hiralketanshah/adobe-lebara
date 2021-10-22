@@ -121,7 +121,7 @@ const LoginTabs: React.FC<LoginTabsProps> = ({ isPasswordResetSucessfull, ...log
             _selected={{ bg: "white" }}
             _focus={{ boxShadow: "none" }}
           >
-            Guest
+            {loginModuleProps.guestLoginLabel}
           </Tab>
           <Tab
             bg="grey.50"
@@ -130,7 +130,7 @@ const LoginTabs: React.FC<LoginTabsProps> = ({ isPasswordResetSucessfull, ...log
             _selected={{ bg: "white" }}
             _focus={{ boxShadow: "none" }}
           >
-            Login
+            {loginModuleProps.loginLabel}
           </Tab>
         </TabList>
 

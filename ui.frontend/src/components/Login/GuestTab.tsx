@@ -26,20 +26,20 @@ const GuestTab: React.FC<LoginTabsProps> = ({...loginModuleProps}) => {
     const errors: GuestFormSchema = {};
     const { email, lebaraMobile, confirmLebaraMobile } = values;
     if (!email) {
-      errors.email = "Please enter a email address";
+      errors.email = loginModuleProps.emailFieldErrorMessage;
     } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(email)) {
-      errors.email = "Please enter a valid email address";
+      errors.email = loginModuleProps.validEmailFieldErrorMessage;
     }
     if (!lebaraMobile)
-      errors.lebaraMobile = "Please enter a lebara mobile number";
+      errors.lebaraMobile = loginModuleProps.mobileNumberNotMatchErrorMessage;
     else if (!phoneNumberRegex.test(lebaraMobile))
-      errors.lebaraMobile = "Please enter 10-12 digits including 0";
+      errors.lebaraMobile = loginModuleProps.mobileNumberFieldPattern;
     if (!confirmLebaraMobile)
-      errors.confirmLebaraMobile = "Please enter a lebara mobile number";
+      errors.confirmLebaraMobile = loginModuleProps.mobileNumberNotMatchErrorMessage;
     else if (!phoneNumberRegex.test(confirmLebaraMobile))
-      errors.confirmLebaraMobile = "Please enter 10-12 digits including 0";
+      errors.confirmLebaraMobile = loginModuleProps. mobileNumberFieldPattern;
     else if (lebaraMobile !== confirmLebaraMobile)
-      errors.confirmLebaraMobile = "Mobile numbers doesn't matched";
+      errors.confirmLebaraMobile = loginModuleProps.mobileNumberNotMatchErrorMessage;
     return errors;
   };
   return (
@@ -63,11 +63,11 @@ const GuestTab: React.FC<LoginTabsProps> = ({...loginModuleProps}) => {
                 },
               });
             } else if (res.error) {
-              setValidLebaraSim("Please use a valid lebara mobile number");
+              setValidLebaraSim(loginModuleProps.validMobileNumberErrorMessage);
             }
           })
           .catch(() => {
-            setValidLebaraSim("Please use a valid lebara mobile number");
+            setValidLebaraSim(loginModuleProps.validMobileNumberErrorMessage);
           });
       }}
       validate={validate}
@@ -75,15 +75,15 @@ const GuestTab: React.FC<LoginTabsProps> = ({...loginModuleProps}) => {
       {({ errors, handleSubmit, isSubmitting }) => (
         <form onSubmit={handleSubmit}>
           <Flex flexDirection="column" gridGap="20px">
-            <FormikInput name="email" label="Email Address" isRequired />
+            <FormikInput name="email" label={loginModuleProps.guestEmailAddressLabel} isRequired />
             <FormikInput
               name="lebaraMobile"
-              label="Lebara Mobile Number"
+              label={loginModuleProps.guestMobileNumberLabel}
               isRequired
             />
             <FormikInput
               name="confirmLebaraMobile"
-              label="Confirm Lebara Mobile Number"
+              label={loginModuleProps.guestMobileNumberConfirmLabel}
               isRequired
             />
             {validLebaraSim && (
@@ -100,7 +100,7 @@ const GuestTab: React.FC<LoginTabsProps> = ({...loginModuleProps}) => {
               isDisabled={Object.keys(errors).length > 0 || isSubmitting}
               isFullWidth
             >
-              Continue
+              {loginModuleProps.registrationContinueButton}
             </Button>
           </Flex>
         </form>
