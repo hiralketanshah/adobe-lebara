@@ -29,6 +29,7 @@ import {
 } from "../../utils/lebara.constants";
 import Select from "../Select/Select";
 import { useHistory } from "react-router-dom";
+import { globalConfigs, globalConstants } from "../../GlobalConfigs";
 
 const SimPortNumberForm: React.FC<SimPortNumberFormProps> = ({
   confirm,
@@ -97,7 +98,7 @@ const SimPortNumberForm: React.FC<SimPortNumberFormProps> = ({
     },
     validationSchema,
     onSubmit: (values) => {
-      history.push("/personal-details", {
+      history.push((globalConfigs.journeyPages[globalConstants.PERSONAL_DETAILS]  || '/'), {
         portIn: {
           dob: `${values.month}/${values.day}/${values.year}`,
           msisdn: values.mobileNumber,

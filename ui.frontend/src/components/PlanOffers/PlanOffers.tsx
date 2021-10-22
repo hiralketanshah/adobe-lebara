@@ -7,7 +7,7 @@ import ExpandableSimPlanCard from "../ExpandableSimPlanCard/ExpandableSimPlanCar
 import Button from "../Button/Button";
 import { useHistory } from "react-router-dom";
 import TickInCircle from "../../icons/TickInCircle";
-
+import {globalConfigs, globalConstants} from  '../../GlobalConfigs.js';
 const PlanOffers: React.FC<PlanOffersProps> = ({
   offers,
   heading,
@@ -111,7 +111,7 @@ const PlanOffers: React.FC<PlanOffersProps> = ({
             minW={{ base: "100%", lg: "320px" }}
             alignSelf="center"
             onClick={() => {
-               history.push("/prepaid", history.location.state);
+               history.push((globalConfigs.journeyPages[globalConstants.PREPAID]  || '/'), history.location.state);
             }}
           >
             {ctaBottomLabel}
