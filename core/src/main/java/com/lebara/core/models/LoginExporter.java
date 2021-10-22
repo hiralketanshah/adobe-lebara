@@ -21,10 +21,13 @@ public class LoginExporter implements ComponentExporter {
     protected static final String RESOURCE_TYPE = "lebara/components/loginmodule";
     @SlingObject
     private SlingHttpServletRequest slingRequest;
+
     @SlingObject
     private ResourceResolver resourceResolver;
+
     @ScriptVariable
     private Resource resource;
+
     @ValueMapValue
     private String loginModuleType;
     /**
@@ -32,22 +35,31 @@ public class LoginExporter implements ComponentExporter {
      */
     @ValueMapValue
     private String loginLabel;
+
     @ValueMapValue
     private String loginEmailAddressLabel;
+
     @ValueMapValue
     private String loginPasswordLabel;
+
     @ValueMapValue
     private String loginForgotPassWordmsg;
+
     @ValueMapValue
     private String loginResetLinkTextLabel;
+
     @ValueMapValue
     private String loginResetLinkLabel;
+
     @ValueMapValue
     private String loginButton;
+
     @ValueMapValue
     private String loginRegistrationMessage;
+
     @ValueMapValue
     private String loginRegistrationCtaLabel;
+
     @ValueMapValue
     private String loginRegistrationCtaLink;
     /**
@@ -55,22 +67,31 @@ public class LoginExporter implements ComponentExporter {
      */
     @ValueMapValue
     private String registrationLabel;
+
     @ValueMapValue
     private String registrationEmailAddress;
+
     @ValueMapValue
     private String registrationPassword;
+
     @ValueMapValue
     private String registrationConfirmPassword;
+
     @ValueMapValue
     private String registrationContinueButton;
+
     @ValueMapValue
     private String registrationMessage;
+
     @ValueMapValue
     private String registrationCtaLabel;
+
     @ValueMapValue
     private String registrationCtaLink;
+
     @ValueMapValue
     private String showLabel;
+
     @ValueMapValue
     private String hideLabel;
     /**
@@ -78,16 +99,22 @@ public class LoginExporter implements ComponentExporter {
      */
     @ValueMapValue
     private String guestLoginLabel;
+
     @ValueMapValue
     private String guestEmailAddressLabel;
+
     @ValueMapValue
     private String guestMobileNumberLabel;
+
     @ValueMapValue
     private String guestForgotPasswordMsg;
+
     @ValueMapValue
     private String guestResetLinkTextLabel;
+
     @ValueMapValue
     private String guestResetLinkLabel;
+
     @ValueMapValue
     private String guestContinueLabel;
     /**
@@ -95,22 +122,36 @@ public class LoginExporter implements ComponentExporter {
      */
     @ValueMapValue
     private String emailFieldErrorMessage;
+
     @ValueMapValue
     private String validEmailFieldErrorMessage;
+
     @ValueMapValue
     private String passwordFieldErrorMessage;
+
     @ValueMapValue
     private String confirmPasswordFieldErrorMessage;
+
     @ValueMapValue
     private String mobileNumberErrorMessage;
+
     @ValueMapValue
     private String validMobileNumberErrorMessage;
+
     @ValueMapValue
     private String mobileNumberNotMatchErrorMessage;
+
     @ValueMapValue
     private String mobileNumberMaxLength;
+
     @ValueMapValue
     private String mobileNumberFieldPattern;
+
+    @ValueMapValue
+    private String guestMobileNumberConfirmLabel;
+    
+    @ValueMapValue
+    private String  loginEmailMobileErrMessage;
 
     public String getLoginRegistrationMessage() {
         return loginRegistrationMessage;
@@ -258,6 +299,14 @@ public class LoginExporter implements ComponentExporter {
 
     public String getMobileNumberFieldPattern() {
         return mobileNumberFieldPattern;
+    }
+
+    public String getGuestMobileNumberConfirmLabel() {
+        return guestMobileNumberConfirmLabel;
+    }
+
+    public String getLoginEmailMobileErrMessage() {
+        return loginEmailMobileErrMessage;
     }
 
     @Override

@@ -200,9 +200,6 @@
                                 </items>
                             </columns>
                         </items>
-                        <layout
-                            jcr:primaryType="nt:unstructured"
-                            sling:resourceType="granite/ui/components/foundation/layouts/collapsible"/>
                     </registration>
                     <guestlogin
                         jcr:primaryType="nt:unstructured"
@@ -266,9 +263,6 @@
                                 </items>
                             </columns>
                         </items>
-                        <layout
-                            jcr:primaryType="nt:unstructured"
-                            sling:resourceType="granite/ui/components/foundation/layouts/collapsible"/>
                     </guestlogin>
                     <errormessages
                         jcr:primaryType="nt:unstructured"
@@ -288,56 +282,63 @@
                                             <emailfielderrormessage
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                                fieldLabel="Email Field Error Message"
+                                                fieldLabel="Error for Email Field"
                                                 name="./emailFieldErrorMessage"/>
                                             <validemailfielderrormessage
                                                     jcr:primaryType="nt:unstructured"
                                                     sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                                    fieldLabel="Valid Email Field Error Message"
+                                                    fieldLabel="Error for Valid Email Field"
                                                     name="./validEmailFieldErrorMessage"/>
                                             <passwordfielderrormessage
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                                fieldLabel="Password Field Error Message"
+                                                fieldLabel="Error for Password Field"
                                                 name="./passwordFieldErrorMessage"/>
                                             <confirmfieldrrrormessage
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                                fieldLabel="Confirm Password Field Error Message"
+                                                fieldLabel="Error for Confirm Password Field"
                                                 name="./confirmPasswordFieldErrorMessage"/>
                                             <mobilenumbererrormessage
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                                fieldLabel="Lebara Mobile Number Error Message"
+                                                fieldLabel="Error for Lebara Mobile Number"
                                                 name="./mobileNumberErrorMessage"/>
                                             <mobilenumbererrormessage
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                                fieldLabel="Valid Mobile Number Error Message"
+                                                fieldLabel="Error for Valid Mobile Number Error Message"
                                                 name="./validMobileNumberErrorMessage"/>
                                             <mobilenumbererrormessagenotmatch
                                                     jcr:primaryType="nt:unstructured"
                                                     sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                                    fieldLabel="Mobile Number Not Match Message"
+                                                    fieldLabel="Error for Mobile Number Not Match Message"
                                                     name="./mobileNumberNotMatchErrorMessage"/>
                                             <mobilenumbermaxlength
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                                fieldLabel="Mobile Number Max Length"
+                                                fieldLabel="Error for Mobile Number Max Length"
                                                 name="./mobileNumberMaxLength"/>
                                             <mobilenumberfieldpattern
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                                fieldLabel="Mobile Number Field Pattern"
+                                                fieldLabel="Error for Mobile Number Field Pattern"
                                                 name="./mobileNumberFieldPattern"/>
+                                            <guestmobilenumberconfirmLabel
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                    fieldLabel="Error for Confirm Lebara Mobile Number"
+                                                    name="./guestMobileNumberConfirmLabel"/>
+                                            <loginemailmobileerrmessage
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                    fieldLabel="Error for email address/mobile number"
+                                                    name="./loginEmailMobileErrMessage"/>
                                         </items>
                                     </column>
                                 </items>
                             </columns>
                         </items>
-                        <layout
-                            jcr:primaryType="nt:unstructured"
-                            sling:resourceType="granite/ui/components/foundation/layouts/collapsible"/>
                     </errormessages>
                 </items>
             </tabs>
