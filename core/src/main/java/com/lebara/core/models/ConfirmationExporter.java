@@ -10,9 +10,6 @@ import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.injectorspecific.ChildResource;
 import org.apache.sling.models.annotations.injectorspecific.ScriptVariable;
 
-import java.util.Collections;
-import java.util.List;
-
 @Model(adaptables = SlingHttpServletRequest.class, adapters = { ConfirmationExporter.class,
         ComponentExporter.class }, resourceType = ConfirmationExporter.RESOURCE_TYPE, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
 @Exporter(name = ExporterConstants.SLING_MODEL_EXPORTER_NAME, extensions = ExporterConstants.SLING_MODEL_EXTENSION)
