@@ -102,9 +102,9 @@ const LoginTabs: React.FC<LoginTabsProps> = ({ isPasswordResetSucessfull, ...log
     color: "primary.600",
     letterSpacing: "-1px",
   };
-  if (cartItems.loading) {
-    return null;
-  }
+  // if (cartItems.loading) {
+  //   return null;
+  // }
   return (
     <>
       {isPasswordResetSucessfull ? (

@@ -3,7 +3,7 @@ import { Box } from "@chakra-ui/react";
 import { useHistory, useLocation } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { highlightButton } from "../../redux/actions/highlightActions";
-import LoginTabsComponent from "./LoginTabs";
+import LoginTabs from "./LoginTabs";
 import BuyPlanLayout from "../../layouts/BuyPlanLayout";
 import { loginModuleProps } from "./types";
 
@@ -28,7 +28,7 @@ const LoginRoute: React.FC<loginModuleProps> = ({...loginModuleProps}) => {
   return (
     <BuyPlanLayout hideButton noPadding>
       <Box p={{ base: "20px", lg: 0 }} pt={{ lg: "89px" }} pb={{ lg: "164px" }}>
-        <LoginTabsComponent
+        <LoginTabs
           isPasswordResetSucessfull={location.state?.isPasswordResetSucessfull}
           {...loginModuleProps}
         />
