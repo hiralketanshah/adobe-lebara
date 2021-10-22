@@ -19,8 +19,7 @@ import {
   NAME_FIELD_PATTERN,
   NUMBER_FIELD_PATTERN,
 } from "../../utils/lebara.constants";
-
-const { REACT_APP_HOST_URI } = process.env;
+import { globalConfigs, globalConstants } from "../../GlobalConfigs";
 
 const PersonalDetailsForm: React.FC<PersonalDetailsFormProps> = ({
   heading,
@@ -143,7 +142,7 @@ const PersonalDetailsForm: React.FC<PersonalDetailsFormProps> = ({
     validationSchema: validationSchema(isManualAddress),
     onSubmit: () => {
       if (isManualAddress) {
-        history.push(`/order-details`, {
+        history.push((globalConfigs.journeyPages[globalConstants.ORDER_DETAILS]  || '/'), {
           ...(location.state || {}),
           personalDetails: personalDetailsFormFormik.values,
         });
@@ -151,13 +150,13 @@ const PersonalDetailsForm: React.FC<PersonalDetailsFormProps> = ({
       }
       return axios
         .get(
-          `${REACT_APP_HOST_URI}/google/getAddress?placeId=${personalDetailsFormFormik.values.address.value.place_id}`,
+          `${globalConfigs.apiHostUri}/google/getAddress?placeId=${personalDetailsFormFormik.values.address.value.place_id}`,
           {
             withCredentials: true,
           }
         )
         .then((res) => {
-          history.push(`/order-details`, {
+          history.push((globalConfigs.journeyPages[globalConstants.ORDER_DETAILS]  || '/'), {
             ...(location.state || {}),
             personalDetails: {
               ...personalDetailsFormFormik.values,

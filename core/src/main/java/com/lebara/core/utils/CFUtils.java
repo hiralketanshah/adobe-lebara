@@ -4,8 +4,8 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 import com.day.cq.i18n.I18n;
+import com.google.gson.JsonSyntaxException;
 import com.lebara.core.dto.*;
-import org.apache.commons.collections.ListUtils;
 import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.sling.api.resource.Resource;
@@ -13,12 +13,16 @@ import org.apache.sling.api.resource.ResourceResolver;
 
 import com.adobe.cq.dam.cfm.ContentFragment;
 import com.google.gson.Gson;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class CFUtils {
 
     private CFUtils() {
         // Private Constructor
     }
+
+    final static Logger LOGGER = LoggerFactory.getLogger(CFUtils.class);
 
     public static String getCountryCodeFromPayloadPath(String payloadPath) {
         if (StringUtils.containsIgnoreCase(payloadPath, "markets/de")) {
@@ -40,11 +44,17 @@ public class CFUtils {
     }
 
     public static <T> List<T> convertStringArrayToList(String[] stringArray, Class<T> T) {
+        List<T> list = new ArrayList<>();
         if (stringArray == null || ArrayUtils.isEmpty(stringArray)) {
-            return ListUtils.EMPTY_LIST;
+            return list;
         }
         Gson gson = new Gson();
-        return Arrays.stream(stringArray).map(al -> gson.fromJson(al, T)).collect(Collectors.toList());
+        try {
+            list = Arrays.stream(stringArray).map(al -> gson.fromJson(al, T)).collect(Collectors.toList());
+        } catch (IllegalStateException | JsonSyntaxException e) {
+            LOGGER.error("[convertStringArrayToList] error while parsing json {}", e);
+        }
+        return list;
     }
 
     public static String getElementValue(ContentFragment cf, String elementName) {
