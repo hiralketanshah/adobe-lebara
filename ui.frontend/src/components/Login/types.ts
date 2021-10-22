@@ -48,8 +48,7 @@ export interface loginModuleProps {
   mobileNumberMaxLength : string;
   mobileNumberFieldPattern : string;
 }
-export interface LoginTabsProps extends TabProps {
+export interface LoginTabsProps extends TabProps, loginModuleProps {
   icon?: IconType;
   isPasswordResetSucessfull?: boolean;
-  items: string;
 }

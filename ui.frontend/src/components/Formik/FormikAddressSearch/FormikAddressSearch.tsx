@@ -71,7 +71,7 @@ const FormikAddressSearch: React.FC<FormikAddressSearchProps> = ({
               ...base,
               display: "none",
             }),
-            placeholder: (defaultStyles) => ({
+            placeholder: (defaultStyles: any) => ({
               ...defaultStyles,
               fontSize: 14,
               color: colors.grey["200"],

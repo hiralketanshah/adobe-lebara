@@ -30,7 +30,7 @@ const LoginRoute: React.FC<loginModuleProps> = ({...loginModuleProps}) => {
       <Box p={{ base: "20px", lg: 0 }} pt={{ lg: "89px" }} pb={{ lg: "164px" }}>
         <LoginTabsComponent
           isPasswordResetSucessfull={location.state?.isPasswordResetSucessfull}
-          items={{...loginModuleProps}}
+          {...loginModuleProps}
         />
       </Box>
     </BuyPlanLayout>

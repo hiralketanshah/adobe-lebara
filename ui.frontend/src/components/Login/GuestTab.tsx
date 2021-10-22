@@ -11,23 +11,7 @@ import Button from "../Button/Button";
 import FormikInput from "../Formik/FormikInput/FormikInput";
 import { phoneNumberRegex } from "../Formik/validations/regeularExpressions";
 
-const GuestTab: React.FC<LoginTabsProps> = ({
-  guestLoginLabel,
-  guestEmailAddressLabel,
-  guestMobileNumberLabel,
-  guestForgotPasswordMsg,
-  guestResetLinkTextLabel,
-  guestResetLinkLabel,
-  guestContinueLabel,
-  emailFieldErrorMessage,
-  validEmailFieldErrorMessage,
-  passwordFieldErrorMessage,
-  confirmPasswordFieldErrorMessage,
-  validMobileNumberErrorMessage,
-  mobileNumberNotMatchErrorMessage,
-  mobileNumberMaxLength,
-  mobileNumberFieldPattern
-}) => {
+const GuestTab: React.FC<LoginTabsProps> = ({...loginModuleProps}) => {
   const history = useHistory();
   const client = useApolloClient();
   const [validLebaraSim, setValidLebaraSim] = useState("");
