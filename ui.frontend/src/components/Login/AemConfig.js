@@ -1,5 +1,5 @@
 import { MapTo } from "@adobe/aem-react-editable-components";
-import Login from "./Login";
+import Login from "./LoginRoute";
 
 const LoginConfig = {
   emptyLabel: "Login Component",
