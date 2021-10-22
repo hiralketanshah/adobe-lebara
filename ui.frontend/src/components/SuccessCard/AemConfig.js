@@ -1,5 +1,5 @@
 import { MapTo } from "@adobe/aem-react-editable-components";
-import SuccessCard from "./UspFile";
+import SuccessCard from "./SuccessCard";
 
 const SuccessCardConfig = {
   emptyLabel: "Order Confirmation",
