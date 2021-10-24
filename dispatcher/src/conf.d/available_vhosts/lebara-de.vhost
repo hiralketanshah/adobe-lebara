@@ -22,7 +22,7 @@ Include conf.d/variables/custom.vars
 		Header add X-Vhost "lebara-de-publish"
 		Header always set Access-Control-Allow-Origin "*"
 		Header always set Access-Control-Allow-Methods "POST, GET, OPTIONS, DELETE, PUT"
-        Header always set Access-Control-Allow-Headers "*"
+        Header always set Access-Control-Allow-Headers "Origin, Content-Type, X-Auth-Token"
         Header always set Access-Control-Expose-Headers "Content-Security-Policy, Location"
         Header always set Access-Control-Max-Age "600"
         Header always set Access-Control-Request-Headers "Content-Type, Authorization"
