@@ -8,7 +8,7 @@ const ProgressStepEllipse: React.FC<ProgressStepEllipseProps> = ({
   isActive,
   isDisabled,
 }) => {
-  const color = isActive ? "#E23484" : "primary.600";
+  const color = isActive ? "primary.600" : "secondary.500";
   const opacity = isDisabled ? 0.2 : 1;
 
   return (
