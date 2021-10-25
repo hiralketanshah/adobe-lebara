@@ -7,6 +7,8 @@ import com.lebara.core.dto.CFAllowance;
 import com.lebara.core.dto.OfferFragmentBean;
 import com.lebara.core.utils.AemUtils;
 import com.lebara.core.utils.CFUtils;
+import org.apache.commons.collections.CollectionUtils;
+import org.apache.commons.collections.ListUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;
@@ -19,10 +21,7 @@ import org.apache.sling.models.annotations.injectorspecific.SlingObject;
 import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
 
 import javax.annotation.PostConstruct;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 @Model(adaptables = SlingHttpServletRequest.class, adapters = {PostpaidExporter.class, ComponentExporter.class},
         resourceType = PostpaidExporter.RESOURCE_TYPE, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
@@ -96,13 +95,10 @@ public class PostpaidExporter implements ComponentExporter {
     @ValueMapValue
     private String yourOrderOneTimeActivationFee;
 
-
     Map<String, String> duration = new HashMap<>();
     Map<String, String> internationalMinutes = new HashMap<>();
     Map<String, String> data = new HashMap<>();
     Map<String, String> postpaidPlans = new HashMap<>();
-
-
     private I18n i18n;
 
     @PostConstruct
@@ -115,12 +111,18 @@ public class PostpaidExporter implements ComponentExporter {
                 String key = offerFragmentBean.getValidity();
                 String value = offerFragmentBean.getId();
                 duration.put(offerFragmentBean.getValidity(), offerFragmentBean.getValidityText());
-                for (CFAllowance allowance : offerFragmentBean.getAllowanceList()) {
+                List<CFAllowance> allowanceList = offerFragmentBean.getAllowanceList();
+                if (CollectionUtils.isEmpty(allowanceList)) {
+                    continue;
+                }
+                for (CFAllowance allowance : allowanceList) {
+                    if (allowance == null) {
+                        continue;
+                    }
                     if (StringUtils.endsWithIgnoreCase(allowance.getName(), "Postpaid_Data")) {
                         data.put(allowance.getFormatedValue(), offerFragmentBean.getDataVolumeText());
                         key += "-" + allowance.getFormatedValue();
-                    }
-                    if (StringUtils.endsWithIgnoreCase(allowance.getName(), "Postpaid_Intl_Mins")) {
+                    } else if (StringUtils.endsWithIgnoreCase(allowance.getName(), "Postpaid_Intl_Mins")) {
                         internationalMinutes.put(allowance.getFormatedValue(), offerFragmentBean.getMinutesToCountriesText());
                         key += "-" + allowance.getFormatedValue();
                     }
