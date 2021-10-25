@@ -40,6 +40,9 @@ public class PortingExporter implements ComponentExporter {
 	@ValueMapValue
 	private String ctaTwoLink;
 
+	@ValueMapValue
+	private Boolean isAddFreeSimtoCart;
+
 	@Override
 	public String getExportedType() {
 		return resource.getResourceType();
@@ -65,4 +68,7 @@ public class PortingExporter implements ComponentExporter {
 		return AemUtils.getLinkWithExtension(ctaTwoLink);
 	}
 
+	public Boolean getIsAddFreeSimtoCart() {
+		return isAddFreeSimtoCart;
+	}
 }

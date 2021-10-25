@@ -79,7 +79,7 @@ const PaymentFrame: React.FC = () => {
         .then((res) => {
           if (res) {
             dispatch(loadInitialCart([]));
-            history.push(`/order-submitted/${res}`, {
+            history.push(`${(globalConfigs.journeyPages[globalConstants.ORDER_SUBMITTED]  || '/')}/${res}`, {
               isGuest: location?.state?.isGuest,
               email: location?.state?.email,
               phoneNumber: location?.state?.phoneNumber,

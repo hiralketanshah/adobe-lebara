@@ -4,6 +4,7 @@ import TopUpMobileIcon from "../../icons/TopUpMobileIcon";
 import { Icon } from "../Icon/Icon";
 import Button from "../Button/Button";
 import { TopUpCreditProps } from "./types";
+import { globalConfigs } from "../../GlobalConfigs";
 
 const TopUpCredit: React.FC<TopUpCreditProps> = ({
   heading,
@@ -108,7 +109,7 @@ const TopUpCredit: React.FC<TopUpCreditProps> = ({
                 value={option}
                 onClick={() => setOptionSelected(option)}
               >
-                €{option}
+                {globalConfigs.currencySymbol}{option}
               </Button>
             ))}
           </ButtonGroup>
