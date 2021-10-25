@@ -48,15 +48,35 @@ public class PostpaidExporter implements ComponentExporter {
     @ValueMapValue
     private String moreDetailsLabel;
     @ValueMapValue
+    private String popupCloseLabel;
+    @ValueMapValue
     private String orderNowLabel;
     @ValueMapValue
     private String orderNowUrl;
     @ValueMapValue
     private String durationLabel;
     @ValueMapValue
+    private String contractPeriodPopupHeading;
+    @ValueMapValue
+    private String contractPeriodPopupInfo;
+    @ValueMapValue
     private String dataVolumeLabel;
     @ValueMapValue
+    private String dataVolumePopupHeading;
+    @ValueMapValue
+    private String dataVolumePopupInfo;
+    @ValueMapValue
     private String abroadMinutesLabel;
+    @ValueMapValue
+    private String abroadMinutesPopupHeading;
+    @ValueMapValue
+    private String abroadMinutesPopupInfoTop;
+    @ValueMapValue
+    private String countryFlagFrom;
+    @ValueMapValue
+    private String countryFlagTo;
+    @ValueMapValue
+    private String abroadMinutesPopupInfoBottom;
     @ValueMapValue
     private String yourOrderLabel;
     @ValueMapValue
@@ -115,6 +135,10 @@ public class PostpaidExporter implements ComponentExporter {
         return duration;
     }
 
+    public String getPopupCloseLabel() {
+        return popupCloseLabel;
+    }
+
     public Map<String, String> getData() {
         return data;
     }
@@ -139,12 +163,48 @@ public class PostpaidExporter implements ComponentExporter {
         return durationLabel;
     }
 
+    public String getContractPeriodPopupHeading() {
+        return contractPeriodPopupHeading;
+    }
+
+    public String getContractPeriodPopupInfo() {
+        return contractPeriodPopupInfo;
+    }
+
     public String getDataVolumeLabel() {
         return dataVolumeLabel;
     }
 
+    public String getDataVolumePopupHeading() {
+        return dataVolumePopupHeading;
+    }
+
+    public String getDataVolumePopupInfo() {
+        return dataVolumePopupInfo;
+    }
+
     public String getAbroadMinutesLabel() {
         return abroadMinutesLabel;
+    }
+
+    public String getAbroadMinutesPopupHeading() {
+        return abroadMinutesPopupHeading;
+    }
+
+    public String getAbroadMinutesPopupInfoTop() {
+        return abroadMinutesPopupInfoTop;
+    }
+
+    public String getCountryFlagFrom() {
+        return countryFlagFrom;
+    }
+
+    public String getCountryFlagTo() {
+        return countryFlagTo;
+    }
+
+    public String getAbroadMinutesPopupInfoBottom() {
+        return abroadMinutesPopupInfoBottom;
     }
 
     public String getYourOrderLabel() {
