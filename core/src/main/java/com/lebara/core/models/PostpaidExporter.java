@@ -127,7 +127,7 @@ public class PostpaidExporter implements ComponentExporter {
                         key += "-" + allowance.getFormatedValue();
                     }
                 }
-                key += "-" + offerFragmentBean.getCost();
+                value += "-" + offerFragmentBean.getCost();
                 postpaidPlans.put(key, value);
             }
         }
