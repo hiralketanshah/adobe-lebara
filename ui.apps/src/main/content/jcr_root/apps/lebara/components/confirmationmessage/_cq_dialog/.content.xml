@@ -34,6 +34,7 @@
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textarea"
                                                 fieldDescription="Please put your Thank you Message"
                                                 fieldLabel="ThankyouMessage"
+                                                value="Thank you for purchasing the selected product.Your SIM will arrive next working day.Occasionally it may take a little longer."
                                                 name="./thankYouMessage"/>
                                         </items>
                                     </column>
