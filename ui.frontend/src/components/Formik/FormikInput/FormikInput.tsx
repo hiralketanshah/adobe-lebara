@@ -19,6 +19,7 @@ import {
 import { useField } from "formik";
 import { Link as ReachLink } from "react-router-dom";
 import { FormikInputProps } from "./types";
+import { globalConstants as GC } from  '../../../GlobalConfigs.js';
 
 const FormikInput: React.FC<FormikInputProps> = ({
   name,
@@ -29,6 +30,9 @@ const FormikInput: React.FC<FormikInputProps> = ({
   isRequired,
   inputProps,
   validate,
+  loginButtonLabel,
+  exitingUserErrorMsg,
+  secondSubscriptionDisplayText,
 }) => {
   const [field, meta] = useField({
     name,
@@ -127,21 +131,21 @@ const FormikInput: React.FC<FormikInputProps> = ({
               lineHeight="17.1px"
               letterSpacing="0.23px"
             >
-              This email address is already registered with us.{" "}
+              {exitingUserErrorMsg}{" "}
+              {/* This email address is already registered with us. */}
               <Link
                 as={ReachLink}
                 color="secondary.500"
                 to={{
-                  pathname: "/login",
+                  pathname: `/${GC.LOGIN}`,
                   state: {
                     fromPostPaid: true,
                   },
                 }}
               >
-                Login
+                {loginButtonLabel}
               </Link>{" "}
-              to manage/upgrade your plan. If you would like to order a second
-              subscription, please use a different email address.
+              {secondSubscriptionDisplayText}
             </Text>
           </Flex>
         </FormErrorMessage>

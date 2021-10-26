@@ -8,6 +8,7 @@ import Button from "../Button/Button";
 import FormikInput from "../Formik/FormikInput/FormikInput";
 import Link from "../Link/Link";
 import AUTHENTICATE_USER_SPS from "../../graphql/AUTHENTICATE_USER_SPS";
+import { globalConstants as GC } from "../../GlobalConfigs";
 
 const LoginTab: React.FC<LoginTabsProps> = ({...loginModuleProps}) => {
   const history = useHistory();
@@ -46,28 +47,27 @@ const LoginTab: React.FC<LoginTabsProps> = ({...loginModuleProps}) => {
           .then((res) => {
             if (res.data.authenticateUserSPS.accessToken) {
               if (isFromMenu) {
-                history.push("/dashboard");
+                history.push(`/${GC.DASHBOARD}`);
                 return;
               }
               if (isFromPostPaid) {
-                history.push("/postpaid/preview", {
+                history.push(`/${GC.POSTPAID_PREVIEW}`, {
                   personalDetails: {
-                    firstName: "Test",
-                    lastName: "User",
-                    emailId: "test.user@gmail.com",
-                    streetName: "26 Sprengelstraße",
+                    firstName: "",
+                    lastName: "",
+                    emailId: "",
+                    streetName: "",
                     houseNumber: "",
-                    townCity: "Berlin",
-                    addition: "Berlin",
-                    zipCode: "13353",
-                    addressLabel:
-                      "Lebara Mobile, Sprengelstraße, Berlin, Germany",
+                    townCity: "",
+                    addition: "",
+                    zipCode: "",
+                    addressLabel: "",
                   },
                   portIn: {},
                 });
                 return;
               }
-              history.push(`/order-details`);
+              history.push(`/${GC.ORDER_DETAILS}`);
             }
           })
           .catch((error) => {
@@ -93,7 +93,7 @@ const LoginTab: React.FC<LoginTabsProps> = ({...loginModuleProps}) => {
             />
             <Text fontSize={14} fontWeight="400" mb="5px">
               {loginModuleProps.loginForgotPassWordmsg}{" "}
-              <Link href="/reset-password">{loginModuleProps.loginResetLinkTextLabel}</Link>{" "}
+              <Link href={`/${GC.RESET_PASSWORD}`}>{loginModuleProps.loginResetLinkTextLabel}</Link>{" "}
             </Text>
             <Button
               isDisabled={Object.keys(errors).length > 0 || isSubmitting}

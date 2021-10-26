@@ -10,4 +10,7 @@ export interface FormikInputProps {
   placeholder?: string;
   isRequired?: boolean;
   validate?: FieldValidator;
+  loginButtonLabel? : string;
+  exitingUserErrorMsg?: string;
+  secondSubscriptionDisplayText?: string;
 }
