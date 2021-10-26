@@ -1,0 +1,380 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="nt:unstructured"
+    jcr:title="Login Module"
+    sling:resourceType="cq/gui/components/authoring/dialog"
+    extraClientlibs="[lebara.touchui]">
+    <content
+        jcr:primaryType="nt:unstructured"
+        sling:resourceType="granite/ui/components/coral/foundation/container">
+        <items jcr:primaryType="nt:unstructured">
+            <tabs
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="granite/ui/components/coral/foundation/tabs"
+                maximized="{Boolean}true">
+                <items jcr:primaryType="nt:unstructured">
+                    <genric
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Genric"
+                        sling:resourceType="granite/ui/components/coral/foundation/container"
+                        margin="{Boolean}true">
+                        <items jcr:primaryType="nt:unstructured">
+                            <columns
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+                                margin="{Boolean}true">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <column
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <selectLoginModule
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                                    fieldLabel="Select Login Module"
+                                                    name="./loginModuleType"
+                                                    required="true">
+                                                <items jcr:primaryType="nt:unstructured">
+                                                    <loginGuest
+                                                        jcr:primaryType="nt:unstructured"
+                                                        text="Login-Guest"
+                                                    value="loginGuest" />
+                                                    <loginRegistration
+                                                        jcr:primaryType="nt:unstructured"
+                                                        text="Login-Registration"
+                                                        value="loginRegistration" />
+                                                </items>
+                                            </selectLoginModule>
+                                        </items>
+                                    </column>
+                                </items>
+                            </columns>
+                        </items>
+                    </genric>
+                    <login
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Login Form Fields"
+                        sling:resourceType="granite/ui/components/coral/foundation/container"
+                        margin="{Boolean}true">
+                        <items jcr:primaryType="nt:unstructured">
+                            <columns
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+                                margin="{Boolean}true">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <column
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <logintab
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="Login Tab Label"
+                                                value="Login"
+                                                name="./loginLabel"/>
+                                            <emailaddresslabel
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="Email Address /Mobile Number Label"
+                                                fieldLabel="Email Address /Mobile Number Label"
+                                                value="Email Address /Mobile Number"
+                                                name="./loginEmailAddressLabel"/>
+                                            <passwordlabel
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="Email Password Label"
+                                                fieldLabel="Password Label"
+                                                value="Password"
+                                                name="./loginPasswordLabel"/>
+                                            <forgotpasslabel
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="Forgot password message"
+                                                fieldLabel="Forgot password message"
+                                                value="Forgot password Message"
+                                                name="./loginForgotPassWordmsg"/>
+                                            <resetlinktextlabel
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="Reset Text Label"
+                                                name="./loginResetLinkTextLabel"/>
+                                            <resetlinklabel
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="Reset Link Label"
+                                                value="Reset Link"
+                                                name="./loginResetLinkLabel"/>
+                                            <loginlabel
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="Login button Label"
+                                                value="Login"
+                                                name="./loginButton"/>
+                                            <loginregistrationmsg
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="Registration Message Label"
+                                                value="Registration"
+                                                name="./loginRegistrationMessage"/>
+                                            <loginregistrationtextcta
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="Registration CTA Text Label"
+                                                value="Registration"
+                                                name="./loginRegistrationCtaLabel"/>
+                                            <loginregistrationctalink
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="Registration CTA Link Label"
+                                                value="Registration CTA Link"
+                                                name="./loginRegistrationCtaLink"/>
+
+                                        </items>
+                                    </column>
+                                </items>
+                            </columns>
+                        </items>
+                    </login>
+                    <registration
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Registration Form Fields"
+                        sling:resourceType="granite/ui/components/coral/foundation/container"
+                        margin="{Boolean}true">
+                        <items jcr:primaryType="nt:unstructured">
+                            <columns
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+                                margin="{Boolean}true">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <column
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <registrationtab
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="Registration Tab Label"
+                                                value="Registration"
+                                                name="./registrationLabel"/>
+                                            <email
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="Email Address Label"
+                                                value="Email Address"
+                                                name="./registrationEmailAddress"/>
+                                            <password
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="Password Label"
+                                                value="Password"
+                                                name="./registrationPassword"/>
+                                            <confpassword
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="Confirm Password Label "
+                                                value="Confirm Password"
+                                                name="./registrationConfirmPassword"/>
+                                            <continue
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="Registration Button Label"
+                                                value="Continue"
+                                                name="./registrationContinueButton"/>
+                                            <registrationmsg
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="Registration Message Label"
+                                                value="Registration Message"
+                                                name="./registrationMessage"/>
+                                            <registrationtextcta
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="Registration CTA Text Label"
+                                                value="Register"
+                                                name="./registrationCtaLabel"/>
+                                            <registrationctalink
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="Registration CTA Link Label"
+                                                value="Register URL"
+                                                name="./registrationCtaLink"/>
+                                            <show
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="Show Label "
+                                                value="Show"
+                                                name="./showLabel"/>
+                                            <hide
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="Hide Label"
+                                                value="Hide"
+                                                name="./hideLabel"/>
+
+                                        </items>
+                                    </column>
+                                </items>
+                            </columns>
+                        </items>
+                    </registration>
+                    <guestlogin
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Guest Login"
+                        sling:resourceType="granite/ui/components/coral/foundation/container"
+                        margin="{Boolean}true">
+                        <items jcr:primaryType="nt:unstructured">
+                            <columns
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+                                margin="{Boolean}true">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <column
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <guestlogintab
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="Guest Tab Label"
+                                                value="Guest"
+                                                name="./guestLoginLabel"/>
+                                            <emailaddresslabel
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="Email Address /Mobile Number Label"
+                                                fieldLabel="Email Address /Mobile Number Label"
+                                                value="Email Address /Mobile Number"
+                                                name="./guestEmailAddressLabel"/>
+                                            <mobilenumberlabel
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="Lebara Password / Mobile Number Label"
+                                                fieldLabel="Lebara Mobile Number Label"
+                                                value="Lebara Mobile Number"
+                                                name="./guestMobileNumberLabel"/>
+                                            <guestforgotpassmsg
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="Forgot password message"
+                                                fieldLabel="Forgot password message"
+                                                value="Forgot password"
+                                                name="./guestForgotPasswordMsg"/>
+                                            <guestresetlinktextlabel
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="Guest reset text label"
+                                                fieldLabel="Reset Text Label"
+                                                value="Reset"
+                                                name="./guestResetLinkTextLabel"/>
+                                            <guestresetlinklabel
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="Guest reset link label"
+                                                fieldLabel="Reset Link Label"
+                                                value="Reset Link"
+                                                name="./guestResetLinkLabel"/>
+                                            <guestcontinuebuton
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="Guest continue button Label"
+                                                fieldLabel="Login Button Label"
+                                                value="Login"
+                                                name="./guestContinueLabel"/>
+                                        </items>
+                                    </column>
+                                </items>
+                            </columns>
+                        </items>
+                    </guestlogin>
+                    <errormessages
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Error Messages"
+                        sling:resourceType="granite/ui/components/coral/foundation/container"
+                        margin="{Boolean}true">
+                        <items jcr:primaryType="nt:unstructured">
+                            <columns
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+                                margin="{Boolean}true">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <column
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <emailfielderrormessage
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="Error for Email Field"
+                                                value="Error for Email"
+                                                name="./emailFieldErrorMessage"/>
+                                            <validemailfielderrormessage
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="Error for Valid Email Field"
+                                                value="Error for Valid Email"
+                                                name="./validEmailFieldErrorMessage"/>
+                                            <passwordfielderrormessage
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="Error for Password Field"
+                                                value="Error for Password "
+                                                name="./passwordFieldErrorMessage"/>
+                                            <confirmfieldrrrormessage
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="Error for Confirm Password Field"
+                                                value="Error for Confirm Password"
+                                                name="./confirmPasswordFieldErrorMessage"/>
+                                            <mobilenumbererrormessage
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="Error for Lebara Mobile Number"
+                                                value="Error for Lebara Mobile Number"
+                                                name="./mobileNumberErrorMessage"/>
+                                            <mobilenumbererrormessage
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="Error for Valid Mobile Number Error Message"
+                                                value="Error for Valid Mobile Number"
+                                                name="./validMobileNumberErrorMessage"/>
+                                            <mobilenumbererrormessagenotmatch
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="Error for Mobile Number Not Match Message"
+                                                value="Error for Mobile Number Not Match Message"
+                                                name="./mobileNumberNotMatchErrorMessage"/>
+                                            <mobilenumbermaxlength
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="Error for Mobile Number Max Length"
+                                                value="Error for Mobile Number Max Length"
+                                                name="./mobileNumberMaxLength"/>
+                                            <mobilenumberfieldpattern
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="Error for Mobile Number Field Pattern"
+                                                value="Error for Mobile Number Field Pattern"
+                                                name="./mobileNumberFieldPattern"/>
+                                            <guestmobilenumberconfirmLabel
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="Error for Confirm Lebara Mobile Number"
+                                                value="Error for Confirm Lebara Mobile Number"
+                                                name="./guestMobileNumberConfirmLabel"/>
+                                            <loginemailmobileerrmessage
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="Error for email address/mobile number"
+                                                value="Error for email address/mobile number"
+                                                name="./loginEmailMobileErrMessage"/>
+                                        </items>
+                                    </column>
+                                </items>
+                            </columns>
+                        </items>
+                    </errormessages>
+                </items>
+            </tabs>
+        </items>
+    </content>
+</jcr:root>
