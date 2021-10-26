@@ -22,9 +22,7 @@ const BuyPlanLayout: React.FC<BuyPlanLayoutProps> = ({
         paymentMethodLabel={paymentMethodLabel}
       />
       <Box
-        backgroundColor="lightenPrimary.50"
         px={noPadding ? 0 : "20px"}
-        pt={noPadding ? 0 : "15px"}
       >
         <Center>
           <Box
@@ -32,7 +30,7 @@ const BuyPlanLayout: React.FC<BuyPlanLayoutProps> = ({
             w="100%"
             bg={fullWidth || noPadding ? {} : { lg: "white" }}
             px={fullWidth || noPadding ? {} : { lg: "60px" }}
-            my={fullWidth || noPadding ? {} : { lg: "20px" }}
+            mb={fullWidth || noPadding ? {} : { lg: "20px" }}
           >
             {children}
             {!hideButton && (
