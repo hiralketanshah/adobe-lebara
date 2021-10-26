@@ -45,7 +45,7 @@ import java.util.Map;
         extensions = "json",
         selectors = "offer")
 public class FragmentInfoServlet extends SlingSafeMethodsServlet {
-    final Logger LOGGER = LoggerFactory.getLogger(getClass());
+    private final Logger LOGGER = LoggerFactory.getLogger(getClass());
 
     @Reference
     private QueryBuilder queryBuilder;
