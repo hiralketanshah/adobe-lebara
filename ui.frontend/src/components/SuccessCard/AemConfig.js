@@ -4,8 +4,7 @@ import SuccessCard from "./SuccessCard";
 const SuccessCardConfig = {
   emptyLabel: "Order Confirmation",
   isEmpty: function (props) {
-    return !props.title;
-  },
+    return !props.thankYouMesage },
 };
 
 MapTo("lebara/components/usp")(SuccessCard, SuccessCardConfig);

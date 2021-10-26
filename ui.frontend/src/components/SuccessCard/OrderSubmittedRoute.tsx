@@ -11,12 +11,16 @@ import { SuccessCard } from "../SuccessCard/SuccessCard";
 // import AppPromo from "../components/GetTheApp/AppPromo";
 // import PopularPlansCard from "../components/PopularPlansCard/PopularPlansCard";
 // import useGetAddons from "../hooks/useGetAddons";
+import { SuccessCardProps } from './types';
 
-const OrderSubmittedRoute: React.FC = () => {
+const OrderSubmittedRoute: React.FC<SuccessCardProps> = ({
+  orderNo,
+  thankYouMesage,
+}) => {
   const { orderId } = useParams<{ orderId: string }>();
-  const location =
-    useLocation<{ phoneNumber?: string; email?: string; isGuest?: boolean }>();
-  console.log(location);
+  // const location =
+  //   useLocation<{ phoneNumber?: string; email?: string; isGuest?: boolean }>();
+  // console.log(location);
   // const [addons] = useGetAddons({
   //   variables: {
   //     country: "DE",
@@ -33,8 +37,8 @@ const OrderSubmittedRoute: React.FC = () => {
         <Box mt="32px">
           <SuccessCard
             icon={IoIosCheckmarkCircleOutline}
-            title={`Order N.${orderId || 1}`}
-            subtitle="Thank you for purchasing the selected product. Your SIM will arrive next working day. Occasionally it may take a little longer."
+            orderNo={`${orderNo}${orderId || 1}`}
+            thankYouMesage={thankYouMesage}
           />
         </Box>
 

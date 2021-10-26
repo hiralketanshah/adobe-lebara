@@ -6,8 +6,8 @@ import { SuccessCardProps } from "./types";
 
 export const SuccessCard: React.FC<SuccessCardProps> = ({
   icon = IoIosCheckmarkCircleOutline,
-  title,
-  subtitle,
+  orderNo,
+  thankYouMesage,
 }) => (
   <Box
     w="100%"
@@ -29,9 +29,9 @@ export const SuccessCard: React.FC<SuccessCardProps> = ({
         pt="20px"
         lineHeight="19px"
       >
-        {title}
+        {orderNo}
       </Text>
-      {subtitle && (
+      {thankYouMesage && (
         <Text
           fontSize="14px"
           textAlign="center"
@@ -40,12 +40,14 @@ export const SuccessCard: React.FC<SuccessCardProps> = ({
           width={{ md: "48%" }}
           marginBottom={{ base: "10px", md: "30px" }}
         >
-          {subtitle}
+          {thankYouMesage}
         </Text>
       )}
-      <Button d={{ md: "none", base: "block" }} marginTop="20px">
+      {/* <Button d={{ md: "none", base: "block" }} marginTop="20px">
         Go to Dashboard
-      </Button>
+      </Button> */}
     </Box>
   </Box>
 );
+
+export default SuccessCard;
