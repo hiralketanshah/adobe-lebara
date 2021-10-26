@@ -19,6 +19,7 @@ import { ReduxState } from "../../redux/types";
 import REMOVE_FROM_CART from "../../graphql/REMOVE_FROM_CART";
 import { TopUpCreditProps } from "./types";
 import getDynamicValues from "../../utils/get-aem-dynamic-values";
+import { globalConfigs, globalConstants } from "../../GlobalConfigs";
 
 const TopupRoute: React.FC<TopUpCreditProps> = ({
   heading,
@@ -68,12 +69,10 @@ const TopupRoute: React.FC<TopUpCreditProps> = ({
   };
   const handleBuyTopUp = async (amount: number) => {
     await addTopupToCart(amount);
-    history.push(userToken ? "/order-details" : "/login");
+    history.push(userToken ?(globalConfigs.journeyPages[globalConstants.ORDER_DETAILS]  || '/') : (globalConfigs.journeyPages[globalConstants.LOGIN]  || '/'));
   };
   const handleViewCartClick = () => {
-    history.push(userToken ? "/order-details" : "/login");
-    // if signed in send him to order details.
-    // history.push("/order-details");
+    history.push(userToken ? (globalConfigs.journeyPages[globalConstants.ORDER_DETAILS]  || '/') : (globalConfigs.journeyPages[globalConstants.LOGIN]  || '/'));
   };
   const handleAddToCart = async (amount: number) => {
     await addTopupToCart(amount);
@@ -90,7 +89,7 @@ const TopupRoute: React.FC<TopUpCreditProps> = ({
           w="420px"
         >
           <Text py="12px">
-            {getDynamicValues(popUpCartMessage, [`€${amount}`])}
+            {getDynamicValues(popUpCartMessage, [`${globalConfigs.currencySymbol}${amount}`])}
           </Text>
           <Button
             variant="ghost"

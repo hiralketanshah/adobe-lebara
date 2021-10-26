@@ -7,6 +7,7 @@ import { highlightButton } from "../redux/actions/highlightActions";
 import SimPortNumberForm from "../components/SimPortNumberForm/SimPortNumberForm";
 import Button from "../components/Button/Button";
 import { SimPortInProps } from "../layouts/types";
+import { globalConfigs, globalConstants } from "../GlobalConfigs";
 
 const SimPortInRoute: React.FC<SimPortInProps> = ({
   ...props
@@ -26,7 +27,7 @@ const SimPortInRoute: React.FC<SimPortInProps> = ({
   );
 
   const handleWillDoItLaterClick = () => {
-    history.push("/personal-details");
+    history.push((globalConfigs.journeyPages[globalConstants.PERSONAL_DETAILS]  || '/'));
   };
 
   return (

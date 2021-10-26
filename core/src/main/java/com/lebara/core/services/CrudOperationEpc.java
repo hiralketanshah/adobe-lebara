@@ -197,10 +197,19 @@ public class CrudOperationEpc {
             List<String> cfAllowanceArray = new ArrayList<>();
             for (Allowance allowances : offer.allowances) {
                 CFAllowance cfAllowance = new CFAllowance();
-                cfAllowance.setValue(allowances.getAllowanceValue());
-                cfAllowance.setName(allowances.getAccount().getName());
-                cfAllowance.setUnit(allowances.getAccount().getUnit().getAbbreviation());
-                cfAllowanceArray.add(gson.toJson(cfAllowance));
+                String value = allowances.getAllowanceValue();
+                String name = StringUtils.EMPTY;
+                String unit = StringUtils.EMPTY;
+                if (allowances.getAccount() != null && allowances.getAccount().getUnit() != null) {
+                    name = allowances.getAccount().getName();
+                    unit = allowances.getAccount().getUnit().getAbbreviation();
+                }
+                if (StringUtils.isNoneBlank(value, name, unit)) {
+                    cfAllowance.setValue(value);
+                    cfAllowance.setName(name);
+                    cfAllowance.setUnit(unit);
+                    cfAllowanceArray.add(gson.toJson(cfAllowance));
+                }
             }
 
             if (cfAllowanceArray.size() > 0) {

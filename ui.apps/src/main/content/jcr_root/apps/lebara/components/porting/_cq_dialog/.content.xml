@@ -63,6 +63,14 @@
                                                 fieldLabel="CTA Label Two Link"
                                                 name="./ctaTwoLink"
                                                 rootPath="/content/lebara"/>
+                                            <isaddfreesimtocart
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                                fieldDescription="Enable to add free sim to cart (if its not already added), on click of any two buttons"
+                                                name="./isAddFreeSimtoCart"
+                                                text="Is Add Free Sim to Cart?"
+                                                uncheckedValue="{Boolean}false"
+                                                value="{Boolean}true"/>
                                         </items>
                                     </column>
                                 </items>

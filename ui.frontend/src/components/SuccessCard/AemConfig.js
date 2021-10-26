@@ -7,4 +7,4 @@ const SuccessCardConfig = {
     return !props.thankYouMesage },
 };
 
-MapTo("lebara/components/usp")(SuccessCard, SuccessCardConfig);
+MapTo("lebara/components/confirmationmessage")(SuccessCard, SuccessCardConfig);
