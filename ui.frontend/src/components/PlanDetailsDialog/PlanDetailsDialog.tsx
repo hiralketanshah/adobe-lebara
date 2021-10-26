@@ -69,10 +69,10 @@ const PlanDetailsDialog: React.FC<PlanDetailsDialogProps> = ({
             >
               {price} {globalConfigs.currencySymbol}
             </Text>
-            <Text as="p" fontSize={14} color="lightenPrimary.150">
+            {duration ? <Text as="p" fontSize={14} color="lightenPrimary.150">
               {" "}
               / {duration}
-            </Text>
+            </Text> : ''}
           </Flex>
         </Flex>
 

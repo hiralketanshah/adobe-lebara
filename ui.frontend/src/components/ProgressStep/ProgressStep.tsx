@@ -1,5 +1,5 @@
 import React from "react";
-import { Divider, Flex, Text, Box } from "@chakra-ui/react";
+import { Divider, Flex, Text, Box, Center } from "@chakra-ui/react";
 import { ProgressStepProps } from "./types";
 import ProgressStepEllipse from "../ProgressStepEllipse/ProgressStepEllipse";
 
@@ -9,7 +9,8 @@ const ProgressStep: React.FC<ProgressStepProps> = ({
 }) => {
   const lastStepIndex = pageLinks?.length - 1;
   return (
-    <Box py="30px" px="25px">
+    <Center paddingX={"20px"}>
+    <Box  w="100%" maxW="846px" bg={{lg: "white"}} mt={"35px"} px={{ lg: "60px" }}>
       <Flex alignItems="center" gridGap="4px" height="72px" my="12px">
         {pageLinks?.map((step, index) => (
           <>
@@ -48,6 +49,7 @@ const ProgressStep: React.FC<ProgressStepProps> = ({
         ))}
       </Flex>
     </Box>
+    </Center>
   );
 };
 export default ProgressStep;

@@ -22,6 +22,7 @@ const EmptyCartRoute: React.FC<EmptyCartShopCardProps> = ({
   emptyBasketText,
   goBackText,
   continueBrowsinglink,
+  addToCartLabel,
 }) => {
   const history = useHistory();
   
@@ -56,6 +57,7 @@ const EmptyCartRoute: React.FC<EmptyCartShopCardProps> = ({
               plansTabLabel={plansTabLabel}
               showDetailsLabel={showDetailsLabel}
               buyPlanLabel={buyPlanLabel}
+              addToCartLabel={addToCartLabel}
             />
         </Box>
       </Box>

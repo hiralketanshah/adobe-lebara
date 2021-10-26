@@ -25,6 +25,7 @@ import IconButton from "../IconButton/IconButton";
 import LanguageDropDown from "../LanguageDropDown/LanguageDropDown";
 import SideMenu from "../SideMenu/SideMenu";
 import { ReduxState } from "../../redux/types";
+import { globalConfigs, globalConstants } from "../../GlobalConfigs";
 // import LebaraLogo from "../../assets/images/lebara-logo.svg";
 
 const MiniHeader: React.FC<MiniHeaderProps> = ({
@@ -41,12 +42,12 @@ const MiniHeader: React.FC<MiniHeaderProps> = ({
         .length > 0;
     history.push(
       cartItems.length === 0
-        ? "/empty-cart"
+        ? (globalConfigs.journeyPages[globalConstants.EMPTY_CART]  || '/')
         : userToken || !hasDataPlan
         ? userToken
-          ? "/order-details"
-          : "/login"
-        : "/lebara-sim-choice"
+          ? (globalConfigs.journeyPages[globalConstants.ORDER_DETAILS]  || '/')
+          : (globalConfigs.journeyPages[globalConstants.LOGIN]  || '/')
+        : (globalConfigs.journeyPages[globalConstants.LEBARA_SIM_CHOICE]  || '/')
     );
   };
   const { isOpen, onClose, onOpen } = useDisclosure();
