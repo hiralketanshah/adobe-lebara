@@ -132,7 +132,6 @@ const FormikInput: React.FC<FormikInputProps> = ({
               letterSpacing="0.23px"
             >
               {exitingUserErrorMsg}{" "}
-              {/* This email address is already registered with us. */}
               <Link
                 as={ReachLink}
                 color="secondary.500"
