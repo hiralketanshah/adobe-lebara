@@ -7,7 +7,7 @@ import { SuccessCardProps } from "./types";
 export const SuccessCard: React.FC<SuccessCardProps> = ({
   icon = IoIosCheckmarkCircleOutline,
   title,
-  thankYouMesage,
+  thankYouMessage,
 }) => (
   <Box
     w="100%"
@@ -31,7 +31,7 @@ export const SuccessCard: React.FC<SuccessCardProps> = ({
       >
         {title}
       </Text>
-      {thankYouMesage && (
+      {thankYouMessage && (
         <Text
           fontSize="14px"
           textAlign="center"
@@ -40,7 +40,7 @@ export const SuccessCard: React.FC<SuccessCardProps> = ({
           width={{ md: "48%" }}
           marginBottom={{ base: "10px", md: "30px" }}
         >
-          {thankYouMesage}
+          {thankYouMessage}
         </Text>
       )}
     </Box>

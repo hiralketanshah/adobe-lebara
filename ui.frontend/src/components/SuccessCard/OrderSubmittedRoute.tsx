@@ -9,7 +9,7 @@ import { SuccessCardProps } from './types';
 
 const OrderSubmittedRoute: React.FC<SuccessCardProps> = ({
   title,
-  thankYouMesage,
+  thankYouMessage,
 }) => {
 
   const { orderId } = useParams<{ orderId: string }>();
@@ -21,7 +21,7 @@ const OrderSubmittedRoute: React.FC<SuccessCardProps> = ({
           <SuccessCard
             icon={IoIosCheckmarkCircleOutline}
             title={`${title}${orderId || 1}`}
-            thankYouMesage={thankYouMesage}
+            thankYouMessage={thankYouMessage}
           />
         </Box>
       </Box>
