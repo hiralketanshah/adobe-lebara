@@ -2,6 +2,6 @@ import { IconType } from "react-icons/lib";
 
 export interface SuccessCardProps {
   icon: IconType;
-  orderNo?: string;
+  title?: string;
   thankYouMesage?: string;
 }

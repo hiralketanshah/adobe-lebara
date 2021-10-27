@@ -1,12 +1,12 @@
 import React from "react";
-import { Box, Text, Button } from "@chakra-ui/react";
+import { Box, Text } from "@chakra-ui/react";
 import { IoIosCheckmarkCircleOutline } from "react-icons/io";
 import { Icon } from "../Icon/Icon";
 import { SuccessCardProps } from "./types";
 
 export const SuccessCard: React.FC<SuccessCardProps> = ({
   icon = IoIosCheckmarkCircleOutline,
-  orderNo,
+  title,
   thankYouMesage,
 }) => (
   <Box
@@ -29,7 +29,7 @@ export const SuccessCard: React.FC<SuccessCardProps> = ({
         pt="20px"
         lineHeight="19px"
       >
-        {orderNo}
+        {title}
       </Text>
       {thankYouMesage && (
         <Text
@@ -43,9 +43,6 @@ export const SuccessCard: React.FC<SuccessCardProps> = ({
           {thankYouMesage}
         </Text>
       )}
-      {/* <Button d={{ md: "none", base: "block" }} marginTop="20px">
-        Go to Dashboard
-      </Button> */}
     </Box>
   </Box>
 );

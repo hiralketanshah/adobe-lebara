@@ -2,7 +2,7 @@ import { MapTo } from "@adobe/aem-react-editable-components";
 import SuccessCard from "./SuccessCard";
 
 const SuccessCardConfig = {
-  emptyLabel: "Order Confirmation",
+  emptyLabel: "Order Confirmation Component",
   isEmpty: function (props) {
     return !props.thankYouMesage },
 };
