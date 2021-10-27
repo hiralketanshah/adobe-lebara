@@ -97,7 +97,7 @@ public class ProgressStepExporter implements ComponentExporter {
 
     public boolean getIsWhiteBackground() {return isWhiteBackground;}
 
-   @Override
+    @Override
     public String getExportedType() {
         return resource.getResourceType();
     }
