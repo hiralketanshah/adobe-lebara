@@ -9,6 +9,7 @@ import org.apache.sling.models.annotations.Exporter;
 import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.injectorspecific.ChildResource;
 import org.apache.sling.models.annotations.injectorspecific.ScriptVariable;
+import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
 
 @Model(adaptables = SlingHttpServletRequest.class, adapters = { ConfirmationExporter.class,
         ComponentExporter.class }, resourceType = ConfirmationExporter.RESOURCE_TYPE, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
@@ -23,8 +24,12 @@ public class ConfirmationExporter extends HeadingExporter {
     @ScriptVariable
     private Resource resource;
 
-    @ChildResource
+    @ValueMapValue
     private String thankYouMessage;
+
+    public String getThankYouMessage() {
+        return thankYouMessage;
+    }
 
     @Override
     public String getExportedType() {
