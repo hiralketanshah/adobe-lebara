@@ -27,6 +27,10 @@ public class ConfirmationExporter extends HeadingExporter {
     @ValueMapValue
     private String thankYouMessage;
 
+    public String getThankYouMessage() {
+        return thankYouMessage;
+    }
+
     @Override
     public String getExportedType() {
         return resource.getResourceType();
