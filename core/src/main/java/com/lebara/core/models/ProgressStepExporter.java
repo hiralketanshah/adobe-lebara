@@ -14,9 +14,9 @@ import org.apache.sling.models.annotations.Exporter;
 import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.injectorspecific.ChildResource;
 import org.apache.sling.models.annotations.injectorspecific.ScriptVariable;
+import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
 import javax.annotation.PostConstruct;
 import java.util.ArrayList;
 import java.util.List;
@@ -46,6 +46,12 @@ public class ProgressStepExporter implements ComponentExporter {
 
     @ChildResource
     private List<Link> progressStepLinks;
+
+    @ValueMapValue
+    private boolean isWhiteBackground = false;
+
+    @ValueMapValue
+    private boolean isSmallWidth = false;
 
     private int activeStepIndex;
     private List<Link> pageLinks = new ArrayList<>();
@@ -87,7 +93,11 @@ public class ProgressStepExporter implements ComponentExporter {
         return activeStepIndex;
     }
 
-    @Override
+    public boolean getIsSmallWidth() { return  isSmallWidth; }
+
+    public boolean getIsWhiteBackground() {return isWhiteBackground;}
+
+   @Override
     public String getExportedType() {
         return resource.getResourceType();
     }
