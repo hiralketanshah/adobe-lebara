@@ -29,7 +29,6 @@ const LoginTab: React.FC<LoginTabsProps> = ({...loginModuleProps}) => {
         errors.email = loginModuleProps.loginEmailMobileErrMessage;
     }
     if (!password) errors.password = loginModuleProps.passwordFieldErrorMessage;
-
     return errors;
   };
   const location =

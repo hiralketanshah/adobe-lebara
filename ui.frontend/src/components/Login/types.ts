@@ -68,6 +68,10 @@ export interface loginModuleProps {
   mobileNumberNotMatchErrorMessage : string;
   mobileNumberMaxLength : string;
   mobileNumberFieldPattern : string;
+  confirmPasswordFieldErrorMsg: string;
+  errorEmailPatternValidMsg: string;
+  errorPasswordPatternMinMsg: string;
+  errorConfirmPasswordPatternNotMatchMsg: string;
 }
 export interface LoginTabsProps extends TabProps, loginModuleProps {
   icon?: IconType;

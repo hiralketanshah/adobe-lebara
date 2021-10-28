@@ -28,21 +28,21 @@ const RegisterTab: React.FC<LoginTabsProps> = ({...loginModuleProps}) => {
 
     const { email, password, confirmPassword } = values;
     if (!email) {
-      errors.email = "Please enter a email address";
+      errors.email = loginModuleProps.emailFieldErrorMessage;
     } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(email)) {
-      errors.email = "Please enter a valid email address";
+      errors.email = loginModuleProps.errorEmailPatternValidMsg;
     }
     if (!password) {
-      errors.password = "Please enter a password";
+      errors.password = loginModuleProps.passwordFieldErrorMessage;
     } else if (password.length <= 7 || password.length > 256) {
-      errors.password = "Password must be atleast 8 characters";
+      errors.password = loginModuleProps.errorPasswordPatternMinMsg;
     }
     if (!confirmPassword) {
-      errors.confirmPassword = "Please enter a password";
+      errors.confirmPassword = loginModuleProps.confirmPasswordFieldErrorMsg;
     } else if (confirmPassword.length <= 7 || confirmPassword.length > 256) {
-      errors.confirmPassword = "Password must be atleast 8 characters";
+      errors.confirmPassword = loginModuleProps.errorPasswordPatternMinMsg;
     } else if (password !== confirmPassword)
-      errors.confirmPassword = "Confirm password must match the password ";
+      errors.confirmPassword = loginModuleProps.errorConfirmPasswordPatternNotMatchMsg;
     return errors;
   };
   return (
@@ -82,6 +82,7 @@ const RegisterTab: React.FC<LoginTabsProps> = ({...loginModuleProps}) => {
                 label={loginModuleProps.registrationEmailAddress}
                 isRequired
               />
+              
             <FormikInput
               name="password"
               label={loginModuleProps.registrationPassword}
