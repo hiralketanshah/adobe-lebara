@@ -1,7 +1,7 @@
 import React from "react";
 import { Box } from "@chakra-ui/react";
 import { IoIosCheckmarkCircleOutline } from "react-icons/io";
-import { useParams } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import "@adyen/adyen-web/dist/adyen.css";
 import BuyPlanLayout from "../../layouts/BuyPlanLayout";
 import { SuccessCard } from "../SuccessCard/SuccessCard";
@@ -12,7 +12,8 @@ const OrderSubmittedRoute: React.FC<SuccessCardProps> = ({
   thankYouMessage,
 }) => {
 
-  const { orderId } = useParams<{ orderId: string }>();
+  const location = useLocation<{ orderId: string }>();
+  const orderId = location.state?.orderId || "12345";
 
   return (
     <BuyPlanLayout hideButton noPadding fullWidth>
