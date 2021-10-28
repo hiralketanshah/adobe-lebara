@@ -229,22 +229,6 @@ const OrderDetailsRoute: React.FC<OrderDetailsProps> = ({ ...props }) => {
                   setIsDeleteDialogOpen(true);
                 }
               }}
-              //should be replaced by AEM CF data
-              options={[
-                [
-                  {
-                    title: "100 International minutes",
-                    description: "41 Countries",
-                  },
-                ],
-                [
-                  {
-                    title: "Lebara to Lebara",
-                    description:
-                      "Unlimited mins and texts to UK Lebara numbers",
-                  },
-                ],
-              ]}
             />
           ))}
         {cartItems
