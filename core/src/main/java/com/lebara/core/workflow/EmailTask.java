@@ -107,6 +107,11 @@ public class EmailTask implements WorkflowProcess {
             }
         } else if (userType.equals("non-initiator")) {
             emailRecepientUserOrGroupName = getPublisherGroupNameFromPayloadPath(payloadPath);
+        } else if(userType.startsWith("groupUser")){
+            if(userType.contains("::")){
+                emailRecepientUserOrGroupName =  userType.split("::")[1];
+            }
+            emailRecepientUserOrGroupName = "lebara-sites-relevance-checker";
         }
 
         LOGGER.debug("userToSendEmail {}", emailRecepientUserOrGroupName);
