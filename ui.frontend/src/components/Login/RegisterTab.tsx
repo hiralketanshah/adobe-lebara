@@ -1,13 +1,10 @@
 import * as React from "react";
 import { Flex } from "@chakra-ui/react";
 import { Formik } from "formik";
-import { InputControl } from "formik-chakra-ui";
-import { InputGroup, InputRightElement, Text } from "@chakra-ui/react";
 import { useMutation } from "@apollo/client";
 import { useHistory } from "react-router-dom";
 import { LoginTabsProps, RegisterFormSchema } from "./types";
 import Button from "../Button/Button";
-import Link from "../Link/Link";
 import REGISTER_USER_SPS from "../../graphql/REGISTER_USER_SPS";
 import FormikInput from "../Formik/FormikInput/FormikInput";
 
@@ -103,7 +100,7 @@ const RegisterTab: React.FC<LoginTabsProps> = ({...loginModuleProps}) => {
                   backgroundColor: "inherit",
                 }}
               >
-                {showPassword ? "Hide" : "Show"}
+                {showPassword ? loginModuleProps.hideLabel || "Hide" : loginModuleProps.showLabel || "Show"}
               </Button>
             </FormikInput>
 
@@ -125,7 +122,7 @@ const RegisterTab: React.FC<LoginTabsProps> = ({...loginModuleProps}) => {
                   backgroundColor: "inherit",
                 }}
               >
-                {showConfirmPassword ? "Hide" : "Show"}
+                {showConfirmPassword ? loginModuleProps.hideLabel || "Hide" : loginModuleProps.showLabel || "Show"}
               </Button>
             </FormikInput>
             
@@ -134,7 +131,7 @@ const RegisterTab: React.FC<LoginTabsProps> = ({...loginModuleProps}) => {
               isDisabled={Object.keys(errors).length > 0 || isSubmitting}
               isFullWidth
             >
-              Continue
+              {loginModuleProps.registrationContinueButton}
             </Button>
           </Flex>
         </form>
