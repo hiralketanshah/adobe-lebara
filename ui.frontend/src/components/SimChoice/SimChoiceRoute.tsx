@@ -42,6 +42,7 @@ const SimChoiceRoute: React.FC<SimChoiceProps> = ({
         })
       )
     }
+  //eslint-disable-next-line
   }, [dispatch, history]);
 
   const cartItems = useSelector((state: ReduxState) => state.cart.items);
