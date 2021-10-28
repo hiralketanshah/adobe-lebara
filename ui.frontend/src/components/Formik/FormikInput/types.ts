@@ -13,4 +13,6 @@ export interface FormikInputProps {
   loginButtonLabel? : string;
   exitingUserErrorMsg?: string;
   secondSubscriptionDisplayText?: string;
+  revealInputToggle?: boolean;
+  onClick?: () => void;
 }

@@ -33,6 +33,8 @@ const FormikInput: React.FC<FormikInputProps> = ({
   loginButtonLabel,
   exitingUserErrorMsg,
   secondSubscriptionDisplayText,
+  children,
+  revealInputToggle,
 }) => {
   const [field, meta] = useField({
     name,
@@ -43,12 +45,13 @@ const FormikInput: React.FC<FormikInputProps> = ({
   const touchedWithError = touched && hasError;
   const touchOrHasValue = touched || !!field.value;
   const isExistingUser = error === "exists";
-  return (
+  return (<>
     <FormControl
       isRequired={isRequired}
       isInvalid={touchedWithError}
       flex={flex}
     >
+
       <FormLabel
         htmlFor={name}
         mb="10px"
@@ -89,7 +92,7 @@ const FormikInput: React.FC<FormikInputProps> = ({
           }
           {...field}
         />
-        {touchOrHasValue && (
+        {!revealInputToggle && touchOrHasValue && (
           <InputRightElement
             color={
               isExistingUser
@@ -107,6 +110,12 @@ const FormikInput: React.FC<FormikInputProps> = ({
                 <MdCheckCircle size={17} />
               )}
             </Box>
+            {children}
+          </InputRightElement>
+        )}
+        {revealInputToggle && children && (
+          <InputRightElement width="4.5rem" mr="10px">
+            {children}
           </InputRightElement>
         )}
       </InputGroup>
@@ -150,7 +159,7 @@ const FormikInput: React.FC<FormikInputProps> = ({
         </FormErrorMessage>
       )}
     </FormControl>
-  );
+  </>);
 };
 
 export default FormikInput;

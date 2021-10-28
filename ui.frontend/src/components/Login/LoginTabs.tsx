@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Tabs,
   TabList,
@@ -8,21 +8,24 @@ import {
   Text,
   Flex,
 } from "@chakra-ui/react";
-import { FaFacebookF, FcGoogle } from "react-icons/all";
 import { useSelector } from "react-redux";
 import Link from "../Link/Link";
-import IconButton from "../IconButton/IconButton";
 import { LoginTabsProps } from "./types";
 import LoginTab from "./LoginTab";
-import Button from "../Button/Button";
 import GuestTab from "./GuestTab";
 import { ReduxState } from "../../redux/types";
 import CongratulationsPopUp from "../CongratulationsPopUp/CongratulationsPopUp";
 
 const LoginTabs: React.FC<LoginTabsProps> = ({ isPasswordResetSucessfull, ...loginModuleProps }) => {
-  const cartItems = useSelector((state: ReduxState) => state.cart);
+  // const cartItems = useSelector((state: ReduxState) => state.cart);
+  const [tabIndex, setTabIndex] = useState(1);
   const congratsMessage: string = "Your Password has been Reset Successfully.";
-  const registerBlock = (
+
+  const handleTabSwitch = (value: any) => {
+    setTabIndex(parseInt(value, 10));
+  }
+
+  const extraBlock = (
     <Flex
       flexDir="column"
       justifyContent="center"
@@ -34,55 +37,6 @@ const LoginTabs: React.FC<LoginTabsProps> = ({ isPasswordResetSucessfull, ...log
         OR
       </Text>
 
-      <Flex
-        justifyContent="center"
-        flexDirection="column"
-        gridGap="11px"
-        w="100%"
-      >
-        <Button
-          isFullWidth
-          textTransform="none"
-          borderColor="primary.500"
-          leftIcon={
-            <IconButton
-              my="8px"
-              aria-label="Google"
-              icon={<FcGoogle />}
-              backgroundColor="grey.50"
-              isRound
-            />
-          }
-          variant="outline"
-          fontSize={14}
-          fontWeight="400"
-          letterSpacing="0.25px"
-          color="black"
-        >
-          <Text minW="200px">Continue with Google</Text>
-        </Button>
-        <Button
-          isFullWidth
-          textTransform="none"
-          borderColor="primary.500"
-          leftIcon={
-            <IconButton
-              my="8px"
-              aria-label="Google"
-              icon={<FaFacebookF />}
-              backgroundColor="grey.50"
-              isRound
-            />
-          }
-          variant="outline"
-          fontSize={14}
-          letterSpacing="0.25px"
-          fontWeight="400"
-          color="black"
-        >
-          <Text minW="200px">Continue with Facebook</Text>
-        </Button>
-      </Flex>
       <Text
         mt="32px"
         color="grey.300"
@@ -112,7 +66,8 @@ const LoginTabs: React.FC<LoginTabsProps> = ({ isPasswordResetSucessfull, ...log
       ) : (
         <></>
       )}
-      <Tabs variant="unstyled" isFitted defaultIndex={1}>
+      <Tabs index={tabIndex} variant="unstyled" isFitted
+        onChange={handleTabSwitch}>
         <TabList>
           <Tab
             bg="grey.50"
@@ -143,11 +98,11 @@ const LoginTabs: React.FC<LoginTabsProps> = ({ isPasswordResetSucessfull, ...log
         >
           <TabPanel>
             <GuestTab {...loginModuleProps}/>
-            {registerBlock}
+            {extraBlock}
           </TabPanel>
           <TabPanel>
             <LoginTab {...loginModuleProps} />
-            {registerBlock}
+            {extraBlock}
           </TabPanel>
         </TabPanels>
       </Tabs>

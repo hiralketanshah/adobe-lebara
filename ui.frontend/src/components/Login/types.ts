@@ -10,6 +10,25 @@ export interface GuestFormSchema {
     lebaraMobile?: string;
     confirmLebaraMobile?: string;
 }
+export interface RegisterFormSchema {
+  email?: string;
+  password?: string;
+  confirmPassword?: string;
+}
+
+export interface CreatePasswordFormSchema {
+  pin: string;
+  newPassword: string;
+  reenterNewPassword: string;
+}
+
+export interface ResetPasswordSchema {}
+
+export interface CreateNewPasswordSchema {
+  mobileNumber?: string;
+  emailAddress?: string;
+}
+
 export interface loginModuleProps {
   loginModuleType : string;
   loginLabel : string;

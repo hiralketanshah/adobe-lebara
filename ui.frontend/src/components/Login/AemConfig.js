@@ -1,5 +1,5 @@
 import { MapTo } from "@adobe/aem-react-editable-components";
-import Login from "./LoginRoute";
+import SwitchRoute from "./SwitchRoute";
 
 const LoginConfig = {
   emptyLabel: "Login Component",
@@ -8,4 +8,4 @@ const LoginConfig = {
   },
 };
 
-MapTo("lebara/components/loginmodule")(Login, LoginConfig);
+MapTo("lebara/components/loginmodule")(SwitchRoute, LoginConfig);
