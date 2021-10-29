@@ -145,7 +145,7 @@ const FormikInput: React.FC<FormikInputProps> = ({
                 as={ReachLink}
                 color="secondary.500"
                 to={{
-                  pathname: `/${GC.LOGIN}`,
+                  pathname: `${GC.LOGIN}`,
                   state: {
                     fromPostPaid: true,
                   },

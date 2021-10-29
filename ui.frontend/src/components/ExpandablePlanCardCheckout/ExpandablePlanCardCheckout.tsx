@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Box,
   Flex,
@@ -18,9 +18,10 @@ import Button from "../Button/Button";
 import DeleteIcon from "../../icons/DeleteIcon";
 import ThreeDots from "../../assets/images/three-dots.png";
 import PlanDetailsDialog from "../PlanDetailsDialog/PlanDetailsDialog";
-//import countries from "../../static/countries";
 import TickInCircle from "../../icons/TickInCircle";
 import {globalConfigs} from  '../../GlobalConfigs.js';
+import { ExpandableSimPlanCardProps } from "../ExpandableSimPlanCard/types";
+import { allowanceListProps } from "../ExpandablePlanCard/types";
 const DataExpandablePlanCardCheckout: React.FC<ExpandablePlanCardCheckoutProps> =
   ({
     magentoId,
@@ -37,31 +38,43 @@ const DataExpandablePlanCardCheckout: React.FC<ExpandablePlanCardCheckoutProps> 
     removeLabel,
     autoRenewDesc,
     autoRenewLabel,
-    description
+    description,
+    id
   }) => {
-    // const [isExpanded, setIsExpanded] = React.useState(initialIsExpanded);
     const [isAutoRenew, setIsAutoRenew] = React.useState(false);
-
+    const [data, setData] = useState<Partial<ExpandableSimPlanCardProps>>({});
+    async function fetchData() {
+      const response = await fetch(`${window.location.pathname.replace('.html','')}.offer.json?offerId=${id}`);
+      const json = await response.json();
+      setData(json);
+    }
     const handleRemoveClick = () => {
       if (onRemove) {
         onRemove(magentoId);
       }
     };
+    const onClickDialogOpen = () => {
+      setIsDialogOpen(true);
+      fetchData();
+    };
     const [isDialogOpen, setIsDialogOpen] = React.useState(false);
+    const filteredAllowanceList: allowanceListProps = (data.allowanceList && data.allowanceList.find((list) => list.name && list.name.includes('Data'))) || {};
     return (
       <>
         <PlanDetailsDialog
           isOpen={isDialogOpen}
           onClose={() => setIsDialogOpen(false)}
-          planName="Komplett S"
+          planName={data?.planName || ""}
           price={price}
-          duration={isAddon ? "" : `${attributes?.[4]} Days`}
-          countries={[]}
-          dataValue={attributes?.[1]}
+          duration={isAddon ? "" : (data.validity || "")}
+          title={data.planInfo?.title}
+          countryTitle={data.planInfo?.countryTitle}
+          countries={(data.planInfo?.countryList) || []}
+          dataValue={filteredAllowanceList.formatedValue}
           previewIcon={<TickInCircle fill="#13357A" tickFill="#EA4984" />}
-          // should be replaced by CF data from AEM
-          previewItems={[]}
+          previewItems={data.planInfo?.listPlanItem || []}
           hideButton
+          isLoading={Object.keys(data).length === 0}
         />
         <Box
           px={27}
@@ -83,11 +96,8 @@ const DataExpandablePlanCardCheckout: React.FC<ExpandablePlanCardCheckoutProps> 
                 {title}
               </Heading>
               {!isFreeSim && (
-                //needs to be replaced with CF data
                 <Text pt="11px" color="grey.300" fontSize="12px" word>
-                  {isAddon
-                    ? `Includes ${JSON.parse(description)[0]?.name}`
-                    : `Includes ${attributes?.[1]} + ${attributes?.[2]} national minutes + ${attributes?.[3]} International minutes`}
+                  {JSON.parse(description)}
                 </Text>
               )}
             </Flex>
@@ -103,7 +113,7 @@ const DataExpandablePlanCardCheckout: React.FC<ExpandablePlanCardCheckoutProps> 
                   </MenuButton>
                   <MenuList minW={150} px="10px">
                     <MenuItem
-                      onClick={() => setIsDialogOpen(true)}
+                      onClick={onClickDialogOpen}
                       borderBottom="1px"
                       borderBottomColor="borderNwColor"
                     >

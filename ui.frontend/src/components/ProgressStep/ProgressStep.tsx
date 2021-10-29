@@ -6,11 +6,13 @@ import ProgressStepEllipse from "../ProgressStepEllipse/ProgressStepEllipse";
 const ProgressStep: React.FC<ProgressStepProps> = ({
   activeStepIndex,
   pageLinks,
+  isSmallWidth,
+  isWhiteBackground
 }) => {
   const lastStepIndex = pageLinks?.length - 1;
   return (
     <Center paddingX={"20px"}>
-    <Box  w="100%" maxW="846px" bg={{lg: "white"}} mt={"35px"} px={{ lg: "60px" }}>
+    <Box w="100%" {...isSmallWidth  && {maxW: "846px"}} {...isWhiteBackground && {bg: {lg: "white"}}} mt={"35px"} px={{ lg: "60px" }}>
       <Flex alignItems="center" gridGap="4px" height="72px" my="12px">
         {pageLinks?.map((step, index) => (
           <>
@@ -49,7 +51,7 @@ const ProgressStep: React.FC<ProgressStepProps> = ({
         ))}
       </Flex>
     </Box>
-    </Center>
+   </Center>
   );
 };
 export default ProgressStep;

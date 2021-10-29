@@ -57,7 +57,7 @@ const GuestTab: React.FC<LoginTabsProps> = ({...loginModuleProps}) => {
           .query({ query: VALIDATE_INTERNAL_SIM, variables })
           .then((res) => {
             if (res.data.validateGuestLogin) {
-              history.push(`/${GC.ORDER_DETAILS}`, {
+              history.push(`${GC.ORDER_DETAILS}`, {
                 email: values.email,
                 phoneNumber: values.lebaraMobile,
                 isGuest: true,

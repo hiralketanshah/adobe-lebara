@@ -35,5 +35,6 @@ const globalConstants = Object.freeze({
     TOP_UP: 'top-up',
     PREPAID: 'prepaid',
     DASHBOARD: 'dashboard',
+    VERIFY_REGISTER_MOBILE: 'verify-register-mobile',
 });
 module.exports = { globalConfigs, globalConstants }

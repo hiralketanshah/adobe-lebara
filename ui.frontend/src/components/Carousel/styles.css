@@ -2,9 +2,6 @@
 .about-lebara ul {
 	list-style:none;
 }
-.about-lebara ul li{
-	line-height: 0.93;
-}
 .about-lebara ul li:before{
 	content: '';
 	display: inline-block;
@@ -20,7 +17,7 @@
 	margin-right: 10.92px;
 	fill: var(--chakra-colors-white);
 	font-size: 14px;
-	line-height: 1em;
+    line-height: 1em;
 }
 @media screen and (min-width: 62em){
 	.about-lebara ul li {
@@ -28,9 +25,16 @@
 		font-size: 24px;
 		margin-bottom: 24px;
 		font-weight: 500;
+        line-height: 0.93;
 	}
 	.about-lebara ul li:before {
 		font-size: 24px;
 		font-weight: 500;
 	}
+    .about-lebara .custom-md-w50 {
+      width: 50%;
+    }
+    .about-lebara .custom-md-width {
+      width: 512px;
+    }
 }

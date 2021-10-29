@@ -46,11 +46,11 @@ const LoginTab: React.FC<LoginTabsProps> = ({...loginModuleProps}) => {
           .then((res) => {
             if (res.data.authenticateUserSPS.accessToken) {
               if (isFromMenu) {
-                history.push(`/${GC.DASHBOARD}`);
+                history.push(`${GC.DASHBOARD}`);
                 return;
               }
               if (isFromPostPaid) {
-                history.push(`/${GC.POSTPAID_PREVIEW}`, {
+                history.push(`${GC.POSTPAID_PREVIEW}`, {
                   personalDetails: {
                     firstName: "",
                     lastName: "",
@@ -66,7 +66,7 @@ const LoginTab: React.FC<LoginTabsProps> = ({...loginModuleProps}) => {
                 });
                 return;
               }
-              history.push(`/${GC.ORDER_DETAILS}`);
+              history.push(`${GC.ORDER_DETAILS}`);
             }
           })
           .catch((error) => {
@@ -92,7 +92,7 @@ const LoginTab: React.FC<LoginTabsProps> = ({...loginModuleProps}) => {
             />
             <Text fontSize={14} fontWeight="400" mb="5px">
               {loginModuleProps.loginForgotPassWordmsg}{" "}
-              <Link href={`/${GC.RESET_PASSWORD}`}>{loginModuleProps.loginResetLinkTextLabel}</Link>{" "}
+              <Link href={`${GC.RESET_PASSWORD}`}>{loginModuleProps.loginResetLinkTextLabel}</Link>{" "}
             </Text>
             <Button
               isDisabled={Object.keys(errors).length > 0 || isSubmitting}
