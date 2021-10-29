@@ -74,6 +74,7 @@ const DataExpandablePlanCardCheckout: React.FC<ExpandablePlanCardCheckoutProps> 
           previewIcon={<TickInCircle fill="#13357A" tickFill="#EA4984" />}
           previewItems={data.planInfo?.listPlanItem || []}
           hideButton
+          isLoading={Object.keys(data).length === 0}
         />
         <Box
           px={27}

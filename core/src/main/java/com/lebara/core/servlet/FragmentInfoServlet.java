@@ -11,7 +11,7 @@ import com.day.cq.search.result.Hit;
 import com.day.cq.search.result.SearchResult;
 import com.day.cq.wcm.api.Page;
 import com.day.cq.wcm.api.PageManager;
-import com.google.gson.Gson;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.lebara.core.dto.OfferFragmentBean;
 import com.lebara.core.utils.AemUtils;
 import com.lebara.core.utils.CFUtils;
@@ -88,8 +88,9 @@ public class FragmentInfoServlet extends SlingSafeMethodsServlet {
         if (offerFragmentBean == null) {
             return;
         }
-        Gson json = new Gson();
-        response.getWriter().println(json.toJson(offerFragmentBean));
+        ObjectMapper mapper = new ObjectMapper();
+        String prettyPrintedJson = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(offerFragmentBean);
+        response.getWriter().println(prettyPrintedJson);
     }
 
     private String getOfferFragmentPath(ResourceResolver resourceResolver) {

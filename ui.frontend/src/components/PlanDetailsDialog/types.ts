@@ -16,4 +16,5 @@ export interface PlanDetailsDialogProps {
   countryTitle?: string;
   dataValue?: string;
   hideButton?: boolean;
+  isLoading?: boolean;
 }

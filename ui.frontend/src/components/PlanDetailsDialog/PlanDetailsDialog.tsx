@@ -1,6 +1,7 @@
 import React from "react";
 import {
   Box,
+  Center,
   Divider,
   Flex,
   Image,
@@ -11,6 +12,7 @@ import {
   ModalFooter,
   ModalHeader,
   ModalOverlay,
+  Spinner,
   Text,
 } from "@chakra-ui/react";
 import { PlanDetailsDialogProps } from "./types";
@@ -31,7 +33,8 @@ const PlanDetailsDialog: React.FC<PlanDetailsDialogProps> = ({
   title,
   countryTitle,
   dataValue,
-  hideButton
+  hideButton,
+  isLoading
 }) => (
   <Modal isOpen={isOpen} onClose={onClose}>
     <ModalOverlay />
@@ -77,6 +80,7 @@ const PlanDetailsDialog: React.FC<PlanDetailsDialogProps> = ({
         </Flex>
 
         <Divider my={3.5} />
+        {isLoading ? <Center><Spinner /></Center> : ''}
         <Text color="primary.600" fontSize={14} fontWeight="bold" pb="3px">
           {title}
         </Text>
