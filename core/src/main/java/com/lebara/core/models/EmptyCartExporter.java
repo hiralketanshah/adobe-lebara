@@ -15,6 +15,7 @@ import org.apache.sling.api.resource.ResourceResolver;
 import org.apache.sling.models.annotations.DefaultInjectionStrategy;
 import org.apache.sling.models.annotations.Exporter;
 import org.apache.sling.models.annotations.Model;
+import org.apache.sling.models.annotations.injectorspecific.ChildResource;
 import org.apache.sling.models.annotations.injectorspecific.ScriptVariable;
 import org.apache.sling.models.annotations.injectorspecific.SlingObject;
 import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
@@ -42,14 +43,14 @@ public class EmptyCartExporter implements ComponentExporter {
     @SlingObject
     private SlingHttpServletRequest slingRequest;
 
-    @ValueMapValue
-    private String planPath;
+    @ChildResource
+    protected Resource addOns;
 
-    @ValueMapValue
-    private String dataPath;
+    @ChildResource
+    protected Resource dataPlans;
 
-    @ValueMapValue
-    private String addOnPath;
+    @ChildResource
+    protected Resource plans;
 
     @ValueMapValue
     private String cartDescription;
@@ -87,18 +88,30 @@ public class EmptyCartExporter implements ComponentExporter {
     }
 
     @JsonProperty("expandableAddOnsCardProps")
-    public OfferFragmentBean getAddOnOffers() {
-        return CFUtils.populateOffers(resourceResolver.getResource(addOnPath), i18n);
+    public List<OfferFragmentBean> getAddOnOffers() {
+        List<OfferFragmentBean> offers = new ArrayList<>();
+        if (null != addOns) {
+            offers = CFUtils.getCfList(addOns, resourceResolver, i18n);
+        }
+        return offers;
     }
 
     @JsonProperty("expandableSimPlanCardProps")
-    public OfferFragmentBean getDataOffers() {
-        return CFUtils.populateOffers(resourceResolver.getResource(dataPath), i18n);
+    public List<OfferFragmentBean> getDataOffers() {
+        List<OfferFragmentBean> offers = new ArrayList<>();
+        if (null != dataPlans) {
+            offers = CFUtils.getCfList(dataPlans, resourceResolver, i18n);
+        }
+        return offers;
     }
 
     @JsonProperty("expandablePlanCardProps")
-    public OfferFragmentBean getPlanOffers() {
-        return CFUtils.populateOffers(resourceResolver.getResource(planPath), i18n);
+    public List<OfferFragmentBean> getPlanOffers() {
+        List<OfferFragmentBean> offers = new ArrayList<>();
+        if (null != plans) {
+            offers = CFUtils.getCfList(plans, resourceResolver, i18n);
+        }
+        return offers;
     }
 
     public String getCartDescription() {
