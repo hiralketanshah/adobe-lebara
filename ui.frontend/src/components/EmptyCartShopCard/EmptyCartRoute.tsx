@@ -8,33 +8,19 @@ import Button from "../Button/Button";
 import { EmptyCartShopCardProps } from "./types";
 
 const EmptyCartRoute: React.FC<EmptyCartShopCardProps> = ({
-  expandableAddOnsCardProps,
-  expandablePlanCardProps,
-  expandableSimPlanCardProps,
-  shopBuyLabel,
-  cartDescription,
-  addOnTabLabel,
-  dataTabLabel,
-  plansTabLabel,
-  showDetailsLabel,
-  buyPlanLabel,
-  continueBrowsingLabel,
-  emptyBasketText,
-  goBackText,
-  continueBrowsinglink,
-  addToCartLabel,
+  ...props
 }) => {
   const history = useHistory();
-  
+  const {emptyBasketText, goBackText, continueBrowsinglink, continueBrowsingLabel} = props;
   return (
     <BuyPlanLayout hideButton noPadding>
       <Box backgroundColor="lightenPrimary.50" py="5px" px="20px">
         <>
           <Flex flexDir="column" alignItems="left" back color="#13357A">
-            <Text fontWeight="700" fontSize="20px" lineHeight="40px">
+            {emptyBasketText ? <Text fontWeight="700" fontSize="20px" lineHeight="40px">
               {emptyBasketText}
-            </Text>
-            <Text
+            </Text> : ''}
+            {goBackText ? <Text
               mb="20px"
               fontWeight="400"
               fontSize="14px"
@@ -42,23 +28,11 @@ const EmptyCartRoute: React.FC<EmptyCartShopCardProps> = ({
               lineHeight="20px"
             >
               {goBackText}
-            </Text>
+            </Text> : ''}
           </Flex>
         </>
         <Box>
-            <EmptyCartShopCard
-              expandableAddOnsCardProps={expandableAddOnsCardProps}
-              expandablePlanCardProps={expandablePlanCardProps}
-              expandableSimPlanCardProps={expandableSimPlanCardProps}
-              shopBuyLabel={shopBuyLabel}
-              cartDescription={cartDescription}
-              addOnTabLabel={addOnTabLabel}
-              dataTabLabel={dataTabLabel}
-              plansTabLabel={plansTabLabel}
-              showDetailsLabel={showDetailsLabel}
-              buyPlanLabel={buyPlanLabel}
-              addToCartLabel={addToCartLabel}
-            />
+            <EmptyCartShopCard {...props}/>
         </Box>
       </Box>
       <Box textAlign="center" pt="26px" pb="33px">
