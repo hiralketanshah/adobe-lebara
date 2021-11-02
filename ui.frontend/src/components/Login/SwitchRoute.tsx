@@ -18,6 +18,9 @@ const SwitchRoute: React.FC<loginModuleProps> = ({ ...loginModuleProps }) => {
             {loginModuleType === "loginRegistration" && (
                 <RegisterRoute {...loginModuleProps} />
             )}
+            {loginModuleType === "resetPassword" && (
+                <RegisterRoute {...loginModuleProps} />
+            )}
         </>
     );
 };
