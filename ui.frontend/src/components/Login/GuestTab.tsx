@@ -40,7 +40,7 @@ const GuestTab: React.FC<LoginTabsProps> = ({...loginModuleProps}) => {
     if (!confirmLebaraMobile)
       errors.confirmLebaraMobile = loginModuleProps.mobileNumberNotMatchErrorMessage;
     else if (!phoneNumberRegex.test(confirmLebaraMobile))
-      errors.confirmLebaraMobile = loginModuleProps. mobileNumberFieldPattern;
+      errors.confirmLebaraMobile = loginModuleProps.mobileNumberFieldPattern;
     else if (lebaraMobile !== confirmLebaraMobile)
       errors.confirmLebaraMobile = loginModuleProps.mobileNumberNotMatchErrorMessage;
     return errors;

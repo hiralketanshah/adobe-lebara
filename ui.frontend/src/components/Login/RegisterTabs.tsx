@@ -8,8 +8,8 @@ import {
   Text,
   Flex,
 } from "@chakra-ui/react";
-import { ReduxState } from "../../redux/types";
-import { useSelector } from "react-redux";
+// import { useSelector } from "react-redux";
+// import { ReduxState } from "../../redux/types";
 import { LoginTabsProps } from "./types";
 import LoginTab from "./LoginTab";
 import RegisterTab from "./RegisterTab";
