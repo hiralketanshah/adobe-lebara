@@ -367,6 +367,30 @@
                                                 fieldLabel="Error for email address/mobile number"
                                                 value="Error for email address/mobile number"
                                                 name="./loginEmailMobileErrMessage"/>
+                                            <confirmPasswordFieldErrorMsg
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                    fieldLabel="Error for Confirm Password Field"
+                                                    value="Error for Confirm Password Field"
+                                                    name="./confirmPasswordFieldErrorMsg"/>
+                                            <errorEmailPatternValidMsg
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                    fieldLabel="Error for valid Email Pattern Message"
+                                                    value="Error for valid Email Pattern"
+                                                    name="./errorEmailPatternValidMsg"/>
+                                            <errorPasswordPatternMinMsg
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                    fieldLabel="Error for Password Pattern Message"
+                                                    value="Error for Password Pattern"
+                                                    name="./errorPasswordPatternMinMsg"/>
+                                            <errorConfirmPasswordPatternNotMatchMsg
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                    fieldLabel="Error for Confirm Password Pattern Not Matching Message"
+                                                    value="Error for Confirm Password Pattern Not Matching"
+                                                    name="./errorConfirmPasswordPatternNotMatchMsg"/>
                                         </items>
                                     </column>
                                 </items>

@@ -153,6 +153,19 @@ public class LoginExporter implements ComponentExporter {
     @ValueMapValue
     private String  loginEmailMobileErrMessage;
 
+    @ValueMapValue
+    private String  confirmPasswordFieldErrorMsg;
+
+    @ValueMapValue
+    private String  errorEmailPatternValidMsg;
+
+    @ValueMapValue
+    private String  errorPasswordPatternMinMsg;
+
+    @ValueMapValue
+    private String  errorConfirmPasswordPatternNotMatchMsg;
+
+
     public String getLoginRegistrationMessage() {
         return loginRegistrationMessage;
     }
@@ -307,6 +320,22 @@ public class LoginExporter implements ComponentExporter {
 
     public String getLoginEmailMobileErrMessage() {
         return loginEmailMobileErrMessage;
+    }
+
+    public String getConfirmPasswordFieldErrorMsg() {
+        return confirmPasswordFieldErrorMsg;
+    }
+
+    public String getErrorEmailPatternValidMsg() {
+        return errorEmailPatternValidMsg;
+    }
+
+    public String getErrorPasswordPatternMinMsg() {
+        return errorPasswordPatternMinMsg;
+    }
+
+    public String getErrorConfirmPasswordPatternNotMatchMsg() {
+        return errorConfirmPasswordPatternNotMatchMsg;
     }
 
     @Override
