@@ -11,10 +11,10 @@ const EmptyCartRoute: React.FC<EmptyCartShopCardProps> = ({
   ...props
 }) => {
   const history = useHistory();
-  const {emptyBasketText, goBackText, continueBrowsinglink, continueBrowsingLabel} = props;
+  const {emptyBasketText, goBackText, continueBrowsinglink, continueBrowsingLabel, isFullWidth} = props;
   return (
-    <BuyPlanLayout hideButton noPadding>
-      <Box backgroundColor="lightenPrimary.50" py="5px" px="20px">
+    <BuyPlanLayout hideButton noPadding fullWidth={isFullWidth}>
+      <Box {...!isFullWidth? {py: "5px", px: "20px"} : {}}>
         <>
           <Flex flexDir="column" alignItems="left" back color="#13357A">
             {emptyBasketText ? <Text fontWeight="700" fontSize="20px" lineHeight="40px">
@@ -35,7 +35,7 @@ const EmptyCartRoute: React.FC<EmptyCartShopCardProps> = ({
             <EmptyCartShopCard {...props}/>
         </Box>
       </Box>
-      <Box textAlign="center" pt="26px" pb="33px">
+      {continueBrowsingLabel ? <Box textAlign="center" pt="26px" pb="33px">
         <Button
           variant="ghost"
           fontWeight="700"
@@ -45,7 +45,7 @@ const EmptyCartRoute: React.FC<EmptyCartShopCardProps> = ({
         >
           {continueBrowsingLabel}
         </Button>
-      </Box>
+      </Box> : ''}
     </BuyPlanLayout>
   );
 };

@@ -80,6 +80,8 @@ public class EmptyCartExporter implements ComponentExporter {
     @ValueMapValue
     private String continueBrowsinglink;
 
+    @ValueMapValue
+    private boolean isFullWidth = false;
     private I18n i18n;
 
     @PostConstruct
@@ -160,6 +162,10 @@ public class EmptyCartExporter implements ComponentExporter {
 
     public String getContinueBrowsinglink() {
         return continueBrowsinglink;
+    }
+
+    public boolean getIsFullWidth() {
+        return isFullWidth;
     }
 
     @Override

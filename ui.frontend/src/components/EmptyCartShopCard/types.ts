@@ -17,6 +17,7 @@ export interface EmptyCartShopCardProps {
   goBackText?: string;
   addToCartLabel?: string;
   continueBrowsinglink?: string;
+  isFullWidth?: boolean;
 }
 
 export interface CountriesList extends CountriesListOption {}
