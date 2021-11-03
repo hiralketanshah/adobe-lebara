@@ -35,8 +35,6 @@ public class UsageDetailsExporter extends HeadingExporter {
     private String ctaSeeMoreCallsLabel;
     @ValueMapValue
     private String ctaLoadMoreLabel;
-    @ValueMapValue
-    private String navigateTopText;
 
     private List<String> tabsName;
 
@@ -51,10 +49,7 @@ public class UsageDetailsExporter extends HeadingExporter {
     public String getCtaLoadMoreLabel() {
         return ctaLoadMoreLabel;
     }
-
-    public String getNavigateTopText() {
-        return navigateTopText;
-    }
+    
 
     public List<String> getTabsName() {
         tabsName = new ArrayList<>();
