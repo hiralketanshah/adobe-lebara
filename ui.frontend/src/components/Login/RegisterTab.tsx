@@ -57,7 +57,7 @@ const RegisterTab: React.FC<LoginTabsProps> = ({...loginModuleProps}) => {
               password: values.password,
             },
           });
-          // console.log(registerResponse);
+          console.log(registerResponse);
           /*
           setUserToken(userInfo.email);
           dispatch(saveUserToken({ token: userInfo.email }));
