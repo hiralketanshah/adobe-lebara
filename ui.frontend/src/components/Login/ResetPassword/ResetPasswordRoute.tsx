@@ -2,9 +2,9 @@ import React, { useEffect } from "react";
 import { Box } from "@chakra-ui/react";
 import { useHistory } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { highlightButton } from "../../redux/actions/highlightActions";
-import BuyPlanLayout from "../../layouts/BuyPlanLayout";
-import { loginModuleProps } from "./types";
+import { highlightButton } from "../../../redux/actions/highlightActions";
+import { loginModuleProps } from "../types";
+import BuyPlanLayout from "../../../layouts/BuyPlanLayout";
 import ResetPassword from "./ResetPassword";
 
 const ResetPasswordRoute: React.FC<loginModuleProps> = ({...loginModuleProps}) => {

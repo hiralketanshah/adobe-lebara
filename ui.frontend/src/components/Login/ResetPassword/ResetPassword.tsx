@@ -1,17 +1,17 @@
 import * as React from "react";
 import { Box, RadioGroup, Stack, Text } from "@chakra-ui/react";
 import { useHistory } from "react-router-dom";
-import { LoginTabsProps } from "./types";
-import RadioButton from "../RadioButton/RadioButton";
-import Input from "../Input/Input";
-import Button from "../Button/Button";
+import { LoginTabsProps } from "../types";
+import RadioButton from "../../RadioButton/RadioButton";
+import Input from "../../Input/Input";
+import Button from "../../Button/Button";
 import {
   EMAIL_FIELD_PATTERN,
   NUMBER_FIELD_PATTERN,
-} from "../../utils/lebara.constants";
-import LebaraText from "../LebaraText/LebaraText";
+} from "../../../utils/lebara.constants";
+import LebaraText from "../../LebaraText/LebaraText";
 
-import { globalConstants as GC} from "../../GlobalConfigs";
+import { globalConstants as GC} from "../../../GlobalConfigs";
 
 const ResetPassword: React.FC<LoginTabsProps> = ({...rpProps}) => {
   const history = useHistory();
