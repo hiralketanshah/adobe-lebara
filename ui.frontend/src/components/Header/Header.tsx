@@ -62,7 +62,9 @@ const Header: React.FC<HeaderProps> = ({
     });
   }, [client, dispatch]);
   React.useEffect(() => {
-    getCart();
+    if( cartItems.length === 0){
+      getCart();
+    }
   }, [getCart]);
   const handleCartClick = () => {
     const hasDataPlan =
