@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:granite="http://www.adobe.com/jcr/granite/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+          jcr:primaryType="nt:unstructured"
+          jcr:title="Usage Details"
+          sling:resourceType="cq/gui/components/authoring/dialog">
+    <content
+            jcr:primaryType="nt:unstructured"
+            sling:resourceType="granite/ui/components/coral/foundation/container">
+        <items jcr:primaryType="nt:unstructured">
+            <tabs
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="granite/ui/components/coral/foundation/tabs"
+                    maximized="{Boolean}true">
+                <items jcr:primaryType="nt:unstructured">
+                    <commonColumn
+                            jcr:primaryType="nt:unstructured"
+                            jcr:title="Usage Details"
+                            sling:resourceType="granite/ui/components/coral/foundation/container">
+                        <items jcr:primaryType="nt:unstructured">
+                            <usageDetailsHeading
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                    fieldDescription="Usage Details Text"
+                                    value="Usage Details"
+                                    fieldLabel="Usage Details Text"
+                                    name="./title"/>
+                            <description
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                    fieldDescription="Usage Details description Text"
+                                    value="Activity within the last 3 hours maynot be seen"
+                                    fieldLabel="Usage Details description Text"
+                                    name="./description"/>
+                            <viewMoreLabel
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                    fieldDescription="view More Label"
+                                    value="View More"
+                                    fieldLabel="view More Label"
+                                    name="./ctaSeeMoreCallsLabel"/>
+                            <ctaLoadMoreLabel
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                    fieldDescription="Load More Label"
+                                    fieldLabel="Load More Label"
+                                    name="./ctaLoadMoreLabel"/>
+                            <ctaLoadMoreLabel
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                    fieldDescription="Navigate to Top Label"
+                                    fieldLabel="Navigate to Top Label"
+                                    name="./navigateTopText"/>
+                            <usageTabs
+                                    granite:class="lebara-multifield__editor"
+                                    jcr:primaryType="nt:unstructured"
+                                    jcr:title="Tabs"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
+                                    composite="{Boolean}true"
+                                    fieldDescription="Tabs Name"
+                                    fieldLabel="Tabs Name">
+                                <granite:data
+                                        jcr:primaryType="nt:unstructured"
+                                        maxItems="{Long}2"/>
+                                <field
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/container"
+                                        name="./tabs">
+                                    <items jcr:primaryType="nt:unstructured">
+                                        <column
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/container">
+                                            <items jcr:primaryType="nt:unstructured">
+                                                <ctaLoadMoreLabel
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                        fieldDescription="Tab Name"
+                                                        fieldLabel="Tab Name"
+                                                        name="./tabsName"/>
+                                            </items>
+                                        </column>
+                                    </items>
+                                </field>
+                            </usageTabs>
+                        </items>
+                    </commonColumn>
+                </items>
+            </tabs>
+        </items>
+    </content>
+</jcr:root>
