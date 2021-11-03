@@ -28,6 +28,24 @@ export interface ResetPasswordSchema {
 export interface CreateNewPasswordSchema {
   mobileNumber?: string;
   emailAddress?: string;
+  pinRequiredValidationMsg?: string;
+  pinLengthValidationMsg?: string;
+  pwdRequiredValidationMsg?: string;
+  pwdMinValdiationMsg?: string;
+  pwdMaxValdiationMsg?: string;
+  pwdConfirmMatchValidationMsg?: string;
+  pwdConfirmRequiredValidationMsg?: string;
+  pwdMinHint: string;
+  alertSuccessSuffixMsg?: string;
+  compHeading?: string;
+  compHeadingDescription?: string;
+  compResendPinText?: string;
+  frmLabelPin?: string;
+  frmLabelNewPwd?: string;
+  frmLabelReEnterNewPwd?: string;
+  frmPwd?: string;
+  frmBtnPrimaryLabel?: string;
+  frmBtnSecondaryLabel?: string;
 }
 
 export interface loginModuleProps {
