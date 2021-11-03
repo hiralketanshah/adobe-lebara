@@ -20,9 +20,7 @@ const MiniFooter: React.FC<MiniFooterProps> = ({helpText, lookText, links}) => (
       fontWeight="bold"
       letterSpacing={{ base: "0.01em", lg: "0.25px" }}
       textTransform={{ base: "uppercase", lg: "none" }}
-    >
-      {helpText}
-    </Text>
+    >{helpText}</Text>
     <Text
       fontFamily="Roboto"
       fontWeight={{ base: "400", lg: "500" }}
@@ -30,14 +28,19 @@ const MiniFooter: React.FC<MiniFooterProps> = ({helpText, lookText, links}) => (
       lineHeight={{ base: "20px", lg: "30px" }}
       letterSpacing="0.25px"
       ml={{ base: "initial", md: "50px" }}
-      dangerouslySetInnerHTML={{ __html: lookText || ''}}
-    >
-      {links?.map((list) => (
-        <Link href={list.link} color="deeppink">
-          {list.label}
-        </Link>
-      ))}
-    </Text>
+    >{lookText}</Text>
+    {links?.map((list, idx) => (
+      <Link href={list.link} color="deeppink" key={`mf-link-${idx}`}>
+        <Text
+          fontFamily="Roboto"
+          fontWeight={{ base: "400", lg: "500" }}
+          fontSize={{ base: "14px", lg: "24px" }}
+          lineHeight={{ base: "20px", lg: "30px" }}
+          letterSpacing="0.25px"
+          ml={{ base: "initial", md: "6px" }}
+        >{list.label}</Text>
+      </Link>
+    ))}
   </Flex>
 );
 

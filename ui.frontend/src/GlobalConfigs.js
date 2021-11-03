@@ -6,7 +6,7 @@ const globalConfigs = window.lebaraGlobalConfigs ? {
     apiHostUri: window.lebaraGlobalConfigs.apiHostUri,
     gqlEndpoint: window.lebaraGlobalConfigs.gqlEndpoint,
     currencyName: window.lebaraGlobalConfigs.currencyName,
-    currencySymbol: window.lebaraGlobalConfigs.currencyName && globalCurrencies.hasOwnProperty(window.lebaraGlobalConfigs.currencyName)? globalCurrencies[window.lebaraGlobalConfigs.currencyName] : globalCurrencies['EUR'],
+    currencySymbol: window.lebaraGlobalConfigs.currencyName && globalCurrencies.hasOwnProperty(window.lebaraGlobalConfigs.currencyName) ? globalCurrencies[window.lebaraGlobalConfigs.currencyName] : globalCurrencies['EUR'],
     paymentClientKey: window.lebaraGlobalConfigs.paymentClientKey,
     paymentAdeyenEnv: window.lebaraGlobalConfigs.paymentAdeyenEnv,
     locale: window.lebaraGlobalConfigs.locale,
@@ -33,6 +33,8 @@ const globalConstants = Object.freeze({
     POSTPAID_PREVIEW: 'postpaid-preview',
     ADD_ONS: 'add-ons',
     TOP_UP: 'top-up',
-    PREPAID: 'prepaid'
-  });
-  module.exports = {globalConfigs, globalConstants}
+    PREPAID: 'prepaid',
+    DASHBOARD: 'dashboard',
+    VERIFY_REGISTER_MOBILE: 'verify-register-mobile',
+});
+module.exports = { globalConfigs, globalConstants }
