@@ -164,7 +164,7 @@ public class EmptyCartExporter implements ComponentExporter {
         return continueBrowsinglink;
     }
 
-    public boolean getIsFullWidth() {
+    public boolean isFullWidth() {
         return isFullWidth;
     }
 

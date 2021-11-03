@@ -133,7 +133,6 @@
                                                 sling:resourceType="granite/ui/components/coral/foundation/container">
                                             <items jcr:primaryType="nt:unstructured">
                                                 <addOnPath
-                                                        cq:showOnCreate="{Boolean}true"
                                                         jcr:primaryType="nt:unstructured"
                                                         sling:resourceType="dam/cfm/components/cfpicker"
                                                         fieldLabel="Select Add ons"
@@ -171,7 +170,6 @@
                                                 sling:resourceType="granite/ui/components/coral/foundation/container">
                                             <items jcr:primaryType="nt:unstructured">
                                                 <dataPlanPath
-                                                        cq:showOnCreate="{Boolean}true"
                                                         jcr:primaryType="nt:unstructured"
                                                         sling:resourceType="dam/cfm/components/cfpicker"
                                                         fieldLabel="Select Data"
@@ -209,7 +207,6 @@
                                                 sling:resourceType="granite/ui/components/coral/foundation/container">
                                             <items jcr:primaryType="nt:unstructured">
                                                 <planPath
-                                                        cq:showOnCreate="{Boolean}true"
                                                         jcr:primaryType="nt:unstructured"
                                                         sling:resourceType="dam/cfm/components/cfpicker"
                                                         fieldLabel="Select Plan"
