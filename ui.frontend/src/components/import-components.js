@@ -48,4 +48,5 @@ import "./EmptyCartShopCard/AemConfig.js";
 import "./Search/AemConfig.js";
 import "./Login/AemConfig.js";
 import "./SuccessCard/AemConfig.js";
-import "./SimSwitch/AemConfig.js"
+import "./SimSwitch/AemConfig.js";
+import "./MyBalanceCard/AemConfig.js";

@@ -13,7 +13,7 @@
                 sling:resourceType="granite/ui/components/coral/foundation/tabs"
                 maximized="{Boolean}true">
                 <items jcr:primaryType="nt:unstructured">
-                    <confirmation
+                    <general
                         jcr:primaryType="nt:unstructured"
                         jcr:title="General"
                         sling:resourceType="granite/ui/components/coral/foundation/container"
@@ -45,7 +45,7 @@
                                 </items>
                             </columns>
                         </items>
-                    </confirmation>
+                    </general>
                 </items>
             </tabs>
         </items>

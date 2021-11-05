@@ -13,7 +13,6 @@ function useGetDashboardData() {
     msisdn?: string;
   }>();
   const msisdn = location?.state?.msisdn || "";
-
   const [getDashboardData, { data: dashboardData }] = useLazyQuery(
     GET_DASHBOARD_DATA,
     {
@@ -59,15 +58,15 @@ function useGetDashboardData() {
       },
       ...(plan.total_sms !== 0
         ? [
-            {
-              icon: SMSIcon,
-              planTabName: "UK SMS",
-              dataType: "SMS",
-              leftQuantity: plan.sms_left,
-              totalQuantity: plan.total_sms,
-              validUpto: undefined,
-            },
-          ]
+          {
+            icon: SMSIcon,
+            planTabName: "UK SMS",
+            dataType: "SMS",
+            leftQuantity: plan.sms_left,
+            totalQuantity: plan.total_sms,
+            validUpto: undefined,
+          },
+        ]
         : []),
       {
         icon: GlobeIcon,
