@@ -4,7 +4,7 @@ subject:  Content Approved
 Hi ${senderName} team,
 
 <br />
-This page has been approved from ${senderName}.
+This page has been come for approval from ${senderName}.
 
 <br />
 Reviewer Comment : ${userComment}

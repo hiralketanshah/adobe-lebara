@@ -12,6 +12,7 @@
     <filter root="/var/workflow/models/lebara-asset-approval-rejection-task" mode="replace"/>  
     <filter root="/var/workflow/models/lebara-content-fragments" mode="replace"/>   
     <filter root="/conf/global/settings/workflow/models/lebara-asset-approval-rejection-task" mode="replace"/>
+    <filter root="/conf/global/settings/workflow/models/content-validation-workflow0" mode="replace"/>
     <filter root="/conf/global/settings/workflow/models/lebara-content-fragments" mode="replace"/>
     <filter root="/etc/notifications/email" mode="replace"/>
     <filter root="/etc/notifications" mode="merge"/>
