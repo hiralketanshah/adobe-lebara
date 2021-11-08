@@ -3,6 +3,7 @@ import { Flex } from "@chakra-ui/react";
 import { Formik } from "formik";
 import { useMutation } from "@apollo/client";
 import { useHistory } from "react-router-dom";
+import { writeStorage } from "@rehooks/local-storage";
 import { LoginTabsProps, RegisterFormSchema } from "./types";
 import { globalConstants as GC } from  '../../GlobalConfigs.js';
 import Button from "../Button/Button";
@@ -51,13 +52,15 @@ const RegisterTab: React.FC<LoginTabsProps> = ({...loginModuleProps}) => {
       initialValues={initialValues}
       onSubmit={async (values, { setErrors }) => {
         try {
-          const { data: registerResponse } = await registerUser({
+          await registerUser({
             variables: {
               email: values.email,
               password: values.password,
             },
           });
-          console.log(registerResponse);
+          writeStorage("newCustomer", true);
+          writeStorage("loggedIn", true);
+          writeStorage("msisdn", null);
           /*
           setUserToken(userInfo.email);
           dispatch(saveUserToken({ token: userInfo.email }));
