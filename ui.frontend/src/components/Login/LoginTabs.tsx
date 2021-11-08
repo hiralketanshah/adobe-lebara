@@ -8,12 +8,12 @@ import {
   Text,
   Flex,
 } from "@chakra-ui/react";
-import { useSelector } from "react-redux";
+// import { useSelector } from "react-redux";
+// import { ReduxState } from "../../redux/types";
 import Link from "../Link/Link";
 import { LoginTabsProps } from "./types";
 import LoginTab from "./LoginTab";
 import GuestTab from "./GuestTab";
-import { ReduxState } from "../../redux/types";
 import CongratulationsPopUp from "../CongratulationsPopUp/CongratulationsPopUp";
 
 const LoginTabs: React.FC<LoginTabsProps> = ({ isPasswordResetSucessfull, ...loginModuleProps }) => {

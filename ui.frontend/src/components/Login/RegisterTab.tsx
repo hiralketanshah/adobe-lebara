@@ -4,7 +4,7 @@ import { Formik } from "formik";
 import { useMutation } from "@apollo/client";
 import { useHistory } from "react-router-dom";
 import { LoginTabsProps, RegisterFormSchema } from "./types";
-import { globalConstants as GC } from  '../../GlobalConfigs.js';
+import { globalConfigs as GC, globalConstants as GCST } from  '../../GlobalConfigs.js';
 import Button from "../Button/Button";
 import REGISTER_USER_SPS from "../../graphql/REGISTER_USER_SPS";
 import FormikInput from "../Formik/FormikInput/FormikInput";
@@ -57,12 +57,12 @@ const RegisterTab: React.FC<LoginTabsProps> = ({...loginModuleProps}) => {
               password: values.password,
             },
           });
-          // console.log(registerResponse);
+          console.log(registerResponse);
           /*
           setUserToken(userInfo.email);
           dispatch(saveUserToken({ token: userInfo.email }));
 */
-          history.push(`${GC.VERIFY_REGISTER_MOBILE}`, {
+          history.push( (GC.journeyPages[GCST.VERIFY_REGISTER_MOBILE]  || '/'), {
             email: values.email,
           });
           // TODO once OTP is ready.
