@@ -17,10 +17,10 @@ const EmptyCartRoute: React.FC<EmptyCartShopCardProps> = ({
       <Box {...!fullWidth? {py: "5px", px: "20px"} : {}}>
         <>
           <Flex flexDir="column" alignItems="left" back color="#13357A">
-            {emptyBasketText ? <Text fontWeight="700" fontSize="20px" lineHeight="40px">
+            {emptyBasketText && <Text fontWeight="700" fontSize="20px" lineHeight="40px">
               {emptyBasketText}
-            </Text> : ''}
-            {goBackText ? <Text
+            </Text>}
+            {goBackText && <Text
               mb="20px"
               fontWeight="400"
               fontSize="14px"
@@ -28,14 +28,14 @@ const EmptyCartRoute: React.FC<EmptyCartShopCardProps> = ({
               lineHeight="20px"
             >
               {goBackText}
-            </Text> : ''}
+            </Text>}
           </Flex>
         </>
         <Box>
             <EmptyCartShopCard {...props}/>
         </Box>
       </Box>
-      {continueBrowsingLabel ? <Box textAlign="center" pt="26px" pb="33px">
+      {continueBrowsingLabel && <Box textAlign="center" pt="26px" pb="33px">
         <Button
           variant="ghost"
           fontWeight="700"
@@ -45,7 +45,7 @@ const EmptyCartRoute: React.FC<EmptyCartShopCardProps> = ({
         >
           {continueBrowsingLabel}
         </Button>
-      </Box> : ''}
+      </Box>}
     </BuyPlanLayout>
   );
 };

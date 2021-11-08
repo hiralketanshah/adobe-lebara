@@ -103,14 +103,14 @@ const EmptyCartShopCard: React.FC<EmptyCartShopCardProps> = ({
             </Tab>
           </TabList>
           <TabPanels width="fit-content">
-            <TabPanel color="primary.600">
+            {expandableAddOnsCardProps && <TabPanel color="primary.600">
               <Flex
                 py="20px"
                 justifyContent={{ base: "space-between", md: "center" }}
                 gridGap="38px"
                 overflowX="auto"
               >
-                {expandableAddOnsCardProps?.map(
+                {expandableAddOnsCardProps.map(
                   (addOnPlan: ExpandableSimPlanCardProps) => (
                     <Box>
                       <ExpandableSimPlanCard {...addOnPlan}
@@ -122,15 +122,15 @@ const EmptyCartShopCard: React.FC<EmptyCartShopCardProps> = ({
                   )
                 )}
               </Flex>
-            </TabPanel>
-            <TabPanel color="primary.600">
+            </TabPanel>}
+            {expandableSimPlanCardProps && <TabPanel color="primary.600">
               <Flex
                 py="20px"
                 justifyContent={{ base: "space-between", md: "center" }}
                 gridGap="38px"
                 overflowX="auto"
               >
-                {expandableSimPlanCardProps?.map(
+                {expandableSimPlanCardProps.map(
                   (planCard: ExpandableSimPlanCardProps) => (
                     <Box>
                       <ExpandableSimPlanCard {...planCard}
@@ -141,15 +141,15 @@ const EmptyCartShopCard: React.FC<EmptyCartShopCardProps> = ({
                   )
                 )}
               </Flex>
-            </TabPanel>
-            <TabPanel color="primary.600">
+            </TabPanel>}
+           {expandablePlanCardProps && <TabPanel color="primary.600">
               <Flex
                 py="20px"
                 justifyContent={{ base: "space-between", md: "center" }}
                 gridGap="38px"
                 overflowX="auto"
               >
-                {expandablePlanCardProps?.map(
+                {expandablePlanCardProps.map(
                   (simCardPlan: ExpandableSimPlanCardProps) => (
                     <Box>
                       <ExpandableSimPlanCard {...simCardPlan}
@@ -160,7 +160,7 @@ const EmptyCartShopCard: React.FC<EmptyCartShopCardProps> = ({
                   )
                 )}
               </Flex>
-            </TabPanel>
+            </TabPanel>}
           </TabPanels>
         </Tabs>
       </Box>
