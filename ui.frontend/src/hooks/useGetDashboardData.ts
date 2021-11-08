@@ -23,7 +23,6 @@ function useGetDashboardData() {
     }
   );
   React.useEffect(() => {
-    console.log(msisdn);
     if (!msisdn) return;
     getDashboardData();
   }, [msisdn, getDashboardData]);
