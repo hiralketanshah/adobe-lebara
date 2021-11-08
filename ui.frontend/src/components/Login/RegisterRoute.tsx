@@ -1,9 +1,8 @@
 import React, { useEffect } from "react";
 import { Box } from "@chakra-ui/react";
-import { useHistory, useLocation } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { highlightButton } from "../../redux/actions/highlightActions";
-import LoginTabs from "./LoginTabs";
 import BuyPlanLayout from "../../layouts/BuyPlanLayout";
 import { loginModuleProps } from "./types";
 import RegisterTabs from "./RegisterTabs";
@@ -11,7 +10,6 @@ import RegisterTabs from "./RegisterTabs";
 const RegisterRoute: React.FC<loginModuleProps> = ({...loginModuleProps}) => {
   const history = useHistory();
   const dispatch = useDispatch();
-  const location = useLocation<{ isPasswordResetSucessfull?: boolean }>();
 
   useEffect(
     () =>
