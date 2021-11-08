@@ -35,7 +35,7 @@ import MiniHeader from "../MiniHeader/MiniHeader";
 import { ReduxState } from "../../redux/types";
 // import LebaraLogo from "../../assets/images/lebara-logo.svg";
 import NewSIMOfferCard from "../NewSImOfferCard/NewSImOfferCard";
-import { globalConfigs, globalConstants } from "../../GlobalConfigs";
+import { globalConfigs as GC, globalConstants as GCST } from "../../GlobalConfigs";
 
 const Header: React.FC<HeaderProps> = ({
   logoPath,
@@ -54,12 +54,12 @@ const Header: React.FC<HeaderProps> = ({
         .length > 0;
     history.push(
       cartItems.length === 0
-        ? (globalConfigs.journeyPages[globalConstants.EMPTY_CART]  || '/')
+        ? (GC.journeyPages[GCST.EMPTY_CART]  || '/')
         : userToken || !hasDataPlan
         ? userToken
-          ? (globalConfigs.journeyPages[globalConstants.ORDER_DETAILS]  || '/')
-          : (globalConfigs.journeyPages[globalConstants.LOGIN]  || '/')
-        : (globalConfigs.journeyPages[globalConstants.LEBARA_SIM_CHOICE]  || '/')
+          ? (GC.journeyPages[GCST.ORDER_DETAILS]  || '/')
+          : (GC.journeyPages[GCST.LOGIN]  || '/')
+        : (GC.journeyPages[GCST.LEBARA_SIM_CHOICE]  || '/')
     );
   };
   return (
@@ -258,7 +258,11 @@ const Header: React.FC<HeaderProps> = ({
               aria-label="Profile"
               size="md"
               variant="ghost"
-              onClick={() => history.push(`/${accountLink}`)}
+              onClick={() =>
+                history.push((GC.journeyPages[GCST.LOGIN]  || '/'), {
+                  fromMenu: true,
+                })
+              }
             />
             <Box pos="relative" onClick={handleCartClick}>
               <IconButton
