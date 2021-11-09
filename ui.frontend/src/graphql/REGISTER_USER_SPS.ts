@@ -1,4 +1,5 @@
 import { gql } from "@apollo/client";
+import { globalConfigs } from "../GlobalConfigs";
 
 export default gql`
   mutation registerUserSPS($email: String!, $password: String!) {
@@ -6,7 +7,7 @@ export default gql`
       email: $email
       password: $password
       channel: "Web"
-      country: "DE"
+      country: "${globalConfigs.country}"
     )
   }
 `;
