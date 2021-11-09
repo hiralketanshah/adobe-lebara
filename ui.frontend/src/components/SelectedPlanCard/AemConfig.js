@@ -2,9 +2,9 @@ import { MapTo } from "@adobe/aem-react-editable-components";
 import SelectedPlanCard from "./SelectedPlanCard";
 
 const SelectedPlanCardConfig = {
-  emptyLabel: "Selected Plan",
-  isEmpty: function (props) {
-    return !props.selectedPlan;
+  emptyLabel: "Dynamic Cart Component",
+  isEmpty: function () {
+    return true;
   },
 };
 

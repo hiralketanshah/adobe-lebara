@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useCallback } from "react";
 import {
   Box,
   Flex,
@@ -21,7 +21,7 @@ import {
   RiShoppingBagLine,
 } from "react-icons/all";
 import { Link, useHistory } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useLocalStorage } from "@rehooks/local-storage";
 import {
   HeaderProps,
@@ -35,7 +35,11 @@ import MiniHeader from "../MiniHeader/MiniHeader";
 import { ReduxState } from "../../redux/types";
 // import LebaraLogo from "../../assets/images/lebara-logo.svg";
 import NewSIMOfferCard from "../NewSImOfferCard/NewSImOfferCard";
-import { globalConfigs, globalConstants } from "../../GlobalConfigs";
+import { globalConfigs as GC, globalConstants as GCST } from "../../GlobalConfigs";
+import { useApolloClient } from "@apollo/client";
+import GET_CART from "../../graphql/GET_CART";
+import { setCartItemsLoading, loadInitialCart } from "../../redux/actions/cartActions";
+import mapMagentoProductToCartItem from "../../utils/mapMagentoProductToCartItem";
 
 const Header: React.FC<HeaderProps> = ({
   logoPath,
@@ -47,19 +51,33 @@ const Header: React.FC<HeaderProps> = ({
   const cartItems = useSelector((state: ReduxState) => state.cart.items);
   const history = useHistory();
   const [userToken] = useLocalStorage("userToken");
-
+  const client = useApolloClient();
+  const dispatch = useDispatch();
+  const getCart = useCallback(() => {
+    dispatch(setCartItemsLoading());
+    client.query({ query: GET_CART }).then((res) => {
+      dispatch(
+        loadInitialCart(mapMagentoProductToCartItem(res.data.getCart.items))
+      );
+    });
+  }, [client, dispatch]);
+  React.useEffect(() => {
+    if( cartItems.length === 0){
+      getCart();
+    }
+  }, [getCart]);
   const handleCartClick = () => {
     const hasDataPlan =
       cartItems.filter((t) => !t.isAddon && !t.duration.startsWith("Top-up"))
         .length > 0;
     history.push(
       cartItems.length === 0
-        ? (globalConfigs.journeyPages[globalConstants.EMPTY_CART]  || '/')
+        ? (GC.journeyPages[GCST.EMPTY_CART]  || '/')
         : userToken || !hasDataPlan
         ? userToken
-          ? (globalConfigs.journeyPages[globalConstants.ORDER_DETAILS]  || '/')
-          : (globalConfigs.journeyPages[globalConstants.LOGIN]  || '/')
-        : (globalConfigs.journeyPages[globalConstants.LEBARA_SIM_CHOICE]  || '/')
+          ? (GC.journeyPages[GCST.ORDER_DETAILS]  || '/')
+          : (GC.journeyPages[GCST.LOGIN]  || '/')
+        : (GC.journeyPages[GCST.LEBARA_SIM_CHOICE]  || '/')
     );
   };
   return (
@@ -258,7 +276,11 @@ const Header: React.FC<HeaderProps> = ({
               aria-label="Profile"
               size="md"
               variant="ghost"
-              onClick={() => history.push(`/${accountLink}`)}
+              onClick={() =>
+                history.push((GC.journeyPages[GCST.LOGIN]  || '/'), {
+                  fromMenu: true,
+                })
+              }
             />
             <Box pos="relative" onClick={handleCartClick}>
               <IconButton

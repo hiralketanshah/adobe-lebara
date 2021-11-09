@@ -191,10 +191,11 @@ const PaymentFrame: React.FC = () => {
               }
               if (res) {
                 dispatch(loadInitialCart([]));
-                history.push(`${(globalConfigs.journeyPages[globalConstants.ORDER_SUBMITTED] || '/')}/${res}`, {
+                history.push(`${(globalConfigs.journeyPages[globalConstants.ORDER_SUBMITTED] || '/')}`, {
                   isGuest: location?.state?.isGuest,
                   email: location?.state?.email,
                   phoneNumber: location?.state?.phoneNumber,
+                  orderId: res,
                 });
               }
             })

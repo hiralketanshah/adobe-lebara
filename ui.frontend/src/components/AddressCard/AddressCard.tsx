@@ -20,6 +20,7 @@ import Button from "../Button/Button";
 import Input from "../Input/Input";
 import Checkbox from "../Checkbox/Checkbox";
 import Select from "../Select/Select";
+import { globalConfigs } from "../../GlobalConfigs";
 
 const AddressCard: React.FC<AddressCardProps> = ({
   title,
@@ -298,7 +299,7 @@ const AddressCard: React.FC<AddressCardProps> = ({
       <GooglePlacesAutocomplete
         autocompletionRequest={{
           componentRestrictions: {
-            country: ["de"],
+            country: [globalConfigs.country],
           },
         }}
         selectProps={{

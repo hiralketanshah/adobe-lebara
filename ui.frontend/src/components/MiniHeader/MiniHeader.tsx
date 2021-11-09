@@ -25,7 +25,7 @@ import IconButton from "../IconButton/IconButton";
 import LanguageDropDown from "../LanguageDropDown/LanguageDropDown";
 import SideMenu from "../SideMenu/SideMenu";
 import { ReduxState } from "../../redux/types";
-import { globalConfigs, globalConstants } from "../../GlobalConfigs";
+import { globalConfigs as GC, globalConstants as GCST } from "../../GlobalConfigs";
 // import LebaraLogo from "../../assets/images/lebara-logo.svg";
 
 const MiniHeader: React.FC<MiniHeaderProps> = ({
@@ -42,12 +42,12 @@ const MiniHeader: React.FC<MiniHeaderProps> = ({
         .length > 0;
     history.push(
       cartItems.length === 0
-        ? (globalConfigs.journeyPages[globalConstants.EMPTY_CART]  || '/')
+        ? (GC.journeyPages[GCST.EMPTY_CART]  || '/')
         : userToken || !hasDataPlan
         ? userToken
-          ? (globalConfigs.journeyPages[globalConstants.ORDER_DETAILS]  || '/')
-          : (globalConfigs.journeyPages[globalConstants.LOGIN]  || '/')
-        : (globalConfigs.journeyPages[globalConstants.LEBARA_SIM_CHOICE]  || '/')
+          ? (GC.journeyPages[GCST.ORDER_DETAILS]  || '/')
+          : (GC.journeyPages[GCST.LOGIN]  || '/')
+        : (GC.journeyPages[GCST.LEBARA_SIM_CHOICE]  || '/')
     );
   };
   const { isOpen, onClose, onOpen } = useDisclosure();
@@ -201,6 +201,11 @@ const MiniHeader: React.FC<MiniHeaderProps> = ({
             icon={<AiOutlineUser />}
             aria-label="Profile"
             variant="ghost"
+            onClick={() =>
+              history.push((GC.journeyPages[GCST.LOGIN]  || '/'), {
+                fromMenu: true,
+              })
+            }
           />
           <Box pos="relative" onClick={handleCartClick}>
             <IconButton
