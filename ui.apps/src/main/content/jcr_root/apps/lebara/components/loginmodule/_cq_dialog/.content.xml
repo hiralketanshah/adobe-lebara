@@ -413,7 +413,7 @@
                                                     jcr:primaryType="nt:unstructured"
                                                     sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                                     fieldLabel="Login (button text)"
-                                                    value="Login (button text)."
+                                                    value="Login."
                                                     name="./loginButtonLabel"/>
                                         </items>
                                     </column>
