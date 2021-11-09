@@ -79,42 +79,26 @@ const LoginTab: React.FC<LoginTabsProps> = ({...loginModuleProps}) => {
                   client
                   .query({ query: GET_PERSONAL_DETAILS })
                   .then((personalDetailsRes) => {
+                    const { getPersonalDetails } = personalDetailsRes && personalDetailsRes.data ? personalDetailsRes.data : null;
+
                     history.push((GC.journeyPages[GCST.POSTPAID_PREVIEW]  || '/'), {
                       personalDetails: {
-                        firstName:
-                          personalDetailsRes.data.getPersonalDetails?.name
-                            ?.firstName,
-                        lastName:
-                          personalDetailsRes.data.getPersonalDetails?.name
-                            ?.lastName,
+                        firstName: getPersonalDetails?.name?.firstName,
+                        lastName: getPersonalDetails?.name?.lastName,
                         emailId: values.email,
-                        streetName:
-                          personalDetailsRes.data.getPersonalDetails
-                            ?.addresses[0].street || "",
-                        houseNumber:
-                          personalDetailsRes.data.getPersonalDetails
-                            ?.addresses[0].houseNumber || "",
-                        townCity:
-                          personalDetailsRes.data.getPersonalDetails
-                            ?.addresses[0].city || "",
-                        zipCode:
-                          personalDetailsRes.data.getPersonalDetails
-                            ?.addresses[0].postCode || "",
-                        addressLabel:
-                          personalDetailsRes.data.getPersonalDetails
-                            ?.addresses?.length > 0
+                        streetName: getPersonalDetails?.addresses[0].street || "",
+                        houseNumber: getPersonalDetails?.addresses[0].houseNumber || "",
+                        townCity: getPersonalDetails?.addresses[0].city || "",
+                        zipCode: getPersonalDetails?.addresses[0].postCode || "",
+                        addressLabel: getPersonalDetails?.addresses?.length > 0
                             ? `${
-                                personalDetailsRes.data.getPersonalDetails
-                                  ?.addresses[0].houseNumber || ""
+                                getPersonalDetails?.addresses[0].houseNumber || ""
                               } ${
-                                personalDetailsRes.data.getPersonalDetails
-                                  .addresses[0].street
+                                getPersonalDetails?.addresses[0].street
                               }, ${
-                                personalDetailsRes.data.getPersonalDetails
-                                  .addresses[0].city
+                                getPersonalDetails?.addresses[0].city
                               }, ${
-                                personalDetailsRes.data.getPersonalDetails
-                                  .addresses[0].postCode
+                                getPersonalDetails?.addresses[0].postCode
                               }, Germany`
                             : undefined,
                       },

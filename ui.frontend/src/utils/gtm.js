@@ -1,3 +1,5 @@
+import { glocalConfigs as GC } from "../GlobalConfigs";
+
 export function googleAnalytics(event, obj) {
   return event
     ? window?.dataLayer.push({
@@ -47,7 +49,7 @@ export function googleAnalyticsTransaction(products, orderId, voucherCode) {
   return window?.dataLayer.push({
     event: "EEtransaction",
     ecommerce: {
-      currencyCode: "EUR",
+      currencyCode: GC.currencyCode,
       purchase: {
         actionField: {
           id: `ML${orderId}`, // transaction ID - mandatory
