@@ -78,6 +78,10 @@
                 /glob "*.json"
                 /type "allow"
             }
+            /0003 {
+                /glob "*.globalConfigs.js"
+                /type "allow"
+            }
 		}
 		/allowedClients {
 			$include "../cache/default_invalidate.any"
