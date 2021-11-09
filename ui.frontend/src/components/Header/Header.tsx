@@ -140,12 +140,13 @@ const Header: React.FC<HeaderProps> = ({
           </ChakraLink>
 
           <Flex alignItems="left" ml={{ lg: "30px", md: "15px" }}>
-            {items?.map((menuItem: children) => (
-              <Menu>
+            {items?.map((menuItem: children, idx: any) => (
+              <Menu key={`menu-key-${idx}`}>
                 <MenuButton
                   _active={{
                     borderBottom: "1px solid white",
                   }}
+                  key={`menu-button-key-${idx}`}
                 >
                   <Box px={{ lg: "2px", md: "initial" }}>
                     <Button
@@ -183,9 +184,10 @@ const Header: React.FC<HeaderProps> = ({
                       display="flex"
                       justifyContent="space-between"
                     >
-                      {menuItem.children?.map((subMenuOption: children) => (
+                      {menuItem.children?.map((subMenuOption: children, cgIdx: any) => (
                         <Box>
                           <MenuGroup
+                            key={`menu-child-group-key-${cgIdx}`}
                             defaultValue="asc"
                             fontSize={14}
                             color="primary.500"
@@ -196,8 +198,9 @@ const Header: React.FC<HeaderProps> = ({
                           >
                             <Box>
                               {subMenuOption.children?.map(
-                                (menuProps: children) => (
+                                (menuProps: children, cIdx: any) => (
                                   <MenuItem
+                                    key={`menu-child-key-${cIdx}`}
                                     isDisabled={menuProps.active}
                                     onClick={() =>
                                       menuProps.path
