@@ -61,11 +61,13 @@ const Header: React.FC<HeaderProps> = ({
       );
     });
   }, [client, dispatch]);
+
   React.useEffect(() => {
     if( cartItems.length === 0){
       getCart();
     }
-  }, [getCart]);
+  }, [cartItems, getCart]);
+
   const handleCartClick = () => {
     const hasDataPlan =
       cartItems.filter((t) => !t.isAddon && !t.duration.startsWith("Top-up"))
@@ -80,6 +82,7 @@ const Header: React.FC<HeaderProps> = ({
         : (GC.journeyPages[GCST.LEBARA_SIM_CHOICE]  || '/')
     );
   };
+
   return (
     <Flex
       flexDirection="column"
