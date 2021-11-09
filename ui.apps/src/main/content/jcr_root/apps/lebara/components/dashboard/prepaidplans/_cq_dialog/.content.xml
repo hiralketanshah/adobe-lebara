@@ -24,6 +24,13 @@
                                     value="Your Plans"
                                     fieldLabel="Prepaid Plan heading"
                                     name="./title"/>
+                            <remainderText
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                    fieldDescription="Left Of Text"
+                                    value="Left Of"
+                                    fieldLabel="Left Of Text"
+                                    name="./leftOfText"/>
                             <manageLabel
                                     jcr:primaryType="nt:unstructured"
                                     sling:resourceType="granite/ui/components/coral/foundation/form/textfield"

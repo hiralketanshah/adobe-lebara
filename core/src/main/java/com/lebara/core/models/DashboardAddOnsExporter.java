@@ -14,43 +14,35 @@ import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
 import java.util.ArrayList;
 import java.util.List;
 
-@Model(adaptables = SlingHttpServletRequest.class, adapters = {PrepaidPlansExporter.class, ComponentExporter.class},
-        resourceType = PrepaidPlansExporter.RESOURCE_TYPE, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
+@Model(adaptables = SlingHttpServletRequest.class, adapters = {DashboardAddOnsExporter.class, ComponentExporter.class},
+        resourceType = DashboardAddOnsExporter.RESOURCE_TYPE, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
 @Exporter(name = ExporterConstants.SLING_MODEL_EXPORTER_NAME, extensions = ExporterConstants.SLING_MODEL_EXTENSION)
-public class PrepaidPlansExporter extends HeadingExporter {
+public class DashboardAddOnsExporter extends HeadingExporter {
 
     /**
      * The resource type.
      */
-    protected static final String RESOURCE_TYPE = "lebara/components/dashboard/prepaidplans";
-
-    @ChildResource
-    private Resource tabs;
+    protected static final String RESOURCE_TYPE = "lebara/components/dashboard/addons";
 
     @ValueMapValue
-    private String manageLabel;
+    private String addMoreLabel;
 
     @ValueMapValue
     private String leftOfText;
 
-    private List<String> plansTabNames;
+    @ValueMapValue
+    private String topUpLabel;
 
-    public String getManageLabel() {
-        return manageLabel;
+    public String getAddMoreLabel() {
+        return addMoreLabel;
     }
 
     public String getLeftOfText() {
         return leftOfText;
     }
 
-    public List<String> getPlansTabNames() {
-        plansTabNames = new ArrayList<>();
-        if (tabs != null) {
-            for (Resource tab : tabs.getChildren()) {
-                plansTabNames.add(AemUtils.getStringProperty(tab, "tabsName"));
-            }
-        }
-        return plansTabNames;
+    public String getTopUpLabel() {
+        return topUpLabel;
     }
 
     @Override
