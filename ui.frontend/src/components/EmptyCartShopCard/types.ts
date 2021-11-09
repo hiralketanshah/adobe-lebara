@@ -2,9 +2,9 @@ import { CountriesListOption } from "../CountriesList/types";
 import { ExpandableSimPlanCardProps } from "../ExpandableSimPlanCard/types";
 
 export interface EmptyCartShopCardProps {
-  expandableAddOnsCardProps: ExpandableSimPlanCardProps;
-  expandablePlanCardProps: ExpandableSimPlanCardProps;
-  expandableSimPlanCardProps: ExpandableSimPlanCardProps;
+  expandableAddOnsCardProps: ExpandableSimPlanCardProps[];
+  expandablePlanCardProps: ExpandableSimPlanCardProps[];
+  expandableSimPlanCardProps: ExpandableSimPlanCardProps[];
   shopBuyLabel?: string;
   cartDescription?: string;
   addOnTabLabel?: string;
@@ -17,6 +17,7 @@ export interface EmptyCartShopCardProps {
   goBackText?: string;
   addToCartLabel?: string;
   continueBrowsinglink?: string;
+  fullWidth?: boolean;
 }
 
 export interface CountriesList extends CountriesListOption {}

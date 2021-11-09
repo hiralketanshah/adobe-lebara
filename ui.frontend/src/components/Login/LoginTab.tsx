@@ -11,7 +11,7 @@ import Link from "../Link/Link";
 import AUTHENTICATE_USER_SPS from "../../graphql/AUTHENTICATE_USER_SPS";
 import { googleAnalytics } from "../../utils/gtm";
 import GET_PERSONAL_DETAILS from "../../graphql/GET_PERSONAL_DETAILS";
-import { globalConstants as GC } from "../../GlobalConfigs";
+import { globalConfigs as GC, globalConstants as GCST} from "../../GlobalConfigs";
 
 const LoginTab: React.FC<LoginTabsProps> = ({...loginModuleProps}) => {
   const history = useHistory();
@@ -68,7 +68,7 @@ const LoginTab: React.FC<LoginTabsProps> = ({...loginModuleProps}) => {
                 });
                 if (isFromMenu) {
                   setTimeout(() => {
-                    history.push(`${GC.DASHBOARD}`, {
+                    history.push((GC.journeyPages[GCST.DASHBOARD]  || '/'),{
                       msisdn: res.data.authenticateUserSPS[0],
                     });
                     resolve();
@@ -79,7 +79,7 @@ const LoginTab: React.FC<LoginTabsProps> = ({...loginModuleProps}) => {
                   client
                   .query({ query: GET_PERSONAL_DETAILS })
                   .then((personalDetailsRes) => {
-                    history.push(`${GC.POSTPAID_PREVIEW}`, {
+                    history.push((GC.journeyPages[GCST.POSTPAID_PREVIEW]  || '/'), {
                       personalDetails: {
                         firstName:
                           personalDetailsRes.data.getPersonalDetails?.name
@@ -124,8 +124,7 @@ const LoginTab: React.FC<LoginTabsProps> = ({...loginModuleProps}) => {
                   });
                 return;
               }
-              history.push(`${GC.ORDER_DETAILS}`);
-              resolve();
+              history.push( (GC.journeyPages[GCST.ORDER_DETAILS]  || '/'));
             }
           })
           .catch((error) => {
@@ -153,7 +152,7 @@ const LoginTab: React.FC<LoginTabsProps> = ({...loginModuleProps}) => {
             />
             <Text fontSize={14} fontWeight="400" mb="5px">
               {loginModuleProps.loginForgotPassWordmsg}{" "}
-              <Link href={`${GC.RESET_PASSWORD}`}>{loginModuleProps.loginResetLinkTextLabel}</Link>{" "}
+              <Link href={(GC.journeyPages[GCST.RESET_PASSWORD]  || '/')}>{loginModuleProps.loginResetLinkTextLabel}</Link>{" "}
             </Text>
             <Button
               isDisabled={Object.keys(errors).length > 0 || isSubmitting}
