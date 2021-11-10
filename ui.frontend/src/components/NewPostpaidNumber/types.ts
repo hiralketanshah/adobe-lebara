@@ -5,7 +5,7 @@ export interface Plan {
   id: string;
 }
 export interface NewPostPaidNumberProps {
-  plans: Plan[];
+  plans?: Plan[];
   durationLabel?: string;
   moreDetailsLabel?:string;
   dataVolumeLabel?:string;
@@ -20,7 +20,7 @@ export interface NewPostPaidNumberProps {
   yourOrderOneTimeActivationFeeLabel?:string;
   yourOrderOneTimeActivationFee?:string;
   orderNowLabel?:string;
-  duration: {};
+  duration?: {};
 }
 export interface ModalProps {
   open: any;
