@@ -4,11 +4,8 @@ import { Flex, Text } from "@chakra-ui/react";
 import { useHistory } from "react-router-dom";
 import { useApolloClient } from "@apollo/client";
 import { HiOutlineExclamation } from "react-icons/all";
-
 import VALIDATE_INTERNAL_SIM from "../../graphql/VALIDATE_INTERNAL_SIM";
-
-import { globalConstants as GC } from  '../../GlobalConfigs.js';
-
+import { globalConfigs as GC, globalConstants as GCST } from  '../../GlobalConfigs.js';
 import { GuestFormSchema, LoginTabsProps } from "./types";
 import Button from "../Button/Button";
 import FormikInput from "../Formik/FormikInput/FormikInput";
@@ -51,13 +48,13 @@ const GuestTab: React.FC<LoginTabsProps> = ({...loginModuleProps}) => {
       onSubmit={(values) => {
         const variables = {
           msisdn: values.lebaraMobile,
-          country: "DE",
+          country: GC.country,
         };
         return client
           .query({ query: VALIDATE_INTERNAL_SIM, variables })
           .then((res) => {
             if (res.data.validateGuestLogin) {
-              history.push(`${GC.ORDER_DETAILS}`, {
+              history.push((GC.journeyPages[GCST.ORDER_DETAILS]  || '/'), {
                 email: values.email,
                 phoneNumber: values.lebaraMobile,
                 isGuest: true,

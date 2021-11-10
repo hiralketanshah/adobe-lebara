@@ -19,7 +19,7 @@ import {
 import { useField } from "formik";
 import { Link as ReachLink } from "react-router-dom";
 import { FormikInputProps } from "./types";
-import { globalConstants as GC } from  '../../../GlobalConfigs.js';
+import { globalConfigs as GC, globalConstants as GCST } from  '../../../GlobalConfigs.js';
 
 const FormikInput: React.FC<FormikInputProps> = ({
   name,
@@ -145,7 +145,7 @@ const FormikInput: React.FC<FormikInputProps> = ({
                 as={ReachLink}
                 color="secondary.500"
                 to={{
-                  pathname: `${GC.LOGIN}`,
+                  pathname: (GC.journeyPages[GCST.LOGIN]  || '/'),
                   state: {
                     fromPostPaid: true,
                   },
