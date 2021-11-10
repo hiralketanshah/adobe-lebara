@@ -13,14 +13,14 @@ import {
 import { ModalProps } from "./types";
 import Button from "../Button/Button";
 
-const DurationModal: React.FC<ModalProps> = ({ open, onClose }) => {
-  const sectionHeading = {
-    fontWeight: "bold",
-    fontSize: "16px",
-    lineHeight: "22px",
-    color: "primary.500",
-    letterSpacing: "0.5px",
-  };
+const DurationModal: React.FC<ModalProps> = ({ open, onClose, heading, info, closeLabel }) => {
+  // const sectionHeading = {
+  //   fontWeight: "bold",
+  //   fontSize: "16px",
+  //   lineHeight: "22px",
+  //   color: "primary.500",
+  //   letterSpacing: "0.5px",
+  // };
   const sectionDetails = {
     fontSize: "14px",
     lineHeight: "20px",
@@ -40,13 +40,14 @@ const DurationModal: React.FC<ModalProps> = ({ open, onClose }) => {
               color="primary.500"
               letterSpacing="-0.01em"
             >
-              Duration
+              {heading}
             </Text>
           </ModalHeader>
           <ModalCloseButton />
           <ModalBody py="15px">
             <Box>
-              <Text {...sectionHeading}>24 months</Text>
+            <span className={'rich-text'} {...sectionDetails} dangerouslySetInnerHTML={{ __html: info || '' }} />
+              {/* <Text {...sectionHeading}>24 months</Text>
               <Text {...sectionDetails} mt="5px">
                 Your subscription starts from the moment you activate the SIM
                 card. After 24 months, your subscription is automatically
@@ -68,7 +69,7 @@ const DurationModal: React.FC<ModalProps> = ({ open, onClose }) => {
                 You activate the subscription whenever you want. Requested
                 number porting? Then only activate your subscription on the day
                 your number is transferred.
-              </Text>
+              </Text> */}
             </Box>
             <Flex justifyContent="center">
               <Button
@@ -77,7 +78,7 @@ const DurationModal: React.FC<ModalProps> = ({ open, onClose }) => {
                 variant="outline"
                 onClick={() => onClose(false)}
               >
-                Close
+                {closeLabel}
               </Button>
             </Flex>
           </ModalBody>

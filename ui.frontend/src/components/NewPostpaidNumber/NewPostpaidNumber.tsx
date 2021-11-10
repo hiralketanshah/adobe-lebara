@@ -12,13 +12,13 @@ import { loadInitialCart } from "../../redux/actions/cartActions";
 import mapMagentoProductToCartItem from "../../utils/mapMagentoProductToCartItem";
 import ADD_TO_CART from "../../graphql/ADD_TO_CART";
 import GET_SIM_ONLY_OFFERS from "../../graphql/GET_SIM_ONLY_OFFERS";
-import SimConfiguratorBanner from "./simConfiguratorShutterBox.png";
-import SimConfiguratorDesktopBanner from "./simConfiguratorDesktopBanner.png";
-import CheckMark from "./checkmark.png";
 import DurationModal from "./DurationModal";
 import DataModal from "./DataModal";
 import MinutesModal from "./MinutesModal";
 import PlanChangeDialog from "../PlanChangeDialog/PlanChangeDialog";
+import { globalConfigs, globalConstants } from "../../GlobalConfigs";
+import CHANGE_PLAN from "../../graphql/CHANGE_PLAN";
+import getDynamicValues from "../../utils/get-aem-dynamic-values";
 
 const NewPostpaidNumber: React.FC<NewPostPaidNumberProps> = ({
   durationLabel,
@@ -27,6 +27,7 @@ const NewPostpaidNumber: React.FC<NewPostPaidNumberProps> = ({
   abroadMinutesLabel,
   yourOrderLabel,
   productInformationLabel,
+  productInformationLink,
   yourOrderContractdurationLabel,
   yourOrderDataLabel,
   yourOrderInternationalMinLabel,
@@ -35,19 +36,37 @@ const NewPostpaidNumber: React.FC<NewPostPaidNumberProps> = ({
   yourOrderOneTimeActivationFeeLabel,
   yourOrderOneTimeActivationFee,
   orderNowLabel,
-  duration,
+  durationRadioLabelList,
+  dataVolumeRadioLabel,
+  abroadMinutesRadioLabel,
+  yourOrdersimPlanLabel,
+  yourOrderMinutesInGermanyValue,
+  contractPeriodPopupHeading,
+  contractPeriodPopupInfo,
+  popupCloseLabel,
+  switchCtaLabel,
+  dataVolumePopupHeading,
+  dataVolumePopupInfo,
+  abroadMinutesPopupHeading,
+  abroadMinutesPopupInfoTop,
+  abroadMinutesPopupInfoBottom,
+  countryFlagFrom,
+  countryFlagTo
 }) => {
   const history = useHistory();
   const [isDurationModalOpen, setDurationModalOpen] = useState(false);
   const [isDataModalOpen, setDataModalOpen] = useState(false);
   const [isMinutesModalOpen, setMinutesModalOpen] = useState(false);
   const location = useLocation<{
+    msisdn?: string;
+    oldPlanId?: string;
     data: number;
     planDuration: string;
     minutes: number;
     fromDashboard: boolean;
   }>();
   const dispatch = useDispatch();
+  const [changePlan] = useMutation(CHANGE_PLAN);
   const [addToCartApi] = useMutation(ADD_TO_CART);
   const isFromDashboard = location?.state?.fromDashboard ?? false;
   const initialValues = {
@@ -64,7 +83,7 @@ const NewPostpaidNumber: React.FC<NewPostPaidNumberProps> = ({
   };
   const { data: simOnlyOffers } = useQuery(GET_SIM_ONLY_OFFERS, {
     variables: {
-      country: "DE",
+      country: globalConfigs.country,
     },
   });
   const dataOptions = [
@@ -125,17 +144,17 @@ const NewPostpaidNumber: React.FC<NewPostPaidNumberProps> = ({
   const previousPlan = !isFromDashboard
     ? undefined
     : simOnlyOffers?.getSimOnlyOffers.find(
-        (t: any) =>
-          (location.state.planDuration === "Month" ||
-            t.name.endsWith(" (24M)")) &&
-          t.allowances.find((e: any) => e.account.name === "DE_Postpaid_Data")
-            .allowanceValue /
-            1024 ===
-            location.state.data &&
-          t.allowances.find(
-            (e: any) => e.account.name === "DE_Postpaid_Intl_Mins"
-          ).allowanceValue === location.state.minutes
-      );
+      (t: any) =>
+        (location.state.planDuration === "Month" ||
+          t.name.endsWith(" (24M)")) &&
+        t.allowances.find((e: any) => e.account.name === "DE_Postpaid_Data")
+          .allowanceValue /
+        1024 ===
+        location.state.data &&
+        t.allowances.find(
+          (e: any) => e.account.name === "DE_Postpaid_Intl_Mins"
+        ).allowanceValue === location.state.minutes
+    );
   const [isPlanChangeDialogOpen, setIsPlanChangeDialogOpen] = useState(false);
   return (
     <>
@@ -152,8 +171,8 @@ const NewPostpaidNumber: React.FC<NewPostPaidNumberProps> = ({
               t.allowances.find(
                 (e: any) => e.account.name === "DE_Postpaid_Data"
               ).allowanceValue /
-                1024 ===
-                values.data &&
+              1024 ===
+              values.data &&
               t.allowances.find(
                 (e: any) => e.account.name === "DE_Postpaid_Intl_Mins"
               ).allowanceValue === values.minutes
@@ -182,7 +201,7 @@ const NewPostpaidNumber: React.FC<NewPostPaidNumberProps> = ({
                 mapMagentoProductToCartItem(res.data.addProduct.items)
               )
             );
-            history.push("/postpaid/details", values);
+            history.push((globalConfigs.journeyPages[globalConstants.POSTPAID_DETAILS] || '/'), values);
           });
         }}
       >
@@ -193,8 +212,8 @@ const NewPostpaidNumber: React.FC<NewPostPaidNumberProps> = ({
               t.allowances.find(
                 (e: any) => e.account.name === "DE_Postpaid_Data"
               ).allowanceValue /
-                1024 ===
-                values.data &&
+              1024 ===
+              values.data &&
               t.allowances.find(
                 (e: any) => e.account.name === "DE_Postpaid_Intl_Mins"
               ).allowanceValue === values.minutes
@@ -207,8 +226,21 @@ const NewPostpaidNumber: React.FC<NewPostPaidNumberProps> = ({
                 fromData={location?.state?.data}
                 toData={values.data}
                 onConfirm={() => {
-                  // TODO submit to backend.
-                  history.push("/order-submitted/549283");
+                  changePlan({
+                    variables: {
+                      msisdn: location?.state?.msisdn,
+                      existingPlan: Number(location?.state?.oldPlanId),
+                      newPlan: Number(selectedPlan?.offerId),
+                    },
+                  })
+                    .then(() => {
+                      history.push((globalConfigs.journeyPages[globalConstants.ORDER_SUBMITTED] || '/'), {
+                        msisdn: location?.state?.msisdn,
+                        previousPlanName: previousPlan?.name,
+                        currentPlan: selectedPlan?.name,
+                      });
+                    })
+                    .catch(() => { })
                 }}
               />
               <Box
@@ -219,105 +251,6 @@ const NewPostpaidNumber: React.FC<NewPostPaidNumberProps> = ({
                 pr={{ base: "23px", md: "150px" }}
                 width={{ base: "100%", md: "1000px" }}
               >
-                {!isFromDashboard && (
-                  <Box
-                    p={{ base: "15px", md: "23px" }}
-                    backgroundImage={{
-                      base: SimConfiguratorBanner,
-                      md: SimConfiguratorDesktopBanner,
-                    }}
-                    height={{ base: "139px", md: "212px" }}
-                    backgroundRepeat="no-repeat"
-                    backgroundSize="100%"
-                    borderRadius="12px"
-                    maxW={{ base: "100%" }}
-                    mb={{ md: "29px" }}
-                  >
-                    <Text
-                      fontWeight="500"
-                      fontSize="24px"
-                      lineHeight="30px"
-                      letterSpacing="0.25px"
-                      color="primary.800"
-                    >
-                      NEU: Flexible
-                    </Text>
-                    <Flex alignItems="baseline">
-                      <Box height="12px" width="12px">
-                        <img src={CheckMark} alt="Check" />
-                      </Box>
-                      <Text
-                        mt={{ base: "8px", md: "12px" }}
-                        fontSize="14px"
-                        lineHeight="20px"
-                        letterSpacing="0.25px"
-                        color="primary.800"
-                        ml="7px"
-                      >
-                        Kostenloser Tarifwechsel
-                      </Text>
-                    </Flex>
-                    <Flex alignItems="baseline">
-                      <Box height="12px" width="12px">
-                        <img src={CheckMark} alt="Check" />
-                      </Box>
-                      <Text
-                        mt={{ base: "8px", md: "12px" }}
-                        fontSize="14px"
-                        lineHeight="20px"
-                        letterSpacing="0.25px"
-                        color="primary.800"
-                        ml="7px"
-                      >
-                        Minuten ins Ausland inklusive
-                      </Text>
-                    </Flex>
-                    <Text
-                      {...moreDetailsStyles}
-                      mt={{ base: "8px", md: "12px" }}
-                    >
-                      Know more
-                    </Text>
-                  </Box>
-                )}
-                {isFromDashboard && (
-                  <>
-                    <Flex
-                      direction={{ base: "column", md: "row" }}
-                      mt={{ md: "16px" }}
-                      alignItems={{ md: "center" }}
-                    >
-                      <Text {...headingStyles}>Current Plan</Text>
-                    </Flex>
-                    <Flex
-                      justifyContent="space-between"
-                      alignItems="center"
-                      {...boxStyle}
-                      marginTop={{ base: "8px", md: "22px" }}
-                      cursor="normal"
-                      border="2px solid"
-                      borderColor="lightenPrimary.500"
-                    >
-                      <Box>
-                        <Text fontWeight="bold" fontSize={16} lineHeight="22px">
-                          {location.state.data} GB
-                        </Text>
-                        <Text fontSize={16} lineHeight="22px">
-                          +{location.state.minutes} mins + Unlimited National
-                          Calls
-                        </Text>
-                      </Box>
-                      <Text
-                        fontWeight="500"
-                        fontSize="20px"
-                        lineHeight="22px"
-                        mr="26px"
-                      >
-                        €{previousPlan?.cost / 100}
-                      </Text>
-                    </Flex>
-                  </>
-                )}
                 <Flex
                   direction={{ base: "column", md: "row" }}
                   mt={{ md: "16px" }}
@@ -361,14 +294,14 @@ const NewPostpaidNumber: React.FC<NewPostPaidNumberProps> = ({
                           location.state.planDuration === "24 Month"
                         }
                       >
-                        <Text {...radioButtonLabel}>1 Month</Text>
+                        <Text {...radioButtonLabel}>{durationRadioLabelList && durationRadioLabelList[0].label1}</Text>
                         <Text
                           fontSize="12px"
                           lineHeight="17px"
                           letterSpacing="0.5px"
                           marginLeft="10px"
                         >
-                          Without Fixed term
+                          {durationRadioLabelList && durationRadioLabelList[0].label2}
                         </Text>
                       </RadioButton>
                     </Box>
@@ -387,14 +320,14 @@ const NewPostpaidNumber: React.FC<NewPostPaidNumberProps> = ({
                       }
                     >
                       <RadioButton value="24 Month" size="lg">
-                        <Text {...radioButtonLabel}>24 months</Text>
+                        <Text {...radioButtonLabel}>{durationRadioLabelList && durationRadioLabelList[1]?.label1}</Text>
                         <Text
                           fontSize="12px"
                           lineHeight="17px"
                           letterSpacing="0.5px"
                           marginLeft="10px"
                         >
-                          Be flexibel & save 2€ monthly
+                          {durationRadioLabelList && durationRadioLabelList[1]?.label2}
                         </Text>
                       </RadioButton>
                     </Box>
@@ -413,7 +346,7 @@ const NewPostpaidNumber: React.FC<NewPostPaidNumberProps> = ({
                     ml={{ md: "auto" }}
                     onClick={() => setDataModalOpen(true)}
                   >
-                    More details
+                    {moreDetailsLabel}
                   </Text>
                 </Flex>
                 <RadioGroup
@@ -446,7 +379,7 @@ const NewPostpaidNumber: React.FC<NewPostPaidNumberProps> = ({
                             {data} GB
                           </Text>
                           <Text {...radioButtonLabel}>
-                            + Unlimited National Calls
+                            {dataVolumeRadioLabel}
                           </Text>
                         </RadioButton>
                       </Box>
@@ -459,14 +392,14 @@ const NewPostpaidNumber: React.FC<NewPostPaidNumberProps> = ({
                   alignItems={{ md: "center" }}
                 >
                   <Text {...headingStyles} marginTop="10px">
-                     {abroadMinutesLabel}
+                    {abroadMinutesLabel}
                   </Text>
                   <Text
                     {...moreDetailsStyles}
                     ml={{ md: "auto" }}
                     onClick={() => setMinutesModalOpen(true)}
                   >
-                    More details
+                    {moreDetailsLabel}
                   </Text>
                 </Flex>
                 <RadioGroup
@@ -499,7 +432,7 @@ const NewPostpaidNumber: React.FC<NewPostPaidNumberProps> = ({
                           }
                         >
                           <Text {...radioButtonLabel}>
-                            {minutes} mins to to 50 countries
+                            {minutes} {abroadMinutesRadioLabel}
                           </Text>
                         </RadioButton>
                       </Box>
@@ -516,15 +449,13 @@ const NewPostpaidNumber: React.FC<NewPostPaidNumberProps> = ({
                   </Text>
                   <Text
                     onClick={() =>
-                      window.open(
-                        `https://mobile.lebara.com/de/de/attachments/${selectedPlan.offerId}_product_information?target=inline`
-                      )
+                      window.open(getDynamicValues(productInformationLink, [selectedPlan.offerId]))
                     }
                     {...moreDetailsStyles}
                     mt={{ md: "16px" }}
                     ml={{ md: "auto" }}
                   >
-                   {productInformationLabel}
+                    {productInformationLabel}
                   </Text>
                 </Flex>
                 <Box
@@ -536,6 +467,21 @@ const NewPostpaidNumber: React.FC<NewPostPaidNumberProps> = ({
                   border={{ base: "none", md: "0.5px solid" }}
                   borderColor={{ md: "grey.200" }}
                 >
+                  {selectedPlan && selectedPlan.name && (
+                    <Flex
+                      mt="9px"
+                      ml="17px"
+                      mr="15px"
+                      pb="9px"
+                      borderBottom="0.25px solid"
+                      borderColor="grey.100"
+                    >
+                      <Text {...totalTextStyle}>{yourOrdersimPlanLabel}</Text>
+                      <Text {...totalTextStyle} marginLeft="auto">
+                        {selectedPlan.name}
+                      </Text>
+                    </Flex>
+                  )}
                   {selectedPlan && values.planDuration && (
                     <Flex
                       mt="9px"
@@ -545,7 +491,7 @@ const NewPostpaidNumber: React.FC<NewPostPaidNumberProps> = ({
                       borderBottom="0.25px solid"
                       borderColor="grey.100"
                     >
-                    <Text {...totalTextStyle}>{yourOrderContractdurationLabel}</Text>
+                      <Text {...totalTextStyle}>{yourOrderContractdurationLabel}</Text>
                       <Text {...totalTextStyle} marginLeft="auto">
                         {values.planDuration}
                       </Text>
@@ -591,16 +537,16 @@ const NewPostpaidNumber: React.FC<NewPostPaidNumberProps> = ({
                       {yourOrderMinutesInGermany}
                     </Text>
                     <Text {...totalTextStyle} mr="15px" marginLeft="auto">
-                      Unlimited
+                      {yourOrderMinutesInGermanyValue}
                     </Text>
                   </Flex>
                   <Flex mt="9px" pl="17px" pr="15px">
                     <Text {...totalTextStyle}>{yourOrderPerMonthOrderTotalLabel}</Text>
                     <Text {...totalTextStyle} marginLeft="auto">
-                      €
+                      {globalConfigs.currencySymbol}
                       {selectedPlan &&
-                      values.planDuration &&
-                      selectedPlan.cost / 100
+                        values.planDuration &&
+                        selectedPlan.cost / 100
                         ? selectedPlan.cost / 100
                         : 0}
                     </Text>
@@ -616,7 +562,7 @@ const NewPostpaidNumber: React.FC<NewPostPaidNumberProps> = ({
                       {yourOrderOneTimeActivationFeeLabel}
                     </Text>
                     <Text {...totalTextStyle} marginLeft="auto">
-                      {yourOrderOneTimeActivationFee} €
+                      {yourOrderOneTimeActivationFee}
                     </Text>
                   </Flex>
                 </Box>
@@ -630,7 +576,7 @@ const NewPostpaidNumber: React.FC<NewPostPaidNumberProps> = ({
                     mb={{ base: "21px" }}
                     type="submit"
                   >
-                    {isFromDashboard ? "Switch" : {orderNowLabel}}
+                    {isFromDashboard ? switchCtaLabel : orderNowLabel}
                   </Button>
                 </Flex>
               </Box>
@@ -650,10 +596,10 @@ const NewPostpaidNumber: React.FC<NewPostPaidNumberProps> = ({
                       lineHeight="22px"
                       letterSpacing="0.15px"
                     >
-                      Total: €
+                      {globalConfigs.currencySymbol}
                       {selectedPlan &&
-                      values.planDuration &&
-                      selectedPlan.cost / 100
+                        values.planDuration &&
+                        selectedPlan.cost / 100
                         ? selectedPlan.cost / 100
                         : 0}{" "}
                       / {values.planDuration}{" "}
@@ -665,7 +611,7 @@ const NewPostpaidNumber: React.FC<NewPostPaidNumberProps> = ({
                       letterSpacing="0.25px"
                       color="grey.200"
                     >
-                      + One -time activation fee €15
+                      {yourOrderOneTimeActivationFeeLabel} {yourOrderOneTimeActivationFee}
                     </Text>
                   </Flex>
                   <Button
@@ -675,7 +621,7 @@ const NewPostpaidNumber: React.FC<NewPostPaidNumberProps> = ({
                     }
                     type="submit"
                   >
-                    {isFromDashboard ? "Switch" : {orderNowLabel}}
+                    {isFromDashboard ? switchCtaLabel : orderNowLabel}
                   </Button>
                 </Flex>
               </Box>
@@ -686,9 +632,21 @@ const NewPostpaidNumber: React.FC<NewPostPaidNumberProps> = ({
       <DurationModal
         open={isDurationModalOpen}
         onClose={setDurationModalOpen}
+        heading={contractPeriodPopupHeading}
+        info={contractPeriodPopupInfo}
+        closeLabel={popupCloseLabel}
       />
-      <DataModal open={isDataModalOpen} onClose={setDataModalOpen} />
-      <MinutesModal open={isMinutesModalOpen} onClose={setMinutesModalOpen} />
+      <DataModal open={isDataModalOpen} onClose={setDataModalOpen}
+        heading={dataVolumePopupHeading}
+        info={dataVolumePopupInfo}
+        closeLabel={popupCloseLabel} />
+      <MinutesModal open={isMinutesModalOpen} onClose={setMinutesModalOpen}
+        heading={abroadMinutesPopupHeading}
+        info={abroadMinutesPopupInfoTop}
+        additionalInfo={abroadMinutesPopupInfoBottom}
+        closeLabel={popupCloseLabel}
+        countryFlagFrom={countryFlagFrom}
+        countryFlagTo={countryFlagTo} />
     </>
   );
 };

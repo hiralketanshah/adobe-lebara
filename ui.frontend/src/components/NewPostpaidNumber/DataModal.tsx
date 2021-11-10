@@ -13,7 +13,7 @@ import {
 } from "@chakra-ui/react";
 import { ModalProps } from "./types";
 import Button from "../Button/Button";
-import CheckMark from "./checkOrderedList.png";
+import CheckMark from "../../assets/images/checkOrderedList.png";
 
 const DataModal: React.FC<ModalProps> = ({ open, onClose }) => {
   const sectionHeading = {

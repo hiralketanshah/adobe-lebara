@@ -31,7 +31,6 @@ import "./AboutLebaraFolder/AemConfig.js";
 import "./Carousel/AemConfig.js";
 import "./Trustpilot/AemConfig.js";
 import "./PlanOffers/AemConfig.js";
-import "./PostpaidPlans/AemConfig.js";
 import "./Banner/AemConfig.js";
 import "../rotues/AemConfig.js";
 import "./ProgressStep/AemConfig.js";

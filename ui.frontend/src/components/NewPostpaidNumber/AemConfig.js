@@ -4,7 +4,7 @@ import NewPostpaidNumber from "./NewPostpaidNumber";
 const NewPostpaidNumberConfig = {
   emptyLabel: "Postpaid Component",
   isEmpty: function (props) {
-    return !props.plans;
+    return !props.durationRadioLabelList;
   },
 };
 

@@ -1,17 +1,12 @@
-export interface Plan {
-  plan?: string;
-  price?: number;
-  details: string;
-  id: string;
-}
+
 export interface NewPostPaidNumberProps {
-  plans?: Plan[];
   durationLabel?: string;
   moreDetailsLabel?:string;
   dataVolumeLabel?:string;
   abroadMinutesLabel?:string;
   yourOrderLabel?:string;
   productInformationLabel?:string;
+  productInformationLink?: string;
   yourOrderContractdurationLabel?:string;
   yourOrderDataLabel?:string;
   yourOrderInternationalMinLabel?:string;
@@ -20,9 +15,30 @@ export interface NewPostPaidNumberProps {
   yourOrderOneTimeActivationFeeLabel?:string;
   yourOrderOneTimeActivationFee?:string;
   orderNowLabel?:string;
-  duration?: {};
+  durationRadioLabelList?:Array<{label1:string, label2:string}>;
+  dataVolumeRadioLabel?: string;
+  abroadMinutesRadioLabel?: string;
+  yourOrdersimPlanLabel?: string;
+  yourOrderMinutesInGermanyValue?: string;
+  contractPeriodPopupHeading?: string;
+  contractPeriodPopupInfo?: string;
+  popupCloseLabel?: string;
+  switchCtaLabel?: string;
+  dataVolumePopupHeading?: string;
+  dataVolumePopupInfo?: string;
+  abroadMinutesPopupHeading?: string;
+  abroadMinutesPopupInfoTop?: string;
+  abroadMinutesPopupInfoBottom?: string;
+  countryFlagFrom?: string;
+  countryFlagTo?: string;
 }
 export interface ModalProps {
   open: any;
   onClose: any;
+  heading?: string;
+  info?:string;
+  closeLabel?: string;
+  additionalInfo?: string;
+  countryFlagFrom?: string;
+  countryFlagTo?: string;
 }
