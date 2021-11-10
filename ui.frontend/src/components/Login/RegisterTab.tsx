@@ -64,7 +64,7 @@ const RegisterTab: React.FC<LoginTabsProps> = ({...loginModuleProps}) => {
           /*
           setUserToken(userInfo.email);
           dispatch(saveUserToken({ token: userInfo.email }));
-*/
+          */
           history.push( (GC.journeyPages[GCST.VERIFY_REGISTER_MOBILE]  || '/'), {
             email: values.email,
           });
