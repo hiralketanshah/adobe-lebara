@@ -50,3 +50,4 @@ import "./Login/AemConfig.js";
 import "./SuccessCard/AemConfig.js";
 import "./SimSwitch/AemConfig.js";
 import "./MyBalanceCard/AemConfig.js";
+import "./Help/AemConfig.js";
