@@ -11,6 +11,7 @@ import {
   InputRightElement,
   Text,
 } from "@chakra-ui/react";
+import { globalConfigs as GC, globalConstants as GCST} from "./../../../GlobalConfigs";
 import { CreateNewPasswordSchema } from "../types";
 import Button from "../../Button/Button";
 import Input from "../../Input/Input";
@@ -82,7 +83,9 @@ const CreateNewPassword: React.FC<CreateNewPasswordSchema> = ({
   };
 
   const onContinueClick = () => {
-    history.push("/login", { isPasswordResetSucessfull: true });
+    history.push((GC.journeyPages[GCST.LOGIN]  || '/'), { 
+      isPasswordResetSucessfull: true 
+    });
   };
 
   return (
@@ -193,7 +196,7 @@ const CreateNewPassword: React.FC<CreateNewPasswordSchema> = ({
                       color: "linkButton",
                     }}
                   >
-                    {showPassword ? "Hide" : "Show"}
+                    {showPassword ? createNewPwdProps?.hideLabel || "Hide" : createNewPwdProps?.showLabel || "Show"}
                   </Button>
                 </InputRightElement>
                 <Text
@@ -242,17 +245,15 @@ const CreateNewPassword: React.FC<CreateNewPasswordSchema> = ({
                       color: "linkButton",
                     }}
                   >
-                    {showConfirmPassword ? "Hide" : "Show"}
+                    {showPassword ? createNewPwdProps?.hideLabel || "Hide" : createNewPwdProps?.showLabel || "Show"}
                   </Button>
                 </InputRightElement>
               </InputGroup>
               {createNewPasswordFormik.touched.reenterNewPassword &&
-              createNewPasswordFormik.errors.reenterNewPassword ? (
-                <Text color="unsuccessful" fontWeight="400" fontSize={14}>
-                  {createNewPasswordFormik.errors.reenterNewPassword}
-                </Text>
-              ) : (
-                <></>
+                createNewPasswordFormik.errors.reenterNewPassword && (
+                  <Text color="unsuccessful" fontWeight="400" fontSize={14}>
+                    {createNewPasswordFormik.errors.reenterNewPassword}
+                  </Text>
               )}
             </Box>
             <Box mt="42px">

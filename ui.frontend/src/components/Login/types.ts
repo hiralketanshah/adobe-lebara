@@ -46,6 +46,8 @@ export interface CreateNewPasswordSchema {
   frmPwd?: string;
   frmBtnPrimaryLabel?: string;
   frmBtnSecondaryLabel?: string;
+  hideLabel?: string;
+  showLabel?: string;
 }
 
 export interface loginModuleProps {
