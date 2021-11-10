@@ -199,7 +199,26 @@ public class CFUtils {
         return planInfo;
     }
 
-    
+    public static DashboardLabels populateDashboardLabels( Resource cfResource) {
+        DashboardLabels dashboardLabels = null;
+        if (null != cfResource) {
+            ContentFragment cfFragment = cfResource.adaptTo(ContentFragment.class);
+            if (null != cfFragment) {
+                dashboardLabels = new DashboardLabels();
+                dashboardLabels.setDataPlanName(cfFragment.getElement("dataPlanName").getContent());
+                dashboardLabels.setDataType(cfFragment.getElement("dataType").getContent());
+                dashboardLabels.setMinPlanName(cfFragment.getElement("minPlanName").getContent());
+                dashboardLabels.setMinDataType(cfFragment.getElement("minDataType").getContent());
+                dashboardLabels.setSmsPlanName(cfFragment.getElement("smsPlanName").getContent());
+                dashboardLabels.setSmsDataType(cfFragment.getElement("smsDataType").getContent());
+                dashboardLabels.setInternationalMinPlanName(cfFragment.getElement("internationalMinPlanName").getContent());
+                dashboardLabels.setInternationalMinDataType(cfFragment.getElement("internationalMinDataType").getContent());
+                dashboardLabels.setLeftOfLabel(cfFragment.getElement("leftOfLabel").getContent());
+            }
+        }
+        return dashboardLabels;
+    }
+
    public static  List<OfferFragmentBean>  getCfList( Resource cfResource,  ResourceResolver resourceResolver, I18n i18n) {
        List<OfferFragmentBean> bundlesList =  new ArrayList<OfferFragmentBean>();
        if (null != cfResource) {

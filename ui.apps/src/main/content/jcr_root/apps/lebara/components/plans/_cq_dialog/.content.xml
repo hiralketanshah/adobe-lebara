@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="nt:unstructured"
+    jcr:title="Dashboard Plans"
+    sling:resourceType="cq/gui/components/authoring/dialog">
+    <content
+        jcr:primaryType="nt:unstructured"
+        sling:resourceType="granite/ui/components/coral/foundation/container">
+        <items jcr:primaryType="nt:unstructured">
+            <tabs
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="granite/ui/components/coral/foundation/tabs"
+                maximized="{Boolean}true">
+                <items jcr:primaryType="nt:unstructured">
+                    <plans
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Plans"
+                        sling:resourceType="granite/ui/components/coral/foundation/container"
+                        margin="{Boolean}true">
+                        <items jcr:primaryType="nt:unstructured">
+                            <columns
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+                                margin="{Boolean}true">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <column
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <renewallabel
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="Renewal Label"
+                                                name="./renewalLabel"
+                                                value=" Renewal:"/>
+                                            <planchangemessage
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="Plan Change Message"
+                                                name="./planChangeMessage"
+                                                value="You plan will change from {0} to {1}."/>
+                                            <cancellabel
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="Cancel Label"
+                                                name="./cancelLabel"
+                                                value="Cancel Request"/>
+                                            <managelabel
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="Manage Label"
+                                                name="./manageLabel"
+                                                value="Manage"/>
+                                            <showmanagebutton
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                                name="./showManageButton"
+                                                text="Show Manage Button?"
+                                                uncheckedValue="{Boolean}false"
+                                                value="{Boolean}true"/>
+                                            <buttontext
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="Button Text"
+                                                name="./buttonText"
+                                                value="Buy it agian"/>
+                                            <hideautorenew
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                                name="./hideAutoRenew"
+                                                text="Hide Auto Renew"
+                                                uncheckedValue="{Boolean}false"
+                                                value="{Boolean}true"/>
+                                            <autorenewlabel
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="Auto Renew Label"
+                                                name="./autoRenewLabel"
+                                                value="Auto renew"/>
+                                            <autorenewdesc
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="Auto Renew Desc"
+                                                name="./autoRenewDesc"
+                                                value="Turn on the auto renewal service."/>
+                                            <hideprice
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                                text="Hide Price?"
+                                                uncheckedValue="{Boolean}false"
+                                                value="{Boolean}true"/>
+                                            <requestplanremoved
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                                name="./requestPlanRemoved"
+                                                text="Request Plan Removed?"
+                                                uncheckedValue="{Boolean}false"
+                                                value="{Boolean}true"/>
+                                            <planlabelscfpath
+                                                cq:showOnCreate="{Boolean}true"
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="dam/cfm/components/cfpicker"
+                                                fieldLabel="Plan Labels CF path"
+                                                name="./planLabelsCfPath"
+                                                required="{Boolean}true"
+                                                rootPath="/content/dam/lebara"/>
+                                        </items>
+                                    </column>
+                                </items>
+                            </columns>
+                        </items>
+                    </plans>
+                    <popup
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Popup"
+                        sling:resourceType="granite/ui/components/coral/foundation/container"
+                        margin="{Boolean}true">
+                        <items jcr:primaryType="nt:unstructured">
+                            <columns
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+                                margin="{Boolean}true">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <column
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <planchangetitle
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="Plan Change Title"
+                                                name="./planChangeTitle"
+                                                value="Plan Change"/>
+                                            <planchangedesc
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="Plan Change Desc"
+                                                name="./planChangeDesc"
+                                                value="Are you sure you would like to cancel the switch to the {0}GB Plan ?"/>
+                                            <termsconsentlabel
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="Terms Consent Label"
+                                                name="./termsConsentLabel"
+                                                value=" I confirm the change and I agree with the"/>
+                                            <termsconditionslabel
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="Terms &amp; Conditions Label"
+                                                name="./termsConditionsLabel"
+                                                value="terms &amp; conditions"/>
+                                            <termsconditionslink
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                                fieldLabel="Terms &amp; Conditions Link"
+                                                name="./termsConditionsLink"
+                                                rootPath="/content/lebara"/>
+                                            <contractconsentlabel
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="Contract Consent Label"
+                                                name="./contractConsentLabel"
+                                                value=" I confirm that I am the contract holder of the plan."/>
+                                            <confirmlabel
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="Confirm Label"
+                                                name="./confirmLabel"
+                                                value="Confirm"/>
+                                        </items>
+                                    </column>
+                                </items>
+                            </columns>
+                        </items>
+                    </popup>
+                </items>
+            </tabs>
+        </items>
+    </content>
+</jcr:root>

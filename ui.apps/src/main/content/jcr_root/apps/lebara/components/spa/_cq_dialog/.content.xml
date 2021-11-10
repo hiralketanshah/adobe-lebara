@@ -159,6 +159,10 @@
                                                                             jcr:primaryType="nt:unstructured"
                                                                             text="dashboard"
                                                                             value="dashboard"/>
+                                                                        <manage-dashboard
+                                                                            jcr:primaryType="nt:unstructured"
+                                                                            text="manage-dashboard"
+                                                                            value="manage-dashboard"/>
                                                                     </items>
                                                                 </name>
                                                                 <path

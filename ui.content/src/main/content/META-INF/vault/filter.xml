@@ -7,6 +7,7 @@
 	<filter root="/conf/lebara/settings/dam/cfm/models/currentproviders" mode="replace"/>
     <filter root="/conf/lebara/settings/dam/cfm/models/countryinformation" mode="replace"/>
     <filter root="/conf/lebara/settings/dam/cfm/models/top-up-fragment" mode="replace"/>
+	<filter root="/conf/lebara/settings/dam/cfm/models/dashboardlabels" mode="replace"/>
     <filter root="/conf/lebara" mode="merge"/>
     <filter root="/conf/global/settings/workflow/launcher/config" mode="replace"/>
     <filter root="/var/workflow/models/lebara-asset-approval-rejection-task" mode="replace"/>  
