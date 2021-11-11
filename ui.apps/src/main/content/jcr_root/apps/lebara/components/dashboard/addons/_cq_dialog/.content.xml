@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:granite="http://www.adobe.com/jcr/granite/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+          jcr:primaryType="nt:unstructured"
+          jcr:title="Dashboard Add On"
+          sling:resourceType="cq/gui/components/authoring/dialog">
+    <content
+            jcr:primaryType="nt:unstructured"
+            sling:resourceType="granite/ui/components/coral/foundation/container">
+        <items jcr:primaryType="nt:unstructured">
+            <tabs
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="granite/ui/components/coral/foundation/tabs"
+                    maximized="{Boolean}true">
+                <items jcr:primaryType="nt:unstructured">
+                    <commonColumn
+                            jcr:primaryType="nt:unstructured"
+                            jcr:title="Dashboard Add On"
+                            sling:resourceType="granite/ui/components/coral/foundation/container">
+                        <items jcr:primaryType="nt:unstructured">
+                            <addOnHeading
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                    fieldDescription="Add On heading Text"
+                                    value="Your Addons"
+                                    fieldLabel="Add On heading"
+                                    name="./title"/>
+                            <remainderText
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                    fieldDescription="Left Of Text"
+                                    value="Left Of"
+                                    fieldLabel="Left Of Text"
+                                    name="./leftOfText"/>
+                            <addMoreLabel
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                    fieldDescription="Add More Label"
+                                    value="Add More"
+                                    fieldLabel="Add More Label"
+                                    name="./addMoreLabel"/>
+                            <topUpLabel
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                    fieldDescription="Top Up Label"
+                                    value="Top Up"
+                                    fieldLabel="Top Up Label"
+                                    name="./topUpLabel"/>
+                        </items>
+                    </commonColumn>
+                </items>
+            </tabs>
+        </items>
+    </content>
+</jcr:root>

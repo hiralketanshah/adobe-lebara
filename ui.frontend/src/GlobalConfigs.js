@@ -37,6 +37,7 @@ const globalConstants = Object.freeze({
     PREPAID: 'prepaid',
     DASHBOARD: 'dashboard',
     VERIFY_REGISTER_MOBILE: 'verify-register-mobile',
+    USAGE_DETAILS: 'usage-details',
     DEFAULT_CURRENCY_CODE: 'EUR',
 });
 module.exports = { globalConfigs, globalConstants }
