@@ -3,11 +3,14 @@ import { Formik } from "formik";
 import { useHistory, useLocation } from "react-router-dom";
 import { useApolloClient } from "@apollo/client";
 import { Flex, Text } from "@chakra-ui/react";
-import { LoginTabsProps, LoginFormSchema } from "./types";
+import { writeStorage, deleteFromStorage } from "@rehooks/local-storage";
+import { LoginFormSchema, LoginTabsProps } from "./types";
 import Button from "../Button/Button";
 import FormikInput from "../Formik/FormikInput/FormikInput";
 import Link from "../Link/Link";
 import AUTHENTICATE_USER_SPS from "../../graphql/AUTHENTICATE_USER_SPS";
+import { googleAnalytics } from "../../utils/gtm";
+import GET_PERSONAL_DETAILS from "../../graphql/GET_PERSONAL_DETAILS";
 import { globalConfigs as GC, globalConstants as GCST} from "../../GlobalConfigs";
 
 const LoginTab: React.FC<LoginTabsProps> = ({...loginModuleProps}) => {
@@ -41,31 +44,68 @@ const LoginTab: React.FC<LoginTabsProps> = ({...loginModuleProps}) => {
       initialValues={initialValues}
       validate={validate}
       onSubmit={(values, { setErrors }) =>
-        client
-          .query({ query: AUTHENTICATE_USER_SPS, variables: values })
-          .then((res) => {
-            if (res.data.authenticateUserSPS) {
-              if (isFromMenu) {
-                history.push((GC.journeyPages[GCST.DASHBOARD]  || '/'),{
-                  msisdn: res.data.authenticateUserSPS[0]
+        new Promise<void>((resolve) => {
+          client
+            .query({ query: AUTHENTICATE_USER_SPS, variables: values })
+            .then((res) => {
+              if (res.data.authenticateUserSPS) {
+                deleteFromStorage("newCustomer");
+                writeStorage("loggedIn", true);
+                writeStorage("portIn", "No"); // `${res.data.portIn}`
+                writeStorage("crmId", res.data.authenticateUserSPS[1]); // `${res.data.crmId}`
+                writeStorage("msisdn", res.data.authenticateUserSPS[0]);
+                // google analytics
+                googleAnalytics(null, {
+                  crmId: res.data.authenticateUserSPS[1],
+                  userId: null,
+                  msisdn: `${res.data.authenticateUserSPS[0]}`,
+                  portIn: "No", // `${res.data.portIn}`
+                  language: "en",
+                  loggedIn: "Yes",
+                  newCustomer: "No",
+                  contentGroup: "Login",
+                  region: "DE",
                 });
-                return;
-              }
-              if (isFromPostPaid) {
-                history.push((GC.journeyPages[GCST.POSTPAID_PREVIEW]  || '/'), {
-                  personalDetails: {
-                    firstName: "",
-                    lastName: "",
-                    emailId: "",
-                    streetName: "",
-                    houseNumber: "",
-                    townCity: "",
-                    addition: "",
-                    zipCode: "",
-                    addressLabel: "",
-                  },
-                  portIn: {},
-                });
+                if (isFromMenu) {
+                  setTimeout(() => {
+                    history.push((GC.journeyPages[GCST.DASHBOARD]  || '/'), {
+                      msisdn: res.data.authenticateUserSPS[0],
+                    });
+                    resolve();
+                  }, 0);
+                  return;
+                }
+                if (isFromPostPaid) {
+                  client
+                  .query({ query: GET_PERSONAL_DETAILS })
+                  .then((personalDetailsRes) => {
+                    const { getPersonalDetails } = personalDetailsRes && personalDetailsRes.data ? personalDetailsRes.data : null;
+
+                    history.push((GC.journeyPages[GCST.POSTPAID_PREVIEW]  || '/'), {
+                      personalDetails: {
+                        firstName: getPersonalDetails?.name?.firstName,
+                        lastName: getPersonalDetails?.name?.lastName,
+                        emailId: values.email,
+                        streetName: getPersonalDetails?.addresses[0].street || "",
+                        houseNumber: getPersonalDetails?.addresses[0].houseNumber || "",
+                        townCity: getPersonalDetails?.addresses[0].city || "",
+                        zipCode: getPersonalDetails?.addresses[0].postCode || "",
+                        addressLabel: getPersonalDetails?.addresses?.length > 0
+                            ? `${
+                                getPersonalDetails?.addresses[0].houseNumber || ""
+                              } ${
+                                getPersonalDetails?.addresses[0].street
+                              }, ${
+                                getPersonalDetails?.addresses[0].city
+                              }, ${
+                                getPersonalDetails?.addresses[0].postCode
+                              }, Germany`
+                            : undefined,
+                      },
+                      portIn: {},
+                    });
+                    resolve();
+                  });
                 return;
               }
               history.push( (GC.journeyPages[GCST.ORDER_DETAILS]  || '/'));
@@ -74,8 +114,10 @@ const LoginTab: React.FC<LoginTabsProps> = ({...loginModuleProps}) => {
           .catch((error) => {
             if (error.graphQLErrors && error.graphQLErrors[0].message) {
               setErrors({ email: error.graphQLErrors[0].message });
+              resolve();
             }
-          })
+          });
+        })
       }
     >
       {({ errors, handleSubmit, isSubmitting }) => (
