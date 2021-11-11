@@ -35,8 +35,11 @@ const dateLabelProps: FormLabelProps = {
   fontWeight: "500",
 };
 const PostpaidPersonalDetails: React.FC<PostpaidPersonalDetailsProps> = ({
+  pageTitle,
   heading,
+  portingSectionHeading,
   validationMessages,
+  frmFields,
 }) => {
   const history = useHistory();
   const [validateEmailSps, { data: validateEmailSpsResult }] = useLazyQuery(VALIDATE_EMAIL_SPS);
@@ -98,7 +101,7 @@ const PostpaidPersonalDetails: React.FC<PostpaidPersonalDetailsProps> = ({
 
           return (
             <Form onSubmit={handleSubmit}>
-              {heading && (
+              {pageTitle && (
                 <Heading
                   lineHeight="40px"
                   fontWeight="bold"
@@ -107,7 +110,7 @@ const PostpaidPersonalDetails: React.FC<PostpaidPersonalDetailsProps> = ({
                   my="7px"
                   d={{ base: "block", lg: "none" }}
                 >
-                  {heading}
+                  {pageTitle}
                 </Heading>
               )}
         
@@ -120,7 +123,7 @@ const PostpaidPersonalDetails: React.FC<PostpaidPersonalDetailsProps> = ({
                 bg="white"
                 borderRadius="8px"
               >
-                <Heading
+                {heading && (<Heading
                   lineHeight="40px"
                   fontWeight="bold"
                   fontSize={20}
@@ -128,8 +131,8 @@ const PostpaidPersonalDetails: React.FC<PostpaidPersonalDetailsProps> = ({
                   my="7px"
                   d={{ base: "none", lg: "block" }}
                 >
-                  Enter Your Personal Details
-                </Heading>
+                  {heading}
+                </Heading>)}
                 <FormikInput
                   validate={async (email) => {
                     await validateEmailSps({
@@ -147,21 +150,21 @@ const PostpaidPersonalDetails: React.FC<PostpaidPersonalDetailsProps> = ({
                     return undefined;
                   }}
                   name="email"
-                  label="Email Address"
-                  placeholder="Email Address"
+                  label={frmFields.emailLabel}
+                  placeholder={frmFields.emailPlaceholder}
                   isRequired
                 />
                 <FormikInput
                   name="firstName"
-                  label="First Name"
-                  placeholder="First Name"
+                  label={frmFields.fNameLabel}
+                  placeholder={frmFields.fnamePlaceholder}
                   {...disabledInputProps}
                   isRequired
                 />
                 <FormikInput
                   name="lastName"
-                  label="Last Name"
-                  placeholder="Last Name"
+                  label={frmFields.lNameLabel}
+                  placeholder={frmFields.lNamePlaceholder}
                   {...disabledInputProps}
                   isRequired
                 />
@@ -175,27 +178,27 @@ const PostpaidPersonalDetails: React.FC<PostpaidPersonalDetailsProps> = ({
                       fontSize="14px"
                       lineHeight="22px"
                     >
-                      Date of Birth
+                      {frmFields.dobLabel}
                     </FormLabel>
                   </FormControl>
                   <Flex gridGap="15px">
                     <FormikInput
                       name="day"
-                      label="Day"
+                      label={frmFields.dayLabel}
                       labelProps={dateLabelProps}
                       {...disabledInputProps}
                       flex={1}
                     />
                     <FormikInput
                       name="month"
-                      label="Month"
+                      label={frmFields.monthLabel}
                       labelProps={dateLabelProps}
                       {...disabledInputProps}
                       flex={1}
                     />
                     <FormikInput
                       name="year"
-                      label="Year"
+                      label={frmFields.yearLabel}
                       labelProps={dateLabelProps}
                       {...disabledInputProps}
                       flex={1.3}
@@ -204,8 +207,8 @@ const PostpaidPersonalDetails: React.FC<PostpaidPersonalDetailsProps> = ({
                 </Box>
                 <FormikAddressSearch
                   name="shippingAddress"
-                  label="Shipping Address"
-                  placeholder="Search for postal code"
+                  label={frmFields.shippingLabel}
+                  placeholder={frmFields.shippingPlaceholder}
                   isRequired
                   isDisabled={isExistingUser}
                 />
@@ -226,12 +229,9 @@ const PostpaidPersonalDetails: React.FC<PostpaidPersonalDetailsProps> = ({
                     fontSize={12}
                     ml="11px"
                     lineHeight="17.1px"
-                    previewText="I consent to trustworthy cooperation partners of Lebara contacting me about their products and services for"
+                    previewText={frmFields.consentPreviewText}
                   >
-                    I consent to trustworthy cooperation partners of Lebara
-                    contacting me about their products and services for
-                    advertising purposes and for market research, via electronic
-                    messages (e.g. e-mail, messenger and SMS) and telephone.
+                    {frmFields.consentDescription}
                   </TextWithMoreButton>
                 </FormikCheckbox>
               </Flex>
@@ -244,7 +244,7 @@ const PostpaidPersonalDetails: React.FC<PostpaidPersonalDetailsProps> = ({
                 mb="14px"
                 d={{ base: "block", lg: "none" }}
               >
-                Would you like to Port your Number?
+                {portingSectionHeading}
               </Heading>
 
               <Flex
@@ -263,41 +263,28 @@ const PostpaidPersonalDetails: React.FC<PostpaidPersonalDetailsProps> = ({
                   mb="14px"
                   d={{ base: "none", lg: "block" }}
                 >
-                  Would you like to Port your Number?
+                  {frmFields.portInNumberLabel}
                 </Heading>
 
                 <FormikRadioGroup
                   name="portInStatus"
-                  options={[
-                    {
-                      label: "No, Thanks",
-                      value: "No",
-                    },
-                    {
-                      label: "I want to port in ",
-                      value: "Yes",
-                    },
-                    {
-                      label: "I want to use my Lebara Sim",
-                      value: "ExistingPhone",
-                    },
-                  ]}
+                  options={frmFields.portInOptions}
                 />
 
                 {values.portInStatus === "Yes" && (
                   <Flex my="29px" flexDirection="column" gridGap="22px">
                     <FormikInput
                       name="portInNumber"
-                      label="Number to port"
-                      placeholder="015100000000"
+                      label={frmFields.portInNumberLabel}
+                      placeholder={frmFields.portInNumberPlaceHolder}
                       {...disabledInputProps}
                       isRequired
                     />
                     <FormikSelect
                       name="currentProvider"
-                      helperText="Choose your current provider from the list provided."
-                      label="Current Provider"
-                      placeholder="Select an option"
+                      helperText={frmFields.currentProviderHelperText}
+                      label={frmFields.currentProviderLabel}
+                      placeholder={frmFields.currentProviderPlaceholder}
                       isRequired
                       options={currentProviderList}
                       isDisabled={isExistingUser}
@@ -306,12 +293,9 @@ const PostpaidPersonalDetails: React.FC<PostpaidPersonalDetailsProps> = ({
                       <InfoBox
                         description={
                           <>
-                            Please remember to inform your previous provider
-                            before ordering that you would like to take the
-                            number with you to Lebara. You can find details on
-                            porting{" "}
-                            <Link color="secondary.500" href="/">
-                              here
+                            {frmFields.currentProviderInfoDescription}{" "}
+                            <Link color="secondary.500" href={frmFields.currentProviderInfoLinkURL}>
+                              {frmFields.currentProviderInfoLinkLabel}
                             </Link>
                             .
                           </>
@@ -323,10 +307,7 @@ const PostpaidPersonalDetails: React.FC<PostpaidPersonalDetailsProps> = ({
                       />
                       <FormikCheckbox name="isUsageProfileAccepted">
                         <Text fontSize={12} ml="11px" lineHeight="17.1px">
-                          The number portability should only take place after my
-                          current contract has ended. In the case of a prepaid
-                          tariff, please do not select, as the porting takes
-                          place immediately.
+                          {frmFields.currentProviderUsageAcceptanceLabel}
                         </Text>
                       </FormikCheckbox>
                       <FormikCheckbox name="isAdvertisingAccepted">
@@ -336,23 +317,7 @@ const PostpaidPersonalDetails: React.FC<PostpaidPersonalDetailsProps> = ({
                           lineHeight="17.1px"
                           previewText="I would like to take my existing mobile number with me to Lebara (number portability) and instruct Lebara to port my number as soon as possible"
                         >
-                          I would like to take my existing mobile number with me
-                          to Lebara (number portability) and instruct Lebara to
-                          port my number as soon as possible. I am aware that
-                          the number portability can only take place if the
-                          mobile phone number, the spelling of my name and my
-                          date of birth as stated above, correspond to my
-                          customer data with my previous provider. Number
-                          portability may not be possible if there is any
-                          discrepancy. I am aware that my existing contract with
-                          my previous provider remains unaffected by the number
-                          portability. If I wish to terminate my contract with
-                          my previous provider, I will terminate it myself. I am
-                          also aware that my previous provider can charge me for
-                          number portability. In the case of a prepaid card,
-                          there must be sufficient credit remaining with my
-                          previous provider to cover the number portability
-                          costs.
+                          {frmFields.currentProviderAdvertisingAcceptanceLabel}
                         </TextWithMoreButton>
                       </FormikCheckbox>
                     </Flex>
@@ -366,8 +331,7 @@ const PostpaidPersonalDetails: React.FC<PostpaidPersonalDetailsProps> = ({
                       letterSpacing="0.23px"
                       color="black"
                     >
-                      In order to be able to port in your Lebara prepaid number,
-                      please first
+                      {frmFields.exitingPhoneHelperLabel}
                     </Text>
                     <Flex
                       flexDirection="column"
@@ -378,23 +342,23 @@ const PostpaidPersonalDetails: React.FC<PostpaidPersonalDetailsProps> = ({
                         variant="outline"
                         w={{ base: "100%", lg: "316px" }}
                         onClick={() => {
-                          history.push("/register");
+                          history.push(GC.journeyPages[C.REGISTER]  || '/');
                         }}
                       >
-                        Create an account
+                        {frmFields.linkCTALabel}
                       </Button>
                       <Text
                         textAlign="center"
                         fontSize="12px"
                         lineHeight="17.1px"
                       >
-                        or
+                        {frmFields.orTextLabel}
                       </Text>
                       <Button
                         w={{ base: "100%", lg: "316px" }}
-                        onClick={() => history.push("/login")}
+                        onClick={() => history.push(GC.journeyPages[C.LOGIN]  || '/')}
                       >
-                        Login
+                        {frmFields.buttonCTALabel}
                       </Button>
                     </Flex>
                   </Flex>
@@ -408,7 +372,7 @@ const PostpaidPersonalDetails: React.FC<PostpaidPersonalDetailsProps> = ({
                     type="submit"
                     isDisabled={Object.keys(errors).length > 0 || !dirty}
                   >
-                    Continue
+                    {frmFields.ctaContinueLabel}
                   </Button>
                 )}
               </Flex>
@@ -420,7 +384,7 @@ const PostpaidPersonalDetails: React.FC<PostpaidPersonalDetailsProps> = ({
                   type="submit"
                   isDisabled={Object.keys(errors).length > 0 || !dirty}
                 >
-                  Continue
+                  {frmFields.ctaContinueLabel}
                 </Button>
               )}
             </Form>
