@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import { Box, Text, InputGroup, InputRightElement } from "@chakra-ui/react";
+import { Flex, Box, Text, InputGroup, InputRightElement } from "@chakra-ui/react";
 import { useHistory, useLocation } from "react-router-dom";
-import { useFormik } from "formik";
+import { Formik, useFormik } from "formik";
 import * as yup from "yup";
 import {
   MdCheckCircle,
@@ -9,17 +9,26 @@ import {
   BsXCircleFill,
 } from "react-icons/all";
 import axios from "axios";
+import { useSelector } from "react-redux";
+import { useLazyQuery } from "@apollo/client";
 import Input from "../Input/Input";
 import AddressCard from "../AddressCard/AddressCard";
 import { PersonalDetailsFormProps } from "./types";
 import Button from "../Button/Button";
+import FormikInput from "../Formik/FormikInput/FormikInput";
 import {
   ADDRESS_FIELD_PATTERN,
   EMAIL_FIELD_PATTERN,
+  HOUSE_NUMBER_REGEX,
   NAME_FIELD_PATTERN,
   NUMBER_FIELD_PATTERN,
+  STREET_REGEX,
+  ZIP_CODE_REGEX,
 } from "../../utils/lebara.constants";
 import { globalConfigs, globalConstants } from "../../GlobalConfigs";
+import { ReduxState } from "../../redux/types";
+import PaymentDialog from "../PaymentDialog/PaymentDialog";
+import VALIDATE_EMAIL_SPS from "../../graphql/VALIDATE_EMAIL_SPS";
 
 const PersonalDetailsForm: React.FC<PersonalDetailsFormProps> = ({
   heading,
@@ -75,7 +84,19 @@ const PersonalDetailsForm: React.FC<PersonalDetailsFormProps> = ({
   const [numberPattern] = useState(NUMBER_FIELD_PATTERN);
   const history = useHistory();
   const [isManualAddress, setIsManualAddress] = useState(false);
-  const location = useLocation<{ bundlePlan: string; planDuration: string }>();
+  const location = useLocation<{
+    bundlePlan: string;
+    planDuration: string;
+    toPortIn?: boolean;
+  }>();
+  const toPortIn = location?.state?.toPortIn;
+  const cartItems = useSelector((state: ReduxState) => state.cart.items);
+  const isFreeTopUpAndFreeSim = cartItems.every(
+    (t) => t.isFreeSimTopup || t.isFreeSim
+  );
+  const [isPaymentDialogOpen, setIsPaymentDialogOpen] = useState(false);
+  const [validateEmailSps, { data: validateEmailSpsResult }] =
+    useLazyQuery(VALIDATE_EMAIL_SPS);
   const validationSchema = (manualAddress: boolean) => {
     let scheme: any = {
       firstName: yup
@@ -101,23 +122,22 @@ const PersonalDetailsForm: React.FC<PersonalDetailsFormProps> = ({
             .string()
             .max(250, streetLabelErrorMax)
             .required(streetLabelErrorRequired)
-            .matches(addressFieldPattern, streetLabelErrorPattern),
+            .matches(STREET_REGEX, streetLabelErrorPattern),
           houseNumber: yup
             .string()
             .max(20, houseNumberErrorMax)
             .required(houseNumberErrorRequired)
-            .matches(addressFieldPattern, houseNumberErrorPattern),
+            .matches(HOUSE_NUMBER_REGEX, houseNumberErrorPattern),
           townCity: yup
             .string()
             .max(20, cityErrorMax)
             .required(cityErrorRequired),
           zipCode: yup
             .string()
-
             .max(10, zipCodeErrorMax)
             .min(5, zipCodeErrorMin)
             .required(zipCodeErrorRequired)
-            .matches(numberPattern, zipCodeErrorPattern),
+            .matches(ZIP_CODE_REGEX, zipCodeErrorPattern),
         }
       : {
           ...scheme,
@@ -142,6 +162,11 @@ const PersonalDetailsForm: React.FC<PersonalDetailsFormProps> = ({
     validationSchema: validationSchema(isManualAddress),
     onSubmit: () => {
       if (isManualAddress) {
+        if (isFreeTopUpAndFreeSim) {
+          setIsPaymentDialogOpen(true);
+          return Promise.resolve();
+        }
+
         history.push((globalConfigs.journeyPages[globalConstants.ORDER_DETAILS]  || '/'), {
           ...(location.state || {}),
           personalDetails: personalDetailsFormFormik.values,
@@ -156,6 +181,10 @@ const PersonalDetailsForm: React.FC<PersonalDetailsFormProps> = ({
           }
         )
         .then((res) => {
+          if (isFreeTopUpAndFreeSim) {
+            setIsPaymentDialogOpen(true);
+            return;
+          }
           history.push((globalConfigs.journeyPages[globalConstants.ORDER_DETAILS]  || '/'), {
             ...(location.state || {}),
             personalDetails: {
@@ -389,8 +418,9 @@ const PersonalDetailsForm: React.FC<PersonalDetailsFormProps> = ({
             )
           }
         >
-          {/* {isManualAddress ? "Continue to order details" : "Continue"} */}
-          {orderDetailsCta}
+          {isManualAddress && !isFreeTopUpAndFreeSim && !toPortIn
+          ? "Continue to order details"
+          : orderDetailsCta}
         </Button>
       </Box>
     </form>
