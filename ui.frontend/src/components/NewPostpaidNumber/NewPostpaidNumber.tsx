@@ -19,6 +19,7 @@ import PlanChangeDialog from "../PlanChangeDialog/PlanChangeDialog";
 import { globalConfigs, globalConstants } from "../../GlobalConfigs";
 import CHANGE_PLAN from "../../graphql/CHANGE_PLAN";
 import getDynamicValues from "../../utils/get-aem-dynamic-values";
+import "./styles.css";
 
 const NewPostpaidNumber: React.FC<NewPostPaidNumberProps> = ({
   durationLabel,
@@ -629,24 +630,24 @@ const NewPostpaidNumber: React.FC<NewPostPaidNumberProps> = ({
           );
         }}
       </Formik>
-      <DurationModal
-        open={isDurationModalOpen}
-        onClose={setDurationModalOpen}
-        heading={contractPeriodPopupHeading}
-        info={contractPeriodPopupInfo}
-        closeLabel={popupCloseLabel}
-      />
-      <DataModal open={isDataModalOpen} onClose={setDataModalOpen}
-        heading={dataVolumePopupHeading}
-        info={dataVolumePopupInfo}
-        closeLabel={popupCloseLabel} />
-      <MinutesModal open={isMinutesModalOpen} onClose={setMinutesModalOpen}
-        heading={abroadMinutesPopupHeading}
-        info={abroadMinutesPopupInfoTop}
-        additionalInfo={abroadMinutesPopupInfoBottom}
-        closeLabel={popupCloseLabel}
-        countryFlagFrom={countryFlagFrom}
-        countryFlagTo={countryFlagTo} />
+        <DurationModal
+          open={isDurationModalOpen}
+          onClose={setDurationModalOpen}
+          heading={contractPeriodPopupHeading}
+          info={contractPeriodPopupInfo}
+          closeLabel={popupCloseLabel}
+        />
+        <DataModal open={isDataModalOpen} onClose={setDataModalOpen}
+          heading={dataVolumePopupHeading}
+          info={dataVolumePopupInfo}
+          closeLabel={popupCloseLabel} />
+        <MinutesModal open={isMinutesModalOpen} onClose={setMinutesModalOpen}
+          heading={abroadMinutesPopupHeading}
+          info={abroadMinutesPopupInfoTop}
+          additionalInfo={abroadMinutesPopupInfoBottom}
+          closeLabel={popupCloseLabel}
+          countryFlagFrom={countryFlagFrom}
+          countryFlagTo={countryFlagTo} />
     </>
   );
 };

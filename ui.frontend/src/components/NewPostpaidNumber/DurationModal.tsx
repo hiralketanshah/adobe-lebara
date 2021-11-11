@@ -44,9 +44,9 @@ const DurationModal: React.FC<ModalProps> = ({ open, onClose, heading, info, clo
             </Text>
           </ModalHeader>
           <ModalCloseButton />
-          <ModalBody py="15px">
+          <ModalBody py="15px" className={'rich-text'}>
             <Box>
-            <span className={'rich-text'} {...sectionDetails} dangerouslySetInnerHTML={{ __html: info || '' }} />
+            <span {...sectionDetails} dangerouslySetInnerHTML={{ __html: info || '' }} />
               {/* <Text {...sectionHeading}>24 months</Text>
               <Text {...sectionDetails} mt="5px">
                 Your subscription starts from the moment you activate the SIM

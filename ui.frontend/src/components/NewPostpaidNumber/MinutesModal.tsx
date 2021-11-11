@@ -15,7 +15,7 @@ import { ModalProps } from "./types";
 import Button from "../Button/Button";
 import BelgiunIcon from "./belgium.png";
 import AndorraIcon from "./andorra.png";
-import FromToIcon from "./nextArrowIcon.png";
+import FromToIcon from "../../assets/images/nextArrowIcon.png";
 
 const MinutesModal: React.FC<ModalProps> = ({ open, onClose }) => {
   const sectionHeading = {
