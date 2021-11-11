@@ -12,12 +12,22 @@ import { loadInitialCart } from "../../redux/actions/cartActions";
 import mapMagentoProductToCartItem from "../../utils/mapMagentoProductToCartItem";
 import ADD_TO_CART from "../../graphql/ADD_TO_CART";
 import GET_SIM_ONLY_OFFERS from "../../graphql/GET_SIM_ONLY_OFFERS";
+<<<<<<< HEAD
 import RichTextModal from "../RichTextModal";
+=======
+import DurationModal from "./DurationModal";
+import DataModal from "./DataModal";
+import MinutesModal from "./MinutesModal";
+>>>>>>> 6e79534e74eba0fcafbd386de62ab021a7210bbb
 import PlanChangeDialog from "../PlanChangeDialog/PlanChangeDialog";
 import { globalConfigs, globalConstants } from "../../GlobalConfigs";
 import CHANGE_PLAN from "../../graphql/CHANGE_PLAN";
 import getDynamicValues from "../../utils/get-aem-dynamic-values";
+<<<<<<< HEAD
 import "./../../styles/index.css";
+=======
+import "./styles.css";
+>>>>>>> 6e79534e74eba0fcafbd386de62ab021a7210bbb
 
 const NewPostpaidNumber: React.FC<NewPostPaidNumberProps> = ({
   durationLabel,

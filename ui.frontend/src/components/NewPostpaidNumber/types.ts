@@ -38,7 +38,6 @@ export interface ModalProps {
   heading?: string;
   info?:string;
   closeLabel?: string;
-  isWithIcons?: boolean;
   additionalInfo?: string;
   countryFlagFrom?: string;
   countryFlagTo?: string;
