@@ -22,11 +22,32 @@ export interface CreatePasswordFormSchema {
   reenterNewPassword: string;
 }
 
-export interface ResetPasswordSchema {}
+export interface ResetPasswordSchema {
+}
 
 export interface CreateNewPasswordSchema {
   mobileNumber?: string;
   emailAddress?: string;
+  pinRequiredValidationMsg?: string;
+  pinLengthValidationMsg?: string;
+  pwdRequiredValidationMsg?: string;
+  pwdMinValdiationMsg?: string;
+  pwdMaxValdiationMsg?: string;
+  pwdConfirmMatchValidationMsg?: string;
+  pwdConfirmRequiredValidationMsg?: string;
+  pwdMinHint: string;
+  alertSuccessSuffixMsg?: string;
+  compHeading?: string;
+  compHeadingDescription?: string;
+  compResendPinText?: string;
+  frmLabelPin?: string;
+  frmLabelNewPwd?: string;
+  frmLabelReEnterNewPwd?: string;
+  frmPwd?: string;
+  frmBtnPrimaryLabel?: string;
+  frmBtnSecondaryLabel?: string;
+  hideLabel?: string;
+  showLabel?: string;
 }
 
 export interface loginModuleProps {
@@ -72,6 +93,12 @@ export interface loginModuleProps {
   errorEmailPatternValidMsg: string;
   errorPasswordPatternMinMsg: string;
   errorConfirmPasswordPatternNotMatchMsg: string;
+  resetPwdTitle: string;
+  resetPwdDescription: string;
+  resetPwdEmailLabel: string;
+  resetPwdMobileLabel: string;
+  resetPwdButtonLabel: string;
+  resetPwdButtonCancelLabel: string;
 }
 export interface LoginTabsProps extends TabProps, loginModuleProps {
   icon?: IconType;
