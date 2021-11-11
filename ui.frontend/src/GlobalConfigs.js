@@ -42,5 +42,6 @@ const globalConstants = Object.freeze({
     DASHBOARD: 'dashboard',
     VERIFY_REGISTER_MOBILE: 'verify-register-mobile',
     CREATE_NEW_PASSWORD: 'create-new-password',
+    USAGE_DETAILS: 'usage-details',
 });
 module.exports = { globalConfigs, globalConstants }
