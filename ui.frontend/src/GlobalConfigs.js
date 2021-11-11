@@ -2,11 +2,15 @@ const globalCurrencies = Object.freeze({
   EUR: '€'
 });
 
+const globalCurrencyCode = Object.freeze({
+  DEFAULT_CURRENCY_CODE: 'EUR',
+});
+
 const globalConfigs = window.lebaraGlobalConfigs ? {
     apiHostUri: window.lebaraGlobalConfigs.apiHostUri,
     gqlEndpoint: window.lebaraGlobalConfigs.gqlEndpoint,
     currencyName: window.lebaraGlobalConfigs.currencyName,
-    currencyCode: window.lebaraGlobalConfigs.currencyCode || globalConstants.DEFAULT_CURRENCY_CODE,
+    currencyCode: window.lebaraGlobalConfigs.currencyCode || globalCurrencyCode.DEFAULT_CURRENCY_CODE,
     currencySymbol: window.lebaraGlobalConfigs.currencyName && globalCurrencies.hasOwnProperty(window.lebaraGlobalConfigs.currencyName) ? globalCurrencies[window.lebaraGlobalConfigs.currencyName] : globalCurrencies['EUR'],
     paymentClientKey: window.lebaraGlobalConfigs.paymentClientKey,
     paymentAdeyenEnv: window.lebaraGlobalConfigs.paymentAdeyenEnv,
@@ -37,7 +41,6 @@ const globalConstants = Object.freeze({
     PREPAID: 'prepaid',
     DASHBOARD: 'dashboard',
     VERIFY_REGISTER_MOBILE: 'verify-register-mobile',
-    USAGE_DETAILS: 'usage-details',
-    DEFAULT_CURRENCY_CODE: 'EUR',
+    USAGE_DETAILS: 'usage-details'
 });
 module.exports = { globalConfigs, globalConstants }
