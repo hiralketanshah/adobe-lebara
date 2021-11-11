@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="nt:unstructured"
+    jcr:title="Create New Password"
+    sling:resourceType="cq/gui/components/authoring/dialog"
+    extraClientlibs="[lebara.touchui]">
+    <content
+        jcr:primaryType="nt:unstructured"
+        sling:resourceType="granite/ui/components/coral/foundation/container">
+        <items jcr:primaryType="nt:unstructured">
+            <tabs
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="granite/ui/components/coral/foundation/tabs"
+                maximized="{Boolean}true">
+                <items jcr:primaryType="nt:unstructured">
+
+                    <login
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Create New Password Fields"
+                        sling:resourceType="granite/ui/components/coral/foundation/container"
+                        margin="{Boolean}true">
+                        <items jcr:primaryType="nt:unstructured">
+                            <columns
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+                                margin="{Boolean}true">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <column
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <createNewPasswordLabel
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="Title"
+                                                value="Create New Password"
+                                                name="./compHeading"/>
+                                            <loggedInAutolabel
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="You will be logged in automatically Label"
+                                                fieldLabel="Description"
+                                                value="You will be logged in automatically"
+                                                name="./compHeadingDescription"/>
+                                            <pinlabel
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="Enter Pin Label"
+                                                fieldLabel="Enter Pin Label"
+                                                value="Enter Pin"
+                                                name="./frmLabelPin"/>
+
+                                            <resendPinlabel
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                    fieldDescription="Enter Resend Pin Label"
+                                                    fieldLabel="Resend Pin Label"
+                                                    value="Resend Pin"
+                                                    name="./compResendPinText"/>
+
+                                            <newPasswordlabel
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                    fieldDescription="New Password Label"
+                                                    fieldLabel="New Password Label"
+                                                    value="New Password"
+                                                    name="./frmLabelNewPwd"/>
+
+                                            <newPasswordMinCharacterlabel
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                    fieldDescription="New Password Minimum Character Label"
+                                                    fieldLabel="New Password Minimum Character Label"
+                                                    value="Minimum 8 Characters"
+                                                    name="./pwdMinHint"/>
+
+                                            <re-enterNewPasswordlabel
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                    fieldDescription="Re-Enter New Password Label"
+                                                    fieldLabel="Re-Enter New Password Label"
+                                                    value="Re-Enter New Password"
+                                                    name="./frmLabelReEnterNewPwd"/>
+                                            <show
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                    fieldLabel="Show Label "
+                                                    value="Show"
+                                                    name="./showLabel"/>
+                                            <hide
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                    fieldLabel="Hide Label"
+                                                    value="Hide"
+                                                    name="./hideLabel"/>
+                                            <primarycta
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                    fieldLabel="Primary CTA Text Label"
+                                                    value="CONTINUE"
+                                                    name="./frmBtnPrimaryLabel"/>
+                                            <secondarycta
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                    fieldLabel="Secondary CTA Text Label"
+                                                    value=""
+                                                    name="./frmBtnSecondaryLabel"/>
+                                        </items>
+                                    </column>
+                                </items>
+                            </columns>
+                        </items>
+                    </login>
+                    <errormessages
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Error Messages"
+                        sling:resourceType="granite/ui/components/coral/foundation/container"
+                        margin="{Boolean}true">
+                        <items jcr:primaryType="nt:unstructured">
+                            <columns
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+                                margin="{Boolean}true">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <column
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <pinfielderrormessage
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="Error For Enter Pin Field"
+                                                value="Error For Pin"
+                                                name="./pinRequiredValidationMsg"/>
+                                            <validpinfielderrormessage
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="Error For Valid Pin Field"
+                                                value="Error For Valid Pin"
+                                                name="./pinLengthValidationMsg"/>
+                                            <newpasswordfielderrormessage
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="Error For New Password Field"
+                                                value="Error For New Password "
+                                                name="./pwdRequiredValidationMsg"/>
+                                            <newpasswordfieldminerrormessage
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                    fieldLabel="Error For New Password Minimum Character Field"
+                                                    value="Error For New Password Minimum Character "
+                                                    name="./pwdMinValdiationMsg"/>
+
+                                            <newpasswordconfirmfielderrormessage
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                    fieldLabel="Error For New Password Confirm Field"
+                                                    value="Error For New Password Confirm"
+                                                    name="./pwdConfirmRequiredValidationMsg"/>
+
+                                            <reenterpasswordmatchfielderrormessage
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                    fieldLabel="Error For Re-enter Password Match Field"
+                                                    value="Error For  Re-enter Password Match"
+                                                    name="./pwdConfirmMatchValidationMsg"/>
+                                        </items>
+                                    </column>
+                                </items>
+                            </columns>
+                        </items>
+                    </errormessages>
+
+                    <successmessages
+                            jcr:primaryType="nt:unstructured"
+                            jcr:title="Success Messages"
+                            sling:resourceType="granite/ui/components/coral/foundation/container"
+                            margin="{Boolean}true">
+                        <items jcr:primaryType="nt:unstructured">
+                            <columns
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+                                    margin="{Boolean}true">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <column
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/container">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            Alert
+                                            <alertSuccessdLabel
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                    fieldLabel="Success Message"
+                                                    value="Entered Pin Sent to"
+                                                    name="./alertSuccessSuffixMsg"/>
+                                        </items>
+                                    </column>
+                                </items>
+                            </columns>
+                        </items>
+                    </successmessages>
+                </items>
+            </tabs>
+        </items>
+    </content>
+</jcr:root>
