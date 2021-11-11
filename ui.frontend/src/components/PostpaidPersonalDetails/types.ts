@@ -1,7 +1,8 @@
-export interface PostpaidPersonalDetailsProps {}
 type PortInStatus = "No" | "Yes" | "ExistingPhone";
 
 export interface PostpaidDetails {
+  pageTitle?: string;
+  heading?:string;
   email?: string;
   firstName?: string;
   lastName?: string;
@@ -23,12 +24,18 @@ export interface PostpaidDetails {
 }
 
 export interface PostpaidDetailsErrors {
-  email?: string;
-  firstName?: string;
-  lastName?: string;
-  day?: string;
-  month?: string;
-  year?: string;
+  emailRequiredMsg?: string;
+  emailInValidMsg?: string;
+  fNameRequiredMsg?: string;
+  fNameInvalidMsg?: string;
+  lNameRequiredMsg?: string;
+  lNameInvalidMsg?: string;
+  dayRequiredMsg?: string;
+  dayInvalidMsg?: string;
+  monthRequiredMsg?: string;
+  monthInvalidMsg?: string;
+  yearRequiredMsg?: string;
+  yearInvalidMsg?: string;
   shippingAddress?: string;
   isAdvertisingAccepted?: string;
   portInStatus?: string;
@@ -37,3 +44,5 @@ export interface PostpaidDetailsErrors {
   portInContractChecked?: string;
   portInConditionsAccepted?: string;
 }
+
+export interface PostpaidPersonalDetailsProps extends PostpaidDetails {}

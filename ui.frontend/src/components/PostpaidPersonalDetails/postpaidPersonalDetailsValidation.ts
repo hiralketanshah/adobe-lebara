@@ -11,38 +11,37 @@ import {
   MONTH_RANGE,
 } from "../../utils/lebara.constants";
 
-export default (values: PostpaidDetails) => {
-  const errors: PostpaidDetailsErrors = {};
+export default (values: PostpaidDetails, validationMessages:PostpaidDetailsErrors) => {
+  const errors: PostpaidDetails = {};
   if (!values.email) {
-    errors.email = "We need your email address to contact you";
+    errors.email = validationMessages.emailRequiredMsg;
   } else if (!emailRegex.test(values.email)) {
-    errors.email = "Please check the email address format";
+    errors.email = validationMessages.emailInValidMsg;
   }
   if (!values.firstName) {
-    errors.firstName = "Please enter First Name";
+    errors.firstName = validationMessages.fNameRequiredMsg;
   } else if (!nameRegex.test(values.firstName)) {
-    errors.firstName = "Please enter valid First Name";
+    errors.firstName = validationMessages.fNameInvalidMsg;
   }
   if (!values.lastName) {
-    errors.lastName = "Please enter Last Name";
+    errors.lastName = validationMessages.lNameRequiredMsg;
   } else if (!nameRegex.test(values.lastName)) {
-    errors.lastName = "Please enter valid First Name";
+    errors.lastName = validationMessages.lNameInvalidMsg;
   }
   if (!values.day) {
-    errors.day = "Please enter Day";
+    errors.day = validationMessages.dayRequiredMsg;
   } else if (!DAY_RANGE.test(values.day)) {
-    errors.day = "Please enter valid Day";
+    errors.day = validationMessages.dayInvalidMsg;
   }
-
   if (!values.month) {
-    errors.month = "Please enter Month";
+    errors.month = validationMessages.monthRequiredMsg;
   } else if (!MONTH_RANGE.test(values.month)) {
-    errors.month = "Please enter valid Month";
+    errors.month = validationMessages.monthInvalidMsg;
   }
   if (!values.year) {
-    errors.year = "Please enter Year";
+    errors.year = validationMessages.yearRequiredMsg;
   } else if (!DATE_OF_BIRTH_YEAR_RANGE.test(values.year)) {
-    errors.year = "Please enter valid Year";
+    errors.year = validationMessages.yearInvalidMsg;
   }
 
   if (
