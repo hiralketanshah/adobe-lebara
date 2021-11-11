@@ -1,8 +1,5 @@
-type PortInStatus = "No" | "Yes" | "ExistingPhone";
-
+export type PortInStatus = "No" | "Yes" | "ExistingPhone";
 export interface PostpaidDetails {
-  pageTitle?: string;
-  heading?:string;
   email?: string;
   firstName?: string;
   lastName?: string;
@@ -21,7 +18,6 @@ export interface PostpaidDetails {
   currentProvider?: string;
   portInContractChecked?: boolean;
   portInConditionsAccepted?: boolean;
-  validationMessages: ValidationMessages;
 }
 
 export interface ValidationMessages {
@@ -60,4 +56,8 @@ export interface PostpaidDetailsErrors {
   portInConditionsAccepted?: string;
 }
 
-export interface PostpaidPersonalDetailsProps extends PostpaidDetails {}
+export interface PostpaidPersonalDetailsProps {
+  pageTitle?: string;
+  heading?:string;
+  validationMessages: ValidationMessages;
+}

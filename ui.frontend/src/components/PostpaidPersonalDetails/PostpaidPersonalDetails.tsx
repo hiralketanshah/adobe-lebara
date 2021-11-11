@@ -14,7 +14,7 @@ import { useHistory } from "react-router-dom";
 import axios from "axios";
 import { useLazyQuery } from "@apollo/client";
 import { globalConfigs as GC, globalConstants as C} from "../../GlobalConfigs";
-import { PostpaidPersonalDetailsProps } from "./types";
+import { PostpaidDetails, PostpaidPersonalDetailsProps } from "./types";
 import FormikInput from "../Formik/FormikInput/FormikInput";
 import postpaidPersonalDetailsValidation from "./postpaidPersonalDetailsValidation";
 import FormikAddressSearch from "../Formik/FormikAddressSearch/FormikAddressSearch";
@@ -55,7 +55,7 @@ const PostpaidPersonalDetails: React.FC<PostpaidPersonalDetailsProps> = ({
           portInStatus: "No",
         }}
         validate={(values) => dynamicFormikValidate(values)}
-        onSubmit={(values) => {
+        onSubmit={(values:PostpaidDetails) => {
           axios
             .get(
               `${GC.apiHostUri}/google/getAddress?placeId=${values.shippingAddress?.value.place_id}`,
@@ -64,7 +64,7 @@ const PostpaidPersonalDetails: React.FC<PostpaidPersonalDetailsProps> = ({
               }
             )
             .then((res) => {
-              history.push("/postpaid/details", {
+              history.push((GC.journeyPages[C.POSTPAID_DETAILS]  || '/'), {
                 personalDetails: {
                   firstName: values.firstName,
                   lastName: values.lastName,
