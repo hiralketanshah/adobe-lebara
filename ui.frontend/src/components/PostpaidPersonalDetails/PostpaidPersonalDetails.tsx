@@ -36,11 +36,13 @@ const dateLabelProps: FormLabelProps = {
 };
 const PostpaidPersonalDetails: React.FC<PostpaidPersonalDetailsProps> = ({
   heading,
+  validationMessages,
 }) => {
   const history = useHistory();
-  const [validateEmailSps, { data: validateEmailSpsResult }] =
-    useLazyQuery(VALIDATE_EMAIL_SPS);
+  const [validateEmailSps, { data: validateEmailSpsResult }] = useLazyQuery(VALIDATE_EMAIL_SPS);
   const [isPaymentDialogOpen, setIsPaymentDialogOpen] = useState(false);
+
+  const dynamicFormikValidate = (values: any) => postpaidPersonalDetailsValidation(values, validationMessages);
 
   return (
     <>
@@ -52,7 +54,7 @@ const PostpaidPersonalDetails: React.FC<PostpaidPersonalDetailsProps> = ({
         initialValues={{
           portInStatus: "No",
         }}
-        validate={postpaidPersonalDetailsValidation}
+        validate={(values) => dynamicFormikValidate(values)}
         onSubmit={(values) => {
           axios
             .get(

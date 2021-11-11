@@ -21,21 +21,36 @@ export interface PostpaidDetails {
   currentProvider?: string;
   portInContractChecked?: boolean;
   portInConditionsAccepted?: boolean;
+  validationMessages: ValidationMessages;
 }
 
-export interface PostpaidDetailsErrors {
+export interface ValidationMessages {
   emailRequiredMsg?: string;
   emailInValidMsg?: string;
   fNameRequiredMsg?: string;
-  fNameInvalidMsg?: string;
+  fNameInValidMsg?: string;
   lNameRequiredMsg?: string;
-  lNameInvalidMsg?: string;
+  lNameInValidMsg?: string;
   dayRequiredMsg?: string;
-  dayInvalidMsg?: string;
+  dayInValidMsg?: string;
   monthRequiredMsg?: string;
-  monthInvalidMsg?: string;
+  monthInValidMsg?: string;
   yearRequiredMsg?: string;
-  yearInvalidMsg?: string;
+  yearInValidMsg?: string;
+  yearInvalidAgeMsg?: string;
+  shippingRequiredMsg?: string;
+  portInNumberRequiredMsg?: string;
+  portInNumberInValidMsg?: string;
+  currentProviderRequiredMsg?: string;
+}
+
+export interface PostpaidDetailsErrors {
+  email?: string;
+  firstName?: string;
+  lastName?: string;
+  day?: string;
+  month?: string;
+  year?: string;
   shippingAddress?: string;
   isAdvertisingAccepted?: string;
   portInStatus?: string;

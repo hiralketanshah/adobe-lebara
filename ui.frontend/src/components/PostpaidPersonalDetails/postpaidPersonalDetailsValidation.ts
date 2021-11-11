@@ -1,5 +1,5 @@
 import moment from "moment";
-import { PostpaidDetails, PostpaidDetailsErrors } from "./types";
+import { PostpaidDetails, PostpaidDetailsErrors, ValidationMessages } from "./types";
 import {
   emailRegex,
   nameRegex,
@@ -11,8 +11,8 @@ import {
   MONTH_RANGE,
 } from "../../utils/lebara.constants";
 
-export default (values: PostpaidDetails, validationMessages:PostpaidDetailsErrors) => {
-  const errors: PostpaidDetails = {};
+export default (values: PostpaidDetails, validationMessages: ValidationMessages) => {
+  const errors: PostpaidDetailsErrors = {};
   if (!values.email) {
     errors.email = validationMessages.emailRequiredMsg;
   } else if (!emailRegex.test(values.email)) {
@@ -21,27 +21,27 @@ export default (values: PostpaidDetails, validationMessages:PostpaidDetailsError
   if (!values.firstName) {
     errors.firstName = validationMessages.fNameRequiredMsg;
   } else if (!nameRegex.test(values.firstName)) {
-    errors.firstName = validationMessages.fNameInvalidMsg;
+    errors.firstName = validationMessages.fNameInValidMsg;
   }
   if (!values.lastName) {
     errors.lastName = validationMessages.lNameRequiredMsg;
   } else if (!nameRegex.test(values.lastName)) {
-    errors.lastName = validationMessages.lNameInvalidMsg;
+    errors.lastName = validationMessages.lNameInValidMsg;
   }
   if (!values.day) {
     errors.day = validationMessages.dayRequiredMsg;
   } else if (!DAY_RANGE.test(values.day)) {
-    errors.day = validationMessages.dayInvalidMsg;
+    errors.day = validationMessages.dayInValidMsg;
   }
   if (!values.month) {
     errors.month = validationMessages.monthRequiredMsg;
   } else if (!MONTH_RANGE.test(values.month)) {
-    errors.month = validationMessages.monthInvalidMsg;
+    errors.month = validationMessages.monthInValidMsg;
   }
   if (!values.year) {
     errors.year = validationMessages.yearRequiredMsg;
   } else if (!DATE_OF_BIRTH_YEAR_RANGE.test(values.year)) {
-    errors.year = validationMessages.yearInvalidMsg;
+    errors.year = validationMessages.yearInValidMsg;
   }
 
   if (
@@ -56,21 +56,21 @@ export default (values: PostpaidDetails, validationMessages:PostpaidDetailsError
       "years"
     ) < 18
   ) {
-    errors.year = "You must be older than 18";
+    errors.year = validationMessages.yearInvalidAgeMsg;
   }
 
   if (!values.shippingAddress) {
-    errors.shippingAddress = "Please start typing your address";
+    errors.shippingAddress = validationMessages.shippingRequiredMsg;
   }
 
   if (values.portInStatus === "Yes") {
     if (!values.portInNumber) {
-      errors.portInNumber = "Please enter your number to port";
+      errors.portInNumber = validationMessages.portInNumberRequiredMsg;
     } else if (!phoneNumberRegex.test(values.portInNumber)) {
-      errors.portInNumber = "Please enter 10-12 digits including 0";
+      errors.portInNumber = validationMessages.portInNumberInValidMsg;
     }
     if (!values.currentProvider) {
-      errors.currentProvider = "Please select your previous phone provider";
+      errors.currentProvider = validationMessages.currentProviderRequiredMsg;
     }
   }
 
