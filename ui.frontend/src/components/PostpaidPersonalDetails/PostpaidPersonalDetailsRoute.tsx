@@ -21,7 +21,6 @@ const PostpaidPersonalDetailsRoute: React.FC<PostpaidPersonalDetailsProps> = ({
       >
         {pageTitle}
       </Text>
-      
       <PostpaidPersonalDetails {...rest} />
     </Box>
   </SelectNumberAndOrderDetailsLayout>

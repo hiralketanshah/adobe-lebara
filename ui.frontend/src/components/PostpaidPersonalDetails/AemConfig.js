@@ -4,9 +4,8 @@ import PostpaidPersonalDetailsRoute from "./PostpaidPersonalDetailsRoute";
 const PostpaidPersonalDetailsConfig = {
   emptyLabel: "Postpaid Personal Details component",
   isEmpty: function (props) {
-    return !props.heading;
+    return !props.pageTitle;
   },
 };
 
-MapTo("lebara/components/personaldetails")(PostpaidPersonalDetailsRoute, PostpaidPersonalDetailsConfig);
-// MapTo("lebara/components/postpaidpersonaldetails")(PostpaidPersonalDetailsRoute, PostpaidPersonalDetailsConfig);
+MapTo("lebara/components/postpaidpersonaldetails")(PostpaidPersonalDetailsRoute, PostpaidPersonalDetailsConfig);
