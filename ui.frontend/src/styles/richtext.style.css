@@ -6,15 +6,20 @@
     line-height: 22px;
     color: var(--chakra-colors-primary-500);
     letter-spacing: 0.5px;
+    margin-top: 21px;
 }
 .rich-text p {
 	font-size: 14px;
     line-height: 20px;
     color: var(--chakra-colors-primary-800);
     letter-spacing: 0.25px;
-    margin-top: 5px;
-	margin-bottom: 20px;
+    margin-top: 12px;
+	margin-bottom: 0;
 }
+.rich-text-flags-wrap {
+    margin-top: 20px;
+}
+
 .rich-text ul,
 .rich-text ol {
     margin:0;

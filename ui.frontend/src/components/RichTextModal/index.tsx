@@ -40,21 +40,19 @@ const RichTextModal: React.FC<ModalProps> = ({ open, onClose, heading, info, clo
           </ModalHeader>
           <ModalCloseButton />
           <ModalBody py="15px" className={'rich-text'}>
-            <div  {...sectionDetails} dangerouslySetInnerHTML={{ __html: info || '' }} />
+            {info && <div style={{...sectionDetails}} dangerouslySetInnerHTML={{ __html: info || '' }} />}
             
             {countryFlagFrom && (
-              <Box mt="20px">
-                <Box width="292px" mr="20px">
-                  <Flex alignItems="center">
-                    <Image height="24px" width="24px" src={countryFlagFrom} />
-                    <Image mx="19px" height="17px" width="9px" src={FromToIcon} />
-                    <Image height="24px" width="24px" src={countryFlagTo} />
-                  </Flex>
-                </Box>
+              <Box width="292px" mr="20px" className={`rich-text-flags-wrap`}>
+                <Flex alignItems="center">
+                  <Image height="24px" width="24px" src={countryFlagFrom} />
+                  <Image mx="19px" height="17px" width="9px" src={FromToIcon} />
+                  <Image height="24px" width="24px" src={countryFlagTo} />
+                </Flex>
               </Box>
             )}
 
-            {additionalInfo && (<div  {...sectionDetails} dangerouslySetInnerHTML={{ __html: additionalInfo || '' }} />)}
+            {additionalInfo && (<div  style={{...sectionDetails}} dangerouslySetInnerHTML={{ __html: additionalInfo || '' }} />)}
 
             <Flex justifyContent="center">
               <Button

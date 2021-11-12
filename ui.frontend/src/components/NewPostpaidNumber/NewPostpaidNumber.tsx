@@ -14,7 +14,7 @@ import ADD_TO_CART from "../../graphql/ADD_TO_CART";
 import GET_SIM_ONLY_OFFERS from "../../graphql/GET_SIM_ONLY_OFFERS";
 import RichTextModal from "../RichTextModal";
 import PlanChangeDialog from "../PlanChangeDialog/PlanChangeDialog";
-import { globalConfigs, globalConstants } from "../../GlobalConfigs";
+import { globalConfigs as GC, globalConstants as C } from "../../GlobalConfigs";
 import CHANGE_PLAN from "../../graphql/CHANGE_PLAN";
 import getDynamicValues from "../../utils/get-aem-dynamic-values";
 import "./../../styles/index.css";
@@ -82,7 +82,7 @@ const NewPostpaidNumber: React.FC<NewPostPaidNumberProps> = ({
   };
   const { data: simOnlyOffers } = useQuery(GET_SIM_ONLY_OFFERS, {
     variables: {
-      country: globalConfigs.country,
+      country: GC.country,
     },
   });
   const dataOptions = [
@@ -200,7 +200,7 @@ const NewPostpaidNumber: React.FC<NewPostPaidNumberProps> = ({
                 mapMagentoProductToCartItem(res.data.addProduct.items)
               )
             );
-            history.push((globalConfigs.journeyPages[globalConstants.POSTPAID_DETAILS] || '/'), values);
+            history.push((GC.journeyPages[C.POSTPAID_DETAILS] || '/'), values);
           });
         }}
       >
@@ -233,7 +233,7 @@ const NewPostpaidNumber: React.FC<NewPostPaidNumberProps> = ({
                     },
                   })
                     .then(() => {
-                      history.push((globalConfigs.journeyPages[globalConstants.ORDER_SUBMITTED] || '/'), {
+                      history.push((GC.journeyPages[C.ORDER_SUBMITTED] || '/'), {
                         msisdn: location?.state?.msisdn,
                         previousPlanName: previousPlan?.name,
                         currentPlan: selectedPlan?.name,
@@ -542,7 +542,7 @@ const NewPostpaidNumber: React.FC<NewPostPaidNumberProps> = ({
                   <Flex mt="9px" pl="17px" pr="15px">
                     <Text {...totalTextStyle}>{yourOrderPerMonthOrderTotalLabel}</Text>
                     <Text {...totalTextStyle} marginLeft="auto">
-                      {globalConfigs.currencySymbol}
+                      {GC.currencySymbol}
                       {selectedPlan &&
                         values.planDuration &&
                         selectedPlan.cost / 100
@@ -595,7 +595,7 @@ const NewPostpaidNumber: React.FC<NewPostPaidNumberProps> = ({
                       lineHeight="22px"
                       letterSpacing="0.15px"
                     >
-                      {globalConfigs.currencySymbol}
+                      {GC.currencySymbol}
                       {selectedPlan &&
                         values.planDuration &&
                         selectedPlan.cost / 100
