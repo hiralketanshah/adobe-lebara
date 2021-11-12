@@ -199,7 +199,6 @@ public class CFUtils {
         return planInfo;
     }
 
-    
    public static  List<OfferFragmentBean>  getCfList( Resource cfResource,  ResourceResolver resourceResolver, I18n i18n) {
        List<OfferFragmentBean> bundlesList =  new ArrayList<OfferFragmentBean>();
        if (null != cfResource) {

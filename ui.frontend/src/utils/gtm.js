@@ -2,14 +2,14 @@ import { glocalConfigs as GC } from "../GlobalConfigs";
 
 export function googleAnalytics(event, obj) {
   return event
-    ? window?.dataLayer.push({
+    ? window?.dataLayer?.push({
         event,
         ecommerce: obj,
       })
     : window?.dataLayer.push(obj);
 }
 export function googleAnalyticsCheckout(step) {
-  return window?.dataLayer.push({
+  return window?.dataLayer?.push({
     event: "EEcheckout",
     ecommerce: {
       checkout: {

@@ -8,4 +8,4 @@ const MyBalanceCardConfig = {
   },
 };
 
-MapTo("lebara/components/mybalancecard")(MyBalanceCard, MyBalanceCardConfig);
+MapTo("lebara/components/dashboard/mybalancecard")(MyBalanceCard, MyBalanceCardConfig);
