@@ -3,7 +3,7 @@ const globalCurrencies = Object.freeze({
 });
 
 const globalCurrencyCode = Object.freeze({
-    DEFAULT_CURRENCY_CODE: 'EUR',
+  DEFAULT_CURRENCY_CODE: 'EUR',
 });
 
 const globalConfigs = window.lebaraGlobalConfigs ? {
@@ -41,5 +41,6 @@ const globalConstants = Object.freeze({
     PREPAID: 'prepaid',
     DASHBOARD: 'dashboard',
     VERIFY_REGISTER_MOBILE: 'verify-register-mobile',
+    CREATE_NEW_PASSWORD: 'create-new-password',
 });
 module.exports = { globalConfigs, globalConstants }
