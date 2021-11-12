@@ -219,9 +219,8 @@ public class AemUtils {
         }
         return title;
     }
-    public static String getInheritedValue(String name, Resource res) {
-        if (null != res) {
-            InheritanceValueMap inheritedProp = new HierarchyNodeInheritanceValueMap(res);
+    public static String getInheritedValue(String name, InheritanceValueMap inheritedProp) {
+        if (null != inheritedProp) {
             return Optional.ofNullable(inheritedProp.getInherited(name, String.class)).orElse("");
         }
         return StringUtils.EMPTY;
@@ -231,15 +230,16 @@ public class AemUtils {
         Resource res = request.getResourceResolver().getResource(request.getRequestPathInfo().getResourcePath());
         DashboardLabels dashboardLabels = new DashboardLabels();
         if (null != res) {
-            dashboardLabels.setDataPlanName(getInheritedValue("dataPlanName", res));
-            dashboardLabels.setDataPlanName(getInheritedValue("dataType", res));
-            dashboardLabels.setDataPlanName(getInheritedValue("minPlanName", res));
-            dashboardLabels.setDataPlanName(getInheritedValue("minDataType", res));
-            dashboardLabels.setDataPlanName(getInheritedValue("smsPlanName", res));
-            dashboardLabels.setDataPlanName(getInheritedValue("smsDataType", res));
-            dashboardLabels.setDataPlanName(getInheritedValue("internationalMinPlanName", res));
-            dashboardLabels.setDataPlanName(getInheritedValue("internationalMinDataType", res));
-            dashboardLabels.setDataPlanName(getInheritedValue("leftOfLabel", res));
+            InheritanceValueMap inheritedProp = new HierarchyNodeInheritanceValueMap(res);
+            dashboardLabels.setDataPlanName(getInheritedValue("dataPlanName", inheritedProp));
+            dashboardLabels.setDataPlanName(getInheritedValue("dataType", inheritedProp));
+            dashboardLabels.setDataPlanName(getInheritedValue("minPlanName", inheritedProp));
+            dashboardLabels.setDataPlanName(getInheritedValue("minDataType", inheritedProp));
+            dashboardLabels.setDataPlanName(getInheritedValue("smsPlanName", inheritedProp));
+            dashboardLabels.setDataPlanName(getInheritedValue("smsDataType", inheritedProp));
+            dashboardLabels.setDataPlanName(getInheritedValue("internationalMinPlanName", inheritedProp));
+            dashboardLabels.setDataPlanName(getInheritedValue("internationalMinDataType", inheritedProp));
+            dashboardLabels.setDataPlanName(getInheritedValue("leftOfLabel", inheritedProp));
         }
         return dashboardLabels;
     }
