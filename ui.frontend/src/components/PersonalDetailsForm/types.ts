@@ -1,4 +1,4 @@
-import {SelectOption} from '../Select/types';
+import { SelectOptionTypeString } from '../Select/types';
 
 export interface PersonalDetailsFormProps {
   heading?: string;
@@ -20,7 +20,7 @@ export interface PersonalDetailsFormProps {
   cityLabel:string;
   postalcodePlaceholder:string;
   cityPlaceholder:string;
-  cities: SelectOption[];
+  cities: SelectOptionTypeString[];
   firstNameErrorMax:string;
   firstNameErrorRequired:string;
   firstNameErrorPattern:string;
@@ -47,4 +47,5 @@ export interface PersonalDetailsFormProps {
   keyInAddress: string;
   saveAddress: string;
   yourPersonalDetailsLabel?: string;
+  emailAddressAlreadyExistMsg?: string;
 }
