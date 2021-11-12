@@ -220,8 +220,11 @@ public class AemUtils {
         return title;
     }
     public static String getInheritedValue(String name, Resource res) {
-        InheritanceValueMap inheritedProp = new HierarchyNodeInheritanceValueMap(res);
-        return Optional.ofNullable(inheritedProp.getInherited(name, String.class)).orElse("");
+        if (null != res) {
+            InheritanceValueMap inheritedProp = new HierarchyNodeInheritanceValueMap(res);
+            return Optional.ofNullable(inheritedProp.getInherited(name, String.class)).orElse("");
+        }
+        return StringUtils.EMPTY;
     }
 
     public static DashboardLabels populateDashboardLabels(SlingHttpServletRequest request) {
