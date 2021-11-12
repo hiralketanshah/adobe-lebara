@@ -1,4 +1,4 @@
-package com.lebara.core.models;
+package com.lebara.core.models.dashboard;
 
 import com.adobe.cq.export.json.ComponentExporter;
 import com.adobe.cq.export.json.ExporterConstants;
@@ -11,7 +11,6 @@ import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.injectorspecific.SlingObject;
 import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
 
-import javax.annotation.PostConstruct;
 import java.util.List;
 
 @Model(adaptables = SlingHttpServletRequest.class, adapters = {MyBalanceCardExporter.class, ComponentExporter.class},
@@ -22,7 +21,7 @@ public class MyBalanceCardExporter implements ComponentExporter {
     /**
      * The resource type.
      */
-    protected static final String RESOURCE_TYPE = "lebara/components/mybalancecard";
+    protected static final String RESOURCE_TYPE = "lebara/components/dashboard/mybalancecard";
 
     @SlingObject
     private ResourceResolver resourceResolver;

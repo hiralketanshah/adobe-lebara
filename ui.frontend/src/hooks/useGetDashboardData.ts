@@ -7,8 +7,9 @@ import DataIcon from "../assets/images/dataIcon.png";
 import MinIcon from "../assets/images/minIcon.png";
 import SMSIcon from "../assets/images/smsIcon.png";
 import GlobeIcon from "../assets/images/globeIcon.png";
+import { DashboardPlanLabelsProps } from "../components/PlanManagement/types";
 
-function useGetDashboardData() {
+function useGetDashboardData(planLabels?: DashboardPlanLabelsProps) {
   const location = useLocation<{
     msisdn?: string;
   }>();
@@ -30,14 +31,14 @@ function useGetDashboardData() {
     return [null, [], null];
 
   const { plans, balance } = dashboardData.getDashboardData;
-  const formattedPlans = plans.map((plan: any) => ({
+  const formattedPlans: [] = plans.map((plan: any) => ({
     name: plan.name,
     offerId: plan.offerId,
     plan: [
       {
         icon: DataIcon,
-        planTabName: "Data",
-        dataType: plan.total_data_unit,
+        planTabName: planLabels?.dataPlanName,
+        dataType: plan.total_data_unit || planLabels?.dataType,
         leftQuantity: plan.data_left,
         totalQuantity: plan.total_data,
         validUpto: moment(
@@ -46,8 +47,8 @@ function useGetDashboardData() {
       },
       {
         icon: MinIcon,
-        planTabName: "DE Min",
-        dataType: "Min",
+        planTabName: planLabels?.minPlanName,
+        dataType: planLabels?.minDataType,
         leftQuantity: plan.call_left,
         totalQuantity: plan.total_call,
         validUpto: moment(
@@ -59,8 +60,8 @@ function useGetDashboardData() {
         ? [
           {
             icon: SMSIcon,
-            planTabName: "UK SMS",
-            dataType: "SMS",
+            planTabName: planLabels?.smsPlanName,
+            dataType: planLabels?.smsDataType,
             leftQuantity: plan.sms_left,
             totalQuantity: plan.total_sms,
             validUpto: undefined,
@@ -69,8 +70,8 @@ function useGetDashboardData() {
         : []),
       {
         icon: GlobeIcon,
-        planTabName: "International min",
-        dataType: "Min",
+        planTabName: planLabels?.internationalMinPlanName,
+        dataType: planLabels?.internationalMinDataType,
         leftQuantity: plan.international_call_left,
         totalQuantity: plan.total_international_call,
         validUpto: moment(
@@ -80,7 +81,7 @@ function useGetDashboardData() {
       },
     ],
   }));
-  return [dashboardData.getDashboardData, msisdn];
+  return [dashboardData.getDashboardData, JSON.stringify(formattedPlans), msisdn];
 }
 
 export default useGetDashboardData;
