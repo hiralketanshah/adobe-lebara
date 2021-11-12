@@ -55,6 +55,9 @@ public class AddOnExporter extends EmptyCartExporter  {
     @ValueMapValue
     private String flexiCallsTabLabel;
 
+    @ValueMapValue
+    private String allPlansTabLabel;
+
     private I18n i18n;
 
     @PostConstruct
@@ -88,8 +91,13 @@ public class AddOnExporter extends EmptyCartExporter  {
         return flexiCallsTabLabel;
     }
     
+    public String getAllPlansTabLabel() {
+		return allPlansTabLabel;
+	}
+    
     @Override
     public String getExportedType() {
         return resource.getResourceType();
     }
+
 }

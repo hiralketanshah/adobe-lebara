@@ -20,35 +20,28 @@
                         sling:resourceType="granite/ui/components/coral/foundation/container">
                         <items
                             jcr:primaryType="nt:unstructured"
-                            sling:hideChildren="[shopBuyLabel,cartDescription,addOnTabLabel,plansTabLabel,buyPlanLabel,continueBrowsingLabel,continueBrowsingURL,isfullwidth]">
-                            <emptyBasketText
+                            sling:hideChildren="[addOnTabLabel,plansTabLabel,buyPlanLabel,continueBrowsingLabel,continueBrowsingURL,isfullwidth,emptyBasketText,goBackText]">
+                            <shopBuyLabel
                                 jcr:primaryType="nt:unstructured"
                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                 fieldDescription="Enter Header Text for Add On"
                                 fieldLabel="Header"
-                                name="./emptyBasketText"
+                                name="./shopBuyLabel"
                                 value="Our Add On"/>
-                            <goBackText
+                            <cartDescription
                                 jcr:primaryType="nt:unstructured"
                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                 fieldDescription="Enter Secondary Header Text for Add On"
                                 fieldLabel="Secondary Header"
-                                name="./goBackText"
+                                name="./cartDescription"
                                 value="Bolt ons or add ons can be added on to any plan which has data minutes. For just €3 you can choose your extra allowance to carry you through the month if you run out of data, UK or international minutes."/>
-                            <flixiCallsTabLabel
+                            <allPlansTabLabel
                                 jcr:primaryType="nt:unstructured"
                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                fieldDescription="Flexi Calls tab label"
-                                fieldLabel="Flexi Calls Tab Label"
-                                name="./flexiCallsTabLabel"
-                                value="Flexi Calls"/>
-                            <intlCallsTabLabel
-                                jcr:primaryType="nt:unstructured"
-                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                fieldDescription="International Calls tab label"
-                                fieldLabel="International Calls Tab Label"
-                                name="./intlCallsTabLabel"
-                                value="International Calls"/>
+                                fieldDescription="All plans tab label"
+                                fieldLabel="All Plans Tab Label"
+                                name="./allPlansTabLabel"
+                                value="All Plans"/>
                             <dataTabLabel
                                 jcr:primaryType="nt:unstructured"
                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
@@ -56,6 +49,20 @@
                                 fieldLabel="Data Tab Label"
                                 name="./dataTabLabel"
                                 value="Data"/>
+                            <intlCallsTabLabel
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldDescription="International Calls tab label"
+                                fieldLabel="International Calls Tab Label"
+                                name="./intlCallsTabLabel"
+                                value="International Calls"/>
+                            <flixiCallsTabLabel
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldDescription="Flexi Calls tab label"
+                                fieldLabel="Flexi Calls Tab Label"
+                                name="./flexiCallsTabLabel"
+                                value="Flexi Calls"/>
                         </items>
                     </commonColumn>
                     <column2
