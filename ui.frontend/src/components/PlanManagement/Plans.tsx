@@ -32,6 +32,7 @@ const Plans: React.FC<PlansProps> = ({
   planChangeMessage,
   cancelLabel,
   manageLabel,
+  manageLink,
   autoRenewLabel,
   autoRenewDesc,
   planLabels,
@@ -324,7 +325,7 @@ const Plans: React.FC<PlansProps> = ({
                           <Box>
                             <Text
                               onClick={() =>
-                                history.push(GC.journeyPages[GCST.MANAGE_DASHBOARD] || '/', {
+                                history.push((manageLink || "/"), {
                                   msisdn,
                                 })
                               }

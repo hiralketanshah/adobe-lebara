@@ -51,6 +51,12 @@
                                                 fieldLabel="Manage Label"
                                                 name="./manageLabel"
                                                 value="Manage"/>
+                                            <managelink
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                                fieldLabel="Manage Link"
+                                                name="./manageLink"
+                                                rootPath="/content/lebara"/>
                                             <showmanagebutton
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
@@ -96,14 +102,6 @@
                                                 text="Request Plan Removed?"
                                                 uncheckedValue="{Boolean}false"
                                                 value="{Boolean}true"/>
-                                            <planlabelscfpath
-                                                cq:showOnCreate="{Boolean}true"
-                                                jcr:primaryType="nt:unstructured"
-                                                sling:resourceType="dam/cfm/components/cfpicker"
-                                                fieldLabel="Plan Labels CF path"
-                                                name="./planLabelsCfPath"
-                                                required="{Boolean}true"
-                                                rootPath="/content/dam/lebara"/>
                                         </items>
                                     </column>
                                 </items>

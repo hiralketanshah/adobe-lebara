@@ -1,13 +1,11 @@
-package com.lebara.core.models;
+package com.lebara.core.models.dashboard;
 
 import com.adobe.cq.export.json.ComponentExporter;
 import com.adobe.cq.export.json.ExporterConstants;
 import com.lebara.core.dto.DashboardLabels;
 import com.lebara.core.utils.AemUtils;
-import com.lebara.core.utils.CFUtils;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;
-import org.apache.sling.api.resource.ResourceResolver;
 import org.apache.sling.models.annotations.DefaultInjectionStrategy;
 import org.apache.sling.models.annotations.Exporter;
 import org.apache.sling.models.annotations.Model;
@@ -23,13 +21,13 @@ public class DashboardPlansExporter implements ComponentExporter {
     /**
      * The resource type.
      */
-    protected static final String RESOURCE_TYPE = "lebara/components/plans";
+    protected static final String RESOURCE_TYPE = "lebara/components/dashboard/plans";
 
     @ScriptVariable
     private Resource resource;
 
     @SlingObject
-    private ResourceResolver resourceResolver;
+    private SlingHttpServletRequest request;
 
     @ValueMapValue
     private String renewalLabel;
@@ -42,6 +40,9 @@ public class DashboardPlansExporter implements ComponentExporter {
 
     @ValueMapValue
     private String manageLabel;
+
+    @ValueMapValue
+    private String manageLink;
 
     @ValueMapValue
     private String autoRenewLabel;
@@ -102,6 +103,10 @@ public class DashboardPlansExporter implements ComponentExporter {
         return manageLabel;
     }
 
+    public String getManageLink() {
+        return AemUtils.getLinkWithExtension(manageLink);
+    }
+
     public String getAutoRenewLabel() {
         return autoRenewLabel;
     }
@@ -159,11 +164,7 @@ public class DashboardPlansExporter implements ComponentExporter {
     }
 
     public DashboardLabels getPlanLabels() {
-        if(planLabelsCfPath != null) {
-            Resource labelsCfResource = resourceResolver.getResource(planLabelsCfPath);
-            return CFUtils.populateDashboardLabels(labelsCfResource);
-        }
-        return new DashboardLabels();
+        return AemUtils.populateDashboardLabels(request);
     }
     @Override
     public String getExportedType() {

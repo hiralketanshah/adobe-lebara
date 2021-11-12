@@ -1,12 +1,15 @@
 package com.lebara.core.utils;
 
 
+import com.day.cq.commons.inherit.HierarchyNodeInheritanceValueMap;
+import com.day.cq.commons.inherit.InheritanceValueMap;
 import com.day.cq.commons.mail.MailTemplate;
 import com.day.cq.i18n.I18n;
 import com.day.cq.mailer.MailingException;
 import com.day.cq.mailer.MessageGatewayService;
 import com.day.cq.wcm.api.Page;
 import com.day.cq.wcm.api.PageManager;
+import com.lebara.core.dto.DashboardLabels;
 import org.apache.commons.lang.text.StrLookup;
 import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.StringUtils;
@@ -217,6 +220,23 @@ public class AemUtils {
         return title;
     }
 
+    public static DashboardLabels populateDashboardLabels(SlingHttpServletRequest request) {
+        Resource res = request.getResourceResolver().getResource(request.getRequestPathInfo().getResourcePath());
+        InheritanceValueMap inheritedProp = new HierarchyNodeInheritanceValueMap(res);
+        DashboardLabels dashboardLabels = new DashboardLabels();
+        if (null != inheritedProp) {
+                dashboardLabels.setDataPlanName(Optional.ofNullable(inheritedProp.getInherited("dataPlanName", String.class)).orElse(""));
+                dashboardLabels.setDataType(Optional.ofNullable(inheritedProp.getInherited("dataType", String.class)).orElse(""));
+                dashboardLabels.setMinPlanName(Optional.ofNullable(inheritedProp.getInherited("minPlanName", String.class)).orElse(""));
+                dashboardLabels.setMinDataType(Optional.ofNullable(inheritedProp.getInherited("minDataType", String.class)).orElse(""));
+                dashboardLabels.setSmsPlanName(Optional.ofNullable(inheritedProp.getInherited("smsPlanName", String.class)).orElse(""));
+                dashboardLabels.setSmsDataType(Optional.ofNullable(inheritedProp.getInherited("smsDataType", String.class)).orElse(""));
+                dashboardLabels.setInternationalMinPlanName(Optional.ofNullable(inheritedProp.getInherited("internationalMinPlanName", String.class)).orElse(""));
+                dashboardLabels.setInternationalMinDataType(Optional.ofNullable(inheritedProp.getInherited("internationalMinDataType", String.class)).orElse(""));
+                dashboardLabels.setLeftOfLabel(Optional.ofNullable(inheritedProp.getInherited("leftOfLabel", String.class)).orElse(""));
+        }
+        return dashboardLabels;
+    }
     /**
      * this method returns the I18n locale based object
      * @param resourceResolver resourceresolver

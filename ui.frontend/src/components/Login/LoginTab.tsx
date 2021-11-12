@@ -47,7 +47,7 @@ const LoginTab: React.FC<LoginTabsProps> = ({...loginModuleProps}) => {
             if (res.data.authenticateUserSPS) {
               if (isFromMenu) {
                 history.push((GC.journeyPages[GCST.DASHBOARD]  || '/'),{
-                  msisdn: res.data.authenticateUserSPS[0]
+                  msisdn: res.data?.authenticateUserSPS?.msisdn[0]
                 });
                 return;
               }

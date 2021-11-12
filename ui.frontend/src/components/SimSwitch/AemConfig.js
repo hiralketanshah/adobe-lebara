@@ -8,4 +8,4 @@ const SimSwitchConfig = {
   },
 };
 
-MapTo("lebara/components/simswitch")(SimSwitch, SimSwitchConfig);
+MapTo("lebara/components/dashboard/simswitch")(SimSwitch, SimSwitchConfig);

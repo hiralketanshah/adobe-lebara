@@ -10,6 +10,7 @@ export interface PlansProps extends PlanChangeDialogCmsProps{
   planChangeMessage?: string;
   cancelLabel?: string;
   manageLabel?: string;
+  manageLink?: string;
   autoRenewLabel?: string;
   autoRenewDesc?: string;
   planLabels?: DashboardPlanLabelsProps;

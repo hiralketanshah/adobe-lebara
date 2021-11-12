@@ -8,4 +8,4 @@ const PlansConfig = {
   },
 };
 
-MapTo("lebara/components/plans")(Plans, PlansConfig);
+MapTo("lebara/components/dashboard/plans")(Plans, PlansConfig);

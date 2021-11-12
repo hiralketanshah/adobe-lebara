@@ -82,6 +82,83 @@
                             </columns>
                         </items>
                     </offerDetails>
+					<dashbaordlabels
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Dashboard Labels"
+                        sling:resourceType="granite/ui/components/coral/foundation/container"
+                        margin="{Boolean}true">
+                        <items jcr:primaryType="nt:unstructured">
+                            <columns
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+                                margin="{Boolean}true">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <column
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                                        <items
+                                            jcr:primaryType="nt:unstructured"
+                                            maxGeneratedOrder="21">
+                                            <dataPlanName
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="Data Plan Name"
+                                                name="./dataPlanName"
+                                                value="Data"/>
+                                            <dataType
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="Data Type"
+                                                name="./dataType"
+                                                value="MB"/>
+                                            <minPlanName
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="Min Plan Name"
+                                                name="./minPlanName"
+                                                value="DE Min"/>
+                                            <minDataType
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="Min Data Type"
+                                                name="./minDataType"
+                                                value="Min"/>
+                                            <smsPlanName
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="SMS Plan Name"
+                                                name="./smsPlanName"
+                                                value="UK SMS"/>
+                                            <smsDataType
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="SMS Data Type"
+                                                name="./smsDataType"
+                                                value="SMS"/>
+                                            <internationalMinPlanName
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="International Min Plan Name"
+                                                name="./internationalMinPlanName"
+                                                value="International min"/>
+                                            <internationalMinDataType
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="International Min Data Type"
+                                                name="./internationalMinDataType"
+                                                value="Min"/>
+                                            <leftOfLabel
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="Left Of Label"
+                                                name="./leftOfLabel"
+                                                value="\{0} left of {1}"/>
+                                        </items>
+                                    </column>
+                                </items>
+                            </columns>
+                        </items>
+                    </dashbaordlabels>
                 </items>
             </tabs>
         </items>
