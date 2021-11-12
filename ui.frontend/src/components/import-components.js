@@ -31,7 +31,6 @@ import "./AboutLebaraFolder/AemConfig.js";
 import "./Carousel/AemConfig.js";
 import "./Trustpilot/AemConfig.js";
 import "./PlanOffers/AemConfig.js";
-import "./PostpaidPlans/AemConfig.js";
 import "./Banner/AemConfig.js";
 import "../rotues/AemConfig.js";
 import "./ProgressStep/AemConfig.js";
@@ -51,3 +50,10 @@ import "./SuccessCard/AemConfig.js";
 import "./SimSwitch/AemConfig.js";
 import "./MyBalanceCard/AemConfig.js";
 import "./PlanManagement/AemConfig.js";
+import "./AddOns/AemConfig.js";
+import "./YourPlansCard/AemConfig.js";
+import "./UsageDetails/AemConfig.js";
+import "./SuccessCard/AemConfig.js"
+import "./NewPostpaidNumber/AemConfig.js";
+import "./Login/CreateNewPassword/AemConfig.js";
+import "./Login/ResetPassword/AemConfig.js";

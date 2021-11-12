@@ -1,0 +1,10 @@
+subject:  Content Approved
+
+<br />
+Hi ${senderName} team,
+
+<br />
+This page has been come for approval from ${senderName}.
+
+<br />
+Reviewer Comment : ${userComment}

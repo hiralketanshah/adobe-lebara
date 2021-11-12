@@ -33,8 +33,8 @@ const FooterMenu: React.FC<FooterMenuProps> = ({
         display={{ lg: "flex", md: "block" }}
       >
         <Box display="flex" justifyContent="space-between" width="40rem">
-          {footerUpperLinks?.map((menu: MenuProps) => (
-            <Box>
+          {footerUpperLinks?.map((menu: MenuProps, fmIdx) => (
+            <Box key={`fm-key-${fmIdx}`}>
               <Text fontSize={14} fontWeight="bold" textTransform="uppercase">
                 {menu?.parentLinks?.label}
               </Text>

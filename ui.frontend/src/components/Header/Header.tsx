@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useCallback } from "react";
 import {
   Box,
   Flex,
@@ -21,7 +21,7 @@ import {
   RiShoppingBagLine,
 } from "react-icons/all";
 import { Link, useHistory } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useLocalStorage } from "@rehooks/local-storage";
 import {
   HeaderProps,
@@ -36,6 +36,10 @@ import { ReduxState } from "../../redux/types";
 // import LebaraLogo from "../../assets/images/lebara-logo.svg";
 import NewSIMOfferCard from "../NewSImOfferCard/NewSImOfferCard";
 import { globalConfigs as GC, globalConstants as GCST } from "../../GlobalConfigs";
+import { useApolloClient } from "@apollo/client";
+import GET_CART from "../../graphql/GET_CART";
+import { setCartItemsLoading, loadInitialCart } from "../../redux/actions/cartActions";
+import mapMagentoProductToCartItem from "../../utils/mapMagentoProductToCartItem";
 
 const Header: React.FC<HeaderProps> = ({
   logoPath,
@@ -47,6 +51,22 @@ const Header: React.FC<HeaderProps> = ({
   const cartItems = useSelector((state: ReduxState) => state.cart.items);
   const history = useHistory();
   const [userToken] = useLocalStorage("userToken");
+  const client = useApolloClient();
+  const dispatch = useDispatch();
+  const getCart = useCallback(() => {
+    dispatch(setCartItemsLoading());
+    client.query({ query: GET_CART }).then((res) => {
+      dispatch(
+        loadInitialCart(mapMagentoProductToCartItem(res.data.getCart.items))
+      );
+    });
+  }, [client, dispatch]);
+
+  React.useEffect(() => {
+    if( cartItems.length === 0){
+      getCart();
+    }
+  }, [cartItems, getCart]);
 
   const handleCartClick = () => {
     const hasDataPlan =
@@ -62,6 +82,7 @@ const Header: React.FC<HeaderProps> = ({
         : (GC.journeyPages[GCST.LEBARA_SIM_CHOICE]  || '/')
     );
   };
+
   return (
     <Flex
       flexDirection="column"
@@ -122,12 +143,13 @@ const Header: React.FC<HeaderProps> = ({
           </ChakraLink>
 
           <Flex alignItems="left" ml={{ lg: "30px", md: "15px" }}>
-            {items?.map((menuItem: children) => (
-              <Menu>
+            {items?.map((menuItem: children, idx: any) => (
+              <Menu key={`menu-key-${idx}`}>
                 <MenuButton
                   _active={{
                     borderBottom: "1px solid white",
                   }}
+                  key={`menu-button-key-${idx}`}
                 >
                   <Box px={{ lg: "2px", md: "initial" }}>
                     <Button
@@ -165,9 +187,10 @@ const Header: React.FC<HeaderProps> = ({
                       display="flex"
                       justifyContent="space-between"
                     >
-                      {menuItem.children?.map((subMenuOption: children) => (
+                      {menuItem.children?.map((subMenuOption: children, cgIdx: any) => (
                         <Box>
                           <MenuGroup
+                            key={`menu-child-group-key-${cgIdx}`}
                             defaultValue="asc"
                             fontSize={14}
                             color="primary.500"
@@ -178,8 +201,9 @@ const Header: React.FC<HeaderProps> = ({
                           >
                             <Box>
                               {subMenuOption.children?.map(
-                                (menuProps: children) => (
+                                (menuProps: children, cIdx: any) => (
                                   <MenuItem
+                                    key={`menu-child-key-${cIdx}`}
                                     isDisabled={menuProps.active}
                                     onClick={() =>
                                       menuProps.path

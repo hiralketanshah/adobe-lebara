@@ -165,6 +165,19 @@ public class LoginExporter implements ComponentExporter {
     @ValueMapValue
     private String  errorConfirmPasswordPatternNotMatchMsg;
 
+    @ValueMapValue
+    private String  secondSubscriptionDisplayText;
+
+    @ValueMapValue
+    private String  exitingUserErrorMsg;
+
+    @ValueMapValue
+    private String  postalCodeText;
+
+    @ValueMapValue
+    private String  loginButtonLabel;
+
+
 
     public String getLoginRegistrationMessage() {
         return loginRegistrationMessage;
@@ -336,6 +349,22 @@ public class LoginExporter implements ComponentExporter {
 
     public String getErrorConfirmPasswordPatternNotMatchMsg() {
         return errorConfirmPasswordPatternNotMatchMsg;
+    }
+
+    public String getSecondSubscriptionDisplayText() {
+        return secondSubscriptionDisplayText;
+    }
+
+    public String getExitingUserErrorMsg() {
+        return exitingUserErrorMsg;
+    }
+
+    public String getPostalCodeText() {
+        return postalCodeText;
+    }
+
+    public String getLoginButtonLabel() {
+        return loginButtonLabel;
     }
 
     @Override
