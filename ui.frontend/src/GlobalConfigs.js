@@ -30,6 +30,7 @@ const globalConstants = Object.freeze({
     ORDER_SUBMITTED: 'order-submitted',
     EMPTY_CART: 'empty-cart',
     LOGIN: 'login',
+    REGISTER: 'register',
     VERIFY_EMAIL: 'verify-email',
     RESET_PASSWORD: 'reset-password',
     POSTPAID: 'postpaid',
