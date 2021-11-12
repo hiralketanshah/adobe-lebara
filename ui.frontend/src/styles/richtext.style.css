@@ -1,0 +1,42 @@
+
+/* Common RichText Component Stylings */
+.rich-text h3 {
+	font-weight: var(--chakra-fontWeights-bold);
+    font-size: 16px;
+    line-height: 22px;
+    color: var(--chakra-colors-primary-500);
+    letter-spacing: 0.5px;
+    margin-top: 21px;
+}
+.rich-text p {
+	font-size: 14px;
+    line-height: 20px;
+    color: var(--chakra-colors-primary-800);
+    letter-spacing: 0.25px;
+    margin-top: 12px;
+	margin-bottom: 0;
+}
+.rich-text-flags-wrap {
+    margin-top: 20px;
+}
+
+.rich-text ul,
+.rich-text ol {
+    margin:0;
+    padding:0;
+    padding-bottom: 12px;
+}
+.rich-text ul li,
+.rich-text ol li{
+    color: var(--chakra-colors-primary-800);
+    padding-left: 29px;
+    font-size: 16px;
+    line-height: 22px;
+    letter-spacing: 0.15px;
+    margin-top:10px;
+}
+
+.rich-text ul li {
+    list-style: none;
+	background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABUAAAAVCAYAAACpF6WWAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAHmSURBVHgBnVWNWcJADE1OB3AD6wS2ukDZADfACcQBtLQMgBuoEwATlA0oEwgTiAN48eXaQpG2/OT7+rV3l3v3cklemVpM/IGHV0jEHhm+JisrfC+J7IyzwbJpHzeAhcQXkX7BY5KDyTIHN7ckmFdw+Y0BPqNDJnfJSILkS/ykR+1R9Jwf/FuZSjBMSayy6oPBmg4R8AdXYP4O5lc8jzr1DP1kTGeYBPFHlbEpTgxJqIsEPNI5JtLX/Q6nBHVJEYqPCXkHqwBx+wSEmCM3dmXDJuX5681JgBquFeYs6m/mguQbPP1L0joUWZyAB8AhIrMhAIPdBZniCjvG1R5RRrthdV1m6wDvh0/Y3MPzULO8hIend+rlXVI1gyvhtOio6mE+QkZSbKe+o1yDXJsSvbrE2esbEjfVuy6Bi7sfA/C5uUUZvrIyJfrechYNEOJnAezrW8cAnFCTaQsjamU6Q191a8/dAs81CW7cZk4T7Cz/DuK0rdc1cXTAci1Am1NZ/CIx2EZNGW8NmQoNYBOpam1AnXxpjRkzonMsF5VpKYP/VCpOUUprsvbxBJUakbDH85eNSpmqk5MvFWQk5gg9DV0CrfxUAfeY7m5wyq9NkIH5Yqv8KD+naJhvUH6mdjYe7f2jFJxa/1F/qPwSt1NZUgUAAAAASUVORK5CYII=") left center no-repeat;
+}
