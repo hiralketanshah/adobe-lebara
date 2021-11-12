@@ -30,6 +30,7 @@ const globalConstants = Object.freeze({
     ORDER_SUBMITTED: 'order-submitted',
     EMPTY_CART: 'empty-cart',
     LOGIN: 'login',
+    REGISTER: 'register',
     VERIFY_EMAIL: 'verify-email',
     RESET_PASSWORD: 'reset-password',
     POSTPAID: 'postpaid',
@@ -42,5 +43,6 @@ const globalConstants = Object.freeze({
     DASHBOARD: 'dashboard',
     VERIFY_REGISTER_MOBILE: 'verify-register-mobile',
     CREATE_NEW_PASSWORD: 'create-new-password',
+    USAGE_DETAILS: 'usage-details',
 });
 module.exports = { globalConfigs, globalConstants }
