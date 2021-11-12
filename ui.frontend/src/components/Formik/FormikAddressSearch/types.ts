@@ -4,4 +4,6 @@ export interface FormikAddressSearchProps {
   placeholder?: string;
   isRequired?: boolean;
   isDisabled?: boolean;
+  country?: string;
+  postalCodeText?: string;
 }

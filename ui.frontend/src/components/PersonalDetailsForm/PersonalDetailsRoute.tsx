@@ -9,20 +9,7 @@ const PersonalDetailsRoute: React.FC<PersonalDetailsFormProps> = ({
   ...rest
 }) => (
   <SelectNumberAndOrderDetailsLayout>
-    <Box py="43px">
-      <Text
-        color="primary.500"
-        fontSize={20}
-        mt="20px"
-        mb="15px"
-        letterSpacing="-0.01em"
-        fontWeight="bold"
-        textAlign={{ lg: "left" }}
-      >
-        {yourPersonalDetailsLabel}
-      </Text>
-      <PersonalDetailsForm {...rest} />
-    </Box>
+    <PersonalDetailsForm {...rest} heading={yourPersonalDetailsLabel} />
   </SelectNumberAndOrderDetailsLayout>
 );
 export default PersonalDetailsRoute;

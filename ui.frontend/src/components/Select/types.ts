@@ -11,3 +11,8 @@ export interface SelectOption {
   name: string | number;
   key?: number;
 }
+export interface SelectOptionTypeString {
+  value: string;
+  name: string;
+  key?: number;
+}

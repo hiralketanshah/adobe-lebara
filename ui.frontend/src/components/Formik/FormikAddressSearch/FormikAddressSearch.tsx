@@ -18,6 +18,8 @@ const FormikAddressSearch: React.FC<FormikAddressSearchProps> = ({
   placeholder,
   isRequired,
   isDisabled,
+  country,
+  postalCodeText,
 }) => {
   const [field, meta, helpers] = useField(name);
   const { touched, error } = meta;
@@ -35,12 +37,12 @@ const FormikAddressSearch: React.FC<FormikAddressSearchProps> = ({
         {label}
       </FormLabel>
       <Text color="explainerColor" fontSize="12px" mb="14px">
-        Key in your postal code and find your address
+        {postalCodeText}
       </Text>
       <GooglePlacesAutocomplete
         autocompletionRequest={{
           componentRestrictions: {
-            country: ["de"],
+            country: [country || "de"],
           },
         }}
         selectProps={{
