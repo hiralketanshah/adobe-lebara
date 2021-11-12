@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:granite="http://www.adobe.com/jcr/granite/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="nt:unstructured"
+    jcr:title="Add On Component"
+    sling:resourceType="cq/gui/components/authoring/dialog">
+    <content
+        jcr:primaryType="nt:unstructured"
+        sling:resourceType="granite/ui/components/coral/foundation/container">
+        <items jcr:primaryType="nt:unstructured">
+            <tabs
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="granite/ui/components/coral/foundation/tabs"
+                maximized="{Boolean}true">
+                <items
+                    jcr:primaryType="nt:unstructured"
+                    sling:hideChildren="[column1,column3]">
+                    <commonColumn
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Common"
+                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                        <items
+                            jcr:primaryType="nt:unstructured"
+                            sling:hideChildren="[shopBuyLabel,cartDescription,addOnTabLabel,plansTabLabel,buyPlanLabel,continueBrowsingLabel,continueBrowsingURL,isfullwidth]">
+                            <emptyBasketText
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldDescription="Enter Header Text for Add On"
+                                fieldLabel="Header"
+                                name="./emptyBasketText"
+                                value="Our Add On"/>
+                            <goBackText
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldDescription="Enter Secondary Header Text for Add On"
+                                fieldLabel="Secondary Header"
+                                name="./goBackText"
+                                value="Bolt ons or add ons can be added on to any plan which has data minutes. For just €3 you can choose your extra allowance to carry you through the month if you run out of data, UK or international minutes."/>
+                            <flixiCallsTabLabel
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldDescription="Flexi Calls tab label"
+                                fieldLabel="Flexi Calls Tab Label"
+                                name="./flexiCallsTabLabel"
+                                value="Flexi Calls"/>
+                            <intlCallsTabLabel
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldDescription="International Calls tab label"
+                                fieldLabel="International Calls Tab Label"
+                                name="./intlCallsTabLabel"
+                                value="International Calls"/>
+                            <dataTabLabel
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldDescription="Data tab label"
+                                fieldLabel="Data Tab Label"
+                                name="./dataTabLabel"
+                                value="Data"/>
+                        </items>
+                    </commonColumn>
+                    <column2
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Data"
+                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                        <items jcr:primaryType="nt:unstructured">
+                            <plans
+                                jcr:primaryType="nt:unstructured"
+                                jcr:title="Data Plans"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
+                                composite="{Boolean}true"
+                                fieldDescription="Select data plans to display on the Empty cart component"
+                                fieldLabel="Data Plans">
+                                <field
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/container"
+                                    name="./dataPlans">
+                                    <granite:data jcr:primaryType="nt:unstructured"/>
+                                    <items jcr:primaryType="nt:unstructured">
+                                        <column
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/container">
+                                            <items jcr:primaryType="nt:unstructured">
+                                                <dataPlanPath
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="dam/cfm/components/cfpicker"
+                                                    fieldLabel="Select Data"
+                                                    name="./cfPath"
+                                                    required="{Boolean}true"
+                                                    rootPath="/content/dam/lebara"/>
+                                            </items>
+                                        </column>
+                                    </items>
+                                </field>
+                            </plans>
+                        </items>
+                    </column2>
+                    <column4
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="International Calls Plans"
+                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                        <items jcr:primaryType="nt:unstructured">
+                            <plans
+                                jcr:primaryType="nt:unstructured"
+                                jcr:title="Plans"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
+                                composite="{Boolean}true"
+                                fieldDescription="Select plans to display on the view plan component"
+                                fieldLabel="Plans">
+                                <field
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/container"
+                                    name="./intlPlans">
+                                    <granite:data jcr:primaryType="nt:unstructured"/>
+                                    <items jcr:primaryType="nt:unstructured">
+                                        <column
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/container">
+                                            <items jcr:primaryType="nt:unstructured">
+                                                <planPath
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="dam/cfm/components/cfpicker"
+                                                    fieldLabel="Select Plan"
+                                                    name="./cfPath"
+                                                    required="{Boolean}true"
+                                                    rootPath="/content/dam/lebara"/>
+                                            </items>
+                                        </column>
+                                    </items>
+                                </field>
+                            </plans>
+                        </items>
+                    </column4>
+                    <column5
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Flexi Calls Plans"
+                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                        <items jcr:primaryType="nt:unstructured">
+                            <plans
+                                jcr:primaryType="nt:unstructured"
+                                jcr:title="Plans"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
+                                composite="{Boolean}true"
+                                fieldDescription="Select plans to display on the view plan component"
+                                fieldLabel="Plans">
+                                <field
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/container"
+                                    name="./flexiPlans">
+                                    <granite:data jcr:primaryType="nt:unstructured"/>
+                                    <items jcr:primaryType="nt:unstructured">
+                                        <column
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/container">
+                                            <items jcr:primaryType="nt:unstructured">
+                                                <planPath
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="dam/cfm/components/cfpicker"
+                                                    fieldLabel="Select Plan"
+                                                    name="./cfPath"
+                                                    required="{Boolean}true"
+                                                    rootPath="/content/dam/lebara"/>
+                                            </items>
+                                        </column>
+                                    </items>
+                                </field>
+                            </plans>
+                        </items>
+                    </column5>
+                </items>
+            </tabs>
+        </items>
+    </content>
+</jcr:root>
