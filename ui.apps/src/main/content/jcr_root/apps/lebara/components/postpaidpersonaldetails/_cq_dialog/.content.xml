@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:granite="http://www.adobe.com/jcr/granite/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+          jcr:primaryType="nt:unstructured"
+          jcr:title="Postpaid Personal Details Component"
+          sling:resourceType="cq/gui/components/authoring/dialog">
+    <content
+            jcr:primaryType="nt:unstructured"
+            sling:resourceType="granite/ui/components/coral/foundation/container">
+        <items jcr:primaryType="nt:unstructured">
+            <tabs
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="granite/ui/components/coral/foundation/tabs"
+                    maximized="{Boolean}true">
+                <items jcr:primaryType="nt:unstructured">
+                    <column1
+                            jcr:primaryType="nt:unstructured"
+                            jcr:title="Name Section"
+                            sling:resourceType="granite/ui/components/coral/foundation/container">
+                        <items jcr:primaryType="nt:unstructured">
+                            <dobtitle
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                    fieldLabel="DOB title"
+                                    name="./dobTitle"/>
+                            <dobdesc
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                    fieldLabel="DOB Description"
+                                    name="./dobDesc"/>
+                            <dayfieldlabel
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                    fieldLabel="Day Field Label "
+                                    value="Day"
+                                    name="./dayFieldLabel"/>
+                            <monthfieldlabel
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                    fieldLabel="Month Field Label "
+                                    value="Month"
+                                    name="./monthFieldLabel"/>
+                            <yearfieldlabel
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                    fieldLabel="Year Field Label "
+                                    value="Year"
+                                    name="./yearFieldLabel"/>
+
+                            <shippingDescriptoin
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                    fieldLabel="Shipping Description Text "
+                                    value=""
+                                    name="./shippingDescription"/>
+
+
+                        </items>
+                    </column1>
+                    <column2
+                            jcr:primaryType="nt:unstructured"
+                            jcr:title="Address Section"
+                            sling:resourceType="granite/ui/components/coral/foundation/container">
+                        <items jcr:primaryType="nt:unstructured">
+
+                        </items>
+                    </column2>
+
+
+                    <column6
+                            jcr:primaryType="nt:unstructured"
+                            jcr:title="Port Your Number"
+                            sling:resourceType="granite/ui/components/coral/foundation/container">
+                        <items jcr:primaryType="nt:unstructured">
+
+                            <portYourNumberTitle
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                    fieldLabel="Port Your Number Title"
+                                    value="Would you like to Port your Number?"
+                                    name="./portYourNumber"/>
+
+                            <thanks
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                    fieldLabel="No Thanks Label"
+                                    value="No, Thanks"
+                                    name="./thanks"/>
+
+                            <wantToPortLabel
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                    fieldLabel="Want To Port In Label"
+                                    value="I want to port in"
+                                    name="./portIn"/>
+                            <numberToPortLabel
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                    fieldLabel="Number To Port Label"
+                                    value="Number to port"
+                                    name="./portNumber"/>
+
+                            <currentProvider
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                    fieldLabel="Current Provider Label"
+                                    value="Current Provider"
+                                    name="./currentProvider"/>
+
+                            <chooseCurrentProvider
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                    fieldLabel="Choose Current Provider Label"
+                                    value="Choose your current provider from the list provided"
+                                    name="./chooseCurrentProvider"/>
+
+                            <portNumberDescriptionFirst
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                    fieldLabel="Port Number Description First"
+                                    value=""
+                                    name="./portNumberDescFirst"/>
+
+                            <portNumberDescriptionSecond
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                    fieldLabel="Port Number Description Second"
+                                    value=""
+                                    name="./portNumberDescSecond"/>
+
+                            <portNumberDescriptionThree
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                    fieldLabel="Port Number Description Three"
+                                    value=""
+                                    name="./portNumberDescThree"/>
+
+                            <useLebaraSim
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                    fieldLabel="Use My Lebara Sim Label"
+                                    value="I want to use my Lebara Sim"
+                                    name="./useLebaraSim"/>
+
+                            <useLebaraSim
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                    fieldLabel="Use My Lebara Sim Label"
+                                    value="I want to use my Lebara Sim"
+                                    name="./useLebaraSim"/>
+
+                            <createLebaraAccountDesc
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                    fieldLabel="Create Lebara Account Desc"
+                                    value=""
+                                    name="./createLebaraAccountDesc"/>
+
+                            <createAnAccountLabel
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                    fieldLabel="Create An Account Cta Label"
+                                    value="CREATE AN ACCOUNT"
+                                    name="./createAccount"/>
+
+                            <loginLabel
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                    fieldLabel="Login Cta Label"
+                                    value="LOGIN"
+                                    name="./loginLabel"/>
+
+                        </items>
+                    </column6>
+
+
+
+
+                    <column3
+                            jcr:primaryType="nt:unstructured"
+                            jcr:title="Order Details CTA"
+                            sling:resourceType="granite/ui/components/coral/foundation/container">
+                        <items jcr:primaryType="nt:unstructured">
+
+                        </items>
+                    </column3>
+                    <column4
+                            jcr:primaryType="nt:unstructured"
+                            jcr:title="First and last Name Error Messages"
+                            sling:resourceType="granite/ui/components/coral/foundation/container">
+                        <items jcr:primaryType="nt:unstructured">
+                            <firstNameErrorMaxNew
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                    fieldLabel="First Name Error message on character limit New"
+                                    value="Must be 50 characters or less"
+                                    name="./firstNameErrorMax"/>
+
+                        </items>
+                    </column4>
+                    <column5
+                            jcr:primaryType="nt:unstructured"
+                            jcr:title="Email and Address Error Messages"
+                            sling:resourceType="granite/ui/components/coral/foundation/container">
+                        <items jcr:primaryType="nt:unstructured">
+                            <emailErrorMaxnew
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                    fieldLabel="Email Error message on character limit new"
+                                    value="Must be 100 characters or less"
+                                    fieldDescription="Must be 100 characters or less"
+                                    name="./emailErrorMax"/>
+
+                        </items>
+                    </column5>
+                </items>
+            </tabs>
+        </items>
+    </content>
+</jcr:root>
