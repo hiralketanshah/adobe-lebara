@@ -8,7 +8,13 @@ import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
 @Model(adaptables = {Resource.class}, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
 public class PostpaidPersonalDetailsErrorMsg {
 
+	@ValueMapValue
+    private String emailRequiredMsg;
+
     @ValueMapValue
+    private String emailInValidMsg;
+	
+	@ValueMapValue
     private String fNameRequiredMsg;
 
     @ValueMapValue
@@ -19,12 +25,6 @@ public class PostpaidPersonalDetailsErrorMsg {
 
     @ValueMapValue
     private String lNameInValidMsg;
-
-    @ValueMapValue
-    private String emailRequiredMsg;
-
-    @ValueMapValue
-    private String emailInValidMsg;
 
     @ValueMapValue
     private String dayRequiredMsg;

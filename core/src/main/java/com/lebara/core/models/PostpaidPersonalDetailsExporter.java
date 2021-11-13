@@ -2,6 +2,7 @@ package com.lebara.core.models;
 
 import com.adobe.cq.export.json.ComponentExporter;
 import com.adobe.cq.export.json.ExporterConstants;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.lebara.core.utils.CFUtils;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;
@@ -38,27 +39,29 @@ public class PostpaidPersonalDetailsExporter implements ComponentExporter{
 
     @ValueMapValue
     private  String portingSectionHeading;
-
+    
     @ChildResource
     private PostpaidPersonalDetailsFormFields frmFields;
 
     @ChildResource
     private  PostpaidPersonalDetailsErrorMsg validationMessages;
 
-    public String getPortingSectionHeading() {
-        return portingSectionHeading;
-    }
-
     public String getHeading() {
         return heading;
     }
 
+    @JsonProperty("frmFields")
     public PostpaidPersonalDetailsFormFields getFrmFields() {
         return frmFields;
     }
 
+    @JsonProperty("validationMessages")
     public PostpaidPersonalDetailsErrorMsg getValidationMessages() {
         return validationMessages;
+    }
+    
+    public String getPortingSectionHeading() {
+        return portingSectionHeading;
     }
 
     @Override

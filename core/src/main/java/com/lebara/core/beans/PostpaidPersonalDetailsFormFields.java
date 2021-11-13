@@ -8,8 +8,7 @@ import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
 @Model(adaptables = {Resource.class}, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
 public class PostpaidPersonalDetailsFormFields {
 
-    @ValueMapValue
-    private String dobTitle;
+    
 
     @ValueMapValue
     private String emailLabel;
@@ -34,7 +33,7 @@ public class PostpaidPersonalDetailsFormFields {
 
     @ValueMapValue
     private String dayLabel;
-
+    
     @ValueMapValue
     private String dayPalceholder;
 
@@ -55,46 +54,49 @@ public class PostpaidPersonalDetailsFormFields {
 
     @ValueMapValue
     private String shippingPlaceholder;
-
+    
     @ValueMapValue
-    private String currentProviderHelperText;
-
+    private String shippingHelperText;
+    
     @ValueMapValue
-    private String currentProviderLabel;
-
-    @ValueMapValue
-        private String currentProviderPlaceholder;
-
-    @ValueMapValue
-    private String currentProviderInfoDescription;
-
+    private String consentPreviewText;
+    
     @ValueMapValue
     private String consentDescription;
-
+    
     @ValueMapValue
-    private String exitingPhoneHelperLabel;
-
+    private String radioNoThanks;
+    
     @ValueMapValue
-    private String orTextLabel;
-
+    private String radioPortIn;
+    
+    @ValueMapValue
+    private String radioUseLebaraSim;
+    
     @ValueMapValue
     private String portInNumberLabel;
 
     @ValueMapValue
     private String portInNumberPlaceHolder;
+    
+    @ValueMapValue
+    private String currentProviderLabel;
 
     @ValueMapValue
-    private String linkCTALabel;
+    private String currentProviderPlaceholder;
+    
+    @ValueMapValue
+    private String currentProviderHelperText;
 
     @ValueMapValue
-    private String buttonCTALabel;
-
+    private String currentProviderInfoDescription;
+    
     @ValueMapValue
     private String currentProviderInfoLinkLabel;
 
     @ValueMapValue
-    private String currentProviderInfoLinkURL ;
-
+    private String currentProviderInfoLinkURL;
+    
     @ValueMapValue
     private String currentProviderUsageAcceptanceLabel;
 
@@ -102,17 +104,21 @@ public class PostpaidPersonalDetailsFormFields {
     private String currentProviderAdvertisingAcceptanceLabel;
 
     @ValueMapValue
+    private String exitingPhoneHelperLabel;
+
+    @ValueMapValue
+    private String linkCTALabel;
+    
+    @ValueMapValue
+    private String orTextLabel;
+
+    @ValueMapValue
+    private String buttonCTALabel;
+
+    @ValueMapValue
     private String ctaContinueLabel;
 
-    @ValueMapValue
-    private String consentPreviewText;
 
-    @ValueMapValue
-    private String portingNumberLabel;
-
-    public String getDobTitle() {
-        return dobTitle;
-    }
 
     public String getEmailLabel() {
         return emailLabel;
@@ -242,7 +248,19 @@ public class PostpaidPersonalDetailsFormFields {
         return consentPreviewText;
     }
 
-    public String getPortingNumberLabel() {
-        return portingNumberLabel;
-    }
+	public String getShippingHelperText() {
+		return shippingHelperText;
+	}
+
+	public String getRadioNoThanks() {
+		return radioNoThanks;
+	}
+
+	public String getRadioPortIn() {
+		return radioPortIn;
+	}
+
+	public String getRadioUseLebaraSim() {
+		return radioUseLebaraSim;
+	}
 }
