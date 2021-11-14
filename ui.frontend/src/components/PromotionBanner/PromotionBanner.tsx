@@ -15,7 +15,6 @@ const PromotionBanner: React.FC<PromotionBannerProps> = ({
       gridGap={{ base: "17px", lg: "20px" }}
       pt={{ base: "17px", lg: "20px" }}
     >
-      <Box d={{ base: "none", lg: "block" }}>
         <Box
           backgroundImage={fileReference}
           backgroundRepeat="no-repeat"
@@ -45,7 +44,6 @@ const PromotionBanner: React.FC<PromotionBannerProps> = ({
             {description}
           </Text>
         </Box>
-      </Box>
     </Flex>
   </Flex>
 );
