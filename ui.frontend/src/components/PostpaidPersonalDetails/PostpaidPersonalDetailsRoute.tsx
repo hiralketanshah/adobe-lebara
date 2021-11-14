@@ -6,9 +6,11 @@ import PostpaidPersonalDetails from "./PostpaidPersonalDetails";
 
 const PostpaidPersonalDetailsRoute: React.FC<PostpaidPersonalDetailsProps> = ({
   pageTitle,
+  heading,
   ...rest
 }) => (
   <SelectNumberAndOrderDetailsLayout>
+  {heading && (
     <Box py="43px">
       <Text
         color="primary.500"
@@ -23,6 +25,7 @@ const PostpaidPersonalDetailsRoute: React.FC<PostpaidPersonalDetailsProps> = ({
       </Text>
       <PostpaidPersonalDetails {...rest} />
     </Box>
+  )}
   </SelectNumberAndOrderDetailsLayout>
 );
 export default PostpaidPersonalDetailsRoute;
