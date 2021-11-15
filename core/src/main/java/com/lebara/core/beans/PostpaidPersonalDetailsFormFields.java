@@ -1,9 +1,14 @@
 package com.lebara.core.beans;
 
+import java.util.ArrayList;
+import java.util.List;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.models.annotations.DefaultInjectionStrategy;
 import org.apache.sling.models.annotations.Model;
+import org.apache.sling.models.annotations.injectorspecific.ChildResource;
 import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.lebara.core.utils.AemUtils;
 
 @Model(adaptables = {Resource.class}, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
 public class PostpaidPersonalDetailsFormFields {
@@ -118,7 +123,11 @@ public class PostpaidPersonalDetailsFormFields {
     @ValueMapValue
     private String ctaContinueLabel;
 
+    @ChildResource
+    protected Resource portInOptions;
 
+    private static final String VALUE = "value";
+    private static final String LABEL = "label";
 
     public String getEmailLabel() {
         return emailLabel;
@@ -263,4 +272,16 @@ public class PostpaidPersonalDetailsFormFields {
 	public String getRadioUseLebaraSim() {
 		return radioUseLebaraSim;
 	}
+
+    @JsonProperty("portInOptions")
+    public List<SelectOption> getPortInOptionArray() {
+        List<SelectOption> options = new ArrayList<>();
+        for (Resource item : portInOptions.getChildren()) {
+            SelectOption option = new SelectOption();
+            option.setLabel(AemUtils.getStringProperty(item, LABEL));
+            option.setValue(AemUtils.getStringProperty(item, VALUE));
+            options.add(option);
+        }
+        return options;
+    }
 }
