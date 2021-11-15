@@ -58,3 +58,4 @@ import "./NewPostpaidNumber/AemConfig.js";
 import "./Login/CreateNewPassword/AemConfig.js";
 import "./Login/ResetPassword/AemConfig.js";
 import "./PostpaidPersonalDetails/AemConfig.js";
+import "./PromotionBanner/AemConfig.js";
