@@ -1,5 +1,7 @@
 import { TabProps } from "@chakra-ui/react";
 import { IconType } from "react-icons/lib";
+import { BaseFormFields } from "../Formik/types";
+import { BaseValidationMessages } from "../Formik/validations/types";
 
 export interface LoginFormSchema {
     email?: string;
@@ -103,4 +105,10 @@ export interface loginModuleProps {
 export interface LoginTabsProps extends TabProps, loginModuleProps {
   icon?: IconType;
   isPasswordResetSucessfull?: boolean;
+}
+export interface VerifyRegisterProps  {
+  heading?: string;
+  subHeading?: string;
+  validationMessages?: BaseValidationMessages;
+  frmFields: BaseFormFields;
 }

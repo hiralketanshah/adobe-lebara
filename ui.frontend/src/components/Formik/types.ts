@@ -1,0 +1,35 @@
+export interface BaseFormFields {
+    emailLabel?: string;
+    emailPlaceholder?: string;
+    fNameLabel?: string;
+    fnamePlaceholder?: string;
+    lNameLabel?: string;
+    lNamePlaceholder?: string;
+    dobLabel?: string;
+    dayLabel?: string;
+    dayPalceholder?: string;
+    monthLabel?: string;
+    monthPlaceholder?: string;
+    yearLabel?: string;
+    yearPlaceholder?: string;
+    shippingLabel?: string;
+    shippingPlaceholder?: string;
+    portInNumberLabel?: string;
+    portInNumberPlaceHolder?: string;
+    consentPreviewText?: string;
+    consentDescription?: string;
+    portingNumberLabel?: string;
+    currentProviderHelperText?: string;
+    currentProviderLabel?: string;
+    currentProviderPlaceholder?: string;
+    currentProviderInfoDescription?: string;
+    currentProviderInfoLinkLabel?: string;
+    currentProviderInfoLinkURL?: string;
+    currentProviderUsageAcceptanceLabel?: string;
+    currentProviderAdvertisingAcceptanceLabel?: string;
+    exitingPhoneHelperLabel?: string;
+    linkCTALabel?: string;
+    buttonCTALabel?: string;
+    ctaContinueLabel?: string;
+    orTextLabel?: string;
+  }

@@ -1,3 +1,6 @@
+import { BaseFormFields } from "../Formik/types";
+import { BaseValidationMessages } from "../Formik/validations/types";
+
 type PortInStatus = "No" | "Yes" | "ExistingPhone";
 export interface PostpaidDetails {
   email?: string;
@@ -20,21 +23,7 @@ export interface PostpaidDetails {
   portInConditionsAccepted?: boolean;
 }
 
-export interface ValidationMessages {
-  emailRequiredMsg?: string;
-  emailInValidMsg?: string;
-  fNameRequiredMsg?: string;
-  fNameInValidMsg?: string;
-  lNameRequiredMsg?: string;
-  lNameInValidMsg?: string;
-  dayRequiredMsg?: string;
-  dayInValidMsg?: string;
-  monthRequiredMsg?: string;
-  monthInValidMsg?: string;
-  yearRequiredMsg?: string;
-  yearInValidMsg?: string;
-  yearInvalidAgeMsg?: string;
-  shippingRequiredMsg?: string;
+export interface ValidationMessages extends BaseValidationMessages {
   portInNumberRequiredMsg?: string;
   portInNumberInValidMsg?: string;
   currentProviderRequiredMsg?: string;
@@ -43,41 +32,8 @@ export interface PortInOptionsFields {
   label: string;
   value: string;
 }
-export interface FormFields {
-  emailLabel?: string;
-  emailPlaceholder?: string;
-  fNameLabel?: string;
-  fnamePlaceholder?: string;
-  lNameLabel?: string;
-  lNamePlaceholder?: string;
-  dobLabel?: string;
-  dayLabel?: string;
-  dayPalceholder?: string;
-  monthLabel?: string;
-  monthPlaceholder?: string;
-  yearLabel?: string;
-  yearPlaceholder?: string;
-  shippingLabel?: string;
-  shippingPlaceholder?: string;
-  portInNumberLabel?: string;
-  portInNumberPlaceHolder?: string;
-  consentPreviewText?: string;
-  consentDescription?: string;
-  portingNumberLabel?: string;
+export interface FormFields extends BaseFormFields {
   portInOptions: PortInOptionsFields[];
-  currentProviderHelperText?: string;
-  currentProviderLabel?: string;
-  currentProviderPlaceholder?: string;
-  currentProviderInfoDescription?: string;
-  currentProviderInfoLinkLabel?: string;
-  currentProviderInfoLinkURL?: string;
-  currentProviderUsageAcceptanceLabel?: string;
-  currentProviderAdvertisingAcceptanceLabel?: string;
-  exitingPhoneHelperLabel?: string;
-  linkCTALabel?: string;
-  buttonCTALabel?: string;
-  ctaContinueLabel?: string;
-  orTextLabel?: string;
 }
 
 export interface PostpaidDetailsErrors {
