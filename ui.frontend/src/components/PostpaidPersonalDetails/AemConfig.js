@@ -4,7 +4,7 @@ import PostpaidPersonalDetailsRoute from "./PostpaidPersonalDetailsRoute";
 const PostpaidPersonalDetailsConfig = {
   emptyLabel: "Postpaid Personal Details component",
   isEmpty: function (props) {
-    return !props.pageTitle;
+    return !props.heading;
   },
 };
 
