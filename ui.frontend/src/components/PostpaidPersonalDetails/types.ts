@@ -134,7 +134,6 @@ export interface PostpaidDetailsErrors {
 }
 
 export interface PostpaidPersonalDetailsProps {
-  pageTitle?: string;
   heading?:string;
   validationMessages: ValidationMessages;
   frmFields: FormFields;

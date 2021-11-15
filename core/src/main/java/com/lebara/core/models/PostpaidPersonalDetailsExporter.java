@@ -39,6 +39,9 @@ public class PostpaidPersonalDetailsExporter implements ComponentExporter{
 
     @ValueMapValue
     private  String portingSectionHeading;
+
+    @ValueMapValue
+    private  String currentProviderList;
     
     @ChildResource
     private PostpaidPersonalDetailsFormFields frmFields;
@@ -68,4 +71,16 @@ public class PostpaidPersonalDetailsExporter implements ComponentExporter{
     public String getExportedType() {
         return RESOURCE_TYPE;
     }
+
+    public List<Object> getCurrentProvidersList() {
+        if(currentProviderList != null) {
+            Resource currentProvidersResource = resourceResolver.getResource(currentProviderList);
+            ContentFragment currentProvidersFragment = currentProvidersResource.adaptTo(ContentFragment.class);
+            if (null != currentProvidersFragment) {
+                return CFUtils.convertStringArrayToList(CFUtils.getElementArrayValue(currentProvidersFragment, "currentProviderList"), Object.class);
+            }
+        }
+        return new ArrayList<>();
+    }
+
 }
