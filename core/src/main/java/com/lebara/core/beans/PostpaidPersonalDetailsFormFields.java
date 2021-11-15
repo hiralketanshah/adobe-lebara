@@ -16,8 +16,11 @@ import com.lebara.core.utils.CFUtils;
 
 @Model(adaptables = {Resource.class}, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
 public class PostpaidPersonalDetailsFormFields {
+	
 
-
+    private static final String VALUE = "value";
+    private static final String LABEL = "label";
+    
     @SlingObject
     private ResourceResolver resourceResolver;
 
@@ -134,37 +137,48 @@ public class PostpaidPersonalDetailsFormFields {
 
     @ValueMapValue
     private  String currentProviderList;
-
-    private static final String VALUE = "value";
-    private static final String LABEL = "label";
+    
+    @ValueMapValue
+    private  String currentProviderAdvertisingPreviewText;
 
     @ValueMapValue
     public String keyInAddress;
+    
     @ValueMapValue
     public String streetLabel;
+    
     @ValueMapValue
     public String addressKeyInText;
+    
     @ValueMapValue
     public String postalcodePlaceholder;
+    
     @ValueMapValue
     public String enterAddressManually;
+    
     @ValueMapValue
     public String streetPlaceholder;
+    
     @ValueMapValue
     public String houseNumberLabel;
+    
     @ValueMapValue
     public String houseNumberPlaceholder;
+    
     @ValueMapValue
     public String zipCodeLabel;
+    
     @ValueMapValue
     public String zipCodePlaceholder;
+    
     @ValueMapValue
     public String cityLabel;
+    
     @ValueMapValue
     public String cityPlaceholder;
+    
     @ValueMapValue
     public String saveAddress;
-
 
 
     public String getEmailLabel() {
@@ -361,7 +375,10 @@ public class PostpaidPersonalDetailsFormFields {
     public String getSaveAddress() {
         return saveAddress;
     }
-
+    
+    public String getCurrentProviderAdvertisingPreviewText() {
+		return currentProviderAdvertisingPreviewText;
+	}
 
     @JsonProperty("portInOptions")
     public List<SelectOption> getPortInOptionArray() {
@@ -374,6 +391,7 @@ public class PostpaidPersonalDetailsFormFields {
         }
         return options;
     }
+    
     @JsonProperty("currentProviderList")
     public List<Object> getCurrentProvidersList() {
         if(currentProviderList != null) {

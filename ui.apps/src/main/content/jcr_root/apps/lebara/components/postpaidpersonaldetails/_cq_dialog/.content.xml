@@ -232,6 +232,13 @@
                                 fieldLabel="Shipping Helper Text"
                                 name="./frmFields/shippingHelperText"
                                 value="Key in your postal code and find your address"/>
+                            <consentPreviewText
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textarea"
+                                fieldDescription="Consent Preview Text"
+                                fieldLabel="Consent Preview Text"
+                                name="./frmFields/consentPreviewText"
+                                value="I consent to trustworthy cooperation partners of Lebara contacting me about their products and services for"/>
                             <consentDescription
                                 jcr:primaryType="nt:unstructured"
                                 sling:resourceType="cq/gui/components/authoring/dialog/richtext"
@@ -710,6 +717,13 @@
                                     </cui>
                                 </uiSettings>
                             </currentProviderConsent1>
+                            <currentProviderConsentPreviewText
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textarea"
+                                fieldDescription="Current Provider Consent 2 Preview Text"
+                                fieldLabel="Current Provider Consent 2 Preview Text"
+                                name="./frmFields/currentProviderAdvertisingPreviewText"
+                                value="I consent to trustworthy cooperation partners of Lebara contacting me about their products and services for"/>
                             <currentProviderConsent2
                                 jcr:primaryType="nt:unstructured"
                                 sling:resourceType="cq/gui/components/authoring/dialog/richtext"
