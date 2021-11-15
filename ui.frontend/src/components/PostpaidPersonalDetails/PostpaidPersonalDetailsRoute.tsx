@@ -9,7 +9,7 @@ const PostpaidPersonalDetailsRoute: React.FC<PostpaidPersonalDetailsProps> = ({
   ...rest
 }) => (
   <SelectNumberAndOrderDetailsLayout>
-    <Box py="43px">
+    {pageTitle && <Box py="43px">
       <Text
         color="primary.500"
         fontSize={20}
@@ -22,7 +22,7 @@ const PostpaidPersonalDetailsRoute: React.FC<PostpaidPersonalDetailsProps> = ({
         {pageTitle}
       </Text>
       <PostpaidPersonalDetails {...rest} />
-    </Box>
+    </Box>}
   </SelectNumberAndOrderDetailsLayout>
 );
 export default PostpaidPersonalDetailsRoute;

@@ -22,7 +22,6 @@ import FormikCheckbox from "../Formik/FormikCheckbox/FormikCheckbox";
 import FormikRadioGroup from "../Formik/FormikRadioGroup/FormikRadioGroup";
 import Button from "../Button/Button";
 import FormikSelect from "../Formik/FormikSelect/FormikSelect";
-import currentProviderList from "../../utils/currentProviderList";
 import InfoBox from "../InfoBox/InfoBox";
 import TextWithMoreButton from "../TextWithMoreButton/TextWithMoreButton";
 import PaymentDialog from "../PaymentDialog/PaymentDialog";
@@ -286,20 +285,18 @@ const PostpaidPersonalDetails: React.FC<PostpaidPersonalDetailsProps> = ({
                       label={frmFields.currentProviderLabel}
                       placeholder={frmFields.currentProviderPlaceholder}
                       isRequired
-                      options={currentProviderList}
+                      options={frmFields.currentProviderList}
                       isDisabled={isExistingUser}
                     />
                     <Flex flexDirection="column" gridGap="14px">
                       <InfoBox
-                        description={
-                          <>
-                            {frmFields.currentProviderInfoDescription}{" "}
-                            <Link color="secondary.500" href={frmFields.currentProviderInfoLinkURL}>
-                              {frmFields.currentProviderInfoLinkLabel}
-                            </Link>
-                            .
-                          </>
-                        }
+                        description={<>
+                          <div 
+                            dangerouslySetInnerHTML={{ __html: 
+                              frmFields && frmFields.currentProviderInfoDescription ? 
+                              frmFields.currentProviderInfoDescription : '' }} 
+                          />
+                        </>}
                         textProps={{
                           fontSize: "12px",
                           color: "black",
@@ -315,7 +312,8 @@ const PostpaidPersonalDetails: React.FC<PostpaidPersonalDetailsProps> = ({
                           fontSize={12}
                           ml="11px"
                           lineHeight="17.1px"
-                          previewText="I would like to take my existing mobile number with me to Lebara (number portability) and instruct Lebara to port my number as soon as possible"
+                          previewText=
+                          {frmFields.currentProviderAdvertisingPreviewText}
                         >
                           {frmFields.currentProviderAdvertisingAcceptanceLabel}
                         </TextWithMoreButton>

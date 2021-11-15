@@ -43,6 +43,10 @@ export interface PortInOptionsFields {
   label: string;
   value: string;
 }
+export interface CurrentProviderListFields {
+  name: string;
+  value: string;
+}
 export interface FormFields {
   emailLabel?: string;
   emailPlaceholder?: string;
@@ -65,6 +69,7 @@ export interface FormFields {
   consentDescription?: string;
   portingNumberLabel?: string;
   portInOptions: PortInOptionsFields[];
+  currentProviderList: CurrentProviderListFields[];
   currentProviderHelperText?: string;
   currentProviderLabel?: string;
   currentProviderPlaceholder?: string;
@@ -73,6 +78,7 @@ export interface FormFields {
   currentProviderInfoLinkURL?: string;
   currentProviderUsageAcceptanceLabel?: string;
   currentProviderAdvertisingAcceptanceLabel?: string;
+  currentProviderAdvertisingPreviewText?: string;
   exitingPhoneHelperLabel?: string;
   linkCTALabel?: string;
   buttonCTALabel?: string;
