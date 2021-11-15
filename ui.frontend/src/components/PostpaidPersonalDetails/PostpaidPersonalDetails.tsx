@@ -100,16 +100,16 @@ const PostpaidPersonalDetails: React.FC<PostpaidPersonalDetailsProps> = ({
 
           return (
             <Form onSubmit={handleSubmit}>
-              <Heading
-                lineHeight="40px"
-                fontWeight="bold"
-                fontSize={20}
-                color="primary.500"
-                my="7px"
-                d={{ base: "block", lg: "none" }}
-              >
-                Enter Your Personal Details
-              </Heading>
+              {heading && (<Heading
+                  lineHeight="40px"
+                  fontWeight="bold"
+                  fontSize={20}
+                  color="primary.500"
+                  my="7px"
+                  d={{ base: "block", lg: "none" }}
+                >{heading}
+              </Heading>)}
+              
               <Flex
                 pt={{ base: "19px", lg: "52px" }}
                 pb={{ base: "28px", lg: "60px" }}

@@ -98,7 +98,7 @@ const SelectNumberAndOrderDetailsLayout: React.FC<SelectNumberAndOrderDetailsLay
             <Box
               maxW="850px"
               w="100%"
-              bg={{ lg: "white" }}
+              bg={{ lg: "none" }}
               px={{ lg: "0" }}
               mt={{ base: "30px", lg: "120px" }}
               mb={{ base: "30px", lg: "148px" }}

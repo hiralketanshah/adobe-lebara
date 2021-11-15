@@ -10,18 +10,7 @@ const PostpaidPersonalDetailsRoute: React.FC<PostpaidPersonalDetailsProps> = ({
 }) => (
   <SelectNumberAndOrderDetailsLayout>
     {heading && <Box py="43px">
-      <Text
-        color="primary.500"
-        fontSize={20}
-        mt="20px"
-        mb="15px"
-        letterSpacing="-0.01em"
-        fontWeight="bold"
-        textAlign={{ lg: "left" }}
-      >
-        {heading}
-      </Text>
-      <PostpaidPersonalDetails {...rest} />
+      <PostpaidPersonalDetails heading={heading} {...rest} />
     </Box>}
   </SelectNumberAndOrderDetailsLayout>
 );
