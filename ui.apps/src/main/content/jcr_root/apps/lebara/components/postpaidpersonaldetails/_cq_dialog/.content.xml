@@ -117,14 +117,6 @@
                         jcr:title="Address Section"
                         sling:resourceType="granite/ui/components/coral/foundation/container">
                         <items jcr:primaryType="nt:unstructured">
-                            <cityFragmentPath
-                                cq:showOnCreate="{Boolean}true"
-                                jcr:primaryType="nt:unstructured"
-                                sling:resourceType="dam/cfm/components/cfpicker"
-                                fieldDescription="City Content Frament path"
-                                fieldLabel="City Content Frament path"
-                                name="./cfPath"
-                                rootPath="/content/dam/lebara"/>
                             <shippingLabel
                                 jcr:primaryType="nt:unstructured"
                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
@@ -294,20 +286,38 @@
                                 jcr:primaryType="nt:unstructured"
                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                 fieldLabel="No Thanks Radio Label"
-                                name="./frmFields/radioNoThanks"
+                                name="./frmFields/portInOptions/item0/label"
                                 value="No Thanks"/>
+                            <nothanksValue
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/hidden"
+                                fieldLabel="No Thanks Radio value"
+                                name="./frmFields/portInOptions/item0/value"
+                                value="No"/>
                             <wantToPortLabel
                                 jcr:primaryType="nt:unstructured"
                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                 fieldLabel="Want To Port In Radio Label"
-                                name="./frmFields/radioPortIn"
+                                name="./frmFields/portInOptions/item1/label"
                                 value="I want to port in"/>
+                            <wantToPortValue
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/hidden"
+                                fieldLabel="Want To Port In Radio Value"
+                                name="./frmFields/portInOptions/item1/value"
+                                value="Yes"/>
                             <useLebaraSim
                                 jcr:primaryType="nt:unstructured"
                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                 fieldLabel="Use My Lebara Sim Radio Label"
-                                name="./frmFields/radioUseLebaraSim"
+                                name="./frmFields/portInOptions/item2/label"
                                 value="I want to use my Lebara Sim"/>
+                            <useLebaraSimValue
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/hidden"
+                                fieldLabel="Use My Lebara Sim Radio Value"
+                                name="./frmFields/portInOptions/item2/value"
+                                value="ExistingPhone"/>
                             <portInNumberLabel
                                 jcr:primaryType="nt:unstructured"
                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
