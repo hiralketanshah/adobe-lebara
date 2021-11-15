@@ -232,14 +232,14 @@ public class AemUtils {
         if (null != res) {
             InheritanceValueMap inheritedProp = new HierarchyNodeInheritanceValueMap(res);
             dashboardLabels.setDataPlanName(getInheritedValue("dataPlanName", inheritedProp));
-            dashboardLabels.setDataPlanName(getInheritedValue("dataType", inheritedProp));
-            dashboardLabels.setDataPlanName(getInheritedValue("minPlanName", inheritedProp));
-            dashboardLabels.setDataPlanName(getInheritedValue("minDataType", inheritedProp));
-            dashboardLabels.setDataPlanName(getInheritedValue("smsPlanName", inheritedProp));
-            dashboardLabels.setDataPlanName(getInheritedValue("smsDataType", inheritedProp));
-            dashboardLabels.setDataPlanName(getInheritedValue("internationalMinPlanName", inheritedProp));
-            dashboardLabels.setDataPlanName(getInheritedValue("internationalMinDataType", inheritedProp));
-            dashboardLabels.setDataPlanName(getInheritedValue("leftOfLabel", inheritedProp));
+            dashboardLabels.setDataType(getInheritedValue("dataType", inheritedProp));
+            dashboardLabels.setMinPlanName(getInheritedValue("minPlanName", inheritedProp));
+            dashboardLabels.setMinDataType(getInheritedValue("minDataType", inheritedProp));
+            dashboardLabels.setSmsPlanName(getInheritedValue("smsPlanName", inheritedProp));
+            dashboardLabels.setSmsDataType(getInheritedValue("smsDataType", inheritedProp));
+            dashboardLabels.setInternationalMinPlanName(getInheritedValue("internationalMinPlanName", inheritedProp));
+            dashboardLabels.setInternationalMinDataType(getInheritedValue("internationalMinDataType", inheritedProp));
+            dashboardLabels.setLeftOfLabel(getInheritedValue("leftOfLabel", inheritedProp));
         }
         return dashboardLabels;
     }
