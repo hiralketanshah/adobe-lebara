@@ -13,8 +13,8 @@ public class PostpaidPersonalDetailsErrorMsg {
 
     @ValueMapValue
     private String emailInValidMsg;
-	
-	@ValueMapValue
+
+    @ValueMapValue
     private String fNameRequiredMsg;
 
     @ValueMapValue
@@ -75,9 +75,7 @@ public class PostpaidPersonalDetailsErrorMsg {
         return lNameInValidMsg;
     }
 
-    public String getEmailRequiredMsg() {
-        return emailRequiredMsg;
-    }
+    public String getEmailRequiredMsg() {return emailRequiredMsg;}
 
     public String getEmailInValidMsg() {
         return emailInValidMsg;
