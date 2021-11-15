@@ -6,6 +6,7 @@ import PostpaidPersonalDetails from "./PostpaidPersonalDetails";
 
 const PostpaidPersonalDetailsRoute: React.FC<PostpaidPersonalDetailsProps> = ({
   pageTitle,
+  heading,
   ...rest
 }) => (
   <SelectNumberAndOrderDetailsLayout>
