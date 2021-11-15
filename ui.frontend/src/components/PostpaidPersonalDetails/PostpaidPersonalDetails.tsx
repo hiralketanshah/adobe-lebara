@@ -207,6 +207,7 @@ const PostpaidPersonalDetails: React.FC<PostpaidPersonalDetailsProps> = ({
                   placeholder={frmFields.shippingPlaceholder}
                   isRequired
                   isDisabled={isExistingUser}
+                  country={GC.country}
                 />
                 {/* <AddressCard
                   onSetManual={() => {
