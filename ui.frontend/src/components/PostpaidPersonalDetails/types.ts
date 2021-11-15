@@ -1,3 +1,5 @@
+import { SelectOptionTypeString } from '../Select/types';
+
 type PortInStatus = "No" | "Yes" | "ExistingPhone";
 export interface PostpaidDetails {
   email?: string;
@@ -63,6 +65,35 @@ export interface FormFields {
   yearPlaceholder?: string;
   shippingLabel?: string;
   shippingPlaceholder?: string;
+  streetLabel: string;
+  streetPlaceholder:string;
+  houseNumberLabel:string;
+  houseNumberPlaceholder:string;
+  zipCodeLabel:string;
+  zipCodePlaceholder:string;
+  cityLabel:string;
+  postalcodePlaceholder:string;
+  cityPlaceholder:string;
+  cities: SelectOptionTypeString[];
+  addressErrorRequired:string;
+  streetLabelErrorMax:string;
+  streetLabelErrorRequired:string;
+  streetLabelErrorPattern:string;
+  houseNumberErrorMax:string;
+  houseNumberErrorRequired:string;
+  houseNumberErrorPattern:string;
+  zipCodeErrorMax:string;
+  zipCodeErrorRequired:string;
+  zipCodeErrorPattern:string;
+  zipCodeErrorMin:string;
+  cityErrorMax:string;
+  cityErrorRequired:string;
+  enterAddressManually: string;
+  keyInAddress: string;
+  saveAddress: string;
+  addressKeyInText:string;
+  emailAddressAlreadyExistMsg?: string;
+
   portInNumberLabel?: string;
   portInNumberPlaceHolder?: string;
   consentPreviewText?: string;

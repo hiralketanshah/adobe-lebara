@@ -26,6 +26,7 @@ import InfoBox from "../InfoBox/InfoBox";
 import TextWithMoreButton from "../TextWithMoreButton/TextWithMoreButton";
 import PaymentDialog from "../PaymentDialog/PaymentDialog";
 import VALIDATE_EMAIL_SPS from "../../graphql/VALIDATE_EMAIL_SPS";
+import AddressCard from "../AddressCard/AddressCard";
 
 const dateLabelProps: FormLabelProps = {
   color: "explainerColor",
@@ -43,6 +44,7 @@ const PostpaidPersonalDetails: React.FC<PostpaidPersonalDetailsProps> = ({
   const history = useHistory();
   const [validateEmailSps, { data: validateEmailSpsResult }] = useLazyQuery(VALIDATE_EMAIL_SPS);
   const [isPaymentDialogOpen, setIsPaymentDialogOpen] = useState(false);
+  const [isManualAddress, setIsManualAddress] = useState(false);
 
   const dynamicFormikValidate = (values: any) => postpaidPersonalDetailsValidation(values, validationMessages);
 
@@ -211,6 +213,30 @@ const PostpaidPersonalDetails: React.FC<PostpaidPersonalDetailsProps> = ({
                   isRequired
                   isDisabled={isExistingUser}
                 />
+                {/* <AddressCard
+                  onSetManual={() => {
+                    setIsManualAddress(true);
+                  }}
+                  
+                  addressLabel={frmFields.shippingLabel}
+                  initialStatus="SearchNewAddress"
+                  searchAddressSubText={frmFields.addressKeyInText}
+                  streetLabel={frmFields.streetLabel}
+                  streetPlaceholder={frmFields.streetPlaceholder}
+                  houseNumberLabel={frmFields.houseNumberLabel}
+                  houseNumberPlaceholder={frmFields.houseNumberPlaceholder}
+                  zipCodeLabel={frmFields.zipCodeLabel}
+                  zipCodePlaceholder={frmFields.zipCodePlaceholder}
+                  cityLabel={frmFields.cityLabel}
+                  postalcodePlaceholder={frmFields.postalcodePlaceholder}
+                  cityPlaceholder={frmFields.cityPlaceholder}
+                  cities={frmFields.cities}
+                  enterAddressManually={frmFields.enterAddressManually}
+                  saveAddress={frmFields.saveAddress}
+                  keyInAddress={frmFields.keyInAddress}
+                  postalCodeText={frmFields.addressKeyInText}
+                  country={GC.country}
+                /> */}
               </Flex>
 
               <Flex
