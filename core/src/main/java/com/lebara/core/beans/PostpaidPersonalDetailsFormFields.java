@@ -13,7 +13,7 @@ import com.lebara.core.utils.AemUtils;
 @Model(adaptables = {Resource.class}, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
 public class PostpaidPersonalDetailsFormFields {
 
-    
+
 
     @ValueMapValue
     private String emailLabel;
