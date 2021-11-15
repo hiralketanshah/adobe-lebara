@@ -352,7 +352,7 @@
                                 jcr:primaryType="nt:unstructured"
                                 sling:resourceType="dam/cfm/components/cfpicker"
                                 fieldLabel="Current Providers Options Content Fragment path"
-                                name="./frmFields/currentProvidersOptions"
+                                name="./frmFields/currentProviderList"
                                 rootPath="/content/dam/lebara"/>
                             <currentProviderInfoDescription
                                 jcr:primaryType="nt:unstructured"

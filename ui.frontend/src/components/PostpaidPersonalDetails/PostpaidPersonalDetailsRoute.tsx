@@ -5,12 +5,11 @@ import SelectNumberAndOrderDetailsLayout from "../../layouts/SelectNumberAndOrde
 import PostpaidPersonalDetails from "./PostpaidPersonalDetails";
 
 const PostpaidPersonalDetailsRoute: React.FC<PostpaidPersonalDetailsProps> = ({
-  pageTitle,
   heading,
   ...rest
 }) => (
   <SelectNumberAndOrderDetailsLayout>
-    {pageTitle && <Box py="43px">
+    {heading && <Box py="43px">
       <Text
         color="primary.500"
         fontSize={20}
@@ -20,7 +19,7 @@ const PostpaidPersonalDetailsRoute: React.FC<PostpaidPersonalDetailsProps> = ({
         fontWeight="bold"
         textAlign={{ lg: "left" }}
       >
-        {pageTitle}
+        {heading}
       </Text>
       <PostpaidPersonalDetails {...rest} />
     </Box>}
