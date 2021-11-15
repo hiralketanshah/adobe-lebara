@@ -3,17 +3,23 @@ package com.lebara.core.beans;
 import java.util.ArrayList;
 import java.util.List;
 import org.apache.sling.api.resource.Resource;
+import org.apache.sling.api.resource.ResourceResolver;
 import org.apache.sling.models.annotations.DefaultInjectionStrategy;
 import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.injectorspecific.ChildResource;
+import org.apache.sling.models.annotations.injectorspecific.SlingObject;
 import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
+import com.adobe.cq.dam.cfm.ContentFragment;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.lebara.core.utils.AemUtils;
+import com.lebara.core.utils.CFUtils;
 
 @Model(adaptables = {Resource.class}, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
 public class PostpaidPersonalDetailsFormFields {
 
-    
+
+    @SlingObject
+    private ResourceResolver resourceResolver;
 
     @ValueMapValue
     private String emailLabel;
@@ -126,8 +132,40 @@ public class PostpaidPersonalDetailsFormFields {
     @ChildResource
     protected Resource portInOptions;
 
+    @ValueMapValue
+    private  String currentProviderList;
+
     private static final String VALUE = "value";
     private static final String LABEL = "label";
+
+    @ValueMapValue
+    public String keyInAddress;
+    @ValueMapValue
+    public String streetLabel;
+    @ValueMapValue
+    public String addressKeyInText;
+    @ValueMapValue
+    public String postalcodePlaceholder;
+    @ValueMapValue
+    public String enterAddressManually;
+    @ValueMapValue
+    public String streetPlaceholder;
+    @ValueMapValue
+    public String houseNumberLabel;
+    @ValueMapValue
+    public String houseNumberPlaceholder;
+    @ValueMapValue
+    public String zipCodeLabel;
+    @ValueMapValue
+    public String zipCodePlaceholder;
+    @ValueMapValue
+    public String cityLabel;
+    @ValueMapValue
+    public String cityPlaceholder;
+    @ValueMapValue
+    public String saveAddress;
+
+
 
     public String getEmailLabel() {
         return emailLabel;
@@ -272,6 +310,58 @@ public class PostpaidPersonalDetailsFormFields {
 	public String getRadioUseLebaraSim() {
 		return radioUseLebaraSim;
 	}
+    public String getKeyInAddress() {
+        return keyInAddress;
+    }
+
+    public String getStreetLabel() {
+        return streetLabel;
+    }
+
+    public String getAddressKeyInText() {
+        return addressKeyInText;
+    }
+
+    public String getPostalcodePlaceholder() {
+        return postalcodePlaceholder;
+    }
+
+    public String getEnterAddressManually() {
+        return enterAddressManually;
+    }
+
+    public String getStreetPlaceholder() {
+        return streetPlaceholder;
+    }
+
+    public String getHouseNumberLabel() {
+        return houseNumberLabel;
+    }
+
+    public String getHouseNumberPlaceholder() {
+        return houseNumberPlaceholder;
+    }
+
+    public String getZipCodeLabel() {
+        return zipCodeLabel;
+    }
+
+    public String getZipCodePlaceholder() {
+        return zipCodePlaceholder;
+    }
+
+    public String getCityLabel() {
+        return cityLabel;
+    }
+
+    public String getCityPlaceholder() {
+        return cityPlaceholder;
+    }
+
+    public String getSaveAddress() {
+        return saveAddress;
+    }
+
 
     @JsonProperty("portInOptions")
     public List<SelectOption> getPortInOptionArray() {
@@ -283,5 +373,16 @@ public class PostpaidPersonalDetailsFormFields {
             options.add(option);
         }
         return options;
+    }
+    @JsonProperty("currentProviderList")
+    public List<Object> getCurrentProvidersList() {
+        if(currentProviderList != null) {
+            Resource currentProvidersResource = resourceResolver.getResource(currentProviderList);
+            ContentFragment currentProvidersFragment = currentProvidersResource.adaptTo(ContentFragment.class);
+            if (null != currentProvidersFragment) {
+                return CFUtils.convertStringArrayToList(CFUtils.getElementArrayValue(currentProvidersFragment, "currentProvidersOptions"), Object.class);
+            }
+        }
+        return new ArrayList<>();
     }
 }

@@ -8,7 +8,7 @@ import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
 @Model(adaptables = {Resource.class}, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
 public class SelectOption {
 
-        @ValueMapValue
+    @ValueMapValue
     private String label;
 
     @ValueMapValue
