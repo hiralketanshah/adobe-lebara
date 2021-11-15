@@ -124,13 +124,6 @@
                                     value="Key in your address manually"
                                     fieldDescription="Key in your address manually"
                                     name="./frmFields/keyInAddress"/>
-                          <!--  <address
-                                    jcr:primaryType="nt:unstructured"
-                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                    fieldLabel="Address label"
-                                    value="Address"
-                                    fieldDescription="Address"
-                                    name="./frmFields/addressLabel"/>-->
                             <addressKeyInText
                                     jcr:primaryType="nt:unstructured"
                                     sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
@@ -210,7 +203,6 @@
                                     value="Save address for future"
                                     fieldDescription="Save address for future"
                                     name="./frmFields/saveAddress"/>
-
                             <shippingLabel
                                 jcr:primaryType="nt:unstructured"
                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
@@ -1009,7 +1001,6 @@
                                 fieldLabel="Error Message Empty Current Provider Number"
                                 name="./validationMessages/currentProviderRequiredMsg"
                                 value="Please Enter Current Provider Number"/>
-
                         </items>
                     </column5>
                 </items>
