@@ -6,7 +6,6 @@ import {
   FormLabel,
   FormLabelProps,
   Heading,
-  Link,
   Text,
 } from "@chakra-ui/react";
 import { Form, Formik } from "formik";
@@ -26,7 +25,7 @@ import InfoBox from "../InfoBox/InfoBox";
 import TextWithMoreButton from "../TextWithMoreButton/TextWithMoreButton";
 import PaymentDialog from "../PaymentDialog/PaymentDialog";
 import VALIDATE_EMAIL_SPS from "../../graphql/VALIDATE_EMAIL_SPS";
-import AddressCard from "../AddressCard/AddressCard";
+// import AddressCard from "../AddressCard/AddressCard";
 
 const dateLabelProps: FormLabelProps = {
   color: "explainerColor",
@@ -101,6 +100,16 @@ const PostpaidPersonalDetails: React.FC<PostpaidPersonalDetailsProps> = ({
 
           return (
             <Form onSubmit={handleSubmit}>
+              <Heading
+                lineHeight="40px"
+                fontWeight="bold"
+                fontSize={20}
+                color="primary.500"
+                my="7px"
+                d={{ base: "block", lg: "none" }}
+              >
+                Enter Your Personal Details
+              </Heading>
               <Flex
                 pt={{ base: "19px", lg: "52px" }}
                 pb={{ base: "28px", lg: "60px" }}
@@ -242,7 +251,11 @@ const PostpaidPersonalDetails: React.FC<PostpaidPersonalDetailsProps> = ({
                     lineHeight="17.1px"
                     previewText={frmFields.consentPreviewText}
                   >
-                    {frmFields.consentDescription}
+                    <span 
+                        dangerouslySetInnerHTML={{ __html: 
+                          frmFields && frmFields.consentDescription ? 
+                          frmFields.consentDescription : '' }} 
+                      />
                   </TextWithMoreButton>
                 </FormikCheckbox>
               </Flex>
@@ -315,8 +328,11 @@ const PostpaidPersonalDetails: React.FC<PostpaidPersonalDetailsProps> = ({
                         }}
                       />
                       <FormikCheckbox name="isUsageProfileAccepted">
-                        <Text fontSize={12} ml="11px" lineHeight="17.1px">
-                          {frmFields.currentProviderUsageAcceptanceLabel}
+                        <Text fontSize={12} ml="11px" lineHeight="17.1px"
+                         dangerouslySetInnerHTML={{ __html: 
+                          frmFields && frmFields.currentProviderUsageAcceptanceLabel ? 
+                          frmFields.currentProviderUsageAcceptanceLabel : '' }} 
+                          >
                         </Text>
                       </FormikCheckbox>
                       <FormikCheckbox name="isAdvertisingAccepted">
@@ -327,7 +343,11 @@ const PostpaidPersonalDetails: React.FC<PostpaidPersonalDetailsProps> = ({
                           previewText=
                           {frmFields.currentProviderAdvertisingPreviewText}
                         >
-                          {frmFields.currentProviderAdvertisingAcceptanceLabel}
+                          <span 
+                            dangerouslySetInnerHTML={{ __html: 
+                              frmFields && frmFields.currentProviderAdvertisingAcceptanceLabel ? 
+                              frmFields.currentProviderAdvertisingAcceptanceLabel : '' }} 
+                          />
                         </TextWithMoreButton>
                       </FormikCheckbox>
                     </Flex>
