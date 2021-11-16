@@ -12,7 +12,6 @@ import org.apache.sling.models.annotations.injectorspecific.ChildResource;
 import org.apache.sling.models.annotations.injectorspecific.SlingObject;
 import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -28,8 +27,6 @@ public class HelpCenterFaqExporter extends HeadingExporter {
 
     @SlingObject
     private ResourceResolver resourceResolver;
-
-    private List<PageInfo> pageInfoList = new ArrayList<>();
 
     @ValueMapValue
     private String readMoreLabel;
