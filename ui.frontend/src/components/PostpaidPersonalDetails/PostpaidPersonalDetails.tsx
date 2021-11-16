@@ -202,30 +202,6 @@ const PostpaidPersonalDetails: React.FC<PostpaidPersonalDetailsProps> = ({
                     />
                   </Flex>
                 </Box>
-                {touched.day && errors.day && (
-                  <Flex color="unsuccessful">
-                    <HiOutlineExclamation size={20} color="lebaraRed" />
-                    <Text paddingLeft="7px" noOfLines={1} fontSize={14}>
-                      {errors.day}
-                    </Text>
-                  </Flex>
-                )}
-                {touched.month && errors.month && (
-                  <Flex color="unsuccessful">
-                    <HiOutlineExclamation size={20} color="lebaraRed" />
-                    <Text paddingLeft="7px" noOfLines={1} fontSize={14}>
-                      {errors.month}
-                    </Text>
-                  </Flex>
-                )}
-                {touched.year && errors.year && (
-                  <Flex color="unsuccessful">
-                    <HiOutlineExclamation size={20} color="lebaraRed" />
-                    <Text paddingLeft="7px" noOfLines={1} fontSize={14}>
-                      {errors.year}
-                    </Text>
-                  </Flex>
-                )}
                 <FormikAddressSearch
                   name="shippingAddress"
                   label={frmFields.shippingLabel}
