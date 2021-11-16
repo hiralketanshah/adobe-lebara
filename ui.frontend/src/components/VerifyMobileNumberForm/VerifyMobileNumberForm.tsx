@@ -19,7 +19,7 @@ const VerifyMobileNumberForm: React.FC<VerifyMobileNumberFormProps> = ({
   timeCounter,
   initalCountdownValue,
 }) => {
-  const INITIAL_COUNT = parseInt(initalCountdownValue) || 60;
+  const INITIAL_COUNT = initalCountdownValue || 60;
   const WORKING_STATUS = "Working";
   const STOP_STATUS = "Stop";
   const [verifyClicked, onVerifyClicked] = useState<boolean>(false);
