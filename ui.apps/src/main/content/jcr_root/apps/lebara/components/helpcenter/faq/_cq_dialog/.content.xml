@@ -32,7 +32,7 @@
                                                     sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                                     fieldDescription ="Label for FAQ"
                                                     value="FAQ"
-                                                    fieldLabel="FAQ Label"
+                                                    fieldLabel="Heading"
                                                     name="./faqLabel"/>
                                             <readMoreLabel
                                                     jcr:primaryType="nt:unstructured"
