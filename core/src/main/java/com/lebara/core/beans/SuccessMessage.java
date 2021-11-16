@@ -5,18 +5,18 @@ import org.apache.sling.models.annotations.DefaultInjectionStrategy;
 import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
 
-@Model(adaptables = {Resource.class}, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
+@Model(adaptables = { Resource.class }, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
 public class SuccessMessage {
 
     @ValueMapValue
     private String otpSentSuccessfullyMsg;
 
     public String getOtpSentSuccessfullyMsg() {
-		return otpSentSuccessfullyMsg;
-	}
+        return otpSentSuccessfullyMsg;
+    }
 
-	public void setOtpSentSuccessfullyMsg(String otpSentSuccessfullyMsg) {
-		this.otpSentSuccessfullyMsg = otpSentSuccessfullyMsg;
-	}
+    public void setOtpSentSuccessfullyMsg(String otpSentSuccessfullyMsg) {
+        this.otpSentSuccessfullyMsg = otpSentSuccessfullyMsg;
+    }
 
 }

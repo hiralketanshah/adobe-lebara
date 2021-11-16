@@ -1,10 +1,12 @@
 package com.lebara.core.beans;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.models.annotations.DefaultInjectionStrategy;
 import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
 
+@JsonInclude(JsonInclude.Include.NON_NULL)
 @Model(adaptables = {Resource.class}, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
 public class PostpaidPersonalDetailsErrorMsg {
 
@@ -87,7 +89,9 @@ public class PostpaidPersonalDetailsErrorMsg {
         return lNameInValidMsg;
     }
 
-    public String getEmailRequiredMsg() {return emailRequiredMsg;}
+    public String getEmailRequiredMsg() {
+        return emailRequiredMsg;
+    }
 
     public String getEmailInValidMsg() {
         return emailInValidMsg;
@@ -138,18 +142,18 @@ public class PostpaidPersonalDetailsErrorMsg {
     }
 
     public String getMobileRequiredMsg() {
-		return mobileRequiredMsg;
-	}
+        return mobileRequiredMsg;
+    }
 
-	public String getMobileInValidMsg() {
-		return mobileInValidMsg;
-	}
+    public String getMobileInValidMsg() {
+        return mobileInValidMsg;
+    }
 
-	public String getVerifyCodeInvalidMsg() {
-		return verifyCodeInvalidMsg;
-	}
+    public String getVerifyCodeInvalidMsg() {
+        return verifyCodeInvalidMsg;
+    }
 
-	public String getVerifyCodeRequiredMsg() {
-		return verifyCodeRequiredMsg;
-	}
+    public String getVerifyCodeRequiredMsg() {
+        return verifyCodeRequiredMsg;
+    }
 }
