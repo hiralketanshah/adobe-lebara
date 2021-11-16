@@ -17,6 +17,7 @@ const VerifyRegisterMobileNumber: React.FC<VerifyRegisterProps> = ({
   const userToken = "Saurabh.Paul@lebara.com";
   const [updatedMobileNumber, setUpdatedMobileNumber] = React.useState("");
   const [isMobileNumberValid, setIsMobileNumberValid] = React.useState(false);
+  
   const onChangeMobileNumber = (event: React.ChangeEvent<HTMLInputElement>) => {
     const userInputMobileNumber = event.target.value;
     setUpdatedMobileNumber(userInputMobileNumber);
