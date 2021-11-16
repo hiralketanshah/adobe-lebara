@@ -46,7 +46,6 @@ public class BrowseCategoryNavigationImpl implements BrowseCategoryNavigation {
     }
 
 
-
     @Override
     public String getBrowseCategoryLabel() {
         return browseCategoriesLabel;
