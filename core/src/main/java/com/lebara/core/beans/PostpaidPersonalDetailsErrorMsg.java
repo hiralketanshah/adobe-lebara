@@ -58,6 +58,18 @@ public class PostpaidPersonalDetailsErrorMsg {
 
     @ValueMapValue
     private String currentProviderRequiredMsg;
+    
+    @ValueMapValue
+    private String mobileRequiredMsg;
+    
+    @ValueMapValue
+    private String mobileInValidMsg;
+    
+    @ValueMapValue
+    private String verifyCodeInvalidMsg;
+    
+    @ValueMapValue
+    private String verifyCodeRequiredMsg;
 
     public String getfNameRequiredMsg() {
         return fNameRequiredMsg;
@@ -124,4 +136,20 @@ public class PostpaidPersonalDetailsErrorMsg {
     public String getCurrentProviderRequiredMsg() {
         return currentProviderRequiredMsg;
     }
+
+	public String getMobileRequiredMsg() {
+		return mobileRequiredMsg;
+	}
+
+	public String getMobileInValidMsg() {
+		return mobileInValidMsg;
+	}
+
+	public String getVerifyCodeInvalidMsg() {
+		return verifyCodeInvalidMsg;
+	}
+
+	public String getVerifyCodeRequiredMsg() {
+		return verifyCodeRequiredMsg;
+	}
 }
