@@ -3,7 +3,7 @@ import { Formik } from "formik";
 import { useHistory, useLocation } from "react-router-dom";
 import { useApolloClient } from "@apollo/client";
 import { Flex, Text } from "@chakra-ui/react";
-import { writeStorage, deleteFromStorage } from "@rehooks/local-storage";
+import { deleteFromStorage } from "@rehooks/local-storage";
 import { LoginFormSchema, LoginTabsProps } from "./types";
 import Button from "../Button/Button";
 import FormikInput from "../Formik/FormikInput/FormikInput";
@@ -12,6 +12,9 @@ import AUTHENTICATE_USER_SPS from "../../graphql/AUTHENTICATE_USER_SPS";
 import { googleAnalytics } from "../../utils/gtm";
 import GET_PERSONAL_DETAILS from "../../graphql/GET_PERSONAL_DETAILS";
 import { globalConfigs as GC, globalConstants as GCST} from "../../GlobalConfigs";
+import { saveUserInfo } from "../../redux/actions/userActions";
+import { setLoading } from "../../redux/actions/loadingActions";
+import { useDispatch } from "react-redux";
 
 const LoginTab: React.FC<LoginTabsProps> = ({...loginModuleProps}) => {
   const history = useHistory();
@@ -35,10 +38,10 @@ const LoginTab: React.FC<LoginTabsProps> = ({...loginModuleProps}) => {
     return errors;
   };
   const location =
-    useLocation<{ fromPostPaid?: boolean; fromMenu?: boolean }>();
+    useLocation<{ fromPostPaid?: boolean; fromMenu?: boolean; from?: Location; }>();
   const isFromPostPaid = location?.state?.fromPostPaid ?? false;
   const isFromMenu = location?.state?.fromMenu ?? false;
-
+  const dispatch = useDispatch();
   return (
     <Formik
       initialValues={initialValues}
@@ -49,16 +52,20 @@ const LoginTab: React.FC<LoginTabsProps> = ({...loginModuleProps}) => {
             .query({ query: AUTHENTICATE_USER_SPS, variables: values })
             .then((res) => {
               if (res.data.authenticateUserSPS) {
+                dispatch(saveUserInfo(res.data.authenticateUserSPS));
+
+                if (location.state?.from) {
+                  dispatch(setLoading(false));
+                  history.push(location.state?.from);
+                  resolve();
+                  return;
+                }
                 deleteFromStorage("newCustomer");
-                writeStorage("loggedIn", true);
-                writeStorage("portIn", "No"); // `${res.data.portIn}`
-                writeStorage("crmId", res.data.authenticateUserSPS[1]); // `${res.data.crmId}`
-                writeStorage("msisdn", res.data.authenticateUserSPS[0]);
                 // google analytics
                 googleAnalytics(null, {
-                  crmId: res.data.authenticateUserSPS[1],
+                  crmId: res.data.authenticateUserSPS.crmId,
                   userId: null,
-                  msisdn: `${res.data.authenticateUserSPS[0]}`,
+                  msisdn: `${res.data.authenticateUserSPS.msisdn[0]}`,
                   portIn: "No", // `${res.data.portIn}`
                   language: "en",
                   loggedIn: "Yes",
