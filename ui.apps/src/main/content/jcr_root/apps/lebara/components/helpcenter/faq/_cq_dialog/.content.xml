@@ -12,7 +12,7 @@
                 sling:resourceType="granite/ui/components/coral/foundation/tabs"
                 maximized="{Boolean}true">
                 <items jcr:primaryType="nt:unstructured">
-                    <faqLabel
+                    <faqLabels
                             jcr:primaryType="nt:unstructured"
                             jcr:title="Faq Label"
                             sling:resourceType="granite/ui/components/coral/foundation/container"
@@ -34,12 +34,19 @@
                                                     value="FAQ"
                                                     fieldLabel="FAQ Label"
                                                     name="./faqLabel"/>
+                                            <readMoreLabel
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                    fieldDescription ="Label for Read More"
+                                                    value="Read More"
+                                                    fieldLabel="Read More Label"
+                                                    name="./readMoreLabel"/>
                                         </items>
                                     </column>
                                 </items>
                             </columns>
                         </items>
-                    </faqLabel>
+                    </faqLabels>
                     <faqlink
                             granite:class="lebara-multifield__editor"
                             jcr:primaryType="nt:unstructured"
