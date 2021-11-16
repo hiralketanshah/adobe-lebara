@@ -11,7 +11,7 @@ public class SuccessMessage {
     @ValueMapValue
     private String otpSentSuccessfullyMsg;
 
-	public String getOtpSentSuccessfullyMsg() {
+    public String getOtpSentSuccessfullyMsg() {
 		return otpSentSuccessfullyMsg;
 	}
 

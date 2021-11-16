@@ -137,7 +137,7 @@ public class PostpaidPersonalDetailsErrorMsg {
         return currentProviderRequiredMsg;
     }
 
-	public String getMobileRequiredMsg() {
+    public String getMobileRequiredMsg() {
 		return mobileRequiredMsg;
 	}
 
