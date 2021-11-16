@@ -19,9 +19,6 @@ public class PageInfo extends Link {
     @SlingObject
     private ResourceResolver resourceResolver;
 
-    @ValueMapValue
-    private String link;
-
     private String description;
     private String title;
 
@@ -39,25 +36,8 @@ public class PageInfo extends Link {
         return description;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    @Override
-    public String getLink() {
-        return link;
-    }
-
-    @Override
-    public void setLink(String link) {
-        this.link = link;
-    }
-
     public String getTitle() {
         return title;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
-    }
 }

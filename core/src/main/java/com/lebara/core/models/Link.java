@@ -18,7 +18,7 @@ public class Link {
     private String label;
 
     @ValueMapValue
-    private String link;
+    protected String link;
 
     @JsonIgnore
     @ValueMapValue
