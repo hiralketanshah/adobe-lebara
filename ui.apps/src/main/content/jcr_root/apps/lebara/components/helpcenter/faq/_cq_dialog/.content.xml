@@ -27,13 +27,13 @@
                                             jcr:primaryType="nt:unstructured"
                                             sling:resourceType="granite/ui/components/coral/foundation/container">
                                         <items jcr:primaryType="nt:unstructured">
-                                            <faqLabel
+                                            <faqTitle
                                                     jcr:primaryType="nt:unstructured"
                                                     sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                                    fieldDescription ="Label for FAQ"
+                                                    fieldDescription ="title for FAQ"
                                                     value="FAQ"
                                                     fieldLabel="Heading"
-                                                    name="./faqLabel"/>
+                                                    name="./title"/>
                                             <readMoreLabel
                                                     jcr:primaryType="nt:unstructured"
                                                     sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
