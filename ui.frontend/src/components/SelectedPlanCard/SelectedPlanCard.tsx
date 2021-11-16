@@ -5,39 +5,35 @@ import { useSelector } from "react-redux";
 import { ReduxState } from "../../redux/types";
 
 const SelectedPlanCard: React.FC<SelectedPlanCardProps> = ({
-  // isExpanded,
-  // compact,
-  selectedPlan,
+  selectedPlanLabel,
 }) => {
-  // const [expanded] = useState(isExpanded);
 
   const selectedProduct = useSelector(
     (state: ReduxState) => state.product.product
   );
 
   const sharedTextStyle = {
-    fontSize: "32px",
+    fontSize: "16px",
     lineHeight: "1.1",
     color: "white",
     fontWeight: "bold",
     fontFamily: "Chiswick Grotesque Lebara",
   };
-
   if (!selectedProduct) {
-    return ( <div></div> );
+    return ( <></> );
   }
   
   return (
     <Flex
       flexDirection="column"
       background="primary.800"
-      p="30px 20px"
-      className="expanded"
+      p="15px 18px 5px"
+      className="compact"
     >
       <Flex
         flexDirection="column"
         alignItems="flex-start"
-        justifyContent=""
+        justifyContent={"space-between"}
       >
           <Text
             color="lightenPrimary.500"
@@ -46,7 +42,7 @@ const SelectedPlanCard: React.FC<SelectedPlanCardProps> = ({
             fontWeight="bold"
             letterSpacing="0.01em"
           >
-            {selectedPlan}
+            {selectedPlanLabel}
           </Text>
         <Flex flex="column" marginBottom="10px">
           <Heading
@@ -56,15 +52,10 @@ const SelectedPlanCard: React.FC<SelectedPlanCardProps> = ({
             pl="2px"
             whiteSpace="pre-line"
           >
-            {selectedProduct}
+           {selectedProduct?.product}
           </Heading>
         </Flex>
       </Flex>
-      {/* {expanded && (
-        <Box mb={7} p="20px">
-          <Text color="white">expanded content?</Text>
-        </Box>
-      )} */}
     </Flex>
   );
 };
