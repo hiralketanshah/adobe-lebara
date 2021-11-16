@@ -10,6 +10,8 @@ import { VerifyRegisterProps } from "./types";
 const VerifyRegisterMobileNumber: React.FC<VerifyRegisterProps> = ({
   heading,
   subHeading,
+  frmFields,
+  validationMessages,
 }) => {
   // const userToken = useSelector((state: ReduxState) => state.user.token);
   const userToken = "Saurabh.Paul@lebara.com";
@@ -42,25 +44,24 @@ const VerifyRegisterMobileNumber: React.FC<VerifyRegisterProps> = ({
         alignItems="center"
       >
         <Image height="27px" width="17px" src={VerifyMobile} />
-        <Text
+        {heading && <Text
           mt="15px"
           fontWeight="900"
           fontSize="22px"
           lineHeight="40px"
           color="primary.800"
         >
-          Verify your Mobile Number
-        </Text>
-        <Text
+          {heading}
+        </Text>}
+        {subHeading && <Text
           fontSize="20px"
           lineHeight="22px"
           color="bodyCopy"
           textAlign="center"
           fontWeight="500"
         >
-          Almost there !<br />
-          Kindly enter your mobile number
-        </Text>
+          {subHeading}
+        </Text>}
       </Flex>
       <Box mt="23px">
         <Input
@@ -91,7 +92,7 @@ const VerifyRegisterMobileNumber: React.FC<VerifyRegisterProps> = ({
           isDisabled={!isMobileNumberValid}
           onClick={onVerfyMobileNumberClick}
         >
-          VERIFY MOBILE NUMBER
+          {frmFields.buttonCTALabel}
         </Button>
         <Button
           variant="ghost"
@@ -105,7 +106,7 @@ const VerifyRegisterMobileNumber: React.FC<VerifyRegisterProps> = ({
             textTransform="uppercase"
             color="secondary.500"
           >
-            Skip for now
+            {frmFields.ctaSkipLabel}
           </LebaraText>
         </Button>
       </Flex>

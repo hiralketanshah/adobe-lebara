@@ -1,6 +1,8 @@
 export interface BaseValidationMessages {
     emailRequiredMsg?: string;
     emailInValidMsg?: string;
+    mobileRequiredMsg?: string;
+    mobileInValidMsg?: string;
     fNameRequiredMsg?: string;
     fNameInValidMsg?: string;
     lNameRequiredMsg?: string;

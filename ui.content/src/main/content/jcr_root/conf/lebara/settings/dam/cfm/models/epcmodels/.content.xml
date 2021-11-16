@@ -83,45 +83,6 @@
                             valueType="string">
                             <granite:data jcr:primaryType="nt:unstructured"/>
                         </_x0031_626007922345>
-                        <_x0031_634728567500
-                                jcr:primaryType="nt:unstructured"
-                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                fieldLabel="Contract Validity Text(for postpaid component)"
-                                listOrder="1"
-                                maxlength="255"
-                                metaType="text-single"
-                                name="validityText"
-                                renderReadOnly="false"
-                                showEmptyInReadOnly="true"
-                                valueType="string">
-                            <granite:data jcr:primaryType="nt:unstructured"/>
-                        </_x0031_634728567500>
-                        <_x0031_634728734015
-                                jcr:primaryType="nt:unstructured"
-                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                fieldLabel="Data Volume Text(for postpaid component)"
-                                listOrder="1"
-                                maxlength="255"
-                                metaType="text-single"
-                                name="dataVolumeText"
-                                renderReadOnly="false"
-                                showEmptyInReadOnly="true"
-                                valueType="string">
-                            <granite:data jcr:primaryType="nt:unstructured"/>
-                        </_x0031_634728734015>
-                        <_x0031_634728827954
-                                jcr:primaryType="nt:unstructured"
-                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                fieldLabel="Minutes To Countries Text(for postpaid component)"
-                                listOrder="21"
-                                maxlength="255"
-                                metaType="text-single"
-                                name="minutesToCountriesText"
-                                renderReadOnly="false"
-                                showEmptyInReadOnly="true"
-                                valueType="string">
-                            <granite:data jcr:primaryType="nt:unstructured"/>
-                        </_x0031_634728827954>
                         <_x0031_626007775688
                             jcr:primaryType="nt:unstructured"
                             sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"

@@ -1,6 +1,9 @@
+import { SelectOptionTypeString } from '../Select/types';
 export interface BaseFormFields {
     emailLabel?: string;
     emailPlaceholder?: string;
+    mobileLabel?: string;
+    mobilePlaceHolder?: string;
     fNameLabel?: string;
     fnamePlaceholder?: string;
     lNameLabel?: string;
@@ -14,22 +17,40 @@ export interface BaseFormFields {
     yearPlaceholder?: string;
     shippingLabel?: string;
     shippingPlaceholder?: string;
-    portInNumberLabel?: string;
-    portInNumberPlaceHolder?: string;
-    consentPreviewText?: string;
-    consentDescription?: string;
-    portingNumberLabel?: string;
-    currentProviderHelperText?: string;
-    currentProviderLabel?: string;
-    currentProviderPlaceholder?: string;
-    currentProviderInfoDescription?: string;
-    currentProviderInfoLinkLabel?: string;
-    currentProviderInfoLinkURL?: string;
-    currentProviderUsageAcceptanceLabel?: string;
-    currentProviderAdvertisingAcceptanceLabel?: string;
-    exitingPhoneHelperLabel?: string;
+
+    streetLabel?: string;
+    streetPlaceholder?:string;
+    houseNumberLabel?:string;
+    houseNumberPlaceholder?:string;
+    zipCodeLabel?:string;
+    zipCodePlaceholder?:string;
+    cityLabel?:string;
+    postalcodePlaceholder?:string;
+    cityPlaceholder?:string;
+    cities?: SelectOptionTypeString[];
+    addressErrorRequired?:string;
+    streetLabelErrorMax?:string;
+    streetLabelErrorRequired?:string;
+    streetLabelErrorPattern?:string;
+    houseNumberErrorMax?:string;
+    houseNumberErrorRequired?:string;
+    houseNumberErrorPattern?:string;
+    zipCodeErrorMax?:string;
+    zipCodeErrorRequired?:string;
+    zipCodeErrorPattern?:string;
+    zipCodeErrorMin?:string;
+    cityErrorMax?:string;
+    cityErrorRequired?:string;
+    enterAddressManually?: string;
+    keyInAddress?: string;
+    saveAddress?: string;
+    addressKeyInText?:string;
+    emailAddressAlreadyExistMsg?: string;
+
+    
     linkCTALabel?: string;
     buttonCTALabel?: string;
     ctaContinueLabel?: string;
+    ctaSkipLabel?: string;
     orTextLabel?: string;
   }

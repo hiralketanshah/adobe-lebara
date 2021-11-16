@@ -32,10 +32,33 @@ export interface PortInOptionsFields {
   label: string;
   value: string;
 }
-export interface FormFields extends BaseFormFields {
-  portInOptions: PortInOptionsFields[];
+export interface CurrentProviderListFields {
+  name: string;
+  value: string;
 }
-
+export interface FormFields extends BaseFormFields {
+  portInNumberLabel?: string;
+  portInNumberPlaceHolder?: string;
+  consentPreviewText?: string;
+  consentDescription?: string;
+  portingNumberLabel?: string;
+  portInOptions: PortInOptionsFields[];
+  currentProviderList: CurrentProviderListFields[];
+  currentProviderHelperText?: string;
+  currentProviderLabel?: string;
+  currentProviderPlaceholder?: string;
+  currentProviderInfoDescription?: string;
+  currentProviderInfoLinkLabel?: string;
+  currentProviderInfoLinkURL?: string;
+  currentProviderUsageAcceptanceLabel?: string;
+  currentProviderAdvertisingAcceptanceLabel?: string;
+  currentProviderAdvertisingPreviewText?: string;
+  exitingPhoneHelperLabel?: string;
+  linkCTALabel?: string;
+  buttonCTALabel?: string;
+  ctaContinueLabel?: string;
+  orTextLabel?: string;
+}
 export interface PostpaidDetailsErrors {
   email?: string;
   firstName?: string;
@@ -53,7 +76,6 @@ export interface PostpaidDetailsErrors {
 }
 
 export interface PostpaidPersonalDetailsProps {
-  pageTitle?: string;
   heading?:string;
   validationMessages: ValidationMessages;
   frmFields: FormFields;
