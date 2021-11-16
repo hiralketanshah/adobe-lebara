@@ -42,7 +42,7 @@ const PostpaidPersonalDetails: React.FC<PostpaidPersonalDetailsProps> = ({
   const history = useHistory();
   const [validateEmailSps, { data: validateEmailSpsResult }] = useLazyQuery(VALIDATE_EMAIL_SPS);
   const [isPaymentDialogOpen, setIsPaymentDialogOpen] = useState(false);
-  const [isManualAddress, setIsManualAddress] = useState(false);
+  // const [isManualAddress, setIsManualAddress] = useState(false);
 
   const dynamicFormikValidate = (values: any) => postpaidPersonalDetailsValidation(values, validationMessages);
 
@@ -90,7 +90,7 @@ const PostpaidPersonalDetails: React.FC<PostpaidPersonalDetailsProps> = ({
             });
         }}
       >
-        {({ handleSubmit, values, errors, dirty }) => {
+        {({ handleSubmit, values, errors, dirty, touched }) => {
           const isExistingUser = errors.email === "exists";
           const disabledInputProps = {
             inputProps: {

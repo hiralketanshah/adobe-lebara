@@ -1,5 +1,4 @@
 import React from "react";
-import { Box, Text } from "@chakra-ui/react";
 import PersonalDetailsForm from "./PersonalDetailsForm";
 import SelectNumberAndOrderDetailsLayout from "../../layouts/SelectNumberAndOrderDetailsLayout";
 import { PersonalDetailsFormProps } from "./types";
