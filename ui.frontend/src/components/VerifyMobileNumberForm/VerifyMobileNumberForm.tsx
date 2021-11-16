@@ -108,7 +108,7 @@ const VerifyMobileNumberForm: React.FC<VerifyMobileNumberFormProps> = ({
                   lineHeight="22px"
                   textAlign="left"
                 >
-                  {successMessages.otpSentSuccessfullyMsg} {updatedMobileNumber}
+                  {successMessages?.otpSentSuccessfullyMsg} {updatedMobileNumber}
                 </AlertDescription>
               </Box>
               <CloseButton
@@ -172,7 +172,7 @@ const VerifyMobileNumberForm: React.FC<VerifyMobileNumberFormProps> = ({
             </Button>
           </Box>
           <Input
-            label="Verification Code"
+            label={frmFields.verifyCodeLabel}
             fontWeight="bold"
             fontSize="20px"
             lineHeight="32px"
@@ -204,7 +204,7 @@ const VerifyMobileNumberForm: React.FC<VerifyMobileNumberFormProps> = ({
                   lineHeight="14.06px"
                   color="#24AD7A"
                 >
-                  {timeCounter.label1}
+                  {timeCounter?.label1}
                 </Text>
                 &nbsp;
                 <Text
@@ -213,7 +213,7 @@ const VerifyMobileNumberForm: React.FC<VerifyMobileNumberFormProps> = ({
                   lineHeight="14.06px"
                   color="black"
                 >
-                  {timeCounter.label2}: {counter}
+                  {timeCounter?.label2}: {counter}
                 </Text>
               </Box>
             ) : (
