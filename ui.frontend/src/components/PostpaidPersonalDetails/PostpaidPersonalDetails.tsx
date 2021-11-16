@@ -24,7 +24,6 @@ import FormikSelect from "../Formik/FormikSelect/FormikSelect";
 import InfoBox from "../InfoBox/InfoBox";
 import TextWithMoreButton from "../TextWithMoreButton/TextWithMoreButton";
 import PaymentDialog from "../PaymentDialog/PaymentDialog";
-import { HiOutlineExclamation } from "react-icons/all";
 import VALIDATE_EMAIL_SPS from "../../graphql/VALIDATE_EMAIL_SPS";
 // import AddressCard from "../AddressCard/AddressCard";
 
