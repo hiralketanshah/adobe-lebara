@@ -24,6 +24,7 @@ import FormikSelect from "../Formik/FormikSelect/FormikSelect";
 import InfoBox from "../InfoBox/InfoBox";
 import TextWithMoreButton from "../TextWithMoreButton/TextWithMoreButton";
 import PaymentDialog from "../PaymentDialog/PaymentDialog";
+import { HiOutlineExclamation } from "react-icons/all";
 import VALIDATE_EMAIL_SPS from "../../graphql/VALIDATE_EMAIL_SPS";
 // import AddressCard from "../AddressCard/AddressCard";
 
@@ -42,7 +43,7 @@ const PostpaidPersonalDetails: React.FC<PostpaidPersonalDetailsProps> = ({
   const history = useHistory();
   const [validateEmailSps, { data: validateEmailSpsResult }] = useLazyQuery(VALIDATE_EMAIL_SPS);
   const [isPaymentDialogOpen, setIsPaymentDialogOpen] = useState(false);
-  const [isManualAddress, setIsManualAddress] = useState(false);
+  // const [isManualAddress, setIsManualAddress] = useState(false);
 
   const dynamicFormikValidate = (values: any) => postpaidPersonalDetailsValidation(values, validationMessages);
 
@@ -90,7 +91,7 @@ const PostpaidPersonalDetails: React.FC<PostpaidPersonalDetailsProps> = ({
             });
         }}
       >
-        {({ handleSubmit, values, errors, dirty }) => {
+        {({ handleSubmit, values, errors, dirty, touched }) => {
           const isExistingUser = errors.email === "exists";
           const disabledInputProps = {
             inputProps: {
@@ -201,6 +202,30 @@ const PostpaidPersonalDetails: React.FC<PostpaidPersonalDetailsProps> = ({
                     />
                   </Flex>
                 </Box>
+                {touched.day && errors.day && (
+                  <Flex color="unsuccessful">
+                    <HiOutlineExclamation size={20} color="lebaraRed" />
+                    <Text paddingLeft="7px" noOfLines={1} fontSize={14}>
+                      {errors.day}
+                    </Text>
+                  </Flex>
+                )}
+                {touched.month && errors.month && (
+                  <Flex color="unsuccessful">
+                    <HiOutlineExclamation size={20} color="lebaraRed" />
+                    <Text paddingLeft="7px" noOfLines={1} fontSize={14}>
+                      {errors.month}
+                    </Text>
+                  </Flex>
+                )}
+                {touched.year && errors.year && (
+                  <Flex color="unsuccessful">
+                    <HiOutlineExclamation size={20} color="lebaraRed" />
+                    <Text paddingLeft="7px" noOfLines={1} fontSize={14}>
+                      {errors.year}
+                    </Text>
+                  </Flex>
+                )}
                 <FormikAddressSearch
                   name="shippingAddress"
                   label={frmFields.shippingLabel}

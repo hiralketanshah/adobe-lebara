@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { IoChevronForwardSharp } from "react-icons/all";
 import {
   Flex,
-  FormControl,
   FormLabel,
   Text,
 } from "@chakra-ui/react";
