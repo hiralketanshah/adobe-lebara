@@ -17,6 +17,7 @@ export interface ValidationMessages extends BaseValidationMessages {
 export interface VerifyMobileNumberFormProps  {
   heading?: string;
   subHeading?: string;
+  initalCountdownValue?: string;
   validationMessages?: ValidationMessages;
   frmFields: FormFields;
   successMessages?: {
