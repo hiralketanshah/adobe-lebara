@@ -1,4 +1,5 @@
-import { SelectOptionTypeString } from '../Select/types';
+import { BaseFormFields } from "../Formik/types";
+import { BaseValidationMessages } from "../Formik/validations/types";
 
 type PortInStatus = "No" | "Yes" | "ExistingPhone";
 export interface PostpaidDetails {
@@ -22,21 +23,7 @@ export interface PostpaidDetails {
   portInConditionsAccepted?: boolean;
 }
 
-export interface ValidationMessages {
-  emailRequiredMsg?: string;
-  emailInValidMsg?: string;
-  fNameRequiredMsg?: string;
-  fNameInValidMsg?: string;
-  lNameRequiredMsg?: string;
-  lNameInValidMsg?: string;
-  dayRequiredMsg?: string;
-  dayInValidMsg?: string;
-  monthRequiredMsg?: string;
-  monthInValidMsg?: string;
-  yearRequiredMsg?: string;
-  yearInValidMsg?: string;
-  yearInvalidAgeMsg?: string;
-  shippingRequiredMsg?: string;
+export interface ValidationMessages extends BaseValidationMessages {
   portInNumberRequiredMsg?: string;
   portInNumberInValidMsg?: string;
   currentProviderRequiredMsg?: string;
@@ -49,51 +36,7 @@ export interface CurrentProviderListFields {
   name: string;
   value: string;
 }
-export interface FormFields {
-  emailLabel?: string;
-  emailPlaceholder?: string;
-  fNameLabel?: string;
-  fnamePlaceholder?: string;
-  lNameLabel?: string;
-  lNamePlaceholder?: string;
-  dobLabel?: string;
-  dayLabel?: string;
-  dayPalceholder?: string;
-  monthLabel?: string;
-  monthPlaceholder?: string;
-  yearLabel?: string;
-  yearPlaceholder?: string;
-  shippingLabel?: string;
-  shippingPlaceholder?: string;
-  streetLabel: string;
-  streetPlaceholder:string;
-  houseNumberLabel:string;
-  houseNumberPlaceholder:string;
-  zipCodeLabel:string;
-  zipCodePlaceholder:string;
-  cityLabel:string;
-  postalcodePlaceholder:string;
-  cityPlaceholder:string;
-  cities: SelectOptionTypeString[];
-  addressErrorRequired:string;
-  streetLabelErrorMax:string;
-  streetLabelErrorRequired:string;
-  streetLabelErrorPattern:string;
-  houseNumberErrorMax:string;
-  houseNumberErrorRequired:string;
-  houseNumberErrorPattern:string;
-  zipCodeErrorMax:string;
-  zipCodeErrorRequired:string;
-  zipCodeErrorPattern:string;
-  zipCodeErrorMin:string;
-  cityErrorMax:string;
-  cityErrorRequired:string;
-  enterAddressManually: string;
-  keyInAddress: string;
-  saveAddress: string;
-  addressKeyInText:string;
-  emailAddressAlreadyExistMsg?: string;
-
+export interface FormFields extends BaseFormFields {
   portInNumberLabel?: string;
   portInNumberPlaceHolder?: string;
   consentPreviewText?: string;
@@ -116,7 +59,6 @@ export interface FormFields {
   ctaContinueLabel?: string;
   orTextLabel?: string;
 }
-
 export interface PostpaidDetailsErrors {
   email?: string;
   firstName?: string;

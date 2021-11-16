@@ -1,6 +1,5 @@
 import { TabProps } from "@chakra-ui/react";
 import { IconType } from "react-icons/lib";
-
 export interface LoginFormSchema {
     email?: string;
     password?: string;
