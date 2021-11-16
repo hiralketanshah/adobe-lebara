@@ -27,7 +27,6 @@ public class PageInfo extends Link {
 
     @PostConstruct
     private void init() {
-        PageInfo pageInfo = new PageInfo();
         Page page = resourceResolver.getResource(link).adaptTo(Page.class);
         if (page != null) {
             description = page.getDescription();
