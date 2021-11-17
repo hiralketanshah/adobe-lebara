@@ -51,6 +51,7 @@ const PostpaidPersonalDetails: React.FC<PostpaidPersonalDetailsProps> = ({
       <PaymentDialog
         isOpen={isPaymentDialogOpen}
         onClose={() => setIsPaymentDialogOpen(false)}
+        isPostpaid={true}
       />
       <Formik
         initialValues={{
