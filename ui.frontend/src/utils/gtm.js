@@ -1,24 +1,56 @@
 import { glocalConfigs as GC } from "../GlobalConfigs";
-
 export function googleAnalytics(event, obj) {
-  return event
-    ? window?.dataLayer?.push({
+   event
+    ? window?.dataLayer.push({
         event,
         ecommerce: obj,
       })
     : window?.dataLayer.push(obj);
 }
-export function googleAnalyticsCheckout(step) {
-  return window?.dataLayer?.push({
-    event: "EEcheckout",
-    ecommerce: {
-      checkout: {
-        actionField: { step },
+export function googleAnalyticsCheckout(step, cartItems) {
+  const products = cartItems?.map((product) => ({
+    id: product?.id,
+    name: product?.duration,
+    price: product?.price,
+    brand: "Lebara", //  Constant
+    category: `${
+      product?.isPrepaid || product?.isPostPaid
+        ? "plan"
+        : product?.isFreeSim
+        ? "sim"
+        : product?.isTopUp
+        ? "topup"
+        : "bolton"
+    }/${product?.duration}///${
+      product?.isPrepaid || product?.isPostPaid
+        ? product.details[1]
+        : product?.isAddon === "addon"
+        ? product.details[1]
+        : ""
+    }`,
+    variant: "DE",
+    quantity: 1,
+  }));
+  try {
+    return window?.dataLayer.push({
+      event: "EEcheckout",
+      ecommerce: {
+        checkout: {
+          actionField: { step },
+          products,
+        },
       },
-    },
-  });
+    });
+  } catch (err) {
+    return null;
+  }
 }
-export function googleAnalyticsTransaction(products, orderId, voucherCode) {
+export function googleAnalyticsTransaction(
+  products,
+  orderId,
+  voucherCode,
+  paymentMethod
+) {
   let totalPrice = 0.0;
   let isAnyFreeSim = false;
   const transactionProducts = products?.map((product) => {
@@ -59,6 +91,7 @@ export function googleAnalyticsTransaction(products, orderId, voucherCode) {
           shipping: "0", // constant leave as 0
           coupon: voucherCode, // if a coupon code was used for this order
           dimension15: isAnyFreeSim ? "FreeSim" : "NoSim",
+          dimension16: paymentMethod,
         },
         products: transactionProducts,
       },

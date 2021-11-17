@@ -10,10 +10,12 @@ import org.apache.sling.models.annotations.injectorspecific.ChildResource;
 import org.apache.sling.models.annotations.injectorspecific.SlingObject;
 import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
 import com.adobe.cq.dam.cfm.ContentFragment;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.lebara.core.utils.AemUtils;
 import com.lebara.core.utils.CFUtils;
 
+@JsonInclude(JsonInclude.Include.NON_NULL)
 @Model(adaptables = {Resource.class}, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
 public class PostpaidPersonalDetailsFormFields {
 	
@@ -179,6 +181,15 @@ public class PostpaidPersonalDetailsFormFields {
     
     @ValueMapValue
     public String saveAddress;
+    
+    @ValueMapValue
+    public String mobileLabel;
+    
+    @ValueMapValue
+    public String mobilePlaceholder;
+    
+    @ValueMapValue
+    public String verifyCodeLabel;
 
 
     public String getEmailLabel() {
@@ -309,21 +320,21 @@ public class PostpaidPersonalDetailsFormFields {
         return consentPreviewText;
     }
 
-	public String getShippingHelperText() {
-		return shippingHelperText;
-	}
+    public String getShippingHelperText() {
+        return shippingHelperText;
+    }
 
-	public String getRadioNoThanks() {
-		return radioNoThanks;
-	}
+    public String getRadioNoThanks() {
+        return radioNoThanks;
+    }
 
-	public String getRadioPortIn() {
-		return radioPortIn;
-	}
+    public String getRadioPortIn() {
+        return radioPortIn;
+    }
 
-	public String getRadioUseLebaraSim() {
-		return radioUseLebaraSim;
-	}
+    public String getRadioUseLebaraSim() {
+        return radioUseLebaraSim;
+    }
     public String getKeyInAddress() {
         return keyInAddress;
     }
@@ -375,19 +386,33 @@ public class PostpaidPersonalDetailsFormFields {
     public String getSaveAddress() {
         return saveAddress;
     }
-    
+
     public String getCurrentProviderAdvertisingPreviewText() {
-		return currentProviderAdvertisingPreviewText;
-	}
+        return currentProviderAdvertisingPreviewText;
+    }
+
+    public String getMobileLabel() {
+        return mobileLabel;
+    }
+
+    public String getMobilePlaceholder() {
+        return mobilePlaceholder;
+    }
+
+    public String getVerifyCodeLabel() {
+        return verifyCodeLabel;
+    }
 
     @JsonProperty("portInOptions")
     public List<SelectOption> getPortInOptionArray() {
         List<SelectOption> options = new ArrayList<>();
-        for (Resource item : portInOptions.getChildren()) {
-            SelectOption option = new SelectOption();
-            option.setLabel(AemUtils.getStringProperty(item, LABEL));
-            option.setValue(AemUtils.getStringProperty(item, VALUE));
-            options.add(option);
+        if(portInOptions != null) {
+        	for (Resource item : portInOptions.getChildren()) {
+                SelectOption option = new SelectOption();
+                option.setLabel(AemUtils.getStringProperty(item, LABEL));
+                option.setValue(AemUtils.getStringProperty(item, VALUE));
+                options.add(option);
+            }
         }
         return options;
     }

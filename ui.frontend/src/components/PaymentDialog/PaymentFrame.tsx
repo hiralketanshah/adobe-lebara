@@ -11,7 +11,7 @@ import { setPaymentMethods } from "../../redux/actions/paymentMethodsActions";
 import {globalConfigs, globalConstants} from  '../../GlobalConfigs.js';
 import { googleAnalyticsCheckout } from "../../utils/gtm";
 
-const PaymentFrame: React.FC = () => {
+const PaymentFrame: React.FC<{isPostpaid?: boolean}> = ({isPostpaid}) => {
   const [address, setAddress] = useState<string>("");
   const dispatch = useDispatch();
   const loadPaymentMethods = useCallback(() => {
@@ -47,7 +47,7 @@ const PaymentFrame: React.FC = () => {
   const voucherCode = useSelector(
     (state: ReduxState) => state.voucher.voucherCode
   );
-  const isPostPaid = location.pathname.startsWith("/postpaid");
+  const isPostPaid = !!isPostpaid;
   // For postpaid only show SEPA
   if (isPostPaid && paymentMethods) {
     paymentMethods = {
