@@ -8,13 +8,20 @@ const LbSectionIntro: React.FC<CompProps> = ({
   sectionHeading, 
   sectionSubHeading, 
   description,
-  link,
+  linkPath,
+  linkLabel,
   noPadding }) => {
   
   const linkStyles = {
     fontSize: "14px",
     letterSpacing: "0.01em",
     fontWeight: "bold",
+  };
+
+  const link = {
+    children: linkLabel,
+    href: linkLabel,
+    color:"#ff3182"
   };
   
   return (
@@ -62,7 +69,7 @@ const LbSectionIntro: React.FC<CompProps> = ({
               >
                 {description}
               </Text>
-              {link && link?.href && <Link marginBottom="20px" {...linkStyles} {...link} />}
+              {linkLabel && linkPath && <Link marginBottom="20px" {...linkStyles} {...link} />}
             </Box>
           )}
         </Flex>
