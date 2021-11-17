@@ -142,17 +142,17 @@ const VerifyMobileNumberForm: React.FC<VerifyMobileNumberFormProps> = ({
       </Box>
       <Box mt="2em">
         <Input
-          label={frmFields.emailLabel}
+          label={frmFields?.emailLabel}
           type="email"
-          placeholder={frmFields.emailPlaceholder}
+          placeholder={frmFields?.emailPlaceholder}
           mb="26px"
           onChange={handleEmailAddressChange}
         />
       </Box>
 
       <Input
-        label={frmFields.mobileLabel}
-        placeholder={frmFields.mobilePlaceHolder}
+        label={frmFields?.mobileLabel}
+        placeholder={frmFields?.mobilePlaceHolder}
         type="number"
         onChange={handleMobileNumberChange}
         value={updatedMobileNumber}
@@ -169,11 +169,11 @@ const VerifyMobileNumberForm: React.FC<VerifyMobileNumberFormProps> = ({
               onClick={onEditMobileNumberClick}
               fontWeight="400"
             >
-              {frmFields.ctaEditMobileLabel}
+              {frmFields?.ctaEditMobileLabel}
             </Button>
           </Box>
           <Input
-            label={frmFields.verifyCodeLabel}
+            label={frmFields?.verifyCodeLabel}
             fontWeight="bold"
             fontSize="20px"
             lineHeight="32px"
@@ -194,7 +194,7 @@ const VerifyMobileNumberForm: React.FC<VerifyMobileNumberFormProps> = ({
               fontWeight="300"
               lineHeight="14.06px"
             >
-              {frmFields.ctaResendVerificationLabel}
+              {frmFields?.ctaResendVerificationLabel}
             </Button>
             {counter !== 0 ? (
               <Box pt="1em" display="flex">
@@ -233,7 +233,7 @@ const VerifyMobileNumberForm: React.FC<VerifyMobileNumberFormProps> = ({
           onClick={handleVerifyMobileNumberClick}
           marginTop="2.5em"
         >
-        {frmFields.ctaVerifyMobileLabel}
+        {frmFields?.buttonCTALabel}
         </Button>
       ) : (
         <Button
@@ -242,7 +242,7 @@ const VerifyMobileNumberForm: React.FC<VerifyMobileNumberFormProps> = ({
           disabled={!continueButtonEnabled}
           onClick={handleVerifyContinueClick}
         >
-          {frmFields.ctaContinueLabel}
+          {frmFields?.ctaContinueLabel}
         </Button>
       )}
 
@@ -255,7 +255,7 @@ const VerifyMobileNumberForm: React.FC<VerifyMobileNumberFormProps> = ({
             color="#EA4984"
             fontWeight="400"
           >
-            {frmFields.ctaSkipLabel}
+            {frmFields?.ctaSkipLabel}
           </Text>
         </Box>
       ) : (
