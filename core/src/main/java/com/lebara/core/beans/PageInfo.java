@@ -3,6 +3,7 @@ package com.lebara.core.beans;
 import com.day.cq.wcm.api.Page;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.lebara.core.models.Link;
+import com.lebara.core.utils.AemUtils;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.api.resource.ResourceResolver;
 import org.apache.sling.models.annotations.DefaultInjectionStrategy;
@@ -27,7 +28,7 @@ public class PageInfo extends Link {
         Page page = resourceResolver.getResource(link).adaptTo(Page.class);
         if (page != null) {
             description = page.getDescription();
-            title = page.getTitle();
+            title = AemUtils.getTitle(page);
         }
     }
 
