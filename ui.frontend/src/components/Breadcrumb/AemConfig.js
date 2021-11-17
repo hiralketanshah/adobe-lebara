@@ -4,7 +4,7 @@ import LebaraBreadcrumb from "./LebaraBreadcrumb";
 const LebaraBreadcrumbConfig = {
   emptyLabel: "Breadcrumb Component",
   isEmpty: function (props) {
-    return !props.title;
+    return !props || !props.items;
   },
 };
 
