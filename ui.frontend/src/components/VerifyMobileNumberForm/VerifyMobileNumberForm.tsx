@@ -233,7 +233,7 @@ const VerifyMobileNumberForm: React.FC<VerifyMobileNumberFormProps> = ({
           onClick={handleVerifyMobileNumberClick}
           marginTop="2.5em"
         >
-        {frmFields?.ctaVerifyMobileLabel}
+        {frmFields?.buttonCTALabel}
         </Button>
       ) : (
         <Button
