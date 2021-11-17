@@ -62,3 +62,4 @@ import "./PostpaidPersonalDetails/AemConfig.js";
 import "./PromotionBanner/AemConfig.js";
 import "./VerifyMobileNumberForm/AemConfig.js";
 import "./Breadcrumb/AemConfig.js";
+import "./LbIntro/AemConfig.js";
