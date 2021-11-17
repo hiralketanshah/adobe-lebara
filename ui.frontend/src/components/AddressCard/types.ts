@@ -1,4 +1,4 @@
-import {SelectOption} from '../Select/types';
+import { SelectOptionTypeString } from '../Select/types';
 
 export interface AddressCardProps {
   title?: string;
@@ -12,6 +12,7 @@ export interface AddressCardProps {
   padding?: boolean;
   formikForm?: any;
   onSetManual?: () => void;
+  addressLabel?: string;
   streetLabel:string;
   streetPlaceholder:string;
   houseNumberLabel:string;
@@ -21,10 +22,12 @@ export interface AddressCardProps {
   cityLabel:string;
   postalcodePlaceholder:string;
   cityPlaceholder:string;
-  cities:SelectOption[];
+  cities:SelectOptionTypeString[];
   enterAddressManually: string;
-  keyInAddress: string;
+  keyInAddress?: string;
   saveAddress: string;
+  postalCodeText: string;
+  country?: string;
 }
 
 export type AddressStatus =

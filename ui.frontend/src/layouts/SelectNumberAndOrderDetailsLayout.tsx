@@ -31,6 +31,7 @@ const SelectNumberAndOrderDetailsLayout: React.FC<SelectNumberAndOrderDetailsLay
           py="13px"
           justifyContent="space-between"
           alignItems="center"
+          display={{ base: "block", md: "none" }}
         >
           {selectedProduct && !selectedProduct.isPostPaid && (
             <>
@@ -51,6 +52,7 @@ const SelectNumberAndOrderDetailsLayout: React.FC<SelectNumberAndOrderDetailsLay
                 fontSize="18px"
                 color="white"
                 whiteSpace="pre-line"
+                fontFamily="Chiswick Grotesque Lebara"
               >
                 {selectedProduct?.product} <br />
               </Text>
@@ -82,7 +84,7 @@ const SelectNumberAndOrderDetailsLayout: React.FC<SelectNumberAndOrderDetailsLay
             </>
           )}
         </Flex>
-        <Box backgroundColor="lightenPrimary.50" px="20px" pt="15px" pb="15px">
+        <Box>
           {heading && (
             <Text
               as="h3"
@@ -94,14 +96,8 @@ const SelectNumberAndOrderDetailsLayout: React.FC<SelectNumberAndOrderDetailsLay
               {heading}
             </Text>
           )}
-          <Center>
-            <Box
-              maxW="850px"
-              w="100%"
-              bg={{ lg: "white" }}
-              px={{ lg: "60px" }}
-              my={{ lg: "20px" }}
-            >
+          <Center px="20px">
+          <Box maxW="846px" w="100%" my={{ lg: "20px" }}>
               {children}
             </Box>
           </Center>

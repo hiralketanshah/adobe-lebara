@@ -4,7 +4,6 @@
     <jcr:content
         cq:designPath="/libs/settings/wcm/designs/default"
         cq:lastModified="{Date}2021-10-28T10:22:48.634+05:30"
-        cq:lastModifiedBy="admin"
         cq:template="/libs/cq/workflow/templates/model"
         jcr:primaryType="cq:PageContent"
         jcr:title="Lebara Content Validation Workflow"
@@ -15,10 +14,8 @@
             sling:resourceType="foundation/components/parsys">
             <initiatorparticipant
                 jcr:created="{Date}2021-10-26T11:18:15.106+05:30"
-                jcr:createdBy="admin"
                 jcr:description="A sample participant chooser that chooses the workflow initiator as participant."
                 jcr:lastModified="{Date}2021-10-27T10:52:58.728+05:30"
-                jcr:lastModifiedBy="admin"
                 jcr:primaryType="nt:unstructured"
                 jcr:title="Content author -Initiator"
                 sling:resourceType="cq/workflow/components/workflow/initiatorparticipantchooser">
@@ -29,10 +26,8 @@
             </initiatorparticipant>
             <process
                 jcr:created="{Date}2021-10-27T10:41:36.308+05:30"
-                jcr:createdBy="admin"
                 jcr:description="Send Email to Relevance Checker"
                 jcr:lastModified="{Date}2021-10-28T10:22:48.523+05:30"
-                jcr:lastModifiedBy="admin"
                 jcr:primaryType="nt:unstructured"
                 jcr:title="Send Email to Relevance Checker"
                 sling:resourceType="cq/workflow/components/model/process">
@@ -44,9 +39,7 @@
             </process>
             <participant
                 jcr:created="{Date}2021-10-26T09:09:12.979+05:30"
-                jcr:createdBy="admin"
                 jcr:lastModified="{Date}2021-10-27T11:03:49.395+05:30"
-                jcr:lastModifiedBy="admin"
                 jcr:primaryType="nt:unstructured"
                 jcr:title="Relevance Checker"
                 sling:resourceType="cq/workflow/components/model/participant">
@@ -56,9 +49,7 @@
             </participant>
             <or
                 jcr:created="{Date}2021-10-26T09:11:10.998+05:30"
-                jcr:createdBy="admin"
                 jcr:lastModified="{Date}2021-10-26T09:13:24.705+05:30"
-                jcr:lastModifiedBy="admin"
                 jcr:primaryType="nt:unstructured"
                 sling:resourceType="cq/workflow/components/model/or"
                 branches="2"
@@ -71,9 +62,7 @@
                     sling:resourceType="cq/flow/components/parsys">
                     <process_copy
                         jcr:created="{Date}2021-10-27T10:41:36.308+05:30"
-                        jcr:createdBy="admin"
                         jcr:lastModified="{Date}2021-10-28T10:17:14.644+05:30"
-                        jcr:lastModifiedBy="admin"
                         jcr:primaryType="nt:unstructured"
                         jcr:title="Send Email to Tonality Checker"
                         sling:resourceType="cq/workflow/components/model/process">
@@ -85,9 +74,7 @@
                     </process_copy>
                     <participant
                         jcr:created="{Date}2021-10-26T09:13:47.443+05:30"
-                        jcr:createdBy="admin"
                         jcr:lastModified="{Date}2021-10-27T11:53:10.373+05:30"
-                        jcr:lastModifiedBy="admin"
                         jcr:primaryType="nt:unstructured"
                         jcr:title="Tonality Checker"
                         sling:resourceType="cq/workflow/components/model/participant">
@@ -98,9 +85,7 @@
                     </participant>
                     <or
                         jcr:created="{Date}2021-10-26T11:18:49.155+05:30"
-                        jcr:createdBy="admin"
                         jcr:lastModified="{Date}2021-10-26T11:28:34.921+05:30"
-                        jcr:lastModifiedBy="admin"
                         jcr:primaryType="nt:unstructured"
                         jcr:title="Lonality Checker Approval/Rejection"
                         sling:resourceType="cq/workflow/components/model/or"
@@ -114,9 +99,7 @@
                             sling:resourceType="cq/flow/components/parsys">
                             <process_copy_copy
                                 jcr:created="{Date}2021-10-27T10:41:36.308+05:30"
-                                jcr:createdBy="admin"
                                 jcr:lastModified="{Date}2021-10-28T10:18:02.781+05:30"
-                                jcr:lastModifiedBy="admin"
                                 jcr:primaryType="nt:unstructured"
                                 jcr:title="Send Email to SEO Checker"
                                 sling:resourceType="cq/workflow/components/model/process">
@@ -128,9 +111,7 @@
                             </process_copy_copy>
                             <participant
                                 jcr:created="{Date}2021-10-26T11:20:16.278+05:30"
-                                jcr:createdBy="admin"
                                 jcr:lastModified="{Date}2021-10-28T10:17:47.171+05:30"
-                                jcr:lastModifiedBy="admin"
                                 jcr:primaryType="nt:unstructured"
                                 jcr:title="SEO Checker"
                                 sling:resourceType="cq/workflow/components/model/participant">
@@ -141,9 +122,7 @@
                             </participant>
                             <process_copy_copy_co
                                 jcr:created="{Date}2021-10-27T10:41:36.308+05:30"
-                                jcr:createdBy="admin"
                                 jcr:lastModified="{Date}2021-10-28T10:18:37.351+05:30"
-                                jcr:lastModifiedBy="admin"
                                 jcr:primaryType="nt:unstructured"
                                 jcr:title="Send Email to Translation Checker"
                                 sling:resourceType="cq/workflow/components/model/process">
@@ -155,9 +134,7 @@
                             </process_copy_copy_co>
                             <participant_1772220616
                                 jcr:created="{Date}2021-10-26T11:25:05.136+05:30"
-                                jcr:createdBy="admin"
                                 jcr:lastModified="{Date}2021-10-27T11:04:59.893+05:30"
-                                jcr:lastModifiedBy="admin"
                                 jcr:primaryType="nt:unstructured"
                                 jcr:title="Translation Checker"
                                 sling:resourceType="cq/workflow/components/model/participant">
@@ -168,9 +145,7 @@
                             </participant_1772220616>
                             <or
                                 jcr:created="{Date}2021-10-26T11:26:09.233+05:30"
-                                jcr:createdBy="admin"
                                 jcr:lastModified="{Date}2021-10-26T11:27:05.051+05:30"
-                                jcr:lastModifiedBy="admin"
                                 jcr:primaryType="nt:unstructured"
                                 sling:resourceType="cq/workflow/components/model/or"
                                 branches="2"
@@ -183,10 +158,8 @@
                                     sling:resourceType="cq/flow/components/parsys">
                                     <createversionprocess
                                         jcr:created="{Date}2021-10-27T10:06:47.529+05:30"
-                                        jcr:createdBy="admin"
                                         jcr:description="A process to create a version for either a page or an asset."
                                         jcr:lastModified="{Date}2021-10-27T10:07:10.156+05:30"
-                                        jcr:lastModifiedBy="admin"
                                         jcr:primaryType="nt:unstructured"
                                         jcr:title="Create Version of page"
                                         sling:resourceType="wcm/workflow/components/workflow/createversionprocess">
@@ -197,10 +170,8 @@
                                     </createversionprocess>
                                     <activateresourceproc
                                         jcr:created="{Date}2021-10-27T10:15:46.697+05:30"
-                                        jcr:createdBy="admin"
                                         jcr:description="A process to activate a page or asset"
                                         jcr:lastModified="{Date}2021-10-27T10:15:59.334+05:30"
-                                        jcr:lastModifiedBy="admin"
                                         jcr:primaryType="nt:unstructured"
                                         jcr:title="Activate Page/Asset"
                                         sling:resourceType="wcm/workflow/components/workflow/activateresourceprocess">
@@ -211,9 +182,7 @@
                                     </activateresourceproc>
                                     <process_copy_copy_co
                                         jcr:created="{Date}2021-10-27T10:41:36.308+05:30"
-                                        jcr:createdBy="admin"
                                         jcr:lastModified="{Date}2021-10-28T10:20:43.188+05:30"
-                                        jcr:lastModifiedBy="admin"
                                         jcr:primaryType="nt:unstructured"
                                         jcr:title="Send Email to Content Author"
                                         sling:resourceType="cq/workflow/components/model/process">
@@ -229,10 +198,8 @@
                                     sling:resourceType="cq/flow/components/parsys">
                                     <goto
                                         jcr:created="{Date}2021-10-27T10:12:45.131+05:30"
-                                        jcr:createdBy="admin"
                                         jcr:description="Goto Step"
                                         jcr:lastModified="{Date}2021-10-27T10:13:29.637+05:30"
-                                        jcr:lastModifiedBy="admin"
                                         jcr:primaryType="nt:unstructured"
                                         jcr:title="Revert to Content Author"
                                         sling:resourceType="cq/workflow/components/model/goto">
@@ -250,10 +217,8 @@
                             sling:resourceType="cq/flow/components/parsys">
                             <goto
                                 jcr:created="{Date}2021-10-26T12:17:29.326+05:30"
-                                jcr:createdBy="admin"
                                 jcr:description="Goto Step"
                                 jcr:lastModified="{Date}2021-10-27T10:52:05.988+05:30"
-                                jcr:lastModifiedBy="admin"
                                 jcr:primaryType="nt:unstructured"
                                 jcr:title="Revert to Content Author"
                                 sling:resourceType="cq/workflow/components/model/goto">
@@ -271,10 +236,8 @@
                     sling:resourceType="cq/flow/components/parsys">
                     <deletenodeprocess
                         jcr:created="{Date}2021-10-27T10:10:06.552+05:30"
-                        jcr:createdBy="admin"
                         jcr:description="A process to delete the given payload node"
                         jcr:lastModified="{Date}2021-10-27T10:10:23.477+05:30"
-                        jcr:lastModifiedBy="admin"
                         jcr:primaryType="nt:unstructured"
                         jcr:title="Delete Page"
                         sling:resourceType="cq/workflow/components/workflow/deletenodeprocess">
@@ -285,9 +248,7 @@
                     </deletenodeprocess>
                     <process_copy_copy
                         jcr:created="{Date}2021-10-27T10:41:36.308+05:30"
-                        jcr:createdBy="admin"
                         jcr:lastModified="{Date}2021-10-28T10:20:55.384+05:30"
-                        jcr:lastModifiedBy="admin"
                         jcr:primaryType="nt:unstructured"
                         jcr:title="Send Email to Content Author"
                         sling:resourceType="cq/workflow/components/model/process">

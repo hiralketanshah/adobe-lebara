@@ -2,25 +2,17 @@ package com.lebara.core.models;
 
 import com.adobe.cq.export.json.ComponentExporter;
 import com.adobe.cq.export.json.ExporterConstants;
-import com.day.cq.i18n.I18n;
-import com.lebara.core.dto.CFAllowance;
-import com.lebara.core.dto.OfferFragmentBean;
 import com.lebara.core.utils.AemUtils;
-import com.lebara.core.utils.CFUtils;
-import org.apache.commons.collections.CollectionUtils;
-import org.apache.commons.collections.ListUtils;
-import org.apache.commons.lang3.StringUtils;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.api.resource.ResourceResolver;
 import org.apache.sling.models.annotations.DefaultInjectionStrategy;
 import org.apache.sling.models.annotations.Exporter;
 import org.apache.sling.models.annotations.Model;
+import org.apache.sling.models.annotations.injectorspecific.ChildResource;
 import org.apache.sling.models.annotations.injectorspecific.ScriptVariable;
 import org.apache.sling.models.annotations.injectorspecific.SlingObject;
 import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
-
-import javax.annotation.PostConstruct;
 import java.util.*;
 
 @Model(adaptables = SlingHttpServletRequest.class, adapters = {PostpaidExporter.class, ComponentExporter.class},
@@ -41,9 +33,6 @@ public class PostpaidExporter implements ComponentExporter {
 
     @ScriptVariable
     private Resource resource;
-
-    @ValueMapValue
-    private String rootpath;
     @ValueMapValue
     private String moreDetailsLabel;
     @ValueMapValue
@@ -51,7 +40,7 @@ public class PostpaidExporter implements ComponentExporter {
     @ValueMapValue
     private String orderNowLabel;
     @ValueMapValue
-    private String orderNowUrl;
+    private String switchCtaLabel;
     @ValueMapValue
     private String durationLabel;
     @ValueMapValue
@@ -81,6 +70,8 @@ public class PostpaidExporter implements ComponentExporter {
     @ValueMapValue
     private String productInformationLabel;
     @ValueMapValue
+    private String productInformationLink;
+    @ValueMapValue
     private String yourOrderContractdurationLabel;
     @ValueMapValue
     private String yourOrderDataLabel;
@@ -94,59 +85,31 @@ public class PostpaidExporter implements ComponentExporter {
     private String yourOrderOneTimeActivationFeeLabel;
     @ValueMapValue
     private String yourOrderOneTimeActivationFee;
+    @ChildResource
+    private List<Labels> durationRadioLabelList;
+    @ValueMapValue
+    private String dataVolumeRadioLabel;
+    @ValueMapValue
+    private String abroadMinutesRadioLabel;
+    @ValueMapValue
+    private String yourOrdersimPlanLabel;
+    @ValueMapValue
+    private String yourOrderMinutesInGermanyValue;
 
-    Map<String, String> duration = new HashMap<>();
-    Map<String, String> internationalMinutes = new HashMap<>();
-    Map<String, String> data = new HashMap<>();
-    Map<String, String> postpaidPlans = new HashMap<>();
-    private I18n i18n;
-
-    @PostConstruct
-    private void init() {
-        i18n = AemUtils.geti18n(resourceResolver, resource, slingRequest);
-        Resource postpaidRootPath = resourceResolver.getResource(rootpath);
-        if (postpaidRootPath != null && StringUtils.equalsIgnoreCase(postpaidRootPath.getName(), "postpaid")) {
-            for (Resource postpaidPlan : postpaidRootPath.getChildren()) {
-                OfferFragmentBean offerFragmentBean = CFUtils.populateOffers(postpaidPlan, i18n);
-                String key = offerFragmentBean.getValidity();
-                String value = offerFragmentBean.getId();
-                duration.put(offerFragmentBean.getValidity(), offerFragmentBean.getValidityText());
-                List<CFAllowance> allowanceList = offerFragmentBean.getAllowanceList();
-                if (CollectionUtils.isEmpty(allowanceList)) {
-                    continue;
-                }
-                for (CFAllowance allowance : allowanceList) {
-                    if (allowance == null) {
-                        continue;
-                    }
-                    if (StringUtils.endsWithIgnoreCase(allowance.getName(), "Postpaid_Data")) {
-                        data.put(allowance.getFormatedValue(), offerFragmentBean.getDataVolumeText());
-                        key += "-" + allowance.getFormatedValue();
-                    } else if (StringUtils.endsWithIgnoreCase(allowance.getName(), "Postpaid_Intl_Mins")) {
-                        internationalMinutes.put(allowance.getFormatedValue(), offerFragmentBean.getMinutesToCountriesText());
-                        key += "-" + allowance.getFormatedValue();
-                    }
-                }
-                value += "-" + offerFragmentBean.getCost();
-                postpaidPlans.put(key, value);
-            }
-        }
+    public List<Labels> getDurationRadioLabelList() {
+        return durationRadioLabelList;
     }
 
-    public Map<String, String> getDuration() {
-        return duration;
+    public String getDataVolumeRadioLabel() {
+        return dataVolumeRadioLabel;
+    }
+
+    public String getAbroadMinutesRadioLabel() {
+        return abroadMinutesRadioLabel;
     }
 
     public String getPopupCloseLabel() {
         return popupCloseLabel;
-    }
-
-    public Map<String, String> getData() {
-        return data;
-    }
-
-    public Map<String, String> getInternationalMinutes() {
-        return internationalMinutes;
     }
 
     public String getMoreDetailsLabel() {
@@ -157,8 +120,8 @@ public class PostpaidExporter implements ComponentExporter {
         return orderNowLabel;
     }
 
-    public String getOrderNowUrl() {
-        return orderNowUrl;
+    public String getSwitchCtaLabel() {
+        return switchCtaLabel;
     }
 
     public String getDurationLabel() {
@@ -217,6 +180,10 @@ public class PostpaidExporter implements ComponentExporter {
         return productInformationLabel;
     }
 
+    public String getProductInformationLink() {
+        return AemUtils.getLinkWithExtension(productInformationLink);
+    }
+
     public String getYourOrderContractdurationLabel() {
         return yourOrderContractdurationLabel;
     }
@@ -245,8 +212,12 @@ public class PostpaidExporter implements ComponentExporter {
         return yourOrderOneTimeActivationFee;
     }
 
-    public Map<String, String> getPostpaidPlans() {
-        return postpaidPlans;
+    public String getYourOrdersimPlanLabel() {
+        return yourOrdersimPlanLabel;
+    }
+
+    public String getYourOrderMinutesInGermanyValue() {
+        return yourOrderMinutesInGermanyValue;
     }
 
     @Override

@@ -22,7 +22,7 @@ const MyBalanceCard: React.FC<MyBalanceCardProps> = ({
   const isActivated = false;
   if (!isPostPaid) {
     return (
-      <Flex flexDirection="column" bg="lightenPrimary.50" alignItems="center">
+      <Flex flexDirection="column" alignItems="center">
         <Flex
           w={{ base: "100%", lg: "846px" }}
           flexDirection="column"

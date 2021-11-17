@@ -9,5 +9,9 @@ export default gql`
       country: "${globalConfigs.country}"
       channel: "Web"
     )
+    {
+      msisdn
+      crmId
+    }
   }
 `;

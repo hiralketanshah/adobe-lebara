@@ -31,7 +31,7 @@ const OrderDetailsRoute: React.FC<OrderDetailsProps> = ({ ...props }) => {
   const dispatch = useDispatch();
   const history = useHistory();
   const location =
-    useLocation<{ phoneNumber?: string; email?: string; isGuest?: boolean }>();
+    useLocation<{ phoneNumber?: string; email?: string; isGuest?: boolean,personalDetails?: any; }>();
   const phoneNumber = location.state?.phoneNumber;
   const voucherCode = useSelector(
     (state: ReduxState) => state.voucher.voucherCode
@@ -261,6 +261,7 @@ const OrderDetailsRoute: React.FC<OrderDetailsProps> = ({ ...props }) => {
           enterVoucherCodeLabel={enterVoucherCodeLabel}
         />}
         <PurchaseSummary items={allItemsAreFree ? [] : items} grandTotalLabel={grandTotalLabel} />
+        {!(location?.state?.isGuest || location?.state?.personalDetails) && (
         <Flex
           px={5}
           py={6}
@@ -281,6 +282,7 @@ const OrderDetailsRoute: React.FC<OrderDetailsProps> = ({ ...props }) => {
             </Text>
           </Checkbox>
         </Flex>
+        )}
       </Flex>
     </BuyPlanLayout>
   );

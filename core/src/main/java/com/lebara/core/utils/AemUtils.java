@@ -1,12 +1,15 @@
 package com.lebara.core.utils;
 
 
+import com.day.cq.commons.inherit.HierarchyNodeInheritanceValueMap;
+import com.day.cq.commons.inherit.InheritanceValueMap;
 import com.day.cq.commons.mail.MailTemplate;
 import com.day.cq.i18n.I18n;
 import com.day.cq.mailer.MailingException;
 import com.day.cq.mailer.MessageGatewayService;
 import com.day.cq.wcm.api.Page;
 import com.day.cq.wcm.api.PageManager;
+import com.lebara.core.dto.DashboardLabels;
 import org.apache.commons.lang.text.StrLookup;
 import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.StringUtils;
@@ -216,7 +219,30 @@ public class AemUtils {
         }
         return title;
     }
+    public static String getInheritedValue(String name, InheritanceValueMap inheritedProp) {
+        if (null != inheritedProp) {
+            return Optional.ofNullable(inheritedProp.getInherited(name, String.class)).orElse("");
+        }
+        return StringUtils.EMPTY;
+    }
 
+    public static DashboardLabels populateDashboardLabels(SlingHttpServletRequest request) {
+        Resource res = request.getResourceResolver().getResource(request.getRequestPathInfo().getResourcePath());
+        DashboardLabels dashboardLabels = new DashboardLabels();
+        if (null != res) {
+            InheritanceValueMap inheritedProp = new HierarchyNodeInheritanceValueMap(res);
+            dashboardLabels.setDataPlanName(getInheritedValue("dataPlanName", inheritedProp));
+            dashboardLabels.setDataType(getInheritedValue("dataType", inheritedProp));
+            dashboardLabels.setMinPlanName(getInheritedValue("minPlanName", inheritedProp));
+            dashboardLabels.setMinDataType(getInheritedValue("minDataType", inheritedProp));
+            dashboardLabels.setSmsPlanName(getInheritedValue("smsPlanName", inheritedProp));
+            dashboardLabels.setSmsDataType(getInheritedValue("smsDataType", inheritedProp));
+            dashboardLabels.setInternationalMinPlanName(getInheritedValue("internationalMinPlanName", inheritedProp));
+            dashboardLabels.setInternationalMinDataType(getInheritedValue("internationalMinDataType", inheritedProp));
+            dashboardLabels.setLeftOfLabel(getInheritedValue("leftOfLabel", inheritedProp));
+        }
+        return dashboardLabels;
+    }
     /**
      * this method returns the I18n locale based object
      * @param resourceResolver resourceresolver

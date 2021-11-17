@@ -2,15 +2,20 @@ const globalCurrencies = Object.freeze({
   EUR: '€'
 });
 
+const globalCurrencyCode = Object.freeze({
+  DEFAULT_CURRENCY_CODE: 'EUR',
+});
+
 const globalConfigs = window.lebaraGlobalConfigs ? {
     apiHostUri: window.lebaraGlobalConfigs.apiHostUri,
     gqlEndpoint: window.lebaraGlobalConfigs.gqlEndpoint,
     currencyName: window.lebaraGlobalConfigs.currencyName,
+    currencyCode: window.lebaraGlobalConfigs.currencyCode || globalCurrencyCode.DEFAULT_CURRENCY_CODE,
     currencySymbol: window.lebaraGlobalConfigs.currencyName && globalCurrencies.hasOwnProperty(window.lebaraGlobalConfigs.currencyName) ? globalCurrencies[window.lebaraGlobalConfigs.currencyName] : globalCurrencies['EUR'],
     paymentClientKey: window.lebaraGlobalConfigs.paymentClientKey,
     paymentAdeyenEnv: window.lebaraGlobalConfigs.paymentAdeyenEnv,
     locale: window.lebaraGlobalConfigs.locale,
-    country: window.lebaraGlobalConfigs.country ? window.lebaraGlobalConfigs.country : window.lebaraGlobalConfigs.locale,
+    country: window.lebaraGlobalConfigs.country ? window.lebaraGlobalConfigs.country : 'de',
     journeyPages: JSON.parse(window.lebaraGlobalConfigs.journeyPages)
 } : {};
 
@@ -25,6 +30,7 @@ const globalConstants = Object.freeze({
     ORDER_SUBMITTED: 'order-submitted',
     EMPTY_CART: 'empty-cart',
     LOGIN: 'login',
+    REGISTER: 'register',
     VERIFY_EMAIL: 'verify-email',
     RESET_PASSWORD: 'reset-password',
     POSTPAID: 'postpaid',
@@ -38,5 +44,6 @@ const globalConstants = Object.freeze({
     VERIFY_REGISTER_MOBILE: 'verify-register-mobile',
     CREATE_NEW_PASSWORD: 'create-new-password',
     FAQ: 'faq',
+    USAGE_DETAILS: 'usage-details',
 });
 module.exports = { globalConfigs, globalConstants }

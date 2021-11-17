@@ -9,7 +9,9 @@ import { ReduxState } from "../../redux/types";
 import { loadInitialCart } from "../../redux/actions/cartActions";
 import { setPaymentMethods } from "../../redux/actions/paymentMethodsActions";
 import {globalConfigs, globalConstants} from  '../../GlobalConfigs.js';
-const PaymentFrame: React.FC = () => {
+import { googleAnalyticsCheckout } from "../../utils/gtm";
+
+const PaymentFrame: React.FC<{isPostpaid?: boolean}> = ({isPostpaid}) => {
   const [address, setAddress] = useState<string>("");
   const dispatch = useDispatch();
   const loadPaymentMethods = useCallback(() => {
@@ -39,10 +41,27 @@ const PaymentFrame: React.FC = () => {
   const history = useHistory();
 
   const cartItems = useSelector((state: ReduxState) => state.cart.items);
-  const paymentMethods = useSelector(
+  let paymentMethods = useSelector(
     (state: ReduxState) => state.paymentMethods.paymentMethods
   );
-
+  const voucherCode = useSelector(
+    (state: ReduxState) => state.voucher.voucherCode
+  );
+  const isPostPaid = !!isPostpaid;
+  // For postpaid only show SEPA
+  if (isPostPaid && paymentMethods) {
+    paymentMethods = {
+      paymentMethods: paymentMethods?.paymentMethods?.filter(
+        (t: any) => t?.type === "sepadirectdebit"
+      ),
+    };
+  }
+  const isFreeTopUpAndFreeSim = cartItems.every(
+    (t) => t.isFreeSimTopup || t.isFreeSim
+  );
+  React.useEffect(() => {
+    googleAnalyticsCheckout(isFreeTopUpAndFreeSim ? 3 : 2);
+  }, []);
   const paymentContainerRef = useRef<HTMLDivElement>(null);
   const orderRef = useRef("");
   const checkout = useRef<AdyenCheckout>();
@@ -79,10 +98,17 @@ const PaymentFrame: React.FC = () => {
         .then((res) => {
           if (res) {
             dispatch(loadInitialCart([]));
-            history.push(`${(globalConfigs.journeyPages[globalConstants.ORDER_SUBMITTED]  || '/')}/${res}`, {
+            history.push(`${(globalConfigs.journeyPages[globalConstants.ORDER_SUBMITTED]  || '/')}`, {
               isGuest: location?.state?.isGuest,
-              email: location?.state?.email,
-              phoneNumber: location?.state?.phoneNumber,
+              email:
+                location?.state?.email ??
+                location.state?.personalDetails?.email,
+              phoneNumber:
+                location?.state?.phoneNumber ?? location?.state?.portIn?.msisdn,
+              personalDetails: location?.state?.personalDetails,
+              voucherCode,
+              cartItems: [...cartItems],
+              orderId: res
             });
           }
         });
@@ -100,7 +126,6 @@ const PaymentFrame: React.FC = () => {
         card: {
           hasHolderName: true,
           holderNameRequired: true,
-          billingAddressRequired: true,
           amount: {
             value: Number(total),
             currency: globalConfigs.currencyName,
@@ -111,7 +136,6 @@ const PaymentFrame: React.FC = () => {
       showPayButton: true,
       clientKey: globalConfigs.paymentClientKey,
       environment: globalConfigs.paymentAdeyenEnv,
-
       paymentMethodsResponse: paymentMethods,
       onAdditionalDetails,
 
@@ -193,20 +217,29 @@ const PaymentFrame: React.FC = () => {
                 dispatch(loadInitialCart([]));
                 history.push(`${(globalConfigs.journeyPages[globalConstants.ORDER_SUBMITTED] || '/')}`, {
                   isGuest: location?.state?.isGuest,
-                  email: location?.state?.email,
-                  phoneNumber: location?.state?.phoneNumber,
+                  email:
+                    location?.state?.email ??
+                    location.state?.personalDetails?.email,
+                  phoneNumber:
+                    location?.state?.phoneNumber ??
+                    location?.state?.portIn?.msisdn,
+                  personalDetails: location?.state?.personalDetails,
+                  voucherCode,
+                  cartItems: [...cartItems],
                   orderId: res,
                 });
               }
             })
-            .catch((err) => {
-              console.log(err);
-            });
+            .catch(() => {});
         }
       },
     });
     if (paymentContainerRef.current != null) {
-      checkout.current.create("dropin").mount(paymentContainerRef.current);
+      checkout.current
+        .create("dropin", {
+          openFirstPaymentMethod: isPostPaid,
+        })
+        .mount(paymentContainerRef.current);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [paymentMethods, total]);
