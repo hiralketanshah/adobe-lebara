@@ -41,4 +41,8 @@ public class PageInfo extends Link {
         return title;
     }
 
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
 }

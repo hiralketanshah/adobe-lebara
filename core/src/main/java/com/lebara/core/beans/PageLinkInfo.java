@@ -36,10 +36,11 @@ public class PageLinkInfo {
             return;
         }
         Page linkPage = resourceResolver.getResource(link).adaptTo(Page.class);
-        Link parentLink = new Link();
+        PageInfo parentLink = new PageInfo();
         if (linkPage != null) {
             parentLink.setLabel(AemUtils.getTitle(linkPage));
             parentLink.setLink(link);
+            parentLink.setDescription(linkPage.getDescription());
             pageLinks.setParentLinks(parentLink);
             Iterator<Page> childPath = linkPage.listChildren(new PageFilter());
             List<Link> childPagesList = new ArrayList<>();
