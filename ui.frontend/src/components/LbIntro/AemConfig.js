@@ -4,7 +4,7 @@ import LbIntro from "./index";
 const LbIntroConfig = {
   emptyLabel: "Intro Component",
   isEmpty: function (props) {
-    return !props || !props.text;
+    return !props || !props.heading;
   },
 };
 
