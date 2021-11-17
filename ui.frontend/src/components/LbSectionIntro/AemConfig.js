@@ -8,4 +8,4 @@ const LbSectionIntroConfig = {
   },
 };
 
-MapTo("lebara/components/intro")(LbSectionIntro, LbSectionIntroConfig);
+MapTo("lebara/components/sectionintro")(LbSectionIntro, LbSectionIntroConfig);
