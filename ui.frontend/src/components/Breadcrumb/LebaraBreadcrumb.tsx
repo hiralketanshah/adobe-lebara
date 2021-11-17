@@ -21,12 +21,10 @@ const LebaraBreadcrumb: React.FC<LebaraBreadcrumbProps> = ({ items }) => (
       spacing: 0,
     }}
   >
-    Hi
     {items?.map((t, index) => {
       const isCurrentPage = index === items.length - 1;
       return (
         <BreadcrumbItem isCurrentPage={isCurrentPage}>
-          HLI
           {isCurrentPage && (
             <Text color="secondary.500" fontWeight="500" fontSize={12}>
               {t.title}
