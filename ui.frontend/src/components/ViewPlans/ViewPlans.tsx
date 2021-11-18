@@ -58,7 +58,7 @@ const ViewPlans: React.FC<PlanCardProps> = ({
             type="caption"
             display={{ base: "block", md: "none" }}
           >
-            {allowanceList[0]?.formatedValue} {minutesField}
+            {allowanceList && allowanceList[0]?.formatedValue} {minutesField}
           </Title>
         </Box>
         <Box>
@@ -75,7 +75,7 @@ const ViewPlans: React.FC<PlanCardProps> = ({
               fontWeight="bold"
               color="fuschia.500"
             >
-              {allowanceList[0]?.formatedValue}
+              {allowanceList && allowanceList[0]?.formatedValue}
             </Box>
           </Box>
           <Title
