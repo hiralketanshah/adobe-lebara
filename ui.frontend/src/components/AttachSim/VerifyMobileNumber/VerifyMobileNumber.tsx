@@ -184,7 +184,6 @@ const VerifyMobileNumber: React.FC<VerifyMobileNumberProps> = ({
           lineHeight="22px"
           fontSize="18px"
           color="bodyCopy"
-          mt=".5em"
         >
           {heading}
         </Text>}
