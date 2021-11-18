@@ -20,7 +20,7 @@ const LbSectionIntro: React.FC<CompProps> = ({
 
   const link = {
     children: linkLabel,
-    href: linkLabel,
+    href: linkPath,
     color:"#ff3182"
   };
   
@@ -44,7 +44,7 @@ const LbSectionIntro: React.FC<CompProps> = ({
           >{heading}</Text>
         )}
         <Flex flexDir="column" align="stretch">
-          {description && (
+          {sectionHeading && (
             <Text
               as="h3"
               mb={{ base: "12.11px", lg: "10px" }}
@@ -52,22 +52,22 @@ const LbSectionIntro: React.FC<CompProps> = ({
               fontSize={{ base: "20px", lg: "24px" }}
               fontWeight="500"
             >
-              {description}
-            </Text>
-          )}
-          {sectionHeading && (
-            <Text fontWeight="bold" fontSize="16px" lineHeight="22px" mb="8px">
               {sectionHeading}
             </Text>
           )}
           {sectionSubHeading && (
+            <Text fontWeight="bold" fontSize="16px" lineHeight="22px" mb="8px">
+              {sectionSubHeading}
+            </Text>
+          )}
+          {description && (
             <Box d={{ lg: "flex" }} justifyContent={{ lg: "space-between" }}>
               <Text
                 lineHeight={{ base: "22px", lg: "30px" }}
                 fontSize="16px"
                 mb={{ base: "15.31px", lg: 0 }}
               >
-                {sectionSubHeading}
+                {description}
               </Text>
               {linkLabel && linkPath && <Link marginBottom="20px" {...linkStyles} {...link} />}
             </Box>
