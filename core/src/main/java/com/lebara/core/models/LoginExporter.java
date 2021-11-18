@@ -177,7 +177,20 @@ public class LoginExporter implements ComponentExporter {
     @ValueMapValue
     private String  loginButtonLabel;
 
+    @ValueMapValue
+    private String extraBlockOrText;
 
+    @ValueMapValue
+    private String extraBlockLoginText;
+
+    @ValueMapValue
+    private String extraBlockLoginLinkText;
+
+    @ValueMapValue
+    private String extraBlockRegisterText;
+
+    @ValueMapValue
+    private String extraBlockRegisterLinkText;
 
     public String getLoginRegistrationMessage() {
         return loginRegistrationMessage;
@@ -366,6 +379,16 @@ public class LoginExporter implements ComponentExporter {
     public String getLoginButtonLabel() {
         return loginButtonLabel;
     }
+
+    public String getExtraBlockLoginText() {return extraBlockLoginText;}
+
+    public String getExtraBlockLoginLinkText() { return extraBlockLoginLinkText;}
+
+    public String getExtraBlockRegisterText() { return extraBlockRegisterText;}
+
+    public String getExtraBlockRegisterLinkText() {return extraBlockRegisterLinkText; }
+
+    public String getExtraBlockOrText() { return extraBlockOrText;}
 
     @Override
     public String getExportedType() {
