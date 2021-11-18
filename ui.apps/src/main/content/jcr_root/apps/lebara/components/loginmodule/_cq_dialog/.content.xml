@@ -137,26 +137,14 @@
                                             <extraBlockLoginText
                                                     jcr:primaryType="nt:unstructured"
                                                     sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                                    fieldLabel="New To Lebara Label"
+                                                    fieldLabel="Already Have an Account Label"
                                                     name="./extraBlockLoginText"
-                                                    value="New To Lebara?"/>
+                                                    value="Already Have An Account?"/>
                                             <extraBlockLoginLinkText
                                                     jcr:primaryType="nt:unstructured"
                                                     sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                                    fieldLabel="New to Lebara Link Label"
+                                                    fieldLabel="Already Have an Account Link Label"
                                                     name="./extraBlockLoginLinkText"
-                                                    value="Register"/>
-                                            <extraBlockRegisterText
-                                                    jcr:primaryType="nt:unstructured"
-                                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                                    fieldLabel="Already Have an Account Label"
-                                                    name="./extraBlockRegisterText"
-                                                    value="Already Have An Account?"/>
-                                            <extraBlockRegisterLinkText
-                                                    jcr:primaryType="nt:unstructured"
-                                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                                    fieldLabel="Already Have An Account Link Label"
-                                                    name="./extraBlockRegisterLinkText"
                                                     value="Login"/>
                                         </items>
                                     </column>
@@ -239,6 +227,18 @@
                                                 fieldLabel="Hide Label"
                                                 value="Hide"
                                                 name="./hideLabel"/>
+                                            <extraBlockRegisterText
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                    fieldLabel="New To Lebara Label"
+                                                    name="./extraBlockRegisterText"
+                                                    value="New To Lebara?"/>
+                                            <extraBlockRegisterLinkText
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                    fieldLabel="New to Lebara Link Label"
+                                                    name="./extraBlockRegisterLinkText"
+                                                    value="Register"/>
 
                                         </items>
                                     </column>
