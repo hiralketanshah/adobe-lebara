@@ -11,10 +11,8 @@ const LbFAQ: React.FC<CompProps> = ({
   title,
   readMoreLabel,
   faqPages,
-  onCategoryClick,
   searchedFaq,
 }) => {
-  const [show, setShow] = useState(false);
   const [showFaqs, setShowFaqs] = useState(false);
   const [selectedFaqIndex, setSelectedFaqIndex] = useState(-1);
 
@@ -24,7 +22,7 @@ const LbFAQ: React.FC<CompProps> = ({
   }, [searchedFaq]);
 
   return (
-    <Box>
+    <Box className="helpcenter-fq">
       {title && <Text
         fontWeight="500"
         fontSize="24px"
@@ -44,46 +42,44 @@ const LbFAQ: React.FC<CompProps> = ({
         px="14px"
         mt="20px"
       >
-        {faqPages?.map((faq, i) => (
-          <Box>
-            <Flex
-              py="23px"
-              borderBottom={
-                i === faqPages?.length - 1 ||
-                (showFaqs && selectedFaqIndex === faq.id)
-                  ? "none"
-                  : "0.25px solid black"
-              }
-              alignItems="center"
-              key={faq.id}
-            >
-              <Text fontSize="16px" lineHeight="22px" letterSpacing="0.5px">
-                {faq?.title}
-              </Text>
-              <Box
-                ml="auto"
-                cursor="pointer"
-                onClick={() => {
-                  setShowFaqs(selectedFaqIndex === faq.id ? !showFaqs : true);
-                  setSelectedFaqIndex(faq.id);
-                }}
+        {faqPages?.map((faq, i) => {
+          const idx = i+1;
+          return (
+            <Box>
+              <Flex
+                py="23px"
+                className="helpcenter-fq-list-item"
+                alignItems="center"
+                key={`faq-wrap`+idx}
               >
-                {showFaqs && selectedFaqIndex === faq.id ? (
-                  <IoIosArrowUp />
-                ) : (
-                  <IoIosArrowDown />
-                )}
-              </Box>
-            </Flex>
-            {showFaqs && selectedFaqIndex === faq.id && (
-              <Box bg="grey.800" padding="16px" mx="-14px">
-                <Text fontSize="14px" lineHeight="28px">
-                  {faq?.description}
+                <Text fontSize="16px" lineHeight="22px" letterSpacing="0.5px">
+                  {faq?.title}
                 </Text>
-              </Box>
-            )}
-          </Box>
-        ))}
+                <Box
+                  ml="auto"
+                  cursor="pointer"
+                  onClick={() => {
+                    setShowFaqs(selectedFaqIndex === idx ? !showFaqs : true);
+                    setSelectedFaqIndex(idx);
+                  }}
+                >
+                  {showFaqs && selectedFaqIndex === idx ? (
+                    <IoIosArrowUp />
+                  ) : (
+                    <IoIosArrowDown />
+                  )}
+                </Box>
+              </Flex>
+              {showFaqs && selectedFaqIndex === idx && (
+                <Box bg="grey.800" padding="16px" mx="-14px">
+                  <Text fontSize="14px" lineHeight="28px">
+                    {faq?.description}
+                  </Text>
+                </Box>
+              )}
+            </Box>
+          )}
+        )}
       </Box>
     </Box>
   );

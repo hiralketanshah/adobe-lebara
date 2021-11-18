@@ -1,20 +1,18 @@
-interface PageLinkProps {
-  parentLinks?: ParentLinks[];
-  childLinks?: ChildLinkProps[];
-}
 
+interface ChildLinkProps {
+  label?: string;
+  link?: string;
+}
 interface ParentLinks {
   label?: string;
   link?: string;
   description?: string;
 }
 
-interface ChildLinkProps {
-  label?: string;
-  link?: string;
+interface PageLinkProps {
+  parentLinks?: ParentLinks;
+  childLinks?: ChildLinkProps[];
 }
-
-
 interface BrowseCategoriesLinksProps {
   pageLinks?: PageLinkProps;
 }
