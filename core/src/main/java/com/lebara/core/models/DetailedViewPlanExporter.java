@@ -76,6 +76,10 @@ public class DetailedViewPlanExporter extends ViewPlanExporter implements Compon
     @ValueMapValue
     private String ctaBottomLink;
 
+    public String getProductInformationFile() {
+        return (i18n == null ? "Product Information" : i18n.get("product.information.label"));
+    }
+
     public String getTitle() {
         return title;
     }

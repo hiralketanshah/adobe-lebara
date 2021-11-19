@@ -4,5 +4,6 @@
   "lebara.viewcart.label":"Zobacz Koszyk",
   "lebara.addon.addedtocart.label":"Dodatek {0} dodany do koszyka",
   "lebara.emptycart.addedtocart.label":"Doładuj kredyt {0} dodany do koszyka",
-  "lebara.selectedplan.label": "Wybrany plan"
+  "lebara.selectedplan.label": "Wybrany plan",
+  "product.information.label": "Informacje o produkcie"
 }
