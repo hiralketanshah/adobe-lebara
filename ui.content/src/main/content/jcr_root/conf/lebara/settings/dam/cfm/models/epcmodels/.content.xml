@@ -134,6 +134,7 @@
                                 rootPath="/content/dam/lebara"
                                 showEmptyInReadOnly="true"
                                 showThumbnail="false"
+                                validation="cfm.validation.contenttype.pdf"
                                 valueType="string/reference">
                             <granite:data
                                     jcr:primaryType="nt:unstructured"
