@@ -121,6 +121,24 @@
                                 renderReadOnly="false"
                                 showEmptyInReadOnly="true"
                                 valueType="string/multiline"/>
+                        <_x0031_637302965718
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="dam/cfm/models/editor/components/contentreference"
+                                fieldLabel="product information Asset"
+                                filter="hierarchy"
+                                listOrder="21"
+                                metaType="reference"
+                                name="productInformationAsset"
+                                nameSuffix="contentReference"
+                                renderReadOnly="false"
+                                rootPath="/content/dam/lebara"
+                                showEmptyInReadOnly="true"
+                                showThumbnail="false"
+                                valueType="string/reference">
+                            <granite:data
+                                    jcr:primaryType="nt:unstructured"
+                                    thumbnail-validation="cfm.validation.thumbnail.show"/>
+                        </_x0031_637302965718>
                         <_x0031_634548203004
                                 jcr:primaryType="nt:unstructured"
                                 sling:resourceType="dam/cfm/models/editor/components/fragmentreference"
