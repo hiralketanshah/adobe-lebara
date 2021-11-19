@@ -124,11 +124,11 @@
                         <_x0031_637302965718
                                 jcr:primaryType="nt:unstructured"
                                 sling:resourceType="dam/cfm/models/editor/components/contentreference"
-                                fieldLabel="product information Asset"
+                                fieldLabel="product information File"
                                 filter="hierarchy"
                                 listOrder="21"
                                 metaType="reference"
-                                name="productInformationAsset"
+                                name="productInformationFile"
                                 nameSuffix="contentReference"
                                 renderReadOnly="false"
                                 rootPath="/content/dam/lebara"

@@ -14,7 +14,7 @@ public class OfferFragmentBean {
     private String cost;
     private String planName;
     private String validity;
-    private String productInformationAsset;
+    private String productInformationFile;
     private PlanInfo planInfo;
     private String additionalOffers;
     private List<CFAllowance> allowanceList;
@@ -62,12 +62,12 @@ public class OfferFragmentBean {
         this.validity = validity;
     }
 
-    public String getProductInformationAsset() {
-        return productInformationAsset;
+    public String getProductInformationFile() {
+        return productInformationFile;
     }
 
-    public void setProductInformationAsset(String productInformationAsset) {
-        this.productInformationAsset = productInformationAsset;
+    public void setProductInformationFile(String productInformationFile) {
+        this.productInformationFile = productInformationFile;
     }
 
     public PlanInfo getPlanInfo() {
