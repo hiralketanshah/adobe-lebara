@@ -11,7 +11,7 @@ const StickyCircle: React.FC<StickyCircleProps> = ({
   return (
     <>
      <style>{`
-    .editor-panel-active .stickycircle{
+    .cq-Editable-dom .stickycircle{
         position: static;
     }
   `}</style>
