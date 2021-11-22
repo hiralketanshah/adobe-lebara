@@ -33,6 +33,9 @@ public class PrepaidPlansExporter extends HeadingExporter {
     @ValueMapValue
     private String manageLabel;
 
+    @ValueMapValue
+    private String ctaDashboardManageURL;
+
     private DashboardLabels dashboardLabels;
 
     @PostConstruct
@@ -55,6 +58,10 @@ public class PrepaidPlansExporter extends HeadingExporter {
         plansTabNames.add(dashboardLabels.getSmsPlanName());
         plansTabNames.add(dashboardLabels.getInternationalMinPlanName());
         return plansTabNames;
+    }
+
+    public String getCtaDashboardManageURL() {
+        return AemUtils.getLinkWithExtension(ctaDashboardManageURL);
     }
 
     @Override
