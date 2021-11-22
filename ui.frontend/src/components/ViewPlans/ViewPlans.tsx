@@ -44,7 +44,7 @@ const ViewPlans: React.FC<PlanCardProps> = ({
               top={{ base: "-12px", md: "0" }}
               fontWeight="bold"
             >
-              £
+              {globalConfigs.currencySymbol}
             </Box>
             <Box as="h3" fontSize="30px" pr="4px" pl="2px" fontWeight="bold">
               {offer?.cost}
