@@ -14,9 +14,7 @@ public class OfferFragmentBean {
     private String cost;
     private String planName;
     private String validity;
-    private String validityText;
-    private String dataVolumeText;
-    private String minutesToCountriesText;
+    private String productInformationFile;
     private PlanInfo planInfo;
     private String additionalOffers;
     private List<CFAllowance> allowanceList;
@@ -64,28 +62,12 @@ public class OfferFragmentBean {
         this.validity = validity;
     }
 
-    public String getValidityText() {
-        return validityText;
+    public String getProductInformationFile() {
+        return productInformationFile;
     }
 
-    public void setValidityText(String validityText) {
-        this.validityText = validityText;
-    }
-
-    public String getDataVolumeText() {
-        return dataVolumeText;
-    }
-
-    public void setDataVolumeText(String dataVolumeText) {
-        this.dataVolumeText = dataVolumeText;
-    }
-
-    public String getMinutesToCountriesText() {
-        return minutesToCountriesText;
-    }
-
-    public void setMinutesToCountriesText(String minutesToCountriesText) {
-        this.minutesToCountriesText = minutesToCountriesText;
+    public void setProductInformationFile(String productInformationFile) {
+        this.productInformationFile = productInformationFile;
     }
 
     public PlanInfo getPlanInfo() {
