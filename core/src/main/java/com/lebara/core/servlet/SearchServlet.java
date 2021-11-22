@@ -9,6 +9,7 @@ import com.day.cq.search.result.SearchResult;
 import com.google.gson.Gson;
 import com.lebara.core.dto.SearchInfo;
 import com.lebara.core.utils.AemUtils;
+import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.api.resource.ResourceResolver;
@@ -40,16 +41,15 @@ import static org.apache.sling.api.servlets.ServletResolverConstants.*;
         property = {
                 Constants.SERVICE_DESCRIPTION + "=Global Search Servlet",
                 SLING_SERVLET_METHODS + "=" + HttpConstants.METHOD_GET,
-                SLING_SERVLET_RESOURCE_TYPES + "=" + SearchServlet.HELP_CENTER_SEARCH_RESOURCETYPE,
-                SLING_SERVLET_RESOURCE_TYPES + "=" + SearchServlet.GLOBAL_SEARCH_RESOURCETYPE,
+                SLING_SERVLET_RESOURCE_TYPES + "=cq:Page" ,
+                SLING_SERVLET_SELECTORS + "=" + "helpcentersearch",
+                SLING_SERVLET_SELECTORS + "=" + "globalsearch",
                 SLING_SERVLET_EXTENSIONS + "=json",
         }
 )
 public class SearchServlet extends SlingSafeMethodsServlet {
     @Reference
     private QueryBuilder builder;
-    public static final String HELP_CENTER_SEARCH_RESOURCETYPE = "lebara/components/helpcenter/search";
-    public static final String GLOBAL_SEARCH_RESOURCETYPE = "lebara/components/search";
 
     private Session session;
     final Logger LOGGER = LoggerFactory.getLogger(getClass());
@@ -61,7 +61,7 @@ public class SearchServlet extends SlingSafeMethodsServlet {
         String searchType = request.getParameter("searchType");
         ResourceResolver resourceResolver = request.getResourceResolver();
         session = resourceResolver.adaptTo(Session.class);
-
+        String[] selectors = request.getRequestPathInfo().getSelectors();
         String pathInfo = request.getRequestPathInfo().getResourcePath();
         String resourceType = request.getResource().getResourceType();
         Resource searchResource = request.getResourceResolver().getResource(pathInfo);
@@ -71,9 +71,9 @@ public class SearchServlet extends SlingSafeMethodsServlet {
         }
         Map<String, String> predicate = new HashMap<>();
         List<SearchInfo> searchInfoList = new ArrayList<>();
-        if (StringUtils.equalsIgnoreCase(resourceType, HELP_CENTER_SEARCH_RESOURCETYPE)) {
+        if (ArrayUtils.contains(selectors,"helpcentersearch")) {
             predicate = getHelpCenterSearchPredicates(param, searchType, searchRoot);
-        } else if (StringUtils.equalsIgnoreCase(resourceType, GLOBAL_SEARCH_RESOURCETYPE)) {
+        } else if (ArrayUtils.contains(selectors,"globalsearch")) {
             predicate = getGlobalSearchPredicates(param, searchType, searchRoot);
         }
         Query query = builder.createQuery(PredicateGroup.create(predicate), session);
