@@ -4,5 +4,6 @@
   "lebara.viewcart.label":"Vizualizare coș",
   "lebara.addon.addedtocart.label":"Addon {0} a fost adăugat în coș",
   "lebara.emptycart.addedtocart.label":"Credit suplimentar {0} adăugat în coș",
-  "lebara.selectedplan.label": "Planul selectat"
+  "lebara.selectedplan.label": "Planul selectat",
+  "product.information.label": "Informații despre produs"
 }

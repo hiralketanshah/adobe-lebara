@@ -1,10 +1,10 @@
 import { MapTo } from "@adobe/aem-react-editable-components";
-import SuccessCard from "./SuccessCard";
+import OrderSubmittedRoute from "./OrderSubmittedRoute";
 
-const SuccessCardConfig = {
+const OrderSubmittedConfig = {
   emptyLabel: "Order Confirmation Component",
   isEmpty: function (props) {
     return !props.thankYouMessage },
 };
 
-MapTo("lebara/components/confirmationmessage")(SuccessCard, SuccessCardConfig);
+MapTo("lebara/components/confirmationmessage")(OrderSubmittedRoute, OrderSubmittedConfig);
