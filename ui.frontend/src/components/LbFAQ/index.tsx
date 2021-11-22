@@ -3,7 +3,6 @@ import { Box, Text, Flex } from "@chakra-ui/react";
 import {
   IoIosArrowDown,
   IoIosArrowUp,
-  IoIosArrowForward,
 } from "react-icons/all";
 import { CompProps } from "./types";
 

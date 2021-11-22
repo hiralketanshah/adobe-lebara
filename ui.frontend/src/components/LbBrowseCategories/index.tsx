@@ -7,7 +7,7 @@ import {
 } from "react-icons/all";
 import { CompProps } from "./types";
 
-import "./../../styles/helpcenter.style.scss";
+import "./../../styles/helpcenter.scss";
 
 const LbBrowseCategories: React.FC<CompProps> = ({
   title,
