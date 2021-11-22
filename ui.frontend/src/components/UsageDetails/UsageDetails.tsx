@@ -39,6 +39,9 @@ const UsageDetails: React.FC<UsageDetailsProps> = ({
   description,
   ctaSeeMoreCallsLabel,
   ctaLoadMoreLabel,
+  ctaSeeMoreURL,
+  ctaTopupURL,
+  ctaTopupText,
 }) => {
   const [lastActivity] = useState(activityLasts);
   const INTERNATIONAL_CALL_TYPE = "international";
@@ -83,7 +86,7 @@ const UsageDetails: React.FC<UsageDetailsProps> = ({
 
   const onSeeMoreClick = () => {
     setSeeMoreClicked(true);
-    history.push(GC.journeyPages[C.USAGE_DETAILS]  || '/');
+    history.push(ctaSeeMoreURL || GC.journeyPages[C.USAGE_DETAILS]  || '/');
   };
 
   return (
@@ -327,16 +330,13 @@ const UsageDetails: React.FC<UsageDetailsProps> = ({
               bg="secondary.500"
               _hover={{ bg: "secondary.500" }}
               _active={{ bg: "secondary.500", borderColor: "secondary.500" }}
-              onClick={() => history.push("/top-up")}
+              onClick={() => history.push(ctaTopupURL || GC.journeyPages[C.TOP_UP]  || '/')}
               _focus={{
                 outline: "none",
               }}
             >
               <Text textTransform="capitalize" fontSize="17px" color="white">
-                Top
-              </Text>
-              <Text textTransform="capitalize" fontSize="17px" color="white">
-                Up
+                {ctaTopupText}
               </Text>
             </Button>
           </Circle>
