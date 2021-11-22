@@ -63,3 +63,5 @@ import "./PromotionBanner/AemConfig.js";
 import "./VerifyMobileNumberForm/AemConfig.js";
 import "./Breadcrumb/AemConfig.js";
 import "./LbIntro/AemConfig.js";
+import "./LbFAQ/AemConfig.js";
+import "./LbBrowseCategories/AemConfig.js";
