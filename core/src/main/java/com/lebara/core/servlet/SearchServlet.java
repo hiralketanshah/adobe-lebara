@@ -41,7 +41,7 @@ import static org.apache.sling.api.servlets.ServletResolverConstants.*;
         property = {
                 Constants.SERVICE_DESCRIPTION + "=Global Search Servlet",
                 SLING_SERVLET_METHODS + "=" + HttpConstants.METHOD_GET,
-                SLING_SERVLET_RESOURCE_TYPES + "=cq:Page" ,
+                SLING_SERVLET_RESOURCE_TYPES + "=cq:Page",
                 SLING_SERVLET_SELECTORS + "=" + "helpcentersearch",
                 SLING_SERVLET_SELECTORS + "=" + "globalsearch",
                 SLING_SERVLET_EXTENSIONS + "=json",
@@ -51,6 +51,10 @@ public class SearchServlet extends SlingSafeMethodsServlet {
     @Reference
     private QueryBuilder builder;
 
+    private ResourceResolver resourceResolver;
+
+    private static final String DEFAULT_SEARCH_ROOT = "/content/lebara";
+
     private Session session;
     final Logger LOGGER = LoggerFactory.getLogger(getClass());
 
@@ -59,21 +63,22 @@ public class SearchServlet extends SlingSafeMethodsServlet {
             throws ServletException, IOException {
         String param = request.getParameter("q");
         String searchType = request.getParameter("searchType");
-        ResourceResolver resourceResolver = request.getResourceResolver();
+        resourceResolver = request.getResourceResolver();
         session = resourceResolver.adaptTo(Session.class);
         String[] selectors = request.getRequestPathInfo().getSelectors();
         String pathInfo = request.getRequestPathInfo().getResourcePath();
-        String resourceType = request.getResource().getResourceType();
-        Resource searchResource = request.getResourceResolver().getResource(pathInfo);
-        String searchRoot = AemUtils.getStringProperty(searchResource, "searchRoot");
-        if (StringUtils.isEmpty(searchRoot)) {
-            searchRoot = "/content/lebara/";
-        }
         Map<String, String> predicate = new HashMap<>();
         List<SearchInfo> searchInfoList = new ArrayList<>();
-        if (ArrayUtils.contains(selectors,"helpcentersearch")) {
-            predicate = getHelpCenterSearchPredicates(param, searchType, searchRoot);
-        } else if (ArrayUtils.contains(selectors,"globalsearch")) {
+        String searchRoot = request.getParameter("searchRoot");
+        if (StringUtils.isEmpty(searchRoot)) {
+            searchRoot = DEFAULT_SEARCH_ROOT;
+        }
+        //String searchRoot = StringUtils.EMPTY;
+        if (ArrayUtils.contains(selectors, "helpcentersearch")) {
+            //searchRoot = getSearchRoot(pathInfo, "helpcentersearch");
+            predicate = getHelpCenterSearchPredicates(param, searchRoot);
+        } else if (ArrayUtils.contains(selectors, "globalsearch")) {
+            //searchRoot = getSearchRoot(pathInfo, "globalsearch");
             predicate = getGlobalSearchPredicates(param, searchType, searchRoot);
         }
         Query query = builder.createQuery(PredicateGroup.create(predicate), session);
@@ -108,7 +113,7 @@ public class SearchServlet extends SlingSafeMethodsServlet {
         return predicate;
     }
 
-    private Map<String, String> getHelpCenterSearchPredicates(String param, String searchType, String searchRoot) {
+    private Map<String, String> getHelpCenterSearchPredicates(String param, String searchRoot) {
         Map<String, String> predicate = new HashMap<>();
         predicate.put("path", searchRoot);
         predicate.put("type", "cq:Page");
@@ -118,5 +123,32 @@ public class SearchServlet extends SlingSafeMethodsServlet {
         predicate.put("1_property.operation", "like");
         return predicate;
     }
+
+/*    private String getSearchRoot(String parentPagePath, String SearchType) {
+        Map<String, String> searchRootPredicate = new HashMap<>();
+        searchRootPredicate.put("path", parentPagePath);
+        searchRootPredicate.put("type", "nt:unstructured");
+        searchRootPredicate.put("p.limit", "1");
+        searchRootPredicate.put("1_property", "sling:resourceType");
+        searchRootPredicate.put("1_property.operation", "equals");
+        if (StringUtils.equalsIgnoreCase(SearchType, "helpcentersearch")) {
+            searchRootPredicate.put("1_property.value", "lebara/components/helpcenter/search");
+        } else if (StringUtils.equalsIgnoreCase(SearchType, "globalsearch")) {
+            searchRootPredicate.put("1_property.value", "lebara/components/search");
+        }
+        Query query = builder.createQuery(PredicateGroup.create(searchRootPredicate), session);
+        SearchResult searchResult = query.getResult();
+        String searchComponentPath = StringUtils.EMPTY;
+        for (Hit hit : searchResult.getHits()) {
+            try {
+                searchComponentPath = hit.getPath();
+                LOGGER.debug(searchComponentPath);
+                break;
+            } catch (RepositoryException e) {
+                LOGGER.error("Error in the Search", e);
+            }
+        }
+        return AemUtils.getStringProperty(resourceResolver.getResource(searchComponentPath), "searchRoot");
+    }*/
 
 }
