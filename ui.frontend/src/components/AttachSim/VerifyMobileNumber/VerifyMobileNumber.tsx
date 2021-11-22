@@ -276,7 +276,7 @@ const VerifyMobileNumber: React.FC<VerifyMobileNumberProps> = ({
         <Box mt="21px">
           <Input
             label={frmFields?.verifyCodeLabel}
-            placeholder={frmFields?.verifyCodeLabel}
+            placeholder={frmFields?.verifyCodePlaceholder}
             maxLength={5}
             fontWeight={updatedVerificationCode ? "bold" : "normal"}
             fontSize={updatedVerificationCode ? "20px" : "14px"}
