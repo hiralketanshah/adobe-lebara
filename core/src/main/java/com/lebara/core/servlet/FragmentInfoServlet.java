@@ -45,12 +45,12 @@ import java.util.Map;
         extensions = "json",
         selectors = "offer")
 public class FragmentInfoServlet extends SlingSafeMethodsServlet {
-    private final Logger LOGGER = LoggerFactory.getLogger(getClass());
+    transient Logger LOGGER = LoggerFactory.getLogger(getClass());
 
     @Reference
-    private QueryBuilder queryBuilder;
+    transient QueryBuilder queryBuilder;
 
-    private I18n i18n;
+    transient I18n i18n;
     private String offerId;
     private String offerRootPath;
 

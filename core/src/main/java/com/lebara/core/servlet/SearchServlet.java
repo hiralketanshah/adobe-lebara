@@ -46,10 +46,9 @@ import static org.apache.sling.api.servlets.ServletResolverConstants.*;
         )
 public class SearchServlet extends SlingSafeMethodsServlet {
     @Reference
-    private QueryBuilder builder;
+    transient QueryBuilder builder;
 
-    private Session session;
-    final Logger LOGGER = LoggerFactory.getLogger(getClass());
+  transient Logger LOGGER = LoggerFactory.getLogger(getClass());
 
     @Override
     protected void doGet(SlingHttpServletRequest request, SlingHttpServletResponse response)
@@ -57,7 +56,7 @@ public class SearchServlet extends SlingSafeMethodsServlet {
         String param = request.getParameter("q");
         String searchType = request.getParameter("searchType");
         ResourceResolver resourceResolver = request.getResourceResolver();
-        session = resourceResolver.adaptTo(Session.class);
+        Session session = resourceResolver.adaptTo(Session.class);
 
         String pathInfo = request.getRequestPathInfo().getResourcePath();
         Resource searchResource = request.getResourceResolver().getResource(pathInfo);

@@ -96,6 +96,7 @@ public class CrudOperationEpc {
             connection.setDoOutput(true);
             connection.setRequestProperty("Content-Type", LebaraConstants.CONTENT_TYPE_JSON);
             connection.setRequestProperty("Accept", LebaraConstants.CONTENT_TYPE_JSON);
+            connection.setConnectTimeout(10000);
             try (OutputStream os = connection.getOutputStream()) {
                 byte[] input = jsonInputString.getBytes(StandardCharsets.UTF_8);
                 os.write(input, 0, input.length);
@@ -108,11 +109,16 @@ public class CrudOperationEpc {
                     sb.append(line);
                 }
             }
-        } catch (IOException e) {
+        }catch (IOException | RuntimeException e) {
+            logger.error("IOException error while fetching EPC data {}, {}", e.getMessage(), e);
+            logger.error("error while fetching EPC data {}, {}", e.getMessage(), e);
+        }
+
+        /*catch (IOException e) {
             logger.error("IOException error while fetching EPC data {}, {}", e.getMessage(), e);
         } catch (Exception e) {
             logger.error("error while fetching EPC data {}, {}", e.getMessage(), e);
-        }
+        }*/
         logger.debug("response from EPC {}", sb);
         return sb.toString();
     }

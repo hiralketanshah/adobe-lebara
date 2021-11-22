@@ -39,7 +39,7 @@ public class GlobalConfigs extends SlingSafeMethodsServlet {
     private static final String CURRENCY_NAME = "currencyName";
     private static final String JOURNEY_PAGES = "journeyPages";
     @Reference
-    private GlobalOsgiService globalOsgiService;
+    transient GlobalOsgiService globalOsgiService;
 
     @Override
     protected void doGet(final SlingHttpServletRequest req,
@@ -57,8 +57,8 @@ public class GlobalConfigs extends SlingSafeMethodsServlet {
             page = pageManager.getContainingPage(request.getResource());
         }
         return (new ImmutableMap.Builder())
-                .put("locale", Optional.ofNullable(page.getLanguage(false).toLanguageTag()).orElse(""))
-                .put("country", Optional.ofNullable( page.getLanguage(false).getCountry()).orElse(""))
+                .put("locale", page!=null?Optional.ofNullable(page.getLanguage(false).toLanguageTag()).orElse(""):"")
+                .put("country", page!=null?Optional.ofNullable(page.getLanguage(false).getCountry()).orElse(""):"")
                 .put("apiHostUri", Optional.ofNullable(globalOsgiService.getApiHostUri()).orElse(""))
                 .put("gqlEndpoint", Optional.ofNullable(globalOsgiService.getGqlEndpoint()).orElse(""))
                 .put("paymentClientKey", Optional.ofNullable(globalOsgiService.getPaymentClientKey()).orElse(""))
@@ -66,7 +66,6 @@ public class GlobalConfigs extends SlingSafeMethodsServlet {
                 .put(CURRENCY_NAME, Optional.ofNullable(inheritedProp.getInherited(CURRENCY_NAME, String.class)).orElse(""))
                 .put(JOURNEY_PAGES, getJourneyPages(request, page)).build();
     }
-
     protected Object getJourneyPages(SlingHttpServletRequest request, Page currentPage) {
         if (currentPage != null) {
             Map<String, String> items = new HashMap<String, String>();

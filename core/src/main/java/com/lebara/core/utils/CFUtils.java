@@ -179,6 +179,8 @@ public class CFUtils {
                 case "mins":
                     formattedValue = value + " " + (i18n == null ? "Minutes" : i18n.get("Minutes"));
                     break;
+                default :
+                    LOGGER.info("Default case");
             }
         }
         return formattedValue;
