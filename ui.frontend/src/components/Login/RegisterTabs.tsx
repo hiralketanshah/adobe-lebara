@@ -47,10 +47,10 @@ const RegisterTabs: React.FC<LoginTabsProps> = ({ ...loginModuleProps }) => {
         letterSpacing="0.25px"
       >
         {" "}
-        Already have Lebara Account? <Link href="/" onClick={(e) => {
+        {loginModuleProps.extraBlockRegisterText} <Link href="/" onClick={(e) => {
           e.preventDefault();
           handleTabSwitch("0");
-        }}>Login</Link>{" "}
+        }}>{loginModuleProps.extraBlockRegisterLinkText}</Link>{" "}
       </Text>
     </Flex>
   );

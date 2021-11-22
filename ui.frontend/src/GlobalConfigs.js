@@ -15,7 +15,7 @@ const globalConfigs = window.lebaraGlobalConfigs ? {
     paymentClientKey: window.lebaraGlobalConfigs.paymentClientKey,
     paymentAdeyenEnv: window.lebaraGlobalConfigs.paymentAdeyenEnv,
     locale: window.lebaraGlobalConfigs.locale,
-    country: window.lebaraGlobalConfigs.country ? window.lebaraGlobalConfigs.country : 'de',
+    country: window.lebaraGlobalConfigs.country ? window.lebaraGlobalConfigs.country : 'DE',
     journeyPages: JSON.parse(window.lebaraGlobalConfigs.journeyPages)
 } : {};
 

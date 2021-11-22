@@ -4,5 +4,6 @@
   "lebara.viewcart.label":"Warenkorb ansehen",
   "lebara.addon.addedtocart.label":"Add-on {0} wurde zum Warenkorb hinzugefügt",
   "lebara.emptycart.addedtocart.label":"Guthaben aufladen {0} zum Warenkorb hinzugefügt",
-  "lebara.selectedplan.label": "Ausgewählter Plan"
+  "lebara.selectedplan.label": "Ausgewählter Plan",
+  "product.information.label": "Produktinformation"
 }
