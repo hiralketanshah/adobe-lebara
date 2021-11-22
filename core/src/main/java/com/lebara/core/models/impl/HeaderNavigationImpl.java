@@ -46,9 +46,6 @@ public class HeaderNavigationImpl implements HeaderNavigation {
     private String newText;
 
     @ValueMapValue
-    private String viewAllButtonText;
-
-    @ValueMapValue
     private String viewAllButtonLink;
 
     @Self
@@ -102,16 +99,6 @@ public class HeaderNavigationImpl implements HeaderNavigation {
     @Override
     public String getNewText(){
         return newText;
-    }
-
-    @Override
-    public String getViewAllButtonText() {
-        return viewAllButtonText;
-    }
-
-    @Override
-    public String getViewAllButtonLink() {
-        return viewAllButtonLink;
     }
 
     /** Navigation Items from resourceSuperType

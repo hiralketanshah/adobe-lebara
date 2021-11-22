@@ -46,15 +46,167 @@
 		<property name="signOutLabel" />
 		<property name="pretitle" />
 		<property name="cq:panelTitle" />
-                <property name="actionText" />
+		<property name="actionText" />
+
+
+		<!-- Lebara fields -->
+		<property name="knowMoreText" />
+		<property name="thankYouMessage" />
+		<property name="ctaOneLable" />
+		<property name="ctaTwoLable" />
+
+		<!-- Header & Footer -->
+		<property name="followUsText" />
+		<property name="appTitle" />
+		<property name="copyrightText" />
+		<property name="textDescription" />
+		<property name="helpTitle" />
+		<property name="storeTitle" />
+		<property name="helpText" />
+		<property name="lookText" />
+
+		<!-- Page props -->
+		<property name="imageText" />
+		<property name="dataPlanName" />
+		<property name="internationalMinPlanName" />
+		<property name="leftOfLabel" />
+
+		<!-- Detailed view Plan -->
+		<property name="subTitle" />
+		<property name="description" />
+		<property name="showLabel" />
+		<property name="hideLabel" />
+		<property name="ctaTopLabel" />
+		<property name="ctaBottomLabel" />
+
+		<!-- Create Password -->
+		<property name="compHeading" />
+		<property name="compHeadingDescription" />
+		<property name="frmLabelPin" />
+		<property name="compResendPinText" />
+		<property name="frmLabelNewPwd" />
+		<property name="pwdMinHint" />
+		<property name="frmLabelReEnterNewPwd" />
+		<property name="frmBtnPrimaryLabel" />
+		<property name="frmBtnSecondaryLabel" />
+
+		<!-- Create Password : Error messages -->
+		<property name="pinRequiredValidationMsg" />
+		<property name="pinLengthValidationMsg" />
+		<property name="pwdRequiredValidationMsg" />
+		<property name="pwdMinValdiationMsg" />
+		<property name="pwdConfirmRequiredValidationMsg" />
+		<property name="pwdConfirmMatchValidationMsg" />
+		<property name="alertSuccessSuffixMsg" />
+
+		<!-- Empty Cart -->
+		<property name="emptyBasketText" />
+		<property name="goBackText" />
+		<property name="shopBuyLabel" />
+		<property name="cartDescription" />
+		<property name="addOnTabLabel" />
+		<property name="dataTabLabel" />
+		<property name="plansTabLabel" />
+		<property name="showDetailsLabel" />
+		<property name="buyPlanLabel" />
+		<property name="addToCartLabel" />
+		<property name="continueBrowsingLabel" />
+
+		<!-- Home page faq -->
+		<property name="question" />
+		<property name="answer" />
+
+		<!-- Login/Register/Guest -->
+		<property name="loginLabel" />
+		<property name="loginEmailAddressLabel" />
+		<property name="loginPasswordLabel" />
+		<property name="loginForgotPassWordmsg" />
+		<property name="loginResetLinkTextLabel" />
+		<property name="loginResetLinkLabel" />
+		<property name="loginButton" />
+		<property name="loginRegistrationMessage" />
+		<property name="loginRegistrationCtaLabel" />
+		<property name="loginRegistrationCtaLink" />
+		<property name="extraBlockOrText" />
+		<property name="extraBlockLoginText" />
+		<property name="extraBlockLoginLinkText" />
+		<property name="registrationLabel" />
+		<property name="registrationEmailAddress" />
+		<property name="registrationPassword" />
+		<property name="registrationConfirmPassword" />
+		<property name="registrationContinueButton" />
+		<property name="registrationMessage" />
+		<property name="registrationCtaLabel" />
+		<property name="extraBlockRegisterText" />
+		<property name="extraBlockRegisterLinkText" />
+		<property name="guestLoginLabel" />
+		<property name="guestEmailAddressLabel" />
+		<property name="guestMobileNumberLabel" />
+		<property name="guestMobileNumberConfirmLabel" />
+		<property name="guestForgotPasswordMsg" />
+		<property name="guestResetLinkTextLabel" />
+		<property name="guestResetLinkLabel" />
+		<property name="guestContinueLabel" />
+
+		<!-- Login/Register/Guest : Error messages -->
+		<property name="emailFieldErrorMessage" />
+		<property name="validEmailFieldErrorMessage" />
+		<property name="passwordFieldErrorMessage" />
+		<property name="confirmPasswordFieldErrorMessage" />
+		<property name="mobileNumberErrorMessage" />
+		<property name="validMobileNumberErrorMessage" />
+		<property name="mobileNumberNotMatchErrorMessage" />
+		<property name="mobileNumberMaxLength" />
+		<property name="mobileNumberFieldPattern" />
+		<property name="validMobileNumberErrorMessage" />
+		<property name="loginEmailMobileErrMessage" />
+		<property name="confirmPasswordFieldErrorMsg" />
+		<property name="errorEmailPatternValidMsg" />
+		<property name="errorPasswordPatternMinMsg" />
+		<property name="errorConfirmPasswordPatternNotMatchMsg" />
+		<property name="secondSubscriptionDisplayText" />
+		<property name="exitingUserErrorMsg" />
+		<property name="postalCodeText" />
+		<property name="loginButtonLabel" />
+
+		<!-- Order Details -->
+		<property name="selectedProductLabel" />
+		<property name="phoneNumberLabel" />
+		<property name="freeSimLabel" />
+		<property name="autoRenewLabel" />
+		<property name="autoRenewDesc" />
+		<property name="grandTotalLabel"/>
+		<property name="addVoucherCodeLabel"/>
+		<property name="applyVoucherLabel"/>
+		<property name="enterVoucherCodeLabel"/>
+		<property name="voucherCodeInvalidMessage"/>
+		<property name="voucherCodeExpiredMessage"/>
+		<property name="voucherCodeDiscountLabel"/>
+		<property name="consentLabel"/>
+		<property name="privacyPolicyLabel"/>
+		<property name="privacyPolicyLink"/>
+		<property name="paymentMethodLabel"/>
+		<property name="paymentButtonLabel"/>
+		<property name="removeLabel"/>
+		<property name="viewPlansLabel"/>
+		<property name="deleteCartItemTitle"/>
+		<property name="deleteCartItemDesc"/>
+		<property name="deleteCartItemYesButtonLabel"/>
+		<property name="deleteCartItemNoButtonLabel"/>
+		<property name="topUpCreditLabel"/>
+		<property name="topUpRecommendedLabel"/>
+		<property name="topUpCapLabel"/>
+		<property name="topUpCapDesc"/>
+
+		<!-- Lebara fields ends -->
 		<property name="cq:language" updateDestinationLanguage="true"/>
 		<node pathContains="/cq:annotations">
 			<property name="text" translate="false"/>
 		</node>
 	</node>
-	<node path="/content/lebara">
+	<node path="/content/forms">
 		<property name="text" translate="false"/>
-    </node>
+	</node>
 	<node path="/content/dam">
 		<property name="dc:description" />
 		<property name="dc:rights" />
@@ -81,14 +233,14 @@
 		</node>
 	</node>
 	<assetNode resourceType="cq/experience-fragments/editor/components/experiencefragment" assetReferenceAttribute="fragmentPath"/>
-        <assetNode resourceType="core/wcm/components/experiencefragment/v1/experiencefragment" assetReferenceAttribute="fragmentVariationPath"/>
+	<assetNode resourceType="lebara/components/experiencefragment" assetReferenceAttribute="fragmentVariationPath"/>
 	<assetNode resourceType="dam/cfm/components/contentfragment" assetReferenceAttribute="fileReference"/>
 	<assetNode resourceType="docs/components/download" />
 	<assetNode resourceType="docs/components/image" />
 	<assetNode resourceType="foundation/components/image" assetReferenceAttribute="fileReference"/>
 	<assetNode resourceType="foundation/components/video" assetReferenceAttribute="asset"/>
 	<assetNode resourceType="foundation/components/download" assetReferenceAttribute="fileReference"/>
-        <assetNode resourceType="core/wcm/components/download/v1/download" assetReferenceAttribute="fileReference"/>
+	<assetNode resourceType="core/wcm/components/download/v1/download" assetReferenceAttribute="fileReference"/>
 	<assetNode resourceType="wcm/foundation/components/image" assetReferenceAttribute="fileReference"/>
 	<assetNode resourceType="core/wcm/components/contentfragment/v1/contentfragment" assetReferenceAttribute="fragmentPath"/>
 	<assetNode resourceType="core/wcm/components/image/v2/image" assetReferenceAttribute="fileReference"/>
