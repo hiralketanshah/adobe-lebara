@@ -153,7 +153,7 @@ const SimPortNumberForm: React.FC<SimPortNumberFormProps> = ({
               <InputGroup size="md" width={{ base: "100%", md: "225px" }}>
                 <Input
                   id="day"
-                  label="Day"
+                  label={multiFieldOptions?.fields  ? multiFieldOptions?.fields[0] : ""}
                   fontSize="12px"
                   onChange={addressCardFormik.handleChange}
                   onBlur={addressCardFormik.handleBlur}
@@ -187,7 +187,7 @@ const SimPortNumberForm: React.FC<SimPortNumberFormProps> = ({
               <InputGroup size="md" width={{ base: "100%", md: "225px" }}>
                 <Input
                   id="month"
-                  label="Month"
+                  label={multiFieldOptions?.fields  ? multiFieldOptions?.fields[1] : ""}
                   fontSize="12px"
                   onChange={addressCardFormik.handleChange}
                   onBlur={addressCardFormik.handleBlur}
@@ -221,7 +221,7 @@ const SimPortNumberForm: React.FC<SimPortNumberFormProps> = ({
               <InputGroup size="md" width={{ base: "100%", md: "250px" }}>
                 <Input
                   id="year"
-                  label="Year"
+                  label={multiFieldOptions?.fields  ? multiFieldOptions?.fields[2] : ""}
                   fontSize="12px"
                   onChange={addressCardFormik.handleChange}
                   onBlur={addressCardFormik.handleBlur}
