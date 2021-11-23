@@ -41,13 +41,9 @@ import MiniHeader from "../MiniHeader/MiniHeader";
 import { ReduxState } from "../../redux/types";
 // import LebaraLogo from "../../assets/images/lebara-logo.svg";
 import NewSIMOfferCard from "../NewSImOfferCard/NewSImOfferCard";
-import SearchBox from "../SearchBox/SearchBox";
+import Search from "../Search/Search";
 import UserMenu from "../UserMenu/UserMenu";
 import userMenuProps from "../../utils/userMenuProps";
-import {
-  mostSearchesFromUsers,
-  recentSearches,
-} from "../../utils/lebara.constants";
 import { headerSearch } from "../../redux/actions/headerSearchActions";
 import { selectIsAuthenticated } from "../../redux/selectors/userSelectors";
 import { globalConfigs as GC, globalConstants as GCST } from "../../GlobalConfigs";
@@ -62,6 +58,7 @@ const Header: React.FC<HeaderProps> = ({
   topupCtaText,
   topupCtaLink,
   accountLink,
+  searchPlaceholder,
 }) => {
   const cartItems = useSelector((state: ReduxState) => state.cart.items);
   const history = useHistory();
@@ -381,7 +378,7 @@ const Header: React.FC<HeaderProps> = ({
                     </InputLeftElement>
                     <Input
                       ml="4px"
-                      placeholder="Search here"
+                      placeholder={searchPlaceholder}
                       _placeholder={{
                         color: "grey.100",
                         fontSize: "16px",
@@ -453,11 +450,10 @@ const Header: React.FC<HeaderProps> = ({
             position="absolute"
             flexDirection="column"
           >
-            <SearchBox
-              mostSearchesFromUsers={mostSearchesFromUsers}
-              recentSearches={recentSearches}
+            <Search
+              searchPlaceholder={searchPlaceholder}
               onCloseClick={onCloseSearch}
-            />
+              />
           </Flex>
         </Box>
       ) : (
