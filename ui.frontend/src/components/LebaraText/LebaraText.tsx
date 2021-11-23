@@ -6,9 +6,9 @@ const LebaraText: React.FC<LebaraTextProps> = ({ type, ...rest }) => {
   const fontDetails = fontTypeDetails[type];
   return (
     <Text
-      fontWeight={fontDetails.weight}
-      fontSize={fontDetails.size}
-      letterSpacing={fontDetails.letterSpacing}
+      fontWeight={fontDetails?.weight}
+      fontSize={fontDetails?.size}
+      letterSpacing={fontDetails?.letterSpacing}
       {...rest}
     />
   );

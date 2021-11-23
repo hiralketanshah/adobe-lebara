@@ -309,38 +309,6 @@ const UsageDetails: React.FC<UsageDetailsProps> = ({
             >{ctaLoadMoreLabel}</Button>
           )}
         </Flex>
-        <Box
-          position="absolute"
-          display={{ lg: "inline-block", base: "none" }}
-          right="50px"
-          top="450px"
-        >
-          <Circle
-            size="72px"
-            bg="secondary.500"
-            color="white"
-            textAlign="center"
-          >
-            <Button
-              display="flex"
-              flexDirection="column"
-              bg="secondary.500"
-              _hover={{ bg: "secondary.500" }}
-              _active={{ bg: "secondary.500", borderColor: "secondary.500" }}
-              onClick={() => history.push("/top-up")}
-              _focus={{
-                outline: "none",
-              }}
-            >
-              <Text textTransform="capitalize" fontSize="17px" color="white">
-                Top
-              </Text>
-              <Text textTransform="capitalize" fontSize="17px" color="white">
-                Up
-              </Text>
-            </Button>
-          </Circle>
-        </Box>
       </Box>
     </Flex>
   );
