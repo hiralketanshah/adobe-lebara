@@ -48,6 +48,111 @@
 		<property name="cq:panelTitle" />
 		<property name="actionText" />
 
+		<!-- Dashboard props -->
+		<!-- simswitch props -->
+		<property name="balanceLabel" />
+		<property name="simName" />
+		<!-- Balance Card props -->
+		<property name="activeDesc" />
+		<property name="activeLabel" />
+		<property name="autoTopupButtonLabel" />
+		<property name="autoTopupLabel" />
+		<property name="autoTopupStatusLabel" />
+		<property name="description" />
+		<property name="editLabel" />
+		<property name="limitSelectLabel" />
+		<property name="title" />
+		<property name="topupLabel" />
+		<property name="topupSelectLabel" />
+		<!-- promotion banner props -->
+		<property name="fileReference" />
+		<!-- Postpaid Plans props -->
+		<property name="renewalLabel" />
+		<property name="planChangeMessage" />
+		<property name="cancelLabel" />
+		<property name="manageLabel" />
+		<property name="autoRenewLabel" />
+		<property name="autoRenewDesc" />
+		<property name="buttonText" />
+		<property name="planChangeTitle" />
+		<property name="planChangeDesc" />
+		<property name="termsConsentLabel" />
+		<property name="termsConditionsLabel" />
+		<property name="contractConsentLabel" />
+		<property name="confirmLabel" />
+		<!-- addons props -->
+		<property name="addMoreLabel" />
+		<property name="leftOfText" />
+		<property name="validToLabel" />
+		<!-- prepaid plans props -->
+		<property name="manageLabel" />
+		<!-- Dashboard inherited page props -->
+		<property name="dataPlanName" />
+		<property name="dataType" />
+		<property name="minPlanName" />
+		<property name="minDataType" />
+		<property name="smsPlanName" />
+		<property name="smsDataType" />
+		<property name="internationalMinPlanName" />
+		<property name="internationalMinDataType" />
+		<property name="leftOfLabel" />
+		<!-- postpaid props -->
+		<property name="moreDetailsLabel" />
+		<property name="popupCloseLabel" />
+		<property name="orderNowLabel" />
+		<property name="switchCtaLabel" />
+		<property name="durationLabel" />
+		<property name="contractPeriodPopupHeading" />
+		<property name="contractPeriodPopupInfo" />
+		<property name="dataVolumeLabel" />
+		<property name="dataVolumePopupHeading" />
+		<property name="dataVolumePopupInfo" />
+		<property name="abroadMinutesLabel" />
+		<property name="abroadMinutesPopupHeading" />
+		<property name="abroadMinutesPopupInfoTop" />
+		<property name="abroadMinutesPopupInfoBottom" />
+		<property name="yourOrderLabel" />
+		<property name="productInformationLabel" />
+		<property name="yourOrderContractdurationLabel" />
+		<property name="yourOrderDataLabel" />
+		<property name="yourOrderInternationalMinLabel" />
+		<property name="yourOrderMinutesInGermany" />
+		<property name="yourOrderPerMonthOrderTotalLabel" />
+		<property name="yourOrderOneTimeActivationFeeLabel" />
+		<property name="yourOrderOneTimeActivationFee" />
+		<property name="dataVolumeRadioLabel" />
+		<property name="abroadMinutesRadioLabel" />
+		<property name="yourOrdersimPlanLabel" />
+		<property name="yourOrderMinutesInGermanyValue" />
+		<property name="label1" />
+		<property name="label2" />
+		<!-- sim portin props -->
+		<property name="pretitle" />
+		<property name="doitLaterButtonLabel" />
+		<property name="dobTitle" />
+		<property name="dobDesc" />
+		<property name="dayFieldLabel" />
+		<property name="monthFieldLabel" />
+		<property name="yearFieldLabel" />
+		<property name="mobileNumberLabel" />
+		<property name="mobileNumberDesc" />
+		<property name="currentProviderLabel" />
+		<property name="currentProviderDesc" />
+		<property name="contractInfo" />
+		<property name="portingInfo" />
+		<property name="consentOne" />
+		<property name="consentTwo" />
+		<property name="dataProtectionMessage" />
+		<property name="termsAndConditions" />
+		<property name="continueButtonLabel" />
+		<property name="cancelbuttonlabel" />
+		<property name="dayFieldErrorMessage" />
+		<property name="monthFieldErrorMessage" />
+		<property name="yearFieldErrorMessage" />
+		<property name="currentProviderErrorMessage" />
+		<property name="mobileNumberErrorMessage" />
+		<property name="mobileNumberMaxLength" />
+		<property name="mobileNumberFieldPattern" />
 
 		<!-- Lebara fields -->
 		<property name="knowMoreText" />
