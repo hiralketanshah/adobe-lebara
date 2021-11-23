@@ -1,13 +1,11 @@
 package com.lebara.core.servlet;
 
 import com.day.cq.search.QueryBuilder;
-import com.lebara.core.utils.SearchUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.SlingHttpServletResponse;
 import org.apache.sling.api.resource.ResourceResolver;
 import org.apache.sling.api.servlets.HttpConstants;
-import org.apache.sling.api.servlets.SlingSafeMethodsServlet;
 import org.osgi.framework.Constants;
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Reference;
@@ -33,7 +31,7 @@ import static org.apache.sling.api.servlets.ServletResolverConstants.*;
                 SLING_SERVLET_EXTENSIONS + "=json",
         }
 )
-public class HelpCenterSearchServlet extends SlingSafeMethodsServlet {
+public class HelpCenterSearchServlet extends GlobalSearchServlet {
     @Reference
     private QueryBuilder builder;
 
@@ -51,11 +49,11 @@ public class HelpCenterSearchServlet extends SlingSafeMethodsServlet {
         session = resourceResolver.adaptTo(Session.class);
         String searchRoot = request.getParameter("searchRoot");
         if (StringUtils.isEmpty(searchRoot)) {
-            searchRoot = SearchUtils.DEFAULT_SEARCH_ROOT;
+            searchRoot = DEFAULT_SEARCH_ROOT;
         }
         LOGGER.debug("searchRoot is {}", searchRoot);
         Map<String, String> predicate = getHelpCenterSearchPredicates(param, searchRoot);
-        response.getWriter().println(SearchUtils.getSearchInfoString(predicate, builder, session));
+        response.getWriter().println(getSearchInfoString(predicate, builder, session));
     }
 
     private Map<String, String> getHelpCenterSearchPredicates(String param, String searchRoot) {

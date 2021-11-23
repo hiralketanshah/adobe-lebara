@@ -38,7 +38,7 @@
                                                     jcr:primaryType="nt:unstructured"
                                                     sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
                                                     fieldDescription="Select Parent Page Path for Help Center Search"
-                                                    fieldLabel="Root page where search should be triggered"
+                                                    fieldLabel="Search Root Path"
                                                     name="./searchRoot"
                                                     rootPath="/content/lebara"/>
                                         </items>
