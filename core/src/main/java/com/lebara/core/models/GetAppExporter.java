@@ -36,6 +36,13 @@ public class GetAppExporter implements ComponentExporter {
 
     @ValueMapValue
     private String textDescription;
+
+    @ValueMapValue
+    private List<String> textCol1;
+
+    @ValueMapValue
+    private List<String> textCol2;
+    
     @ValueMapValue
     private boolean show;
 
@@ -61,6 +68,14 @@ public class GetAppExporter implements ComponentExporter {
 
     public String getAppTitle() {
         return appTitle;
+    }
+
+    public List<String> getTextCol1() {
+        return textCol1;
+    }
+
+    public List<String> getTextCol2() {
+        return textCol2;
     }
 
     @Override
