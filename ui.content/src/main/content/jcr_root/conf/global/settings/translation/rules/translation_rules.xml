@@ -198,6 +198,48 @@
 		<property name="topUpCapLabel"/>
 		<property name="topUpCapDesc"/>
 
+		<!-- spa -->
+		<!-- tabs -->
+		<!-- teaser -->
+		<!-- text -->
+		<!-- title -->
+		<!-- topup -->
+		<property name="leftTitle"/>
+		<property name="leftSubTitle"/>
+		<property name="rightTitle"/>
+		<property name="rightSubTitle"/>
+		<property name="buyTopUpLabel"/>
+
+		<!-- trustpilotrating -->
+		<!-- usagedetails -->
+		<property name="body"/>
+		<property name="ctaSeeMoreCallsLabel"/>
+		<property name="ctaLoadMoreLabel"/>
+		<property name="tabsName"/>
+
+		<!-- usp -->
+		<property name="body"/>
+
+		<!-- verifymobile -->
+		<property name="subHeading"/>
+		<property name="unlimitedTextField"/>
+		<property name="emailLabel"/>
+		<property name="emailPlaceholder"/>
+		<property name="mobileLabel"/>
+		<property name="mobilePlaceholder"/>
+		<property name="buttonCTALabel"/>
+		<property name="verifyCodeLabel"/>
+		<property name="otpSentSuccessfullyMsg"/>
+		<property name="label1"/>
+		<property name="label2"/>
+
+		<!-- viewplan -->
+		<property name="minutesField"/>
+		<property name="unlimitedTextField"/>
+
+		<!-- Wheretocall -->
+		<!-- XfPage -->
+
 		<!-- Lebara fields ends -->
 		<property name="cq:language" updateDestinationLanguage="true"/>
 		<node pathContains="/cq:annotations">
