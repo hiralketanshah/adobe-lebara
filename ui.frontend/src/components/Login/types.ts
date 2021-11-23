@@ -61,7 +61,7 @@ export interface loginModuleProps {
   loginButton : string;
   loginRegistrationMessage : string;
   loginRegistrationCtaLabel : string;
-  loginRegistrationCtaLink : string;
+  loginRegistrationCtaLink : string;  
   registrationLabel : string;
   registrationEmailAddress : string;
   registrationPassword :string;
@@ -98,6 +98,12 @@ export interface loginModuleProps {
   resetPwdMobileLabel: string;
   resetPwdButtonLabel: string;
   resetPwdButtonCancelLabel: string;
+  extraBlockOrText?: string
+  extraBlockLoginText? : string;
+  extraBlockLoginLinkText? : string;
+  extraBlockRegisterText? : string;
+  extraBlockRegisterLinkText? : string;
+  
 }
 export interface LoginTabsProps extends TabProps, loginModuleProps {
   icon?: IconType;
