@@ -20,11 +20,7 @@ import {
   AiOutlineUser,
   BsSearch,
   BiSearch,
-  FaSimCard,
-  // IoLocationOutline,
-  RiHeadphoneFill,
   RiShoppingCartLine,
-  RiShoppingBagLine,
 } from "react-icons/all";
 import { Link, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
@@ -144,6 +140,9 @@ const Header: React.FC<HeaderProps> = ({
     history.push(GC.journeyPages[GCST.REGISTER]  || '/', {
       fromHeader: true,
     });
+    // history.push((GC.journeyPages[GCST.LOGIN]  || '/'), {
+    //   fromMenu: true,
+    // })
   };
 
   return (
@@ -207,7 +206,8 @@ const Header: React.FC<HeaderProps> = ({
 
           <Flex alignItems="left" ml={{ lg: "30px", md: "15px" }}>
             {items?.map((menuItem: children, idx: any) => (
-              <Menu key={`menu-key-${idx}`}>
+              <Menu key={`menu-key-${idx}`}
+                isOpen={isOpenMenu}>
                 <MenuButton
                 onClick={() => (menuItem.path ? history.push(menuItem.path) : null)}
                 onMouseEnter={btnMouseEnterEvent}
@@ -241,7 +241,10 @@ const Header: React.FC<HeaderProps> = ({
                     </Button>
                   </Box>
                 </MenuButton>
-                <MenuList marginLeft="-135px" marginTop="5px" zIndex={2}>
+                <MenuList marginLeft="-135px" marginTop="5px" 
+                  zIndex={2}
+                  onMouseEnter={menuListMouseEnterEvent}
+                  onMouseLeave={menuListMouseLeaveEvent}>
                   <Box
                     display="flex"
                     justifyContent="space-between"
@@ -400,11 +403,7 @@ const Header: React.FC<HeaderProps> = ({
               aria-label="Profile"
               size="md"
               variant="ghost"
-              onClick={() =>
-                history.push((GC.journeyPages[GCST.LOGIN]  || '/'), {
-                  fromMenu: true,
-                })
-              }
+              onClick={handleProfileClick}
             />
             <Box pos="relative" onClick={handleCartClick}>
               <IconButton
