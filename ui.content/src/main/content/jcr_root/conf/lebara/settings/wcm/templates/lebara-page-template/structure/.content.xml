@@ -13,6 +13,10 @@
                 jcr:primaryType="nt:unstructured"
                 sling:resourceType="lebara/components/experiencefragment"
                 editable="{Boolean}true"/>
+            <breadcrumb
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="lebara/components/breadcrumb"
+                    editable="{Boolean}true"/>
             <responsivegrid
                 jcr:primaryType="nt:unstructured"
                 sling:resourceType="wcm/foundation/components/responsivegrid"
