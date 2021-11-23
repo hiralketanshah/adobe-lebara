@@ -113,12 +113,6 @@ public class CrudOperationEpc {
             logger.error("IOException error while fetching EPC data {}, {}", e.getMessage(), e);
             logger.error("error while fetching EPC data {}, {}", e.getMessage(), e);
         }
-
-        /*catch (IOException e) {
-            logger.error("IOException error while fetching EPC data {}, {}", e.getMessage(), e);
-        } catch (Exception e) {
-            logger.error("error while fetching EPC data {}, {}", e.getMessage(), e);
-        }*/
         logger.debug("response from EPC {}", sb);
         return sb.toString();
     }

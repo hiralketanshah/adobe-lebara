@@ -39,7 +39,7 @@ public class GlobalConfigs extends SlingSafeMethodsServlet {
     private static final String CURRENCY_NAME = "currencyName";
     private static final String JOURNEY_PAGES = "journeyPages";
     @Reference
-    transient GlobalOsgiService globalOsgiService;
+    private transient GlobalOsgiService globalOsgiService;
 
     @Override
     protected void doGet(final SlingHttpServletRequest req,

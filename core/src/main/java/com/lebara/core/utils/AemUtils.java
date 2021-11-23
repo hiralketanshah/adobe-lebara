@@ -61,7 +61,7 @@ public class AemUtils {
      *
      * @param resource     the resource
      * @param propertyName the property name
-     * @return String property with propertpropertyNameyName for resource
+     * @return String property with propertyName for resource
      */
     public static String getStringProperty(final Resource resource, final String propertyName) {
         return getProperty(resource, propertyName, String.class);

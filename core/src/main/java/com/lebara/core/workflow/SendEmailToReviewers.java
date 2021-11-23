@@ -52,8 +52,7 @@ public class SendEmailToReviewers implements WorkflowProcess {
     }
 
     private void sendEmailToReceipients(WorkItem workItem, WorkflowSession workflowSession, String templatePath) {
-       // String emailRecepientGroupName = StringUtils.EMPTY;
-        String payloadPath = workItem.getWorkflow().getWorkflowData().getPayload().toString();
+       String payloadPath = workItem.getWorkflow().getWorkflowData().getPayload().toString();
         ResourceResolver resourceResolver = workflowSession.adaptTo(ResourceResolver.class);
         if (null == resourceResolver) {
             return;

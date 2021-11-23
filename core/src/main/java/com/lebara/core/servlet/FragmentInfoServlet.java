@@ -50,7 +50,7 @@ public class FragmentInfoServlet extends SlingSafeMethodsServlet {
     @Reference
     transient QueryBuilder queryBuilder;
 
-    transient I18n i18n;
+    private transient I18n i18n;
     private String offerId;
     private String offerRootPath;
 
