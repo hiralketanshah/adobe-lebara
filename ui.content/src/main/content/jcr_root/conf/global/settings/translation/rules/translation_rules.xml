@@ -338,12 +338,108 @@
 		<property name="label1"/>
 		<property name="label2"/>
 
-		<!-- viewplan -->
-		<property name="minutesField"/>
-		<property name="unlimitedTextField"/>
-
 		<!-- Wheretocall -->
 		<!-- XfPage -->
+
+		<!-- Personal Details -->
+		<property name="yourPersonalDetailsLabel"/>
+		<property name="firstNameLabel"/>
+		<property name="firstNamePlaceholder"/>
+		<property name="lastNameLabel"/>
+		<property name="lastNamePlaceholder"/>
+		<property name="emailAddressLabel"/>
+		<property name="emailAddressPlaceholder"/>
+		<property name="keyInAddress"/>
+		<property name="addressLabel"/>
+		<property name="addressKeyInText"/>
+		<property name="postalcodePlaceholder"/>
+		<property name="enterAddressManually"/>
+		<property name="streetLabel"/>
+		<property name="streetPlaceholder"/>
+		<property name="houseNumberLabel"/>
+		<property name="houseNumberPlaceholder"/>
+		<property name="zipCodeLabel"/>
+		<property name="zipCodePlaceholder"/>
+		<property name="cityLabel"/>
+		<property name="cityPlaceholder"/>
+		<property name="saveAddress"/>
+		<property name="orderDetailsCta"/>
+		<property name="firstNameErrorMax"/>
+		<property name="firstNameErrorRequired"/>
+		<property name="firstNameErrorPattern"/>
+		<property name="lastNameErrorMax"/>
+		<property name="lastNameErrorRequired"/>
+		<property name="lastNameErrorPattern"/>
+		<property name="emailErrorMax"/>
+		<property name="emailErrorRequired"/>
+		<property name="emailErrorPattern"/>
+		<property name="addressErrorRequired"/>
+		<property name="streetLabelErrorMax"/>
+		<property name="streetLabelErrorRequired"/>
+		<property name="streetLabelErrorPattern"/>
+		<property name="houseNumberErrorMax"/>
+		<property name="houseNumberErrorRequired"/>
+		<property name="cityErrorMax"/>
+		<property name="cityErrorRequired"/>
+		<property name="houseNumberErrorPattern"/>
+		<property name="zipCodeErrorMin"/>
+		<property name="zipCodeErrorRequired"/>
+		<property name="zipCodeErrorPattern"/>
+		<property name="zipCodeErrorMax"/>
+
+		<!-- Postpaid personal details -->
+		<property name="emailLabel"/>
+		<property name="emailPlaceholder"/>
+		<property name="fNameLabel"/>
+		<property name="fnamePlaceholder"/>
+		<property name="lNameLabel"/>
+		<property name="lNamePlaceholder"/>
+		<property name="dobLabel"/>
+		<property name="dayLabel"/>
+		<property name="dayPalceholder"/>
+		<property name="monthLabel"/>
+		<property name="monthPlaceholder"/>
+		<property name="yearLabel"/>
+		<property name="yearPlaceholder"/>
+		<property name="enterAddressManually"/>
+		<property name="shippingLabel"/>
+		<property name="shippingPlaceholder"/>
+		<property name="shippingHelperText"/>
+		<property name="portingSectionHeading"/>
+		<property name="portInNumberLabel"/>
+		<property name="portInNumberPlaceHolder"/>
+		<property name="currentProviderLabel"/>
+		<property name="currentProviderPlaceholder"/>
+		<property name="currentProviderHelperText"/>
+		<property name="currentProviderList"/>
+		<property name="currentProviderInfoDescription"/>
+		<property name="currentProviderUsageAcceptanceLabel"/>
+		<property name="currentProviderAdvertisingPreviewText"/>
+		<property name="currentProviderAdvertisingAcceptanceLabel"/>
+		<property name="exitingPhoneHelperLabel"/>
+		<property name="linkCTALabel"/>
+		<property name="orTextLabel"/>
+		<property name="buttonCTALabel"/>
+		<property name="ctaContinueLabel"/>
+		<property name="emailRequiredMsg"/>
+		<property name="emailInValidMsg"/>
+		<property name="firstNameErrorMax"/>
+		<property name="fNameRequiredMsg"/>
+		<property name="fNameInValidMsg"/>
+		<property name="lastNameErrorMax"/>
+		<property name="lNameRequiredMsg"/>
+		<property name="lNameInValidMsg"/>
+		<property name="dayRequiredMsg"/>
+		<property name="dayInValidMsg"/>
+		<property name="monthRequiredMsg"/>
+		<property name="monthInValidMsg"/>
+		<property name="yearRequiredMsg"/>
+		<property name="yearInValidMsg"/>
+		<property name="yearInvalidAgeMsg"/>
+		<property name="shippingRequiredMsg"/>
+		<property name="portInNumberRequiredMsg"/>
+		<property name="portInNumberInValidMsg"/>
+		<property name="currentProviderRequiredMsg"/>
 
 		<!-- Lebara fields ends -->
 		<property name="cq:language" updateDestinationLanguage="true"/>
