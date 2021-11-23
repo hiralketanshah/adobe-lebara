@@ -1,0 +1,490 @@
+<nodelist>
+	<node path="/content">
+		<property name="addLabel" />
+		<property name="allowedResponses" />
+		<property name="alt" />
+		<property name="attachFileLabel" />
+		<property name="benefits" />
+		<property name="buttonLabel" />
+		<property name="chartAlt" />
+		<property name="confirmationMessageToggle" />
+		<property name="confirmationMessageUntoggle" />
+		<property name="constraintMessage" />
+		<property name="contentLabel" />
+		<property name="denyText" />
+		<property name="detailDescription" />
+		<property name="emptyText" />
+		<property name="helpMessage" />
+		<property name="image/alt" />
+		<property name="image/jcr:description" />
+		<property name="image/jcr:title" />
+		<property name="jcr:description" />
+		<property name="jcr:title" />
+		<property name="heading" />
+		<property name="label" />
+		<property name="main" />
+		<property name="listLabel" />
+		<property name="moreText" />
+		<property name="pageTitle" />
+		<property name="placeholder" />
+		<property name="requiredMessage" />
+		<property name="resetTitle" />
+		<property name="subjectLabel" />
+		<property name="subtitle" />
+		<property name="tableData" />
+		<property name="text" />
+		<property name="title" />
+		<property name="navTitle" />
+		<property name="titleDivContent" />
+		<property name="toggleLabel" />
+		<property name="transitionLabel" />
+		<property name="untoggleLabel" />
+		<property name="name" />
+		<property name="occupations" />
+		<property name="greetingLabel" />
+		<property name="signInLabel" />
+		<property name="signOutLabel" />
+		<property name="pretitle" />
+		<property name="cq:panelTitle" />
+		<property name="actionText" />
+
+		<!-- Dashboard props -->
+		<!-- simswitch props -->
+		<property name="balanceLabel" />
+		<property name="simName" />
+		<!-- Balance Card props -->
+		<property name="activeDesc" />
+		<property name="activeLabel" />
+		<property name="autoTopupButtonLabel" />
+		<property name="autoTopupLabel" />
+		<property name="autoTopupStatusLabel" />
+		<property name="description" />
+		<property name="editLabel" />
+		<property name="limitSelectLabel" />
+		<property name="title" />
+		<property name="topupLabel" />
+		<property name="topupSelectLabel" />
+		<!-- promotion banner props -->
+		<property name="fileReference" />
+		<!-- Postpaid Plans props -->
+		<property name="renewalLabel" />
+		<property name="planChangeMessage" />
+		<property name="cancelLabel" />
+		<property name="manageLabel" />
+		<property name="autoRenewLabel" />
+		<property name="autoRenewDesc" />
+		<property name="buttonText" />
+		<property name="planChangeTitle" />
+		<property name="planChangeDesc" />
+		<property name="termsConsentLabel" />
+		<property name="termsConditionsLabel" />
+		<property name="contractConsentLabel" />
+		<property name="confirmLabel" />
+		<!-- addons props -->
+		<property name="addMoreLabel" />
+		<property name="leftOfText" />
+		<property name="validToLabel" />
+		<!-- prepaid plans props -->
+		<property name="manageLabel" />
+		<!-- Dashboard inherited page props -->
+		<property name="dataPlanName" />
+		<property name="dataType" />
+		<property name="minPlanName" />
+		<property name="minDataType" />
+		<property name="smsPlanName" />
+		<property name="smsDataType" />
+		<property name="internationalMinPlanName" />
+		<property name="internationalMinDataType" />
+		<property name="leftOfLabel" />
+		<!-- postpaid props -->
+		<property name="moreDetailsLabel" />
+		<property name="popupCloseLabel" />
+		<property name="orderNowLabel" />
+		<property name="switchCtaLabel" />
+		<property name="durationLabel" />
+		<property name="contractPeriodPopupHeading" />
+		<property name="contractPeriodPopupInfo" />
+		<property name="dataVolumeLabel" />
+		<property name="dataVolumePopupHeading" />
+		<property name="dataVolumePopupInfo" />
+		<property name="abroadMinutesLabel" />
+		<property name="abroadMinutesPopupHeading" />
+		<property name="abroadMinutesPopupInfoTop" />
+		<property name="abroadMinutesPopupInfoBottom" />
+		<property name="yourOrderLabel" />
+		<property name="productInformationLabel" />
+		<property name="yourOrderContractdurationLabel" />
+		<property name="yourOrderDataLabel" />
+		<property name="yourOrderInternationalMinLabel" />
+		<property name="yourOrderMinutesInGermany" />
+		<property name="yourOrderPerMonthOrderTotalLabel" />
+		<property name="yourOrderOneTimeActivationFeeLabel" />
+		<property name="yourOrderOneTimeActivationFee" />
+		<property name="dataVolumeRadioLabel" />
+		<property name="abroadMinutesRadioLabel" />
+		<property name="yourOrdersimPlanLabel" />
+		<property name="yourOrderMinutesInGermanyValue" />
+		<property name="label1" />
+		<property name="label2" />
+		<!-- sim portin props -->
+		<property name="pretitle" />
+		<property name="doitLaterButtonLabel" />
+		<property name="dobTitle" />
+		<property name="dobDesc" />
+		<property name="dayFieldLabel" />
+		<property name="monthFieldLabel" />
+		<property name="yearFieldLabel" />
+		<property name="mobileNumberLabel" />
+		<property name="mobileNumberDesc" />
+		<property name="currentProviderLabel" />
+		<property name="currentProviderDesc" />
+		<property name="contractInfo" />
+		<property name="portingInfo" />
+		<property name="consentOne" />
+		<property name="consentTwo" />
+		<property name="dataProtectionMessage" />
+		<property name="termsAndConditions" />
+		<property name="continueButtonLabel" />
+		<property name="cancelbuttonlabel" />
+		<property name="dayFieldErrorMessage" />
+		<property name="monthFieldErrorMessage" />
+		<property name="yearFieldErrorMessage" />
+		<property name="currentProviderErrorMessage" />
+		<property name="mobileNumberErrorMessage" />
+		<property name="mobileNumberMaxLength" />
+		<property name="mobileNumberFieldPattern" />
+
+		<!-- Lebara fields -->
+		<property name="knowMoreText" />
+		<property name="thankYouMessage" />
+		<property name="ctaOneLable" />
+		<property name="ctaTwoLable" />
+
+		<!-- Header & Footer -->
+		<property name="followUsText" />
+		<property name="appTitle" />
+		<property name="copyrightText" />
+		<property name="textDescription" />
+		<property name="helpTitle" />
+		<property name="storeTitle" />
+		<property name="helpText" />
+		<property name="lookText" />
+
+		<!-- Page props -->
+		<property name="imageText" />
+		<property name="dataPlanName" />
+		<property name="internationalMinPlanName" />
+		<property name="leftOfLabel" />
+
+		<!-- Detailed view Plan -->
+		<property name="subTitle" />
+		<property name="description" />
+		<property name="showLabel" />
+		<property name="hideLabel" />
+		<property name="ctaTopLabel" />
+		<property name="ctaBottomLabel" />
+
+		<!-- Create Password -->
+		<property name="compHeading" />
+		<property name="compHeadingDescription" />
+		<property name="frmLabelPin" />
+		<property name="compResendPinText" />
+		<property name="frmLabelNewPwd" />
+		<property name="pwdMinHint" />
+		<property name="frmLabelReEnterNewPwd" />
+		<property name="frmBtnPrimaryLabel" />
+		<property name="frmBtnSecondaryLabel" />
+
+		<!-- Create Password : Error messages -->
+		<property name="pinRequiredValidationMsg" />
+		<property name="pinLengthValidationMsg" />
+		<property name="pwdRequiredValidationMsg" />
+		<property name="pwdMinValdiationMsg" />
+		<property name="pwdConfirmRequiredValidationMsg" />
+		<property name="pwdConfirmMatchValidationMsg" />
+		<property name="alertSuccessSuffixMsg" />
+
+		<!-- Empty Cart -->
+		<property name="emptyBasketText" />
+		<property name="goBackText" />
+		<property name="shopBuyLabel" />
+		<property name="cartDescription" />
+		<property name="addOnTabLabel" />
+		<property name="dataTabLabel" />
+		<property name="plansTabLabel" />
+		<property name="showDetailsLabel" />
+		<property name="buyPlanLabel" />
+		<property name="addToCartLabel" />
+		<property name="continueBrowsingLabel" />
+
+		<!-- Home page faq -->
+		<property name="question" />
+		<property name="answer" />
+
+		<!-- Login/Register/Guest -->
+		<property name="loginLabel" />
+		<property name="loginEmailAddressLabel" />
+		<property name="loginPasswordLabel" />
+		<property name="loginForgotPassWordmsg" />
+		<property name="loginResetLinkTextLabel" />
+		<property name="loginResetLinkLabel" />
+		<property name="loginButton" />
+		<property name="loginRegistrationMessage" />
+		<property name="loginRegistrationCtaLabel" />
+		<property name="loginRegistrationCtaLink" />
+		<property name="extraBlockOrText" />
+		<property name="extraBlockLoginText" />
+		<property name="extraBlockLoginLinkText" />
+		<property name="registrationLabel" />
+		<property name="registrationEmailAddress" />
+		<property name="registrationPassword" />
+		<property name="registrationConfirmPassword" />
+		<property name="registrationContinueButton" />
+		<property name="registrationMessage" />
+		<property name="registrationCtaLabel" />
+		<property name="extraBlockRegisterText" />
+		<property name="extraBlockRegisterLinkText" />
+		<property name="guestLoginLabel" />
+		<property name="guestEmailAddressLabel" />
+		<property name="guestMobileNumberLabel" />
+		<property name="guestMobileNumberConfirmLabel" />
+		<property name="guestForgotPasswordMsg" />
+		<property name="guestResetLinkTextLabel" />
+		<property name="guestResetLinkLabel" />
+		<property name="guestContinueLabel" />
+
+		<!-- Login/Register/Guest : Error messages -->
+		<property name="emailFieldErrorMessage" />
+		<property name="validEmailFieldErrorMessage" />
+		<property name="passwordFieldErrorMessage" />
+		<property name="confirmPasswordFieldErrorMessage" />
+		<property name="mobileNumberErrorMessage" />
+		<property name="validMobileNumberErrorMessage" />
+		<property name="mobileNumberNotMatchErrorMessage" />
+		<property name="mobileNumberMaxLength" />
+		<property name="mobileNumberFieldPattern" />
+		<property name="validMobileNumberErrorMessage" />
+		<property name="loginEmailMobileErrMessage" />
+		<property name="confirmPasswordFieldErrorMsg" />
+		<property name="errorEmailPatternValidMsg" />
+		<property name="errorPasswordPatternMinMsg" />
+		<property name="errorConfirmPasswordPatternNotMatchMsg" />
+		<property name="secondSubscriptionDisplayText" />
+		<property name="exitingUserErrorMsg" />
+		<property name="postalCodeText" />
+		<property name="loginButtonLabel" />
+
+		<!-- Order Details -->
+		<property name="selectedProductLabel" />
+		<property name="phoneNumberLabel" />
+		<property name="freeSimLabel" />
+		<property name="autoRenewLabel" />
+		<property name="autoRenewDesc" />
+		<property name="grandTotalLabel"/>
+		<property name="addVoucherCodeLabel"/>
+		<property name="applyVoucherLabel"/>
+		<property name="enterVoucherCodeLabel"/>
+		<property name="voucherCodeInvalidMessage"/>
+		<property name="voucherCodeExpiredMessage"/>
+		<property name="voucherCodeDiscountLabel"/>
+		<property name="consentLabel"/>
+		<property name="privacyPolicyLabel"/>
+		<property name="privacyPolicyLink"/>
+		<property name="paymentMethodLabel"/>
+		<property name="paymentButtonLabel"/>
+		<property name="removeLabel"/>
+		<property name="viewPlansLabel"/>
+		<property name="deleteCartItemTitle"/>
+		<property name="deleteCartItemDesc"/>
+		<property name="deleteCartItemYesButtonLabel"/>
+		<property name="deleteCartItemNoButtonLabel"/>
+		<property name="topUpCreditLabel"/>
+		<property name="topUpRecommendedLabel"/>
+		<property name="topUpCapLabel"/>
+		<property name="topUpCapDesc"/>
+
+		<!-- spa -->
+		<!-- tabs -->
+		<!-- teaser -->
+		<!-- text -->
+		<!-- title -->
+		<!-- topup -->
+		<property name="leftTitle"/>
+		<property name="leftSubTitle"/>
+		<property name="rightTitle"/>
+		<property name="rightSubTitle"/>
+		<property name="buyTopUpLabel"/>
+
+		<!-- trustpilotrating -->
+		<!-- usagedetails -->
+		<property name="body"/>
+		<property name="ctaSeeMoreCallsLabel"/>
+		<property name="ctaLoadMoreLabel"/>
+		<property name="tabsName"/>
+
+		<!-- usp -->
+		<property name="body"/>
+
+		<!-- verifymobile -->
+		<property name="subHeading"/>
+		<property name="unlimitedTextField"/>
+		<property name="emailLabel"/>
+		<property name="emailPlaceholder"/>
+		<property name="mobileLabel"/>
+		<property name="mobilePlaceholder"/>
+		<property name="buttonCTALabel"/>
+		<property name="verifyCodeLabel"/>
+		<property name="otpSentSuccessfullyMsg"/>
+		<property name="label1"/>
+		<property name="label2"/>
+
+		<!-- Wheretocall -->
+		<!-- XfPage -->
+
+		<!-- Personal Details -->
+		<property name="yourPersonalDetailsLabel"/>
+		<property name="firstNameLabel"/>
+		<property name="firstNamePlaceholder"/>
+		<property name="lastNameLabel"/>
+		<property name="lastNamePlaceholder"/>
+		<property name="emailAddressLabel"/>
+		<property name="emailAddressPlaceholder"/>
+		<property name="keyInAddress"/>
+		<property name="addressLabel"/>
+		<property name="addressKeyInText"/>
+		<property name="postalcodePlaceholder"/>
+		<property name="enterAddressManually"/>
+		<property name="streetLabel"/>
+		<property name="streetPlaceholder"/>
+		<property name="houseNumberLabel"/>
+		<property name="houseNumberPlaceholder"/>
+		<property name="zipCodeLabel"/>
+		<property name="zipCodePlaceholder"/>
+		<property name="cityLabel"/>
+		<property name="cityPlaceholder"/>
+		<property name="saveAddress"/>
+		<property name="orderDetailsCta"/>
+		<property name="firstNameErrorMax"/>
+		<property name="firstNameErrorRequired"/>
+		<property name="firstNameErrorPattern"/>
+		<property name="lastNameErrorMax"/>
+		<property name="lastNameErrorRequired"/>
+		<property name="lastNameErrorPattern"/>
+		<property name="emailErrorMax"/>
+		<property name="emailErrorRequired"/>
+		<property name="emailErrorPattern"/>
+		<property name="addressErrorRequired"/>
+		<property name="streetLabelErrorMax"/>
+		<property name="streetLabelErrorRequired"/>
+		<property name="streetLabelErrorPattern"/>
+		<property name="houseNumberErrorMax"/>
+		<property name="houseNumberErrorRequired"/>
+		<property name="cityErrorMax"/>
+		<property name="cityErrorRequired"/>
+		<property name="houseNumberErrorPattern"/>
+		<property name="zipCodeErrorMin"/>
+		<property name="zipCodeErrorRequired"/>
+		<property name="zipCodeErrorPattern"/>
+		<property name="zipCodeErrorMax"/>
+
+		<!-- Postpaid personal details -->
+		<property name="emailLabel"/>
+		<property name="emailPlaceholder"/>
+		<property name="fNameLabel"/>
+		<property name="fnamePlaceholder"/>
+		<property name="lNameLabel"/>
+		<property name="lNamePlaceholder"/>
+		<property name="dobLabel"/>
+		<property name="dayLabel"/>
+		<property name="dayPalceholder"/>
+		<property name="monthLabel"/>
+		<property name="monthPlaceholder"/>
+		<property name="yearLabel"/>
+		<property name="yearPlaceholder"/>
+		<property name="enterAddressManually"/>
+		<property name="shippingLabel"/>
+		<property name="shippingPlaceholder"/>
+		<property name="shippingHelperText"/>
+		<property name="portingSectionHeading"/>
+		<property name="portInNumberLabel"/>
+		<property name="portInNumberPlaceHolder"/>
+		<property name="currentProviderLabel"/>
+		<property name="currentProviderPlaceholder"/>
+		<property name="currentProviderHelperText"/>
+		<property name="currentProviderList"/>
+		<property name="currentProviderInfoDescription"/>
+		<property name="currentProviderUsageAcceptanceLabel"/>
+		<property name="currentProviderAdvertisingPreviewText"/>
+		<property name="currentProviderAdvertisingAcceptanceLabel"/>
+		<property name="exitingPhoneHelperLabel"/>
+		<property name="linkCTALabel"/>
+		<property name="orTextLabel"/>
+		<property name="buttonCTALabel"/>
+		<property name="ctaContinueLabel"/>
+		<property name="emailRequiredMsg"/>
+		<property name="emailInValidMsg"/>
+		<property name="firstNameErrorMax"/>
+		<property name="fNameRequiredMsg"/>
+		<property name="fNameInValidMsg"/>
+		<property name="lastNameErrorMax"/>
+		<property name="lNameRequiredMsg"/>
+		<property name="lNameInValidMsg"/>
+		<property name="dayRequiredMsg"/>
+		<property name="dayInValidMsg"/>
+		<property name="monthRequiredMsg"/>
+		<property name="monthInValidMsg"/>
+		<property name="yearRequiredMsg"/>
+		<property name="yearInValidMsg"/>
+		<property name="yearInvalidAgeMsg"/>
+		<property name="shippingRequiredMsg"/>
+		<property name="portInNumberRequiredMsg"/>
+		<property name="portInNumberInValidMsg"/>
+		<property name="currentProviderRequiredMsg"/>
+
+		<!-- Lebara fields ends -->
+		<property name="cq:language" updateDestinationLanguage="true"/>
+		<node pathContains="/cq:annotations">
+			<property name="text" translate="false"/>
+		</node>
+	</node>
+	<node path="/content/forms">
+		<property name="text" translate="false"/>
+	</node>
+	<node path="/content/dam">
+		<property name="dc:description" />
+		<property name="dc:rights" />
+		<property name="dc:subject" />
+		<property name="dc:title" />
+		<property name="defaultContent" />
+		<property name="jcr:description" />
+		<property name="jcr:title" />
+		<property name="pdf:Title" />
+		<property name="xmpRights:UsageTerms" />
+		<property name="main" />
+		<property name="adventureActivity" />
+		<property name="adventureDescription" />
+		<property name="adventureDifficulty" />
+		<property name="adventureGearList" />
+		<property name="adventureGroupSize" />
+		<property name="adventureItinerary" />
+		<property name="adventurePrice" />
+		<property name="adventureTitle" />
+		<property name="adventureTripLength" />
+		<property name="adventureType" />
+		<node pathContains="/jcr:content/metadata/predictedTags">
+			<property name="name"/>
+		</node>
+	</node>
+	<assetNode resourceType="cq/experience-fragments/editor/components/experiencefragment" assetReferenceAttribute="fragmentPath"/>
+	<assetNode resourceType="lebara/components/experiencefragment" assetReferenceAttribute="fragmentVariationPath"/>
+	<assetNode resourceType="dam/cfm/components/contentfragment" assetReferenceAttribute="fileReference"/>
+	<assetNode resourceType="docs/components/download" />
+	<assetNode resourceType="docs/components/image" />
+	<assetNode resourceType="foundation/components/image" assetReferenceAttribute="fileReference"/>
+	<assetNode resourceType="foundation/components/video" assetReferenceAttribute="asset"/>
+	<assetNode resourceType="foundation/components/download" assetReferenceAttribute="fileReference"/>
+	<assetNode resourceType="core/wcm/components/download/v1/download" assetReferenceAttribute="fileReference"/>
+	<assetNode resourceType="wcm/foundation/components/image" assetReferenceAttribute="fileReference"/>
+	<assetNode resourceType="core/wcm/components/contentfragment/v1/contentfragment" assetReferenceAttribute="fragmentPath"/>
+	<assetNode resourceType="core/wcm/components/image/v2/image" assetReferenceAttribute="fileReference"/>
+</nodelist>
