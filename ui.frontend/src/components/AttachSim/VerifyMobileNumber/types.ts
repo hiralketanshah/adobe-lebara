@@ -1,9 +1,10 @@
 
-import { BaseFormFields } from "../Formik/types";
-import { BaseValidationMessages } from "../Formik/validations/types";
+import { BaseFormFields } from "../../Formik/types";
+import { BaseValidationMessages } from "../../Formik/validations/types";
 
 export interface FormFields extends BaseFormFields {
     verifyCodeLabel?:string;
+    verifyCodePlaceholder?:string;
     ctaEditMobileLabel?: string;
     ctaContinueLabel?: string;
     ctaResendVerificationLabel?: string;
@@ -14,7 +15,7 @@ export interface ValidationMessages extends BaseValidationMessages {
     verifyCodeInvalidMsg?:string;
 }
 
-export interface VerifyMobileNumberFormProps  {
+export interface VerifyMobileNumberProps  {
   heading?: string;
   subHeading?: string;
   initalCountdownValue?: number;

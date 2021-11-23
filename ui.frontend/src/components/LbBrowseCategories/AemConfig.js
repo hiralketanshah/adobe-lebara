@@ -8,4 +8,4 @@ const HelpConfig = {
     },
 };
 
-MapTo("lebara/components/help")(Help, HelpConfig);
+MapTo("lebara/components/helpcenter/browsecategories")(Help, HelpConfig);

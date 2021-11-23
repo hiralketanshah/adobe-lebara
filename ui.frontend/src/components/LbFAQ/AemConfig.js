@@ -8,4 +8,4 @@ const LbFAQConfig = {
     },
 };
 
-MapTo("lebara/components/help")(LbFAQ, LbFAQConfig);
+MapTo("lebara/components/helpcenter/faq")(LbFAQ, LbFAQConfig);

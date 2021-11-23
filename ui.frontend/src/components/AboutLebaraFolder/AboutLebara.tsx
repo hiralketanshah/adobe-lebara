@@ -17,7 +17,7 @@ const AboutLebara: React.FC<AboutLebaraProps> = (props) => {
       }
     }
     setStyle();
-  },[]);// eslint-disable-line react-hooks/exhaustive-deps
+  },[backgroundColor]);// eslint-disable-line react-hooks/exhaustive-deps
   return (
     <Box className='about-lebara'  ref={nodeRef}  py={{ lg: "47px" }} px={{ lg: "70px" }}>
       <TextFeature {...props} />
