@@ -31,19 +31,16 @@
                                         <items jcr:primaryType="nt:unstructured">
                                             <sectionHeading
                                                 jcr:primaryType="nt:unstructured"
+                                                sling:orderBefore="description"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                                 fieldLabel="Section Heading"
                                                 name="./sectionHeading"/>
                                             <sectionSubHeading
                                                 jcr:primaryType="nt:unstructured"
+                                                sling:orderBefore="description"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textarea"
                                                 fieldLabel="Section Sub Heading"
                                                 name="./sectionSubHeading"/>
-                                            <description
-                                                jcr:primaryType="nt:unstructured"
-                                                sling:resourceType="granite/ui/components/coral/foundation/form/textarea"
-                                                fieldLabel="Description"
-                                                name="./description"/>
                                             <linkLabel
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
