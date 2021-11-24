@@ -303,6 +303,9 @@
 		<property name="topUpCapLabel"/>
 		<property name="topUpCapDesc"/>
 
+		<!--Help center Search -->
+		<property name="searchPlaceholder"/>
+
 		<!-- spa -->
 		<!-- tabs -->
 		<!-- teaser -->
