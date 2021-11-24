@@ -18,9 +18,10 @@ const RecommendedTariffs: React.FC<RecommendedTariffsProps> = ({
           color="secondary.500"
           my="15px"
         >{offers?.planName}</Heading>}
-        {offers?.additionalOffers && <Box spacing={3} marginBottom="15px"
-          dangerouslySetInnerHTML={{__html : offers?.additionalOffers}}>
-        </Box>}
+        {offers?.additionalOffers && <div className={'rich-text'}>
+          <Box spacing={3} marginBottom="15px"
+            dangerouslySetInnerHTML={{__html : offers?.additionalOffers}}>
+          </Box></div>}
         <Button variant="outline" w="100%">
           {buttonLabel}
         </Button>
