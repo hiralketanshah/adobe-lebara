@@ -12,32 +12,62 @@ const TextFeature: React.FC<AboutLebaraProps> = ({
   description,
   imagePath,
   linkURL,
-  buttonStyle
+  buttonStyle,
+  imageAlign
 }) => (
-    <Flex
-      flexDirection={{ base: "column", lg: "row" }}
-      justifyContent="center"
-      alignItems="center"
-    >
-      <Flex w={{ md: "50%" }} justifyContent="center">
-        {imagePath && (
-          <Image src={imagePath}  w={{lg: 398 }} alt="About lebara" />
-        )}
-      </Flex>
-      <Spacer />
-      <Flex
-        flexDirection="column"
+    <>
+      {imageAlign && (imageAlign === '' || imageAlign === 'left') && (<Flex
+        flexDirection={{ base: "column", lg: "row" }}
+        justifyContent="center"
+        alignItems="center"
       >
-        <TextBlock
-          buttonText={actionsEnabled ? actions && actions[0]?.title : ""}
-          linkURL={linkURL ? linkURL : actionsEnabled ? actions && actions[0]?.url : "#"}
-          slogan={pretitle}
-          header={title}
-          subHeader={description}
-          buttonStyle={buttonStyle}
-        />
+        <Flex w={{ md: "50%" }} justifyContent="center">
+          {imagePath && (
+            <Image src={imagePath}  w={{lg: 398 }} alt="About lebara" />
+          )}
+        </Flex>
+        <Spacer />
+        <Flex
+          flexDirection="column"
+        >
+          <TextBlock
+            buttonText={actionsEnabled ? actions && actions[0]?.title : ""}
+            linkURL={linkURL ? linkURL : actionsEnabled ? actions && actions[0]?.url : "#"}
+            slogan={pretitle}
+            header={title}
+            subHeader={description}
+            buttonStyle={buttonStyle}
+          />
+        </Flex>
+      </Flex>)}
+      
+      {imageAlign && (imageAlign === '' || imageAlign === 'right') && (<Flex
+        flexDirection={{ base: "column", lg: "row" }}
+        justifyContent="center"
+        alignItems="center"
+      >
+        <Flex
+          flexDirection="column">
+          <TextBlock
+            buttonText={actionsEnabled ? actions && actions[0]?.title : ""}
+            linkURL={linkURL ? linkURL : actionsEnabled ? actions && actions[0]?.url : "#"}
+            slogan={pretitle}
+            header={title}
+            subHeader={description}
+            buttonStyle={buttonStyle}
+          />
+        </Flex>
+        <Spacer />
+        <Flex w={{ md: "50%" }} justifyContent="center">
+          {imagePath && (
+            <Image src={imagePath}  w={{lg: 398 }} alt="About lebara" />
+          )}
+        </Flex>
       </Flex>
-    </Flex>
+      
+      )}
+
+    </>
   );
 
 export default TextFeature;
