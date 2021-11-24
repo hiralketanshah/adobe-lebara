@@ -20,8 +20,8 @@ public class OfferFragmentBean {
     private PlanInfo planInfo;
     private String additionalOffers;
     private List<CFAllowance> allowanceList;
-    private String recommendImage;
-    private String recommendLink;
+    private String recommendedImage;
+    private String recommendedURL;
 
     public String getPlanName() {
         return planName;
@@ -98,19 +98,19 @@ public class OfferFragmentBean {
         this.additionalOffers = additionalOffers;
     }
 
-    public String getRecommendImage() {
-        return recommendImage;
+    public String getRecommendedImage() {
+        return recommendedImage;
     }
 
-    public void setRecommendImage(String recommendImage) {
-        this.recommendImage = recommendImage;
+    public void setRecommendedImage(String recommendedImage) {
+        this.recommendedImage = recommendedImage;
     }
 
-    public String getRecommendLink() {
-        return recommendLink;
+    public String getRecommendedURL() {
+        return recommendedURL;
     }
 
-    public void setRecommendLink(String recommendLink) {
-        this.recommendLink = AemUtils.getLinkWithExtension(recommendLink);
+    public void setRecommendedURL(String recommendedURL) {
+        this.recommendedURL = AemUtils.getLinkWithExtension(recommendedURL);
     }
 }

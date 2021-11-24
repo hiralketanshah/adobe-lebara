@@ -8,4 +8,4 @@ const RecommendedTariffsConfig = {
   },
 };
 
-MapTo("lebara/components/recommendplans")(RecommendedTariffs, RecommendedTariffsConfig);
+MapTo("lebara/components/plans/recommendedtariff")(RecommendedTariffs, RecommendedTariffsConfig);
