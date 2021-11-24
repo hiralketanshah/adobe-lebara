@@ -11,6 +11,7 @@ import {
   Flex,
 } from "@chakra-ui/react";
 import { useHistory } from "react-router-dom";
+import { globalConfigs as GC, globalConstants as C} from "../../GlobalConfigs";
 import { ProgressBarCardDataProps, YourPlansCardProps } from "./types";
 import { ProgressBarCardProps } from "../ProgressBarCard/types";
 import ProgressBarCard from "../ProgressBarCard/ProgressBarCard";
@@ -26,6 +27,7 @@ const YourPlansCard: React.FC<YourPlansCardProps> = ({
   manageLabel,
   leftOfText,
   plansTabNames,
+  ctaDashboardManageURL,
 }) => {
   const history = useHistory();
   return (
@@ -97,7 +99,7 @@ const YourPlansCard: React.FC<YourPlansCardProps> = ({
           textTransform="uppercase"
           pl="15px"
           onClick={() =>
-            history.push("/dashboard/manage", {
+            history.push(ctaDashboardManageURL || GC.journeyPages[C.DASHBOARD_MANAGE]  || '/', {
               msisdn,
             })
           }

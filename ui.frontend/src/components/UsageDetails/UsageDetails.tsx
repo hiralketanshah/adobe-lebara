@@ -39,6 +39,9 @@ const UsageDetails: React.FC<UsageDetailsProps> = ({
   description,
   ctaSeeMoreCallsLabel,
   ctaLoadMoreLabel,
+  ctaSeeMoreURL,
+  ctaTopupURL,
+  ctaTopupText,
 }) => {
   const [lastActivity] = useState(activityLasts);
   const INTERNATIONAL_CALL_TYPE = "international";
@@ -83,7 +86,7 @@ const UsageDetails: React.FC<UsageDetailsProps> = ({
 
   const onSeeMoreClick = () => {
     setSeeMoreClicked(true);
-    history.push(GC.journeyPages[C.USAGE_DETAILS]  || '/');
+    history.push(ctaSeeMoreURL || GC.journeyPages[C.USAGE_DETAILS]  || '/');
   };
 
   return (
