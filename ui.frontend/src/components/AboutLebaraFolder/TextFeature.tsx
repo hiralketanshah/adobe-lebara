@@ -13,7 +13,8 @@ const TextFeature: React.FC<AboutLebaraProps> = ({
   imagePath,
   linkURL,
   buttonStyle,
-  imageAlign
+  imageAlign,
+  buttonClassName,
 }) => (
     <>
       {imageAlign && (imageAlign === '' || imageAlign === 'left') && (<Flex
@@ -31,6 +32,7 @@ const TextFeature: React.FC<AboutLebaraProps> = ({
           flexDirection="column"
         >
           <TextBlock
+            buttonClassName={buttonClassName}
             buttonText={actionsEnabled ? actions && actions[0]?.title : ""}
             linkURL={linkURL ? linkURL : actionsEnabled ? actions && actions[0]?.url : "#"}
             slogan={pretitle}
