@@ -29,12 +29,12 @@
                                         jcr:primaryType="nt:unstructured"
                                         sling:resourceType="granite/ui/components/coral/foundation/container">
                                         <items jcr:primaryType="nt:unstructured">
-                                            <getapptitle
+                                            <getAppLabel
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                                fieldDescription="Title Text"
-                                                fieldLabel="Title"
-                                                name="./appTitle"/>
+                                                fieldDescription="Get app Label"
+                                                fieldLabel="Get App Label"
+                                                name="./getAppLabel"/>
                                             <getapplink
                                                 granite:class="lebara-multifield__editor"
                                                 jcr:primaryType="nt:unstructured"
@@ -94,6 +94,12 @@
                                         jcr:primaryType="nt:unstructured"
                                         sling:resourceType="granite/ui/components/coral/foundation/container">
                                         <items jcr:primaryType="nt:unstructured">
+                                            <getapptitle
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="Title Text"
+                                                fieldLabel="Main Title"
+                                                name="./appTitle"/>
                                             <showimage
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"

@@ -29,6 +29,9 @@ public class GetAppExporter implements ComponentExporter {
     private String appTitle;
 
     @ValueMapValue
+    private String getAppLabel;
+
+    @ValueMapValue
     private String backgroundImageDesktop;
 
     @ValueMapValue
@@ -68,6 +71,10 @@ public class GetAppExporter implements ComponentExporter {
 
     public String getAppTitle() {
         return appTitle;
+    }
+
+    public String getGetAppLabel() {
+        return getAppLabel;
     }
 
     public List<String> getTextCol1() {
