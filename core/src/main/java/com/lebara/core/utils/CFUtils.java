@@ -180,7 +180,7 @@ public class CFUtils {
                     formattedValue = value + " " + (i18n == null ? "Minutes" : i18n.get("Minutes"));
                     break;
                 default :
-                    LOGGER.info("Default case");
+                    formattedValue = StringUtils.EMPTY;
             }
         }
         return formattedValue;
