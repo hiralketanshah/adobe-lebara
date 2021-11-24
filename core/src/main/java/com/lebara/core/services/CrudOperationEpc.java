@@ -172,7 +172,6 @@ public class CrudOperationEpc {
         }
     }
 
-
     String writeJsonToCf(Offer offer, String cfDamPath, ResourceResolver resourceResolver, String validOfferName, String offerType) {
         GsonBuilder builder = new GsonBuilder();
         Gson gson = builder.create();
