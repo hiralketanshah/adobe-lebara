@@ -1,7 +1,10 @@
 export interface UserInfo {
-  name: "";
+  name: string;
+  email: string;
+  crmId: string;
+  msisdn: string[];
 }
 
 export interface UserToken {
-  token: "";
+  token: string;
 }

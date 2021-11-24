@@ -1,9 +1,12 @@
-import React, { useCallback } from "react";
+import React, { useRef, useState, useCallback } from "react";
 import {
   Box,
   Flex,
   Spacer,
   Text,
+  Input,
+  InputGroup,
+  InputLeftElement,
   Menu,
   MenuButton,
   MenuList,
@@ -15,10 +18,9 @@ import {
 } from "@chakra-ui/react";
 import {
   AiOutlineUser,
+  BsSearch,
   BiSearch,
-  // IoLocationOutline,
-  // RiHeadphoneFill,
-  RiShoppingBagLine,
+  RiShoppingCartLine,
 } from "react-icons/all";
 import { Link, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
@@ -35,6 +37,11 @@ import MiniHeader from "../MiniHeader/MiniHeader";
 import { ReduxState } from "../../redux/types";
 // import LebaraLogo from "../../assets/images/lebara-logo.svg";
 import NewSIMOfferCard from "../NewSImOfferCard/NewSImOfferCard";
+import Search from "../Search/Search";
+import UserMenu from "../UserMenu/UserMenu";
+import userMenuProps from "../../utils/userMenuProps";
+import { headerSearch } from "../../redux/actions/headerSearchActions";
+import { selectIsAuthenticated } from "../../redux/selectors/userSelectors";
 import { globalConfigs as GC, globalConstants as GCST } from "../../GlobalConfigs";
 import { useApolloClient } from "@apollo/client";
 import GET_CART from "../../graphql/GET_CART";
@@ -47,12 +54,55 @@ const Header: React.FC<HeaderProps> = ({
   topupCtaText,
   topupCtaLink,
   accountLink,
+  searchPlaceholder,
 }) => {
   const cartItems = useSelector((state: ReduxState) => state.cart.items);
   const history = useHistory();
   const [userToken] = useLocalStorage("userToken");
   const client = useApolloClient();
   const dispatch = useDispatch();
+  const [isSearchOpened, setIsSearchOpened] = React.useState(false);
+  const [isProfileDropdownOpen, setProfileDropdown] = useState(false);
+  const isAuthenticated = useSelector(selectIsAuthenticated);
+  const timerRef = useRef<any>();
+  const [isOpenMenu, setIsOpenMenu] = useState(false);
+
+  const btnMouseEnterEvent = () => {
+    setIsOpenMenu(true);
+  };
+
+  const btnMouseLeaveEvent = () => {
+    timerRef.current = window.setTimeout(() => {
+      setIsOpenMenu(false);
+    }, 150);
+  };
+
+  const menuListMouseEnterEvent = () => {
+    clearTimeout(timerRef.current);
+    timerRef.current = undefined;
+    setIsOpenMenu(true);
+  };
+
+  const menuListMouseLeaveEvent = () => {
+    setIsOpenMenu(false);
+  };
+
+  const onSearchClick = () => {
+    setIsSearchOpened(true);
+    dispatch(
+      headerSearch({
+        key: true,
+      })
+    );
+  };
+  const onCloseSearch = () => {
+    setIsSearchOpened(false);
+    dispatch(
+      headerSearch({
+        key: false,
+      })
+    );
+  };
   const getCart = useCallback(() => {
     dispatch(setCartItemsLoading());
     client.query({ query: GET_CART }).then((res) => {
@@ -81,6 +131,18 @@ const Header: React.FC<HeaderProps> = ({
           : (GC.journeyPages[GCST.LOGIN]  || '/')
         : (GC.journeyPages[GCST.LEBARA_SIM_CHOICE]  || '/')
     );
+  };
+  const handleProfileClick = () => {
+    if (isAuthenticated) {
+      setProfileDropdown(!isProfileDropdownOpen);
+      return;
+    }
+    history.push(GC.journeyPages[GCST.REGISTER]  || '/', {
+      fromHeader: true,
+    });
+    // history.push((GC.journeyPages[GCST.LOGIN]  || '/'), {
+    //   fromMenu: true,
+    // })
   };
 
   return (
@@ -144,8 +206,12 @@ const Header: React.FC<HeaderProps> = ({
 
           <Flex alignItems="left" ml={{ lg: "30px", md: "15px" }}>
             {items?.map((menuItem: children, idx: any) => (
-              <Menu key={`menu-key-${idx}`}>
+              <Menu key={`menu-key-${idx}`}
+                isOpen={isOpenMenu}>
                 <MenuButton
+                onClick={() => (menuItem.path ? history.push(menuItem.path) : null)}
+                onMouseEnter={btnMouseEnterEvent}
+                onMouseLeave={btnMouseLeaveEvent}
                   _active={{
                     borderBottom: "1px solid white",
                   }}
@@ -175,7 +241,10 @@ const Header: React.FC<HeaderProps> = ({
                     </Button>
                   </Box>
                 </MenuButton>
-                <MenuList marginLeft="-135px" marginTop="5px" zIndex={2}>
+                <MenuList marginLeft="-135px" marginTop="5px" 
+                  zIndex={2}
+                  onMouseEnter={menuListMouseEnterEvent}
+                  onMouseLeave={menuListMouseLeaveEvent}>
                   <Box
                     display="flex"
                     justifyContent="space-between"
@@ -269,30 +338,79 @@ const Header: React.FC<HeaderProps> = ({
           </Box>
           <Spacer />
           <Flex>
+            <Box>
+              {!isSearchOpened ? (
+                <Button
+                  padding="initial"
+                  bgColor="transparent"
+                  _hover={{ bgColor: "transparent" }}
+                  _active={{ bgColor: "transparent" }}
+                  onClick={onSearchClick}
+                >
+                  <IconButton
+                    icon={<BiSearch size={24} />}
+                    aria-label="Search"
+                    variant="ghost"
+                    size="md"
+                    paddingRight={{
+                      lg: "26px!important",
+                      md: "13px!important",
+                    }}
+                    paddingLeft={{ lg: "56px!important", md: "26px!important" }}
+                    colorScheme="dark"
+                  />
+                </Button>
+              ) : (
+                <>
+                  <InputGroup
+                    borderRadius="lg"
+                    ml="4%"
+                    width={{ md: "auto", lg: "18rem" }}
+                  >
+                    <InputLeftElement
+                      pointerEvents="none"
+                      backgroundColor="white"
+                      borderRadius="lg"
+                      ml="5px"
+                    >
+                      <BsSearch color="#969696" size={20} />
+                      <Box color="black" pl="4px">
+                        {" "}
+                        |{" "}
+                      </Box>
+                    </InputLeftElement>
+                    <Input
+                      ml="4px"
+                      placeholder={searchPlaceholder}
+                      _placeholder={{
+                        color: "grey.100",
+                        fontSize: "16px",
+                        lineHeight: "19px",
+                        letterSpacing: "0.25px",
+                      }}
+                      color="black"
+                      bgColor="white"
+                      borderRadius="lg"
+                    />
+                  </InputGroup>
+                </>
+              )}
+            </Box>
             <IconButton
-              icon={<BiSearch />}
-              aria-label="Search"
-              variant="ghost"
-              size="md"
               colorScheme="dark"
-            />
-            <IconButton
-              colorScheme="dark"
-              icon={<AiOutlineUser />}
+              icon={<AiOutlineUser size={24} />}
+              px={{ lg: "26px!important", md: "13px!important" }}
               aria-label="Profile"
               size="md"
               variant="ghost"
-              onClick={() =>
-                history.push((GC.journeyPages[GCST.LOGIN]  || '/'), {
-                  fromMenu: true,
-                })
-              }
+              onClick={handleProfileClick}
             />
             <Box pos="relative" onClick={handleCartClick}>
               <IconButton
                 p="absolute"
+                px={{ lg: "26px!important", md: "13px!important" }}
                 colorScheme="dark"
-                icon={<RiShoppingBagLine />}
+                icon={<RiShoppingCartLine size={24} />}
                 aria-label="Cart"
                 variant="ghost"
               />
@@ -316,7 +434,50 @@ const Header: React.FC<HeaderProps> = ({
           </Flex>
         </Flex>
       </Flex>
-
+      {isSearchOpened ? (
+        <Box
+          backgroundColor="rgba(0,0,0,0.5)"
+          width="100%"
+          height="100%"
+          display={{ base: "none", md: "block" }}
+        >
+          <Flex
+            zIndex="3"
+            width="17.5rem"
+            // ml="calc(100vw - 32.5rem)"
+            right={{ lg: "13.5rem", md: "4rem" }}
+            position="absolute"
+            flexDirection="column"
+          >
+            <Search
+              searchPlaceholder={searchPlaceholder}
+              onCloseClick={onCloseSearch}
+              />
+          </Flex>
+        </Box>
+      ) : (
+        <></>
+      )}
+      {isProfileDropdownOpen ? (
+        <Box backgroundColor="white" width="100%" height="100%">
+          <Flex
+            zIndex="3"
+            width="18rem"
+            ml="calc(100vw - 24rem)"
+            position="absolute"
+            flexDirection="column"
+            background="white"
+            w="360px"
+            px="11px"
+            mt="-20px"
+            borderBottomRadius="12px"
+          >
+            <UserMenu {...userMenuProps} />
+          </Flex>
+        </Box>
+      ) : (
+        <></>
+      )}
       <Flex display={{ md: "none", sm: "flex" }} mx={{ md: "27px" }}>
         <MiniHeader logoPath={logoPath} items={items}/>
       </Flex>
