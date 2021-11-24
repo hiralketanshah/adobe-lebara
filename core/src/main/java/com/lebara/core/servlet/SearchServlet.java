@@ -46,9 +46,8 @@ import static org.apache.sling.api.servlets.ServletResolverConstants.*;
         )
 public class SearchServlet extends SlingSafeMethodsServlet {
     @Reference
-    transient QueryBuilder builder;
-
-  transient Logger LOGGER = LoggerFactory.getLogger(getClass());
+    private transient QueryBuilder builder;
+    transient Logger LOGGER = LoggerFactory.getLogger(getClass());
 
     @Override
     protected void doGet(SlingHttpServletRequest request, SlingHttpServletResponse response)
