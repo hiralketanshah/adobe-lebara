@@ -1,4 +1,4 @@
-import { ReduxState } from "../types";
+import { ReduxState } from "../redux/types";
 
 export const selectMsisdn = (state: ReduxState) =>
   state.user.msisdn && state.user.msisdn.length > 0
