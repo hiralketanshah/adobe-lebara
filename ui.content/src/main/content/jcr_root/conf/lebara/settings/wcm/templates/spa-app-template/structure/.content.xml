@@ -9,8 +9,34 @@
         jcr:primaryType="cq:PageContent"
         sling:resourceType="lebara/components/spa">
         <root
-            jcr:primaryType="nt:unstructured"
-            sling:resourceType="wcm/foundation/components/responsivegrid"/>
-        <cq:responsive jcr:primaryType="nt:unstructured"/>
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="wcm/foundation/components/responsivegrid">
+            <experiencefragment-header
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="lebara/components/experiencefragment"
+                    editable="{Boolean}true"/>
+            <responsivegrid
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="wcm/foundation/components/responsivegrid"
+                    editable="{Boolean}true">
+                <cq:responsive jcr:primaryType="nt:unstructured"/>
+            </responsivegrid>
+            <experiencefragment-footer
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="lebara/components/experiencefragment"
+                    editable="{Boolean}true"/>
+        </root>
+        <cq:responsive jcr:primaryType="nt:unstructured">
+            <breakpoints jcr:primaryType="nt:unstructured">
+                <phone
+                        jcr:primaryType="nt:unstructured"
+                        title="Smaller Screen"
+                        width="{Long}650"/>
+                <tablet
+                        jcr:primaryType="nt:unstructured"
+                        title="Tablet"
+                        width="{Long}1200"/>
+            </breakpoints>
+        </cq:responsive>
     </jcr:content>
 </jcr:root>

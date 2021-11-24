@@ -54,11 +54,6 @@ const TitleV2 = withAsyncImport(() =>
     `@adobe/aem-core-components-react-base/dist/authoring/title/v2/TitleV2`
   )
 );
-MapTo("lebara/components/title")(TitleV2, {
-    isEmpty: TitleV2IsEmptyFn
-});
-
-
 MapTo("lebara/components/container")(ContainerV1, {
     isEmpty: ContainerV1IsEmptyFn
 });
