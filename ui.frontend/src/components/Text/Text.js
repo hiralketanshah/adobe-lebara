@@ -20,10 +20,13 @@ import sanitizeWhiteList from "../sanitize-html.whitelist";
 import React, { Component } from "react";
 import extractModelId from "../../utils/extract-model-id";
 
+import "./text.scss";
+
 /**
  * Text React component
  */
 class Text extends Component {
+
   get richTextContent() {
     return (
       <div
@@ -32,6 +35,7 @@ class Text extends Component {
         dangerouslySetInnerHTML={{
           __html: sanitizeHtml(this.props.text, sanitizeWhiteList),
         }}
+        className="lb-text-comp"
       />
     );
   }

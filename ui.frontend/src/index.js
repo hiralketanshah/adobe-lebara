@@ -10,6 +10,7 @@ import { Router } from "react-router-dom";
 import App from "./App";
 import "./components/import-components";
 import "./index.css";
+import "./styles/index.scss";
 import { Provider } from "react-redux";
 import { combineReducers, createStore } from "redux";
 import { ApolloClient, ApolloProvider, InMemoryCache } from "@apollo/client";

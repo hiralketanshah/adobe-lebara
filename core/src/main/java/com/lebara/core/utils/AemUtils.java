@@ -222,10 +222,15 @@ public class AemUtils {
     }
 
     public static DashboardLabels populateDashboardLabels(SlingHttpServletRequest request) {
-        Resource res = request.getResourceResolver().getResource(request.getRequestPathInfo().getResourcePath());
+        PageManager pageManager = request.getResourceResolver().adaptTo(PageManager.class);
+        Page page = null;
+        Resource resource = request.getResource();
+        if (pageManager != null) {
+            page = pageManager.getContainingPage(resource);
+        }
         DashboardLabels dashboardLabels = new DashboardLabels();
-        if (null != res) {
-            InheritanceValueMap inheritedProp = new HierarchyNodeInheritanceValueMap(res);
+        if (page != null) {
+            InheritanceValueMap inheritedProp = new HierarchyNodeInheritanceValueMap(page.getContentResource());
             dashboardLabels.setDataPlanName(getInheritedValue("dataPlanName", inheritedProp));
             dashboardLabels.setDataType(getInheritedValue("dataType", inheritedProp));
             dashboardLabels.setMinPlanName(getInheritedValue("minPlanName", inheritedProp));

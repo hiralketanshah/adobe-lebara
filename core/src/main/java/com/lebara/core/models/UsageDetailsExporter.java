@@ -35,6 +35,8 @@ public class UsageDetailsExporter extends HeadingExporter {
     private String ctaSeeMoreCallsLabel;
     @ValueMapValue
     private String ctaLoadMoreLabel;
+    @ValueMapValue
+    private String ctaSeeMoreURL;
 
     private List<String> tabsName;
 
@@ -49,13 +51,16 @@ public class UsageDetailsExporter extends HeadingExporter {
     public String getCtaLoadMoreLabel() {
         return ctaLoadMoreLabel;
     }
-    
+
+    public String getCtaSeeMoreURL() {
+        return AemUtils.getLinkWithExtension(ctaSeeMoreURL);
+    }
 
     public List<String> getTabsName() {
         tabsName = new ArrayList<>();
-        if (tabs!=null) {
-            for(Resource tab: tabs.getChildren()){
-                tabsName.add(AemUtils.getStringProperty(tab,"tabsName"));
+        if (tabs != null) {
+            for (Resource tab : tabs.getChildren()) {
+                tabsName.add(AemUtils.getStringProperty(tab, "tabsName"));
             }
         }
         return tabsName;
