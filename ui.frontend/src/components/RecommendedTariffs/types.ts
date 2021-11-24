@@ -1,9 +1,5 @@
-export interface RecommendedTariffsProps {
-    heading?: string;
-    list?: [{
-        text?: string;
-        icon?: string;
-    }];
-    ctaButtonLabel?:string;
-    ctaButtonURL?:string;
+import { PlanCardProps } from "../ViewPlans/types";
+export interface RecommendedTariffsProps extends PlanCardProps {
+    recommendedImage?: string;
+    recommendedURL?:string;
 }
