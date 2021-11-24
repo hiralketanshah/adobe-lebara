@@ -11,6 +11,7 @@ export interface YourPlansCardProps {
   manageLabel: string;
   leftOfText: string;
   plansTabNames: string[];
+  ctaDashboardManageURL: string;
 }
 
 export interface ProgressBarCardDataProps extends ProgressBarCardProps {

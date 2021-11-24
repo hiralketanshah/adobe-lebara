@@ -19,5 +19,6 @@ export interface HeaderProps {
   accessibilityLabel?: string;
   id?: string;
   logoPath?: string;
-  items?: children[]
+  items?: children[];
+  searchPlaceholder?: string;
 }
