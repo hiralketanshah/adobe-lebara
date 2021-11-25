@@ -67,3 +67,4 @@ import "./LbSectionIntro/AemConfig.js";
 import "./StickyCircle/AemConfig.js";
 import "./LbFAQ/AemConfig.js";
 import "./LbBrowseCategories/AemConfig.js";
+import "./HowItWorks/AemConfig.js";
