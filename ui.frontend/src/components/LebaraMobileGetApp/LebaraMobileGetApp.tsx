@@ -45,8 +45,7 @@ const LebaraMobileGetApp: React.FC<LebaraMobileAppProps> = ({
                   lineHeight="14px"
                   letterSpacing="0.25px"
                   fontWeight="bold"
-                >
-                  {appTitle}
+                >{appTitle}
                 </LebaraText>}
                 {textDescription && <Text
                   mt="10px"
