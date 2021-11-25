@@ -110,7 +110,7 @@ const LebaraMobileGetApp: React.FC<LebaraMobileAppProps> = ({
                   {links?.length && <Flex justifyContent="flex-start" mt="10px">
                     <IconButton
                       as={Link}
-                      href={links[0] && links[0].link || "/"}
+                      href={(links[0] && links[0].link) || "/"}
                       icon={
                         <AvailableOnTheAppstore width="160px" height="100%" />
                       }
@@ -124,7 +124,7 @@ const LebaraMobileGetApp: React.FC<LebaraMobileAppProps> = ({
                     />
                     <IconButton
                       as={Link}
-                      href={links[1] && links[1].link || "/"}
+                      href={(links[1] && links[1].link) || "/"}
                       icon={
                         <GetItOnGooglePlayIcon width="160px" height="100%" />
                       }
