@@ -1,6 +1,8 @@
 package com.lebara.core.dto;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
+import com.lebara.core.utils.AemUtils;
+
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.math.NumberUtils;
 
@@ -18,6 +20,8 @@ public class OfferFragmentBean {
     private PlanInfo planInfo;
     private String additionalOffers;
     private List<CFAllowance> allowanceList;
+    private String recommendedImage;
+    private String recommendedURL;
 
     public String getPlanName() {
         return planName;
@@ -92,5 +96,21 @@ public class OfferFragmentBean {
 
     public void setAdditionalOffers(String additionalOffers) {
         this.additionalOffers = additionalOffers;
+    }
+
+    public String getRecommendedImage() {
+        return recommendedImage;
+    }
+
+    public void setRecommendedImage(String recommendedImage) {
+        this.recommendedImage = recommendedImage;
+    }
+
+    public String getRecommendedURL() {
+        return recommendedURL;
+    }
+
+    public void setRecommendedURL(String recommendedURL) {
+        this.recommendedURL = AemUtils.getLinkWithExtension(recommendedURL);
     }
 }
