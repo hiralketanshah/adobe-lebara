@@ -1,17 +1,19 @@
 import React from "react";
 import { Box, Image, Heading, Button } from "@chakra-ui/react";
 import { RecommendedTariffsProps } from "./types";
+import { useHistory } from "react-router-dom";
 
 const RecommendedTariffs: React.FC<RecommendedTariffsProps> = ({
   buttonLabel,
   offers,
 }) => {
+  const history = useHistory();
   return (<Box
     backgroundColor={{ base: "lightenPrimary.50", md: "white" }}
     padding="20px"
     className="recommended-tariffs-blocks"
     display={{base: "block", md: "flex", lg: "flex"}}
-    justifyContent={{base: "space-around", md: "space-between"}}
+    justifyContent={{base: "space-around", md: "space-evenly"}}
     >
       {offers?.map((offer: any, idx:number) => (
         <Box w={{base: "100%", md: "305px"}}
@@ -28,7 +30,11 @@ const RecommendedTariffs: React.FC<RecommendedTariffsProps> = ({
               <Box spacing={3} marginBottom="15px"
                 dangerouslySetInnerHTML={{__html : offer?.additionalOffers}}>
               </Box></div>}
-            <Button variant="outline" w="100%">
+            <Button
+              onClick={() => {
+                history.push(offer?.recommendedURL || '/');
+              }}
+              variant="outline" w="100%">
               {buttonLabel}
             </Button>
           </Box>
