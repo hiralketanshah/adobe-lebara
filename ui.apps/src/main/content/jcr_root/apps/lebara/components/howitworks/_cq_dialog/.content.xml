@@ -32,7 +32,7 @@
                                             <titleDescription
                                                     jcr:primaryType="nt:unstructured"
                                                     sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                                    fieldDescription="Mian Title Description"
+                                                    fieldDescription="Main Title Description"
                                                     fieldLabel="Main Title Description"
                                                     name="./description"/>
                                         </items>
