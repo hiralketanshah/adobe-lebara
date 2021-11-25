@@ -1,8 +1,11 @@
 import React from "react";
 import { Box, SimpleGrid } from "@chakra-ui/react";
 import FormikInput from "../Formik/FormikInput/FormikInput";
+import { UserDetailsProps } from "./types";
 
-const UserNameAndSurnameSection: React.FC<any> = () => {
+const UserNameAndSurnameSection: React.FC<UserDetailsProps> = ({
+  frmFields
+}) => {
   const disabledInputField = {
     inputProps: {
       isDisabled: true,
@@ -19,7 +22,8 @@ const UserNameAndSurnameSection: React.FC<any> = () => {
           <FormikInput
             name="userName"
             isRequired
-            label="Name"
+            label={frmFields?.fNameLabel}
+            placeholder={frmFields?.fnamePlaceholder}
             removeValidation
             {...disabledInputField}
           />
@@ -28,7 +32,8 @@ const UserNameAndSurnameSection: React.FC<any> = () => {
           <FormikInput
             name="userSurname"
             isRequired
-            label="Surname"
+            label={frmFields?.lNameLabel}
+            placeholder={frmFields?.lNamePlaceholder}
             removeValidation
             {...disabledInputField}
           />

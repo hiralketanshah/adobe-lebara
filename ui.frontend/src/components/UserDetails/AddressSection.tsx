@@ -1,8 +1,11 @@
 import React from "react";
 import { Box, SimpleGrid } from "@chakra-ui/react";
 import FormikInput from "../Formik/FormikInput/FormikInput";
+import { UserDetailsProps } from "./types";
 
-const AddressSection: React.FC<any> = () => {
+const AddressSection: React.FC<UserDetailsProps> = ({
+  frmFields
+}) => {
   const disabledInputField = {
     inputProps: {
       isDisabled: true,
@@ -20,7 +23,7 @@ const AddressSection: React.FC<any> = () => {
           <FormikInput
             name="streetName"
             isRequired
-            label="Street Name"
+            label={frmFields?.streetLabel}
             removeValidation
             {...disabledInputField}
           />
@@ -29,7 +32,7 @@ const AddressSection: React.FC<any> = () => {
           <FormikInput
             name="houseNumber"
             isRequired
-            label="House Number"
+            label={frmFields?.houseNumberLabel}
             removeValidation
             {...disabledInputField}
           />
@@ -38,7 +41,8 @@ const AddressSection: React.FC<any> = () => {
           <FormikInput
             name="postCode"
             isRequired
-            label="Post Code"
+            label={frmFields?.zipCodeLabel}
+            placeholder={frmFields?.zipCodePlaceholder}
             removeValidation
             {...disabledInputField}
           />
@@ -47,7 +51,8 @@ const AddressSection: React.FC<any> = () => {
           <FormikInput
             name="city"
             isRequired
-            label="City"
+            label={frmFields?.cityLabel}
+            placeholder={frmFields?.cityPlaceholder}
             removeValidation
             {...disabledInputField}
           />
@@ -56,7 +61,8 @@ const AddressSection: React.FC<any> = () => {
           <FormikInput
             name="alternateContactNumber"
             isRequired
-            label="Alternative Contact Number"
+            label={frmFields?.alternativeContactLabel}
+            placeholder={frmFields?.alternativeNumberPlaceholder}
             removeValidation
             {...disabledInputField}
           />

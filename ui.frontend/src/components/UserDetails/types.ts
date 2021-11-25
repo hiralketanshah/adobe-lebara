@@ -1,13 +1,27 @@
-export interface UserDetailsProps extends BaseFormDeta {
+import { BaseFormFields } from "../Formik/types";
+import { BaseValidationMessages } from "../Formik/validations/types";
+
+export interface FormFields extends BaseFormFields {
+  consentDescription?: string;
+  userProfilePhoto?: string;
+  ctaCancelURL?: string;
+  editLinkLabel?: string;
+  emailEditLinkURL?: string;
+  passwordEditLinkURL?: string;
+}
+export interface ValidationMessages extends BaseValidationMessages {
+
+}
+export interface UserDetailsProps {
   // New
   heading?: string;
   description?: string;
   sectionUsernameHeading?: string;
   sectionAddressHeading?: string;
   sectionEmailPasswordHeading?: string;
-  secitonConsentHeading?: string;
-  frmFields?: string;
-  validationMessages?: string;
+  sectionConsentHeading?: string;
+  frmFields?: FormFields;
+  validationMessages?: ValidationMessages;
 
   // Old
   userName?: string;
@@ -39,6 +53,7 @@ export interface ChangePasswordSchema {
 }
 
 export interface ChangeEmailPasswordProfileProps {
+  frmFields?: FormFields;
   onEmailEdit: () => void;
   onPasswordEdit: () => void;
 }

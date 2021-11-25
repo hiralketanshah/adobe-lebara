@@ -5,6 +5,7 @@ import {
   FormControl,
   FormErrorMessage,
   FormLabel,
+  Icon,
   Input,
   InputGroup,
   InputRightElement,
@@ -30,6 +31,9 @@ const FormikInput: React.FC<FormikInputProps> = ({
   isRequired,
   inputProps,
   validate,
+  removeValidation,
+  ignoreValidations,
+  isPrepaid,
   loginButtonLabel,
   exitingUserErrorMsg,
   secondSubscriptionDisplayText,
@@ -77,6 +81,9 @@ const FormikInput: React.FC<FormikInputProps> = ({
             boxShadow: "none",
             borderColor: isExistingUser ? "warning" : "lebaraRed",
           }}
+          _disabled={{
+            backgroundColor: "#FCFCFC",
+          }}
           isInvalid={touchedWithError}
           placeholder={placeholder}
           errorBorderColor="unsuccessful"
@@ -103,13 +110,17 @@ const FormikInput: React.FC<FormikInputProps> = ({
             }
             w="47px"
           >
-            <Box>
-              {error ? (
-                <BsXCircleFill size={17} />
-              ) : (
-                <MdCheckCircle size={17} />
-              )}
-            </Box>
+            {!removeValidation ? (
+              <Box>
+                {error ? (
+                  <BsXCircleFill size={17} />
+                ) : (
+                  <MdCheckCircle size={17} />
+                )}
+              </Box>
+            ) : (
+              <></>
+            )}
             {children}
           </InputRightElement>
         )}
@@ -119,16 +130,14 @@ const FormikInput: React.FC<FormikInputProps> = ({
           </InputRightElement>
         )}
       </InputGroup>
-      {hasError && !isExistingUser && (
-        <FormErrorMessage color="unsuccessful">
-          <HiOutlineExclamation size={20} color="lebaraRed" />
-          <Text paddingLeft="7px" noOfLines={1}>
-            {error}
-          </Text>
+      {!ignoreValidations && hasError && !isExistingUser && (
+        <FormErrorMessage color="unsuccessful" alignItems="flex-start">
+          <Icon as={HiOutlineExclamation} color="lebaraRed" w="20px" h="20px" />
+          <Text paddingLeft="7px">{error}</Text>
         </FormErrorMessage>
       )}
-      {hasError && isExistingUser && (
-        <FormErrorMessage color="warning">
+      {!ignoreValidations && hasError && !isPrepaid && isExistingUser && (
+        <FormErrorMessage color="warning" alignItems="flex-start">
           <Flex>
             <Box w="20px">
               <HiOutlineExclamation size={20} color="warning" />
@@ -154,6 +163,36 @@ const FormikInput: React.FC<FormikInputProps> = ({
                 {loginButtonLabel}
               </Link>{" "}
               {secondSubscriptionDisplayText}
+            </Text>
+          </Flex>
+        </FormErrorMessage>
+      )}
+      {!ignoreValidations && hasError && isPrepaid && isExistingUser && (
+        <FormErrorMessage color="warning" alignItems="flex-start">
+          <Flex>
+            <Box w="20px">
+              <HiOutlineExclamation size={20} color="warning" />
+            </Box>
+            <Text
+              color="black"
+              paddingLeft="7px"
+              fontSize={14}
+              lineHeight="17.1px"
+              letterSpacing="0.23px"
+            >
+              {exitingUserErrorMsg}{" "}
+              <Link
+                as={ReachLink}
+                color="secondary.500"
+                to={{
+                  pathname: (GC.journeyPages[GCST.LOGIN]  || '/'),
+                  state: {
+                    fromPrepaid: true,
+                  },
+                }}
+              >
+                {loginButtonLabel}
+              </Link>
             </Text>
           </Flex>
         </FormErrorMessage>

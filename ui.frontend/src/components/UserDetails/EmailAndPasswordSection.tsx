@@ -12,6 +12,7 @@ import LebaraText from "../LebaraText/LebaraText";
 import { ChangeEmailPasswordProfileProps } from "./types";
 
 const EmailAndPasswordSection: React.FC<ChangeEmailPasswordProfileProps> = ({
+  frmFields,
   onEmailEdit,
   onPasswordEdit,
 }) => {
@@ -47,7 +48,8 @@ const EmailAndPasswordSection: React.FC<ChangeEmailPasswordProfileProps> = ({
             <FormikInput
               name="emailAddress"
               isRequired
-              label="Email Address"
+              label={frmFields?.emailLabel}
+              placeholder={frmFields?.emailPlaceholder}
               removeValidation
               {...disabledEmailProps}
             />
@@ -62,7 +64,7 @@ const EmailAndPasswordSection: React.FC<ChangeEmailPasswordProfileProps> = ({
                 <FiEdit size={24} color="#463C3C" />
                 &nbsp;
                 <LebaraText type="button" color="#FF3182">
-                  Edit
+                  {frmFields?.editLinkLabel}
                 </LebaraText>
               </Button>
             </InputRightElement>
@@ -73,7 +75,8 @@ const EmailAndPasswordSection: React.FC<ChangeEmailPasswordProfileProps> = ({
             <FormikInput
               name="password"
               isRequired
-              label="Password"
+              label={frmFields?.passwordLabel}
+              placeholder={frmFields?.passwordPlaceholder}
               removeValidation
               {...disabledPasswordProps}
             />
@@ -88,7 +91,7 @@ const EmailAndPasswordSection: React.FC<ChangeEmailPasswordProfileProps> = ({
                 <FiEdit size={24} color="#463C3C" />
                 &nbsp;
                 <LebaraText type="button" color="#FF3182">
-                  Edit
+                  {frmFields?.editLinkLabel}
                 </LebaraText>
               </Button>
             </InputRightElement>

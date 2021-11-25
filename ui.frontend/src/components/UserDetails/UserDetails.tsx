@@ -14,7 +14,10 @@ import { useHistory } from "react-router-dom";
 import { Formik } from "formik";
 import { useMutation } from "@apollo/client";
 import * as yup from "yup";
+
+import { globalConfigs as GC, globalConstants as C } from "../../GlobalConfigs";
 import { UserDetailsProps } from "./types";
+
 import LebaraText from "../LebaraText/LebaraText";
 import Button from "../Button/Button";
 import UserNameAndSurnameSection from "./UserNameAndSurnameSection";
@@ -32,9 +35,25 @@ const UserDetails: React.FC<UserDetailsProps> = ({
   sectionUsernameHeading,
   sectionAddressHeading,
   sectionEmailPasswordHeading,
-  secitonConsentHeading,
+  sectionConsentHeading,
   frmFields,
   validationMessages,
+
+  alternateContactNumber,
+  city,
+  emailAddress,
+  houseNumber,
+  informedEmail,
+  informedPhone,
+  informedSms,
+  password,
+  postCode,
+  selectedParterSms,
+  selectedPartnerEmail,
+  streetName,
+  userName,
+  userSurname,
+  userInfo,
 }) => {
   const history = useHistory();
   const [changeEmailSuccessPopup, setChangeEmailSuccessPopup] =
@@ -102,6 +121,7 @@ const UserDetails: React.FC<UserDetailsProps> = ({
                 },
               },
             });
+            // eslint-disable-next-line
             setLastFormValues(values);
             resetForm({ values });
           } catch (error: any) {
@@ -136,7 +156,7 @@ const UserDetails: React.FC<UserDetailsProps> = ({
                 </Box>
                 <Box display={{ base: "inline-block", md: "none" }}>
                   <Avatar
-                    name={userName}
+                    name={userInfo}
                     src={userInfo}
                     color="white"
                     size="lg"
@@ -171,13 +191,13 @@ const UserDetails: React.FC<UserDetailsProps> = ({
                       px={{ base: "13px", md: "42px" }}
                       py={{ base: "21px", md: "41px" }}
                     >
-                      <LebaraText
+                      {sectionUsernameHeading && <LebaraText
                         type="subtitle1"
                         lineHeight="23px"
                         fontWeight="400"
                       >
-                        Name & Surname
-                      </LebaraText>
+                        {sectionUsernameHeading}
+                      </LebaraText>}
                     </Box>
                     <IconButton
                       {...iconButtonProps}
@@ -194,9 +214,10 @@ const UserDetails: React.FC<UserDetailsProps> = ({
                     />
                   </Box>
                   <Collapse in={nameAndSurnameflag} animateOpacity>
-                    <UserNameAndSurnameSection />
+                    <UserNameAndSurnameSection frmFields={frmFields} />
                   </Collapse>
                 </Box>
+
                 {/* Address Section */}
                 <Box
                   borderBottom="0.5px solid #c8c8c8"
@@ -212,13 +233,13 @@ const UserDetails: React.FC<UserDetailsProps> = ({
                       px={{ base: "13px", md: "42px" }}
                       py={{ base: "21px", md: "41px" }}
                     >
-                      <LebaraText
+                      {sectionAddressHeading && <LebaraText
                         type="subtitle1"
                         lineHeight="23px"
                         fontWeight="400"
                       >
-                        Address
-                      </LebaraText>
+                        {sectionAddressHeading}
+                      </LebaraText>}
                     </Box>
                     <IconButton
                       {...iconButtonProps}
@@ -236,9 +257,10 @@ const UserDetails: React.FC<UserDetailsProps> = ({
                     />
                   </Box>
                   <Collapse in={addressSectionflag} animateOpacity>
-                    <AddressSection />
+                    <AddressSection frmFields={frmFields} />
                   </Collapse>
                 </Box>
+
                 {/* Email & Password Section */}
                 <Box
                   borderBottom="0.5px solid #c8c8c8"
@@ -254,13 +276,13 @@ const UserDetails: React.FC<UserDetailsProps> = ({
                       px={{ base: "13px", md: "42px" }}
                       py={{ base: "21px", md: "41px" }}
                     >
-                      <LebaraText
+                      {sectionEmailPasswordHeading && <LebaraText
                         type="subtitle1"
                         lineHeight="23px"
                         fontWeight="400"
                       >
-                        Email & Password
-                      </LebaraText>
+                        {sectionEmailPasswordHeading}
+                      </LebaraText>}
                     </Box>
                     <IconButton
                       {...iconButtonProps}
@@ -279,9 +301,10 @@ const UserDetails: React.FC<UserDetailsProps> = ({
                   </Box>
                   <Collapse in={emailPasswordSectionflag} animateOpacity>
                     <EmailAndPasswordSection
+                      frmFields={frmFields}
                       onEmailEdit={() => setEmailEditPopup(true)}
                       onPasswordEdit={() =>
-                        history.push("/user-profile/change-password")
+                        history.push(GC.journeyPages[`${C.USER_PROFILE}/${C.CHANGE_PASSWORD}`])
                       }
                     />
                   </Collapse>
@@ -297,7 +320,7 @@ const UserDetails: React.FC<UserDetailsProps> = ({
                     justifyContent="space-between"
                     alignItems="center"
                   >
-                    <Box>
+                    {sectionConsentHeading && <Box>
                       <LebaraText
                         type="subtitle1"
                         lineHeight="23px"
@@ -305,9 +328,9 @@ const UserDetails: React.FC<UserDetailsProps> = ({
                         px={{ base: "13px", md: "42px" }}
                         py={{ base: "21px", md: "41px" }}
                       >
-                        Consent Management
+                        {sectionConsentHeading}
                       </LebaraText>
-                    </Box>
+                    </Box>}
                     <IconButton
                       {...iconButtonProps}
                       aria-label="Toggle section"
@@ -337,48 +360,46 @@ const UserDetails: React.FC<UserDetailsProps> = ({
                           lineHeight="14px"
                           fontSize="12px"
                         >
-                          We would like to keep you informed of your latest
-                          products and services including special offers and
-                          promotions. If you do not want to hear about our
-                          latest offers please untick the box
+                          {frmFields?.consentDescription}
                         </LebaraText>
-                        <Flex flexDirection="row" mt="19px">
-                          <FormikCheckbox name="informedEmail" isValidated>
+                        {frmFields?.subscribeOptions?.length && <Flex flexDirection="row" mt="19px">
+                          {frmFields?.subscribeOptions[0] && <FormikCheckbox name="informedEmail" isValidated>
                             <Text
                               color="black"
                               fontSize="14px"
                               lineHeight="16px"
                             >
-                              Email
+                              {frmFields?.subscribeOptions[0].label}
                             </Text>
-                          </FormikCheckbox>
-                          <Box ml="35px">
+                          </FormikCheckbox>}
+                          {frmFields?.subscribeOptions[1] && <Box ml="35px">
                             <FormikCheckbox name="informedSms" isValidated>
                               <Text
                                 color="black"
                                 fontSize="14px"
                                 lineHeight="16px"
                               >
-                                SMS
+                                {frmFields?.subscribeOptions[1].label}
                               </Text>
                             </FormikCheckbox>
-                          </Box>
-                          <Box ml="35px">
+                          </Box>}
+                          {frmFields?.subscribeOptions[2] && <Box ml="35px">
                             <FormikCheckbox name="informedPhone" isValidated>
                               <Text
                                 color="black"
                                 fontSize="14px"
                                 lineHeight="16px"
                               >
-                                Phone
+                                {frmFields?.subscribeOptions[2].label}
                               </Text>
                             </FormikCheckbox>
-                          </Box>
-                        </Flex>
+                          </Box>}
+                        </Flex>}
                       </Box>
                     </Box>
                   </Collapse>
                 </Box>
+                
                 {/* save / cancel */}
                 <Box
                   pt="63px"
@@ -399,7 +420,7 @@ const UserDetails: React.FC<UserDetailsProps> = ({
                     bgColor="primary.500"
                     type="submit"
                   >
-                    SAVE
+                    {frmFields?.ctaButtonLabel}
                   </Button>
                   <Button
                     mt="15px"
@@ -415,7 +436,7 @@ const UserDetails: React.FC<UserDetailsProps> = ({
                     type="reset"
                     onClick={() => resetForm({ values: lastFormValues })}
                   >
-                    Cancel
+                    {frmFields?.ctaCancelLabel}
                   </Button>
                 </Box>
               </Box>

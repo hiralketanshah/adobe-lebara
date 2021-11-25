@@ -46,5 +46,7 @@ const globalConstants = Object.freeze({
     CREATE_NEW_PASSWORD: 'create-new-password',
     FAQ: 'faq',
     USAGE_DETAILS: 'usage-details',
+    USER_PROFILE: 'user-profile',
+    CHANGE_PASSWORD: 'change-password',
 });
 module.exports = { globalConfigs, globalConstants }
