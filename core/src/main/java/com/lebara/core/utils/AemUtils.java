@@ -154,15 +154,10 @@ public class AemUtils {
             email.setTo(emailIds);
             email.setFrom(senderEmail);
             messageGatewayService.getGateway(HtmlEmail.class).send(email);
-        } catch (IOException e) {
-            LOGGER.error("IOException {}", e);
-        } catch (MessagingException e) {
-            LOGGER.error("MessagingException {}", e);
-        } catch (EmailException e) {
-            LOGGER.error("EmailException {}", e);
-        } catch (MailingException e) {
-            LOGGER.error("MailingException {}", e);
-        } catch (Exception e) {
+        } catch (IOException | EmailException | MessagingException e) {
+            LOGGER.error("Error in sending an email  [ {} ]", e.getMessage());
+        }
+        catch (Exception e) {
             LOGGER.error("MailingException {}", e);
         }
 
@@ -227,10 +222,15 @@ public class AemUtils {
     }
 
     public static DashboardLabels populateDashboardLabels(SlingHttpServletRequest request) {
-        Resource res = request.getResourceResolver().getResource(request.getRequestPathInfo().getResourcePath());
+        PageManager pageManager = request.getResourceResolver().adaptTo(PageManager.class);
+        Page page = null;
+        Resource resource = request.getResource();
+        if (pageManager != null) {
+            page = pageManager.getContainingPage(resource);
+        }
         DashboardLabels dashboardLabels = new DashboardLabels();
-        if (null != res) {
-            InheritanceValueMap inheritedProp = new HierarchyNodeInheritanceValueMap(res);
+        if (page != null) {
+            InheritanceValueMap inheritedProp = new HierarchyNodeInheritanceValueMap(page.getContentResource());
             dashboardLabels.setDataPlanName(getInheritedValue("dataPlanName", inheritedProp));
             dashboardLabels.setDataType(getInheritedValue("dataType", inheritedProp));
             dashboardLabels.setMinPlanName(getInheritedValue("minPlanName", inheritedProp));

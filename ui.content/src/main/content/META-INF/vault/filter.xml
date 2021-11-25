@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <workspaceFilter version="1.0">
     <filter root="/conf/lebara/settings/wcm" mode="replace"/>
+    <filter root="/conf/global/settings/translation/rules/translation_rules.xml" mode="replace"/>
     <filter root="/conf/lebara/settings/dam/cfm/models/epcmodels" mode="replace"/>
     <filter root="/conf/lebara/settings/dam/cfm/models/city-fragment" mode="replace"/>
     <filter root="/conf/lebara/settings/dam/cfm/models/planinformation" mode="replace"/>

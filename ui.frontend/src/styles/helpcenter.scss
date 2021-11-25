@@ -1,0 +1,14 @@
+
+/****
+    Help Center [FAQ/BrowseCategories] Style Classes
+****/
+
+.helpcenter-bc {
+    &-childlinks {
+        border-bottom: 0.25px solid black;
+
+        &:last-child {
+            border-bottom: none;
+        }
+    }
+}

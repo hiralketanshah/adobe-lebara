@@ -1,13 +1,25 @@
-import {allowanceListProps} from "../PlanOffers/types"
-export interface offerProps {
+import { ExpandablePlanCardProps } from "../ExpandablePlanCard/types";
+import {allowanceListProps} from "../PlanOffers/types";
+
+
+export interface OfferProps extends ExpandablePlanCardProps {
+    id?: number;
+    offerType?: string;
     cost?: string;
+    planName?: string;
     validity?: string;
+    validityText?: string;
+    dataVolumeText?: string;
+    minutesToCountriesText?: string;
+    additionalOffers?: string;
+    allowanceList?: allowanceListProps[];
 }
 
 export interface PlanCardProps {
-    offer?: offerProps; 
-    allowanceList?: allowanceListProps;
+    offers?: OfferProps; 
     buttonLabel?: string;
     minutesField?: string;
     unlimitedTextField?: string;
+    exploreAllLabel?: string;
+    exploreAllLink?: string;
 }

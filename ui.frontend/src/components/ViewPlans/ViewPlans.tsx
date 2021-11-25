@@ -1,123 +1,108 @@
 //@ts-nocheck
 import React from "react";
-import { Box, Divider, Grid, GridItem } from "@chakra-ui/react";
+import { Box, Flex, Text, Link } from "@chakra-ui/react";
 import { PlanCardProps } from "./types";
-import Title from "../Title/Title";
+import ExpandableSimPlanCard from "../ExpandableSimPlanCard/ExpandableSimPlanCard";
 import Button from "../Button/Button";
-import {globalConfigs} from  '../../GlobalConfigs.js';
+import { useHistory } from "react-router-dom";
+import TickInCircle from "../../icons/TickInCircle";
+import {globalConfigs, globalConstants} from  '../../GlobalConfigs.js';
+
 const ViewPlans: React.FC<PlanCardProps> = ({
-  offer,
+  title,
+  description,
+  showLabel,
+  ctaTopLink,
+  ctaTopLabel,
+  exploreAllLabel,
+  exploreAllLink,
   buttonLabel,
-  unlimitedTextField,
-  minutesField,
-  allowanceList,
+  addedtoCartLabel,
+  viewCartLabel,
+  offers,
 }) => {
+  const history = useHistory();
+  const linkStyles = {
+    fontSize: "14px",
+    letterSpacing: "0.01em",
+    fontWeight: "bold",
+    color: "var(--chakra-colors-pink-500);"
+  };
+
   return (
-    <Grid
-      boxShadow="md"
-      templateColumns="repeat(12, 1fr)"
-      gap={0}
-      paddingInline={2.5}
-      bg="white"
-      borderRadius={8}
-      alignItems="center"
-      w={{ md: "460px" }}
-      mb="20px"
+    <Box
+      backgroundColor="lightenPrimary.50"
+      backgroundPosition="center right"
+      backgroundRepeat="no-repeat"
+      py={{ base: "30.68px", lg: "60px" }}
+      px={{ base: "20px", lg: "80px" }}
     >
-      <GridItem
-        colSpan={{ base: 7, md: 4 }}
-        display="flex"
-        justifyContent="space-evenly"
-        alignItems="center"
-      >
-        <Box>
-          <Box
-            d={{ base: "flex", md: "none" }}
-            alignItems="baseline"
-            color="lightenPrimary.600"
+      <Flex flexDir="column" align="stretch">
+        {title && (
+          <Text
+            as="h3"
+            mb={{ base: "12.11px", lg: "10px" }}
+            lineHeight={{ base: "22px", lg: "30px" }}
+            fontSize={{ base: "20px", lg: "24px" }}
+            fontWeight="500"
+            color="primary.600"
           >
-            <Box
-              as="p"
-              fontSize={{ base: "14px", md: "30px" }}
-              alignItems="baseline"
-              pos="relative"
-              top={{ base: "-12px", md: "0" }}
-              fontWeight="bold"
+            {title}
+          </Text>
+        )}
+        
+        {description && (
+          <Box d={{ lg: "flex" }} justifyContent={{ lg: "space-between" }}>
+            <Text
+              lineHeight={{ base: "22px", lg: "30px" }}
+              fontSize="16px"
+              mb={{ base: "15.31px", lg: 0 }}
             >
-              £
-            </Box>
-            <Box as="h3" fontSize="30px" pr="4px" pl="2px" fontWeight="bold">
-              {offer?.cost}
-            </Box>
-            <Box as="p" fontSize="13px" fontWeight="semibold">
-              / {offer?.validity}
-            </Box>
+              {description}
+            </Text>
+            {ctaTopLabel && <Link marginBottom="20px" {...linkStyles} href={ctaTopLink} >
+              {ctaTopLabel}
+            </Link>}
           </Box>
-          <Title
-            color="lebaraBlue.600"
-            type="caption"
-            display={{ base: "block", md: "none" }}
-          >
-            {allowanceList[0]?.formatedValue} {minutesField}
-          </Title>
-        </Box>
-        <Box>
-          <Box
-            d={{ base: "none", md: "flex" }}
-            alignItems="baseline"
-            color="lightenPrimary.600"
-          >
-            <Box
-              as="h3"
-              fontSize="30px"
-              pr="4px"
-              pl="2px"
-              fontWeight="bold"
-              color="fuschia.500"
-            >
-              {allowanceList[0]?.formatedValue}
-            </Box>
-          </Box>
-          <Title
-            color="bodyCopy"
-            type="caption"
-            fontSize="14px"
-            d={{ base: "none", md: "flex" }}
-          >
-            {minutesField}
-          </Title>
-        </Box>
+        )}
 
-        <Divider
-          my={3.5}
-          orientation="vertical"
-          color="black"
-          h="50px"
-          w="1px"
-          ml="30px"
-        />
-      </GridItem>
-
-      <GridItem
-        colSpan={{ base: 5, md: 8 }}
-        d="flex"
-        justifyContent={{ base: "space-around", md: "space-around" }}
-      >
-        <Box
-          d={{ base: "none", md: "flex" }}
-          as="h3"
-          fontSize="30px"
-          pr="4px"
-          pl="2px"
-          fontWeight="bold"
+        <Flex
+          flexWrap="wrap"
+          flexDirection={{ base: "column", lg: "row" }}
+          gridGap={{ base: "10px", lg: "19px" }}
+          mt={{ base: "15.31px", lg: "20px" }}
         >
-          {globalConfigs.currencySymbol}{offer?.cost}
-        </Box>
-        <Button variant="solid" w="134px" onClick={() => {}}>
-          {buttonLabel}
-        </Button>
-      </GridItem>
-    </Grid>
+          {offers &&
+            offers?.map((plan: ExpandableSimPlanCardProps) => (
+              <Box
+                maxW={{ lg: "400px" }}
+                minW={{ base: "320px", lg: "400px" }}
+                w="100%"
+                key={plan.planName}
+              >
+                <ExpandableSimPlanCard {...plan} showLabel={showLabel}
+                  buttonLabel={buttonLabel}
+                  addedtoCartLabel={addedtoCartLabel}
+                  viewCartLabel={viewCartLabel}
+                  previewIcon={<TickInCircle fill="#13357A" tickFill="#EA4984" />} />
+              </Box>
+            ))}
+        </Flex>
+        {exploreAllLabel && (
+          <Button
+            variant="outline"
+            mt={{ base: "20px", lg: "30px" }}
+            minW={{ base: "100%", lg: "320px" }}
+            alignSelf="center"
+            onClick={() => {
+               history.push((exploreAllLink || globalConfigs.journeyPages[globalConstants.PREPAID]  || '/'), history.location.state);
+            }}
+          >
+            {exploreAllLabel}
+          </Button>
+        )}
+      </Flex>
+    </Box>
   );
 };
 

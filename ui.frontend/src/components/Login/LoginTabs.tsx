@@ -15,6 +15,7 @@ import { LoginTabsProps } from "./types";
 import LoginTab from "./LoginTab";
 import GuestTab from "./GuestTab";
 import CongratulationsPopUp from "../CongratulationsPopUp/CongratulationsPopUp";
+import { globalConfigs as GC, globalConstants as GCST} from "../../GlobalConfigs";
 
 const LoginTabs: React.FC<LoginTabsProps> = ({ isPasswordResetSucessfull, ...loginModuleProps }) => {
   // const cartItems = useSelector((state: ReduxState) => state.cart);
@@ -34,7 +35,7 @@ const LoginTabs: React.FC<LoginTabsProps> = ({ isPasswordResetSucessfull, ...log
       fontWeight="400"
     >
       <Text my="12px" color="bodyCopy " fontSize="14px" lineHeight="20px">
-        OR
+        {loginModuleProps.extraBlockOrText}
       </Text>
 
       <Text
@@ -45,7 +46,7 @@ const LoginTabs: React.FC<LoginTabsProps> = ({ isPasswordResetSucessfull, ...log
         letterSpacing="0.25px"
       >
         {" "}
-        New to Lebara? <Link href="/">Register</Link>{" "}
+        {loginModuleProps.extraBlockLoginText} <Link href={GC?.journeyPages[GCST?.REGISTER]  || '/'}>{loginModuleProps.extraBlockLoginLinkText}</Link>{" "}
       </Text>
     </Flex>
   );

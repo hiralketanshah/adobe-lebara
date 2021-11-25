@@ -57,12 +57,12 @@
                                         sling:resourceType="granite/ui/components/coral/foundation/container">
                                         <items jcr:primaryType="nt:unstructured">
                                             <simImagePath
-                                                    jcr:primaryType="nt:unstructured"
-                                                    sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
-                                                    fieldDescription="Image Path"
-                                                    fieldLabel="Sim Image Path"
-                                                    name="./simImageFile"
-                                                    rootPath="/content/dam/lebara"/>
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                                fieldDescription="Image Path"
+                                                fieldLabel="Sim Image Path"
+                                                name="./simImageFile"
+                                                rootPath="/content/dam/lebara"/>
                                             <imageText
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
