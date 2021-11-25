@@ -23,7 +23,7 @@ import {globalConfigs} from  '../../GlobalConfigs.js';
 import { ExpandableSimPlanCardProps } from "../ExpandableSimPlanCard/types";
 import { allowanceListProps } from "../ExpandablePlanCard/types";
 import ChangePlanDialog from "../ChangePlanDialog/ChangePlanDialog";
-import getCfOfferDataUrl from "../../utils/get-cf-offer-data-url";
+import getCfOfferDataUrl from "../../utils/aem-utils";
 import { Icon } from "../Icon/Icon";
 import { FiChevronRight, HiOutlineExclamation } from "react-icons/all";
 import useMissingDetails from "../../hooks/useMissingDetails";

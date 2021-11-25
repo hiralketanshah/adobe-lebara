@@ -51,7 +51,6 @@ public class FragmentInfoServlet extends SlingSafeMethodsServlet {
     private I18n i18n;
     private String offerId;
     private String offerRootPath;
-    private List<String>offerIdList;
 
     @Override
     protected void doGet(SlingHttpServletRequest request, SlingHttpServletResponse response) throws ServletException, IOException {
@@ -60,7 +59,7 @@ public class FragmentInfoServlet extends SlingSafeMethodsServlet {
             return;
         }
         offerId = request.getRequestParameter("offerId").getString();
-        offerIdList = Arrays.asList(offerId.split(","));
+        List<String> offerIdList = Arrays.asList(offerId.split(","));
         if (StringUtils.isBlank(offerId)) {
             return;
         }
@@ -81,7 +80,7 @@ public class FragmentInfoServlet extends SlingSafeMethodsServlet {
             return;
         }
         i18n = AemUtils.geti18n(resourceResolver, resource, request);
-        getOfferFragmentPath(resourceResolver).stream().forEach(path -> {
+        getOfferFragmentPath(resourceResolver, offerIdList).stream().forEach(path -> {
                     Resource cfResource = resourceResolver.getResource(path);
                     if (i18n == null || cfResource == null) {
                         return;
@@ -98,8 +97,8 @@ public class FragmentInfoServlet extends SlingSafeMethodsServlet {
         response.getWriter().println(prettyPrintedJson);
     }
 
-    private List<String> getOfferFragmentPath(ResourceResolver resourceResolver) {
-        Query query = queryBuilder.createQuery(PredicateGroup.create(getPredicatesMap()), resourceResolver.adaptTo(Session.class));
+    private List<String> getOfferFragmentPath(ResourceResolver resourceResolver, List<String> offerIdList) {
+        Query query = queryBuilder.createQuery(PredicateGroup.create(getPredicatesMap(offerIdList)), resourceResolver.adaptTo(Session.class));
         SearchResult searchResult = query.getResult();
         List<Hit> hitList = searchResult.getHits();
         List<String> offerFragmentsPath = new ArrayList<>();
@@ -108,6 +107,7 @@ public class FragmentInfoServlet extends SlingSafeMethodsServlet {
                     try {
                         offerFragmentsPath.add(hitList.get(hitList.indexOf(hit)).getPath());
                     } catch (RepositoryException e) {
+                        LOGGER.error("Error in results", e);
                         e.printStackTrace();
                     }
                 });
@@ -115,7 +115,7 @@ public class FragmentInfoServlet extends SlingSafeMethodsServlet {
         return offerFragmentsPath;
     }
 
-    private Map<String, String> getPredicatesMap() {
+    private Map<String, String> getPredicatesMap(List<String> offerIdList) {
         Map<String, String> predicate = new HashMap<>();
         predicate.put("path", offerRootPath);
         predicate.put("type", "dam:Asset");
