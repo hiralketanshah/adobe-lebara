@@ -15,6 +15,7 @@ import org.apache.sling.models.annotations.Exporter;
 import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.injectorspecific.ChildResource;
 import org.apache.sling.models.annotations.injectorspecific.ScriptVariable;
+import org.apache.sling.models.annotations.injectorspecific.SlingObject;
 
 import javax.annotation.PostConstruct;
 import javax.inject.Named;
@@ -31,6 +32,9 @@ public class FooterExporter implements ComponentExporter {
      * The resource type.
      */
     protected static final String RESOURCE_TYPE = "lebara/components/footer";
+
+    @SlingObject
+	private SlingHttpServletRequest request;
 
     @ScriptVariable
     private PageManager pageManager;
@@ -82,7 +86,7 @@ public class FooterExporter implements ComponentExporter {
             while (childPath.hasNext()) {
                 Link links = new Link();
                 Page childPage = childPath.next();
-                links.setLink(AemUtils.getLinkWithExtension(childPage.getPath()));
+                links.setLink(AemUtils.getLinkWithExtension(childPage.getPath(), request));
                 links.setLabel(AemUtils.getTitle(childPage));
                 childPagesList.add(links);
             }

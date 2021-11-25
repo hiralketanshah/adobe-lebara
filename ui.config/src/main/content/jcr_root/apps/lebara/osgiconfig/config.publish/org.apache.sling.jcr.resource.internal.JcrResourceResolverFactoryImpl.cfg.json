@@ -1,5 +1,6 @@
 {
   "resource.resolver.mapping": [
     "/content/lebara/</", "/:/"
-  ]
+  ],
+  "resource.resolver.map.location":"/etc/map/lebara-publish"
 }
