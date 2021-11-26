@@ -29,11 +29,11 @@ public class RecommendedTariffExporter extends ViewPlanExporter {
 
     private static final String CF_PATH = "cfPath";
 
-	private static final String RECOMMEND_LINK_PROPERTY = "recommendedURL";
+    private static final String RECOMMEND_LINK_PROPERTY = "recommendedURL";
 
-	private static final String RECOMMEND_IMAGE_PROPERTY = "recommendedImage";
+    private static final String RECOMMEND_IMAGE_PROPERTY = "recommendedImage";
 
-	/**
+    /**
      * The resource type.
      */
     protected static final String RESOURCE_TYPE = "lebara/components/plans/recommendedtariff";
