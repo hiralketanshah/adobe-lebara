@@ -90,8 +90,7 @@ const UserDetails: React.FC<UserDetailsProps> = ({
     selectedParterSms,
   };
 
-  // const [lastFormValues, setLastFormValues] = React.useState(initialValues);
-  const [lastFormValues, setLastFormValues] = React.useState();
+  const [lastFormValues, setLastFormValues] = React.useState(initialValues);
   const validationSchema = yup.object({
     emailAddress: yup
       .string()
@@ -121,7 +120,6 @@ const UserDetails: React.FC<UserDetailsProps> = ({
                 },
               },
             });
-            // eslint-disable-next-line
             setLastFormValues(values);
             resetForm({ values });
           } catch (error: any) {
