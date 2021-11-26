@@ -221,7 +221,7 @@ const ExpandableSimPlanCard: React.FC<ExpandableSimPlanCardProps> = ({
             </Flex>}
           </Box>
         )}
-        {/* {productInformationButtonLabel && ( */}
+        {productInformationButtonLabel && (
           <Text
             onClick={() => setIsPdfDialogOpen(true)}
             cursor="pointer"
@@ -231,9 +231,9 @@ const ExpandableSimPlanCard: React.FC<ExpandableSimPlanCardProps> = ({
             lineHeight="17px"
             pt="10px"
           >
-            {productInformationButtonLabel || "PDF document"}
+            {productInformationButtonLabel || "Product Information"}
           </Text>
-        {/* )} */}
+        )}
 
         {!isRelatedPlan && <Divider my={3.5} />}
         <Flex
