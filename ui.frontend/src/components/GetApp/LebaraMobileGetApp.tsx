@@ -29,7 +29,8 @@ const LebaraMobileGetApp: React.FC<GetAppProps> = ({
       className="get-app-comp-wrapper"
       backgroundImage={backgroundImageDesktop}
       bgRepeat="no-repeat"
-      bgSize="100%"
+      bgSize={{base: "cover", md: "100%" }}
+      px={{base: "20px", md: "0" }}
       bgPosition="center"
       width="auto"
     >
