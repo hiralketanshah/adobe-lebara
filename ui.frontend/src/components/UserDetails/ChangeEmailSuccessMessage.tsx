@@ -9,7 +9,7 @@ import {
   Image,
   Text,
 } from "@chakra-ui/react";
-import CheckCircle from "../../../assets/images/checkCircle.png";
+import CheckCircle from "../../assets/images/checkCircle.png";
 import { ChangeEmailSuccessProps } from "./types";
 
 const ChangeEmailSuccess: React.FC<ChangeEmailSuccessProps> = ({
