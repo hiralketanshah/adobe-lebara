@@ -21,8 +21,8 @@ export interface PlanCardProps {
     productInformationButtonLabel?: string;
     ctaAddToCartLabel?: string;
     ctaSelectLabel?: string;
-    ctaCLoseLabel?: string;
-    ctaDowndloadLabel?: string;
+    ctaCloseLabel?: string;
+    ctaDownloadLabel?: string;
     minutesField?: string;
     unlimitedTextField?: string;
     exploreAllLabel?: string;

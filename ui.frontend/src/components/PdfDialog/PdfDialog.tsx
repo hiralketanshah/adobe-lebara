@@ -20,8 +20,8 @@ const Doc = ({ fileName }: any) => (
 );
 
 const PdfDialog: React.FC<PdfDialogProps> = ({ fileName, isOpen, onClose,
-  ctaCLoseLabel,
-  ctaDowndloadLabel
+  ctaCloseLabel,
+  ctaDownloadLabel
  }) => (
   <Modal size="3xl" isOpen={isOpen} onClose={onClose}>
     <ModalOverlay />
@@ -36,7 +36,7 @@ const PdfDialog: React.FC<PdfDialogProps> = ({ fileName, isOpen, onClose,
       <ModalFooter>
         <Flex gridGap="16px">
           <Button onClick={onClose} variant="outline">
-            {ctaCLoseLabel}
+            {ctaCloseLabel}
           </Button>
           <Link
             href={fileName}
@@ -46,7 +46,7 @@ const PdfDialog: React.FC<PdfDialogProps> = ({ fileName, isOpen, onClose,
               textDecoration: "none",
             }}
           >
-            <Button>{ctaDowndloadLabel}</Button>
+            <Button>{ctaDownloadLabel}</Button>
           </Link>
         </Flex>
       </ModalFooter>

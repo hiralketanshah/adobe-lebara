@@ -13,7 +13,7 @@ const ViewPlans: React.FC<PlanCardProps> = ({
   description,
   showLabel,
   ctaTopLink,
-  ctaTopLabel,
+ taTopLabel,
   exploreAllLabel,
   exploreAllLink,
   buttonLabel,
@@ -23,8 +23,8 @@ const ViewPlans: React.FC<PlanCardProps> = ({
   productInformationButtonLabel,
   ctaSelectLabel,
   ctaAddToCartLabel,
-  ctaCLoseLabel,
-  ctaDowndloadLabel,
+  ctaCloseLabel,
+  ctaDownloadLabel,
 }) => {
   const history = useHistory();
   const linkStyles = {
@@ -91,7 +91,7 @@ const ViewPlans: React.FC<PlanCardProps> = ({
                   ctaSelectLabel={ctaSelectLabel}
                   ctaAddToCartLabel={ctaAddToCartLabel}
                   ctaCloseLabel={ctaCloseLabel}
-                  ctaDowndloadLabel={ctaDowndloadLabel}
+                  ctaDownloadLabel={ctaDownloadLabel}
                   addedtoCartLabel={addedtoCartLabel}
                   viewCartLabel={viewCartLabel}
                   previewIcon={<TickInCircle fill="#13357A" tickFill="#EA4984" />} />

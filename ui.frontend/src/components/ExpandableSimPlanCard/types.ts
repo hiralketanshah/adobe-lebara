@@ -33,8 +33,8 @@ export interface ExpandableSimPlanCardProps {
   promotionalAmount?: string;
   ctaSelectLabel?: string;
   ctaAddToCartLabel?: string;
-  ctaCLoseLabel?: string;
-  ctaDowndloadLabel?: string;
+  ctaCloseLabel?: string;
+  ctaDownloadLabel?: string;
 }
 
 const OfferTypes = {

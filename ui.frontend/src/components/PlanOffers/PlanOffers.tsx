@@ -24,8 +24,8 @@ const PlanOffers: React.FC<PlanOffersProps> = ({
   productInformationButtonLabel,
   ctaSelectLabel,
   ctaAddToCartLabel,
-  ctaCLoseLabel,
-  ctaDowndloadLabel,
+  ctaCloseLabel,
+  ctaDownloadLabel,
 }) => {
   const history = useHistory();
   const linkStyles = {
@@ -107,7 +107,7 @@ const PlanOffers: React.FC<PlanOffersProps> = ({
                   ctaSelectLabel={ctaSelectLabel}
                   ctaAddToCartLabel={ctaAddToCartLabel}
                   ctaCloseLabel={ctaCloseLabel}
-                  ctaDowndloadLabel={ctaDowndloadLabel}
+                  ctaDownloadLabel={ctaDownloadLabel}
                   addedtoCartLabel={addedtoCartLabel}
                   viewCartLabel={viewCartLabel}
                   previewIcon={<TickInCircle fill="#13357A" tickFill="#EA4984" />} />

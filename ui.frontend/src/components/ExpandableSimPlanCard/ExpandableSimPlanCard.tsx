@@ -23,8 +23,8 @@ const ExpandableSimPlanCard: React.FC<ExpandableSimPlanCardProps> = ({
   productInformationButtonLabel,
   ctaSelectLabel,
   ctaAddToCartLabel,
-  ctaCLoseLabel,
-  ctaDowndloadLabel,
+  ctaCloseLabel,
+  ctaDownloadLabel,
   allowanceList,
   validity,
   cost,
@@ -133,6 +133,8 @@ const ExpandableSimPlanCard: React.FC<ExpandableSimPlanCardProps> = ({
           fileName={productInformationFile || ""}
           isOpen={isPdfDialogOpen}
           onClose={() => setIsPdfDialogOpen(false)}
+          ctaCloseLabel={ctaCloseLabel || "Close"}
+          ctaDownloadLabel={ctaDownloadLabel || "Download"}
         />
 
         <PlanDetailsDialog
@@ -229,7 +231,7 @@ const ExpandableSimPlanCard: React.FC<ExpandableSimPlanCardProps> = ({
             lineHeight="17px"
             pt="10px"
           >
-            {productInformationButtonLabel}
+            {productInformationButtonLabel || "PDF document"}
           </Text>
         {/* )} */}
 
