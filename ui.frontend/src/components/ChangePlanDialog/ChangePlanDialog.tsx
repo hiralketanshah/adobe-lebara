@@ -16,7 +16,7 @@ import GET_RELATED_OFFERS from "../../graphql/GET_RELATED_OFFERS";
 import ExpandableSimPlanCard from "../ExpandableSimPlanCard/ExpandableSimPlanCard";
 import { globalConfigs } from "../../GlobalConfigs";
 import { ExpandableSimPlanCardProps } from "../ExpandableSimPlanCard/types";
-import getCfOfferDataUrl from "../../utils/get-cf-offer-data-url";
+import getCfOfferDataUrl from "../../utils/aem-utils";
 import TickInCircle from "../../icons/TickInCircle";
 const ChangePlanDialog: React.FC<ChangePlanDialogProps> = ({
   title,

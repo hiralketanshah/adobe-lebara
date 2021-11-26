@@ -338,6 +338,13 @@ const OrderDetailsRoute: React.FC<OrderDetailsProps> = ({ ...props }) => {
           .filter((t) => t.isFreeSimTopup)
           .map((t) => (
             <DataFreeSimTopUpCreditCard
+              autoRenewLabel={autoRenewLabel}
+              autoRenewDesc={autoRenewDesc}
+              topUpCapDesc={topUpCapDesc}
+              topUpCapLabel={topUpCapLabel}
+              key={t.magentoId}
+              isAutoTopUp={t.isAutoTopUp}
+              topUpCap={t.topUpCap || t.price}
               removeLabel={removeLabel}
               topUpCreditLabel={topUpCreditLabel}
               topUpRecommendedLabel={topUpRecommendedLabel}
@@ -394,6 +401,10 @@ const OrderDetailsRoute: React.FC<OrderDetailsProps> = ({ ...props }) => {
           .filter((t) => t.isTopUp)
           .map((t) => (
             <SelectedTopUpCreditCard
+              key={t.magentoId}
+              showAutoRenew={!isGuest}
+              isAutoTopUp={t.isAutoTopUp}
+              topUpCap={t.topUpCap || t.price}
               topUpCapDesc={topUpCapDesc}
               topUpCapLabel={topUpCapLabel}
               topUpCreditLabel={topUpCreditLabel}
