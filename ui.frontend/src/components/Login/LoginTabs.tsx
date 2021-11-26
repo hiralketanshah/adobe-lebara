@@ -26,27 +26,47 @@ const LoginTabs: React.FC<LoginTabsProps> = ({ isPasswordResetSucessfull, ...log
     setTabIndex(parseInt(value, 10));
   }
 
-  const extraBlock = (
+  const loginExtraBlock = (
     <Flex
       flexDir="column"
       justifyContent="center"
       alignItems="center"
-      fontSize={14}
-      fontWeight="400"
+      fontSize="14px"
+      lineHeight="20px"
+      letterSpacing="0.25px"
+      mt="22px"
     >
-      <Text my="12px" color="bodyCopy " fontSize="14px" lineHeight="20px">
-        {loginModuleProps.extraBlockOrText}
-      </Text>
-
       <Text
-        mt="32px"
         color="grey.300"
         fontWeight="400"
         lineHeight="20px"
         letterSpacing="0.25px"
       >
         {" "}
-        {loginModuleProps.extraBlockLoginText} <Link href={GC?.journeyPages[GCST?.REGISTER]  || '/'}>{loginModuleProps.extraBlockLoginLinkText}</Link>{" "}
+        {loginModuleProps?.extraBlockLoginText}{" "}<Link href={GC?.journeyPages[GCST?.REGISTER]  || '/'}>{loginModuleProps.extraBlockLoginLinkText}</Link>{" "}
+      </Text>
+    </Flex>
+  );
+  
+  const guestExtraBlock = (
+    <Flex
+      flexDir="column"
+      justifyContent="center"
+      alignItems="center"
+      fontSize="14px"
+      lineHeight="20px"
+      letterSpacing="0.25px"
+      mt="22px"
+    >
+      <Text
+        color="grey.300"
+        fontWeight="400"
+        lineHeight="20px"
+        letterSpacing="0.25px"
+      >
+        {" "}
+        {loginModuleProps?.extraBlockGuestText}{" "}<Link href={GC?.journeyPages[GCST?.LOGIN]  || '/'}>{loginModuleProps.extraBlockGuestLinkText}</Link>{" "}
+        {" "}
       </Text>
     </Flex>
   );
@@ -99,11 +119,11 @@ const LoginTabs: React.FC<LoginTabsProps> = ({ isPasswordResetSucessfull, ...log
         >
           <TabPanel>
             <GuestTab {...loginModuleProps}/>
-            {extraBlock}
+            {guestExtraBlock}
           </TabPanel>
           <TabPanel>
             <LoginTab {...loginModuleProps} />
-            {extraBlock}
+            {loginExtraBlock}
           </TabPanel>
         </TabPanels>
       </Tabs>

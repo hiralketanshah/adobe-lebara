@@ -30,7 +30,7 @@ const RegisterTabs: React.FC<LoginTabsProps> = ({ ...loginModuleProps }) => {
     letterSpacing: "-1px",
   };
   
-  const extraBlock = (
+  const loginExtraBlock = (
     <Flex
       flexDir="column"
       justifyContent="center"
@@ -47,10 +47,35 @@ const RegisterTabs: React.FC<LoginTabsProps> = ({ ...loginModuleProps }) => {
         letterSpacing="0.25px"
       >
         {" "}
-        {loginModuleProps.extraBlockRegisterText} <Link href="/" onClick={(e) => {
+        {loginModuleProps?.extraBlockLoginText} <Link href="/" onClick={(e) => {
+          e.preventDefault();
+          handleTabSwitch("1");
+        }}>{loginModuleProps?.extraBlockLoginLinkText}</Link>{" "}
+      </Text>
+    </Flex>
+  );
+  
+  const registerExtraBlock = (
+    <Flex
+      flexDir="column"
+      justifyContent="center"
+      alignItems="center"
+      fontSize="14px"
+      lineHeight="20px"
+      letterSpacing="0.25px"
+      mt="22px"
+    >
+      <Text
+        color="grey.300"
+        fontWeight="400"
+        lineHeight="20px"
+        letterSpacing="0.25px"
+      >
+        {" "}
+        {loginModuleProps?.extraBlockRegisterText} <Link href="/" onClick={(e) => {
           e.preventDefault();
           handleTabSwitch("0");
-        }}>{loginModuleProps.extraBlockRegisterLinkText}</Link>{" "}
+        }}>{loginModuleProps?.extraBlockRegisterLinkText}</Link>{" "}
       </Text>
     </Flex>
   );
@@ -92,11 +117,11 @@ const RegisterTabs: React.FC<LoginTabsProps> = ({ ...loginModuleProps }) => {
       >
         <TabPanel>
           <LoginTab {...loginModuleProps} />
-          {extraBlock}
+          {loginExtraBlock}
         </TabPanel>
         <TabPanel>
           <RegisterTab {...loginModuleProps} />
-          {extraBlock}
+          {registerExtraBlock}
         </TabPanel>
       </TabPanels>
     </Tabs>

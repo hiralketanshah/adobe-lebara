@@ -103,7 +103,8 @@ export interface loginModuleProps {
   extraBlockLoginLinkText? : string;
   extraBlockRegisterText? : string;
   extraBlockRegisterLinkText? : string;
-  
+  extraBlockGuestText?: string;
+  extraBlockGuestLinkText?: string;
 }
 export interface LoginTabsProps extends TabProps, loginModuleProps {
   icon?: IconType;
