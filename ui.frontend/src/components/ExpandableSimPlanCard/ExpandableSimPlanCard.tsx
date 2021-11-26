@@ -9,6 +9,8 @@ import { useHistory } from "react-router-dom";
 import useAddToCart from "../../hooks/useAddToCart";
 import { useLocalStorage } from "@rehooks/local-storage";
 import {globalConfigs, globalConstants} from  '../../GlobalConfigs.js';
+import { useMutation } from "@apollo/client";
+import REMOVE_FROM_CART from "../../graphql/REMOVE_FROM_CART";
 const ExpandableSimPlanCard: React.FC<ExpandableSimPlanCardProps> = ({
   planName,
   previewIcon,
@@ -24,10 +26,14 @@ const ExpandableSimPlanCard: React.FC<ExpandableSimPlanCardProps> = ({
   buttonLabel,
   addedtoCartLabel,
   viewCartLabel,
-  offerType
+  offerType,
+  isRelatedPlan,
+  isRemoveFromCart,
+  onClose
 }) => {
   const history = useHistory();
   const [addItemToCart] = useAddToCart();
+  const [removeFromCartApi] = useMutation(REMOVE_FROM_CART);
   const toast = useToast();
   const [isDialogOpen, setIsDialogOpen] = React.useState(false);
   const [isButtonDisabled, setIsButtonDisabled] = React.useState(false);
@@ -39,6 +45,13 @@ const ExpandableSimPlanCard: React.FC<ExpandableSimPlanCardProps> = ({
   const handleAddToCart = async () => {
    const description:string | undefined = additionalOffers?.match(/(?<=>)([\w\s]+)(?=<\/)/g)?.length ? additionalOffers.replaceAll('\n','').match(/(?<=>)([\w\s^\\n]+)(?=<\/)/g)?.join('+') : additionalOffers;
     setIsButtonDisabled(true);
+    if(isRemoveFromCart){
+      await removeFromCartApi({
+        variables: {
+          itemId: id,
+        },
+      });
+    }
     switch (offerType) {
       case OfferTypes.BOLTON:
       case OfferTypes.TOPUP: {
@@ -71,20 +84,20 @@ const ExpandableSimPlanCard: React.FC<ExpandableSimPlanCardProps> = ({
       case OfferTypes.PREPAID:
       case OfferTypes.POSTPAID: {
         await addItemToCart(parseInt(id || ''), planName, (JSON.stringify(description || '')), parseFloat(cost || ''), "plan");
-        history.push(userToken ? (globalConfigs.journeyPages[globalConstants.ORDER_DETAILS]  || '/') : (globalConfigs.journeyPages[globalConstants.LEBARA_SIM_CHOICE]  || '/'));
+          isRemoveFromCart && onClose? onClose() : history.push(userToken ? (globalConfigs.journeyPages[globalConstants.ORDER_DETAILS]  || '/') : (globalConfigs.journeyPages[globalConstants.LEBARA_SIM_CHOICE]  || '/'));
       }
     }
     setIsButtonDisabled(false);
   };
   return (
     <Flex
-      flexDirection="column"
-      background="white"
-      borderRadius="lg"
-      boxShadow="0px 4px 4px rgba(0, 0, 0, 0.05)"
-      px={{ base: "15px", lg: "27.23px" }}
-      pt={{ base: "15px", lg: "34px" }}
-      pb={{ base: "15px", lg: "18px" }}
+    flexDirection="column"
+    background="white"
+    borderRadius={isRelatedPlan ? undefined : "lg"}
+    boxShadow={isRelatedPlan ? undefined : "0px 4px 4px rgba(0, 0, 0, 0.05)"}
+    px={isRelatedPlan ? undefined : { base: "15px", lg: "27.23px" }}
+    pt={{ base: "15px", lg: "34px" }}
+    pb={{ base: "15px", lg: "18px" }}
     >
       {planName && (
         <Text color="primary.500" fontWeight="bold">
@@ -107,6 +120,7 @@ const ExpandableSimPlanCard: React.FC<ExpandableSimPlanCardProps> = ({
         isButtonDisabled={isButtonDisabled}
         onActionClick={handleAddToCart}
         buttonText={buttonLabel}
+        hideButton={isRelatedPlan}
       />
       <Flex justifyContent="space-between" alignItems="center">
         <Text
@@ -162,8 +176,9 @@ const ExpandableSimPlanCard: React.FC<ExpandableSimPlanCardProps> = ({
         </Text>
       )}
 
-      <Divider my={3.5} />
+{!isRelatedPlan && <Divider my={3.5} />}
       <Flex
+       mt={isRelatedPlan ? 3.5 : undefined}
         justifyContent="space-between"
         alignItems="center"
         color="primary"
@@ -186,6 +201,7 @@ const ExpandableSimPlanCard: React.FC<ExpandableSimPlanCardProps> = ({
           onClick={handleAddToCart}
           disabled={isButtonDisabled}
           isLoading={isButtonDisabled}
+          variant={isRelatedPlan ? "outline" : undefined}
         >
           {buttonLabel}
         </Button>

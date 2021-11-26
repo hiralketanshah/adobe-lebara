@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Flex, Link, Text } from "@chakra-ui/react";
+import { Accordion, AccordionButton, AccordionIcon, AccordionItem, AccordionPanel, Box, Button, Flex, Link, Spacer, Text } from "@chakra-ui/react";
 import { useMutation } from "@apollo/client";
 import { useHistory, useLocation } from "react-router-dom";
 import ExpandablePlanCardCheckout from "../components/ExpandablePlanCardCheckout/ExpandablePlanCardCheckout";
@@ -19,20 +19,34 @@ import { selectVoucher } from "../redux/actions/selectVoucherActions";
 import Select from "../components/Select/Select";
 import DataFreeSimTopUpCreditCard from "../components/FreeSimTopUpCreditCard/FreeSimTopUpCreditCard";
 import { OrderDetailsProps } from "../layouts/types";
-import { globalConfigs, globalConstants } from "../GlobalConfigs";
-
+import { globalConfigs as GC, globalConstants as GCST } from "../GlobalConfigs";
+import {
+  selectIsAuthenticated,
+  selectMsisdn,
+} from "../selectors/userSelectors";
+import { CartItem } from "../redux/types/cartTypes";
+import useMissingDetails from "../hooks/useMissingDetails";
 const OrderDetailsRoute: React.FC<OrderDetailsProps> = ({ ...props }) => {
   const { selectedProductLabel, grandTotalLabel, applyVoucherLabel, enterVoucherCodeLabel, consentLabel,
     paymentButtonLabel, phoneNumberLabel, viewPlansLabel, showDetailsLabel, removeLabel, autoRenewDesc, autoRenewLabel,
     voucherCodeExpiredMessage, voucherCodeInvalidMessage, addVoucherCodeLabel, privacyPolicyLabel, privacyPolicyLink, voucherCodeDiscountLabel,
     deleteCartItemDesc, deleteCartItemTitle, deleteCartItemNoButtonLabel, deleteCartItemYesButtonLabel,
-    topUpCapDesc, topUpCapLabel, topUpCreditLabel, topUpRecommendedLabel, paymentMethodLabel } = props;
+    topUpCapDesc, topUpCapLabel, topUpCreditLabel, topUpRecommendedLabel, paymentMethodLabel, selectPlanLabel,
+    addonsTitle, plansTitle, personalDetailsLabel, nameLabel, emailLabel, mobileNumberLabel, shippingAddressLabel,
+    editLabel, missingInfoLabel } = props;
   const [removeFromCartApi] = useMutation(REMOVE_FROM_CART);
   const dispatch = useDispatch();
   const history = useHistory();
-  const location =
-    useLocation<{ phoneNumber?: string; email?: string; isGuest?: boolean,personalDetails?: any; }>();
-  const phoneNumber = location.state?.phoneNumber;
+  const userMsisdn = useSelector(selectMsisdn);
+  const isAuthenticated = useSelector(selectIsAuthenticated);
+  const location = useLocation<{
+    phoneNumber?: string;
+    email?: string;
+    isGuest?: boolean;
+    personalDetails?: any;
+  }>();
+  const phoneNumber = location.state?.phoneNumber || userMsisdn;
+  const isGuest = location?.state?.isGuest;
   const voucherCode = useSelector(
     (state: ReduxState) => state.voucher.voucherCode
   );
@@ -50,8 +64,12 @@ const OrderDetailsRoute: React.FC<OrderDetailsProps> = ({ ...props }) => {
   }));
   const allItemsAreFree = cartItems.every((t) => t.price === 0);
   const [isMarketingEnabled, setIsMarketingEnabled] = useState(false);
-  const [itemToRemove, setItemToRemove] =
-    React.useState<{ magentoId?: string; type: string; title: string }>();
+  const [itemToRemove, setItemToRemove] = React.useState<{
+    magentoId?: string;
+    type: string;
+    title: string;
+    item: CartItem;
+  }>();
   const [isDeleteDialogOpen, setIsDeleteDialogOpen] = React.useState(false);
   const handleRemoveItemFromCart = (magentoId?: string, type?: string) =>
     removeFromCartApi({
@@ -65,7 +83,7 @@ const OrderDetailsRoute: React.FC<OrderDetailsProps> = ({ ...props }) => {
         )
       );
       if (res.data.removeProduct.items.length === 0) {
-        history.replace((globalConfigs.journeyPages[globalConstants.EMPTY_CART] || ''), {
+        history.replace((GC.journeyPages[GCST.EMPTY_CART] || ''), {
           selectedType: type,
         });
       }
@@ -79,7 +97,26 @@ const OrderDetailsRoute: React.FC<OrderDetailsProps> = ({ ...props }) => {
       },
     ];
   }
-  const handleSelectPrice = (magentoId?: string, amount?: number) => {
+
+  const {
+    keepMobileFromAnotherOperator,
+    hasPrepaid,
+    personalDetails,
+    hasPostpaid,
+    portIn,
+    postpaidPersonalDetails,
+    missingDetailsForPrepaid,
+    missingDetailsForPostPaid,
+  } = useMissingDetails();
+
+  const hasPrepaidData = hasPrepaid && !missingDetailsForPrepaid;
+  const hasPostPaidData = hasPostpaid && !missingDetailsForPostPaid
+  const handleSelectPrice = (
+    magentoId?: string,
+    amount?: number,
+    isAutoTopUp?: boolean,
+    topUpCap?: number
+  ) => {
     removeFromCartApi({
       variables: {
         itemId: magentoId,
@@ -88,6 +125,8 @@ const OrderDetailsRoute: React.FC<OrderDetailsProps> = ({ ...props }) => {
       addToCartApi({
         variables: {
           productInput: {
+            recurring: isAutoTopUp,
+            topUpCap,
             product: {
               sku: `${amount}`,
               name: `Top-up${amount}`,
@@ -113,7 +152,7 @@ const OrderDetailsRoute: React.FC<OrderDetailsProps> = ({ ...props }) => {
   );
   React.useEffect(() => {
     if (!isCartItemsLoading && cartItems.length === 0) {
-      history.replace((globalConfigs.journeyPages[globalConstants.EMPTY_CART] || ''), {
+      history.replace((GC.journeyPages[GCST.EMPTY_CART] || ''), {
         selectedType: "plan",
       });
     }
@@ -121,9 +160,9 @@ const OrderDetailsRoute: React.FC<OrderDetailsProps> = ({ ...props }) => {
   }, [isCartItemsLoading]);
 
   const type =
-    itemToRemove?.type === "data"
+    itemToRemove?.type === "topup"
       ? "Top Up"
-      : itemToRemove?.title === "Bolt-on"
+      : itemToRemove?.type === "addon"
         ? "Add-on"
         : "Plan";
   return (
@@ -149,6 +188,119 @@ const OrderDetailsRoute: React.FC<OrderDetailsProps> = ({ ...props }) => {
           setIsDeleteDialogOpen(false);
         }}
       />
+      {(hasPrepaidData || hasPostPaidData) && !isGuest && !isAuthenticated && (
+        <Accordion allowToggle pt="16px">
+          <AccordionItem
+            borderWidth={1}
+            borderColor={{ base: "white", lg: "greySuccess" }}
+            borderRadius="8px"
+            bg="white"
+          >
+            <h2>
+              <AccordionButton p="16px" _focus={{ outline: "none" }}>
+                <Text
+                  flex="1"
+                  textAlign="left"
+                  fontWeight="bold"
+                  lineHeight="16px"
+                  fontSize="16px"
+                  letterSpacing="0.5px"
+                >
+                  {personalDetailsLabel}
+                </Text>
+                <AccordionIcon />
+              </AccordionButton>
+            </h2>
+            <AccordionPanel pb={4}>
+              <Flex>
+                {hasPrepaidData && (
+                  <Box>
+                    <Text fontWeight="bold">
+                      {nameLabel}{" "}
+                      <Text fontWeight="normal" d="inline">
+                        {personalDetails.firstName} {personalDetails.lastName}
+                      </Text>
+                    </Text>
+                    <Text fontWeight="bold">
+                      {emailLabel}{" "}
+                      <Text fontWeight="normal" d="inline">
+                        {personalDetails.email}
+                      </Text>
+                    </Text>
+                    {portIn.mobileNumber && keepMobileFromAnotherOperator && (
+                      <Text fontWeight="bold">
+                        {mobileNumberLabel}{" "}
+                        <Text fontWeight="normal" d="inline">
+                          {portIn.mobileNumber}
+                        </Text>
+                      </Text>
+                    )}
+                    <Text fontWeight="bold">
+                      {shippingAddressLabel}{" "}
+                      <Text fontWeight="normal" d="inline">
+                        {personalDetails.houseNumber}{" "}
+                        {personalDetails.streetName} {personalDetails.townCity}{" "}
+                        {personalDetails.zipCode}
+                      </Text>
+                    </Text>
+                  </Box>
+                )}
+                {hasPostpaid && (
+                  <Box>
+                    <Text fontWeight="bold">
+                      {nameLabel}{" "}
+                      <Text fontWeight="normal" d="inline">
+                        {postpaidPersonalDetails.firstName}{" "}
+                        {postpaidPersonalDetails.lastName}
+                      </Text>
+                    </Text>
+                    <Text fontWeight="bold">
+                      {emailLabel}{" "}
+                      <Text fontWeight="normal" d="inline">
+                        {postpaidPersonalDetails.email}
+                      </Text>
+                    </Text>
+                    {postpaidPersonalDetails.portInStatus === "Yes" &&
+                      postpaidPersonalDetails.portInNumber && (
+                        <Text fontWeight="bold">
+                          {mobileNumberLabel}{" "}
+                          <Text fontWeight="normal" d="inline">
+                            {postpaidPersonalDetails.portInNumber}
+                          </Text>
+                        </Text>
+                      )}
+                    <Text fontWeight="bold">
+                      {shippingAddressLabel}{" "}
+                      <Text fontWeight="normal" d="inline">
+                        {postpaidPersonalDetails.shippingAddress.label}{" "}
+                      </Text>
+                    </Text>
+                  </Box>
+                )}
+
+                <Spacer />
+                <Button
+                  variant="ghost"
+                  p={0}
+                  _hover={{ background: "none" }}
+                  _active={{ background: "none" }}
+                  _focus={{ boxShadow: "none" }}
+                  color="greySuccess"
+                  onClick={() => {
+                    history.push(
+                      hasPrepaidData
+                        ? (GC.journeyPages[GCST.LEBARA_SIM_CHOICE] || '')
+                        : (GC.journeyPages[GCST.POSTPAID_DETAILS] || '')
+                    );
+                  }}
+                >
+                  {editLabel}
+                </Button>
+              </Flex>
+            </AccordionPanel>
+          </AccordionItem>
+        </Accordion>
+      )}
       {phoneNumber && (
         <>
           <Text
@@ -186,6 +338,13 @@ const OrderDetailsRoute: React.FC<OrderDetailsProps> = ({ ...props }) => {
           .filter((t) => t.isFreeSimTopup)
           .map((t) => (
             <DataFreeSimTopUpCreditCard
+              autoRenewLabel={autoRenewLabel}
+              autoRenewDesc={autoRenewDesc}
+              topUpCapDesc={topUpCapDesc}
+              topUpCapLabel={topUpCapLabel}
+              key={t.magentoId}
+              isAutoTopUp={t.isAutoTopUp}
+              topUpCap={t.topUpCap || t.price}
               removeLabel={removeLabel}
               topUpCreditLabel={topUpCreditLabel}
               topUpRecommendedLabel={topUpRecommendedLabel}
@@ -206,6 +365,8 @@ const OrderDetailsRoute: React.FC<OrderDetailsProps> = ({ ...props }) => {
               hideViewDetails={t.isFreeSim}
               title={t.duration}
               isFreeSim={t.isFreeSim}
+              isPostPaid={t.isPostPaid}
+              isPrepaid={t.isPrepaid}
               isAddon={t.isAddon}
               magentoId={t.magentoId}
               description={t.description}
@@ -214,17 +375,22 @@ const OrderDetailsRoute: React.FC<OrderDetailsProps> = ({ ...props }) => {
               id={t.id}
               viewPlansLabel={viewPlansLabel}
               showDetailsLabel={showDetailsLabel}
+              selectPlanLabel={selectPlanLabel}
               removeLabel={removeLabel}
               autoRenewDesc={autoRenewDesc}
               autoRenewLabel={autoRenewLabel}
+              addonsTitle={addonsTitle}
+              plansTitle={plansTitle}
+              missingInfoLabel={missingInfoLabel}
               onRemove={async (magentoId, noConfirmation) => {
                 if (noConfirmation) {
                   await handleRemoveItemFromCart(magentoId, "plan");
                 } else {
                   setItemToRemove({
                     magentoId,
-                    type: "plan",
+                    type: t.isAddon ? "addon" : t.isTopUp ? "topup" : "plan",
                     title: t.duration,
+                    item: t,
                   });
                   setIsDeleteDialogOpen(true);
                 }
@@ -235,6 +401,10 @@ const OrderDetailsRoute: React.FC<OrderDetailsProps> = ({ ...props }) => {
           .filter((t) => t.isTopUp)
           .map((t) => (
             <SelectedTopUpCreditCard
+              key={t.magentoId}
+              showAutoRenew={!isGuest}
+              isAutoTopUp={t.isAutoTopUp}
+              topUpCap={t.topUpCap || t.price}
               topUpCapDesc={topUpCapDesc}
               topUpCapLabel={topUpCapLabel}
               topUpCreditLabel={topUpCreditLabel}
@@ -244,7 +414,12 @@ const OrderDetailsRoute: React.FC<OrderDetailsProps> = ({ ...props }) => {
               magentoId={t.magentoId}
               onRemove={(magentoId) => {
                 // handleRemoveItemFromCart(magentoId, "data")
-                setItemToRemove({ magentoId, type: "data", title: t.duration });
+                setItemToRemove({
+                  magentoId,
+                  type: "topup",
+                  title: t.duration,
+                  item: t,
+                });
                 setIsDeleteDialogOpen(true);
               }}
               onSelectPrice={handleSelectPrice}
@@ -261,27 +436,27 @@ const OrderDetailsRoute: React.FC<OrderDetailsProps> = ({ ...props }) => {
           enterVoucherCodeLabel={enterVoucherCodeLabel}
         />}
         <PurchaseSummary items={allItemsAreFree ? [] : items} grandTotalLabel={grandTotalLabel} />
-        {!(location?.state?.isGuest || location?.state?.personalDetails) && (
-        <Flex
-          px={5}
-          py={6}
-          backgroundColor="white"
-          fontWeight="500"
-          borderRadius={8}
-          color="grey.300"
-        >
-          <Checkbox
-            isChecked={isMarketingEnabled}
-            onChange={(e) => setIsMarketingEnabled(e.target.checked)}
+        {!isGuest && !isAuthenticated && (
+          <Flex
+            px={5}
+            py={6}
+            backgroundColor="white"
+            fontWeight="500"
+            borderRadius={8}
+            color="grey.300"
           >
-            <Text fontSize="14px">
-              <span dangerouslySetInnerHTML={{ __html: (consentLabel && consentLabel.replace(/<p>|<\/p>/g, '')) || '' }} />
-              <Link to={privacyPolicyLink} colorScheme="secondary" color="secondary.500">
-                {privacyPolicyLabel}
-              </Link>
-            </Text>
-          </Checkbox>
-        </Flex>
+            <Checkbox
+              isChecked={isMarketingEnabled}
+              onChange={(e) => setIsMarketingEnabled(e.target.checked)}
+            >
+              <Text fontSize="14px">
+                <span dangerouslySetInnerHTML={{ __html: (consentLabel && consentLabel.replace(/<p>|<\/p>/g, '')) || '' }} />
+                <Link to={privacyPolicyLink} colorScheme="secondary" color="secondary.500">
+                  {privacyPolicyLabel}
+                </Link>
+              </Text>
+            </Checkbox>
+          </Flex>
         )}
       </Flex>
     </BuyPlanLayout>

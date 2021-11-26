@@ -4,12 +4,16 @@ import { useHistory } from "react-router-dom";
 import Button from "../Button/Button";
 import { ChoiceButtonsProps } from "./types";
 import LebaraText from "../LebaraText/LebaraText";
+import { saveFormDetails } from "../../redux/actions/formsActions";
+import { useDispatch } from "react-redux";
 
 const ChoiceButtons: React.FC<ChoiceButtonsProps> = ({
   text,
   buttonOptions,
+  formName
 }) => {
   const history = useHistory();
+  const dispatch = useDispatch();
   return (
     <Box
       px={{ base: "16px", md: "0px" }}
@@ -40,8 +44,17 @@ const ChoiceButtons: React.FC<ChoiceButtonsProps> = ({
             textTransform="uppercase"
             {...rest}
             isFullWidth
-            onClick={() =>
+            onClick={() =>{
+              dispatch(
+                saveFormDetails({
+                  formName: formName || "simChoice",
+                  values: {
+                    selectedValue: key,
+                  },
+                })
+              );
               onClick ? onClick() : path && history.push(path, state)
+            }
             }
           />
         ))}
