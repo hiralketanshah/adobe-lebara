@@ -88,7 +88,6 @@
 		<property name="manageLabel" />
 		<!-- sticky circle props -->
 		<property name="linkLabel" />
-		<property name="linkPath" />
 		<!-- Dashboard inherited page props -->
 		<property name="dataPlanName" />
 		<property name="dataType" />

@@ -49,7 +49,6 @@ public class FragmentInfoServlet extends SlingSafeMethodsServlet {
     private QueryBuilder queryBuilder;
 
     private I18n i18n;
-    private String offerId;
     private String offerRootPath;
 
     @Override
@@ -58,7 +57,7 @@ public class FragmentInfoServlet extends SlingSafeMethodsServlet {
         if (request.getRequestParameter("offerId") == null) {
             return;
         }
-        offerId = request.getRequestParameter("offerId").getString();
+        String offerId = request.getRequestParameter("offerId").getString();
         List<String> offerIdList = Arrays.asList(offerId.split(","));
         if (StringUtils.isBlank(offerId)) {
             return;
@@ -108,7 +107,6 @@ public class FragmentInfoServlet extends SlingSafeMethodsServlet {
                         offerFragmentsPath.add(hitList.get(hitList.indexOf(hit)).getPath());
                     } catch (RepositoryException e) {
                         LOGGER.error("Error in results", e);
-                        e.printStackTrace();
                     }
                 });
         }
