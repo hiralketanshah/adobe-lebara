@@ -27,8 +27,8 @@ public class UsageDetailsExporter extends HeadingExporter {
      */
     protected static final String RESOURCE_TYPE = "lebara/components/usagedetails";
 
-	@SlingObject
-	private SlingHttpServletRequest request;
+    @SlingObject
+    private SlingHttpServletRequest request;
 
     @ChildResource
     private Resource tabs;

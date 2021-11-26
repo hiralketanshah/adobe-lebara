@@ -17,7 +17,7 @@ import javax.inject.Named;
 public class Link {
 
     @SlingObject
-	private SlingHttpServletRequest request;
+    private SlingHttpServletRequest request;
 
     @ValueMapValue
     private String label;

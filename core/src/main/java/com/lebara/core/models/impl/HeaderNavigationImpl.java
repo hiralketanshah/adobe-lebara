@@ -28,8 +28,8 @@ import java.util.stream.Collectors;
 @Exporter(name = ExporterConstants.SLING_MODEL_EXPORTER_NAME, extensions = ExporterConstants.SLING_MODEL_EXTENSION)
 public class HeaderNavigationImpl implements HeaderNavigation {
 
-	@SlingObject
-	private SlingHttpServletRequest request;
+    @SlingObject
+    private SlingHttpServletRequest request;
 
     @ScriptVariable
     protected Resource resource;

@@ -38,7 +38,7 @@ public class DetailedViewPlanExporter extends ViewPlanExporter implements Compon
     private I18n i18n;
 
     @SlingObject
-	private SlingHttpServletRequest request;
+    private SlingHttpServletRequest request;
 
     @SlingObject
     private ResourceResolver resourceResolver;

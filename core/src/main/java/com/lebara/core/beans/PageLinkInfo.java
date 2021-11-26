@@ -27,7 +27,7 @@ public class PageLinkInfo {
     protected String link;
 
     @SlingObject
-	private SlingHttpServletRequest request;
+    private SlingHttpServletRequest request;
 
     @SlingObject
     private ResourceResolver resourceResolver;

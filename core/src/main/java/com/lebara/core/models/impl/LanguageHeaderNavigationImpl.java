@@ -29,8 +29,8 @@ import java.util.List;
 @Exporter(name = ExporterConstants.SLING_MODEL_EXPORTER_NAME, extensions = ExporterConstants.SLING_MODEL_EXTENSION)
 public class LanguageHeaderNavigationImpl implements LanguageHeaderNavigation {
 
-	@SlingObject
-	private SlingHttpServletRequest request;
+    @SlingObject
+    private SlingHttpServletRequest request;
 
     @ScriptVariable
     protected Resource resource;

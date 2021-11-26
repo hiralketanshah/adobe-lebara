@@ -34,7 +34,7 @@ public class FooterExporter implements ComponentExporter {
     protected static final String RESOURCE_TYPE = "lebara/components/footer";
 
     @SlingObject
-	private SlingHttpServletRequest request;
+    private SlingHttpServletRequest request;
 
     @ScriptVariable
     private PageManager pageManager;
