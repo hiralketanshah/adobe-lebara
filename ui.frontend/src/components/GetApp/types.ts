@@ -5,6 +5,9 @@ export interface GetAppProps {
   backgroundImageDesktop?: string;
   textDescription?: string;
   show?: boolean;
+  textCol1?: string[];
+  textCol2?: string[];
+  getAppLabel?: string;
 }
 
 export interface getAppOption  {

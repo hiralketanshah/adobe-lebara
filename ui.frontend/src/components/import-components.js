@@ -66,4 +66,3 @@ import "./LbIntro/AemConfig.js";
 import "./StickyCircle/AemConfig.js";
 import "./LbFAQ/AemConfig.js";
 import "./LbBrowseCategories/AemConfig.js";
-import "./LebaraMobileGetApp/AemConfig.js";
