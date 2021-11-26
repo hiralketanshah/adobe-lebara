@@ -4,9 +4,7 @@
     var dialogContentSelector = ".cmp-teaser__editor";
     var colorsEnabledCheckboxSelector = 'coral-checkbox[name="./colorsEnabled"]';
     var backgroundColorSelector = '[name="./buttonBackgroundColor"]';
-    var textColorSelector = '[name="./buttonTextColor"]';
     var hoverColorSelector = '[name="./buttonHoverBgColor"]';
-    var hoverTextColorSelector = '[name="./buttonHoverTextColor"]';
     var colorsEnabled;
  
 
@@ -32,21 +30,15 @@
     }
 
     function toggleInputs(dialogContent) {       
-        var backgroundColorField = dialogContent.find(backgroundColorSelector).adaptTo("foundation-field"); 
-        var textColorField = dialogContent.find(textColorSelector).adaptTo("foundation-field");
-        var hoverColorField = dialogContent.find(hoverColorSelector).adaptTo("foundation-field");
-        var hoverTextColorField = dialogContent.find(hoverTextColorSelector).adaptTo("foundation-field");
+        var backgroundColorField = dialogContent.find(backgroundColorSelector).adaptTo("foundation-field");     
+        var hoverColorField = dialogContent.find(hoverColorSelector).adaptTo("foundation-field");        
         if (backgroundColorField) {
             if (colorsEnabled) {
-                backgroundColorField.setDisabled(false); 
-                textColorField.setDisabled(false); 
-                hoverColorField.setDisabled(false); 
-                hoverTextColorField.setDisabled(false); 
+                backgroundColorField.setDisabled(false);                 
+                hoverColorField.setDisabled(false);                  
             } else {
-                backgroundColorField.setDisabled(true); 
-                textColorField.setDisabled(true); 
-                hoverColorField.setDisabled(true);
-                hoverTextColorField.setDisabled(true); 
+                backgroundColorField.setDisabled(true);                 
+                hoverColorField.setDisabled(true);                
             }
         }
     }

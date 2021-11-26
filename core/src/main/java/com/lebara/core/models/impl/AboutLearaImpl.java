@@ -43,13 +43,7 @@ public class AboutLearaImpl  implements AboutLebara {
 	private String buttonBackgroundColor;
 
 	@ValueMapValue
-	private String buttonTextColor;
-
-	@ValueMapValue
 	private String buttonHoverBgColor;
-
-	@ValueMapValue
-	private String buttonHoverTextColor;
 
 	@ValueMapValue
 	private boolean colorsEnabled;
@@ -130,16 +124,8 @@ public class AboutLearaImpl  implements AboutLebara {
 		return colorsEnabled ? buttonBackgroundColor : null;
 	}
 
-	public String getButtonTextColor() {
-		return colorsEnabled ? buttonTextColor : null;
-	}
-
 	public String getButtonHoverBgColor() {
 		return colorsEnabled ? buttonHoverBgColor : null;
-	}
-
-	public String getButtonHoverTextColor() {
-		return colorsEnabled ? buttonHoverTextColor : null;
 	}
 
 	@Override
