@@ -1,3 +1,5 @@
 import { LinkProps as ChakraLinkProps } from "@chakra-ui/react";
-
-export interface LinkProps extends ChakraLinkProps {}
+export interface LinkProps extends ChakraLinkProps {
+    to?: any;
+}
+  

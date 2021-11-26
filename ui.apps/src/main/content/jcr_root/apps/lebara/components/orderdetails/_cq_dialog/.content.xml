@@ -31,31 +31,44 @@
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                                 fieldLabel="Selected Product Label"
+                                                fieldDescription="Selected Product"
                                                 name="./selectedProductLabel"/>
                                             <phonenumberlabel
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                                 fieldLabel="Phone Number Label"
+                                                fieldDescription="Phone Number"
                                                 name="./phoneNumberLabel"/>
+                                            <missinginfolabel
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="Missing Info Label"
+                                                name="./missingInfoLabel"
+                                                fieldDescription="Please provide the required missing information."
+                                                value="Please provide the required missing information."/>
                                             <freesimlabel
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                                 fieldLabel="Free Sim Label"
+                                                fieldDescription="Free sim"
                                                 name="./freeSimLabel"/>
                                             <autorenewlabel
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                                 fieldLabel="Auto Renew Label"
+                                                fieldDescription="Auto Renew"
                                                 name="./autoRenewLabel"/>
                                             <autorenewdesc
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                                 fieldLabel="Auto Renew Desc"
+                                                fieldDescription="Every time your credit reaches €3 it will be topped up by €"
                                                 name="./autoRenewDesc"/>
                                             <grandtotallabel
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                                 fieldLabel="Grand Total Label"
+                                                fieldDescription="Grand Total"
                                                 name="./grandTotalLabel"/>
                                         </items>
                                     </column>
@@ -82,36 +95,43 @@
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                                 fieldLabel="Add Voucher Code Label"
+                                                fieldDescription="Add voucher code"
                                                 name="./addVoucherCodeLabel"/>
                                             <applyvoucherlabel
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                                 fieldLabel="Apply Voucher Label"
+                                                fieldDescription="Apply voucher"
                                                 name="./applyVoucherLabel"/>
                                             <entervouchercodelabel
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                                 fieldLabel="Enter Voucher Code Label"
+                                                fieldDescription="Enter voucher code"
                                                 name="./enterVoucherCodeLabel"/>
                                             <vouchercodeinvalidmessage
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                                 fieldLabel="Voucher code Invalid Message"
+                                                fieldDescription="Voucher code is invalid"
                                                 name="./voucherCodeInvalidMessage"/>
                                             <vouchercodeexpiredmessage
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                                 fieldLabel="Voucher code Expired Message"
+                                                fieldDescription="Voucher code has expired"
                                                 name="./voucherCodeExpiredMessage"/>
                                             <vouchercodediscountlabel
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                                 fieldLabel="Voucher code Discount Label"
+                                                fieldDescription="Discount"
                                                 name="./voucherCodeDiscountLabel"/>
                                             <consentlabel
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="cq/gui/components/authoring/dialog/richtext"
                                                 fieldLabel="Consent Label"
+                                                fieldDescription="I want to receive personalised marketing materials from Lebara."
                                                 name="./consentLabel"
                                                 useFixedInlineToolbar="{Boolean}true">
                                                 <rtePlugins jcr:primaryType="nt:unstructured">
@@ -243,6 +263,7 @@
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                                 fieldLabel="Privacy Policy Label"
+                                                fieldDescription="Privacy Policy"
                                                 name="./privacyPolicyLabel"/>
                                             <privacypolicylink
                                                 jcr:primaryType="nt:unstructured"
@@ -275,27 +296,32 @@
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                                 fieldLabel="Payment Method Label"
+                                                fieldDescription="Select Payment Method"
 												value="Select Payment Method"
                                                 name="./paymentMethodLabel"/>
                                             <paymentbuttonlabel
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                                 fieldLabel="Payment Button Label"
+                                                fieldDescription="Proceed to payment"
                                                 name="./paymentButtonLabel"/>
                                             <removelabel
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                                 fieldLabel="Remove Label"
+                                                fieldDescription="Remove"
                                                 name="./removeLabel"/>
                                             <showdetailslabel
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                                 fieldLabel="Show Details Label"
+                                                fieldDescription="SHow Details"
                                                 name="./showDetailsLabel"/>
                                             <viewplanslabel
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                                 fieldLabel="View Plans Label"
+                                                fieldDescription="View Plans"
                                                 name="./viewPlansLabel"/>
                                         </items>
                                     </column>
@@ -334,11 +360,13 @@
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                                 fieldLabel="Delete Cart Item Yes Button Label"
+                                                fieldDescription="Yes"
                                                 name="./deleteCartItemYesButtonLabel"/>
                                             <deletecartitemnobuttonlabel
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                                 fieldLabel="Delete Cart Item No Button Label"
+                                                fieldDescription="No"
                                                 name="./deleteCartItemNoButtonLabel"/>
                                         </items>
                                     </column>
@@ -365,21 +393,25 @@
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                                 fieldLabel="Top Up Credit Label"
+                                                fieldDescription="Top up credit"
                                                 name="./topUpCreditLabel"/>
                                             <topuprecommendedlabel
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                                 fieldLabel="Top Up Recommended Label"
+                                                fieldDescription="Recommended top up"
                                                 name="./topUpRecommendedLabel"/>
                                             <topupcaplabel
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                                 fieldLabel="Top Up Cap Label"
+                                                fieldDescription="Top up cap"
                                                 name="./topUpCapLabel"/>
                                             <topupcapdesc
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                                 fieldLabel="Top Up Cap Desc"
+                                                fieldDescription="Per Month Exceed limit for Auto Top Up"
                                                 name="./topUpCapDesc"/>
                                         </items>
                                     </column>
@@ -387,6 +419,110 @@
                             </columns>
                         </items>
                     </topuplabels>
+                    <changeplanpopup
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Change Plan Popup"
+                        sling:resourceType="granite/ui/components/coral/foundation/container"
+                        margin="{Boolean}true">
+                        <items jcr:primaryType="nt:unstructured">
+                            <columns
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+                                margin="{Boolean}true">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <column
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <planstitle
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="Plans Title"
+                                                fieldDescription="Plans"
+                                                name="./plansTitle"
+                                                value="Plans"/>
+                                            <addonstitle
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="Addons Title"
+                                                fieldDescription="Addons"
+                                                name="./addonsTitle"
+                                                value="Addons"/>
+                                            <selectplanlabel
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="Select Plan Label"
+                                                fieldDescription="Select Plan"
+                                                name="./selectPlanLabel"/>
+                                        </items>
+                                    </column>
+                                </items>
+                            </columns>
+                        </items>
+                    </changeplanpopup>
+                    <personaldetails
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Personal Details"
+                        sling:resourceType="granite/ui/components/coral/foundation/container"
+                        margin="{Boolean}true">
+                        <items jcr:primaryType="nt:unstructured">
+                            <columns
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+                                margin="{Boolean}true">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <column
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <personaldetailslabel
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="Personal details Label"
+                                                name="./personalDetailsLabel"
+                                                fieldDescription="Your personal details"
+                                                value="Your personal details"/>
+                                            <namelabel
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="NameTitle"
+                                                name="./nameLabel"
+                                                fieldDescription="Your name:"
+                                                value="Your name:"/>
+                                            <emaillabel
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="Email Label"
+                                                name="./emailLabel"
+                                                fieldDescription="Your email address:"
+                                                value="Your email address:"/>
+                                            <mobilenumberlabel
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="Mobile Number Label"
+                                                name="./mobileNumberLabel"
+                                                fieldDescription="Your mobile number:"
+                                                value="Your mobile number:"/>
+                                            <shippingaddresslabel
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="Shipping address Label"
+                                                name="./shippingAddressLabel"
+                                                fieldDescription="Your shipping address:"
+                                                value="Your shipping address:"/>
+                                            <editlabel
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="Edit Label"
+                                                name="./editLabel"
+                                                fieldDescription="Edit"
+                                                value="Edit"/>
+                                        </items>
+                                    </column>
+                                </items>
+                            </columns>
+                        </items>
+                    </personaldetails>
                 </items>
             </tabs>
         </items>

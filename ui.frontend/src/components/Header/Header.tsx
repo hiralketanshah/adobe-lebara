@@ -43,10 +43,12 @@ import userMenuProps from "../../utils/userMenuProps";
 import { headerSearch } from "../../redux/actions/headerSearchActions";
 import { selectIsAuthenticated } from "../../redux/selectors/userSelectors";
 import { globalConfigs as GC, globalConstants as GCST } from "../../GlobalConfigs";
-import { useApolloClient } from "@apollo/client";
+import { useApolloClient, useQuery } from "@apollo/client";
 import GET_CART from "../../graphql/GET_CART";
 import { setCartItemsLoading, loadInitialCart } from "../../redux/actions/cartActions";
 import mapMagentoProductToCartItem from "../../utils/mapMagentoProductToCartItem";
+import { saveTopUps } from "../../redux/actions/topUpActions";
+import GET_TOP_UPS from "../../graphql/GET_TOP_UPS";
 
 const Header: React.FC<HeaderProps> = ({
   logoPath,
@@ -117,7 +119,21 @@ const Header: React.FC<HeaderProps> = ({
       getCart();
     }
   }, [cartItems, getCart]);
+  const { data: topUps } = useQuery(GET_TOP_UPS, {
+    variables: {
+      country: GC.country,
+    },
+  });
 
+  React.useEffect(() => {
+    if (topUps) {
+      dispatch(
+        saveTopUps(
+          topUps.getTopUps.map((t: string) => Number(t.replace("€", "")))
+        )
+      );
+    }
+  }, [topUps, dispatch]);
   const handleCartClick = () => {
     const hasDataPlan =
       cartItems.filter((t) => !t.isAddon && !t.duration.startsWith("Top-up"))

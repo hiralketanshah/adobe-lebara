@@ -33,9 +33,7 @@ import javax.jcr.Session;
 import javax.servlet.Servlet;
 import javax.servlet.ServletException;
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 
 @Component(service = {Servlet.class})
@@ -50,8 +48,7 @@ public class FragmentInfoServlet extends SlingSafeMethodsServlet {
     @Reference
     private transient QueryBuilder queryBuilder;
 
-    private transient I18n i18n;
-    private String offerId;
+    private I18n i18n;
     private String offerRootPath;
 
     @Override
@@ -60,7 +57,8 @@ public class FragmentInfoServlet extends SlingSafeMethodsServlet {
         if (request.getRequestParameter("offerId") == null) {
             return;
         }
-        offerId = request.getRequestParameter("offerId").getString();
+        String offerId = request.getRequestParameter("offerId").getString();
+        List<String> offerIdList = Arrays.asList(offerId.split(","));
         if (StringUtils.isBlank(offerId)) {
             return;
         }
@@ -68,6 +66,7 @@ public class FragmentInfoServlet extends SlingSafeMethodsServlet {
         PageManager pageManager = resourceResolver.adaptTo(PageManager.class);
         Page page = null;
         Resource resource = request.getResource();
+        List<OfferFragmentBean> offerFragmentBeanList = new ArrayList<>();
         if (pageManager != null) {
             page = pageManager.getContainingPage(resource);
         }
@@ -80,41 +79,46 @@ public class FragmentInfoServlet extends SlingSafeMethodsServlet {
             return;
         }
         i18n = AemUtils.geti18n(resourceResolver, resource, request);
-        Resource cfResource = resourceResolver.getResource(getOfferFragmentPath(resourceResolver));
-        if (i18n == null || cfResource == null) {
-            return;
-        }
-        OfferFragmentBean offerFragmentBean = CFUtils.populateOffers(cfResource, i18n);
-        if (offerFragmentBean == null) {
-            return;
-        }
+        getOfferFragmentPath(resourceResolver, offerIdList).stream().forEach(path -> {
+                    Resource cfResource = resourceResolver.getResource(path);
+                    if (i18n == null || cfResource == null) {
+                        return;
+                    }
+                    OfferFragmentBean offerFragmentBean = CFUtils.populateOffers(cfResource, i18n);
+                    if (offerFragmentBean == null) {
+                        return;
+                    }
+                    offerFragmentBeanList.add(offerFragmentBean);
+                }
+                );
         ObjectMapper mapper = new ObjectMapper();
-        String prettyPrintedJson = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(offerFragmentBean);
+        String prettyPrintedJson = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(offerFragmentBeanList);
         response.getWriter().println(prettyPrintedJson);
     }
 
-    private String getOfferFragmentPath(ResourceResolver resourceResolver) {
-        Query query = queryBuilder.createQuery(PredicateGroup.create(getPredicatesMap()), resourceResolver.adaptTo(Session.class));
+    private List<String> getOfferFragmentPath(ResourceResolver resourceResolver, List<String> offerIdList) {
+        Query query = queryBuilder.createQuery(PredicateGroup.create(getPredicatesMap(offerIdList)), resourceResolver.adaptTo(Session.class));
         SearchResult searchResult = query.getResult();
         List<Hit> hitList = searchResult.getHits();
-        String offerFragmentPath = StringUtils.EMPTY;
+        List<String> offerFragmentsPath = new ArrayList<>();
         if (CollectionUtils.isNotEmpty(hitList)) {
-            LOGGER.debug("hit.getPath() {}", hitList.get(0));
-            try {
-                offerFragmentPath = hitList.get(0).getPath();
-            } catch (RepositoryException e) {
-                LOGGER.error("error while querying for fragments {}", e);
-            }
+                hitList.stream().forEach(hit -> {
+                    try {
+                        offerFragmentsPath.add(hitList.get(hitList.indexOf(hit)).getPath());
+                    } catch (RepositoryException e) {
+                        LOGGER.error("Error in results", e);
+                    }
+                });
         }
-        return offerFragmentPath;
+        return offerFragmentsPath;
     }
 
-    private Map<String, String> getPredicatesMap() {
+    private Map<String, String> getPredicatesMap(List<String> offerIdList) {
         Map<String, String> predicate = new HashMap<>();
         predicate.put("path", offerRootPath);
         predicate.put("type", "dam:Asset");
         predicate.put("property", "jcr:content/data/master/offerid");
-        predicate.put("property.value", offerId);
+        offerIdList.forEach(id-> predicate.put("property.{0}_value".replace("{0}", String.valueOf(offerIdList.indexOf(id))), id));
         return predicate;
     }
 }
