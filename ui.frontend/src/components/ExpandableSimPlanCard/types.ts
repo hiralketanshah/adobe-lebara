@@ -24,6 +24,15 @@ export interface ExpandableSimPlanCardProps {
   viewCartLabel?: string;
   addedtoCartLabel?: string;
   buttonLabel?: string;
+  ctaSelectLabel?: string;
+  ctaAddToCartLabel?: string;
+  productInformationFile?: string;
+  showAddToCart?: boolean;
+  isRelatedPlan?: boolean;
+  isPromotionalPlan?: boolean;
+  promotionalPlanHeading?: string;
+  promotionalData?: string;
+  promotionalAmount?: string;
 }
 
 const OfferTypes = {
