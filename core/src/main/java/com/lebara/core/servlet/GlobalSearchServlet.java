@@ -44,12 +44,12 @@ import static org.apache.sling.api.servlets.ServletResolverConstants.*;
 )
 public class GlobalSearchServlet extends SlingSafeMethodsServlet {
     @Reference
-    private QueryBuilder builder;
+    private transient QueryBuilder builder;
 
     private ResourceResolver resourceResolver;
 
     private Session session;
-    final Logger LOGGER = LoggerFactory.getLogger(getClass());
+    transient Logger LOGGER = LoggerFactory.getLogger(getClass());
 
     public static final String DEFAULT_SEARCH_ROOT = "/content/lebara";
 
