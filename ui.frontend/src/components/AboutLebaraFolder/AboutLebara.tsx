@@ -9,11 +9,13 @@ const AboutLebara: React.FC<AboutLebaraProps> = (props) => {
 
   useEffect(() => {
     const setStyle = () => {
-      if (!nodeRef.current.parentNode.parentElement.classList.contains("cmp-carousel__item")) {
-        nodeRef.current.style.background = backgroundColor; 
-        nodeRef.current.firstChild.lastElementChild.classList.add('custom-md-w50');
-      } else {
-        nodeRef.current.firstChild.lastElementChild.classList.add('custom-md-width');
+      if(nodeRef && nodeRef.current && nodeRef.current.firstChild){
+        if (!nodeRef.current.parentNode.parentElement.classList.contains("cmp-carousel__item")) {
+          nodeRef.current.style.background = backgroundColor; 
+          nodeRef.current.firstChild.lastElementChild.classList.add('custom-md-w50');
+        } else {
+          nodeRef.current.firstChild.lastElementChild.classList.add('custom-md-width');
+        }
       }
     }
     setStyle();

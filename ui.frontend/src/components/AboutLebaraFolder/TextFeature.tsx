@@ -31,8 +31,7 @@ const TextFeature: React.FC<AboutLebaraProps> = ({
         <Flex
           flexDirection="column"
         >
-          <TextBlock
-            buttonClassName={buttonClassName}
+          <TextBlock            
             buttonText={actionsEnabled ? actions && actions[0]?.title : ""}
             linkURL={linkURL ? linkURL : actionsEnabled ? actions && actions[0]?.url : "#"}
             slogan={pretitle}
