@@ -137,15 +137,13 @@
                                             <extraBlockLoginText
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                                fieldLabel="Already Have an Account Label"
-                                                name="./extraBlockLoginText"
-                                                value="Already Have An Account?"/>
+                                                fieldLabel="Extra Block Login Label"
+                                                name="./extraBlockLoginText"/>
                                             <extraBlockLoginLinkText
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                                fieldLabel="Already Have an Account Link Label"
-                                                name="./extraBlockLoginLinkText"
-                                                value="Login"/>
+                                                fieldLabel="Extra Block Login Link Label"
+                                                name="./extraBlockLoginLinkText"/>
                                         </items>
                                     </column>
                                 </items>
@@ -230,15 +228,13 @@
                                             <extraBlockRegisterText
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                                fieldLabel="New To Lebara Label"
-                                                name="./extraBlockRegisterText"
-                                                value="New To Lebara?"/>
+                                                fieldLabel="Extra Block Register Label"
+                                                name="./extraBlockRegisterText"/>
                                             <extraBlockRegisterLinkText
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                                fieldLabel="New to Lebara Link Label"
-                                                name="./extraBlockRegisterLinkText"
-                                                value="Register"/>
+                                                fieldLabel="Extra Block Register Link Label"
+                                                name="./extraBlockRegisterLinkText"/>
 
                                         </items>
                                     </column>
