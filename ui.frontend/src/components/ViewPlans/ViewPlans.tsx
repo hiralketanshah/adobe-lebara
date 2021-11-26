@@ -13,7 +13,7 @@ const ViewPlans: React.FC<PlanCardProps> = ({
   description,
   showLabel,
   ctaTopLink,
- taTopLabel,
+  ctaTopLabel,
   exploreAllLabel,
   exploreAllLink,
   buttonLabel,
