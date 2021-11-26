@@ -21,6 +21,10 @@ const ExpandableSimPlanCard: React.FC<ExpandableSimPlanCardProps> = ({
   showAddToCart,
   productInformationFile,
   productInformationButtonLabel,
+  ctaSelectLabel,
+  ctaAddToCartLabel,
+  ctaCLoseLabel,
+  ctaDowndloadLabel,
   allowanceList,
   validity,
   cost,
@@ -29,8 +33,6 @@ const ExpandableSimPlanCard: React.FC<ExpandableSimPlanCardProps> = ({
   additionalOffers,
   id,
   buttonLabel,
-  ctaSelectLabel,
-  ctaAddToCartLabel,
   addedtoCartLabel,
   viewCartLabel,
   offerType,
@@ -217,7 +219,7 @@ const ExpandableSimPlanCard: React.FC<ExpandableSimPlanCardProps> = ({
             </Flex>}
           </Box>
         )}
-        {productInformationButtonLabel && (
+        {/* {productInformationButtonLabel && ( */}
           <Text
             onClick={() => setIsPdfDialogOpen(true)}
             cursor="pointer"
@@ -229,7 +231,7 @@ const ExpandableSimPlanCard: React.FC<ExpandableSimPlanCardProps> = ({
           >
             {productInformationButtonLabel}
           </Text>
-        )}
+        {/* )} */}
 
         {!isRelatedPlan && <Divider my={3.5} />}
         <Flex

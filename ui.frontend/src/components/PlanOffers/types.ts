@@ -19,6 +19,11 @@ export interface PlanOffersProps {
   viewCartLabel?: string;
   addedtoCartLabel?: string;
   buttonLabel?: string;
+  productInformationButtonLabel?: string;
+  ctaAddToCartLabel?: string;
+  ctaSelectLabel?: string;
+  ctaCLoseLabel?: string;
+  ctaDowndloadLabel?: string;
 }
 
 export interface allowanceListProps {
