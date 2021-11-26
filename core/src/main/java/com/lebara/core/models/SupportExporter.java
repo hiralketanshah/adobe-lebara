@@ -22,14 +22,14 @@ public class SupportExporter extends HeadingExporter {
     protected static final String RESOURCE_TYPE = "lebara/components/support";
 
     @ChildResource
-    private List<SupportConstants> supportList;
+    private List<SupportProperties> supportList;
 
     @Override
     public String getExportedType() {
         return RESOURCE_TYPE;
     }
 
-    public List<SupportConstants> getSupportList() {
+    public List<SupportProperties> getSupportList() {
         return (supportList == null) ? Collections.emptyList() : supportList;
     }
 

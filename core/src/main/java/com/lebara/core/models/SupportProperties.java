@@ -6,9 +6,9 @@ import org.apache.sling.models.annotations.DefaultInjectionStrategy;
 import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
 
-@Model(adapters = {SupportConstants.class}, adaptables = {
+@Model(adapters = {SupportProperties.class}, adaptables = {
         Resource.class}, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
-public class SupportConstants extends ImageProperties {
+public class SupportProperties extends ImageProperties {
 
     @ValueMapValue
     private String ctalinklabel;
