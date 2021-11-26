@@ -7,8 +7,6 @@ const AboutLebara: React.FC<AboutLebaraProps> = (props) => {
   const nodeRef= useRef();
   const { backgroundColor } = props;
 
-  console.log('backgroundColor', backgroundColor);
-  
   useEffect(() => {
     const setStyle = () => {
       if(nodeRef && nodeRef.current){
