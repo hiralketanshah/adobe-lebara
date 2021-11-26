@@ -28,7 +28,6 @@ public class MyProfileExporter implements ComponentExporter{
     @ValueMapValue
     private String sectionUsernameHeading;
 
-
     @ValueMapValue
     private String sectionAddressHeading;
 
