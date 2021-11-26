@@ -10,7 +10,6 @@ export interface AboutLebaraProps {
 	isFullWidthButton?: boolean;
 	buttonStyle?: string;
 	imageAlign?: string;
-	buttonClassName?: string;
 }
 
 export interface ButtonActionProps {

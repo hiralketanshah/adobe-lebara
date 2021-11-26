@@ -6,4 +6,6 @@ export interface TextBlockProps {
   linkURL?: string;
   imagePath?: string;
   buttonStyle?: string;
+  isFullWidthButton?: boolean;
+  desktopListItems?: string[];
 }
