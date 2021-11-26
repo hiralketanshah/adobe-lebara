@@ -81,7 +81,7 @@
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
                                                 checked="{Boolean}false"
-                                                fieldDescription="When checked, enables definition of custom colors for button background, text and hover color."
+                                                fieldDescription="When checked, enables definition of custom colors for button background and hover color."
                                                 name="./colorsEnabled"
                                                 text="Enable Custom Button Colors"
                                                 uncheckedValue="{Boolean}false"
