@@ -8,4 +8,10 @@ export interface TextBlockProps {
   buttonStyle?: string;
   isFullWidthButton?: boolean;
   desktopListItems?: string[];
+  buttonCustomMakeup?: {
+    buttonBackgroundColor?: string;
+    buttonTextColor?: string;
+    buttonHoverBgColor?: string;
+    buttonHoverTextColor?: string;
+  }
 }

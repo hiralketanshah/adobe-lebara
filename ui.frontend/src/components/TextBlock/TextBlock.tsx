@@ -2,12 +2,12 @@
 import React from "react";
 import { Box, Text, Heading } from "@chakra-ui/react";
 import { TextBlockProps } from "./types";
-import List from "../List/List";
-import TickInCircle from "../../icons/TickInCircle";
 import Button from "../Button/Button";
 import sanitizeHtml from "sanitize-html";
 import sanitizeWhiteList from "../sanitize-html.whitelist";
-import Trustpilot from "../Trustpilot/Trustpilot";
+// import List from "../List/List";
+// import TickInCircle from "../../icons/TickInCircle";
+// import Trustpilot from "../Trustpilot/Trustpilot";
 
 const TextBlock: React.FC<TextBlockProps> = ({
   slogan,
@@ -16,7 +16,8 @@ const TextBlock: React.FC<TextBlockProps> = ({
   buttonText,
   // imagePath,
   linkURL,
-  buttonStyle
+  buttonStyle,
+  buttonCustomMakeup,
 }) => (
     <Box
       px={{ base: "20px" }}
@@ -45,16 +46,17 @@ const TextBlock: React.FC<TextBlockProps> = ({
             color="grey.600"
             fontSize={16}
             mt={{ base: "10px", lg: "20px" }}
-            >
-              {subHeader}
-            </Text>
+            dangerouslySetInnerHTML={{
+              __html: sanitizeHtml(subHeader)
+            }}
+            />
           )}
-          {sanitizeWhiteList && (<Box mt={26}
+          {/* {sanitizeWhiteList && (<Box mt={26}
               textColor="white"
               dangerouslySetInnerHTML={{
-                __html: sanitizeWhiteList
+                __html: sanitizeWhiteList,
               }}
-          />)}
+          />)} */}
         </Box>
         {buttonText && (
           <Button
@@ -62,29 +64,32 @@ const TextBlock: React.FC<TextBlockProps> = ({
             fontSize={14}
             px="32px"
             mt={{ base: "20px", lg: "40px" }}
-            color="white"
             maxW={{ lg: "306px" }}
             variant={buttonStyle? buttonStyle : "outline"}
             onClick={() => window.open(linkURL ,"_self")}
+            backgroundColor={buttonCustomMakeup?.buttonBackgroundColor || "inherit"}
+            color={buttonCustomMakeup?.buttonTextColor || "white"}
+            _hover={{ backgroundColor: buttonCustomMakeup?.buttonHoverBgColor || "inherit", 
+              color: buttonCustomMakeup?.buttonHoverTextColor || "white" }}
           >
             {buttonText}
           </Button>
         )}
       </Box>
 
-      <Box d={{ base: "none", md: "block" }}>
+      {/* <Box d={{ base: "none", md: "block" }}>
         {sanitizeWhiteList && (
           <Box>
             {sanitizeWhiteList && (<Box mt={26}
                 textColor="white"
                 dangerouslySetInnerHTML={{
-                  __html: sanitizeWhiteList
+                  __html: sanitizeHtml(sanitizeWhiteList),
                 }}
             />)}
-            {/* <Trustpilot ratingValue={4} totalRatings={9814} totalStars={5} /> */}
+             <Trustpilot ratingValue={4} totalRatings={9814} totalStars={5} /> 
           </Box>
         )}
-      </Box>
+      </Box> */}
     </Box>
   );
 

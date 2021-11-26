@@ -15,7 +15,19 @@ const TextFeature: React.FC<AboutLebaraProps> = ({
   buttonStyle,
   imageAlign,
   isFullWidthButton,
-}) => (
+  buttonBackgroundColor,
+  buttonTextColor,
+  buttonHoverBgColor,
+  buttonHoverTextColor,
+}) => {
+  const buttonCustomMakeup = {
+    buttonBackgroundColor: (buttonBackgroundColor || ""),
+    buttonTextColor: (buttonTextColor || ""),
+    buttonHoverBgColor: (buttonHoverBgColor || ""),
+    buttonHoverTextColor: (buttonHoverTextColor || ""),
+  }
+
+  return (
     <>
       {imageAlign && (imageAlign === '' || imageAlign === 'left') && (<Flex
         flexDirection={{ base: "column", lg: "row" }}
@@ -25,7 +37,8 @@ const TextFeature: React.FC<AboutLebaraProps> = ({
         <Flex w={{ md: "50%" }} justifyContent="center">
           {imagePath && (
             <Image 
-              src={imagePath}  
+              src={imagePath}
+              w={{lg: 398 }}  
               height="100%"
               alt={title} 
               backgroundColor={{ base: "white", lg: "primary.500" }}
@@ -37,7 +50,6 @@ const TextFeature: React.FC<AboutLebaraProps> = ({
         <Flex
           maxW={{ lg: "50%" }}
           flexDirection="column"
-          backgroundColor="primary.500"
           >
           <TextBlock
             buttonText={actionsEnabled ? actions && actions[0]?.title : ""}
@@ -47,6 +59,7 @@ const TextFeature: React.FC<AboutLebaraProps> = ({
             header={title}
             subHeader={description}
             buttonStyle={buttonStyle}
+            buttonCustomMakeup={buttonCustomMakeup}
           />
         </Flex>
       </Flex>)}
@@ -66,6 +79,7 @@ const TextFeature: React.FC<AboutLebaraProps> = ({
             header={title}
             subHeader={description}
             buttonStyle={buttonStyle}
+            buttonCustomMakeup={buttonCustomMakeup}
           />
         </Flex>
         <Spacer />
@@ -85,5 +99,6 @@ const TextFeature: React.FC<AboutLebaraProps> = ({
 
     </>
   );
+}
 
 export default TextFeature;
