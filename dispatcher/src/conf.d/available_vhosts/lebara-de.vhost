@@ -22,7 +22,6 @@ Include conf.d/variables/custom.vars
 		Header add X-Vhost "lebara-de-publish"
 		SetEnvIf Origin "https?://(api-aggregator.lebara.com|sit-api-aggregator.lebara.com)(/api-aggregator)$" AccessControlAllowOrigin=$0$1
 		Header add Access-Control-Allow-Origin %{AccessControlAllowOrigin}e env=AccessControlAllowOrigin
-		Header always set Access-Control-Allow-Origin "*"
 		Header always set Access-Control-Allow-Methods "POST, GET, OPTIONS"
 		Header always set Access-Control-Allow-Headers "Origin, Content-Type, X-Auth-Token, Authorization"
 		Header always set Access-Control-Expose-Headers "Content-Security-Policy, Location"
