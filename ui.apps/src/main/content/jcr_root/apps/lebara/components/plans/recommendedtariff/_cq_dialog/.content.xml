@@ -39,15 +39,7 @@
                                         <column
                                             jcr:primaryType="nt:unstructured"
                                             sling:resourceType="granite/ui/components/coral/foundation/container">
-                                            <items jcr:primaryType="nt:unstructured">
-                                                <applicationformpath
-                                                    cq:showOnCreate="{Boolean}true"
-                                                    jcr:primaryType="nt:unstructured"
-                                                    sling:resourceType="dam/cfm/components/cfpicker"
-                                                    fieldLabel="Offer fragment path"
-                                                    name="./cfPath"
-                                                    required="{Boolean}true"
-                                                    rootPath="/content/dam/lebara"/>
+                                            <items jcr:primaryType="nt:unstructured">                                                
                                                 <recommendImage
                                                     jcr:primaryType="nt:unstructured"
                                                     sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
