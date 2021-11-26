@@ -3,13 +3,14 @@ import {
   Alert,
   AlertDescription,
   Box,
+  Center,
   CloseButton,
   Flex,
   FormControl,
   Image,
   Text,
 } from "@chakra-ui/react";
-import { useLocation } from "react-router-dom";
+import { Link as RouterLink, useLocation } from "react-router-dom";
 import { useApolloClient, useMutation } from "@apollo/client";
 import { useHistory } from "react-router";
 
@@ -22,6 +23,8 @@ import VERIFY_OTP from "../../../graphql/VERIFY_OTP";
 import GET_SESSION_STATUS from "../../../graphql/GET_SESSION_STATUS";
 import { saveUserInfo } from "../../../redux/actions/userActions";
 import { useDispatch } from "react-redux";
+import ActivateYourSimMobile from "../ActivateYourSimMobile";
+import Link from "../../Link/Link";
 import { VerifyMobileNumberProps } from "./types";
 
 import Input from "../../Input/Input";
@@ -39,7 +42,11 @@ const VerifyMobileNumber: React.FC<VerifyMobileNumberProps> = ({
   const client = useApolloClient();
   const dispatch = useDispatch();
 
-  const location = useLocation<{ email: string; mobile?: string }>();
+  const location = useLocation<{ 
+    email: string; 
+    mobile?: string;
+    openByDefault?: boolean;
+    defaultStatus?: string; }>();
   const userToken = location?.state?.email;
   const INITIAL_COUNT = initalCountdownValue || 60;
   const WORKING_STATUS = "Working";
@@ -51,18 +58,23 @@ const VerifyMobileNumber: React.FC<VerifyMobileNumberProps> = ({
     !!location?.state?.mobile
   );
   const [counter, setCounter] = React.useState(INITIAL_COUNT);
-  const [status, setStatus] = React.useState(STOP_STATUS);
+  const [status, setStatus] = React.useState(
+    location?.state?.defaultStatus ?? STOP_STATUS
+  );
   const [isValidationMobileClicked, setIsValidationMobileClicked] =
-    React.useState(false);
+  React.useState(location?.state?.openByDefault);
   const enableResendVericationCode = counter === 0;
   const [updatedVerificationCode, setUpdatedVerificationCode] =
     React.useState("");
-  const [isOpen, setIsOpen] = React.useState(false);
+  const [isOpen, setIsOpen] = React.useState(location?.state?.openByDefault);
   const onClose = () => setIsOpen(false);
   const [linkMsisdnSPS, { loading }] = useMutation(LINK_MSISDN_SPS);
   const [verifyOTP, { loading: isVerifyOtpLoading }] = useMutation(VERIFY_OTP);
   const [errorMessage, setErrorMessage] = React.useState("");
   const history = useHistory();
+
+  const [showActivateYourSimMobile, setShowActivateYourSimMobile] =
+    React.useState(false);
   const onChangeMobileNumber = (event: React.ChangeEvent<HTMLInputElement>) => {
     setErrorMessage("");
     const userInputMobileNumber = event.target.value;
@@ -72,24 +84,6 @@ const VerifyMobileNumber: React.FC<VerifyMobileNumberProps> = ({
         userInputMobileNumber.length >= 10 &&
         userInputMobileNumber.length <= 12
     );
-  };
-  const onResendVarificationCodeClick = () => {
-    setCounter(INITIAL_COUNT);
-    setUpdatedVerificationCode("");
-    setStatus(WORKING_STATUS);
-    linkMsisdnSPS({
-      variables: {
-        msisdn: updatedMobileNumber,
-      },
-    })
-      .then(() => {
-        setIsOpen(true);
-        setStatus(WORKING_STATUS);
-        setIsValidationMobileClicked(true);
-      })
-      .catch((err) => {
-        setErrorMessage(err.message);
-      });
   };
 
   /*
@@ -130,10 +124,15 @@ const VerifyMobileNumber: React.FC<VerifyMobileNumberProps> = ({
     })
       .then(() => {
         setIsOpen(true);
+        setCounter(INITIAL_COUNT);
         setStatus(WORKING_STATUS);
         setIsValidationMobileClicked(true);
       })
       .catch((err) => {
+        if (err.message.endsWith('Reason: IDLE"')) {
+          setShowActivateYourSimMobile(true);
+          return;
+        }
         setErrorMessage(err.message);
       });
   };
@@ -151,7 +150,7 @@ const VerifyMobileNumber: React.FC<VerifyMobileNumberProps> = ({
           })
           .then((res) => {
             dispatch(saveUserInfo(res.data.getSessionStatus));
-            history.push( (GC.journeyPages[C.VERIFY_REGISTER_MOBILE]  || '/'), {
+            history.push( (GC.journeyPages[C.DASHBOARD]  || '/'), {
               msisdn: updatedMobileNumber,
               simLinkedPopup: true,
             });
@@ -160,6 +159,12 @@ const VerifyMobileNumber: React.FC<VerifyMobileNumberProps> = ({
       .catch((err) => {
         setErrorMessage(err.message);
       });
+  };
+  const onResendVarificationCodeClick = () => {
+    setCounter(INITIAL_COUNT);
+    setUpdatedVerificationCode("");
+    setStatus(WORKING_STATUS);
+    onVerfyMobileNumberValidationClick();
   };
   /*
     const onSkipForNowClick = () => {};
@@ -171,6 +176,11 @@ const VerifyMobileNumber: React.FC<VerifyMobileNumberProps> = ({
       bgColor="white"
       borderRadius="8px"
     >
+      <ActivateYourSimMobile
+        open={showActivateYourSimMobile}
+        mobile={updatedMobileNumber}
+        onEdit={() => setShowActivateYourSimMobile(false)}
+      />      
       <Flex
         justifyContent="center"
         flexDirection="column"
@@ -252,25 +262,24 @@ const VerifyMobileNumber: React.FC<VerifyMobileNumberProps> = ({
             fontWeight="bold"
             height="45px"
           />
-          {errorMessage && <Text color="unsuccessful">{errorMessage}</Text>}
+          {errorMessage && <Text mt="8px" color="unsuccessful">{errorMessage}</Text>}
         </FormControl>
 
-        {/* <Button
-          isDisabled={!isMobileNumberValid}
-          variant="ghost"
-          _hover={{ bgColor: "transparent" }}
-          height="initial"
-          onClick={onEditMobileNumberClick}
-        >
+        {isOpen && (
           <Text
-            fontSize="10px"
+            mt="14px"
+            fontSize="14px"
+            cursor="pointer"
             lineHeight="16px"
             textDecoration="underline"
-            color="explainerColor"
+            onClick={() => {
+              setIsOpen(false);
+              setIsValidationMobileClicked(false);
+            }}
           >
             {frmFields?.ctaEditMobileLabel}
           </Text>
-        </Button> */}
+        )}
       </Box>
       {isValidationMobileClicked ? (
         <Box mt="21px">
@@ -343,21 +352,22 @@ const VerifyMobileNumber: React.FC<VerifyMobileNumberProps> = ({
             {frmFields?.ctaContinueLabel}
           </Button>
         )}
-        {/* <Button
-          variant="ghost"
-          mt="20px"
-          onClick={onSkipForNowClick}
-          _hover={{ bgColor: "transparent" }}
-        >
-          <LebaraText
-            type="button"
-            fontWeight="bold"
-            textTransform="uppercase"
+        <Center>
+          <Link
+            mt="20px"
+            as={RouterLink}
+            to="/dashboard"
             color="secondary.500"
+            textDecoration="underline"
+            fontFamily="Roboto"
+            fontSize="14px"
+            lineHeight="16px"
+            textAlign="center"
+            cursor="pointer"
           >
             {frmFields?.ctaSkipLabel}
-          </LebaraText>
-        </Button> */}
+          </Link>
+        </Center>
       </Flex>
     </Box>
   );

@@ -12,11 +12,13 @@ import {
   Image,
 } from "@chakra-ui/react";
 import Button from "../Button/Button";
-import AttachSimProps from "./types";
+import { ActivateYourSimMobileProps } from "./types";
 import EditIcon from "../../assets/images/Edit-Icon.png";
 
-const ActivateYourSimMobile: React.FC<AttachSimProps> = ({
+const ActivateYourSimMobile: React.FC<ActivateYourSimMobileProps> = ({
   open,
+  mobile,
+  onEdit,
   continueClick,
 }) => {
   // STATES
@@ -39,9 +41,9 @@ const ActivateYourSimMobile: React.FC<AttachSimProps> = ({
           <Box>
             <Flex alignItems="center">
               <Text fontSize="14px" lineHeight="22px">
-                Mobile number - 06123456789
+                Mobile number - {mobile}
               </Text>
-              <Flex ml="auto" alignItems="center">
+              <Flex ml="auto" alignItems="center" onClick={onEdit}>
                 <Image src={EditIcon} />
                 <Text
                   ml="10px"

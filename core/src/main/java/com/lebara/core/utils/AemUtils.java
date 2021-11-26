@@ -154,15 +154,10 @@ public class AemUtils {
             email.setTo(emailIds);
             email.setFrom(senderEmail);
             messageGatewayService.getGateway(HtmlEmail.class).send(email);
-        } catch (IOException e) {
-            LOGGER.error("IOException {}", e);
-        } catch (MessagingException e) {
-            LOGGER.error("MessagingException {}", e);
-        } catch (EmailException e) {
-            LOGGER.error("EmailException {}", e);
-        } catch (MailingException e) {
-            LOGGER.error("MailingException {}", e);
-        } catch (Exception e) {
+        } catch (IOException | EmailException | MessagingException e) {
+            LOGGER.error("Error in sending an email  [ {} ]", e.getMessage());
+        }
+        catch (Exception e) {
             LOGGER.error("MailingException {}", e);
         }
 
