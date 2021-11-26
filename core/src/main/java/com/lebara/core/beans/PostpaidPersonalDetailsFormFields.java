@@ -191,6 +191,18 @@ public class PostpaidPersonalDetailsFormFields {
     @ValueMapValue
     public String verifyCodeLabel;
 
+    @ValueMapValue
+    public String verifyCodePlaceholder;
+
+    @ValueMapValue
+    public String ctaResendVerificationLabel;
+
+    @ValueMapValue
+    public String ctaEditMobileLabel;
+
+    @ValueMapValue
+    public String ctaSkipLabel;
+
 
     public String getEmailLabel() {
         return emailLabel;
@@ -401,6 +413,22 @@ public class PostpaidPersonalDetailsFormFields {
 
     public String getVerifyCodeLabel() {
         return verifyCodeLabel;
+    }
+
+    public String getVerifyCodePlaceholder() {
+        return verifyCodePlaceholder;
+    }
+
+    public String getCtaResendVerificationLabel() {
+        return ctaResendVerificationLabel;
+    }
+
+    public String getCtaEditMobileLabel() {
+        return ctaEditMobileLabel;
+    }
+
+    public String getCtaSkipLabel() {
+        return ctaSkipLabel;
     }
 
     @JsonProperty("portInOptions")

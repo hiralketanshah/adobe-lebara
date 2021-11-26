@@ -52,13 +52,12 @@ public class SendEmailToReviewers implements WorkflowProcess {
     }
 
     private void sendEmailToReceipients(WorkItem workItem, WorkflowSession workflowSession, String templatePath) {
-        String emailRecepientGroupName = StringUtils.EMPTY;
-        String payloadPath = workItem.getWorkflow().getWorkflowData().getPayload().toString();
+       String payloadPath = workItem.getWorkflow().getWorkflowData().getPayload().toString();
         ResourceResolver resourceResolver = workflowSession.adaptTo(ResourceResolver.class);
         if (null == resourceResolver) {
             return;
         }
-        emailRecepientGroupName = getReviewerGroupNameFromPayloadPath(payloadPath);
+        String emailRecepientGroupName = getReviewerGroupNameFromPayloadPath(payloadPath);
         LOGGER.debug("userToSendEmail {}", emailRecepientGroupName);
         UserManager manager = resourceResolver.adaptTo(UserManager.class);
         if (null == manager || StringUtils.isBlank(emailRecepientGroupName)) {

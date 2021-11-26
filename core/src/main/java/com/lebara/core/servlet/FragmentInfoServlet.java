@@ -43,10 +43,10 @@ import java.util.*;
         extensions = "json",
         selectors = "offer")
 public class FragmentInfoServlet extends SlingSafeMethodsServlet {
-    private final Logger LOGGER = LoggerFactory.getLogger(getClass());
+    private transient Logger LOGGER = LoggerFactory.getLogger(getClass());
 
     @Reference
-    private QueryBuilder queryBuilder;
+    private transient QueryBuilder queryBuilder;
 
     private I18n i18n;
     private String offerRootPath;
