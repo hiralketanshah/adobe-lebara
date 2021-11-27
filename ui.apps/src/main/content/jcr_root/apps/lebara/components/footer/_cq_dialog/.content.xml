@@ -14,65 +14,270 @@
                 sling:resourceType="granite/ui/components/coral/foundation/tabs"
                 maximized="{Boolean}true">
                 <items jcr:primaryType="nt:unstructured">
-                    <navigationLinks
-                        jcr:primaryType="nt:unstructured"
-                        jcr:title="Footer upper Links Section"
-                        sling:resourceType="granite/ui/components/coral/foundation/container"
-                        margin="{Boolean}true">
+                    <column1
+                            jcr:primaryType="nt:unstructured"
+                            jcr:title="Column 1"
+                            sling:resourceType="granite/ui/components/coral/foundation/container"
+                            margin="{Boolean}true">
                         <items jcr:primaryType="nt:unstructured">
                             <columns
-                                jcr:primaryType="nt:unstructured"
-                                sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
-                                margin="{Boolean}true">
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+                                    margin="{Boolean}true">
                                 <items jcr:primaryType="nt:unstructured">
                                     <column
-                                        jcr:primaryType="nt:unstructured"
-                                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/container">
                                         <items jcr:primaryType="nt:unstructured">
-                                            <footernavlinks
-                                                granite:class="lebara-multifield__editor"
-                                                jcr:primaryType="nt:unstructured"
-                                                jcr:title="Plans"
-                                                sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
-                                                composite="{Boolean}true"
-                                                fieldDescription="Select the footer navigation parent pages"
-                                                fieldLabel="Footer Upper Links">
-                                                <granite:data
+                                            <well
                                                     jcr:primaryType="nt:unstructured"
-                                                    maxItems="{Long}4"/>
-                                                <field
-                                                    jcr:primaryType="nt:unstructured"
-                                                    sling:resourceType="granite/ui/components/coral/foundation/container"
-                                                    name="./footerUpperLinks">
-                                                    <items jcr:primaryType="nt:unstructured">
-                                                        <column
+                                                    sling:resourceType="granite/ui/components/coral/foundation/well">
+                                                <items jcr:primaryType="nt:unstructured">
+                                                    <pages
+                                                            granite:class="foundation-layout-util-maximized-alt coral-Form-fieldwrapper"
                                                             jcr:primaryType="nt:unstructured"
                                                             sling:resourceType="granite/ui/components/coral/foundation/container">
-                                                            <items jcr:primaryType="nt:unstructured">
-                                                                <label
+                                                        <items jcr:primaryType="nt:unstructured">
+                                                            <field
                                                                     jcr:primaryType="nt:unstructured"
-                                                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                                                    fieldDescription="If this is not edited, the page title will be selected"
-                                                                    fieldLabel="Override Page Title"
-                                                                    name="./label"/>
-                                                                <labellink
-                                                                    jcr:primaryType="nt:unstructured"
-                                                                    sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
-                                                                    fieldDescription="Select Parent Page Path for footer Upper Links"
-                                                                    fieldLabel="Link"
-                                                                    name="./link"
+                                                                    sling:resourceType="cq/gui/components/coral/common/form/pagefield"
+                                                                    fieldLabel="Parent Link"
+                                                                    name="./column1Link"
                                                                     rootPath="/content/lebara"/>
-                                                            </items>
-                                                        </column>
-                                                    </items>
-                                                </field>
-                                            </footernavlinks>
+                                                            <multi
+                                                                    jcr:primaryType="nt:unstructured"
+                                                                    sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
+                                                                    composite="{Boolean}true"
+                                                                    fieldLabel="Child Links">
+                                                                <field
+                                                                        jcr:primaryType="nt:unstructured"
+                                                                        sling:resourceType="granite/ui/components/coral/foundation/container"
+                                                                        name="./column1">
+                                                                    <granite:data
+                                                                            jcr:primaryType="nt:unstructured"/>
+                                                                    <items jcr:primaryType="nt:unstructured">
+                                                                        <column
+                                                                                jcr:primaryType="nt:unstructured"
+                                                                                sling:resourceType="granite/ui/components/coral/foundation/container">
+                                                                            <items jcr:primaryType="nt:unstructured">
+                                                                                <pagepath
+                                                                                        jcr:primaryType="nt:unstructured"
+                                                                                        sling:resourceType="cq/gui/components/coral/common/form/pagefield"
+                                                                                        name="./link"
+                                                                                        rootPath="/content/lebara"/>
+                                                                            </items>
+                                                                        </column>
+                                                                    </items>
+                                                                </field>
+                                                            </multi>
+                                                        </items>
+                                                    </pages>
+                                                </items>
+                                            </well>
                                         </items>
                                     </column>
                                 </items>
                             </columns>
                         </items>
-                    </navigationLinks>
+                    </column1>
+                    <column2
+                            jcr:primaryType="nt:unstructured"
+                            jcr:title="Column 2"
+                            sling:resourceType="granite/ui/components/coral/foundation/container"
+                            margin="{Boolean}true">
+                        <items jcr:primaryType="nt:unstructured">
+                            <columns
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+                                    margin="{Boolean}true">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <column
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/container">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <well
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/well">
+                                                <items jcr:primaryType="nt:unstructured">
+                                                    <pages
+                                                            granite:class="foundation-layout-util-maximized-alt coral-Form-fieldwrapper"
+                                                            jcr:primaryType="nt:unstructured"
+                                                            sling:resourceType="granite/ui/components/coral/foundation/container">
+                                                        <items jcr:primaryType="nt:unstructured">
+                                                            <field
+                                                                    jcr:primaryType="nt:unstructured"
+                                                                    sling:resourceType="cq/gui/components/coral/common/form/pagefield"
+                                                                    fieldLabel="Parent Link"
+                                                                    name="./column2Link"
+                                                                    rootPath="/content/lebara"/>
+                                                            <multi
+                                                                    jcr:primaryType="nt:unstructured"
+                                                                    sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
+                                                                    composite="{Boolean}true"
+                                                                    fieldLabel="Child Links">
+                                                                <field
+                                                                        jcr:primaryType="nt:unstructured"
+                                                                        sling:resourceType="granite/ui/components/coral/foundation/container"
+                                                                        name="./column2">
+                                                                    <granite:data
+                                                                            jcr:primaryType="nt:unstructured"/>
+                                                                    <items jcr:primaryType="nt:unstructured">
+                                                                        <column
+                                                                                jcr:primaryType="nt:unstructured"
+                                                                                sling:resourceType="granite/ui/components/coral/foundation/container">
+                                                                            <items jcr:primaryType="nt:unstructured">
+                                                                                <pagepath
+                                                                                        jcr:primaryType="nt:unstructured"
+                                                                                        sling:resourceType="cq/gui/components/coral/common/form/pagefield"
+                                                                                        name="./link"
+                                                                                        rootPath="/content/lebara"/>
+                                                                            </items>
+                                                                        </column>
+                                                                    </items>
+                                                                </field>
+                                                            </multi>
+                                                        </items>
+                                                    </pages>
+                                                </items>
+                                            </well>
+                                        </items>
+                                    </column>
+                                </items>
+                            </columns>
+                        </items>
+                    </column2>
+                    <column3
+                            jcr:primaryType="nt:unstructured"
+                            jcr:title="Column3"
+                            sling:resourceType="granite/ui/components/coral/foundation/container"
+                            margin="{Boolean}true">
+                        <items jcr:primaryType="nt:unstructured">
+                            <columns
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+                                    margin="{Boolean}true">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <column
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/container">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <well
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/well">
+                                                <items jcr:primaryType="nt:unstructured">
+                                                    <pages
+                                                            granite:class="foundation-layout-util-maximized-alt coral-Form-fieldwrapper"
+                                                            jcr:primaryType="nt:unstructured"
+                                                            sling:resourceType="granite/ui/components/coral/foundation/container">
+                                                        <items jcr:primaryType="nt:unstructured">
+                                                            <field
+                                                                    jcr:primaryType="nt:unstructured"
+                                                                    sling:resourceType="cq/gui/components/coral/common/form/pagefield"
+                                                                    fieldLabel="Parent Link"
+                                                                    name="./column3Link"
+                                                                    rootPath="/content/lebara"/>
+                                                            <multi
+                                                                    jcr:primaryType="nt:unstructured"
+                                                                    sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
+                                                                    composite="{Boolean}true"
+                                                                    fieldLabel="Child Links">
+                                                                <field
+                                                                        jcr:primaryType="nt:unstructured"
+                                                                        sling:resourceType="granite/ui/components/coral/foundation/container"
+                                                                        name="./column3">
+                                                                    <granite:data
+                                                                            jcr:primaryType="nt:unstructured"/>
+                                                                    <items jcr:primaryType="nt:unstructured">
+                                                                        <column
+                                                                                jcr:primaryType="nt:unstructured"
+                                                                                sling:resourceType="granite/ui/components/coral/foundation/container">
+                                                                            <items jcr:primaryType="nt:unstructured">
+                                                                                <pagepath
+                                                                                        jcr:primaryType="nt:unstructured"
+                                                                                        sling:resourceType="cq/gui/components/coral/common/form/pagefield"
+                                                                                        name="./link"
+                                                                                        rootPath="/content/lebara"/>
+                                                                            </items>
+                                                                        </column>
+                                                                    </items>
+                                                                </field>
+                                                            </multi>
+                                                        </items>
+                                                    </pages>
+                                                </items>
+                                            </well>
+                                        </items>
+                                    </column>
+                                </items>
+                            </columns>
+                        </items>
+                    </column3>
+                    <column4
+                            jcr:primaryType="nt:unstructured"
+                            jcr:title="Column 4"
+                            sling:resourceType="granite/ui/components/coral/foundation/container"
+                            margin="{Boolean}true">
+                        <items jcr:primaryType="nt:unstructured">
+                            <columns
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+                                    margin="{Boolean}true">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <column
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/container">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <well
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/well">
+                                                <items jcr:primaryType="nt:unstructured">
+                                                    <pages
+                                                            granite:class="foundation-layout-util-maximized-alt coral-Form-fieldwrapper"
+                                                            jcr:primaryType="nt:unstructured"
+                                                            sling:resourceType="granite/ui/components/coral/foundation/container">
+                                                        <items jcr:primaryType="nt:unstructured">
+                                                            <field
+                                                                    jcr:primaryType="nt:unstructured"
+                                                                    sling:resourceType="cq/gui/components/coral/common/form/pagefield"
+                                                                    fieldLabel="Parent Link"
+                                                                    name="./column4Link"
+                                                                    rootPath="/content/lebara"/>
+                                                            <multi
+                                                                    jcr:primaryType="nt:unstructured"
+                                                                    sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
+                                                                    composite="{Boolean}true"
+                                                                    fieldLabel="Child Links">
+                                                                <field
+                                                                        jcr:primaryType="nt:unstructured"
+                                                                        sling:resourceType="granite/ui/components/coral/foundation/container"
+                                                                        name="./column4">
+                                                                    <granite:data
+                                                                            jcr:primaryType="nt:unstructured"/>
+                                                                    <items jcr:primaryType="nt:unstructured">
+                                                                        <column
+                                                                                jcr:primaryType="nt:unstructured"
+                                                                                sling:resourceType="granite/ui/components/coral/foundation/container">
+                                                                            <items jcr:primaryType="nt:unstructured">
+                                                                                <pagepath
+                                                                                        jcr:primaryType="nt:unstructured"
+                                                                                        sling:resourceType="cq/gui/components/coral/common/form/pagefield"
+                                                                                        name="./link"
+                                                                                        rootPath="/content/lebara"/>
+                                                                            </items>
+                                                                        </column>
+                                                                    </items>
+                                                                </field>
+                                                            </multi>
+                                                        </items>
+                                                    </pages>
+                                                </items>
+                                            </well>
+                                        </items>
+                                    </column>
+                                </items>
+                            </columns>
+                        </items>
+                    </column4>
                     <additionalLinks
                         jcr:primaryType="nt:unstructured"
                         jcr:title="Footer Copyright Section"
