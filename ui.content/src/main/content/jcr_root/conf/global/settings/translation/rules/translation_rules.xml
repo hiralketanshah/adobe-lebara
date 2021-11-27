@@ -316,6 +316,9 @@
 		<property name="mobileNumberLabel"/>
 
 
+		<!--Support component -->
+		<property name="ctaLinkLabel"/>
+
 		<!--Help center Search -->
 		<property name="searchPlaceholder"/>
 
