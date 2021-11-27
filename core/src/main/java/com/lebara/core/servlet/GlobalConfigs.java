@@ -76,7 +76,7 @@ public class GlobalConfigs extends SlingSafeMethodsServlet {
                 Iterator<Resource> children = currentPage.getContentResource(JOURNEY_PAGES).listChildren();
                 while (children.hasNext()) {
                     Resource child = children.next();
-                    items.put(child.getValueMap().get("name", String.class), AemUtils.getLinkWithExtension(child.getValueMap().get("path", String.class)));
+                    items.put(child.getValueMap().get("name", String.class), AemUtils.getLinkWithExtension(child.getValueMap().get("path", String.class), request));
                 }
 
             }

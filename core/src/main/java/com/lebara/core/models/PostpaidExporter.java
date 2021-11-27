@@ -181,7 +181,7 @@ public class PostpaidExporter implements ComponentExporter {
     }
 
     public String getProductInformationLink() {
-        return AemUtils.getLinkWithExtension(productInformationLink);
+        return AemUtils.getLinkWithExtension(productInformationLink, slingRequest);
     }
 
     public String getYourOrderContractdurationLabel() {
