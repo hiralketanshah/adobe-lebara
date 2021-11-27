@@ -34,19 +34,15 @@ import static org.apache.sling.api.servlets.ServletResolverConstants.*;
 public class HelpCenterSearchServlet extends GlobalSearchServlet {
     @Reference
     private QueryBuilder builder;
-
-    private ResourceResolver resourceResolver;
-
-
-    private Session session;
+   
     final Logger LOGGER = LoggerFactory.getLogger(getClass());
 
     @Override
     protected void doGet(SlingHttpServletRequest request, SlingHttpServletResponse response)
             throws ServletException, IOException {
         String param = request.getParameter("q");
-        resourceResolver = request.getResourceResolver();
-        session = resourceResolver.adaptTo(Session.class);
+        ResourceResolver resourceResolver = request.getResourceResolver();
+        Session session = resourceResolver.adaptTo(Session.class);
         String searchRoot = request.getParameter("searchRoot");
         if (StringUtils.isEmpty(searchRoot)) {
             searchRoot = DEFAULT_SEARCH_ROOT;
