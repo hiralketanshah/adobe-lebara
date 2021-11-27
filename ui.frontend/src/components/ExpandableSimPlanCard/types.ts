@@ -26,7 +26,6 @@ export interface ExpandableSimPlanCardProps {
   buttonLabel?: string;
   productInformationFile?: string;
   showAddToCart?: boolean;
-  isRelatedPlan?: boolean;
   isPromotionalPlan?: boolean;
   promotionalPlanHeading?: string;
   promotionalData?: string;
@@ -35,6 +34,9 @@ export interface ExpandableSimPlanCardProps {
   ctaAddToCartLabel?: string;
   ctaCloseLabel?: string;
   ctaDownloadLabel?: string;
+  isRelatedPlan?: boolean;
+  isRemoveFromCart?: boolean;
+  onClose?: () => void;
 }
 
 const OfferTypes = {

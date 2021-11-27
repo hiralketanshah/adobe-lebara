@@ -14,11 +14,15 @@ function useAddToCart() {
     name: string,
     description: string,
     price: number,
-    type: string
+    type: string,
+    recurring?: boolean,
+    topUpCap?: number
   ) =>
     addToCartApi({
       variables: {
         productInput: {
+          recurring,
+          topUpCap,
           product: {
             sku: String(id),
             name:

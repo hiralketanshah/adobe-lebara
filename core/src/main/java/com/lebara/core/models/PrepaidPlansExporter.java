@@ -61,7 +61,7 @@ public class PrepaidPlansExporter extends HeadingExporter {
     }
 
     public String getCtaDashboardManageURL() {
-        return AemUtils.getLinkWithExtension(ctaDashboardManageURL);
+        return AemUtils.getLinkWithExtension(ctaDashboardManageURL, request);
     }
 
     @Override

@@ -21,4 +21,10 @@ export interface ExpandablePlanCardCheckoutProps {
   removeLabel?: string;
   autoRenewDesc?: string;
   autoRenewLabel?: string;
+  selectPlanLabel?: string;
+  plansTitle?: string;
+  addonsTitle?: string;
+  isPrepaid?: boolean;
+  isPostPaid?: boolean;
+  missingInfoLabel?: string;
 }

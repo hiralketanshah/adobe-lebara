@@ -15,6 +15,7 @@ import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.Via;
 import org.apache.sling.models.annotations.injectorspecific.ScriptVariable;
 import org.apache.sling.models.annotations.injectorspecific.Self;
+import org.apache.sling.models.annotations.injectorspecific.SlingObject;
 import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
 import org.apache.sling.models.annotations.via.ResourceSuperType;
 
@@ -27,6 +28,9 @@ import java.util.List;
 )
 @Exporter(name = ExporterConstants.SLING_MODEL_EXPORTER_NAME, extensions = ExporterConstants.SLING_MODEL_EXTENSION)
 public class LanguageHeaderNavigationImpl implements LanguageHeaderNavigation {
+
+    @SlingObject
+    private SlingHttpServletRequest request;
 
     @ScriptVariable
     protected Resource resource;
@@ -75,12 +79,12 @@ public class LanguageHeaderNavigationImpl implements LanguageHeaderNavigation {
 
     @Override
     public String getStoreLink() {
-        return AemUtils.getLinkWithExtension(storeLink);
+        return AemUtils.getLinkWithExtension(storeLink, request);
     }
 
     @Override
     public String getHelpLink() {
-        return AemUtils.getLinkWithExtension(helpLink);
+        return AemUtils.getLinkWithExtension(helpLink, request);
     }
 
     @Override
