@@ -111,7 +111,7 @@ public class ViewPlanExporter implements ComponentExporter {
     }
 
     public String getExploreAllLink() {
-        return AemUtils.getLinkWithExtension(exploreAllLink);
+        return AemUtils.getLinkWithExtension(exploreAllLink, slingRequest);
     }
 
     public List<OfferFragmentBean> getOffers() {
