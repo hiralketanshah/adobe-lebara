@@ -48,3 +48,5 @@ const globalConstants = Object.freeze({
     USAGE_DETAILS: 'usage-details',
 });
 module.exports = { globalConfigs, globalConstants }
+
+export const PROJECT_URL_ROOT = "/content/lebara/de";
