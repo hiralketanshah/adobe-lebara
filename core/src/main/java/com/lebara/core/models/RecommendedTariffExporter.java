@@ -64,7 +64,7 @@ public class RecommendedTariffExporter extends ViewPlanExporter {
                 Resource cfResource = resourceResolver.getResource(AemUtils.getStringProperty(offer, CF_PATH));
                 OfferFragmentBean offerFragmentBean= CFUtils.populateOffers(cfResource, i18n);
                 offerFragmentBean.setRecommendedImage(AemUtils.getStringProperty(offer, RECOMMEND_IMAGE_PROPERTY));
-                offerFragmentBean.setRecommendedURL(AemUtils.getStringProperty(offer, RECOMMEND_LINK_PROPERTY));
+                offerFragmentBean.setRecommendedURL(AemUtils.getStringProperty(offer, RECOMMEND_LINK_PROPERTY), slingRequest);
                 offers.add(offerFragmentBean);
             }
         }

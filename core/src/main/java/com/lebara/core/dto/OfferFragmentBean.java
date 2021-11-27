@@ -5,6 +5,7 @@ import com.lebara.core.utils.AemUtils;
 
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.math.NumberUtils;
+import org.apache.sling.api.SlingHttpServletRequest;
 
 import java.text.DecimalFormat;
 import java.util.List;
@@ -110,7 +111,7 @@ public class OfferFragmentBean {
         return recommendedURL;
     }
 
-    public void setRecommendedURL(String recommendedURL) {
-        this.recommendedURL = AemUtils.getLinkWithExtension(recommendedURL);
+    public void setRecommendedURL(String recommendedURL, SlingHttpServletRequest slingRequest) {
+        this.recommendedURL = AemUtils.getLinkWithExtension(recommendedURL, slingRequest);
     }
 }
