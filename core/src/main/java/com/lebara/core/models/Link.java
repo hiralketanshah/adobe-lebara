@@ -3,8 +3,8 @@ package com.lebara.core.models;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.lebara.core.utils.AemUtils;
-import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;
+import org.apache.sling.api.resource.ResourceResolver;
 import org.apache.sling.models.annotations.DefaultInjectionStrategy;
 import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.injectorspecific.SlingObject;
@@ -17,7 +17,7 @@ import javax.inject.Named;
 public class Link {
 
     @SlingObject
-    private SlingHttpServletRequest request;
+    private ResourceResolver resourceResolver;
 
     @ValueMapValue
     private String label;
@@ -44,7 +44,7 @@ public class Link {
     }
 
     public String getLink() {
-        return AemUtils.getLinkWithExtension(link, request);
+        return AemUtils.getLinkWithExtension(link, resourceResolver);
     }
 
     public void setLink(String link) {
