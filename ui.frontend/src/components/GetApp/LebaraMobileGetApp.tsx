@@ -6,7 +6,6 @@ import {
   ListItem,
   ListIcon,
   Flex,
-  IconButton,
   Image,
   Link,
 } from "@chakra-ui/react";
