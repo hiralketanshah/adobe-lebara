@@ -41,10 +41,6 @@ public class FooterExporter implements ComponentExporter {
     @ScriptVariable
     private PageManager pageManager;
 
-    ///////////////
-    @ChildResource
-    private List<Link> footerUpperLinks;
-
     @ValueMapValue
     private String column1Link;
     @ValueMapValue
@@ -92,40 +88,28 @@ public class FooterExporter implements ComponentExporter {
         if (pageManager == null) {
             return;
         }
-        Page parentLinkPage = pageManager.getContainingPage(column1Link);
-        Link parentLink = new Link();
-        parentLink.setLabel(AemUtils.getTitle(parentLinkPage));
-        parentLink.setLink(AemUtils.getLinkWithExtension(column1Link, request));
-        PageLink pageLinks = new PageLink();
-        pageLinks.setParentLinks(parentLink);
-        pageLinks.setChildLinks(column1);
-        pageLinkList.add(pageLinks);
 
-        parentLinkPage = pageManager.getContainingPage(column2Link);
+        setFooterUpperLinks(column1Link, column1);
+
+        setFooterUpperLinks(column2Link, column2);
+
+        setFooterUpperLinks(column3Link, column3);
+
+        setFooterUpperLinks(column4Link, column4);
+
+    }
+
+    private void setFooterUpperLinks(String columnLink, List<Link> column2) {
+        Page parentLinkPage;
+        PageLink pageLinks;
+        Link parentLink = new Link();
+        parentLinkPage = pageManager.getContainingPage(columnLink);
         parentLink.setLabel(AemUtils.getTitle(parentLinkPage));
-        parentLink.setLink(AemUtils.getLinkWithExtension(column2Link, request));
+        parentLink.setLink(AemUtils.getLinkWithExtension(columnLink, request));
         pageLinks = new PageLink();
         pageLinks.setParentLinks(parentLink);
         pageLinks.setChildLinks(column2);
         pageLinkList.add(pageLinks);
-
-        parentLinkPage = pageManager.getContainingPage(column3Link);
-        parentLink.setLabel(AemUtils.getTitle(parentLinkPage));
-        parentLink.setLink(AemUtils.getLinkWithExtension(column3Link, request));
-        pageLinks = new PageLink();
-        pageLinks.setParentLinks(parentLink);
-        pageLinks.setChildLinks(column3);
-        pageLinkList.add(pageLinks);
-
-        parentLinkPage = pageManager.getContainingPage(column4Link);
-        parentLink.setLabel(AemUtils.getTitle(parentLinkPage));
-        parentLink.setLink(AemUtils.getLinkWithExtension(column4Link, request));
-        pageLinks = new PageLink();
-        pageLinks.setParentLinks(parentLink);
-        pageLinks.setChildLinks(column4);
-
-        pageLinkList.add(pageLinks);
-
     }
 
     public List<PageLink> getFooterUpperLinks() {

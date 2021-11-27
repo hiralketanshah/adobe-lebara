@@ -1,5 +1,6 @@
 package com.lebara.core.models;
 
+import com.day.cq.wcm.api.Page;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.lebara.core.utils.AemUtils;
@@ -10,6 +11,7 @@ import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.injectorspecific.SlingObject;
 import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
 
+import javax.annotation.PostConstruct;
 import javax.inject.Named;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
@@ -29,6 +31,14 @@ public class Link {
     @ValueMapValue
     @Named("link")
     private String extensionlessLink;
+
+    @PostConstruct
+    private void init(){
+        Page page = resourceResolver.getResource(link).adaptTo(Page.class);
+        if (page != null) {
+            label = AemUtils.getTitle(page);
+        }
+    }
 
     @JsonIgnore
     public String getExtensionlessLink() {
