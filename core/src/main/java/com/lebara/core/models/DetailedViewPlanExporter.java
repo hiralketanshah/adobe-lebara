@@ -79,10 +79,6 @@ public class DetailedViewPlanExporter extends ViewPlanExporter implements Compon
     @ValueMapValue
     private String ctaBottomLink;
 
-    public String getProductInformationFile() {
-        return (i18n == null ? "Product Information" : i18n.get("product.information.label"));
-    }
-
     public String getTitle() {
         return title;
     }
@@ -126,6 +122,10 @@ public class DetailedViewPlanExporter extends ViewPlanExporter implements Compon
     @PostConstruct
     private void init() {
         i18n = AemUtils.geti18n(resourceResolver, resource, slingRequest);
+    }
+
+    public String getProductInformationButtonLabel() {
+        return (i18n == null ? "Product Information" : i18n.get("product.information.label"));
     }
 
     @Override

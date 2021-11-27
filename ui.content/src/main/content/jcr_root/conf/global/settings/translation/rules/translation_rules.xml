@@ -184,6 +184,8 @@
 		<property name="showLabel" />
 		<property name="hideLabel" />
 		<property name="ctaTopLabel" />
+		<property name="ctaCloseLabel" />
+		<property name="ctaDownloadLabel" />
 		<property name="ctaBottomLabel" />
 		<property name="getExploreAllLabel" />
 		
