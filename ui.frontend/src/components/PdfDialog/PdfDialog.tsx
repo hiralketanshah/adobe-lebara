@@ -11,7 +11,8 @@ import {
   ModalOverlay,
 } from "@chakra-ui/react";
 import Button from "../Button/Button";
-import { Document, Page } from "react-pdf";
+import { Document, Page, pdfjs } from "react-pdf";
+pdfjs.GlobalWorkerOptions.workerSrc = '/etc.clientlibs/lebara/clientlibs/clientlib-react/resources/pdf.worker.js';
 
 const Doc = ({ fileName }: any) => (
   <Document file={fileName}>
