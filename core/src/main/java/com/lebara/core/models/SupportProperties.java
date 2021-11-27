@@ -11,17 +11,17 @@ import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
 public class SupportProperties extends ImageProperties {
 
     @ValueMapValue
-    private String ctalinklabel;
+    private String ctaLinkLabel;
 
     @ValueMapValue
-    private String ctalink;
+    private String ctaLink;
 
-    public String getCtalinklabel() {
-        return ctalinklabel;
+    public String getCtaLinkLabel() {
+        return ctaLinkLabel;
     }
 
-    public String getCtalink() {
-        return AemUtils.getLinkWithExtension(ctalink);
+    public String getCtaLink() {
+        return AemUtils.getLinkWithExtension(ctaLink);
     }
 
 }

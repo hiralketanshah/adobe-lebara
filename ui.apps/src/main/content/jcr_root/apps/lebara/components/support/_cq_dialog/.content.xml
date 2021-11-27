@@ -198,13 +198,13 @@
                                                                         sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                                                         fieldDescription="CTA label"
                                                                         fieldLabel="CTA Button Label"
-                                                                        name="./ctalinklabel"/>
+                                                                        name="./ctaLinkLabel"/>
                                                                 <ctalink
                                                                         jcr:primaryType="nt:unstructured"
                                                                         sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
                                                                         fieldDescription="CTA Link URL"
                                                                         fieldLabel="CTA Button Link URL"
-                                                                        name="./ctalink"
+                                                                        name="./ctaLink"
                                                                         required="{Boolean}true"
                                                                         rootPath="/content/lebara"/>
                                                             </items>

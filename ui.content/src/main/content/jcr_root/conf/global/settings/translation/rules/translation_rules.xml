@@ -304,7 +304,7 @@
 		<property name="topUpCapDesc"/>
 
 		<!--Support component -->
-		<property name="ctalinklabel"/>
+		<property name="ctaLinkLabel"/>
 
 		<!--Help center Search -->
 		<property name="searchPlaceholder"/>
