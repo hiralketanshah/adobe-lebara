@@ -16,7 +16,8 @@
 
 import React, { Component } from 'react';
 import { Route } from 'react-router-dom';
-import {PROJECT_URL_ROOT} from '../../GlobalConfigs.js';
+import {AuthoringUtils} from "@adobe/aem-spa-page-model-manager";
+import { PROJECT_URL_ROOT } from "../../utils/lebara.constants";
 
 /**
  * Helper that facilitate the use of the {@link Route} component

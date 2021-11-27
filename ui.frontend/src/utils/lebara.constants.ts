@@ -38,3 +38,5 @@ export const mostSearchesFromUsers: string[] = [
 
 export const ADD = "Add";
 export const EDIT = "Edit";
+
+export const PROJECT_URL_ROOT = "/content/lebara/de";
