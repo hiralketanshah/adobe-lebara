@@ -45,6 +45,7 @@ const OrderDetailsRoute: React.FC<OrderDetailsProps> = ({ ...props }) => {
     isGuest?: boolean;
     personalDetails?: any;
   }>();
+  const personalDetailsLocation= location.state?.personalDetails;
   const phoneNumber = location.state?.phoneNumber || userMsisdn;
   const isGuest = location?.state?.isGuest;
   const voucherCode = useSelector(
@@ -101,16 +102,13 @@ const OrderDetailsRoute: React.FC<OrderDetailsProps> = ({ ...props }) => {
   const {
     keepMobileFromAnotherOperator,
     hasPrepaid,
-    personalDetails,
     hasPostpaid,
     portIn,
     postpaidPersonalDetails,
-    missingDetailsForPrepaid,
-    missingDetailsForPostPaid,
   } = useMissingDetails();
 
-  const hasPrepaidData = hasPrepaid && !missingDetailsForPrepaid;
-  const hasPostPaidData = hasPostpaid && !missingDetailsForPostPaid
+  const hasPrepaidData = hasPrepaid;
+  const hasPostPaidData = hasPostpaid;
   const handleSelectPrice = (
     magentoId?: string,
     amount?: number,
@@ -218,13 +216,13 @@ const OrderDetailsRoute: React.FC<OrderDetailsProps> = ({ ...props }) => {
                     <Text fontWeight="bold">
                       {nameLabel}{" "}
                       <Text fontWeight="normal" d="inline">
-                        {personalDetails.firstName} {personalDetails.lastName}
+                        {personalDetailsLocation.firstName} {personalDetailsLocation.lastName}
                       </Text>
                     </Text>
                     <Text fontWeight="bold">
                       {emailLabel}{" "}
                       <Text fontWeight="normal" d="inline">
-                        {personalDetails.email}
+                        {personalDetailsLocation.email}
                       </Text>
                     </Text>
                     {portIn.mobileNumber && keepMobileFromAnotherOperator && (
@@ -238,9 +236,9 @@ const OrderDetailsRoute: React.FC<OrderDetailsProps> = ({ ...props }) => {
                     <Text fontWeight="bold">
                       {shippingAddressLabel}{" "}
                       <Text fontWeight="normal" d="inline">
-                        {personalDetails.houseNumber}{" "}
-                        {personalDetails.streetName} {personalDetails.townCity}{" "}
-                        {personalDetails.zipCode}
+                        {personalDetailsLocation.houseNumber}{" "}
+                        {personalDetailsLocation.streetName} {personalDetailsLocation.townCity}{" "}
+                        {personalDetailsLocation.zipCode}
                       </Text>
                     </Text>
                   </Box>

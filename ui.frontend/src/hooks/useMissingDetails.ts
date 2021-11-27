@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux";
 import { CartItem } from "../redux/types/cartTypes";
-import { selectFormValues } from "../selectors/formsSelectors";
+import { selectFormValues } from "../redux/selectors/formsSelectors";
 import { ReduxState } from "../redux/types";
 import { selectIsAuthenticated } from "../selectors/userSelectors";
 import { useLocation } from "react-router-dom";
