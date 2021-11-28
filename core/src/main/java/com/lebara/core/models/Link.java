@@ -33,8 +33,12 @@ public class Link {
     private String extensionlessLink;
 
     @PostConstruct
-    private void init(){
-        Page page = resourceResolver.getResource(link).adaptTo(Page.class);
+    private void init() {
+        Resource linkResource = resourceResolver.getResource(link);
+        if (linkResource == null) {
+            return;
+        }
+        Page page = linkResource.adaptTo(Page.class);
         if (page != null) {
             label = AemUtils.getTitle(page);
         }
