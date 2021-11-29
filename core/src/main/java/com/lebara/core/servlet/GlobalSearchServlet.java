@@ -43,7 +43,7 @@ import static org.apache.sling.api.servlets.ServletResolverConstants.*;
         }
 )
 public class GlobalSearchServlet extends SlingSafeMethodsServlet {
-	
+
     @Reference
     private transient QueryBuilder builder;
 
@@ -107,25 +107,25 @@ public class GlobalSearchServlet extends SlingSafeMethodsServlet {
         return predicate;
     }
 
-	/**
-	 * @param param
-	 * @param predicate
-	 */
-	private void addTitleSearchPredicate(String param, Map<String, String> predicate) {
-		predicate.put("1_group.p.or", "true");
+    /**
+     * @param param
+     * @param predicate
+     */
+    private void addTitleSearchPredicate(String param, Map<String, String> predicate) {
+        predicate.put("1_group.p.or", "true");
 
-		predicate.put("1_group.1_property", "jcr:content/jcr:title");
-		predicate.put("1_group.1_property.value", "%" + param + "%");
-		predicate.put("1_group.1_property.operation", "like");
+        predicate.put("1_group.1_property", "jcr:content/jcr:title");
+        predicate.put("1_group.1_property.value", "%" + param + "%");
+        predicate.put("1_group.1_property.operation", "like");
 
-		predicate.put("1_group.2_property", "jcr:content/pageTitle");
-		predicate.put("1_group.2_property.value", "%" + param + "%");
-		predicate.put("1_group.2_property.operation", "like");
+        predicate.put("1_group.2_property", "jcr:content/pageTitle");
+        predicate.put("1_group.2_property.value", "%" + param + "%");
+        predicate.put("1_group.2_property.operation", "like");
 
-		predicate.put("1_group.3_property", "jcr:content/navTitle");
-		predicate.put("1_group.3_property.value", "%" + param + "%");
-		predicate.put("1_group.3_property.operation", "like");
-	}
+        predicate.put("1_group.3_property", "jcr:content/navTitle");
+        predicate.put("1_group.3_property.value", "%" + param + "%");
+        predicate.put("1_group.3_property.operation", "like");
+    }
     
     /**
      * @param predicate
