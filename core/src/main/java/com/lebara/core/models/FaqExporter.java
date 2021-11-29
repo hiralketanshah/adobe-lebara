@@ -26,11 +26,19 @@ public class FaqExporter extends HeadingExporter {
 
     @ScriptVariable
     private Resource resource;
+
     @ChildResource
     private List<Option> options;
+
+    @ValueMapValue
+    private String backgroundColor;
+
     public List<Option> getOptions() {
         return (options == null) ? Collections.emptyList() : options;
     }
+
+    public String getBackgroundColor() { return backgroundColor; }
+
     @Override
     public String getExportedType() {
         return RESOURCE_TYPE;
