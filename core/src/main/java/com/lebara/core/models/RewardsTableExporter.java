@@ -17,7 +17,7 @@ import java.util.List;
 @Model(adaptables = SlingHttpServletRequest.class, adapters = { RewardsTableExporter.class,
         ComponentExporter.class }, resourceType = RewardsTableExporter.RESOURCE_TYPE, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
 @Exporter(name = ExporterConstants.SLING_MODEL_EXPORTER_NAME, extensions = ExporterConstants.SLING_MODEL_EXTENSION)
-public class RewardsTableExporter implements ComponentExporter {
+public class RewardsTableExporter extends IntroExporter {
 
     /**
      * The resource type.
@@ -29,10 +29,6 @@ public class RewardsTableExporter implements ComponentExporter {
 
     @ValueMapValue
     private String columnHeader;
-    @ValueMapValue
-    private String description;
-    @ValueMapValue
-    private String heading;
 
     @Override
     public String getExportedType() {
@@ -47,11 +43,4 @@ public class RewardsTableExporter implements ComponentExporter {
         return columnHeader;
     }
 
-    public String getDescription() {
-        return description;
-    }
-
-    public String getHeading() {
-        return heading;
-    }
 }
