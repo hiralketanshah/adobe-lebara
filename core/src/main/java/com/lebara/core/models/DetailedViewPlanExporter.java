@@ -79,6 +79,13 @@ public class DetailedViewPlanExporter extends ViewPlanExporter implements Compon
     @ValueMapValue
     private String ctaBottomLink;
 
+    @ValueMapValue
+    private String backgroundColor;
+
+    public String getProductInformationFile() {
+        return (i18n == null ? "Product Information" : i18n.get("product.information.label"));
+    }
+
     public String getTitle() {
         return title;
     }
@@ -118,6 +125,8 @@ public class DetailedViewPlanExporter extends ViewPlanExporter implements Compon
     public String getCtaBottomLink() {
         return AemUtils.getLinkWithExtension(ctaBottomLink, request);
     }
+
+    public String getBackgroundColor() { return backgroundColor; }
 
     @PostConstruct
     private void init() {

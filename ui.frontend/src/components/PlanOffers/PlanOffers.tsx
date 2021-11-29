@@ -21,6 +21,7 @@ const PlanOffers: React.FC<PlanOffersProps> = ({
   buttonLabel,
   addedtoCartLabel,
   viewCartLabel,
+  backgroundColor,
   productInformationButtonLabel,
   ctaSelectLabel,
   ctaAddToCartLabel,
@@ -37,7 +38,7 @@ const PlanOffers: React.FC<PlanOffersProps> = ({
 
   return (
     <Box
-      backgroundColor="lightenPrimary.50"
+      backgroundColor={backgroundColor ? backgroundColor : `lightenPrimary.50`}
       backgroundPosition="center right"
       backgroundRepeat="no-repeat"
       py={{ base: "30.68px", lg: "60px" }}
