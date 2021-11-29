@@ -79,9 +79,9 @@ public class GlobalSearchServlet extends SlingSafeMethodsServlet {
             predicate.put("1_property.value", "%" + param + "%");
             predicate.put("1_property.operation", "like");
         } else {
-        	predicate.put("1_group.p.or", "true");
-            
-        	predicate.put("1_group.1_property", "jcr:content/jcr:title");
+            predicate.put("1_group.p.or", "true");
+
+            predicate.put("1_group.1_property", "jcr:content/jcr:title");
             predicate.put("1_group.1_property.value", "%" + param + "%");
             predicate.put("1_group.1_property.operation", "like");
 
