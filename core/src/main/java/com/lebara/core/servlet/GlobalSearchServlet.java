@@ -68,6 +68,14 @@ public class GlobalSearchServlet extends SlingSafeMethodsServlet {
     }
 
 
+    /**
+     * Full text or tag based search
+     * 
+     * @param param
+     * @param searchType
+     * @param searchRoot
+     * @return
+     */
     protected Map<String, String> getGlobalSearchPredicates(String param, String searchType, String searchRoot) {
         Map<String, String> predicate = new HashMap<>();
         predicate.put("path", searchRoot);
@@ -79,23 +87,52 @@ public class GlobalSearchServlet extends SlingSafeMethodsServlet {
             predicate.put("1_property.value", "%" + param + "%");
             predicate.put("1_property.operation", "like");
         } else {
-            predicate.put("1_group.p.or", "true");
-
-            predicate.put("1_group.1_property", "jcr:content/jcr:title");
-            predicate.put("1_group.1_property.value", "%" + param + "%");
-            predicate.put("1_group.1_property.operation", "like");
-
-            predicate.put("1_group.2_property", "jcr:content/pageTitle");
-            predicate.put("1_group.2_property.value", "%" + param + "%");
-            predicate.put("1_group.2_property.operation", "like");
-
-            predicate.put("1_group.3_property", "jcr:content/navTitle");
-            predicate.put("1_group.3_property.value", "%" + param + "%");
-            predicate.put("1_group.3_property.operation", "like");
+            addTitleSearchPredicate(param, predicate);
         }
         return predicate;
     }
+    
+    /**
+     * Title based search
+     * 
+     * @param param
+     * @param searchRoot
+     * @return
+     */
+    protected Map<String, String> getGlobalSearchPredicates(String param, String searchRoot) {
+        Map<String, String> predicate = new HashMap<>();
+        predicate.put("path", searchRoot);
+        predicate.put("type", "cq:Page");
+        addTitleSearchPredicate(param, predicate);
+        return predicate;
+    }
 
+	/**
+	 * @param param
+	 * @param predicate
+	 */
+	private void addTitleSearchPredicate(String param, Map<String, String> predicate) {
+		predicate.put("1_group.p.or", "true");
+
+		predicate.put("1_group.1_property", "jcr:content/jcr:title");
+		predicate.put("1_group.1_property.value", "%" + param + "%");
+		predicate.put("1_group.1_property.operation", "like");
+
+		predicate.put("1_group.2_property", "jcr:content/pageTitle");
+		predicate.put("1_group.2_property.value", "%" + param + "%");
+		predicate.put("1_group.2_property.operation", "like");
+
+		predicate.put("1_group.3_property", "jcr:content/navTitle");
+		predicate.put("1_group.3_property.value", "%" + param + "%");
+		predicate.put("1_group.3_property.operation", "like");
+	}
+    
+    /**
+     * @param predicate
+     * @param builder
+     * @param session
+     * @return
+     */
     protected String getSearchInfoString(Map<String, String> predicate, QueryBuilder builder, Session session) {
         Query query = builder.createQuery(PredicateGroup.create(predicate), session);
         SearchResult searchResult = query.getResult();

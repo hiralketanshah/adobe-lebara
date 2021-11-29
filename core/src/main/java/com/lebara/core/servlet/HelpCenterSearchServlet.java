@@ -48,7 +48,7 @@ public class HelpCenterSearchServlet extends GlobalSearchServlet {
             searchRoot = DEFAULT_SEARCH_ROOT;
         }
         log.debug("searchRoot is {}", searchRoot);
-        Map<String, String> predicate = getGlobalSearchPredicates(param, null, searchRoot);
+        Map<String, String> predicate = getGlobalSearchPredicates(param, searchRoot);
         response.getWriter().println(getSearchInfoString(predicate, builder, session));
     }
 }
