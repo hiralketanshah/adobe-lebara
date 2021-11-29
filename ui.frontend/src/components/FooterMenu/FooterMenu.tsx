@@ -1,4 +1,5 @@
 import React from "react";
+import { Link as RouterLink } from "react-router-dom";
 import {
   Box,
   Divider,
@@ -19,18 +20,24 @@ const FooterMenu: React.FC<FooterMenuProps> = ({
   copyrightLinks,
   getapp,
   followus,
+  socialButtons,
+  desktopFootertext,
+  mobileTheme = { color: "white", bgColor: "primary.500" },
+  theme = { color: "white", bgColor: "primary.500" },
 }) => (
   <>
     <Box
-      px="50px"
-      py="50px"
+      px="80px"
+      py="116px"
       display={{ md: "block", base: "none" }}
-      bg="primary.500"
-      color="white"
+      bg={theme?.bgColor}
+      color={theme?.color}
     >
       <Box
         height={{ lg: "50vh", md: "initial" }}
         display={{ lg: "flex", md: "block" }}
+        justifyContent="space-between"
+        mb="8.135rem"
       >
         <Box display="flex" justifyContent="space-between" width="40rem">
           {footerUpperLinks?.map((menu: MenuProps, fmIdx) => (
@@ -38,7 +45,7 @@ const FooterMenu: React.FC<FooterMenuProps> = ({
               <Text fontSize={14} fontWeight="bold" textTransform="uppercase">
                 {menu?.parentLinks?.label}
               </Text>
-              <Box>
+              <Flex direction="column">
                 {menu?.childLinks?.map((subMenuItem: SubMenuProps, index) => (
                   <Text
                     key={index}
@@ -46,11 +53,16 @@ const FooterMenu: React.FC<FooterMenuProps> = ({
                     fontWeight="500"
                     lineHeight="14.06px"
                     mt="2em"
+                    color={theme?.color === "white" ? "white" : "black"}
                   >
-                    {subMenuItem.label}
+                    <RouterLink to={subMenuItem?.link}
+                      style={{color: theme?.color === "white" ? "white" : "black"}}
+                      >
+                      {subMenuItem.label}
+                    </RouterLink>
                   </Text>
                 ))}
-              </Box>
+              </Flex>
             </Box>
           ))}
         </Box>
@@ -73,7 +85,7 @@ const FooterMenu: React.FC<FooterMenuProps> = ({
               {followus?.followUsText}
             </Text>
             <Box width="350px">
-              <SocialMediaButtons buttons={followus?.links} />
+              <SocialMediaButtons buttons={followus?.links} color={theme?.color} />
             </Box>
             <Box px="10px">
               <Text
@@ -91,7 +103,7 @@ const FooterMenu: React.FC<FooterMenuProps> = ({
                     as={Link}
                     href={getapp?.links[0]?.link}
                     aria-label="Available on the App Store"
-                  >
+                    >
                     <Image
                       src={getapp?.links[0]?.label}
                       height="46"
@@ -117,18 +129,19 @@ const FooterMenu: React.FC<FooterMenuProps> = ({
         </Box>
       </Box>
       <Divider mt="2em" />
-      <Box>
+      <Box color={theme?.color === "white" ? undefined : "grey.300"}>
         <Flex py="25px">
-          {copyrightLinks && (
-            <Text fontSize={12} textAlign="left">
-              {copyrightLinks[0]?.label}
-            </Text>
-          )}
-          {copyrightLinks && (
-            <Text fontSize={12} ml="60px" textAlign="left">
-              {copyrightLinks[1]?.label}
-            </Text>
-          )}
+          {copyrightLinks?.map((linkItem, idx) => (<Link 
+            key={`copyright-link-${idx}`} 
+            to={linkItem?.link} 
+            py="10px" 
+            display="block" 
+            fontSize={12} 
+            textAlign="left"
+            ml={idx > 0 ? '60px' : '0'}>
+            {linkItem?.label}
+          </Link>))}
+          
           <Spacer />
           <Text fontSize={12} textAlign="right">
             {copyrightText}
@@ -142,6 +155,7 @@ const FooterMenu: React.FC<FooterMenuProps> = ({
         footerUpperLinks={footerUpperLinks}
         copyrightText={copyrightText}
         getapp={getapp}
+        theme={mobileTheme}
       />
     </Box>
   </>
