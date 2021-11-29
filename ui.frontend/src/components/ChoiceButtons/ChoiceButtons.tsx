@@ -53,7 +53,13 @@ const ChoiceButtons: React.FC<ChoiceButtonsProps> = ({
                   },
                 })
               );
-              onClick ? onClick() : path && history.push(path, state)
+              if (onClick) {
+                onClick();
+                return;
+              }
+              if (path) {
+                history.push(path, state);
+              }
             }
             }
           />
