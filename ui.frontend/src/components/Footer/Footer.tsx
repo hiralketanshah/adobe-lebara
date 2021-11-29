@@ -41,7 +41,7 @@ const Footer: React.FC<FooterProps> = ({
                     textTransform="uppercase"
                     py="15px"
                   >
-                    {menu?.parentLinks?.label} JB
+                    {menu?.parentLinks?.label}
                   </Box>
                   {isExpanded ? (
                     <FcMinus fontSize="12px" fontWeight="bold" />
