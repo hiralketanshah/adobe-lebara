@@ -17,12 +17,14 @@ import SocialMediaButtons from "../SocialMediaButtons/SocialMediaButtons";
 import { FooterProps } from "./types";
 
 const Footer: React.FC<FooterProps> = ({
+  socialButtons,
   footerUpperLinks,
   copyrightText,
   getapp,
   followus,
+  theme = { color: "lightenPrimary.50", bgColor: "primary.500" },
 }) => (
-  <Box bg="primary.500" color="white">
+  <Box bg={theme?.bgColor} color={theme?.color}>
     <Accordion defaultIndex={[0]} allowMultiple>
       {footerUpperLinks?.map((menu, index) => (
         <AccordionItem key={index} borderTop="none" borderBottomWidth="1px">
@@ -39,7 +41,7 @@ const Footer: React.FC<FooterProps> = ({
                     textTransform="uppercase"
                     py="15px"
                   >
-                    {menu?.parentLinks?.label}
+                    {menu?.parentLinks?.label} JB
                   </Box>
                   {isExpanded ? (
                     <FcMinus fontSize="12px" fontWeight="bold" />
@@ -51,7 +53,7 @@ const Footer: React.FC<FooterProps> = ({
               <AccordionPanel pb={4}>
                 {menu.childLinks?.map((subMenuItem, index) => (
                   <Box key={index}>
-                    <Link href={subMenuItem.link} py="10px" display="block">
+                    <Link to={subMenuItem.link} py="10px" display="block">
                       {subMenuItem.label}
                     </Link>
                   </Box>
@@ -92,7 +94,7 @@ const Footer: React.FC<FooterProps> = ({
     </Box>
 
     <Divider pt="30px" />
-    <Box px="10px">
+    <Box px="10px" color="primary.500">
       <Text
         fontSize={14}
         fontWeight="bold"
@@ -102,11 +104,11 @@ const Footer: React.FC<FooterProps> = ({
       >
         {followus?.followUsText}
       </Text>
-      <SocialMediaButtons buttons={followus?.links || []} />
+      <SocialMediaButtons buttons={followus?.links || []} color={theme?.color} />
     </Box>
 
     <Divider pt="30px" />
-    <Text fontSize={12} textAlign="center" py="25px">
+    <Text fontSize={12} textAlign="center" py="25px" color="black">
       {copyrightText}
     </Text>
   </Box>

@@ -10,4 +10,5 @@ export interface SocialMediaButtonOption extends IconProps {
 
 export interface SocialMediaButtonsProps {
   buttons: SocialMediaButtonOption[];
+  color?: string;
 }
