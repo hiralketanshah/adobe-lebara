@@ -48,19 +48,7 @@ public class HelpCenterSearchServlet extends GlobalSearchServlet {
             searchRoot = DEFAULT_SEARCH_ROOT;
         }
         LOGGER.debug("searchRoot is {}", searchRoot);
-        Map<String, String> predicate = getHelpCenterSearchPredicates(param, searchRoot);
+        Map<String, String> predicate = getGlobalSearchPredicates(param, searchRoot, null);
         response.getWriter().println(getSearchInfoString(predicate, builder, session));
     }
-
-    private Map<String, String> getHelpCenterSearchPredicates(String param, String searchRoot) {
-        Map<String, String> predicate = new HashMap<>();
-        predicate.put("path", searchRoot);
-        predicate.put("type", "cq:Page");
-        predicate.put("p.limit", "20");
-        predicate.put("1_property", "jcr:content/jcr:title");
-        predicate.put("1_property.value", "%" + param + "%");
-        predicate.put("1_property.operation", "like");
-        return predicate;
-    }
-
 }
