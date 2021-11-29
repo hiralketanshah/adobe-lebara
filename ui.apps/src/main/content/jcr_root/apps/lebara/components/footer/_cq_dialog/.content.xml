@@ -404,8 +404,8 @@
                                                                                         <label
                                                                                             jcr:primaryType="nt:unstructured"
                                                                                             sling:resourceType="granite/ui/components/coral/foundation/form/pathbrowser"
-                                                                                            fieldDescription="Choose Image"
-                                                                                            fieldLabel="Link Image"
+                                                                                            fieldDescription="Choose Image Path in DAM"
+                                                                                            fieldLabel="Choose Image Path in DAM"
                                                                                             name="./label"
                                                                                             rootPath="/content/dam/lebara"/>
                                                                                         <labellink
@@ -413,6 +413,7 @@
                                                                                             sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
                                                                                             fieldDescription="Choose Image link"
                                                                                             fieldLabel="Link"
+                                                                                            rootPath="/content/lebara"
                                                                                             name="./link"/>
                                                                                     </items>
                                                                                 </column>
@@ -475,15 +476,16 @@
                                                                 <label
                                                                     jcr:primaryType="nt:unstructured"
                                                                     sling:resourceType="granite/ui/components/coral/foundation/form/pathbrowser"
-                                                                    fieldDescription="Choose Image"
-                                                                    fieldLabel="Link Image"
+                                                                    fieldDescription="Choose Image Path"
+                                                                    fieldLabel="Choose Image Path in DAM"
                                                                     name="./label"
                                                                     rootPath="/content/dam/lebara"/>
                                                                 <labellink
                                                                     jcr:primaryType="nt:unstructured"
                                                                     sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
-                                                                    fieldDescription="Choose Image link"
-                                                                    fieldLabel="Link"
+                                                                    fieldDescription="Add the social media handle url"
+                                                                    fieldLabel="Social Media Link/Url"
+                                                                    rootPath="/content/lebara"
                                                                     name="./link"/>
                                                             </items>
                                                         </column>
