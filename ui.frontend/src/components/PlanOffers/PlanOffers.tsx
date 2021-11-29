@@ -20,7 +20,8 @@ const PlanOffers: React.FC<PlanOffersProps> = ({
   ctaBottomLabel,
   buttonLabel,
   addedtoCartLabel,
-  viewCartLabel
+  viewCartLabel,
+  backgroundColor,
 }) => {
   const history = useHistory();
   const linkStyles = {
@@ -32,7 +33,7 @@ const PlanOffers: React.FC<PlanOffersProps> = ({
 
   return (
     <Box
-      backgroundColor="lightenPrimary.50"
+      backgroundColor={backgroundColor ? backgroundColor : `lightenPrimary.50`}
       backgroundPosition="center right"
       backgroundRepeat="no-repeat"
       py={{ base: "30.68px", lg: "60px" }}

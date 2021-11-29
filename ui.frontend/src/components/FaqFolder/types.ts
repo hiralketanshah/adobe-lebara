@@ -5,4 +5,5 @@ export interface options {
 export interface HomeFaqsProps {
   title?: string;
   options: options[] | [];
+  backgroundColor?: string;
 }

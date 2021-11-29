@@ -19,6 +19,7 @@ export interface PlanOffersProps {
   viewCartLabel?: string;
   addedtoCartLabel?: string;
   buttonLabel?: string;
+  backgroundColor?: string;
 }
 
 export interface allowanceListProps {
