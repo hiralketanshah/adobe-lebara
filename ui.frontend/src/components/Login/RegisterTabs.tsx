@@ -95,7 +95,7 @@ const RegisterTabs: React.FC<LoginTabsProps> = ({ ...loginModuleProps }) => {
           _selected={{ bg: "white" }}
           _focus={{ boxShadow: "none" }}
         >
-          {loginModuleProps.loginLabel}
+          {loginModuleProps.loginTabLabel}
         </Tab>
         <Tab
           bg="grey.50"
@@ -104,7 +104,7 @@ const RegisterTabs: React.FC<LoginTabsProps> = ({ ...loginModuleProps }) => {
           _selected={{ bg: "white" }}
           _focus={{ boxShadow: "none" }}
         >
-          {loginModuleProps.registrationCtaLabel}
+          {loginModuleProps.registrationTabLabel}
         </Tab>
       </TabList>
 
