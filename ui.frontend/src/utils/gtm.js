@@ -1,4 +1,4 @@
-import { globalConfigs, glocalConfigs as GC } from "../GlobalConfigs";
+import { globalConfigs as GC } from "../GlobalConfigs";
 export function googleAnalytics(event, obj) {
    event
     ? window?.dataLayer.push({
@@ -22,7 +22,7 @@ export function googleAnalyticsCheckout(eventName, step, cartItems) {
         ? "topup"
         : "bolton"
     }/${product?.duration}///`,
-    variant: globalConfigs.country,
+    variant: GC.country,
     quantity: 1,
   }));
   try {

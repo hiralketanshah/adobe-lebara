@@ -347,9 +347,6 @@
 		<!-- usp -->
 		<property name="body"/>
 
-		<!-- porting -->
-		<property name="formName"/>
-
 		<!-- verifymobile -->
 		<property name="subHeading"/>
 		<property name="unlimitedTextField"/>

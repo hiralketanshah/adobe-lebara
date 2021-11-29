@@ -63,13 +63,17 @@
                             <optionsmultifield jcr:primaryType="nt:unstructured">
                                 <item0
                                     jcr:primaryType="nt:unstructured"
+                                    fieldLabel="default"
+                                    fieldValue=""/>
+                                <item1
+                                    jcr:primaryType="nt:unstructured"
                                     fieldLabel="prepaid"
                                     fieldValue="prepaid"/>
-                                <item1
+                                <item2
                                     jcr:primaryType="nt:unstructured"
                                     fieldLabel="postpaid"
                                     fieldValue="postpaid"/>
-                                <item2
+                                <item3
                                     jcr:primaryType="nt:unstructured"
                                     fieldLabel="bolton"
                                     fieldValue="bolton"/>
