@@ -476,6 +476,9 @@
 		<property name="textCol2"/>
 		<property name="getAppLabel"/>
 
+		<!-- Global Search -->
+		<property name="mostSearchLabel"/>
+		
 		<!-- Lebara fields ends -->
 		<property name="cq:language" updateDestinationLanguage="true"/>
 		<node pathContains="/cq:annotations">
