@@ -34,14 +34,13 @@ const TextFeature: React.FC<AboutLebaraProps> = ({
         justifyContent="center"
         alignItems="center"
       >
-        <Flex w={{ md: "50%" }} justifyContent="center">
+        <Flex maxW={{ lg: "40%" }} justifyContent="center">
           {imagePath && (
             <Image 
               src={imagePath}
-              w={{lg: 398 }}  
+              w={{lg: 398 }}
               height="100%"
               alt={title} 
-              backgroundColor={{ base: "white", lg: "primary.500" }}
               mb={{ base: "-28%", lg: 0 }}
             />
           )}
@@ -88,8 +87,7 @@ const TextFeature: React.FC<AboutLebaraProps> = ({
             <Image src={imagePath}  
               height="100%"
               alt={title} 
-              backgroundColor={{ base: "white", lg: "primary.500" }}
-              mb={{ base: "-28%", lg: 0 }} 
+              mb={{ base: "-28%", lg: 0 }}
             />
           )}
         </Flex>
