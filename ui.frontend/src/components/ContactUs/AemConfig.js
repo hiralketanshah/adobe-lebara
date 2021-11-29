@@ -4,7 +4,7 @@ import ContactUs from "./ContactUs";
 const ContactUsConfig = {
   emptyLabel: "Contact Us Component",
   isEmpty: function (props) {
-    return !props.title;
+    return !props || !props.heading;
   },
 };
 

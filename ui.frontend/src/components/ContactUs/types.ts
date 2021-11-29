@@ -1,9 +1,9 @@
-export interface SupportList {
+interface SupportList {
     body?: string;
     title?: string;
     icon?: string;
-    ctalinklabel?: string;
-    ctalink?: string;
+    ctaLinkLabel?: string;
+    ctaLink?: string;
 }
 export interface ContactUsProps {
     heading?: string;

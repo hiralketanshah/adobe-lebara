@@ -1,4 +1,5 @@
 import React from "react";
+import { useHistory } from "react-router-dom";
 import { Box, Text, Flex } from "@chakra-ui/react";
 import Button from "../Button/Button";
 import { ContactUsProps } from "./types";
@@ -8,6 +9,8 @@ const ContactUs: React.FC<ContactUsProps> = ({
   description,
   supportList,
 }) => {
+  const history = useHistory();
+
   const headingStyle = {
     fontFamily: "Roboto",
     fontWeight: { base: "500", lg: "bold" },
@@ -30,6 +33,7 @@ const ContactUs: React.FC<ContactUsProps> = ({
     lineHeight: { base: "20px", lg: "23px" },
     color: "#00000",
   };
+
   return (
     <Box
       py={{ base: "30px", lg: "60px" }}
@@ -54,100 +58,34 @@ const ContactUs: React.FC<ContactUsProps> = ({
       >
         {description}
       </Text>}
-      {supportList && supportList.length && <Flex
+      {supportList && supportList?.length !== 0 && <Flex
         mt={{ base: "10px", lg: "50px" }}
         flexDirection={{ base: "column", lg: "row" }}
       >
-        <Box {...boxStyle} mt="10px">
-          <Flex alignItems="center">
-            <Text {...headingStyle}>{supportList?.title}</Text>
-            <img src={supportList?.icon} alt="chat" style={{ marginLeft: "auto" }} />
-          </Flex>
-          <Text {...contactBoxTextStyle} mt={{ base: "9px", lg: "9px" }}>
-            {supportList?.body}
-          </Text>
-          <Button
-            w="100%"
-            mt={{ base: "20px", lg: "60px" }}
-            mb={{ base: "30px", lg: "40px" }}
+        {supportList?.map((item, idx) => (<Box {...boxStyle} 
+          key={`support-list-${idx}`}
+          mt="10px" 
+          ml={{ lg: idx > 0 ? "21px" : "" }} 
           >
-            START LIVE CHAT
-          </Button>
-        </Box>
-        <Box {...boxStyle} ml={{ lg: "21px" }} mt="10px">
-          <Flex alignItems="center">
-            <Text {...headingStyle}>Call Support</Text>
-            <img src={CallIcon} alt="chat" style={{ marginLeft: "auto" }} />
-          </Flex>
-          <Text {...contactBoxTextStyle} mt={{ base: "9px", lg: "9px" }}>
-            We are here to help from 9am to 9pm, all seven days.
-          </Text>
-          <Flex mt="10px">
-            <Text
-              color="primary.800"
-              fontSize={{ base: "14px", lg: "16px" }}
-              lineHeight={{ base: "16px", lg: "22px" }}
-              letterSpacing="0.5px"
+            <Flex alignItems="center">
+              <Text {...headingStyle}>{item?.title}</Text>
+              <img src={item?.icon} alt="chat" style={{ marginLeft: "auto" }} />
+            </Flex>
+            <Text {...contactBoxTextStyle} mt={{ base: "9px", lg: "9px" }} 
+              className="rich-text--support"
+              dangerouslySetInnerHTML={
+                item?.body ? { __html: item?.body } : undefined
+               } />
+            <Button
+              w="100%"
+              mt={{ base: "20px", lg: idx === 0 ? "60px" : "25px" }}
+              mb={{ base: "30px", lg: "40px" }}
+              onClick={() => history.push(item?.ctaLink || "/")}
             >
-              Lebara Sim
-            </Text>
-            <Text
-              color="secondary.500"
-              fontSize={{ base: "14px", lg: "16px" }}
-              lineHeight={{ base: "16px", lg: "22px" }}
-              letterSpacing="0.5px"
-              ml="15px"
-            >
-              2323 (Free Call)
-            </Text>
-          </Flex>
-          <Flex mt="10px">
-            <Text
-              color="primary.800"
-              fontSize={{ base: "14px", lg: "16px" }}
-              lineHeight={{ base: "16px", lg: "22px" }}
-              letterSpacing="0.5px"
-            >
-              Other User
-            </Text>
-            <Text
-              color="secondary.500"
-              fontSize={{ base: "14px", lg: "16px" }}
-              lineHeight={{ base: "16px", lg: "22px" }}
-              letterSpacing="0.5px"
-              ml="15px"
-            >
-              +331 72 28 23 23
-            </Text>
-          </Flex>
-          <Button
-            w="100%"
-            mt={{ base: "20px", lg: "25px" }}
-            mb={{ base: "30px", lg: "40px" }}
-          >
-            Ask us a call back
-          </Button>
-        </Box>
-        <Box {...boxStyle} mt="10px" ml={{ lg: "21px" }}>
-          <Flex alignItems="center">
-            <Text {...headingStyle}>Email</Text>
-            <img src={EmailIcon} alt="chat" style={{ marginLeft: "auto" }} />
-          </Flex>
-          <Text {...contactBoxTextStyle} mt={{ base: "9px", lg: "14px" }}>
-            We are here to help from 9am to 9pm, all seven days.
-          </Text>
-          <Text {...contactBoxTextStyle} mt={{ base: "3px", lg: "13px" }}>
-            Let us know what your issue is through mail and we will reach you
-            back.
-          </Text>
-          <Button
-            w="100%"
-            mt={{ base: "20px", lg: "25px" }}
-            mb={{ base: "30px", lg: "40px" }}
-          >
-            E-MAIL US
-          </Button>
-        </Box>
+              {item?.ctaLinkLabel}
+            </Button>
+          </Box>)
+        )}
       </Flex>}
     </Box>
   );
