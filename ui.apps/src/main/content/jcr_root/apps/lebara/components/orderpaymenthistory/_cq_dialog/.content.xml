@@ -21,7 +21,7 @@
                                 jcr:primaryType="nt:unstructured"
                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                 fieldDescription="Order Payment History"
-                                fieldLabel="Order and Payment History"
+                                fieldLabel="Title"
                                 name="./title"
                                 value="Order and Payment History"/>
                             <historyLabel
@@ -38,78 +38,50 @@
                                 fieldLabel="Number History Label"
                                 name="./frmFields/numberHistoryLabel"
                                 value="015171918893"/>
-                            <firstNameLabel
+                            <transactionSummery
                                 jcr:primaryType="nt:unstructured"
                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                fieldDescription="First Name"
-                                fieldLabel="First Name Label"
-                                name="./frmFields/fNameLabel"
-                                value="First Name"/>
-                            <firstNamePlaceholder
+                                fieldDescription="Transaction Summery Label"
+                                fieldLabel="Transaction Summery Label"
+                                name="./frmFields/transactionSummery"
+                                value="Get a summary of all your transactions !"/>
+                            <monthsLabel
                                 jcr:primaryType="nt:unstructured"
                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                fieldDescription="Enter Your First Name"
-                                fieldLabel="First Name Placeholder"
-                                name="./frmFields/fnamePlaceholder"
-                                value="Enter Your First Name"/>
-                            <lastNameLabel
-                                jcr:primaryType="nt:unstructured"
-                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                fieldLabel="Last Name Label"
-                                name="./frmFields/lNameLabel"
-                                value="Last Name"/>
-                            <lastNamePlaceholder
-                                jcr:primaryType="nt:unstructured"
-                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                fieldDescription="Enter Your First Name"
-                                fieldLabel="Last Name Placeholder"
-                                name="./frmFields/lNamePlaceholder"
-                                value="Enter Your First Name"/>
-                            <dobtitle
-                                jcr:primaryType="nt:unstructured"
-                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                fieldLabel="DOB title"
-                                name="./frmFields/dobLabel"
-                                value="Date of Birth"/>
-                            <dayfieldlabel
-                                jcr:primaryType="nt:unstructured"
-                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                fieldLabel="Day Field Label "
-                                name="./frmFields/dayLabel"
-                                value="Day"/>
-                            <dayPalceholder
-                                jcr:primaryType="nt:unstructured"
-                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                fieldDescription="Enter Day"
-                                fieldLabel="Day Placeholder"
-                                name="./frmFields/dayPalceholder"
-                                value="Enter Day"/>
-                            <monthLabel
-                                jcr:primaryType="nt:unstructured"
-                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                fieldLabel="Month Field Label "
+                                fieldDescription="Month Label"
+                                fieldLabel="Months Label"
                                 name="./frmFields/monthLabel"
-                                value="Month"/>
-                            <monthPlaceholder
-                                jcr:primaryType="nt:unstructured"
-                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                fieldDescription="Enter Month"
-                                fieldLabel="Month Placeholder"
-                                name="./frmFields/monthPlaceholder"
-                                value="Enter Month"/>
-                            <yearLabel
-                                jcr:primaryType="nt:unstructured"
-                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                fieldLabel="Year Field Label "
-                                name="./frmFields/yearLabel"
-                                value="Year"/>
-                            <yearPlaceholder
-                                jcr:primaryType="nt:unstructured"
-                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                fieldDescription="Enter Year"
-                                fieldLabel="Year Placeholder"
-                                name="./frmFields/yearPlaceholder"
-                                value="Enter Year"/>
+                                value="Months"/>
+
+                            <backgroundImage
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/foundation/form/pathbrowser"
+                                    fieldLabel="Background Image"
+                                    name="./backgroundImage"/>
+                            <orderHistoryEmptyLabel
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                    fieldDescription="Month Label"
+                                    fieldLabel="Order History Empty Label"
+                                    name="./frmFields/orderHistoryEmptyLabel"
+                                    value="Your order history is Empty"/>
+                            <emptyOrderLabel
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                    fieldDescription="Looks like you haven’t made any orders yet"
+                                    fieldLabel=" Empty Order Label"
+                                    name="./frmFields/emptyOrderLabel"
+                                    value="Looks like you haven’t made any orders yet"/>
+
+                            <shopNowCTA
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                    fieldDescription="Shop now CTA Label"
+                                    fieldLabel="Shop Now CTA Label"
+                                    name="./frmFields/shopNowCTA"
+                                    value="SHOP NOW"/>
+
+
                         </items>
                     </column1>
                     <column2
@@ -117,120 +89,72 @@
                         jcr:title="Modal Data"
                         sling:resourceType="granite/ui/components/coral/foundation/container">
                         <items jcr:primaryType="nt:unstructured">
-                            <keyInAddress
+                            <filterLabel
                                     jcr:primaryType="nt:unstructured"
                                     sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                    fieldLabel="Key in your address manually"
-                                    value="Key in your address manually"
-                                    fieldDescription="Key in your address manually"
-                                    name="./frmFields/keyInAddress"/>
-                            <addressKeyInText
+                                    fieldLabel="FILTER"
+                                    value="FILTER"
+                                    fieldDescription="Filter Label"
+                                    name="./frmFields/filterLabel"/>
+
+                            <modalTitle
                                     jcr:primaryType="nt:unstructured"
                                     sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                    fieldLabel="Address key in message"
-                                    value="Key in your postal code and find your address"
-                                    fieldDescription="Key in your postal code and find your address"
-                                    name="./frmFields/addressKeyInText"/>
-                            <postalcodePlaceholder
+                                    fieldLabel="Modal Title"
+                                    value="Transaction Filter"
+                                    fieldDescription="Modal Title"
+                                    name="./frmFields/modalTitle"/>
+
+                            <fromLabel
                                     jcr:primaryType="nt:unstructured"
                                     sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                    fieldLabel="Search For Postal Code placeholder text"
-                                    value="Search For Postal Code"
-                                    fieldDescription="Search For Postal Code"
-                                    name="./frmFields/postalcodePlaceholder"/>
-                            <enterAddressManually
+                                    fieldLabel="From Label"
+                                    value="From"
+                                    fieldDescription="From Label"
+                                    name="./frmFields/fromLabel"/>
+
+                            <toLabel
                                     jcr:primaryType="nt:unstructured"
                                     sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                    fieldLabel="Enter Address Manually label"
-                                    value="Enter Address Manually?"
-                                    fieldDescription="Enter Address Manually?"
-                                    name="./frmFields/enterAddressManually"/>
-                            <streetLabel
+                                    fieldLabel="To Label"
+                                    value="To"
+                                    fieldDescription="To Label"
+                                    name="./frmFields/toLabel"/>
+
+                            <mobileNumberLabel
                                     jcr:primaryType="nt:unstructured"
                                     sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                    fieldLabel="Street Label"
-                                    value="Street"
-                                    name="./frmFields/streetLabel"/>
-                            <streetPlaceholder
+                                    fieldLabel="Mobile Number Label"
+                                    value="Mobile Number"
+                                    fieldDescription="Mobile Number Label"
+                                    name="./frmFields/mobileNumberLabel"/>
+                            <mobileNumberPlaceholder
                                     jcr:primaryType="nt:unstructured"
                                     sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                    fieldLabel="Street Placeholder"
-                                    value="Enter Your Street Name"
-                                    fieldDescription="Enter Your Street Name"
-                                    name="./frmFields/streetPlaceholder"/>
-                            <houseNumberLabel
+                                    fieldLabel="Mobile Number Placeholder"
+                                    value="015171918893"
+                                    fieldDescription="Mobile Number Placeholder"
+                                    name="./frmFields/mobileNumberPlaceholder"/>
+
+                            <continueCTALabel
                                     jcr:primaryType="nt:unstructured"
                                     sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                    fieldLabel="House Number Label"
-                                    value="House Number"
-                                    name="./frmFields/houseNumberLabel"/>
-                            <houseNumberPlaceholder
+                                    fieldDescription="Continue CTA Label"
+                                    fieldLabel="Continue CTA Label"
+                                    name="./frmFields/continueCTALabel"
+                                    value="CONTINUE"/>
+                            <cancelCTALabel
                                     jcr:primaryType="nt:unstructured"
                                     sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                    fieldLabel="House Number Placeholder"
-                                    value="Enter Your House Number"
-                                    name="./frmFields/houseNumberPlaceholder"/>
-                            <zipCodeLabel
-                                    jcr:primaryType="nt:unstructured"
-                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                    fieldLabel="Zip Code Label"
-                                    value="Zip Code"
-                                    fieldDescription="Zip Code"
-                                    name="./frmFields/zipCodeLabel"/>
-                            <zipCodePlaceholder
-                                    jcr:primaryType="nt:unstructured"
-                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                    fieldLabel="Zip Code Placeholder"
-                                    value="Enter Your Zip Code"
-                                    fieldDescription="Enter Your Zip Code"
-                                    name="./frmFields/zipCodePlaceholder"/>
-                            <cityLabel
-                                    jcr:primaryType="nt:unstructured"
-                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                    fieldLabel="city Label"
-                                    value="City"
-                                    name="./frmFields/cityLabel"/>
-                            <cityPlaceholder
-                                    jcr:primaryType="nt:unstructured"
-                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                    fieldLabel="City Placeholder"
-                                    value="Enter Your City"
-                                    name="./frmFields/cityPlaceholder"/>
-                            <saveAddress
-                                    jcr:primaryType="nt:unstructured"
-                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                    fieldLabel="Save address for future label"
-                                    value="Save address for future"
-                                    fieldDescription="Save address for future"
-                                    name="./frmFields/saveAddress"/>
-                            <shippingLabel
-                                jcr:primaryType="nt:unstructured"
-                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                fieldDescription="Shipping Address"
-                                fieldLabel="Address label"
-                                name="./frmFields/shippingLabel"
-                                value="Shipping Address"/>
-                            <shippingPlaceholder
-                                jcr:primaryType="nt:unstructured"
-                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                fieldDescription="Shipping Place Holder"
-                                fieldLabel="Search For Postal Code placeholder text"
-                                name="./frmFields/shippingPlaceholder"
-                                value="Shipping Place Holder"/>
-                            <shippingHelperText
-                                jcr:primaryType="nt:unstructured"
-                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                fieldDescription="Shipping Helper Text"
-                                fieldLabel="Shipping Helper Text"
-                                name="./frmFields/shippingHelperText"
-                                value="Key in your postal code and find your address"/>
-                            <consentPreviewText
-                                jcr:primaryType="nt:unstructured"
-                                sling:resourceType="granite/ui/components/coral/foundation/form/textarea"
-                                fieldDescription="Consent Preview Text"
-                                fieldLabel="Consent Preview Text"
-                                name="./frmFields/consentPreviewText"
-                                value="I consent to trustworthy cooperation partners of Lebara contacting me about their products and services for"/>
+                                    fieldDescription="Cancel CTA Label"
+                                    fieldLabel="Cancel CTA Label"
+                                    name="./frmFields/cancelCTALabel"
+                                    value="CANCEL"/>
+
+
+
+
+
 
                         </items>
                     </column2>
