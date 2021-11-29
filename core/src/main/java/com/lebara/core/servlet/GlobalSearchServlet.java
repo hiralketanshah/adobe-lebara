@@ -46,9 +46,6 @@ public class GlobalSearchServlet extends SlingSafeMethodsServlet {
     @Reference
     private transient QueryBuilder builder;
 
-    private ResourceResolver resourceResolver;
-
-    private Session session;
     transient Logger LOGGER = LoggerFactory.getLogger(getClass());
 
     public static final String DEFAULT_SEARCH_ROOT = "/content/lebara";
@@ -58,8 +55,8 @@ public class GlobalSearchServlet extends SlingSafeMethodsServlet {
             throws ServletException, IOException {
         String param = request.getParameter("q");
         String searchType = request.getParameter("searchType");
-        resourceResolver = request.getResourceResolver();
-        session = resourceResolver.adaptTo(Session.class);
+        ResourceResolver resourceResolver = request.getResourceResolver();
+        Session session = resourceResolver.adaptTo(Session.class);
         String searchRoot = request.getParameter("searchRoot");
         if (StringUtils.isEmpty(searchRoot)) {
             searchRoot = DEFAULT_SEARCH_ROOT;

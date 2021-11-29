@@ -10,6 +10,7 @@ import org.apache.sling.models.annotations.Exporter;
 import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.injectorspecific.ChildResource;
 import org.apache.sling.models.annotations.injectorspecific.ScriptVariable;
+import org.apache.sling.models.annotations.injectorspecific.SlingObject;
 import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
 
 import java.util.ArrayList;
@@ -25,6 +26,9 @@ public class UsageDetailsExporter extends HeadingExporter {
      * The resource type.
      */
     protected static final String RESOURCE_TYPE = "lebara/components/usagedetails";
+
+    @SlingObject
+    private SlingHttpServletRequest request;
 
     @ChildResource
     private Resource tabs;
@@ -53,7 +57,7 @@ public class UsageDetailsExporter extends HeadingExporter {
     }
 
     public String getCtaSeeMoreURL() {
-        return AemUtils.getLinkWithExtension(ctaSeeMoreURL);
+        return AemUtils.getLinkWithExtension(ctaSeeMoreURL, request);
     }
 
     public List<String> getTabsName() {

@@ -184,6 +184,8 @@
 		<property name="showLabel" />
 		<property name="hideLabel" />
 		<property name="ctaTopLabel" />
+		<property name="ctaCloseLabel" />
+		<property name="ctaDownloadLabel" />
 		<property name="ctaBottomLabel" />
 		<property name="getExploreAllLabel" />
 		
@@ -315,6 +317,9 @@
 		<property name="editLabel"/>
 		<property name="mobileNumberLabel"/>
 
+
+		<!--Support component -->
+		<property name="ctaLinkLabel"/>
 
 		<!--Help center Search -->
 		<property name="searchPlaceholder"/>
