@@ -65,17 +65,15 @@ const RegisterTabs: React.FC<LoginTabsProps> = ({ ...loginModuleProps }) => {
       letterSpacing="0.25px"
       mt="22px"
     >
-      <Text
-        color="grey.300"
-        fontWeight="400"
-        lineHeight="20px"
-        letterSpacing="0.25px"
-      >
+      <Text d="inline">
         {" "}
-        {loginModuleProps?.extraBlockRegisterText} <Link href="/" onClick={(e) => {
-          e.preventDefault();
-          handleTabSwitch("0");
-        }}>{loginModuleProps?.extraBlockRegisterLinkText}</Link>{" "}
+        {loginModuleProps?.extraBlockRegisterText}
+        <Link
+            d="inline"
+            href={(GC.journeyPages[GCST.LOGIN] || '/')}
+        >
+        {loginModuleProps?.extraBlockRegisterLinkText}
+        </Link>{" "}
       </Text>
     </Flex>
   );
