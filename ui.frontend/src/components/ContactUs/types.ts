@@ -1,4 +1,4 @@
-interface SupportList {
+export interface SupportList {
     body?: string;
     title?: string;
     icon?: string;
