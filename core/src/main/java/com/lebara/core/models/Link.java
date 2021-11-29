@@ -36,7 +36,7 @@ public class Link {
     @PostConstruct
     private void init() {
         Resource linkResource = resourceResolver.getResource(link);
-        if (linkResource != null) {
+        if (StringUtils.isBlank(label) && linkResource != null) {
             Page page = linkResource.adaptTo(Page.class);
             if (page != null) {
                 label = AemUtils.getTitle(page);
