@@ -16,7 +16,6 @@ import javax.jcr.Session;
 import javax.servlet.Servlet;
 import javax.servlet.ServletException;
 import java.io.IOException;
-import java.util.HashMap;
 import java.util.Map;
 
 import static org.apache.sling.api.servlets.ServletResolverConstants.*;
@@ -32,10 +31,11 @@ import static org.apache.sling.api.servlets.ServletResolverConstants.*;
         }
 )
 public class HelpCenterSearchServlet extends GlobalSearchServlet {
+	
     @Reference
-    private QueryBuilder builder;
+    private transient QueryBuilder builder;
    
-    final Logger LOGGER = LoggerFactory.getLogger(getClass());
+    final transient Logger log = LoggerFactory.getLogger(getClass());
 
     @Override
     protected void doGet(SlingHttpServletRequest request, SlingHttpServletResponse response)
@@ -47,20 +47,8 @@ public class HelpCenterSearchServlet extends GlobalSearchServlet {
         if (StringUtils.isEmpty(searchRoot)) {
             searchRoot = DEFAULT_SEARCH_ROOT;
         }
-        LOGGER.debug("searchRoot is {}", searchRoot);
-        Map<String, String> predicate = getHelpCenterSearchPredicates(param, searchRoot);
+        log.debug("searchRoot is {}", searchRoot);
+        Map<String, String> predicate = getGlobalSearchPredicates(param, searchRoot);
         response.getWriter().println(getSearchInfoString(predicate, builder, session));
     }
-
-    private Map<String, String> getHelpCenterSearchPredicates(String param, String searchRoot) {
-        Map<String, String> predicate = new HashMap<>();
-        predicate.put("path", searchRoot);
-        predicate.put("type", "cq:Page");
-        predicate.put("p.limit", "20");
-        predicate.put("1_property", "jcr:content/jcr:title");
-        predicate.put("1_property.value", "%" + param + "%");
-        predicate.put("1_property.operation", "like");
-        return predicate;
-    }
-
 }
