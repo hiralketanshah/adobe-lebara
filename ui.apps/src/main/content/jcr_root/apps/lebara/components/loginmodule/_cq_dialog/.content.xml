@@ -15,7 +15,7 @@
                 <items jcr:primaryType="nt:unstructured">
                     <genric
                         jcr:primaryType="nt:unstructured"
-                        jcr:title="Genric"
+                        jcr:title="Generic"
                         sling:resourceType="granite/ui/components/coral/foundation/container"
                         margin="{Boolean}true">
                         <items jcr:primaryType="nt:unstructured">

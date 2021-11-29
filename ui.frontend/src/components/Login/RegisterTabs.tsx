@@ -14,6 +14,7 @@ import { LoginTabsProps } from "./types";
 import LoginTab from "./LoginTab";
 import RegisterTab from "./RegisterTab";
 import Link from "../Link/Link";
+import { globalConfigs as GC, globalConstants as GCST} from "../../GlobalConfigs";
 
 const RegisterTabs: React.FC<LoginTabsProps> = ({ ...loginModuleProps }) => {
   // const cartItems = useSelector((state: ReduxState) => state.cart);
