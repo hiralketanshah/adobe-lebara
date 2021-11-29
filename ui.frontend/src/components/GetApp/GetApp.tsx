@@ -1,16 +1,23 @@
 import React from "react";
 import { Box, Flex, Text, Image, Link } from "@chakra-ui/react";
+import { IoIosCheckmarkCircleOutline } from "react-icons/all";
+import AvailableOnTheAppstore from "../../icons/AvailableOnTheAppstoreIcon";
+import GetItOnGooglePlayIcon from "../../icons/GetItOnGooglePlayIcon";
+import LebaraText from "../LebaraText/LebaraText";
 import AppPromo from "./GetAppPromo";
 
 import { GetAppProps } from "./types";
 
 const GetApp: React.FC<GetAppProps> = ({
   appTitle,
+  show,
   backgroundImageMobile,
   backgroundImageDesktop,
-  links,
   textDescription,
-  show,
+  links,
+  textCol1,
+  textCol2,
+  getAppLabel,
 }) => {
   return (
     <>

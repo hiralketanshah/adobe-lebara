@@ -81,7 +81,7 @@
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
                                                 checked="{Boolean}false"
-                                                fieldDescription="When checked, enables definition of custom colors for button background, text and hover color."
+                                                fieldDescription="When checked, enables definition of custom colors for button background and hover color."
                                                 name="./colorsEnabled"
                                                 text="Enable Custom Button Colors"
                                                 uncheckedValue="{Boolean}false"
@@ -94,16 +94,7 @@
                                                 name="./buttonBackgroundColor"
                                                 showDefaultColors="{Boolean}false"
                                                 showProperties="{Boolean}true"
-                                                showSwatches="{Boolean}true"/>
-                                            <buttonTextColor
-                                                jcr:primaryType="nt:unstructured"
-                                                sling:resourceType="granite/ui/components/coral/foundation/form/colorfield"
-                                                disabled="{Boolean}true"
-                                                fieldLabel="Button Text Color"
-                                                name="./buttonTextColor"
-                                                showDefaultColors="{Boolean}false"
-                                                showProperties="{Boolean}true"
-                                                showSwatches="{Boolean}true"/>
+                                                showSwatches="{Boolean}true"/>                                            
                                             <buttonHoverBgColor
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/colorfield"
@@ -112,16 +103,7 @@
                                                 name="./buttonHoverBgColor"
                                                 showDefaultColors="{Boolean}false"
                                                 showProperties="{Boolean}true"
-                                                showSwatches="{Boolean}true"/>
-                                            <buttonHoverTextColor
-                                                jcr:primaryType="nt:unstructured"
-                                                sling:resourceType="granite/ui/components/coral/foundation/form/colorfield"
-                                                disabled="{Boolean}true"
-                                                fieldLabel="Button Hover Text Color"
-                                                name="./buttonHoverTextColor"
-                                                showDefaultColors="{Boolean}false"
-                                                showProperties="{Boolean}true"
-                                                showSwatches="{Boolean}true"/>
+                                                showSwatches="{Boolean}true"/>                                            
                                         </items>
                                     </column>
                                 </items>

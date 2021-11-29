@@ -38,6 +38,9 @@ public class DetailedViewPlanExporter extends ViewPlanExporter implements Compon
     private I18n i18n;
 
     @SlingObject
+    private SlingHttpServletRequest request;
+
+    @SlingObject
     private ResourceResolver resourceResolver;
 
     @ScriptVariable
@@ -79,7 +82,6 @@ public class DetailedViewPlanExporter extends ViewPlanExporter implements Compon
     @ValueMapValue
     private String backgroundColor;
 
-
     public String getProductInformationFile() {
         return (i18n == null ? "Product Information" : i18n.get("product.information.label"));
     }
@@ -113,7 +115,7 @@ public class DetailedViewPlanExporter extends ViewPlanExporter implements Compon
     }
 
     public String getCtaTopLink() {
-    	return AemUtils.getLinkWithExtension(ctaTopLink);
+        return AemUtils.getLinkWithExtension(ctaTopLink, request);
     }
 
     public String getCtaBottomLabel() {
@@ -121,7 +123,7 @@ public class DetailedViewPlanExporter extends ViewPlanExporter implements Compon
     }
 
     public String getCtaBottomLink() {
-    	return AemUtils.getLinkWithExtension(ctaBottomLink);
+        return AemUtils.getLinkWithExtension(ctaBottomLink, request);
     }
 
     public String getBackgroundColor() { return backgroundColor; }
@@ -129,6 +131,10 @@ public class DetailedViewPlanExporter extends ViewPlanExporter implements Compon
     @PostConstruct
     private void init() {
         i18n = AemUtils.geti18n(resourceResolver, resource, slingRequest);
+    }
+
+    public String getProductInformationButtonLabel() {
+        return (i18n == null ? "Product Information" : i18n.get("product.information.label"));
     }
 
     @Override

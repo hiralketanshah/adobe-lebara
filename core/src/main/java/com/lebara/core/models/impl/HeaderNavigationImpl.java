@@ -16,6 +16,7 @@ import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.Via;
 import org.apache.sling.models.annotations.injectorspecific.ScriptVariable;
 import org.apache.sling.models.annotations.injectorspecific.Self;
+import org.apache.sling.models.annotations.injectorspecific.SlingObject;
 import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
 import org.apache.sling.models.annotations.via.ResourceSuperType;
 
@@ -26,6 +27,9 @@ import java.util.stream.Collectors;
         resourceType = HeaderNavigationImpl.RESOURCE_TYPE, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
 @Exporter(name = ExporterConstants.SLING_MODEL_EXPORTER_NAME, extensions = ExporterConstants.SLING_MODEL_EXTENSION)
 public class HeaderNavigationImpl implements HeaderNavigation {
+
+    @SlingObject
+    private SlingHttpServletRequest request;
 
     @ScriptVariable
     protected Resource resource;
@@ -89,11 +93,11 @@ public class HeaderNavigationImpl implements HeaderNavigation {
 
     @Override
     public String getTopupCtaLink() {
-        return AemUtils.getLinkWithExtension(topupCtaLink);
+        return AemUtils.getLinkWithExtension(topupCtaLink, request);
     }
 
     public String getAccountLink() {
-        return AemUtils.getLinkWithExtension(accountLink);
+        return AemUtils.getLinkWithExtension(accountLink, request);
     }
 
     @Override
@@ -108,7 +112,7 @@ public class HeaderNavigationImpl implements HeaderNavigation {
     @JsonProperty("items")
     public List<CustomNavigationItem> getCustomItems() {
         return delegate.getItems().stream()
-                .map(navItem -> new CustomNavigationItem(resource, navItem))
+                .map(navItem -> new CustomNavigationItem(resource, navItem, request))
                 .collect(Collectors.toList());
     }
 }

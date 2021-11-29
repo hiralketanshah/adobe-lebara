@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Box, Divider, Flex, Spacer, Text } from "@chakra-ui/react";
 import { SelectedTopUpCreditCardProps } from "./types";
 import Button from "../Button/Button";
@@ -6,13 +6,18 @@ import DeleteIcon from "../../icons/DeleteIcon";
 import Select from "../Select/Select";
 import Switch from "../ToggleSwitch/Switch";
 import InfoBox from "../InfoBox/InfoBox";
-import {globalConfigs} from  '../../GlobalConfigs.js';
+import { globalConfigs } from '../../GlobalConfigs.js';
+import useCartHelpers from "../../hooks/useCartHelpers";
+import { formatNumber } from "../../utils/formatNumber";
 const DataSelectedTopUpCreditCard: React.FC<SelectedTopUpCreditCardProps> = ({
+  isAutoTopUp,
   onRemove,
   magentoId,
   selectedPrice,
   prices,
   onSelectPrice,
+  showAutoRenew,
+  topUpCap,
   topUpCapDesc,
   topUpCapLabel,
   topUpCreditLabel,
@@ -22,27 +27,28 @@ const DataSelectedTopUpCreditCard: React.FC<SelectedTopUpCreditCardProps> = ({
 }) => {
   const handleChange = (e: any) => {
     if (!onSelectPrice) return;
-    onSelectPrice(magentoId, Number(e.target.value));
+    const price = Number(e.target.value);
+    onSelectPrice(magentoId, price, isAutoTopUp, price);
   };
   const handleRemove = () => {
     if (!onRemove) return;
     onRemove(magentoId);
   };
 
-  const [isAutoTopUp, setIsAutoTopUp] = useState(false);
-  const [topUpCap, setTopUpCap] = useState<number>(selectedPrice);
+  const { setIsRecurring } = useCartHelpers();
 
-  const handleTopUpCap = (e: any) => {
-    setTopUpCap(Number(e.target.value));
+  const handleTopUpCap = async (e: any) => {
+    await setIsRecurring(magentoId, isAutoTopUp, Number(e.target.value));
   };
   return (
     <Box
       px={27}
       pt={{ base: 15, lg: 26 }}
       pb={{ base: 15, lg: 13 }}
-      boxShadow="md"
       bg="white"
-      borderRadius={8}
+      border="1px"
+      borderRadius="8px"
+      borderColor={{ base: "white", lg: "greySuccess" }}
     >
       <Flex alignItems="center" mb="23px">
         <Box
@@ -53,7 +59,7 @@ const DataSelectedTopUpCreditCard: React.FC<SelectedTopUpCreditCardProps> = ({
           fontWeight="bold"
           color="bodyCopy"
         >
-         {topUpCreditLabel}
+          {topUpCreditLabel}
         </Box>
         <Spacer />
         <Box
@@ -65,7 +71,7 @@ const DataSelectedTopUpCreditCard: React.FC<SelectedTopUpCreditCardProps> = ({
           color="bodyCopy"
         >
           <Select
-            w="92px"
+            minW="max-content"
             onChange={handleChange}
             value={selectedPrice}
             color="primary.700"
@@ -74,68 +80,71 @@ const DataSelectedTopUpCreditCard: React.FC<SelectedTopUpCreditCardProps> = ({
             options={prices.map((price) => ({
               key: price,
               value: price.toString(),
-              name: `${globalConfigs.currencySymbol}${price}`,
+              name: `${formatNumber(price)}${globalConfigs.currencySymbol}`,
             }))}
           />
         </Box>
       </Flex>
-      <Switch
-        label={autoRenewLabel}
-        mr="4px"
-        pt="11px"
-        size="lg"
-        onChange={(e) => setIsAutoTopUp(e.target.checked)}
-      />
-      {isAutoTopUp && (
+      {showAutoRenew && (
         <>
-          <Text fontSize={12} color="grey.300" mt="4px">
-            {autoRenewDesc}
-            {selectedPrice}
-          </Text>
-          <Flex alignItems="center" mt="16px">
-            <Box
-              as="h3"
-              fontSize="16px"
-              pr="4px"
-              pl="2px"
-              fontWeight="bold"
-              color="bodyCopy"
-            >
-              <Text>{topUpCapLabel}</Text>
-              <Box fontWeight="400" fontSize="14px" mt="4px">
-                <InfoBox description={topUpCapDesc || ''} />
-              </Box>
-            </Box>
-            <Spacer />
-            <Box
-              as="h3"
-              fontSize="30px"
-              pr="4px"
-              pl="2px"
-              fontWeight="bold"
-              color="bodyCopy"
-            >
-              <Select
-                w="92px"
-                onChange={handleTopUpCap}
-                value={topUpCap}
-                color="primary.700"
-                fontWeight="bold"
-                fontSize={24}
-                options={[
-                  selectedPrice,
-                  selectedPrice * 2,
-                  selectedPrice * 3,
-                  selectedPrice * 4,
-                  selectedPrice * 5,
-                ].map((price) => ({
-                  key: price,
-                  value: price.toString(),
-                  name: `${globalConfigs.currencySymbol}${price}`,
-                }))}
-              />
-            </Box>
-          </Flex>
+          <Switch
+            label={autoRenewLabel}
+            mr="4px"
+            isChecked={isAutoTopUp}
+            onChange={(e) => setIsRecurring(magentoId, e.target.checked)}
+          />
+          {isAutoTopUp && (
+            <>
+              <Text fontSize={12} color="grey.300" mt="4px">
+                {autoRenewDesc}
+                {selectedPrice}
+              </Text>
+              <Flex alignItems="center" mt="16px">
+                <Box
+                  as="h3"
+                  fontSize="16px"
+                  pr="4px"
+                  pl="2px"
+                  fontWeight="bold"
+                  color="bodyCopy"
+                >
+                  <Text>{topUpCapLabel}</Text>
+                  <Box fontWeight="400" fontSize="14px" mt="4px">
+                    <InfoBox description={topUpCapDesc || ''} />
+                  </Box>
+                </Box>
+                <Spacer />
+                <Box
+                  as="h3"
+                  fontSize="30px"
+                  pr="4px"
+                  pl="2px"
+                  fontWeight="bold"
+                  color="bodyCopy"
+                >
+                  <Select
+                    minW="max-content"
+                    onChange={handleTopUpCap}
+                    value={topUpCap}
+                    color="primary.700"
+                    fontWeight="bold"
+                    fontSize={24}
+                    options={[
+                      selectedPrice,
+                      selectedPrice * 2,
+                      selectedPrice * 3,
+                      selectedPrice * 4,
+                      selectedPrice * 5,
+                    ].map((price) => ({
+                      key: price,
+                      value: price.toString(),
+                      name: `${globalConfigs.currencySymbol}${price}`,
+                    }))}
+                  />
+                </Box>
+              </Flex>
+            </>
+          )}
         </>
       )}
       <Divider my={4} />

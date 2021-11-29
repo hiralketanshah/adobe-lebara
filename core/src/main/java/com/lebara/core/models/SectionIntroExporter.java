@@ -6,6 +6,7 @@ import org.apache.sling.models.annotations.DefaultInjectionStrategy;
 import org.apache.sling.models.annotations.Exporter;
 import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.injectorspecific.ScriptVariable;
+import org.apache.sling.models.annotations.injectorspecific.SlingObject;
 import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
 
 import com.adobe.cq.export.json.ComponentExporter;
@@ -21,6 +22,9 @@ public class SectionIntroExporter implements ComponentExporter {
 	 * The resource type.
 	 */
 	protected static final String RESOURCE_TYPE = "lebara/components/sectionintro";
+
+	@SlingObject
+	private SlingHttpServletRequest slingRequest;
 
 	@ScriptVariable
 	private Resource resource;
@@ -67,7 +71,7 @@ public class SectionIntroExporter implements ComponentExporter {
 	}
 
 	public String getLinkPath() {
-		return AemUtils.getLinkWithExtension(linkPath);
+		return AemUtils.getLinkWithExtension(linkPath, slingRequest);
 	}
 
 	public boolean isNoPadding() {

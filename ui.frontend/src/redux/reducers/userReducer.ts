@@ -1,10 +1,8 @@
 import { createReducer } from "redux-act";
 import produce from "immer";
-import { logout, saveUserInfo, saveUserToken } from "../actions/userActions";
+import { logout, saveUserInfo } from "../actions/userActions";
 
 export interface UserState {
-  token?: string;
-  name?: string;
   email?: string;
   crmId?: string;
   msisdn?: string[];
@@ -32,12 +30,6 @@ reducer
       draft.msisdn = undefined;
       draft.isAuthenticated = false;
     })
-);
-
-reducer.on(saveUserToken, (state, payload) =>
-  produce(state, (draft) => {
-    draft.name = payload.token;
-  })
-);
+  );
 
 export default reducer;
