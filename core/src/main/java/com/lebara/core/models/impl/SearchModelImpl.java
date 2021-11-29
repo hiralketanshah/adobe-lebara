@@ -15,13 +15,13 @@ import org.apache.sling.models.annotations.via.ResourceSuperType;
 import com.adobe.cq.export.json.ComponentExporter;
 import com.adobe.cq.export.json.ExporterConstants;
 import com.adobe.cq.wcm.core.components.models.Search;
-import com.lebara.core.models.GenericSearch;
+import com.lebara.core.models.SearchModel;
 import com.lebara.core.models.Link;
 
-@Model(adaptables = SlingHttpServletRequest.class, adapters = { GenericSearchImpl.class,
-		ComponentExporter.class }, resourceType = GenericSearchImpl.RESOURCE_TYPE, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
+@Model(adaptables = SlingHttpServletRequest.class, adapters = { SearchModelImpl.class,
+		ComponentExporter.class }, resourceType = SearchModelImpl.RESOURCE_TYPE, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
 @Exporter(name = ExporterConstants.SLING_MODEL_EXPORTER_NAME, extensions = ExporterConstants.SLING_MODEL_EXTENSION)
-public class GenericSearchImpl implements GenericSearch {
+public class SearchModelImpl implements SearchModel {
 
 	@ValueMapValue
 	private String searchPlaceholder;
@@ -38,7 +38,7 @@ public class GenericSearchImpl implements GenericSearch {
 	/**
 	 * The resource type.
 	 */
-	protected static final String RESOURCE_TYPE = "lebara/components/genericsearch";
+	protected static final String RESOURCE_TYPE = "lebara/components/search";
 
 	@Self
 	@Via(type = ResourceSuperType.class)
