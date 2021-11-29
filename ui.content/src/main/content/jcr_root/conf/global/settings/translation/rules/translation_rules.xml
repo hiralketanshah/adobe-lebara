@@ -486,6 +486,10 @@
 		<property name="textCol2"/>
 		<property name="getAppLabel"/>
 
+		<!-- getitnow -->
+		<property name="getItNowErrorMessage"/>
+		
+
 		<!-- Global Search -->
 		<property name="mostSearchLabel"/>
 		
