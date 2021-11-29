@@ -1,12 +1,13 @@
 import React from "react";
 import { Box, Text, Flex } from "@chakra-ui/react";
 import Button from "../Button/Button";
-import ChatIcon from "../../assets/images/support_chat.png";
-import CallIcon from "../../assets/images/support_callus.png";
-import EmailIcon from "../../assets/images/support_email.png";
 import { ContactUsProps } from "./types";
 
-const ContactUs: React.FC<ContactUsProps> = ({}) => {
+const ContactUs: React.FC<ContactUsProps> = ({
+  heading,
+  description,
+  supportList,
+}) => {
   const headingStyle = {
     fontFamily: "Roboto",
     fontWeight: { base: "500", lg: "bold" },
@@ -35,7 +36,7 @@ const ContactUs: React.FC<ContactUsProps> = ({}) => {
       paddingLeft={{ base: "20px", lg: "81px" }}
       paddingRight="20px"
     >
-      <Text
+      {heading && <Text
         fontFamily="Chiswick Grotesque Lebara"
         fontWeight="bold"
         fontSize="32px"
@@ -43,30 +44,27 @@ const ContactUs: React.FC<ContactUsProps> = ({}) => {
         letterSpacing="0.25px"
         color="primary.500"
       >
-        Ask us for support
-      </Text>
-      <Text
+        {heading}
+      </Text>}
+      {description && <Text
         fontFamily="Roboto"
         fontSize={{ base: "14px", lg: "16px" }}
         lineHeight={{ base: "20px", lg: "23px" }}
         mt="10px"
       >
-        Our team is here to help you 7 days a week.
-      </Text>
-      <Flex
+        {description}
+      </Text>}
+      {supportList && supportList.length && <Flex
         mt={{ base: "10px", lg: "50px" }}
         flexDirection={{ base: "column", lg: "row" }}
       >
         <Box {...boxStyle} mt="10px">
           <Flex alignItems="center">
-            <Text {...headingStyle}>Live Chat</Text>
-            <img src={ChatIcon} alt="chat" style={{ marginLeft: "auto" }} />
+            <Text {...headingStyle}>{supportList?.title}</Text>
+            <img src={supportList?.icon} alt="chat" style={{ marginLeft: "auto" }} />
           </Flex>
           <Text {...contactBoxTextStyle} mt={{ base: "9px", lg: "9px" }}>
-            Chat to our friendly advisors.
-          </Text>
-          <Text {...contactBoxTextStyle} mt={{ base: "3px", lg: "13px" }}>
-            We are online everyday from 9am to 9pm.
+            {supportList?.body}
           </Text>
           <Button
             w="100%"
@@ -150,7 +148,7 @@ const ContactUs: React.FC<ContactUsProps> = ({}) => {
             E-MAIL US
           </Button>
         </Box>
-      </Flex>
+      </Flex>}
     </Box>
   );
 };

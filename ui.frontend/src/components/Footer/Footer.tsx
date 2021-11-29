@@ -62,7 +62,7 @@ const Footer: React.FC<FooterProps> = ({
         </AccordionItem>
       ))}
     </Accordion>
-
+GOOTER!!
     <Box px="10px">
       <Text
         fontSize={22}
