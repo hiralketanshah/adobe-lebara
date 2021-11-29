@@ -84,7 +84,9 @@ const PersonalDetailsForm: React.FC<PersonalDetailsFormProps> = ({
   minimumCharactersLabel,
   samePasswordLabel,
   passwordField,
-  confirmPasswordField
+  confirmPasswordField,
+  showPasswordLabel,
+  hidePasswordLabel
 }) => {
   const formInitialValues = useSelector(selectFormValues("personalDetails"));
   const history = useHistory();
@@ -337,11 +339,15 @@ const PersonalDetailsForm: React.FC<PersonalDetailsFormProps> = ({
                       name="password"
                       label={passwordField}
                       isRequired
+                      showPasswordLabel={showPasswordLabel}
+                      hidePasswordLabel={hidePasswordLabel}
                       {...disabledInputProps}
                     />
                     <FormikPassword
                       name="confirmPassword"
                       label={confirmPasswordField}
+                      showPasswordLabel={showPasswordLabel}
+                      hidePasswordLabel={hidePasswordLabel}
                       isRequired
                       {...disabledInputProps}
                     />

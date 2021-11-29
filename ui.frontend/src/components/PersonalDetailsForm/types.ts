@@ -55,4 +55,6 @@ export interface PersonalDetailsFormProps {
   samePasswordLabel?: string;
   passwordField?: string;
   confirmPasswordField?: string;
+  showPasswordLabel?: string;
+  hidePasswordLabel?: string;
 }

@@ -12,4 +12,6 @@ export interface FormikPasswordProps {
   removeValidation?: boolean;
   isShowHide?: boolean;
   isShowHideButton?: boolean;
+  showPasswordLabel?: string;
+  hidePasswordLabel?: string;
 }

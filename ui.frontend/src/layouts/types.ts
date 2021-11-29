@@ -69,6 +69,7 @@ export interface OrderDetailsProps extends deleteCartItemCmsProps, topupCreditCm
 	plansTitle?: string;
 	addonsTitle?: string;
 	missingInfoLabel?: string;
+	termsAndConditionsLabel?: string;
   }
 
   export interface deleteCartItemCmsProps {

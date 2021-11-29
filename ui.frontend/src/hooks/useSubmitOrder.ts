@@ -3,8 +3,7 @@ import { selectIsAuthenticated } from "../redux/selectors/userSelectors";
 import useMissingDetails from "./useMissingDetails";
 import { selectFormValues } from "../redux/selectors/formsSelectors";
 import { useLocation } from "react-router-dom";
-
-const { REACT_APP_HOST_URI } = process.env;
+import { globalConfigs } from "../GlobalConfigs";
 
 function useSubmitOrder() {
   const location = useLocation<{
@@ -64,12 +63,12 @@ function useSubmitOrder() {
 
   const submitOrder = (stateData: any, formUserDetails?: any) => {
     const finalUserDetails: any = formUserDetails ?? userDetails;
-    return fetch(`${REACT_APP_HOST_URI}/payments/adyen/payments`, {
+    return fetch(`${globalConfigs.apiHostUri}/payments/adyen/payments`, {
       credentials: "include",
       method: "POST",
       body: JSON.stringify({
         channel: "Web",
-        country: "DE",
+        country: globalConfigs.country,
         userType: "Registered",
         marketingPreferences,
         personalDetails: {

@@ -25,6 +25,8 @@ const FormikPassword: React.FC<FormikPasswordProps> = ({
   validate,
   isShowHide,
   isShowHideButton,
+  showPasswordLabel,
+  hidePasswordLabel
 }) => {
   const [showPassword, setShowPassword] = useState(false);
   const [field, meta] = useField({
@@ -116,7 +118,7 @@ const FormikPassword: React.FC<FormikPasswordProps> = ({
                     backgroundColor: "inherit",
                   }}
                 >
-                  {showPassword ? "Hide" : "Show"}
+                  {showPassword ? hidePasswordLabel : showPasswordLabel}
                 </Button>
               </InputRightElement>{" "}
             </Box>

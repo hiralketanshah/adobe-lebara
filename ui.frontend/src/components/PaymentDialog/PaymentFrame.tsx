@@ -10,7 +10,12 @@ import { loadInitialCart } from "../../redux/actions/cartActions";
 import { setPaymentMethods } from "../../redux/actions/paymentMethodsActions";
 import {globalConfigs, globalConstants} from  '../../GlobalConfigs.js';
 import { googleAnalyticsCheckout } from "../../utils/gtm";
-
+import { useApolloClient } from "@apollo/client";
+import useSubmitOrder from "../../hooks/useSubmitOrder";
+import AUTHENTICATE_USER_SPS from "../../graphql/AUTHENTICATE_USER_SPS";
+import { saveUserInfo } from "../../redux/actions/userActions";
+import { setLoading } from "../../redux/actions/loadingActions";
+import { resetForms } from "../../redux/actions/formsActions";
 const PaymentFrame: React.FC<{isPostpaid?: boolean}> = ({isPostpaid}) => {
   const [address, setAddress] = useState<string>("");
   const dispatch = useDispatch();
@@ -39,7 +44,8 @@ const PaymentFrame: React.FC<{isPostpaid?: boolean}> = ({isPostpaid}) => {
   }>();
 
   const history = useHistory();
-
+  const client = useApolloClient();
+  const { submitOrder, userDetails, portIn } = useSubmitOrder();
   const cartItems = useSelector((state: ReduxState) => state.cart.items);
   let paymentMethods = useSelector(
     (state: ReduxState) => state.paymentMethods.paymentMethods
@@ -56,11 +62,8 @@ const PaymentFrame: React.FC<{isPostpaid?: boolean}> = ({isPostpaid}) => {
       ),
     };
   }
-  const isFreeTopUpAndFreeSim = cartItems.every(
-    (t) => t.isFreeSimTopup || t.isFreeSim
-  );
   React.useEffect(() => {
-    googleAnalyticsCheckout(isFreeTopUpAndFreeSim ? 3 : 2);
+    googleAnalyticsCheckout("EEcheckoutPayment", 3, cartItems);
   }, []);
   const paymentContainerRef = useRef<HTMLDivElement>(null);
   const orderRef = useRef("");
@@ -95,11 +98,30 @@ const PaymentFrame: React.FC<{isPostpaid?: boolean}> = ({isPostpaid}) => {
         }
       )
         .then((res) => res.json())
-        .then((res) => {
+        .then(async (res) => {
           if (res) {
+            if (userDetails.password) {
+              const authUser = await client.query({
+                query: AUTHENTICATE_USER_SPS,
+                variables: {
+                  email: userDetails.email,
+                  password: userDetails.password,
+                },
+              });
+
+              if (authUser.data.authenticateUserSPS) {
+                dispatch(
+                  saveUserInfo({
+                    ...authUser.data.authenticateUserSPS,
+                    email: userDetails.email,
+                  })
+                );
+              }
+            }
             dispatch(loadInitialCart([]));
             history.push(`${(globalConfigs.journeyPages[globalConstants.ORDER_SUBMITTED]  || '/')}`, {
               isGuest: location?.state?.isGuest,
+              signedUp: !!userDetails.password,
               email:
                 location?.state?.email ??
                 location.state?.personalDetails?.email,
@@ -108,6 +130,7 @@ const PaymentFrame: React.FC<{isPostpaid?: boolean}> = ({isPostpaid}) => {
               personalDetails: location?.state?.personalDetails,
               voucherCode,
               cartItems: [...cartItems],
+              paymentMethod: state.data?.paymentMethod?.type,
               orderId: res
             });
           }
@@ -141,47 +164,11 @@ const PaymentFrame: React.FC<{isPostpaid?: boolean}> = ({isPostpaid}) => {
 
       onSubmit: (state: any, component: any) => {
         if (state.isValid) {
+          dispatch(setLoading(true));
           component.setStatus("loading");
-          fetch(`${globalConfigs.apiHostUri}/payments/adyen/payments`, {
-            credentials: "include",
-            method: "POST",
-            body: JSON.stringify({
-              channel: "Web",
-              country: globalConfigs.country ? globalConfigs.country : globalConfigs.locale,
-              userType: "Registered",
-              personalDetails: {
-                firstName:
-                  location.state?.personalDetails?.firstName,
-                lastName: location.state?.personalDetails?.lastName,
-                emailId: location.state?.isGuest
-                  ? location?.state.email
-                  : location.state?.personalDetails?.email,
-              },
-              portIn: location.state?.portIn
-                ? {
-                    ...location.state.portIn,
-                  }
-                : {},
-              addresses: [
-                {
-                  address1:
-                    location.state?.personalDetails?.streetName,
-                  address2:
-                    location.state?.personalDetails?.houseNumber,
-                  city:
-                    location.state?.personalDetails?.townCity,
-                  postcode: location.state?.personalDetails?.zipCode,
-                  addition: location.state?.personalDetails?.addition,
-                },
-              ],
-              ...state.data,
-            }),
-            headers: {
-              "Content-Type": "application/json",
-            },
-          })
+          submitOrder(state.data)
             .then((res) => res.json())
-            .then((res) => {
+            .then(async (res) => {
               if (res && res.error) {
                 setError(res.error);
                 component.setStatus("ready");
@@ -195,16 +182,6 @@ const PaymentFrame: React.FC<{isPostpaid?: boolean}> = ({isPostpaid}) => {
               ) {
                 setError(res[0].refusalReason);
                 component.setStatus("ready");
-                /*
-                component.setStatus("error", {
-                  message: res[0].additionalData.refusalReasonRaw
-                });
-*/
-                /*
-                component.setStatus('loading'); // start the loading state
-                component.setStatus('ready'); // set back to the initial state
-*/
-
                 return;
               }
               if (res && res.length && res.length > 0 && res[0].action) {
@@ -214,26 +191,49 @@ const PaymentFrame: React.FC<{isPostpaid?: boolean}> = ({isPostpaid}) => {
                 return;
               }
               if (res) {
+                if (userDetails.password) {
+                  const authUser = await client.query({
+                    query: AUTHENTICATE_USER_SPS,
+                    variables: {
+                      email: userDetails.email,
+                      password: userDetails.password,
+                    },
+                  });
+
+                  if (authUser.data.authenticateUserSPS) {
+                    dispatch(
+                      saveUserInfo({
+                        ...authUser.data.authenticateUserSPS,
+                        email: userDetails.email,
+                      })
+                    );
+                  }
+                }
+
                 dispatch(loadInitialCart([]));
-                history.push(`${(globalConfigs.journeyPages[globalConstants.ORDER_SUBMITTED] || '/')}`, {
+                dispatch(resetForms());
+
+                history.push(`${(globalConfigs.journeyPages[globalConstants.ORDER_SUBMITTED]  || '/')}`, {
                   isGuest: location?.state?.isGuest,
-                  email:
-                    location?.state?.email ??
-                    location.state?.personalDetails?.email,
-                  phoneNumber:
-                    location?.state?.phoneNumber ??
-                    location?.state?.portIn?.msisdn,
-                  personalDetails: location?.state?.personalDetails,
+                  email: location?.state?.email ?? userDetails.email,
+                  signedUp: !!userDetails.password,
+                  phoneNumber: location?.state?.phoneNumber ?? portIn?.msisdn,
+                  personalDetails: userDetails,
                   voucherCode,
                   cartItems: [...cartItems],
-                  orderId: res,
+                  paymentMethod: state.data?.paymentMethod?.type,
+                  orderId: res
                 });
+                dispatch(saveUserInfo);
               }
             })
-            .catch(() => {});
-        }
-      },
-    });
+            .catch(() => {})
+            .finally(() => {
+              dispatch(setLoading(false));
+            });
+          }
+        },
+      });
     if (paymentContainerRef.current != null) {
       checkout.current
         .create("dropin", {

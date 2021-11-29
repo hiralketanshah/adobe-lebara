@@ -53,7 +53,6 @@ const DataExpandablePlanCardCheckout: React.FC<ExpandablePlanCardCheckoutProps> 
     missingInfoLabel
   }) => {
     const [isAutoRenew, setIsAutoRenew] = React.useState(false);
-    const { isMissingDetails } = useMissingDetails();
     const [data, setData] = useState<Partial<ExpandableSimPlanCardProps>>({});
     async function fetchData() {
       const response = await fetch(getCfOfferDataUrl(id));
@@ -80,6 +79,8 @@ const DataExpandablePlanCardCheckout: React.FC<ExpandablePlanCardCheckoutProps> 
     const [isDialogOpen, setIsDialogOpen] = React.useState(false);
     const [isChangePlanDialogOpen, setIsChangePlanDialogOpen] =
     React.useState(false);
+    const { isMissingDetails, handleRedirectsForMissingData } =
+    useMissingDetails();
     const filteredAllowanceList: allowanceListProps = (data.allowanceList && data.allowanceList.find((list) => list.name && list.name.includes('Data'))) || {};
     return (
       <>
@@ -230,6 +231,8 @@ const DataExpandablePlanCardCheckout: React.FC<ExpandablePlanCardCheckoutProps> 
           )}
           {(isPrepaid || isPostPaid) && isMissingDetails && (
             <Flex
+              onClick={handleRedirectsForMissingData}
+              cursor="pointer"
               borderWidth={1}
               borderColor="warning"
               py="12px"

@@ -26,6 +26,8 @@ import {
 } from "../selectors/userSelectors";
 import { CartItem } from "../redux/types/cartTypes";
 import useMissingDetails from "../hooks/useMissingDetails";
+import { selectFormValues } from "../redux/selectors/formsSelectors";
+import { saveFormDetails } from "../redux/actions/formsActions";
 const OrderDetailsRoute: React.FC<OrderDetailsProps> = ({ ...props }) => {
   const { selectedProductLabel, grandTotalLabel, applyVoucherLabel, enterVoucherCodeLabel, consentLabel,
     paymentButtonLabel, phoneNumberLabel, viewPlansLabel, showDetailsLabel, removeLabel, autoRenewDesc, autoRenewLabel,
@@ -33,7 +35,7 @@ const OrderDetailsRoute: React.FC<OrderDetailsProps> = ({ ...props }) => {
     deleteCartItemDesc, deleteCartItemTitle, deleteCartItemNoButtonLabel, deleteCartItemYesButtonLabel,
     topUpCapDesc, topUpCapLabel, topUpCreditLabel, topUpRecommendedLabel, paymentMethodLabel, selectPlanLabel,
     addonsTitle, plansTitle, personalDetailsLabel, nameLabel, emailLabel, mobileNumberLabel, shippingAddressLabel,
-    editLabel, missingInfoLabel } = props;
+    editLabel, missingInfoLabel, termsAndConditionsLabel } = props;
   const [removeFromCartApi] = useMutation(REMOVE_FROM_CART);
   const dispatch = useDispatch();
   const history = useHistory();
@@ -45,7 +47,7 @@ const OrderDetailsRoute: React.FC<OrderDetailsProps> = ({ ...props }) => {
     isGuest?: boolean;
     personalDetails?: any;
   }>();
-  const personalDetailsLocation= location.state?.personalDetails;
+  const personalDetailsLocation = location.state?.personalDetails;
   const phoneNumber = location.state?.phoneNumber || userMsisdn;
   const isGuest = location?.state?.isGuest;
   const voucherCode = useSelector(
@@ -64,7 +66,7 @@ const OrderDetailsRoute: React.FC<OrderDetailsProps> = ({ ...props }) => {
     amount: t.price,
   }));
   const allItemsAreFree = cartItems.every((t) => t.price === 0);
-  const [isMarketingEnabled, setIsMarketingEnabled] = useState(false);
+  const { isMarketingEnabled } = useSelector(selectFormValues("order-details"));
   const [itemToRemove, setItemToRemove] = React.useState<{
     magentoId?: string;
     type: string;
@@ -349,7 +351,7 @@ const OrderDetailsRoute: React.FC<OrderDetailsProps> = ({ ...props }) => {
               magentoId={t.magentoId}
               selectedPrice={t.price}
               //prices to be taken from AEM CF
-              prices={[5, 10, 20, 30]}
+              prices={topUpOptions}
               onRemove={async (magentoId) => {
                 await handleRemoveItemFromCart(magentoId, "data");
               }}
@@ -436,16 +438,25 @@ const OrderDetailsRoute: React.FC<OrderDetailsProps> = ({ ...props }) => {
         <PurchaseSummary items={allItemsAreFree ? [] : items} grandTotalLabel={grandTotalLabel} />
         {!isGuest && !isAuthenticated && (
           <Flex
-            px={5}
-            py={6}
-            backgroundColor="white"
-            fontWeight="500"
-            borderRadius={8}
-            color="grey.300"
+          px={{ base: "16px", lg: 0 }}
+          py={{ base: "7px", lg: 0 }}
+          backgroundColor="white"
+          fontWeight="500"
+          borderRadius={8}
+          color="grey.300"
           >
             <Checkbox
               isChecked={isMarketingEnabled}
-              onChange={(e) => setIsMarketingEnabled(e.target.checked)}
+              onChange={() =>
+                dispatch(
+                  saveFormDetails({
+                    formName: "order-details",
+                    values: {
+                      isMarketingEnabled: !isMarketingEnabled,
+                    },
+                  })
+                )
+              }
             >
               <Text fontSize="14px">
                 <span dangerouslySetInnerHTML={{ __html: (consentLabel && consentLabel.replace(/<p>|<\/p>/g, '')) || '' }} />
@@ -456,6 +467,18 @@ const OrderDetailsRoute: React.FC<OrderDetailsProps> = ({ ...props }) => {
             </Checkbox>
           </Flex>
         )}
+        <Flex
+          px={{ base: "16px", lg: 0 }}
+          py={{ base: "7px", lg: 0 }}
+          backgroundColor="white"
+          fontWeight="500"
+          borderRadius={8}
+          color="grey.300"
+        >
+          <Text>
+            <span className={'rich-text-consent'} dangerouslySetInnerHTML={{ __html: termsAndConditionsLabel || "" }} />
+          </Text>
+        </Flex>
       </Flex>
     </BuyPlanLayout>
   );

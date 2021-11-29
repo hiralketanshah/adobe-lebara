@@ -1,4 +1,4 @@
-import { glocalConfigs as GC } from "../GlobalConfigs";
+import { globalConfigs, glocalConfigs as GC } from "../GlobalConfigs";
 export function googleAnalytics(event, obj) {
    event
     ? window?.dataLayer.push({
@@ -7,7 +7,7 @@ export function googleAnalytics(event, obj) {
       })
     : window?.dataLayer.push(obj);
 }
-export function googleAnalyticsCheckout(step, cartItems) {
+export function googleAnalyticsCheckout(eventName, step, cartItems) {
   const products = cartItems?.map((product) => ({
     id: product?.id,
     name: product?.duration,
@@ -21,20 +21,18 @@ export function googleAnalyticsCheckout(step, cartItems) {
         : product?.isTopUp
         ? "topup"
         : "bolton"
-    }/${product?.duration}///${
-      product?.isPrepaid || product?.isPostPaid
-        ? product.details[1]
-        : product?.isAddon === "addon"
-        ? product.details[1]
-        : ""
-    }`,
-    variant: "DE",
+    }/${product?.duration}///`,
+    variant: globalConfigs.country,
     quantity: 1,
   }));
   try {
+    if (!window.mt) {
+      return null;
+    }
     return window?.dataLayer.push({
-      event: "EEcheckout",
+      event: eventName,
       ecommerce: {
+        currencyCode: "EUR",
         checkout: {
           actionField: { step },
           products,

@@ -392,6 +392,18 @@
                                 fieldDescription="Both password need to be the same"
                                 fieldLabel="Same Password Label"
                                 name="./samePasswordLabel"/>
+                            <showpasswordlabel
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldDescription="Show"
+                                fieldLabel="Show Password Label"
+                                name="./showPasswordLabel"/>
+                            <hidepasswordlabel
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldDescription="Hide"
+                                fieldLabel="Hide Password Label"
+                                name="./hidePasswordLabel"/>
                         </items>
                     </column6>
                 </items>
