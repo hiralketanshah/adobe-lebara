@@ -1,7 +1,6 @@
 package com.lebara.core.models.impl;
 
 import java.util.List;
-
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.models.annotations.DefaultInjectionStrategy;
@@ -13,7 +12,6 @@ import org.apache.sling.models.annotations.injectorspecific.ScriptVariable;
 import org.apache.sling.models.annotations.injectorspecific.Self;
 import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
 import org.apache.sling.models.annotations.via.ResourceSuperType;
-
 import com.adobe.cq.export.json.ComponentExporter;
 import com.adobe.cq.export.json.ExporterConstants;
 import com.adobe.cq.wcm.core.components.models.Search;
@@ -64,8 +62,8 @@ public class GenericSearchImpl implements GenericSearch {
 	}
 
 	@Override
-    public String getExportedType() {
-        return RESOURCE_TYPE;
-    }
+	public String getExportedType() {
+		return RESOURCE_TYPE;
+	}
 
 }
