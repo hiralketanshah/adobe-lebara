@@ -4,6 +4,7 @@ import com.day.cq.wcm.api.Page;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.lebara.core.utils.AemUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.api.resource.ResourceResolver;
 import org.apache.sling.models.annotations.DefaultInjectionStrategy;
@@ -35,13 +36,16 @@ public class Link {
     @PostConstruct
     private void init() {
         Resource linkResource = resourceResolver.getResource(link);
-        if (linkResource == null) {
-            return;
+        if (linkResource != null) {
+            Page page = linkResource.adaptTo(Page.class);
+            if (page != null) {
+                label = AemUtils.getTitle(page);
+            }
         }
-        Page page = linkResource.adaptTo(Page.class);
-        if (page != null) {
-            label = AemUtils.getTitle(page);
+        if (StringUtils.isBlank(label)) {
+            label = link;
         }
+
     }
 
     @JsonIgnore
