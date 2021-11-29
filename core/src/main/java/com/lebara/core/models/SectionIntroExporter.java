@@ -16,7 +16,7 @@ import com.lebara.core.utils.AemUtils;
 @Model(adaptables = SlingHttpServletRequest.class, adapters = { SectionIntroExporter.class,
 		ComponentExporter.class }, resourceType = SectionIntroExporter.RESOURCE_TYPE, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
 @Exporter(name = ExporterConstants.SLING_MODEL_EXPORTER_NAME, extensions = ExporterConstants.SLING_MODEL_EXTENSION)
-public class SectionIntroExporter implements ComponentExporter {
+public class SectionIntroExporter extends IntroExporter {
 
 	/**
 	 * The resource type.
@@ -28,12 +28,6 @@ public class SectionIntroExporter implements ComponentExporter {
 
 	@ScriptVariable
 	private Resource resource;
-
-	@ValueMapValue
-	private String heading;
-
-	@ValueMapValue
-	private String description;
 
 	@ValueMapValue
 	private String sectionHeading;
@@ -49,14 +43,6 @@ public class SectionIntroExporter implements ComponentExporter {
 
 	@ValueMapValue
 	private boolean noPadding;
-
-	public String getHeading() {
-		return heading;
-	}
-
-	public String getDescription() {
-		return description;
-	}
 
 	public String getSectionHeading() {
 		return sectionHeading;
