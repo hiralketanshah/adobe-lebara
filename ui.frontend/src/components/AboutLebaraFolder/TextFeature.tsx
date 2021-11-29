@@ -29,7 +29,7 @@ const TextFeature: React.FC<AboutLebaraProps> = ({
 
   return (
     <>
-      {imageAlign && (imageAlign === '' || imageAlign === 'left') && (<Flex
+      {(!imageAlign || (imageAlign === '' || imageAlign === 'left')) && (<Flex
         flexDirection={{ base: "column", lg: "row" }}
         justifyContent="center"
         alignItems="center"
