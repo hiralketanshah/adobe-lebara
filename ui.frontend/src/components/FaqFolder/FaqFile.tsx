@@ -7,12 +7,14 @@ import {
   Box,
   Flex,
   Heading,
-  Text,
+  Text
 } from "@chakra-ui/react";
 import { FcMinus, GoPlus } from "react-icons/all";
 import { HomeFaqsProps } from "./types";
 
-const HomeFaqs: React.FC<HomeFaqsProps> = ({ title, options }) => {
+const HomeFaqs: React.FC<HomeFaqsProps> = ({ title, options,
+  backgroundColor,
+ }) => {
   const half = Math.ceil(options.length / 2);
 
   const firstHalf = options.slice(0, half);
@@ -64,7 +66,7 @@ const HomeFaqs: React.FC<HomeFaqsProps> = ({ title, options }) => {
     <Box
       py={{ base: "30px", lg: "60px" }}
       px={{ base: "20px", lg: "80px" }}
-      bg="lightenPrimary.50"
+      bg={backgroundColor ? backgroundColor : `lightenPrimary.50`}
     >
       <Heading color="primary.500" fontSize={{ base: "32px", lg: " 47px" }}>
         {title}
