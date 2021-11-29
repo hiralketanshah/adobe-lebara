@@ -118,7 +118,7 @@ const Header: React.FC<HeaderProps> = ({
     if( cartItems.length === 0){
       getCart();
     }
-  }, [cartItems, getCart]);
+  }, []);
   const { data: topUps } = useQuery(GET_TOP_UPS, {
     variables: {
       country: GC.country,
