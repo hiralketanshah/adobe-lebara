@@ -63,7 +63,7 @@
                             <optionsmultifield jcr:primaryType="nt:unstructured">
                                 <item0
                                     jcr:primaryType="nt:unstructured"
-                                    fieldLabel="default"
+                                    fieldLabel="Select Offer Type"
                                     fieldValue=""/>
                                 <item1
                                     jcr:primaryType="nt:unstructured"
