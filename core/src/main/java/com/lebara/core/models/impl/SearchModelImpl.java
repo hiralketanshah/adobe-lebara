@@ -29,6 +29,9 @@ public class SearchModelImpl implements SearchModel {
 	@ValueMapValue
 	private String mostSearchLabel;
 
+	@ValueMapValue
+	private String emptySearchResultMsg;
+
 	@ChildResource
 	private List<Link> links;
 
@@ -59,6 +62,10 @@ public class SearchModelImpl implements SearchModel {
 
 	public List<Link> getLinks() {
 		return links;
+	}
+
+	public String getEmptySearchResultMsg() {
+		return emptySearchResultMsg;
 	}
 
 	@Override
