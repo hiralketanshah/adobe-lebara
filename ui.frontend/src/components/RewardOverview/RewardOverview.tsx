@@ -9,7 +9,7 @@ const RewardOverview: React.FC<RewardOverviewProps> = ({
   columnHeader2,
   tableItems,
 }) => (
-  <Box
+  {heading && <Box
     maxWidth={{ base: "405px", md: "none" }}
     backgroundColor={{ base: "none", md: "grey.50" }}
     textAlign={{ md: "center" }}
@@ -84,6 +84,7 @@ const RewardOverview: React.FC<RewardOverviewProps> = ({
 
     </Box>
   </Box>
+  }
 );
 
 export default RewardOverview;
