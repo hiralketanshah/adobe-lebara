@@ -20,6 +20,7 @@ const FormikAddressSearch: React.FC<FormikAddressSearchProps> = ({
   isDisabled,
   country,
   postalCodeText,
+  onChange,
 }) => {
   const [field, meta, helpers] = useField(name);
   const { touched, error } = meta;
@@ -82,6 +83,9 @@ const FormikAddressSearch: React.FC<FormikAddressSearchProps> = ({
           value: field.value,
           onChange: (value: any) => {
             helpers.setValue(value);
+            if (onChange) {
+              onChange(value);
+            }
           },
           onBlur: () => {
             // https://github.com/formium/formik/issues/2083#issuecomment-639962222

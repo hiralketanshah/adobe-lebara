@@ -8,7 +8,6 @@ import {
   Text,
   useBreakpointValue,
 } from "@chakra-ui/react";
-import moment from "moment";
 import { TrustedShopSliderProps } from "./types";
 import TrustedShopReview from "../TrustedShopReview/TrustedShopReview";
 import ReviewSliderPrevIcon from "../../icons/ReviewSliderPrevIcon";
@@ -18,31 +17,25 @@ import { Image } from "../Image/Image";
 import TrustedShopsLogo from "./trusted-shop-logo.png";
 import TrustedShopsStarIcon from "../../icons/TrustedShopsStarIcon";
 import trustedShopsAxios from "../../utils/trustedShopsAxios";
+import { useQuery } from "@apollo/client";
+import GET_TRUSTED_SHOPS_REVIEWS from "../../graphql/GET_TRUSTED_SHOPS_REVIEWS";
 
 const TrustedShopSlider: React.FC<TrustedShopSliderProps> = ({title}) => {
   const [currentSlide, setCurrentSlide] = useState<number>(0);
   const slider = createRef<any>();
-  const [reviews, setReviews] = useState([]);
   const [trustedShopInfo, setTrustedShopInfo] = React.useState<{
     reviewsCount: number;
     markDescription: string;
     stars: number;
   }>();
-
   const slidesToShow = useBreakpointValue({ base: 1, lg: 3 }) || 1;
-
+  const { data: trustedShopsReviews } = useQuery(GET_TRUSTED_SHOPS_REVIEWS, {
+    variables: {
+      page: 0,
+      betterThan: 4,
+    },
+  });
   React.useEffect(() => {
-    trustedShopsAxios
-      .get("/shops/XC8F2118BD80057577BC028C8CB06B635/reviews.json")
-      .then((res) => {
-        setReviews(
-          (res.data.response?.data?.shop?.reviews || []).map((t: any) => ({
-            date: moment(t.creationDate).format("DD MMMM YYYY"),
-            description: t.comment,
-            stars: Number(t.mark),
-          }))
-        );
-      });
     trustedShopsAxios
       .get("/shops/XC8F2118BD80057577BC028C8CB06B635/quality.json")
       .then((res) => {
@@ -69,11 +62,12 @@ const TrustedShopSlider: React.FC<TrustedShopSliderProps> = ({title}) => {
   };
 
   const isPrevDisabled = currentSlide <= 0;
-  const isNextDisabled = slidesToShow + currentSlide >= reviews.length;
+  const isNextDisabled =
+    slidesToShow + currentSlide >=
+    trustedShopsReviews?.getTrustedShopsReviews?.length;
   const starsPercentage = trustedShopInfo.stars % 1;
-
   return (
-    <Box
+<Box
       pt={{ base: "23px", lg: "63px" }}
       pb={{ base: "23px", lg: "49px" }}
       px={{ base: "23px", lg: "80px" }}
@@ -109,7 +103,7 @@ const TrustedShopSlider: React.FC<TrustedShopSliderProps> = ({title}) => {
         afterChange={(slide) => setCurrentSlide(slide)}
         ref={slider}
       >
-        {reviews.map((t) => (
+        {trustedShopsReviews?.getTrustedShopsReviews?.filter((t: any)=> !!t.description).map((t: any) => (
           <TrustedShopReview {...t} />
         ))}
       </Slider>

@@ -34,6 +34,18 @@
                                     sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                     fieldLabel="Minutes Field"
                                     name="./minutesField"/>
+                            <ctaCLoseLabel
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                    fieldLabel="Popup Close Label"
+                                    value="Close"
+                                    name="./ctaCloseLabel"/>
+                            <ctaDowndloadLabel
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                    fieldLabel="Popup Downdload Label"
+                                    value="Download"
+                                    name="./ctaDownloadLabel"/>
                             <plans
                                     jcr:primaryType="nt:unstructured"
                                     jcr:title="Plans"

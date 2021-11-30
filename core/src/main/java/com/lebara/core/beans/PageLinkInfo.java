@@ -27,9 +27,6 @@ public class PageLinkInfo {
     protected String link;
 
     @SlingObject
-    private SlingHttpServletRequest request;
-
-    @SlingObject
     private ResourceResolver resourceResolver;
 
     private PageLink pageLinks = new PageLink();
@@ -51,7 +48,7 @@ public class PageLinkInfo {
             while (childPath.hasNext()) {
                 Link links = new Link();
                 Page childPage = childPath.next();
-                links.setLink(AemUtils.getLinkWithExtension(childPage.getPath(), request));
+                links.setLink(AemUtils.getLinkWithExtension(childPage.getPath(), resourceResolver));
                 links.setLabel(AemUtils.getTitle(childPage));
                 childPagesList.add(links);
             }

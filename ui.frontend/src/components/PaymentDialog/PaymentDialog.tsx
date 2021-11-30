@@ -15,7 +15,7 @@ const PaymentDialog: React.FC<PaymentDialogProps> = ({ isOpen, onClose, paymentM
     blockScrollOnMount={false}
     isOpen={isOpen}
     onClose={onClose}
-    size="5xl"
+    size="2xl"
     closeOnOverlayClick={false}
   >
     <ModalOverlay />

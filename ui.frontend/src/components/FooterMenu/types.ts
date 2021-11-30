@@ -1,11 +1,21 @@
+import { SocialMediaButtonOption } from "../SocialMediaButtons/types";
 export interface FooterMenuProps {
+  socialButtons?: SocialMediaButtonOption[];
+  menu: MenuProps[];
   footerUpperLinks: MenuProps[];
   desktopFootertext: DesktopFooterText;
+  theme: MenuThemeProps;
+  mobileTheme?: MenuThemeProps;
   followus: FollowusProps;
   getapp: GetAppProps;
   copyrightText: string;
   copyrightLinks: SubMenuProps[];
 }
+export interface MenuThemeProps {
+  color: string;
+  bgColor: string;
+}
+
 
 export interface MenuProps {
   label: string;
