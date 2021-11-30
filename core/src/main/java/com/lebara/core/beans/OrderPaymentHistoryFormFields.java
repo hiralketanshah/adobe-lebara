@@ -65,12 +65,6 @@ public class OrderPaymentHistoryFormFields {
     @ValueMapValue
     private String filterLabel;
 
-   /* @ValueMapValue
-    private String fromDate;
-
-    @ValueMapValue
-    private String toDate;*/
-
     public String getShopNowCTA() {
         return shopNowCTA;
     }
@@ -134,12 +128,4 @@ public class OrderPaymentHistoryFormFields {
     public String getFilterLabel() {
         return filterLabel;
     }
-
-   /* public String getFromDate() {
-        return fromDate;
-    }
-
-    public String getToDate() {
-        return toDate;
-    }*/
 }

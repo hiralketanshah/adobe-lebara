@@ -12,13 +12,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @Model(adaptables = {Resource.class}, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
 public class OrderPaymentHistoryErrorMsg {
-	
-
     @SlingObject
     private ResourceResolver resourceResolver;
-
-
-
-
-
 }
