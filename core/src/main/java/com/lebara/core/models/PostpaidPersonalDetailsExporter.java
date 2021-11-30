@@ -3,7 +3,6 @@ package com.lebara.core.models;
 import com.adobe.cq.export.json.ComponentExporter;
 import com.adobe.cq.export.json.ExporterConstants;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.lebara.core.utils.CFUtils;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.api.resource.ResourceResolver;
@@ -11,11 +10,7 @@ import org.apache.sling.models.annotations.DefaultInjectionStrategy;
 import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.injectorspecific.*;
 import org.apache.sling.models.annotations.Exporter;
-import com.adobe.cq.dam.cfm.ContentFragment;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.List;
-import com.lebara.core.beans.*;
+import com.lebara.core.models.beans.*;
 
 
 @Model(adaptables = SlingHttpServletRequest.class, adapters = {PostpaidPersonalDetailsExporter.class, ComponentExporter.class},

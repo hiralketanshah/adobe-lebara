@@ -1,4 +1,4 @@
-package com.lebara.core.beans;
+package com.lebara.core.models.beans;
 
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.models.annotations.DefaultInjectionStrategy;

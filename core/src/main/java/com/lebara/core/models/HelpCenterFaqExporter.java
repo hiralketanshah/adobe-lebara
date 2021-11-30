@@ -2,7 +2,7 @@ package com.lebara.core.models;
 
 import com.adobe.cq.export.json.ComponentExporter;
 import com.adobe.cq.export.json.ExporterConstants;
-import com.lebara.core.beans.PageInfo;
+import com.lebara.core.models.beans.PageInfo;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.ResourceResolver;
 import org.apache.sling.models.annotations.DefaultInjectionStrategy;

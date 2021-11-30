@@ -1,4 +1,4 @@
-package com.lebara.core.beans;
+package com.lebara.core.models.beans;
 
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.models.annotations.DefaultInjectionStrategy;
@@ -6,27 +6,19 @@ import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
 
 @Model(adaptables = {Resource.class}, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
-public class SelectOption {
+public class Duration {
 
     @ValueMapValue
-    private String label;
+    private String durationPlan;
 
     @ValueMapValue
-    private String value;
+    private String durationPlanCost;
 
-	public String getLabel() {
-		return label;
-	}
+    public String getDurationPlan() {
+        return durationPlan;
+    }
 
-	public void setLabel(String label) {
-		this.label = label;
-	}
-
-	public String getValue() {
-		return value;
-	}
-
-	public void setValue(String value) {
-		this.value = value;
-	}
+    public String getDurationPlanCost() {
+        return durationPlanCost;
+    }
 }
