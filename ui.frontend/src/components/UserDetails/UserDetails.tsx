@@ -36,6 +36,7 @@ const UserDetails: React.FC<UserDetailsProps> = ({
   sectionAddressHeading,
   sectionEmailPasswordHeading,
   sectionConsentHeading,
+  changeEmailHeading,
   frmFields,
   validationMessages,
 
@@ -301,8 +302,10 @@ const UserDetails: React.FC<UserDetailsProps> = ({
                     <EmailAndPasswordSection
                       frmFields={frmFields}
                       onEmailEdit={() => setEmailEditPopup(true)}
-                      onPasswordEdit={() =>
-                        history.push(GC.journeyPages[`${C.USER_PROFILE}/${C.CHANGE_PASSWORD}`])
+                      onPasswordEdit={(e) => {
+                        history.push(GC.journeyPages[`${C.USER_PROFILE_CHANGE_PASSWORD}`]);
+                      }
+                        
                       }
                     />
                   </Collapse>
@@ -443,6 +446,9 @@ const UserDetails: React.FC<UserDetailsProps> = ({
         )}
       </Formik>
       <ChangeEmail
+        changeEmailHeading={changeEmailHeading}
+        frmFields={frmFields}
+        validationMessages={validationMessages}
         isOpen={emailEditPopup}
         onClose={(status: boolean | undefined, email: string | undefined) => {
           setEmailEditPopup(false);

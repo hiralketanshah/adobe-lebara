@@ -14,7 +14,13 @@ import { ChangeEmailProps, ChangeEmailSchema } from "./types";
 import FormikInput from "../Formik/FormikInput/FormikInput";
 import Button from "../Button/Button";
 
-const ChangeEmail: React.FC<ChangeEmailProps> = ({ isOpen, onClose }) => {
+const ChangeEmail: React.FC<ChangeEmailProps> = ({ 
+  isOpen, 
+  onClose,
+  changeEmailHeading,
+  frmFields,
+  validationMessages,
+ }) => {
   const [changeEmailMut] = useMutation(CHANGE_EMAIL);
   const initialValues = {
     email: "",
@@ -24,19 +30,19 @@ const ChangeEmail: React.FC<ChangeEmailProps> = ({ isOpen, onClose }) => {
     const errors: ChangeEmailSchema = {};
     const { email, confirmEmail } = values;
     if (!email) {
-      errors.email = "Please enter a email address";
+      errors.email = validationMessages?.emailRequiredMsg;
     } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(email)) {
-      errors.email = "Please enter a valid email address";
+      errors.email = validationMessages?.emailInValidMsg;
     }
     if (!confirmEmail) {
-      errors.confirmEmail = "Please enter a email address";
+      errors.confirmEmail = validationMessages?.emailRequiredMsg;
     } else if (
       !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(confirmEmail)
     ) {
-      errors.confirmEmail = "Please enter a valid email address";
+      errors.confirmEmail = validationMessages?.emailInValidMsg;
     } else if (email !== confirmEmail) {
       errors.confirmEmail =
-        "Email address and Confirm email address shoule be same";
+      validationMessages?.confirmEmailNotMatchMsg;
     }
     return errors;
   };
@@ -73,29 +79,29 @@ const ChangeEmail: React.FC<ChangeEmailProps> = ({ isOpen, onClose }) => {
             >
               {({ errors, handleSubmit, isSubmitting }) => (
                 <form onSubmit={handleSubmit}>
-                  <Text
+                  {changeEmailHeading && <Text
                     fontWeight="500"
                     fontSize="20px"
                     lineHeight="22px"
                     letterSpacing="0.15px"
                     pb="20px"
                   >
-                    Change Email Address
-                  </Text>
+                    {changeEmailHeading}
+                  </Text>}
                   <FormikInput
                     name="email"
-                    label="New Email Address"
+                    label={frmFields?.newEmailLabel}
+                    placeholder={frmFields?.newEmailPlacehodler}
                     labelProps={{ mt: "17px" }}
                     inputProps={{ mt: "5px", w: { base: "100%", lg: "414px" } }}
-                    placeholder="Enter new email address"
                     isRequired
                   />
                   <FormikInput
                     name="confirmEmail"
-                    label="Confirm New Email Address"
+                    label={frmFields?.newConfirmEmailLabel}
+                    placeholder={frmFields?.newConfirmEmailPlacehodler}
                     labelProps={{ mt: "17px" }}
                     inputProps={{ mt: "5px", w: { base: "100%", lg: "414px" } }}
-                    placeholder="Confirm new email address"
                     isRequired
                   />
                   <Flex
@@ -111,17 +117,17 @@ const ChangeEmail: React.FC<ChangeEmailProps> = ({ isOpen, onClose }) => {
                       }
                       type="submit"
                     >
-                      Continue
+                      {frmFields?.ctaButtonLabel || "Continue"}
                     </Button>
                     <Button
                       w={{ base: "100%", lg: "324px" }}
                       mt="15px"
                       variant="outline"
                       onClick={() =>
-                        onClose(false, "shubhamgoyal2243@gmail.com")
+                        onClose(false, "")
                       }
                     >
-                      cancel
+                      {frmFields?.ctaCancelLabel || "Cancel"}
                     </Button>
                   </Flex>
                 </form>

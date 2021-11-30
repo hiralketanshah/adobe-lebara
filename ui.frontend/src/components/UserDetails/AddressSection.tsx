@@ -24,6 +24,7 @@ const AddressSection: React.FC<UserDetailsProps> = ({
             name="streetName"
             isRequired
             label={frmFields?.streetLabel}
+            placeholder={frmFields?.streetPlaceholder}
             removeValidation
             {...disabledInputField}
           />
@@ -33,6 +34,7 @@ const AddressSection: React.FC<UserDetailsProps> = ({
             name="houseNumber"
             isRequired
             label={frmFields?.houseNumberLabel}
+            placeholder={frmFields?.houseNumberPlaceholder}
             removeValidation
             {...disabledInputField}
           />

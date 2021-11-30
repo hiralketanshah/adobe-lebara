@@ -23,7 +23,7 @@ const UserNameAndSurnameSection: React.FC<UserDetailsProps> = ({
             name="userName"
             isRequired
             label={frmFields?.fNameLabel}
-            placeholder={frmFields?.fnamePlaceholder}
+            placeholder={frmFields?.fNamePlaceholder}
             removeValidation
             {...disabledInputField}
           />

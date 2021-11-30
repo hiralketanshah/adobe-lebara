@@ -2,6 +2,7 @@ import { BaseFormFields } from "../Formik/types";
 import { BaseValidationMessages } from "../Formik/validations/types";
 
 export interface FormFields extends BaseFormFields {
+  fNamePlaceholder?: string;
   consentDescription?: string;
   userProfilePhoto?: string;
   ctaCancelURL?: string;
@@ -13,17 +14,16 @@ export interface ValidationMessages extends BaseValidationMessages {
 
 }
 export interface UserDetailsProps {
-  // New
   heading?: string;
   description?: string;
   sectionUsernameHeading?: string;
   sectionAddressHeading?: string;
   sectionEmailPasswordHeading?: string;
   sectionConsentHeading?: string;
+  changeEmailHeading?: string;
   frmFields?: FormFields;
   validationMessages?: ValidationMessages;
 
-  // Old
   userName?: string;
   userSurname?: string;
   streetName?: string;
@@ -55,7 +55,7 @@ export interface ChangePasswordSchema {
 export interface ChangeEmailPasswordProfileProps {
   frmFields?: FormFields;
   onEmailEdit: () => void;
-  onPasswordEdit: () => void;
+  onPasswordEdit: (e:any) => void;
 }
 
 export interface ModalProps {
@@ -80,7 +80,18 @@ export interface PinSendSchema {
   pin?: string;
 }
 
-export interface ChangeEmailProps {
+interface ChangeEmailFormFields extends FormFields {
+  newEmailLabel?: string;
+  newEmailPlacehodler?: string;
+  newConfirmEmailLabel?: string;
+  newConfirmEmailPlacehodler?: string;
+}
+interface ChangeEmailValidationMessages extends ValidationMessages {
+  confirmEmailNotMatchMsg?: string;
+}
+export interface ChangeEmailProps extends UserDetailsProps {
+  frmFields?: ChangeEmailFormFields;
+  validationMessages?: ChangeEmailValidationMessages;
   isOpen: any;
   onClose: (status?: boolean, email?: string) => void;
 }
