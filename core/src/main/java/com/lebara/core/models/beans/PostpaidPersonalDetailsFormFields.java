@@ -1,4 +1,4 @@
-package com.lebara.core.beans;
+package com.lebara.core.models.beans;
 
 import java.util.ArrayList;
 import java.util.List;

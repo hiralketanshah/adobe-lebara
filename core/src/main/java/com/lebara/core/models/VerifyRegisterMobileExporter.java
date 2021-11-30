@@ -16,9 +16,9 @@ import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
 
 import com.adobe.cq.export.json.ComponentExporter;
 import com.adobe.cq.export.json.ExporterConstants;
-import com.lebara.core.beans.PostpaidPersonalDetailsErrorMsg;
-import com.lebara.core.beans.PostpaidPersonalDetailsFormFields;
-import com.lebara.core.beans.SuccessMessage;
+import com.lebara.core.models.beans.PostpaidPersonalDetailsErrorMsg;
+import com.lebara.core.models.beans.PostpaidPersonalDetailsFormFields;
+import com.lebara.core.models.beans.SuccessMessage;
 import com.lebara.core.utils.AemUtils;
 
 @Model(adaptables = SlingHttpServletRequest.class, adapters = { VerifyRegisterMobileExporter.class,
