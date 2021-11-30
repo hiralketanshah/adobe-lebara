@@ -86,7 +86,7 @@
                     </column1>
                     <column2
                         jcr:primaryType="nt:unstructured"
-                        jcr:title="Modal Data"
+                        jcr:title="Filter Modal Data"
                         sling:resourceType="granite/ui/components/coral/foundation/container">
                         <items jcr:primaryType="nt:unstructured">
                             <filterLabel
@@ -96,7 +96,6 @@
                                     value="FILTER"
                                     fieldDescription="Filter Label"
                                     name="./frmFields/filterLabel"/>
-
                             <modalTitle
                                     jcr:primaryType="nt:unstructured"
                                     sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
@@ -112,7 +111,6 @@
                                     value="From"
                                     fieldDescription="From Label"
                                     name="./frmFields/fromLabel"/>
-
                             <toLabel
                                     jcr:primaryType="nt:unstructured"
                                     sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
@@ -150,12 +148,6 @@
                                     fieldLabel="Cancel CTA Label"
                                     name="./frmFields/cancelCTALabel"
                                     value="CANCEL"/>
-
-
-
-
-
-
                         </items>
                     </column2>
                     <column3
