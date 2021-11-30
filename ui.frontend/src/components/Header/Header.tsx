@@ -21,7 +21,6 @@ import {
 import { Link, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useLocalStorage } from "@rehooks/local-storage";
-import {AuthoringUtils} from "@adobe/aem-spa-page-model-manager";
 
 import {
   HeaderProps,
@@ -56,7 +55,6 @@ const Header: React.FC<HeaderProps> = ({
   accountLink,
   searchPlaceholder,
 }) => {
-  const isAemEditor = AuthoringUtils.isEditMode();
   const cartItems = useSelector((state: ReduxState) => state.cart.items);
   const history = useHistory();
   const [userToken] = useLocalStorage("userToken");

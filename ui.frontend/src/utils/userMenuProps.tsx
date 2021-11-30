@@ -5,7 +5,7 @@ import PaymentHistoryMenu from "../assets/images/user-menu-icons/payment-history
 import PaymentMethodsMenu from "../assets/images/user-menu-icons/payment-methods-menu.svg";
 import ProfileMenu from "../assets/images/user-menu-icons/profile-menu.svg";
 
-export default {
+const menusList = {
   menus: [
     {
       key: 1,
@@ -45,3 +45,5 @@ export default {
     },
   ],
 };
+
+export default menusList;
