@@ -4,7 +4,6 @@ import {
   Flex,
   Heading,
   Spacer,
-  Switch,
   Text,
   Image,
   Menu,
@@ -27,6 +26,7 @@ import getCfOfferDataUrl from "../../utils/aem-utils";
 import { Icon } from "../Icon/Icon";
 import { FiChevronRight, HiOutlineExclamation } from "react-icons/all";
 import useMissingDetails from "../../hooks/useMissingDetails";
+import InfoBox from "../InfoBox/InfoBox";
 const DataExpandablePlanCardCheckout: React.FC<ExpandablePlanCardCheckoutProps> =
   ({
     magentoId,
@@ -52,7 +52,6 @@ const DataExpandablePlanCardCheckout: React.FC<ExpandablePlanCardCheckoutProps> 
     isPostPaid,
     missingInfoLabel
   }) => {
-    const [isAutoRenew, setIsAutoRenew] = React.useState(false);
     const [data, setData] = useState<Partial<ExpandableSimPlanCardProps>>({});
     async function fetchData() {
       const response = await fetch(getCfOfferDataUrl(id));
@@ -180,36 +179,16 @@ const DataExpandablePlanCardCheckout: React.FC<ExpandablePlanCardCheckoutProps> 
             </Box>
           </Flex>
           {showAutoRenew && (
-            <Box>
-              <Flex
-                alignItems="space-between"
-                justifyContent="space-between"
-                mt="22px"
-                mb="8px"
-              >
-                <Heading
-                  as="h3"
-                  fontSize="16px"
-                  fontWeight="bold"
-                  color="bodyCopy"
-                >
-                  {autoRenewLabel}
-                </Heading>
-                <Switch
-                  size="md"
-                  colorScheme="secondary"
-                  variant="outline"
-                  px={3}
-                  isChecked={isAutoRenew}
-                  onChange={(e) => setIsAutoRenew(e.target.checked)}
-                />
-              </Flex>
-              {isAutoRenew && (
-                <Text color="grey.300" fontSize="12px">
-                  {autoRenewDesc}
-                </Text>
-              )}
-            </Box>
+             <Box mt="22px" mb="8px">
+             <InfoBox
+               description={autoRenewDesc || ""}
+               textProps={{
+                 color: "grey.300",
+                 fontSize: "14px",
+                 lineHeight: "20px",
+               }}
+             />
+           </Box>
           )}
 
           {hideViewDetails && (
