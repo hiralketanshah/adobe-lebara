@@ -86,6 +86,8 @@
 		<property name="validToLabel" />
 		<!-- prepaid plans props -->
 		<property name="manageLabel" />
+		<!-- sticky circle props -->
+		<property name="linkLabel" />
 		<!-- Dashboard inherited page props -->
 		<property name="dataPlanName" />
 		<property name="dataType" />
@@ -182,6 +184,8 @@
 		<property name="showLabel" />
 		<property name="hideLabel" />
 		<property name="ctaTopLabel" />
+		<property name="ctaCloseLabel" />
+		<property name="ctaDownloadLabel" />
 		<property name="ctaBottomLabel" />
 		<property name="getExploreAllLabel" />
 		
@@ -302,6 +306,21 @@
 		<property name="topUpRecommendedLabel"/>
 		<property name="topUpCapLabel"/>
 		<property name="topUpCapDesc"/>
+		<property name="missingInfoLabel"/>
+		<property name="plansTitle"/>
+		<property name="addonsTitle"/>
+		<property name="selectPlanLabel"/>
+		<property name="personalDetailsLabel"/>
+		<property name="nameLabel"/>
+		<property name="emailLabel"/>
+		<property name="shippingAddressLabel"/>
+		<property name="editLabel"/>
+		<property name="mobileNumberLabel"/>
+		<property name="termsAndConditionsLabel"/>
+
+
+		<!--Support component -->
+		<property name="ctaLinkLabel"/>
 
 		<!--Help center Search -->
 		<property name="searchPlaceholder"/>
@@ -393,6 +412,15 @@
 		<property name="zipCodeErrorRequired"/>
 		<property name="zipCodeErrorPattern"/>
 		<property name="zipCodeErrorMax"/>
+		<property name="paymentCta"/>
+		<property name="passwordField"/>
+		<property name="confirmPasswordField"/>
+		<property name="enterPasswordLabel"/>
+		<property name="confirmPasswordLabel"/>
+		<property name="minimumCharactersLabel"/>
+		<property name="samePasswordLabel"/>
+		<property name="showPasswordLabel"/>
+		<property name="hidePasswordLabel"/>
 
 		<!-- Postpaid personal details -->
 		<property name="emailLabel"/>
@@ -458,6 +486,13 @@
 		<property name="textCol2"/>
 		<property name="getAppLabel"/>
 
+		<!-- getitnow -->
+		<property name="getItNowErrorMessage"/>
+		
+
+		<!-- Global Search -->
+		<property name="mostSearchLabel"/>
+		
 		<!-- Lebara fields ends -->
 		<property name="cq:language" updateDestinationLanguage="true"/>
 		<node pathContains="/cq:annotations">

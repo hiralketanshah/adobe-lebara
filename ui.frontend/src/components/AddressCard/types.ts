@@ -28,6 +28,9 @@ export interface AddressCardProps {
   saveAddress: string;
   postalCodeText: string;
   country?: string;
+  onSetAutomatic: () => void;
+  onAddressChange: (value: any) => void;
+  isDisabled?: boolean;
 }
 
 export type AddressStatus =

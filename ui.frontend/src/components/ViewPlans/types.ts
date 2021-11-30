@@ -18,6 +18,11 @@ export interface OfferProps extends ExpandablePlanCardProps {
 export interface PlanCardProps {
     offers?: OfferProps; 
     buttonLabel?: string;
+    productInformationButtonLabel?: string;
+    ctaAddToCartLabel?: string;
+    ctaSelectLabel?: string;
+    ctaCloseLabel?: string;
+    ctaDownloadLabel?: string;
     minutesField?: string;
     unlimitedTextField?: string;
     exploreAllLabel?: string;

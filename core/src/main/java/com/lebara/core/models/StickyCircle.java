@@ -9,6 +9,7 @@ import org.apache.sling.models.annotations.DefaultInjectionStrategy;
 import org.apache.sling.models.annotations.Exporter;
 import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.injectorspecific.ScriptVariable;
+import org.apache.sling.models.annotations.injectorspecific.SlingObject;
 import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
 
 @Model(adaptables = SlingHttpServletRequest.class, adapters = { StickyCircle.class,
@@ -22,6 +23,9 @@ public class StickyCircle implements ComponentExporter {
 
 	@ScriptVariable
 	private Resource resource;
+
+	@SlingObject
+	private SlingHttpServletRequest request;
 
 	@ValueMapValue
 	private String linkLabel;
@@ -39,6 +43,6 @@ public class StickyCircle implements ComponentExporter {
 	}
 
 	public String getLinkPath() {
-		return AemUtils.getLinkWithExtension(linkPath);
+		return AemUtils.getLinkWithExtension(linkPath, request);
 	}
 }

@@ -100,7 +100,7 @@ const GuestTab: React.FC<LoginTabsProps> = ({...loginModuleProps}) => {
               isDisabled={Object.keys(errors).length > 0 || isSubmitting}
               isFullWidth
             >
-              {loginModuleProps.registrationContinueButton}
+              {loginModuleProps.guestContinueLabel}
             </Button>
           </Flex>
         </form>

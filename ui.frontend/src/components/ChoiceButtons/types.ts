@@ -1,6 +1,9 @@
+import { FormName } from "../../redux/types/formsTypes";
+
 export interface ChoiceButtonsProps {
   text: string;
   buttonOptions: ButtonOptions[];
+  formName?: FormName;
 }
 
 export interface ButtonOptions {

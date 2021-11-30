@@ -31,6 +31,7 @@ const LanguageHeader: React.FC<LanguageHeaderProps> = ({
       </Box>
 
       {storeTitle && (
+        <Link href={storeLink}>
         <Flex alignItems="center">
           <IconButton
             icon={<IoLocationOutline />}
@@ -38,14 +39,14 @@ const LanguageHeader: React.FC<LanguageHeaderProps> = ({
             variant="ghost"
             size="sm"
             colorScheme="dark"
-            as={Link}
-            href={storeLink}
           />
           <Text fontSize="12px">{storeTitle}</Text>
         </Flex>
+        </Link>
       )}
 
       {helpTitle && (
+         <Link href={helpLink}>
         <Flex alignItems="center">
           <IconButton
             icon={<RiHeadphoneFill />}
@@ -53,11 +54,10 @@ const LanguageHeader: React.FC<LanguageHeaderProps> = ({
             variant="ghost"
             size="sm"
             colorScheme="dark"
-            as={Link}
-            href={helpLink}
           />
           <Text fontSize="12px">{helpTitle}</Text>
         </Flex>
+        </Link>
       )}
     </Flex>
   </Flex>

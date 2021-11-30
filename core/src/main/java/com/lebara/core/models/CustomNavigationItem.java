@@ -4,6 +4,8 @@ import com.adobe.cq.wcm.core.components.models.NavigationItem;
 import com.day.cq.wcm.api.Page;
 import com.drew.lang.annotations.NotNull;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.lebara.core.utils.AemUtils;
+import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.api.resource.ValueMap;
 
@@ -28,16 +30,18 @@ public class CustomNavigationItem implements NavigationItem {
     private Page page;
     private ValueMap properties;
     private NavigationItem item;
+    private SlingHttpServletRequest request;
 
     /** Constructor
      * @param resource
      * @param item
      */
-    public CustomNavigationItem(@NotNull Resource resource, @NotNull NavigationItem item) {
+    public CustomNavigationItem(@NotNull Resource resource, @NotNull NavigationItem item, @NotNull SlingHttpServletRequest request) {
         this.resource = resource;
         this.item = item;
         this.page = Objects.requireNonNull(Objects.requireNonNull(resource.getResourceResolver().getResource(item.getPath())).adaptTo(Page.class));
         this.properties = page.getContentResource().getValueMap();
+        this.request = request;
     }
 
     /** Default Property getters **/
@@ -46,12 +50,12 @@ public class CustomNavigationItem implements NavigationItem {
         return item.getId();
     }
     public String getPath() {
-        return item.getPath();
+        return AemUtils.getLinkWithExtension(item.getPath(), request);
     }
 
     @JsonProperty("children")
     public List<CustomNavigationItem> getNavChildren() {
-        return item.getChildren().stream().map(p-> new CustomNavigationItem(resource, p)).collect(Collectors.toList());
+        return item.getChildren().stream().map(p-> new CustomNavigationItem(resource, p, request)).collect(Collectors.toList());
     }
 
     public int getLevel() {
@@ -63,7 +67,7 @@ public class CustomNavigationItem implements NavigationItem {
     }
 
     public String getUrl() {
-        return item.getURL();
+        return AemUtils.getLinkWithExtension(item.getURL(), request);
     }
 
     public String getTitle() {

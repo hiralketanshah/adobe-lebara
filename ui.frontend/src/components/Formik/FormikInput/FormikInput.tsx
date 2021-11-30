@@ -32,13 +32,13 @@ const FormikInput: React.FC<FormikInputProps> = ({
   inputProps,
   validate,
   removeValidation,
-  ignoreValidations,
-  isPrepaid,
   loginButtonLabel,
   exitingUserErrorMsg,
   secondSubscriptionDisplayText,
   children,
   revealInputToggle,
+  ignoreValidations,
+  isPrepaid,
 }) => {
   const [field, meta] = useField({
     name,
@@ -187,11 +187,11 @@ const FormikInput: React.FC<FormikInputProps> = ({
                 to={{
                   pathname: (GC.journeyPages[GCST.LOGIN]  || '/'),
                   state: {
-                    fromPrepaid: true,
+                    fromPostPaid: true,
                   },
                 }}
               >
-                {loginButtonLabel}
+                 {loginButtonLabel}
               </Link>
             </Text>
           </Flex>

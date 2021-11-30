@@ -11,4 +11,7 @@ export interface CartItem {
   isPrepaid?: boolean;
   isPostPaid?: boolean;
   details?: string[];
+  isAutoTopUp?: boolean;
+  isAutoRenew?: boolean;
+  topUpCap?: number;
 }

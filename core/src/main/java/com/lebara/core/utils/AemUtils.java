@@ -28,6 +28,7 @@ import javax.jcr.Value;
 import javax.mail.MessagingException;
 import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;
+import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 import java.util.*;
 
@@ -184,17 +185,27 @@ public class AemUtils {
      * @param payloadPath      path to be externalized.
      * @return externalized path.
      */
-    public static String getLinkWithExtension(String payloadPath) {
+    public static String getLinkWithExtension(String payloadPath, SlingHttpServletRequest request) {
         if (StringUtils.isBlank(payloadPath) || isExternalLink(payloadPath)) {
             return payloadPath;
         }
-        return payloadPath + LebaraConstants.HTML_EXTENSION;
+        return ((request == null) ? payloadPath : request.getResourceResolver().map(payloadPath)) + (isHtmlExtensionRequired(payloadPath) ? LebaraConstants.HTML_EXTENSION : StringUtils.EMPTY);
+    }
+
+    public static String getLinkWithExtension(String payloadPath, ResourceResolver resourceResolver) {
+        if (StringUtils.isBlank(payloadPath) || isExternalLink(payloadPath)) {
+            return payloadPath;
+        }
+        return ((resourceResolver == null) ? payloadPath : resourceResolver.map(payloadPath)) + (isHtmlExtensionRequired(payloadPath) ? LebaraConstants.HTML_EXTENSION : StringUtils.EMPTY);
     }
 
     private static boolean isExternalLink(String payloadPath) {
         return payloadPath.startsWith("http") || payloadPath.startsWith("www");
     }
 
+    private static boolean isHtmlExtensionRequired(String payloadPath) {
+        return !payloadPath.contains(".html");
+    }
     /**
      * priority of display of title is navigationtitle > pagetitle > title
      */

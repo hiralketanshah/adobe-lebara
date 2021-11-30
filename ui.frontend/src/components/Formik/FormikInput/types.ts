@@ -18,4 +18,6 @@ export interface FormikInputProps {
   secondSubscriptionDisplayText?: string;
   revealInputToggle?: boolean;
   onClick?: () => void;
+  isPrepaid?: boolean;
+  ignoreValidations?: boolean;
 }

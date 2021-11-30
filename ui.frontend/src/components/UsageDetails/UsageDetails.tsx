@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import {
   Flex,
   Box,
@@ -11,7 +11,6 @@ import {
   Tab,
   TabPanel,
   AvatarBadge,
-  Circle,
 } from "@chakra-ui/react";
 // import { useHistory } from "react-router-dom";
 import {
@@ -43,7 +42,6 @@ const UsageDetails: React.FC<UsageDetailsProps> = ({
   ctaTopupURL,
   ctaTopupText,
 }) => {
-  const [lastActivity] = useState(activityLasts);
   const INTERNATIONAL_CALL_TYPE = "international";
   const ROAMING_CALL_TYPE = "roaming";
   const FLIGHT_CALL_TYPE = "flight";

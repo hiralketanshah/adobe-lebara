@@ -6,6 +6,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.lebara.core.dto.PageLink;
 import com.lebara.core.models.Link;
 import com.lebara.core.utils.AemUtils;
+import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.api.resource.ResourceResolver;
 import org.apache.sling.models.annotations.DefaultInjectionStrategy;
@@ -47,7 +48,7 @@ public class PageLinkInfo {
             while (childPath.hasNext()) {
                 Link links = new Link();
                 Page childPage = childPath.next();
-                links.setLink(AemUtils.getLinkWithExtension(childPage.getPath()));
+                links.setLink(AemUtils.getLinkWithExtension(childPage.getPath(), resourceResolver));
                 links.setLabel(AemUtils.getTitle(childPage));
                 childPagesList.add(links);
             }

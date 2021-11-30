@@ -104,7 +104,7 @@ public class DashboardPlansExporter implements ComponentExporter {
     }
 
     public String getManageLink() {
-        return AemUtils.getLinkWithExtension(manageLink);
+        return AemUtils.getLinkWithExtension(manageLink, request);
     }
 
     public String getAutoRenewLabel() {
@@ -152,7 +152,7 @@ public class DashboardPlansExporter implements ComponentExporter {
     }
 
     public String getTermsConditionsLink() {
-        return AemUtils.getLinkWithExtension(termsConditionsLink);
+        return AemUtils.getLinkWithExtension(termsConditionsLink, request);
     }
 
     public String getContractConsentLabel() {

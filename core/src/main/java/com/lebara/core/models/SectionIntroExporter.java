@@ -6,6 +6,7 @@ import org.apache.sling.models.annotations.DefaultInjectionStrategy;
 import org.apache.sling.models.annotations.Exporter;
 import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.injectorspecific.ScriptVariable;
+import org.apache.sling.models.annotations.injectorspecific.SlingObject;
 import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
 
 import com.adobe.cq.export.json.ComponentExporter;
@@ -15,21 +16,18 @@ import com.lebara.core.utils.AemUtils;
 @Model(adaptables = SlingHttpServletRequest.class, adapters = { SectionIntroExporter.class,
 		ComponentExporter.class }, resourceType = SectionIntroExporter.RESOURCE_TYPE, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
 @Exporter(name = ExporterConstants.SLING_MODEL_EXPORTER_NAME, extensions = ExporterConstants.SLING_MODEL_EXTENSION)
-public class SectionIntroExporter implements ComponentExporter {
+public class SectionIntroExporter extends IntroExporter {
 
 	/**
 	 * The resource type.
 	 */
 	protected static final String RESOURCE_TYPE = "lebara/components/sectionintro";
 
+	@SlingObject
+	private SlingHttpServletRequest slingRequest;
+
 	@ScriptVariable
 	private Resource resource;
-
-	@ValueMapValue
-	private String heading;
-
-	@ValueMapValue
-	private String description;
 
 	@ValueMapValue
 	private String sectionHeading;
@@ -46,14 +44,6 @@ public class SectionIntroExporter implements ComponentExporter {
 	@ValueMapValue
 	private boolean noPadding;
 
-	public String getHeading() {
-		return heading;
-	}
-
-	public String getDescription() {
-		return description;
-	}
-
 	public String getSectionHeading() {
 		return sectionHeading;
 	}
@@ -67,7 +57,7 @@ public class SectionIntroExporter implements ComponentExporter {
 	}
 
 	public String getLinkPath() {
-		return AemUtils.getLinkWithExtension(linkPath);
+		return AemUtils.getLinkWithExtension(linkPath, slingRequest);
 	}
 
 	public boolean isNoPadding() {

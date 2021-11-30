@@ -36,6 +36,18 @@ public class AboutLearaImpl  implements AboutLebara {
 	@ValueMapValue
 	private String buttonStyle;
 
+	@ValueMapValue
+	private String imageAlign;
+
+	@ValueMapValue
+	private String buttonBackgroundColor;
+
+	@ValueMapValue
+	private String buttonHoverBgColor;
+
+	@ValueMapValue
+	private boolean colorsEnabled;
+
 	/**
 	 * The resource type.
 	 */
@@ -104,11 +116,21 @@ public class AboutLearaImpl  implements AboutLebara {
 		return resource.getResourceType();
 	}
 
+	public String getImageAlign() {
+		return imageAlign;
+	}
+
+	public String getButtonBackgroundColor() {
+		return colorsEnabled ? buttonBackgroundColor : null;
+	}
+
+	public String getButtonHoverBgColor() {
+		return colorsEnabled ? buttonHoverBgColor : null;
+	}
+
 	@Override
 	public String getImagePath() {
-	return fileReference;
-		
-	
+		return fileReference;
 	}
 
 }
