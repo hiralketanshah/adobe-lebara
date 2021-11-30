@@ -241,7 +241,6 @@
                                     fieldDescription="Password Edit Link URL"
                                     fieldLabel="Password Edit Link URL"
                                     name="./frmFields/passwordEditLinkURL"/>
-
                             <consentManagementlabel
                                     jcr:primaryType="nt:unstructured"
                                     sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
@@ -418,7 +417,69 @@
                                     value="phone"/>
                         </items>
                     </column3>
+
                     <column4
+                            jcr:primaryType="nt:unstructured"
+                            jcr:title="Edit Email Modal Data"
+                            sling:resourceType="granite/ui/components/coral/foundation/container">
+                        <items jcr:primaryType="nt:unstructured">
+
+                            <changeEmailHeading
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                    fieldDescription="Change Email Address"
+                                    fieldLabel="Change Email Title Label"
+                                    name="./frmFields/changeEmailHeading"
+                                    value="Change Email Address"/>
+                            <newEmailLabel
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                    fieldDescription="New Email Address Label"
+                                    fieldLabel="New Email Address Label"
+                                    name="./frmFields/newEmailLabel"
+                                    value="New Email Address"/>
+                            <newEmailPlacehodler
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                    fieldDescription="New Email Address Placeholder"
+                                    fieldLabel="New Email Address Placeholder"
+                                    name="./frmFields/newEmailPlacehodler"
+                                    value="Enter New Email Address"/>
+
+                            <newConfirmEmailLabel
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                    fieldDescription="Confirm New Email Address Label"
+                                    fieldLabel="Confirm New Email Address Label"
+                                    name="./frmFields/newConfirmEmailLabel"
+                                    value="Confirm New Email Address"/>
+
+                            <newConfirmEmailPlacehodler
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                    fieldDescription="Confirm New Email Address Placeholder"
+                                    fieldLabel="Confirm New Email Address Placeholder"
+                                    name="./frmFields/newConfirmEmailPlacehodler"
+                                    value="Confirm New Email Address Placeholder"/>
+
+                            <ctaContinueLabel
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                    fieldLabel="Continue Cta Label"
+                                    name="./frmFields/ctaContinueLabel"
+                                    value="CONTINUE"/>
+
+                            <modalCancelCTALabel
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                    fieldLabel="Cancel Cta Label"
+                                    name="./frmFields/modalCancelCTALabel"
+                                    value="CANCEL"/>
+
+
+                         </items>
+                    </column4>
+                   <column5
                         jcr:primaryType="nt:unstructured"
                         jcr:title="Error Messages"
                         sling:resourceType="granite/ui/components/coral/foundation/container">
@@ -430,6 +491,13 @@
                                 fieldLabel="Email Error message on Empty Email"
                                 name="./validationMessages/emailRequiredMsg"
                                 value="The email address field cannot be empty"/>
+                            <confirmEmailNotMatchMsg
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                    fieldDescription="Email address and Confirm email address shoule be same"
+                                    fieldLabel="Email Error message on not match Email"
+                                    name="./validationMessages/confirmEmailNotMatchMsg"
+                                    value="Email address and Confirm email address shoule be same"/>
                             <emailInValidMsg
                                 jcr:primaryType="nt:unstructured"
                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
@@ -563,7 +631,7 @@
                                     value="Invalid street name"
                                     name="./validationMessages/streetLabelErrorPattern"/>
                         </items>
-                    </column4>
+                    </column5>
                 </items>
             </tabs>
         </items>

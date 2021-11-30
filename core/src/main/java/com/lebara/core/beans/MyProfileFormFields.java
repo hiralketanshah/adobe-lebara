@@ -17,8 +17,7 @@ import com.lebara.core.utils.CFUtils;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @Model(adaptables = {Resource.class}, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
-public class UserProfileFormFields {
-	
+public class MyProfileFormFields {
 
     private static final String VALUE = "value";
     private static final String LABEL = "label";
@@ -106,6 +105,32 @@ public class UserProfileFormFields {
 
     @ValueMapValue
     private String passwordPlaceholder;
+
+    /* Edit Email Modal Fields */
+
+    @ValueMapValue
+    private String changeEmailHeading;
+
+    @ValueMapValue
+    private String newEmailLabel;
+
+    @ValueMapValue
+    private String newEmailPlacehodler;
+
+    @ValueMapValue
+    private String newConfirmEmailLabel;
+
+    @ValueMapValue
+    private String newConfirmEmailPlacehodler;
+
+    @ValueMapValue
+    private String ctaContinueLabel;
+
+    @ValueMapValue
+    private String modalCancelCTALabel;
+
+    @ValueMapValue
+    private String confirmEmailNotMatchMsg;
 
     @ChildResource
     protected Resource subscribeOptions;
@@ -219,6 +244,38 @@ public class UserProfileFormFields {
 
     public String getPasswordPlaceholder() {
         return passwordPlaceholder;
+    }
+
+    public String getNewEmailLabel() {
+        return newEmailLabel;
+    }
+
+    public String getNewEmailPlacehodler() {
+        return newEmailPlacehodler;
+    }
+
+    public String getNewConfirmEmailLabel() {
+        return newConfirmEmailLabel;
+    }
+
+    public String getNewConfirmEmailPlacehodler() {
+        return newConfirmEmailPlacehodler;
+    }
+
+    public String getChangeEmailHeading() {
+        return changeEmailHeading;
+    }
+
+    public String getCtaContinueLabel() {
+        return ctaContinueLabel;
+    }
+
+    public String getModalCancelCTALabel() {
+        return modalCancelCTALabel;
+    }
+
+    public String getConfirmEmailNotMatchMsg() {
+        return confirmEmailNotMatchMsg;
     }
 
     @JsonProperty("subscribeOptions")

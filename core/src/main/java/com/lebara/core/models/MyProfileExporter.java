@@ -38,18 +38,18 @@ public class MyProfileExporter implements ComponentExporter{
     private String sectionConsentHeading;
 
     @ChildResource
-    private UserProfileFormFields frmFields;
+    private MyProfileFormFields frmFields;
 
     @ChildResource
-    private UserProfileErrorMsg validationMessages;
+    private MyProfileErrorMsg validationMessages;
 
     @JsonProperty("frmFields")
-    public UserProfileFormFields getFrmFields() {
+    public MyProfileFormFields getFrmFields() {
         return frmFields;
     }
 
     @JsonProperty("validationMessages")
-    public UserProfileErrorMsg getValidationMessages() {
+    public MyProfileErrorMsg getValidationMessages() {
         return validationMessages;
     }
 
@@ -82,5 +82,4 @@ public class MyProfileExporter implements ComponentExporter{
     public String getExportedType() {
         return RESOURCE_TYPE;
     }
-
 }
