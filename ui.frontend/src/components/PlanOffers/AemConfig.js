@@ -21,4 +21,4 @@ const PlanOffersConfig = {
   },
 };
 
-MapTo("lebara/components/orderpaymenthistory")(PlanOffers, PlanOffersConfig);
+MapTo("lebara/components/detailedviewplans")(PlanOffers, PlanOffersConfig);
