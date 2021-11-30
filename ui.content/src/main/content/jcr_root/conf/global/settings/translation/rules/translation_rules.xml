@@ -493,7 +493,11 @@
 
 		<!-- getitnow -->
 		<property name="getItNowErrorMessage"/>
-		
+
+		<!-- Rewards table -->
+		<property name="columnHeader1"/>
+		<property name="columnHeader2"/>
+
 		<!-- Global Search -->
 		<property name="mostSearchLabel"/>
 		
