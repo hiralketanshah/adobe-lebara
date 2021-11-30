@@ -143,7 +143,7 @@ const LoginTab: React.FC<LoginTabsProps> = ({...loginModuleProps}) => {
             />
             <Text fontSize={14} fontWeight="400" mb="5px">
               {loginModuleProps.loginForgotPassWordmsg}{" "}
-              <Link href={(GC.journeyPages[GCST.RESET_PASSWORD]  || '/')}>{loginModuleProps.loginResetLinkTextLabel}</Link>{" "}
+              <Link href={(GC.journeyPages[GCST.RESET_PASSWORD]  || '/')}>{loginModuleProps.loginResetLinkLabel}</Link>{" "}
             </Text>
             <Button
               isDisabled={Object.keys(errors).length > 0 || isSubmitting}

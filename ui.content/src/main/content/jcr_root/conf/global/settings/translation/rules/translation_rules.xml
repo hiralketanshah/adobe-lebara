@@ -316,6 +316,7 @@
 		<property name="shippingAddressLabel"/>
 		<property name="editLabel"/>
 		<property name="mobileNumberLabel"/>
+		<property name="termsAndConditionsLabel"/>
 
 
 		<!--Support component -->
@@ -411,6 +412,15 @@
 		<property name="zipCodeErrorRequired"/>
 		<property name="zipCodeErrorPattern"/>
 		<property name="zipCodeErrorMax"/>
+		<property name="paymentCta"/>
+		<property name="passwordField"/>
+		<property name="confirmPasswordField"/>
+		<property name="enterPasswordLabel"/>
+		<property name="confirmPasswordLabel"/>
+		<property name="minimumCharactersLabel"/>
+		<property name="samePasswordLabel"/>
+		<property name="showPasswordLabel"/>
+		<property name="hidePasswordLabel"/>
 
 		<!-- Postpaid personal details -->
 		<property name="emailLabel"/>
@@ -476,6 +486,13 @@
 		<property name="textCol2"/>
 		<property name="getAppLabel"/>
 
+		<!-- getitnow -->
+		<property name="getItNowErrorMessage"/>
+		
+
+		<!-- Global Search -->
+		<property name="mostSearchLabel"/>
+		
 		<!-- Lebara fields ends -->
 		<property name="cq:language" updateDestinationLanguage="true"/>
 		<node pathContains="/cq:annotations">

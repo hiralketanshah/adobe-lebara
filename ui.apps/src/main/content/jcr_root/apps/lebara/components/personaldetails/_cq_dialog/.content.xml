@@ -188,6 +188,12 @@
                                     value="CONTINUE TO ORDER DETAILS"
                                     fieldDescription="CONTINUE TO ORDER DETAILS"
                                     name="./orderDetailsCta"/>
+                            <paymentcta
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldDescription="PROCEED TO PAYMENT"
+                                fieldLabel="Payment CTA"
+                                name="./paymentCta"/>
                         </items>
                     </column3>
                     <column4
@@ -345,6 +351,61 @@
                                     name="./zipCodeErrorMax"/>
                         </items>
                     </column5>
+                    <column6
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Password Messages"
+                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                        <items jcr:primaryType="nt:unstructured">
+                            <passwordfield
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldDescription="Password"
+                                fieldLabel="Password Field"
+                                name="./passwordField"/>
+                            <confirmpasswordfield
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldDescription="Confirm Password"
+                                fieldLabel="Confirm Password Field"
+                                name="./confirmPasswordField"/>
+                            <enterpasswordlabel
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldDescription="Please enter a password"
+                                fieldLabel="Enter Password Label"
+                                name="./enterPasswordLabel"/>
+                            <confirmpasswordlabel
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldDescription="Please enter a confirm password"
+                                fieldLabel="Confirm Password Label"
+                                name="./confirmPasswordLabel"/>
+                            <minimumcharacterslabel
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldDescription="Minimum 8 characters"
+                                fieldLabel="Minimum Characters Label"
+                                name="./minimumCharactersLabel"/>
+                            <samepasswordlabel
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldDescription="Both password need to be the same"
+                                fieldLabel="Same Password Label"
+                                name="./samePasswordLabel"/>
+                            <showpasswordlabel
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldDescription="Show"
+                                fieldLabel="Show Password Label"
+                                name="./showPasswordLabel"/>
+                            <hidepasswordlabel
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldDescription="Hide"
+                                fieldLabel="Hide Password Label"
+                                name="./hidePasswordLabel"/>
+                        </items>
+                    </column6>
                 </items>
             </tabs>
         </items>

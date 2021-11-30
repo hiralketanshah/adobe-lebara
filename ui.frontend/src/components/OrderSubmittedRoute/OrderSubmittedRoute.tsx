@@ -13,7 +13,7 @@ const OrderSubmittedRoute: React.FC<SuccessCardProps> = ({
 }) => {
 
   const location = useLocation<{ orderId: string }>();
-  const orderId = location.state?.orderId;
+  const orderId = location.state?.orderId || "12345";
 
   return (
     <BuyPlanLayout hideButton noPadding fullWidth>
