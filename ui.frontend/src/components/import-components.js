@@ -54,7 +54,6 @@ import "./PlanManagement/AemConfig.js";
 import "./AddOns/AemConfig.js";
 import "./YourPlansCard/AemConfig.js";
 import "./UsageDetails/AemConfig.js";
-import "./SuccessCard/AemConfig.js"
 import "./NewPostpaidNumber/AemConfig.js";
 import "./Login/CreateNewPassword/AemConfig.js";
 import "./Login/ResetPassword/AemConfig.js";
