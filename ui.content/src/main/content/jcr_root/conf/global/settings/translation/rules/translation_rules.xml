@@ -475,6 +475,7 @@
 		<property name="portInNumberRequiredMsg"/>
 		<property name="portInNumberInValidMsg"/>
 		<property name="currentProviderRequiredMsg"/>
+		<property name="paymentCta"/>
 
 		<!-- Section Intro -->
 		<property name="sectionHeading"/>
