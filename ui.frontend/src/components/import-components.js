@@ -69,4 +69,5 @@ import "./LbFAQ/AemConfig.js";
 import "./LbBrowseCategories/AemConfig.js";
 import "./RecommendedTariffs/AemConfig.js";
 import "./HowItWorks/AemConfig.js";
-
+import "./BillsOverview/AemConfig.js";
+import "./PreviousBills/AemConfig.js";
