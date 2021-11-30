@@ -14,9 +14,16 @@ export interface SearchProps {
   // not in use need to confirm
   menuTitle2?: string;
   recentSearches?: string[];
+  isHeaderSearchInput?: boolean;
+  isHeaderSearchResult?: boolean;
 }
 
 export interface SearchResultProps {
     title?: string;
     path?: string;
+}
+
+export interface HeaderSearchInputProps extends SearchProps {
+  onSearchHandler: ()=>void;
+  handleChange: (e: any)=>void;
 }
