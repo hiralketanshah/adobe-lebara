@@ -117,7 +117,7 @@ const ChangeEmail: React.FC<ChangeEmailProps> = ({
                       }
                       type="submit"
                     >
-                      {frmFields?.ctaButtonLabel || "Continue"}
+                      {frmFields?.ctaContinueLabel || "Continue"}
                     </Button>
                     <Button
                       w={{ base: "100%", lg: "324px" }}

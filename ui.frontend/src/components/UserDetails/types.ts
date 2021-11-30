@@ -85,6 +85,7 @@ interface ChangeEmailFormFields extends FormFields {
   newEmailPlacehodler?: string;
   newConfirmEmailLabel?: string;
   newConfirmEmailPlacehodler?: string;
+  ctaContinueLabel?: string;
 }
 interface ChangeEmailValidationMessages extends ValidationMessages {
   confirmEmailNotMatchMsg?: string;
