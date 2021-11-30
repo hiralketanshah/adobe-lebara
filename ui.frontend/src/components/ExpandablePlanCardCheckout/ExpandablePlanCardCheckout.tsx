@@ -22,6 +22,11 @@ import TickInCircle from "../../icons/TickInCircle";
 import {globalConfigs} from  '../../GlobalConfigs.js';
 import { ExpandableSimPlanCardProps } from "../ExpandableSimPlanCard/types";
 import { allowanceListProps } from "../ExpandablePlanCard/types";
+import ChangePlanDialog from "../ChangePlanDialog/ChangePlanDialog";
+import getCfOfferDataUrl from "../../utils/aem-utils";
+import { Icon } from "../Icon/Icon";
+import { FiChevronRight, HiOutlineExclamation } from "react-icons/all";
+import useMissingDetails from "../../hooks/useMissingDetails";
 const DataExpandablePlanCardCheckout: React.FC<ExpandablePlanCardCheckoutProps> =
   ({
     magentoId,
@@ -39,14 +44,20 @@ const DataExpandablePlanCardCheckout: React.FC<ExpandablePlanCardCheckoutProps> 
     autoRenewDesc,
     autoRenewLabel,
     description,
-    id
+    id,
+    selectPlanLabel,
+    plansTitle,
+    addonsTitle,
+    isPrepaid,
+    isPostPaid,
+    missingInfoLabel
   }) => {
     const [isAutoRenew, setIsAutoRenew] = React.useState(false);
     const [data, setData] = useState<Partial<ExpandableSimPlanCardProps>>({});
     async function fetchData() {
-      const response = await fetch(`${window.location.pathname.replace('.html','')}.offer.json?offerId=${id}`);
+      const response = await fetch(getCfOfferDataUrl(id));
       const json = await response.json();
-      setData(json);
+      setData(json[0]);
     }
     const handleRemoveClick = () => {
       if (onRemove) {
@@ -57,10 +68,31 @@ const DataExpandablePlanCardCheckout: React.FC<ExpandablePlanCardCheckoutProps> 
       setIsDialogOpen(true);
       fetchData();
     };
+    const IsJsonString = (str:string) => {
+      try {
+          JSON.parse(str);
+      } catch (e) {
+          return false;
+      }
+      return true;
+  }
     const [isDialogOpen, setIsDialogOpen] = React.useState(false);
+    const [isChangePlanDialogOpen, setIsChangePlanDialogOpen] =
+    React.useState(false);
+    const { isMissingDetails, handleRedirectsForMissingData } =
+    useMissingDetails();
     const filteredAllowanceList: allowanceListProps = (data.allowanceList && data.allowanceList.find((list) => list.name && list.name.includes('Data'))) || {};
     return (
       <>
+        <ChangePlanDialog
+          title={isAddon ? (addonsTitle || "") : (plansTitle || "")}
+          isOpen={isChangePlanDialogOpen}
+          onClose={() => setIsChangePlanDialogOpen(false)}
+          magentoId={magentoId}
+          sku={id.toString()}
+          selectPlanLabel={selectPlanLabel}
+          showDetailsLabel={showDetailsLabel}
+        />
         <PlanDetailsDialog
           isOpen={isDialogOpen}
           onClose={() => setIsDialogOpen(false)}
@@ -97,7 +129,7 @@ const DataExpandablePlanCardCheckout: React.FC<ExpandablePlanCardCheckoutProps> 
               </Heading>
               {!isFreeSim && (
                 <Text pt="11px" color="grey.300" fontSize="12px" word>
-                  {JSON.parse(description)}
+                  {IsJsonString(description) ? JSON.parse(description) : description}
                 </Text>
               )}
             </Flex>
@@ -122,6 +154,9 @@ const DataExpandablePlanCardCheckout: React.FC<ExpandablePlanCardCheckoutProps> 
                     <MenuItem
                       borderBottom="1px"
                       borderBottomColor="borderNwColor"
+                      onClick={() => {
+                        setIsChangePlanDialogOpen(true);
+                      }}
                     >
                      {viewPlansLabel}
                     </MenuItem>
@@ -193,6 +228,39 @@ const DataExpandablePlanCardCheckout: React.FC<ExpandablePlanCardCheckoutProps> 
                {removeLabel}
               </Button>
             </Box>
+          )}
+          {(isPrepaid || isPostPaid) && isMissingDetails && (
+            <Flex
+              onClick={handleRedirectsForMissingData}
+              cursor="pointer"
+              borderWidth={1}
+              borderColor="warning"
+              py="12px"
+              px="14px"
+              borderRadius="12px"
+              boxShadow="0px 1px 4px rgba(0, 0, 0, 0.21)"
+              alignItems="center"
+              my="14px"
+            >
+              <Icon
+                icon={HiOutlineExclamation}
+                color="warning"
+                w="20px"
+                h="20px"
+              />
+              <Text
+                pl="11px"
+                fontSize="14px"
+                fontWeight="400"
+                lineHeight="20px"
+                letterSpacing="0.25px"
+                color="primary.800"
+              >
+                {missingInfoLabel}
+              </Text>
+              <Spacer />
+              <Icon icon={FiChevronRight} color="warning" w="20px" h="20px" />
+            </Flex>
           )}
         </Box>
       </>

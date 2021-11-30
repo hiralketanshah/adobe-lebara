@@ -20,6 +20,15 @@ Include conf.d/variables/custom.vars
 	# Add header breadcrumbs for help in troubleshooting
 	<IfModule mod_headers.c>
 		Header add X-Vhost "lebara-de-publish"
+		SetEnvIf Origin "https?://(api-aggregator.lebara.com|sit-api-aggregator.lebara.com)(/api-aggregator)$" AccessControlAllowOrigin=$0$1
+		Header add Access-Control-Allow-Origin %{AccessControlAllowOrigin}e env=AccessControlAllowOrigin
+		Header always set Access-Control-Allow-Methods "POST, GET, OPTIONS"
+		Header always set Access-Control-Allow-Headers "Origin, Content-Type, X-Auth-Token, Authorization"
+		Header always set Access-Control-Expose-Headers "Content-Security-Policy, Location"
+		Header always set Access-Control-Max-Age "600"
+		Header always set Access-Control-Allow-Credentials "true"
+		Header always set Access-Control-Request-Headers "Content-Type, Authorization"
+		Header always set Access-Control-Request-Method "*"
 	</IfModule>
 	<Directory />
 		<IfModule disp_apache2.c>

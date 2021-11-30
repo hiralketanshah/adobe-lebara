@@ -43,7 +43,7 @@ export interface SimPortInProps {
   currentProviderDefaultSelectValue?: string;
 }
 
-export interface OrderDetailsProps extends deleteCartItemCmsProps, topupCreditCmsProps{
+export interface OrderDetailsProps extends deleteCartItemCmsProps, topupCreditCmsProps, personalDetailsProps{
 	consentLabel?: string;
 	viewPlansLabel?: string;
 	addVoucherCodeLabel?: string;
@@ -60,11 +60,16 @@ export interface OrderDetailsProps extends deleteCartItemCmsProps, topupCreditCm
 	grandTotalLabel?: string;
 	removeLabel?: string;
 	showDetailsLabel?: string;
+	selectPlanLabel?: string;
 	voucherCodeInvalidMessage?: string;
 	voucherCodeExpiredMessage?: string;
 	privacyPolicyLabel?: string;
 	privacyPolicyLink?: string;
 	voucherCodeDiscountLabel?: string;
+	plansTitle?: string;
+	addonsTitle?: string;
+	missingInfoLabel?: string;
+	termsAndConditionsLabel?: string;
   }
 
   export interface deleteCartItemCmsProps {
@@ -79,4 +84,13 @@ export interface OrderDetailsProps extends deleteCartItemCmsProps, topupCreditCm
 	topUpRecommendedLabel?: string;
 	topUpCapLabel?: string;
 	topUpCapDesc?: string;
+  }
+
+  export interface personalDetailsProps{
+	personalDetailsLabel?: string;
+	nameLabel?: string;
+	emailLabel?: string;
+	mobileNumberLabel?: string;
+	shippingAddressLabel?: string;
+	editLabel?: string;
   }

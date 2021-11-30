@@ -14,6 +14,7 @@ import { LoginTabsProps } from "./types";
 import LoginTab from "./LoginTab";
 import RegisterTab from "./RegisterTab";
 import Link from "../Link/Link";
+import { globalConfigs as GC, globalConstants as GCST} from "../../GlobalConfigs";
 
 const RegisterTabs: React.FC<LoginTabsProps> = ({ ...loginModuleProps }) => {
   // const cartItems = useSelector((state: ReduxState) => state.cart);
@@ -30,7 +31,7 @@ const RegisterTabs: React.FC<LoginTabsProps> = ({ ...loginModuleProps }) => {
     letterSpacing: "-1px",
   };
   
-  const extraBlock = (
+  const loginExtraBlock = (
     <Flex
       flexDir="column"
       justifyContent="center"
@@ -47,10 +48,33 @@ const RegisterTabs: React.FC<LoginTabsProps> = ({ ...loginModuleProps }) => {
         letterSpacing="0.25px"
       >
         {" "}
-        {loginModuleProps.extraBlockRegisterText} <Link href="/" onClick={(e) => {
+        {loginModuleProps?.extraBlockLoginText} <Link href="/" onClick={(e) => {
           e.preventDefault();
-          handleTabSwitch("0");
-        }}>{loginModuleProps.extraBlockRegisterLinkText}</Link>{" "}
+          handleTabSwitch("1");
+        }}>{loginModuleProps?.extraBlockLoginLinkText}</Link>{" "}
+      </Text>
+    </Flex>
+  );
+  
+  const registerExtraBlock = (
+    <Flex
+      flexDir="column"
+      justifyContent="center"
+      alignItems="center"
+      fontSize="14px"
+      lineHeight="20px"
+      letterSpacing="0.25px"
+      mt="22px"
+    >
+      <Text d="inline">
+        {" "}
+        {loginModuleProps?.extraBlockRegisterText}
+        <Link
+            d="inline"
+            href={(GC.journeyPages[GCST.LOGIN] || '/')}
+        >
+        {loginModuleProps?.extraBlockRegisterLinkText}
+        </Link>{" "}
       </Text>
     </Flex>
   );
@@ -70,7 +94,7 @@ const RegisterTabs: React.FC<LoginTabsProps> = ({ ...loginModuleProps }) => {
           _selected={{ bg: "white" }}
           _focus={{ boxShadow: "none" }}
         >
-          {loginModuleProps.loginLabel}
+          {loginModuleProps.loginTabLabel}
         </Tab>
         <Tab
           bg="grey.50"
@@ -79,7 +103,7 @@ const RegisterTabs: React.FC<LoginTabsProps> = ({ ...loginModuleProps }) => {
           _selected={{ bg: "white" }}
           _focus={{ boxShadow: "none" }}
         >
-          {loginModuleProps.registrationCtaLabel}
+          {loginModuleProps.registrationTabLabel}
         </Tab>
       </TabList>
 
@@ -92,11 +116,11 @@ const RegisterTabs: React.FC<LoginTabsProps> = ({ ...loginModuleProps }) => {
       >
         <TabPanel>
           <LoginTab {...loginModuleProps} />
-          {extraBlock}
+          {loginExtraBlock}
         </TabPanel>
         <TabPanel>
           <RegisterTab {...loginModuleProps} />
-          {extraBlock}
+          {registerExtraBlock}
         </TabPanel>
       </TabPanels>
     </Tabs>

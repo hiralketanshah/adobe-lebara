@@ -6,6 +6,7 @@ import org.apache.sling.models.annotations.DefaultInjectionStrategy;
 import org.apache.sling.models.annotations.Exporter;
 import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.injectorspecific.ScriptVariable;
+import org.apache.sling.models.annotations.injectorspecific.SlingObject;
 import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
 
 import com.adobe.cq.export.json.ComponentExporter;
@@ -21,6 +22,9 @@ public class PortingExporter implements ComponentExporter {
 	 * The resource type.
 	 */
 	protected static final String RESOURCE_TYPE = "lebara/components/porting";
+
+	@SlingObject
+	private SlingHttpServletRequest request;
 
 	@ScriptVariable
 	private Resource resource;
@@ -41,7 +45,7 @@ public class PortingExporter implements ComponentExporter {
 	private String ctaTwoLink;
 
 	@ValueMapValue
-	private Boolean isAddFreeSimtoCart;
+	private String formName;
 
 	@Override
 	public String getExportedType() {
@@ -57,7 +61,7 @@ public class PortingExporter implements ComponentExporter {
 	}
 
 	public String getCtaOneLink() {
-		return AemUtils.getLinkWithExtension(ctaOneLink);
+		return AemUtils.getLinkWithExtension(ctaOneLink, request);
 	}
 
 	public String getCtaTwoLable() {
@@ -65,10 +69,10 @@ public class PortingExporter implements ComponentExporter {
 	}
 
 	public String getCtaTwoLink() {
-		return AemUtils.getLinkWithExtension(ctaTwoLink);
+		return AemUtils.getLinkWithExtension(ctaTwoLink, request);
 	}
 
-	public Boolean getIsAddFreeSimtoCart() {
-		return isAddFreeSimtoCart;
+	public String getFormName() {
+		return formName;
 	}
 }

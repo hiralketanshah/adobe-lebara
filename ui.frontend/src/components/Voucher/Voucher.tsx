@@ -78,7 +78,7 @@ const Voucher: React.FC<VoucherProps> = ({	addVoucherCodeLabel,
         bg="white"
         border="1px"
         borderRadius="8px"
-        borderColor="greySuccess"
+        borderColor={{ base: "white", lg: "greySuccess" }}
       >
         <Flex flexDir="row" gridGap="18px">
           <Text fontSize={16} fontWeight="bold">

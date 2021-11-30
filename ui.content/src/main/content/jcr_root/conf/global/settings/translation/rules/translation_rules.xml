@@ -86,6 +86,8 @@
 		<property name="validToLabel" />
 		<!-- prepaid plans props -->
 		<property name="manageLabel" />
+		<!-- sticky circle props -->
+		<property name="linkLabel" />
 		<!-- Dashboard inherited page props -->
 		<property name="dataPlanName" />
 		<property name="dataType" />
@@ -182,7 +184,11 @@
 		<property name="showLabel" />
 		<property name="hideLabel" />
 		<property name="ctaTopLabel" />
+		<property name="ctaCloseLabel" />
+		<property name="ctaDownloadLabel" />
 		<property name="ctaBottomLabel" />
+		<property name="getExploreAllLabel" />
+		
 
 		<!-- Create Password -->
 		<property name="compHeading" />
@@ -230,8 +236,7 @@
 		<property name="loginResetLinkLabel" />
 		<property name="loginButton" />
 		<property name="loginRegistrationMessage" />
-		<property name="loginRegistrationCtaLabel" />
-		<property name="loginRegistrationCtaLink" />
+		<property name="loginRegistrationCtaLabel" />		
 		<property name="extraBlockOrText" />
 		<property name="extraBlockLoginText" />
 		<property name="extraBlockLoginLinkText" />
@@ -288,8 +293,7 @@
 		<property name="voucherCodeExpiredMessage"/>
 		<property name="voucherCodeDiscountLabel"/>
 		<property name="consentLabel"/>
-		<property name="privacyPolicyLabel"/>
-		<property name="privacyPolicyLink"/>
+		<property name="privacyPolicyLabel"/>		
 		<property name="paymentMethodLabel"/>
 		<property name="paymentButtonLabel"/>
 		<property name="removeLabel"/>
@@ -302,6 +306,21 @@
 		<property name="topUpRecommendedLabel"/>
 		<property name="topUpCapLabel"/>
 		<property name="topUpCapDesc"/>
+		<property name="missingInfoLabel"/>
+		<property name="plansTitle"/>
+		<property name="addonsTitle"/>
+		<property name="selectPlanLabel"/>
+		<property name="personalDetailsLabel"/>
+		<property name="nameLabel"/>
+		<property name="emailLabel"/>
+		<property name="shippingAddressLabel"/>
+		<property name="editLabel"/>
+		<property name="mobileNumberLabel"/>
+		<property name="termsAndConditionsLabel"/>
+
+
+		<!--Support component -->
+		<property name="ctaLinkLabel"/>
 
 		<!--Help center Search -->
 		<property name="searchPlaceholder"/>
@@ -340,6 +359,10 @@
 		<property name="otpSentSuccessfullyMsg"/>
 		<property name="label1"/>
 		<property name="label2"/>
+		<property name="verifyCodePlaceholder"/>
+		<property name="ctaResendVerificationLabel"/>
+		<property name="ctaEditMobileLabel"/>
+		<property name="ctaSkipLabel"/>
 
 		<!-- Wheretocall -->
 		<!-- XfPage -->
@@ -389,6 +412,15 @@
 		<property name="zipCodeErrorRequired"/>
 		<property name="zipCodeErrorPattern"/>
 		<property name="zipCodeErrorMax"/>
+		<property name="paymentCta"/>
+		<property name="passwordField"/>
+		<property name="confirmPasswordField"/>
+		<property name="enterPasswordLabel"/>
+		<property name="confirmPasswordLabel"/>
+		<property name="minimumCharactersLabel"/>
+		<property name="samePasswordLabel"/>
+		<property name="showPasswordLabel"/>
+		<property name="hidePasswordLabel"/>
 
 		<!-- Postpaid personal details -->
 		<property name="emailLabel"/>
@@ -444,6 +476,23 @@
 		<property name="portInNumberInValidMsg"/>
 		<property name="currentProviderRequiredMsg"/>
 
+		<!-- Section Intro -->
+		<property name="sectionHeading"/>
+		<property name="sectionSubHeading"/>
+		<property name="linkLabel"/>
+
+		<!-- getapp -->
+		<property name="textCol1"/>
+		<property name="textCol2"/>
+		<property name="getAppLabel"/>
+
+		<!-- getitnow -->
+		<property name="getItNowErrorMessage"/>
+		
+
+		<!-- Global Search -->
+		<property name="mostSearchLabel"/>
+		
 		<!-- Lebara fields ends -->
 		<property name="cq:language" updateDestinationLanguage="true"/>
 		<node pathContains="/cq:annotations">
