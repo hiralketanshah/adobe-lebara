@@ -70,6 +70,9 @@ public class MyProfileErrorMsg {
     @ValueMapValue
     public String streetLabelErrorPattern;
 
+    @ValueMapValue
+    private String confirmEmailNotMatchMsg;
+
     public String getfNameRequiredMsg() {
         return fNameRequiredMsg;
     }
@@ -143,6 +146,10 @@ public class MyProfileErrorMsg {
 
     public String getStreetLabelErrorPattern() {
         return streetLabelErrorPattern;
+    }
+
+    public String getConfirmEmailNotMatchMsg() {
+        return confirmEmailNotMatchMsg;
     }
 
 }

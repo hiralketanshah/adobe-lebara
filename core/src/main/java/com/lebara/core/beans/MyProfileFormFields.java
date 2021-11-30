@@ -129,9 +129,6 @@ public class MyProfileFormFields {
     @ValueMapValue
     private String modalCancelCTALabel;
 
-    @ValueMapValue
-    private String confirmEmailNotMatchMsg;
-
     @ChildResource
     protected Resource subscribeOptions;
 
@@ -274,9 +271,6 @@ public class MyProfileFormFields {
         return modalCancelCTALabel;
     }
 
-    public String getConfirmEmailNotMatchMsg() {
-        return confirmEmailNotMatchMsg;
-    }
 
     @JsonProperty("subscribeOptions")
     public List<SelectOption> getPortInOptionArray() {
