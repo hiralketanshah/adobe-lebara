@@ -38,7 +38,7 @@ const Search: React.FC<SearchProps> = ({
       setSearchResults([]);
     }
   }
-  
+
   const onSearchHandler = aemUtils.debounce(() => fetchData());
   
   return (
