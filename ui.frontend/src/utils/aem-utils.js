@@ -1,6 +1,6 @@
 const aemUtils = {
   getSearchResultsPath: function(query = '', searchRootPagePath = undefined) {
-    const baseUrl = `/content/lebara/de/de.globalsearch.json`;
+    const baseUrl = `${window.location.pathname.replace('.html', '')}.globalsearch.json`;
     let returnUrl;
     if(query && (searchRootPagePath && searchRootPagePath !== "")) {
       returnUrl = `${baseUrl}?q=${query}&searchRootPagePath=${searchRootPagePath}`;

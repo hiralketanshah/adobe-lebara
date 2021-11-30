@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Box,
   InputGroup,
@@ -18,10 +18,11 @@ const Search: React.FC<SearchProps> = ({
   onCloseClick,
   mostSearchLabel,
   searchPlaceholder,
+  searchRootPagePath,
   emptySearchResultMsg,
 }) => {
   const [query, setQuery] = useState('');
-  const [searchRootValue, setSearchRootValue] = useState(undefined);
+  const [searchRootValue, setSearchRootValue] = useState(searchRootPagePath);
   const [searchResults, setSearchResults] = useState([]);
   async function fetchData() {
     const response = await fetch(aemUtils.getSearchResultsPath(query, searchRootValue));
@@ -33,12 +34,12 @@ const Search: React.FC<SearchProps> = ({
     const { value } = e.target;
     setQuery(value);
     
-    if(value.length > 2) {
-      aemUtils.debounce(() => fetchData());
-    } else {
+    if(!value) {
       setSearchResults([]);
     }
   }
+  
+  const onSearchHandler = aemUtils.debounce(() => fetchData());
   
   return (
     <>
@@ -51,7 +52,7 @@ const Search: React.FC<SearchProps> = ({
       >
         <Box bgColor="lightenPrimary.500" width="100%" height="max-content">
           <Box
-            // display={{ md: "none", base: "flex" }}
+            display={{ md: "none", base: "flex" }}
             justifyContent="space-between"
             borderRadius="lg"
           >
@@ -81,7 +82,8 @@ const Search: React.FC<SearchProps> = ({
                 color="black"
                 bgColor="white"
                 borderRadius="lg"
-                onKeyUp={handleChange}
+                onChange={handleChange}
+                onKeyUp={onSearchHandler}
               />
             </InputGroup>
             <Box width="10px">

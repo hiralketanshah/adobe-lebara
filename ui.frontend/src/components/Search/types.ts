@@ -8,7 +8,7 @@ export interface SearchProps {
   mostSearchLabel?: string;
   links?: LinksProps[];
   onCloseClick?: () => void;
-  searchRootPagePath?: string;
+  searchRootPagePath?: any;
   emptySearchResultMsg?: string;
 
   // not in use need to confirm
