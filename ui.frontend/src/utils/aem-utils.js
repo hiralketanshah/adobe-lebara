@@ -1,9 +1,12 @@
+import { globalConstants as C } from "../GlobalConfigs";
+
 const aemUtils = {
-  getSearchResultsPath: function(query = '', searchRootPagePath = undefined) {
-    const baseUrl = `${window.location.pathname.replace('.html', '')}.globalsearch.json`;
+  getSearchResultsPath: function(query = '', searchRootPagePath = undefined, type = "") {
+    let filename = type === 'help' ? C.HELPCENTER_SEARCH_FILENAME : C.GLOBAL_SEARCH_FILENAME;
+    const baseUrl = `${window.location.pathname.replace('.html', '')}.${filename}`;
     let returnUrl;
     if(query && (searchRootPagePath && searchRootPagePath !== "")) {
-      returnUrl = `${baseUrl}?q=${query}&searchRootPagePath=${searchRootPagePath}`;
+      returnUrl = `${baseUrl}?q=${query}&searchRoot=${searchRootPagePath}`;
     }
     else {
       returnUrl = `${baseUrl}?q=${query}`;

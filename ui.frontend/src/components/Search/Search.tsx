@@ -31,7 +31,7 @@ const Search: React.FC<SearchProps> = ({
   const [searchRootValue] = useState(searchRootPagePath);
   const [searchResults, setSearchResults] = useState([]);
   async function fetchData() {
-    const response = await fetch(aemUtils.getSearchResultsPath(query, searchRootValue));
+    const response = await fetch(aemUtils.getSearchResultsPath(query, searchRootValue, ''));
     const jsonResp = await response.json();
     setSearchResults(jsonResp);
   }
