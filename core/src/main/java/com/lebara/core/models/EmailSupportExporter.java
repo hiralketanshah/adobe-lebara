@@ -10,6 +10,8 @@ import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.injectorspecific.ScriptVariable;
 import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
 
+import java.util.List;
+
 @Model(adaptables = SlingHttpServletRequest.class, adapters = {EmailSupportExporter.class,
         ComponentExporter.class}, resourceType = EmailSupportExporter.RESOURCE_TYPE_EMAIL_SUPPORT, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
 @Exporter(name = ExporterConstants.SLING_MODEL_EXPORTER_NAME, extensions = ExporterConstants.SLING_MODEL_EXTENSION)
@@ -53,6 +55,12 @@ public class EmailSupportExporter extends IntroExporter {
     private String attachmentDescription;
     @ValueMapValue
     private String submitLabel;
+    @ValueMapValue
+    private List<String> dropDownValues;
+
+    public List<String> getDropDownValues() {
+        return dropDownValues;
+    }
 
     public String getFirstName() {
         return firstName;
