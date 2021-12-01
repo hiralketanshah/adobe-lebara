@@ -7,9 +7,11 @@ import com.day.cq.commons.inherit.InheritanceValueMap;
 import com.day.cq.i18n.I18n;
 import com.day.cq.wcm.api.Page;
 import com.day.cq.wcm.api.PageManager;
+import com.lebara.core.dto.InternationalRateBean;
 import com.lebara.core.dto.OfferFragmentBean;
 import com.lebara.core.models.beans.ImageIcon;
 import com.lebara.core.utils.AemUtils;
+import com.lebara.core.utils.CFUtils;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.api.resource.ResourceResolver;
@@ -77,13 +79,8 @@ public class InternationalRatesExporter implements ComponentExporter {
         return description;
     }
 
-    //todo: to list a list of bean of the fragment.
-    public List<String> getCountryList() {
-        List<String> countryList = new ArrayList<>();
-        countryList.add("India");
-        countryList.add("UK");
-
-        return countryList;
+    public List<InternationalRateBean> getCountryList() {
+        return CFUtils.getInternationalRates(resourceResolver, fragmentRootPath);
     }
 
     public String getLandlineLabel() {

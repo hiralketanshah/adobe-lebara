@@ -127,6 +127,29 @@ public class CFUtils {
         return cities;
     }
 
+    /**
+     * this methods takes the root path for fragment as an input and iterates through all
+     * its child and returns a list of InternationalRateBean objects.
+     */
+    public static List<InternationalRateBean> getInternationalRates(ResourceResolver resolver, String fragmentRootPath) {
+        List<InternationalRateBean> internationalRateBeanList = new ArrayList<>();
+        Resource parentResource = resolver.getResource(fragmentRootPath);
+        for (Resource fragment : parentResource.getChildren()) {
+            ContentFragment irFragment = fragment.adaptTo(ContentFragment.class);
+            if (null != irFragment) {
+                String countryLandingPageUrl = CFUtils.getElementValue(irFragment, "countryLandingPageUrl");
+                String countryName = CFUtils.getElementValue(irFragment, "countryName");
+                String landlineRates = CFUtils.getElementValue(irFragment, "landlineRates");
+                String mobileCallRate = CFUtils.getElementValue(irFragment, "mobileCallRate");
+                String smsRate = CFUtils.getElementValue(irFragment, "smsRate");
+                if (StringUtils.isNoneBlank(countryLandingPageUrl, countryName)) {
+                    internationalRateBeanList.add(new InternationalRateBean(countryLandingPageUrl, countryName, landlineRates, mobileCallRate, smsRate));
+                }
+            }
+        }
+        return internationalRateBeanList;
+    }
+
     public static OfferFragmentBean populateOffers( Resource cfResource, I18n i18n) {
         OfferFragmentBean offerFragmentBean = null;
         if (null != cfResource) {
