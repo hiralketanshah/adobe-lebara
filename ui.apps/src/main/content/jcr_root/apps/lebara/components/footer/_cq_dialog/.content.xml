@@ -40,8 +40,8 @@
                                                         <items jcr:primaryType="nt:unstructured">
                                                             <field
                                                                     jcr:primaryType="nt:unstructured"
-                                                                    sling:resourceType="cq/gui/components/coral/common/form/pagefield"
-                                                                    fieldLabel="Parent Link"
+                                                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                                    fieldLabel="Parent Page Title"
                                                                     name="./column1Link"
                                                                     rootPath="/content/lebara"/>
                                                             <multi
@@ -60,6 +60,12 @@
                                                                                 jcr:primaryType="nt:unstructured"
                                                                                 sling:resourceType="granite/ui/components/coral/foundation/container">
                                                                             <items jcr:primaryType="nt:unstructured">
+                                                                                <pagelabel
+                                                                                        jcr:primaryType="nt:unstructured"
+                                                                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                                                        fieldDescription="Enter Label to override fetching title from page properties"
+                                                                                        fieldLabel="Page label"
+                                                                                        name="./label"/>
                                                                                 <pagepath
                                                                                         jcr:primaryType="nt:unstructured"
                                                                                         sling:resourceType="cq/gui/components/coral/common/form/pagefield"
@@ -106,8 +112,8 @@
                                                         <items jcr:primaryType="nt:unstructured">
                                                             <field
                                                                     jcr:primaryType="nt:unstructured"
-                                                                    sling:resourceType="cq/gui/components/coral/common/form/pagefield"
-                                                                    fieldLabel="Parent Link"
+                                                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                                    fieldLabel="Parent Page Title"
                                                                     name="./column2Link"
                                                                     rootPath="/content/lebara"/>
                                                             <multi
@@ -126,6 +132,12 @@
                                                                                 jcr:primaryType="nt:unstructured"
                                                                                 sling:resourceType="granite/ui/components/coral/foundation/container">
                                                                             <items jcr:primaryType="nt:unstructured">
+                                                                                <pagelabel
+                                                                                        jcr:primaryType="nt:unstructured"
+                                                                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                                                        fieldDescription="Enter Label to override fetching title from page properties"
+                                                                                        fieldLabel="Page label"
+                                                                                        name="./label"/>
                                                                                 <pagepath
                                                                                         jcr:primaryType="nt:unstructured"
                                                                                         sling:resourceType="cq/gui/components/coral/common/form/pagefield"
@@ -172,8 +184,8 @@
                                                         <items jcr:primaryType="nt:unstructured">
                                                             <field
                                                                     jcr:primaryType="nt:unstructured"
-                                                                    sling:resourceType="cq/gui/components/coral/common/form/pagefield"
-                                                                    fieldLabel="Parent Link"
+                                                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                                    fieldLabel="Parent Page Title"
                                                                     name="./column3Link"
                                                                     rootPath="/content/lebara"/>
                                                             <multi
@@ -192,6 +204,12 @@
                                                                                 jcr:primaryType="nt:unstructured"
                                                                                 sling:resourceType="granite/ui/components/coral/foundation/container">
                                                                             <items jcr:primaryType="nt:unstructured">
+                                                                                <pagelabel
+                                                                                        jcr:primaryType="nt:unstructured"
+                                                                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                                                        fieldDescription="Enter Label to override fetching title from page properties"
+                                                                                        fieldLabel="Page label"
+                                                                                        name="./label"/>
                                                                                 <pagepath
                                                                                         jcr:primaryType="nt:unstructured"
                                                                                         sling:resourceType="cq/gui/components/coral/common/form/pagefield"
@@ -238,8 +256,8 @@
                                                         <items jcr:primaryType="nt:unstructured">
                                                             <field
                                                                     jcr:primaryType="nt:unstructured"
-                                                                    sling:resourceType="cq/gui/components/coral/common/form/pagefield"
-                                                                    fieldLabel="Parent Link"
+                                                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                                    fieldLabel="Parent Page Title"
                                                                     name="./column4Link"
                                                                     rootPath="/content/lebara"/>
                                                             <multi
@@ -258,6 +276,12 @@
                                                                                 jcr:primaryType="nt:unstructured"
                                                                                 sling:resourceType="granite/ui/components/coral/foundation/container">
                                                                             <items jcr:primaryType="nt:unstructured">
+                                                                                <pagelabel
+                                                                                        jcr:primaryType="nt:unstructured"
+                                                                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                                                        fieldDescription="Enter Label to override fetching title from page properties"
+                                                                                        fieldLabel="Page label"
+                                                                                        name="./label"/>
                                                                                 <pagepath
                                                                                         jcr:primaryType="nt:unstructured"
                                                                                         sling:resourceType="cq/gui/components/coral/common/form/pagefield"
@@ -307,9 +331,6 @@
                                                 composite="{Boolean}true"
                                                 fieldDescription="Add the footer copyright section"
                                                 fieldLabel="Footer">
-                                                <granite:data
-                                                    jcr:primaryType="nt:unstructured"
-                                                    maxItems="{Long}3"/>
                                                 <field
                                                     jcr:primaryType="nt:unstructured"
                                                     sling:resourceType="granite/ui/components/coral/foundation/container"
@@ -461,9 +482,6 @@
                                                 composite="{Boolean}true"
                                                 fieldDescription="Add the Follow Us icon and link"
                                                 fieldLabel="Follow Us">
-                                                <granite:data
-                                                    jcr:primaryType="nt:unstructured"
-                                                    maxItems="{Long}5"/>
                                                 <field
                                                     jcr:primaryType="nt:unstructured"
                                                     sling:resourceType="granite/ui/components/coral/foundation/container"
