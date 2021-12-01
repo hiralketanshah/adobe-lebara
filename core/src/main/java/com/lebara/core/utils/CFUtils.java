@@ -6,6 +6,7 @@ import java.util.stream.Collectors;
 import com.day.cq.i18n.I18n;
 import com.google.gson.JsonSyntaxException;
 import com.lebara.core.dto.*;
+import com.lebara.core.models.beans.SelectOption;
 import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.sling.api.resource.Resource;
@@ -131,8 +132,8 @@ public class CFUtils {
      * this methods takes the root path for fragment as an input and iterates through all
      * its child and returns a list of InternationalRateBean objects.
      */
-    public static List<InternationalRateBean> getInternationalRates(ResourceResolver resolver, String fragmentRootPath) {
-        List<InternationalRateBean> internationalRateBeanList = new ArrayList<>();
+    public static List<SelectOption> getInternationalRates(ResourceResolver resolver, String fragmentRootPath) {
+        List<SelectOption> internationalRateBeanList = new ArrayList<>();
         Resource parentResource = resolver.getResource(fragmentRootPath);
         for (Resource fragment : parentResource.getChildren()) {
             ContentFragment irFragment = fragment.adaptTo(ContentFragment.class);
@@ -140,11 +141,11 @@ public class CFUtils {
                 String countryLandingPageUrl = CFUtils.getElementValue(irFragment, "countryLandingPageURL");
                 countryLandingPageUrl = AemUtils.getLinkWithExtension(countryLandingPageUrl, resolver);
                 String countryName = CFUtils.getElementValue(irFragment, "countryName");
-                String landlineCallRate = CFUtils.getElementValue(irFragment, "landlineCallRate");
-                String mobileCallRate = CFUtils.getElementValue(irFragment, "mobileCallRate");
-                String smsRate = CFUtils.getElementValue(irFragment, "smsRate");
                 if (StringUtils.isNoneBlank(countryLandingPageUrl, countryName)) {
-                    internationalRateBeanList.add(new InternationalRateBean(countryLandingPageUrl, countryName, landlineCallRate, mobileCallRate, smsRate));
+                    SelectOption selectOption = new SelectOption();
+                    selectOption.setLabel(countryName);
+                    selectOption.setValue(countryLandingPageUrl);
+                    internationalRateBeanList.add(selectOption);
                 }
             }
         }

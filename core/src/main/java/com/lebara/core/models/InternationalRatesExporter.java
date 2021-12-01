@@ -1,5 +1,6 @@
 package com.lebara.core.models;
 
+import com.adobe.cq.dam.cfm.ContentFragment;
 import com.adobe.cq.export.json.ComponentExporter;
 import com.adobe.cq.export.json.ExporterConstants;
 import com.day.cq.commons.inherit.HierarchyNodeInheritanceValueMap;
@@ -7,24 +8,21 @@ import com.day.cq.commons.inherit.InheritanceValueMap;
 import com.day.cq.i18n.I18n;
 import com.day.cq.wcm.api.Page;
 import com.day.cq.wcm.api.PageManager;
-import com.lebara.core.dto.InternationalRateBean;
-import com.lebara.core.dto.OfferFragmentBean;
-import com.lebara.core.models.beans.ImageIcon;
+import com.lebara.core.models.beans.SelectOption;
 import com.lebara.core.utils.AemUtils;
 import com.lebara.core.utils.CFUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.api.resource.ResourceResolver;
 import org.apache.sling.models.annotations.DefaultInjectionStrategy;
 import org.apache.sling.models.annotations.Exporter;
 import org.apache.sling.models.annotations.Model;
-import org.apache.sling.models.annotations.injectorspecific.ChildResource;
 import org.apache.sling.models.annotations.injectorspecific.ScriptVariable;
 import org.apache.sling.models.annotations.injectorspecific.SlingObject;
 import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
 
 import javax.annotation.PostConstruct;
-import java.util.ArrayList;
 import java.util.List;
 
 @Model(adaptables = SlingHttpServletRequest.class, adapters = {InternationalRatesExporter.class, ComponentExporter.class},
@@ -48,7 +46,8 @@ public class InternationalRatesExporter implements ComponentExporter {
     private SlingHttpServletRequest slingRequest;
 
     @ValueMapValue
-    private String selectCountryLabel;
+    private String cfPath;
+
 
     @ValueMapValue
     private String description;
@@ -56,6 +55,10 @@ public class InternationalRatesExporter implements ComponentExporter {
     private String fragmentRootPath;
 
     private I18n i18n;
+
+    private String landlineCallRate;
+    private String mobileCallRate;
+    private String smsRate;
 
     @PostConstruct
     private void init() {
@@ -69,17 +72,35 @@ public class InternationalRatesExporter implements ComponentExporter {
             InheritanceValueMap inheritedProp = new HierarchyNodeInheritanceValueMap(page.getContentResource());
             fragmentRootPath = inheritedProp.getInherited("internationalRatesRootPath", String.class);
         }
+        Resource cfResource = resourceResolver.getResource(cfPath);
+        if (cfResource != null) {
+            ContentFragment irFragment = cfResource.adaptTo(ContentFragment.class);
+            if (null != irFragment) {
+                landlineCallRate = CFUtils.getElementValue(irFragment, "landlineCallRate");
+                mobileCallRate = CFUtils.getElementValue(irFragment, "mobileCallRate");
+                smsRate = CFUtils.getElementValue(irFragment, "smsRate");
+            }
+        }
     }
 
-    public String getSelectCountryLabel() {
-        return selectCountryLabel;
-    }
 
     public String getDescription() {
         return description;
     }
 
-    public List<InternationalRateBean> getCountryList() {
+    public String getLandlineCallRate() {
+        return landlineCallRate;
+    }
+
+    public String getMobileCallRate() {
+        return mobileCallRate;
+    }
+
+    public String getSmsRate() {
+        return smsRate;
+    }
+
+    public List<SelectOption> getCountryList() {
         return CFUtils.getInternationalRates(resourceResolver, fragmentRootPath);
     }
 
