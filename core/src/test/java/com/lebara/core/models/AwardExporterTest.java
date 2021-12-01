@@ -22,7 +22,7 @@ class AwardExporterTest {
     @InjectMocks
     AwardExporter awardExporter = new AwardExporter();
 
-    private static final String PROPERTIES_JSON = "/content/video/jcr:content/root/responsivegrid/page1";
+    private static final String PROPERTIES_JSON = "/content/video/jcr:content/root/responsivegrid/orderdetails";
 
     List<String> list  = new ArrayList<>();
 

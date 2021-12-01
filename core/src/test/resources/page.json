@@ -12,7 +12,7 @@
         "responsivegrid": {
           "jcr:primaryType": "nt:unstructured",
           "sling:resourceType": "wcm/foundation/components/responsivegrid",
-          "page1": {
+          "orderdetails": {
             "jcr:primaryType": "nt:unstructured",
             "description": "description",
             "heading": "heading",
@@ -46,9 +46,15 @@
             "image": "image",
             "name": "name",
             "noPadding": "noPadding",
-            "fileReference": "fileReference"
+            "fileReference": "fileReference",
+            "subTitle": "subTitle",
+            "showLabel": "showLabel",
+            "hideLabel": "hideLabel",
+            "ctaTopLabel": "ctaTopLabel",
+            "ctaBottomLabel": "ctaBottomLabel",
+            "backgroundColor": "backgroundColor"
           },
-          "page2": {
+          "simportin": {
             "jcr:primaryType": "nt:unstructured",
             "sling:resourceType": "lebara/components/page",
             "linkLabel": "linkLabel",
@@ -71,7 +77,7 @@
             "pwdConfirmRequiredValidationMsg": "pwdConfirmRequiredValidationMsg",
             "pwdConfirmMatchValidationMsg": "pwdConfirmMatchValidationMsg"
           },
-          "page3": {
+          "topup": {
             "jcr:primaryType": "nt:unstructured",
             "sling:resourceType": "lebara/components/page",
             "cartDescription": "cartDescription",
