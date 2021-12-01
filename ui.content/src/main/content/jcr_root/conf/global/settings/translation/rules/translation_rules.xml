@@ -475,6 +475,7 @@
 		<property name="portInNumberRequiredMsg"/>
 		<property name="portInNumberInValidMsg"/>
 		<property name="currentProviderRequiredMsg"/>
+		<property name="paymentCta"/>
 
 		<!-- Section Intro -->
 		<property name="sectionHeading"/>
@@ -486,9 +487,16 @@
 		<property name="textCol2"/>
 		<property name="getAppLabel"/>
 
+		<!-- previous bills -->
+		<property name="ctaButtonLabel"/>
+		<property name="dateLabel"/>
+
 		<!-- getitnow -->
 		<property name="getItNowErrorMessage"/>
-		
+
+		<!-- Rewards table -->
+		<property name="columnHeader1"/>
+		<property name="columnHeader2"/>
 
 		<!-- Global Search -->
 		<property name="mostSearchLabel"/>

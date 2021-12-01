@@ -42,12 +42,10 @@ function useMissingDetails() {
   const isMissingDetails =
     !isGuest &&
     !isAuthenticated &&
-    (missingDetailsForPostPaid ||
-      missingDetailsForPrepaid ||
-      (!hasPrepaid && !hasPostpaid && !isAuthenticated && hasTopUpOrAddon));
-      const isFreeTopUpAndFreeSim = cartItems.every(
-        (t: CartItem) => t.isFreeSimTopup || t.isFreeSim
-      );
+      (!hasPrepaid && !hasPostpaid && !isAuthenticated && hasTopUpOrAddon);
+  const isFreeTopUpAndFreeSim = cartItems.every(
+    (t: CartItem) => t.isFreeSimTopup || t.isFreeSim
+  );
       const handleRedirectsForMissingData = () => {
         if (hasTopUpOrAddonAndNoPlanAndNotLoggedIn) {
           history.push(GC.journeyPages[GCST.LOGIN] || '');

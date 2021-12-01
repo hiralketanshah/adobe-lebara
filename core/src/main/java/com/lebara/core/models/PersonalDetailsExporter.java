@@ -115,7 +115,8 @@ public class PersonalDetailsExporter implements ComponentExporter {
     public String saveAddress;
     @ValueMapValue
     public String orderDetailsCta;
-
+    @ValueMapValue
+    public String paymentCta;
 
     @ValueMapValue
     private String cfPath;
