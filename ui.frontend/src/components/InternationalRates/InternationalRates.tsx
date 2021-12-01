@@ -18,7 +18,7 @@ const InternationalRates: React.FC<InternationalRatesProps> = ({
   countryList,
 }) => {
   const handleClick = (url: any) => {
-    location.href = url;
+    window.location?.href = url;
   };
   return (
     <Box backgroundColor="lightCyan" padding="20px">
@@ -27,9 +27,11 @@ const InternationalRates: React.FC<InternationalRatesProps> = ({
         <Select background="white">
           <option>{countryLabel}</option>
           {countryList?.map((country: CountryList, idx) => (
-            {countryLabel !== country.label && (
-                <option onClick={() => handleClick(country.value)}>{country.label}</option>
-            )}
+            <>
+                {countryLabel !== country.label && (
+                    <option onClick={() => handleClick(country.value)}>{country.label}</option>
+                )}
+            </>
           ))}
         </Select>
       </Box>
