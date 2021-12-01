@@ -28,13 +28,48 @@
                                         jcr:primaryType="nt:unstructured"
                                         sling:resourceType="granite/ui/components/coral/foundation/container">
                                         <items jcr:primaryType="nt:unstructured">
-                                            <thankyoumessage
+                                            <orderidtitle
                                                 jcr:primaryType="nt:unstructured"
-                                                sling:resourceType="granite/ui/components/coral/foundation/form/textarea"
-                                                fieldDescription="Please put your Thank you Message"
-                                                fieldLabel="ThankyouMessage"
-                                                emptyText="Thank you for purchasing the selected product.Your SIM will arrive next working day.Occasionally it may take a little longer."
-                                                name="./thankYouMessage"/>
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="Order N."
+                                                fieldLabel="Order Id Title"
+                                                name="./orderIdTitle"/>
+                                            <simonlytitle
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="You’re all set!"
+                                                fieldLabel="Sim Only Title"
+                                                name="./simOnlyTitle"/>
+                                            <title
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="Thank you. We have received your request for a SIM only plan change."
+                                                fieldLabel="Title"
+                                                name="./title"/>
+                                            <orderidsubtitle
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="Thank you for purchasing the selected product. Your SIM will arrive next working day. Occasionally it may take a little longer."
+                                                fieldLabel="Order Id Subtitle"
+                                                name="./orderIdSubtitle"/>
+                                            <simonlysubtitle
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="You can now start calling, texting and using data."
+                                                fieldLabel="Sim Only Subtitle"
+                                                name="./simOnlySubtitle"/>
+                                            <planchangesubtitle
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="The plan change for the number {0} from the {1} to the {2} will take place on the first day of the following month. You will receive an email with further details about your new SIM only plan shortly."
+                                                fieldLabel="Plan Change Subtitle"
+                                                name="./planChangeSubtitle"/>
+                                            <dashboardbuttonlabel
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="Goto Dashboard"
+                                                fieldLabel="Dashboard Button Label"
+                                                name="./dashboardButtonLabel"/>
                                         </items>
                                     </column>
                                 </items>

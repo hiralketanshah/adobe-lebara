@@ -28,6 +28,7 @@ import { CartItem } from "../redux/types/cartTypes";
 import useMissingDetails from "../hooks/useMissingDetails";
 import { selectFormValues } from "../redux/selectors/formsSelectors";
 import { saveFormDetails } from "../redux/actions/formsActions";
+import {AuthoringUtils} from "@adobe/aem-spa-page-model-manager";
 const OrderDetailsRoute: React.FC<OrderDetailsProps> = ({ ...props }) => {
   const { selectedProductLabel, grandTotalLabel, applyVoucherLabel, enterVoucherCodeLabel, consentLabel,
     paymentButtonLabel, phoneNumberLabel, viewPlansLabel, showDetailsLabel, removeLabel, autoRenewDesc, autoRenewLabel,
@@ -151,7 +152,7 @@ const OrderDetailsRoute: React.FC<OrderDetailsProps> = ({ ...props }) => {
     [dispatch]
   );
   React.useEffect(() => {
-    if (!isCartItemsLoading && cartItems.length === 0) {
+    if (!isCartItemsLoading && cartItems.length === 0 && !AuthoringUtils.isInEditor()) {
       history.replace((GC.journeyPages[GCST.EMPTY_CART] || ''), {
         selectedType: "plan",
       });
@@ -218,29 +219,29 @@ const OrderDetailsRoute: React.FC<OrderDetailsProps> = ({ ...props }) => {
                     <Text fontWeight="bold">
                       {nameLabel}{" "}
                       <Text fontWeight="normal" d="inline">
-                        {personalDetailsLocation.firstName} {personalDetailsLocation.lastName}
+                        {personalDetailsLocation?.firstName} {personalDetailsLocation?.lastName}
                       </Text>
                     </Text>
                     <Text fontWeight="bold">
                       {emailLabel}{" "}
                       <Text fontWeight="normal" d="inline">
-                        {personalDetailsLocation.email}
+                        {personalDetailsLocation?.email}
                       </Text>
                     </Text>
                     {portIn.mobileNumber && keepMobileFromAnotherOperator && (
                       <Text fontWeight="bold">
                         {mobileNumberLabel}{" "}
                         <Text fontWeight="normal" d="inline">
-                          {portIn.mobileNumber}
+                          {portIn?.mobileNumber}
                         </Text>
                       </Text>
                     )}
                     <Text fontWeight="bold">
                       {shippingAddressLabel}{" "}
                       <Text fontWeight="normal" d="inline">
-                        {personalDetailsLocation.houseNumber}{" "}
-                        {personalDetailsLocation.streetName} {personalDetailsLocation.townCity}{" "}
-                        {personalDetailsLocation.zipCode}
+                        {personalDetailsLocation?.houseNumber}{" "}
+                        {personalDetailsLocation?.streetName} {personalDetailsLocation?.townCity}{" "}
+                        {personalDetailsLocation?.zipCode}
                       </Text>
                     </Text>
                   </Box>
@@ -250,14 +251,14 @@ const OrderDetailsRoute: React.FC<OrderDetailsProps> = ({ ...props }) => {
                     <Text fontWeight="bold">
                       {nameLabel}{" "}
                       <Text fontWeight="normal" d="inline">
-                        {postpaidPersonalDetails.firstName}{" "}
-                        {postpaidPersonalDetails.lastName}
+                        {postpaidPersonalDetails?.firstName}{" "}
+                        {postpaidPersonalDetails?.lastName}
                       </Text>
                     </Text>
                     <Text fontWeight="bold">
                       {emailLabel}{" "}
                       <Text fontWeight="normal" d="inline">
-                        {postpaidPersonalDetails.email}
+                        {postpaidPersonalDetails?.email}
                       </Text>
                     </Text>
                     {postpaidPersonalDetails.portInStatus === "Yes" &&
@@ -272,7 +273,7 @@ const OrderDetailsRoute: React.FC<OrderDetailsProps> = ({ ...props }) => {
                     <Text fontWeight="bold">
                       {shippingAddressLabel}{" "}
                       <Text fontWeight="normal" d="inline">
-                        {postpaidPersonalDetails.shippingAddress.label}{" "}
+                        {postpaidPersonalDetails?.shippingAddress.label}{" "}
                       </Text>
                     </Text>
                   </Box>
@@ -361,7 +362,7 @@ const OrderDetailsRoute: React.FC<OrderDetailsProps> = ({ ...props }) => {
           .filter((t) => !t.isTopUp && !t.isFreeSimTopup)
           .map((t) => (
             <ExpandablePlanCardCheckout
-              showAutoRenew={!t.isFreeSim}
+              showAutoRenew={!t.isFreeSim && !t.isPostPaid && !t.isAddon}
               hideViewDetails={t.isFreeSim}
               title={t.duration}
               isFreeSim={t.isFreeSim}
@@ -402,7 +403,7 @@ const OrderDetailsRoute: React.FC<OrderDetailsProps> = ({ ...props }) => {
           .map((t) => (
             <SelectedTopUpCreditCard
               key={t.magentoId}
-              showAutoRenew={!isGuest}
+              showAutoRenew={isAuthenticated}
               isAutoTopUp={t.isAutoTopUp}
               topUpCap={t.topUpCap || t.price}
               topUpCapDesc={topUpCapDesc}
