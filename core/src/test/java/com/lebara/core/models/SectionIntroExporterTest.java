@@ -31,7 +31,7 @@ class SectionIntroExporterTest {
 		sectionIntroExporter = aemContext.request().adaptTo(SectionIntroExporter.class);
 		assertEquals("linkLabel", sectionIntroExporter.getLinkLabel());
 		assertEquals("sectionSubHeading", sectionIntroExporter.getSectionSubHeading());
-		assertEquals("lebara/resourceType", sectionIntroExporter.getExportedType());
+		assertEquals("lebara/components/embed2", sectionIntroExporter.getExportedType());
 		assertEquals(false, sectionIntroExporter.isNoPadding());
 		assertEquals("sectionHeading", sectionIntroExporter.getSectionHeading());
 		

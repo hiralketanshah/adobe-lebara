@@ -70,11 +70,11 @@
             "pwdMinValdiationMsg": "pwdMinValdiationMsg",
             "pwdConfirmRequiredValidationMsg": "pwdConfirmRequiredValidationMsg",
             "pwdConfirmMatchValidationMsg": "pwdConfirmMatchValidationMsg",
-            "sling:resourceType": "lebara/resourceType"
+            "sling:resourceType": "lebara/components/embed2"
           },
           "embed3": {
             "jcr:primaryType": "nt:unstructured",
-            "sling:resourceType": "unilever/components/embed",
+            "sling:resourceType": "lebara/components/embed",
             "cartDescription": "cartDescription",
             "addOnTabLabel": "addOnTabLabel",
             "dataTabLabel": "dataTabLabel",
