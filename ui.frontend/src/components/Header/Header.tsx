@@ -15,16 +15,19 @@ import {
   MenuItem,
   Tag,
   TagLabel,
+  useOutsideClick,
 } from "@chakra-ui/react";
 import {
   AiOutlineUser,
   BsSearch,
   BiSearch,
   RiShoppingCartLine,
+  // RiHeadphoneFill,
 } from "react-icons/all";
 import { Link, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useLocalStorage } from "@rehooks/local-storage";
+
 import {
   HeaderProps,
   children
@@ -49,26 +52,13 @@ import { setCartItemsLoading, loadInitialCart } from "../../redux/actions/cartAc
 import mapMagentoProductToCartItem from "../../utils/mapMagentoProductToCartItem";
 import { saveTopUps } from "../../redux/actions/topUpActions";
 import GET_TOP_UPS from "../../graphql/GET_TOP_UPS";
+import LanguageDropDown from "../LanguageDropDown/LanguageDropDown";
 
-const Header: React.FC<HeaderProps> = ({
-  logoPath,
-  items,
-  topupCtaText,
-  topupCtaLink,
-  accountLink,
-  searchPlaceholder,
-}) => {
-  const cartItems = useSelector((state: ReduxState) => state.cart.items);
+
+const SingleMenu = ({ menuItem, newText }: { menuItem: children, newText: any }) => {
   const history = useHistory();
-  const [userToken] = useLocalStorage("userToken");
-  const client = useApolloClient();
-  const dispatch = useDispatch();
-  const [isSearchOpened, setIsSearchOpened] = React.useState(false);
-  const [isProfileDropdownOpen, setProfileDropdown] = useState(false);
-  const isAuthenticated = useSelector(selectIsAuthenticated);
   const timerRef = useRef<any>();
   const [isOpenMenu, setIsOpenMenu] = useState(false);
-
   const btnMouseEnterEvent = () => {
     setIsOpenMenu(true);
   };
@@ -89,6 +79,152 @@ const Header: React.FC<HeaderProps> = ({
     setIsOpenMenu(false);
   };
 
+  return (
+    <Menu
+      isOpen={isOpenMenu}>
+      <MenuButton
+      onClick={() => (menuItem.path ? history.push(menuItem.path) : null)}
+      onMouseEnter={btnMouseEnterEvent}
+      onMouseLeave={btnMouseLeaveEvent}
+        _active={{
+          borderBottom: "1px solid white",
+        }}
+      >
+        <Box px={{ lg: "2px", md: "initial" }}>
+          <Button
+            colorScheme="teal"
+            variant="ghost"
+            _focus={{ borderBottom: "1px solid white" }}
+            _hover={{ color: "white", bg: "lightenPrimary.500" }}
+            size="sm"
+            pl="initial"
+            onClick={() => history.push(`"/"${menuItem.title}`)}
+            isDisabled={menuItem.active}
+          >
+            <Text
+              textTransform="capitalize"
+              fontSize={{ lg: "14px", md: "12px" }}
+              lineHeight="20px"
+              align="left"
+              color="white"
+              fontWeight="normal"
+            >
+              {menuItem.title}
+            </Text>
+          </Button>
+        </Box>
+      </MenuButton>
+      <MenuList 
+        marginLeft="-135px" 
+        marginTop="5px" 
+        zIndex={2}
+        onMouseEnter={menuListMouseEnterEvent}
+        onMouseLeave={menuListMouseLeaveEvent}>
+        <Box
+          display="flex"
+          justifyContent="space-between"
+          width="calc(100vw - 0px)"
+          padding="45px"
+        >
+          <Box
+            width="75%"
+            display="flex"
+            justifyContent="space-between"
+          >
+            {menuItem.children?.map((subMenuOption: children, cgIdx: any) => (
+              <Box>
+                <MenuGroup
+                  defaultValue="asc"
+                  fontSize={14}
+                  color="primary.500"
+                  fontWeight="bold"
+                  textTransform="uppercase"
+                  marginLeft="12px"
+                  title={subMenuOption.title}
+                >
+                  <Box>
+                    {subMenuOption.children?.map(
+                      (menuProps: children, cIdx: any) => (
+                        <MenuItem
+                          isDisabled={menuProps.active}
+                          onClick={() =>
+                            menuProps.path
+                              ? history.push(menuProps.path)
+                              : null
+                          }
+                        >
+                          <Text
+                            fontSize="14px"
+                            fontWeight="500"
+                            lineHeight="14.06px"
+                            color="black"
+                          >
+                            {menuProps.title}
+                          </Text>
+                          {menuProps.showNewText ? (
+                            <Tag
+                              size="md"
+                              borderRadius="full"
+                              variant="solid"
+                              colorScheme="blue"
+                              marginLeft="20px"
+                            >
+                              <TagLabel
+                                fontSize="14px"
+                                fontWeight="700"
+                              >
+                                {newText || 'New'}
+                              </TagLabel>
+                            </Tag>
+                          ) : (
+                            <></>
+                          )}
+                        </MenuItem>
+                      )
+                    )}
+                  </Box>
+                </MenuGroup>
+              </Box>
+            ))}
+          </Box>
+          <Box width="12%">
+            <></>
+          </Box>
+          <Box position="relative">
+            {(menuItem.imagePath || menuItem.simImage || menuItem.imageText) && (
+              <NewSIMOfferCard imagePath={menuItem.imagePath} simImage= {menuItem.simImage} imageText={menuItem.imageText}/>
+            )}
+          </Box>
+        </Box>
+      </MenuList>
+    </Menu>
+  );
+};
+
+const Header: React.FC<HeaderProps> = ({
+  logoPath,
+  items,
+  newText,
+  accountLink,
+  topupCtaText,
+  topupCtaLink,
+  searchPlaceholder,
+}) => {
+  const ref = React.useRef<any>(undefined);
+  const cartItems = useSelector((state: ReduxState) => state.cart.items);
+  const history = useHistory();
+  const [userToken] = useLocalStorage("userToken");
+  const client = useApolloClient();
+  const dispatch = useDispatch();
+  const [isSearchOpened, setIsSearchOpened] = React.useState(false);
+  const [isProfileDropdownOpen, setProfileDropdown] = useState(false);
+  const isAuthenticated = useSelector(selectIsAuthenticated);
+
+  useOutsideClick({
+    ref,
+    handler: () => setProfileDropdown(false),
+  });
+
   const onSearchClick = () => {
     setIsSearchOpened(true);
     dispatch(
@@ -97,6 +233,7 @@ const Header: React.FC<HeaderProps> = ({
       })
     );
   };
+
   const onCloseSearch = () => {
     setIsSearchOpened(false);
     dispatch(
@@ -105,6 +242,7 @@ const Header: React.FC<HeaderProps> = ({
       })
     );
   };
+
   const getCart = useCallback(() => {
     dispatch(setCartItemsLoading());
     client.query({ query: GET_CART }).then((res) => {
@@ -134,6 +272,7 @@ const Header: React.FC<HeaderProps> = ({
       );
     }
   }, [topUps, dispatch]);
+  
   const handleCartClick = () => {
     const hasDataPlan =
       cartItems.filter((t) => !t.isAddon && !t.duration.startsWith("Top-up"))
@@ -148,6 +287,7 @@ const Header: React.FC<HeaderProps> = ({
         : (GC.journeyPages[GCST.LEBARA_SIM_CHOICE]  || '/')
     );
   };
+
   const handleProfileClick = () => {
     if (isAuthenticated) {
       setProfileDropdown(!isProfileDropdownOpen);
@@ -169,7 +309,7 @@ const Header: React.FC<HeaderProps> = ({
       borderRadius={{ md: "8px" }}
     >
       <Flex display={{ base: "none", md: "block" }}>
-        {/* <Flex
+        <Flex
           alignItems="center"
           px={10}
           justifyContent="flex-end"
@@ -177,15 +317,15 @@ const Header: React.FC<HeaderProps> = ({
           color="white"
           display={{ base: "none", md: "flex" }}
         >
-          <Box>
+          {/* <Box>
             <LanguageDropDown
               options={[]}
               selectProps={{
                 height: "2em",
               }}
             />
-          </Box>
-          <Flex alignItems="center">
+          </Box> */}
+          {/* <Flex alignItems="center">
             <IconButton
               icon={<IoLocationOutline />}
               aria-label="Search"
@@ -194,8 +334,8 @@ const Header: React.FC<HeaderProps> = ({
               colorScheme="dark"
             />
             <Text fontSize="12px">Find a store</Text>
-          </Flex>
-          <Flex alignItems="center">
+          </Flex> */}
+          {/* <Flex alignItems="center">
             <IconButton
               icon={<RiHeadphoneFill />}
               aria-label="Search"
@@ -204,8 +344,8 @@ const Header: React.FC<HeaderProps> = ({
               colorScheme="dark"
             />
             <Text fontSize="12px">Help</Text>
-          </Flex>
-        </Flex> */}
+          </Flex> */}
+        </Flex>
 
         <Flex
           alignItems="center"
@@ -222,125 +362,9 @@ const Header: React.FC<HeaderProps> = ({
 
           <Flex alignItems="left" ml={{ lg: "30px", md: "15px" }}>
             {items?.map((menuItem: children, idx: any) => (
-              <Menu key={`menu-key-${idx}`}
-                isOpen={isOpenMenu}>
-                <MenuButton
-                onClick={() => (menuItem.path ? history.push(menuItem.path) : null)}
-                onMouseEnter={btnMouseEnterEvent}
-                onMouseLeave={btnMouseLeaveEvent}
-                  _active={{
-                    borderBottom: "1px solid white",
-                  }}
-                  key={`menu-button-key-${idx}`}
-                >
-                  <Box px={{ lg: "2px", md: "initial" }}>
-                    <Button
-                      colorScheme="teal"
-                      variant="ghost"
-                      _focus={{ borderBottom: "1px solid white" }}
-                      _hover={{ color: "white", bg: "lightenPrimary.500" }}
-                      size="sm"
-                      pl="initial"
-                      onClick={() => history.push(`"/"${menuItem.title}`)}
-                      isDisabled={menuItem.active}
-                    >
-                      <Text
-                        textTransform="capitalize"
-                        fontSize={{ lg: "14px", md: "12px" }}
-                        lineHeight="20px"
-                        align="left"
-                        color="white"
-                        fontWeight="normal"
-                      >
-                        {menuItem.title}
-                      </Text>
-                    </Button>
-                  </Box>
-                </MenuButton>
-                <MenuList marginLeft="-135px" marginTop="5px" 
-                  zIndex={2}
-                  onMouseEnter={menuListMouseEnterEvent}
-                  onMouseLeave={menuListMouseLeaveEvent}>
-                  <Box
-                    display="flex"
-                    justifyContent="space-between"
-                    width="calc(100vw - 0px)"
-                    padding="45px"
-                  >
-                    <Box
-                      width="75%"
-                      display="flex"
-                      justifyContent="space-between"
-                    >
-                      {menuItem.children?.map((subMenuOption: children, cgIdx: any) => (
-                        <Box>
-                          <MenuGroup
-                            key={`menu-child-group-key-${cgIdx}`}
-                            defaultValue="asc"
-                            fontSize={14}
-                            color="primary.500"
-                            fontWeight="bold"
-                            textTransform="uppercase"
-                            marginLeft="12px"
-                            title={subMenuOption.title}
-                          >
-                            <Box>
-                              {subMenuOption.children?.map(
-                                (menuProps: children, cIdx: any) => (
-                                  <MenuItem
-                                    key={`menu-child-key-${cIdx}`}
-                                    isDisabled={menuProps.active}
-                                    onClick={() =>
-                                      menuProps.path
-                                        ? history.push(menuProps.path)
-                                        : null
-                                    }
-                                  >
-                                    <Text
-                                      fontSize="14px"
-                                      fontWeight="500"
-                                      lineHeight="14.06px"
-                                      color="black"
-                                    >
-                                      {menuProps.title}
-                                    </Text>
-                                    {menuProps.showNewText ? (
-                                      <Tag
-                                        size="md"
-                                        borderRadius="full"
-                                        variant="solid"
-                                        colorScheme="blue"
-                                        marginLeft="20px"
-                                      >
-                                        <TagLabel
-                                          fontSize="14px"
-                                          fontWeight="700"
-                                        >
-                                          New
-                                        </TagLabel>
-                                      </Tag>
-                                    ) : (
-                                      <></>
-                                    )}
-                                  </MenuItem>
-                                )
-                              )}
-                            </Box>
-                          </MenuGroup>
-                        </Box>
-                      ))}
-                    </Box>
-                    <Box width="12%">
-                      <></>
-                    </Box>
-                    <Box position="relative">
-                      {(menuItem.imagePath || menuItem.simImage || menuItem.imageText) && (
-                        <NewSIMOfferCard imagePath={menuItem.imagePath} simImage= {menuItem.simImage} imageText={menuItem.imageText}/>
-                      )}
-                    </Box>
-                  </Box>
-                </MenuList>
-              </Menu>
+              <React.Fragment key={menuItem.title}>
+                <SingleMenu menuItem={menuItem} newText={newText} />
+              </React.Fragment>
             ))}
           </Flex>
           <Spacer />
@@ -364,6 +388,7 @@ const Header: React.FC<HeaderProps> = ({
                   onClick={onSearchClick}
                 >
                   <IconButton
+                    className="header-search-icon"
                     icon={<BiSearch size={24} />}
                     aria-label="Search"
                     variant="ghost"
@@ -450,7 +475,7 @@ const Header: React.FC<HeaderProps> = ({
           </Flex>
         </Flex>
       </Flex>
-      {isSearchOpened ? (
+      {isSearchOpened && (
         <Box
           backgroundColor="rgba(0,0,0,0.5)"
           width="100%"
@@ -461,20 +486,17 @@ const Header: React.FC<HeaderProps> = ({
             zIndex="3"
             width="17.5rem"
             // ml="calc(100vw - 32.5rem)"
-            right={{ lg: "13.5rem", md: "4rem" }}
+            right={{ lg: "6.3rem", md: "4rem" }}
             position="absolute"
             flexDirection="column"
           >
             <Search
-              searchPlaceholder={searchPlaceholder}
               onCloseClick={onCloseSearch}
               />
           </Flex>
         </Box>
-      ) : (
-        <></>
       )}
-      {isProfileDropdownOpen ? (
+      {isProfileDropdownOpen && (
         <Box backgroundColor="white" width="100%" height="100%">
           <Flex
             zIndex="3"
@@ -491,11 +513,9 @@ const Header: React.FC<HeaderProps> = ({
             <UserMenu {...userMenuProps} />
           </Flex>
         </Box>
-      ) : (
-        <></>
       )}
       <Flex display={{ md: "none", sm: "flex" }} mx={{ md: "27px" }}>
-        <MiniHeader logoPath={logoPath} items={items}/>
+        <MiniHeader logoPath={logoPath} items={items} />
       </Flex>
     </Flex>
   );
