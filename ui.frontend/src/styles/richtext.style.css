@@ -50,7 +50,3 @@
     outline-offset: 2px;
     color: var(--chakra-colors-secondary-500);
 }
-
-a {
-    text-decoration: underline !important;
-}
