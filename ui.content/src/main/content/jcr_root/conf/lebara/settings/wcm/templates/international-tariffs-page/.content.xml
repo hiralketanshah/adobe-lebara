@@ -4,8 +4,10 @@
     <jcr:content
         cq:created="{Date}2018-10-22T17:08:28.689+05:30"
         cq:createdBy="admin"
-        jcr:primaryType="cq:PageContent"
+        cq:lastModified="{Date}2021-12-01T19:05:29.853+05:30"
+        cq:lastModifiedBy="admin"
         jcr:description="International Call Page"
+        jcr:primaryType="cq:PageContent"
         jcr:title="International Call Page"
         status="enabled"/>
 </jcr:root>

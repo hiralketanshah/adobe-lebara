@@ -4,9 +4,9 @@
     allowedPaths="[/content/entities(/.*)?]"
     ranking="{Long}100">
     <jcr:content
-        cq:lastModified="{Date}2021-12-01T17:37:44.882+05:30"
+        cq:lastModified="{Date}2021-12-01T18:47:39.180+05:30"
         cq:lastModifiedBy="admin"
-        cq:scaffolding="/conf/lebara/settings/dam/cfm/models/international-rates-fragment/jcr:content/model"
+        cq:scaffolding="/conf/lebara/settings/dam/cfm/models/international-tariffs-fragment/jcr:content/model"
         cq:templateType="/libs/settings/dam/cfm/model-types/fragment"
         jcr:primaryType="cq:PageContent"
         jcr:title="International Rates Fragment"
@@ -24,13 +24,13 @@
                 jcr:primaryType="nt:unstructured"
                 sling:resourceType="cq/gui/components/authoring/dialog">
                 <content
-                    jcr:lastModified="{Date}2021-12-01T17:37:44.882+05:30"
+                    jcr:lastModified="{Date}2021-12-01T18:47:39.180+05:30"
                     jcr:lastModifiedBy="admin"
                     jcr:primaryType="nt:unstructured"
                     sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns">
                     <items
                         jcr:primaryType="nt:unstructured"
-                        maxGeneratedOrder="23">
+                        maxGeneratedOrder="21">
                         <_x0031_638357556781
                             jcr:primaryType="nt:unstructured"
                             sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
@@ -45,28 +45,32 @@
                             valueType="string">
                             <granite:data jcr:primaryType="nt:unstructured"/>
                         </_x0031_638357556781>
-                        <_x0031_638357671645
+                        <_x0031_638364306347
                             jcr:primaryType="nt:unstructured"
-                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                            fieldLabel="Country landing page URL"
-                            listOrder="1"
-                            maxlength="255"
-                            metaType="text-single"
-                            name="countryLandingPageUrl"
+                            sling:resourceType="dam/cfm/models/editor/components/contentreference"
+                            fieldLabel="Country Landing Page"
+                            filter="hierarchy"
+                            listOrder="21"
+                            metaType="reference"
+                            name="countryLandingPageURL"
+                            nameSuffix="contentReference"
                             renderReadOnly="false"
+                            rootPath="/content/lebara"
                             showEmptyInReadOnly="true"
-                            validation="cfm.validation.url"
-                            valueType="string">
-                            <granite:data jcr:primaryType="nt:unstructured"/>
-                        </_x0031_638357671645>
+                            showThumbnail="false"
+                            valueType="string/reference">
+                            <granite:data
+                                jcr:primaryType="nt:unstructured"
+                                thumbnail-validation="cfm.validation.thumbnail.show"/>
+                        </_x0031_638364306347>
                         <_x0031_638357694850
                             jcr:primaryType="nt:unstructured"
                             sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                            fieldLabel="Landline Rates"
+                            fieldLabel="Landline Call Rate"
                             listOrder="1"
                             maxlength="255"
                             metaType="text-single"
-                            name="landlineRates"
+                            name="landlineCallRate"
                             renderReadOnly="false"
                             showEmptyInReadOnly="true"
                             valueType="string">
@@ -75,8 +79,8 @@
                         <_x0031_638360376950
                             jcr:primaryType="nt:unstructured"
                             sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                            fieldLabel="Mobile call rate"
-                            listOrder="23"
+                            fieldLabel="Mobile Call Rate"
+                            listOrder="1"
                             maxlength="255"
                             metaType="text-single"
                             name="mobileCallRate"
@@ -88,8 +92,8 @@
                         <_x0031_638360371297
                             jcr:primaryType="nt:unstructured"
                             sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                            fieldLabel="SMS rate"
-                            listOrder="22"
+                            fieldLabel="SMS Rate"
+                            listOrder="1"
                             maxlength="255"
                             metaType="text-single"
                             name="smsRate"
