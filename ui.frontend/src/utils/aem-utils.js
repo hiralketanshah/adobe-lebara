@@ -1,5 +1,26 @@
-const getCfOfferDataUrl = (offerIds) => {
-  return `${window.location.pathname.replace('.html', '')}.offer.json?offerId=${offerIds}`;
-};
+const aemUtils = {
+  getSearchResultsPath: function(query = '', searchRootPagePath = undefined) {
+    const baseUrl = `${window.location.pathname.replace('.html', '')}.globalsearch.json`;
+    let returnUrl;
+    if(query && (searchRootPagePath && searchRootPagePath !== "")) {
+      returnUrl = `${baseUrl}?q=${query}&searchRootPagePath=${searchRootPagePath}`;
+    }
+    else {
+      returnUrl = `${baseUrl}?q=${query}`;
+    }
 
-export default getCfOfferDataUrl;
+    return returnUrl;
+  },
+  getCfOfferDataUrl: function (offerIds) {
+    return `${window.location.pathname.replace('.html', '')}.offer.json?offerId=${offerIds}`;
+  },
+  debounce: function (func, timeout = 300) {
+    let timer;
+    return (...args) => {
+      clearTimeout(timer);
+      timer = setTimeout(() => { func.apply(this, args); }, timeout);
+    };
+  },
+}
+
+export default aemUtils;

@@ -4,9 +4,6 @@ import {
   Flex,
   Spacer,
   Text,
-  Input,
-  InputGroup,
-  InputLeftElement,
   Menu,
   MenuButton,
   MenuList,
@@ -18,13 +15,13 @@ import {
 } from "@chakra-ui/react";
 import {
   AiOutlineUser,
-  BsSearch,
   BiSearch,
   RiShoppingCartLine,
 } from "react-icons/all";
 import { Link, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useLocalStorage } from "@rehooks/local-storage";
+
 import {
   HeaderProps,
   children
@@ -364,6 +361,7 @@ const Header: React.FC<HeaderProps> = ({
                   onClick={onSearchClick}
                 >
                   <IconButton
+                    className="header-search-icon"
                     icon={<BiSearch size={24} />}
                     aria-label="Search"
                     variant="ghost"
@@ -377,39 +375,7 @@ const Header: React.FC<HeaderProps> = ({
                   />
                 </Button>
               ) : (
-                <>
-                  <InputGroup
-                    borderRadius="lg"
-                    ml="4%"
-                    width={{ md: "auto", lg: "18rem" }}
-                  >
-                    <InputLeftElement
-                      pointerEvents="none"
-                      backgroundColor="white"
-                      borderRadius="lg"
-                      ml="5px"
-                    >
-                      <BsSearch color="#969696" size={20} />
-                      <Box color="black" pl="4px">
-                        {" "}
-                        |{" "}
-                      </Box>
-                    </InputLeftElement>
-                    <Input
-                      ml="4px"
-                      placeholder={searchPlaceholder}
-                      _placeholder={{
-                        color: "grey.100",
-                        fontSize: "16px",
-                        lineHeight: "19px",
-                        letterSpacing: "0.25px",
-                      }}
-                      color="black"
-                      bgColor="white"
-                      borderRadius="lg"
-                    />
-                  </InputGroup>
-                </>
+                <Search isHeaderSearchInput={true} />
               )}
             </Box>
             <IconButton
@@ -450,7 +416,7 @@ const Header: React.FC<HeaderProps> = ({
           </Flex>
         </Flex>
       </Flex>
-      {isSearchOpened ? (
+      {isSearchOpened && (
         <Box
           backgroundColor="rgba(0,0,0,0.5)"
           width="100%"
@@ -461,20 +427,19 @@ const Header: React.FC<HeaderProps> = ({
             zIndex="3"
             width="17.5rem"
             // ml="calc(100vw - 32.5rem)"
-            right={{ lg: "13.5rem", md: "4rem" }}
+            right={{ lg: "6.3rem", md: "4rem" }}
             position="absolute"
             flexDirection="column"
           >
             <Search
-              searchPlaceholder={searchPlaceholder}
+              isHeaderSearchInput={false}
+              isHeaderSearchResult={true}
               onCloseClick={onCloseSearch}
               />
           </Flex>
         </Box>
-      ) : (
-        <></>
       )}
-      {isProfileDropdownOpen ? (
+      {isProfileDropdownOpen && (
         <Box backgroundColor="white" width="100%" height="100%">
           <Flex
             zIndex="3"
@@ -491,11 +456,9 @@ const Header: React.FC<HeaderProps> = ({
             <UserMenu {...userMenuProps} />
           </Flex>
         </Box>
-      ) : (
-        <></>
       )}
       <Flex display={{ md: "none", sm: "flex" }} mx={{ md: "27px" }}>
-        <MiniHeader logoPath={logoPath} items={items}/>
+        <MiniHeader logoPath={logoPath} items={items} />
       </Flex>
     </Flex>
   );

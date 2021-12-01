@@ -500,6 +500,7 @@
 
 		<!-- Global Search -->
 		<property name="mostSearchLabel"/>
+		<property name="emptySearchResultMsg"/>
 		
 		<!-- Lebara fields ends -->
 		<property name="cq:language" updateDestinationLanguage="true"/>
