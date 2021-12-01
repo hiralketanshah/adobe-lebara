@@ -52,8 +52,6 @@ import { setCartItemsLoading, loadInitialCart } from "../../redux/actions/cartAc
 import mapMagentoProductToCartItem from "../../utils/mapMagentoProductToCartItem";
 import { saveTopUps } from "../../redux/actions/topUpActions";
 import GET_TOP_UPS from "../../graphql/GET_TOP_UPS";
-import LanguageDropDown from "../LanguageDropDown/LanguageDropDown";
-
 
 const SingleMenu = ({ menuItem, newText }: { menuItem: children, newText: any }) => {
   const history = useHistory();
