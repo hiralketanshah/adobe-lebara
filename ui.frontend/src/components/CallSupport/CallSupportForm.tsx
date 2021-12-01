@@ -37,10 +37,29 @@ const CallSupportForm: React.FC<CallSupportProps> = ({
     subject: "",
     helpText: "",
   };
-  const subjectOptions: FormikSelectOption[] = [
+
+  const defaultSubjectOptions = [
     { value: "Prepaid", name: "Prepaid" },
     { value: "Postpaid", name: "Postpaid" },
   ];
+
+  const getSubjects = () => {
+    let subjects: FormikSelectOption[] = [];
+
+    if(dropDownValues && dropDownValues.length) {
+      subjects = dropDownValues?.map((ddValue: any) => {
+        return { value: ddValue, name: ddValue };
+      });
+
+    } else {
+      subjects = [...defaultSubjectOptions];
+    }
+
+    return subjects;
+  }
+
+  const subjectOptions: FormikSelectOption[] = getSubjects();
+
   const validate = (values: CallSupportProps) => {
     const errors: CallSupportProps = {
       firstName: "",

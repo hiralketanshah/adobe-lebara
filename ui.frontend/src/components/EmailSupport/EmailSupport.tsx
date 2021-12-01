@@ -28,7 +28,6 @@ const EmailSupport: React.FC<EmailSupportProps> = ({
   attachment,
   attachmentDescription,
   submitLabel,
-  separatorText,
 }) => {
   const initialValues: EmailSupportProps = {
     firstName: "",
@@ -37,10 +36,29 @@ const EmailSupport: React.FC<EmailSupportProps> = ({
     subject: "",
     helpText: "",
   };
-  const subjectOptions: FormikSelectOption[] = [
+  
+  const defaultSubjectOptions = [
     { value: "Prepaid", name: "Prepaid" },
     { value: "Postpaid", name: "Postpaid" },
   ];
+
+  const getSubjects = () => {
+    let subjects: FormikSelectOption[] = [];
+
+    if(dropDownValues && dropDownValues.length) {
+      subjects = dropDownValues?.map((ddValue: any) => {
+        return { value: ddValue, name: ddValue };
+      });
+
+    } else {
+      subjects = [...defaultSubjectOptions];
+    }
+
+    return subjects;
+  }
+
+  const subjectOptions: FormikSelectOption[] = getSubjects();
+
   const validate = (values: EmailSupportProps) => {
     const errors: EmailSupportProps = {
       firstName: "",
@@ -99,30 +117,6 @@ const EmailSupport: React.FC<EmailSupportProps> = ({
           className="rich-text"
           dangerouslySetInnerHTML={{ __html : description }}
         />}
-
-        {separatorText && <Flex
-          mt={{ base: "10px", lg: "35px" }}
-          justifyContent="center"
-          width="100%"
-        >
-          <Text
-            fontWeight="500"
-            fontSize="24px"
-            lineHeight="28px"
-            color="primary.500"
-          >
-            {separatorText}
-          </Text>
-        </Flex>}
-
-        {callbackMessageText && <Text
-          mt="7px"
-          fontSize="16px"
-          lineHeight="18px"
-          display={{ base: "block", lg: "none" }}
-        >
-          {callbackMessageText}
-        </Text>}
 
         <Box
           w={{ base: "100%", lg: "515px" }}
