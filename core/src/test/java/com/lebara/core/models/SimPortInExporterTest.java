@@ -14,7 +14,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class SimPortInExporterTest {
 
     private final AemContext aemContext = new AemContext();
-    private static final String PROPERTIES_JSON = "/content/video/jcr:content/root/responsivegrid/embed3";
+    private static final String PROPERTIES_JSON = "/content/video/jcr:content/root/responsivegrid/page3";
 
     @InjectMocks
     SimPortInExporter simPortInExporter = new SimPortInExporter();
@@ -29,7 +29,7 @@ class SimPortInExporterTest {
     void getPretitle() {
         aemContext.currentResource(PROPERTIES_JSON);
         simPortInExporter = aemContext.request().adaptTo(SimPortInExporter.class);
-        assertEquals("lebara/components/embed2", simPortInExporter.getExportedType());
+        assertEquals("lebara/components/page", simPortInExporter.getExportedType());
         assertEquals("pretitle", simPortInExporter.getPretitle());
         assertEquals("title", simPortInExporter.getTitle());
         assertEquals("dobTitle", simPortInExporter.getDobTitle());

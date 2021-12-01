@@ -14,7 +14,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class EmptyCartExporterTest {
 
     private final AemContext aemContext = new AemContext();
-    private static final String PROPERTIES_JSON = "/content/video/jcr:content/root/responsivegrid/embed3";
+    private static final String PROPERTIES_JSON = "/content/video/jcr:content/root/responsivegrid/page3";
 
     @InjectMocks
     EmptyCartExporter emptyCartExporter = new EmptyCartExporter();

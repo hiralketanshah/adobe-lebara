@@ -14,7 +14,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class SectionIntroExporterTest {
 
 	private final AemContext aemContext = new AemContext();
-	private static final String PROPERTIES_JSON = "/content/video/jcr:content/root/responsivegrid/embed2";
+	private static final String PROPERTIES_JSON = "/content/video/jcr:content/root/responsivegrid/page2";
 
 	@InjectMocks
 	SectionIntroExporter sectionIntroExporter = new SectionIntroExporter();
@@ -31,11 +31,8 @@ class SectionIntroExporterTest {
 		sectionIntroExporter = aemContext.request().adaptTo(SectionIntroExporter.class);
 		assertEquals("linkLabel", sectionIntroExporter.getLinkLabel());
 		assertEquals("sectionSubHeading", sectionIntroExporter.getSectionSubHeading());
-		assertEquals("lebara/components/embed2", sectionIntroExporter.getExportedType());
+		assertEquals("lebara/components/page", sectionIntroExporter.getExportedType());
 		assertEquals(false, sectionIntroExporter.isNoPadding());
 		assertEquals("sectionHeading", sectionIntroExporter.getSectionHeading());
-		
-		
-
 	}
 }

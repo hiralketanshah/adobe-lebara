@@ -12,7 +12,7 @@
         "responsivegrid": {
           "jcr:primaryType": "nt:unstructured",
           "sling:resourceType": "wcm/foundation/components/responsivegrid",
-          "embed1": {
+          "page1": {
             "jcr:primaryType": "nt:unstructured",
             "description": "description",
             "heading": "heading",
@@ -48,9 +48,9 @@
             "noPadding": "noPadding",
             "fileReference": "fileReference"
           },
-          "embed2": {
+          "page2": {
             "jcr:primaryType": "nt:unstructured",
-            "sling:resourceType": "lebara/components/embed2",
+            "sling:resourceType": "lebara/components/page",
             "linkLabel": "linkLabel",
             "sectionHeading": "sectionHeading",
             "noPadding": false,
@@ -69,12 +69,11 @@
             "pwdRequiredValidationMsg": "pwdRequiredValidationMsg",
             "pwdMinValdiationMsg": "pwdMinValdiationMsg",
             "pwdConfirmRequiredValidationMsg": "pwdConfirmRequiredValidationMsg",
-            "pwdConfirmMatchValidationMsg": "pwdConfirmMatchValidationMsg",
-            "sling:resourceType": "lebara/components/embed2"
+            "pwdConfirmMatchValidationMsg": "pwdConfirmMatchValidationMsg"
           },
-          "embed3": {
+          "page3": {
             "jcr:primaryType": "nt:unstructured",
-            "sling:resourceType": "lebara/components/embed",
+            "sling:resourceType": "lebara/components/page",
             "cartDescription": "cartDescription",
             "addOnTabLabel": "addOnTabLabel",
             "dataTabLabel": "dataTabLabel",
@@ -119,7 +118,6 @@
             "mobileNumberErrorMessage": "mobileNumberErrorMessage",
             "mobileNumberMaxLength": "mobileNumberMaxLength",
             "mobileNumberFieldPattern": "mobileNumberFieldPattern",
-            "sling:resourceType": "lebara/components/embed2",
             "doitLaterButtonLabel": "doitLaterButtonLabel"
           }
         }
