@@ -17,7 +17,7 @@ import com.lebara.core.beans.*;
 @Exporter(name = ExporterConstants.SLING_MODEL_EXPORTER_NAME, extensions = ExporterConstants.SLING_MODEL_EXTENSION)
 public class MyProfileExporter implements ComponentExporter{
 
-    protected static final String RESOURCE_TYPE = "lebara/components/myprofile";
+    protected static final String RESOURCE_TYPE = "lebara/components/user/myprofile";
 
     @ValueMapValue
     private String heading;
@@ -60,6 +60,7 @@ public class MyProfileExporter implements ComponentExporter{
     public String getSectionUsernameHeading() {
         return sectionUsernameHeading;
     }
+
     public String getSectionEmailPasswordHeading()
     {
         return sectionEmailPasswordHeading;
@@ -69,6 +70,7 @@ public class MyProfileExporter implements ComponentExporter{
     {
         return sectionAddressHeading;
     }
+
     public String getSectionConsentHeading()
     {
         return sectionConsentHeading;

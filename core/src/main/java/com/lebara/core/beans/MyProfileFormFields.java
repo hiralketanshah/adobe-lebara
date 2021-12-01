@@ -9,11 +9,9 @@ import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.injectorspecific.ChildResource;
 import org.apache.sling.models.annotations.injectorspecific.SlingObject;
 import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
-import com.adobe.cq.dam.cfm.ContentFragment;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.lebara.core.utils.AemUtils;
-import com.lebara.core.utils.CFUtils;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @Model(adaptables = {Resource.class}, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
@@ -66,9 +64,6 @@ public class MyProfileFormFields {
 
     @ValueMapValue
     private String emailLabel;
-
-    @ValueMapValue
-    private String userProfilePhoto;
 
     @ValueMapValue
     private String emailPlaceholder;
@@ -215,11 +210,6 @@ public class MyProfileFormFields {
 
     public String getCtaCancelURL() {
         return ctaCancelURL;
-    }
-
-    public String getUserProfilePhoto()
-    {
-        return userProfilePhoto;
     }
 
     public String getAlternativeContactLabel()
