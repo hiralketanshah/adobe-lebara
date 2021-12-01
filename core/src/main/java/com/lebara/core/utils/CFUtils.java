@@ -138,6 +138,7 @@ public class CFUtils {
             ContentFragment irFragment = fragment.adaptTo(ContentFragment.class);
             if (null != irFragment) {
                 String countryLandingPageUrl = CFUtils.getElementValue(irFragment, "countryLandingPageURL");
+                countryLandingPageUrl = AemUtils.getLinkWithExtension(countryLandingPageUrl, resolver);
                 String countryName = CFUtils.getElementValue(irFragment, "countryName");
                 String landlineCallRate = CFUtils.getElementValue(irFragment, "landlineCallRate");
                 String mobileCallRate = CFUtils.getElementValue(irFragment, "mobileCallRate");
