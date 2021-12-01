@@ -35,7 +35,6 @@ public class InternationalRatesExporter implements ComponentExporter {
      */
     protected static final String RESOURCE_TYPE = "lebara/components/internationalrates";
 
-
     @SlingObject
     private ResourceResolver resourceResolver;
 
@@ -48,6 +47,9 @@ public class InternationalRatesExporter implements ComponentExporter {
     @ValueMapValue
     private String cfPath;
 
+    @ValueMapValue
+    private String selectCountryLabel;
+    private String countryLabel;
 
     @ValueMapValue
     private String description;
@@ -59,30 +61,42 @@ public class InternationalRatesExporter implements ComponentExporter {
     private String landlineCallRate;
     private String mobileCallRate;
     private String smsRate;
+    private List<SelectOption> countryList;
 
     @PostConstruct
     private void init() {
-        i18n = AemUtils.geti18n(resourceResolver, resource, slingRequest);
-        PageManager pageManager = resourceResolver.adaptTo(PageManager.class);
-        Page page = null;
-        if (pageManager != null) {
-            page = pageManager.getContainingPage(resource);
-        }
-        if (page != null) {
-            InheritanceValueMap inheritedProp = new HierarchyNodeInheritanceValueMap(page.getContentResource());
-            fragmentRootPath = inheritedProp.getInherited("internationalRatesRootPath", String.class);
-        }
-        Resource cfResource = resourceResolver.getResource(cfPath);
-        if (cfResource != null) {
-            ContentFragment irFragment = cfResource.adaptTo(ContentFragment.class);
-            if (null != irFragment) {
-                landlineCallRate = CFUtils.getElementValue(irFragment, "landlineCallRate");
-                mobileCallRate = CFUtils.getElementValue(irFragment, "mobileCallRate");
-                smsRate = CFUtils.getElementValue(irFragment, "smsRate");
+        if (StringUtils.isNotBlank(cfPath)) {
+            i18n = AemUtils.geti18n(resourceResolver, resource, slingRequest);
+            PageManager pageManager = resourceResolver.adaptTo(PageManager.class);
+            Page page = null;
+            if (pageManager != null) {
+                page = pageManager.getContainingPage(resource);
             }
+            if (page != null) {
+                InheritanceValueMap inheritedProp = new HierarchyNodeInheritanceValueMap(page.getContentResource());
+                fragmentRootPath = inheritedProp.getInherited("internationalRatesRootPath", String.class);
+            }
+            Resource cfResource = resourceResolver.getResource(cfPath);
+            if (cfResource != null) {
+                ContentFragment irFragment = cfResource.adaptTo(ContentFragment.class);
+                if (null != irFragment) {
+                    countryLabel = CFUtils.getElementValue(irFragment, "countryName");
+                    landlineCallRate = CFUtils.getElementValue(irFragment, "landlineCallRate");
+                    mobileCallRate = CFUtils.getElementValue(irFragment, "mobileCallRate");
+                    smsRate = CFUtils.getElementValue(irFragment, "smsRate");
+                }
+            }
+            countryList = CFUtils.getInternationalRates(resourceResolver, fragmentRootPath);
         }
     }
 
+    public String getSelectCountryLabel() {
+        return selectCountryLabel;
+    }
+
+    public String getCountryLabel() {
+        return countryLabel;
+    }
 
     public String getDescription() {
         return description;
@@ -101,7 +115,7 @@ public class InternationalRatesExporter implements ComponentExporter {
     }
 
     public List<SelectOption> getCountryList() {
-        return CFUtils.getInternationalRates(resourceResolver, fragmentRootPath);
+        return countryList;
     }
 
     public String getLandlineLabel() {
@@ -112,7 +126,7 @@ public class InternationalRatesExporter implements ComponentExporter {
         return i18n == null ? "Mobile" : i18n.get("mobile");
     }
 
-    public String getSMSLabel() {
+    public String getSmsLabel() {
         return i18n == null ? "SMS" : i18n.get("sms");
     }
 

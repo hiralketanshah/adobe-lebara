@@ -66,6 +66,7 @@ import "./LbSectionIntro/AemConfig.js";
 import "./StickyCircle/AemConfig.js";
 import "./LbFAQ/AemConfig.js";
 import "./LbBrowseCategories/AemConfig.js";
+import "./InternationalRates/AemConfig.js";
 import "./RecommendedTariffs/AemConfig.js";
 import "./HowItWorks/AemConfig.js";
 import "./RewardOverview/AemConfig.js";
