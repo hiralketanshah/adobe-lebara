@@ -10,15 +10,14 @@ import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.injectorspecific.ScriptVariable;
 import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
 
-@Model(adaptables = SlingHttpServletRequest.class, adapters = {CallEmailSupportExporter.class,
-        ComponentExporter.class}, resourceType = {CallEmailSupportExporter.RESOURCE_TYPE_CALL_SUPPORT, CallEmailSupportExporter.RESOURCE_TYPE_EMAIL_SUPPORT}, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
+@Model(adaptables = SlingHttpServletRequest.class, adapters = {EmailSupportExporter.class,
+        ComponentExporter.class}, resourceType = EmailSupportExporter.RESOURCE_TYPE_EMAIL_SUPPORT, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
 @Exporter(name = ExporterConstants.SLING_MODEL_EXPORTER_NAME, extensions = ExporterConstants.SLING_MODEL_EXTENSION)
-public class CallEmailSupportExporter extends IntroExporter {
+public class EmailSupportExporter extends IntroExporter {
 
     /**
      * The resource type.
      */
-    protected static final String RESOURCE_TYPE_CALL_SUPPORT = "lebara/components/callsupport";
     protected static final String RESOURCE_TYPE_EMAIL_SUPPORT = "lebara/components/emailsupport";
 
     @ScriptVariable
