@@ -4,7 +4,7 @@ import { IoIosCheckmarkCircleOutline } from "react-icons/io";
 import { useLocation } from "react-router-dom";
 import "@adyen/adyen-web/dist/adyen.css";
 import BuyPlanLayout from "../../layouts/BuyPlanLayout";
-import { SuccessCard } from "../SuccessCard/SuccessCard";
+import { SuccessCard } from "../OrderSubmittedRoute/SuccessCard";
 import { SuccessCardProps } from './types';
 
 const OrderSubmittedRoute: React.FC<SuccessCardProps> = ({
