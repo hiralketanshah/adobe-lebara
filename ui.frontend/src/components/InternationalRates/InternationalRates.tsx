@@ -18,7 +18,7 @@ const InternationalRates: React.FC<InternationalRatesProps> = ({
   countryList,
 }) => {
   const handleClick = (url: any) => {
-    window.location?.href = url;
+    window.open(url);
   };
   return (
     <Box backgroundColor="lightCyan" padding="20px">
