@@ -1,4 +1,4 @@
-package com.lebara.core.beans;
+package com.lebara.core.models.beans;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import org.apache.sling.api.resource.Resource;

@@ -10,7 +10,7 @@ import org.apache.sling.models.annotations.DefaultInjectionStrategy;
 import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.injectorspecific.*;
 import org.apache.sling.models.annotations.Exporter;
-import com.lebara.core.beans.*;
+import com.lebara.core.models.beans.*;
 
 @Model(adaptables = SlingHttpServletRequest.class, adapters = {MyProfileExporter.class, ComponentExporter.class},
         resourceType = MyProfileExporter.RESOURCE_TYPE, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
