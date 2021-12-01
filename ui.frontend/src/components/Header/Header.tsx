@@ -22,7 +22,6 @@ import {
   BsSearch,
   BiSearch,
   RiShoppingCartLine,
-  // RiHeadphoneFill,
 } from "react-icons/all";
 import { Link, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
@@ -34,11 +33,9 @@ import {
 } from "./types";
 
 import IconButton from "../IconButton/IconButton";
-// import LanguageDropDown from "../LanguageDropDown/LanguageDropDown";
 import Button from "../Button/Button";
 import MiniHeader from "../MiniHeader/MiniHeader";
 import { ReduxState } from "../../redux/types";
-// import LebaraLogo from "../../assets/images/lebara-logo.svg";
 import NewSIMOfferCard from "../NewSImOfferCard/NewSImOfferCard";
 import Search from "../Search/Search";
 import UserMenu from "../UserMenu/UserMenu";
@@ -81,9 +78,9 @@ const SingleMenu = ({ menuItem, newText }: { menuItem: children, newText: any })
     <Menu
       isOpen={isOpenMenu}>
       <MenuButton
-      onClick={() => (menuItem.path ? history.push(menuItem.path) : null)}
-      onMouseEnter={btnMouseEnterEvent}
-      onMouseLeave={btnMouseLeaveEvent}
+        onClick={() => (menuItem.url ? history.push(menuItem.url) : null)}
+        onMouseEnter={btnMouseEnterEvent}
+        onMouseLeave={btnMouseLeaveEvent}
         _active={{
           borderBottom: "1px solid white",
         }}
@@ -96,7 +93,7 @@ const SingleMenu = ({ menuItem, newText }: { menuItem: children, newText: any })
             _hover={{ color: "white", bg: "lightenPrimary.500" }}
             size="sm"
             pl="initial"
-            onClick={() => history.push(`"/"${menuItem.title}`)}
+            onClick={() => history.push(`${menuItem.url}`)}
             isDisabled={menuItem.active}
           >
             <Text
@@ -146,8 +143,8 @@ const SingleMenu = ({ menuItem, newText }: { menuItem: children, newText: any })
                         <MenuItem
                           isDisabled={menuProps.active}
                           onClick={() =>
-                            menuProps.path
-                              ? history.push(menuProps.path)
+                            menuProps.url
+                              ? history.push(menuProps.url)
                               : null
                           }
                         >
@@ -307,44 +304,6 @@ const Header: React.FC<HeaderProps> = ({
       borderRadius={{ md: "8px" }}
     >
       <Flex display={{ base: "none", md: "block" }}>
-        <Flex
-          alignItems="center"
-          px={10}
-          justifyContent="flex-end"
-          background="lightenPrimary.200"
-          color="white"
-          display={{ base: "none", md: "flex" }}
-        >
-          {/* <Box>
-            <LanguageDropDown
-              options={[]}
-              selectProps={{
-                height: "2em",
-              }}
-            />
-          </Box> */}
-          {/* <Flex alignItems="center">
-            <IconButton
-              icon={<IoLocationOutline />}
-              aria-label="Search"
-              variant="ghost"
-              size="sm"
-              colorScheme="dark"
-            />
-            <Text fontSize="12px">Find a store</Text>
-          </Flex> */}
-          {/* <Flex alignItems="center">
-            <IconButton
-              icon={<RiHeadphoneFill />}
-              aria-label="Search"
-              variant="ghost"
-              size="sm"
-              colorScheme="dark"
-            />
-            <Text fontSize="12px">Help</Text>
-          </Flex> */}
-        </Flex>
-
         <Flex
           alignItems="center"
           px={{ lg: "30px", md: "11px" }}
