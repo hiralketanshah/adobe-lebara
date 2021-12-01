@@ -12,6 +12,7 @@ import {
   MenuItem,
   Tag,
   TagLabel,
+  useOutsideClick,
 } from "@chakra-ui/react";
 import {
   AiOutlineUser,
@@ -28,11 +29,9 @@ import {
 } from "./types";
 
 import IconButton from "../IconButton/IconButton";
-// import LanguageDropDown from "../LanguageDropDown/LanguageDropDown";
 import Button from "../Button/Button";
 import MiniHeader from "../MiniHeader/MiniHeader";
 import { ReduxState } from "../../redux/types";
-// import LebaraLogo from "../../assets/images/lebara-logo.svg";
 import NewSIMOfferCard from "../NewSImOfferCard/NewSImOfferCard";
 import Search from "../Search/Search";
 import UserMenu from "../UserMenu/UserMenu";
@@ -47,25 +46,10 @@ import mapMagentoProductToCartItem from "../../utils/mapMagentoProductToCartItem
 import { saveTopUps } from "../../redux/actions/topUpActions";
 import GET_TOP_UPS from "../../graphql/GET_TOP_UPS";
 
-const Header: React.FC<HeaderProps> = ({
-  logoPath,
-  items,
-  topupCtaText,
-  topupCtaLink,
-  accountLink,
-  searchPlaceholder,
-}) => {
-  const cartItems = useSelector((state: ReduxState) => state.cart.items);
+const SingleMenu = ({ menuItem, newText }: { menuItem: children, newText: any }) => {
   const history = useHistory();
-  const [userToken] = useLocalStorage("userToken");
-  const client = useApolloClient();
-  const dispatch = useDispatch();
-  const [isSearchOpened, setIsSearchOpened] = React.useState(false);
-  const [isProfileDropdownOpen, setProfileDropdown] = useState(false);
-  const isAuthenticated = useSelector(selectIsAuthenticated);
   const timerRef = useRef<any>();
   const [isOpenMenu, setIsOpenMenu] = useState(false);
-
   const btnMouseEnterEvent = () => {
     setIsOpenMenu(true);
   };
@@ -86,6 +70,152 @@ const Header: React.FC<HeaderProps> = ({
     setIsOpenMenu(false);
   };
 
+  return (
+    <Menu
+      isOpen={isOpenMenu}>
+      <MenuButton
+        onClick={() => (menuItem.url ? history.push(menuItem.url) : null)}
+        onMouseEnter={btnMouseEnterEvent}
+        onMouseLeave={btnMouseLeaveEvent}
+        _active={{
+          borderBottom: "1px solid white",
+        }}
+      >
+        <Box px={{ lg: "2px", md: "initial" }}>
+          <Button
+            colorScheme="teal"
+            variant="ghost"
+            _focus={{ borderBottom: "1px solid white" }}
+            _hover={{ color: "white", bg: "lightenPrimary.500" }}
+            size="sm"
+            pl="initial"
+            onClick={() => history.push(`${menuItem.url}`)}
+            isDisabled={menuItem.active}
+          >
+            <Text
+              textTransform="capitalize"
+              fontSize={{ lg: "14px", md: "12px" }}
+              lineHeight="20px"
+              align="left"
+              color="white"
+              fontWeight="normal"
+            >
+              {menuItem.title}
+            </Text>
+          </Button>
+        </Box>
+      </MenuButton>
+      <MenuList 
+        marginLeft="-135px" 
+        marginTop="5px" 
+        zIndex={2}
+        onMouseEnter={menuListMouseEnterEvent}
+        onMouseLeave={menuListMouseLeaveEvent}>
+        <Box
+          display="flex"
+          justifyContent="space-between"
+          width="calc(100vw - 0px)"
+          padding="45px"
+        >
+          <Box
+            width="75%"
+            display="flex"
+            justifyContent="space-between"
+          >
+            {menuItem.children?.map((subMenuOption: children, cgIdx: any) => (
+              <Box>
+                <MenuGroup
+                  defaultValue="asc"
+                  fontSize={14}
+                  color="primary.500"
+                  fontWeight="bold"
+                  textTransform="uppercase"
+                  marginLeft="12px"
+                  title={subMenuOption.title}
+                >
+                  <Box>
+                    {subMenuOption.children?.map(
+                      (menuProps: children, cIdx: any) => (
+                        <MenuItem
+                          isDisabled={menuProps.active}
+                          onClick={() =>
+                            menuProps.url
+                              ? history.push(menuProps.url)
+                              : null
+                          }
+                        >
+                          <Text
+                            fontSize="14px"
+                            fontWeight="500"
+                            lineHeight="14.06px"
+                            color="black"
+                          >
+                            {menuProps.title}
+                          </Text>
+                          {menuProps.showNewText ? (
+                            <Tag
+                              size="md"
+                              borderRadius="full"
+                              variant="solid"
+                              colorScheme="blue"
+                              marginLeft="20px"
+                            >
+                              <TagLabel
+                                fontSize="14px"
+                                fontWeight="700"
+                              >
+                                {newText || 'New'}
+                              </TagLabel>
+                            </Tag>
+                          ) : (
+                            <></>
+                          )}
+                        </MenuItem>
+                      )
+                    )}
+                  </Box>
+                </MenuGroup>
+              </Box>
+            ))}
+          </Box>
+          <Box width="12%">
+            <></>
+          </Box>
+          <Box position="relative">
+            {(menuItem.imagePath || menuItem.simImage || menuItem.imageText) && (
+              <NewSIMOfferCard imagePath={menuItem.imagePath} simImage= {menuItem.simImage} imageText={menuItem.imageText}/>
+            )}
+          </Box>
+        </Box>
+      </MenuList>
+    </Menu>
+  );
+};
+
+const Header: React.FC<HeaderProps> = ({
+  logoPath,
+  items,
+  newText,
+  accountLink,
+  topupCtaText,
+  topupCtaLink,
+  searchPlaceholder,
+}) => {
+  const ref = React.useRef<any>(undefined);
+  const cartItems = useSelector((state: ReduxState) => state.cart.items);
+  const history = useHistory();
+  const [userToken] = useLocalStorage("userToken");
+  const client = useApolloClient();
+  const dispatch = useDispatch();
+  const [isSearchOpened, setIsSearchOpened] = React.useState(false);
+  const [isProfileDropdownOpen, setProfileDropdown] = useState(false);
+  const isAuthenticated = useSelector(selectIsAuthenticated);
+
+  useOutsideClick({
+    ref,
+    handler: () => setProfileDropdown(false),
+  });
+
   const onSearchClick = () => {
     setIsSearchOpened(true);
     dispatch(
@@ -94,6 +224,7 @@ const Header: React.FC<HeaderProps> = ({
       })
     );
   };
+
   const onCloseSearch = () => {
     setIsSearchOpened(false);
     dispatch(
@@ -102,6 +233,7 @@ const Header: React.FC<HeaderProps> = ({
       })
     );
   };
+
   const getCart = useCallback(() => {
     dispatch(setCartItemsLoading());
     client.query({ query: GET_CART }).then((res) => {
@@ -131,6 +263,7 @@ const Header: React.FC<HeaderProps> = ({
       );
     }
   }, [topUps, dispatch]);
+  
   const handleCartClick = () => {
     const hasDataPlan =
       cartItems.filter((t) => !t.isAddon && !t.duration.startsWith("Top-up"))
@@ -145,6 +278,7 @@ const Header: React.FC<HeaderProps> = ({
         : (GC.journeyPages[GCST.LEBARA_SIM_CHOICE]  || '/')
     );
   };
+
   const handleProfileClick = () => {
     if (isAuthenticated) {
       setProfileDropdown(!isProfileDropdownOpen);
@@ -166,44 +300,6 @@ const Header: React.FC<HeaderProps> = ({
       borderRadius={{ md: "8px" }}
     >
       <Flex display={{ base: "none", md: "block" }}>
-        {/* <Flex
-          alignItems="center"
-          px={10}
-          justifyContent="flex-end"
-          background="lightenPrimary.200"
-          color="white"
-          display={{ base: "none", md: "flex" }}
-        >
-          <Box>
-            <LanguageDropDown
-              options={[]}
-              selectProps={{
-                height: "2em",
-              }}
-            />
-          </Box>
-          <Flex alignItems="center">
-            <IconButton
-              icon={<IoLocationOutline />}
-              aria-label="Search"
-              variant="ghost"
-              size="sm"
-              colorScheme="dark"
-            />
-            <Text fontSize="12px">Find a store</Text>
-          </Flex>
-          <Flex alignItems="center">
-            <IconButton
-              icon={<RiHeadphoneFill />}
-              aria-label="Search"
-              variant="ghost"
-              size="sm"
-              colorScheme="dark"
-            />
-            <Text fontSize="12px">Help</Text>
-          </Flex>
-        </Flex> */}
-
         <Flex
           alignItems="center"
           px={{ lg: "30px", md: "11px" }}
@@ -219,125 +315,9 @@ const Header: React.FC<HeaderProps> = ({
 
           <Flex alignItems="left" ml={{ lg: "30px", md: "15px" }}>
             {items?.map((menuItem: children, idx: any) => (
-              <Menu key={`menu-key-${idx}`}
-                isOpen={isOpenMenu}>
-                <MenuButton
-                onClick={() => (menuItem.path ? history.push(menuItem.path) : null)}
-                onMouseEnter={btnMouseEnterEvent}
-                onMouseLeave={btnMouseLeaveEvent}
-                  _active={{
-                    borderBottom: "1px solid white",
-                  }}
-                  key={`menu-button-key-${idx}`}
-                >
-                  <Box px={{ lg: "2px", md: "initial" }}>
-                    <Button
-                      colorScheme="teal"
-                      variant="ghost"
-                      _focus={{ borderBottom: "1px solid white" }}
-                      _hover={{ color: "white", bg: "lightenPrimary.500" }}
-                      size="sm"
-                      pl="initial"
-                      onClick={() => history.push(`"/"${menuItem.title}`)}
-                      isDisabled={menuItem.active}
-                    >
-                      <Text
-                        textTransform="capitalize"
-                        fontSize={{ lg: "14px", md: "12px" }}
-                        lineHeight="20px"
-                        align="left"
-                        color="white"
-                        fontWeight="normal"
-                      >
-                        {menuItem.title}
-                      </Text>
-                    </Button>
-                  </Box>
-                </MenuButton>
-                <MenuList marginLeft="-135px" marginTop="5px" 
-                  zIndex={2}
-                  onMouseEnter={menuListMouseEnterEvent}
-                  onMouseLeave={menuListMouseLeaveEvent}>
-                  <Box
-                    display="flex"
-                    justifyContent="space-between"
-                    width="calc(100vw - 0px)"
-                    padding="45px"
-                  >
-                    <Box
-                      width="75%"
-                      display="flex"
-                      justifyContent="space-between"
-                    >
-                      {menuItem.children?.map((subMenuOption: children, cgIdx: any) => (
-                        <Box>
-                          <MenuGroup
-                            key={`menu-child-group-key-${cgIdx}`}
-                            defaultValue="asc"
-                            fontSize={14}
-                            color="primary.500"
-                            fontWeight="bold"
-                            textTransform="uppercase"
-                            marginLeft="12px"
-                            title={subMenuOption.title}
-                          >
-                            <Box>
-                              {subMenuOption.children?.map(
-                                (menuProps: children, cIdx: any) => (
-                                  <MenuItem
-                                    key={`menu-child-key-${cIdx}`}
-                                    isDisabled={menuProps.active}
-                                    onClick={() =>
-                                      menuProps.path
-                                        ? history.push(menuProps.path)
-                                        : null
-                                    }
-                                  >
-                                    <Text
-                                      fontSize="14px"
-                                      fontWeight="500"
-                                      lineHeight="14.06px"
-                                      color="black"
-                                    >
-                                      {menuProps.title}
-                                    </Text>
-                                    {menuProps.showNewText ? (
-                                      <Tag
-                                        size="md"
-                                        borderRadius="full"
-                                        variant="solid"
-                                        colorScheme="blue"
-                                        marginLeft="20px"
-                                      >
-                                        <TagLabel
-                                          fontSize="14px"
-                                          fontWeight="700"
-                                        >
-                                          New
-                                        </TagLabel>
-                                      </Tag>
-                                    ) : (
-                                      <></>
-                                    )}
-                                  </MenuItem>
-                                )
-                              )}
-                            </Box>
-                          </MenuGroup>
-                        </Box>
-                      ))}
-                    </Box>
-                    <Box width="12%">
-                      <></>
-                    </Box>
-                    <Box position="relative">
-                      {(menuItem.imagePath || menuItem.simImage || menuItem.imageText) && (
-                        <NewSIMOfferCard imagePath={menuItem.imagePath} simImage= {menuItem.simImage} imageText={menuItem.imageText}/>
-                      )}
-                    </Box>
-                  </Box>
-                </MenuList>
-              </Menu>
+              <React.Fragment key={menuItem.title}>
+                <SingleMenu menuItem={menuItem} newText={newText} />
+              </React.Fragment>
             ))}
           </Flex>
           <Spacer />
@@ -432,8 +412,6 @@ const Header: React.FC<HeaderProps> = ({
             flexDirection="column"
           >
             <Search
-              isHeaderSearchInput={false}
-              isHeaderSearchResult={true}
               onCloseClick={onCloseSearch}
               />
           </Flex>
