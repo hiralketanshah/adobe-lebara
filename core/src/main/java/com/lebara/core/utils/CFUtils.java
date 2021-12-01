@@ -137,7 +137,7 @@ public class CFUtils {
         for (Resource fragment : parentResource.getChildren()) {
             ContentFragment irFragment = fragment.adaptTo(ContentFragment.class);
             if (null != irFragment) {
-                String countryLandingPageUrl = CFUtils.getElementValue(irFragment, "countryLandingPageUrl");
+                String countryLandingPageUrl = CFUtils.getElementValue(irFragment, "countryLandingPageURL");
                 String countryName = CFUtils.getElementValue(irFragment, "countryName");
                 String landlineCallRate = CFUtils.getElementValue(irFragment, "landlineCallRate");
                 String mobileCallRate = CFUtils.getElementValue(irFragment, "mobileCallRate");
