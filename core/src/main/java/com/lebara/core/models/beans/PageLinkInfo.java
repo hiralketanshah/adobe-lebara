@@ -1,12 +1,10 @@
-package com.lebara.core.beans;
+package com.lebara.core.models.beans;
 
 import com.day.cq.wcm.api.Page;
 import com.day.cq.wcm.api.PageFilter;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.lebara.core.dto.PageLink;
-import com.lebara.core.models.Link;
 import com.lebara.core.utils.AemUtils;
-import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.api.resource.ResourceResolver;
 import org.apache.sling.models.annotations.DefaultInjectionStrategy;

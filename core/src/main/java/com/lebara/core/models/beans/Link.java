@@ -1,4 +1,4 @@
-package com.lebara.core.models;
+package com.lebara.core.models.beans;
 
 import com.day.cq.wcm.api.Page;
 import com.fasterxml.jackson.annotation.JsonIgnore;

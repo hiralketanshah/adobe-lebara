@@ -6,6 +6,7 @@ import com.day.cq.wcm.api.Page;
 import com.day.cq.wcm.api.PageFilter;
 import com.day.cq.wcm.api.PageManager;
 import com.lebara.core.dto.PageLink;
+import com.lebara.core.models.beans.Link;
 import com.lebara.core.utils.AemUtils;
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.lang3.StringUtils;
@@ -99,16 +100,13 @@ public class FooterExporter implements ComponentExporter {
 
     }
 
-    private void setFooterUpperLinks(String columnLink, List<Link> column2) {
-        Page parentLinkPage;
+    private void setFooterUpperLinks(String columnLink, List<Link> column) {
         PageLink pageLinks;
         Link parentLink = new Link();
-        parentLinkPage = pageManager.getContainingPage(columnLink);
-        parentLink.setLabel(AemUtils.getTitle(parentLinkPage));
-        parentLink.setLink(AemUtils.getLinkWithExtension(columnLink, request));
+        parentLink.setLabel(columnLink);
         pageLinks = new PageLink();
         pageLinks.setParentLinks(parentLink);
-        pageLinks.setChildLinks(column2);
+        pageLinks.setChildLinks(column);
         pageLinkList.add(pageLinks);
     }
 

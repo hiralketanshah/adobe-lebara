@@ -5,6 +5,7 @@ import com.adobe.cq.export.json.ExporterConstants;
 import com.day.cq.wcm.api.Page;
 import com.day.cq.wcm.api.PageManager;
 import com.drew.lang.annotations.NotNull;
+import com.lebara.core.models.beans.Link;
 import com.lebara.core.utils.AemUtils;
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.sling.api.SlingHttpServletRequest;
