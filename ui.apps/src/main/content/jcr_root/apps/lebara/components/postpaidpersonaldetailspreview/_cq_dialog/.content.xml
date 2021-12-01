@@ -12,8 +12,9 @@
                 sling:resourceType="granite/ui/components/coral/foundation/tabs"
                 maximized="{Boolean}true">
                 <items jcr:primaryType="nt:unstructured">
-                    <column1
+                    <general
                         jcr:primaryType="nt:unstructured"
+                        jcr:title="General"
                         sling:resourceType="granite/ui/components/coral/foundation/container">
                         <items jcr:primaryType="nt:unstructured">
                             <yourPersonalDetailsLabel
@@ -69,6 +70,13 @@
                                 fieldLabel="Customer Support Text"
                                 name="./customerSupportText"
                                 value="Please contact customer support if you need to edit your personal details"/>
+                            <productAndServicePreviewText
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textarea"
+                                fieldDescription="I consent to trustworthy cooperation partners of Lebara contacting me about their products and services"
+                                fieldLabel="Product And Service Preview Text"
+                                name="./productAndServicePreviewText"
+                                value="I consent to trustworthy cooperation partners of Lebara contacting me about their products and services"/>
                             <productAndServiceDescription
                                 jcr:primaryType="nt:unstructured"
                                 sling:resourceType="cq/gui/components/authoring/dialog/richtext"
@@ -337,8 +345,88 @@
                                 fieldLabel="Continue to Payment CTA Label"
                                 name="./ctaContinueLabel"
                                 value="CONTINUE TO PAYMENT"/>
+                            <orderTotalLabel
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldLabel="Order Total"
+                                name="./orderTotalLabel"
+                                value="Order Total"/>
+                            <paymentMethodLabel
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldLabel="Select Payment Method"
+                                name="./paymentMethodLabel"
+                                value="Select Payment Method"/>
                         </items>
-                    </column1>
+                    </general>
+                    <yourOrder
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Your Order"
+                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                        <items jcr:primaryType="nt:unstructured">
+                            <simplanlabel
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldLabel="Sim plan label"
+                                name="./yourOrdersimPlanLabel"
+                                value="Your Order"/>
+                            <contractdurationLabel
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldDescription="Contract duration Label"
+                                fieldLabel="Contract duration Label"
+                                name="./yourOrderContractdurationLabel"
+                                value="Contract duration"/>
+                            <data
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldDescription="Data Label"
+                                fieldLabel="Data Label"
+                                name="./yourOrderDataLabel"
+                                value="Data"/>
+                            <internationalMin
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldDescription="International Min Label"
+                                fieldLabel="International Min Label"
+                                name="./yourOrderInternationalMinLabel"
+                                value="International Min"/>
+                            <minutesInGermany
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldDescription="Minutes in Germany Label"
+                                fieldLabel="Minutes in Germany Label"
+                                name="./yourOrderMinutesInGermany"
+                                value="Minutes in Germany"/>
+                            <minutesInGermanyvalue
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldLabel="Minutes in Germany Value"
+                                name="./yourOrderMinutesInGermanyValue"
+                                value="Unlimited"/>
+                            <perMonthOrderTotal
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldDescription="Per Month Order Total Label"
+                                fieldLabel="Per Month Order Total Label"
+                                name="./yourOrderPerMonthOrderTotalLabel"
+                                value="Per Month Order Total"/>
+                            <oneTimeActivationFeeLabel
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldDescription="One-time activation fee Label"
+                                fieldLabel="One-time activation fee Label"
+                                name="./yourOrderOneTimeActivationFeeLabel"
+                                value="One-time activation fee"/>
+                            <oneTimeActivationFee
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldDescription="One-time activation fee"
+                                fieldLabel="One-time activation fee"
+                                name="./yourOrderOneTimeActivationFee"
+                                value="15"/>
+                        </items>
+                    </yourOrder>
                 </items>
             </tabs>
         </items>

@@ -69,4 +69,5 @@ import "./LbBrowseCategories/AemConfig.js";
 import "./RecommendedTariffs/AemConfig.js";
 import "./HowItWorks/AemConfig.js";
 import "./RewardOverview/AemConfig.js";
+import "./PostpaidPersonalDetailsPreview/AemConfig.js";
 
