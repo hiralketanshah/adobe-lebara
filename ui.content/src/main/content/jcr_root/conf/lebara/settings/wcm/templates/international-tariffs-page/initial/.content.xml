@@ -23,9 +23,9 @@
                 <text
                     jcr:primaryType="nt:unstructured"
                     sling:resourceType="lebara/components/text"/>
-                <aboutlebara
+                <internationalrates
                     jcr:primaryType="nt:unstructured"
-                    sling:resourceType="lebara/components/aboutlebara"/>
+                    sling:resourceType="lebara/components/internationalrates"/>
             </responsivegrid>
             <experiencefragment-footer
                 jcr:primaryType="nt:unstructured"
