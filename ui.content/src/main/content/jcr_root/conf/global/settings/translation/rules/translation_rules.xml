@@ -500,6 +500,9 @@
 
 		<!-- Global Search -->
 		<property name="mostSearchLabel"/>
+
+		<!-- Logged in user menu -->
+		<property name="logoutLabel"/>
 		
 		<!-- Lebara fields ends -->
 		<property name="cq:language" updateDestinationLanguage="true"/>
