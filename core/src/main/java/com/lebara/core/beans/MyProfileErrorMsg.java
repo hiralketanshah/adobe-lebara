@@ -73,6 +73,9 @@ public class MyProfileErrorMsg {
     @ValueMapValue
     private String confirmEmailNotMatchMsg;
 
+    @ValueMapValue
+    private String emailUpdateSuccessMsg;
+
     public String getfNameRequiredMsg() {
         return fNameRequiredMsg;
     }
@@ -152,4 +155,5 @@ public class MyProfileErrorMsg {
         return confirmEmailNotMatchMsg;
     }
 
+    public String getEmailUpdateSuccessMsg() { return emailUpdateSuccessMsg; }
 }
