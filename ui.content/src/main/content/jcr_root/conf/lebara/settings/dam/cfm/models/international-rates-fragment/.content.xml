@@ -55,6 +55,7 @@
                             name="countryLandingPageUrl"
                             renderReadOnly="false"
                             showEmptyInReadOnly="true"
+                            validation="cfm.validation.url"
                             valueType="string">
                             <granite:data jcr:primaryType="nt:unstructured"/>
                         </_x0031_638357671645>
@@ -68,7 +69,6 @@
                             name="landlineRates"
                             renderReadOnly="false"
                             showEmptyInReadOnly="true"
-                            validation="cfm.validation.url"
                             valueType="string">
                             <granite:data jcr:primaryType="nt:unstructured"/>
                         </_x0031_638357694850>
