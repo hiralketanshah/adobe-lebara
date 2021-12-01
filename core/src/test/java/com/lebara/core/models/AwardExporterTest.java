@@ -28,7 +28,7 @@ class AwardExporterTest {
 
     @BeforeEach
     void setUp() {
-        aemContext.addModelsForClasses(ConfirmationExporter.class);
+        aemContext.addModelsForClasses(AwardExporter.class);
         aemContext.load().json("/page.json","/content");
     }
 
