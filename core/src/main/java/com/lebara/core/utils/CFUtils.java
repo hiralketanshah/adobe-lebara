@@ -139,11 +139,11 @@ public class CFUtils {
             if (null != irFragment) {
                 String countryLandingPageUrl = CFUtils.getElementValue(irFragment, "countryLandingPageUrl");
                 String countryName = CFUtils.getElementValue(irFragment, "countryName");
-                String landlineRates = CFUtils.getElementValue(irFragment, "landlineRates");
+                String landlineCallRate = CFUtils.getElementValue(irFragment, "landlineCallRate");
                 String mobileCallRate = CFUtils.getElementValue(irFragment, "mobileCallRate");
                 String smsRate = CFUtils.getElementValue(irFragment, "smsRate");
                 if (StringUtils.isNoneBlank(countryLandingPageUrl, countryName)) {
-                    internationalRateBeanList.add(new InternationalRateBean(countryLandingPageUrl, countryName, landlineRates, mobileCallRate, smsRate));
+                    internationalRateBeanList.add(new InternationalRateBean(countryLandingPageUrl, countryName, landlineCallRate, mobileCallRate, smsRate));
                 }
             }
         }
