@@ -108,6 +108,7 @@ const UserDetails: React.FC<UserDetailsProps> = ({
     <>
       <Formik
         initialValues={initialValues}
+        enableReinitialize
         validationSchema={
           emailPasswordSectionflag ? validationSchema : undefined
         }
@@ -131,7 +132,7 @@ const UserDetails: React.FC<UserDetailsProps> = ({
           }
         }}
       >
-        {({ handleSubmit, handleReset, dirty, resetForm }) => (
+        {({ handleSubmit, handleReset, resetForm }) => (
           <form onSubmit={handleSubmit} onReset={handleReset}>
             <Box px="20px" py="26px"
               w={{ base: "100%", lg: "846px" }}
@@ -142,8 +143,8 @@ const UserDetails: React.FC<UserDetailsProps> = ({
                 color="black"
                 borderRadius="lg"
                 textAlign="left"
-                px="20px"
-                py="37px"
+                px={{ base: "20px", md: "41px" }}
+                py={{ base: "37px", md: "43px" }}
                 display="flex"
                 justifyContent="space-between"
                 alignItems="center"
@@ -180,19 +181,20 @@ const UserDetails: React.FC<UserDetailsProps> = ({
                 borderRadius="lg"
                 textAlign="left"
                 mt="9px"
+                pb="26px"
               >
                 {/* Name And Surname Section */}
-                <Box borderBottom="0.5px solid #c8c8c8">
+                <Box>
                   <Box
                     display="flex"
                     flexDirection="row"
                     justifyContent="space-between"
                     alignItems="center"
+                    mx={{ base: "13px", md: "42px" }}
+                    borderBottomWidth={!nameAndSurnameflag ? "0.5px" : "0px"}
+                    borderColor="greySuccess"
                   >
-                    <Box
-                      px={{ base: "13px", md: "42px" }}
-                      py={{ base: "21px", md: "41px" }}
-                    >
+                    <Box py={{ base: "21px", md: "41px" }}>
                       {sectionUsernameHeading && <LebaraText
                         type="subtitle1"
                         lineHeight="23px"
@@ -205,7 +207,7 @@ const UserDetails: React.FC<UserDetailsProps> = ({
                       {...iconButtonProps}
                       aria-label="Toggle section"
                       onClick={setNameAndSurnameFlag.toggle}
-                      mr={{ base: "10px", md: "100px" }}
+                      mr={{ base: "10px", md: "55px" }}
                       icon={
                         !nameAndSurnameflag ? (
                           <IoMdAddCircleOutline size={24} color="#FF3182" />
@@ -221,18 +223,17 @@ const UserDetails: React.FC<UserDetailsProps> = ({
                 </Box>
 
                 {/* Address Section */}
-                <Box
-                  borderBottom="0.5px solid #c8c8c8"
-                  mt={{ base: "none", md: "19px" }}
-                >
+                <Box mt={{ base: "none", md: "19px" }}>
                   <Box
                     display="flex"
                     flexDirection="row"
                     justifyContent="space-between"
                     alignItems="center"
+                    mx={{ base: "13px", md: "42px" }}
+                    borderBottomWidth={!addressSectionflag ? "0.5px" : "0px"}
+                    borderColor="greySuccess"
                   >
                     <Box
-                      px={{ base: "13px", md: "42px" }}
                       py={{ base: "21px", md: "41px" }}
                     >
                       {sectionAddressHeading && <LebaraText
@@ -245,7 +246,7 @@ const UserDetails: React.FC<UserDetailsProps> = ({
                     </Box>
                     <IconButton
                       {...iconButtonProps}
-                      mr={{ base: "10px", md: "100px" }}
+                      mr={{ base: "10px", md: "55px" }}
                       aria-label="Toggle section"
                       isRound
                       onClick={setAddressSectionFlag.toggle}
@@ -264,18 +265,19 @@ const UserDetails: React.FC<UserDetailsProps> = ({
                 </Box>
 
                 {/* Email & Password Section */}
-                <Box
-                  borderBottom="0.5px solid #c8c8c8"
-                  mt={{ base: "none", md: "19px" }}
-                >
+                <Box mt={{ base: "none", md: "19px" }}>
                   <Box
                     display="flex"
                     flexDirection="row"
                     justifyContent="space-between"
                     alignItems="center"
+                    mx={{ base: "13px", md: "42px" }}
+                    borderBottomWidth={
+                      !emailPasswordSectionflag ? "0.5px" : "0px"
+                    }
+                    borderColor="greySuccess"
                   >
                     <Box
-                      px={{ base: "13px", md: "42px" }}
                       py={{ base: "21px", md: "41px" }}
                     >
                       {sectionEmailPasswordHeading && <LebaraText
@@ -290,7 +292,7 @@ const UserDetails: React.FC<UserDetailsProps> = ({
                       {...iconButtonProps}
                       aria-label="Toggle section"
                       isRound
-                      mr={{ base: "10px", md: "100px" }}
+                      mr={{ base: "10px", md: "55px" }}
                       onClick={setEmailPasswordSectionFlag.toggle}
                       icon={
                         !emailPasswordSectionflag ? (
@@ -305,17 +307,15 @@ const UserDetails: React.FC<UserDetailsProps> = ({
                     <EmailAndPasswordSection
                       frmFields={frmFields}
                       onEmailEdit={() => setEmailEditPopup(true)}
-                      onPasswordEdit={(e) => {
-                        history.push(GC.journeyPages[`${C.USER_PROFILE_CHANGE_PASSWORD}`]);
-                      }
-                        
+                      onPasswordEdit={() => {
+                          history.push(GC.journeyPages[C.USER_PROFILE_CHANGE_PASSWORD] || '/user-profile/change-password.html');
+                        }
                       }
                     />
                   </Collapse>
                 </Box>
                 {/* Consent Management */}
                 <Box
-                  borderBottom="0.5px solid #c8c8c8"
                   mt={{ base: "none", md: "19px" }}
                 >
                   <Box
@@ -323,13 +323,17 @@ const UserDetails: React.FC<UserDetailsProps> = ({
                     flexDirection="row"
                     justifyContent="space-between"
                     alignItems="center"
+                    mx={{ base: "13px", md: "42px" }}
+                    borderBottomWidth={
+                      !consentManagementSectionflag ? "0.5px" : "0px"
+                    }
+                    borderColor="greySuccess"
                   >
                     {sectionConsentHeading && <Box>
                       <LebaraText
                         type="subtitle1"
                         lineHeight="23px"
                         fontWeight="400"
-                        px={{ base: "13px", md: "42px" }}
                         py={{ base: "21px", md: "41px" }}
                       >
                         {sectionConsentHeading}
@@ -339,7 +343,7 @@ const UserDetails: React.FC<UserDetailsProps> = ({
                       {...iconButtonProps}
                       aria-label="Toggle section"
                       isRound
-                      mr={{ base: "10px", md: "100px" }}
+                      mr={{ base: "10px", md: "55px" }}
                       onClick={setConsentManagementSectionFlag.toggle}
                       icon={
                         !consentManagementSectionflag ? (
@@ -430,7 +434,6 @@ const UserDetails: React.FC<UserDetailsProps> = ({
                     mt="15px"
                     variant="outline"
                     color="primary.500"
-                    textTransform="uppercase"
                     _hover={{ bgColor: "transparent" }}
                     fontSize="16px"
                     fontWeight="bold"

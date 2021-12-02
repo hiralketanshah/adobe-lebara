@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Box, Center } from "@chakra-ui/react";
 import { BuyPlanLayoutProps } from "./types";
 
