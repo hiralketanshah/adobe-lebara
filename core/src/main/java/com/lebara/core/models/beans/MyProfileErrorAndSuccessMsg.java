@@ -8,7 +8,7 @@ import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @Model(adaptables = {Resource.class}, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
-public class MyProfileErrorMsg {
+public class MyProfileErrorAndSuccessMsg {
 
 	@ValueMapValue
     private String emailRequiredMsg;
@@ -74,7 +74,10 @@ public class MyProfileErrorMsg {
     private String confirmEmailNotMatchMsg;
 
     @ValueMapValue
-    private String emailUpdateSuccessMsg;
+    private String successModalHeading;
+
+    @ValueMapValue
+    private String rteSuccessModalMsg;
 
     public String getfNameRequiredMsg() {
         return fNameRequiredMsg;
@@ -155,5 +158,7 @@ public class MyProfileErrorMsg {
         return confirmEmailNotMatchMsg;
     }
 
-    public String getEmailUpdateSuccessMsg() { return emailUpdateSuccessMsg; }
+    public String getSuccessModalHeading() { return successModalHeading; }
+
+    public String getRteSuccessModalMsg() { return rteSuccessModalMsg; }
 }

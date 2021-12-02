@@ -41,7 +41,7 @@ public class MyProfileExporter implements ComponentExporter{
     private MyProfileFormFields frmFields;
 
     @ChildResource
-    private MyProfileErrorMsg validationMessages;
+    private MyProfileErrorAndSuccessMsg validationMessages;
 
     @JsonProperty("frmFields")
     public MyProfileFormFields getFrmFields() {
@@ -49,7 +49,7 @@ public class MyProfileExporter implements ComponentExporter{
     }
 
     @JsonProperty("validationMessages")
-    public MyProfileErrorMsg getValidationMessages() {
+    public MyProfileErrorAndSuccessMsg getValidationMessages() {
         return validationMessages;
     }
 
