@@ -16,6 +16,7 @@ const ChangeEmailSuccess: React.FC<ChangeEmailSuccessProps> = ({
   isOpen,
   onClose,
   email,
+  successModal,
 }) => (
   <Modal isOpen={isOpen} onClose={onClose} isCentered>
     <ModalOverlay />
@@ -37,7 +38,7 @@ const ChangeEmailSuccess: React.FC<ChangeEmailSuccessProps> = ({
           flexDirection="column"
         >
           <Image src={CheckCircle} />
-          <Text
+          {successModal?.heading && <Text
             mt={{ base: "39px", lg: "28px" }}
             fontSize="20px"
             lineHeight="22px"
@@ -45,9 +46,10 @@ const ChangeEmailSuccess: React.FC<ChangeEmailSuccessProps> = ({
             fontWeight="500"
             textAlign="center"
           >
-            Email Update Request has been successfully sent !
-          </Text>
-          <Text
+            {successModal?.heading}
+          </Text>}
+
+          {successModal?.beforeEmailText && successModal?.afterEmailText &&<Text
             mt={{ base: "24px", lg: "14px" }}
             fontSize="14px"
             lineHeight="16px"
@@ -55,9 +57,11 @@ const ChangeEmailSuccess: React.FC<ChangeEmailSuccessProps> = ({
             fontWeight="500"
             textAlign="center"
           >
-            Kindy click on the link sent to {email} to validate your email.
-          </Text>
-          <Flex>
+            {successModal?.beforeEmailText} {email} {
+              successModal?.afterEmailText}
+          </Text>}
+
+          {successModal?.description && <Flex>
             <Text
               mt={{ base: "24px", lg: "14px" }}
               fontSize="14px"
@@ -65,11 +69,9 @@ const ChangeEmailSuccess: React.FC<ChangeEmailSuccessProps> = ({
               color="white"
               fontWeight="500"
               textAlign="center"
-            >
-              Email on My Profile won’t be updated until the verification is
-              made.
-            </Text>
-          </Flex>
+              dangerouslySetInnerHTML={{ __html: successModal?.description }}
+            />
+          </Flex>}
         </Flex>
       </ModalBody>
     </ModalContent>

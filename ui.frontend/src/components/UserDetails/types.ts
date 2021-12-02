@@ -11,8 +11,13 @@ export interface FormFields extends BaseFormFields {
   passwordEditLinkURL?: string;
   changeEmailHeading?: string;
 }
-export interface ValidationMessages extends BaseValidationMessages {
+export interface ValidationMessages extends BaseValidationMessages {}
 
+export interface SuccessModalProps {
+  heading?: string;
+  description?: string;
+  beforeEmailText?: string;
+  afterEmailText?: string;
 }
 export interface UserDetailsProps {
   heading?: string;
@@ -24,6 +29,7 @@ export interface UserDetailsProps {
   changeEmailHeading?: string;
   frmFields?: FormFields;
   validationMessages?: ValidationMessages;
+  successEmailModal?: SuccessModalProps;
 
   userName?: string;
   userSurname?: string;
@@ -107,4 +113,6 @@ export interface ChangeEmailSuccessProps {
   email?: string;
   isOpen: any;
   onClose: () => void;
+  successModal?: SuccessModalProps;
 }
+

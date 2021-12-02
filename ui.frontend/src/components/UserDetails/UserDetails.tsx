@@ -39,6 +39,7 @@ const UserDetails: React.FC<UserDetailsProps> = ({
   changeEmailHeading,
   frmFields,
   validationMessages,
+  successEmailModal,
 
   alternateContactNumber,
   city,
@@ -459,6 +460,7 @@ const UserDetails: React.FC<UserDetailsProps> = ({
         }}
       />
       <ChangeEmailSuccess
+        successModal={successEmailModal}
         isOpen={changeEmailSuccessPopup}
         email={updatedEmail}
         onClose={() => setChangeEmailSuccessPopup(false)}
