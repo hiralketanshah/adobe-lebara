@@ -10,6 +10,7 @@ const LanguageDropDown: React.FC<LanguageDropDownProps> = ({
 }) => {
   const history = useHistory();
   const [selectOptions, setSelectOptions] = useState([]);
+  const [selectedValue, setSelectedValue] = useState("");
 
   const handleChange = (event: any) => {
     const { target } = event;
@@ -23,6 +24,10 @@ const LanguageDropDown: React.FC<LanguageDropDownProps> = ({
     if(options && options.length) {
       let newSelectOptionsData = [] as  any;
       newSelectOptionsData = options && options?.map((item: any, idx: number) => {
+
+        if(item?.active) {
+          setSelectedValue(item?.url);
+        }
         return {
           name: item?.title,
           value: item?.url,
@@ -46,10 +51,11 @@ const LanguageDropDown: React.FC<LanguageDropDownProps> = ({
       maxW="120px"
       iconSize="14px"
       width="auto"
+      value={selectedValue}
+      defaultValue={selectedValue}
       icon={
         <IoChevronDownCircleSharp fill="#FF3182" width="14px" height="14px" />
       }
-      placeholder="English"
       options={selectOptions}
       onChange={handleChange}
       {...selectProps}
