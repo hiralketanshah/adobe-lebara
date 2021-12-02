@@ -37,11 +37,17 @@ public class MyProfileExporter implements ComponentExporter{
     @ValueMapValue
     private String sectionConsentHeading;
 
+    @ValueMapValue
+    private String changeEmailHeading;
+
     @ChildResource
     private MyProfileFormFields frmFields;
 
     @ChildResource
     private MyProfileErrorAndSuccessMsg validationMessages;
+
+    @ChildResource
+    private MyProfileSuccessEmailModal successEmailModal;
 
     @JsonProperty("frmFields")
     public MyProfileFormFields getFrmFields() {
@@ -52,6 +58,9 @@ public class MyProfileExporter implements ComponentExporter{
     public MyProfileErrorAndSuccessMsg getValidationMessages() {
         return validationMessages;
     }
+
+    @JsonProperty("successEmailModal")
+    public MyProfileSuccessEmailModal getSuccessEmailModal() { return successEmailModal; }
 
     public String getDescription() {
         return description;
@@ -78,6 +87,10 @@ public class MyProfileExporter implements ComponentExporter{
 
     public String getHeading() {
         return heading;
+    }
+
+    public String getChangeEmailHeading() {
+        return changeEmailHeading;
     }
 
     @Override
