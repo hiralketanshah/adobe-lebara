@@ -128,7 +128,8 @@ const DataExpandablePlanCardCheckout: React.FC<ExpandablePlanCardCheckoutProps> 
               </Heading>
               {!isFreeSim && (
                 <Text pt="11px" color="grey.300" fontSize="12px" word>
-                  {IsJsonString(description) ? JSON.parse(description) : description}
+                  <span dangerouslySetInnerHTML={{ __html: IsJsonString(description) ? JSON.parse(description) : description }} />
+                  {}
                 </Text>
               )}
             </Flex>
