@@ -1,5 +1,5 @@
 import { MapTo } from "@adobe/aem-react-editable-components";
-import PersonalDetailsRoute from "./PersonalDetailsRoute";
+import PersonalDetailsRoute from "@lebara/ui/src/rotues/PersonalDetailsRoute";
 
 const PersonalDetailsConfig = {
   emptyLabel: "Personal Details form",

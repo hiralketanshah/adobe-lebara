@@ -1,5 +1,5 @@
 import { MapTo } from "@adobe/aem-react-editable-components";
-import ResetPasswordRoute from "./ResetPasswordRoute";
+import ResetPasswordRoute from "@lebara/ui/src/rotues/ResetPasswordRoute";
 
 const ResetPasswordConfig = {
   emptyLabel: "Reset Password Component",
