@@ -5,5 +5,8 @@
   "lebara.addon.addedtocart.label":"Dodatek {0} dodany do koszyka",
   "lebara.emptycart.addedtocart.label":"Doładuj kredyt {0} dodany do koszyka",
   "lebara.selectedplan.label": "Wybrany plan",
-  "product.information.label": "Informacje o produkcie"
+  "product.information.label": "Informacje o produkcie",
+  "landline": "Telefon Stacjonarny",
+  "mobile": "Mobilny",
+  "sms": "SMS"
 }

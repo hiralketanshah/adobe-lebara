@@ -3,7 +3,9 @@
     jcr:primaryType="cq:Page">
     <jcr:content
         cq:deviceGroups="[mobile/groups/responsive]"
-        cq:template="/conf/lebara/settings/wcm/templates/lebara-page-template"
+        cq:lastModified="{Date}2021-12-01T19:04:59.016+05:30"
+        cq:lastModifiedBy="admin"
+        cq:template="/conf/lebara/settings/wcm/templates/international-tariffs-page"
         jcr:primaryType="cq:PageContent"
         sling:resourceType="lebara/components/page">
         <root
