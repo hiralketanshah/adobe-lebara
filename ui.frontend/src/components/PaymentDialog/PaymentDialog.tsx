@@ -10,7 +10,7 @@ import {
 import { PaymentDialogProps } from "./types";
 import PaymentFrame from "./PaymentFrame";
 
-const PaymentDialog: React.FC<PaymentDialogProps> = ({ isOpen, onClose, paymentMethodLabel, isPostpaid }) => (
+const PaymentDialog: React.FC<PaymentDialogProps> = ({ isOpen, onClose, paymentMethodLabel = "Select payment method", isPostpaid }) => (
   <Modal
     blockScrollOnMount={false}
     isOpen={isOpen}
