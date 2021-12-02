@@ -1,5 +1,5 @@
 import { MapTo } from "@adobe/aem-react-editable-components";
-import SwitchRoute from "./SwitchRoute";
+import SwitchRoute from "../components/Login/SwitchRoute";
 
 const LoginConfig = {
   emptyLabel: "Login Component",
