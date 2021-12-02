@@ -10,14 +10,14 @@ import org.apache.sling.models.annotations.DefaultInjectionStrategy;
 import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.injectorspecific.*;
 import org.apache.sling.models.annotations.Exporter;
-import com.lebara.core.beans.*;
+import com.lebara.core.models.beans.*;
 
 @Model(adaptables = SlingHttpServletRequest.class, adapters = {MyProfileExporter.class, ComponentExporter.class},
         resourceType = MyProfileExporter.RESOURCE_TYPE, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
 @Exporter(name = ExporterConstants.SLING_MODEL_EXPORTER_NAME, extensions = ExporterConstants.SLING_MODEL_EXTENSION)
 public class MyProfileExporter implements ComponentExporter{
 
-    protected static final String RESOURCE_TYPE = "lebara/components/myprofile";
+    protected static final String RESOURCE_TYPE = "lebara/components/user/myprofile";
 
     @ValueMapValue
     private String heading;
@@ -60,6 +60,7 @@ public class MyProfileExporter implements ComponentExporter{
     public String getSectionUsernameHeading() {
         return sectionUsernameHeading;
     }
+
     public String getSectionEmailPasswordHeading()
     {
         return sectionEmailPasswordHeading;
@@ -69,6 +70,7 @@ public class MyProfileExporter implements ComponentExporter{
     {
         return sectionAddressHeading;
     }
+
     public String getSectionConsentHeading()
     {
         return sectionConsentHeading;

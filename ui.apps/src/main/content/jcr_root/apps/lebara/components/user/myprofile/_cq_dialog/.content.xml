@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
     jcr:primaryType="nt:unstructured"
-    jcr:title="My Profile"
+    jcr:title="Lebara - Profile"
     sling:resourceType="cq/gui/components/authoring/dialog">
     <content
         jcr:primaryType="nt:unstructured"
@@ -24,7 +24,6 @@
                                     fieldLabel="Personal Details Title"
                                     name="./heading"
                                     value="Prsonal Details"/>
-
                             <personalDetailsDescription
                                     jcr:primaryType="nt:unstructured"
                                     sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
@@ -32,21 +31,18 @@
                                     fieldLabel="Personal Details Title Description"
                                     name="./description"
                                     value="Prsonal Details Title Description"/>
-
                             <saveLabel
                                     jcr:primaryType="nt:unstructured"
                                     sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                     fieldLabel="Save Cta Label"
                                     name="./frmFields/ctaButtonLabel"
                                     value="SAVE"/>
-
                             <cancelLabel
                                     jcr:primaryType="nt:unstructured"
                                     sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                     fieldLabel="Cancel Cta Label"
                                     name="./frmFields/ctaCancelLabel"
                                     value="CANCEL"/>
-
                             <ctaCancelURL
                                     jcr:primaryType="nt:unstructured"
                                     sling:resourceType="granite/ui/components/foundation/form/pathbrowser"
@@ -54,16 +50,8 @@
                                     name="./frmFields/ctaCancelURL"
                                     rootPath="/content/dam/lebara"
                                     value=""/>
-                            <profileImage
-                                    jcr:primaryType="nt:unstructured"
-                                    sling:resourceType="granite/ui/components/foundation/form/pathbrowser"
-                                    fieldLabel="User Profile Image"
-                                    name="./frmFields/userProfilePhoto"
-                                    rootPath="/content/dam/lebara"
-                                    value=""/>
                         </items>
                     </column1>
-
                     <column2
                         jcr:primaryType="nt:unstructured"
                         jcr:title="Name and Address"
@@ -103,7 +91,6 @@
                                 fieldLabel="Surname Placeholder"
                                 name="./frmFields/lNamePlaceholder"
                                 value="Enter Your Surname"/>
-
                             <addressLabel
                                     jcr:primaryType="nt:unstructured"
                                     sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
@@ -162,7 +149,6 @@
                                     fieldLabel="City Placeholder"
                                     value="Enter Your City"
                                     name="./frmFields/cityPlaceholder"/>
-
                             <alternativeComtactNumberLabel
                                     jcr:primaryType="nt:unstructured"
                                     sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
@@ -182,7 +168,6 @@
                         jcr:title="Email and Password"
                         sling:resourceType="granite/ui/components/coral/foundation/container">
                         <items jcr:primaryType="nt:unstructured">
-
                             <emailPasswordHeading
                                     jcr:primaryType="nt:unstructured"
                                     sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
@@ -211,7 +196,6 @@
                                     fieldLabel="Password Label"
                                     value="Password"
                                     name="./frmFields/passwordLabel"/>
-
                             <passwordPlaceholder
                                     jcr:primaryType="nt:unstructured"
                                     sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
@@ -219,7 +203,6 @@
                                     fieldLabel="Password Placeholder"
                                     value="Password Placeholder"
                                     name="./frmFields/passwordPlaceholder"/>
-
                             <editLinklabel
                                     jcr:primaryType="nt:unstructured"
                                     sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
@@ -227,14 +210,12 @@
                                     fieldLabel="Edit Link Label"
                                     value="EDIT"
                                     name="./frmFields/editLinkLabel"/>
-
                             <emailEditLinkURL
                                     jcr:primaryType="nt:unstructured"
                                     sling:resourceType="granite/ui/components/foundation/form/pathbrowser"
                                     fieldDescription="Email Edit Link URL"
                                     fieldLabel="Email Edit Link URL"
                                     name="./frmFields/emailEditLinkURL"/>
-
                             <passwordEditLinkURL
                                     jcr:primaryType="nt:unstructured"
                                     sling:resourceType="granite/ui/components/foundation/form/pathbrowser"
@@ -417,7 +398,6 @@
                                     value="phone"/>
                         </items>
                     </column3>
-
                     <column4
                             jcr:primaryType="nt:unstructured"
                             jcr:title="Edit Email Modal Data"
@@ -445,7 +425,6 @@
                                     fieldLabel="New Email Address Placeholder"
                                     name="./frmFields/newEmailPlacehodler"
                                     value="Enter New Email Address"/>
-
                             <newConfirmEmailLabel
                                     jcr:primaryType="nt:unstructured"
                                     sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
@@ -453,7 +432,6 @@
                                     fieldLabel="Confirm New Email Address Label"
                                     name="./frmFields/newConfirmEmailLabel"
                                     value="Confirm New Email Address"/>
-
                             <newConfirmEmailPlacehodler
                                     jcr:primaryType="nt:unstructured"
                                     sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
@@ -461,27 +439,23 @@
                                     fieldLabel="Confirm New Email Address Placeholder"
                                     name="./frmFields/newConfirmEmailPlacehodler"
                                     value="Confirm New Email Address Placeholder"/>
-
                             <ctaContinueLabel
                                     jcr:primaryType="nt:unstructured"
                                     sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                     fieldLabel="Continue Cta Label"
                                     name="./frmFields/ctaContinueLabel"
                                     value="CONTINUE"/>
-
                             <modalCancelCTALabel
                                     jcr:primaryType="nt:unstructured"
                                     sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                     fieldLabel="Cancel Cta Label"
                                     name="./frmFields/modalCancelCTALabel"
                                     value="CANCEL"/>
-
-
                          </items>
                     </column4>
                    <column5
                         jcr:primaryType="nt:unstructured"
-                        jcr:title="Error Messages"
+                        jcr:title="Error And Success Messages"
                         sling:resourceType="granite/ui/components/coral/foundation/container">
                         <items jcr:primaryType="nt:unstructured">
                             <emailRequiredMsg
@@ -630,6 +604,13 @@
                                     fieldLabel="Street Name Error message on Invalid characters"
                                     value="Invalid street name"
                                     name="./validationMessages/streetLabelErrorPattern"/>
+                            <emailUpdateSuccessMsg
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                    fieldDescription="Email Update Request has been successfully sent !"
+                                    fieldLabel="Email Update Request Sent Sccess Message "
+                                    name="./validationMessages/emailUpdateSuccessMsg"
+                                    value="Email Update Request has been successfully sent !"/>
                         </items>
                     </column5>
                 </items>

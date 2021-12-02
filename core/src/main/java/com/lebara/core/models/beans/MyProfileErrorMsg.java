@@ -1,4 +1,4 @@
-package com.lebara.core.beans;
+package com.lebara.core.models.beans;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import org.apache.sling.api.resource.Resource;
@@ -72,6 +72,9 @@ public class MyProfileErrorMsg {
 
     @ValueMapValue
     private String confirmEmailNotMatchMsg;
+
+    @ValueMapValue
+    private String emailUpdateSuccessMsg;
 
     public String getfNameRequiredMsg() {
         return fNameRequiredMsg;
@@ -152,4 +155,5 @@ public class MyProfileErrorMsg {
         return confirmEmailNotMatchMsg;
     }
 
+    public String getEmailUpdateSuccessMsg() { return emailUpdateSuccessMsg; }
 }
