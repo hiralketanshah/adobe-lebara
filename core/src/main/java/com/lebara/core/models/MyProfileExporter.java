@@ -46,6 +46,9 @@ public class MyProfileExporter implements ComponentExporter{
     @ChildResource
     private MyProfileErrorAndSuccessMsg validationMessages;
 
+    @ChildResource
+    private MyProfileSuccessEmailModal successEmailModal;
+
     @JsonProperty("frmFields")
     public MyProfileFormFields getFrmFields() {
         return frmFields;
@@ -55,6 +58,9 @@ public class MyProfileExporter implements ComponentExporter{
     public MyProfileErrorAndSuccessMsg getValidationMessages() {
         return validationMessages;
     }
+
+    @JsonProperty("successEmailModal")
+    public MyProfileSuccessEmailModal getSuccessEmailModal() { return successEmailModal; }
 
     public String getDescription() {
         return description;

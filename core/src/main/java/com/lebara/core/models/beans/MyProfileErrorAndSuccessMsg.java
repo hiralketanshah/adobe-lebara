@@ -73,12 +73,6 @@ public class MyProfileErrorAndSuccessMsg {
     @ValueMapValue
     private String confirmEmailNotMatchMsg;
 
-    @ValueMapValue
-    private String successModalHeading;
-
-    @ValueMapValue
-    private String rteSuccessModalMsg;
-
     public String getfNameRequiredMsg() {
         return fNameRequiredMsg;
     }
@@ -158,7 +152,5 @@ public class MyProfileErrorAndSuccessMsg {
         return confirmEmailNotMatchMsg;
     }
 
-    public String getSuccessModalHeading() { return successModalHeading; }
 
-    public String getRteSuccessModalMsg() { return rteSuccessModalMsg; }
 }
