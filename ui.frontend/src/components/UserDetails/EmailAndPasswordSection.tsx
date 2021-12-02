@@ -23,7 +23,6 @@ const EmailAndPasswordSection: React.FC<ChangeEmailPasswordProfileProps> = ({
       isDisabled: emailFieldDisabled,
       color: "#3D4998",
       fontSize: "12px",
-      textDecoration: "underline",
       fontWeight: "500",
     },
   };

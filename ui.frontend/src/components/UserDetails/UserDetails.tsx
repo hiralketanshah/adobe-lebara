@@ -355,14 +355,15 @@ const UserDetails: React.FC<UserDetailsProps> = ({
                       borderBottom="0.5px solid #c8c8c8"
                     >
                       <Box>
-                        <LebaraText
+                        {frmFields?.consentDescription && <LebaraText
                           type="caption"
                           fontWeight="500"
                           lineHeight="14px"
                           fontSize="12px"
+                          dangerouslySetInnerHTML={{ __html: frmFields?.consentDescription }}
                         >
-                          {frmFields?.consentDescription}
-                        </LebaraText>
+                        </LebaraText>}
+
                         {frmFields?.subscribeOptions?.length && <Flex flexDirection="row" mt="19px">
                           {frmFields?.subscribeOptions[0] && <FormikCheckbox name="informedEmail" isValidated>
                             <Text
@@ -406,7 +407,6 @@ const UserDetails: React.FC<UserDetailsProps> = ({
                   pt="63px"
                   pb="41px"
                   px={{ base: "22px", md: "initial" }}
-                  display={!dirty ? "none" : "block"}
                   width={{ base: "full", md: "355px" }}
                   m={{ base: "initial", md: "0 auto" }}
                 >
@@ -446,7 +446,7 @@ const UserDetails: React.FC<UserDetailsProps> = ({
         )}
       </Formik>
       <ChangeEmail
-        changeEmailHeading={changeEmailHeading}
+        changeEmailHeading={changeEmailHeading || frmFields?.changeEmailHeading}
         frmFields={frmFields}
         validationMessages={validationMessages}
         isOpen={emailEditPopup}

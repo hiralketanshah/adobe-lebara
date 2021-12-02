@@ -9,6 +9,7 @@ export interface FormFields extends BaseFormFields {
   editLinkLabel?: string;
   emailEditLinkURL?: string;
   passwordEditLinkURL?: string;
+  changeEmailHeading?: string;
 }
 export interface ValidationMessages extends BaseValidationMessages {
 
