@@ -56,6 +56,7 @@ export default {
   bossanova: "#49255E",
   greySilver: "#C8C8C8",
   linkButton: "#EA4984",
+  lightCyan: "#CBEFFF",
   grey: {
     50: "#F4F4F4",
     100: "#C8C8C8",
