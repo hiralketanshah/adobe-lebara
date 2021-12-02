@@ -4,7 +4,6 @@
  */
 import withAsyncImport from "../utils/withAsyncImport";
 import { MapTo } from "@adobe/aem-react-editable-components";
-import { TitleV2IsEmptyFn } from "@adobe/aem-core-components-react-base/dist/isEmptyFunctions";
 import {
     ContainerV1,
     ContainerV1IsEmptyFn,
@@ -49,16 +48,6 @@ MapTo("lebara/components/text")(LazyTextComponent, {
 
 
 //lazyload / code splitting examples of external components
-const TitleV2 = withAsyncImport(() =>
-  import(
-    `@adobe/aem-core-components-react-base/dist/authoring/title/v2/TitleV2`
-  )
-);
-MapTo("lebara/components/title")(TitleV2, {
-    isEmpty: TitleV2IsEmptyFn
-});
-
-
 MapTo("lebara/components/container")(ContainerV1, {
     isEmpty: ContainerV1IsEmptyFn
 });

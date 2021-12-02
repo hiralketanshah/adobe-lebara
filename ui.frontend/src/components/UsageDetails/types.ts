@@ -13,6 +13,9 @@ export interface UsageDetailsProps {
   description: string;
   ctaSeeMoreCallsLabel: string;
   ctaLoadMoreLabel: string;
+  ctaSeeMoreURL: string;
+  ctaTopupURL: string;
+  ctaTopupText: string;
 }
 
 export interface PhoneProps {

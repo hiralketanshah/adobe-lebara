@@ -33,8 +33,15 @@ public class LoginExporter implements ComponentExporter {
     /**
      * Login form fields Labels
      */
+
     @ValueMapValue
-    private String loginLabel;
+    private String loginTabLabel;
+
+    @ValueMapValue
+    private String registrationTabLabel;
+
+    @ValueMapValue
+    private String guestTabLabel;
 
     @ValueMapValue
     private String loginEmailAddressLabel;
@@ -53,20 +60,12 @@ public class LoginExporter implements ComponentExporter {
 
     @ValueMapValue
     private String loginButton;
-
-    @ValueMapValue
-    private String loginRegistrationMessage;
-
-    @ValueMapValue
-    private String loginRegistrationCtaLabel;
-
-    @ValueMapValue
-    private String loginRegistrationCtaLink;
     /**
      * Registration form fields label
      */
+
     @ValueMapValue
-    private String registrationLabel;
+    private String extraBlockGuestLinkText;
 
     @ValueMapValue
     private String registrationEmailAddress;
@@ -76,9 +75,6 @@ public class LoginExporter implements ComponentExporter {
 
     @ValueMapValue
     private String registrationConfirmPassword;
-
-    @ValueMapValue
-    private String registrationContinueButton;
 
     @ValueMapValue
     private String registrationMessage;
@@ -111,6 +107,9 @@ public class LoginExporter implements ComponentExporter {
 
     @ValueMapValue
     private String guestResetLinkTextLabel;
+
+    @ValueMapValue
+    private String extraBlockGuestText;
 
     @ValueMapValue
     private String guestResetLinkLabel;
@@ -177,32 +176,28 @@ public class LoginExporter implements ComponentExporter {
     @ValueMapValue
     private String  loginButtonLabel;
 
+    @ValueMapValue
+    private String extraBlockOrText;
 
+    @ValueMapValue
+    private String extraBlockLoginText;
 
-    public String getLoginRegistrationMessage() {
-        return loginRegistrationMessage;
-    }
+    @ValueMapValue
+    private String extraBlockLoginLinkText;
 
-    public String getLoginRegistrationCtaLabel() {
-        return loginRegistrationCtaLabel;
-    }
+    @ValueMapValue
+    private String extraBlockRegisterText;
 
-    public String getLoginRegistrationCtaLink() {
-        return loginRegistrationCtaLink;
-    }
+    @ValueMapValue
+    private String extraBlockRegisterLinkText;
 
     public String getLoginModuleType() {
         return loginModuleType;
     }
 
-    public String getLoginLabel() {
-        return loginLabel;
-    }
-
     public String getLoginEmailAddressLabel() {
         return loginEmailAddressLabel;
     }
-
     public String getLoginPasswordLabel() {
         return loginPasswordLabel;
     }
@@ -223,10 +218,6 @@ public class LoginExporter implements ComponentExporter {
         return loginButton;
     }
 
-    public String getRegistrationLabel() {
-        return registrationLabel;
-    }
-
     public String getRegistrationEmailAddress() {
         return registrationEmailAddress;
     }
@@ -237,10 +228,6 @@ public class LoginExporter implements ComponentExporter {
 
     public String getRegistrationConfirmPassword() {
         return registrationConfirmPassword;
-    }
-
-    public String getRegistrationContinueButton() {
-        return registrationContinueButton;
     }
 
     public String getRegistrationMessage() {
@@ -365,6 +352,35 @@ public class LoginExporter implements ComponentExporter {
 
     public String getLoginButtonLabel() {
         return loginButtonLabel;
+    }
+
+    public String getExtraBlockLoginText() {return extraBlockLoginText;}
+
+    public String getExtraBlockLoginLinkText() { return extraBlockLoginLinkText;}
+
+    public String getExtraBlockRegisterText() { return extraBlockRegisterText;}
+
+    public String getExtraBlockRegisterLinkText() {return extraBlockRegisterLinkText; }
+
+    public String getExtraBlockOrText() { return extraBlockOrText;}
+
+    public String getLoginTabLabel() {
+        return loginTabLabel;
+    }
+    public String getRegistrationTabLabel() {
+        return registrationTabLabel;
+    }
+
+    public String getGuestTabLabel() {
+        return guestTabLabel;
+    }
+
+    public String getExtraBlockGuestText() {
+        return extraBlockGuestText;
+    }
+
+    public String getExtraBlockGuestLinkText() {
+        return extraBlockGuestLinkText;
     }
 
     @Override

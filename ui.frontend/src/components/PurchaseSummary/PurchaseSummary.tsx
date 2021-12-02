@@ -2,12 +2,19 @@ import React from "react";
 import { Divider, Flex, Text } from "@chakra-ui/react";
 import { PurchaseSummaryProps } from "./types";
 import {globalConfigs} from  '../../GlobalConfigs.js';
+import { formatNumber } from "../../utils/formatNumber";
 const PurchaseSummary: React.FC<PurchaseSummaryProps> = ({ items, grandTotalLabel }) => (
-  <Flex flexDirection="column" borderRadius={8} backgroundColor="white">
+<Flex
+    flexDirection="column"
+    borderRadius={8}
+    backgroundColor="white"
+    borderWidth={1}
+    borderColor={{ lg: "greySuccess" }}
+  >
     {items &&
       items.length > 1 &&
       items.map((item) => (
-        <Flex flexDirection="column">
+        <Flex flexDirection="column" py="9px" px="16px">
           <Flex
             key={item.description}
             fontSize={14}
@@ -15,7 +22,8 @@ const PurchaseSummary: React.FC<PurchaseSummaryProps> = ({ items, grandTotalLabe
           >
             <Text>{item.description}</Text>
             <Text fontSize={16} fontWeight="bold">
-              {item.amount < 0 ? "-" : ""}{globalConfigs.currencySymbol}{Math.abs(item.amount)}
+              {item.amount < 0 ? "-" : ""}
+              {formatNumber(Math.abs(item.amount))} {globalConfigs.currencySymbol}
             </Text>
           </Flex>
           <Divider color="grey.50" my={1.5} />
@@ -26,19 +34,18 @@ const PurchaseSummary: React.FC<PurchaseSummaryProps> = ({ items, grandTotalLabe
       justifyContent="space-between"
       padding="15px"
       fontWeight="bold"
-      border="1px"
       borderRadius="8px"
-      borderColor="greySuccess"
+      borderColor={{ lg: "greySuccess" }}
     >
       <Text>{grandTotalLabel}</Text>
       <Text>
-      {globalConfigs.currencySymbol}
         {items
           .reduce((sum, t) => sum + t.amount, 0)
-          .toLocaleString(globalConfigs.locale, {
+          .toLocaleString((globalConfigs.locale || "de-DE"), {
             maximumFractionDigits: 2,
             useGrouping: false,
-          })}
+          })}{" "}
+        {globalConfigs.currencySymbol}
       </Text>
     </Flex>
   </Flex>

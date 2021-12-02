@@ -15,7 +15,7 @@ const globalConfigs = window.lebaraGlobalConfigs ? {
     paymentClientKey: window.lebaraGlobalConfigs.paymentClientKey,
     paymentAdeyenEnv: window.lebaraGlobalConfigs.paymentAdeyenEnv,
     locale: window.lebaraGlobalConfigs.locale,
-    country: window.lebaraGlobalConfigs.country ? window.lebaraGlobalConfigs.country : window.lebaraGlobalConfigs.locale,
+    country: window.lebaraGlobalConfigs.country ? window.lebaraGlobalConfigs.country : 'DE',
     journeyPages: JSON.parse(window.lebaraGlobalConfigs.journeyPages)
 } : {};
 
@@ -41,8 +41,10 @@ const globalConstants = Object.freeze({
     TOP_UP: 'top-up',
     PREPAID: 'prepaid',
     DASHBOARD: 'dashboard',
+    DASHBOARD_MANAGE: 'dashboard-manage',
     VERIFY_REGISTER_MOBILE: 'verify-register-mobile',
     CREATE_NEW_PASSWORD: 'create-new-password',
+    FAQ: 'faq',
     USAGE_DETAILS: 'usage-details',
 });
 module.exports = { globalConfigs, globalConstants }

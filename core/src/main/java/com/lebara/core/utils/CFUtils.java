@@ -6,6 +6,7 @@ import java.util.stream.Collectors;
 import com.day.cq.i18n.I18n;
 import com.google.gson.JsonSyntaxException;
 import com.lebara.core.dto.*;
+import com.lebara.core.models.beans.SelectOption;
 import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.sling.api.resource.Resource;
@@ -127,6 +128,30 @@ public class CFUtils {
         return cities;
     }
 
+    /**
+     * this methods takes the root path for fragment as an input and iterates through all
+     * its child and returns a list of InternationalRateBean objects.
+     */
+    public static List<SelectOption> getInternationalRates(ResourceResolver resolver, String fragmentRootPath) {
+        List<SelectOption> internationalRateBeanList = new ArrayList<>();
+        Resource parentResource = resolver.getResource(fragmentRootPath);
+        for (Resource fragment : parentResource.getChildren()) {
+            ContentFragment irFragment = fragment.adaptTo(ContentFragment.class);
+            if (null != irFragment) {
+                String countryLandingPageUrl = CFUtils.getElementValue(irFragment, "countryLandingPageURL");
+                countryLandingPageUrl = AemUtils.getLinkWithExtension(countryLandingPageUrl, resolver);
+                String countryName = CFUtils.getElementValue(irFragment, "countryName");
+                if (StringUtils.isNoneBlank(countryLandingPageUrl, countryName)) {
+                    SelectOption selectOption = new SelectOption();
+                    selectOption.setLabel(countryName);
+                    selectOption.setValue(countryLandingPageUrl);
+                    internationalRateBeanList.add(selectOption);
+                }
+            }
+        }
+        return internationalRateBeanList;
+    }
+
     public static OfferFragmentBean populateOffers( Resource cfResource, I18n i18n) {
         OfferFragmentBean offerFragmentBean = null;
         if (null != cfResource) {
@@ -136,9 +161,7 @@ public class CFUtils {
                 offerFragmentBean.setCost(CFUtils.getElementValue(offerFragment, "cost"));
                 offerFragmentBean.setPlanName(CFUtils.getElementValue(offerFragment, "name"));
                 offerFragmentBean.setValidity(CFUtils.getElementValue(offerFragment, "validity") + " " + (i18n == null ? "Days" : i18n.get("Days")));
-                offerFragmentBean.setValidityText(CFUtils.getElementValue(offerFragment, "validityText"));
-                offerFragmentBean.setMinutesToCountriesText(CFUtils.getElementValue(offerFragment, "minutesToCountriesText"));
-                offerFragmentBean.setDataVolumeText(CFUtils.getElementValue(offerFragment, "dataVolumeText"));
+                offerFragmentBean.setProductInformationFile(CFUtils.getElementValue(offerFragment,"productInformationFile"));
                 offerFragmentBean.setId(CFUtils.getElementValue(offerFragment, "offerid"));
                 offerFragmentBean.setOfferType(CFUtils.getElementValue(offerFragment, "offerType"));
                 if (offerFragment.getElement("additionalOffers") != null) {
@@ -171,7 +194,7 @@ public class CFUtils {
             int value = Integer.parseInt(val);
             switch (unit.toLowerCase()) {
                 case "mb":
-                    formattedValue = value >= 1024 ? (value / 1024) + " GB" : value + " MB";
+                    formattedValue = (value >= 1024) ? (value / 1024) + " GB" : value + " MB";
                     break;
                 case "sms":
                     formattedValue = value + " SMS";
@@ -179,6 +202,8 @@ public class CFUtils {
                 case "mins":
                     formattedValue = value + " " + (i18n == null ? "Minutes" : i18n.get("Minutes"));
                     break;
+                default :
+                    formattedValue = StringUtils.EMPTY;
             }
         }
         return formattedValue;

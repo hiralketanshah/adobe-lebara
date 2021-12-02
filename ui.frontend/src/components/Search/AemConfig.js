@@ -1,10 +1,11 @@
 import { MapTo } from "@adobe/aem-react-editable-components";
 import Search from "./Search";
 
-const SearchConfig = {
-  emptyLabel: "Quick Search",
+const SearchBoxConfig = {
+  emptyLabel: "Search Component",
   isEmpty: function (props) {
-    return !props.searchRoot;
+    return !props.searchPlaceholder;
   },
 };
-MapTo("lebara/components/search")(Search, SearchConfig);
+
+MapTo("lebara/components/search")(Search, SearchBoxConfig);

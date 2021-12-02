@@ -4,19 +4,24 @@ import NextBillLogo from "../../assets/images/nextBill.png";
 import { NextBillProps } from "./types";
 import { globalConfigs as GC } from "../../GlobalConfigs";
 import useGetDashboardData from "../../hooks/useGetDashboardData";
-
+import moment from "moment";
+import { useHistory } from "react-router-dom";
 const NextBill: React.FC<NextBillProps> = ({
   title,
   durationLabel,
+  totalEstimatedLabel,
   additionalChargesLabel,
   monthlyChargesLabel,
-  buttonLabel
+  buttonLabel,
+  buttonLink,
+  hideButton
 }) => {
   const textStyle = {
     fontSize: "14px",
     color: "primary.800",
     lineHeight: "20px",
   };
+  const history = useHistory();
   const [getDashboardData] = useGetDashboardData();
   const isPostPaid = !!(getDashboardData && getDashboardData.bills);
   if (isPostPaid && getDashboardData.bills.length > 0) {
@@ -56,26 +61,38 @@ const NextBill: React.FC<NextBillProps> = ({
                       {title}
                     </Text>
                     <Text ml="5px" fontSize="10px" lineHeight="17px" color="grey.300">
-                      {durationLabel}
+                      {durationLabel} {moment(getDashboardData.bills[0].date).format(
+                        "D, MMM YYYY"
+                      )}
                     </Text>
                   </Flex>
-                  <Box
-                    backgroundColor="secondary.500"
-                    borderRadius="7px"
-                    px="10px"
-                    py="5px"
-                    ml="auto"
-                  >
+                  <Flex ml="auto" alignItems="center">
                     <Text
-                      fontWeight="500"
-                      fontSize="20px"
-                      lineHeight="22px"
-                      letterSpacing="0.15px"
-                      color="white"
+                      fontSize="12px"
+                      lineHeight="17px"
+                      color="primary.800"
+                      mr="10px"
+                      ml="auto"
                     >
-                      {GC.currencySymbol}{getDashboardData.bills[0]?.totalBillAmount}
+                      {totalEstimatedLabel}
                     </Text>
-                  </Box>
+                    <Box
+                      backgroundColor="secondary.500"
+                      borderRadius="7px"
+                      px="10px"
+                      py="5px"
+                    >
+                      <Text
+                        fontWeight="500"
+                        fontSize="20px"
+                        lineHeight="22px"
+                        letterSpacing="0.15px"
+                        color="white"
+                      >
+                        {GC.currencySymbol}{getDashboardData.bills[0].totalBillAmount}
+                      </Text>
+                    </Box>
+                  </Flex>
                 </Flex>
                 <Flex
                   mt="26px"
@@ -92,8 +109,7 @@ const NextBill: React.FC<NextBillProps> = ({
                     fontWeight="bold"
                     letterSpacing="0.1px"
                   >
-                    {/* hardcoded value has to be replaced once change is done in storybook */}
-                    {GC.currencySymbol}20
+                    {GC.currencySymbol}{getDashboardData.bills[0].totalBillAmount}
                   </Text>
                 </Flex>
                 <Flex
@@ -111,23 +127,25 @@ const NextBill: React.FC<NextBillProps> = ({
                     fontWeight="bold"
                     letterSpacing="0.1px"
                   >
-                    {/* hardcoded value has to be replaced once change is done in storybook */}
-                    {GC.currencySymbol}10
+                    {GC.currencySymbol}{getDashboardData?.currentBill?.additionalCharges || 0}
                   </Text>
                 </Flex>
               </Box>
-              <Text
-                color="secondary.500"
-                fontWeight="bold"
-                fontSize="16px"
-                lineHeight="25px"
-                letterSpacing="0.01em"
-                mt="20px"
-                textTransform="uppercase"
-                cursor="pointer"
-              >
-                {buttonLabel}
-              </Text>
+              {!hideButton && (
+                <Text
+                  color="secondary.500"
+                  fontWeight="bold"
+                  fontSize="16px"
+                  lineHeight="25px"
+                  letterSpacing="0.01em"
+                  mt="20px"
+                  textTransform="uppercase"
+                  cursor="pointer"
+                  onClick={() => history.push(buttonLink || "")}
+                >
+                  {buttonLabel}
+                </Text>
+              )}
             </Flex>
           </Box>
         </Flex>

@@ -3,8 +3,6 @@ package com.lebara.core.models;
 import com.adobe.cq.export.json.ComponentExporter;
 import com.adobe.cq.export.json.ExporterConstants;
 import com.day.cq.i18n.I18n;
-import com.day.cq.wcm.api.Page;
-import com.day.cq.wcm.api.PageManager;
 import com.lebara.core.dto.OfferFragmentBean;
 import com.lebara.core.utils.AemUtils;
 import com.lebara.core.utils.CFUtils;
@@ -19,8 +17,6 @@ import org.apache.sling.models.annotations.injectorspecific.*;
 import javax.annotation.PostConstruct;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
-import java.util.ResourceBundle;
 
 @Model(adaptables = SlingHttpServletRequest.class, adapters = {ViewPlanExporter.class, ComponentExporter.class},
         resourceType = ViewPlanExporter.RESOURCE_TYPE, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
@@ -48,16 +44,46 @@ public class ViewPlanExporter implements ComponentExporter {
     private String buttonLabel;
 
     @ValueMapValue
+    private String ctaDownloadLabel;
+
+    @ValueMapValue
+    private String ctaCloseLabel;
+
+    @ValueMapValue
     private String minutesField;
 
     @ValueMapValue
     private String unlimitedTextField;
+    
+    @ValueMapValue
+    private String title;
+    
+    @ValueMapValue
+    private String showLabel;
+    
+    @ValueMapValue
+    private String exploreAllLabel;
+    
+    @ValueMapValue
+    private String exploreAllLink;
 
     private I18n i18n;
 
     @PostConstruct
     private void init() {
         i18n = AemUtils.geti18n(resourceResolver, resource, slingRequest);
+    }
+
+    public String getProductInformationButtonLabel() {
+        return (i18n == null ? "Product Information" : i18n.get("product.information.label"));
+    }
+
+    public String getCtaDownloadLabel() {
+        return ctaDownloadLabel;
+    }
+
+    public String getCtaCloseLabel() {
+        return ctaCloseLabel;
     }
 
     public String getButtonLabel() {
@@ -70,6 +96,22 @@ public class ViewPlanExporter implements ComponentExporter {
 
     public String getUnlimitedTextField() {
         return unlimitedTextField;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public String getShowLabel() {
+        return showLabel;
+    }
+
+    public String getExploreAllLabel() {
+        return exploreAllLabel;
+    }
+
+    public String getExploreAllLink() {
+        return AemUtils.getLinkWithExtension(exploreAllLink, slingRequest);
     }
 
     public List<OfferFragmentBean> getOffers() {

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import {
   Flex,
   Box,
@@ -11,7 +11,6 @@ import {
   Tab,
   TabPanel,
   AvatarBadge,
-  Circle,
 } from "@chakra-ui/react";
 // import { useHistory } from "react-router-dom";
 import {
@@ -39,8 +38,10 @@ const UsageDetails: React.FC<UsageDetailsProps> = ({
   description,
   ctaSeeMoreCallsLabel,
   ctaLoadMoreLabel,
+  ctaSeeMoreURL,
+  ctaTopupURL,
+  ctaTopupText,
 }) => {
-  const [lastActivity] = useState(activityLasts);
   const INTERNATIONAL_CALL_TYPE = "international";
   const ROAMING_CALL_TYPE = "roaming";
   const FLIGHT_CALL_TYPE = "flight";
@@ -83,7 +84,7 @@ const UsageDetails: React.FC<UsageDetailsProps> = ({
 
   const onSeeMoreClick = () => {
     setSeeMoreClicked(true);
-    history.push(GC.journeyPages[C.USAGE_DETAILS]  || '/');
+    history.push(ctaSeeMoreURL || GC.journeyPages[C.USAGE_DETAILS]  || '/');
   };
 
   return (
@@ -309,38 +310,6 @@ const UsageDetails: React.FC<UsageDetailsProps> = ({
             >{ctaLoadMoreLabel}</Button>
           )}
         </Flex>
-        <Box
-          position="absolute"
-          display={{ lg: "inline-block", base: "none" }}
-          right="50px"
-          top="450px"
-        >
-          <Circle
-            size="72px"
-            bg="secondary.500"
-            color="white"
-            textAlign="center"
-          >
-            <Button
-              display="flex"
-              flexDirection="column"
-              bg="secondary.500"
-              _hover={{ bg: "secondary.500" }}
-              _active={{ bg: "secondary.500", borderColor: "secondary.500" }}
-              onClick={() => history.push("/top-up")}
-              _focus={{
-                outline: "none",
-              }}
-            >
-              <Text textTransform="capitalize" fontSize="17px" color="white">
-                Top
-              </Text>
-              <Text textTransform="capitalize" fontSize="17px" color="white">
-                Up
-              </Text>
-            </Button>
-          </Circle>
-        </Box>
       </Box>
     </Flex>
   );

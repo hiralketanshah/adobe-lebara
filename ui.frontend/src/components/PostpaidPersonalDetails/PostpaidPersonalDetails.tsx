@@ -6,7 +6,6 @@ import {
   FormLabel,
   FormLabelProps,
   Heading,
-  Link,
   Text,
 } from "@chakra-ui/react";
 import { Form, Formik } from "formik";
@@ -22,11 +21,11 @@ import FormikCheckbox from "../Formik/FormikCheckbox/FormikCheckbox";
 import FormikRadioGroup from "../Formik/FormikRadioGroup/FormikRadioGroup";
 import Button from "../Button/Button";
 import FormikSelect from "../Formik/FormikSelect/FormikSelect";
-import currentProviderList from "../../utils/currentProviderList";
 import InfoBox from "../InfoBox/InfoBox";
 import TextWithMoreButton from "../TextWithMoreButton/TextWithMoreButton";
 import PaymentDialog from "../PaymentDialog/PaymentDialog";
 import VALIDATE_EMAIL_SPS from "../../graphql/VALIDATE_EMAIL_SPS";
+// import AddressCard from "../AddressCard/AddressCard";
 
 const dateLabelProps: FormLabelProps = {
   color: "explainerColor",
@@ -35,7 +34,6 @@ const dateLabelProps: FormLabelProps = {
   fontWeight: "500",
 };
 const PostpaidPersonalDetails: React.FC<PostpaidPersonalDetailsProps> = ({
-  pageTitle,
   heading,
   portingSectionHeading,
   validationMessages,
@@ -44,6 +42,7 @@ const PostpaidPersonalDetails: React.FC<PostpaidPersonalDetailsProps> = ({
   const history = useHistory();
   const [validateEmailSps, { data: validateEmailSpsResult }] = useLazyQuery(VALIDATE_EMAIL_SPS);
   const [isPaymentDialogOpen, setIsPaymentDialogOpen] = useState(false);
+  // const [isManualAddress, setIsManualAddress] = useState(false);
 
   const dynamicFormikValidate = (values: any) => postpaidPersonalDetailsValidation(values, validationMessages);
 
@@ -52,6 +51,7 @@ const PostpaidPersonalDetails: React.FC<PostpaidPersonalDetailsProps> = ({
       <PaymentDialog
         isOpen={isPaymentDialogOpen}
         onClose={() => setIsPaymentDialogOpen(false)}
+        isPostpaid={true}
       />
       <Formik
         initialValues={{
@@ -91,7 +91,7 @@ const PostpaidPersonalDetails: React.FC<PostpaidPersonalDetailsProps> = ({
             });
         }}
       >
-        {({ handleSubmit, values, errors, dirty }) => {
+        {({ handleSubmit, values, errors, dirty, touched }) => {
           const isExistingUser = errors.email === "exists";
           const disabledInputProps = {
             inputProps: {
@@ -101,19 +101,16 @@ const PostpaidPersonalDetails: React.FC<PostpaidPersonalDetailsProps> = ({
 
           return (
             <Form onSubmit={handleSubmit}>
-              {pageTitle && (
-                <Heading
+              {heading && (<Heading
                   lineHeight="40px"
                   fontWeight="bold"
                   fontSize={20}
                   color="primary.500"
                   my="7px"
                   d={{ base: "block", lg: "none" }}
-                >
-                  {pageTitle}
-                </Heading>
-              )}
-        
+                >{heading}
+              </Heading>)}
+              
               <Flex
                 pt={{ base: "19px", lg: "52px" }}
                 pb={{ base: "28px", lg: "60px" }}
@@ -211,7 +208,32 @@ const PostpaidPersonalDetails: React.FC<PostpaidPersonalDetailsProps> = ({
                   placeholder={frmFields.shippingPlaceholder}
                   isRequired
                   isDisabled={isExistingUser}
+                  country={GC.country}
                 />
+                {/* <AddressCard
+                  onSetManual={() => {
+                    setIsManualAddress(true);
+                  }}
+                  
+                  addressLabel={frmFields.shippingLabel}
+                  initialStatus="SearchNewAddress"
+                  searchAddressSubText={frmFields.addressKeyInText}
+                  streetLabel={frmFields.streetLabel}
+                  streetPlaceholder={frmFields.streetPlaceholder}
+                  houseNumberLabel={frmFields.houseNumberLabel}
+                  houseNumberPlaceholder={frmFields.houseNumberPlaceholder}
+                  zipCodeLabel={frmFields.zipCodeLabel}
+                  zipCodePlaceholder={frmFields.zipCodePlaceholder}
+                  cityLabel={frmFields.cityLabel}
+                  postalcodePlaceholder={frmFields.postalcodePlaceholder}
+                  cityPlaceholder={frmFields.cityPlaceholder}
+                  cities={frmFields.cities}
+                  enterAddressManually={frmFields.enterAddressManually}
+                  saveAddress={frmFields.saveAddress}
+                  keyInAddress={frmFields.keyInAddress}
+                  postalCodeText={frmFields.addressKeyInText}
+                  country={GC.country}
+                /> */}
               </Flex>
 
               <Flex
@@ -231,7 +253,11 @@ const PostpaidPersonalDetails: React.FC<PostpaidPersonalDetailsProps> = ({
                     lineHeight="17.1px"
                     previewText={frmFields.consentPreviewText}
                   >
-                    {frmFields.consentDescription}
+                    <span 
+                        dangerouslySetInnerHTML={{ __html: 
+                          frmFields && frmFields.consentDescription ? 
+                          frmFields.consentDescription : '' }} 
+                      />
                   </TextWithMoreButton>
                 </FormikCheckbox>
               </Flex>
@@ -286,28 +312,29 @@ const PostpaidPersonalDetails: React.FC<PostpaidPersonalDetailsProps> = ({
                       label={frmFields.currentProviderLabel}
                       placeholder={frmFields.currentProviderPlaceholder}
                       isRequired
-                      options={currentProviderList}
+                      options={frmFields.currentProviderList}
                       isDisabled={isExistingUser}
                     />
                     <Flex flexDirection="column" gridGap="14px">
                       <InfoBox
-                        description={
-                          <>
-                            {frmFields.currentProviderInfoDescription}{" "}
-                            <Link color="secondary.500" href={frmFields.currentProviderInfoLinkURL}>
-                              {frmFields.currentProviderInfoLinkLabel}
-                            </Link>
-                            .
-                          </>
-                        }
+                        description={<>
+                          <div 
+                            dangerouslySetInnerHTML={{ __html: 
+                              frmFields && frmFields.currentProviderInfoDescription ? 
+                              frmFields.currentProviderInfoDescription : '' }} 
+                          />
+                        </>}
                         textProps={{
                           fontSize: "12px",
                           color: "black",
                         }}
                       />
                       <FormikCheckbox name="isUsageProfileAccepted">
-                        <Text fontSize={12} ml="11px" lineHeight="17.1px">
-                          {frmFields.currentProviderUsageAcceptanceLabel}
+                        <Text fontSize={12} ml="11px" lineHeight="17.1px"
+                         dangerouslySetInnerHTML={{ __html: 
+                          frmFields && frmFields.currentProviderUsageAcceptanceLabel ? 
+                          frmFields.currentProviderUsageAcceptanceLabel : '' }} 
+                          >
                         </Text>
                       </FormikCheckbox>
                       <FormikCheckbox name="isAdvertisingAccepted">
@@ -315,9 +342,14 @@ const PostpaidPersonalDetails: React.FC<PostpaidPersonalDetailsProps> = ({
                           fontSize={12}
                           ml="11px"
                           lineHeight="17.1px"
-                          previewText="I would like to take my existing mobile number with me to Lebara (number portability) and instruct Lebara to port my number as soon as possible"
+                          previewText=
+                          {frmFields.currentProviderAdvertisingPreviewText}
                         >
-                          {frmFields.currentProviderAdvertisingAcceptanceLabel}
+                          <span 
+                            dangerouslySetInnerHTML={{ __html: 
+                              frmFields && frmFields.currentProviderAdvertisingAcceptanceLabel ? 
+                              frmFields.currentProviderAdvertisingAcceptanceLabel : '' }} 
+                          />
                         </TextWithMoreButton>
                       </FormikCheckbox>
                     </Flex>

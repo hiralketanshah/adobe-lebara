@@ -2,6 +2,7 @@ package com.lebara.core.models;
 
 import com.adobe.cq.export.json.ComponentExporter;
 import com.adobe.cq.export.json.ExporterConstants;
+import com.lebara.core.models.beans.Link;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.models.annotations.DefaultInjectionStrategy;
@@ -29,6 +30,9 @@ public class GetAppExporter implements ComponentExporter {
     private String appTitle;
 
     @ValueMapValue
+    private String getAppLabel;
+
+    @ValueMapValue
     private String backgroundImageDesktop;
 
     @ValueMapValue
@@ -36,6 +40,13 @@ public class GetAppExporter implements ComponentExporter {
 
     @ValueMapValue
     private String textDescription;
+
+    @ValueMapValue
+    private List<String> textCol1;
+
+    @ValueMapValue
+    private List<String> textCol2;
+    
     @ValueMapValue
     private boolean show;
 
@@ -61,6 +72,18 @@ public class GetAppExporter implements ComponentExporter {
 
     public String getAppTitle() {
         return appTitle;
+    }
+
+    public String getGetAppLabel() {
+        return getAppLabel;
+    }
+
+    public List<String> getTextCol1() {
+        return textCol1;
+    }
+
+    public List<String> getTextCol2() {
+        return textCol2;
     }
 
     @Override

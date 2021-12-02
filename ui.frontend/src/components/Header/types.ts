@@ -18,6 +18,8 @@ export interface HeaderProps {
   accountLink?: string;
   accessibilityLabel?: string;
   id?: string;
+  newText?: string;
   logoPath?: string;
-  items?: children[]
+  items?: children[];
+  searchPlaceholder?: string;
 }

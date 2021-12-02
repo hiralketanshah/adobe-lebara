@@ -44,18 +44,40 @@
                             valueType="string">
                             <granite:data jcr:primaryType="nt:unstructured"/>
                         </_x0031_626007518296>
-						<_x0031_633526718213
+                        <_x0031_633526718213
                             jcr:primaryType="nt:unstructured"
-                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                            sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                            emptyOption="{Boolean}true"
                             fieldLabel="Offer Type"
-                            listOrder="21"
-                            maxlength="255"
-                            metaType="text-single"
+                            listOrder="6"
+                            metaType="enumeration"
                             name="offerType"
                             renderReadOnly="false"
                             showEmptyInReadOnly="true"
                             valueType="string">
+                            <datasource
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="dam/cfm/admin/components/datasources/optionrendererenumeration"
+                                variant="default"/>
                             <granite:data jcr:primaryType="nt:unstructured"/>
+                            <optionsmultifield jcr:primaryType="nt:unstructured">
+                                <item0
+                                    jcr:primaryType="nt:unstructured"
+                                    fieldLabel="Select Offer Type"
+                                    fieldValue=""/>
+                                <item1
+                                    jcr:primaryType="nt:unstructured"
+                                    fieldLabel="prepaid"
+                                    fieldValue="prepaid"/>
+                                <item2
+                                    jcr:primaryType="nt:unstructured"
+                                    fieldLabel="postpaid"
+                                    fieldValue="postpaid"/>
+                                <item3
+                                    jcr:primaryType="nt:unstructured"
+                                    fieldLabel="bolton"
+                                    fieldValue="bolton"/>
+                            </optionsmultifield>
                         </_x0031_633526718213>
                         <_x0031_626007604231
                             jcr:primaryType="nt:unstructured"
@@ -83,45 +105,6 @@
                             valueType="string">
                             <granite:data jcr:primaryType="nt:unstructured"/>
                         </_x0031_626007922345>
-                        <_x0031_634728567500
-                                jcr:primaryType="nt:unstructured"
-                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                fieldLabel="Contract Validity Text(for postpaid component)"
-                                listOrder="1"
-                                maxlength="255"
-                                metaType="text-single"
-                                name="validityText"
-                                renderReadOnly="false"
-                                showEmptyInReadOnly="true"
-                                valueType="string">
-                            <granite:data jcr:primaryType="nt:unstructured"/>
-                        </_x0031_634728567500>
-                        <_x0031_634728734015
-                                jcr:primaryType="nt:unstructured"
-                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                fieldLabel="Data Volume Text(for postpaid component)"
-                                listOrder="1"
-                                maxlength="255"
-                                metaType="text-single"
-                                name="dataVolumeText"
-                                renderReadOnly="false"
-                                showEmptyInReadOnly="true"
-                                valueType="string">
-                            <granite:data jcr:primaryType="nt:unstructured"/>
-                        </_x0031_634728734015>
-                        <_x0031_634728827954
-                                jcr:primaryType="nt:unstructured"
-                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                fieldLabel="Minutes To Countries Text(for postpaid component)"
-                                listOrder="21"
-                                maxlength="255"
-                                metaType="text-single"
-                                name="minutesToCountriesText"
-                                renderReadOnly="false"
-                                showEmptyInReadOnly="true"
-                                valueType="string">
-                            <granite:data jcr:primaryType="nt:unstructured"/>
-                        </_x0031_634728827954>
                         <_x0031_626007775688
                             jcr:primaryType="nt:unstructured"
                             sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
@@ -160,6 +143,25 @@
                                 renderReadOnly="false"
                                 showEmptyInReadOnly="true"
                                 valueType="string/multiline"/>
+                        <_x0031_637302965718
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="dam/cfm/models/editor/components/contentreference"
+                                fieldLabel="product information File"
+                                filter="hierarchy"
+                                listOrder="21"
+                                metaType="reference"
+                                name="productInformationFile"
+                                nameSuffix="contentReference"
+                                renderReadOnly="false"
+                                rootPath="/content/dam/lebara"
+                                showEmptyInReadOnly="true"
+                                showThumbnail="false"
+                                validation="cfm.validation.contenttype.pdf"
+                                valueType="string/reference">
+                            <granite:data
+                                    jcr:primaryType="nt:unstructured"
+                                    thumbnail-validation="cfm.validation.thumbnail.show"/>
+                        </_x0031_637302965718>
                         <_x0031_634548203004
                                 jcr:primaryType="nt:unstructured"
                                 sling:resourceType="dam/cfm/models/editor/components/fragmentreference"

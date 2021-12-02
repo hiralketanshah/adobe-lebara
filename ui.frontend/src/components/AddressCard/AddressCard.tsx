@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { IoChevronForwardSharp } from "react-icons/all";
 import {
   Flex,
-  FormControl,
   FormLabel,
   Text,
 } from "@chakra-ui/react";
@@ -40,10 +39,22 @@ const AddressCard: React.FC<AddressCardProps> = ({
   keyInAddress,
   saveAddress,
   country,
+  onSetAutomatic,
+  onAddressChange,
+  isDisabled
 }) => {
   const [status, setStatus] = useState<AddressStatus>(initialStatus);
-
+  const disabledInputProps = {
+    inputProps: {
+      isDisabled,
+    },
+  };
   const handleClick = () => {
+    if (status === "NewAddress") {
+      onSetAutomatic();
+      setStatus("SearchNewAddress");
+      return;
+    }
     if (status === "Initial") {
       setStatus("SearchNewAddress");
     } else {
@@ -79,18 +90,21 @@ const AddressCard: React.FC<AddressCardProps> = ({
           isRequired
           label={streetLabel}
           placeholder={streetPlaceholder}
+          {...disabledInputProps}
         />
         <FormikInput
           name="houseNumber"
           isRequired
           label={houseNumberLabel}
           placeholder={houseNumberPlaceholder}
+          {...disabledInputProps}
         />
         <FormikInput
           name="zipCode"
           isRequired
           label={zipCodeLabel}
           placeholder={zipCodePlaceholder}
+          {...disabledInputProps}
         />
         <FormikSelect
           name="townCity"
@@ -98,6 +112,7 @@ const AddressCard: React.FC<AddressCardProps> = ({
           options={cities}
           label={cityLabel}
           placeholder={cityPlaceholder}
+          {...disabledInputProps}
         />
       </Flex>
     </Flex>
@@ -109,8 +124,11 @@ const AddressCard: React.FC<AddressCardProps> = ({
         label={addressLabel}
         placeholder={postalcodePlaceholder}
         isRequired
-        country={country}
-        postalCodeText={searchAddressSubText}
+        onChange={(address: any) => {
+          onAddressChange(address);
+          setStatus("NewAddress");
+        }}
+        isDisabled={isDisabled}
       />
     </Flex>
   );

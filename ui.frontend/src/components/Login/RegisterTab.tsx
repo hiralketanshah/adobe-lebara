@@ -136,7 +136,7 @@ const RegisterTab: React.FC<LoginTabsProps> = ({...loginModuleProps}) => {
               isDisabled={Object.keys(errors).length > 0 || isSubmitting}
               isFullWidth
             >
-              {loginModuleProps.registrationContinueButton}
+              {loginModuleProps.registrationCtaLabel}
             </Button>
           </Flex>
         </form>

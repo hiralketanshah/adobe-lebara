@@ -1,8 +1,11 @@
 package com.lebara.core.dto;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
+import com.lebara.core.utils.AemUtils;
+
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.math.NumberUtils;
+import org.apache.sling.api.SlingHttpServletRequest;
 
 import java.text.DecimalFormat;
 import java.util.List;
@@ -14,12 +17,12 @@ public class OfferFragmentBean {
     private String cost;
     private String planName;
     private String validity;
-    private String validityText;
-    private String dataVolumeText;
-    private String minutesToCountriesText;
+    private String productInformationFile;
     private PlanInfo planInfo;
     private String additionalOffers;
     private List<CFAllowance> allowanceList;
+    private String recommendedImage;
+    private String recommendedURL;
 
     public String getPlanName() {
         return planName;
@@ -64,28 +67,12 @@ public class OfferFragmentBean {
         this.validity = validity;
     }
 
-    public String getValidityText() {
-        return validityText;
+    public String getProductInformationFile() {
+        return productInformationFile;
     }
 
-    public void setValidityText(String validityText) {
-        this.validityText = validityText;
-    }
-
-    public String getDataVolumeText() {
-        return dataVolumeText;
-    }
-
-    public void setDataVolumeText(String dataVolumeText) {
-        this.dataVolumeText = dataVolumeText;
-    }
-
-    public String getMinutesToCountriesText() {
-        return minutesToCountriesText;
-    }
-
-    public void setMinutesToCountriesText(String minutesToCountriesText) {
-        this.minutesToCountriesText = minutesToCountriesText;
+    public void setProductInformationFile(String productInformationFile) {
+        this.productInformationFile = productInformationFile;
     }
 
     public PlanInfo getPlanInfo() {
@@ -110,5 +97,21 @@ public class OfferFragmentBean {
 
     public void setAdditionalOffers(String additionalOffers) {
         this.additionalOffers = additionalOffers;
+    }
+
+    public String getRecommendedImage() {
+        return recommendedImage;
+    }
+
+    public void setRecommendedImage(String recommendedImage) {
+        this.recommendedImage = recommendedImage;
+    }
+
+    public String getRecommendedURL() {
+        return recommendedURL;
+    }
+
+    public void setRecommendedURL(String recommendedURL, SlingHttpServletRequest slingRequest) {
+        this.recommendedURL = AemUtils.getLinkWithExtension(recommendedURL, slingRequest);
     }
 }

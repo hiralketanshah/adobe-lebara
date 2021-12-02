@@ -10,6 +10,7 @@ import org.apache.sling.models.annotations.Exporter;
 import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.injectorspecific.ChildResource;
 import org.apache.sling.models.annotations.injectorspecific.ScriptVariable;
+import org.apache.sling.models.annotations.injectorspecific.SlingObject;
 import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
 
 import java.util.ArrayList;
@@ -26,6 +27,9 @@ public class UsageDetailsExporter extends HeadingExporter {
      */
     protected static final String RESOURCE_TYPE = "lebara/components/usagedetails";
 
+    @SlingObject
+    private SlingHttpServletRequest request;
+
     @ChildResource
     private Resource tabs;
 
@@ -35,6 +39,8 @@ public class UsageDetailsExporter extends HeadingExporter {
     private String ctaSeeMoreCallsLabel;
     @ValueMapValue
     private String ctaLoadMoreLabel;
+    @ValueMapValue
+    private String ctaSeeMoreURL;
 
     private List<String> tabsName;
 
@@ -49,13 +55,16 @@ public class UsageDetailsExporter extends HeadingExporter {
     public String getCtaLoadMoreLabel() {
         return ctaLoadMoreLabel;
     }
-    
+
+    public String getCtaSeeMoreURL() {
+        return AemUtils.getLinkWithExtension(ctaSeeMoreURL, request);
+    }
 
     public List<String> getTabsName() {
         tabsName = new ArrayList<>();
-        if (tabs!=null) {
-            for(Resource tab: tabs.getChildren()){
-                tabsName.add(AemUtils.getStringProperty(tab,"tabsName"));
+        if (tabs != null) {
+            for (Resource tab : tabs.getChildren()) {
+                tabsName.add(AemUtils.getStringProperty(tab, "tabsName"));
             }
         }
         return tabsName;

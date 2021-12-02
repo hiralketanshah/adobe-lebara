@@ -38,7 +38,13 @@
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                                 fieldLabel="Duration Label"
                                                 name="./durationLabel"
-                                                value="From: 2 Jul to 1 Aug"/>
+                                                value="Date:"/>
+                                            <totalestimatedlabel
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="Total Estimated Label"
+                                                name="./totalEstimatedLabel"
+                                                value="Total Estimated"/>
                                             <monthlychargeslabel
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
@@ -57,6 +63,19 @@
                                                 fieldLabel="Button Label"
                                                 name="./buttonLabel"
                                                 value="More Details"/>
+                                            <buttonlink
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                                fieldLabel="Button Link"
+                                                name="./buttonLink"
+                                                rootPath="/content/lebara"/>
+                                            <hidebutton
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                                text="Hide Button?"
+                                                name="./hideButton"
+                                                uncheckedValue="{Boolean}false"
+                                                value="{Boolean}true"/>
                                         </items>
                                     </column>
                                 </items>

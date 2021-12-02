@@ -15,6 +15,7 @@ import { LoginTabsProps } from "./types";
 import LoginTab from "./LoginTab";
 import GuestTab from "./GuestTab";
 import CongratulationsPopUp from "../CongratulationsPopUp/CongratulationsPopUp";
+import { globalConfigs as GC, globalConstants as GCST} from "../../GlobalConfigs";
 
 const LoginTabs: React.FC<LoginTabsProps> = ({ isPasswordResetSucessfull, ...loginModuleProps }) => {
   // const cartItems = useSelector((state: ReduxState) => state.cart);
@@ -25,27 +26,47 @@ const LoginTabs: React.FC<LoginTabsProps> = ({ isPasswordResetSucessfull, ...log
     setTabIndex(parseInt(value, 10));
   }
 
-  const extraBlock = (
+  const loginExtraBlock = (
     <Flex
       flexDir="column"
       justifyContent="center"
       alignItems="center"
-      fontSize={14}
-      fontWeight="400"
+      fontSize="14px"
+      lineHeight="20px"
+      letterSpacing="0.25px"
+      mt="22px"
     >
-      <Text my="12px" color="bodyCopy " fontSize="14px" lineHeight="20px">
-        OR
-      </Text>
-
       <Text
-        mt="32px"
         color="grey.300"
         fontWeight="400"
         lineHeight="20px"
         letterSpacing="0.25px"
       >
         {" "}
-        New to Lebara? <Link href="/">Register</Link>{" "}
+        {loginModuleProps?.extraBlockLoginText}{" "}<Link href={GC?.journeyPages[GCST?.REGISTER]  || '/'}>{loginModuleProps.extraBlockLoginLinkText}</Link>{" "}
+      </Text>
+    </Flex>
+  );
+  
+  const guestExtraBlock = (
+    <Flex
+      flexDir="column"
+      justifyContent="center"
+      alignItems="center"
+      fontSize="14px"
+      lineHeight="20px"
+      letterSpacing="0.25px"
+      mt="22px"
+    >
+      <Text
+        color="grey.300"
+        fontWeight="400"
+        lineHeight="20px"
+        letterSpacing="0.25px"
+      >
+        {" "}
+        {loginModuleProps?.extraBlockGuestText}{" "}<Link href={GC?.journeyPages[GCST?.LOGIN]  || '/'}>{loginModuleProps.extraBlockGuestLinkText}</Link>{" "}
+        {" "}
       </Text>
     </Flex>
   );
@@ -76,7 +97,7 @@ const LoginTabs: React.FC<LoginTabsProps> = ({ isPasswordResetSucessfull, ...log
             _selected={{ bg: "white" }}
             _focus={{ boxShadow: "none" }}
           >
-            {loginModuleProps.guestLoginLabel}
+            {loginModuleProps.guestTabLabel}
           </Tab>
           <Tab
             bg="grey.50"
@@ -85,7 +106,7 @@ const LoginTabs: React.FC<LoginTabsProps> = ({ isPasswordResetSucessfull, ...log
             _selected={{ bg: "white" }}
             _focus={{ boxShadow: "none" }}
           >
-            {loginModuleProps.loginLabel}
+            {loginModuleProps.loginTabLabel}
           </Tab>
         </TabList>
 
@@ -98,11 +119,11 @@ const LoginTabs: React.FC<LoginTabsProps> = ({ isPasswordResetSucessfull, ...log
         >
           <TabPanel>
             <GuestTab {...loginModuleProps}/>
-            {extraBlock}
+            {guestExtraBlock}
           </TabPanel>
           <TabPanel>
             <LoginTab {...loginModuleProps} />
-            {extraBlock}
+            {loginExtraBlock}
           </TabPanel>
         </TabPanels>
       </Tabs>

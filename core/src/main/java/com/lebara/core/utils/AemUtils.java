@@ -28,6 +28,7 @@ import javax.jcr.Value;
 import javax.mail.MessagingException;
 import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;
+import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 import java.util.*;
 
@@ -154,15 +155,10 @@ public class AemUtils {
             email.setTo(emailIds);
             email.setFrom(senderEmail);
             messageGatewayService.getGateway(HtmlEmail.class).send(email);
-        } catch (IOException e) {
-            LOGGER.error("IOException {}", e);
-        } catch (MessagingException e) {
-            LOGGER.error("MessagingException {}", e);
-        } catch (EmailException e) {
-            LOGGER.error("EmailException {}", e);
-        } catch (MailingException e) {
-            LOGGER.error("MailingException {}", e);
-        } catch (Exception e) {
+        } catch (IOException | EmailException | MessagingException e) {
+            LOGGER.error("Error in sending an email  [ {} ]", e.getMessage());
+        }
+        catch (Exception e) {
             LOGGER.error("MailingException {}", e);
         }
 
@@ -189,17 +185,27 @@ public class AemUtils {
      * @param payloadPath      path to be externalized.
      * @return externalized path.
      */
-    public static String getLinkWithExtension(String payloadPath) {
+    public static String getLinkWithExtension(String payloadPath, SlingHttpServletRequest request) {
         if (StringUtils.isBlank(payloadPath) || isExternalLink(payloadPath)) {
             return payloadPath;
         }
-        return payloadPath + LebaraConstants.HTML_EXTENSION;
+        return ((request == null) ? payloadPath : request.getResourceResolver().map(payloadPath)) + (isHtmlExtensionRequired(payloadPath) ? LebaraConstants.HTML_EXTENSION : StringUtils.EMPTY);
+    }
+
+    public static String getLinkWithExtension(String payloadPath, ResourceResolver resourceResolver) {
+        if (StringUtils.isBlank(payloadPath) || isExternalLink(payloadPath)) {
+            return payloadPath;
+        }
+        return ((resourceResolver == null) ? payloadPath : resourceResolver.map(payloadPath)) + (isHtmlExtensionRequired(payloadPath) ? LebaraConstants.HTML_EXTENSION : StringUtils.EMPTY);
     }
 
     private static boolean isExternalLink(String payloadPath) {
         return payloadPath.startsWith("http") || payloadPath.startsWith("www");
     }
 
+    private static boolean isHtmlExtensionRequired(String payloadPath) {
+        return !payloadPath.contains(".html");
+    }
     /**
      * priority of display of title is navigationtitle > pagetitle > title
      */
@@ -227,19 +233,24 @@ public class AemUtils {
     }
 
     public static DashboardLabels populateDashboardLabels(SlingHttpServletRequest request) {
-        Resource res = request.getResourceResolver().getResource(request.getRequestPathInfo().getResourcePath());
+        PageManager pageManager = request.getResourceResolver().adaptTo(PageManager.class);
+        Page page = null;
+        Resource resource = request.getResource();
+        if (pageManager != null) {
+            page = pageManager.getContainingPage(resource);
+        }
         DashboardLabels dashboardLabels = new DashboardLabels();
-        if (null != res) {
-            InheritanceValueMap inheritedProp = new HierarchyNodeInheritanceValueMap(res);
+        if (page != null) {
+            InheritanceValueMap inheritedProp = new HierarchyNodeInheritanceValueMap(page.getContentResource());
             dashboardLabels.setDataPlanName(getInheritedValue("dataPlanName", inheritedProp));
-            dashboardLabels.setDataPlanName(getInheritedValue("dataType", inheritedProp));
-            dashboardLabels.setDataPlanName(getInheritedValue("minPlanName", inheritedProp));
-            dashboardLabels.setDataPlanName(getInheritedValue("minDataType", inheritedProp));
-            dashboardLabels.setDataPlanName(getInheritedValue("smsPlanName", inheritedProp));
-            dashboardLabels.setDataPlanName(getInheritedValue("smsDataType", inheritedProp));
-            dashboardLabels.setDataPlanName(getInheritedValue("internationalMinPlanName", inheritedProp));
-            dashboardLabels.setDataPlanName(getInheritedValue("internationalMinDataType", inheritedProp));
-            dashboardLabels.setDataPlanName(getInheritedValue("leftOfLabel", inheritedProp));
+            dashboardLabels.setDataType(getInheritedValue("dataType", inheritedProp));
+            dashboardLabels.setMinPlanName(getInheritedValue("minPlanName", inheritedProp));
+            dashboardLabels.setMinDataType(getInheritedValue("minDataType", inheritedProp));
+            dashboardLabels.setSmsPlanName(getInheritedValue("smsPlanName", inheritedProp));
+            dashboardLabels.setSmsDataType(getInheritedValue("smsDataType", inheritedProp));
+            dashboardLabels.setInternationalMinPlanName(getInheritedValue("internationalMinPlanName", inheritedProp));
+            dashboardLabels.setInternationalMinDataType(getInheritedValue("internationalMinDataType", inheritedProp));
+            dashboardLabels.setLeftOfLabel(getInheritedValue("leftOfLabel", inheritedProp));
         }
         return dashboardLabels;
     }

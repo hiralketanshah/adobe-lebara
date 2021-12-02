@@ -9,8 +9,11 @@ const AppPromo: React.FC<GetAppProps> = ({
   appTitle,
   backgroundImageMobile,
   backgroundImageDesktop,
-  links,
   textDescription,
+  links,
+  textCol1,
+  textCol2,
+  getAppLabel,
 }) => (
   <Flex
     flexDirection="column"

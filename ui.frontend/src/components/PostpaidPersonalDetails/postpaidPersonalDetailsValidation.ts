@@ -11,7 +11,7 @@ import {
   MONTH_RANGE,
 } from "../../utils/lebara.constants";
 
-export default (values: PostpaidDetails, validationMessages: ValidationMessages) => {
+const ppdvalidations = (values: PostpaidDetails, validationMessages: ValidationMessages) => {
   const errors: PostpaidDetailsErrors = {};
   if (!values.email) {
     errors.email = validationMessages.emailRequiredMsg;
@@ -76,3 +76,5 @@ export default (values: PostpaidDetails, validationMessages: ValidationMessages)
 
   return errors;
 };
+
+export default ppdvalidations;

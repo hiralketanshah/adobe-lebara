@@ -1,6 +1,5 @@
 import { TabProps } from "@chakra-ui/react";
 import { IconType } from "react-icons/lib";
-
 export interface LoginFormSchema {
     email?: string;
     password?: string;
@@ -52,34 +51,29 @@ export interface CreateNewPasswordSchema {
 
 export interface loginModuleProps {
   loginModuleType : string;
-  loginLabel : string;
+  loginTabLabel : string;
   loginEmailAddressLabel : string;
   loginEmailMobileErrMessage: string;
   loginPasswordLabel : string;
   loginForgotPassWordmsg : string;
-  loginResetLinkTextLabel : string;
   loginResetLinkLabel : string;
   loginButton : string;
-  loginRegistrationMessage : string;
-  loginRegistrationCtaLabel : string;
-  loginRegistrationCtaLink : string;
-  registrationLabel : string;
+  extraBlockLoginText? : string;
+  extraBlockLoginLinkText? : string;
+  registrationTabLabel : string;
   registrationEmailAddress : string;
   registrationPassword :string;
   registrationConfirmPassword : string;
-  registrationContinueButton : string;
-  registrationMessage : string;
   registrationCtaLabel : string;
   registrationCtaLink : string;
   showLabel : string;
   hideLabel : string;
-  guestLoginLabel : string;
+  extraBlockRegisterText? : string;
+  extraBlockRegisterLinkText? : string;
+  guestTabLabel : string;
   guestEmailAddressLabel : string;
   guestMobileNumberLabel : string;
   guestMobileNumberConfirmLabel: string;
-  guestForgotPasswordMsg : string;
-  guestResetLinkTextLabel : string;
-  guestResetLinkLabel : string;
   guestContinueLabel : string;
   emailFieldErrorMessage : string;
   validEmailFieldErrorMessage : string;
@@ -99,6 +93,8 @@ export interface loginModuleProps {
   resetPwdMobileLabel: string;
   resetPwdButtonLabel: string;
   resetPwdButtonCancelLabel: string;
+  extraBlockGuestText?: string;
+  extraBlockGuestLinkText?: string;
 }
 export interface LoginTabsProps extends TabProps, loginModuleProps {
   icon?: IconType;

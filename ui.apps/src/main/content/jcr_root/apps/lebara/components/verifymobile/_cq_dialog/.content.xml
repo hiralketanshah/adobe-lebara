@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="nt:unstructured"
+    jcr:title="Verify Register Mobile Number"
+    sling:resourceType="cq/gui/components/authoring/dialog"
+    extraClientlibs="[lebara.touchui]">
+    <content
+        jcr:primaryType="nt:unstructured"
+        sling:resourceType="granite/ui/components/coral/foundation/container">
+        <items jcr:primaryType="nt:unstructured">
+            <tabs
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="granite/ui/components/coral/foundation/tabs"
+                maximized="{Boolean}true">
+                <items jcr:primaryType="nt:unstructured">
+                    <formfields
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Form Fields"
+                        sling:resourceType="granite/ui/components/coral/foundation/container"
+                        margin="{Boolean}true">
+                        <items jcr:primaryType="nt:unstructured">
+                            <columns
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+                                margin="{Boolean}true">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <column
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <heading
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="Heading"
+                                                value="Verify your Mobile Number"
+                                                name="./heading"/>
+                                            <subHeading
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textarea"
+                                                fieldLabel="Sub Heading"
+                                                fieldDescription="Enter description for the component"
+                                                name="./subHeading"/>
+                                            <emailLabel
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="Email Address Label"
+                                                value="Email Address"
+                                                name="./frmFields/emailLabel"/>
+                                            <emailPlaceholder
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="Email Address Placeholder"
+                                                value="Email Address"
+                                                name="./frmFields/emailPlaceholder"/>
+                                            <mobileLabel
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="Mobile Number Label"
+                                                value="Lebara Mobile Number"
+                                                name="./frmFields/mobileLabel"/>
+                                            <mobilePlaceholder
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="Mobile Number Placeholder"
+                                                value="Lebara Mobile Number"
+                                                name="./frmFields/mobilePlaceholder"/>
+                                            <ctaEditMobileLabel
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="Edit Mobile Number Label"
+                                                value="Edit"
+                                                name="./frmFields/ctaEditMobileLabel"/>
+                                            <submitButton
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="Submit Button Text"
+                                                value="Verify Mobile Number"
+                                                name="./frmFields/buttonCTALabel"/>
+                                            <verificationCodeLabel
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="Verification Code Input field Label"
+                                                value="Verification Code"
+                                                name="./frmFields/verifyCodeLabel"/>
+                                            <verifyCodePlaceholder
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="Verification Code Input field Placeholder"
+                                                value="Verification Code"
+                                                name="./frmFields/verifyCodePlaceholder"/>
+                                            <ctaResendVerificationLabel
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="Resend verification code Label"
+                                                value="Resend verification code"
+                                                name="./frmFields/ctaResendVerificationLabel"/> 
+                                            <otpSentSuccessfullyMsg
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="OTP Validation Success Message"
+                                                name="./successMessages/otpSentSuccessfullyMsg"/>                                            
+                                            <otpTimerLabel
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="OTP Timer Label"
+                                                value="00"
+                                                name="./timeCounter/label2"/>
+                                            <initalCountdownValue
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/numberfield"
+                                                fieldLabel="OTP Expiration time in seconds"
+                                                value="60"
+                                                valueType="double"
+                                                name="./initalCountdownValue"/>
+                                            <ctaContinueLabel
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="Continue Button Label"
+                                                value="CONTINUE"
+                                                name="./frmFields/ctaContinueLabel"/>
+                                            <ctaSkipLabel
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="Skip Label"
+                                                value="Skip"
+                                                name="./frmFields/ctaSkipLabel"/>
+                                        </items>
+                                    </column>
+                                </items>
+                            </columns>
+                        </items>
+                    </formfields>
+                    <errormessages
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Error Messages"
+                        sling:resourceType="granite/ui/components/coral/foundation/container"
+                        margin="{Boolean}true">
+                        <items jcr:primaryType="nt:unstructured">
+                            <columns
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+                                margin="{Boolean}true">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <column
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <emailfielderrormessage
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="Email address required error message"
+                                                value="We need your email address to contact you"
+                                                name="./validationMessages/emailRequiredMsg"/>
+                                            <emailInValidMsg
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="Email address invalid error message"
+                                                value="Please check the email address format"
+                                                name="./validationMessages/emailInValidMsg"/>
+                                            <mobilefielderrormessage
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="Mobile Number required error message"
+                                                value="We need your mobile number to verify"
+                                                name="./validationMessages/mobileRequiredMsg"/>
+                                            <mobileInValidMsg
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="Mobile Number invalid error message"
+                                                value="Please check the mobile number format"
+                                                name="./validationMessages/mobileInValidMsg"/>
+                                            <verifyCodeRequiredMsg
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="Verification Code Required Error Message"
+                                                name="./validationMessages/verifyCodeRequiredMsg"/>
+                                            <verifyCodeInValidMsg
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="Verification Code Invalid Error Message"
+                                                name="./validationMessages/verifyCodeInvalidMsg"/>
+                                        </items>
+                                    </column>
+                                </items>
+                            </columns>
+                        </items>
+                    </errormessages>
+                </items>
+            </tabs>
+        </items>
+    </content>
+</jcr:root>

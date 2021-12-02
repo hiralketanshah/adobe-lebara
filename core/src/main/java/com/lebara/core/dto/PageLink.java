@@ -1,6 +1,6 @@
 package com.lebara.core.dto;
 
-import com.lebara.core.models.Link;
+import com.lebara.core.models.beans.Link;
 
 import java.util.List;
 

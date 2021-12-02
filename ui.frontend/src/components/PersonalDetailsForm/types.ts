@@ -48,4 +48,13 @@ export interface PersonalDetailsFormProps {
   saveAddress: string;
   yourPersonalDetailsLabel?: string;
   emailAddressAlreadyExistMsg?: string;
+  paymentCta?: string;
+  enterPasswordLabel?: string;
+  confirmPasswordLabel?: string;
+  minimumCharactersLabel?: string;
+  samePasswordLabel?: string;
+  passwordField?: string;
+  confirmPasswordField?: string;
+  showPasswordLabel?: string;
+  hidePasswordLabel?: string;
 }

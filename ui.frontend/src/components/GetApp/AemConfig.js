@@ -1,11 +1,11 @@
 import { MapTo } from "@adobe/aem-react-editable-components";
-import GetApp from "./GetApp";
+import LebaraMobileGetApp from "./LebaraMobileGetApp";
 
-const GetAppConfig = {
+const LebaraMobileGetAppConfig = {
   emptyLabel: "Get APP",
   isEmpty: function (props) {
     return !props.appTitle;
   },
 };
 
-MapTo("lebara/components/getapp")(GetApp, GetAppConfig);
+MapTo("lebara/components/getapp")(LebaraMobileGetApp, LebaraMobileGetAppConfig);

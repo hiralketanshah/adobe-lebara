@@ -2,6 +2,7 @@ package com.lebara.core.models;
 
 import com.adobe.cq.export.json.ComponentExporter;
 import com.adobe.cq.export.json.ExporterConstants;
+import com.lebara.core.models.beans.Option;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.models.annotations.DefaultInjectionStrategy;
@@ -26,11 +27,19 @@ public class FaqExporter extends HeadingExporter {
 
     @ScriptVariable
     private Resource resource;
+
     @ChildResource
     private List<Option> options;
+
+    @ValueMapValue
+    private String backgroundColor;
+
     public List<Option> getOptions() {
         return (options == null) ? Collections.emptyList() : options;
     }
+
+    public String getBackgroundColor() { return backgroundColor; }
+
     @Override
     public String getExportedType() {
         return RESOURCE_TYPE;

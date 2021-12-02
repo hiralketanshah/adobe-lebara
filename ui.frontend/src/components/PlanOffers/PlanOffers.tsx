@@ -20,7 +20,13 @@ const PlanOffers: React.FC<PlanOffersProps> = ({
   ctaBottomLabel,
   buttonLabel,
   addedtoCartLabel,
-  viewCartLabel
+  viewCartLabel,
+  backgroundColor,
+  productInformationButtonLabel,
+  ctaSelectLabel,
+  ctaAddToCartLabel,
+  ctaCloseLabel,
+  ctaDownloadLabel,
 }) => {
   const history = useHistory();
   const linkStyles = {
@@ -32,7 +38,7 @@ const PlanOffers: React.FC<PlanOffersProps> = ({
 
   return (
     <Box
-      backgroundColor="lightenPrimary.50"
+      backgroundColor={backgroundColor ? backgroundColor : `lightenPrimary.50`}
       backgroundPosition="center right"
       backgroundRepeat="no-repeat"
       py={{ base: "30.68px", lg: "60px" }}
@@ -97,10 +103,15 @@ const PlanOffers: React.FC<PlanOffersProps> = ({
                 key={plan.planName}
               >
                 <ExpandableSimPlanCard {...plan} showLabel={showLabel}
-                buttonLabel={buttonLabel}
-                addedtoCartLabel={addedtoCartLabel}
-                viewCartLabel={viewCartLabel}
-                previewIcon={<TickInCircle fill="#13357A" tickFill="#EA4984" />} />
+                  productInformationButtonLabel={productInformationButtonLabel}
+                  buttonLabel={buttonLabel}
+                  ctaSelectLabel={ctaSelectLabel}
+                  ctaAddToCartLabel={ctaAddToCartLabel}
+                  ctaCloseLabel={ctaCloseLabel}
+                  ctaDownloadLabel={ctaDownloadLabel}
+                  addedtoCartLabel={addedtoCartLabel}
+                  viewCartLabel={viewCartLabel}
+                  previewIcon={<TickInCircle fill="#13357A" tickFill="#EA4984" />} />
               </Box>
             ))}
         </Flex>

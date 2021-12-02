@@ -6,15 +6,19 @@ import com.day.cq.wcm.api.Page;
 import com.day.cq.wcm.api.PageFilter;
 import com.day.cq.wcm.api.PageManager;
 import com.lebara.core.dto.PageLink;
+import com.lebara.core.models.beans.Link;
 import com.lebara.core.utils.AemUtils;
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.sling.api.SlingHttpServletRequest;
+import org.apache.sling.api.resource.ResourceResolver;
 import org.apache.sling.models.annotations.DefaultInjectionStrategy;
 import org.apache.sling.models.annotations.Exporter;
 import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.injectorspecific.ChildResource;
 import org.apache.sling.models.annotations.injectorspecific.ScriptVariable;
+import org.apache.sling.models.annotations.injectorspecific.SlingObject;
+import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
 
 import javax.annotation.PostConstruct;
 import javax.inject.Named;
@@ -32,11 +36,29 @@ public class FooterExporter implements ComponentExporter {
      */
     protected static final String RESOURCE_TYPE = "lebara/components/footer";
 
+    @SlingObject
+    private SlingHttpServletRequest request;
+
     @ScriptVariable
     private PageManager pageManager;
 
+    @ValueMapValue
+    private String column1Link;
+    @ValueMapValue
+    private String column2Link;
+    @ValueMapValue
+    private String column3Link;
+    @ValueMapValue
+    private String column4Link;
+
     @ChildResource
-    private List<Link> footerUpperLinks;
+    private List<Link> column1;
+    @ChildResource
+    private List<Link> column2;
+    @ChildResource
+    private List<Link> column3;
+    @ChildResource
+    private List<Link> column4;
 
     @ChildResource
     @Named("footercopyright/links")
@@ -64,32 +86,28 @@ public class FooterExporter implements ComponentExporter {
 
     @PostConstruct
     public void init() {
-        if (CollectionUtils.isEmpty(footerUpperLinks) || pageManager == null) {
+        if (pageManager == null) {
             return;
         }
-        for (Link parentLink : footerUpperLinks) {
-            Page linkPage = pageManager.getContainingPage(parentLink.getExtensionlessLink());
-            List<Link> childPagesList = new ArrayList<>();
-            PageLink pageLinks = new PageLink();
-            if (linkPage == null) {
-                continue;
-            }
-            if (StringUtils.isBlank(parentLink.getLabel())) {
-                parentLink.setLabel(AemUtils.getTitle(linkPage));
-            }
-            pageLinks.setParentLinks(parentLink);
-            Iterator<Page> childPath = linkPage.listChildren(new PageFilter());
-            while (childPath.hasNext()) {
-                Link links = new Link();
-                Page childPage = childPath.next();
-                links.setLink(AemUtils.getLinkWithExtension(childPage.getPath()));
-                links.setLabel(AemUtils.getTitle(childPage));
-                childPagesList.add(links);
-            }
-            pageLinks.setChildLinks(childPagesList);
-            pageLinkList.add(pageLinks);
 
-        }
+        setFooterUpperLinks(column1Link, column1);
+
+        setFooterUpperLinks(column2Link, column2);
+
+        setFooterUpperLinks(column3Link, column3);
+
+        setFooterUpperLinks(column4Link, column4);
+
+    }
+
+    private void setFooterUpperLinks(String columnLink, List<Link> column) {
+        PageLink pageLinks;
+        Link parentLink = new Link();
+        parentLink.setLabel(columnLink);
+        pageLinks = new PageLink();
+        pageLinks.setParentLinks(parentLink);
+        pageLinks.setChildLinks(column);
+        pageLinkList.add(pageLinks);
     }
 
     public List<PageLink> getFooterUpperLinks() {

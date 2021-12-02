@@ -68,8 +68,7 @@
                                                                     sling:resourceType="granite/ui/components/coral/foundation/form/textarea"
                                                                     fieldDescription="Choose Image Description"
                                                                     fieldLabel="Image Description"
-                                                                    name="./body"
-                                                                    rootPath="/content/dam/lebara"/>
+                                                                    name="./body"/>
                                                             </items>
                                                         </column>
                                                     </items>
