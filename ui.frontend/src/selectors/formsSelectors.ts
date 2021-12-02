@@ -1,5 +1,5 @@
-import { ReduxState } from "../types";
-import { FormName } from "../types/formsTypes";
+import { ReduxState } from "../redux/types";
+import { FormName } from "../redux/types/formsTypes";
 
 export const selectFormValues = (formName: FormName) => (state: ReduxState) =>
   state.forms[formName] || {};
