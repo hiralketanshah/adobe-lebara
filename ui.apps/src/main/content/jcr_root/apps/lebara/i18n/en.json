@@ -5,5 +5,8 @@
   "lebara.addon.addedtocart.label":"Addon {0} added to cart",
   "lebara.emptycart.addedtocart.label":"Top up Credit {0} added to cart",
   "lebara.selectedplan.label": "Selected Plan",
-  "product.information.label": "Product Information"
+  "product.information.label": "Product Information",
+  "landline": "Landline",
+  "mobile": "Mobile",
+  "sms": "SMS"
 }

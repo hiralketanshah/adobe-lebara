@@ -81,3 +81,15 @@ export interface PostpaidPersonalDetailsProps {
   frmFields: FormFields;
   portingSectionHeading?: string;
 }
+
+export interface OrderSummaryProps {
+  yourOrderContractdurationLabel?:string;
+  yourOrderDataLabel?:string;
+  yourOrderInternationalMinLabel?:string;
+  yourOrderMinutesInGermany?:string;
+  yourOrderPerMonthOrderTotalLabel?:string;
+  yourOrderOneTimeActivationFeeLabel?:string;
+  yourOrderOneTimeActivationFee?:string;
+  yourOrdersimPlanLabel?: string;
+  yourOrderMinutesInGermanyValue?: string;
+}
