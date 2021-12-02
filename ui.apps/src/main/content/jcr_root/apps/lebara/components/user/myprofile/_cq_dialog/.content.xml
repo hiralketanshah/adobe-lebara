@@ -442,13 +442,13 @@
                             <ctaContinueLabel
                                     jcr:primaryType="nt:unstructured"
                                     sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                    fieldLabel="Continue Cta Label"
+                                    fieldLabel="Continue CTA Label"
                                     name="./frmFields/ctaContinueLabel"
                                     value="CONTINUE"/>
                             <modalCancelCTALabel
                                     jcr:primaryType="nt:unstructured"
                                     sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                    fieldLabel="Cancel Cta Label"
+                                    fieldLabel="Cancel CTA Label"
                                     name="./frmFields/modalCancelCTALabel"
                                     value="CANCEL"/>
                          </items>
@@ -462,146 +462,146 @@
                                 jcr:primaryType="nt:unstructured"
                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                 fieldDescription="The email address field cannot be empty"
-                                fieldLabel="Email Error message on Empty Email"
+                                fieldLabel="Email Error Message on Empty Email"
                                 name="./validationMessages/emailRequiredMsg"
                                 value="The email address field cannot be empty"/>
                             <confirmEmailNotMatchMsg
                                     jcr:primaryType="nt:unstructured"
                                     sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                     fieldDescription="Email address and Confirm email address shoule be same"
-                                    fieldLabel="Email Error message on not match Email"
+                                    fieldLabel="Error Message Email on Not Match"
                                     name="./validationMessages/confirmEmailNotMatchMsg"
                                     value="Email address and Confirm email address should be same"/>
                             <emailInValidMsg
                                 jcr:primaryType="nt:unstructured"
                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                 fieldDescription="Please enter a valid email address. For example username@domain.com"
-                                fieldLabel="Email Error message on Invalid characters"
+                                fieldLabel="Email Error Message on Invalid characters"
                                 name="./validationMessages/emailInValidMsg"
                                 value="Please enter a valid email address. For example username@domain.com"/>
                             <firstNameErrorMax
                                 jcr:primaryType="nt:unstructured"
                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                fieldLabel="First Name Error message on character limit"
+                                fieldLabel="First Name Character Limit Error Message"
                                 name="./validationMessages/firstNameErrorMax"
                                 value="Must be 50 characters or less"/>
                             <firstNameErrorRequired
                                 jcr:primaryType="nt:unstructured"
                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                fieldLabel="First Name Error message on Empty Names"
+                                fieldLabel="First Name Empty Error Message"
                                 name="./validationMessages/fNameRequiredMsg"
                                 value="Please enter a valid First Name , First name cannot be empty"/>
                             <firstNameErrorPattern
                                 jcr:primaryType="nt:unstructured"
                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                fieldLabel="First Name Error message on Invalid characters"
+                                fieldLabel="First Name Invalid Characters Error Message"
                                 name="./validationMessages/fNameInValidMsg"
                                 value="The First name cannot contain any special characters ($, @, #, !, %. * ^() ?)"/>
                             <surnameErrorMax
                                 jcr:primaryType="nt:unstructured"
                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                 fieldDescription="Must be 75 characters or less"
-                                fieldLabel="Surname Error message on character limit"
+                                fieldLabel="Surname Character Limit Error"
                                 name="./validationMessages/lastNameErrorMax"
                                 value="Must be 75 characters or less"/>
                             <surnameErrorRequired
                                 jcr:primaryType="nt:unstructured"
                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                fieldLabel="Surname Error message on Empty Names"
+                                fieldLabel="Surname Empty Error Message"
                                 name="./validationMessages/lNameRequiredMsg"
                                 value="Please enter a valid surname, surname cannot be empty"/>
                             <surnameErrorPattern
                                 jcr:primaryType="nt:unstructured"
                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                fieldLabel="Surname Error message on Invalid characters"
+                                fieldLabel="Surname Invalid Characters Error Message"
                                 name="./validationMessages/lNameInValidMsg"
                                 value="The surname cannot contain any special characters ($, @, #, !, %. * ^() ?)"/>
                             <alternativeContactRequiredMsg
                                 jcr:primaryType="nt:unstructured"
                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                fieldLabel="Error Message On Empty Alternative Number"
+                                fieldLabel="Alternative Number Empty Error Message"
                                 name="./validationMessages/altContactNumberRequiredMsg"
                                 value="Please Enter Port In Number"/>
                             <alternativeContactInValidMsg
                                 jcr:primaryType="nt:unstructured"
                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                fieldLabel="Error Message On Invalid Alternative Number"
+                                fieldLabel="Invalid Alternative Number Error Message"
                                 name="./validationMessages/alternativeNumberInValidMsg"
                                 value="Please Enter Valid Alternative Number"/>
                             <postCodeErrorMin
                                     jcr:primaryType="nt:unstructured"
                                     sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                    fieldLabel="Post Code Error message on Min character limit"
+                                    fieldLabel="Post Code Min. Character Limit Error message"
                                     value="Must be 5 characters or more"
                                     name="./validationMessages/zipCodeErrorMin"/>
                             <postCodeErrorRequired
                                     jcr:primaryType="nt:unstructured"
                                     sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                    fieldLabel="Post Code Error message on Empty zipCode values"
-                                    value="Post Code is required"
-                                    fieldDescription="Post Code is required"
+                                    fieldLabel="Post Code Empty Error Message"
+                                    value="Post code is required"
+                                    fieldDescription="Post code is required"
                                     name="./validationMessages/zipCodeErrorRequired"/>
                             <postCodeErrorPattern
                                     jcr:primaryType="nt:unstructured"
                                     sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                    fieldLabel="Post Code Error message on Invalid characters"
-                                    value="Invalid Post Code"
+                                    fieldLabel="Post Code Invalid Characters Error Message"
+                                    value="Invalid post code"
                                     fieldDescription="Invalid Post Code"
                                     name="./validationMessages/zipCodeErrorPattern"/>
                             <postCodeErrorMax
                                     jcr:primaryType="nt:unstructured"
                                     sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                    fieldLabel="Post Code Error message on Max character limit"
+                                    fieldLabel="Post Code Max Character Limit Error Message"
                                     value="Must be 10 characters or less"
                                     name="./validationMessages/zipCodeErrorMax"/>
                             <cityErrorMax
                                     jcr:primaryType="nt:unstructured"
                                     sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                    fieldLabel="Town/City Error message on character limit"
+                                    fieldLabel="Town/City Error Character Limit Message"
                                     value="Must be 20 characters or less"
                                     name="./validationMessages/cityErrorMax"/>
                             <cityErrorRequired
                                     jcr:primaryType="nt:unstructured"
                                     sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                    fieldLabel="Town/City Error message on Empty Street Names"
-                                    value="Town/City is required"
+                                    fieldLabel="Town/City Empty Error Message"
+                                    value="Town/city is required"
                                     fieldDescription="Town/City is required"
                                     name="./validationMessages/cityErrorRequired"/>
                             <houseNumberErrorMax
                                     jcr:primaryType="nt:unstructured"
                                     sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                    fieldLabel="House Number Error message on character limit"
+                                    fieldLabel="House Number Character Limit Error Message"
                                     value="Must be 20 characters or less"
                                     name="./validationMessages/houseNumberErrorMax"/>
                             <houseNumberErrorRequired
                                     jcr:primaryType="nt:unstructured"
                                     sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                    fieldLabel="House Number Error message on Empty Street Names"
+                                    fieldLabel="House Number Empty Error Message"
                                     value="House number is required"
                                     name="./validationMessages/houseNumberErrorRequired"/>
                             <houseNumberErrorPattern
                                     jcr:primaryType="nt:unstructured"
                                     sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                    fieldLabel="House Number Error message on Invalid characters"
+                                    fieldLabel="House Number Invalid Characters Error Message"
                                     value="Invalid house number"
                                     fieldDescription="Invalid house number"
                                     name="./validationMessages/houseNumberErrorPattern"/>
                             <streetLabelErrorMax
                                     jcr:primaryType="nt:unstructured"
                                     sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                    fieldLabel="Street Name Error message on character limit"
+                                    fieldLabel="Street Name Character Limit Error Message"
                                     value="Must be 250 characters or less"
                                     name="./validationMessages/streetLabelErrorMax"/>
                             <streetLabelErrorRequired
                                     jcr:primaryType="nt:unstructured"
                                     sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                    fieldLabel="Street Name Error message on Empty Street Names"
+                                    fieldLabel="Street Name Empty Error Message"
                                     value="Street name is required"
                                     name="./validationMessages/streetLabelErrorRequired"/>
                             <streetLabelErrorPattern
                                     jcr:primaryType="nt:unstructured"
                                     sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                    fieldLabel="Street Name Error message on Invalid characters"
+                                    fieldLabel="Street Name Invalid Characters Error Message"
                                     value="Invalid street name"
                                     name="./validationMessages/streetLabelErrorPattern"/>
                             <heading
@@ -622,7 +622,7 @@
                                     jcr:primaryType="nt:unstructured"
                                     sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                     fieldDescription="Email Modal Sccess Message Before Email"
-                                    fieldLabel="Email Modal Success Message Before Email"
+                                    fieldLabel="Email Modal Success Message Before Email Label"
                                     name="./successEmailModal/beforeEmailText"
                                     value="Kindly click on the link sent to"/>
                             <afterEmailText
