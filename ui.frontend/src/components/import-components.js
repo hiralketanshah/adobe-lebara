@@ -73,5 +73,7 @@ import "./UserDetails/AemConfig.js";
 import "./RewardOverview/AemConfig.js";
 import "./ContactUs/AemConfig.js";
 import "./RewardOverview/AemConfig.js";
+import "./HelpCenterSearch/AemConfig.js";
+import "./CallSupport/AemConfig.js";
+import "./EmailSupport/AemConfig.js";
 import "./PostpaidPersonalDetailsPreview/AemConfig.js";
-

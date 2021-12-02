@@ -47,5 +47,7 @@ const globalConstants = Object.freeze({
     FAQ: 'faq',
     USAGE_DETAILS: 'usage-details',
     USER_PROFILE_CHANGE_PASSWORD: 'user-profile-change-password',
+    GLOBAL_SEARCH_FILENAME: 'globalsearch.json',
+    HELPCENTER_SEARCH_FILENAME: 'helpcentersearch.json',
 });
 module.exports = { globalConfigs, globalConstants }

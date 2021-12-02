@@ -70,6 +70,14 @@ export default {
   greySilver: "#C8C8C8",
   linkButton: "#EA4984",
   explainerColor: "#535353",
+  lightCyan: "#CBEFFF",
+  borderNwColor: "#E7E7E7",
+  mercury: "E5E5E5",
+  linerGradientRedViolet: "#C6186D",
+  linerGradientPitconBlue: "#33A5EB",
+  inputFieldBgColor: "#FCFCFC",
+  currentBreadcrumbLink: "#E73180",
+  badgeColor: "#19AFED",
   grey: {
     50: "#F4F4F4",
     100: "#C8C8C8",
@@ -79,6 +87,7 @@ export default {
     500: "#EAEAEA",
     600: "#EBEBEB",
     700: "#BCB7B7",
+    800: "#F3F2F2",
   },
   bannerBg: "#22407C",
 };

@@ -4,9 +4,6 @@ import {
   Flex,
   Spacer,
   Text,
-  Input,
-  InputGroup,
-  InputLeftElement,
   Menu,
   MenuButton,
   MenuList,
@@ -19,7 +16,6 @@ import {
 } from "@chakra-ui/react";
 import {
   AiOutlineUser,
-  BsSearch,
   BiSearch,
   RiShoppingCartLine,
 } from "react-icons/all";
@@ -359,39 +355,7 @@ const Header: React.FC<HeaderProps> = ({
                   />
                 </Button>
               ) : (
-                <>
-                  <InputGroup
-                    borderRadius="lg"
-                    ml="4%"
-                    width={{ md: "auto", lg: "18rem" }}
-                  >
-                    <InputLeftElement
-                      pointerEvents="none"
-                      backgroundColor="white"
-                      borderRadius="lg"
-                      ml="5px"
-                    >
-                      <BsSearch color="#969696" size={20} />
-                      <Box color="black" pl="4px">
-                        {" "}
-                        |{" "}
-                      </Box>
-                    </InputLeftElement>
-                    <Input
-                      ml="4px"
-                      placeholder={searchPlaceholder}
-                      _placeholder={{
-                        color: "grey.100",
-                        fontSize: "16px",
-                        lineHeight: "19px",
-                        letterSpacing: "0.25px",
-                      }}
-                      color="black"
-                      bgColor="white"
-                      borderRadius="lg"
-                    />
-                  </InputGroup>
-                </>
+                <Search isHeaderSearchInput={true} />
               )}
             </Box>
             <IconButton
