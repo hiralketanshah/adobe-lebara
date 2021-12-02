@@ -500,7 +500,14 @@
 
 		<!-- Global Search -->
 		<property name="mostSearchLabel"/>
+
 		<property name="emptySearchResultMsg"/>
+
+		<!-- Manage SIM -->
+		<property name="delinkConfirmationMsg"/>
+		<property name="delinkLabel"/>
+		<property name="attachNewSim"/>
+		<property name="linkedSimDesc"/>
 		
 		<!-- Lebara fields ends -->
 		<property name="cq:language" updateDestinationLanguage="true"/>

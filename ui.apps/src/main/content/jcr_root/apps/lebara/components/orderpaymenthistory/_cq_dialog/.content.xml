@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="nt:unstructured"
+    jcr:title="Order Payment History Component"
+    sling:resourceType="cq/gui/components/authoring/dialog">
+    <content
+        jcr:primaryType="nt:unstructured"
+        sling:resourceType="granite/ui/components/coral/foundation/container">
+        <items jcr:primaryType="nt:unstructured">
+            <tabs
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="granite/ui/components/coral/foundation/tabs"
+                maximized="{Boolean}true">
+                <items jcr:primaryType="nt:unstructured">
+                    <column1
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="General"
+                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                        <items jcr:primaryType="nt:unstructured">
+                            <title
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldDescription="Order Payment History"
+                                fieldLabel="Title"
+                                name="./title"
+                                value="Order and Payment History"/>
+                            <historyLabel
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldDescription="History Label"
+                                fieldLabel="History Label"
+                                name="./frmFields/historyLabel"
+                                value="History"/>
+                            <numberHistoryLabel
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldDescription="Number History Label"
+                                fieldLabel="Number History Label"
+                                name="./frmFields/numberHistoryLabel"
+                                value="015171918893"/>
+                            <transactionSummery
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldDescription="Transaction Summery Label"
+                                fieldLabel="Transaction Summery Label"
+                                name="./frmFields/transactionSummery"
+                                value="Get a summary of all your transactions !"/>
+                            <monthsLabel
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldDescription="Month Label"
+                                fieldLabel="Months Label"
+                                name="./frmFields/monthLabel"
+                                value="Months"/>
+
+                            <backgroundImage
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/foundation/form/pathbrowser"
+                                    fieldLabel="Background Image"
+                                    name="./backgroundImage"/>
+                            <orderHistoryEmptyLabel
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                    fieldDescription="Month Label"
+                                    fieldLabel="Order History Empty Label"
+                                    name="./frmFields/orderHistoryEmptyLabel"
+                                    value="Your order history is Empty"/>
+                            <emptyOrderLabel
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                    fieldDescription="Looks like you haven’t made any orders yet"
+                                    fieldLabel=" Empty Order Label"
+                                    name="./frmFields/emptyOrderLabel"
+                                    value="Looks like you haven’t made any orders yet"/>
+
+                            <shopNowCTA
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                    fieldDescription="Shop now CTA Label"
+                                    fieldLabel="Shop Now CTA Label"
+                                    name="./frmFields/shopNowCTA"
+                                    value="SHOP NOW"/>
+
+
+                        </items>
+                    </column1>
+                    <column2
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Filter Modal Data"
+                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                        <items jcr:primaryType="nt:unstructured">
+                            <filterLabel
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                    fieldLabel="Filter Label"
+                                    value="FILTER"
+                                    fieldDescription="Filter Label"
+                                    name="./frmFields/filterLabel"/>
+                            <modalTitle
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                    fieldLabel="Modal Title"
+                                    value="Transaction Filter"
+                                    fieldDescription="Modal Title"
+                                    name="./frmFields/modalTitle"/>
+
+                            <fromLabel
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                    fieldLabel="From Label"
+                                    value="From"
+                                    fieldDescription="From Label"
+                                    name="./frmFields/fromLabel"/>
+                            <toLabel
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                    fieldLabel="To Label"
+                                    value="To"
+                                    fieldDescription="To Label"
+                                    name="./frmFields/toLabel"/>
+
+                            <mobileNumberLabel
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                    fieldLabel="Mobile Number Label"
+                                    value="Mobile Number"
+                                    fieldDescription="Mobile Number Label"
+                                    name="./frmFields/mobileNumberLabel"/>
+                            <mobileNumberPlaceholder
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                    fieldLabel="Mobile Number Placeholder"
+                                    value="015171918893"
+                                    fieldDescription="Mobile Number Placeholder"
+                                    name="./frmFields/mobileNumberPlaceholder"/>
+
+                            <continueCTALabel
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                    fieldDescription="Continue CTA Label"
+                                    fieldLabel="Continue CTA Label"
+                                    name="./frmFields/continueCTALabel"
+                                    value="CONTINUE"/>
+                            <cancelCTALabel
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                    fieldDescription="Cancel CTA Label"
+                                    fieldLabel="Cancel CTA Label"
+                                    name="./frmFields/cancelCTALabel"
+                                    value="CANCEL"/>
+                        </items>
+                    </column2>
+                    <column3
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Error Messages"
+                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                        <items jcr:primaryType="nt:unstructured">
+                            <emailRequiredMsg
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldDescription="The email address field cannot be empty"
+                                fieldLabel="Email Error message on Empty Email"
+                                name="./validationMessages/emailRequiredMsg"
+                                value="The email address field cannot be empty"/>
+                            <emailInValidMsg
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldDescription="Please enter a valid email address. For example username@domain.com"
+                                fieldLabel="Email Error message on Invalid characters"
+                                name="./validationMessages/emailInValidMsg"
+                                value="Please enter a valid email address. For example username@domain.com"/>
+
+                        </items>
+                    </column3>
+                </items>
+            </tabs>
+        </items>
+    </content>
+</jcr:root>
