@@ -501,6 +501,25 @@
 		<!-- Global Search -->
 		<property name="mostSearchLabel"/>
 
+		<property name="emptySearchResultMsg"/>
+		<property name="firstName"/>
+		<property name="firstNameError"/>
+		<property name="lastname"/>
+		<property name="lastnameError"/>
+		<property name="email"/>
+		<property name="emailEmptyError"/>
+		<property name="emailInvalidError"/>
+		<property name="subject"/>
+		<property name="subjectError"/>
+		<property name="helplabel"/>
+		<property name="helpError"/>
+		<property name="requestText"/>
+		<property name="attachment"/>
+		<property name="attachmentDescription"/>
+		<property name="submitLabel"/>
+
+		<property name="callbackMessageText"/>
+
 		<!-- Manage SIM -->
 		<property name="delinkConfirmationMsg"/>
 		<property name="delinkLabel"/>
