@@ -1,5 +1,5 @@
 import { MapTo } from "@adobe/aem-react-editable-components";
-import UserDetails from "./UserDetails";
+import LayoutWrapper from "./LayoutWrapper";
 
 const UserDetailsConfig = {
   emptyLabel: "User Details Component",
@@ -8,4 +8,4 @@ const UserDetailsConfig = {
   },
 };
 
-MapTo("lebara/components/user/myprofile")(UserDetails, UserDetailsConfig);
+MapTo("lebara/components/user/myprofile")(LayoutWrapper, UserDetailsConfig);

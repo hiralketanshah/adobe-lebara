@@ -133,7 +133,9 @@ const UserDetails: React.FC<UserDetailsProps> = ({
       >
         {({ handleSubmit, handleReset, dirty, resetForm }) => (
           <form onSubmit={handleSubmit} onReset={handleReset}>
-            <Box px="20px" py="26px" bgColor="lightenPrimary.50">
+            <Box px="20px" py="26px"
+              w={{ base: "100%", lg: "846px" }}
+              >
               {/* Heading Section */}
               <Box
                 bgColor="white"
