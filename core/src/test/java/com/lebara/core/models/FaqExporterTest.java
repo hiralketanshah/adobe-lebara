@@ -14,7 +14,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class FaqExporterTest {
 
     private final AemContext aemContext=new AemContext();
-    private static final String PROPERTIES_JSON = "/content/video/jcr:content/root/responsivegrid/orderdetails";
+    private static final String PROPERTIES_JSON = "/content/video/jcr:content/root/responsivegrid/faqExporter";
 
     @InjectMocks
     FaqExporter faqExporter = new FaqExporter();

@@ -14,7 +14,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class SectionIntroExporterTest {
 
 	private final AemContext aemContext = new AemContext();
-	private static final String PROPERTIES_JSON = "/content/video/jcr:content/root/responsivegrid/simportin";
+	private static final String PROPERTIES_JSON = "/content/video/jcr:content/root/responsivegrid/sectionIntroExporter";
 
 	@InjectMocks
 	SectionIntroExporter sectionIntroExporter = new SectionIntroExporter();

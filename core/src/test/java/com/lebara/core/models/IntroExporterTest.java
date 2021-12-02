@@ -14,7 +14,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 class IntroExporterTest {
 
     private final AemContext aemContext = new AemContext();
-    private static final String PROPERTIES_JSON = "/content/video/jcr:content/root/responsivegrid/orderdetails";
+    private static final String PROPERTIES_JSON = "/content/video/jcr:content/root/responsivegrid/introExporter";
 
     @InjectMocks
     IntroExporter introExporter = new IntroExporter();

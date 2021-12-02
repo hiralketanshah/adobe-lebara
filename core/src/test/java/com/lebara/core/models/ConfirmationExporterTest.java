@@ -19,7 +19,7 @@ class ConfirmationExporterTest {
     @InjectMocks
     ConfirmationExporter confirmationExporter = new ConfirmationExporter();
 
-    private static final String PROPERTIES_JSON = "/content/video/jcr:content/root/responsivegrid/orderdetails";
+    private static final String PROPERTIES_JSON = "/content/video/jcr:content/root/responsivegrid/confirmationExporter";
 
     @BeforeEach
     void setUp() {

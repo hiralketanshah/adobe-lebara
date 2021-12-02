@@ -19,7 +19,7 @@ class BannerExporterTest {
     @InjectMocks
     BannerExporter bannerExporter = new BannerExporter();
 
-    private static final String PROPERTIES_JSON = "/content/video/jcr:content/root/responsivegrid/orderdetails";
+    private static final String PROPERTIES_JSON = "/content/video/jcr:content/root/responsivegrid/bannerExporter";
 
 
     @BeforeEach
