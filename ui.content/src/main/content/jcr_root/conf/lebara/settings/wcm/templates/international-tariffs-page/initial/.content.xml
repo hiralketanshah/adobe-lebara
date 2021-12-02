@@ -2,7 +2,9 @@
 <jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
     jcr:primaryType="cq:Page">
     <jcr:content
-        cq:template="/conf/lebara/settings/wcm/templates/lebara-page-template"
+        cq:lastModified="{Date}2021-12-01T19:05:29.853+05:30"
+        cq:lastModifiedBy="admin"
+        cq:template="/conf/lebara/settings/wcm/templates/international-tariffs-page"
         jcr:primaryType="cq:PageContent"
         sling:resourceType="lebara/components/page">
         <root
@@ -17,11 +19,13 @@
                 sling:resourceType="wcm/foundation/components/responsivegrid">
                 <breadcrumb
                     jcr:primaryType="nt:unstructured"
-                    startLevel="3"
-                    disableShadowing="false"
-                    hideCurrent="false"
-                    showHidden="false"
                     sling:resourceType="lebara/components/breadcrumb"/>
+                <text
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="lebara/components/text"/>
+                <internationalrates
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="lebara/components/internationalrates"/>
             </responsivegrid>
             <experiencefragment-footer
                 jcr:primaryType="nt:unstructured"

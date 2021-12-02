@@ -100,16 +100,13 @@ public class FooterExporter implements ComponentExporter {
 
     }
 
-    private void setFooterUpperLinks(String columnLink, List<Link> column2) {
-        Page parentLinkPage;
+    private void setFooterUpperLinks(String columnLink, List<Link> column) {
         PageLink pageLinks;
         Link parentLink = new Link();
-        parentLinkPage = pageManager.getContainingPage(columnLink);
-        parentLink.setLabel(AemUtils.getTitle(parentLinkPage));
-        parentLink.setLink(AemUtils.getLinkWithExtension(columnLink, request));
+        parentLink.setLabel(columnLink);
         pageLinks = new PageLink();
         pageLinks.setParentLinks(parentLink);
-        pageLinks.setChildLinks(column2);
+        pageLinks.setChildLinks(column);
         pageLinkList.add(pageLinks);
     }
 
