@@ -1,5 +1,5 @@
 import { MapTo } from "@adobe/aem-react-editable-components";
-import PostpaidPersonalDetailsRoute from "./PostpaidPersonalDetailsRoute";
+import PostpaidDetailsRoute from "@lebara/ui/src/rotues/PostpaidDetailsRoute";
 
 const PostpaidPersonalDetailsConfig = {
   emptyLabel: "Postpaid Personal Details component",
@@ -8,4 +8,4 @@ const PostpaidPersonalDetailsConfig = {
   },
 };
 
-MapTo("lebara/components/postpaidpersonaldetails")(PostpaidPersonalDetailsRoute, PostpaidPersonalDetailsConfig);
+MapTo("lebara/components/postpaidpersonaldetails")(PostpaidDetailsRoute, PostpaidPersonalDetailsConfig);
