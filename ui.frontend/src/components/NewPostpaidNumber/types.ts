@@ -42,3 +42,13 @@ export interface ModalProps {
   countryFlagFrom?: string;
   countryFlagTo?: string;
 }
+export interface PlanDurationProps {
+  data: number;
+  minutes: number;
+  planDuration: string;
+}
+export interface SelectedPlanProps {
+  offerId: number;
+  name: string;
+  cost: number;
+}
