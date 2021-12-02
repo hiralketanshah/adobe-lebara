@@ -4,7 +4,7 @@ import { IoIosCheckmarkCircleOutline } from "react-icons/io";
 import { useLocation } from "react-router-dom";
 import "@adyen/adyen-web/dist/adyen.css";
 import BuyPlanLayout from "../../layouts/BuyPlanLayout";
-import { SuccessCard } from "../SuccessCard/SuccessCard";
+import {SuccessCard} from "@lebara/ui/src/components/SuccessCard/SuccessCard";
 import { SuccessCardProps } from './types';
 import getDynamicValues from "../../utils/get-aem-dynamic-values";
 

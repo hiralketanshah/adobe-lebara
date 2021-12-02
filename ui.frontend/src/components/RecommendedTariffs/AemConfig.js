@@ -1,5 +1,5 @@
 import { MapTo } from "@adobe/aem-react-editable-components";
-import RecommendedTariffs from "./RecommendedTariffs";
+import RecommendedTariffs from "@lebara/ui/src/components/RecommendedTariffs/RecommendedTariffs";
 
 const RecommendedTariffsConfig = {
   emptyLabel: "Recommended Tariffs Component",

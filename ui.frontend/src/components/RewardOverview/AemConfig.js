@@ -1,5 +1,5 @@
 import { MapTo } from "@adobe/aem-react-editable-components";
-import RewardOverview from "./RewardOverview";
+import RewardOverview from "@lebara/ui/src/components/RewardOverview/RewardOverview";
 
 const RewardOverviewConfig = {
   emptyLabel: "Rewards Table Component",
