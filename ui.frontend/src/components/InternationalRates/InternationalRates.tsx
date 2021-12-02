@@ -1,4 +1,5 @@
 import React from "react";
+import { useHistory } from "react-router-dom";
 import { Box, Select, Text, Image } from "@chakra-ui/react";
 import { InternationalRatesProps, CountryList } from "./types";
 import CallIcon from "../../assets/images/phone.png";
@@ -17,8 +18,9 @@ const InternationalRates: React.FC<InternationalRatesProps> = ({
   smsRate,
   countryList,
 }) => {
+  const history = useHistory();
   const handleClick = (url: any) => {
-    window.open(url);
+    history.push(url);
   };
   return (
     <Box backgroundColor="lightCyan" padding="20px">
