@@ -27,6 +27,7 @@ const PlanOffers: React.FC<PlanOffersProps> = ({
   ctaAddToCartLabel,
   ctaCloseLabel,
   ctaDownloadLabel,
+  ctaBottomLink,
 }) => {
   const history = useHistory();
   const linkStyles = {
@@ -122,7 +123,7 @@ const PlanOffers: React.FC<PlanOffersProps> = ({
             minW={{ base: "100%", lg: "320px" }}
             alignSelf="center"
             onClick={() => {
-               history.push((globalConfigs.journeyPages[globalConstants.PREPAID]  || '/'), history.location.state);
+               history.push((ctaBottomLink || globalConfigs.journeyPages[globalConstants.PREPAID]  || '/'), history.location.state);
             }}
           >
             {ctaBottomLabel}
