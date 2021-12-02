@@ -104,9 +104,6 @@ public class MyProfileFormFields {
     /* Edit Email Modal Fields */
 
     @ValueMapValue
-    private String changeEmailHeading;
-
-    @ValueMapValue
     private String newEmailLabel;
 
     @ValueMapValue
@@ -247,10 +244,6 @@ public class MyProfileFormFields {
 
     public String getNewConfirmEmailPlacehodler() {
         return newConfirmEmailPlacehodler;
-    }
-
-    public String getChangeEmailHeading() {
-        return changeEmailHeading;
     }
 
     public String getCtaContinueLabel() {

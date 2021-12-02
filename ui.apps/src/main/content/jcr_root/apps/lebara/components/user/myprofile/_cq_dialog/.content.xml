@@ -409,7 +409,7 @@
                                     sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                     fieldDescription="Change Email Address"
                                     fieldLabel="Change Email Title Label"
-                                    name="./frmFields/changeEmailHeading"
+                                    name="./changeEmailHeading"
                                     value="Change Email Address"/>
                             <newEmailLabel
                                     jcr:primaryType="nt:unstructured"

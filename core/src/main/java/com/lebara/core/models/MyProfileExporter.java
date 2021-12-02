@@ -37,6 +37,9 @@ public class MyProfileExporter implements ComponentExporter{
     @ValueMapValue
     private String sectionConsentHeading;
 
+    @ValueMapValue
+    private String changeEmailHeading;
+
     @ChildResource
     private MyProfileFormFields frmFields;
 
@@ -78,6 +81,10 @@ public class MyProfileExporter implements ComponentExporter{
 
     public String getHeading() {
         return heading;
+    }
+
+    public String getChangeEmailHeading() {
+        return changeEmailHeading;
     }
 
     @Override
