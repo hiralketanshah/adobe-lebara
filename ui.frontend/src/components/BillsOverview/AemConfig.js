@@ -1,12 +1,12 @@
 import { MapTo } from "@adobe/aem-react-editable-components";
-import BillsOverview from "./BillsOverview";
+import BillsContainer from "./BillsContainer";
 
 const BillsOverviewConfig = {
   emptyLabel: "Dashboard - My Bills Overview",
 
   isEmpty: function (props) {
-    return !props || !props.title;
+    return true;
   },
 };
 
-MapTo("lebara/components/dashboard/mybills")(BillsOverview, BillsOverviewConfig);
+MapTo("lebara/components/dashboard/mybills")(BillsContainer, BillsOverviewConfig);

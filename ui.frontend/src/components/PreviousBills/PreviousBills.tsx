@@ -9,17 +9,28 @@ import { formatNumber } from "../../utils/formatNumber";
 import moment from "moment";
 
 const PreviousBills: React.FC<PreviousBillProps> = ({ 
+  title,
   dateLabel,
   ctaButtonLabel,
   ctaLoadMoreLabel,
   bills,
  }) => {
-  const [totalBills] = React.useState(bills || []);
   const [billsToShow, setBillsToShow] = React.useState(5);
   const shownBills = (bills && bills.slice(0, billsToShow)) || [];
   
   return (
     <Box>
+      {title && <Text
+          my="22px"
+          fontSize="20px"
+          fontWei="500"
+          lineHeight="28px"
+          letterSpacing="0.15px"
+          color="primary.800"
+        >
+          {title || "Previous Bills"}
+      </Text>}
+
       {shownBills?.map((t: any) => (
         <Box
           mt="15px"
@@ -79,7 +90,7 @@ const PreviousBills: React.FC<PreviousBillProps> = ({
         </Box>
       ))}
 
-      {billsToShow < totalBills?.length && (
+      {bills && billsToShow < bills?.length && (
         <Flex justifyContent="center">
           <Button
             width={{ base: "100%", md: "295px" }}

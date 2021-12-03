@@ -1,12 +1,12 @@
 import { MapTo } from "@adobe/aem-react-editable-components";
-import PreviousBills from "./PreviousBills";
+import PreviousBillsContainer from "./PreviousBillsContainer";
 
 const PreviousBillsConfig = {
   emptyLabel: "Dashboard - Previous Bills",
 
-  isEmpty: function (props) {
-    return !props || !props.dateLabel;
+  isEmpty: function () {
+    return true;
   },
 };
 
-MapTo("lebara/components/dashboard/previousbills")(PreviousBills, PreviousBillsConfig);
+MapTo("lebara/components/dashboard/previousbills")(PreviousBillsContainer, PreviousBillsConfig);
