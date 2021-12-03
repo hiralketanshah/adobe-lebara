@@ -168,7 +168,7 @@ public class CFUtils {
                 }
                 String validityLabel = "Days";
                 if (validityInNumber >= 30) {
-                    validityLabel = "Months";
+                    validityLabel = "Month";
                     validityInNumber = validityInNumber / 30;
                 }
                 offerFragmentBean.setValidity( validityInNumber + " " + (i18n == null ? validityLabel : i18n.get(validityLabel)));
