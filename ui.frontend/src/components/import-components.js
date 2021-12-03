@@ -35,7 +35,7 @@ import "./Banner/AemConfig.js";
 import "../rotues/AemConfig.js";
 import "./ProgressStep/AemConfig.js";
 import "./FooterMenu/AemConfig.js";
-import "./CallPrices/AemConfig.js";
+import "../aemConfigs/CallPricesAemConfig.js";
 import "./AwardsShowCase/AemConfig.js";
 import "./TrustedShopSlider/AemConfig.js";
 import "./FaqFolder/AemConfig.js";
