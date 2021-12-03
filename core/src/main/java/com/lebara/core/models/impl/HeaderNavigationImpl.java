@@ -41,6 +41,9 @@ public class HeaderNavigationImpl implements HeaderNavigation {
     private String topupCtaText;
 
     @ValueMapValue
+    private String logolinkurl;
+
+    @ValueMapValue
     private String topupCtaLink;
 
     @ValueMapValue
@@ -95,6 +98,9 @@ public class HeaderNavigationImpl implements HeaderNavigation {
     public String getTopupCtaLink() {
         return AemUtils.getLinkWithExtension(topupCtaLink, request);
     }
+
+    @Override
+    public String getLogolinkurl() { return AemUtils.getLinkWithExtension(topupCtaLink, request); }
 
     public String getAccountLink() {
         return AemUtils.getLinkWithExtension(accountLink, request);

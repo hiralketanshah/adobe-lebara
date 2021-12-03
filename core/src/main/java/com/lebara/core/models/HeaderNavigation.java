@@ -7,6 +7,7 @@ public interface HeaderNavigation extends Navigation {
     public String getLogoPath();
     public String getTopupCtaText();
     public String getTopupCtaLink();
+    public String getLogolinkurl();
     public String getAccountLink();
     public String getNewText();
 
