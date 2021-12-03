@@ -8,4 +8,4 @@ const WeAreHereConfig = {
   },
 };
 
-MapTo("lebara/components/wearehere")(WeAreHere, WeAreHereConfig);
+MapTo("lebara/components/whileyouarehere")(WeAreHere, WeAreHereConfig);

@@ -28,4 +28,5 @@ export interface CallSupportProps {
 export interface WeAreHereProps extends CallSupportProps {
   ctaLiveChatLabel?: string;
   ctaLiveChatUrl?: string;
+  separatorOrText?: string;
 }
