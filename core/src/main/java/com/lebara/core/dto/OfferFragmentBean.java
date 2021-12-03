@@ -7,8 +7,9 @@ import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.math.NumberUtils;
 import org.apache.sling.api.SlingHttpServletRequest;
 
-import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.util.List;
+import java.util.Locale;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class OfferFragmentBean {
@@ -50,7 +51,8 @@ public class OfferFragmentBean {
 
     public String getCost() {
         if (NumberUtils.isCreatable(cost)) {
-            return new DecimalFormat("##.##").format(Float.parseFloat(cost) / 100);
+            NumberFormat nf = NumberFormat.getNumberInstance(Locale.GERMAN);
+            return nf.format(Float.parseFloat(cost) / 100);
         }
         return StringUtils.EMPTY;
     }
