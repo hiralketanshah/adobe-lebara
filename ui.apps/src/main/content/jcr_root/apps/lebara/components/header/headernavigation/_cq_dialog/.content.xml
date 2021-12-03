@@ -45,12 +45,12 @@
                                                 useHTML5="{Boolean}true"
                                                 allowUpload="{Boolean}false"/>
                                             <logolinkurl
-                                                    jcr:primaryType="nt:unstructured"
-                                                    sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
-                                                    fieldDescription="URL to Navigate"
-                                                    rootPath="/content/lebara"
-                                                    fieldLabel="Logo Link URL"
-                                                    name="./logolinkurl"/>
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                                fieldDescription="URL to Navigate"
+                                                rootPath="/content/lebara"
+                                                fieldLabel="Logo Link URL"
+                                                name="./logoLinkURL"/>
                                         </items>
                                     </column>
                                 </items>
