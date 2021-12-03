@@ -29,7 +29,7 @@ const InternationalRates: React.FC<InternationalRatesProps> = ({
           {countryList?.map((country: CountryList, idx) => (
             <>
                 {countryLabel !== country.label && (
-                    <option value={country.url}>{country.label}</option>
+                    <option value={country.value}>{country.label}</option>
                 )}
             </>
           ))}
