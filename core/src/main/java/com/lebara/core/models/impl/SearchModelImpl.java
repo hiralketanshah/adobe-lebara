@@ -61,7 +61,7 @@ public class SearchModelImpl implements SearchModel {
 	}
 
 	public List<Link> getLinks() {
-		return links;
+		return Collections.unmodifiableList(links);
 	}
 
 	public String getEmptySearchResultMsg() {

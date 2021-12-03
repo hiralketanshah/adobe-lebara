@@ -2,7 +2,6 @@ package com.lebara.core.utils;
 
 import java.util.*;
 import java.util.stream.Collectors;
-
 import com.day.cq.i18n.I18n;
 import com.google.gson.JsonSyntaxException;
 import com.lebara.core.dto.*;
@@ -167,6 +166,7 @@ public class CFUtils {
                 if (offerFragment.getElement("additionalOffers") != null) {
                     offerFragmentBean.setAdditionalOffers(CFUtils.getElementValue(offerFragment, "additionalOffers"));
                 }
+
                 if (offerFragment.getElement("planInfoPath") != null) {
                     ResourceResolver resourceResolver = cfResource.getResourceResolver();
                     Resource cfPlanResource = resourceResolver.getResource(CFUtils.getElementValue(offerFragment, "planInfoPath"));
@@ -175,6 +175,7 @@ public class CFUtils {
                         offerFragmentBean.setPlanInfo(planInfo);
                     }
                 }
+                
                 if (offerFragment.getElement("allowancesList") != null) {
                     String[] allowanceArray = CFUtils.getElementArrayValue(offerFragment, "allowancesList");
                     List<CFAllowance> allowanceList = CFUtils.convertStringArrayToList(allowanceArray, CFAllowance.class);

@@ -5,7 +5,6 @@ import com.day.cq.commons.inherit.InheritanceValueMap;
 import com.day.cq.wcm.api.Page;
 import com.day.cq.wcm.api.NameConstants;
 import com.day.cq.commons.jcr.JcrConstants;
-
 import com.day.cq.wcm.api.PageManager;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.net.MediaType;

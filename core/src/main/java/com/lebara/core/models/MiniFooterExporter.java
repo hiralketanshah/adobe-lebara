@@ -36,8 +36,6 @@ public class MiniFooterExporter implements ComponentExporter {
     @ChildResource
     private List<Link> links;
 
-
-
     public String getHelpText() {
         return helpText;
     }
@@ -47,7 +45,7 @@ public class MiniFooterExporter implements ComponentExporter {
     }
 
     public List<Link> getLinks() {
-        return links;
+        return ollections.unmodifiableList(links);
     }
 
     @Override

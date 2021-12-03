@@ -67,7 +67,7 @@ public class UsageDetailsExporter extends HeadingExporter {
                 tabsName.add(AemUtils.getStringProperty(tab, "tabsName"));
             }
         }
-        return tabsName;
+        return Collections.unmodifiableList(tabsName);
     }
 
     @Override

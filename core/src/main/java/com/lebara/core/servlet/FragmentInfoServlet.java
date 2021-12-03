@@ -26,8 +26,9 @@ import org.apache.sling.servlets.annotations.SlingServletResourceTypes;
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Reference;
 import org.slf4j.Logger;
+import com.day.cq.wcm.api.NameConstants;
 import org.slf4j.LoggerFactory;
-
+import org.apache.sling.api.servlets.HttpConstants;
 import javax.jcr.RepositoryException;
 import javax.jcr.Session;
 import javax.servlet.Servlet;
@@ -35,11 +36,10 @@ import javax.servlet.ServletException;
 import java.io.IOException;
 import java.util.*;
 
-
 @Component(service = {Servlet.class})
 @SlingServletResourceTypes(
-        resourceTypes = "cq:Page",
-        methods = "GET",
+        resourceTypes = NameConstants.NT_PAGE,
+        methods = HttpConstants.METHOD_GET,
         extensions = "json",
         selectors = "offer")
 public class FragmentInfoServlet extends SlingSafeMethodsServlet {
@@ -48,7 +48,7 @@ public class FragmentInfoServlet extends SlingSafeMethodsServlet {
     @Reference
     private transient QueryBuilder queryBuilder;
 
-    private I18n i18n;
+    private transient I18n i18n;
     private String offerRootPath;
 
     @Override
