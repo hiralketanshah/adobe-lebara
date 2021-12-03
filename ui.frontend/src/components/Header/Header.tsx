@@ -198,6 +198,7 @@ const Header: React.FC<HeaderProps> = ({
   newText,
   accountLink,
   topupCtaText,
+  logoLinkURL,
   topupCtaLink,
   searchPlaceholder,
 }) => {
@@ -308,7 +309,7 @@ const Header: React.FC<HeaderProps> = ({
           color="white"
         >
           <ChakraLink>
-            <Link to="/">
+            <Link to={logoLinkURL || "/"}>
               <img src={logoPath} alt="Logo" />
             </Link>
           </ChakraLink>
@@ -324,7 +325,7 @@ const Header: React.FC<HeaderProps> = ({
           <Box>
             <Button
               fontSize={{ lg: "14px", md: "12px" }}
-              onClick={() => history.push(`/${topupCtaLink}`)}
+              onClick={() => history.push(`${topupCtaLink}`)}
             >
               {topupCtaText}
             </Button>
@@ -436,7 +437,7 @@ const Header: React.FC<HeaderProps> = ({
         </Box>
       )}
       <Flex display={{ md: "none", sm: "flex" }} mx={{ md: "27px" }}>
-        <MiniHeader logoPath={logoPath} items={items} />
+        <MiniHeader logoPath={logoPath} logoLinkURL={logoLinkURL} items={items} />
       </Flex>
     </Flex>
   );

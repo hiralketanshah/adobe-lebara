@@ -35,6 +35,7 @@ import { selectIsAuthenticated } from "../../redux/selectors/userSelectors";
 
 const MiniHeader: React.FC<MiniHeaderProps> = ({
   logoPath,
+  logoLinkURL,
   items
 }) => {
   const cartItems = useSelector((state: ReduxState) => state.cart.items);
@@ -126,7 +127,7 @@ const MiniHeader: React.FC<MiniHeaderProps> = ({
             onClick={onOpen}
           />
           <ChakraLink>
-            <Link to="/">
+            <Link to={logoLinkURL || "/"}>
               <img src={logoPath} alt="Logo" />
             </Link>
           </ChakraLink>
