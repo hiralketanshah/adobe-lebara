@@ -24,16 +24,6 @@
                                     sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                     fieldLabel="Buy Plan Button Label"
                                     name="./buttonLabel"/>
-                            <unlimitedtextfield
-                                    jcr:primaryType="nt:unstructured"
-                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                    fieldLabel="Unlimited Text Field"
-                                    name="./unlimitedTextField"/>
-                            <minutesfield
-                                    jcr:primaryType="nt:unstructured"
-                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                    fieldLabel="Minutes Field"
-                                    name="./minutesField"/>
                             <ctaCLoseLabel
                                     jcr:primaryType="nt:unstructured"
                                     sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
@@ -104,6 +94,7 @@
                                 jcr:primaryType="nt:unstructured"
                                 sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
                                 fieldLabel="Explore All Button Link"
+                                rootPath="/content/lebara"
                                 name="./exploreAllLink"/>                                                  
                         </items>
                     </column2>

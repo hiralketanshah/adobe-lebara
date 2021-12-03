@@ -324,7 +324,7 @@ const Header: React.FC<HeaderProps> = ({
           <Box>
             <Button
               fontSize={{ lg: "14px", md: "12px" }}
-              onClick={() => history.push(`/${topupCtaLink}`)}
+              onClick={() => history.push(`${topupCtaLink}`)}
             >
               {topupCtaText}
             </Button>

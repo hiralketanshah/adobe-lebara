@@ -7,8 +7,6 @@ import ViewPlans from "./ViewPlans";
 const PlanCardWrapper: React.FC<PlanCardProps> = ({
   offers,
   buttonLabel,
-  minutesField,
-  unlimitedTextField,
 }) => {
   return (
     <Box mt="20px">
@@ -16,8 +14,6 @@ const PlanCardWrapper: React.FC<PlanCardProps> = ({
         <ViewPlans
           offer={item}
           buttonLabel={buttonLabel}
-          unlimitedTextField={unlimitedTextField}
-          minutesField={minutesField}
           allowanceList={item?.allowanceList}
         />
       ))}
