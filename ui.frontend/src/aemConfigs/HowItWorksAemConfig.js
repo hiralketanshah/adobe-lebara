@@ -1,5 +1,5 @@
 import { MapTo } from "@adobe/aem-react-editable-components";
-import HowItWorks from "./HowItWorks";
+import HowItWorks from "@lebara/ui/src/components/HowItWorks/HowItWorks";
 
 const HowItWorksConfig = {
     emptyLabel: "How it works component",

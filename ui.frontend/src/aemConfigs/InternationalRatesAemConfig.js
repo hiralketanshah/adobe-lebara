@@ -1,5 +1,5 @@
 import { MapTo } from "@adobe/aem-react-editable-components";
-import InternationalRates from "./InternationalRates";
+import InternationalRates from "@lebara/ui/src/components/InternationalRates/InternationalRates";
 
 const InternationalRatesConfig = {
     emptyLabel: "International Rates",

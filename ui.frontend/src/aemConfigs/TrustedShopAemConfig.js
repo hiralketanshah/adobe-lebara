@@ -1,5 +1,5 @@
 import { MapTo } from "@adobe/aem-react-editable-components";
-import TrustedShopSlider from "./TrustedShopSlider";
+import TrustedShopSlider from "@lebara/ui/src/components/TrustedShopSlider/TrustedShopSlider";
 
 const TrustedShopSliderConfig = {
     emptyLabel: "Review Component",

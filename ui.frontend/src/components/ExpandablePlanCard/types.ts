@@ -1,4 +1,4 @@
-import { CountriesListOption } from "../CountriesList/types";
+import {CountriesList} from "../ExpandableSimPlanCard/types";
 
 export interface ExpandablePlanCardProps {
     id?: number;
@@ -26,7 +26,7 @@ export interface PlanCardOffer {
 export interface planDetails {
     listPlanItem?: string[];
     title?: string;
-    countryList?: CountriesListOption[];
+    countryList?: CountriesList[];
     countryTitle?: string;
 }
 
