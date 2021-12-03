@@ -205,7 +205,7 @@ public class CFUtils {
             int value = Integer.parseInt(val);
             switch (unit.toLowerCase()) {
                 case "mb":
-                    formattedValue = (value >= 1024) ? new DecimalFormat("#,##").format(value/1024) + "GB" : value + "MB";
+                    formattedValue = (value >= 1024) ? new DecimalFormat("#.##").format(value/1024.0) + "GB" : value + "MB";
                     break;
                 case "sms":
                     formattedValue = value + " SMS";
