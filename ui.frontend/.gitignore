@@ -79,7 +79,6 @@ buildNumber.properties
 
 # NPM
 node_modules/
-yarn.lock
 
 # Webpack
 build/
