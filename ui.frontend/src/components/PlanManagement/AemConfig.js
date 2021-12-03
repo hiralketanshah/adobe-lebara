@@ -1,5 +1,5 @@
 import { MapTo } from "@adobe/aem-react-editable-components";
-import Plans from "./Plans";
+import Plans from "@lebara/ui/src/components/PlanManagement/Plans"
 
 const PlansConfig = {
   emptyLabel: "Plans component",

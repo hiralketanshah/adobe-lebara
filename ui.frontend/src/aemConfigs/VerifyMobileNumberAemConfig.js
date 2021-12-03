@@ -1,5 +1,6 @@
 import { MapTo } from "@adobe/aem-react-editable-components";
-import VerifyMobileNumber from "./VerifyMobileNumber";
+import VerifyMobileNumber from "@lebara/ui/src/components/VerifyMobileNumberForm/VerifyMobileNumberForm"
+
 
 const VerifyMobileNumberConfig = {
   emptyLabel: "Verify Mobile Number component",

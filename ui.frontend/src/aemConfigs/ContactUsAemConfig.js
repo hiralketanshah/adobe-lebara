@@ -1,5 +1,5 @@
 import { MapTo } from "@adobe/aem-react-editable-components";
-import ContactUs from "./ContactUs";
+import ContactUs from "@lebara/ui/src/components/ContactUs/ContactUs";
 
 const ContactUsConfig = {
   emptyLabel: "Contact Us Component",
