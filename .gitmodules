@@ -1,3 +1,4 @@
 [submodule "ui.frontend/packages/lebara-client"]
 	path = ui.frontend/packages/lebara-client
-	url = https://github.com/Lebara-digital/storybook.git
+	url = https://git.cloudmanager.adobe.com/lebara/storybook.git
+    branch = aem-release
