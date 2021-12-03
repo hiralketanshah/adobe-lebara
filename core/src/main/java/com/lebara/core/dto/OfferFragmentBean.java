@@ -24,6 +24,42 @@ public class OfferFragmentBean {
     private List<CFAllowance> allowanceList;
     private String recommendedImage;
     private String recommendedURL;
+    private String promotionID;
+    private String promotionMessage;
+    private String promotionPrice;
+    private String promotionData;
+
+    public String getPromotionID() {
+        return promotionID;
+    }
+
+    public void setPromotionID(String promotionID) {
+        this.promotionID = promotionID;
+    }
+
+    public String getPromotionMessage() {
+        return promotionMessage;
+    }
+
+    public void setPromotionMessage(String promotionMessage) {
+        this.promotionMessage = promotionMessage;
+    }
+
+    public String getPromotionPrice() {
+        return promotionPrice;
+    }
+
+    public void setPromotionPrice(String promotionPrice) {
+        this.promotionPrice = promotionPrice;
+    }
+
+    public String getPromotionData() {
+        return promotionData;
+    }
+
+    public void setPromotionData(String promotionData) {
+        this.promotionData = promotionData;
+    }
 
     public String getPlanName() {
         return planName;

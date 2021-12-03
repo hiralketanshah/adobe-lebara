@@ -159,6 +159,20 @@ public class CFUtils {
             ContentFragment offerFragment = cfResource.adaptTo(ContentFragment.class);
             if (null != offerFragment) {
                 offerFragmentBean = new OfferFragmentBean();
+                String activePromotion = CFUtils.getElementValue(offerFragment, "activatePromotion");
+                if (StringUtils.equalsIgnoreCase(activePromotion, "true")) {
+                    offerFragmentBean.setPromotionID(CFUtils.getElementValue(offerFragment, "promotionId"));
+                    offerFragmentBean.setPromotionMessage(CFUtils.getElementValue(offerFragment, "promotionalMessage"));
+                    String promotionFragPath = CFUtils.getElementValue(offerFragment, "promotionFragment");
+                    Resource promotionalFragres = cfResource.getResourceResolver().getResource(promotionFragPath);
+                    if (promotionalFragres != null) {
+                        ContentFragment promotionFragment = promotionalFragres.adaptTo(ContentFragment.class);
+                        if (promotionFragment != null) {
+                            offerFragmentBean.setPromotionPrice(CFUtils.getElementValue(promotionFragment, "promotionalPrice"));
+                            offerFragmentBean.setPromotionData(CFUtils.getElementValue(promotionFragment, "promotionData"));
+                        }
+                    }
+                }
                 offerFragmentBean.setCost(CFUtils.getElementValue(offerFragment, "cost"));
                 offerFragmentBean.setPlanName(CFUtils.getElementValue(offerFragment, "name"));
                 String validity = CFUtils.getElementValue(offerFragment, "validity");
