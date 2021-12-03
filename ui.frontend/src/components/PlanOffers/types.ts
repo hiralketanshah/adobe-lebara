@@ -7,14 +7,12 @@ export interface PlanOffersProps {
   subTitle?: string;
   description?: string;
   hideLabel?: string;
-  minutesField?: string;
   showLabel?: string;
   ctaTopLink?: string;
   ctaTopLabel?: string;
   ctaBottomLink?: string;
   ctaBottomLabel?: string;
   offers?: ExpandablePlanCardProps[];
-  unlimitedTextField?: string;
   allowanceList?: allowanceListProps;
   viewCartLabel?: string;
   addedtoCartLabel?: string;

@@ -50,12 +50,6 @@ public class ViewPlanExporter implements ComponentExporter {
     private String ctaCloseLabel;
 
     @ValueMapValue
-    private String minutesField;
-
-    @ValueMapValue
-    private String unlimitedTextField;
-    
-    @ValueMapValue
     private String title;
     
     @ValueMapValue
@@ -88,14 +82,6 @@ public class ViewPlanExporter implements ComponentExporter {
 
     public String getButtonLabel() {
         return buttonLabel;
-    }
-
-    public String getMinutesField() {
-        return minutesField;
-    }
-
-    public String getUnlimitedTextField() {
-        return unlimitedTextField;
     }
 
     public String getTitle() {
