@@ -1,5 +1,4 @@
 import React from "react";
-import { useHistory } from "react-router-dom";
 import { Box, Select, Text, Image } from "@chakra-ui/react";
 import { InternationalRatesProps, CountryList } from "./types";
 import CallIcon from "../../assets/images/phone.png";
@@ -18,20 +17,19 @@ const InternationalRates: React.FC<InternationalRatesProps> = ({
   smsRate,
   countryList,
 }) => {
-  const history = useHistory();
-  const handleClick = (url: any) => {
-    history.push(url);
+  const handleChange = (e: any) => {
+    window.open(e.target.value);
   };
   return (
     <Box backgroundColor="lightCyan" padding="20px">
       <Box background="grey.50" padding="30px 60px">
         <Text as="label">{selectCountryLabel}</Text>
-        <Select background="white">
+        <Select background="white" onChange={handleChange}>
           <option>{countryLabel}</option>
           {countryList?.map((country: CountryList, idx) => (
             <>
                 {countryLabel !== country.label && (
-                    <option onClick={() => handleClick(country.value)}>{country.label}</option>
+                    <option value={country.url}>{country.label}</option>
                 )}
             </>
           ))}
