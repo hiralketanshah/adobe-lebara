@@ -70,9 +70,6 @@ class FragmentInfoServletTest {
         MockSlingHttpServletRequest request = context.request();
         MockSlingHttpServletResponse response = context.response();
         request.setParameterMap(map);
-        Mockito.when(inheritanceValueMap.getInherited("offerRootPath", String.class)).thenReturn("/content/lebara");
-        //Map<String, String> predicatesMap = new HashMap<>();
-        PredicateGroup predicateGroup = PredicateGroup.create(getPredicatesMap(result1));
         PrivateAccessor.setField(fragmentInfoServlet, "queryBuilder", queryBuilder);
         lenient().when(queryBuilder.createQuery(any(PredicateGroup.class), any(Session.class))).thenReturn(query);
         lenient().when(query.getResult()).thenReturn(searchResult);
@@ -81,7 +78,6 @@ class FragmentInfoServletTest {
         results.add(pageResult2);
         when(searchResult.getHits()).thenReturn(results);
 
-        when(searchResult.getTotalMatches()).thenReturn(3L);
         fragmentInfoServlet.doGet(request,response);
     }
 
