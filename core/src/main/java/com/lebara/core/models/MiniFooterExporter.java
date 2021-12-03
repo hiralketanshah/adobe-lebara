@@ -11,6 +11,7 @@ import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.injectorspecific.ChildResource;
 import org.apache.sling.models.annotations.injectorspecific.ScriptVariable;
 import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
+import java.util.*;
 
 import java.util.List;
 
@@ -45,7 +46,7 @@ public class MiniFooterExporter implements ComponentExporter {
     }
 
     public List<Link> getLinks() {
-        return ollections.unmodifiableList(links);
+        return Collections.unmodifiableList(links);
     }
 
     @Override
