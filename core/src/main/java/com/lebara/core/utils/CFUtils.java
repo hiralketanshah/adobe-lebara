@@ -74,9 +74,9 @@ public class CFUtils {
         List<OfferFragmentBean> resultList = new ArrayList<>();
         if (StringUtils.isNotBlank(cfPath)) {
             Resource cfResource = resourceResolver.getResource(cfPath);
-            OfferFragmentBean offerFragmentBean=populateOffers(cfResource, i18n);
-            if(offerFragmentBean !=null) {
-            resultList.add(offerFragmentBean);
+            OfferFragmentBean offerFragmentBean = populateOffers(cfResource, i18n);
+            if (offerFragmentBean != null) {
+                resultList.add(offerFragmentBean);
             }
         }
         return resultList;
@@ -152,16 +152,30 @@ public class CFUtils {
         return internationalRateBeanList;
     }
 
-    public static OfferFragmentBean populateOffers( Resource cfResource, I18n i18n) {
+    public static OfferFragmentBean populateOffers(Resource cfResource, I18n i18n) {
         OfferFragmentBean offerFragmentBean = null;
         if (null != cfResource) {
             ContentFragment offerFragment = cfResource.adaptTo(ContentFragment.class);
             if (null != offerFragment) {
                 offerFragmentBean = new OfferFragmentBean();
+                String activePromotion = CFUtils.getElementValue(offerFragment, "activatePromotion");
+                if (StringUtils.equalsIgnoreCase(activePromotion, "true")) {
+                    offerFragmentBean.setPromotionID(CFUtils.getElementValue(offerFragment, "promotionId"));
+                    offerFragmentBean.setPromotionMessage(CFUtils.getElementValue(offerFragment, "promotionalMessage"));
+                    String promotionFragPath = CFUtils.getElementValue(offerFragment, "promotionFragment");
+                    Resource promotionaFragres = cfResource.getResourceResolver().getResource(promotionFragPath);
+                    if (promotionaFragres != null) {
+                        ContentFragment promotionFragment = promotionaFragres.adaptTo(ContentFragment.class);
+                        if (promotionFragment != null) {
+                            offerFragmentBean.setPromotionPrice(CFUtils.getElementValue(promotionFragment, "promotionalPrice"));
+                            offerFragmentBean.setPromotionData(CFUtils.getElementValue(promotionFragment, "promotionData"));
+                        }
+                    }
+                }
                 offerFragmentBean.setCost(CFUtils.getElementValue(offerFragment, "cost"));
                 offerFragmentBean.setPlanName(CFUtils.getElementValue(offerFragment, "name"));
                 offerFragmentBean.setValidity(CFUtils.getElementValue(offerFragment, "validity") + " " + (i18n == null ? "Days" : i18n.get("Days")));
-                offerFragmentBean.setProductInformationFile(CFUtils.getElementValue(offerFragment,"productInformationFile"));
+                offerFragmentBean.setProductInformationFile(CFUtils.getElementValue(offerFragment, "productInformationFile"));
                 offerFragmentBean.setId(CFUtils.getElementValue(offerFragment, "offerid"));
                 offerFragmentBean.setOfferType(CFUtils.getElementValue(offerFragment, "offerType"));
                 if (offerFragment.getElement("additionalOffers") != null) {
@@ -183,6 +197,8 @@ public class CFUtils {
                     }
                     offerFragmentBean.setAllowanceList(allowanceList);
                 }
+
+                //setting plan information related fields
             }
         }
         return offerFragmentBean;
@@ -202,14 +218,14 @@ public class CFUtils {
                 case "mins":
                     formattedValue = value + " " + (i18n == null ? "Minutes" : i18n.get("Minutes"));
                     break;
-                default :
+                default:
                     formattedValue = StringUtils.EMPTY;
             }
         }
         return formattedValue;
     }
 
-    public static PlanInfo populatePlans( Resource cfPlanResource) {
+    public static PlanInfo populatePlans(Resource cfPlanResource) {
         PlanInfo planInfo = null;
         if (null != cfPlanResource) {
             ContentFragment cfPlanFragment = cfPlanResource.adaptTo(ContentFragment.class);
@@ -218,21 +234,21 @@ public class CFUtils {
                 planInfo.setTitle(cfPlanFragment.getElement("title").getContent());
                 planInfo.setCountryTitle(cfPlanFragment.getElement("countryTitle").getContent());
                 planInfo.setListPlanItem(CFUtils.getElementArrayValue(cfPlanFragment, "listPlanItem"));
-                planInfo.setCountryList(CFUtils.convertStringArrayToList(CFUtils.getElementArrayValue( cfPlanFragment, "countryList"), CountryInfo.class));
+                planInfo.setCountryList(CFUtils.convertStringArrayToList(CFUtils.getElementArrayValue(cfPlanFragment, "countryList"), CountryInfo.class));
             }
         }
         return planInfo;
     }
 
-   public static  List<OfferFragmentBean>  getCfList( Resource cfResource,  ResourceResolver resourceResolver, I18n i18n) {
-       List<OfferFragmentBean> bundlesList =  new ArrayList<OfferFragmentBean>();
-       if (null != cfResource) {
-           for (Resource offer : cfResource.getChildren()) {
-               String cfPath = AemUtils.getStringProperty(offer, "cfPath");
-               bundlesList.addAll(CFUtils.getCfDetails(cfPath, resourceResolver, i18n));
-           }
-       }
-    return bundlesList;
-   }
+    public static List<OfferFragmentBean> getCfList(Resource cfResource, ResourceResolver resourceResolver, I18n i18n) {
+        List<OfferFragmentBean> bundlesList = new ArrayList<OfferFragmentBean>();
+        if (null != cfResource) {
+            for (Resource offer : cfResource.getChildren()) {
+                String cfPath = AemUtils.getStringProperty(offer, "cfPath");
+                bundlesList.addAll(CFUtils.getCfDetails(cfPath, resourceResolver, i18n));
+            }
+        }
+        return bundlesList;
+    }
 
 }
