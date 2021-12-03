@@ -1,5 +1,5 @@
 import { MapTo } from "@adobe/aem-react-editable-components";
-import CallPrices from "packages/lebara-client/src/components/CallPrices/CallPrices";
+import CallPrices from "@lebara/ui/src/components/CallPrices/CallPrices";
 
 const CallPricesConfig = {
   emptyLabel: "Where To Call",
