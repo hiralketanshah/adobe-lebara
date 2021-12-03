@@ -50,7 +50,7 @@ public class OfferFragmentBean {
 
     public String getCost() {
         if (NumberUtils.isCreatable(cost)) {
-            return new DecimalFormat("##.##").format(Float.parseFloat(cost) / 100);
+            return new DecimalFormat("##,##").format(Float.parseFloat(cost) / 100);
         }
         return StringUtils.EMPTY;
     }
