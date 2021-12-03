@@ -525,7 +525,11 @@
 		<property name="delinkLabel"/>
 		<property name="attachNewSim"/>
 		<property name="linkedSimDesc"/>
-		
+
+		<!-- While You Are Here -->
+		<property name="ctaLiveChatLabel"/>
+		<property name="separatorOrText"/>
+
 		<!-- Lebara fields ends -->
 		<property name="cq:language" updateDestinationLanguage="true"/>
 		<node pathContains="/cq:annotations">
