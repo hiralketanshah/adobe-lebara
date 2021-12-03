@@ -22,7 +22,7 @@ import {globalConfigs} from  '../../GlobalConfigs.js';
 import { ExpandableSimPlanCardProps } from "../ExpandableSimPlanCard/types";
 import { allowanceListProps } from "../ExpandablePlanCard/types";
 import ChangePlanDialog from "../ChangePlanDialog/ChangePlanDialog";
-import getCfOfferDataUrl from "../../utils/aem-utils";
+import aemUtils from "../../utils/aem-utils";
 import { Icon } from "../Icon/Icon";
 import { FiChevronRight, HiOutlineExclamation } from "react-icons/all";
 import useMissingDetails from "../../hooks/useMissingDetails";
@@ -54,7 +54,7 @@ const DataExpandablePlanCardCheckout: React.FC<ExpandablePlanCardCheckoutProps> 
   }) => {
     const [data, setData] = useState<Partial<ExpandableSimPlanCardProps>>({});
     async function fetchData() {
-      const response = await fetch(getCfOfferDataUrl(id));
+      const response = await fetch(aemUtils.getCfOfferDataUrl(id));
       const json = await response.json();
       setData(json[0]);
     }
@@ -128,7 +128,8 @@ const DataExpandablePlanCardCheckout: React.FC<ExpandablePlanCardCheckoutProps> 
               </Heading>
               {!isFreeSim && (
                 <Text pt="11px" color="grey.300" fontSize="12px" word>
-                  {IsJsonString(description) ? JSON.parse(description) : description}
+                  <span dangerouslySetInnerHTML={{ __html: IsJsonString(description) ? JSON.parse(description) : description }} />
+                  {}
                 </Text>
               )}
             </Flex>

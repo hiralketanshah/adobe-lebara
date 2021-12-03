@@ -26,6 +26,13 @@ public class CallSupportExporter extends EmailSupportExporter {
     @ValueMapValue
     private String separatorText;
 
+    @ValueMapValue
+    private String callbackMessageText;
+
+    public String getCallbackMessageText() {
+        return callbackMessageText;
+    }
+
     public String getSeparatorText() {
         return separatorText;
     }

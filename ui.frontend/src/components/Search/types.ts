@@ -1,13 +1,29 @@
 interface LinksProps {
-  linkText?: string;
-  linkPath?: string;
+  label?: string;
+  link?: string;
 }
 export interface SearchProps {
   closeLinkText?: string;
   searchPlaceholder?: string;
-  menuTitle1?: string;
+  mostSearchLabel?: string;
+  links?: LinksProps[];
+  onCloseClick?: () => void;
+  searchRootPagePath?: any;
+  emptySearchResultMsg?: string;
+
+  // not in use need to confirm
   menuTitle2?: string;
   recentSearches?: string[];
-  mostSearchesFromUsers?: LinksProps[];
-  onCloseClick?: () => void;
+  isHeaderSearchInput?: boolean;
+  isHeaderSearchResult?: boolean;
+}
+
+export interface SearchResultProps {
+    title?: string;
+    path?: string;
+}
+
+export interface HeaderSearchInputProps extends SearchProps {
+  onSearchHandler: ()=>void;
+  handleChange: (e: any)=>void;
 }

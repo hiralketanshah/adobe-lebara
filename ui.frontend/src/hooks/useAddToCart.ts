@@ -16,7 +16,8 @@ function useAddToCart() {
     price: number,
     type: string,
     recurring?: boolean,
-    topUpCap?: number
+    topUpCap?: number,
+    skipGoogleAnalytics?: boolean
   ) =>
     addToCartApi({
       variables: {
