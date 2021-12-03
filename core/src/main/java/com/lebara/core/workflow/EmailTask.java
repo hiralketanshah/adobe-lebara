@@ -17,6 +17,7 @@ import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Reference;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import com.day.cq.commons.jcr.JcrConstants;
 
 import com.adobe.granite.workflow.WorkflowException;
 import com.adobe.granite.workflow.WorkflowSession;
@@ -103,7 +104,7 @@ public class EmailTask implements WorkflowProcess {
             //asset rejected, email to be sent to the original creator of the asset.
             emailRecepientUserOrGroupName = workItem.getWorkflow().getInitiator();
             if (StringUtils.isNotBlank(emailRecepientUserOrGroupName) && emailRecepientUserOrGroupName.equals("workflow-service")) {
-                emailRecepientUserOrGroupName = AemUtils.getStringProperty(resourceResolver.getResource(payloadPath), "jcr:createdBy");
+                emailRecepientUserOrGroupName = AemUtils.getStringProperty(resourceResolver.getResource(payloadPath), JcrConstants.JCR_CREATED_BY);
             }
         } else if (userType.equals("non-initiator")) {
             emailRecepientUserOrGroupName = getPublisherGroupNameFromPayloadPath(payloadPath);

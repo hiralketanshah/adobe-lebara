@@ -1,10 +1,10 @@
 package com.lebara.core.servlet;
 
-
 import com.day.cq.commons.inherit.HierarchyNodeInheritanceValueMap;
 import com.day.cq.commons.inherit.InheritanceValueMap;
 import com.day.cq.i18n.I18n;
 import com.day.cq.search.PredicateGroup;
+import com.day.cq.dam.api.DamConstants;
 import com.day.cq.search.Query;
 import com.day.cq.search.QueryBuilder;
 import com.day.cq.search.result.Hit;
@@ -116,7 +116,8 @@ public class FragmentInfoServlet extends SlingSafeMethodsServlet {
     private Map<String, String> getPredicatesMap(List<String> offerIdList) {
         Map<String, String> predicate = new HashMap<>();
         predicate.put("path", offerRootPath);
-        predicate.put("type", "dam:Asset");
+        predicate.put("type",  DamConstants.NT_DAM_ASSET);
+
         predicate.put("property", "jcr:content/data/master/offerid");
         offerIdList.forEach(id-> predicate.put("property.{0}_value".replace("{0}", String.valueOf(offerIdList.indexOf(id))), id));
         return predicate;

@@ -5,6 +5,8 @@ import com.day.cq.search.Query;
 import com.day.cq.search.QueryBuilder;
 import com.day.cq.search.result.Hit;
 import com.day.cq.search.result.SearchResult;
+import com.day.cq.wcm.api.NameConstants;
+import com.day.cq.commons.jcr.JcrConstants;
 import com.google.gson.Gson;
 import com.lebara.core.dto.SearchInfo;
 import org.apache.commons.lang3.StringUtils;
@@ -79,7 +81,7 @@ public class GlobalSearchServlet extends SlingSafeMethodsServlet {
     protected Map<String, String> getGlobalSearchPredicates(String param, String searchType, String searchRoot) {
         Map<String, String> predicate = new HashMap<>();
         predicate.put("path", searchRoot);
-        predicate.put("type", "cq:Page");
+        predicate.put("type", NameConstants.NT_PAGE);
         if (null != searchType && searchType.equalsIgnoreCase("fulltext")) {
             predicate.put("fulltext", param);
         } else if (null != searchType && searchType.equalsIgnoreCase("tag")){
@@ -102,7 +104,7 @@ public class GlobalSearchServlet extends SlingSafeMethodsServlet {
     protected Map<String, String> getGlobalSearchPredicates(String param, String searchRoot) {
         Map<String, String> predicate = new HashMap<>();
         predicate.put("path", searchRoot);
-        predicate.put("type", "cq:Page");
+        predicate.put("type", NameConstants.NT_PAGE);
         addTitleSearchPredicate(param, predicate);
         return predicate;
     }

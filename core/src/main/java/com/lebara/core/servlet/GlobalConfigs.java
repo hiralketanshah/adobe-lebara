@@ -3,6 +3,9 @@ package com.lebara.core.servlet;
 import com.day.cq.commons.inherit.HierarchyNodeInheritanceValueMap;
 import com.day.cq.commons.inherit.InheritanceValueMap;
 import com.day.cq.wcm.api.Page;
+import com.day.cq.wcm.api.NameConstants;
+import com.day.cq.commons.jcr.JcrConstants;
+
 import com.day.cq.wcm.api.PageManager;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.net.MediaType;
@@ -29,7 +32,7 @@ import java.util.Optional;
         property = {
                 Constants.SERVICE_DESCRIPTION + "=Servlet to retrive global configurations",
                 "sling.servlet.methods=" + HttpConstants.METHOD_GET,
-                "sling.servlet.resourceTypes=" + "cq:Page",
+                "sling.servlet.resourceTypes=" + NameConstants.NT_PAGE,
                 "sling.servlet.selectors=" + "globalConfigs",
                 "sling.servlet.extensions=" + "js"
         })
@@ -49,7 +52,7 @@ public class GlobalConfigs extends SlingSafeMethodsServlet {
     }
 
     protected Object getGlobalData(SlingHttpServletRequest request) {
-        Resource res = request.getResource().getChild("jcr:content");
+        Resource res = request.getResource().getChild(JcrConstants.JCR_CONTENT);
         InheritanceValueMap inheritedProp = new HierarchyNodeInheritanceValueMap(res);
         PageManager pageManager = request.getResourceResolver().adaptTo(PageManager.class);
         Page page = null;
