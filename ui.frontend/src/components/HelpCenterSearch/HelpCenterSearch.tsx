@@ -53,18 +53,13 @@ const HelpCenterSearch: React.FC<HelpCenterSearchProps> = ({
     }
   }
 
-  const onSearchHandler = (e: any) => {
-    // console.log('onsearchHandler' , {e});
-    
-    const { value } = e.target;
-    console.log('onsearchHandler' , {value});
+  const onSearchHandler = (value: any) => {
     setQuery(value);
     
-    if(!value) {
+    if(!value || value === "") {
       setSearchResults([]);
+      return aemUtils.debounce(() => fetchData());
     }
-
-    return aemUtils.debounce(() => fetchData());
   };
 
   return (
@@ -121,7 +116,7 @@ const HelpCenterSearch: React.FC<HelpCenterSearchProps> = ({
                 getOptionLabel={(t) => t.label}
                 options={searchResults}
                 onChange={handleChange}
-                onKeyDown={onSearchHandler}
+                onInputChange={onSearchHandler}
                 
               />
           </Box>
