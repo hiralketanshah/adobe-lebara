@@ -11,6 +11,8 @@ export interface BuyPlanLayoutProps {
   paymentMethodLabel?: string;
 }
 
+export interface SingleFormContainerTypes extends BuyPlanLayoutProps{}
+
 export interface SimPortInProps {
 	pretitle?: string,
 	doitLaterButtonLabel?: string,
