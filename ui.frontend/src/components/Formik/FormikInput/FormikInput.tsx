@@ -31,6 +31,7 @@ const FormikInput: React.FC<FormikInputProps> = ({
   isRequired,
   inputProps,
   validate,
+  removeValidation,
   loginButtonLabel,
   exitingUserErrorMsg,
   secondSubscriptionDisplayText,
@@ -80,6 +81,9 @@ const FormikInput: React.FC<FormikInputProps> = ({
             boxShadow: "none",
             borderColor: isExistingUser ? "warning" : "lebaraRed",
           }}
+          _disabled={{
+            backgroundColor: "#FCFCFC",
+          }}
           isInvalid={touchedWithError}
           placeholder={placeholder}
           errorBorderColor="unsuccessful"
@@ -106,13 +110,17 @@ const FormikInput: React.FC<FormikInputProps> = ({
             }
             w="47px"
           >
-            <Box>
-              {error ? (
-                <BsXCircleFill size={17} />
-              ) : (
-                <MdCheckCircle size={17} />
-              )}
-            </Box>
+            {!removeValidation ? (
+              <Box>
+                {error ? (
+                  <BsXCircleFill size={17} />
+                ) : (
+                  <MdCheckCircle size={17} />
+                )}
+              </Box>
+            ) : (
+              <></>
+            )}
             {children}
           </InputRightElement>
         )}
@@ -159,7 +167,7 @@ const FormikInput: React.FC<FormikInputProps> = ({
           </Flex>
         </FormErrorMessage>
       )}
-            {!ignoreValidations && hasError && isPrepaid && isExistingUser && (
+      {!ignoreValidations && hasError && isPrepaid && isExistingUser && (
         <FormErrorMessage color="warning" alignItems="flex-start">
           <Flex>
             <Box w="20px">

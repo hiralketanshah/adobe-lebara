@@ -1,5 +1,6 @@
 {
   "Days" : "Days",
+  "Month" : "Month",
   "Minutes" : "Minutes",
   "lebara.viewcart.label":"View Cart",
   "lebara.addon.addedtocart.label":"Addon {0} added to cart",
