@@ -1,5 +1,6 @@
 package com.lebara.core.utils;
 
+import java.text.DecimalFormat;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -158,9 +159,33 @@ public class CFUtils {
             ContentFragment offerFragment = cfResource.adaptTo(ContentFragment.class);
             if (null != offerFragment) {
                 offerFragmentBean = new OfferFragmentBean();
+                String activePromotion = CFUtils.getElementValue(offerFragment, "activatePromotion");
+                if (StringUtils.equalsIgnoreCase(activePromotion, "true")) {
+                    offerFragmentBean.setPromotionID(CFUtils.getElementValue(offerFragment, "promotionId"));
+                    offerFragmentBean.setPromotionMessage(CFUtils.getElementValue(offerFragment, "promotionalMessage"));
+                    String promotionFragPath = CFUtils.getElementValue(offerFragment, "promotionFragment");
+                    Resource promotionalFragres = cfResource.getResourceResolver().getResource(promotionFragPath);
+                    if (promotionalFragres != null) {
+                        ContentFragment promotionFragment = promotionalFragres.adaptTo(ContentFragment.class);
+                        if (promotionFragment != null) {
+                            offerFragmentBean.setPromotionPrice(CFUtils.getElementValue(promotionFragment, "promotionalPrice"));
+                            offerFragmentBean.setPromotionData(CFUtils.getElementValue(promotionFragment, "promotionData"));
+                        }
+                    }
+                }
                 offerFragmentBean.setCost(CFUtils.getElementValue(offerFragment, "cost"));
                 offerFragmentBean.setPlanName(CFUtils.getElementValue(offerFragment, "name"));
-                offerFragmentBean.setValidity(CFUtils.getElementValue(offerFragment, "validity") + " " + (i18n == null ? "Days" : i18n.get("Days")));
+                String validity = CFUtils.getElementValue(offerFragment, "validity");
+                int validityInNumber = 0;
+                if (StringUtils.isNotBlank(validity)) {
+                    validityInNumber = Integer.parseInt(validity);
+                }
+                String validityLabel = "Days";
+                if (validityInNumber >= 30) {
+                    validityLabel = "Month";
+                    validityInNumber = validityInNumber / 30;
+                }
+                offerFragmentBean.setValidity( validityInNumber + " " + (i18n == null ? validityLabel : i18n.get(validityLabel)));
                 offerFragmentBean.setProductInformationFile(CFUtils.getElementValue(offerFragment,"productInformationFile"));
                 offerFragmentBean.setId(CFUtils.getElementValue(offerFragment, "offerid"));
                 offerFragmentBean.setOfferType(CFUtils.getElementValue(offerFragment, "offerType"));
@@ -194,7 +219,7 @@ public class CFUtils {
             int value = Integer.parseInt(val);
             switch (unit.toLowerCase()) {
                 case "mb":
-                    formattedValue = (value >= 1024) ? (value / 1024) + " GB" : value + " MB";
+                    formattedValue = (value >= 1024) ? new DecimalFormat("#.##").format(value/1024.0) + "GB" : value + "MB";
                     break;
                 case "sms":
                     formattedValue = value + " SMS";

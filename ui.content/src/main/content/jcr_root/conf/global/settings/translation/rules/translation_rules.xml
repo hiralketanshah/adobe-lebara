@@ -84,7 +84,6 @@
 		<property name="addMoreLabel" />
 		<property name="leftOfText" />
 		<property name="validToLabel" />
-
 		<!-- prepaid plans props -->
 		<property name="manageLabel" />
 		<!-- sticky circle props -->
@@ -536,7 +535,34 @@
 		<property name="mailNotReceivedLabel" />
 		<property name="followLinkLabel" />
 		<property name="confirmationEmailLabel" />
-		
+
+		<!-- Lebara Profile -->
+		<property name="ctaCancelLabel"/>
+		<property name="sectionUsernameHeading"/>
+		<property name="sectionAddressHeading"/>
+		<property name="alternativeContactLabel"/>
+		<property name="alternativeNumberPlaceholder"/>
+		<property name="sectionEmailPasswordHeading"/>
+		<property name="passwordLabel"/>
+		<property name="passwordPlaceholder"/>
+		<property name="editLinkLabel"/>
+		<property name="sectionConsentHeading"/>
+		<property name="consentDescription"/>
+		<property name="changeEmailHeading"/>
+		<property name="newEmailLabel"/>
+		<property name="newEmailPlacehodler"/>
+		<property name="newConfirmEmailLabel"/>
+		<property name="newConfirmEmailPlacehodler"/>
+		<property name="modalCancelCTALabel"/>
+		<property name="confirmEmailNotMatchMsg"/>
+		<property name="altContactNumberRequiredMsg"/>
+		<property name="alternativeNumberInValidMsg"/>
+		<property name="beforeEmailText"/>
+		<property name="afterEmailText"/>
+
+		<!-- Logged in user menu -->
+		<property name="logoutLabel"/>
+
 		<!-- Lebara fields ends -->
 		<property name="cq:language" updateDestinationLanguage="true"/>
 		<node pathContains="/cq:annotations">

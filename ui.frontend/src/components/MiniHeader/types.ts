@@ -14,6 +14,7 @@ export interface children {
   children?: children[];
 }
 export interface MiniHeaderProps extends HeaderProps {
+  logoLinkURL?: string;
   logoPath?: string;
   accountLink?: string;
   items?: children[];
