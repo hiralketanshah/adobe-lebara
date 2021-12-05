@@ -19,6 +19,8 @@ import org.apache.sling.models.annotations.injectorspecific.Self;
 import org.apache.sling.models.annotations.injectorspecific.SlingObject;
 import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
 import org.apache.sling.models.annotations.via.ResourceSuperType;
+import com.lebara.core.models.beans.Link;
+import org.apache.sling.models.annotations.injectorspecific.ChildResource;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -54,6 +56,13 @@ public class HeaderNavigationImpl implements HeaderNavigation {
 
     @ValueMapValue
     private String viewAllButtonLink;
+
+    @ChildResource
+    private List<Link> links;
+
+    @ValueMapValue
+    private String logoutLabel;
+
 
     @Self
     @Via(type = ResourceSuperType.class)
@@ -122,5 +131,14 @@ public class HeaderNavigationImpl implements HeaderNavigation {
         return delegate.getItems().stream()
                 .map(navItem -> new CustomNavigationItem(resource, navItem, request))
                 .collect(Collectors.toList());
+    }
+
+    @JsonProperty("loggedInMenuItems")
+    public List<Link> getLinks() {
+        return links;
+    }
+
+    public String getLogoutLabel() {
+        return logoutLabel;
     }
 }

@@ -28,6 +28,9 @@ public class Link {
     @ValueMapValue
     protected String link;
 
+    @ValueMapValue
+    protected String icon;
+
     @JsonIgnore
     @ValueMapValue
     @Named("link")
@@ -68,5 +71,13 @@ public class Link {
     public void setLink(String link) {
         this.link = link;
     }
+
+    public String getIcon() {
+        return icon;
+    }
+
+    public void setIcon(String icon) {
+        this.icon = icon;
+    }    
 
 }

@@ -550,6 +550,9 @@
 		<property name="beforeEmailText"/>
 		<property name="afterEmailText"/>
 
+		<!-- Logged in user menu -->
+		<property name="logoutLabel"/>
+
 		<!-- Lebara fields ends -->
 		<property name="cq:language" updateDestinationLanguage="true"/>
 		<node pathContains="/cq:annotations">
