@@ -14,17 +14,25 @@ const WeAreHere: React.FC<WeAreHereProps> = ({
 }) => {
   const history = useHistory();
   return (<>
-    {separatorOrText && <Text
-      mt="52px"
-      fontWeight="500"
-      fontSize="24px"
-      lineHeight="28px"
-      color="primary.500"
-      display={{ base: "none", lg: "block" }}
-    >
-      {" "}
-      or{" "}
-    </Text>}
+
+    {separatorOrText && <Flex
+        alignItems={{ base: "flex-start", lg: "center" }}
+        justifyContent={{ base: "flex-start", lg: "center" }}
+        direction="column"
+        bg="lightenPrimary.50"
+      >
+        <Text
+          mt="52px"
+          mb="52px"
+          fontWeight="500"
+          fontSize="24px"
+          lineHeight="28px"
+          color="primary.500"
+          display={{ base: "none", lg: "block" }}
+        >
+          {" "}{separatorOrText || "OR"}{" "}
+      </Text>
+    </Flex>}
 
     <Box
         pb={{ base: "0px", lg: "98px" }}

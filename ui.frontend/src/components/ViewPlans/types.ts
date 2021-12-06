@@ -25,4 +25,5 @@ export interface PlanCardProps {
     ctaDownloadLabel?: string;
     exploreAllLabel?: string;
     exploreAllLink?: string;
+    minutesLabel?: string;
 }

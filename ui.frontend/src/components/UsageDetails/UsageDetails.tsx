@@ -1,37 +1,38 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Flex,
   Box,
   Text,
-  Avatar,
-  Wrap,
   Tabs,
   TabList,
   TabPanels,
   Tab,
   TabPanel,
-  AvatarBadge,
+  Circle,
+  Icon,
 } from "@chakra-ui/react";
 // import { useHistory } from "react-router-dom";
 import {
   AiOutlineMessage,
-  BiGlobe,
-  IoCallOutline,
-  IoPaperPlaneOutline,
+  BiPhoneIncoming,
+  BiPhoneOutgoing,
+  FiGlobe,
 } from "react-icons/all";
 import { useHistory } from "react-router-dom";
 import { globalConfigs as GC, globalConstants as C} from "../../GlobalConfigs";
-import { UsageDetailsProps, PhoneProps, SMSProps } from "./types";
+import { UsageDetailsProps, PhoneProps, SMSProps, DataProps } from "./types";
 import Button from "../Button/Button";
 import Select from "../Select/Select";
-
+import useGetDashboardData from "../../hooks/useGetDashboardData";
+import moment from "moment";
+import 'moment-duration-format';
+import getDynamicValues from "../../utils/get-aem-dynamic-values";
+const totalShownByClick = 5;
 const UsageDetails: React.FC<UsageDetailsProps> = ({
-  activityLasts,
+  activityLasts = 3,
   filterUsageOptions,
-  phoneCallDetails,
-  smsDetails,
   tabsName,
-  theme,
+  theme = "grey.50",
   defaultSeeMoreClicked = false,
   isWhiteTabs = false,
   title,
@@ -39,53 +40,65 @@ const UsageDetails: React.FC<UsageDetailsProps> = ({
   ctaSeeMoreCallsLabel,
   ctaLoadMoreLabel,
   ctaSeeMoreURL,
-  ctaTopupURL,
-  ctaTopupText,
+  durationLabel,
 }) => {
-  const INTERNATIONAL_CALL_TYPE = "international";
-  const ROAMING_CALL_TYPE = "roaming";
-  const FLIGHT_CALL_TYPE = "flight";
-  const MESSAGE_CALL_TYPE = "message";
+  const [getDashboardData] = useGetDashboardData();
+  const activityHistoryCalls = getDashboardData?.activityHistory?.calls;
+  const activityHistorySms = getDashboardData?.activityHistory?.sms;
+  const activityHistoryData = getDashboardData?.activityHistory?.data;
+
+  const phoneCallDetails = activityHistoryCalls?.map((t: any) => ({
+    amount: t.cost,
+    currency: GC.currencySymbol,
+    duration: moment.duration(t.seconds, "seconds").format("hh:mm:ss", {
+      forceLength: true,
+      trim: false,
+    }),
+    callDate: moment(t.date).fromNow(),
+    phoneNumber: t.target,
+    callingType: t.type,
+  }));
+  const smsDetails = activityHistorySms?.map((t: any) => ({
+    smsCharges: `${GC.currencySymbol}${t.cost}`,
+    smsTime: moment(t.date).fromNow(),
+    phoneNumber: t.target,
+  }));
+
+  const dataDetails = activityHistoryData?.map((t: any) => ({
+    cost: `${GC.currencySymbol}${t.cost}`,
+    date: moment(t.date).fromNow(),
+    usedData: t.usedData,
+  }));
+  const [lastActivity] = useState(activityLasts);
   const history = useHistory();
+  const [numberOfCallsShown, setNumberOfCallsShown] =
+    React.useState(totalShownByClick);
+  const [numberOfSmsShown, setNumberOfSmsShown] =
+    React.useState(totalShownByClick);
+  const [numberOfDataShown, setNumberOfDataShown] =
+    React.useState(totalShownByClick);
 
-  const [isSeeMoreClicked, setSeeMoreClicked] = React.useState<boolean>(
-    defaultSeeMoreClicked
-  );
-
-  const renderCallingType = (param: string) => {
-    switch (param) {
-      case INTERNATIONAL_CALL_TYPE:
-        return <IoCallOutline size={15} color="white" />;
-      case ROAMING_CALL_TYPE:
-        return <BiGlobe size={15} color="white" />;
-      case FLIGHT_CALL_TYPE:
-        return <IoPaperPlaneOutline size={15} color="white" />;
-      case MESSAGE_CALL_TYPE:
-        return <AiOutlineMessage size={15} color="white" />;
-      default:
-        return <Text>There is no calling type</Text>;
-    }
+  const onLoadMorePhoneCallsClick = () => {
+    setNumberOfCallsShown(numberOfCallsShown + totalShownByClick);
   };
 
-  const getAvatarColor = (param: string) => {
-    switch (param) {
-      case INTERNATIONAL_CALL_TYPE:
-        return "cyan";
-      case ROAMING_CALL_TYPE:
-        return "darkTurquoise";
-      case FLIGHT_CALL_TYPE:
-        return "lebaraGreen";
-      case MESSAGE_CALL_TYPE:
-        return "cyan";
-      default:
-        return "white";
-    }
+  const onLoadMorePhoneSMSClick = () => {
+    setNumberOfSmsShown(numberOfSmsShown + totalShownByClick);
+  };
+  const onLoadMorePhoneDataClick = () => {
+    setNumberOfDataShown(numberOfDataShown + totalShownByClick);
   };
 
-  const onSeeMoreClick = () => {
-    setSeeMoreClicked(true);
-    history.push(ctaSeeMoreURL || GC.journeyPages[C.USAGE_DETAILS]  || '/');
-  };
+  const isCallsDisabled =
+    numberOfCallsShown >= (phoneCallDetails ? phoneCallDetails.length : 0);
+  const isSmsDisabled =
+    numberOfSmsShown >= (smsDetails ? smsDetails.length : 0);
+  const isDataDisabled =
+    numberOfDataShown >= (dataDetails ? dataDetails.length : 0);
+
+    const onSeeMoreClick = () => {
+      history.push(ctaSeeMoreURL || GC.journeyPages[C.USAGE_DETAILS]  || '/');
+    };
 
   return (
     <Flex
@@ -94,9 +107,7 @@ const UsageDetails: React.FC<UsageDetailsProps> = ({
       justifyContent="center"
       bg={theme}
     >
-      <Box maxW={{ base: "100%", lg: "846px" }}
-        position="relative"
-        >
+      <Box maxW={{ base: "100%", lg: "846px" }} minW={{ lg: "800px" }}>
         <Box display="flex" textAlign="center" flexDirection="column" pb="20px">
           <Text
             fontWeight="bold"
@@ -108,7 +119,7 @@ const UsageDetails: React.FC<UsageDetailsProps> = ({
             {title}
           </Text>
           <Text fontWeight="400" fontSize="14px" color="primary.800" mt="8px">
-            {description}
+          {getDynamicValues(description, [lastActivity])}
           </Text>
         </Box>
         <Box>
@@ -148,7 +159,7 @@ const UsageDetails: React.FC<UsageDetailsProps> = ({
 
             <TabPanels>
               <TabPanel px={{ base: "initial", md: "4px" }}>
-                {isSeeMoreClicked ? (
+                {filterUsageOptions ? (
                   <Box mb="10px" borderRadius="lg">
                     <Select
                       options={filterUsageOptions}
@@ -163,130 +174,249 @@ const UsageDetails: React.FC<UsageDetailsProps> = ({
                 ) : (
                   <></>
                 )}
-                <Wrap>
-                  {phoneCallDetails?.map((phoneCallDetail: PhoneProps, idx) => (
-                    <Flex
-                      borderRadius="lg"
-                      p="15px"
-                      w="100%"
-                      bg="white"
-                      alignItems="center"
-                      my="7px"
-                      key={`pcd-key-${idx}`}
-                    >
-                      <Avatar
-                        name={phoneCallDetail.avatarName}
-                        src={phoneCallDetail.avatarSrc}
-                        color="white"
+                <Flex gridGap="8px" flexDirection="column">
+                  {phoneCallDetails
+                    ?.slice(0, numberOfCallsShown)
+                    ?.map((phoneCallDetail: PhoneProps) => (
+                      <Flex
+                        borderRadius="lg"
+                        px={4}
+                        p="12px"
+                        w="100%"
+                        bg="white"
+                        alignItems="center"
                       >
-                        <AvatarBadge
-                          boxSize="1.25em"
-                          bg={getAvatarColor(phoneCallDetail.callingType)}
-                          borderColor={getAvatarColor(
-                            phoneCallDetail.callingType
+                        <Circle p="12px" bg="rgba(0, 166, 235, 0.2)">
+                          {phoneCallDetail.callingType === "OUT" && (
+                            <Icon
+                              as={BiPhoneOutgoing}
+                              w="24px"
+                              h="24px"
+                              color="lightenPrimary.500"
+                            />
                           )}
-                        >
-                          {renderCallingType(phoneCallDetail.callingType)}
-                        </AvatarBadge>
-                      </Avatar>
-                      <Box ml="10px" textAlign="left">
-                        <Text
-                          fontWeight="700"
-                          fontSize="14px"
-                          lineHeight="20px"
-                          color="primary.800"
-                        >
-                          +{phoneCallDetail.phoneCode}
-                          {phoneCallDetail.phoneNumber}
-                        </Text>
-                        <Text
-                          fontWeight="400"
-                          fontSize="14px"
-                          lineHeight="20px"
-                          color="grey.200"
-                        >
-                          {phoneCallDetail.duration}
-                        </Text>
-                      </Box>
-                      <Box marginLeft="auto" textAlign="right">
-                        <Text
-                          fontWeight="700"
-                          fontSize="14px"
-                          lineHeight="20px"
-                          color="primary.800"
-                        >
-                          {phoneCallDetail.currency}
-                          {phoneCallDetail.amount}
-                        </Text>
-                        <Text
-                          fontWeight="400"
-                          fontSize="14px"
-                          lineHeight="20px"
-                          color="grey.200"
-                        >
-                          {phoneCallDetail.callDate} at{" "}
-                          {phoneCallDetail.callTime}
-                        </Text>
-                      </Box>
-                    </Flex>
-                  ))}
-                </Wrap>
+                          {phoneCallDetail.callingType !== "OUT" && (
+                            <Icon
+                              as={BiPhoneIncoming}
+                              w="24px"
+                              h="24px"
+                              color="lightenPrimary.500"
+                            />
+                          )}
+                        </Circle>
+                        <Box ml="10px" textAlign="left">
+                          <Text
+                            fontWeight="700"
+                            fontSize="14px"
+                            lineHeight="20px"
+                            color="primary.800"
+                          >
+                            +{phoneCallDetail.phoneNumber}
+                          </Text>
+                          <Text
+                            fontWeight="400"
+                            fontSize="14px"
+                            lineHeight="20px"
+                            color="grey.200"
+                          >
+                            {durationLabel} {phoneCallDetail.duration}
+                          </Text>
+                        </Box>
+                        <Box marginLeft="auto" textAlign="right">
+                          <Text
+                            fontWeight="700"
+                            fontSize="14px"
+                            lineHeight="20px"
+                            color="primary.800"
+                          >
+                            {phoneCallDetail.currency}
+                            {phoneCallDetail.amount}
+                          </Text>
+                          <Text
+                            fontWeight="400"
+                            fontSize="14px"
+                            lineHeight="20px"
+                            color="grey.200"
+                          >
+                            {phoneCallDetail.callDate}
+                          </Text>
+                        </Box>
+                      </Flex>
+                    ))}
+                  {defaultSeeMoreClicked ? (
+                    <Box width="100%">
+                      <Button
+                        mt={15}
+                        textTransform="uppercase"
+                        isFullWidth
+                        bg="white"
+                        variant="outline"
+                        fontWeight="bold"
+                        maxW={{ base: "100%", md: "335px" }}
+                        color="primary.500"
+                        isDisabled={isCallsDisabled}
+                        onClick={onLoadMorePhoneCallsClick}
+                      >
+                        {ctaLoadMoreLabel}
+                      </Button>
+                    </Box>
+                  ) : (
+                    <></>
+                  )}
+                </Flex>
               </TabPanel>
               <TabPanel px={{ base: "initial", md: "4px" }}>
-                <Wrap>
-                  {smsDetails?.map((smsDetail: SMSProps, idx) => (
-                    <Flex
-                      borderRadius="lg"
-                      px={4}
-                      p="12px"
-                      w="100%"
-                      bg="white"
-                      alignItems="center"
-                      key={`sd-key-${idx}`}
-                    >
-                      <Avatar
-                        bg="grey.50"
-                        icon={
-                          <AiOutlineMessage fontSize="1.5rem" color="#1978CD" />
-                        }
-                      />
-                      <Box textAlign="left" ml="10px">
-                        <Text
-                          fontWeight="700"
-                          fontSize="14px"
-                          lineHeight="20px"
-                          color="primary.800"
-                        >
-                          {smsDetail.phoneNumber}
-                        </Text>
-                      </Box>
-                      <Box textAlign="right" ml="auto">
-                        <Text
-                          fontWeight="700"
-                          fontSize="14px"
-                          lineHeight="20px"
-                          color="primary.800"
-                        >
-                          {smsDetail.smsCharges}
-                        </Text>
-                        <Text
-                          fontWeight="400"
-                          fontSize="14px"
-                          lineHeight="20px"
-                          color="grey.200"
-                        >
-                          {smsDetail.smsTime}
-                        </Text>
-                      </Box>
-                    </Flex>
-                  ))}
-                </Wrap>
+                <Flex gridGap="8px" flexDirection="column">
+                  {smsDetails
+                    ?.slice(0, numberOfSmsShown)
+                    ?.map((smsDetail: SMSProps) => (
+                      <Flex
+                        borderRadius="lg"
+                        px={4}
+                        p="12px"
+                        w="100%"
+                        bg="white"
+                        alignItems="center"
+                      >
+                        <Circle p="12px" bg="rgba(0, 166, 235, 0.2)">
+                          <Icon
+                            as={AiOutlineMessage}
+                            w="24px"
+                            h="24px"
+                            color="lightenPrimary.500"
+                          />
+                        </Circle>
+
+                        <Box textAlign="left" ml="10px">
+                          <Text
+                            fontWeight="700"
+                            fontSize="14px"
+                            lineHeight="20px"
+                            color="primary.800"
+                          >
+                            {smsDetail.phoneNumber}
+                          </Text>
+                        </Box>
+                        <Box textAlign="right" ml="auto">
+                          <Text
+                            fontWeight="700"
+                            fontSize="14px"
+                            lineHeight="20px"
+                            color="primary.800"
+                          >
+                            {smsDetail.smsCharges}
+                          </Text>
+                          <Text
+                            fontWeight="400"
+                            fontSize="14px"
+                            lineHeight="20px"
+                            color="grey.200"
+                          >
+                            {smsDetail.smsTime}
+                          </Text>
+                        </Box>
+                      </Flex>
+                    ))}
+                  {defaultSeeMoreClicked ? (
+                    <Box width="100%">
+                      <Button
+                        mt={15}
+                        textTransform="uppercase"
+                        isFullWidth
+                        bg="white"
+                        variant="outline"
+                        fontWeight="bold"
+                        maxW={{ base: "100%", md: "335px" }}
+                        color="primary.500"
+                        isDisabled={isSmsDisabled}
+                        onClick={onLoadMorePhoneSMSClick}
+                      >
+                        {ctaLoadMoreLabel}
+                      </Button>
+                    </Box>
+                  ) : (
+                    <></>
+                  )}
+                </Flex>
+              </TabPanel>
+              <TabPanel px={{ base: "initial", md: "4px" }}>
+                <Flex gridGap="8px" flexDirection="column">
+                  {dataDetails
+                    ?.slice(0, numberOfDataShown)
+                    ?.map((dataDetail: DataProps) => (
+                      <Flex
+                        borderRadius="lg"
+                        px={4}
+                        p="12px"
+                        w="100%"
+                        bg="white"
+                        alignItems="center"
+                      >
+                        <Circle p="12px" bg="rgba(0, 166, 235, 0.2)">
+                          <Icon
+                            as={FiGlobe}
+                            w="24px"
+                            h="24px"
+                            color="lightenPrimary.500"
+                          />
+                        </Circle>
+                        <Box textAlign="left" ml="10px">
+                          <Text
+                            fontWeight="700"
+                            fontSize="14px"
+                            lineHeight="20px"
+                            color="primary.800"
+                          >
+                            {dataDetail.usedData}
+                          </Text>
+                        </Box>
+                        <Box textAlign="right" ml="auto">
+                          <Text
+                            fontWeight="700"
+                            fontSize="14px"
+                            lineHeight="20px"
+                            color="primary.800"
+                          >
+                            {dataDetail.cost}
+                          </Text>
+                          <Text
+                            fontWeight="400"
+                            fontSize="14px"
+                            lineHeight="20px"
+                            color="grey.200"
+                          >
+                            {dataDetail.date}
+                          </Text>
+                        </Box>
+                      </Flex>
+                    ))}
+                  {defaultSeeMoreClicked ? (
+                    <Box width="100%">
+                      <Button
+                        mt={15}
+                        textTransform="uppercase"
+                        isFullWidth
+                        bg="white"
+                        variant="outline"
+                        fontWeight="bold"
+                        maxW={{ base: "100%", md: "335px" }}
+                        color="primary.500"
+                        isDisabled={isDataDisabled}
+                        onClick={onLoadMorePhoneDataClick}
+                      >
+                        {ctaLoadMoreLabel}
+                      </Button>
+                    </Box>
+                  ) : (
+                    <></>
+                  )}
+                </Flex>
               </TabPanel>
             </TabPanels>
           </Tabs>
         </Box>
         <Flex justifyContent="center" px={{ base: "initial", md: "165px" }}>
-          {!isSeeMoreClicked ? (
+          {!defaultSeeMoreClicked ? (
             <Button
               mt={15}
               textTransform="uppercase"
@@ -296,18 +426,11 @@ const UsageDetails: React.FC<UsageDetailsProps> = ({
               color="white"
               maxW={{ base: "100%", md: "335px" }}
               onClick={onSeeMoreClick}
-            >{ctaSeeMoreCallsLabel}</Button>
+            >
+              {ctaSeeMoreCallsLabel}
+            </Button>
           ) : (
-            <Button
-              mt={15}
-              textTransform="uppercase"
-              isFullWidth
-              bg="white"
-              variant="outline"
-              fontWeight="bold"
-              maxW={{ base: "100%", md: "335px" }}
-              color="primary.500"
-            >{ctaLoadMoreLabel}</Button>
+            <></>
           )}
         </Flex>
       </Box>

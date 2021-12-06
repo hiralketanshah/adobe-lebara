@@ -35,7 +35,6 @@ import { ReduxState } from "../../redux/types";
 import NewSIMOfferCard from "../NewSImOfferCard/NewSImOfferCard";
 import Search from "../Search/Search";
 import UserMenu from "../UserMenu/UserMenu";
-import userMenuProps from "../../utils/userMenuProps";
 import { headerSearch } from "../../redux/actions/headerSearchActions";
 import { selectIsAuthenticated } from "../../redux/selectors/userSelectors";
 import { globalConfigs as GC, globalConstants as GCST } from "../../GlobalConfigs";
@@ -45,6 +44,9 @@ import { setCartItemsLoading, loadInitialCart } from "../../redux/actions/cartAc
 import mapMagentoProductToCartItem from "../../utils/mapMagentoProductToCartItem";
 import { saveTopUps } from "../../redux/actions/topUpActions";
 import GET_TOP_UPS from "../../graphql/GET_TOP_UPS";
+import GET_SESSION_STATUS from "../../graphql/GET_SESSION_STATUS";
+import { saveUserInfo } from "../../redux/actions/userActions";
+import { setLoading } from "../../redux/actions/loadingActions";
 
 const SingleMenu = ({ menuItem, newText }: { menuItem: children, newText: any }) => {
   const history = useHistory();
@@ -105,89 +107,102 @@ const SingleMenu = ({ menuItem, newText }: { menuItem: children, newText: any })
           </Button>
         </Box>
       </MenuButton>
-      <MenuList 
-        marginLeft="-135px" 
-        marginTop="5px" 
-        zIndex={2}
-        onMouseEnter={menuListMouseEnterEvent}
-        onMouseLeave={menuListMouseLeaveEvent}>
-        <Box
-          display="flex"
-          justifyContent="space-between"
-          width="calc(100vw - 0px)"
-          padding="45px"
-        >
+      {menuItem && menuItem?.children?.length !== 0 && 
+        (<MenuList 
+          marginLeft="-135px" 
+          marginTop="5px" 
+          zIndex={2}
+          onMouseEnter={menuListMouseEnterEvent}
+          onMouseLeave={menuListMouseLeaveEvent}>
           <Box
-            width="75%"
             display="flex"
             justifyContent="space-between"
+            width="calc(100vw - 0px)"
+            padding="45px"
           >
-            {menuItem.children?.map((subMenuOption: children, cgIdx: any) => (
-              <Box>
-                <MenuGroup
-                  defaultValue="asc"
-                  fontSize={14}
-                  color="primary.500"
-                  fontWeight="bold"
-                  textTransform="uppercase"
-                  marginLeft="12px"
-                  title={subMenuOption.title}
-                >
-                  <Box>
-                    {subMenuOption.children?.map(
-                      (menuProps: children, cIdx: any) => (
-                        <MenuItem
-                          isDisabled={menuProps.active}
-                          onClick={() =>
-                            menuProps.url
-                              ? history.push(menuProps.url)
-                              : null
-                          }
+            <Box
+              width="75%"
+              display="flex"
+              justifyContent={menuItem?.children?.length === 3 ? "start" : "space-between"}
+            >
+              {menuItem?.children?.map((subMenuOption: children, cgIdx: any) => {
+                if(cgIdx<=GCST.DEFUALT_GROUP_MENU_UPTO-1) {
+                  return (<Box>
+                      <MenuGroup
+                        defaultValue="asc"
+                        fontSize={14}
+                        color="primary.500"
+                        fontWeight="bold"
+                        textTransform="uppercase"
+                        marginLeft="12px"
+                        title={subMenuOption?.title}
+                        className="menu-group-heading"
+                        cursor={subMenuOption?.url ? 'pointer' : 'default'}
+                        onClick={() =>
+                          subMenuOption?.url
+                             && history.push(subMenuOption?.url)
+                        }
+                        marginRight={menuItem?.children?.length === 2 || 3 ? "8rem" : 0}
                         >
-                          <Text
-                            fontSize="14px"
-                            fontWeight="500"
-                            lineHeight="14.06px"
-                            color="black"
-                          >
-                            {menuProps.title}
-                          </Text>
-                          {menuProps.showNewText ? (
-                            <Tag
-                              size="md"
-                              borderRadius="full"
-                              variant="solid"
-                              colorScheme="blue"
-                              marginLeft="20px"
-                            >
-                              <TagLabel
-                                fontSize="14px"
-                                fontWeight="700"
+                        <Box>
+                          {subMenuOption.children?.map(
+                            (menuProps: children, cIdx: any) => (
+                              <MenuItem
+                                isDisabled={menuProps.active}
+                                onClick={() =>
+                                  menuProps.url
+                                    ? history.push(menuProps.url)
+                                    : null
+                                }
                               >
-                                {newText || 'New'}
-                              </TagLabel>
-                            </Tag>
-                          ) : (
-                            <></>
+                                <Text
+                                  fontSize="14px"
+                                  fontWeight="500"
+                                  lineHeight="14.06px"
+                                  color="black"
+                                >
+                                  {menuProps.title}
+                                </Text>
+                                {menuProps.showNewText ? (
+                                  <Tag
+                                    size="md"
+                                    borderRadius="full"
+                                    variant="solid"
+                                    colorScheme="blue"
+                                    marginLeft="20px"
+                                  >
+                                    <TagLabel
+                                      fontSize="14px"
+                                      fontWeight="700"
+                                    >
+                                      {newText || 'New'}
+                                    </TagLabel>
+                                  </Tag>
+                                ) : (
+                                  <></>
+                                )}
+                              </MenuItem>
+                            )
                           )}
-                        </MenuItem>
-                      )
-                    )}
-                  </Box>
-                </MenuGroup>
-              </Box>
-            ))}
+                        </Box>
+                      </MenuGroup>
+                    </Box>);
+                } else {
+                  return null;
+                }
+              })}
+            </Box>
+            <Box width="12%">
+              <></>
+            </Box>
+            <Box position="relative">
+              {(menuItem.imagePath || menuItem.simImage || menuItem.imageText) && (
+                <NewSIMOfferCard imagePath={menuItem.imagePath} simImage= {menuItem.simImage} imageText={menuItem.imageText}/>
+              )}
+            </Box>
           </Box>
-          <Box width="12%">
-            <></>
-          </Box>
-          <Box position="relative">
-            {(menuItem.imagePath || menuItem.simImage || menuItem.imageText) && (
-              <NewSIMOfferCard imagePath={menuItem.imagePath} simImage= {menuItem.simImage} imageText={menuItem.imageText}/>
-            )}
-          </Box>
-        </Box>
-      </MenuList>
+        </MenuList>)
+      }
     </Menu>
   );
 };
@@ -198,8 +213,10 @@ const Header: React.FC<HeaderProps> = ({
   newText,
   accountLink,
   topupCtaText,
+  logoLinkURL,
   topupCtaLink,
-  searchPlaceholder,
+  logoutLabel,
+  loggedInMenuItems,
 }) => {
   const ref = React.useRef<any>(undefined);
   const cartItems = useSelector((state: ReduxState) => state.cart.items);
@@ -247,6 +264,17 @@ const Header: React.FC<HeaderProps> = ({
     if( cartItems.length === 0){
       getCart();
     }
+    client
+      .query({
+        query: GET_SESSION_STATUS,
+      })
+      .then((res) => {
+        dispatch(saveUserInfo(res.data.getSessionStatus));
+      })
+      .catch(() => {})
+      .finally(() => {
+        dispatch(setLoading(false));
+      });
   }, []);// eslint-disable-line react-hooks/exhaustive-deps
   const { data: topUps } = useQuery(GET_TOP_UPS, {
     variables: {
@@ -308,7 +336,7 @@ const Header: React.FC<HeaderProps> = ({
           color="white"
         >
           <ChakraLink>
-            <Link to="/">
+            <Link to={logoLinkURL || "/"}>
               <img src={logoPath} alt="Logo" />
             </Link>
           </ChakraLink>
@@ -431,12 +459,12 @@ const Header: React.FC<HeaderProps> = ({
             mt="-20px"
             borderBottomRadius="12px"
           >
-            <UserMenu {...userMenuProps} />
+            {loggedInMenuItems && <UserMenu menus={loggedInMenuItems} logoutLabel={logoutLabel} />}
           </Flex>
         </Box>
       )}
       <Flex display={{ md: "none", sm: "flex" }} mx={{ md: "27px" }}>
-        <MiniHeader logoPath={logoPath} items={items} />
+        <MiniHeader loggedInMenuItems={loggedInMenuItems} logoutLabel={logoutLabel} logoPath={logoPath} logoLinkURL={logoLinkURL} items={items} />
       </Flex>
     </Flex>
   );

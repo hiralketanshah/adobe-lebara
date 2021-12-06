@@ -1,9 +1,19 @@
 import { SelectOptionTypeString } from '../Select/types';
+
+
+interface OptionsFieldProps {
+  label?: string;
+  value?: string;
+}
 export interface BaseFormFields {
     emailLabel?: string;
     emailPlaceholder?: string;
+    passwordLabel?: string;
+    passwordPlaceholder?: string;
     mobileLabel?: string;
     mobilePlaceHolder?: string;
+    alternativeNumberPlaceholder?: string;
+    alternativeContactLabel?: string;
     fNameLabel?: string;
     fnamePlaceholder?: string;
     lNameLabel?: string;
@@ -47,10 +57,13 @@ export interface BaseFormFields {
     addressKeyInText?:string;
     emailAddressAlreadyExistMsg?: string;
 
-    
     linkCTALabel?: string;
     buttonCTALabel?: string;
     ctaContinueLabel?: string;
     ctaSkipLabel?: string;
     orTextLabel?: string;
+
+    subscribeOptions?: OptionsFieldProps[];
+    ctaButtonLabel?: string;
+    ctaCancelLabel?: string;
   }

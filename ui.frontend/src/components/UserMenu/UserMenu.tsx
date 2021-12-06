@@ -8,10 +8,10 @@ import LOGOUT_USER from "../../graphql/LOGOUT_USER";
 import { useDispatch } from "react-redux";
 import { logout } from "../../redux/actions/userActions";
 
-const UserMenu: React.FC<UserMenuProps> = ({ menus }) => {
+const UserMenu: React.FC<UserMenuProps> = ({ menus, logoutLabel }) => {
   const history = useHistory();
   const dispatch = useDispatch();
-  const handleMenuClick = (url: string) => history.push(url);
+  const handleMenuClick = (url: any) => history.push(url);
   const [logoutUser] = useLazyQuery(LOGOUT_USER);
 
   const handleLogout = async () => {
@@ -21,27 +21,28 @@ const UserMenu: React.FC<UserMenuProps> = ({ menus }) => {
   };
   return (
     <>
-      {menus.map((menu: MenuItem) => (
+      {menus?.map((menu: MenuItem, idx) => (
         <Flex
-          key={menu.key}
+          key={'menu-item-key'+idx}
           borderBottomColor="lightCyan"
           borderBottomWidth="1px"
           mt="23px"
           alignItems="center"
           pb="20px"
           cursor="pointer"
-          onClick={() => handleMenuClick(menu.url)}
+          onClick={() => handleMenuClick(menu?.link)}
         >
-          <Img src={menu.icon} width="22px" height="16px" ml="20px" />
-          <Text
+          {menu?.icon && <Img src={menu.icon} width="22px" height="16px" ml="20px" />}
+          {menu?.label && <Text
             ml="25px"
             fontSize="14px"
             lineHeight="22px"
             textTransform="capitalize"
             color="primary.500"
+          onClick={() => handleMenuClick(menu?.link)}
           >
-            {menu.name}
-          </Text>
+            {menu?.label}
+          </Text>}
           <Box ml="auto">
             <IoIosArrowForward fill="#3D4998" />
           </Box>
@@ -56,7 +57,7 @@ const UserMenu: React.FC<UserMenuProps> = ({ menus }) => {
           fontWeight="bold"
           color="grey.200"
         >
-          LOG OUT
+          {logoutLabel || 'LOG OUT'}
         </Text>
       </Flex>
     </>

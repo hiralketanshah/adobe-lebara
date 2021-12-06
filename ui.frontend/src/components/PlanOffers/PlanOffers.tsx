@@ -28,6 +28,7 @@ const PlanOffers: React.FC<PlanOffersProps> = ({
   ctaCloseLabel,
   ctaDownloadLabel,
   ctaBottomLink,
+  minutesLabel,
 }) => {
   const history = useHistory();
   const linkStyles = {
@@ -112,6 +113,7 @@ const PlanOffers: React.FC<PlanOffersProps> = ({
                   ctaDownloadLabel={ctaDownloadLabel}
                   addedtoCartLabel={addedtoCartLabel}
                   viewCartLabel={viewCartLabel}
+                  minutesLabel={minutesLabel}
                   previewIcon={<TickInCircle fill="#13357A" tickFill="#EA4984" />} />
               </Box>
             ))}
