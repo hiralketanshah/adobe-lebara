@@ -26,10 +26,10 @@ export interface ExpandableSimPlanCardProps {
   buttonLabel?: string;
   productInformationFile?: string;
   showAddToCart?: boolean;
-  isPromotionalPlan?: boolean;
-  promotionalPlanHeading?: string;
-  promotionalData?: string;
-  promotionalAmount?: string;
+  promotionID?: string;
+  promotionMessage?: string;
+  promotionPrice?: string;
+  promotionData?: string;
   ctaSelectLabel?: string;
   ctaAddToCartLabel?: string;
   ctaCloseLabel?: string;
