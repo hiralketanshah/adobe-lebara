@@ -71,16 +71,13 @@ public class CFUtils {
                 : cf.getElement(elementName).getValue().getValue(String[].class);
     }
 
-    public static List<OfferFragmentBean> getCfDetails(String cfPath, ResourceResolver resourceResolver, I18n i18n) {
-        List<OfferFragmentBean> resultList = new ArrayList<>();
+    public static OfferFragmentBean getCfDetails(String cfPath, ResourceResolver resourceResolver, I18n i18n) {
+        OfferFragmentBean offerFragmentBean = new OfferFragmentBean();
         if (StringUtils.isNotBlank(cfPath)) {
             Resource cfResource = resourceResolver.getResource(cfPath);
-            OfferFragmentBean offerFragmentBean=populateOffers(cfResource, i18n);
-            if(offerFragmentBean !=null) {
-            resultList.add(offerFragmentBean);
-            }
+            offerFragmentBean = populateOffers(cfResource, i18n);
         }
-        return resultList;
+        return offerFragmentBean;
     }
 
     public static List<SelectBean> populateCountryInfo(Resource cfResource) {
@@ -250,14 +247,17 @@ public class CFUtils {
     }
 
    public static  List<OfferFragmentBean>  getCfList( Resource cfResource,  ResourceResolver resourceResolver, I18n i18n) {
-       List<OfferFragmentBean> bundlesList =  new ArrayList<OfferFragmentBean>();
+       List<OfferFragmentBean> bundlesList = new ArrayList<OfferFragmentBean>();
        if (null != cfResource) {
            for (Resource offer : cfResource.getChildren()) {
                String cfPath = AemUtils.getStringProperty(offer, "cfPath");
-               bundlesList.addAll(CFUtils.getCfDetails(cfPath, resourceResolver, i18n));
+               String allowanceType = AemUtils.getStringProperty(offer, "allowanceType");
+               OfferFragmentBean offerFragmentBean = CFUtils.getCfDetails(cfPath, resourceResolver, i18n);
+               offerFragmentBean.setAllowanceType(allowanceType);
+               bundlesList.add(offerFragmentBean);
            }
        }
-    return bundlesList;
+       return bundlesList;
    }
 
 }
