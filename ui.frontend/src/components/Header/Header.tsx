@@ -35,7 +35,6 @@ import { ReduxState } from "../../redux/types";
 import NewSIMOfferCard from "../NewSImOfferCard/NewSImOfferCard";
 import Search from "../Search/Search";
 import UserMenu from "../UserMenu/UserMenu";
-import userMenuProps from "../../utils/userMenuProps";
 import { headerSearch } from "../../redux/actions/headerSearchActions";
 import { selectIsAuthenticated } from "../../redux/selectors/userSelectors";
 import { globalConfigs as GC, globalConstants as GCST } from "../../GlobalConfigs";

@@ -28,8 +28,6 @@ import { ReduxState } from "../../redux/types";
 import { globalConfigs as GC, globalConstants as GCST } from "../../GlobalConfigs";
 import Button from "../Button/Button";
 import UserMenu from "../UserMenu/UserMenu";
-import userMenuProps from "../../utils/userMenuProps";
-// import LebaraLogo from "../../assets/images/lebara-logo.svg";
 import Search from "../Search/Search";
 import { selectIsAuthenticated } from "../../redux/selectors/userSelectors";
 
