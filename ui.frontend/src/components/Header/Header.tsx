@@ -31,19 +31,19 @@ import {
 import IconButton from "../IconButton/IconButton";
 import Button from "../Button/Button";
 import MiniHeader from "../MiniHeader/MiniHeader";
-import { ReduxState } from "../../redux/types";
+import { ReduxState } from "@lebara/ui/src/redux/types";
 import NewSIMOfferCard from "../NewSImOfferCard/NewSImOfferCard";
 import Search from "../Search/Search";
 import UserMenu from "../UserMenu/UserMenu";
 import userMenuProps from "../../utils/userMenuProps";
-import { headerSearch } from "../../redux/actions/headerSearchActions";
-import { selectIsAuthenticated } from "../../redux/selectors/userSelectors";
+import { headerSearch } from "@lebara/ui/src/redux/actions/headerSearchActions";
+import { selectIsAuthenticated } from "@lebara/ui/src/redux/selectors/userSelectors";
 import { globalConfigs as GC, globalConstants as GCST } from "../../GlobalConfigs";
 import { useApolloClient, useQuery } from "@apollo/client";
 import GET_CART from "../../graphql/GET_CART";
-import { setCartItemsLoading, loadInitialCart } from "../../redux/actions/cartActions";
+import { setCartItemsLoading, loadInitialCart } from "@lebara/ui/src/redux/actions/cartActions";
 import mapMagentoProductToCartItem from "../../utils/mapMagentoProductToCartItem";
-import { saveTopUps } from "../../redux/actions/topUpActions";
+import { saveTopUps } from "@lebara/ui/src/redux/actions/topUpActions";
 import GET_TOP_UPS from "../../graphql/GET_TOP_UPS";
 
 const SingleMenu = ({ menuItem, newText }: { menuItem: children, newText: any }) => {
