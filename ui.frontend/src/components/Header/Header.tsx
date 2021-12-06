@@ -105,89 +105,102 @@ const SingleMenu = ({ menuItem, newText }: { menuItem: children, newText: any })
           </Button>
         </Box>
       </MenuButton>
-      <MenuList 
-        marginLeft="-135px" 
-        marginTop="5px" 
-        zIndex={2}
-        onMouseEnter={menuListMouseEnterEvent}
-        onMouseLeave={menuListMouseLeaveEvent}>
-        <Box
-          display="flex"
-          justifyContent="space-between"
-          width="calc(100vw - 0px)"
-          padding="45px"
-        >
+      {menuItem && menuItem?.children?.length !== 0 && 
+        (<MenuList 
+          marginLeft="-135px" 
+          marginTop="5px" 
+          zIndex={2}
+          onMouseEnter={menuListMouseEnterEvent}
+          onMouseLeave={menuListMouseLeaveEvent}>
           <Box
-            width="75%"
             display="flex"
             justifyContent="space-between"
+            width="calc(100vw - 0px)"
+            padding="45px"
           >
-            {menuItem.children?.map((subMenuOption: children, cgIdx: any) => (
-              <Box>
-                <MenuGroup
-                  defaultValue="asc"
-                  fontSize={14}
-                  color="primary.500"
-                  fontWeight="bold"
-                  textTransform="uppercase"
-                  marginLeft="12px"
-                  title={subMenuOption.title}
-                >
-                  <Box>
-                    {subMenuOption.children?.map(
-                      (menuProps: children, cIdx: any) => (
-                        <MenuItem
-                          isDisabled={menuProps.active}
-                          onClick={() =>
-                            menuProps.url
-                              ? history.push(menuProps.url)
-                              : null
-                          }
+            <Box
+              width="75%"
+              display="flex"
+              justifyContent={menuItem?.children?.length === 3 ? "start" : "space-between"}
+            >
+              {menuItem?.children?.map((subMenuOption: children, cgIdx: any) => {
+                if(cgIdx<=GCST.DEFUALT_GROUP_MENU_UPTO-1) {
+                  return (<Box>
+                      <MenuGroup
+                        defaultValue="asc"
+                        fontSize={14}
+                        color="primary.500"
+                        fontWeight="bold"
+                        textTransform="uppercase"
+                        marginLeft="12px"
+                        title={subMenuOption?.title}
+                        className="menu-group-heading"
+                        cursor={subMenuOption?.url ? 'pointer' : 'default'}
+                        onClick={() =>
+                          subMenuOption?.url
+                             && history.push(subMenuOption?.url)
+                        }
+                        marginRight={menuItem?.children?.length === 2 || 3 ? "8rem" : 0}
                         >
-                          <Text
-                            fontSize="14px"
-                            fontWeight="500"
-                            lineHeight="14.06px"
-                            color="black"
-                          >
-                            {menuProps.title}
-                          </Text>
-                          {menuProps.showNewText ? (
-                            <Tag
-                              size="md"
-                              borderRadius="full"
-                              variant="solid"
-                              colorScheme="blue"
-                              marginLeft="20px"
-                            >
-                              <TagLabel
-                                fontSize="14px"
-                                fontWeight="700"
+                        <Box>
+                          {subMenuOption.children?.map(
+                            (menuProps: children, cIdx: any) => (
+                              <MenuItem
+                                isDisabled={menuProps.active}
+                                onClick={() =>
+                                  menuProps.url
+                                    ? history.push(menuProps.url)
+                                    : null
+                                }
                               >
-                                {newText || 'New'}
-                              </TagLabel>
-                            </Tag>
-                          ) : (
-                            <></>
+                                <Text
+                                  fontSize="14px"
+                                  fontWeight="500"
+                                  lineHeight="14.06px"
+                                  color="black"
+                                >
+                                  {menuProps.title}
+                                </Text>
+                                {menuProps.showNewText ? (
+                                  <Tag
+                                    size="md"
+                                    borderRadius="full"
+                                    variant="solid"
+                                    colorScheme="blue"
+                                    marginLeft="20px"
+                                  >
+                                    <TagLabel
+                                      fontSize="14px"
+                                      fontWeight="700"
+                                    >
+                                      {newText || 'New'}
+                                    </TagLabel>
+                                  </Tag>
+                                ) : (
+                                  <></>
+                                )}
+                              </MenuItem>
+                            )
                           )}
-                        </MenuItem>
-                      )
-                    )}
-                  </Box>
-                </MenuGroup>
-              </Box>
-            ))}
+                        </Box>
+                      </MenuGroup>
+                    </Box>);
+                } else {
+                  return null;
+                }
+              })}
+            </Box>
+            <Box width="12%">
+              <></>
+            </Box>
+            <Box position="relative">
+              {(menuItem.imagePath || menuItem.simImage || menuItem.imageText) && (
+                <NewSIMOfferCard imagePath={menuItem.imagePath} simImage= {menuItem.simImage} imageText={menuItem.imageText}/>
+              )}
+            </Box>
           </Box>
-          <Box width="12%">
-            <></>
-          </Box>
-          <Box position="relative">
-            {(menuItem.imagePath || menuItem.simImage || menuItem.imageText) && (
-              <NewSIMOfferCard imagePath={menuItem.imagePath} simImage= {menuItem.simImage} imageText={menuItem.imageText}/>
-            )}
-          </Box>
-        </Box>
-      </MenuList>
+        </MenuList>)
+      }
     </Menu>
   );
 };
