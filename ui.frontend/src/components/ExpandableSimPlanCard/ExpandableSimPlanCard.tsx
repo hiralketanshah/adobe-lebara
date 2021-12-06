@@ -37,10 +37,10 @@ const ExpandableSimPlanCard: React.FC<ExpandableSimPlanCardProps> = ({
   viewCartLabel,
   offerType,
   isRelatedPlan,
-  promotionalAmount,
-  isPromotionalPlan,
-  promotionalData,
-  promotionalPlanHeading,
+  promotionID,
+  promotionMessage,
+  promotionPrice,
+  promotionData,
   isRemoveFromCart,
   onClose,
   minutesLabel,
@@ -115,7 +115,7 @@ const ExpandableSimPlanCard: React.FC<ExpandableSimPlanCardProps> = ({
   };
   return (
     <>
-      {isPromotionalPlan && (
+      {promotionMessage && (
         <Box
           bgColor="#FF3182"
           color="white"
@@ -126,15 +126,15 @@ const ExpandableSimPlanCard: React.FC<ExpandableSimPlanCardProps> = ({
           borderTopLeftRadius="md"
         >
           <LebaraText type="caption" fontWeight="500" fontSize="12px">
-            {promotionalPlanHeading}
+            {promotionMessage}
           </LebaraText>
         </Box>
       )}
         <Flex
           flexDirection="column"
           background="white"
-          borderRadius={isRelatedPlan || isPromotionalPlan ? undefined : "lg"}
-          borderBottomRadius={isPromotionalPlan ? "lg" : undefined}
+          borderRadius={isRelatedPlan || promotionPrice ? undefined : "lg"}
+          borderBottomRadius={promotionPrice ? "lg" : undefined}
           boxShadow={
             isRelatedPlan ? undefined : "0px 4px 4px rgba(0, 0, 0, 0.05)"
           }
@@ -142,7 +142,7 @@ const ExpandableSimPlanCard: React.FC<ExpandableSimPlanCardProps> = ({
           pt={{ base: "15px", lg: "34px" }}
           pb={{ base: "15px", lg: "18px" }}
         >
-          <Box mt={isPromotionalPlan ? "13px" : "initial"}>
+          <Box mt={promotionPrice ? "13px" : "initial"}>
             {planName && (
               <Text color="primary.500" fontWeight="bold" textAlign="left">
                 {planName}
@@ -175,13 +175,13 @@ const ExpandableSimPlanCard: React.FC<ExpandableSimPlanCardProps> = ({
             hideButton={isRelatedPlan}
           />
           <Flex justifyContent="space-between"
-            direction={isPromotionalPlan ? "row" : "row"}
-            alignItems={promotionalData ? "flex-end" : "initial"}>
+            direction={promotionPrice ? "row" : "row"}
+            alignItems={promotionData ? "flex-end" : "initial"}>
             <Box
-              display={promotionalData ? "flex" : "initial"}
-              alignItems={promotionalData ? "center" : "initial"}
+              display={promotionData ? "flex" : "initial"}
+              alignItems={promotionData ? "center" : "initial"}
             >
-              {promotionalData && isPromotionalPlan && (
+              {promotionData && (
                 <Text
                   as="h3"
                   fontSize={32}
@@ -191,24 +191,24 @@ const ExpandableSimPlanCard: React.FC<ExpandableSimPlanCardProps> = ({
                   color="secondary.500"
                   fontFamily="Chiswick Grotesque Lebara"
                 >
-                  {promotionalData}
+                  {promotionData}
                 </Text>
               )}
               <Text
                 as="h3"
-                fontSize={isPromotionalPlan ? "16px" : "32px"}
+                fontSize={promotionPrice ? "16px" : "32px"}
                 pr="6px"
                 pl="2px"
-                fontWeight={isPromotionalPlan ? "normal" : "bold"}
+                fontWeight={promotionPrice ? "normal" : "bold"}
                 color="secondary.500"
-                textDecoration={isPromotionalPlan ? "line-through" : "initial"}
+                textDecoration={promotionPrice ? "line-through" : "initial"}
                 fontFamily="Chiswick Grotesque Lebara"
               >
                 {filteredAllowanceList.formatedValue}
               </Text>
             </Box>
             <Flex alignItems="baseline" color="primary.600" direction="column">
-              {isPromotionalPlan && promotionalAmount && (
+              {promotionPrice && (
                 <Text
                   as="h3"
                   fontSize={16}
@@ -222,7 +222,7 @@ const ExpandableSimPlanCard: React.FC<ExpandableSimPlanCardProps> = ({
                 </Text>
               )}
               <Box display="flex" alignItems="center">
-                {isPromotionalPlan && promotionalAmount ? (
+                {promotionPrice ? (
                   <Text
                     as="h3"
                     fontSize={24}
@@ -231,7 +231,7 @@ const ExpandableSimPlanCard: React.FC<ExpandableSimPlanCardProps> = ({
                     color="secondary.500"
                     fontWeight={500}
                   >
-                    {promotionalAmount} {globalConfigs.currencySymbol}
+                    {promotionPrice} {globalConfigs.currencySymbol}
                   </Text>
                 ) : (
                   <Text
