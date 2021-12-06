@@ -35,7 +35,6 @@ import { ReduxState } from "../../redux/types";
 import NewSIMOfferCard from "../NewSImOfferCard/NewSImOfferCard";
 import Search from "../Search/Search";
 import UserMenu from "../UserMenu/UserMenu";
-import userMenuProps from "../../utils/userMenuProps";
 import { headerSearch } from "../../redux/actions/headerSearchActions";
 import { selectIsAuthenticated } from "../../redux/selectors/userSelectors";
 import { globalConfigs as GC, globalConstants as GCST } from "../../GlobalConfigs";
@@ -213,7 +212,8 @@ const Header: React.FC<HeaderProps> = ({
   topupCtaText,
   logoLinkURL,
   topupCtaLink,
-  searchPlaceholder,
+  logoutLabel,
+  loggedInMenuItems,
 }) => {
   const ref = React.useRef<any>(undefined);
   const cartItems = useSelector((state: ReduxState) => state.cart.items);
@@ -445,12 +445,12 @@ const Header: React.FC<HeaderProps> = ({
             mt="-20px"
             borderBottomRadius="12px"
           >
-            <UserMenu {...userMenuProps} />
+            {loggedInMenuItems && <UserMenu menus={loggedInMenuItems} logoutLabel={logoutLabel} />}
           </Flex>
         </Box>
       )}
       <Flex display={{ md: "none", sm: "flex" }} mx={{ md: "27px" }}>
-        <MiniHeader logoPath={logoPath} logoLinkURL={logoLinkURL} items={items} />
+        <MiniHeader loggedInMenuItems={loggedInMenuItems} logoutLabel={logoutLabel} logoPath={logoPath} logoLinkURL={logoLinkURL} items={items} />
       </Flex>
     </Flex>
   );

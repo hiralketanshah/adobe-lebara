@@ -12,6 +12,12 @@ export interface children {
   title?: string;
   children?: children[];
 }
+
+export interface LoggedInMenus {
+  label?: string;
+  link?: string;
+  icon?: string;
+}
 export interface HeaderProps {
   logoLinkURL?: string;
   topupCtaText?: string;
@@ -23,4 +29,6 @@ export interface HeaderProps {
   logoPath?: string;
   items?: children[];
   searchPlaceholder?: string;
+  logoutLabel?: string;
+  loggedInMenuItems?: LoggedInMenus[];
 }
