@@ -158,7 +158,7 @@ const Plans: React.FC<PlansProps> = ({
           isOpen={isDialogOpen}
           onClose={() => setIsDialogOpen(false)}
           planName={data?.planName || ""}
-          price={data?.price || 0}
+          price={parseFloat(data?.cost || "0")}
           duration={(data.validity || "")}
           title={data.planInfo?.title}
           countryTitle={data.planInfo?.countryTitle}
