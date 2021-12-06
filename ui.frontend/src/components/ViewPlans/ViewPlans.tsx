@@ -25,6 +25,7 @@ const ViewPlans: React.FC<PlanCardProps> = ({
   ctaAddToCartLabel,
   ctaCloseLabel,
   ctaDownloadLabel,
+  minutesLabel,
 }) => {
   const history = useHistory();
   const linkStyles = {
@@ -94,6 +95,7 @@ const ViewPlans: React.FC<PlanCardProps> = ({
                   ctaDownloadLabel={ctaDownloadLabel}
                   addedtoCartLabel={addedtoCartLabel}
                   viewCartLabel={viewCartLabel}
+                  minutesLabel={minutesLabel}
                   previewIcon={<TickInCircle fill="#13357A" tickFill="#EA4984" />} />
               </Box>
             ))}

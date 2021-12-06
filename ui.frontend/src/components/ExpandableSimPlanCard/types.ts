@@ -15,6 +15,8 @@ export interface ExpandableSimPlanCardProps {
   allowance?: string;
   onActionClick?: () => void;
   allowanceList?: allowanceListProps[];
+  allowanceType?: string;
+  minutesLabel?: string;
   validity?: string;
   cost?: string;
   showLabel?: string;

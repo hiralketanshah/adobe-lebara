@@ -25,6 +25,7 @@ const ExpandableSimPlanCard: React.FC<ExpandableSimPlanCardProps> = ({
   ctaCloseLabel,
   ctaDownloadLabel,
   allowanceList,
+  allowanceType,
   validity,
   cost,
   showLabel,
@@ -41,7 +42,8 @@ const ExpandableSimPlanCard: React.FC<ExpandableSimPlanCardProps> = ({
   promotionalData,
   promotionalPlanHeading,
   isRemoveFromCart,
-  onClose
+  onClose,
+  minutesLabel,
 }) => {
   const history = useHistory();
   const [addItemToCart] = useAddToCart();
@@ -54,7 +56,16 @@ const ExpandableSimPlanCard: React.FC<ExpandableSimPlanCardProps> = ({
   const handleViewCartClick = () => {
     history.push(userToken ? (globalConfigs.journeyPages[globalConstants.ORDER_DETAILS] || '/') : (globalConfigs.journeyPages[globalConstants.LOGIN] || ''));
   };
-  const filteredAllowanceList: allowanceListProps = (allowanceList && allowanceList.find((list) => list.name && list.name.includes('Data'))) || {};
+
+  let filteredAllowanceList: allowanceListProps = {};
+  if((!allowanceType || allowanceType === '' || allowanceType?.toLowerCase() === 'data')) {
+    filteredAllowanceList = (allowanceList && allowanceList.find((list) => list.name && list.name.toLowerCase().includes('data'))) || {};
+  } else if(allowanceType && (allowanceType?.toLowerCase() === 'minutes')) {
+    filteredAllowanceList = (allowanceList && allowanceList.find((list) => list.name && (!list.name.toLowerCase().includes('data') || !list.name.toLowerCase().includes('national_voice') 
+    || !list.name.toLowerCase().includes('l2l')))) || {};
+    filteredAllowanceList['formatedValue'] = filteredAllowanceList['value']+ ' ' + minutesLabel;
+  }
+
   const handleAddToCart = async () => {
     const description: string | undefined = additionalOffers?.match(/<li>.*?<\/li>/g)?.length ? additionalOffers.replaceAll('\n', '').replaceAll('&nbsp;', '').match(/<li>.*?<\/li>/g)?.map(list => list?.replaceAll(/<li>|<\/li>/g, ''))?.join('+') : additionalOffers;
     setIsButtonDisabled(true);
