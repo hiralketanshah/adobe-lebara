@@ -529,6 +529,16 @@
 		<property name="delinkLabel"/>
 		<property name="attachNewSim"/>
 		<property name="linkedSimDesc"/>
+		<property name="linkSimLabel" />
+		<property name="noSimLabel" />
+		<property name="activeMonthPlanLabel" />
+		<property name="noLabel" />
+		<property name="mobilePlaceholderLabel" />
+		<property name="toResendLabel" />
+		<property name="clickHereLabel" />
+		<property name="mailNotReceivedLabel" />
+		<property name="followLinkLabel" />
+		<property name="confirmationEmailLabel" />
 
 		<!-- Lebara Profile -->
 		<property name="ctaCancelLabel"/>

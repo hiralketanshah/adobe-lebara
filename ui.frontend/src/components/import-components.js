@@ -78,5 +78,6 @@ import "./HelpCenterSearch/AemConfig.js";
 import "./EmailSupport/AemConfig.js";
 import "./PostpaidPersonalDetailsPreview/AemConfig.js";
 import "./HeroBanner/AemConfig.js";
+import "./AttachYourSim/AemConfig.js";
 import "./CallSupport/AemConfig.js";
 import "./CallSupport/WeAreHere/AemConfig.js";

@@ -44,6 +44,9 @@ import { setCartItemsLoading, loadInitialCart } from "../../redux/actions/cartAc
 import mapMagentoProductToCartItem from "../../utils/mapMagentoProductToCartItem";
 import { saveTopUps } from "../../redux/actions/topUpActions";
 import GET_TOP_UPS from "../../graphql/GET_TOP_UPS";
+import GET_SESSION_STATUS from "../../graphql/GET_SESSION_STATUS";
+import { saveUserInfo } from "../../redux/actions/userActions";
+import { setLoading } from "../../redux/actions/loadingActions";
 
 const SingleMenu = ({ menuItem, newText }: { menuItem: children, newText: any }) => {
   const history = useHistory();
@@ -261,6 +264,17 @@ const Header: React.FC<HeaderProps> = ({
     if( cartItems.length === 0){
       getCart();
     }
+    client
+      .query({
+        query: GET_SESSION_STATUS,
+      })
+      .then((res) => {
+        dispatch(saveUserInfo(res.data.getSessionStatus));
+      })
+      .catch(() => {})
+      .finally(() => {
+        dispatch(setLoading(false));
+      });
   }, []);// eslint-disable-line react-hooks/exhaustive-deps
   const { data: topUps } = useQuery(GET_TOP_UPS, {
     variables: {
