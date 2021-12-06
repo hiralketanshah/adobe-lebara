@@ -143,6 +143,7 @@ public class DetailedViewPlanExporter extends ViewPlanExporter implements Compon
         if (null != phases) {
             for (Resource offer : phases.getChildren()) {
                 String cfPath = AemUtils.getStringProperty(offer, "cfPath");
+                String allowanceType = AemUtils.getStringProperty(offer, "allowanceType");
                 Resource cfResource = resourceResolver.getResource(cfPath);
 
                 String cfPlanPath = AemUtils.getStringProperty(offer, "cfPlanPath");
@@ -151,6 +152,7 @@ public class DetailedViewPlanExporter extends ViewPlanExporter implements Compon
                 if (offerFragmentBean == null) {
                     continue;
                 }
+                offerFragmentBean.setAllowanceType(allowanceType);
                 PlanInfo planInfo = CFUtils.populatePlans(cfPlanResource);
                 if (planInfo != null) {
                     offerFragmentBean.setPlanInfo(planInfo);

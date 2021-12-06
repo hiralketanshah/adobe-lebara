@@ -21,6 +21,13 @@ import { globalConfigs as GC, globalConstants as GCST } from "../../GlobalConfig
 import getDynamicValues from "../../utils/get-aem-dynamic-values";
 import GET_SIM_ONLY_OFFERS from "../../graphql/GET_SIM_ONLY_OFFERS";
 import GET_PLAN_CHANGE_REQUEST from "../../graphql/GET_PLAN_CHANGE_REQUEST";
+import moment from "moment";
+import { formatNumber } from "../../utils/formatNumber";
+import aemUtils from "../../utils/aem-utils";
+import { ExpandableSimPlanCardProps } from "../ExpandableSimPlanCard/types";
+import TickInCircle from "../../icons/TickInCircle";
+import { allowanceListProps } from "../ExpandablePlanCard/types";
+import PlanDetailsDialog from "../PlanDetailsDialog/PlanDetailsDialog";
 
 const Plans: React.FC<PlansProps> = ({
   buttonText,
@@ -53,6 +60,7 @@ const Plans: React.FC<PlansProps> = ({
     width: "100%",
     borderRadius: "12px",
   };
+  const [isDialogOpen, setIsDialogOpen] = React.useState(false);
   const [getDashboardData, formattedPlans, msisdn] = useGetDashboardData(planLabels);
   const isPostPaid = !!(getDashboardData && getDashboardData.bills);
   const { data: simOnlyOffers } = useQuery(GET_SIM_ONLY_OFFERS, {
@@ -132,9 +140,35 @@ const Plans: React.FC<PlansProps> = ({
   const handleRequestPlanRemoved = () => {
     getPlanChangeRequest();
   };
+  const [data, setData] = useState<Partial<ExpandableSimPlanCardProps>>({});
+  async function fetchData(offerId : string) {
+    const response = await fetch(aemUtils.getCfOfferDataUrl(offerId));
+    const json = await response.json();
+    setData(json[0]);
+  }
+  const onClickDialogOpen = (offerId: string) => {
+    setIsDialogOpen(true);
+    fetchData(offerId);
+  };
+  const filteredAllowanceList: allowanceListProps = (data.allowanceList && data.allowanceList.find((list) => list.name && list.name.includes('Data'))) || {};
   if (isPostPaid) {
     return (
       <>
+        <PlanDetailsDialog
+          isOpen={isDialogOpen}
+          onClose={() => setIsDialogOpen(false)}
+          planName={data?.planName || ""}
+          price={parseFloat(data?.cost || "0")}
+          duration={(data.validity || "")}
+          title={data.planInfo?.title}
+          countryTitle={data.planInfo?.countryTitle}
+          countries={(data.planInfo?.countryList) || []}
+          dataValue={filteredAllowanceList.formatedValue}
+          previewIcon={<TickInCircle fill="#13357A" tickFill="#EA4984" />}
+          previewItems={data.planInfo?.listPlanItem || []}
+          hideButton
+          isLoading={Object.keys(data).length === 0}
+        />
         <Flex flexDirection="column" alignItems="center">
           <Flex
             w={{ base: "100%", lg: "846px" }}
@@ -193,7 +227,14 @@ const Plans: React.FC<PlansProps> = ({
                             >
                               {plan.name}
                             </Text>
-                            <Image src={Warning} height="11px" width="11px" ml="8px" />
+                            <Image
+                              src={Warning}
+                              height="11px"
+                              width="11px"
+                              ml="8px"
+                              onClick={() => onClickDialogOpen(plan.offerId)}
+                              cursor="pointer"
+                            />
                           </Flex>
                           <Text
                             fontSize="12px"
@@ -201,8 +242,7 @@ const Plans: React.FC<PlansProps> = ({
                             letterSpacing="0.23px"
                             color="grey.300"
                           >
-                            {/* replace when storybook replaces with actual data */}
-                            {renewalLabel} 4,July 2021
+                            {renewalLabel} {moment(plan.expirationDate).format("d, MMM yyyy")}
                           </Text>
                         </Flex>
                         {!hidePrice && (
@@ -214,8 +254,7 @@ const Plans: React.FC<PlansProps> = ({
                             color="primary.800"
                             ml="auto"
                           >
-                            {/* replace when storybook replaces with actual data */}
-                            9,99{GC.currencySymbol}
+                            {formatNumber(plan.cost || plan.price)}{GC.currencySymbol}
                           </Text>
                         )}
                       </Flex>

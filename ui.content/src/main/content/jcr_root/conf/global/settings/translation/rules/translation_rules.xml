@@ -325,6 +325,10 @@
 		<!--Help center Search -->
 		<property name="searchPlaceholder"/>
 
+		<!-- While You Are Here -->
+		<property name="ctaLiveChatLabel"/>
+		<property name="separatorOrText"/>
+
 		<!-- spa -->
 		<!-- tabs -->
 		<!-- teaser -->
@@ -339,10 +343,10 @@
 
 		<!-- trustpilotrating -->
 		<!-- usagedetails -->
-		<property name="body"/>
 		<property name="ctaSeeMoreCallsLabel"/>
 		<property name="ctaLoadMoreLabel"/>
 		<property name="tabsName"/>
+		<property name="durationLabel" />
 
 		<!-- usp -->
 		<property name="body"/>

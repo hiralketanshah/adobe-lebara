@@ -15,6 +15,8 @@ export interface ExpandableSimPlanCardProps {
   allowance?: string;
   onActionClick?: () => void;
   allowanceList?: allowanceListProps[];
+  allowanceType?: string;
+  minutesLabel?: string;
   validity?: string;
   cost?: string;
   showLabel?: string;
@@ -26,10 +28,10 @@ export interface ExpandableSimPlanCardProps {
   buttonLabel?: string;
   productInformationFile?: string;
   showAddToCart?: boolean;
-  isPromotionalPlan?: boolean;
-  promotionalPlanHeading?: string;
-  promotionalData?: string;
-  promotionalAmount?: string;
+  promotionID?: string;
+  promotionMessage?: string;
+  promotionPrice?: string;
+  promotionData?: string;
   ctaSelectLabel?: string;
   ctaAddToCartLabel?: string;
   ctaCloseLabel?: string;

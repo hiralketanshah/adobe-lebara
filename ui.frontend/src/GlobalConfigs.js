@@ -50,5 +50,6 @@ const globalConstants = Object.freeze({
     USER_PROFILE_CHANGE_PASSWORD: 'user-profile-change-password',
     GLOBAL_SEARCH_FILENAME: 'globalsearch.json',
     HELPCENTER_SEARCH_FILENAME: 'helpcentersearch.json',
+    DEFUALT_GROUP_MENU_UPTO: 5,
 });
 module.exports = { globalConfigs, globalConstants }
