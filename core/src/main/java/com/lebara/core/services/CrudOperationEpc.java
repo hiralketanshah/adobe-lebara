@@ -11,7 +11,6 @@ import java.util.Map;
 import javax.jcr.RepositoryException;
 import javax.jcr.Session;
 import javax.net.ssl.HttpsURLConnection;
-
 import com.adobe.cq.dam.cfm.*;
 import com.day.cq.commons.jcr.JcrUtil;
 import com.lebara.core.dto.*;
@@ -26,7 +25,7 @@ import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Reference;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
+import org.apache.sling.jcr.resource.api.JcrResourceConstants;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.lebara.core.utils.LebaraConstants;
@@ -47,6 +46,7 @@ public class CrudOperationEpc {
         apiEndPointUrl = globalOsgiService.getApiHostUri().concat(globalOsgiService.getGqlEndpoint());
     }
 
+
     public void readEPCAndCreateCF(String cfDamPath, ResourceResolver resourceResolver) {
         // Read data from EPC
         String countryCode = CFUtils.getCountryCodeFromPayloadPath(cfDamPath);
@@ -63,8 +63,9 @@ public class CrudOperationEpc {
         for (String offerType : offerTypes.keySet()) {
             String epcJsonString = getJsonFromEPC(apiEndPointUrl, countryCode, offerType);
             fragmentPathInDam = cfDamPath + "/" + offerTypes.get(offerType);
+
             try {
-                JcrUtil.createPath(fragmentPathInDam, "sling:Folder", resourceResolver.adaptTo(Session.class));
+                JcrUtil.createPath(fragmentPathInDam, JcrResourceConstants.NT_SLING_FOLDER, resourceResolver.adaptTo(Session.class));
             } catch (RepositoryException e) {
                 logger.error("errow while creating the folder {} {}", fragmentPathInDam, e);
             }
