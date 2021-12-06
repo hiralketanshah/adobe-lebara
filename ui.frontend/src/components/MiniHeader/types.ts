@@ -1,4 +1,4 @@
-import { HeaderProps } from "../Header/types";
+import { HeaderProps, LoggedInMenus } from "../Header/types";
 export interface children {
   isDisabled?: boolean;
   showNewText?: string;

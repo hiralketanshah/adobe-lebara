@@ -92,6 +92,7 @@
                                             <hideprice
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                                name="./hidePrice"
                                                 text="Hide Price?"
                                                 uncheckedValue="{Boolean}false"
                                                 value="{Boolean}true"/>

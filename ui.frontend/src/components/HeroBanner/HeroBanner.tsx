@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Flex, Heading, Text, useToast } from "@chakra-ui/react";
+import { Box, Flex, Heading, useToast } from "@chakra-ui/react";
 import { HeroBannerProps } from "./types";
 import { Image } from "../Image/Image";
 import Button from "../Button/Button";

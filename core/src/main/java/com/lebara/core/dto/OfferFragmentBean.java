@@ -28,6 +28,15 @@ public class OfferFragmentBean {
     private String promotionMessage;
     private String promotionPrice;
     private String promotionData;
+    private String allowanceType;
+
+    public String getAllowanceType() {
+        return allowanceType;
+    }
+
+    public void setAllowanceType(String allowanceType) {
+        this.allowanceType = allowanceType;
+    }
 
     public String getPromotionID() {
         return promotionID;

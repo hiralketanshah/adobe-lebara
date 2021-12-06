@@ -1,5 +1,5 @@
 import { MapTo } from "@adobe/aem-react-editable-components";
-import NewPostpaidNumber from "./NewPostpaidNumber";
+import NewPostpaidNumberRoute from "./NewPostpaidNumberRoute";
 
 const NewPostpaidNumberConfig = {
   emptyLabel: "Postpaid Component",
@@ -8,4 +8,4 @@ const NewPostpaidNumberConfig = {
   },
 };
 
-MapTo("lebara/components/postpaid")(NewPostpaidNumber, NewPostpaidNumberConfig);
+MapTo("lebara/components/postpaid")(NewPostpaidNumberRoute, NewPostpaidNumberConfig);
