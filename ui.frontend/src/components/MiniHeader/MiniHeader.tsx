@@ -36,7 +36,9 @@ import { selectIsAuthenticated } from "../../redux/selectors/userSelectors";
 const MiniHeader: React.FC<MiniHeaderProps> = ({
   logoPath,
   logoLinkURL,
-  items
+  items,
+  logoutLabel,
+  loggedInMenuItems,
 }) => {
   const cartItems = useSelector((state: ReduxState) => state.cart.items);
   const history = useHistory();
@@ -217,7 +219,7 @@ const MiniHeader: React.FC<MiniHeaderProps> = ({
             px="11px"
             borderBottomRadius="12px"
           >
-            <UserMenu {...userMenuProps} />
+            {loggedInMenuItems && <UserMenu menus={loggedInMenuItems} logoutLabel={logoutLabel} />}
           </Flex>
         </Box>
       ) : (

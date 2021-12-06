@@ -200,7 +200,8 @@ const Header: React.FC<HeaderProps> = ({
   topupCtaText,
   logoLinkURL,
   topupCtaLink,
-  searchPlaceholder,
+  logoutLabel,
+  loggedInMenuItems,
 }) => {
   const ref = React.useRef<any>(undefined);
   const cartItems = useSelector((state: ReduxState) => state.cart.items);
@@ -432,12 +433,12 @@ const Header: React.FC<HeaderProps> = ({
             mt="-20px"
             borderBottomRadius="12px"
           >
-            <UserMenu {...userMenuProps} />
+            {loggedInMenuItems && <UserMenu menus={loggedInMenuItems} logoutLabel={logoutLabel} />}
           </Flex>
         </Box>
       )}
       <Flex display={{ md: "none", sm: "flex" }} mx={{ md: "27px" }}>
-        <MiniHeader logoPath={logoPath} logoLinkURL={logoLinkURL} items={items} />
+        <MiniHeader loggedInMenuItems={loggedInMenuItems} logoutLabel={logoutLabel} logoPath={logoPath} logoLinkURL={logoLinkURL} items={items} />
       </Flex>
     </Flex>
   );
