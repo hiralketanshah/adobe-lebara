@@ -182,7 +182,7 @@ public class CFUtils {
                     validityLabel = "Month";
                     validityInNumber = validityInNumber / 30;
                 }
-                offerFragmentBean.setValidity( validityInNumber + " " + (i18n == null ? validityLabel : i18n.get(validityLabel)));
+                offerFragmentBean.setValidity( (validityInNumber == 1 ? "" : validityInNumber + " " )+ (i18n == null ? validityLabel : i18n.get(validityLabel)));
                 offerFragmentBean.setProductInformationFile(CFUtils.getElementValue(offerFragment,"productInformationFile"));
                 offerFragmentBean.setId(CFUtils.getElementValue(offerFragment, "offerid"));
                 offerFragmentBean.setOfferType(CFUtils.getElementValue(offerFragment, "offerType"));
