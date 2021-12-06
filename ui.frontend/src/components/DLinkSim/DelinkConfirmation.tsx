@@ -98,7 +98,7 @@ const DelinkConfirmation: React.FC<DLinkSimProps> = ({
               color="secondary.500"
               as="span"
             >
-              {clickHereLabel}
+              &nbsp;{clickHereLabel}&nbsp;
             </Text>
             <Text
               fontSize="14px"
