@@ -46,6 +46,8 @@ const globalConstants = Object.freeze({
     CREATE_NEW_PASSWORD: 'create-new-password',
     FAQ: 'faq',
     USAGE_DETAILS: 'usage-details',
+    USER_PROFILE: 'user-profile',
+    USER_PROFILE_CHANGE_PASSWORD: 'user-profile-change-password',
     GLOBAL_SEARCH_FILENAME: 'globalsearch.json',
     HELPCENTER_SEARCH_FILENAME: 'helpcentersearch.json',
 });

@@ -10,11 +10,12 @@ export interface FormikInputProps {
   placeholder?: string;
   isRequired?: boolean;
   validate?: FieldValidator;
+  removeValidation?: boolean;
+  ignoreValidations?: boolean;
+  isPrepaid?: boolean;
   loginButtonLabel? : string;
   exitingUserErrorMsg?: string;
   secondSubscriptionDisplayText?: string;
   revealInputToggle?: boolean;
   onClick?: () => void;
-  isPrepaid?: boolean;
-  ignoreValidations?: boolean;
 }

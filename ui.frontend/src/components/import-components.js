@@ -69,6 +69,8 @@ import "./LbBrowseCategories/AemConfig.js";
 import "./InternationalRates/AemConfig.js";
 import "./RecommendedTariffs/AemConfig.js";
 import "./HowItWorks/AemConfig.js";
+import "./UserDetails/AemConfig.js";
+import "./RewardOverview/AemConfig.js";
 import "./ContactUs/AemConfig.js";
 import "./RewardOverview/AemConfig.js";
 import "./HelpCenterSearch/AemConfig.js";

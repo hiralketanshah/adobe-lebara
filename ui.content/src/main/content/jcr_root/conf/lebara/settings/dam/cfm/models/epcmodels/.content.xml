@@ -225,6 +225,64 @@
                                 </items>
                             </field>
                         </_x0031_626008217644>
+                        <_x0031_638441445446
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                listOrder="21"
+                                metaType="boolean"
+                                name="activatePromotion"
+                                renderReadOnly="false"
+                                showEmptyInReadOnly="true"
+                                text="Activate Promotion"
+                                valueType="boolean">
+                            <granite:data jcr:primaryType="nt:unstructured"/>
+                        </_x0031_638441445446>
+                        <_x0031_638509896404
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="dam/cfm/models/editor/components/fragmentreference"
+                                allowNew="{Boolean}true"
+                                fieldLabel="Promotion Fragment"
+                                filter="hierarchy"
+                                fragmentmodelreference="/conf/lebara/settings/dam/cfm/models/promotion-plan-fragment"
+                                listOrder="21"
+                                metaType="fragment-reference"
+                                name="promotionFragment"
+                                nameSuffix="contentReference"
+                                renderReadOnly="false"
+                                rootPath="/content/dam/lebara/markets"
+                                showEmptyInReadOnly="true"
+                                valueType="string/content-fragment">
+                            <field
+                                    jcr:primaryType="nt:unstructured"
+                                    rootPath="/content/dam/lebara/markets"/>
+                            <granite:data jcr:primaryType="nt:unstructured"/>
+                        </_x0031_638509896404>
+                        <_x0031_638441279167
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldLabel="Promotion Id"
+                                listOrder="1"
+                                maxlength="255"
+                                metaType="text-single"
+                                name="promotionId"
+                                renderReadOnly="false"
+                                showEmptyInReadOnly="true"
+                                valueType="string">
+                            <granite:data jcr:primaryType="nt:unstructured"/>
+                        </_x0031_638441279167>
+                        <_x0031_638441536351
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldLabel="Promotional Message"
+                                listOrder="22"
+                                maxlength="255"
+                                metaType="text-single"
+                                name="promotionalMessage"
+                                renderReadOnly="false"
+                                showEmptyInReadOnly="true"
+                                valueType="string">
+                            <granite:data jcr:primaryType="nt:unstructured"/>
+                        </_x0031_638441536351>
                     </items>
                 </content>
             </cq:dialog>

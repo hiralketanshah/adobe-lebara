@@ -7,8 +7,9 @@ import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.math.NumberUtils;
 import org.apache.sling.api.SlingHttpServletRequest;
 
-import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.util.List;
+import java.util.Locale;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class OfferFragmentBean {
@@ -23,6 +24,51 @@ public class OfferFragmentBean {
     private List<CFAllowance> allowanceList;
     private String recommendedImage;
     private String recommendedURL;
+    private String promotionID;
+    private String promotionMessage;
+    private String promotionPrice;
+    private String promotionData;
+    private String allowanceType;
+
+    public String getAllowanceType() {
+        return allowanceType;
+    }
+
+    public void setAllowanceType(String allowanceType) {
+        this.allowanceType = allowanceType;
+    }
+
+    public String getPromotionID() {
+        return promotionID;
+    }
+
+    public void setPromotionID(String promotionID) {
+        this.promotionID = promotionID;
+    }
+
+    public String getPromotionMessage() {
+        return promotionMessage;
+    }
+
+    public void setPromotionMessage(String promotionMessage) {
+        this.promotionMessage = promotionMessage;
+    }
+
+    public String getPromotionPrice() {
+        return promotionPrice;
+    }
+
+    public void setPromotionPrice(String promotionPrice) {
+        this.promotionPrice = promotionPrice;
+    }
+
+    public String getPromotionData() {
+        return promotionData;
+    }
+
+    public void setPromotionData(String promotionData) {
+        this.promotionData = promotionData;
+    }
 
     public String getPlanName() {
         return planName;
@@ -50,7 +96,8 @@ public class OfferFragmentBean {
 
     public String getCost() {
         if (NumberUtils.isCreatable(cost)) {
-            return new DecimalFormat("##.##").format(Float.parseFloat(cost) / 100);
+            NumberFormat nf = NumberFormat.getNumberInstance(Locale.GERMAN);
+            return nf.format(Float.parseFloat(cost) / 100);
         }
         return StringUtils.EMPTY;
     }

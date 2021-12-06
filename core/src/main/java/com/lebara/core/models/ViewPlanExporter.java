@@ -51,6 +51,9 @@ public class ViewPlanExporter implements ComponentExporter {
 
     @ValueMapValue
     private String title;
+
+    @ValueMapValue
+    private String minutesLabel;
     
     @ValueMapValue
     private String showLabel;
@@ -98,6 +101,10 @@ public class ViewPlanExporter implements ComponentExporter {
 
     public String getExploreAllLink() {
         return AemUtils.getLinkWithExtension(exploreAllLink, slingRequest);
+    }
+
+    public String getMinutesLabel() {
+        return minutesLabel;
     }
 
     public List<OfferFragmentBean> getOffers() {

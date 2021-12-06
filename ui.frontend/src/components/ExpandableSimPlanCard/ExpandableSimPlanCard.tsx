@@ -253,7 +253,7 @@ const ExpandableSimPlanCard: React.FC<ExpandableSimPlanCardProps> = ({
               </Flex>}
             </Box>
           )}
-          {productInformationButtonLabel && (offerType !== OfferTypes.BOLTON) && (
+          {productInformationFile && productInformationButtonLabel && (offerType !== OfferTypes.BOLTON) && (
             <Text
               onClick={() => setIsPdfDialogOpen(true)}
               cursor="pointer"
