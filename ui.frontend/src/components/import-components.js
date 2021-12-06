@@ -54,7 +54,6 @@ import "./PlanManagement/AemConfig.js";
 import "./AddOns/AemConfig.js";
 import "./YourPlansCard/AemConfig.js";
 import "./UsageDetails/AemConfig.js";
-import "./SuccessCard/AemConfig.js"
 import "./NewPostpaidNumber/AemConfig.js";
 import "./Login/CreateNewPassword/AemConfig.js";
 import "./Login/ResetPassword/AemConfig.js";
@@ -67,6 +66,15 @@ import "./LbSectionIntro/AemConfig.js";
 import "./StickyCircle/AemConfig.js";
 import "./LbFAQ/AemConfig.js";
 import "./LbBrowseCategories/AemConfig.js";
+import "./InternationalRates/AemConfig.js";
 import "./RecommendedTariffs/AemConfig.js";
 import "./HowItWorks/AemConfig.js";
-
+import "./UserDetails/AemConfig.js";
+import "./RewardOverview/AemConfig.js";
+import "./ContactUs/AemConfig.js";
+import "./RewardOverview/AemConfig.js";
+import "./HelpCenterSearch/AemConfig.js";
+import "./CallSupport/AemConfig.js";
+import "./EmailSupport/AemConfig.js";
+import "./PostpaidPersonalDetailsPreview/AemConfig.js";
+import "./HeroBanner/AemConfig.js";

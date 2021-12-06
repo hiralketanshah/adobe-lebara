@@ -56,7 +56,7 @@ const ExpandableSimPlanCard: React.FC<ExpandableSimPlanCardProps> = ({
   };
   const filteredAllowanceList: allowanceListProps = (allowanceList && allowanceList.find((list) => list.name && list.name.includes('Data'))) || {};
   const handleAddToCart = async () => {
-    const description: string | undefined = additionalOffers?.match(/(?<=>)([\w\s]+)(?=<\/)/g)?.length ? additionalOffers.replaceAll('\n', '').match(/(?<=>)([\w\s^\\n]+)(?=<\/)/g)?.join('+') : additionalOffers;
+    const description: string | undefined = additionalOffers?.match(/<li>.*?<\/li>/g)?.length ? additionalOffers.replaceAll('\n', '').replaceAll('&nbsp;', '').match(/<li>.*?<\/li>/g)?.map(list => list?.replaceAll(/<li>|<\/li>/g, ''))?.join('+') : additionalOffers;
     setIsButtonDisabled(true);
     if (isRemoveFromCart) {
       await removeFromCartApi({
@@ -253,7 +253,7 @@ const ExpandableSimPlanCard: React.FC<ExpandableSimPlanCardProps> = ({
               </Flex>}
             </Box>
           )}
-          {productInformationButtonLabel && (offerType !== OfferTypes.BOLTON) && (
+          {productInformationFile && productInformationButtonLabel && (offerType !== OfferTypes.BOLTON) && (
             <Text
               onClick={() => setIsPdfDialogOpen(true)}
               cursor="pointer"

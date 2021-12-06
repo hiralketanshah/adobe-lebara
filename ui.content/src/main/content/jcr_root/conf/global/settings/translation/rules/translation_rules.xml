@@ -475,6 +475,7 @@
 		<property name="portInNumberRequiredMsg"/>
 		<property name="portInNumberInValidMsg"/>
 		<property name="currentProviderRequiredMsg"/>
+		<property name="paymentCta"/>
 
 		<!-- Section Intro -->
 		<property name="sectionHeading"/>
@@ -486,13 +487,72 @@
 		<property name="textCol2"/>
 		<property name="getAppLabel"/>
 
+		<!-- previous bills -->
+		<property name="ctaButtonLabel"/>
+		<property name="dateLabel"/>
+
 		<!-- getitnow -->
 		<property name="getItNowErrorMessage"/>
-		
+
+		<!-- Rewards table -->
+		<property name="columnHeader1"/>
+		<property name="columnHeader2"/>
 
 		<!-- Global Search -->
 		<property name="mostSearchLabel"/>
-		
+
+		<property name="emptySearchResultMsg"/>
+		<property name="firstName"/>
+		<property name="firstNameError"/>
+		<property name="lastname"/>
+		<property name="lastnameError"/>
+		<property name="email"/>
+		<property name="emailEmptyError"/>
+		<property name="emailInvalidError"/>
+		<property name="subject"/>
+		<property name="subjectError"/>
+		<property name="helplabel"/>
+		<property name="helpError"/>
+		<property name="requestText"/>
+		<property name="attachment"/>
+		<property name="attachmentDescription"/>
+		<property name="submitLabel"/>
+
+		<property name="callbackMessageText"/>
+
+		<!-- Manage SIM -->
+		<property name="delinkConfirmationMsg"/>
+		<property name="delinkLabel"/>
+		<property name="attachNewSim"/>
+		<property name="linkedSimDesc"/>
+
+		<!-- Lebara Profile -->
+		<property name="ctaCancelLabel"/>
+		<property name="sectionUsernameHeading"/>
+		<property name="sectionAddressHeading"/>
+		<property name="alternativeContactLabel"/>
+		<property name="alternativeNumberPlaceholder"/>
+		<property name="sectionEmailPasswordHeading"/>
+		<property name="passwordLabel"/>
+		<property name="passwordPlaceholder"/>
+		<property name="editLinkLabel"/>
+		<property name="sectionConsentHeading"/>
+		<property name="consentDescription"/>
+		<property name="changeEmailHeading"/>
+		<property name="newEmailLabel"/>
+		<property name="newEmailPlacehodler"/>
+		<property name="newConfirmEmailLabel"/>
+		<property name="newConfirmEmailPlacehodler"/>
+		<property name="modalCancelCTALabel"/>
+		<property name="confirmEmailNotMatchMsg"/>
+		<property name="altContactNumberRequiredMsg"/>
+		<property name="alternativeNumberInValidMsg"/>
+		<property name="beforeEmailText"/>
+		<property name="afterEmailText"/>
+
+		<!-- Logged in user menu -->
+		<property name="logoutLabel"/>
+
 		<!-- Lebara fields ends -->
 		<property name="cq:language" updateDestinationLanguage="true"/>
 		<node pathContains="/cq:annotations">

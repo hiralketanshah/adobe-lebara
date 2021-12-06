@@ -16,7 +16,7 @@ import GET_RELATED_OFFERS from "../../graphql/GET_RELATED_OFFERS";
 import ExpandableSimPlanCard from "../ExpandableSimPlanCard/ExpandableSimPlanCard";
 import { globalConfigs } from "../../GlobalConfigs";
 import { ExpandableSimPlanCardProps } from "../ExpandableSimPlanCard/types";
-import getCfOfferDataUrl from "../../utils/aem-utils";
+import aemUtils from "../../utils/aem-utils";
 import TickInCircle from "../../icons/TickInCircle";
 const ChangePlanDialog: React.FC<ChangePlanDialogProps> = ({
   title,
@@ -39,7 +39,7 @@ const ChangePlanDialog: React.FC<ChangePlanDialogProps> = ({
   getRelatedOffers?.getRelatedOffers?.forEach((item: any) => relatedOfferIds.push(item.offerId));
   const [data, setData] = useState<ExpandableSimPlanCardProps[]>([]);
   async function fetchData() {
-    const response = await fetch(getCfOfferDataUrl(relatedOfferIds.join(',')));
+    const response = await fetch(aemUtils.getCfOfferDataUrl(relatedOfferIds.join(',')));
     const json = await response.json();
     setData(json);
   }

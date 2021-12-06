@@ -1,3 +1,4 @@
+import { HeaderProps } from "../Header/types";
 export interface children {
   isDisabled?: boolean;
   showNewText?: string;
@@ -12,7 +13,8 @@ export interface children {
   title?: string;
   children?: children[];
 }
-export interface MiniHeaderProps {
+export interface MiniHeaderProps extends HeaderProps {
+  logoLinkURL?: string;
   logoPath?: string;
   accountLink?: string;
   items?: children[];

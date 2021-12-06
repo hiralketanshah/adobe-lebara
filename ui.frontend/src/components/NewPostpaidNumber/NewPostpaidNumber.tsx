@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import { Formik } from "formik";
 import { Box, Text, Flex, RadioGroup } from "@chakra-ui/react";
 import { useHistory, useLocation } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { useMutation, useQuery } from "@apollo/client";
+import { useDispatch, useSelector } from "react-redux";
+import { useApolloClient, useMutation, useQuery } from "@apollo/client";
 import RadioButton from "../RadioButton/RadioButton";
 import Button from "../Button/Button";
 import { NewPostPaidNumberProps } from "./types";
@@ -17,8 +17,15 @@ import PlanChangeDialog from "../PlanChangeDialog/PlanChangeDialog";
 import { globalConfigs as GC, globalConstants as C } from "../../GlobalConfigs";
 import CHANGE_PLAN from "../../graphql/CHANGE_PLAN";
 import getDynamicValues from "../../utils/get-aem-dynamic-values";
+import GET_PERSONAL_DETAILS from "../../graphql/GET_PERSONAL_DETAILS";
 import "./../../styles/index.css";
-
+import {
+  selectEmail,
+  selectIsAuthenticated,
+  selectMsisdn,
+} from "../../redux/selectors/userSelectors";
+import { setLoading } from "../../redux/actions/loadingActions";
+import moment from "moment";
 const NewPostpaidNumber: React.FC<NewPostPaidNumberProps> = ({
   durationLabel,
   moreDetailsLabel,
@@ -65,6 +72,10 @@ const NewPostpaidNumber: React.FC<NewPostPaidNumberProps> = ({
     fromDashboard: boolean;
   }>();
   const dispatch = useDispatch();
+  const client = useApolloClient();
+  const isAuthenticated = useSelector(selectIsAuthenticated);
+  const email = useSelector(selectEmail);
+  const msisdn = useSelector(selectMsisdn);
   const [changePlan] = useMutation(CHANGE_PLAN);
   const [addToCartApi] = useMutation(ADD_TO_CART);
   const isFromDashboard = location?.state?.fromDashboard ?? false;
@@ -200,7 +211,67 @@ const NewPostpaidNumber: React.FC<NewPostPaidNumberProps> = ({
                 mapMagentoProductToCartItem(res.data.addProduct.items)
               )
             );
-            history.push((GC.journeyPages[C.POSTPAID_DETAILS] || '/'), values);
+            if (!isAuthenticated || !msisdn) {
+              history.push((GC.journeyPages[C.POSTPAID_DETAILS] || '/'), values);
+              return Promise.resolve();
+            }
+
+            dispatch(setLoading(true));
+            return client
+              .query({ query: GET_PERSONAL_DETAILS })
+              .then((personalDetailsRes) => {
+                history.push((GC.journeyPages[C.POSTPAID_PREVIEW] || '/'), {
+                  personalDetails: {
+                    firstName:
+                      personalDetailsRes.data.getPersonalDetails?.name
+                        ?.firstName,
+                    lastName:
+                      personalDetailsRes.data.getPersonalDetails?.name
+                        ?.lastName,
+                    emailId: email,
+                    streetName:
+                      personalDetailsRes.data.getPersonalDetails?.addresses[0]
+                        .street || "",
+                    houseNumber:
+                      personalDetailsRes.data.getPersonalDetails?.addresses[0]
+                        .houseNumber || "",
+                    townCity:
+                      personalDetailsRes.data.getPersonalDetails?.addresses[0]
+                        .city || "",
+                    zipCode:
+                      personalDetailsRes.data.getPersonalDetails?.addresses[0]
+                        .postCode || "",
+                    addressLabel:
+                      personalDetailsRes.data.getPersonalDetails?.addresses
+                        ?.length > 0
+                        ? `${
+                            personalDetailsRes.data.getPersonalDetails
+                              ?.addresses[0].houseNumber || ""
+                          } ${
+                            personalDetailsRes.data.getPersonalDetails
+                              .addresses[0].street
+                          }, ${
+                            personalDetailsRes.data.getPersonalDetails
+                              .addresses[0].city
+                          }, ${
+                            personalDetailsRes.data.getPersonalDetails
+                              .addresses[0].postCode
+                          }, Germany`
+                        : undefined,
+                  },
+                  portIn: {
+                    dob: personalDetailsRes.data.getPersonalDetails?.dateOfBirth
+                      ? moment(
+                          personalDetailsRes.data.getPersonalDetails
+                            ?.dateOfBirth
+                        ).format("MM/DD/YYYY")
+                      : "",
+                  },
+                });
+              })
+              .finally(() => {
+                dispatch(setLoading(false));
+              });
           });
         }}
       >

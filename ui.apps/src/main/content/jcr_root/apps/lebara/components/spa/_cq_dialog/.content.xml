@@ -31,6 +31,12 @@
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/pathbrowser"
                                                 fieldLabel="Root path for Offer Fragments"
                                                 name="./offerRootPath"/>
+                                            <internationalRatesRootPath
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/pathbrowser"
+                                                rootPath="/content/dam/lebara"
+                                                fieldLabel="Root path for Internation Rates Fragment"
+                                                name="./internationalRatesRootPath"/>
                                             <currencyname
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/select"

@@ -16,8 +16,6 @@
 
 import React, { Component } from 'react';
 import { Route } from 'react-router-dom';
-import {AuthoringUtils} from "@adobe/aem-spa-page-model-manager";
-import { PROJECT_URL_ROOT } from "../../utils/lebara.constants";
 
 /**
  * Helper that facilitate the use of the {@link Route} component
@@ -40,18 +38,12 @@ export const withRoute = (WrappedComponent, extension) => {
 
       extension = extension || 'html';
 
-      let paths = ['(.*)' + routePath + '(.' + extension + ')?'];
-       
-      if (!AuthoringUtils.isInEditor() && routePath.startsWith(PROJECT_URL_ROOT)) {
-        paths.push(routePath.substring(PROJECT_URL_ROOT.length) + ".html");
-      }
-
       // Context path + route path + extension
       return (
         <Route
           key={routePath}
           exact
-          path={ paths }
+          path={ '(.*)' + routePath + '(.' + extension + ')?' }
           render={routeProps => {
             return <WrappedComponent {...this.props} {...routeProps} />;
           }}

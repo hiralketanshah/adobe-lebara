@@ -4,6 +4,7 @@ import {
   FormControl,
   FormErrorMessage,
   FormLabel,
+  Icon,
   Text,
 } from "@chakra-ui/react";
 import { FiChevronDown, HiOutlineExclamation } from "react-icons/all";
@@ -63,6 +64,7 @@ const FormikSelect: React.FC<FormikSelectProps> = ({
             </Box>
           ),
         }}
+        value={options.filter((t) => t.value === field.value)}
         onBlur={() => {
           // https://github.com/formium/formik/issues/2083#issuecomment-639962222
           setTimeout(() => helpers.setTouched(true));
@@ -97,11 +99,9 @@ const FormikSelect: React.FC<FormikSelectProps> = ({
         options={options}
       />
       {hasError && (
-        <FormErrorMessage color="unsuccessful">
-          <HiOutlineExclamation size={20} color="lebaraRed" />
-          <Text paddingLeft="7px" noOfLines={1}>
-            {error}
-          </Text>
+        <FormErrorMessage color="unsuccessful" alignItems="flex-start">
+          <Icon as={HiOutlineExclamation} color="lebaraRed" w="20px" h="20px" />
+          <Text paddingLeft="7px">{error}</Text>
         </FormErrorMessage>
       )}
     </FormControl>

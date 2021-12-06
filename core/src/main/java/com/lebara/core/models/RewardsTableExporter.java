@@ -27,7 +27,9 @@ public class RewardsTableExporter extends IntroExporter {
     private List<Labels> tableItems;
 
     @ValueMapValue
-    private String columnHeader;
+    private String columnHeader1;
+    @ValueMapValue
+    private String columnHeader2;
 
     @Override
     public String getExportedType() {
@@ -38,8 +40,12 @@ public class RewardsTableExporter extends IntroExporter {
         return (tableItems == null) ? Collections.emptyList() : tableItems;
     }
 
-    public String getColumnHeader() {
-        return columnHeader;
+    public String getColumnHeader1() {
+        return columnHeader1;
+    }
+
+    public String getColumnHeader2() {
+        return columnHeader2;
     }
 
 }

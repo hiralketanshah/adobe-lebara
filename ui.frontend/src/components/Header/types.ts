@@ -13,11 +13,13 @@ export interface children {
   children?: children[];
 }
 export interface HeaderProps {
+  logoLinkURL?: string;
   topupCtaText?: string;
   topupCtaLink?: string;
   accountLink?: string;
   accessibilityLabel?: string;
   id?: string;
+  newText?: string;
   logoPath?: string;
   items?: children[];
   searchPlaceholder?: string;

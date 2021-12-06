@@ -14,6 +14,7 @@ export default gql`
         houseNumber
       }
       contact
+      dateOfBirth
     }
   }
 `;
