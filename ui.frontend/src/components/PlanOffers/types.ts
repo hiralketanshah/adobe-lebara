@@ -23,6 +23,7 @@ export interface PlanOffersProps {
   ctaSelectLabel?: string;
   ctaCloseLabel?: string;
   ctaDownloadLabel?: string;
+  minutesLabel?: string;
 }
 
 export interface allowanceListProps {
