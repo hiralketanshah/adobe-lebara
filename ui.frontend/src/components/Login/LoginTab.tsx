@@ -38,9 +38,9 @@ const LoginTab: React.FC<LoginTabsProps> = ({...loginModuleProps}) => {
     return errors;
   };
   const location =
-    useLocation<{ fromPostPaid?: boolean; fromMenu?: boolean; from?: Location; }>();
+    useLocation<{ fromPostPaid?: boolean; fromMenu?: boolean; from?: Location;fromHeader?: boolean }>();
   const isFromPostPaid = location?.state?.fromPostPaid ?? false;
-  const isFromMenu = location?.state?.fromMenu ?? false;
+  const isFromHeader = location?.state?.fromHeader ?? false;
   const dispatch = useDispatch();
   return (
     <Formik
@@ -73,7 +73,7 @@ const LoginTab: React.FC<LoginTabsProps> = ({...loginModuleProps}) => {
                   contentGroup: "Login",
                   region: "DE",
                 });
-                if (isFromMenu) {
+                if (isFromHeader) {
                   setTimeout(() => {
                     history.push((GC.journeyPages[GCST.DASHBOARD]  || '/'), {
                       msisdn: res.data?.authenticateUserSPS?.msisdn[0]
