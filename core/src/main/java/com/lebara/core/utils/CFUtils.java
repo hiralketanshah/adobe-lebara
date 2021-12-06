@@ -1,10 +1,8 @@
 package com.lebara.core.utils;
 
-import java.text.DecimalFormat;
-import java.util.*;
-import java.util.stream.Collectors;
-
+import com.adobe.cq.dam.cfm.ContentFragment;
 import com.day.cq.i18n.I18n;
+import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
 import com.lebara.core.dto.*;
 import com.lebara.core.models.beans.SelectOption;
@@ -12,11 +10,14 @@ import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.api.resource.ResourceResolver;
-
-import com.adobe.cq.dam.cfm.ContentFragment;
-import com.google.gson.Gson;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.text.DecimalFormat;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class CFUtils {
 
@@ -181,11 +182,18 @@ public class CFUtils {
                     validityInNumber = Integer.parseInt(validity);
                 }
                 String validityLabel = "Days";
-                if (validityInNumber >= 30) {
+                if (validityInNumber > 30) {
                     validityLabel = "Month";
                     validityInNumber = validityInNumber / 30;
+                    offerFragmentBean.setValidity( validityInNumber + " " + (i18n == null ? validityLabel : i18n.get(validityLabel)));
                 }
-                offerFragmentBean.setValidity( validityInNumber + " " + (i18n == null ? validityLabel : i18n.get(validityLabel)));
+                if (validityInNumber == 30) {
+                    validityLabel = "Month";
+                    offerFragmentBean.setValidity( (i18n == null ? validityLabel : i18n.get(validityLabel)));
+                }else
+                {
+                    offerFragmentBean.setValidity( validityInNumber + " " + (i18n == null ? validityLabel : i18n.get(validityLabel)));
+                }
                 offerFragmentBean.setProductInformationFile(CFUtils.getElementValue(offerFragment,"productInformationFile"));
                 offerFragmentBean.setId(CFUtils.getElementValue(offerFragment, "offerid"));
                 offerFragmentBean.setOfferType(CFUtils.getElementValue(offerFragment, "offerType"));
