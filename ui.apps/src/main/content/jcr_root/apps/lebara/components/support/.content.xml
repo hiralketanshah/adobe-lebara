@@ -3,4 +3,4 @@
     jcr:primaryType="cq:Component"
     jcr:title="Contact Us Component"
     sling:resourceSuperType="lebara/components/intro"
-    componentGroup="Lebara - Content SPA"/>
+    componentGroup="Lebara - Support"/>

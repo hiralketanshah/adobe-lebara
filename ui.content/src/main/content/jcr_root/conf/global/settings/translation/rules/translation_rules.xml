@@ -325,6 +325,10 @@
 		<!--Help center Search -->
 		<property name="searchPlaceholder"/>
 
+		<!-- While You Are Here -->
+		<property name="ctaLiveChatLabel"/>
+		<property name="separatorOrText"/>
+
 		<!-- spa -->
 		<!-- tabs -->
 		<!-- teaser -->
