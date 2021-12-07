@@ -85,7 +85,10 @@ public class ProgressStepExporter implements ComponentExporter {
     }
 
     public List<Link> getPageLinks() {
-        return Collections.unmodifiableList(pageLinks);
+        if (pageLinks != null) {
+            return Collections.unmodifiableList(pageLinks);
+        }
+        return pageLinks;
     }
 
     public int getActiveStepIndex() {
