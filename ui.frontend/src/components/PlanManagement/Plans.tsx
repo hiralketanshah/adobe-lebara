@@ -53,7 +53,8 @@ const Plans: React.FC<PlansProps> = ({
     width: "100%",
     borderRadius: "12px",
   };
-  const [getDashboardData, formattedPlans, msisdn] = useGetDashboardData(planLabels);
+  const [getDashboardData,  msisdn,,
+    formattedPlans] = useGetDashboardData(planLabels);
   const isPostPaid = !!(getDashboardData && getDashboardData.bills);
   const { data: simOnlyOffers } = useQuery(GET_SIM_ONLY_OFFERS, {
     variables: {
@@ -150,7 +151,7 @@ const Plans: React.FC<PlansProps> = ({
               flexDirection={{ base: "column", lg: "column" }}
             >
               <Box flex={1}>
-                {formattedPlans && JSON.parse(formattedPlans).map((plan: any) => (
+                {formattedPlans && formattedPlans.map((plan: any) => (
                   <>
                     {newOfferData && !Number.isNaN(newOfferData) ? (
                       <CancelPlanChangeDialog

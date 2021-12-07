@@ -17,10 +17,20 @@ export default gql`
         status
         topupAmount
         thresholdAmount
+        cap
+      }
+      currentBill {
+        nextBill {
+          amount
+          period
+        }
+        additionalCharges
       }
       plans {
         offerId
         name
+        expiration
+        cost
         total_data
         total_data_unit
         total_call
@@ -36,12 +46,10 @@ export default gql`
         data_consumed
         data_consumed_unit
         sms_consumed
-      }
-      bills {
-        status
-        period
-        totalBillAmount
-        pdfUrl
+        recurring {
+          isAutoRenew
+          expiryDate
+        }
       }
       addons {
         offerId
@@ -59,19 +67,115 @@ export default gql`
         data_consumed
         sms_consumed
       }
+
+      bills {
+        status
+        period
+        totalBillAmount
+        pdfUrl
+      }
+      userBillingType
       activityHistory {
         calls {
           target
           date
           type
           cost
+          seconds
         }
         sms {
           target
           date
           cost
         }
+        data {
+          usedData
+          date
+          cost
+        }
       }
+      userOffers {
+        offerId
+        name
+        validity
+        cost
+        allowances {
+          allowanceValue
+          account {
+            accountId
+            name
+            unit {
+              abbreviation
+            }
+          }
+        }
+      }
+      allowance {
+        data {
+          exists
+          expiry
+          data {
+            left
+            consumed
+            total
+            isUnlimited
+            totalUnit
+            leftUnit
+            consumedUnit
+          }
+        }
+        sms {
+          exists
+          expiry
+          local {
+            left
+            consumed
+            total
+            exists
+            isUnlimited
+          }
+          l2l {
+            left
+            consumed
+            total
+            exists
+            isUnlimited
+          }
+          aio {
+            left
+            consumed
+            total
+            exists
+            isUnlimited
+          }
+        }
+        minutes {
+          exists
+          expiry
+          local {
+            left
+            consumed
+            total
+            exists
+            isUnlimited
+          }
+          l2l {
+            left
+            consumed
+            total
+            exists
+            isUnlimited
+          }
+          aio {
+            left
+            consumed
+            total
+            exists
+            isUnlimited
+          }
+        }
+      }
+      cpaExists
     }
   }
 `;

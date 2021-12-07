@@ -9,7 +9,7 @@ const SimSwitch: React.FC<SimSwitchProps> = ({
   simName,
   balanceLabel
 }) => {
-  const [getDashboardData, , msisdn] = useGetDashboardData();
+  const [getDashboardData,msisdn] = useGetDashboardData();
   const { mainBalance = "" } = getDashboardData || "";
   const isPostPaid = !!(getDashboardData && getDashboardData.bills);
   return (
