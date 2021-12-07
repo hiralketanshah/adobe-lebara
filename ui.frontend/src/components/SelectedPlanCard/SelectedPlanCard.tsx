@@ -9,7 +9,7 @@ const SelectedPlanCard: React.FC<SelectedPlanCardProps> = ({
 }) => {
 
   const selectedProduct = useSelector(
-    (state: ReduxState) => state.product.product
+    (state: any) => state.product.product
   );
 
   const sharedTextStyle = {

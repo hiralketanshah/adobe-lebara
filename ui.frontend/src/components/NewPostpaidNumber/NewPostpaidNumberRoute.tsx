@@ -1,7 +1,9 @@
 import React from "react";
 import { Box } from "@chakra-ui/react";
-import NewPostpaidNumber from "./NewPostpaidNumber";
+// import NewPostpaidNumber from "./NewPostpaidNumber";
+import NewPostpaidNumber from "@lebara/ui/src/components/NewPostpaidNumber/NewPostpaidNumber";
 import NewPostpaidNumberLayout from "../../layouts/NewPostpaidNumberLayout";
+
 import { NewPostPaidNumberProps } from "./types";
 
 const NewPostpaidNumberRoute: React.FC<NewPostPaidNumberProps> = ({...props}) => (
