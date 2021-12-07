@@ -10,6 +10,7 @@ import {
   ModalFooter,
   ModalOverlay,
 } from "@chakra-ui/react";
+import "./style.css";
 import Button from "../Button/Button";
 import { Document, Page, pdfjs } from "react-pdf";
 pdfjs.GlobalWorkerOptions.workerSrc = '/etc.clientlibs/lebara/clientlibs/clientlib-react/resources/pdf.worker.js';
@@ -27,7 +28,7 @@ const PdfDialog: React.FC<PdfDialogProps> = ({ fileName, isOpen, onClose,
   <Modal size="3xl" isOpen={isOpen} onClose={onClose}>
     <ModalOverlay />
     <ModalContent>
-      <ModalCloseButton />
+    <ModalCloseButton zIndex={1000} />
       <ModalBody>
         <Flex justifyContent="center">
           <Doc fileName={fileName} />
@@ -35,11 +36,15 @@ const PdfDialog: React.FC<PdfDialogProps> = ({ fileName, isOpen, onClose,
       </ModalBody>
 
       <ModalFooter>
-        <Flex gridGap="16px">
-          <Button onClick={onClose} variant="outline">
-            {ctaCloseLabel}
-          </Button>
+        <Flex
+          gridGap={{ base: "10px", lg: "20px" }}
+          flexDirection="column"
+          w="100%"
+          alignItems="center"
+        >
           <Link
+            w="100%"
+            maxW={{ lg: "408px" }}
             href={fileName}
             target="_blank"
             download
@@ -47,8 +52,16 @@ const PdfDialog: React.FC<PdfDialogProps> = ({ fileName, isOpen, onClose,
               textDecoration: "none",
             }}
           >
-            <Button>{ctaDownloadLabel}</Button>
+            <Button isFullWidth>{ctaDownloadLabel}</Button>
           </Link>
+          <Button
+            onClick={onClose}
+            variant="outline"
+            isFullWidth
+            maxW={{ lg: "408px" }}
+          >
+           {ctaCloseLabel}
+          </Button>
         </Flex>
       </ModalFooter>
     </ModalContent>
