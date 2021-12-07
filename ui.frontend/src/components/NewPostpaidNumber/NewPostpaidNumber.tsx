@@ -26,6 +26,8 @@ import {
 import { setLoading } from "../../redux/actions/loadingActions";
 import moment from "moment";
 import PdfDialog from "../PdfDialog/PdfDialog";
+import { ExpandableSimPlanCardProps } from "../ExpandableSimPlanCard/types";
+import aemUtils from "../../utils/aem-utils";
 const NewPostpaidNumber: React.FC<NewPostPaidNumberProps> = ({
   durationLabel,
   moreDetailsLabel,
@@ -168,10 +170,20 @@ const NewPostpaidNumber: React.FC<NewPostPaidNumberProps> = ({
         ).allowanceValue === location.state.minutes
     );
   const [isPlanChangeDialogOpen, setIsPlanChangeDialogOpen] = useState(false);
+  const [data, setData] = useState<Partial<ExpandableSimPlanCardProps>>({});
+  async function fetchData(offerId : string) {
+    const response = await fetch(aemUtils.getCfOfferDataUrl(offerId));
+    const json = await response.json();
+    setData(json[0]);
+  }
+  const onClickDialogOpen = (offerId: string) => {
+    fetchData(offerId);
+    setIsPdfDialogOpen(true);
+  };
   return (
     <>
      <PdfDialog
-            fileName={productInformationLink || ""}
+            fileName={data?.productInformationFile || ""}
             isOpen={isPdfDialogOpen}
             onClose={() => setIsPdfDialogOpen(false)}
             ctaCloseLabel={popupCloseLabel}
@@ -528,7 +540,7 @@ const NewPostpaidNumber: React.FC<NewPostPaidNumberProps> = ({
                     {yourOrderLabel}
                   </Text>
                   <Text
-                    onClick={() => setIsPdfDialogOpen(true)}
+                    onClick={() => onClickDialogOpen(selectedPlan.offerId)}
                     {...moreDetailsStyles}
                     mt={{ md: "16px" }}
                     ml={{ md: "auto" }}

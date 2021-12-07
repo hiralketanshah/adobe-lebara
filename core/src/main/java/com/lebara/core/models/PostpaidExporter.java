@@ -62,8 +62,6 @@ public class PostpaidExporter implements ComponentExporter {
     @ValueMapValue
     private String productInformationLabel;
     @ValueMapValue
-    private String productInformationLink;
-    @ValueMapValue
     private String yourOrderContractdurationLabel;
     @ValueMapValue
     private String yourOrderDataLabel;
@@ -171,10 +169,6 @@ public class PostpaidExporter implements ComponentExporter {
 
     public String getProductInformationLabel() {
         return productInformationLabel;
-    }
-
-    public String getProductInformationLink() {
-        return productInformationLink;
     }
 
     public String getYourOrderContractdurationLabel() {
