@@ -98,7 +98,10 @@ public class PostpaidExporter implements ComponentExporter {
     private String yourOrderMinutesInGermanyValue;
 
     public List<Labels> getDurationRadioLabelList() {
-        return Collections.unmodifiableList(durationRadioLabelList);
+        if (durationRadioLabelList != null) {
+            return Collections.unmodifiableList(durationRadioLabelList);
+        }
+        return durationRadioLabelList;
     }
 
     public String getDataVolumeRadioLabel() {
