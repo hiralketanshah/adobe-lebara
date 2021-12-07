@@ -28,14 +28,15 @@ import { ReduxState } from "../../redux/types";
 import { globalConfigs as GC, globalConstants as GCST } from "../../GlobalConfigs";
 import Button from "../Button/Button";
 import UserMenu from "../UserMenu/UserMenu";
-import userMenuProps from "../../utils/userMenuProps";
-// import LebaraLogo from "../../assets/images/lebara-logo.svg";
 import Search from "../Search/Search";
 import { selectIsAuthenticated } from "../../redux/selectors/userSelectors";
 
 const MiniHeader: React.FC<MiniHeaderProps> = ({
   logoPath,
-  items
+  logoLinkURL,
+  items,
+  logoutLabel,
+  loggedInMenuItems,
 }) => {
   const cartItems = useSelector((state: ReduxState) => state.cart.items);
   const history = useHistory();
@@ -126,7 +127,7 @@ const MiniHeader: React.FC<MiniHeaderProps> = ({
             onClick={onOpen}
           />
           <ChakraLink>
-            <Link to="/">
+            <Link to={logoLinkURL || "/"}>
               <img src={logoPath} alt="Logo" />
             </Link>
           </ChakraLink>
@@ -216,7 +217,7 @@ const MiniHeader: React.FC<MiniHeaderProps> = ({
             px="11px"
             borderBottomRadius="12px"
           >
-            <UserMenu {...userMenuProps} />
+            {loggedInMenuItems && <UserMenu menus={loggedInMenuItems} logoutLabel={logoutLabel} />}
           </Flex>
         </Box>
       ) : (

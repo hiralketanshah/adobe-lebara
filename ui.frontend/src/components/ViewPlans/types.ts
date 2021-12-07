@@ -23,8 +23,7 @@ export interface PlanCardProps {
     ctaSelectLabel?: string;
     ctaCloseLabel?: string;
     ctaDownloadLabel?: string;
-    minutesField?: string;
-    unlimitedTextField?: string;
     exploreAllLabel?: string;
     exploreAllLink?: string;
+    minutesLabel?: string;
 }

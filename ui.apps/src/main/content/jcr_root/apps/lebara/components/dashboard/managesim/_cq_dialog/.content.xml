@@ -31,22 +31,53 @@
                                         <items jcr:primaryType="nt:unstructured">
                                             <title
                                                 jcr:primaryType="nt:unstructured"
-                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"                                                
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                                 fieldLabel="Title"
-                                                value="Attach your SIM"
-                                                name="./title"/>
+                                                name="./title"
+                                                value="Attach your SIM"/>
                                             <linkedSimDesc
                                                 jcr:primaryType="nt:unstructured"
-                                                sling:resourceType="granite/ui/components/coral/foundation/form/textarea"                                                
-                                                fieldLabel="Linked Sim Description"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textarea"
                                                 fieldDescription="Add a placeholder {0} which will be replaced by number of sim linked dynamically"
-                                                name="./linkedSimDesc"/>
+                                                fieldLabel="Linked Sim Description"
+                                                name="./linkedSimDesc"
+                                                value="There is {0} SIM linked to your MyLebara"/>
                                             <attachNewSim
                                                 jcr:primaryType="nt:unstructured"
-                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"                                                
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                                 fieldLabel="Attach New Sim Label"
-                                                value="Attach new sim"
-                                                name="./attachNewSim"/>                                           
+                                                name="./attachNewSim"
+                                                value="Attach new sim"/>
+                                            <linkSimLabel
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="Link Sim Label"
+                                                name="./linkSimLabel"
+                                                value="Please complete the below to link your SIM."/>
+                                            <noSimLabel
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="No Sim Label"
+                                                name="./noSimLabel"
+                                                value="I don't have a sim"/>
+                                            <activeMonthPlanLabel
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="Active Month Plan Label"
+                                                name="./activeMonthPlanLabel"
+                                                value="This number have active month plan"/>
+                                            <noLabel
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="No Label"
+                                                name="./noLabel"
+                                                value="No"/>
+                                            <mobilePlaceholderLabel
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="Mobile Placeholder Label"
+                                                name="./mobilePlaceholderLabel"
+                                                value="Lebara Mobile Number"/>
                                         </items>
                                     </column>
                                 </items>
@@ -70,28 +101,81 @@
                                         <items jcr:primaryType="nt:unstructured">
                                             <delinkLabel
                                                 jcr:primaryType="nt:unstructured"
-                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"                                                
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                                 fieldLabel="Delink Sim Label"
-                                                value="DELINK SIM"
-                                                name="./delinkLabel"/>
+                                                name="./delinkLabel"
+                                                value="DELINK SIM"/>
                                             <delinkContinueLabel
                                                 jcr:primaryType="nt:unstructured"
-                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"                                                
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                                 fieldLabel="Delink Continue Label"
-                                                value="CONTINUE"
-                                                name="./ctaContinueLabel"/>   
+                                                name="./ctaContinueLabel"
+                                                value="CONTINUE"/>
                                             <delinkConfirmationMessage
                                                 jcr:primaryType="nt:unstructured"
-                                                sling:resourceType="granite/ui/components/coral/foundation/form/textarea"                                                
-                                                fieldLabel="Delink Confirmation Message"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textarea"
                                                 fieldDescription="Enter Delink sim confirmation message, Add a placeholder {0} which will be replaced by dynamic sim number"
-                                                name="./delinkConfirmationMsg"/>                                          
+                                                fieldLabel="Delink Confirmation Message"
+                                                name="./delinkConfirmationMsg"
+                                                value="Are you sure you want to Unlink {0} from your account"/>
                                         </items>
                                     </column>
                                 </items>
                             </columns>
                         </items>
                     </delink>
+                    <delinkconfirmationdialog
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Delink Confirmation Dialog"
+                        sling:resourceType="granite/ui/components/coral/foundation/container"
+                        margin="{Boolean}true">
+                        <items jcr:primaryType="nt:unstructured">
+                            <columns
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+                                margin="{Boolean}true">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <column
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <confirmationEmailLabel
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="Confirmation Email Label"
+                                                name="./confirmationEmailLabel"
+                                                value="An Confirmation email has been sent to your registered email Id"/>
+                                            <followLinkLabel
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="Follow Link Label"
+                                                name="./followLinkLabel"
+                                                value="Please follow the link we have sent to the email address"/>
+                                            <mailNotReceivedLabel
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="If you havent received the email yet"
+                                                fieldLabel="Mail Not Received Label"
+                                                name="./mailNotReceivedLabel"
+                                                value="If you havent received the email yet"/>
+                                            <clickHereLabel
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="Click Here Label"
+                                                name="./clickHereLabel"
+                                                value="Click Here"/>
+                                            <toResendLabel
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="To Resend Label"
+                                                name="./toResendLabel"
+                                                value="to resend"/>
+                                        </items>
+                                    </column>
+                                </items>
+                            </columns>
+                        </items>
+                    </delinkconfirmationdialog>
                 </items>
             </tabs>
         </items>

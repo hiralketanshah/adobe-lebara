@@ -4,6 +4,7 @@ import com.adobe.cq.dam.cfm.*;
 import com.google.gson.Gson;
 import com.lebara.core.dto.Offer;
 import com.lebara.core.dto.RootRead;
+import com.lebara.core.dto.topup.Root;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.sling.api.resource.ResourceResolver;
@@ -51,18 +52,18 @@ public class CrudOperationEpcTest {
 
     }
 
-    //@Test
+    @Test
     public void testGetJsonFromEPC() {
         assert (json != null);
     }
 
-    //@Test
+    @Test
     public void testcreateContentFragment() {
         Mockito.when(resourceResolver.getResource(anyString())).thenReturn(resource);
         crudOperationEpc.createContentFragment(json, "", resourceResolver, "prepaid");
     }
 
-    //@Test
+//    @Test
     public void testcreateContentFragment2() throws ContentFragmentException {
         RootRead convertedEpcJsonObject = new Gson().fromJson(json, RootRead.class);
         List<Offer> offers = convertedEpcJsonObject.getData().getOffers();
@@ -78,10 +79,17 @@ public class CrudOperationEpcTest {
     }
 
     //this code comes handy to get json response from api-aggregator quickly.
-    //@Test
+    @Test
     public void testConnection() {
         String json = crudOperationEpc.getJsonFromEPC("https://dev-api-aggregator.lebara.com/api-aggregator", "GB","getCurrentOffers");
         assert (json != StringUtils.EMPTY);
     }
 
+    //@Test
+    public void createTopupContentFragment(){
+        Root convertedEpcJsonObject = new Gson().fromJson(json, Root.class);
+        List<String> offers = convertedEpcJsonObject.getData().getOffers();
+        Mockito.when(resourceResolver.getResource(anyString())).thenReturn(resource);
+
+    }
 }

@@ -27,6 +27,8 @@ const PlanOffers: React.FC<PlanOffersProps> = ({
   ctaAddToCartLabel,
   ctaCloseLabel,
   ctaDownloadLabel,
+  ctaBottomLink,
+  minutesLabel,
 }) => {
   const history = useHistory();
   const linkStyles = {
@@ -111,6 +113,7 @@ const PlanOffers: React.FC<PlanOffersProps> = ({
                   ctaDownloadLabel={ctaDownloadLabel}
                   addedtoCartLabel={addedtoCartLabel}
                   viewCartLabel={viewCartLabel}
+                  minutesLabel={minutesLabel}
                   previewIcon={<TickInCircle fill="#13357A" tickFill="#EA4984" />} />
               </Box>
             ))}
@@ -122,7 +125,7 @@ const PlanOffers: React.FC<PlanOffersProps> = ({
             minW={{ base: "100%", lg: "320px" }}
             alignSelf="center"
             onClick={() => {
-               history.push((globalConfigs.journeyPages[globalConstants.PREPAID]  || '/'), history.location.state);
+               history.push((ctaBottomLink || globalConfigs.journeyPages[globalConstants.PREPAID]  || '/'), history.location.state);
             }}
           >
             {ctaBottomLabel}

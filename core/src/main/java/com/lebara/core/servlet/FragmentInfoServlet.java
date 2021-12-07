@@ -1,10 +1,10 @@
 package com.lebara.core.servlet;
 
-
 import com.day.cq.commons.inherit.HierarchyNodeInheritanceValueMap;
 import com.day.cq.commons.inherit.InheritanceValueMap;
 import com.day.cq.i18n.I18n;
 import com.day.cq.search.PredicateGroup;
+import com.day.cq.dam.api.DamConstants;
 import com.day.cq.search.Query;
 import com.day.cq.search.QueryBuilder;
 import com.day.cq.search.result.Hit;
@@ -26,8 +26,9 @@ import org.apache.sling.servlets.annotations.SlingServletResourceTypes;
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Reference;
 import org.slf4j.Logger;
+import com.day.cq.wcm.api.NameConstants;
 import org.slf4j.LoggerFactory;
-
+import org.apache.sling.api.servlets.HttpConstants;
 import javax.jcr.RepositoryException;
 import javax.jcr.Session;
 import javax.servlet.Servlet;
@@ -35,11 +36,10 @@ import javax.servlet.ServletException;
 import java.io.IOException;
 import java.util.*;
 
-
 @Component(service = {Servlet.class})
 @SlingServletResourceTypes(
-        resourceTypes = "cq:Page",
-        methods = "GET",
+        resourceTypes = NameConstants.NT_PAGE,
+        methods = HttpConstants.METHOD_GET,
         extensions = "json",
         selectors = "offer")
 public class FragmentInfoServlet extends SlingSafeMethodsServlet {
@@ -48,7 +48,7 @@ public class FragmentInfoServlet extends SlingSafeMethodsServlet {
     @Reference
     private transient QueryBuilder queryBuilder;
 
-    private I18n i18n;
+    private transient I18n i18n;
     private String offerRootPath;
 
     @Override
@@ -116,7 +116,8 @@ public class FragmentInfoServlet extends SlingSafeMethodsServlet {
     private Map<String, String> getPredicatesMap(List<String> offerIdList) {
         Map<String, String> predicate = new HashMap<>();
         predicate.put("path", offerRootPath);
-        predicate.put("type", "dam:Asset");
+        predicate.put("type",  DamConstants.NT_DAM_ASSET);
+
         predicate.put("property", "jcr:content/data/master/offerid");
         offerIdList.forEach(id-> predicate.put("property.{0}_value".replace("{0}", String.valueOf(offerIdList.indexOf(id))), id));
         return predicate;

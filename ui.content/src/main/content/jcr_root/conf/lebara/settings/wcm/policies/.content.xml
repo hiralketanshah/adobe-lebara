@@ -266,7 +266,7 @@
                         jcr:primaryType="nt:unstructured"
                         jcr:title="XF Root"
                         sling:resourceType="wcm/core/components/policy/policy"
-                        components="[/libs/wcm/foundation/components/responsivegrid,group:Lebara - Content SPA,group:Lebara - Structure,group:Lebara - Dashboard]">
+                        components="[/libs/wcm/foundation/components/responsivegrid,group:Lebara - Content SPA,group:Lebara - Structure,group:Lebara - Dashboard,group:Lebara - Support]">
                     <jcr:content jcr:primaryType="nt:unstructured"/>
                     <cq:authoring jcr:primaryType="nt:unstructured">
                         <assetToComponentMapping jcr:primaryType="nt:unstructured">
@@ -297,7 +297,7 @@
                     sling:resourceType="wcm/core/components/policy/policy"
                     backgroundColorEnabled="true"
                     backgroundImageEnabled="true"
-                    components="[/libs/wcm/foundation/components/responsivegrid,group:Lebara - Content SPA,group:Lebara - Dashboard]"
+                    components="[/libs/wcm/foundation/components/responsivegrid,group:Lebara - Content SPA,group:Lebara - Dashboard,group:Lebara - Support]"
                     layoutDisabled="false">
                     <jcr:content jcr:primaryType="nt:unstructured"/>
                 </lebara-container>
@@ -365,7 +365,7 @@
                             jcr:primaryType="nt:unstructured"
                             jcr:title="SPA Content"
                             sling:resourceType="wcm/core/components/policy/policy"
-                            components="[/libs/wcm/foundation/components/responsivegrid,group:Lebara - Content SPA,group:Lebara - Dashboard]">
+                            components="[/libs/wcm/foundation/components/responsivegrid,group:Lebara - Content SPA,group:Lebara - Dashboard,group:Lebara - Support]">
                         <jcr:content jcr:primaryType="nt:unstructured"/>
                     </spa-default>
                 </responsivegrid>

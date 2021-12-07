@@ -17,6 +17,7 @@ import com.adobe.cq.export.json.ExporterConstants;
 import com.adobe.cq.wcm.core.components.models.Search;
 import com.lebara.core.models.SearchModel;
 import com.lebara.core.models.beans.Link;
+import java.util.*;
 
 @Model(adaptables = SlingHttpServletRequest.class, adapters = { SearchModelImpl.class,
 		ComponentExporter.class }, resourceType = SearchModelImpl.RESOURCE_TYPE, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
@@ -61,6 +62,9 @@ public class SearchModelImpl implements SearchModel {
 	}
 
 	public List<Link> getLinks() {
+		if (links != null) {
+			return Collections.unmodifiableList(links);
+		}
 		return links;
 	}
 

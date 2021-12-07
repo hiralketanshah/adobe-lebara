@@ -4,8 +4,8 @@ import UsageDetails from "./UsageDetails";
 const UsageDetailsConfig = {
   emptyLabel: "Usage Details component",
   isEmpty: function (props) {
-    return !props.phoneCallDetails?.length;
+    return true;
   },
 };
 
-MapTo("lebara/components/usagedetails")(UsageDetails, UsageDetailsConfig);
+MapTo("lebara/components/dashboard/usagedetails")(UsageDetails, UsageDetailsConfig);

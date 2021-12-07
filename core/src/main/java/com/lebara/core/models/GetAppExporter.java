@@ -10,8 +10,7 @@ import org.apache.sling.models.annotations.Exporter;
 import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.injectorspecific.ChildResource;
 import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
-
-import java.util.List;
+import java.util.*;
 
 @Model(adaptables = {SlingHttpServletRequest.class, Resource.class}, adapters = {GetAppExporter.class, ComponentExporter.class},
         resourceType = GetAppExporter.RESOURCE_TYPE, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
@@ -67,7 +66,10 @@ public class GetAppExporter implements ComponentExporter {
     }
 
     public List<Link> getLinks() {
-        return links;
+        if (links != null) {
+            return Collections.unmodifiableList(links);
+        }
+        return null;
     }
 
     public String getAppTitle() {
@@ -79,10 +81,16 @@ public class GetAppExporter implements ComponentExporter {
     }
 
     public List<String> getTextCol1() {
+        if (textCol1 != null) {
+            return Collections.unmodifiableList(textCol1);
+        }
         return textCol1;
     }
 
     public List<String> getTextCol2() {
+        if (textCol2 != null) {
+            return Collections.unmodifiableList(textCol2);
+        }
         return textCol2;
     }
 

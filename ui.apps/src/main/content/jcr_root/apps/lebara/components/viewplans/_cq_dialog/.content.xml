@@ -24,16 +24,6 @@
                                     sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                     fieldLabel="Buy Plan Button Label"
                                     name="./buttonLabel"/>
-                            <unlimitedtextfield
-                                    jcr:primaryType="nt:unstructured"
-                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                    fieldLabel="Unlimited Text Field"
-                                    name="./unlimitedTextField"/>
-                            <minutesfield
-                                    jcr:primaryType="nt:unstructured"
-                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                    fieldLabel="Minutes Field"
-                                    name="./minutesField"/>
                             <ctaCLoseLabel
                                     jcr:primaryType="nt:unstructured"
                                     sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
@@ -46,6 +36,12 @@
                                     fieldLabel="Popup Downdload Label"
                                     value="Download"
                                     name="./ctaDownloadLabel"/>
+                            <minuteslabel
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                    fieldLabel="Minutes Label"
+                                    Value="minutes"
+                                    name="./minutesLabel"/>
                             <plans
                                     jcr:primaryType="nt:unstructured"
                                     jcr:title="Plans"
@@ -72,6 +68,23 @@
                                                         name="./cfPath"
                                                         required="{Boolean}true"
                                                         rootPath="/content/dam/lebara"/>
+                                                <dataMinSelector
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                                        fieldLabel="Select Between Data Or Minutes"
+                                                        name="./allowanceType">
+                                                    <items jcr:primaryType="nt:unstructured">
+                                                        <Data
+                                                                jcr:primaryType="nt:unstructured"
+                                                                text="Data"
+                                                                selected="true"
+                                                                value="data" />
+                                                        <Minutes
+                                                                jcr:primaryType="nt:unstructured"
+                                                                text="Minutes"
+                                                                value="minutes" />
+                                                    </items>
+                                                </dataMinSelector>
                                             </items>
                                         </column>
                                     </items>
@@ -104,6 +117,7 @@
                                 jcr:primaryType="nt:unstructured"
                                 sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
                                 fieldLabel="Explore All Button Link"
+                                rootPath="/content/lebara"
                                 name="./exploreAllLink"/>                                                  
                         </items>
                     </column2>

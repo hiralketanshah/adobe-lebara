@@ -4,6 +4,7 @@ export interface UsageDetailsProps {
   activityLasts: number;
   phoneCallDetails: PhoneProps[];
   smsDetails: SMSProps[];
+  dataDetails: DataProps[];
   filterUsageOptions: SelectOption[];
   tabsName: string[];
   theme: string;
@@ -16,18 +17,15 @@ export interface UsageDetailsProps {
   ctaSeeMoreURL: string;
   ctaTopupURL: string;
   ctaTopupText: string;
+  durationLabel?: string;
 }
 
 export interface PhoneProps {
-  phoneCode: number;
   phoneNumber: number;
   duration: string;
   currency: string;
   amount: string;
   callDate: string;
-  callTime: string;
-  avatarName: string;
-  avatarSrc?: string;
   // International || Roaming
   callingType: string;
 }
@@ -36,4 +34,9 @@ export interface SMSProps {
   phoneNumber: string;
   smsCharges: string;
   smsTime: string;
+}
+export interface DataProps {
+  cost: string;
+  usedData: string;
+  date: string;
 }

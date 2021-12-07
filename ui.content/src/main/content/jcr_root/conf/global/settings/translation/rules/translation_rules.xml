@@ -325,6 +325,10 @@
 		<!--Help center Search -->
 		<property name="searchPlaceholder"/>
 
+		<!-- While You Are Here -->
+		<property name="ctaLiveChatLabel"/>
+		<property name="separatorOrText"/>
+
 		<!-- spa -->
 		<!-- tabs -->
 		<!-- teaser -->
@@ -339,10 +343,10 @@
 
 		<!-- trustpilotrating -->
 		<!-- usagedetails -->
-		<property name="body"/>
 		<property name="ctaSeeMoreCallsLabel"/>
 		<property name="ctaLoadMoreLabel"/>
 		<property name="tabsName"/>
+		<property name="durationLabel" />
 
 		<!-- usp -->
 		<property name="body"/>
@@ -525,7 +529,44 @@
 		<property name="delinkLabel"/>
 		<property name="attachNewSim"/>
 		<property name="linkedSimDesc"/>
-		
+		<property name="linkSimLabel" />
+		<property name="noSimLabel" />
+		<property name="activeMonthPlanLabel" />
+		<property name="noLabel" />
+		<property name="mobilePlaceholderLabel" />
+		<property name="toResendLabel" />
+		<property name="clickHereLabel" />
+		<property name="mailNotReceivedLabel" />
+		<property name="followLinkLabel" />
+		<property name="confirmationEmailLabel" />
+
+		<!-- Lebara Profile -->
+		<property name="ctaCancelLabel"/>
+		<property name="sectionUsernameHeading"/>
+		<property name="sectionAddressHeading"/>
+		<property name="alternativeContactLabel"/>
+		<property name="alternativeNumberPlaceholder"/>
+		<property name="sectionEmailPasswordHeading"/>
+		<property name="passwordLabel"/>
+		<property name="passwordPlaceholder"/>
+		<property name="editLinkLabel"/>
+		<property name="sectionConsentHeading"/>
+		<property name="consentDescription"/>
+		<property name="changeEmailHeading"/>
+		<property name="newEmailLabel"/>
+		<property name="newEmailPlacehodler"/>
+		<property name="newConfirmEmailLabel"/>
+		<property name="newConfirmEmailPlacehodler"/>
+		<property name="modalCancelCTALabel"/>
+		<property name="confirmEmailNotMatchMsg"/>
+		<property name="altContactNumberRequiredMsg"/>
+		<property name="alternativeNumberInValidMsg"/>
+		<property name="beforeEmailText"/>
+		<property name="afterEmailText"/>
+
+		<!-- Logged in user menu -->
+		<property name="logoutLabel"/>
+
 		<!-- Lebara fields ends -->
 		<property name="cq:language" updateDestinationLanguage="true"/>
 		<node pathContains="/cq:annotations">

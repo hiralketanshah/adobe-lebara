@@ -50,13 +50,10 @@ public class ViewPlanExporter implements ComponentExporter {
     private String ctaCloseLabel;
 
     @ValueMapValue
-    private String minutesField;
+    private String title;
 
     @ValueMapValue
-    private String unlimitedTextField;
-    
-    @ValueMapValue
-    private String title;
+    private String minutesLabel;
     
     @ValueMapValue
     private String showLabel;
@@ -90,14 +87,6 @@ public class ViewPlanExporter implements ComponentExporter {
         return buttonLabel;
     }
 
-    public String getMinutesField() {
-        return minutesField;
-    }
-
-    public String getUnlimitedTextField() {
-        return unlimitedTextField;
-    }
-
     public String getTitle() {
         return title;
     }
@@ -112,6 +101,10 @@ public class ViewPlanExporter implements ComponentExporter {
 
     public String getExploreAllLink() {
         return AemUtils.getLinkWithExtension(exploreAllLink, slingRequest);
+    }
+
+    public String getMinutesLabel() {
+        return minutesLabel;
     }
 
     public List<OfferFragmentBean> getOffers() {
