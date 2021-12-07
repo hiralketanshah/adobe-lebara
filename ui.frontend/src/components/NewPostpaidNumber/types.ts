@@ -23,6 +23,7 @@ export interface NewPostPaidNumberProps {
   contractPeriodPopupHeading?: string;
   contractPeriodPopupInfo?: string;
   popupCloseLabel?: string;
+  popupDownloadLabel?: string;
   switchCtaLabel?: string;
   dataVolumePopupHeading?: string;
   dataVolumePopupInfo?: string;
