@@ -137,11 +137,28 @@ public class CrudOperationEpc {
             for (Offer offer : offers) {
                 String validOfferName = JcrUtil.createValidName(offer.name);
                 String cfPath = cfDamPath + "/" + validOfferName;
-                if (resourceResolver.getResource(cfPath) == null) {
+                Resource cfPathResource = resourceResolver.getResource(cfPath);
+                if (cfPathResource == null) {
                     String offerId = writeJsonToCf(offer, cfDamPath, resourceResolver, validOfferName, offerType);
                     logger.debug("content fragment created for offer id {}", offerId);
                 } else {
                     logger.debug("CF already exist with name {} and offer id {} at {}", validOfferName, offer.offerId, cfPath);
+
+                    // on retrigger of workflow update the allowance
+                    ContentFragment offerFragment = cfPathResource.adaptTo(ContentFragment.class);
+                    if (offerFragment != null) {
+                        List<String> cfAllowanceArray = populateAllowanceArray(offer);
+                        try {
+                            if (cfAllowanceArray.size() > 0) {
+                                FragmentData fd = offerFragment.getElement("allowancesList").getValue();
+                                fd.setValue(cfAllowanceArray.toArray(new String[0]));
+                                offerFragment.getElement("allowancesList").setValue(fd);
+                            }
+                        } catch (ContentFragmentException e) {
+                            logger.error("ContentFragmentException {}", e);
+                        }
+                    }
+
                 }
             }
         }
@@ -174,9 +191,6 @@ public class CrudOperationEpc {
     }
 
     String writeJsonToCf(Offer offer, String cfDamPath, ResourceResolver resourceResolver, String validOfferName, String offerType) {
-        GsonBuilder builder = new GsonBuilder();
-        Gson gson = builder.create();
-
         try {
             Resource contentFragmentModelResource = resourceResolver.getResource(LebaraConstants.CONTENT_FRAGMENT_MODEL_PATH);
             if (contentFragmentModelResource == null) {
@@ -194,23 +208,7 @@ public class CrudOperationEpc {
             newFragment.getElement("active").setContent(String.valueOf(true), LebaraConstants.CONTENT_TYPE_TEXT_PLAIN);
             newFragment.getElement("cost").setContent(String.valueOf(offer.cost), LebaraConstants.CONTENT_TYPE_TEXT_PLAIN);
             newFragment.getElement("offerType").setContent(offerType, LebaraConstants.CONTENT_TYPE_TEXT_PLAIN);
-            List<String> cfAllowanceArray = new ArrayList<>();
-            for (Allowance allowances : offer.allowances) {
-                CFAllowance cfAllowance = new CFAllowance();
-                String value = allowances.getAllowanceValue();
-                String name = StringUtils.EMPTY;
-                String unit = StringUtils.EMPTY;
-                if (allowances.getAccount() != null && allowances.getAccount().getUnit() != null) {
-                    name = allowances.getAccount().getName();
-                    unit = allowances.getAccount().getUnit().getAbbreviation();
-                }
-                if (StringUtils.isNoneBlank(value, name, unit)) {
-                    cfAllowance.setValue(value);
-                    cfAllowance.setName(name);
-                    cfAllowance.setUnit(unit);
-                    cfAllowanceArray.add(gson.toJson(cfAllowance));
-                }
-            }
+            List<String> cfAllowanceArray = populateAllowanceArray(offer);
 
             if (cfAllowanceArray.size() > 0) {
                 FragmentData fd = newFragment.getElement("allowancesList").getValue();
@@ -222,6 +220,29 @@ public class CrudOperationEpc {
         }
         return offer.offerId;
 
+    }
+
+    private List<String> populateAllowanceArray(Offer offer) {
+        GsonBuilder builder = new GsonBuilder();
+        Gson gson = builder.create();
+        List<String> cfAllowanceArray = new ArrayList<>();
+        for (Allowance allowances : offer.allowances) {
+            CFAllowance cfAllowance = new CFAllowance();
+            String value = allowances.getAllowanceValue();
+            String name = StringUtils.EMPTY;
+            String unit = StringUtils.EMPTY;
+            if (allowances.getAccount() != null && allowances.getAccount().getUnit() != null) {
+                name = allowances.getAccount().getName();
+                unit = allowances.getAccount().getUnit().getAbbreviation();
+            }
+            if (StringUtils.isNoneBlank(value, name, unit)) {
+                cfAllowance.setValue(value);
+                cfAllowance.setName(name);
+                cfAllowance.setUnit(unit);
+                cfAllowanceArray.add(gson.toJson(cfAllowance));
+            }
+        }
+        return cfAllowanceArray;
     }
 
 
