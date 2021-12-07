@@ -80,7 +80,7 @@ const ExpandableSimPlanCard: React.FC<ExpandableSimPlanCardProps> = ({
       case OfferTypes.BOLTON:
       case OfferTypes.TOPUP: {
         const updatedAddtoCart: string = addedtoCartLabel?.replace('{0}', planName) || '';
-        await addItemToCart(parseInt(id || ''), planName, (JSON.stringify(description || '')), parseFloat(cost || ''), "addon");
+        await addItemToCart(parseInt(id || ''), planName, (JSON.stringify(description || '')), Number(cost?.replaceAll(',','.') || ''), "addon");
         toast({
           position: "bottom",
           render: () => (
@@ -107,7 +107,7 @@ const ExpandableSimPlanCard: React.FC<ExpandableSimPlanCardProps> = ({
       }
       case OfferTypes.PREPAID:
       case OfferTypes.POSTPAID: {
-        await addItemToCart(parseInt(id || ''), planName, (JSON.stringify(description || '')), parseFloat(cost || ''), "plan");
+        await addItemToCart(parseInt(id || ''), planName, (JSON.stringify(description || '')), Number(cost?.replaceAll(',','.') || ''), "plan");
         isRemoveFromCart && onClose ? onClose() : history.push(userToken ? (globalConfigs.journeyPages[globalConstants.ORDER_DETAILS] || '/') : (globalConfigs.journeyPages[globalConstants.LEBARA_SIM_CHOICE] || '/'));
       }
     }
@@ -161,7 +161,7 @@ const ExpandableSimPlanCard: React.FC<ExpandableSimPlanCardProps> = ({
             isOpen={isDialogOpen}
             onClose={() => setIsDialogOpen(false)}
             planName={planName}
-            price={parseFloat(cost || '')}
+            price={Number(cost || '')}
             duration={!(offerType === OfferTypes.BOLTON) ? (validity || '') : ''}
             countries={(planInfo && planInfo.countryList) || []}
             previewIcon={previewIcon}
