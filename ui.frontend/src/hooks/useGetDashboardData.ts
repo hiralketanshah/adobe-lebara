@@ -54,7 +54,7 @@ function useGetDashboardData(planLabels?: DashboardPlanLabelsProps) {
 
   const { plans, balance, userOffers } = dashboardData.getDashboardData;
   const formattedPlans = plans.map((plan: any) => {
-    const offer = userOffers.find((item: any) => item.offerId === plan.offerId);
+    const offer = userOffers?.find((item: any) => item.offerId === plan.offerId);
     return {
     name: plan.name,
     offerId: plan.offerId,
