@@ -1,6 +1,5 @@
 import { MapTo } from "@adobe/aem-react-editable-components";
-import NewPostpaidNumberRoute from "./NewPostpaidNumberRoute";
-// import NewPostpaidNumber from "@lebara/ui/src/components/NewPostpaidNumber/NewPostpaidNumber";
+import NewPostpaidNumberRoute from "@lebara/ui/src/rotues/NewPostpaidNumberRoute";
 
 const NewPostpaidNumberConfig = {
   emptyLabel: "Postpaid Component",

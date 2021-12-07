@@ -1,58 +1,45 @@
-import React, { useRef, useState, useCallback } from "react";
+import React, {useCallback, useRef, useState} from "react";
 import {
   Box,
   Flex,
-  Spacer,
-  Text,
+  Link as ChakraLink,
   Menu,
   MenuButton,
-  MenuList,
-  Link as ChakraLink,
   MenuGroup,
   MenuItem,
+  MenuList,
+  Spacer,
   Tag,
   TagLabel,
+  Text,
   useOutsideClick,
 } from "@chakra-ui/react";
-import {
-  AiOutlineUser,
-  BiSearch,
-  RiShoppingCartLine,
-} from "react-icons/all";
-import { Link, useHistory } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import { useLocalStorage } from "@rehooks/local-storage";
+import {AiOutlineUser, BiSearch, RiShoppingCartLine,} from "react-icons/all";
+import {Link, useHistory} from "react-router-dom";
+import {useDispatch, useSelector} from "react-redux";
+import {useLocalStorage} from "@rehooks/local-storage";
 
-import {
-  HeaderProps,
-  children
-} from "./types";
+import {children, HeaderProps} from "./types";
 
 import IconButton from "../IconButton/IconButton";
 import Button from "../Button/Button";
 import MiniHeader from "../MiniHeader/MiniHeader";
-import { ReduxState } from "@lebara/ui/src/redux/types";
+import {ReduxState} from "@lebara/ui/src/redux/types";
 import NewSIMOfferCard from "../NewSImOfferCard/NewSImOfferCard";
 import Search from "../Search/Search";
 import UserMenu from "../UserMenu/UserMenu";
-<<<<<<< HEAD
-import { headerSearch } from "../../redux/actions/headerSearchActions";
-import { selectIsAuthenticated } from "../../redux/selectors/userSelectors";
-=======
-import userMenuProps from "../../utils/userMenuProps";
-import { headerSearch } from "@lebara/ui/src/redux/actions/headerSearchActions";
-import { selectIsAuthenticated } from "@lebara/ui/src/redux/selectors/userSelectors";
->>>>>>> 3ce4d202af6bfcd7422875b78a7107b4ca0afea8
-import { globalConfigs as GC, globalConstants as GCST } from "../../GlobalConfigs";
-import { useApolloClient, useQuery } from "@apollo/client";
+import {headerSearch} from "@lebara/ui/src/redux/actions/headerSearchActions";
+import {selectIsAuthenticated} from "@lebara/ui/src/redux/selectors/userSelectors";
+import {globalConfigs as GC, globalConstants as GCST} from "../../GlobalConfigs";
+import {useApolloClient, useQuery} from "@apollo/client";
 import GET_CART from "../../graphql/GET_CART";
-import { setCartItemsLoading, loadInitialCart } from "@lebara/ui/src/redux/actions/cartActions";
+import {loadInitialCart, setCartItemsLoading} from "@lebara/ui/src/redux/actions/cartActions";
 import mapMagentoProductToCartItem from "../../utils/mapMagentoProductToCartItem";
-import { saveTopUps } from "@lebara/ui/src/redux/actions/topUpActions";
+import {saveTopUps} from "@lebara/ui/src/redux/actions/topUpActions";
 import GET_TOP_UPS from "../../graphql/GET_TOP_UPS";
 import GET_SESSION_STATUS from "../../graphql/GET_SESSION_STATUS";
-import { saveUserInfo } from "../../redux/actions/userActions";
-import { setLoading } from "../../redux/actions/loadingActions";
+import {saveUserInfo} from "../../redux/actions/userActions";
+import {setLoading} from "../../redux/actions/loadingActions";
 
 const SingleMenu = ({ menuItem, newText }: { menuItem: children, newText: any }) => {
   const history = useHistory();
