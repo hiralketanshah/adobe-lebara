@@ -37,8 +37,7 @@
                                                 composite="{Boolean}true"
                                                 fieldLabel="Support Properties ">
                                                 <granite:data
-                                                    jcr:primaryType="nt:unstructured"
-                                                    maxItems="{Long}3"/>
+                                                    jcr:primaryType="nt:unstructured"/>
                                                 <field
                                                     jcr:primaryType="nt:unstructured"
                                                     sling:resourceType="granite/ui/components/coral/foundation/container"
@@ -205,7 +204,6 @@
                                                                         fieldDescription="CTA Link URL"
                                                                         fieldLabel="CTA Button Link URL"
                                                                         name="./ctaLink"
-                                                                        required="{Boolean}true"
                                                                         rootPath="/content/lebara"/>
                                                             </items>
                                                         </column>
