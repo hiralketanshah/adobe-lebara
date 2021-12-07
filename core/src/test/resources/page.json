@@ -365,6 +365,23 @@
             "ctaBottomLabel": "ctaBottomLabel",
             "backgroundColor": "backgroundColor"
           },
+
+          "changepassword": {
+            "changePasswordHeading": "Change Password",
+            "frmFields": {
+              "oldPassword": "Old Password",
+              "oldPasswordPlacehodler": "Enter Old Password",
+              "newPasswordLabel": "New Password",
+              "newPasswprdPlacehodler": "Enter New Password",
+              "confirmNewPasswordLabel": "Confirm Password",
+              "confirmPasswordPlacehodler": "Confirm Password Placeholder",
+              "ctaButtonLabel": "SAVE",
+              "ctaCancelLabel": "CANCEL"
+            },
+            ":type": "lebara/components/user/changepassword"
+          },
+
+
           "miniFooterExporter": {
             "jcr:primaryType": "nt:unstructured",
             "description": "description",

@@ -565,6 +565,18 @@
 		<property name="beforeEmailText"/>
 		<property name="afterEmailText"/>
 
+		<!-- Change Password -->
+		<property name="changePasswordHeading"/>
+		<property name="oldPasswordLabel"/>
+		<property name="oldPasswordPlacehodler"/>
+		<property name="newPasswordLabel"/>
+		<property name="newPasswprdPlacehodler"/>
+		<property name="confirmPasswordPlacehodler"/>
+		<property name="oldPasswordRequiredMsg"/>
+		<property name="newPasswordRequiredMsg"/>
+		<property name="confirmPasswordRequiredMsg"/>
+		<property name="passwordNotMatchErrorMessage"/>
+
 		<!-- Logged in user menu -->
 		<property name="logoutLabel"/>
 
