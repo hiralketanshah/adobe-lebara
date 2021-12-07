@@ -254,7 +254,9 @@ public class CFUtils {
                String cfPath = AemUtils.getStringProperty(offer, "cfPath");
                String allowanceType = AemUtils.getStringProperty(offer, "allowanceType");
                OfferFragmentBean offerFragmentBean = CFUtils.getCfDetails(cfPath, resourceResolver, i18n);
-               offerFragmentBean.setAllowanceType(allowanceType);
+               if (offerFragmentBean != null) {
+                   offerFragmentBean.setAllowanceType(allowanceType);
+               }
                bundlesList.add(offerFragmentBean);
            }
        }
