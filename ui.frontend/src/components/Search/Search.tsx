@@ -25,7 +25,6 @@ const Search: React.FC<SearchProps> = ({
   isHeaderSearchInput,
   isHeaderSearchResult,
 }) => {
-  console.log({links, searchPlaceholder, AuthoringUtils, });
   const isAemEditor = AuthoringUtils.isEditMode();
   const [query, setQuery] = useState('');
   const [searchRootValue] = useState(searchRootPagePath);

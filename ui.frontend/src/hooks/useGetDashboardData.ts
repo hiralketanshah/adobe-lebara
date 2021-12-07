@@ -1,39 +1,76 @@
-import { useLazyQuery } from "@apollo/client";
-import { useLocation } from "react-router-dom";
+import React, { useCallback, useState } from "react";
 import moment from "moment";
-import React from "react";
+import { useApolloClient } from "@apollo/client";
+import { useDispatch, useSelector } from "react-redux";
 import GET_DASHBOARD_DATA from "../graphql/GET_DASHBOARD_DATA";
 import DataIcon from "../assets/images/dataIcon.png";
 import MinIcon from "../assets/images/minIcon.png";
 import SMSIcon from "../assets/images/smsIcon.png";
 import GlobeIcon from "../assets/images/globeIcon.png";
 import { DashboardPlanLabelsProps } from "../components/PlanManagement/types";
+import { selectMsisdn } from "../redux/selectors/userSelectors";
+import { setLoading } from "../redux/actions/loadingActions";
+
 
 function useGetDashboardData(planLabels?: DashboardPlanLabelsProps) {
-  const location = useLocation<{
-    msisdn?: string;
-  }>();
-  const msisdn = location?.state?.msisdn || "";
-  const [getDashboardData, { data: dashboardData }] = useLazyQuery(
-    GET_DASHBOARD_DATA,
-    {
-      variables: {
-        type: "All",
-        msisdn,
-      },
-    }
-  );
+  const msisdn = useSelector(selectMsisdn);
+  const dispatch = useDispatch();
+  const [dashboardData, setDashboardData] = useState<any>(undefined);
+  const client = useApolloClient();
+
+  const getDashboardData = useCallback(async () => {
+    try {
+      setDashboardData(
+        (
+          await client.query({
+            query: GET_DASHBOARD_DATA,
+            variables: {
+              type: "All",
+              msisdn,
+            },
+          })
+        ).data
+      );
+      // eslint-disable-next-line no-empty
+    } catch (e) {}
+  }, [client, msisdn]);
+
+  const reloadDashboard = async () => {
+    dispatch(setLoading(true));
+    await getDashboardData();
+    dispatch(setLoading(false));
+  };
+
   React.useEffect(() => {
     if (!msisdn) return;
-    getDashboardData();
-  }, [msisdn, getDashboardData]);
-  if (!dashboardData || !dashboardData.getDashboardData)
-    return [null, [], null];
+    dispatch(setLoading(true));
+    getDashboardData().then(() => {
+      dispatch(setLoading(false));
+    });
+  }, [dispatch, msisdn, getDashboardData]);
 
-  const { plans, balance } = dashboardData.getDashboardData;
-  const formattedPlans: [] = plans.map((plan: any) => ({
+  if (!dashboardData || !dashboardData.getDashboardData)
+    return [null, null, undefined];
+
+  const { plans, balance, userOffers } = dashboardData.getDashboardData;
+  const formattedPlans = plans.map((plan: any) => {
+    const offer = userOffers?.find((item: any) => item.offerId === plan.offerId);
+    return {
     name: plan.name,
     offerId: plan.offerId,
+    price: offer.cost / 100,
+    expirationDate: moment(plan.expiration).format("D, MMM YYYY"),
+    validity: offer.validity,
+    duration: `${offer.validity} Days`,
+    data: `${offer.allowances[0].allowanceValue / 1024}GB`,
+    recurring: plan.recurring,
+    internationalCalls: offer.allowances.find(
+      (t: any) => t.account.name === "DE_Srilanka_India_EU_voice"
+    )?.allowanceValue,
+    nationalCalls:
+      offer.allowances.find(
+        (t: any) => t.account.name === "DE_National_Voice"
+      )?.allowanceValue || "Unlimited",
     plan: [
       {
         icon: DataIcon,
@@ -80,8 +117,14 @@ function useGetDashboardData(planLabels?: DashboardPlanLabelsProps) {
         ).format("MM/YY"),
       },
     ],
-  }));
-  return [dashboardData.getDashboardData, JSON.stringify(formattedPlans), msisdn];
+  };
+});
+  return [
+    dashboardData.getDashboardData, 
+    msisdn,
+    reloadDashboard,
+    formattedPlans,
+  ];
 }
 
 export default useGetDashboardData;
