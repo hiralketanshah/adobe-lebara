@@ -41,6 +41,12 @@
                                 fieldLabel="Popup Close Label"
                                 name="./popupCloseLabel"
                                 value="CLOSE"/>
+                            <popupDownloadLabel
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldLabel="Popup Download Label"
+                                name="./popupDownloadLabel"
+                                value="Download"/>
                         </items>
                     </common>
                     <duration
@@ -563,12 +569,6 @@
                                 fieldLabel="Product information Label"
                                 name="./productInformationLabel"
                                 value="Product information"/>
-                            <productInformationLink
-                                jcr:primaryType="nt:unstructured"
-                                sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
-                                fieldLabel="Product Information Link"
-                                name="./productInformationLink"
-                                rootPath="/content/lebara"/>
                             <simplanlabel
                                 jcr:primaryType="nt:unstructured"
                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"

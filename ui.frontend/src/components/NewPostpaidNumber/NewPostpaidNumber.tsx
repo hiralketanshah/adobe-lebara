@@ -16,7 +16,6 @@ import RichTextModal from "../RichTextModal";
 import PlanChangeDialog from "../PlanChangeDialog/PlanChangeDialog";
 import { globalConfigs as GC, globalConstants as C } from "../../GlobalConfigs";
 import CHANGE_PLAN from "../../graphql/CHANGE_PLAN";
-import getDynamicValues from "../../utils/get-aem-dynamic-values";
 import GET_PERSONAL_DETAILS from "../../graphql/GET_PERSONAL_DETAILS";
 import "./../../styles/index.css";
 import {
@@ -26,6 +25,9 @@ import {
 } from "../../redux/selectors/userSelectors";
 import { setLoading } from "../../redux/actions/loadingActions";
 import moment from "moment";
+import PdfDialog from "../PdfDialog/PdfDialog";
+import { ExpandableSimPlanCardProps } from "../ExpandableSimPlanCard/types";
+import aemUtils from "../../utils/aem-utils";
 const NewPostpaidNumber: React.FC<NewPostPaidNumberProps> = ({
   durationLabel,
   moreDetailsLabel,
@@ -50,6 +52,7 @@ const NewPostpaidNumber: React.FC<NewPostPaidNumberProps> = ({
   contractPeriodPopupHeading,
   contractPeriodPopupInfo,
   popupCloseLabel,
+  popupDownloadLabel,
   switchCtaLabel,
   dataVolumePopupHeading,
   dataVolumePopupInfo,
@@ -63,6 +66,7 @@ const NewPostpaidNumber: React.FC<NewPostPaidNumberProps> = ({
   const [isDurationModalOpen, setDurationModalOpen] = useState(false);
   const [isDataModalOpen, setDataModalOpen] = useState(false);
   const [isMinutesModalOpen, setMinutesModalOpen] = useState(false);
+  const [isPdfDialogOpen, setIsPdfDialogOpen] = useState(false);
   const location = useLocation<{
     msisdn?: string;
     oldPlanId?: string;
@@ -166,8 +170,26 @@ const NewPostpaidNumber: React.FC<NewPostPaidNumberProps> = ({
         ).allowanceValue === location.state.minutes
     );
   const [isPlanChangeDialogOpen, setIsPlanChangeDialogOpen] = useState(false);
+  const [data, setData] = useState<Partial<ExpandableSimPlanCardProps>>({});
+  async function fetchData(offerId : string) {
+    const response = await fetch(aemUtils.getCfOfferDataUrl(offerId));
+    const json = await response.json();
+    setData(json[0]);
+  }
+  const onClickDialogOpen = (offerId: string) => {
+    fetchData(offerId);
+    setIsPdfDialogOpen(true);
+  };
   return (
     <>
+     <PdfDialog
+            fileName={data?.productInformationFile || ""}
+            isOpen={isPdfDialogOpen}
+            onClose={() => setIsPdfDialogOpen(false)}
+            ctaCloseLabel={popupCloseLabel}
+            ctaDownloadLabel={popupDownloadLabel}
+          />
+
       <Formik
         initialValues={initialValues}
         onSubmit={(values) => {
@@ -518,9 +540,7 @@ const NewPostpaidNumber: React.FC<NewPostPaidNumberProps> = ({
                     {yourOrderLabel}
                   </Text>
                   <Text
-                    onClick={() =>
-                      window.open(getDynamicValues(productInformationLink, [selectedPlan.offerId]))
-                    }
+                    onClick={() => onClickDialogOpen(selectedPlan.offerId)}
                     {...moreDetailsStyles}
                     mt={{ md: "16px" }}
                     ml={{ md: "auto" }}
