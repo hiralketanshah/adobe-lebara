@@ -2032,6 +2032,17 @@
     lodash "^4.17.15"
     webpack-merge "^4.2.2"
 
+"@craco/craco@^6.4.2":
+  version "6.4.2"
+  resolved "https://registry.yarnpkg.com/@craco/craco/-/craco-6.4.2.tgz#11cf0fce1d38be6599bf4bb09e340a9ed821f29c"
+  integrity sha512-egIooyvuzKM5dsvWe/U5ISyFpZwLnG9uuTF1fU4s/6b/hE8MvoxyaxKymQKgbtpfOZeH0ebtEP4cbH7xZ4XRbw==
+  dependencies:
+    cosmiconfig "^7.0.1"
+    cross-spawn "^7.0.0"
+    lodash "^4.17.15"
+    semver "^7.3.2"
+    webpack-merge "^4.2.2"
+
 "@csstools/convert-colors@^1.4.0":
   version "1.4.0"
   resolved "https://registry.yarnpkg.com/@csstools/convert-colors/-/convert-colors-1.4.0.tgz#ad495dc41b12e75d588c6db8b9834f08fa131eb7"

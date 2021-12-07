@@ -38,8 +38,9 @@ import mapMagentoProductToCartItem from "../../utils/mapMagentoProductToCartItem
 import {saveTopUps} from "@lebara/ui/src/redux/actions/topUpActions";
 import GET_TOP_UPS from "../../graphql/GET_TOP_UPS";
 import GET_SESSION_STATUS from "../../graphql/GET_SESSION_STATUS";
-import {saveUserInfo} from "../../redux/actions/userActions";
-import {setLoading} from "../../redux/actions/loadingActions";
+import {saveUserInfo} from "@lebara/ui/src/redux/actions/userActions";
+import {setLoading} from "@lebara/ui/src/redux/actions/loadingActions";
+import {setPaymentMethods} from "@lebara/ui/src/redux/actions/paymentMethodsActions";
 
 const SingleMenu = ({ menuItem, newText }: { menuItem: children, newText: any }) => {
   const history = useHistory();
@@ -244,6 +245,7 @@ const Header: React.FC<HeaderProps> = ({
     );
   };
 
+
   const getCart = useCallback(() => {
     dispatch(setCartItemsLoading());
     client.query({ query: GET_CART }).then((res) => {
@@ -252,6 +254,24 @@ const Header: React.FC<HeaderProps> = ({
       );
     });
   }, [client, dispatch]);
+
+  const loadPaymentMethods = useCallback(() => {
+    fetch(`${GC.apiHostUri}/payments/adyen/paymentMethods`, {
+      credentials: "include",
+      method: "POST",
+      body: JSON.stringify({
+        channel: "Web",
+      }),
+    })
+        .then((res) => res.json())
+        .then((res) => {
+          dispatch(setPaymentMethods(res));
+        });
+  }, [dispatch]);
+
+  React.useEffect(() => {
+    loadPaymentMethods();
+  }, [loadPaymentMethods]);
 
   React.useEffect(() => {
     if( cartItems.length === 0){

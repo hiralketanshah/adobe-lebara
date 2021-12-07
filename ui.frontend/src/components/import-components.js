@@ -44,6 +44,7 @@ import "../aemConfigs/HowItWorksAemConfig.js";
 import "../aemConfigs/ContactUsAemConfig.js";
 import "../aemConfigs/RewardOverviewAemConfig.js";
 import "../aemConfigs/PostpaidPersonalDetailsPreviewAemConfig.js";
+import "../aemConfigs/OrderSubmittedAemConfig.js";
 
 import "../rotues/AemConfig.js";
 
