@@ -7,12 +7,11 @@ import DataIcon from "../assets/images/dataIcon.png";
 import MinIcon from "../assets/images/minIcon.png";
 import SMSIcon from "../assets/images/smsIcon.png";
 import GlobeIcon from "../assets/images/globeIcon.png";
-import { DashboardPlanLabelsProps } from "../components/PlanManagement/types";
 import { selectMsisdn } from "../redux/selectors/userSelectors";
 import { setLoading } from "../redux/actions/loadingActions";
 
 
-function useGetDashboardData(planLabels?: DashboardPlanLabelsProps) {
+function useGetDashboardData(planLabels?: any) {
   const msisdn = useSelector(selectMsisdn);
   const dispatch = useDispatch();
   const [dashboardData, setDashboardData] = useState<any>(undefined);
