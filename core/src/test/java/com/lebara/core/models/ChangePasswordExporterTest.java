@@ -8,7 +8,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @ExtendWith({AemContextExtension.class, MockitoExtension.class})
 class ChangePasswordExporterTest {
@@ -20,7 +20,7 @@ class ChangePasswordExporterTest {
     ChangePasswordExporter changePasswordExporter = new ChangePasswordExporter();
 
     @BeforeEach
-    void setUp() {
+     void setUp() {
         aemContext.addModelsForClasses(FaqExporter.class);
         aemContext.load().json("/page.json","/content");
     }
@@ -37,10 +37,31 @@ class ChangePasswordExporterTest {
     void getFrmFields() {
         aemContext.currentResource(PROPERTIES_JSON);
         changePasswordExporter = aemContext.request().adaptTo(ChangePasswordExporter.class);
-        assertEquals("Change Password", changePasswordExporter.getFrmFields());
+        assert changePasswordExporter != null;
+        assertEquals("New Password", changePasswordExporter.getFrmFields().getNewPasswordLabel());
+        //assertEquals("Enter New Password", changePasswordExporter.getFrmFields().getNewPasswordPlacehodler());
+        assertEquals("Confirm Password", changePasswordExporter.getFrmFields().getConfirmNewPasswordLabel());
+        assertEquals("Confirm Password Placeholder", changePasswordExporter.getFrmFields().getConfirmPasswordPlacehodler());
+       // assertEquals("Old Password", changePasswordExporter.getFrmFields().getOldPasswordLabel());
+        assertEquals("Enter Old Password", changePasswordExporter.getFrmFields().getOldPasswordPlacehodler());
+        assertEquals("SAVE", changePasswordExporter.getFrmFields().getCtaButtonLabel());
+        assertEquals("CANCEL", changePasswordExporter.getFrmFields().getCtaCancelLabel());
     }
 
     @Test
-    void getExportedType() {
+    void getValidationMessages() {
+        aemContext.currentResource(PROPERTIES_JSON);
+        changePasswordExporter = aemContext.request().adaptTo(ChangePasswordExporter.class);
+        assert changePasswordExporter != null;
+        assertEquals("Confirm password should be same as new password.", changePasswordExporter.getValidationMessages().getPasswordNotMatchErrorMessage());
+        assertEquals("Please enter a password", changePasswordExporter.getValidationMessages().getNewPasswordRequiredMsg());
+        assertEquals("Please enter a password", changePasswordExporter.getValidationMessages().getConfirmPasswordRequiredMsg());
+        assertEquals("Please enter a password", changePasswordExporter.getValidationMessages().getOldPasswordRequiredMsg());
+
+
     }
+
+
+
+
 }

@@ -50,7 +50,7 @@
                                     sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                     fieldDescription="New Password Placeholder"
                                     fieldLabel="New Password Placeholder"
-                                    name="./frmFields/newPasswprdPlacehodler"
+                                    name="./frmFields/newPasswordPlacehodler"
                                     value="Enter New Password"/>
                             <confirmPasswordLabel
                                     jcr:primaryType="nt:unstructured"
