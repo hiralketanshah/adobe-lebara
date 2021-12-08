@@ -13,6 +13,7 @@ import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.Via;
 import org.apache.sling.models.annotations.injectorspecific.ScriptVariable;
 import org.apache.sling.models.annotations.injectorspecific.Self;
+import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
 import org.apache.sling.models.annotations.via.ResourceSuperType;
 
 import java.util.List;
@@ -27,6 +28,9 @@ public class LebaraContainerImpl implements LebaraContainer {
 
     @ScriptVariable
     protected Resource resource;
+    
+    @ValueMapValue
+    private String width;
 
     /**
      * The resource type.
@@ -72,4 +76,9 @@ public class LebaraContainerImpl implements LebaraContainer {
     public String getId() {
         return delegate.getId();
     }
+
+	@Override
+	public String getWidth() {
+		return width;
+	}
 }
