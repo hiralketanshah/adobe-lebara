@@ -39,16 +39,16 @@
                                                 <items jcr:primaryType="nt:unstructured">
                                                     <full
                                                         jcr:primaryType="nt:unstructured"
-                                                        text="Full Layout"
+                                                        text="Page full container"
                                                         value="page-full-container"/>
                                                     <medium
                                                         jcr:primaryType="nt:unstructured"
-                                                        text="Form Container"
-                                                        value="page-form-container"/>
+                                                        text="Page medium Container"
+                                                        value="page-medium-container"/>
                                                     <small
                                                         jcr:primaryType="nt:unstructured"
-                                                        text="Inner Page Container"
-                                                        value="page-inner-container"/>                                                    
+                                                        text="Page small Container"
+                                                        value="page-small-container"/>                                                    
                                                 </items>
                                             </width>
                                         </items>

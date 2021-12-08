@@ -78,8 +78,8 @@ public class LebaraContainerImpl implements LebaraContainer {
     public String getId() {
         return delegate.getId();
     }
-	
-	public String getWidth() {
-		return width;
-	}
+
+    public String getWidth() {
+        return width;
+    }
 }
