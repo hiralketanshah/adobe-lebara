@@ -88,10 +88,7 @@ public class PostpaidExporter implements ComponentExporter {
     @ValueMapValue
     private String popupDownloadLabel;
     public List<Labels> getDurationRadioLabelList() {
-        if (durationRadioLabelList != null) {
-            return Collections.unmodifiableList(durationRadioLabelList);
-        }
-        return durationRadioLabelList;
+        return durationRadioLabelList == null ? Collections.emptyList() : Collections.unmodifiableList(durationRadioLabelList);
     }
 
     public String getDataVolumeRadioLabel() {
