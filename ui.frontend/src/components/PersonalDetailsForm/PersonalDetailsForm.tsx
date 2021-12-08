@@ -240,7 +240,7 @@ const PersonalDetailsForm: React.FC<PersonalDetailsFormProps> = ({
               .then((res: any) => res.json())
               .then(async (res: any) => {
                 history.push((GC.journeyPages[C.ORDER_SUBMITTED] || '/'), {
-                  orderId: res,
+                  orderId: res.orderId,
                   isGuest: false,
                   signedUp: !!values.password,
                   email: values.email,

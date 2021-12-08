@@ -131,7 +131,7 @@ const PaymentFrame: React.FC<{isPostpaid?: boolean}> = ({isPostpaid}) => {
               voucherCode,
               cartItems: [...cartItems],
               paymentMethod: state.data?.paymentMethod?.type,
-              orderId: res
+              orderId: res.orderId
             });
           }
         });
@@ -222,7 +222,7 @@ const PaymentFrame: React.FC<{isPostpaid?: boolean}> = ({isPostpaid}) => {
                   voucherCode,
                   cartItems: [...cartItems],
                   paymentMethod: state.data?.paymentMethod?.type,
-                  orderId: res
+                  orderId: res.orderId
                 });
                 dispatch(saveUserInfo);
               }
