@@ -1,5 +1,5 @@
 import { MapTo } from "@adobe/aem-react-editable-components";
-import Addons from "./Addons";
+import Addons from "@lebara/ui/src/components/AddOns/Addons";
 
 const AddOnsConfig = {
   emptyLabel: "Dahsboard Addons component",
@@ -8,4 +8,4 @@ const AddOnsConfig = {
   },
 };
 
-MapTo("lebara/components/dashboard/addons")(Addons, AddOnsConfig);
+MapTo("lebara/components/dashboard/a  ddons")(Addons, AddOnsConfig);

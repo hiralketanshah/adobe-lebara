@@ -1,5 +1,5 @@
 import { MapTo } from "@adobe/aem-react-editable-components";
-import LebaraMobileGetApp from "./LebaraMobileGetApp";
+import LebaraMobileGetApp from "@lebara/ui/src/components/LebaraMobileApp/LebaraMobileApp";
 
 const LebaraMobileGetAppConfig = {
   emptyLabel: "Get APP",

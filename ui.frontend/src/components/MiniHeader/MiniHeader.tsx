@@ -27,7 +27,7 @@ import SideMenu from "../SideMenu/SideMenu";
 import { ReduxState } from "../../redux/types";
 import { globalConfigs as GC, globalConstants as GCST } from "../../GlobalConfigs";
 import Button from "../Button/Button";
-import UserMenu from "../UserMenu/UserMenu";
+import UserMenu from "@lebara/ui/src/components/UserMenu/UserMenu";
 import Search from "../Search/Search";
 import { selectIsAuthenticated } from "../../redux/selectors/userSelectors";
 
@@ -217,7 +217,7 @@ const MiniHeader: React.FC<MiniHeaderProps> = ({
             px="11px"
             borderBottomRadius="12px"
           >
-            {loggedInMenuItems && <UserMenu menus={loggedInMenuItems} logoutLabel={logoutLabel} />}
+            {loggedInMenuItems && <UserMenu menus={loggedInMenuItems as any} logoutLabel={logoutLabel} />}
           </Flex>
         </Box>
       ) : (

@@ -1,5 +1,5 @@
 import { MapTo } from "@adobe/aem-react-editable-components";
-import Help from "./Help";
+import Help from "@lebara/ui/src/components/Help/Help";
 
 const HelpConfig = {
     emptyLabel: "Help Center",

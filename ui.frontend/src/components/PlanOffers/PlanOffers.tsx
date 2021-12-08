@@ -2,7 +2,7 @@
 // import React, { useEffect, useRef } from "react";
 import { Flex, Box, Text } from "@chakra-ui/react";
 import { PlanOffersProps } from "./types";
-import Link from "../Link/Link";
+import Link from "@lebara/ui/src/components/Link/Link";
 import ExpandableSimPlanCard from "../ExpandableSimPlanCard/ExpandableSimPlanCard";
 import Button from "../Button/Button";
 import { useHistory } from "react-router-dom";

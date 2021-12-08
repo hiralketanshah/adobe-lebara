@@ -1,4 +1,4 @@
-import { SelectOption } from "../components/Select/types";
+import { SelectOption } from "@lebara/ui/src/components/Select/types";
 export interface SelectNumberAndOrderDetailsLayoutProps {
   heading?: string;
 }
