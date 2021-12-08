@@ -9,4 +9,4 @@ const ViewPlansConfig = {
   },
 };
 
-MapTo("lebara/components/user/changepassword")(ViewPlans, ViewPlansConfig);
+MapTo("lebara/components/viewplans")(ViewPlans, ViewPlansConfig);
