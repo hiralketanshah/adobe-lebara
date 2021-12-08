@@ -1,5 +1,5 @@
 import { MapTo } from "@adobe/aem-react-editable-components";
-import UsageDetails from "./UsageDetails";
+import UsageDetails from "@lebara/ui/src/components/UsageDetails/UsageDetails";
 
 const UsageDetailsConfig = {
   emptyLabel: "Usage Details component",

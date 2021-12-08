@@ -68,7 +68,7 @@ import "./SelectedPlanCard/AemConfig.js";
 import "./Search/AemConfig.js";
 import "./Help/AemConfig.js";
 import "./AddOns/AemConfig.js";
-import "./UsageDetails/AemConfig.js";
+import "../aemConfigs/UsageDetailsAemConfig.js";
 import "./Breadcrumb/AemConfig.js";
 import "./LbIntro/AemConfig.js";
 import "./LbSectionIntro/AemConfig.js";
