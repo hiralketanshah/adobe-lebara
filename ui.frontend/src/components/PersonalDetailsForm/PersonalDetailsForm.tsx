@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Flex, Text } from "@chakra-ui/react";
 import { useHistory, useLocation } from "react-router-dom";
 import { Formik } from "formik";
+import { useApolloClient } from "@apollo/client";
 import * as yup from "yup";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
@@ -30,6 +31,7 @@ import { loadInitialCart } from "../../redux/actions/cartActions";
 import { saveFormDetails, resetForms } from "../../redux/actions/formsActions";
 import { selectFormValues } from "../../redux/selectors/formsSelectors";
 import FormikPassword from "../Formik/FormikPassword/FormikPassword";
+import { selectIsAuthenticated, selectEmail } from "../../selectors/userSelectors";
 
 const PersonalDetailsForm: React.FC<PersonalDetailsFormProps> = ({
   heading,
@@ -99,6 +101,12 @@ const PersonalDetailsForm: React.FC<PersonalDetailsFormProps> = ({
     toPortIn?: boolean;
   }>();
   const toPortIn = location?.state?.toPortIn;
+  const isAuthenticated = useSelector(selectIsAuthenticated);
+  const loggedInEmail = useSelector(selectEmail);
+  const [isEmailValidationLoading, setIsEmailValidationLoading] =
+  React.useState(false);
+  const [hasEmailError, setHasEmailError] = React.useState(false);
+  const client = useApolloClient();
   const cartItems = useSelector((state: ReduxState) => state.cart.items);
   const isFreeTopUpAndFreeSim =
     cartItems.length > 0 &&
@@ -138,74 +146,61 @@ const PersonalDetailsForm: React.FC<PersonalDetailsFormProps> = ({
         dispatch(setLoading(false));
       });
   };
-  const validationSchema = (manualAddress: boolean) => {
-    let scheme: any = {
-      firstName: yup
-        .string()
-        .max(50, firstNameErrorMax)
-        .required(firstNameErrorRequired)
-        .matches(nameRegex, firstNameErrorPattern),
-      lastName: yup
-        .string()
-        .max(75, lastNameErrorMax)
-        .required(lastNameErrorRequired)
-        .matches(nameRegex, lastNameErrorPattern),
-      email: yup
-        .string()
-        .max(100, emailErrorMax)
-        .required(emailErrorRequired)
-        .matches(emailRegex, emailErrorPattern),
-      ...(freeSimWithAutoTopUp
-        ? {
-          password: yup
-            .string()
-            .min(8, minimumCharactersLabel)
-            .required(enterPasswordLabel),
-          confirmPassword: yup
-            .string()
-            .required(confirmPasswordLabel)
-            .min(8, minimumCharactersLabel)
-            .when("password", {
-              is: (val: string | any[]) => val && val.length > 0,
-              then: yup
-                .string()
-                .oneOf(
-                  [yup.ref("password")],
-                  samePasswordLabel
-                ),
-            }),
-        }
-        : {}),
-    };
-    scheme = manualAddress
-      ? {
-        ...scheme,
-        streetName: yup
-          .string()
-          .max(250, streetLabelErrorMax)
-          .required(streetLabelErrorRequired)
-          .matches(STREET_REGEX, streetLabelErrorPattern),
-        houseNumber: yup
-          .string()
-          .max(20, houseNumberErrorMax)
-          .required(houseNumberErrorRequired)
-          .matches(HOUSE_NUMBER_REGEX, houseNumberErrorPattern),
-        townCity: yup
-          .string()
-          .max(20, cityErrorMax)
-          .required(cityErrorRequired),
-        zipCode: yup
-          .string()
-          .required(zipCodeErrorRequired)
-          .matches(ZIP_CODE_REGEX, zipCodeErrorPattern),
+  const validate = (values: any) => {
+    const errors: any = {};
+    if (!values.firstName) {
+      errors.firstName = firstNameErrorRequired;
+    } else if (!nameRegex.test(values.firstName)) {
+      errors.firstName = firstNameErrorPattern;
+    }
+    if (!values.lastName) {
+      errors.lastName = lastNameErrorRequired;
+    } else if (!nameRegex.test(values.lastName)) {
+      errors.lastName = lastNameErrorPattern;
+    }
+    if (!isAuthenticated) {
+      if (!values.email) {
+        errors.email = emailErrorRequired;
+      } else if (!emailRegex.test(values.email)) {
+        errors.email = emailErrorPattern;
       }
-      : {
-        ...scheme,
-        address: yup.object({
-          label: yup.string().required(addressErrorRequired),
-        }),
-      };
-    return yup.object(scheme);
+    }
+
+    if (freeSimWithAutoTopUp && !loggedInEmail) {
+      if (!values.password) {
+        errors.email = enterPasswordLabel;
+      } else if (values.password.length < 8) {
+        errors.password = "Minimum 8 characters";
+      } else if (values.password !== values.confirmPassword) {
+        errors.password = samePasswordLabel;
+      }
+      if (!values.confirmPassword) {
+        errors.email = confirmPasswordLabel;
+      } else if (values.password.length < 8) {
+        errors.password = minimumCharactersLabel;
+      }
+    }
+    if (!values.streetName) {
+      errors.streetName = streetLabelErrorRequired;
+    } else if (!STREET_REGEX.test(values.streetName)) {
+      errors.streetName = streetLabelErrorPattern;
+    }
+
+    if (!values.houseNumber) {
+      errors.houseNumber = houseNumberErrorRequired;
+    } else if (!HOUSE_NUMBER_REGEX.test(values.houseNumber)) {
+      errors.houseNumber = houseNumberErrorPattern;
+    }
+
+    if (!values.townCity) {
+      errors.townCity = cityErrorRequired;
+    }
+    if (!values.zipCode) {
+      errors.zipCode = zipCodeErrorRequired;
+    } else if (!ZIP_CODE_REGEX.test(values.zipCode)) {
+      errors.zipCode = zipCodeErrorPattern;
+    }
+    return errors;
   };
   const isFreeTopUpWithAmountAndFreeSim = cartItems.every(
     (t) => (t.isFreeSimTopup && t.price > 0) || t.isFreeSim
@@ -217,7 +212,7 @@ const PersonalDetailsForm: React.FC<PersonalDetailsFormProps> = ({
         onClose={() => setIsPaymentDialogOpen(false)}
       />
       <Formik
-        validationSchema={validationSchema(isManualAddress)}
+        validate={validate}
         initialValues={formInitialValues}
         onSubmit={(values: any) => {
           const userDetails = {
@@ -270,7 +265,7 @@ const PersonalDetailsForm: React.FC<PersonalDetailsFormProps> = ({
           const isExistingUser = errors.email === "exists";
           const disabledInputProps = {
             inputProps: {
-              isDisabled: isExistingUser,
+              isDisabled: hasEmailError,
             },
           };
           return (
@@ -316,20 +311,29 @@ const PersonalDetailsForm: React.FC<PersonalDetailsFormProps> = ({
                   label={emailAddressLabel}
                   placeholder={emailAddressPlaceholder}
                   isPrepaid
+                  hasEmailError={hasEmailError}
                   validate={async (email) => {
-                    await validateEmailSps({
+                    if (!email) {
+                      setHasEmailError(false);
+                      return;
+                    }
+                    if (errors.email) {
+                      return;
+                    }
+                    setIsEmailValidationLoading(true);
+                    setHasEmailError(false);
+                    const validateEmailSpsResult = await client.query({
+                      query: VALIDATE_EMAIL_SPS,
                       variables: {
                         email,
                       },
                     });
-                    if (
-                      validateEmailSpsResult?.validateEmailSPS?.startsWith(
+                    setIsEmailValidationLoading(false);
+                    setHasEmailError(
+                      validateEmailSpsResult?.data?.validateEmailSPS?.startsWith(
                         "Customer already exists"
                       )
-                    ) {
-                      return emailAddressAlreadyExistMsg;
-                    }
-                    return undefined;
+                    );
                   }}
                   isRequired
                 />
@@ -369,7 +373,7 @@ const PersonalDetailsForm: React.FC<PersonalDetailsFormProps> = ({
                     isManualAddress ? "NewAddress" : "SearchNewAddress"
                   }
                   onAddressChange={handleAddressChange(setFieldValue)}
-                  isDisabled={isExistingUser}
+                  isDisabled={hasEmailError}
                   addressLabel={addressLabel}
                   searchAddressSubText={addressKeyInText}
                   streetLabel={streetLabel}
@@ -396,7 +400,7 @@ const PersonalDetailsForm: React.FC<PersonalDetailsFormProps> = ({
                   type="submit"
                   maxW={{ lg: "403px" }}
                   isDisabled={
-                    Object.keys(errors).length > 0 || validateEmailLoading
+                    Object.keys(errors).length > 0 || isEmailValidationLoading || hasEmailError
                   }
                 >
                   {isFreeTopUpWithAmountAndFreeSim

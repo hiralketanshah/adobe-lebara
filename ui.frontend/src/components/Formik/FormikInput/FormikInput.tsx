@@ -39,13 +39,14 @@ const FormikInput: React.FC<FormikInputProps> = ({
   revealInputToggle,
   ignoreValidations,
   isPrepaid,
+  hasEmailError
 }) => {
   const [field, meta] = useField({
     name,
     validate,
   });
   const { touched, error } = meta;
-  const hasError = !!error;
+  const hasError = !!error || hasEmailError;
   const touchedWithError = touched && hasError;
   const touchOrHasValue = touched || !!field.value;
   const isExistingUser = error === "exists";
@@ -79,7 +80,7 @@ const FormikInput: React.FC<FormikInputProps> = ({
           }}
           _invalid={{
             boxShadow: "none",
-            borderColor: isExistingUser ? "warning" : "lebaraRed",
+            borderColor: hasEmailError ? "warning" : "lebaraRed",
           }}
           _disabled={{
             backgroundColor: "#FCFCFC",
@@ -89,7 +90,7 @@ const FormikInput: React.FC<FormikInputProps> = ({
           errorBorderColor="unsuccessful"
           borderWidth="1.5px"
           borderColor={
-            isExistingUser
+            hasEmailError
               ? "warning"
               : touchedWithError
               ? "lebaraRed"
@@ -99,10 +100,10 @@ const FormikInput: React.FC<FormikInputProps> = ({
           }
           {...field}
         />
-        {!revealInputToggle && touchOrHasValue && (
+        {touchOrHasValue && (
           <InputRightElement
             color={
-              isExistingUser
+              hasEmailError
                 ? "warning"
                 : touchedWithError
                 ? "lebaraRed"
@@ -130,13 +131,13 @@ const FormikInput: React.FC<FormikInputProps> = ({
           </InputRightElement>
         )}
       </InputGroup>
-      {!ignoreValidations && hasError && !isExistingUser && (
+      {!ignoreValidations && hasError && !hasEmailError && (
         <FormErrorMessage color="unsuccessful" alignItems="flex-start">
           <Icon as={HiOutlineExclamation} color="lebaraRed" w="20px" h="20px" />
           <Text paddingLeft="7px">{error}</Text>
         </FormErrorMessage>
       )}
-      {!ignoreValidations && hasError && !isPrepaid && isExistingUser && (
+      {!ignoreValidations && hasError && !isPrepaid && hasEmailError && (
         <FormErrorMessage color="warning" alignItems="flex-start">
           <Flex>
             <Box w="20px">
@@ -167,7 +168,7 @@ const FormikInput: React.FC<FormikInputProps> = ({
           </Flex>
         </FormErrorMessage>
       )}
-      {!ignoreValidations && hasError && isPrepaid && isExistingUser && (
+      {!ignoreValidations && hasError && isPrepaid && hasEmailError && (
         <FormErrorMessage color="warning" alignItems="flex-start">
           <Flex>
             <Box w="20px">
