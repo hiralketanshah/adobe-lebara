@@ -7,5 +7,6 @@ export interface SimChoiceProps {
     ctaTwoLink: string;
     isAddFreeSimtoCart?: boolean;
     formName?: string;
+    showSkeleton?: boolean;
 }
 
