@@ -469,7 +469,6 @@ const Header: React.FC<HeaderProps> = ({
             background="white"
             w="360px"
             px="11px"
-            
             mt="-20px"
             borderBottomRadius="12px"
           >

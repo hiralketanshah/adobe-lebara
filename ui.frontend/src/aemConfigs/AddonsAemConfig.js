@@ -8,4 +8,4 @@ const AddOnsConfig = {
   },
 };
 
-MapTo("lebara/components/dashboard/a  ddons")(Addons, AddOnsConfig);
+MapTo("lebara/components/dashboard/addons")(Addons, AddOnsConfig);
