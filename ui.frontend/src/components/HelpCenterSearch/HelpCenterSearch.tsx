@@ -33,7 +33,6 @@ const HelpCenterSearch: React.FC<HelpCenterSearchProps> = ({
   async function fetchData() {
     const response = await fetch(aemUtils.getSearchResultsPath(query, searchRootValue, 'help'));
     const jsonResp = await response.json();
-    
     const newSelectOptionsData = jsonResp && jsonResp?.map((item: any, idx: number) => {
 
       return {
@@ -46,8 +45,6 @@ const HelpCenterSearch: React.FC<HelpCenterSearchProps> = ({
   }
 
   const handleChange = (option: any) => {
-    console.log('handle change', {option});
-
     if(option && option?.value) {
       history.push(option?.value);
     }

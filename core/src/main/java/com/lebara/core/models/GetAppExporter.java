@@ -66,7 +66,10 @@ public class GetAppExporter implements ComponentExporter {
     }
 
     public List<Link> getLinks() {
-        return Collections.unmodifiableList(links);
+        if (links != null) {
+            return Collections.unmodifiableList(links);
+        }
+        return null;
     }
 
     public String getAppTitle() {
@@ -78,11 +81,17 @@ public class GetAppExporter implements ComponentExporter {
     }
 
     public List<String> getTextCol1() {
-        return Collections.unmodifiableList(textCol1);
+        if (textCol1 != null) {
+            return Collections.unmodifiableList(textCol1);
+        }
+        return textCol1;
     }
 
     public List<String> getTextCol2() {
-        return Collections.unmodifiableList(textCol2);
+        if (textCol2 != null) {
+            return Collections.unmodifiableList(textCol2);
+        }
+        return textCol2;
     }
 
     @Override

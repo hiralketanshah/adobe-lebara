@@ -3,5 +3,5 @@
     jcr:primaryType="sling:OsgiConfig"
     getApiHostUri="https://api-aggregator.lebara.com"
     getGqlEndpoint="/api-aggregator"
-    getPaymentAdeyenEnv="test"
-    getPaymentClientKey="test_H6OSQDTUINBCDPAD2QBO2CBX2AKULOWL"/>
+    getPaymentAdeyenEnv="live"
+    getPaymentClientKey="live_DUKE2HHZGNDXDG5R6NI5TGDYV4E2FA6Y"/>

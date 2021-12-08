@@ -3,16 +3,13 @@ package com.lebara.core.models;
 import com.adobe.cq.export.json.ComponentExporter;
 import com.adobe.cq.export.json.ExporterConstants;
 import com.lebara.core.models.beans.Labels;
-import com.lebara.core.utils.AemUtils;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;
-import org.apache.sling.api.resource.ResourceResolver;
 import org.apache.sling.models.annotations.DefaultInjectionStrategy;
 import org.apache.sling.models.annotations.Exporter;
 import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.injectorspecific.ChildResource;
 import org.apache.sling.models.annotations.injectorspecific.ScriptVariable;
-import org.apache.sling.models.annotations.injectorspecific.SlingObject;
 import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
 import java.util.*;
 
@@ -25,12 +22,6 @@ public class PostpaidExporter implements ComponentExporter {
      * The resource type.
      */
     protected static final String RESOURCE_TYPE = "lebara/components/postpaid";
-
-    @SlingObject
-    private ResourceResolver resourceResolver;
-
-    @SlingObject
-    private SlingHttpServletRequest slingRequest;
 
     @ScriptVariable
     private Resource resource;
@@ -71,8 +62,6 @@ public class PostpaidExporter implements ComponentExporter {
     @ValueMapValue
     private String productInformationLabel;
     @ValueMapValue
-    private String productInformationLink;
-    @ValueMapValue
     private String yourOrderContractdurationLabel;
     @ValueMapValue
     private String yourOrderDataLabel;
@@ -96,9 +85,13 @@ public class PostpaidExporter implements ComponentExporter {
     private String yourOrdersimPlanLabel;
     @ValueMapValue
     private String yourOrderMinutesInGermanyValue;
-
+    @ValueMapValue
+    private String popupDownloadLabel;
     public List<Labels> getDurationRadioLabelList() {
-        return Collections.unmodifiableList(durationRadioLabelList);
+        if (durationRadioLabelList != null) {
+            return Collections.unmodifiableList(durationRadioLabelList);
+        }
+        return durationRadioLabelList;
     }
 
     public String getDataVolumeRadioLabel() {
@@ -181,10 +174,6 @@ public class PostpaidExporter implements ComponentExporter {
         return productInformationLabel;
     }
 
-    public String getProductInformationLink() {
-        return AemUtils.getLinkWithExtension(productInformationLink, slingRequest);
-    }
-
     public String getYourOrderContractdurationLabel() {
         return yourOrderContractdurationLabel;
     }
@@ -221,6 +210,9 @@ public class PostpaidExporter implements ComponentExporter {
         return yourOrderMinutesInGermanyValue;
     }
 
+    public String getPopupDownloadLabel() {
+        return popupDownloadLabel;
+    }
     @Override
     public String getExportedType() {
         return RESOURCE_TYPE;
