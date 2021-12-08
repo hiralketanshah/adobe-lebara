@@ -570,7 +570,7 @@
 		<property name="oldPasswordLabel"/>
 		<property name="oldPasswordPlacehodler"/>
 		<property name="newPasswordLabel"/>
-		<property name="newPasswprdPlacehodler"/>
+		<property name="newPasswordPlacehodler"/>
 		<property name="confirmPasswordPlacehodler"/>
 		<property name="oldPasswordRequiredMsg"/>
 		<property name="newPasswordRequiredMsg"/>
