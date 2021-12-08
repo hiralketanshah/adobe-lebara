@@ -1,5 +1,5 @@
 import { MapTo } from "@adobe/aem-react-editable-components";
-import LebaraBreadcrumb from "./LebaraBreadcrumb";
+import LebaraBreadcrumb from "@lebara/ui/src/components/Breadcrumb/LebaraBreadcrumb";
 
 const LebaraBreadcrumbConfig = {
   emptyLabel: "Breadcrumb Component",

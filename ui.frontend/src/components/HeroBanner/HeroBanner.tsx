@@ -1,7 +1,6 @@
 import React from "react";
 import { Box, Flex, Heading, useToast } from "@chakra-ui/react";
 import { HeroBannerProps } from "./types";
-import { Image } from "../Image/Image";
 import Button from "../Button/Button";
 import { setLoading } from "../../redux/actions/loadingActions";
 import {
@@ -13,6 +12,8 @@ import useAddToCart from "../../hooks/useAddToCart";
 import { ReduxState } from "../../redux/types";
 import { useHistory } from "react-router-dom";
 import { globalConfigs as GC, globalConstants as C } from "../../GlobalConfigs";
+import { Image } from "@lebara/ui/src/components/Image/Image";
+
 const HeroBanner: React.FC<HeroBannerProps> = ({
   imagePath,
   title,

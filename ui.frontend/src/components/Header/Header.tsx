@@ -25,9 +25,9 @@ import IconButton from "../IconButton/IconButton";
 import Button from "../Button/Button";
 import MiniHeader from "../MiniHeader/MiniHeader";
 import {ReduxState} from "@lebara/ui/src/redux/types";
-import NewSIMOfferCard from "../NewSImOfferCard/NewSImOfferCard";
+import NewSIMOfferCard from "@lebara/ui/src/components/NewSImOfferCard/NewSImOfferCard";
 import Search from "../Search/Search";
-import UserMenu from "../UserMenu/UserMenu";
+import UserMenu from "@lebara/ui/src/components/UserMenu/UserMenu";
 import {headerSearch} from "@lebara/ui/src/redux/actions/headerSearchActions";
 import {selectIsAuthenticated} from "@lebara/ui/src/redux/selectors/userSelectors";
 import {globalConfigs as GC, globalConstants as GCST} from "../../GlobalConfigs";
@@ -472,7 +472,7 @@ const Header: React.FC<HeaderProps> = ({
             mt="-20px"
             borderBottomRadius="12px"
           >
-            {loggedInMenuItems && <UserMenu menus={loggedInMenuItems} logoutLabel={logoutLabel} />}
+            {loggedInMenuItems && <UserMenu menus={loggedInMenuItems as any} logoutLabel={logoutLabel} />}
           </Flex>
         </Box>
       )}

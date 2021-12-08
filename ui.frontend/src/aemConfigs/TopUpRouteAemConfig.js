@@ -1,5 +1,5 @@
 import { MapTo } from "@adobe/aem-react-editable-components";
-import TopupRoute from "./TopupRoute";
+import TopupRoute from "@lebara/ui/src/rotues/TopupRoute";
 
 const TopupRouteConfig = {
   emptyLabel: "Top Up Component",

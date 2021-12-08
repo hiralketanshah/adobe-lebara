@@ -21,7 +21,8 @@ import "@fontsource/roboto/700.css";
 import "@fontsource/roboto/900.css";
 import {globalConfigs} from './GlobalConfigs.js';
 import store from "@lebara/ui/src/store";
-
+import { pdfjs } from "react-pdf";
+pdfjs.GlobalWorkerOptions.workerSrc = '/etc.clientlibs/lebara/clientlibs/clientlib-react/resources/pdf.worker.js';
 const client = new ApolloClient({
   uri: `${globalConfigs.apiHostUri}${globalConfigs.gqlEndpoint}`,
   credentials: "include",

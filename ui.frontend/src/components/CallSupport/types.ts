@@ -1,4 +1,4 @@
-import { SelectOption } from "../Select/types";
+import { SelectOption } from "@lebara/ui/src/components/Select/types";
 
 export interface CallSupportProps {
   lastName?: string;

@@ -1,4 +1,4 @@
-import { SelectOptionTypeString } from '../Select/types';
+import { SelectOptionTypeString } from "@lebara/ui/src/components/Select/types";
 
 
 interface OptionsFieldProps {
