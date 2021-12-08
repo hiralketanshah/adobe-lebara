@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <workspaceFilter version="1.0">
     <filter root="/apps/lebara/clientlibs"/>
-    <filter root="/apps/eaem-touchui-rte-structured-content"/>
+    <filter root="/apps/lebara/rte-tooltip-plugin"/>
     <filter root="/apps/lebara/components"/>
     <filter root="/apps/lebara/i18n"/>
     <filter root="/apps/mcm/campaign/components"/>

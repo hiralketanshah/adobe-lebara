@@ -5,7 +5,7 @@
         CONTENT_IN_DIALOG = "content",
         REQUESTER = "requester",
         CANCEL_CSS = "[data-foundation-wizard-control-action='cancel']",
-        MODAL_URL = "/apps/eaem-touchui-rte-structured-content/structured-content.html",
+        MODAL_URL = "/apps/lebara/rte-tooltip-plugin/structured-content.html",
         $eaemStructuredModal, url = document.location.pathname;
 
     if( url.indexOf(MODAL_URL) !== 0 ){
