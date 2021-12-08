@@ -7,7 +7,7 @@ import ExpandableSimPlanCard from "../ExpandableSimPlanCard/ExpandableSimPlanCar
 import Button from "../Button/Button";
 import { useHistory } from "react-router-dom";
 import TickInCircle from "../../icons/TickInCircle";
-import {globalConfigs, globalConstants} from  '../../GlobalConfigs.js';
+import { globalConfigs, globalConstants } from '../../GlobalConfigs.js';
 const PlanOffers: React.FC<PlanOffersProps> = ({
   offers,
   heading,
@@ -29,13 +29,13 @@ const PlanOffers: React.FC<PlanOffersProps> = ({
   ctaDownloadLabel,
   ctaBottomLink,
   minutesLabel,
+  noPadding
 }) => {
   const history = useHistory();
   const linkStyles = {
     fontSize: "14px",
     letterSpacing: "0.01em",
     fontWeight: "bold",
-    color: "var(--chakra-colors-pink-500);"
   };
 
   return (
@@ -43,8 +43,8 @@ const PlanOffers: React.FC<PlanOffersProps> = ({
       backgroundColor={backgroundColor ? backgroundColor : `lightenPrimary.50`}
       backgroundPosition="center right"
       backgroundRepeat="no-repeat"
-      py={{ base: "30.68px", lg: "60px" }}
-      px={{ base: "20px", lg: "80px" }}
+      py={noPadding ? {} : { base: "30.68px", lg: "60px" }}
+      px={noPadding ? {} : { base: "20px", lg: "80px" }}
     >
       {heading && (
         <Text
@@ -61,11 +61,13 @@ const PlanOffers: React.FC<PlanOffersProps> = ({
       <Flex flexDir="column" align="stretch">
         {title && (
           <Text
+            color="primary.500"
             as="h3"
             mb={{ base: "12.11px", lg: "10px" }}
+            mt={{ base: "20px", lg: "30px" }}
             lineHeight={{ base: "22px", lg: "30px" }}
-            fontSize={{ base: "20px", lg: "24px" }}
-            fontWeight="500"
+            fontSize={{ base: "20px", lg: "32px" }}
+            fontWeight="bold"
           >
             {title}
           </Text>
@@ -100,7 +102,7 @@ const PlanOffers: React.FC<PlanOffersProps> = ({
             offers?.map((plan: ExpandableSimPlanCardProps) => (
               <Box
                 maxW={{ lg: "400px" }}
-                minW={{ base: "320px", lg: "400px" }}
+                minW={{ base: "285px", lg: "400px" }}
                 w="100%"
                 key={plan.planName}
               >
@@ -125,7 +127,7 @@ const PlanOffers: React.FC<PlanOffersProps> = ({
             minW={{ base: "100%", lg: "320px" }}
             alignSelf="center"
             onClick={() => {
-               history.push((ctaBottomLink || globalConfigs.journeyPages[globalConstants.PREPAID]  || '/'), history.location.state);
+              history.push((ctaBottomLink || globalConfigs.journeyPages[globalConstants.PREPAID] || '/'), history.location.state);
             }}
           >
             {ctaBottomLabel}

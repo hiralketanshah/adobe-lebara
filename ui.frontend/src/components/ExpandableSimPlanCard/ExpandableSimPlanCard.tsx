@@ -44,6 +44,7 @@ const ExpandableSimPlanCard: React.FC<ExpandableSimPlanCardProps> = ({
   isRemoveFromCart,
   onClose,
   minutesLabel,
+  isResponsivePlan
 }) => {
   const history = useHistory();
   const [addItemToCart] = useAddToCart();
@@ -58,12 +59,12 @@ const ExpandableSimPlanCard: React.FC<ExpandableSimPlanCardProps> = ({
   };
 
   let filteredAllowanceList: allowanceListProps = {};
-  if((!allowanceType || allowanceType === '' || allowanceType?.toLowerCase() === 'data')) {
+  if ((!allowanceType || allowanceType === '' || allowanceType?.toLowerCase() === 'data')) {
     filteredAllowanceList = (allowanceList && allowanceList.find((list) => list.name && list.name.toLowerCase().includes('data'))) || {};
-  } else if(allowanceType && (allowanceType?.toLowerCase() === 'minutes')) {
-    filteredAllowanceList = (allowanceList && allowanceList.find((list) => list.name && (!list.name.toLowerCase().includes('data') || !list.name.toLowerCase().includes('national_voice') 
-    || !list.name.toLowerCase().includes('l2l')))) || {};
-    filteredAllowanceList['formatedValue'] = filteredAllowanceList['value']+ ' ' + minutesLabel;
+  } else if (allowanceType && (allowanceType?.toLowerCase() === 'minutes')) {
+    filteredAllowanceList = (allowanceList && allowanceList.find((list) => list.name && (!list.name.toLowerCase().includes('data') || !list.name.toLowerCase().includes('national_voice')
+      || !list.name.toLowerCase().includes('l2l')))) || {};
+    filteredAllowanceList['formatedValue'] = filteredAllowanceList['value'] + ' ' + minutesLabel;
   }
 
   const handleAddToCart = async () => {
@@ -80,7 +81,7 @@ const ExpandableSimPlanCard: React.FC<ExpandableSimPlanCardProps> = ({
       case OfferTypes.BOLTON:
       case OfferTypes.TOPUP: {
         const updatedAddtoCart: string = addedtoCartLabel?.replace('{0}', planName) || '';
-        await addItemToCart(parseInt(id || ''), planName, (JSON.stringify(description || '')), Number(cost?.replaceAll(',','.') || ''), "addon");
+        await addItemToCart(parseInt(id || ''), planName, (JSON.stringify(description || '')), Number(cost?.replaceAll(',', '.') || ''), "addon");
         toast({
           position: "bottom",
           render: () => (
@@ -107,7 +108,7 @@ const ExpandableSimPlanCard: React.FC<ExpandableSimPlanCardProps> = ({
       }
       case OfferTypes.PREPAID:
       case OfferTypes.POSTPAID: {
-        await addItemToCart(parseInt(id || ''), planName, (JSON.stringify(description || '')), Number(cost?.replaceAll(',','.') || ''), "plan");
+        await addItemToCart(parseInt(id || ''), planName, (JSON.stringify(description || '')), Number(cost?.replaceAll(',', '.') || ''), "plan");
         isRemoveFromCart && onClose ? onClose() : history.push(userToken ? (globalConfigs.journeyPages[globalConstants.ORDER_DETAILS] || '/') : (globalConfigs.journeyPages[globalConstants.LEBARA_SIM_CHOICE] || '/'));
       }
     }
@@ -130,56 +131,73 @@ const ExpandableSimPlanCard: React.FC<ExpandableSimPlanCardProps> = ({
           </LebaraText>
         </Box>
       )}
-        <Flex
-          flexDirection="column"
-          background="white"
-          borderRadius={isRelatedPlan || promotionPrice ? undefined : "lg"}
-          borderBottomRadius={promotionPrice ? "lg" : undefined}
-          boxShadow={
-            isRelatedPlan ? undefined : "0px 4px 4px rgba(0, 0, 0, 0.05)"
-          }
-          px={isRelatedPlan ? undefined : { base: "15px", lg: "27.23px" }}
-          pt={{ base: "15px", lg: "34px" }}
-          pb={{ base: "15px", lg: "18px" }}
-        >
-          <Box mt={promotionPrice ? "13px" : "initial"}>
-            {planName && (
-              <Text color="primary.500" fontWeight="bold" textAlign="left">
-                {planName}
-              </Text>
-            )}
-          </Box>
-          <PdfDialog
-            fileName={productInformationFile || ""}
-            isOpen={isPdfDialogOpen}
-            onClose={() => setIsPdfDialogOpen(false)}
-            ctaCloseLabel={ctaCloseLabel}
-            ctaDownloadLabel={ctaDownloadLabel}
-          />
+      <Flex
+        flexDirection="column"
+        background="white"
+        borderRadius={isRelatedPlan || promotionPrice ? undefined : "lg"}
+        borderBottomRadius={promotionPrice ? "lg" : undefined}
+        boxShadow={
+          isRelatedPlan ? undefined : "0px 4px 4px rgba(0, 0, 0, 0.05)"
+        }
+        px={isRelatedPlan ? undefined : { base: "15px", lg: "27.23px" }}
+        pt={promotionPrice ? "8px" : "12px"}
+        pb="8px"
+      >
+        <Box>
+          {planName && (
+            <Text color="primary.500" fontWeight="bold" textAlign="left">
+              {planName}
+            </Text>
+          )}
+        </Box>
+        <PdfDialog
+          fileName={productInformationFile || ""}
+          isOpen={isPdfDialogOpen}
+          onClose={() => setIsPdfDialogOpen(false)}
+          ctaCloseLabel={ctaCloseLabel}
+          ctaDownloadLabel={ctaDownloadLabel}
+        />
 
-          <PlanDetailsDialog
-            isOpen={isDialogOpen}
-            onClose={() => setIsDialogOpen(false)}
-            planName={planName}
-            price={Number(cost || '')}
-            duration={!(offerType === OfferTypes.BOLTON) ? (validity || '') : ''}
-            countries={(planInfo && planInfo.countryList) || []}
-            previewIcon={previewIcon}
-            previewItems={(planInfo && planInfo.listPlanItem) || []}
-            title={planInfo?.title}
-            countryTitle={planInfo?.countryTitle}
-            dataValue={filteredAllowanceList.formatedValue}
-            isButtonDisabled={isButtonDisabled}
-            onActionClick={handleAddToCart}
-            buttonText={buttonLabel}
-            hideButton={isRelatedPlan}
-          />
-          <Flex justifyContent="space-between"
-            direction={promotionPrice ? "row" : "row"}
-            alignItems={promotionData ? "flex-end" : "initial"}>
+        <PlanDetailsDialog
+          isOpen={isDialogOpen}
+          onClose={() => setIsDialogOpen(false)}
+          planName={planName}
+          price={Number(cost || '')}
+          duration={!(offerType === OfferTypes.BOLTON) ? (validity || '') : ''}
+          countries={(planInfo && planInfo.countryList) || []}
+          previewIcon={previewIcon}
+          previewItems={(planInfo && planInfo.listPlanItem) || []}
+          title={planInfo?.title}
+          countryTitle={planInfo?.countryTitle}
+          dataValue={filteredAllowanceList.formatedValue}
+          isButtonDisabled={isButtonDisabled}
+          onActionClick={handleAddToCart}
+          buttonText={buttonLabel}
+          hideButton={isRelatedPlan}
+        />
+        <Flex direction={
+          isResponsivePlan ? { base: "column", lg: "row" } : "column"
+        }
+          justifyContent={
+            isResponsivePlan
+              ? { base: "initial", lg: "space-between" }
+              : "initial"
+          }
+          alignItems={
+            isResponsivePlan ? { base: "initial", lg: "center" } : "initial"
+          }>
+          <Flex
+            justifyContent="space-between"
+            gridGap="12px"
+            direction={promotionData ? "row" : "column"}
+            alignItems={promotionData ? "flex-end" : "flex-start"}
+            width={
+              isResponsivePlan ? { base: "initial", lg: "275px" } : "initial"
+            }
+          >
             <Box
               display={promotionData ? "flex" : "initial"}
-              alignItems={promotionData ? "center" : "initial"}
+              alignItems={"center"}
             >
               {promotionData && (
                 <Text
@@ -207,110 +225,113 @@ const ExpandableSimPlanCard: React.FC<ExpandableSimPlanCardProps> = ({
                 {filteredAllowanceList.formatedValue}
               </Text>
             </Box>
-            <Flex alignItems="baseline" color="primary.600" direction="column">
-              {promotionPrice && (
+          </Flex>
+          <Flex alignItems="baseline" color="primary.600" direction="column">
+            {promotionPrice && (
+              <Text
+                as="h3"
+                fontSize={16}
+                pr="6px"
+                pl="2px"
+                color="secondary.500"
+                fontWeight="normal"
+                textDecoration="line-through"
+              >
+                {cost} {globalConfigs.currencySymbol}
+              </Text>
+            )}
+            <Box display="flex" alignItems="center">
+              {promotionPrice ? (
                 <Text
                   as="h3"
-                  fontSize={16}
+                  fontSize={24}
                   pr="6px"
                   pl="2px"
                   color="secondary.500"
-                  fontWeight="normal"
-                  textDecoration="line-through"
+                  fontWeight={500}
+                >
+                  {promotionPrice} {globalConfigs.currencySymbol}
+                </Text>
+              ) : (
+                <Text
+                  as="h3"
+                  fontSize={24}
+                  pr="6px"
+                  pl="2px"
+                  color="secondary.500"
+                  fontWeight={500}
                 >
                   {cost} {globalConfigs.currencySymbol}
                 </Text>
               )}
-              <Box display="flex" alignItems="center">
-                {promotionPrice ? (
-                  <Text
-                    as="h3"
-                    fontSize={24}
-                    pr="6px"
-                    pl="2px"
-                    color="secondary.500"
-                    fontWeight={500}
-                  >
-                    {promotionPrice} {globalConfigs.currencySymbol}
-                  </Text>
-                ) : (
-                  <Text
-                    as="h3"
-                    fontSize={24}
-                    pr="6px"
-                    pl="2px"
-                    color="secondary.500"
-                    fontWeight={500}
-                  >
-                    {cost} {globalConfigs.currencySymbol}
-                  </Text>
-                )}
-                {!(offerType === OfferTypes.BOLTON) ? <Text as="p" fontSize={14} color="lightenPrimary.150">
-                  {" "}
-                  {validity && `/ ${validity}`}
-                </Text> : ''}
-              </Box>
-            </Flex>
-          </Flex>
-          {additionalOffers && (
-            <Box mt="7px" color="primary.700">
-              {additionalOffers.match(/<li>.*?<\/li>/g)?.length ? additionalOffers.match(/<li>.*?<\/li>/g)?.map((t) => (
-                <Flex width="100%" alignItems="center" mb={1}>
-                  {previewIcon}
-                  <Text ml="8px" dangerouslySetInnerHTML={{ __html: t.replace(/<li>|<\/li>/g, '') }}></Text>
-                </Flex>
-              )) : <Flex width="100%" alignItems="center" mb={1}>
-                <Text ml="8px" dangerouslySetInnerHTML={{ __html: additionalOffers }}></Text>
-              </Flex>}
+              {!(offerType === OfferTypes.BOLTON) ? <Text as="p" fontSize={14} color="lightenPrimary.150">
+                {" "}
+                {validity && `/ ${validity}`}
+              </Text> : ''}
             </Box>
-          )}
-          {productInformationFile && productInformationButtonLabel && (offerType !== OfferTypes.BOLTON) && (
-            <Text
-              onClick={() => setIsPdfDialogOpen(true)}
-              cursor="pointer"
-              color="grey.200"
-              textDecorationLine="underline"
-              fontSize={12}
-              lineHeight="17px"
-              pt="10px"
-            >
-              {productInformationButtonLabel}
-            </Text>
-          )}
-
-          {!isRelatedPlan && <Divider my={3.5} />}
-          <Flex
-            mt={isRelatedPlan ? 3.5 : undefined}
-            justifyContent="space-between"
-            alignItems="center"
-            color="primary"
-            gridGap="16px"
-          >
-            <Button
-              isFullWidth
-              variant="ghost"
-              color="secondary.500"
-              fontSize="16px"
-              colorScheme="secondary"
-              onClick={() => setIsDialogOpen(!isDialogOpen)}
-            >
-              {" "}
-              {showLabel}
-            </Button>
-            <Button
-              isFullWidth
-              fontSize="16px"
-              onClick={handleAddToCart}
-              disabled={isButtonDisabled}
-              isLoading={isButtonDisabled}
-              variant={isRelatedPlan ? "outline" : undefined}
-            >
-              {buttonLabel}
-            </Button>
           </Flex>
         </Flex>
-      </>
-      );
+        {additionalOffers && (
+          <Box mt="7px" color="primary.700">
+            {additionalOffers.match(/<li>.*?<\/li>/g)?.length ? additionalOffers.match(/<li>.*?<\/li>/g)?.map((t) => (
+              <Flex width="100%" alignItems="center" mb={1}>
+                {previewIcon}
+                <Text ml="8px" dangerouslySetInnerHTML={{ __html: t.replace(/<li>|<\/li>/g, '') }}></Text>
+              </Flex>
+            )) : <Flex width="100%" alignItems="center" mb={1}>
+              <Text ml="8px" dangerouslySetInnerHTML={{ __html: additionalOffers }}></Text>
+            </Flex>}
+          </Box>
+        )}
+        {productInformationFile && productInformationButtonLabel && (offerType !== OfferTypes.BOLTON) && (
+          <Text
+            onClick={() => setIsPdfDialogOpen(true)}
+            cursor="pointer"
+            color="grey.200"
+            textDecorationLine="underline"
+            fontSize={12}
+            lineHeight="17px"
+            pt="10px"
+          >
+            {productInformationButtonLabel}
+          </Text>
+        )}
+
+        {!isRelatedPlan && <Divider my={3.5} />}
+        <Flex
+          mt={isRelatedPlan ? 3.5 : undefined}
+          justifyContent="space-between"
+          alignItems="center"
+          color="primary"
+          gridGap="16px"
+          direction={isResponsivePlan ? { base: "row", lg: "column" } : "row"}
+        >
+          <Button
+            isFullWidth
+            variant="ghost"
+            color="secondary.500"
+            fontSize="16px"
+            colorScheme="secondary"
+            onClick={() => setIsDialogOpen(!isDialogOpen)}
+          >
+            {" "}
+            {showLabel}
+          </Button>
+          <Button
+            isFullWidth
+            fontSize="16px"
+            onClick={handleAddToCart}
+            disabled={isButtonDisabled}
+            isLoading={isButtonDisabled}
+            color={promotionData ? "white" : "primary"}
+            variant={isRelatedPlan ? "outline" : undefined}
+          >
+            {buttonLabel}
+          </Button>
+        </Flex>
+      </Flex>
+    </>
+  );
 };
 
-      export default ExpandableSimPlanCard;
+export default ExpandableSimPlanCard;
