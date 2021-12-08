@@ -15,6 +15,7 @@
     "@emotion/react": "^11.4.1",
     "@emotion/styled": "^11.3.0",
     "@fontsource/roboto": "^4.3.0",
+    "@lebara/ui": "1.0.0",
     "@react-pdf/renderer": "^2.0.21",
     "@rehooks/local-storage": "2.4.0",
     "@types/react": "^17.0.5",
@@ -80,10 +81,10 @@
     "yup": "^0.32.9"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build && clientlib --verbose",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
+    "start": "craco start",
+    "build": "craco build && clientlib --verbose",
+    "test": "craco test",
+    "eject": "craco eject",
     "sync": "aemsync -d -w ../ui.apps/src/main/content"
   },
   "eslintConfig": {
@@ -92,6 +93,13 @@
   "browserslist": [
     "defaults"
   ],
+  "workspaces": {
+    "packages": [
+      "packages/*",
+      "packages/lebara-client/*"
+    ],
+    "nohoist": []
+  },
   "proxy": "http://localhost:4502",
   "devDependencies": {
     "@testing-library/jest-dom": "^4.2.4",
@@ -105,10 +113,14 @@
     "babel-plugin-universal-import": "^4.0.0",
     "clean-webpack-plugin": "^0.1.19",
     "clone": "^2.1.2",
+    "craco": "^0.0.3",
+    "craco-babel-loader": "^1.0.3",
     "css-loader": "^3.4.2",
     "enzyme": "^3.10.0",
     "enzyme-adapter-react-16": "^1.15.1",
+    "fs": "^0.0.1-security",
     "ignore-styles": "^5.0.1",
+    "path": "^0.12.7",
     "sass-loader": "^6.0.7",
     "sinon": "^7.5.0",
     "style-loader": "^0.20.3",
