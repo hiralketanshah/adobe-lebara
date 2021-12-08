@@ -39,10 +39,8 @@ class ChangePasswordExporterTest {
         changePasswordExporter = aemContext.request().adaptTo(ChangePasswordExporter.class);
         assert changePasswordExporter != null;
         assertEquals("New Password", changePasswordExporter.getFrmFields().getNewPasswordLabel());
-        //assertEquals("Enter New Password", changePasswordExporter.getFrmFields().getNewPasswordPlacehodler());
         assertEquals("Confirm Password", changePasswordExporter.getFrmFields().getConfirmNewPasswordLabel());
         assertEquals("Confirm Password Placeholder", changePasswordExporter.getFrmFields().getConfirmPasswordPlacehodler());
-       // assertEquals("Old Password", changePasswordExporter.getFrmFields().getOldPasswordLabel());
         assertEquals("Enter Old Password", changePasswordExporter.getFrmFields().getOldPasswordPlacehodler());
         assertEquals("SAVE", changePasswordExporter.getFrmFields().getCtaButtonLabel());
         assertEquals("CANCEL", changePasswordExporter.getFrmFields().getCtaCancelLabel());
