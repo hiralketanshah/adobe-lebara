@@ -1,5 +1,6 @@
 import { MapTo } from "@adobe/aem-react-editable-components";
 import NewPostpaidNumberRoute from "@lebara/ui/src/rotues/NewPostpaidNumberRoute";
+import aemUtils from "../utils/aem-utils";
 
 const NewPostpaidNumberConfig = {
   emptyLabel: "Postpaid Component",
@@ -7,5 +8,5 @@ const NewPostpaidNumberConfig = {
     return !props.durationRadioLabelList;
   },
 };
-
-MapTo("lebara/components/postpaid")(NewPostpaidNumberRoute, NewPostpaidNumberConfig);
+const componentwithofferDataProp=()=> <NewPostpaidNumberRoute fetchDataCallback={(id, isOneEntry)=> aemUtils.fetchData(id, isOneEntry)}/>;
+MapTo("lebara/components/postpaid")(componentwithofferDataProp, NewPostpaidNumberConfig);
