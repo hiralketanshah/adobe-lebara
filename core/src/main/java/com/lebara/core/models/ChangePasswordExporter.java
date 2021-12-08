@@ -25,10 +25,8 @@ public class ChangePasswordExporter implements ComponentExporter{
     @ChildResource
     private ChangePasswordFormFields frmFields;
 
-
     @ChildResource
     private ChangePasswordErrorAndSuccessMsg validationMessages;
-
 
     @JsonProperty("frmFields")
     public ChangePasswordFormFields getFrmFields() {
@@ -36,9 +34,7 @@ public class ChangePasswordExporter implements ComponentExporter{
     }
 
     @JsonProperty("validationMessages")
-    public ChangePasswordErrorAndSuccessMsg getValidationMessages() {
-        return validationMessages;
-    }
+    public ChangePasswordErrorAndSuccessMsg getValidationMessages() { return validationMessages; }
 
     public String getChangePasswordHeading() {
         return changePasswordHeading;

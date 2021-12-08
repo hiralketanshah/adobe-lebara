@@ -39,7 +39,6 @@ public class ChangePasswordFormFields {
     @ValueMapValue
     private String ctaCancelLabel;
 
-
     public String getOldPasswordLabel() {return oldPasswordLabel;}
 
     public String getOldPasswordPlacehodler() {
@@ -50,9 +49,7 @@ public class ChangePasswordFormFields {
         return newPasswordLabel;
     }
 
-    public String getNewPasswordPlacehodler() {
-        return newPasswordPlacehodler;
-    }
+    public String getNewPasswordPlacehodler() { return newPasswordPlacehodler; }
 
     public String getConfirmNewPasswordLabel() {
         return confirmNewPasswordLabel;
@@ -69,5 +66,4 @@ public class ChangePasswordFormFields {
     public String getCtaCancelLabel() {
         return ctaCancelLabel;
     }
-
 }

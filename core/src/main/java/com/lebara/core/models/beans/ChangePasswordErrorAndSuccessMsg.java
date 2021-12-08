@@ -42,9 +42,5 @@ public class ChangePasswordErrorAndSuccessMsg {
     public String getOldPasswordRequiredMsg() {
         return oldPasswordRequiredMsg;
     }
-
-
-
-
-
 }
+

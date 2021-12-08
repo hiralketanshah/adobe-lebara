@@ -55,11 +55,5 @@ class ChangePasswordExporterTest {
         assertEquals("Please enter a password", changePasswordExporter.getValidationMessages().getNewPasswordRequiredMsg());
         assertEquals("Please enter a password", changePasswordExporter.getValidationMessages().getConfirmPasswordRequiredMsg());
         assertEquals("Please enter a password", changePasswordExporter.getValidationMessages().getOldPasswordRequiredMsg());
-
-
     }
-
-
-
-
 }
