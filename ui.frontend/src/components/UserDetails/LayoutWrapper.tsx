@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router";
 import ChangePasswordSuccess from "./ChangePasswordSuccesMessage";
 
-import { globalConfigs as GC, globalConstants as C } from "../../GlobalConfigs";
+import { globalConfigs as GC, globalConstants as C } from "@lebara/ui/src/configs/globalConfigs.js";
 import {
   selectEmail,
   selectIsAuthenticated,

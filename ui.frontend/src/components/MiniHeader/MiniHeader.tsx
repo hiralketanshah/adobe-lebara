@@ -25,7 +25,7 @@ import IconButton from "../IconButton/IconButton";
 import LanguageDropDown from "../LanguageDropDown/LanguageDropDown";
 import SideMenu from "../SideMenu/SideMenu";
 import { ReduxState } from "../../redux/types";
-import { globalConfigs as GC, globalConstants as GCST } from "../../GlobalConfigs";
+import { globalConfigs as GC, globalConstants as GCST } from "@lebara/ui/src/configs/globalConfigs.js";
 import Button from "../Button/Button";
 import UserMenu from "@lebara/ui/src/components/UserMenu/UserMenu";
 import Search from "../Search/Search";
