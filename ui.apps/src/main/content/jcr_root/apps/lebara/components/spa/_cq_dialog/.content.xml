@@ -143,12 +143,12 @@
                                                                             value="manage-plan"/>
                                                                         <postpaid-details
                                                                             jcr:primaryType="nt:unstructured"
-                                                                            text="postpaid-details"
-                                                                            value="postpaid-details"/>
+                                                                            text="postpaid/details"
+                                                                            value="postpaid/details"/>
                                                                         <postpaid-preview
                                                                             jcr:primaryType="nt:unstructured"
-                                                                            text="postpaid-preview"
-                                                                            value="postpaid-preview"/>
+                                                                            text="postpaid/preview"
+                                                                            value="postpaid/preview"/>
                                                                         <add-ons
                                                                             jcr:primaryType="nt:unstructured"
                                                                             text="add-ons"
