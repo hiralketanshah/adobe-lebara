@@ -2,14 +2,14 @@ import { Box, Divider, Flex, Text, useToast } from "@chakra-ui/react";
 import React, { useState } from "react";
 import { ExpandableSimPlanCardProps } from "./types";
 import OfferTypes from "./types";
-import Button from "../Button/Button";
+import Button from "@lebara/ui/src/components/Button/Button";
 import PlanDetailsDialog from "../PlanDetailsDialog/PlanDetailsDialog";
 import { allowanceListProps } from "../ExpandablePlanCard/types";
 import { useHistory } from "react-router-dom";
 import useAddToCart from "../../hooks/useAddToCart";
 import { useLocalStorage } from "@rehooks/local-storage";
-import { globalConfigs, globalConstants } from '../../GlobalConfigs.js';
-import LebaraText from "../LebaraText/LebaraText";
+import { globalConfigs, globalConstants } from "@lebara/ui/src/configs/globalConfigs";
+import LebaraText from "@lebara/ui/src/components/LebaraText/LebaraText";
 import PdfDialog from "@lebara/ui/src/components/PdfDialog/PdfDialog";
 import { useMutation } from "@apollo/client";
 import REMOVE_FROM_CART from "../../graphql/REMOVE_FROM_CART";
@@ -108,6 +108,7 @@ const ExpandableSimPlanCard: React.FC<ExpandableSimPlanCardProps> = ({
       }
       case OfferTypes.PREPAID:
       case OfferTypes.POSTPAID: {
+        console.log(globalConfigs.journeyPages, globalConstants.ORDER_DETAILS);
         await addItemToCart(parseInt(id || ''), planName, (JSON.stringify(description || '')), Number(cost?.replaceAll(',', '.') || ''), "plan");
         isRemoveFromCart && onClose ? onClose() : history.push(userToken ? (globalConfigs.journeyPages[globalConstants.ORDER_DETAILS] || '/') : (globalConfigs.journeyPages[globalConstants.LEBARA_SIM_CHOICE] || '/'));
       }
@@ -323,7 +324,6 @@ const ExpandableSimPlanCard: React.FC<ExpandableSimPlanCardProps> = ({
             onClick={handleAddToCart}
             disabled={isButtonDisabled}
             isLoading={isButtonDisabled}
-            color={promotionData ? "white" : "primary"}
             variant={isRelatedPlan ? "outline" : undefined}
           >
             {buttonLabel}

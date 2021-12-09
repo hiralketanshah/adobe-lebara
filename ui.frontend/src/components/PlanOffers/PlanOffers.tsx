@@ -29,7 +29,7 @@ const PlanOffers: React.FC<PlanOffersProps> = ({
   ctaDownloadLabel,
   ctaBottomLink,
   minutesLabel,
-  noPadding
+
 }) => {
   const history = useHistory();
   const linkStyles = {
@@ -43,8 +43,8 @@ const PlanOffers: React.FC<PlanOffersProps> = ({
       backgroundColor={backgroundColor ? backgroundColor : `lightenPrimary.50`}
       backgroundPosition="center right"
       backgroundRepeat="no-repeat"
-      py={noPadding ? {} : { base: "30.68px", lg: "60px" }}
-      px={noPadding ? {} : { base: "20px", lg: "80px" }}
+      py={{ base: "30.68px", lg: "60px" }}
+      px={{ base: "20px", lg: "80px" }}
     >
       {heading && (
         <Text
