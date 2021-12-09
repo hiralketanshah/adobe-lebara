@@ -1,5 +1,5 @@
 import { MapTo } from "@adobe/aem-react-editable-components";
-import OrderHistoryContainer from "../components/OrderHistory/OrderHistoryContainer";
+import OrderHistoryContainer from "@lebara/ui/src/components/OrderHistory/OrderHistoryContainer";
 
 const OrderHistoryContainerConfig = {
   emptyLabel: "Order History Component",
