@@ -1,11 +1,11 @@
 import React from "react";
 import { Box, Text, Flex, Image } from "@chakra-ui/react";
 import { IoIosArrowForward } from "react-icons/all";
-import Select from "../Select/Select";
+import Select from "@lebara/ui/src/components/Select/Select";
 import StatementIcon from "../../assets/images/order-history.png";
-import { ChooseSimProps } from "./types";
+import { ChooseSimProps, CompDefaultBindings } from "./types";
 
-const ChooseSim: React.FC<ChooseSimProps> = ({ sims }) => {
+const ChooseSim: React.FC<ChooseSimProps> = ({ sims, frmFields }) => {
   const [selectedSim, setSelectedSim] = React.useState(sims[0].value);
   const options = sims.map((sim: any) => ({
     value: sim.value,
@@ -29,7 +29,7 @@ const ChooseSim: React.FC<ChooseSimProps> = ({ sims }) => {
         fontWeight="500"
         letterSpacing="0.15px"
       >
-        History
+        {frmFields?.historyLabel || CompDefaultBindings?.historyLabel}
       </Text>
       <Select
         id="chooseSim"
@@ -57,7 +57,7 @@ const ChooseSim: React.FC<ChooseSimProps> = ({ sims }) => {
           lineHeight="14px"
           ml={{ base: "15px", lg: "20px" }}
         >
-          Get a summary of all your transactions !
+          {frmFields?.transactionSummery || CompDefaultBindings?.transactionSummery}
         </Text>
         <Box ml="auto" cursor="pointer">
           <IoIosArrowForward />

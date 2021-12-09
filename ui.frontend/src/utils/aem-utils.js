@@ -1,4 +1,4 @@
-import { globalConstants as C } from "../GlobalConfigs";
+import { globalConstants as C } from "@lebara/ui/src/configs/globalConfigs.js";
 
 const aemUtils = {
   getSearchResultsPath: function(query = '', searchRootPagePath = undefined, type = "") {
@@ -16,6 +16,11 @@ const aemUtils = {
   },
   getCfOfferDataUrl: function (offerIds) {
     return `${window.location.pathname.replace('.html', '')}.offer.json?offerId=${offerIds}`;
+  },
+  fetchData: async function(offerId, isOneEntry) {
+    const response = await fetch(aemUtils.getCfOfferDataUrl(offerId));
+    const json = await response.json();
+    return isOneEntry ? json[0] : json;
   },
   debounce: function (func, timeout = 300) {
     let timer;

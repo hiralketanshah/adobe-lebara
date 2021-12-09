@@ -1,4 +1,4 @@
-import { CountriesList } from "../ExpandableSimPlanCard/types";
+import {CountriesList} from "../ExpandableSimPlanCard/types";
 
 export interface PlanDetailsDialogProps {
   isOpen: boolean;

@@ -7,16 +7,17 @@ import {
   ModalBody,
   Text,
 } from "@chakra-ui/react";
-import Select from "../Select/Select";
-import Button from "../Button/Button";
-import DatePickerComp from "../DatePicker/DatePicker";
-import { OrderFilterProps } from "./types";
+import Select from "@lebara/ui/src/components/Select/Select";
+import Button from "@lebara/ui/src/components/Button/Button";
+import DatePickerComp from "@lebara/ui/src/components/DatePicker/DatePicker";
+import { OrderFilterProps, CompDefaultBindings } from "./types";
 
 const OrderFilter: React.FC<OrderFilterProps> = ({
   isOpen,
   onClose,
   sims,
   onSubmit,
+  frmFields,
 }) => {
   const [fromDate, setFromDate] = useState<Date>(new Date());
   const [toDate, setToDate] = useState<Date>(new Date());
@@ -57,22 +58,22 @@ const OrderFilter: React.FC<OrderFilterProps> = ({
               letterSpacing="0.15px"
               mb="15px"
             >
-              Transaction Filter
+              {frmFields?.modalTitle || CompDefaultBindings?.modalTitle}
             </Text>
-            <Text {...labelHeading}>From</Text>
+            <Text {...labelHeading}>{frmFields?.fromLabel || CompDefaultBindings?.fromLabel}</Text>
             <DatePickerComp
               selectRange={false}
               dateValue={fromDate}
               onDateSelect={(date) => setFromDate(date)}
             />
-            <Text {...labelHeading}>To</Text>
+            <Text {...labelHeading}>{frmFields?.toLabel || CompDefaultBindings?.toLabel}</Text>
             <DatePickerComp
               selectRange={false}
               dateValue={toDate}
               onDateSelect={(date) => setToDate(date)}
             />
             <Text fontWeight="500" fontSize="16px" lineHeight="22px" mt="23px">
-              Mobile Number
+              {frmFields?.mobileNumberLabel || CompDefaultBindings?.mobileNumberLabel}
             </Text>
             <Select
               id="chooseSim"
@@ -92,7 +93,7 @@ const OrderFilter: React.FC<OrderFilterProps> = ({
                 isDisabled={fromDate > toDate}
                 onClick={() => handleContinueClick()}
               >
-                Continue
+                {frmFields?.continueCTALabel || CompDefaultBindings?.continueCTALabel}
               </Button>
               <Button
                 w={{ base: "100%", lg: "284px" }}
@@ -100,7 +101,7 @@ const OrderFilter: React.FC<OrderFilterProps> = ({
                 mt="15px"
                 onClick={onClose}
               >
-                CANCEL
+                {frmFields?.cancelCTALabel || CompDefaultBindings?.cancelCTALabel}
               </Button>
             </Flex>
           </Flex>

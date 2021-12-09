@@ -10,7 +10,7 @@ import {
 } from "@chakra-ui/react";
 import { useHistory } from "react-router-dom";
 import { SideMenuProps } from "./types";
-import { Icon } from "../Icon/Icon";
+import { Icon } from "@lebara/ui/src/components/Icon/Icon";
 import Button from "../Button/Button";
 
 const SideMenu: React.FC<SideMenuProps> = ({ items }) => {

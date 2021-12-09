@@ -2,12 +2,12 @@
 // import React, { useEffect, useRef } from "react";
 import { Flex, Box, Text } from "@chakra-ui/react";
 import { PlanOffersProps } from "./types";
-import Link from "../Link/Link";
+import Link from "@lebara/ui/src/components/Link/Link";
 import ExpandableSimPlanCard from "../ExpandableSimPlanCard/ExpandableSimPlanCard";
 import Button from "../Button/Button";
 import { useHistory } from "react-router-dom";
 import TickInCircle from "../../icons/TickInCircle";
-import {globalConfigs, globalConstants} from  '../../GlobalConfigs.js';
+import {globalConfigs, globalConstants} from  '@lebara/ui/src/configs/globalConfigs.js';
 const PlanOffers: React.FC<PlanOffersProps> = ({
   offers,
   heading,

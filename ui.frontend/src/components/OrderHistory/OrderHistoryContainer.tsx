@@ -25,7 +25,12 @@ import Button from "../Button/Button";
 import FilterIcon from "../../assets/images/filter.png";
 import NoDataImage from "../../assets/images/order-history-no-data.png";
 
-const OrderHistoryContainer: React.FC = () => {
+import { OrderProps, CompDefaultBindings } from "./types";
+
+const OrderHistoryContainer: React.FC<OrderProps> = ({
+  title = "Order & Payment History",
+  frmFields,
+}) => {
   const history = useHistory();
   const { data: orderHistory } = useQuery(GET_ORDER_HISTORY, {
     variables: {
@@ -79,7 +84,7 @@ const OrderHistoryContainer: React.FC = () => {
         px={{ base: "20px" }}
       >
         <Flex width={{ base: "100%", lg: "846px" }}>
-          <Text
+          {title && <Text
             fontWeight="bold"
             display={{ base: "none", lg: "block" }}
             mt="30px"
@@ -88,8 +93,8 @@ const OrderHistoryContainer: React.FC = () => {
             letterSpacing="-0.01em"
             color="primary.500"
           >
-            Order & Payment History
-          </Text>
+            {title || CompDefaultBindings?.title}
+          </Text>}
         </Flex>
         <Flex
           py={{ base: "30px", lg: "90px" }}
@@ -109,7 +114,7 @@ const OrderHistoryContainer: React.FC = () => {
               lineHeight="28px"
               letterSpacing="0.15px"
             >
-              Months
+              {frmFields?.mobileLabel || CompDefaultBindings?.monthLabel}
             </Text>
             <Flex
               ml="auto"
@@ -128,7 +133,7 @@ const OrderHistoryContainer: React.FC = () => {
                 letterSpacing="0.01em"
                 color="secondary.500"
               >
-                FILTER
+                {frmFields?.filterLabel || CompDefaultBindings?.filterLabel}
               </Text>
             </Flex>
           </Flex>
@@ -154,7 +159,7 @@ const OrderHistoryContainer: React.FC = () => {
               mt="50px"
               flexDir="column"
             >
-              <Image src={NoDataImage} height="257px" width="264px" />
+              <Image src={frmFields?.nodataImage || NoDataImage} height="257px" width="264px" />
               <Text
                 fontWeight="500"
                 fontSize="24px"
@@ -162,7 +167,7 @@ const OrderHistoryContainer: React.FC = () => {
                 letterSpacing="0.25px"
                 mt="31px"
               >
-                Your order history is Empty
+                {frmFields?.orderHistoryEmptyLabel || CompDefaultBindings?.orderHistoryEmptyLabel}
               </Text>
               <Text
                 fontSize="16px"
@@ -170,16 +175,17 @@ const OrderHistoryContainer: React.FC = () => {
                 letterSpacing="0.15px"
                 mt="20px"
               >
-                Looks like you haven’t made any orders yet
+                {frmFields?.emptyOrderLabel || CompDefaultBindings?.emptyOrderLabel}
               </Text>
-              <Button w="264px" mt="40px" onClick={() => history.push("/")}>
-                Shop now
-              </Button>
+              {frmFields?.shopNowCTA && <Button w="264px" mt="40px" onClick={() => history.push("/")}>
+                {frmFields?.shopNowCTA || CompDefaultBindings?.shopNowCTA}
+              </Button>}
             </Flex>
           )}
         </Flex>
       </Flex>
       <OrderFilter
+        frmFields={frmFields}
         isOpen={isFilterVisible}
         onClose={() => setFilterVisible(false)}
         sims={msisdns}

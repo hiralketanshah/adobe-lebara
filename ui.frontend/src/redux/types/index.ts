@@ -2,7 +2,6 @@ import { CartState } from "../reducers/cartReducer";
 import { SelectedNumberState } from "../reducers/selectedNumberReducer";
 import { SelectedVoucherState } from "../reducers/selectedVoucherReducer";
 import { HighlightButtonState } from "../reducers/highlightedButtonReducer";
-import { SelectedProductState } from "../reducers/selectedProductReducer";
 import { UserState } from "../reducers/userReducer";
 import { TopUpsState } from "../reducers/topUpsReducer";
 import { PaymentMethodsState } from "../reducers/paymentMethodsReducer";
@@ -16,7 +15,6 @@ export interface ReduxState {
   voucher: SelectedVoucherState;
   highlightedButton: HighlightButtonState;
   headerSearchBox: HeaderSearchBoxOpenedState;
-  product: SelectedProductState;
   user: UserState;
   loading: LoadingState;
   topUps: TopUpsState;

@@ -10,7 +10,6 @@ import {
 import { HiOutlineExclamation } from "react-icons/all";
 import { Field, useField } from "formik";
 import { FormikCheckboxProps } from "./types";
-import styles from "./Checkbox.module.css";
 import LebaraText from "../../LebaraText/LebaraText";
 
 const FormikCheckbox: React.FC<FormikCheckboxProps> = ({ 
@@ -49,7 +48,6 @@ const FormikCheckbox: React.FC<FormikCheckboxProps> = ({
           <>
             <Checkbox
               defaultChecked={field.value}
-              className={styles.checkbox}
               marginTop="2px"
               alignItems="center"
               colorScheme="lightenPrimary"
