@@ -50,7 +50,7 @@ return (
     <Flex
       flexDirection="column"
       gridGap={{ base: "11.5px", lg: "21px" }}
-      maxW={{ lg: "306px" }}
+      maxW={{ lg: "355px" }}
       mr={{ lg: "auto" }}
     >
       <Heading
