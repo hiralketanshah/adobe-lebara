@@ -10,6 +10,7 @@ import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.injectorspecific.ScriptVariable;
 import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
 
+import java.util.Collections;
 import java.util.List;
 
 @Model(adaptables = SlingHttpServletRequest.class, adapters = { BannerExporter.class,
@@ -49,7 +50,7 @@ public class BannerExporter implements ComponentExporter {
     }
 
     public List<String> getText() {
-        return text;
+        return text == null ? Collections.emptyList() : Collections.unmodifiableList(text);
     }
 
     public String getKnowMoreText() {
