@@ -46,10 +46,7 @@ public class MiniFooterExporter implements ComponentExporter {
     }
 
     public List<Link> getLinks() {
-        if (links != null) {
-            return Collections.unmodifiableList(links);
-        }
-        return links;
+        return links == null ? Collections.emptyList() : Collections.unmodifiableList(links);
     }
 
     @Override
