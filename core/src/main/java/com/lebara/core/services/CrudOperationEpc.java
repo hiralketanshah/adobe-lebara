@@ -1,5 +1,33 @@
 package com.lebara.core.services;
 
+import com.adobe.cq.dam.cfm.ContentFragment;
+import com.adobe.cq.dam.cfm.ContentFragmentException;
+import com.adobe.cq.dam.cfm.FragmentData;
+import com.adobe.cq.dam.cfm.FragmentTemplate;
+import com.day.cq.commons.jcr.JcrUtil;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.lebara.core.dto.Allowance;
+import com.lebara.core.dto.CFAllowance;
+import com.lebara.core.dto.Offer;
+import com.lebara.core.dto.RootRead;
+import com.lebara.core.dto.topup.Root;
+import com.lebara.core.utils.CFUtils;
+import com.lebara.core.utils.LebaraConstants;
+import org.apache.commons.collections.CollectionUtils;
+import org.apache.commons.lang3.StringUtils;
+import org.apache.sling.api.resource.Resource;
+import org.apache.sling.api.resource.ResourceResolver;
+import org.apache.sling.jcr.resource.api.JcrResourceConstants;
+import org.osgi.service.component.annotations.Activate;
+import org.osgi.service.component.annotations.Component;
+import org.osgi.service.component.annotations.Reference;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import javax.jcr.RepositoryException;
+import javax.jcr.Session;
+import javax.net.ssl.HttpsURLConnection;
 import java.io.*;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
@@ -7,28 +35,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import javax.jcr.RepositoryException;
-import javax.jcr.Session;
-import javax.net.ssl.HttpsURLConnection;
-import com.adobe.cq.dam.cfm.*;
-import com.day.cq.commons.jcr.JcrUtil;
-import com.lebara.core.dto.*;
-import com.lebara.core.dto.topup.Root;
-import com.lebara.core.utils.CFUtils;
-import org.apache.commons.collections.CollectionUtils;
-import org.apache.commons.lang3.StringUtils;
-import org.apache.sling.api.resource.Resource;
-import org.apache.sling.api.resource.ResourceResolver;
-import org.osgi.service.component.annotations.Activate;
-import org.osgi.service.component.annotations.Component;
-import org.osgi.service.component.annotations.Reference;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.apache.sling.jcr.resource.api.JcrResourceConstants;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.lebara.core.utils.LebaraConstants;
 
 /**
  * This service class is responsible for connecting to EPC and fetching the plans information as json from EPC.
@@ -98,6 +104,8 @@ public class CrudOperationEpc {
             connection.setRequestProperty("Content-Type", LebaraConstants.CONTENT_TYPE_JSON);
             connection.setRequestProperty("Accept", LebaraConstants.CONTENT_TYPE_JSON);
             connection.setConnectTimeout(10000);
+            connection.setReadTimeout(5000);
+
             try (OutputStream os = connection.getOutputStream()) {
                 byte[] input = jsonInputString.getBytes(StandardCharsets.UTF_8);
                 os.write(input, 0, input.length);

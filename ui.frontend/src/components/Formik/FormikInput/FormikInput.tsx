@@ -20,7 +20,7 @@ import {
 import { useField } from "formik";
 import { Link as ReachLink } from "react-router-dom";
 import { FormikInputProps } from "./types";
-import { globalConfigs as GC, globalConstants as GCST } from  '../../../GlobalConfigs.js';
+import { globalConfigs as GC, globalConstants as GCST } from  '@lebara/ui/src/configs/globalConfigs.js';
 
 const FormikInput: React.FC<FormikInputProps> = ({
   name,

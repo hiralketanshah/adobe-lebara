@@ -12,6 +12,7 @@ import org.apache.sling.models.annotations.injectorspecific.ChildResource;
 import org.apache.sling.models.annotations.injectorspecific.ScriptVariable;
 import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
 
+import java.util.Collections;
 import java.util.List;
 
 @Model(adaptables = {SlingHttpServletRequest.class, Resource.class}, adapters = {FollowUsExporter.class, ComponentExporter.class},
@@ -34,7 +35,7 @@ public class FollowUsExporter implements ComponentExporter {
     private String followUsText;
 
     public List<Link> getLinks() {
-        return links;
+        return links == null ? Collections.emptyList() : Collections.unmodifiableList(links);
     }
 
     public String getFollowUsText() {
