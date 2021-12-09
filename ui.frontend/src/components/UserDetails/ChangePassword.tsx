@@ -5,10 +5,14 @@ import { Flex, Text } from "@chakra-ui/react";
 import { useHistory } from "react-router-dom";
 import CHANGE_PASSWORD from "../../graphql/CHANGE_PASSWORD";
 import FormikPassword from "../Formik/FormikPassword/FormikPassword";
-import { ChangePasswordSchema } from "./types";
+import { ChangePasswordSchema, ChangePasswordProps, CompCPDefaultBindings } from "./types";
 import Button from "../Button/Button";
 
-const ChangePassword: React.FC = () => {
+const ChangePassword: React.FC<ChangePasswordProps> = ({
+  changePasswordHeading = CompCPDefaultBindings?.changePasswordHeading,
+  frmFields,
+  validationMessages,
+}) => {
   const [changePasswordMut] = useMutation(CHANGE_PASSWORD);
   const history = useHistory();
   const initialValues = {
@@ -19,12 +23,11 @@ const ChangePassword: React.FC = () => {
   const validate = (values: ChangePasswordSchema) => {
     const errors: ChangePasswordSchema = {};
     const { oldPassword, newPassword, confirmPassword } = values;
-    if (!oldPassword) errors.oldPassword = "Please enter a password";
-    if (!newPassword) errors.newPassword = "Please enter a password";
-    if (!confirmPassword) errors.confirmPassword = "Please enter a password";
+    if (!oldPassword) errors.oldPassword = validationMessages?.oldPasswordRequiredMsg || CompCPDefaultBindings?.oldPasswordRequiredMsg;
+    if (!newPassword) errors.newPassword = validationMessages?.newPasswordRequiredMsg || CompCPDefaultBindings?.newPasswordRequiredMsg;
+    if (!confirmPassword) errors.confirmPassword = validationMessages?.confirmPasswordRequiredMsg || CompCPDefaultBindings?.confirmPasswordRequiredMsg;
     if (confirmPassword && newPassword && confirmPassword !== newPassword)
-      errors.confirmPassword =
-        "Confirm Password should be same as New Password.";
+      errors.confirmPassword = validationMessages?.passwordNotMatchErrorMessage || CompCPDefaultBindings?.passwordNotMatchErrorMessage;
 
     return errors;
   };
@@ -60,11 +63,11 @@ const ChangePassword: React.FC = () => {
               letterSpacing="0.15px"
               pb="20px"
             >
-              Change Password
+              {changePasswordHeading}
             </Text>
             <FormikPassword
               name="oldPassword"
-              label="Old Password"
+              label={frmFields?.oldPasswordLabel || CompCPDefaultBindings?.oldPasswordLabel}
               labelProps={{ mt: "17px" }}
               inputProps={{
                 mt: "5px",
@@ -75,7 +78,7 @@ const ChangePassword: React.FC = () => {
             />
             <FormikPassword
               name="newPassword"
-              label="New Password"
+              label={frmFields?.newPasswordLabel || CompCPDefaultBindings?.newPasswordLabel}
               labelProps={{ mt: "17px" }}
               inputProps={{
                 mt: "5px",
@@ -86,7 +89,7 @@ const ChangePassword: React.FC = () => {
             />
             <FormikPassword
               name="confirmPassword"
-              label="Confirm Password"
+              label={frmFields?.confirmNewPasswordLabel || CompCPDefaultBindings?.confirmNewPasswordLabel}
               labelProps={{ mt: "17px" }}
               inputProps={{
                 mt: "5px",
@@ -108,7 +111,7 @@ const ChangePassword: React.FC = () => {
                 isDisabled={Object.keys(errors).length > 0 || isSubmitting}
                 type="submit"
               >
-                Save
+                {frmFields?.ctaButtonLabel || CompCPDefaultBindings?.ctaButtonLabel}
               </Button>
               <Button
                 width={{ base: "278px", lg: "355px" }}
@@ -118,7 +121,7 @@ const ChangePassword: React.FC = () => {
                   history.push("/user-profile", { passwordUpdated: false })
                 }
               >
-                Cancel
+                {frmFields?.ctaCancelLabel || CompCPDefaultBindings?.ctaCancelLabel}
               </Button>
             </Flex>
           </form>

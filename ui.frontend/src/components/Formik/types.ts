@@ -28,6 +28,13 @@ export interface BaseFormFields {
     shippingLabel?: string;
     shippingPlaceholder?: string;
 
+    oldPasswordLabel?: string;
+    oldPasswordPlacehodler?: string;
+    newPasswordLabel?: string;
+    newPasswordPlacehodler?: string;
+    confirmNewPasswordLabel?: string;
+    confirmPasswordPlacehodler?: string;
+
     streetLabel?: string;
     streetPlaceholder?:string;
     houseNumberLabel?:string;

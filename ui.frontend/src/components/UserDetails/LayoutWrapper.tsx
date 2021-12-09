@@ -120,6 +120,7 @@ const LayoutWrapper: React.FC<UserDetailsProps> = ({ ...rest }) => {
           )}
 
         <ChangePasswordSuccess
+          changePasswordSuccessMsg={rest?.changePasswordSuccessMsg}
           isOpen={passwordUpdateModal}
           onClose={() => setPasswordUpdateModal(false)}
         />
