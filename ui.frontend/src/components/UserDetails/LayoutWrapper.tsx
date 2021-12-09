@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router";
 import ChangePasswordSuccess from "./ChangePasswordSuccesMessage";
 
-import { globalConfigs as GC, globalConstants as C } from "@lebara/ui/src/configs/globalConfigs.js";
+import { globalConfigs as GC} from "@lebara/ui/src/configs/globalConfigs.js";
 import {
   selectEmail,
   selectIsAuthenticated,
@@ -34,6 +34,7 @@ const LayoutWrapper: React.FC<UserDetailsProps> = ({ ...rest }) => {
   const dispatch = useDispatch();
   const isAuthenticated = useSelector(selectIsAuthenticated);
   const history = useHistory();
+  const USER_PROFILE= 'user-profile';
   React.useEffect(() => {
     dispatch(setLoading(true));
   }, [dispatch]);
@@ -43,7 +44,7 @@ const LayoutWrapper: React.FC<UserDetailsProps> = ({ ...rest }) => {
       return;
     }
 
-    history.replace(GC.journeyPages[`${C.USER_PROFILE}`], {
+    history.replace(GC.journeyPages[`${USER_PROFILE}`], {
       passwordUpdated: false,
     });
   }, [history, passwordUpdated]);
