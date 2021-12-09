@@ -115,10 +115,10 @@ const SingleMenu = ({ menuItem, newText }: { menuItem: children, newText: any })
             padding="45px"
           >
             <Box
-              width="75%"
-              display="flex"
+              display={"flex"}
+              width={menuItem?.children?.length === (2 || 3 || 4 || 5) ? "25.3%" : "75%"}
               justifyContent={menuItem?.children?.length === 3 ? "start" : "space-between"}
-            >
+              >
               {menuItem?.children?.map((subMenuOption: children, cgIdx: any) => {
                 if(cgIdx<=DEFUALT_GROUP_MENU_UPTO-1) {
                   return (<Box>
@@ -136,7 +136,8 @@ const SingleMenu = ({ menuItem, newText }: { menuItem: children, newText: any })
                           subMenuOption?.url
                              && history.push(subMenuOption?.url)
                         }
-                        marginRight={menuItem?.children?.length === 2 || 3 ? "8rem" : 0}
+                        marginRight={menuItem?.children?.length === (2 || 3 || 4 || 5) ? "8rem" : 0}
+                        w={"100%"}
                         >
                         <Box>
                           {subMenuOption.children?.map(
