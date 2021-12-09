@@ -3,6 +3,8 @@ package com.lebara.core.models;
 import com.adobe.cq.export.json.ComponentExporter;
 import com.adobe.cq.export.json.ExporterConstants;
 import com.lebara.core.models.beans.ImageIcon;
+import com.lebara.core.models.beans.PasswordErrorAndSuccessMsg;
+import com.lebara.core.models.beans.PersonalDetailsErrorMsg;
 import com.lebara.core.utils.AemUtils;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;
@@ -25,6 +27,12 @@ public class CreateAccountExporter extends IntroExporter {
 
     @SlingObject
     private SlingHttpServletRequest request;
+
+    @ChildResource
+    private PasswordErrorAndSuccessMsg validationMessages;
+
+    @ChildResource
+    private PersonalDetailsErrorMsg formfields;
 
     @ValueMapValue
     private String subHeading;
@@ -66,6 +74,14 @@ public class CreateAccountExporter extends IntroExporter {
 
     public String getCtaLink() {
         return AemUtils.getLinkWithExtension(ctaLink, request);
+    }
+
+    public PasswordErrorAndSuccessMsg getValidationMessages() {
+        return validationMessages;
+    }
+
+    public PersonalDetailsErrorMsg getFormfields() {
+        return formfields;
     }
 
     @Override

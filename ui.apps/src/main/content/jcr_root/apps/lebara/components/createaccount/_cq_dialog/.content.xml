@@ -168,6 +168,20 @@
                                                     value="Email"
                                                     fieldLabel="Email"
                                                     name="./emailAddressLabel"/>
+                                            <emailRequiredMsg
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                    fieldDescription="The email address field cannot be empty"
+                                                    fieldLabel="Email Error message on Empty Email"
+                                                    name="./formfields/emailRequiredMsg"
+                                                    value="We need your email address to contact you"/>
+                                            <emailInValidMsg
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                    fieldDescription="Please enter a valid email address. For example username@domain.com"
+                                                    fieldLabel="Email Error message on Invalid characters"
+                                                    name="./formfields/emailInValidMsg"
+                                                    value="Please check the email address format"/>
                                             <passwordLabel
                                                     jcr:primaryType="nt:unstructured"
                                                     sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
@@ -182,6 +196,40 @@
                                                     value="Confirm Password"
                                                     fieldLabel="Confirm Password Label"
                                                     name="./confirmPasswordLabel"/>
+                                            <passwordRequiredMsg
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                    fieldDescription="Password Error Message on Empty"
+                                                    fieldLabel="Password Error Message on Empty"
+                                                    name="./validationMessages/passwordRequiredMsg"
+                                                    value="Required"/>
+                                            <passwordRestrictionMsg
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                    fieldDescription="Password Error Message on Incorrect length of Password"
+                                                    fieldLabel="Password Error Message on Incorrect length of Password"
+                                                    name="./validationMessages/passwordRestrictionMsg"
+                                                    value="Minimum 8 characters"/>
+                                            <confirmPasswordRequiredMsg
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                    fieldDescription="The confirm password field cannot be empty"
+                                                    fieldLabel="Confirm Password Error Message on Empty"
+                                                    name="./validationMessages/confirmPasswordRequiredMsg"
+                                                    value="Required"/>
+                                            <confirmPasswordRestrictionMsg
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                    fieldDescription="Password Error Message on Incorrect length of Confirm Password"
+                                                    fieldLabel="Password Error Message on Incorrect length of Confirm Password"
+                                                    name="./validationMessages/confirmPasswordRestrictionMsg"
+                                                    value="Minimum 8 characters"/>
+                                            <passwordNotMatchErrorMessage
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                    fieldLabel="Confirm Password Not Match Error Message"
+                                                    value="Both password need to be the same"
+                                                    name="./validationMessages/passwordNotMatchErrorMessage"/>
                                             <createAccountCTAHeading
                                                     jcr:primaryType="nt:unstructured"
                                                     sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
