@@ -185,10 +185,10 @@
                                                                                 jcr:primaryType="nt:unstructured"
                                                                                 text="mobile-number-from-another-operator-choice"
                                                                                 value="mobile-number-from-another-operator-choice"/>
-                                                                        <lebara-sim-choice
+                                                                        <sim-choice
                                                                                 jcr:primaryType="nt:unstructured"
-                                                                                text="lebara-sim-choice"
-                                                                                value="lebara-sim-choice"/>
+                                                                                text="sim-choice"
+                                                                                value="sim-choice"/>
                                                                     </items>
                                                                 </name>
                                                                 <path
