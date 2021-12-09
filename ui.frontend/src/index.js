@@ -19,7 +19,7 @@ import "@fontsource/roboto/400.css";
 import "@fontsource/roboto/500.css";
 import "@fontsource/roboto/700.css";
 import "@fontsource/roboto/900.css";
-import {globalConfigs} from './GlobalConfigs.js';
+import {globalConfigs} from '@lebara/ui/src/configs/globalConfigs.js';
 import store from "@lebara/ui/src/store";
 import { pdfjs } from "react-pdf";
 pdfjs.GlobalWorkerOptions.workerSrc = '/etc.clientlibs/lebara/clientlibs/clientlib-react/resources/pdf.worker.js';

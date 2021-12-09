@@ -6,7 +6,7 @@ import ExpandableSimPlanCard from "../ExpandableSimPlanCard/ExpandableSimPlanCar
 import Button from "../Button/Button";
 import { useHistory } from "react-router-dom";
 import TickInCircle from "../../icons/TickInCircle";
-import {globalConfigs, globalConstants} from  '../../GlobalConfigs.js';
+import {globalConfigs, globalConstants} from  '@lebara/ui/src/configs/globalConfigs.js';
 
 const ViewPlans: React.FC<PlanCardProps> = ({
   title,
