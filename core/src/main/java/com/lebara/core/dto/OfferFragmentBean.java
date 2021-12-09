@@ -135,7 +135,7 @@ public class OfferFragmentBean {
     }
 
     public void setAllowanceList(List<CFAllowance> allowanceList) {
-        this.allowanceList = allowanceList == null ? Collections.emptyList() : Collections.unmodifiableList(allowanceList);
+        this.allowanceList = allowanceList;
     }
 
     public String getAdditionalOffers() {

@@ -22,6 +22,6 @@ public class PageLink {
     }
 
     public void setChildLinks(List<Link> childLinks) {
-        this.childLinks = childLinks == null ? Collections.emptyList() : Collections.unmodifiableList(childLinks);
+        this.childLinks = childLinks;
     }
 }
