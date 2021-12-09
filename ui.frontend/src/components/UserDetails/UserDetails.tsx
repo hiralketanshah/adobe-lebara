@@ -15,7 +15,7 @@ import { Formik } from "formik";
 import { useMutation } from "@apollo/client";
 import * as yup from "yup";
 
-import { globalConfigs as GC, globalConstants as C } from "../../GlobalConfigs";
+import { globalConfigs as GC, globalConstants as C } from "@lebara/ui/src/configs/globalConfigs.js";
 import { UserDetailsProps } from "./types";
 
 import LebaraText from "../LebaraText/LebaraText";
