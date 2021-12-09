@@ -9,6 +9,7 @@ import org.mockito.*;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -38,7 +39,7 @@ class AwardExporterTest {
         awardExporter = aemContext.request().adaptTo(AwardExporter.class);
         list.add("value1");
         list.add("value2");
-        assertEquals(null, awardExporter.getAwards());
+        assertEquals(Collections.emptyList(), awardExporter.getAwards());
         assertEquals("title", awardExporter.getTitle());
         assertEquals("lebara/components/awards", awardExporter.getExportedType());
     }
