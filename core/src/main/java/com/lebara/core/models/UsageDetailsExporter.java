@@ -9,7 +9,6 @@ import org.apache.sling.models.annotations.DefaultInjectionStrategy;
 import org.apache.sling.models.annotations.Exporter;
 import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.injectorspecific.ChildResource;
-import org.apache.sling.models.annotations.injectorspecific.ScriptVariable;
 import org.apache.sling.models.annotations.injectorspecific.SlingObject;
 import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
 
@@ -67,7 +66,7 @@ public class UsageDetailsExporter extends HeadingExporter {
                 tabsName.add(AemUtils.getStringProperty(tab, "tabsName"));
             }
         }
-        return Collections.unmodifiableList(tabsName);
+        return tabsName == null ? Collections.emptyList() : Collections.unmodifiableList(tabsName);
     }
 
     @Override

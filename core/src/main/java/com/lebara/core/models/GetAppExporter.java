@@ -66,10 +66,7 @@ public class GetAppExporter implements ComponentExporter {
     }
 
     public List<Link> getLinks() {
-        if (links != null) {
-            return Collections.unmodifiableList(links);
-        }
-        return null;
+        return links == null ? Collections.emptyList() : Collections.unmodifiableList(links);
     }
 
     public String getAppTitle() {
@@ -84,14 +81,11 @@ public class GetAppExporter implements ComponentExporter {
         if (textCol1 != null) {
             return Collections.unmodifiableList(textCol1);
         }
-        return textCol1;
+        return textCol1 == null ? Collections.emptyList() : Collections.unmodifiableList(textCol1);
     }
 
     public List<String> getTextCol2() {
-        if (textCol2 != null) {
-            return Collections.unmodifiableList(textCol2);
-        }
-        return textCol2;
+        return textCol2 == null ? Collections.emptyList() : Collections.unmodifiableList(textCol2);
     }
 
     @Override

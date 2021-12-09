@@ -8,9 +8,9 @@ import { allowanceListProps } from "../ExpandablePlanCard/types";
 import { useHistory } from "react-router-dom";
 import useAddToCart from "../../hooks/useAddToCart";
 import { useLocalStorage } from "@rehooks/local-storage";
-import { globalConfigs, globalConstants } from '../../GlobalConfigs.js';
+import { globalConfigs, globalConstants } from '@lebara/ui/src/configs/globalConfigs.js';
 import LebaraText from "../LebaraText/LebaraText";
-import PdfDialog from "../PdfDialog/PdfDialog";
+import PdfDialog from "@lebara/ui/src/components/PdfDialog/PdfDialog";
 import { useMutation } from "@apollo/client";
 import REMOVE_FROM_CART from "../../graphql/REMOVE_FROM_CART";
 const ExpandableSimPlanCard: React.FC<ExpandableSimPlanCardProps> = ({

@@ -18,4 +18,5 @@ export interface FormikInputProps {
   secondSubscriptionDisplayText?: string;
   revealInputToggle?: boolean;
   onClick?: () => void;
+  hasEmailError?: boolean;
 }
