@@ -181,14 +181,14 @@
                                                                                 jcr:primaryType="nt:unstructured"
                                                                                 text="postpaid-bills"
                                                                                 value="postpaid-bills"/>
-                                                                        <from-another-mobile-operator
+                                                                        <mobile-number-from-another-operator-choice
                                                                                 jcr:primaryType="nt:unstructured"
-                                                                                text="from-another-mobile-operator"
-                                                                                value="from-another-mobile-operator"/>
-                                                                        <sim-choice
+                                                                                text="mobile-number-from-another-operator-choice"
+                                                                                value="mobile-number-from-another-operator-choice"/>
+                                                                        <lebara-sim-choice
                                                                                 jcr:primaryType="nt:unstructured"
-                                                                                text="sim-choice"
-                                                                                value="sim-choice"/>
+                                                                                text="lebara-sim-choice"
+                                                                                value="lebara-sim-choice"/>
                                                                     </items>
                                                                 </name>
                                                                 <path
