@@ -30,7 +30,7 @@ import Search from "../Search/Search";
 import UserMenu from "@lebara/ui/src/components/UserMenu/UserMenu";
 import {headerSearch} from "@lebara/ui/src/redux/actions/headerSearchActions";
 import {selectIsAuthenticated} from "@lebara/ui/src/redux/selectors/userSelectors";
-import {globalConfigs as GC, globalConstants as GCST} from "../../GlobalConfigs";
+import {globalConfigs as GC, globalConstants as GCST} from "@lebara/ui/src/configs/globalConfigs.js";
 import {useApolloClient, useQuery} from "@apollo/client";
 import GET_CART from "../../graphql/GET_CART";
 import {loadInitialCart, setCartItemsLoading} from "@lebara/ui/src/redux/actions/cartActions";
@@ -65,7 +65,7 @@ const SingleMenu = ({ menuItem, newText }: { menuItem: children, newText: any })
   const menuListMouseLeaveEvent = () => {
     setIsOpenMenu(false);
   };
-
+  const DEFUALT_GROUP_MENU_UPTO = 5;
   return (
     <Menu
       isOpen={isOpenMenu}>
@@ -115,12 +115,12 @@ const SingleMenu = ({ menuItem, newText }: { menuItem: children, newText: any })
             padding="45px"
           >
             <Box
-              width="75%"
-              display="flex"
+              display={"flex"}
+              width={menuItem?.children?.length === (2 || 3 || 4 || 5) ? "25.3%" : "75%"}
               justifyContent={menuItem?.children?.length === 3 ? "start" : "space-between"}
-            >
+              >
               {menuItem?.children?.map((subMenuOption: children, cgIdx: any) => {
-                if(cgIdx<=GCST.DEFUALT_GROUP_MENU_UPTO-1) {
+                if(cgIdx<=DEFUALT_GROUP_MENU_UPTO-1) {
                   return (<Box>
                       <MenuGroup
                         defaultValue="asc"
@@ -136,7 +136,8 @@ const SingleMenu = ({ menuItem, newText }: { menuItem: children, newText: any })
                           subMenuOption?.url
                              && history.push(subMenuOption?.url)
                         }
-                        marginRight={menuItem?.children?.length === 2 || 3 ? "8rem" : 0}
+                        marginRight={menuItem?.children?.length === (2 || 3 || 4 || 5) ? "8rem" : 0}
+                        w={"100%"}
                         >
                         <Box>
                           {subMenuOption.children?.map(

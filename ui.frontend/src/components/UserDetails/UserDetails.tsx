@@ -15,7 +15,7 @@ import { Formik } from "formik";
 import { useMutation } from "@apollo/client";
 import * as yup from "yup";
 
-import { globalConfigs as GC, globalConstants as C } from "../../GlobalConfigs";
+import { globalConfigs as GC} from "@lebara/ui/src/configs/globalConfigs.js";
 import { UserDetailsProps } from "./types";
 
 import LebaraText from "../LebaraText/LebaraText";
@@ -68,7 +68,7 @@ const UserDetails: React.FC<UserDetailsProps> = ({
   const [consentManagementSectionflag, setConsentManagementSectionFlag] =
     useBoolean();
   const [updateMarketingPrefrences] = useMutation(UPDATE_MARKETING_PREFRENCES);
-
+  const USER_PROFILE_CHANGE_PASSWORD= 'user-profile-change-password';
   const iconButtonProps = {
     variant: "ghost",
     colorScheme: "teal",
@@ -308,7 +308,7 @@ const UserDetails: React.FC<UserDetailsProps> = ({
                       frmFields={frmFields}
                       onEmailEdit={() => setEmailEditPopup(true)}
                       onPasswordEdit={() => {
-                          history.push(GC.journeyPages[C.USER_PROFILE_CHANGE_PASSWORD] || '/user-profile/change-password.html');
+                          history.push(GC.journeyPages[USER_PROFILE_CHANGE_PASSWORD] || '/user-profile/change-password.html');
                         }
                       }
                     />

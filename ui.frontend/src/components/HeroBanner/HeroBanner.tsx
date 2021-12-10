@@ -11,7 +11,7 @@ import { useDispatch, useSelector } from "react-redux";
 import useAddToCart from "../../hooks/useAddToCart";
 import { ReduxState } from "../../redux/types";
 import { useHistory } from "react-router-dom";
-import { globalConfigs as GC, globalConstants as C } from "../../GlobalConfigs";
+import { globalConfigs as GC, globalConstants as C } from "@lebara/ui/src/configs/globalConfigs.js";
 import { Image } from "@lebara/ui/src/components/Image/Image";
 
 const HeroBanner: React.FC<HeroBannerProps> = ({
@@ -50,7 +50,7 @@ return (
     <Flex
       flexDirection="column"
       gridGap={{ base: "11.5px", lg: "21px" }}
-      maxW={{ lg: "306px" }}
+      maxW={{ lg: "355px" }}
       mr={{ lg: "auto" }}
     >
       <Heading
