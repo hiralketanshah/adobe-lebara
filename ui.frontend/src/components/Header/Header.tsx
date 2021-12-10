@@ -266,7 +266,9 @@ const Header: React.FC<HeaderProps> = ({
     })
         .then((res) => res.json())
         .then((res) => {
-          dispatch(setPaymentMethods(res));
+          dispatch(setPaymentMethods({
+            paymentMethods: res.paymentMethods.filter((t: any) => t.name !== "Local Polish Payment Methods")
+          }));
         });
   }, [dispatch]);
 
