@@ -3,14 +3,15 @@ package com.lebara.core.models;
 import com.adobe.cq.export.json.ComponentExporter;
 import com.adobe.cq.export.json.ExporterConstants;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.lebara.core.models.beans.MyProfileErrorAndSuccessMsg;
+import com.lebara.core.models.beans.MyProfileFormFields;
+import com.lebara.core.models.beans.MyProfileSuccessEmailModal;
 import org.apache.sling.api.SlingHttpServletRequest;
-import org.apache.sling.api.resource.Resource;
-import org.apache.sling.api.resource.ResourceResolver;
 import org.apache.sling.models.annotations.DefaultInjectionStrategy;
-import org.apache.sling.models.annotations.Model;
-import org.apache.sling.models.annotations.injectorspecific.*;
 import org.apache.sling.models.annotations.Exporter;
-import com.lebara.core.models.beans.*;
+import org.apache.sling.models.annotations.Model;
+import org.apache.sling.models.annotations.injectorspecific.ChildResource;
+import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
 
 @Model(adaptables = SlingHttpServletRequest.class, adapters = {MyProfileExporter.class, ComponentExporter.class},
         resourceType = MyProfileExporter.RESOURCE_TYPE, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
@@ -39,6 +40,9 @@ public class MyProfileExporter implements ComponentExporter{
 
     @ValueMapValue
     private String changeEmailHeading;
+
+    @ValueMapValue
+    private String changePasswordSuccessMsg;
 
     @ChildResource
     private MyProfileFormFields frmFields;
@@ -92,6 +96,8 @@ public class MyProfileExporter implements ComponentExporter{
     public String getChangeEmailHeading() {
         return changeEmailHeading;
     }
+
+    public String getChangePasswordSuccessMsg() { return changePasswordSuccessMsg;}
 
     @Override
     public String getExportedType() {
