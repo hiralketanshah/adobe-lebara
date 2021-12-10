@@ -49,7 +49,7 @@ const FormikInput: React.FC<FormikInputProps> = ({
   const hasError = !!error || hasEmailError;
   const touchedWithError = touched && hasError;
   const touchOrHasValue = touched || !!field.value;
-  const isExistingUser = error === "exists";
+
   return (<>
     <FormControl
       isRequired={isRequired}

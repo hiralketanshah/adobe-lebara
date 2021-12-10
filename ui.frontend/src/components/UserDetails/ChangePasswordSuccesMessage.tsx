@@ -10,9 +10,13 @@ import {
   Text,
 } from "@chakra-ui/react";
 import CheckCircle from "../../assets/images/checkCircle.png";
-import { ModalProps } from "./types";
+import { ChangePasswordSuccessProps } from "./types";
 
-const ChangePasswordSuccess: React.FC<ModalProps> = ({ isOpen, onClose }) => (
+const ChangePasswordSuccess: React.FC<ChangePasswordSuccessProps> = ({ 
+  isOpen, 
+  onClose, 
+  changePasswordSuccessMsg = "Password Successfuly Updated",
+}) => (
   <Modal isOpen={isOpen} onClose={onClose} isCentered>
     <ModalOverlay />
     <ModalContent
@@ -41,7 +45,7 @@ const ChangePasswordSuccess: React.FC<ModalProps> = ({ isOpen, onClose }) => (
             fontWeight="500"
             textAlign="center"
           >
-            Password Successfuly Updated
+            {changePasswordSuccessMsg}
           </Text>
         </Flex>
       </ModalBody>

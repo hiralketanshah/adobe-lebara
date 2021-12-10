@@ -2,12 +2,12 @@ package com.lebara.core.dto;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.lebara.core.utils.AemUtils;
-
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.math.NumberUtils;
 import org.apache.sling.api.SlingHttpServletRequest;
 
 import java.text.NumberFormat;
+import java.util.Collections;
 import java.util.List;
 import java.util.Locale;
 
@@ -131,7 +131,7 @@ public class OfferFragmentBean {
     }
 
     public List<CFAllowance> getAllowanceList() {
-        return allowanceList;
+        return allowanceList == null ? Collections.emptyList() : Collections.unmodifiableList(allowanceList);
     }
 
     public void setAllowanceList(List<CFAllowance> allowanceList) {

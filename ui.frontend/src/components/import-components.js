@@ -15,10 +15,10 @@
  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 import "./Page/Page";
 import "./ExperienceFragment/ExperienceFragment";
+import "../aemConfigs/DashboardAemConfig/index";
 
 // import all components below
 import "./AemConfig.js";
-
 import "../aemConfigs/ContainerAemConfig";
 import "../aemConfigs/UspAemConfig.js";
 import "../aemConfigs/SimPortInAemConfig";
@@ -28,15 +28,11 @@ import "../aemConfigs/TrustedShopAemConfig.js";
 import "../aemConfigs/PersonalDetailsFormAemConfig.js";
 import "../aemConfigs/EmptyCartRouteConfig.js";
 import "../aemConfigs/LoginAemConfig";
-import "../aemConfigs/SimSwitchAemConfig.js";
-import "../aemConfigs/MyBalanceCardAemConfig.js";
 import "../aemConfigs/NewPostPaidNumberAemConfig";
 import "../aemConfigs/CreateNewPasswordAemConfig";
 import "../aemConfigs/ResetPasswordAemConfig";
 import "../aemConfigs/PostpaidPersonalDetailsAemConfig.js";
-import "../aemConfigs/PromotionBannerAemConfig.js";
 import "../aemConfigs/VerifyMobileNumberAemConfig";
-import "../aemConfigs/PlanManagmentAemConfig.js";
 import "../aemConfigs/YourPlansCardAemConfig.js";
 import "../aemConfigs/InternationalRatesAemConfig.js";
 import "../aemConfigs/RecommendedTariffsAemConfig.js";
@@ -45,6 +41,7 @@ import "../aemConfigs/ContactUsAemConfig.js";
 import "../aemConfigs/RewardOverviewAemConfig.js";
 import "../aemConfigs/PostpaidPersonalDetailsPreviewAemConfig.js";
 import "../aemConfigs/OrderSubmittedAemConfig.js";
+import "../aemConfigs/ChangePasswordAemConfig.js";
 import "../aemConfigs/OrderPaymentHistoryAemConfig.js";
 
 import "../rotues/AemConfig.js";
@@ -54,7 +51,6 @@ import "./ViewPlans/AemConfig.js";
 import "./LanguageHeader/AemConfig.js";
 import "./Header/AemConfig.js";
 import "./LebaraText/AemConfig.js";
-import "../aemConfigs/GetAppAemConfig.js";
 import "./AboutLebaraFolder/AemConfig.js";
 import "./Carousel/AemConfig.js";
 import "./PlanOffers/AemConfig.js";
@@ -69,15 +65,12 @@ import "./SelectedPlanCard/AemConfig.js";
 import "./Search/AemConfig.js";
 import "../aemConfigs/HelpAemConfig.js";
 import "../aemConfigs/AddonsAemConfig.js";
-import "../aemConfigs/UsageDetailsAemConfig.js";
 import "../aemConfigs/LebaraBreadcrumbAemConfig.js";
 import "./LbIntro/AemConfig.js";
 import "./LbSectionIntro/AemConfig.js";
 import "./StickyCircle/AemConfig.js";
 import "./LbFAQ/AemConfig.js";
 import "./LbBrowseCategories/AemConfig.js";
-import "../aemConfigs/BillOverviewAemConfig.js";
-import "../aemConfigs/PreviousBillsAemConfig.js";
 import "./UserDetails/AemConfig.js";
 import "./HelpCenterSearch/AemConfig.js";
 import "./EmailSupport/AemConfig.js";
