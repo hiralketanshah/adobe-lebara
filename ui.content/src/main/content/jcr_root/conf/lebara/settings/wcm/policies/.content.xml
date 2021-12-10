@@ -344,7 +344,7 @@
                     <jcr:content jcr:primaryType="nt:unstructured"/>
                 </policy_spa>
                 <policy_spa_journey
-                    cq:styleDefaultClasses="lightenPrimary50"                                        
+                    cq:styleDefaultClasses="journey-page-body"                                        
                     jcr:primaryType="nt:unstructured"
                     jcr:title="Lebara SPA Journey Page Policy"
                     sling:resourceType="wcm/core/components/policy/policy"
