@@ -42,6 +42,8 @@ import {saveUserInfo} from "@lebara/ui/src/redux/actions/userActions";
 import {setLoading} from "@lebara/ui/src/redux/actions/loadingActions";
 import {setPaymentMethods} from "@lebara/ui/src/redux/actions/paymentMethodsActions";
 import axios from "axios";
+import PlanNotEligibleDialog from "@lebara/ui/src/components/PlanNotEligibleDialog/PlanNotEligibleDialog";
+import { toggleDialogState } from "@lebara/ui/src/redux/actions/modalsActions";
 
 const SingleMenu = ({ menuItem, newText }: { menuItem: children, newText: any }) => {
   const history = useHistory();
@@ -223,6 +225,7 @@ const Header: React.FC<HeaderProps> = ({
   const [isSearchOpened, setIsSearchOpened] = React.useState(false);
   const [isProfileDropdownOpen, setProfileDropdown] = useState(false);
   const isAuthenticated = useSelector(selectIsAuthenticated);
+  const isModalOpen = useSelector((t: ReduxState) => t.modal.open);
 
   useOutsideClick({
     ref,
@@ -339,6 +342,11 @@ const Header: React.FC<HeaderProps> = ({
       boxShadow={{ md: "8px 4px 15px 3px rgba(0, 0, 0, 0.04)" }}
       borderRadius={{ md: "8px" }}
     >
+
+      <PlanNotEligibleDialog
+          open={isModalOpen}
+          onClose={() => dispatch(toggleDialogState(false))}
+      />
       <Flex display={{ base: "none", md: "block" }}>
         <Flex
           alignItems="center"
