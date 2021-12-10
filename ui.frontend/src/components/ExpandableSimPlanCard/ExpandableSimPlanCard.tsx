@@ -163,7 +163,7 @@ const ExpandableSimPlanCard: React.FC<ExpandableSimPlanCardProps> = ({
           isOpen={isDialogOpen}
           onClose={() => setIsDialogOpen(false)}
           planName={planName}
-          price={Number(cost || '')}
+          price={(cost || '')}
           duration={!(offerType === OfferTypes.BOLTON) ? (validity || '') : ''}
           countries={(planInfo && planInfo.countryList) || []}
           previewIcon={previewIcon}
