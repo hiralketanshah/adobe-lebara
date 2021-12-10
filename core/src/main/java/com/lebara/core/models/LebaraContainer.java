@@ -5,5 +5,7 @@ import org.osgi.annotation.versioning.ConsumerType;
 
 @ConsumerType
 public interface LebaraContainer extends LayoutContainer {
-    // Empty Interface for Containers
+   
+	public String getWidth();
+	
 }
