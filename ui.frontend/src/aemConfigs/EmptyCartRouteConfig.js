@@ -1,5 +1,5 @@
 import { MapTo } from "@adobe/aem-react-editable-components";
-import EmptyCartRoute from "@lebara/ui/src/rotues/EmptyCartRoute";
+import EmptyCartRoute from "../components/EmptyCartShopCard/EmptyCartRoute";
 
 const EmptyCartRouteConfig = {
   emptyLabel: "Empty Cart Shop",

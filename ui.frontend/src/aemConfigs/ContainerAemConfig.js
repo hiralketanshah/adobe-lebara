@@ -17,18 +17,18 @@
 import {
     MapTo,
     withComponentMappingContext,
-    AllowedComponentsContainer
 } from '@adobe/aem-react-editable-components';
 
+import LebaraContainer from "../components/Container/LebaraContainer";
 
 const ContainerConfig = {
-    emptyLabel: 'Container',
-
+    emptyLabel: 'Core Lebara Container',
+    
     isEmpty: function(props) {
+        console.log({props})
         return !props || !props.cqItemsOrder || props.cqItemsOrder.length === 0;
     }
 };
 
-
-MapTo('lebara/components/container')(withComponentMappingContext(AllowedComponentsContainer), ContainerConfig);
+MapTo('lebara/components/container')(withComponentMappingContext(LebaraContainer), ContainerConfig);
 

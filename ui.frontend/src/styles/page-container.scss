@@ -1,0 +1,47 @@
+@mixin responsiveContainerSpacing {
+    padding-top: 30.68px;
+    padding-bottom: 30.68px;
+    padding-inline: 20px;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.page-full-container,
+.page-medium-container,
+.page-small-container {
+    padding-inline: 56px;
+    background-color: var(--chakra-colors-white);
+    margin-top: 43px;
+    margin-bottom: 32px;
+    border-radius: var(--chakra-radii-md);
+    margin-left: auto;
+    margin-right: auto;
+}
+.page-full-container {
+    padding-top: 60px;
+    padding-bottom: 60px;
+    padding-inline: 80px;
+    width: 100%;
+
+    @media (max-width: 840px) {
+        @include responsiveContainerSpacing();
+    }
+}
+
+.page-medium-container {
+    max-width: 846px;
+    width: 100%;
+
+    @media (max-width: 840px) {
+        @include responsiveContainerSpacing();
+    }
+}
+
+.page-small-container {
+    max-width: 630px;
+    width: 100%;
+    
+    @media (max-width: 840px) {
+        @include responsiveContainerSpacing();
+    }
+}

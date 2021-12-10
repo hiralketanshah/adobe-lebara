@@ -5,8 +5,8 @@
 import withAsyncImport from "../utils/withAsyncImport";
 import { MapTo } from "@adobe/aem-react-editable-components";
 import {
-    ContainerV1,
-    ContainerV1IsEmptyFn,
+    // ContainerV1,
+    // ContainerV1IsEmptyFn,
     TabsV1,
     TabsV1IsEmptyFn,
     AccordionV1,
@@ -48,9 +48,9 @@ MapTo("lebara/components/text")(LazyTextComponent, {
 
 
 //lazyload / code splitting examples of external components
-MapTo("lebara/components/container")(ContainerV1, {
-    isEmpty: ContainerV1IsEmptyFn
-});
+// MapTo("lebara/components/container")(ContainerV1, {
+//     isEmpty: ContainerV1IsEmptyFn
+// });
 MapTo("lebara/components/tabs")(TabsV1,{
     isEmpty: TabsV1IsEmptyFn
 });
