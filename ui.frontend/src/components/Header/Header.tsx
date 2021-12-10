@@ -41,6 +41,7 @@ import GET_SESSION_STATUS from "../../graphql/GET_SESSION_STATUS";
 import {saveUserInfo} from "@lebara/ui/src/redux/actions/userActions";
 import {setLoading} from "@lebara/ui/src/redux/actions/loadingActions";
 import {setPaymentMethods} from "@lebara/ui/src/redux/actions/paymentMethodsActions";
+import axios from "axios";
 
 const SingleMenu = ({ menuItem, newText }: { menuItem: children, newText: any }) => {
   const history = useHistory();
@@ -257,17 +258,12 @@ const Header: React.FC<HeaderProps> = ({
   }, [client, dispatch]);
 
   const loadPaymentMethods = useCallback(() => {
-    fetch(`${GC.apiHostUri}/payments/adyen/paymentMethods`, {
-      credentials: "include",
-      method: "POST",
-      body: JSON.stringify({
-        channel: "Web",
-      }),
+    axios.post(`${GC.apiHostUri}/payments/adyen/paymentMethods`, {
+      channel: "Web",
     })
-        .then((res) => res.json())
         .then((res) => {
           dispatch(setPaymentMethods({
-            paymentMethods: res.paymentMethods.filter((t: any) => t.name !== "Local Polish Payment Methods")
+            paymentMethods: res.data.paymentMethods.filter((t: any) => t.name !== "Local Polish Payment Methods")
           }));
         });
   }, [dispatch]);
