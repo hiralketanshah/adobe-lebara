@@ -179,12 +179,8 @@
                                                                                 value="usage-details"/>
                                                                         <postpaid-bills
                                                                                 jcr:primaryType="nt:unstructured"
-                                                                                text="postpaid-bills"
-                                                                                value="postpaid-bills"/>
-                                                                        <mobile-number-from-another-operator-choice
-                                                                                jcr:primaryType="nt:unstructured"
-                                                                                text="mobile-number-from-another-operator-choice"
-                                                                                value="mobile-number-from-another-operator-choice"/>
+                                                                                text="postpaid/bills"
+                                                                                value="postpaid/bills"/>
                                                                         <sim-choice
                                                                                 jcr:primaryType="nt:unstructured"
                                                                                 text="sim-choice"
