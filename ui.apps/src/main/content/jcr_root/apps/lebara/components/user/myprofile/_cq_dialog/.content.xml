@@ -632,6 +632,15 @@
                                     fieldLabel="Email Modal Success Message After Email"
                                     name="./successEmailModal/afterEmailText"
                                     value="to validate your email."/>
+                            <changePasswordSuccessMsg
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                    fieldDescription="Password Successfully Updated"
+                                    fieldLabel="Password Successfully Updated Success Message"
+                                    name="./changePasswordSuccessMsg"
+                                    value="Password Successfully Updated"/>
+
+
                         </items>
                     </column5>
                 </items>
