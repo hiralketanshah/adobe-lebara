@@ -9,4 +9,6 @@ export interface SideMenuItem {
 
 export interface SideMenuProps {
   items?: SideMenuItem[];
+  onClose?: () => void;
+  menuTitle?: string;
 }

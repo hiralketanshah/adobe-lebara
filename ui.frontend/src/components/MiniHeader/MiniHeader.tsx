@@ -225,8 +225,8 @@ const MiniHeader: React.FC<MiniHeaderProps> = ({
       )}
       <Drawer placement="left" onClose={onClose} isOpen={isOpen}>
         <DrawerContent>
-          <DrawerBody>
-            <SideMenu items={remappedItems} />
+          <DrawerBody p={0}>
+            <SideMenu items={remappedItems} onClose={onClose}/>
           </DrawerBody>
         </DrawerContent>
       </Drawer>

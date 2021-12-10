@@ -33,6 +33,9 @@ const IconButton: React.FC<IconButtonProps> = ({
   return (
     <ChakraIconButton
       variant="ghost"
+      _focus={{
+        outline: "none",
+      }}
       style={style}
       aria-label={ariaLabel}
       icon={bottomText ? iconWithBottomText : icon}
