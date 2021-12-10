@@ -15,4 +15,9 @@ export interface BaseValidationMessages {
     yearInValidMsg?: string;
     yearInvalidAgeMsg?: string;
     shippingRequiredMsg?: string;
+
+    oldPasswordRequiredMsg?: string;
+    newPasswordRequiredMsg?: string;
+    confirmPasswordRequiredMsg?: string;
+    passwordNotMatchErrorMessage?: string;
   }

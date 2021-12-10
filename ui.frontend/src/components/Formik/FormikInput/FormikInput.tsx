@@ -20,7 +20,7 @@ import {
 import { useField } from "formik";
 import { Link as ReachLink } from "react-router-dom";
 import { FormikInputProps } from "./types";
-import { globalConfigs as GC, globalConstants as GCST } from  '../../../GlobalConfigs.js';
+import { globalConfigs as GC, globalConstants as GCST } from  '@lebara/ui/src/configs/globalConfigs.js';
 
 const FormikInput: React.FC<FormikInputProps> = ({
   name,
@@ -49,7 +49,7 @@ const FormikInput: React.FC<FormikInputProps> = ({
   const hasError = !!error || hasEmailError;
   const touchedWithError = touched && hasError;
   const touchOrHasValue = touched || !!field.value;
-  const isExistingUser = error === "exists";
+
   return (<>
     <FormControl
       isRequired={isRequired}

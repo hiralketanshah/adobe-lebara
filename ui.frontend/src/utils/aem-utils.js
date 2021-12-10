@@ -1,4 +1,4 @@
-import { globalConstants as C } from "../GlobalConfigs";
+import { globalConstants as C } from "@lebara/ui/src/configs/globalConfigs.js";
 
 const aemUtils = {
   getSearchResultsPath: function(query = '', searchRootPagePath = undefined, type = "") {
