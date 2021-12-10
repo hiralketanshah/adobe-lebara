@@ -8,7 +8,7 @@ import {
   Flex,
   Text, Heading, Spacer,
 } from "@chakra-ui/react";
-import { useHistory } from "react-router-dom";
+import { useHistory } from "@lebara/ui/src/hooks/useHistory";
 import { SideMenuProps } from "./types";
 import { Icon } from "@lebara/ui/src/components/Icon/Icon";
 import Button from "../Button/Button";

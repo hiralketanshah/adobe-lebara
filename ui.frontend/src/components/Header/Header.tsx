@@ -378,7 +378,6 @@ const Header: React.FC<HeaderProps> = ({
               {topupCtaText}
             </Button>
           </Box>
-          <Spacer />
           <Flex>
             <Box>
               {!isSearchOpened ? (
