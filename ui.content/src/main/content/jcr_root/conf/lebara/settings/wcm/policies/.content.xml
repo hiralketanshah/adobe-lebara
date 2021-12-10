@@ -362,6 +362,32 @@
                         structureDepth="2"
                 />
             </spa>
+
+            <embed jcr:primaryType="nt:unstructured">
+                <policy_1639144570135
+                        jcr:lastModified="{Date}2021-12-10T19:26:32.259+05:30"
+                        jcr:lastModifiedBy="admin"
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="embed_policy"
+                        sling:resourceType="wcm/core/components/policy/policy"
+                        allowedEmbeddables="core/wcm/components/embed/v1/embed/embeddable/youtube"
+                        embeddablesDisabled="false"
+                        htmlDisabled="false"
+                        urlDisabled="false"
+                        youtubeAutoPlayDefaultValue="false"
+                        youtubeAutoPlayEnabled="false"
+                        youtubeLoopDefaultValue="false"
+                        youtubeLoopEnabled="false"
+                        youtubeMuteDefaultValue="false"
+                        youtubeMuteEnabled="false"
+                        youtubePlaysInlineDefaultValue="false"
+                        youtubePlaysInlineEnabled="false"
+                        youtubeRelatedVideosDefaultValue="true"
+                        youtubeRelatedVideosEnabled="false">
+                    <jcr:content jcr:primaryType="nt:unstructured"/>
+                </policy_1639144570135>
+            </embed>
+
         </components>
     </lebara>
     <wcm jcr:primaryType="nt:unstructured">

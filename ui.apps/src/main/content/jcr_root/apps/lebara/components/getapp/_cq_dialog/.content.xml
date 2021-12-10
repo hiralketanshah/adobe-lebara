@@ -73,6 +73,15 @@
                                                     </items>
                                                 </field>
                                             </getapplink>
+                                            <backgroundColor
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/foundation/form/colorpicker"
+                                                    classicPaletteType="true"
+                                                    editType="true"
+                                                    fieldLabel="Background color"
+                                                    name="./backgroundColor"/>
+
+
                                         </items>
                                     </column>
                                 </items>

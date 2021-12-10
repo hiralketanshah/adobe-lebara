@@ -49,6 +49,9 @@ public class GetAppExporter implements ComponentExporter {
     @ValueMapValue
     private boolean show;
 
+    @ValueMapValue
+    private boolean backgroundColor;
+
     public String getTextDescription() {
         return textDescription;
     }
@@ -76,6 +79,8 @@ public class GetAppExporter implements ComponentExporter {
     public String getGetAppLabel() {
         return getAppLabel;
     }
+
+    public boolean isBackgroundColor() { return backgroundColor; }
 
     public List<String> getTextCol1() {
         if (textCol1 != null) {
