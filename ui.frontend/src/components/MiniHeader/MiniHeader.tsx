@@ -8,6 +8,7 @@ import {
   Link as ChakraLink,
   Text,
   useDisclosure,
+  useOutsideClick,
 } from "@chakra-ui/react";
 import {
   AiOutlineUser,
@@ -17,9 +18,9 @@ import {
   GiHamburgerMenu,
   RiShoppingCartLine,
 } from "react-icons/all";
-import { Link, useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
+import { useHistory } from "@lebara/ui/src/hooks/useHistory";
 import { useSelector } from "react-redux";
-import { useLocalStorage } from "@rehooks/local-storage";
 import { MiniHeaderProps } from "./types";
 import IconButton from "../IconButton/IconButton";
 import LanguageDropDown from "../LanguageDropDown/LanguageDropDown";
@@ -38,27 +39,16 @@ const MiniHeader: React.FC<MiniHeaderProps> = ({
   logoutLabel,
   loggedInMenuItems,
 }) => {
+  const ref = React.useRef<any>(undefined);
   const cartItems = useSelector((state: ReduxState) => state.cart.items);
   const history = useHistory();
-  const [userToken] = useLocalStorage("userToken");
   const [isProfileDropdownOpen, setProfileDropdown] = useState(false);
   const isAuthenticated = useSelector(selectIsAuthenticated);
 
-
   const handleCartClick = () => {
-    const hasDataPlan =
-      cartItems.filter((t) => !t.isAddon && !t.duration.startsWith("Top-up"))
-        .length > 0;
-    history.push(
-      cartItems.length === 0
-        ? (GC.journeyPages[GCST.EMPTY_CART]  || '/')
-        : userToken || !hasDataPlan
-        ? userToken
-          ? (GC.journeyPages[GCST.ORDER_DETAILS]  || '/')
-          : (GC.journeyPages[GCST.LOGIN]  || '/')
-        : (GC.journeyPages[GCST.LEBARA_SIM_CHOICE]  || '/')
-    );
+    history.push(cartItems.length === 0 ? GC.journeyPages[GCST.EMPTY_CART] : GC.journeyPages[GCST.ORDER_DETAILS]);
   };
+
   const { isOpen, onClose, onOpen } = useDisclosure();
   const [isSearchOpened, setIsSearchOpened] = React.useState(false);
   const onSearchClick = () => {
@@ -77,6 +67,10 @@ const MiniHeader: React.FC<MiniHeaderProps> = ({
       fromHeader: true,
     });
   };
+  useOutsideClick({
+    ref,
+    handler: () => setProfileDropdown(false),
+  });
   const remapToSideMenuArr = (arr: any, parent: boolean) => {
     return arr?.map((k:any) => {
       let subItems = {};

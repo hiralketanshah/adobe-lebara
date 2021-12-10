@@ -15,9 +15,8 @@ import {
   useOutsideClick,
 } from "@chakra-ui/react";
 import {AiOutlineUser, BiSearch, RiShoppingCartLine,} from "react-icons/all";
-import {Link, useHistory} from "react-router-dom";
+import {Link} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
-import {useLocalStorage} from "@rehooks/local-storage";
 
 import {children, HeaderProps} from "./types";
 
@@ -41,10 +40,13 @@ import GET_SESSION_STATUS from "../../graphql/GET_SESSION_STATUS";
 import {saveUserInfo} from "@lebara/ui/src/redux/actions/userActions";
 import {setLoading} from "@lebara/ui/src/redux/actions/loadingActions";
 import {setPaymentMethods} from "@lebara/ui/src/redux/actions/paymentMethodsActions";
+import { useHistory } from "@lebara/ui/src/hooks/useHistory";
 
 const SingleMenu = ({ menuItem, newText }: { menuItem: children, newText: any }) => {
+  const DEFUALT_GROUP_MENU_UPTO = 5;
   const history = useHistory();
   const timerRef = useRef<any>();
+  const dispatch = useDispatch();
   const [isOpenMenu, setIsOpenMenu] = useState(false);
   const btnMouseEnterEvent = () => {
     setIsOpenMenu(true);
@@ -65,7 +67,16 @@ const SingleMenu = ({ menuItem, newText }: { menuItem: children, newText: any })
   const menuListMouseLeaveEvent = () => {
     setIsOpenMenu(false);
   };
-  const DEFUALT_GROUP_MENU_UPTO = 5;
+  
+  const onCloseSearch = (url = "") => {
+    dispatch(
+      headerSearch({
+        key: false,
+      })
+    );
+    if(url) history.push(url);
+  };
+
   return (
     <Menu
       isOpen={isOpenMenu}>
@@ -132,10 +143,7 @@ const SingleMenu = ({ menuItem, newText }: { menuItem: children, newText: any })
                         title={subMenuOption?.title}
                         className="menu-group-heading"
                         cursor={subMenuOption?.url ? 'pointer' : 'default'}
-                        onClick={() =>
-                          subMenuOption?.url
-                             && history.push(subMenuOption?.url)
-                        }
+                        onClick={() => onCloseSearch(subMenuOption?.url)}
                         marginRight={menuItem?.children?.length === (2 || 3 || 4 || 5) ? "8rem" : 0}
                         w={"100%"}
                         >
@@ -216,7 +224,6 @@ const Header: React.FC<HeaderProps> = ({
   const ref = React.useRef<any>(undefined);
   const cartItems = useSelector((state: ReduxState) => state.cart.items);
   const history = useHistory();
-  const [userToken] = useLocalStorage("userToken");
   const client = useApolloClient();
   const dispatch = useDispatch();
   const [isSearchOpened, setIsSearchOpened] = React.useState(false);
@@ -245,7 +252,6 @@ const Header: React.FC<HeaderProps> = ({
       })
     );
   };
-
 
   const getCart = useCallback(() => {
     dispatch(setCartItemsLoading());
@@ -307,31 +313,20 @@ const Header: React.FC<HeaderProps> = ({
   }, [topUps, dispatch]);
   
   const handleCartClick = () => {
-    const hasDataPlan =
-      cartItems.filter((t) => !t.isAddon && !t.duration.startsWith("Top-up"))
-        .length > 0;
-    history.push(
-      cartItems.length === 0
-        ? (GC.journeyPages[GCST.EMPTY_CART]  || '/')
-        : userToken || !hasDataPlan
-        ? userToken
-          ? (GC.journeyPages[GCST.ORDER_DETAILS]  || '/')
-          : (GC.journeyPages[GCST.LOGIN]  || '/')
-        : (GC.journeyPages[GCST.LEBARA_SIM_CHOICE]  || '/')
-    );
+    onCloseSearch();
+    history.push(cartItems.length === 0 ? GC.journeyPages[GCST.EMPTY_CART]  : GC.journeyPages[GCST.ORDER_DETAILS]);
   };
 
   const handleProfileClick = () => {
+    onCloseSearch();
     if (isAuthenticated) {
       setProfileDropdown(!isProfileDropdownOpen);
       return;
     }
+    
     history.push(GC.journeyPages[GCST.REGISTER]  || '/', {
       fromHeader: true,
     });
-    // history.push((GC.journeyPages[GCST.LOGIN]  || '/'), {
-    //   fromMenu: true,
-    // })
   };
 
   return (
@@ -344,14 +339,15 @@ const Header: React.FC<HeaderProps> = ({
       <Flex display={{ base: "none", md: "block" }}>
         <Flex
           alignItems="center"
-          px={{ lg: "30px", md: "11px" }}
-          py={{ lg: "12px", md: "6px" }}
+          px="6.1%"
           background="lightenPrimary.500"
           color="white"
+          height="95px"
+          borderBottom="none"
         >
           <ChakraLink>
             <Link to={logoLinkURL || "/"}>
-              <img src={logoPath} alt="Logo" />
+              <img src={logoPath} alt="lebara-logo" style={{maxWidth: 'inherit'}} />
             </Link>
           </ChakraLink>
 
@@ -366,12 +362,16 @@ const Header: React.FC<HeaderProps> = ({
           <Box>
             <Button
               fontSize={{ lg: "14px", md: "12px" }}
-              onClick={() => history.push(`${topupCtaLink}`)}
+              onClick={() => {
+                history.push(GC.journeyPages[GCST.TOP_UP]);
+                onCloseSearch();
+              }}
+              height="40px"
             >
               {topupCtaText}
             </Button>
           </Box>
-          <Spacer />
+          {/* <Spacer /> */}
           <Flex>
             <Box>
               {!isSearchOpened ? (
@@ -449,7 +449,7 @@ const Header: React.FC<HeaderProps> = ({
             zIndex="3"
             width="17.5rem"
             // ml="calc(100vw - 32.5rem)"
-            right={{ lg: "6.3rem", md: "4rem" }}
+            right={{ lg: "13.5rem", md: "4rem" }}
             position="absolute"
             flexDirection="column"
           >
@@ -459,7 +459,7 @@ const Header: React.FC<HeaderProps> = ({
           </Flex>
         </Box>
       )}
-      {isProfileDropdownOpen && (
+      {isProfileDropdownOpen && isAuthenticated && (
         <Box backgroundColor="white" width="100%" height="100%">
           <Flex
             zIndex="3"
