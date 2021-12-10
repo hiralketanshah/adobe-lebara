@@ -11,7 +11,7 @@ import {
 } from "@chakra-ui/react";
 import { useLocation } from "react-router-dom";
 import ExpandableSimPlanCard from "../ExpandableSimPlanCard/ExpandableSimPlanCard";
-import TickInCircle from "../../icons/TickInCircle";
+import TickInCircle from "@lebara/ui/src/icons/TickInCircle";
 import { EmptyCartShopCardProps } from "./types";
 import { ExpandableSimPlanCardProps } from "../ExpandableSimPlanCard/types";
 
@@ -51,7 +51,13 @@ const EmptyCartShopCard: React.FC<EmptyCartShopCardProps> = ({
         >
           {shopBuyLabel}
         </Text>
-        <Text fontWeight="400" fontSize="14px" lineHeight="20px" color="white">
+        <Text
+          fontWeight="400"
+          fontSize="16px"
+          lineHeight="20px"
+          color="white"
+          mt="7px"
+        >
           {cartDescription}
         </Text>
       </Box>
@@ -102,7 +108,7 @@ const EmptyCartShopCard: React.FC<EmptyCartShopCardProps> = ({
               {plansTabLabel}
             </Tab>
           </TabList>
-          <TabPanels width="fit-content">
+          <TabPanels width="100%" overflowX="auto">
             {expandableAddOnsCardProps && <TabPanel color="primary.600">
               <Flex
                 py="20px"

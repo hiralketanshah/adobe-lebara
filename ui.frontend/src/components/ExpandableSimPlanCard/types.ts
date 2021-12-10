@@ -1,4 +1,3 @@
-import { CountriesListOption } from "../CountriesList/types";
 import { allowanceListProps, planDetails } from "../ExpandablePlanCard/types";
 
 export interface ExpandableSimPlanCardProps {
@@ -39,6 +38,7 @@ export interface ExpandableSimPlanCardProps {
   isRelatedPlan?: boolean;
   isRemoveFromCart?: boolean;
   onClose?: () => void;
+  isResponsivePlan?: boolean;
 }
 
 const OfferTypes = {
@@ -49,4 +49,10 @@ const OfferTypes = {
 }
 export default  OfferTypes;
 
-export interface CountriesList extends CountriesListOption {}
+export interface CountriesList {
+  label: string;
+  value: string;
+  countryName: string;
+  countryFlag: string;
+
+}

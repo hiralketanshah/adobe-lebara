@@ -2,9 +2,9 @@ import React from "react";
 import "@adyen/adyen-web/dist/adyen.css";
 import { Box, Flex, Text } from "@chakra-ui/react";
 import { useHistory } from "react-router-dom";
-import BuyPlanLayout from "../../layouts/BuyPlanLayout";
+import BuyPlanLayout from "@lebara/ui/src/layouts/BuyPlanLayout";
 import EmptyCartShopCard from "./EmptyCartShopCard";
-import Button from "../Button/Button";
+import Button from "@lebara/ui/src/components/Button/Button";
 import { EmptyCartShopCardProps } from "./types";
 
 const EmptyCartRoute: React.FC<EmptyCartShopCardProps> = ({

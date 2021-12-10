@@ -11,6 +11,7 @@ export interface FormFields extends BaseFormFields {
   passwordEditLinkURL?: string;
   changeEmailHeading?: string;
 }
+
 export interface ValidationMessages extends BaseValidationMessages {}
 
 export interface SuccessModalProps {
@@ -30,6 +31,7 @@ export interface UserDetailsProps {
   frmFields?: FormFields;
   validationMessages?: ValidationMessages;
   successEmailModal?: SuccessModalProps;
+  changePasswordSuccessMsg?: string;
 
   userName?: string;
   userSurname?: string;
@@ -57,6 +59,31 @@ export interface ChangePasswordSchema {
   oldPassword?: string;
   newPassword?: string;
   confirmPassword?: string;
+}
+
+export interface ChangePasswordProps {
+  changePasswordHeading?: string;
+  oldPassword?: string;
+  newPassword?: string;
+  confirmPassword?: string;
+  frmFields?: FormFields;
+  validationMessages?: ValidationMessages;
+}
+
+export const CompCPDefaultBindings = {
+  changePasswordHeading: "Change Password",
+  oldPasswordLabel: "Old Password",
+  oldPasswordPlacehodler: "Enter Old Password",
+  newPasswordLabel: "New Password",
+  newPasswordPlacehodler: "Enter New Password",
+  confirmPasswordPlacehodler: "Enter Confrim Password",
+  confirmNewPasswordLabel: "Confirm Password",
+  oldPasswordRequiredMsg: "Please enter a password",
+  newPasswordRequiredMsg: "Please enter a password",
+  confirmPasswordRequiredMsg: "Please enter a password",
+  passwordNotMatchErrorMessage: "Confirm Password should be same as New Password.",
+  ctaButtonLabel: "Save",
+  ctaCancelLabel: "Cancel",
 }
 
 export interface ChangeEmailPasswordProfileProps {
@@ -114,5 +141,10 @@ export interface ChangeEmailSuccessProps {
   isOpen: any;
   onClose: () => void;
   successModal?: SuccessModalProps;
+}
+
+
+export interface ChangePasswordSuccessProps extends ModalProps {
+  changePasswordSuccessMsg?: string;
 }
 

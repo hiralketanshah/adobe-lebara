@@ -1,5 +1,5 @@
 import { gql } from "@apollo/client";
-import { globalConfigs } from "../GlobalConfigs";
+import { globalConfigs } from "@lebara/ui/src/configs/globalConfigs.js";
 
 export default gql`
   query authenticateUserSPS($email: String!, $password: String!) {

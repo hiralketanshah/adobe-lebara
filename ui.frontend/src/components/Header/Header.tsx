@@ -1,52 +1,46 @@
-import React, { useRef, useState, useCallback } from "react";
+import React, {useCallback, useRef, useState} from "react";
 import {
   Box,
   Flex,
-  Spacer,
-  Text,
+  Link as ChakraLink,
   Menu,
   MenuButton,
-  MenuList,
-  Link as ChakraLink,
   MenuGroup,
   MenuItem,
+  MenuList,
+  Spacer,
   Tag,
   TagLabel,
+  Text,
   useOutsideClick,
 } from "@chakra-ui/react";
-import {
-  AiOutlineUser,
-  BiSearch,
-  RiShoppingCartLine,
-} from "react-icons/all";
-import { Link, useHistory } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import { useLocalStorage } from "@rehooks/local-storage";
+import {AiOutlineUser, BiSearch, RiShoppingCartLine,} from "react-icons/all";
+import {Link, useHistory} from "react-router-dom";
+import {useDispatch, useSelector} from "react-redux";
+import {useLocalStorage} from "@rehooks/local-storage";
 
-import {
-  HeaderProps,
-  children
-} from "./types";
+import {children, HeaderProps} from "./types";
 
 import IconButton from "../IconButton/IconButton";
 import Button from "../Button/Button";
 import MiniHeader from "../MiniHeader/MiniHeader";
-import { ReduxState } from "../../redux/types";
-import NewSIMOfferCard from "../NewSImOfferCard/NewSImOfferCard";
+import {ReduxState} from "@lebara/ui/src/redux/types";
+import NewSIMOfferCard from "@lebara/ui/src/components/NewSImOfferCard/NewSImOfferCard";
 import Search from "../Search/Search";
-import UserMenu from "../UserMenu/UserMenu";
-import { headerSearch } from "../../redux/actions/headerSearchActions";
-import { selectIsAuthenticated } from "../../redux/selectors/userSelectors";
-import { globalConfigs as GC, globalConstants as GCST } from "../../GlobalConfigs";
-import { useApolloClient, useQuery } from "@apollo/client";
+import UserMenu from "@lebara/ui/src/components/UserMenu/UserMenu";
+import {headerSearch} from "@lebara/ui/src/redux/actions/headerSearchActions";
+import {selectIsAuthenticated} from "@lebara/ui/src/redux/selectors/userSelectors";
+import {globalConfigs as GC, globalConstants as GCST} from "@lebara/ui/src/configs/globalConfigs.js";
+import {useApolloClient, useQuery} from "@apollo/client";
 import GET_CART from "../../graphql/GET_CART";
-import { setCartItemsLoading, loadInitialCart } from "../../redux/actions/cartActions";
+import {loadInitialCart, setCartItemsLoading} from "@lebara/ui/src/redux/actions/cartActions";
 import mapMagentoProductToCartItem from "../../utils/mapMagentoProductToCartItem";
-import { saveTopUps } from "../../redux/actions/topUpActions";
+import {saveTopUps} from "@lebara/ui/src/redux/actions/topUpActions";
 import GET_TOP_UPS from "../../graphql/GET_TOP_UPS";
 import GET_SESSION_STATUS from "../../graphql/GET_SESSION_STATUS";
-import { saveUserInfo } from "../../redux/actions/userActions";
-import { setLoading } from "../../redux/actions/loadingActions";
+import {saveUserInfo} from "@lebara/ui/src/redux/actions/userActions";
+import {setLoading} from "@lebara/ui/src/redux/actions/loadingActions";
+import {setPaymentMethods} from "@lebara/ui/src/redux/actions/paymentMethodsActions";
 
 const SingleMenu = ({ menuItem, newText }: { menuItem: children, newText: any }) => {
   const history = useHistory();
@@ -71,7 +65,7 @@ const SingleMenu = ({ menuItem, newText }: { menuItem: children, newText: any })
   const menuListMouseLeaveEvent = () => {
     setIsOpenMenu(false);
   };
-
+  const DEFUALT_GROUP_MENU_UPTO = 5;
   return (
     <Menu
       isOpen={isOpenMenu}>
@@ -121,12 +115,12 @@ const SingleMenu = ({ menuItem, newText }: { menuItem: children, newText: any })
             padding="45px"
           >
             <Box
-              width="75%"
-              display="flex"
+              display={"flex"}
+              width={menuItem?.children?.length === (2 || 3 || 4 || 5) ? "25.3%" : "75%"}
               justifyContent={menuItem?.children?.length === 3 ? "start" : "space-between"}
-            >
+              >
               {menuItem?.children?.map((subMenuOption: children, cgIdx: any) => {
-                if(cgIdx<=GCST.DEFUALT_GROUP_MENU_UPTO-1) {
+                if(cgIdx<=DEFUALT_GROUP_MENU_UPTO-1) {
                   return (<Box>
                       <MenuGroup
                         defaultValue="asc"
@@ -142,7 +136,8 @@ const SingleMenu = ({ menuItem, newText }: { menuItem: children, newText: any })
                           subMenuOption?.url
                              && history.push(subMenuOption?.url)
                         }
-                        marginRight={menuItem?.children?.length === 2 || 3 ? "8rem" : 0}
+                        marginRight={menuItem?.children?.length === (2 || 3 || 4 || 5) ? "8rem" : 0}
+                        w={"100%"}
                         >
                         <Box>
                           {subMenuOption.children?.map(
@@ -251,6 +246,7 @@ const Header: React.FC<HeaderProps> = ({
     );
   };
 
+
   const getCart = useCallback(() => {
     dispatch(setCartItemsLoading());
     client.query({ query: GET_CART }).then((res) => {
@@ -259,6 +255,24 @@ const Header: React.FC<HeaderProps> = ({
       );
     });
   }, [client, dispatch]);
+
+  const loadPaymentMethods = useCallback(() => {
+    fetch(`${GC.apiHostUri}/payments/adyen/paymentMethods`, {
+      credentials: "include",
+      method: "POST",
+      body: JSON.stringify({
+        channel: "Web",
+      }),
+    })
+        .then((res) => res.json())
+        .then((res) => {
+          dispatch(setPaymentMethods(res));
+        });
+  }, [dispatch]);
+
+  React.useEffect(() => {
+    loadPaymentMethods();
+  }, [loadPaymentMethods]);
 
   React.useEffect(() => {
     if( cartItems.length === 0){
@@ -459,7 +473,7 @@ const Header: React.FC<HeaderProps> = ({
             mt="-20px"
             borderBottomRadius="12px"
           >
-            {loggedInMenuItems && <UserMenu menus={loggedInMenuItems} logoutLabel={logoutLabel} />}
+            {loggedInMenuItems && <UserMenu menus={loggedInMenuItems as any} logoutLabel={logoutLabel} />}
           </Flex>
         </Box>
       )}

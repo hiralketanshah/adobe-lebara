@@ -1,0 +1,14 @@
+import "./BillOverviewAemConfig";
+import "./DashboardAllowancesAemConfig";
+import "./DashboardPlansAemConfig";
+import "./GetAppAemConfig";
+import "./MyBalanceCardAemConfig";
+import "./NextBillAemConfig";
+import "./PlanManagementAemConfig";
+import "./PlansAemConfig";
+import "./PreviousBillsAemConfig";
+import "./PromoBannerSmallAemConfig";
+import "./PromotionBannerAemConfig";
+import "./SimSwitchAemConfig";
+import "./UsageDetailsAemConfig";
+import "./RenewNowAemConfig";

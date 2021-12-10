@@ -9,6 +9,7 @@ import org.apache.sling.models.annotations.Exporter;
 import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.injectorspecific.ChildResource;
 
+import java.util.Collections;
 import java.util.List;
 
 @Model(adaptables = SlingHttpServletRequest.class, adapters = {BrowseCategoriesExporter.class, ComponentExporter.class},
@@ -24,7 +25,7 @@ public class BrowseCategoriesExporter extends HeadingExporter {
     protected static final String RESOURCE_TYPE = "lebara/components/helpcenter/browsecategories";
 
     public List<PageLinkInfo> getBrowseCategoriesLinks() {
-        return browseCategoriesLinks;
+        return browseCategoriesLinks == null ? Collections.emptyList() : Collections.unmodifiableList(browseCategoriesLinks);
     }
 
     @Override

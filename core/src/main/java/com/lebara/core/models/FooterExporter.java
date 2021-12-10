@@ -2,16 +2,10 @@ package com.lebara.core.models;
 
 import com.adobe.cq.export.json.ComponentExporter;
 import com.adobe.cq.export.json.ExporterConstants;
-import com.day.cq.wcm.api.Page;
-import com.day.cq.wcm.api.PageFilter;
 import com.day.cq.wcm.api.PageManager;
 import com.lebara.core.dto.PageLink;
 import com.lebara.core.models.beans.Link;
-import com.lebara.core.utils.AemUtils;
-import org.apache.commons.collections4.CollectionUtils;
-import org.apache.commons.lang3.StringUtils;
 import org.apache.sling.api.SlingHttpServletRequest;
-import org.apache.sling.api.resource.ResourceResolver;
 import org.apache.sling.models.annotations.DefaultInjectionStrategy;
 import org.apache.sling.models.annotations.Exporter;
 import org.apache.sling.models.annotations.Model;
@@ -23,7 +17,7 @@ import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
 import javax.annotation.PostConstruct;
 import javax.inject.Named;
 import java.util.ArrayList;
-import java.util.Iterator;
+import java.util.Collections;
 import java.util.List;
 
 @Model(adaptables = SlingHttpServletRequest.class, adapters = {FooterExporter.class, ComponentExporter.class},
@@ -75,7 +69,7 @@ public class FooterExporter implements ComponentExporter {
     private FollowUsExporter followus;
 
     public List<Link> getCopyrightLinks() {
-        return copyrightLinks;
+        return copyrightLinks == null ? Collections.emptyList() : Collections.unmodifiableList(copyrightLinks);
     }
 
     public String getCopyrightText() {
@@ -111,7 +105,7 @@ public class FooterExporter implements ComponentExporter {
     }
 
     public List<PageLink> getFooterUpperLinks() {
-        return pageLinkList;
+        return pageLinkList == null ? Collections.emptyList() : Collections.unmodifiableList(pageLinkList);
     }
 
     public FollowUsExporter getFollowus() {

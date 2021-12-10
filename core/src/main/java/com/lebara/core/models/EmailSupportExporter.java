@@ -10,6 +10,7 @@ import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.injectorspecific.ScriptVariable;
 import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
 
+import java.util.Collections;
 import java.util.List;
 
 @Model(adaptables = SlingHttpServletRequest.class, adapters = {EmailSupportExporter.class,
@@ -59,7 +60,7 @@ public class EmailSupportExporter extends IntroExporter {
     private List<String> dropDownValues;
 
     public List<String> getDropDownValues() {
-        return dropDownValues;
+        return dropDownValues == null ? Collections.emptyList() : Collections.unmodifiableList(dropDownValues);
     }
 
     public String getFirstName() {

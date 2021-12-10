@@ -266,7 +266,7 @@
                         jcr:primaryType="nt:unstructured"
                         jcr:title="XF Root"
                         sling:resourceType="wcm/core/components/policy/policy"
-                        components="[/libs/wcm/foundation/components/responsivegrid,group:Lebara - Content SPA,group:Lebara - Structure,group:Lebara - Dashboard,group:Lebara - Support]">
+                        components="[/libs/wcm/foundation/components/responsivegrid,group:Lebara - Content SPA,group:Lebara - Structure,group:Lebara - Dashboard,group:Lebara - Support,group:Lebara - User]">
                     <jcr:content jcr:primaryType="nt:unstructured"/>
                     <cq:authoring jcr:primaryType="nt:unstructured">
                         <assetToComponentMapping jcr:primaryType="nt:unstructured">
@@ -297,7 +297,7 @@
                     sling:resourceType="wcm/core/components/policy/policy"
                     backgroundColorEnabled="true"
                     backgroundImageEnabled="true"
-                    components="[/libs/wcm/foundation/components/responsivegrid,group:Lebara - Content SPA,group:Lebara - Dashboard,group:Lebara - Support]"
+                    components="[/libs/wcm/foundation/components/responsivegrid,group:Lebara - Content SPA,group:Lebara - Dashboard,group:Lebara - Support,group:Lebara - User]"
                     layoutDisabled="false">
                     <jcr:content jcr:primaryType="nt:unstructured"/>
                 </lebara-container>
@@ -343,6 +343,14 @@
                         clientlibs="[lebara.react]">
                     <jcr:content jcr:primaryType="nt:unstructured"/>
                 </policy_spa>
+                <policy_spa_journey
+                    cq:styleDefaultClasses="journey-page-body"                                        
+                    jcr:primaryType="nt:unstructured"
+                    jcr:title="Lebara SPA Journey Page Policy"
+                    sling:resourceType="wcm/core/components/policy/policy"
+                    clientlibs="[lebara.react]">
+                    <jcr:content jcr:primaryType="nt:unstructured"/>
+                </policy_spa_journey>
             </page>
             <spa jcr:primaryType="nt:unstructured">
                 <default
@@ -354,6 +362,32 @@
                         structureDepth="2"
                 />
             </spa>
+
+            <embed jcr:primaryType="nt:unstructured">
+                <policy_1639144570135
+                        jcr:lastModified="{Date}2021-12-10T19:26:32.259+05:30"
+                        jcr:lastModifiedBy="admin"
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="embed_policy"
+                        sling:resourceType="wcm/core/components/policy/policy"
+                        allowedEmbeddables="core/wcm/components/embed/v1/embed/embeddable/youtube"
+                        embeddablesDisabled="false"
+                        htmlDisabled="false"
+                        urlDisabled="false"
+                        youtubeAutoPlayDefaultValue="false"
+                        youtubeAutoPlayEnabled="false"
+                        youtubeLoopDefaultValue="false"
+                        youtubeLoopEnabled="false"
+                        youtubeMuteDefaultValue="false"
+                        youtubeMuteEnabled="false"
+                        youtubePlaysInlineDefaultValue="false"
+                        youtubePlaysInlineEnabled="false"
+                        youtubeRelatedVideosDefaultValue="true"
+                        youtubeRelatedVideosEnabled="false">
+                    <jcr:content jcr:primaryType="nt:unstructured"/>
+                </policy_1639144570135>
+            </embed>
+
         </components>
     </lebara>
     <wcm jcr:primaryType="nt:unstructured">
@@ -365,7 +399,7 @@
                             jcr:primaryType="nt:unstructured"
                             jcr:title="SPA Content"
                             sling:resourceType="wcm/core/components/policy/policy"
-                            components="[/libs/wcm/foundation/components/responsivegrid,group:Lebara - Content SPA,group:Lebara - Dashboard,group:Lebara - Support]">
+                            components="[/libs/wcm/foundation/components/responsivegrid,group:Lebara - Content SPA,group:Lebara - Dashboard,group:Lebara - Support,group:Lebara - User]">
                         <jcr:content jcr:primaryType="nt:unstructured"/>
                     </spa-default>
                 </responsivegrid>
