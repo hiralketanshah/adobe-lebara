@@ -2,6 +2,7 @@ package com.lebara.core.dto;
 
 import com.lebara.core.models.beans.Link;
 
+import java.util.Collections;
 import java.util.List;
 
 public class PageLink {
@@ -17,7 +18,7 @@ public class PageLink {
     }
 
     public List<Link> getChildLinks() {
-        return childLinks;
+        return childLinks == null ? Collections.emptyList() : Collections.unmodifiableList(childLinks);
     }
 
     public void setChildLinks(List<Link> childLinks) {

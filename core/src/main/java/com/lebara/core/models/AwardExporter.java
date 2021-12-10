@@ -11,6 +11,8 @@ import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.injectorspecific.ChildResource;
 import org.apache.sling.models.annotations.injectorspecific.ScriptVariable;
 import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
+
+import java.util.Collections;
 import java.util.List;
 
 @Model(adaptables = {SlingHttpServletRequest.class, Resource.class}, adapters = {AwardExporter.class, ComponentExporter.class},
@@ -35,7 +37,7 @@ public class AwardExporter implements ComponentExporter {
     }
 
     public List<ImageIcon> getAwards() {
-        return awards;
+        return awards == null ? Collections.emptyList() : Collections.unmodifiableList(awards);
     }
 
     @Override

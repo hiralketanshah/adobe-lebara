@@ -1,4 +1,4 @@
-import { SelectOptionTypeString } from '../Select/types';
+import { SelectOptionTypeString } from "@lebara/ui/src/components/Select/types";
 
 
 interface OptionsFieldProps {
@@ -27,6 +27,13 @@ export interface BaseFormFields {
     yearPlaceholder?: string;
     shippingLabel?: string;
     shippingPlaceholder?: string;
+
+    oldPasswordLabel?: string;
+    oldPasswordPlacehodler?: string;
+    newPasswordLabel?: string;
+    newPasswordPlacehodler?: string;
+    confirmNewPasswordLabel?: string;
+    confirmPasswordPlacehodler?: string;
 
     streetLabel?: string;
     streetPlaceholder?:string;

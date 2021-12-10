@@ -10,7 +10,7 @@ import {
 } from "@chakra-ui/react";
 import { useHistory } from "react-router-dom";
 import { SideMenuProps } from "./types";
-import { Icon } from "../Icon/Icon";
+import { Icon } from "@lebara/ui/src/components/Icon/Icon";
 import Button from "../Button/Button";
 
 const SideMenu: React.FC<SideMenuProps> = ({ items }) => {
@@ -20,7 +20,9 @@ const SideMenu: React.FC<SideMenuProps> = ({ items }) => {
       {items?.map((item) => (
         <AccordionItem key={item.title}>
           <h2>
-            <AccordionButton h="52px">
+            <AccordionButton h="52px"
+              onClick={() => item?.linkUrl && item?.items?.length === 0 ? history.push(item?.linkUrl) : null}
+            >
               <Flex textAlign="left" alignItems="center" flex={1}>
                 {item.icon && (
                   <Icon
@@ -31,15 +33,14 @@ const SideMenu: React.FC<SideMenuProps> = ({ items }) => {
                     h={18}
                   />
                 )}
-
                 <Text color="primary.600" fontWeight="bold" fontSize={14}>
                   {item.title}
                 </Text>
               </Flex>
-              <AccordionIcon />
+              {item.items && item.items.length !== 0 && <AccordionIcon />}
             </AccordionButton>
           </h2>
-          <AccordionPanel pb={4}>
+          {item.items && item.items.length !== 0 && <AccordionPanel pb={4}>
             {item.items?.map((subItem) => (
               <Button
                 variant="ghost"
@@ -57,7 +58,7 @@ const SideMenu: React.FC<SideMenuProps> = ({ items }) => {
                 {subItem.title}
               </Button>
             ))}
-          </AccordionPanel>
+          </AccordionPanel>}
         </AccordionItem>
       ))}
     </ChakraAccordion>

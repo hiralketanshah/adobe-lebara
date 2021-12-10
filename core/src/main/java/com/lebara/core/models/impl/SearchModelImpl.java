@@ -1,6 +1,10 @@
 package com.lebara.core.models.impl;
 
-import java.util.List;
+import com.adobe.cq.export.json.ComponentExporter;
+import com.adobe.cq.export.json.ExporterConstants;
+import com.adobe.cq.wcm.core.components.models.Search;
+import com.lebara.core.models.SearchModel;
+import com.lebara.core.models.beans.Link;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.models.annotations.DefaultInjectionStrategy;
@@ -12,12 +16,9 @@ import org.apache.sling.models.annotations.injectorspecific.ScriptVariable;
 import org.apache.sling.models.annotations.injectorspecific.Self;
 import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
 import org.apache.sling.models.annotations.via.ResourceSuperType;
-import com.adobe.cq.export.json.ComponentExporter;
-import com.adobe.cq.export.json.ExporterConstants;
-import com.adobe.cq.wcm.core.components.models.Search;
-import com.lebara.core.models.SearchModel;
-import com.lebara.core.models.beans.Link;
-import java.util.*;
+
+import java.util.Collections;
+import java.util.List;
 
 @Model(adaptables = SlingHttpServletRequest.class, adapters = { SearchModelImpl.class,
 		ComponentExporter.class }, resourceType = SearchModelImpl.RESOURCE_TYPE, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
@@ -62,10 +63,7 @@ public class SearchModelImpl implements SearchModel {
 	}
 
 	public List<Link> getLinks() {
-		if (links != null) {
-			return Collections.unmodifiableList(links);
-		}
-		return links;
+		return links == null ? Collections.emptyList() : Collections.unmodifiableList(links);
 	}
 
 	public String getEmptySearchResultMsg() {

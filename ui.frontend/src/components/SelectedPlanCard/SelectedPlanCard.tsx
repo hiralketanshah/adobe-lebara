@@ -2,14 +2,13 @@ import { Flex, Heading, Text } from "@chakra-ui/react";
 import React from "react";
 import { SelectedPlanCardProps } from "./types";
 import { useSelector } from "react-redux";
-import { ReduxState } from "../../redux/types";
 
 const SelectedPlanCard: React.FC<SelectedPlanCardProps> = ({
   selectedPlanLabel,
 }) => {
 
   const selectedProduct = useSelector(
-    (state: ReduxState) => state.product.product
+    (state: any) => state.product.product
   );
 
   const sharedTextStyle = {

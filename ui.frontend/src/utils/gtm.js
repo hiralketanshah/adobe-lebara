@@ -1,4 +1,4 @@
-import { globalConfigs as GC } from "../GlobalConfigs";
+import { globalConfigs as GC } from "@lebara/ui/src/configs/globalConfigs.js";
 export function googleAnalytics(event, obj) {
    event
     ? window?.dataLayer.push({

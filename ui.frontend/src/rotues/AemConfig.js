@@ -1,6 +1,7 @@
 import { MapTo } from "@adobe/aem-react-editable-components";
-import SimPortInRoute from "./SimPortInRoute";
-import OrderDetailsRoute from "./OrderDetailsRoute";
+import OrderDetailsRoute from "@lebara/ui/src/rotues/OrderDetailsRoute";
+import SimPortInRoute from "@lebara/ui/src/rotues/SimPortInRoute";
+import aemUtils from "../utils/aem-utils";
 const SimPortInConfig = {
   emptyLabel: "Sim Port In Component",
   isEmpty: function (props) {
@@ -13,5 +14,6 @@ const OrderDetailsConfig = {
     return !props.selectedProductLabel;
   },
 };
+const componentwithofferDataProp=()=> <OrderDetailsRoute fetchDataCallback={(id, isOneEntry)=> aemUtils.fetchData(id, isOneEntry)}/>;
 MapTo("lebara/components/simportin")(SimPortInRoute, SimPortInConfig);
-MapTo("lebara/components/orderdetails")(OrderDetailsRoute, OrderDetailsConfig);
+MapTo("lebara/components/orderdetails")(componentwithofferDataProp, OrderDetailsConfig);

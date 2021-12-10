@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { IoChevronDownCircleSharp } from "react-icons/all";
 import { LanguageDropDownProps } from "./types";
-import Select from "../Select/Select";
+import Select from "@lebara/ui/src/components/Select/Select";
 
 const LanguageDropDown: React.FC<LanguageDropDownProps> = ({
   options,
