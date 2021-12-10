@@ -2,21 +2,15 @@ package com.lebara.core.models;
 
 import com.adobe.cq.export.json.ComponentExporter;
 import com.adobe.cq.export.json.ExporterConstants;
-import com.lebara.core.models.beans.ImageIcon;
-import com.lebara.core.models.beans.PasswordErrorAndSuccessMsg;
-import com.lebara.core.models.beans.PersonalDetailsErrorMsg;
-import com.lebara.core.utils.AemUtils;
+import com.lebara.core.models.beans.FormFields;
+import com.lebara.core.models.beans.ValidationMsg;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.models.annotations.DefaultInjectionStrategy;
 import org.apache.sling.models.annotations.Exporter;
 import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.injectorspecific.ChildResource;
-import org.apache.sling.models.annotations.injectorspecific.ScriptVariable;
-import org.apache.sling.models.annotations.injectorspecific.SlingObject;
 import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
-
-import java.util.List;
 
 @Model(adaptables = {SlingHttpServletRequest.class, Resource.class}, adapters = {CreateAccountExporter.class, ComponentExporter.class},
         resourceType = CreateAccountExporter.RESOURCE_TYPE, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
@@ -25,63 +19,27 @@ public class CreateAccountExporter extends IntroExporter {
 
     protected static final String RESOURCE_TYPE = "lebara/components/createaccount";
 
-    @SlingObject
-    private SlingHttpServletRequest request;
 
     @ChildResource
-    private PasswordErrorAndSuccessMsg validationMessages;
+    private ValidationMsg validationMessages;
 
     @ChildResource
-    private PersonalDetailsErrorMsg formfields;
+    private FormFields frmFields;
 
     @ValueMapValue
     private String subHeading;
 
-    @ValueMapValue
-    private String emailAddressLabel;
-
-    @ValueMapValue
-    private String passwordLabel;
-
-    @ValueMapValue
-    private String confirmPasswordLabel;
-
-    @ValueMapValue
-    private String ctaHeading;
-
-    @ValueMapValue
-    private String ctaLink;
 
     public String getSubHeading() {
         return subHeading;
     }
 
-    public String getEmailAddressLabel() {
-        return emailAddressLabel;
+    public FormFields getFrmFields() {
+        return frmFields;
     }
 
-    public String getPasswordLabel() {
-        return passwordLabel;
-    }
-
-    public String getConfirmPasswordLabel() {
-        return confirmPasswordLabel;
-    }
-
-    public String getCtaHeading() {
-        return ctaHeading;
-    }
-
-    public String getCtaLink() {
-        return AemUtils.getLinkWithExtension(ctaLink, request);
-    }
-
-    public PasswordErrorAndSuccessMsg getValidationMessages() {
+    public ValidationMsg getValidationMessages() {
         return validationMessages;
-    }
-
-    public PersonalDetailsErrorMsg getFormfields() {
-        return formfields;
     }
 
     @Override

@@ -10,7 +10,7 @@ import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @Model(adaptables = {Resource.class}, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
-public class ChangePasswordErrorAndSuccessMsg extends PasswordErrorAndSuccessMsg {
+public class ChangePasswordErrorAndSuccessMsg extends ValidationMsg {
 
     @SlingObject
     private ResourceResolver resourceResolver;

@@ -10,7 +10,13 @@ import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @Model(adaptables = {Resource.class}, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
-public class PasswordErrorAndSuccessMsg {
+public class ValidationMsg {
+
+    @ValueMapValue
+    private String emailRequiredMsg;
+
+    @ValueMapValue
+    private String emailInValidMsg;
 
     @ValueMapValue
     private String passwordNotMatchErrorMessage;
@@ -26,6 +32,14 @@ public class PasswordErrorAndSuccessMsg {
 
     @ValueMapValue
     private String confirmPasswordRestrictionMsg;
+
+    public String getEmailRequiredMsg() {
+        return emailRequiredMsg;
+    }
+
+    public String getEmailInValidMsg() {
+        return emailInValidMsg;
+    }
 
     public String getPasswordRequiredMsg() {
         return passwordRequiredMsg;

@@ -167,20 +167,27 @@
                                                     fieldDescription ="Email"
                                                     value="Email"
                                                     fieldLabel="Email"
-                                                    name="./emailAddressLabel"/>
+                                                    name="./frmFields/emailLabel"/>
+                                            <emailPlaceHolderLabel
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                    fieldDescription ="Email Placeholder"
+                                                    value="aa@ss.dd"
+                                                    fieldLabel="Email Placeholder"
+                                                    name="./frmFields/emailPlaceholder"/>
                                             <emailRequiredMsg
                                                     jcr:primaryType="nt:unstructured"
                                                     sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                                     fieldDescription="The email address field cannot be empty"
                                                     fieldLabel="Email Error message on Empty Email"
-                                                    name="./formfields/emailRequiredMsg"
+                                                    name="./validationMessages/emailRequiredMsg"
                                                     value="We need your email address to contact you"/>
                                             <emailInValidMsg
                                                     jcr:primaryType="nt:unstructured"
                                                     sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                                     fieldDescription="Please enter a valid email address. For example username@domain.com"
                                                     fieldLabel="Email Error message on Invalid characters"
-                                                    name="./formfields/emailInValidMsg"
+                                                    name="./validationMessages/emailInValidMsg"
                                                     value="Please check the email address format"/>
                                             <passwordLabel
                                                     jcr:primaryType="nt:unstructured"
@@ -188,14 +195,14 @@
                                                     fieldDescription ="Password Label"
                                                     value="Password"
                                                     fieldLabel="Password Label"
-                                                    name="./passwordLabel"/>
+                                                    name="./frmFields/passwordLabel"/>
                                             <confirmPasswordLabel
                                                     jcr:primaryType="nt:unstructured"
                                                     sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                                     fieldDescription ="Confirm Password Label"
                                                     value="Confirm Password"
                                                     fieldLabel="Confirm Password Label"
-                                                    name="./confirmPasswordLabel"/>
+                                                    name="./frmFields/confirmPasswordLabel"/>
                                             <passwordRequiredMsg
                                                     jcr:primaryType="nt:unstructured"
                                                     sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
@@ -236,14 +243,14 @@
                                                     fieldDescription ="title for Create Account CTA"
                                                     value="Create Account"
                                                     fieldLabel="Heading"
-                                                    name="./ctaHeading"/>
+                                                    name="./frmFields/ctaButtonLabel"/>
                                             <createAccountCTALink
                                                     jcr:primaryType="nt:unstructured"
                                                     sling:resourceType="granite/ui/components/coral/foundation/form/pathbrowser"
                                                     fieldDescription ="Link for Create Account CTA"
                                                     fieldLabel="Create Account CTA link"
                                                     rootPath="/content/lebara"
-                                                    name="./ctaLink"/>
+                                                    name="./frmFields/ctaLink"/>
                                         </items>
                                     </column>
                                 </items>
