@@ -64,7 +64,7 @@ public class OrderPaymentHistoryFormFields {
     @ValueMapValue
     private String filterLabel;
 
-   @ValueMapValue
+    @ValueMapValue
     private String nodataImage;
 
     public String getShopNowCTA() {
@@ -130,5 +130,6 @@ public class OrderPaymentHistoryFormFields {
     public String getFilterLabel() {
         return filterLabel;
     }
+
     public String getNodataImage() { return nodataImage;}
 }

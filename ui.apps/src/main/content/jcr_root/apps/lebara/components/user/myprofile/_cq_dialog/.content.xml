@@ -639,8 +639,6 @@
                                     fieldLabel="Password Successfully Updated Success Message"
                                     name="./changePasswordSuccessMsg"
                                     value="Password Successfully Updated"/>
-
-
                         </items>
                     </column5>
                 </items>

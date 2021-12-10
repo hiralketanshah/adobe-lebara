@@ -75,7 +75,7 @@
                                     jcr:primaryType="nt:unstructured"
                                     sling:resourceType="granite/ui/components/foundation/form/pathbrowser"
                                     fieldLabel="No Data Image"
-                                    name="./nodataImage"/>
+                                    name="./frmFields/nodataImage"/>
                             <shopNowCTA
                                     jcr:primaryType="nt:unstructured"
                                     sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
