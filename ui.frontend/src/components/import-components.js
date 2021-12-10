@@ -42,6 +42,7 @@ import "../aemConfigs/RewardOverviewAemConfig.js";
 import "../aemConfigs/PostpaidPersonalDetailsPreviewAemConfig.js";
 import "../aemConfigs/OrderSubmittedAemConfig.js";
 import "../aemConfigs/ChangePasswordAemConfig.js";
+import "../aemConfigs/OrderPaymentHistoryAemConfig.js";
 
 import "../rotues/AemConfig.js";
 
