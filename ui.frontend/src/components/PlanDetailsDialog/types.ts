@@ -4,7 +4,7 @@ export interface PlanDetailsDialogProps {
   isOpen: boolean;
   onClose: () => void;
   planName: string;
-  price: number;
+  price: number | string;
   duration: string;
   previewIcon?: JSX.Element;
   previewItems?: string[];
