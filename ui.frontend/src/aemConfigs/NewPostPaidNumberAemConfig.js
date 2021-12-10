@@ -8,5 +8,5 @@ const NewPostpaidNumberConfig = {
     return !props.durationRadioLabelList;
   },
 };
-const componentwithofferDataProp=()=> <NewPostpaidNumberRoute fetchDataCallback={(id, isOneEntry)=> aemUtils.fetchData(id, isOneEntry)}/>;
+const componentwithofferDataProp=(props)=> <NewPostpaidNumberRoute fetchDataCallback={(id, isOneEntry)=> aemUtils.fetchData(id, isOneEntry)} {...props}/>;
 MapTo("lebara/components/postpaid")(componentwithofferDataProp, NewPostpaidNumberConfig);
