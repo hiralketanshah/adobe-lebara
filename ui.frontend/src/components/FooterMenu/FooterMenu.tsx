@@ -39,7 +39,7 @@ const FooterMenu: React.FC<FooterMenuProps> = ({
         justifyContent="space-between"
         mb="8.135rem"
       >
-        <Flex gridGap="140px">
+        <Flex gridGap="70px">
           {footerUpperLinks?.map((menu: MenuProps, fmIdx) => (
             <Box key={`fm-key-${fmIdx}`}>
               <Text fontSize={14} fontWeight="bold" textTransform="uppercase">

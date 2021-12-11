@@ -288,7 +288,7 @@ const ExpandableSimPlanCard: React.FC<ExpandableSimPlanCardProps> = ({
             textDecorationLine="underline"
             fontSize={12}
             lineHeight="17px"
-            pt="10px"
+            pt={promotionMessage ? "10px" : "59px"}
           >
             {productInformationButtonLabel}
           </Text>

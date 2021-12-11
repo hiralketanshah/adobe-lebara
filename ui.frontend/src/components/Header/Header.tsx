@@ -358,7 +358,7 @@ const Header: React.FC<HeaderProps> = ({
             </Link>
           </ChakraLink>
 
-          <Flex alignItems="left" ml={{ xl: "60px", lg: "40px", md: "15px" }}  gridGap={{lg: "20px", xl: "66px"}}>
+          <Flex alignItems="left" ml={{ xl: "60px", lg: "40px", md: "15px" }}  gridGap={{lg: "20px", xl: "30px"}}>
           {items?.map((menuItem: children, idx: any) => (
               <React.Fragment key={menuItem.title}>
                 <SingleMenu menuItem={menuItem} newText={newText} />
