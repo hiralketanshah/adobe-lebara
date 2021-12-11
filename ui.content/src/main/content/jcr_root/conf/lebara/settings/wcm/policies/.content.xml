@@ -359,7 +359,7 @@
                         sling:resourceType="wcm/core/components/policy/policy"
                         clientlibs="[lebara.react]"
                         isRoot="{Boolean}true"
-                        structureDepth="2"
+                        structureDepth="1"
                 />
             </spa>
 
