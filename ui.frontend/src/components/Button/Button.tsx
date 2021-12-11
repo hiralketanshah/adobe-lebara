@@ -10,6 +10,9 @@ const Button: React.FC<ButtonProps> = ({ ...rest }) => {
     <ChakraButton
       textTransform="uppercase"
       borderRadius="lg"
+      _focus={{
+        outline: 0,
+      }}
       fontWeight={fontDetails.weight}
       letterSpacing={fontDetails.letterSpacing}
       lineHeight="shorter"

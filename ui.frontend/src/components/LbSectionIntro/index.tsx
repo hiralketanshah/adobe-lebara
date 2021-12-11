@@ -1,5 +1,5 @@
 import React from "react";
-import { Flex, Box, Text } from "@chakra-ui/react";
+import {Flex, Box, Text, Heading} from "@chakra-ui/react";
 import { CompProps } from "./types";
 import Link from "@lebara/ui/src/components/Link/Link";
 
@@ -34,18 +34,18 @@ const LbSectionIntro: React.FC<CompProps> = ({
         px={noPadding ? {} : { base: "20px", lg: "80px" }}
       >
         {heading && (
-          <Text
+          <Heading
             color="primary.600"
             as="h2"
             fontWeight="bold"
             lineHeight={{ base: "40px", lg: "50px" }}
             fontSize={{ base: 32, lg: 47 }}
             mb={{ base: "11.11px", lg: "5px" }}
-          >{heading}</Text>
+          >{heading}</Heading>
         )}
         <Flex flexDir="column" align="stretch">
           {sectionHeading && (
-            <Text
+            <Heading
               as="h3"
               mb={{ base: "12.11px", lg: "10px" }}
               lineHeight={{ base: "22px", lg: "30px" }}
@@ -53,7 +53,7 @@ const LbSectionIntro: React.FC<CompProps> = ({
               fontWeight="500"
             >
               {sectionHeading}
-            </Text>
+            </Heading>
           )}
           {sectionSubHeading && (
             <Text fontWeight="bold" fontSize="16px" lineHeight="22px" mb="8px">

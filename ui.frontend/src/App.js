@@ -13,6 +13,7 @@ import "@fontsource/roboto/500.css";
 import "@fontsource/roboto/700.css";
 import "@fontsource/roboto/900.css";
 import store from "@lebara/ui/src/store";
+import Fonts from "@lebara/ui/src/components/Fonts/Fonts";
 
 const theme = extendTheme(
   {
@@ -21,7 +22,7 @@ const theme = extendTheme(
     // latter on we will decide on the bases of domain name which color pattern needs to be follow
     colors,
     fonts: {
-      heading: "Roboto",
+      heading: "Chiswick Grotesque Lebara",
       body: "Roboto",
     },
   },
@@ -34,6 +35,7 @@ class App extends Page {
     return (
       <Provider store={store}>
         <ChakraProvider theme={theme}>
+            <Fonts />
           {this.childComponents}
           {this.childPages}
         </ChakraProvider>

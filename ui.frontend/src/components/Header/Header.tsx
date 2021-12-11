@@ -1,7 +1,7 @@
 import React, {useCallback, useRef, useState} from "react";
 import {
   Box,
-  Flex,
+  Flex, Image,
   Link as ChakraLink,
   Menu,
   MenuButton,
@@ -347,22 +347,22 @@ const Header: React.FC<HeaderProps> = ({
           open={isModalOpen}
           onClose={() => dispatch(toggleDialogState(false))}
       />
-      <Flex display={{ base: "none", md: "block" }}>
+      <Flex display={{ base: "none", lg: "block" }}>
         <Flex
           alignItems="center"
-          px={{ lg: "30px", md: "11px" }}
+          px={{lg: "20px", xl: "87.88px"}}
           py={{ lg: "12px", md: "6px" }}
           background="lightenPrimary.500"
           color="white"
         >
           <ChakraLink>
             <Link to={logoLinkURL || "/"}>
-              <img src={logoPath} alt="Logo" />
+              <Image src={logoPath} h="37px" w={{lg: "80px", xl: "116.84px"}} alt="logo" />
             </Link>
           </ChakraLink>
 
-          <Flex alignItems="left" ml={{ lg: "30px", md: "15px" }}>
-            {items?.map((menuItem: children, idx: any) => (
+          <Flex alignItems="left" ml={{ xl: "60px", lg: "40px", md: "15px" }}  gridGap={{lg: "20px", xl: "66px"}}>
+          {items?.map((menuItem: children, idx: any) => (
               <React.Fragment key={menuItem.title}>
                 <SingleMenu menuItem={menuItem} newText={newText} />
               </React.Fragment>
@@ -371,13 +371,13 @@ const Header: React.FC<HeaderProps> = ({
           <Spacer />
           <Box>
             <Button
-              fontSize={{ lg: "14px", md: "12px" }}
+                w={{lg: "100px", xl: "130px"}}
+                fontSize={{ lg: "14px", md: "12px" }}
               onClick={() => history.push(`${topupCtaLink}`)}
             >
               {topupCtaText}
             </Button>
           </Box>
-          <Spacer />
           <Flex>
             <Box>
               {!isSearchOpened ? (
@@ -483,7 +483,7 @@ const Header: React.FC<HeaderProps> = ({
           </Flex>
         </Box>
       )}
-      <Flex display={{ md: "none", sm: "flex" }} mx={{ md: "27px" }}>
+      <Flex display={{ lg: "none", sm: "flex" }} mx={{ lg: "27px" }}>
         <MiniHeader loggedInMenuItems={loggedInMenuItems} logoutLabel={logoutLabel} logoPath={logoPath} logoLinkURL={logoLinkURL} items={items} />
       </Flex>
     </Flex>
