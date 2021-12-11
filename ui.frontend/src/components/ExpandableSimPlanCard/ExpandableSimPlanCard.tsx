@@ -180,17 +180,9 @@ const ExpandableSimPlanCard: React.FC<ExpandableSimPlanCardProps> = ({
           buttonText={buttonLabel}
           hideButton={isRelatedPlan}
         />
-        <Flex direction={
-          isResponsivePlan ? { base: "column", lg: "row" } : "column"
-        }
-          justifyContent={
-            isResponsivePlan
-              ? { base: "initial", lg: "space-between" }
-              : "initial"
-          }
-          alignItems={
-            isResponsivePlan ? { base: "initial", lg: "center" } : "initial"
-          }>
+        <Flex justifyContent="space-between"
+            direction={promotionPrice ? "row" : "row"}
+            alignItems={promotionData ? "flex-end" : "initial"}>
           <Flex
             justifyContent="space-between"
             gridGap="12px"
