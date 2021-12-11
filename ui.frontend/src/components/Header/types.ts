@@ -1,3 +1,20 @@
+export interface HeaderProps {
+  isActive?: boolean;
+  isDisabled?: boolean;
+  logoLinkURL?: string;
+  topupCtaText?: string;
+  topupCtaLink?: string;
+  accountLink?: string;
+  accessibilityLabel?: string;
+  id?: string;
+  newText?: string;
+  logoPath?: string;
+  items?: children[];
+  searchPlaceholder?: string;
+  logoutLabel?: string;
+  loggedInMenuItems?: LoggedInMenus[];
+}
+
 export interface children {
   isDisabled?: boolean;
   showNewText?: string;
@@ -17,18 +34,4 @@ export interface LoggedInMenus {
   label?: string;
   link?: string;
   icon?: string;
-}
-export interface HeaderProps {
-  logoLinkURL?: string;
-  topupCtaText?: string;
-  topupCtaLink?: string;
-  accountLink?: string;
-  accessibilityLabel?: string;
-  id?: string;
-  newText?: string;
-  logoPath?: string;
-  items?: children[];
-  searchPlaceholder?: string;
-  logoutLabel?: string;
-  loggedInMenuItems?: LoggedInMenus[];
 }
