@@ -79,6 +79,12 @@ public class SimPortInExporter implements ComponentExporter {
     private String portingInfo;
 
     @ValueMapValue
+    private String advertisingInfo;
+
+    @ValueMapValue
+    private String partnersInfo;
+
+    @ValueMapValue
     private String consentOne;
 
     @ValueMapValue
@@ -174,6 +180,14 @@ public class SimPortInExporter implements ComponentExporter {
 
     public String getPortingInfo() {
         return portingInfo;
+    }
+
+    public String getAdvertisingInfo() {
+        return advertisingInfo;
+    }
+
+    public String getPartnersInfo() {
+        return partnersInfo;
     }
 
     public String getConsentOne() {

@@ -165,6 +165,26 @@
                                                                             jcr:primaryType="nt:unstructured"
                                                                             text="dashboard"
                                                                             value="dashboard"/>
+                                                                        <create-new-password
+                                                                                jcr:primaryType="nt:unstructured"
+                                                                                text="create-new-password"
+                                                                                value="create-new-password"/>
+                                                                        <verify-register-mobile
+                                                                                jcr:primaryType="nt:unstructured"
+                                                                                text="verify-register-mobile"
+                                                                                value="verify-register-mobile"/>
+                                                                        <usage-details
+                                                                                jcr:primaryType="nt:unstructured"
+                                                                                text="usage-details"
+                                                                                value="usage-details"/>
+                                                                        <postpaid-bills
+                                                                                jcr:primaryType="nt:unstructured"
+                                                                                text="postpaid/bills"
+                                                                                value="postpaid/bills"/>
+                                                                        <sim-choice
+                                                                                jcr:primaryType="nt:unstructured"
+                                                                                text="sim-choice"
+                                                                                value="sim-choice"/>
                                                                     </items>
                                                                 </name>
                                                                 <path

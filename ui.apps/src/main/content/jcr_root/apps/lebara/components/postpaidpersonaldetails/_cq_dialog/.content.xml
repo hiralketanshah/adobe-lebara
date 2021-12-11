@@ -348,7 +348,7 @@
                                         </inline>
                                         <dialogFullScreen
                                             jcr:primaryType="nt:unstructured"
-                                            toolbar="[format#bold,format#italic,format#underline,justify#justifyleft,justify#justifycenter,justify#justifyright,lists#unordered,lists#ordered,lists#outdent,lists#indent,links#modifylink,links#unlink,table#createoredit,#paraformat,image#imageProps]">
+                                            toolbar="[format#bold,format#italic,format#underline,justify#justifyleft,justify#justifycenter,justify#justifyright,lists#unordered,lists#ordered,lists#outdent,lists#indent,links#modifylink,links#unlink,table#createoredit,#paraformat,image#imageProps,experience-aem#structuredContentModal]">
                                             <popovers jcr:primaryType="nt:unstructured">
                                                 <paraformat
                                                     jcr:primaryType="nt:unstructured"
@@ -564,7 +564,7 @@
                                         </inline>
                                         <dialogFullScreen
                                             jcr:primaryType="nt:unstructured"
-                                            toolbar="[format#bold,format#italic,format#underline,justify#justifyleft,justify#justifycenter,justify#justifyright,lists#unordered,lists#ordered,lists#outdent,lists#indent,links#modifylink,links#unlink,table#createoredit,#paraformat,image#imageProps]">
+                                            toolbar="[format#bold,format#italic,format#underline,justify#justifyleft,justify#justifycenter,justify#justifyright,lists#unordered,lists#ordered,lists#outdent,lists#indent,links#modifylink,links#unlink,table#createoredit,#paraformat,image#imageProps,experience-aem#structuredContentModal]">
                                             <popovers jcr:primaryType="nt:unstructured">
                                                 <paraformat
                                                     jcr:primaryType="nt:unstructured"
@@ -695,7 +695,7 @@
                                         </inline>
                                         <dialogFullScreen
                                             jcr:primaryType="nt:unstructured"
-                                            toolbar="[format#bold,format#italic,format#underline,justify#justifyleft,justify#justifycenter,justify#justifyright,lists#unordered,lists#ordered,lists#outdent,lists#indent,links#modifylink,links#unlink,table#createoredit,#paraformat,image#imageProps]">
+                                            toolbar="[format#bold,format#italic,format#underline,justify#justifyleft,justify#justifycenter,justify#justifyright,lists#unordered,lists#ordered,lists#outdent,lists#indent,links#modifylink,links#unlink,table#createoredit,#paraformat,image#imageProps,experience-aem#structuredContentModal]">
                                             <popovers jcr:primaryType="nt:unstructured">
                                                 <paraformat
                                                     jcr:primaryType="nt:unstructured"
@@ -833,7 +833,7 @@
                                         </inline>
                                         <dialogFullScreen
                                             jcr:primaryType="nt:unstructured"
-                                            toolbar="[format#bold,format#italic,format#underline,justify#justifyleft,justify#justifycenter,justify#justifyright,lists#unordered,lists#ordered,lists#outdent,lists#indent,links#modifylink,links#unlink,table#createoredit,#paraformat,image#imageProps]">
+                                            toolbar="[format#bold,format#italic,format#underline,justify#justifyleft,justify#justifycenter,justify#justifyright,lists#unordered,lists#ordered,lists#outdent,lists#indent,links#modifylink,links#unlink,table#createoredit,#paraformat,image#imageProps,experience-aem#structuredContentModal]">
                                             <popovers jcr:primaryType="nt:unstructured">
                                                 <paraformat
                                                     jcr:primaryType="nt:unstructured"
