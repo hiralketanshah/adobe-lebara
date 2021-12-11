@@ -1,7 +1,7 @@
 import React, {useCallback, useRef, useState} from "react";
 import {
   Box,
-  Flex,
+  Flex, Image,
   Link as ChakraLink,
   Menu,
   MenuButton,
@@ -41,6 +41,9 @@ import {saveUserInfo} from "@lebara/ui/src/redux/actions/userActions";
 import {setLoading} from "@lebara/ui/src/redux/actions/loadingActions";
 import {setPaymentMethods} from "@lebara/ui/src/redux/actions/paymentMethodsActions";
 import { useHistory } from "@lebara/ui/src/hooks/useHistory";
+import axios from "axios";
+import PlanNotEligibleDialog from "@lebara/ui/src/components/PlanNotEligibleDialog/PlanNotEligibleDialog";
+import { toggleDialogState } from "@lebara/ui/src/redux/actions/modalsActions";
 
 const SingleMenu = ({ menuItem, newText }: { menuItem: children, newText: any }) => {
   const DEFUALT_GROUP_MENU_UPTO = 5;
@@ -229,6 +232,7 @@ const Header: React.FC<HeaderProps> = ({
   const [isSearchOpened, setIsSearchOpened] = React.useState(false);
   const [isProfileDropdownOpen, setProfileDropdown] = useState(false);
   const isAuthenticated = useSelector(selectIsAuthenticated);
+  const isModalOpen = useSelector((t: ReduxState) => t.modal.open);
 
   useOutsideClick({
     ref,
@@ -263,16 +267,13 @@ const Header: React.FC<HeaderProps> = ({
   }, [client, dispatch]);
 
   const loadPaymentMethods = useCallback(() => {
-    fetch(`${GC.apiHostUri}/payments/adyen/paymentMethods`, {
-      credentials: "include",
-      method: "POST",
-      body: JSON.stringify({
-        channel: "Web",
-      }),
+    axios.post(`${GC.apiHostUri}/payments/adyen/paymentMethods`, {
+      channel: "Web",
     })
-        .then((res) => res.json())
         .then((res) => {
-          dispatch(setPaymentMethods(res));
+          dispatch(setPaymentMethods({
+            paymentMethods: res.data.paymentMethods.filter((t: any) => t.name !== "Local Polish Payment Methods")
+          }));
         });
   }, [dispatch]);
 
@@ -336,10 +337,16 @@ const Header: React.FC<HeaderProps> = ({
       boxShadow={{ md: "8px 4px 15px 3px rgba(0, 0, 0, 0.04)" }}
       borderRadius={{ md: "8px" }}
     >
-      <Flex display={{ base: "none", md: "block" }}>
+
+      <PlanNotEligibleDialog
+          open={isModalOpen}
+          onClose={() => dispatch(toggleDialogState(false))}
+      />
+      <Flex display={{ base: "none", lg: "block" }}>
         <Flex
           alignItems="center"
-          px="6.1%"
+          px={{lg: "20px", xl: "87.88px"}}
+          py={{ lg: "12px", md: "6px" }}
           background="lightenPrimary.500"
           color="white"
           height="95px"
@@ -347,12 +354,12 @@ const Header: React.FC<HeaderProps> = ({
         >
           <ChakraLink>
             <Link to={logoLinkURL || "/"}>
-              <img src={logoPath} alt="lebara-logo" style={{maxWidth: 'inherit'}} />
+              <Image src={logoPath} h="37px" w={{lg: "80px", xl: "116.84px"}} alt="logo" />
             </Link>
           </ChakraLink>
 
-          <Flex alignItems="left" ml={{ lg: "30px", md: "15px" }}>
-            {items?.map((menuItem: children, idx: any) => (
+          <Flex alignItems="left" ml={{ xl: "60px", lg: "40px", md: "15px" }}  gridGap={{lg: "20px", xl: "66px"}}>
+          {items?.map((menuItem: children, idx: any) => (
               <React.Fragment key={menuItem.title}>
                 <SingleMenu menuItem={menuItem} newText={newText} />
               </React.Fragment>
@@ -361,17 +368,13 @@ const Header: React.FC<HeaderProps> = ({
           <Spacer />
           <Box>
             <Button
-              fontSize={{ lg: "14px", md: "12px" }}
-              onClick={() => {
-                history.push(GC.journeyPages[GCST.TOP_UP]);
-                onCloseSearch();
-              }}
-              height="40px"
+                w={{lg: "100px", xl: "130px"}}
+                fontSize={{ lg: "14px", md: "12px" }}
+              onClick={() => history.push(`${GC.journeyPages[GCST.TOP_UP]}`)}
             >
               {topupCtaText}
             </Button>
           </Box>
-          {/* <Spacer /> */}
           <Flex>
             <Box>
               {!isSearchOpened ? (
@@ -477,7 +480,7 @@ const Header: React.FC<HeaderProps> = ({
           </Flex>
         </Box>
       )}
-      <Flex display={{ md: "none", sm: "flex" }} mx={{ md: "27px" }}>
+      <Flex display={{ lg: "none", sm: "flex" }} mx={{ lg: "27px" }}>
         <MiniHeader loggedInMenuItems={loggedInMenuItems} logoutLabel={logoutLabel} logoPath={logoPath} logoLinkURL={logoLinkURL} items={items} />
       </Flex>
     </Flex>

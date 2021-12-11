@@ -31,7 +31,8 @@ const Footer: React.FC<FooterProps> = ({
           {({ isExpanded }) => (
             <>
               <Text as="h3" fontSize={14} fontWeight="bold">
-                <AccordionButton>
+                <AccordionButton
+                    _focus={{outline: "none"}}>
                   <Box
                     flex="1"
                     textAlign="left"
@@ -96,6 +97,7 @@ const Footer: React.FC<FooterProps> = ({
     <Divider pt="30px" />
     <Box px="10px" color="primary.500">
       <Text
+          color={theme?.color}
         fontSize={14}
         fontWeight="bold"
         textTransform="uppercase"
@@ -108,7 +110,7 @@ const Footer: React.FC<FooterProps> = ({
     </Box>
 
     <Divider pt="30px" />
-    <Text fontSize={12} textAlign="center" py="25px" color="black">
+    <Text fontSize={12} textAlign="center" py="25px" color={theme?.color}>
       {copyrightText}
     </Text>
   </Box>

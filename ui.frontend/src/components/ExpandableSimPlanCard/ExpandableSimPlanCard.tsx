@@ -6,7 +6,7 @@ import Button from "@lebara/ui/src/components/Button/Button";
 import PlanDetailsDialog from "../PlanDetailsDialog/PlanDetailsDialog";
 import { allowanceListProps } from "../ExpandablePlanCard/types";
 import { useHistory } from "react-router-dom";
-import useAddToCart from "../../hooks/useAddToCart";
+import useAddToCart from "@lebara/ui/src/hooks/useAddToCart";
 import { useLocalStorage } from "@rehooks/local-storage";
 import { globalConfigs, globalConstants } from "@lebara/ui/src/configs/globalConfigs";
 import LebaraText from "@lebara/ui/src/components/LebaraText/LebaraText";
@@ -81,29 +81,33 @@ const ExpandableSimPlanCard: React.FC<ExpandableSimPlanCardProps> = ({
       case OfferTypes.BOLTON:
       case OfferTypes.TOPUP: {
         const updatedAddtoCart: string = addedtoCartLabel?.replace('{0}', planName) || '';
-        await addItemToCart(parseInt(id || ''), planName, (JSON.stringify(description || '')), Number(cost?.replaceAll(',', '.') || ''), "addon");
-        toast({
-          position: "bottom",
-          render: () => (
-            <Flex
-              color="white"
-              p={3}
-              bg="primary.700"
-              borderRadius="4px"
-              justifyContent="space-between"
-              maxW="420px"
-            >
-              <Text py="12px">{updatedAddtoCart}</Text>
-              <Button
-                variant="ghost"
-                colorScheme="secondary"
-                onClick={handleViewCartClick}
-              >
-                {viewCartLabel}
-              </Button>
-            </Flex>
-          ),
-        });
+        try {
+          await addItemToCart(parseInt(id || ''), planName, (JSON.stringify(description || '')), Number(cost?.replaceAll(',','.') || ''), "addon");
+          toast({
+            position: "bottom",
+            render: () => (
+                <Flex
+                    color="white"
+                    p={3}
+                    bg="primary.700"
+                    borderRadius="4px"
+                    justifyContent="space-between"
+                    maxW="420px"
+                >
+                  <Text py="12px">{updatedAddtoCart}</Text>
+                  <Button
+                      variant="ghost"
+                      colorScheme="secondary"
+                      onClick={handleViewCartClick}
+                  >
+                    {viewCartLabel}
+                  </Button>
+                </Flex>
+            ),
+          });
+        }catch(e){
+
+        }
         break;
       }
       case OfferTypes.PREPAID:

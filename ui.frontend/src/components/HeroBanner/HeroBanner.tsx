@@ -8,7 +8,7 @@ import {
   selectMsisdn,
 } from "../../redux/selectors/userSelectors";
 import { useDispatch, useSelector } from "react-redux";
-import useAddToCart from "../../hooks/useAddToCart";
+import useAddToCart from "@lebara/ui/src/hooks/useAddToCart";
 import { ReduxState } from "../../redux/types";
 import { useHistory } from "react-router-dom";
 import { globalConfigs as GC, globalConstants as C } from "@lebara/ui/src/configs/globalConfigs.js";
@@ -73,21 +73,23 @@ return (
         return;
       }
       dispatch(setLoading(true));
-
-      if (!cartItems.find((t : any) => t.id === 99999999)) {
-        await addItemToCart(99999999, "Free Sim", "", 0, "free-sim");
-      }
-      if (!cartItems.find((t : any) => t.id === 99999998)) {
-        await addItemToCart(
-          99999998,
-          "Free Sim Top Up",
-          "",
-          0,
-          "free-sim-top-up",
-          undefined,
-          undefined,
-          true
-        );
+      try{
+        if (!cartItems.find((t : any) => t.id === 99999999)) {
+          await addItemToCart(99999999, "Free Sim", "", 0, "free-sim");
+        }
+        if (!cartItems.find((t : any) => t.id === 99999998)) {
+          await addItemToCart(
+              99999998,
+              "Free Sim Top Up",
+              "",
+              0,
+              "free-sim-top-up",
+              undefined,
+              undefined,
+              true
+          );
+        }
+      }catch (e){
       }
       dispatch(setLoading(false));
       history.push((GC.journeyPages[C.ORDER_DETAILS] || '/'));

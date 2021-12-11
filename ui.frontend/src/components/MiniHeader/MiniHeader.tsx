@@ -132,13 +132,14 @@ const MiniHeader: React.FC<MiniHeaderProps> = ({
               <Button
                 onClick={onSearchClick}
                 padding="initial"
-                bgColor="transparent"
+                variant="unstyled"
               >
                 <IconButton
-                  icon={<BiSearch size={18} />}
+                  icon={<BiSearch />}
                   aria-label="Search"
                   variant="ghost"
-                  size="md"
+                  fontSize={24}
+                  size="24px"
                   paddingRight={{ lg: "26px!important", md: "13px!important" }}
                   paddingLeft={{ lg: "56px!important", md: "26px!important" }}
                   colorScheme="dark"
@@ -149,15 +150,20 @@ const MiniHeader: React.FC<MiniHeaderProps> = ({
             <></>
           )}
           <IconButton
+              mx="24px"
             colorScheme="dark"
             icon={<AiOutlineUser />}
+            fontSize={24}
+            size="24px"
             aria-label="Profile"
             onClick={handleProfileClick}
             variant="ghost"
           />
           <Box pos="relative" onClick={handleCartClick}>
             <IconButton
+                height="45px"
               p="absolute"
+              fontSize={24}
               colorScheme="dark"
               icon={<RiShoppingCartLine />}
               aria-label="Cart"
@@ -219,8 +225,8 @@ const MiniHeader: React.FC<MiniHeaderProps> = ({
       )}
       <Drawer placement="left" onClose={onClose} isOpen={isOpen}>
         <DrawerContent>
-          <DrawerBody>
-            <SideMenu items={remappedItems} />
+          <DrawerBody p={0}>
+            <SideMenu items={remappedItems} onClose={onClose}/>
           </DrawerBody>
         </DrawerContent>
       </Drawer>

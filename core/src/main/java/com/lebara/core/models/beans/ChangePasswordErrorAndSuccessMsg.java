@@ -10,33 +10,19 @@ import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @Model(adaptables = {Resource.class}, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
-public class ChangePasswordErrorAndSuccessMsg {
+public class ChangePasswordErrorAndSuccessMsg extends ValidationMsg {
 
     @SlingObject
     private ResourceResolver resourceResolver;
 
     @ValueMapValue
-    private String passwordNotMatchErrorMessage;
-
-    @ValueMapValue
     private String newPasswordRequiredMsg;
-
-    @ValueMapValue
-    private String confirmPasswordRequiredMsg;
 
     @ValueMapValue
     private String oldPasswordRequiredMsg;
 
-    public String getPasswordNotMatchErrorMessage() {
-        return passwordNotMatchErrorMessage;
-    }
-
     public String getNewPasswordRequiredMsg() {
         return newPasswordRequiredMsg;
-    }
-
-    public String getConfirmPasswordRequiredMsg() {
-        return confirmPasswordRequiredMsg;
     }
 
     public String getOldPasswordRequiredMsg() {
