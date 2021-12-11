@@ -80,8 +80,6 @@
                                                     editType="true"
                                                     fieldLabel="Background color"
                                                     name="./backgroundColor"/>
-
-
                                         </items>
                                     </column>
                                 </items>

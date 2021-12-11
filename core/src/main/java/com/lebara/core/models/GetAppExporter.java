@@ -50,37 +50,23 @@ public class GetAppExporter implements ComponentExporter {
     private boolean show;
 
     @ValueMapValue
-    private boolean backgroundColor;
+    private String backgroundColor;
 
-    public String getTextDescription() {
-        return textDescription;
-    }
+    public String getTextDescription() { return textDescription; }
 
-    public boolean isShow() {
-        return show;
-    }
+    public boolean isShow() { return show; }
 
-    public String getBackgroundImageDesktop() {
-        return backgroundImageDesktop;
-    }
+    public String getBackgroundImageDesktop() { return backgroundImageDesktop; }
 
-    public String getBackgroundImageMobile() {
-        return backgroundImageMobile;
-    }
+    public String getBackgroundImageMobile() { return backgroundImageMobile; }
 
-    public List<Link> getLinks() {
-        return links == null ? Collections.emptyList() : Collections.unmodifiableList(links);
-    }
+    public List<Link> getLinks() { return links == null ? Collections.emptyList() : Collections.unmodifiableList(links);}
 
-    public String getAppTitle() {
-        return appTitle;
-    }
+    public String getAppTitle() { return appTitle; }
 
-    public String getGetAppLabel() {
-        return getAppLabel;
-    }
+    public String getGetAppLabel() { return getAppLabel; }
 
-    public boolean isBackgroundColor() { return backgroundColor; }
+    public String getBackgroundColor() { return backgroundColor;}
 
     public List<String> getTextCol1() {
         if (textCol1 != null) {
@@ -89,9 +75,7 @@ public class GetAppExporter implements ComponentExporter {
         return textCol1 == null ? Collections.emptyList() : Collections.unmodifiableList(textCol1);
     }
 
-    public List<String> getTextCol2() {
-        return textCol2 == null ? Collections.emptyList() : Collections.unmodifiableList(textCol2);
-    }
+    public List<String> getTextCol2() { return textCol2 == null ? Collections.emptyList() : Collections.unmodifiableList(textCol2);}
 
     @Override
     public String getExportedType() {
