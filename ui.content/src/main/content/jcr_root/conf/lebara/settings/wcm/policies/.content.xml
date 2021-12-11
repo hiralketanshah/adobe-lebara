@@ -371,7 +371,7 @@
                         jcr:title="embed_policy"
                         sling:resourceType="wcm/core/components/policy/policy"
                         allowedEmbeddables="core/wcm/components/embed/v1/embed/embeddable/youtube"
-                        embeddablesDisabled="false"
+                        embeddablesDisabled="true"
                         htmlDisabled="false"
                         urlDisabled="false"
                         youtubeAutoPlayDefaultValue="false"
