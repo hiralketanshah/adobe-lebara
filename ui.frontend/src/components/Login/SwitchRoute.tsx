@@ -8,7 +8,6 @@ const SwitchRoute: React.FC<SwitchRouteProps> = ({ ...loginModuleProps }) => {
         loginModuleProps && Object.keys(loginModuleProps).length
             ? loginModuleProps.loginModuleType
             : null;
-console.log(loginModuleProps);
     return (
         <>
             {loginModuleType === "loginGuest" && (

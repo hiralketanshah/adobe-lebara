@@ -28,18 +28,18 @@ const FooterMenu: React.FC<FooterMenuProps> = ({
   <>
     <Box
       px="80px"
-      py="116px"
+      pt="116px"
       display={{ md: "block", base: "none" }}
       bg={theme?.bgColor}
       color={theme?.color}
     >
       <Box
-        height={{ lg: "50vh", md: "initial" }}
+        height="initial"
         display={{ lg: "flex", md: "block" }}
         justifyContent="space-between"
         mb="8.135rem"
       >
-        <Box display="flex" justifyContent="space-between" width="40rem">
+        <Flex gridGap="140px">
           {footerUpperLinks?.map((menu: MenuProps, fmIdx) => (
             <Box key={`fm-key-${fmIdx}`}>
               <Text fontSize={14} fontWeight="bold" textTransform="uppercase">
@@ -49,10 +49,11 @@ const FooterMenu: React.FC<FooterMenuProps> = ({
                 {menu?.childLinks?.map((subMenuItem: SubMenuProps, index) => (
                   <Text
                     key={index}
-                    fontSize="12px"
+                    fontSize="14px"
                     fontWeight="500"
                     lineHeight="14.06px"
-                    mt="2em"
+                    whiteSpace="pre"
+                    mt="30px"
                     color={theme?.color === "white" ? "white" : "black"}
                   >
                     <RouterLink to={subMenuItem?.link}
@@ -65,7 +66,7 @@ const FooterMenu: React.FC<FooterMenuProps> = ({
               </Flex>
             </Box>
           ))}
-        </Box>
+        </Flex>
         <Box width="10rem">
           <></>
         </Box>
@@ -79,8 +80,9 @@ const FooterMenu: React.FC<FooterMenuProps> = ({
               fontSize={14}
               fontWeight="bold"
               textTransform="uppercase"
-              pb="10px"
-              pl="15px"
+              letterSpacing="0.1px"
+              lineHeight="20px"
+              pb="18px"
             >
               {followus?.followUsText}
             </Text>
@@ -92,7 +94,7 @@ const FooterMenu: React.FC<FooterMenuProps> = ({
                 fontSize={22}
                 fontWeight="bold"
                 textTransform="uppercase"
-                mt="30px"
+                mt="62px"
                 mb="16px"
               >
                 {getapp?.appTitle}
@@ -100,7 +102,7 @@ const FooterMenu: React.FC<FooterMenuProps> = ({
               {getapp?.links?.length > 1 && (
                 <Flex>
                   <IconButton
-                    as={Link}
+                    variant="unstyled"
                     href={getapp?.links[0]?.link}
                     aria-label="Available on the App Store"
                     >
@@ -111,9 +113,9 @@ const FooterMenu: React.FC<FooterMenuProps> = ({
                     />
                   </IconButton>
                   <IconButton
-                    as={Link}
                     href={getapp?.links[1]?.link}
-                    ml="2em"
+                    variant="unstyled"
+                      ml="10px"
                     aria-label="Get it on google Play"
                   >
                     <Image
@@ -128,22 +130,22 @@ const FooterMenu: React.FC<FooterMenuProps> = ({
           </Box>
         </Box>
       </Box>
-      <Divider mt="2em" />
+      <Divider ml="-80px" w="calc(100% + 160px)" opacity={0.38} borderColor="grey.50"/>
       <Box color={theme?.color === "white" ? undefined : "grey.300"}>
         <Flex py="25px">
-          {copyrightLinks?.map((linkItem, idx) => (<Link 
-            key={`copyright-link-${idx}`} 
-            to={linkItem?.link} 
-            py="10px" 
-            display="block" 
-            fontSize={12} 
+          {copyrightLinks?.map((linkItem, idx) => (<Link
+            key={`copyright-link-${idx}`}
+            to={linkItem?.link}
+            py="10px"
+            display="block"
+            fontSize={14}
             textAlign="left"
             ml={idx > 0 ? '60px' : '0'}>
             {linkItem?.label}
           </Link>))}
-          
+
           <Spacer />
-          <Text fontSize={12} textAlign="right">
+          <Text fontSize={14} textAlign="right">
             {copyrightText}
           </Text>
         </Flex>

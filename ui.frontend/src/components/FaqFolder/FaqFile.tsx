@@ -31,7 +31,9 @@ const HomeFaqs: React.FC<HomeFaqsProps> = ({ title, options,
         {({ isExpanded }) => (
           <>
             <Text as="h3" fontSize={14}>
-              <AccordionButton p={0}>
+                <AccordionButton p={0} _focus={{
+                    outline: "none"
+                }}>
                 <Box
                   flex="1"
                   textAlign="left"

@@ -47,6 +47,8 @@ import "../aemConfigs/OrderPaymentHistoryAemConfig.js";
 import "../rotues/AemConfig.js";
 
 import "./Teaser/AemConfig.js";
+import "./Embed/AemConfig.js";
+import "./Iframe/AemConfig.js";
 import "./ViewPlans/AemConfig.js";
 import "./LanguageHeader/AemConfig.js";
 import "./Header/AemConfig.js";
