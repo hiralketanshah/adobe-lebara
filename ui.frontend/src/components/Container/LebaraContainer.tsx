@@ -36,15 +36,17 @@ class LebaraContainer extends AllowedComponentsContainer<LebaraContainerProps, C
     }
 
     componentDidMount() {
-        if (this.mainDiv.current) {
-            this.mainDiv.current.setAttribute('style', this.props.backgroundStyle);
+        if (this.mainDiv.current?.parentNode?.parentElement) {
+            this.mainDiv.current?.parentElement?.setAttribute('style', this.props.backgroundStyle);
+            this.mainDiv.current?.parentNode?.parentElement?.setAttribute('style', this.props.backgroundStyle);
         }
 
     }
 
     componentDidUpdate() {
-        if (this.mainDiv.current) {
-            this.mainDiv.current.setAttribute('style', this.props.backgroundStyle);
+        if (this.mainDiv.current?.parentNode?.parentElement) {
+          this.mainDiv.current?.parentElement?.setAttribute('style', this.props.backgroundStyle);
+          this.mainDiv.current?.parentNode?.parentElement?.setAttribute('style', this.props.backgroundStyle);
         }
     }
 
