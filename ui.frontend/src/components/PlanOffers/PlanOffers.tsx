@@ -1,6 +1,6 @@
 // @ts-nocheck
 // import React, { useEffect, useRef } from "react";
-import { Flex, Box, Text } from "@chakra-ui/react";
+import { Flex, Box, Text, Heading } from "@chakra-ui/react";
 import { PlanOffersProps } from "./types";
 import Link from "@lebara/ui/src/components/Link/Link";
 import ExpandableSimPlanCard from "../ExpandableSimPlanCard/ExpandableSimPlanCard";
@@ -47,7 +47,7 @@ const PlanOffers: React.FC<PlanOffersProps> = ({
       px={{ base: "20px", lg: "80px" }}
     >
       {heading && (
-        <Text
+        <Heading
           color="primary.600"
           as="h1"
           fontWeight="bold"
@@ -56,11 +56,11 @@ const PlanOffers: React.FC<PlanOffersProps> = ({
           mb={{ base: "11.11px", lg: "5px" }}
         >
           {heading}
-        </Text>
+        </Heading>
       )}
       <Flex flexDir="column" align="stretch">
         {title && (
-          <Text
+          <Heading
             color="primary.500"
             as="h2"
             mb={{ base: "12.11px", lg: "10px" }}
@@ -70,12 +70,12 @@ const PlanOffers: React.FC<PlanOffersProps> = ({
             fontWeight="bold"
           >
             {title}
-          </Text>
+          </Heading>
         )}
         {subTitle && (
-          <Text as="h3" fontWeight="bold" fontSize="16px" lineHeight="22px" mb="8px">
+          <Heading as="h3" fontWeight="bold" fontSize="16px" lineHeight="22px" mb="8px">
             {subTitle}
-          </Text>
+          </Heading>
         )}
         {description && (
           <Box d={{ lg: "flex" }} justifyContent={{ lg: "space-between" }}>
