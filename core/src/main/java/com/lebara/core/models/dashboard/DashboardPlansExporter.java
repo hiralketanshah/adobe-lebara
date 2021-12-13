@@ -60,6 +60,9 @@ public class DashboardPlansExporter implements ComponentExporter {
     private Boolean hideAutoRenew;
 
     @ValueMapValue
+    private Boolean showTabData;
+
+    @ValueMapValue
     private Boolean showManageButton;
 
     @ValueMapValue
@@ -85,6 +88,9 @@ public class DashboardPlansExporter implements ComponentExporter {
 
     @ValueMapValue
     private String confirmLabel;
+
+    @ValueMapValue
+    private String allActivePlansLabel;
 
     @ValueMapValue
     private String planLabelsCfPath;
@@ -121,6 +127,10 @@ public class DashboardPlansExporter implements ComponentExporter {
 
     public Boolean getHidePrice() {
         return hidePrice;
+    }
+
+    public Boolean getShowTabData() {
+        return showTabData;
     }
 
     public Boolean getHideAutoRenew() {
@@ -163,6 +173,9 @@ public class DashboardPlansExporter implements ComponentExporter {
         return confirmLabel;
     }
 
+    public String getAllActivePlansLabel() {
+        return allActivePlansLabel;
+    }
     public DashboardLabels getPlanLabels() {
         return AemUtils.populateDashboardLabels(request);
     }
