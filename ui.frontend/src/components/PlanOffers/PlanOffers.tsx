@@ -49,7 +49,7 @@ const PlanOffers: React.FC<PlanOffersProps> = ({
       {heading && (
         <Text
           color="primary.600"
-          as="h2"
+          as="h1"
           fontWeight="bold"
           lineHeight={{ base: "40px", lg: "50px" }}
           fontSize={{ base: 32, lg: 47 }}
@@ -62,7 +62,7 @@ const PlanOffers: React.FC<PlanOffersProps> = ({
         {title && (
           <Text
             color="primary.500"
-            as="h3"
+            as="h2"
             mb={{ base: "12.11px", lg: "10px" }}
             mt={{ base: "20px", lg: "30px" }}
             lineHeight={{ base: "22px", lg: "30px" }}
@@ -73,7 +73,7 @@ const PlanOffers: React.FC<PlanOffersProps> = ({
           </Text>
         )}
         {subTitle && (
-          <Text fontWeight="bold" fontSize="16px" lineHeight="22px" mb="8px">
+          <Text as="h3" fontWeight="bold" fontSize="16px" lineHeight="22px" mb="8px">
             {subTitle}
           </Text>
         )}
