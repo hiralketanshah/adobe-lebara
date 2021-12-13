@@ -20,6 +20,7 @@ import "../aemConfigs/DashboardAemConfig/index";
 // import all components below
 import "./AemConfig.js";
 import "../aemConfigs/ContainerAemConfig";
+import "../aemConfigs/OrderFailedRouteAemConfig";
 import "../aemConfigs/UspAemConfig.js";
 import "../aemConfigs/SimPortInAemConfig";
 import "../aemConfigs/TrustPilotAemConfig";
