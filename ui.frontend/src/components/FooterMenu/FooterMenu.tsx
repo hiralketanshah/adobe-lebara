@@ -101,29 +101,33 @@ const FooterMenu: React.FC<FooterMenuProps> = ({
               </Text>
               {getapp?.links?.length > 1 && (
                 <Flex>
-                  <IconButton
-                    variant="unstyled"
-                    href={getapp?.links[0]?.link}
-                    aria-label="Available on the App Store"
-                    >
-                    <Image
-                      src={getapp?.links[0]?.label}
-                      height="46"
-                      width="156"
-                    />
-                  </IconButton>
-                  <IconButton
-                    href={getapp?.links[1]?.link}
-                    variant="unstyled"
+                  <Link href={getapp?.links[0]?.link}>
+                    <IconButton
+                      variant="unstyled"
+                      href={getapp?.links[0]?.link}
+                      aria-label="Available on the App Store"
+                      >
+                      <Image
+                        src={getapp?.links[0]?.label}
+                        height="46"
+                        width="156"
+                       />
+                    </IconButton>
+                  </Link>
+                  <Link href={getapp?.links[1]?.link}>
+                    <IconButton
+                      href={getapp?.links[1]?.link}
+                      variant="unstyled"
                       ml="10px"
-                    aria-label="Get it on google Play"
-                  >
-                    <Image
-                      src={getapp?.links[1]?.label}
-                      height="46"
-                      width="156"
-                    />
-                  </IconButton>
+                      aria-label="Get it on google Play"
+                    >
+                      <Image
+                        src={getapp?.links[1]?.label}
+                        height="46"
+                        width="156"
+                      />
+                    </IconButton>
+                  </Link>
                 </Flex>
               )}
             </Box>
@@ -135,6 +139,7 @@ const FooterMenu: React.FC<FooterMenuProps> = ({
         <Flex py="25px">
           {copyrightLinks?.map((linkItem, idx) => (<Link
             key={`copyright-link-${idx}`}
+            as={RouterLink}
             to={linkItem?.link}
             py="10px"
             display="block"
