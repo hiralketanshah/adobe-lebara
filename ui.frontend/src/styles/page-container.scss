@@ -45,3 +45,13 @@
         @include responsiveContainerSpacing();
     }
 }
+
+#dashboard-container {
+    .aem-container{
+        width: 846px;
+        display: flex;
+        flex-direction: column;
+        grid-gap: 16px;
+        margin: 16px auto;
+    }
+}

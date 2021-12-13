@@ -3,5 +3,6 @@ export interface HeroBannerProps {
   title?: string;
   description?: string;
   buttonCTALabel?: string;
+  buttonCTALink?: string;
   getItNowErrorMessage?: string;
 }

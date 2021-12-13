@@ -20,4 +20,9 @@ public class HowItWorksExporter extends UspExporter {
     public String getDescription() {
         return description;
     }
+
+    @Override
+    public String getExportedType() {
+        return RESOURCE_TYPE;
+    }
 }
