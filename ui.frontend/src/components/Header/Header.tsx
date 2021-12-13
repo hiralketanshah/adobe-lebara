@@ -476,7 +476,7 @@ const Header: React.FC<HeaderProps> = ({
             mt="-20px"
             borderBottomRadius="12px"
           >
-            {loggedInMenuItems && <UserMenu menus={loggedInMenuItems as any} logoutLabel={logoutLabel} />}
+            <UserMenu menus={loggedInMenuItems as any} logoutLabel={logoutLabel} />
           </Flex>
         </Box>
       )}

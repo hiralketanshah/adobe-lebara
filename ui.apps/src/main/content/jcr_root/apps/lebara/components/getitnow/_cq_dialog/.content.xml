@@ -2,8 +2,7 @@
 <jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
     jcr:primaryType="nt:unstructured"
     jcr:title="Get it now"
-    sling:resourceType="cq/gui/components/authoring/dialog"
-    extraClientlibs="[lebara.touchui]">
+    sling:resourceType="cq/gui/components/authoring/dialog">
     <content
         jcr:primaryType="nt:unstructured"
         sling:resourceType="granite/ui/components/coral/foundation/container">
@@ -143,6 +142,12 @@
                                                 fieldLabel="CTA button label"
                                                 value="Get it now"
                                                 name="./buttonCTALabel"/>
+                                            <ctaButtonLink
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/pathbrowser"
+                                                rootPath="/content/lebara"
+                                                fieldLabel="CTA button Link"
+                                                name="./buttonCTALink"/>
                                         </items>
                                     </column>
                                 </items>
