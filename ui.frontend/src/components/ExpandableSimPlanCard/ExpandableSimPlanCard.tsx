@@ -294,7 +294,7 @@ const ExpandableSimPlanCard: React.FC<ExpandableSimPlanCardProps> = ({
           </Text>
         )}
 
-        {!isRelatedPlan && <Divider my={3.5} />}
+        {!isRelatedPlan && <Divider my={3.5} pb={!promotionID && showAddToCart ? "52px" : 0}/>}
         <Flex
           mt={isRelatedPlan ? 3.5 : undefined}
           justifyContent="space-between"
