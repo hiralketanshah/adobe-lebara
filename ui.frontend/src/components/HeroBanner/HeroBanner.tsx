@@ -19,6 +19,7 @@ const HeroBanner: React.FC<HeroBannerProps> = ({
   title,
   description,
   buttonCTALabel,
+  buttonCTALink,
   getItNowErrorMessage
 }) => {
   const isAuthenticated = useSelector(selectIsAuthenticated);
@@ -62,7 +63,7 @@ return (
         {title}
       </Heading>
       <span className="about-lebara" dangerouslySetInnerHTML={{ __html: description || ""}} />
-      <Button my="20px" fontSize={{ lg: "16px" }} onClick={async () => {
+      <Button my="20px" fontSize={{ lg: "16px" }} onClick={buttonCTALink ? ()=> history.push(buttonCTALink) : async () => {
       if (isAuthenticated && msisdn) {
         toast.closeAll();
         toast({
