@@ -23,7 +23,6 @@ import { useHistory } from "@lebara/ui/src/hooks/useHistory";
 import { useSelector } from "react-redux";
 import { MiniHeaderProps } from "./types";
 import IconButton from "../IconButton/IconButton";
-import LanguageDropDown from "../LanguageDropDown/LanguageDropDown";
 import SideMenu from "../SideMenu/SideMenu";
 import { ReduxState } from "../../redux/types";
 import { globalConfigs as GC, globalConstants as GCST } from "@lebara/ui/src/configs/globalConfigs.js";
@@ -93,16 +92,6 @@ const MiniHeader: React.FC<MiniHeaderProps> = ({
   
   return (
     <Box w="100%">
-      <Flex
-        alignItems="center"
-        px={4}
-        justifyContent="flex-end"
-        background="lightenPrimary.200"
-        color="white"
-      >
-        <LanguageDropDown options={[]} selectProps={{}} />
-      </Flex>
-
       <Flex
         height="56px"
         alignItems="center"

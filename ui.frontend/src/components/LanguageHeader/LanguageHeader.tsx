@@ -12,14 +12,14 @@ const LanguageHeader: React.FC<LanguageHeaderProps> = ({
   helpLink,
   helpTitle,
 }) => (
-  <Flex display={{ base: "none", md: "block" }}>
+  <Flex display={'block'}>
     <Flex
       alignItems="center"
-      px={10}
+      px={{ base: 4, md: 10 }}
       justifyContent="flex-end"
       background="lightenPrimary.200"
       color="white"
-      display={{ base: "none", md: "flex" }}
+      display={'flex'}
     >
       <Box>
         <LanguageDropDown
@@ -30,35 +30,37 @@ const LanguageHeader: React.FC<LanguageHeaderProps> = ({
         />
       </Box>
 
-      {storeTitle && (
-        <Link href={storeLink}>
-        <Flex alignItems="center">
-          <IconButton
-            icon={<IoLocationOutline />}
-            aria-label="Search"
-            variant="ghost"
-            size="sm"
-            colorScheme="dark"
-          />
-          <Text fontSize="12px">{storeTitle}</Text>
-        </Flex>
-        </Link>
-      )}
+      <Box display={{ base: "none", md: "flex" }}>
+        {storeTitle && (
+          <Link href={storeLink}>
+          <Flex alignItems="center">
+            <IconButton
+              icon={<IoLocationOutline />}
+              aria-label="Search"
+              variant="ghost"
+              size="sm"
+              colorScheme="dark"
+            />
+            <Text fontSize="12px">{storeTitle}</Text>
+          </Flex>
+          </Link>
+        )}
 
-      {helpTitle && (
-         <Link href={helpLink}>
-        <Flex alignItems="center">
-          <IconButton
-            icon={<RiHeadphoneFill />}
-            aria-label="Search"
-            variant="ghost"
-            size="sm"
-            colorScheme="dark"
-          />
-          <Text fontSize="12px">{helpTitle}</Text>
-        </Flex>
-        </Link>
-      )}
+        {helpTitle && (
+          <Link href={helpLink}>
+          <Flex alignItems="center">
+            <IconButton
+              icon={<RiHeadphoneFill />}
+              aria-label="Search"
+              variant="ghost"
+              size="sm"
+              colorScheme="dark"
+            />
+            <Text fontSize="12px">{helpTitle}</Text>
+          </Flex>
+          </Link>
+        )}
+      </Box>
     </Flex>
   </Flex>
 );
