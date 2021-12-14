@@ -17,39 +17,19 @@ const SearchResults: React.FC<any> = ({
     onCloseClick,
     closeLinkText,
   }) => {
-    // console.log({queryVal});
     
     return (<>
       <Box
-        className="isheadersearchinput-search-field-and-search-result"
+        className="search-results-feature"
         bgColor="lightenPrimary.500"
-        px="20px"
-        py={{ base: "15px", md: "initial" }}
-        height={results?.length > 5 ? '315' : 'max-content'}
+        px={{ base: "4px", md: "20px" }}
+        py={{ base: "0", md: "inital" }}
+        height={{base: '100%', md: results?.length > 5 ? '315' : 'max-content'}}
         overflowY="auto"
         width={{ base: "100%", md: "initial" }}
       >
         <Box bgColor="lightenPrimary.500" width="100%" height="max-content">
-          <Box
-            display={{ md: "none", base: "flex" }}
-            justifyContent="space-between"
-            borderRadius="lg"
-          >
-            <Button
-              display={{ base: "inline-block", md: "none" }}
-              textTransform="capitalize"
-              color="white"
-              p="initial"
-              variant="ghost"
-              fontSize="14px"
-              lineHeight="20px"
-              fontWeight="500"
-              onClick={onCloseClick}
-            >
-              {closeLinkText}
-            </Button>
-          </Box>
-            
+          
           {/* Need to check for functionality on click of this keywords - need a discussion */}
           {/* {recentSearchLabel && <LebaraText type="subtitle2" color="white" fontWeight="bold">
             {recentSearchLabel}

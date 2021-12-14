@@ -32,12 +32,16 @@ const Search: React.FC<SearchProps> = ({
   async function fetchData() {
     const response = await fetch(aemUtils.getSearchResultsPath(query, searchRootValue, ''));
     const jsonResp = await response.json();
+
+    if(!isHeaderSearchInput && query === '') {
+      setSearchResults([]);
+      return;
+    }
     setSearchResults(jsonResp);
   }
 
   const handleChange = (e: any) => {
     const { value } = e.target;
-    // console.log('handle change' , value);
     setQuery(value);
     
     onHandleSearchQuery && onHandleSearchQuery({
@@ -45,18 +49,16 @@ const Search: React.FC<SearchProps> = ({
       results: [...searchResults]
     });
 
-    if(!value) {
+    if(value === '') {
       setSearchResults([]);
       onHandleSearchQuery && onHandleSearchQuery({
         isQuery: value,
-        results: [...searchResults]
+        results: []
       });
     }
   }
 
   const onSearchHandler = aemUtils.debounce(() => fetchData());
-
-  // console.log(searchResults);
 
   return (
     <>
@@ -80,7 +82,7 @@ const Search: React.FC<SearchProps> = ({
             </InputLeftElement>
             <Input
               ml="4px"
-              name="gsearch"
+              name="gdesktopsearch"
               placeholder={searchPlaceholder}
               _placeholder={{
                 color: "grey.100",
@@ -91,7 +93,7 @@ const Search: React.FC<SearchProps> = ({
               color="black"
               bgColor="white"
               borderRadius="lg"
-              defaultValue={searchValue}
+              value={searchValue}
               onChange={handleChange}
               onKeyUp={onSearchHandler}
               autoFocus={true}
@@ -100,13 +102,12 @@ const Search: React.FC<SearchProps> = ({
         </>)}
 
       {/* For Desktop/Default View Search field and Result output! */}
-      {showSearchResults && (<>
+      {isHeaderSearchInput && showSearchResults && (<>
         <SearchResults
-            key={query}
+            key={'sr-desktop-key'+query}
             mostSearchLabel={mostSearchLabel}
             queryVal={query}
             links={links}
-            results={searchResults}
             emptySearchResultMsg={emptySearchResultMsg}
             onCloseClick={onCloseClick}
             closeLinkText={closeLinkText}
@@ -120,10 +121,11 @@ const Search: React.FC<SearchProps> = ({
         bgColor="lightenPrimary.500"
         px="20px"
         py={{ base: "15px", md: "initial" }}
-        height="max-content"
+        height={{base: '100%', md: searchResults?.length > 5 ? '315' : 'max-content'}}
         width={{ base: "100%", md: "initial" }}
       >
-        <Box bgColor="lightenPrimary.500" width="100%" height="max-content">
+        <Box bgColor="lightenPrimary.500" width="100%" 
+          height="max-content">
           <Box
             display={{ md: "none", base: "flex" }}
             justifyContent="space-between"
@@ -144,7 +146,7 @@ const Search: React.FC<SearchProps> = ({
               </InputLeftElement>
               <Input
                 ml="4px"
-                name="gsearch"
+                name="gmobilesearch"
                 placeholder={searchPlaceholder}
                 _placeholder={{
                   color: "grey.100",
@@ -177,12 +179,14 @@ const Search: React.FC<SearchProps> = ({
           </Box>
           
           <SearchResults
-            key={query}
+            key={'sr-mobile-key-'+query}
             mostSearchLabel={mostSearchLabel}
             queryVal={query}
             links={links}
             results={searchResults}
             emptySearchResultMsg={emptySearchResultMsg}
+            onCloseClick={onCloseClick}
+            closeLinkText={closeLinkText}
           />
         </Box>
       </Box>

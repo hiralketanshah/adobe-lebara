@@ -506,7 +506,9 @@ const Header: React.FC<HeaderProps> = ({
         <MiniHeader loggedInMenuItems={loggedInMenuItems} 
           topupCtaText={topupCtaText}
           topupCtaLink={topupCtaLink}
-          logoutLabel={logoutLabel} logoPath={logoPath} logoLinkURL={logoLinkURL} items={items} />
+          logoutLabel={logoutLabel} logoPath={logoPath} 
+          logoLinkURL={logoLinkURL} items={items}
+          search={search} />
       </Flex>
     </Flex>
   );
