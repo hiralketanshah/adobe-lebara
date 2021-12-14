@@ -72,7 +72,7 @@ public class GetAppExporter implements ComponentExporter {
         if (textCol1 != null) {
             return Collections.unmodifiableList(textCol1);
         }
-        return textCol1 == null ? Collections.emptyList() : Collections.unmodifiableList(textCol1);
+        return Collections.emptyList();
     }
 
     public List<String> getTextCol2() { return textCol2 == null ? Collections.emptyList() : Collections.unmodifiableList(textCol2);}

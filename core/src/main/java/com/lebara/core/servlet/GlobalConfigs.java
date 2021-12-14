@@ -71,7 +71,7 @@ public class GlobalConfigs extends SlingSafeMethodsServlet {
     protected Object getJourneyPages(SlingHttpServletRequest request, Page currentPage) {
         if (currentPage != null) {
             Map<String, String> items = new HashMap<String, String>();
-            while (currentPage.getContentResource(JOURNEY_PAGES) == null && currentPage.getAbsoluteParent(1).getPath() != currentPage.getPath()) {
+            while (currentPage.getContentResource(JOURNEY_PAGES) == null && !currentPage.getAbsoluteParent(1).getPath().equals(currentPage.getPath())) {
                 currentPage = currentPage.getParent();
             }
             if (currentPage != null && currentPage.getContentResource(JOURNEY_PAGES) != null) {

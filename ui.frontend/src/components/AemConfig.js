@@ -29,6 +29,7 @@ import {
     ListV2IsEmptyFn,
 } from "@adobe/aem-core-components-react-base";
 
+import ColorText from "./ColorText/Text";
 
 //lazyload / code splitting example of an internal component
 const LazyTextComponent = withAsyncImport(
@@ -41,6 +42,13 @@ const LazyTextComponent = withAsyncImport(
  */
 MapTo("lebara/components/text")(LazyTextComponent, {
     emptyLabel: "Text",
+    isEmpty: function (props) {
+        return !props || !props.text || props.text.trim().length < 1;
+    }
+});
+
+MapTo("lebara/components/colortext")(ColorText, {
+    emptyLabel: "Color Text",
     isEmpty: function (props) {
         return !props || !props.text || props.text.trim().length < 1;
     }

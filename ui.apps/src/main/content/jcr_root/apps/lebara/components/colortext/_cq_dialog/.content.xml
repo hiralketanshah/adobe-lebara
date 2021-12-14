@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:granite="http://www.adobe.com/jcr/granite/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
     jcr:primaryType="nt:unstructured"
-    jcr:title="Iframe"
-    sling:resourceType="cq/gui/components/authoring/dialog">
+    jcr:title="Text"
+    sling:resourceType="cq/gui/components/authoring/dialog"
+    helpPath="https://www.adobe.com/go/aem_cmp_text_v2"
+    trackingFeature="core-components:text:v2">
     <content
         jcr:primaryType="nt:unstructured"
         sling:resourceType="granite/ui/components/coral/foundation/container">
@@ -24,31 +26,18 @@
                                 margin="{Boolean}true">
                                 <items jcr:primaryType="nt:unstructured">
                                     <column
+                                        granite:class="cq-RichText-FixedColumn-column"
                                         jcr:primaryType="nt:unstructured"
                                         sling:resourceType="granite/ui/components/coral/foundation/container">
                                         <items jcr:primaryType="nt:unstructured">
-                                            <url
-                                                granite:class="foundation-toggleable"
+                                            <fontColor
                                                 jcr:primaryType="nt:unstructured"
-                                                sling:resourceType="granite/ui/components/coral/foundation/container">
-                                                <items jcr:primaryType="nt:unstructured">
-                                                    <field
-                                                        jcr:primaryType="nt:unstructured"
-                                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                                        emptyText="Paste a URL for iframe"
-                                                        fieldDescription="The URL of the content to be loaded in the iframe."
-                                                        fieldLabel="URL"
-                                                        name="./url"
-                                                        required="{Boolean}true">
-                                                    </field>
-                                                </items>
-                                            </url>
-                                            <id
-                                                jcr:primaryType="nt:unstructured"
-                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                                fieldDescription="HTML ID attribute to apply to the component."
-                                                fieldLabel="ID"
-                                                name="./id"/>
+                                                sling:resourceType="granite/ui/components/foundation/form/colorpicker"
+                                                classicPaletteType="true"
+                                                sling:orderBefore="id"
+                                                editType="true"
+                                                fieldLabel="Font color"
+                                                name="./fontColor"/>
                                         </items>
                                     </column>
                                 </items>

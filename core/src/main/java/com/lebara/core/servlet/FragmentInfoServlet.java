@@ -75,7 +75,7 @@ public class FragmentInfoServlet extends SlingSafeMethodsServlet {
             offerRootPath = inheritedProp.getInherited("offerRootPath", String.class);
         }
         if (StringUtils.isBlank(offerRootPath)) {
-            LOGGER.info("please author the root path for fragments");
+            LOGGER.debug("please author the root path for fragments");
             return;
         }
         i18n = AemUtils.geti18n(resourceResolver, resource, request);
