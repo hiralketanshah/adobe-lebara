@@ -92,12 +92,6 @@
                                                     fieldLabel="Manage"
                                                     value="Manage"
                                                     name="./manageLabel"/>
-                                            <managePlanPath
-                                                    jcr:primaryType="nt:unstructured"
-                                                    sling:resourceType="granite/ui/components/coral/foundation/form/pathbrowser"
-                                                    fieldLabel="Manage Plan Path"
-                                                    name="./managePlanPath"
-                                                    rootPath="/content/lebara"/>
                                         </items>
                                     </column>
                                 </items>

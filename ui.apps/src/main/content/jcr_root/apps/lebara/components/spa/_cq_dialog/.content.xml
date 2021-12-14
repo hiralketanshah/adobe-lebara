@@ -137,6 +137,10 @@
                                                                             jcr:primaryType="nt:unstructured"
                                                                             text="postpaid"
                                                                             value="postpaid"/>
+                                                                        <manage-plan
+                                                                            jcr:primaryType="nt:unstructured"
+                                                                            text="manage-plan"
+                                                                            value="/dashboard/manage"/>
                                                                         <postpaid-details
                                                                             jcr:primaryType="nt:unstructured"
                                                                             text="postpaid/details"
