@@ -655,7 +655,6 @@
                             </columns>
                         </items>
                     </personaldetails>
-
                     <contractSummery
                             jcr:primaryType="nt:unstructured"
                             jcr:title="Contract Summery"
@@ -696,9 +695,6 @@
                             </columns>
                         </items>
                     </contractSummery>
-
-
-
                 </items>
             </tabs>
         </items>
