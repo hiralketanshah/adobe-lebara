@@ -655,9 +655,9 @@
                             </columns>
                         </items>
                     </personaldetails>
-                    <contractSummery
+                    <contractSummary
                             jcr:primaryType="nt:unstructured"
-                            jcr:title="Contract Summery"
+                            jcr:title="Contract Summary"
                             sling:resourceType="granite/ui/components/coral/foundation/container"
                             margin="{Boolean}true">
                         <items jcr:primaryType="nt:unstructured">
@@ -694,7 +694,7 @@
                                 </items>
                             </columns>
                         </items>
-                    </contractSummery>
+                    </contractSummary>
                 </items>
             </tabs>
         </items>
