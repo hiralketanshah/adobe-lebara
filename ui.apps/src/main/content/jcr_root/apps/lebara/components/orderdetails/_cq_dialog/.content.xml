@@ -655,6 +655,50 @@
                             </columns>
                         </items>
                     </personaldetails>
+
+                    <contractSummery
+                            jcr:primaryType="nt:unstructured"
+                            jcr:title="Contract Summery"
+                            sling:resourceType="granite/ui/components/coral/foundation/container"
+                            margin="{Boolean}true">
+                        <items jcr:primaryType="nt:unstructured">
+                            <columns
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+                                    margin="{Boolean}true">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <column
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/container">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <contractSummerylabel
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                    fieldLabel="Contract Summery Label"
+                                                    name="./contractSummery"
+                                                    fieldDescription="Contract Summery Label"
+                                                    value="CONTRACT SUMMERY"/>
+                                            <freeSimPdfLink
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                                    fieldLabel="Free Sim PDF"
+                                                    name="./freeSimPDF"
+                                                    rootPath="/content/dam/lebara"/>
+                                            <planPDFLink
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                                    fieldLabel="Plan PDF"
+                                                    name="./planPDF"
+                                                    rootPath="/content/dam/lebara"/>
+                                        </items>
+                                    </column>
+                                </items>
+                            </columns>
+                        </items>
+                    </contractSummery>
+
+
+
                 </items>
             </tabs>
         </items>
