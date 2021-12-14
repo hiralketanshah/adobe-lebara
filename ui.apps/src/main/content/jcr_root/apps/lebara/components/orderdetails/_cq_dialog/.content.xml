@@ -670,13 +670,13 @@
                                             jcr:primaryType="nt:unstructured"
                                             sling:resourceType="granite/ui/components/coral/foundation/container">
                                         <items jcr:primaryType="nt:unstructured">
-                                            <contractSummerylabel
+                                            <contractSummarylabel
                                                     jcr:primaryType="nt:unstructured"
                                                     sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                                    fieldLabel="Contract Summery Label"
-                                                    name="./contractSummery"
-                                                    fieldDescription="Contract Summery Label"
-                                                    value="CONTRACT SUMMERY"/>
+                                                    fieldLabel="Contract Summary Label"
+                                                    name="./contractSummary"
+                                                    fieldDescription="Contract Summary Label"
+                                                    value="CONTRACT SUMMARY"/>
                                             <freeSimPdfLink
                                                     jcr:primaryType="nt:unstructured"
                                                     sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
