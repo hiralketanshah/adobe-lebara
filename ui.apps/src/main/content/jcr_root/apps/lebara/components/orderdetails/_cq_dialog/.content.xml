@@ -688,8 +688,7 @@
                                                     sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
                                                     fieldLabel="Plan PDF"
                                                     name="./planPDF"
-                                                    rootPath="/content/dam/lebara"/>
-                                        </items>
+                                                    rootPath="/content/dam/lebara"/>                                        </items>
                                     </column>
                                 </items>
                             </columns>
