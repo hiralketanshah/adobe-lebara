@@ -20,14 +20,14 @@ const Search: React.FC<SearchProps> = ({
   onCloseClick,
   mostSearchLabel,
   searchPlaceholder,
-  searchRootPagePath,
+  searchRoot,
   emptySearchResultMsg,
   isHeaderSearchInput,
   isHeaderSearchResult,
 }) => {
   const isAemEditor = AuthoringUtils.isEditMode();
   const [query, setQuery] = useState('');
-  const [searchRootValue] = useState(searchRootPagePath);
+  const [searchRootValue] = useState(searchRoot);
   const [searchResults, setSearchResults] = useState([]);
   async function fetchData() {
     const response = await fetch(aemUtils.getSearchResultsPath(query, searchRootValue, ''));

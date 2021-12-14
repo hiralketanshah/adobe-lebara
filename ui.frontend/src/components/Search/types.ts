@@ -7,8 +7,7 @@ export interface SearchProps {
   searchPlaceholder?: string;
   mostSearchLabel?: string;
   links?: LinksProps[];
-  onCloseClick?: () => void;
-  searchRootPagePath?: any;
+  searchRoot?: any;
   emptySearchResultMsg?: string;
 
   // not in use need to confirm
@@ -16,6 +15,7 @@ export interface SearchProps {
   recentSearches?: string[];
   isHeaderSearchInput?: boolean;
   isHeaderSearchResult?: boolean;
+  onCloseClick?: () => void;
 }
 
 export interface SearchResultProps {

@@ -217,12 +217,12 @@ const Header: React.FC<HeaderProps> = ({
   logoPath,
   items,
   newText,
-  accountLink,
   topupCtaText,
   logoLinkURL,
   topupCtaLink,
   logoutLabel,
   loggedInMenuItems,
+  search,
 }) => {
   const ref = React.useRef<any>(undefined);
   const cartItems = useSelector((state: ReduxState) => state.cart.items);
@@ -400,7 +400,9 @@ const Header: React.FC<HeaderProps> = ({
                   />
                 </Button>
               ) : (
-                <Search isHeaderSearchInput={true} />
+                <Search
+                  {...search}
+                  isHeaderSearchInput={true} />
               )}
             </Box>
             <IconButton
@@ -457,6 +459,7 @@ const Header: React.FC<HeaderProps> = ({
             flexDirection="column"
           >
             <Search
+              {...search}
               onCloseClick={onCloseSearch}
               />
           </Flex>
