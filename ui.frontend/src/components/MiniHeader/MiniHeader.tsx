@@ -37,6 +37,8 @@ const MiniHeader: React.FC<MiniHeaderProps> = ({
   items,
   logoutLabel,
   loggedInMenuItems,
+  topupCtaText,
+  topupCtaLink,
 }) => {
   const ref = React.useRef<any>(undefined);
   const cartItems = useSelector((state: ReduxState) => state.cart.items);
@@ -215,7 +217,7 @@ const MiniHeader: React.FC<MiniHeaderProps> = ({
       <Drawer placement="left" onClose={onClose} isOpen={isOpen}>
         <DrawerContent>
           <DrawerBody p={0}>
-            <SideMenu items={remappedItems} onClose={onClose}/>
+            <SideMenu items={remappedItems} onClose={onClose} topupCtaText={topupCtaText} topupCtaLink={topupCtaLink} />
           </DrawerBody>
         </DrawerContent>
       </Drawer>

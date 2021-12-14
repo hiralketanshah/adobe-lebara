@@ -18,4 +18,6 @@ export interface MiniHeaderProps extends HeaderProps {
   logoPath?: string;
   accountLink?: string;
   items?: children[];
+  topupCtaText?: string;
+  topupCtaLink?: string;
 }
