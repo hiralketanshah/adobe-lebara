@@ -137,10 +137,6 @@
                                                                             jcr:primaryType="nt:unstructured"
                                                                             text="postpaid"
                                                                             value="postpaid"/>
-                                                                        <manage-plan
-                                                                            jcr:primaryType="nt:unstructured"
-                                                                            text="manage-plan"
-                                                                            value="manage-plan"/>
                                                                         <postpaid-details
                                                                             jcr:primaryType="nt:unstructured"
                                                                             text="postpaid/details"
@@ -185,6 +181,10 @@
                                                                                 jcr:primaryType="nt:unstructured"
                                                                                 text="sim-choice"
                                                                                 value="sim-choice"/>
+                                                                        <order-failed
+                                                                                jcr:primaryType="nt:unstructured"
+                                                                                text="order-failed"
+                                                                                value="order-failed"/>
                                                                     </items>
                                                                 </name>
                                                                 <path

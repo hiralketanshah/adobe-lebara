@@ -11,4 +11,6 @@ export interface SideMenuProps {
   items?: SideMenuItem[];
   onClose?: () => void;
   menuTitle?: string;
+  topupCtaText?: string;
+  topupCtaLink?: string;
 }

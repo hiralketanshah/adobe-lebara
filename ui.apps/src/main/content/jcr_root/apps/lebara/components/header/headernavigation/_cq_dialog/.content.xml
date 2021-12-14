@@ -197,6 +197,83 @@
                             </columns>
                         </items>
                     </loggedinmenu>
+                    <search
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Search"
+                        sling:resourceType="granite/ui/components/coral/foundation/container"
+                        margin="{Boolean}true">
+                        <items jcr:primaryType="nt:unstructured">
+                            <columns
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+                                margin="{Boolean}true">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <column
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <searchRoot
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                                fieldDescription="The root page from which to search in. Can be a blueprint master, language master or regular page."
+                                                fieldLabel="Search Root"
+                                                name="./search/searchRoot"
+                                                rootPath="/content"/>
+                                            <searchPlaceholder
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="Search Placeholder"
+                                                name="./search/searchPlaceholder"/>
+                                            <emptySearchResultMsg
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="Empty search result error message"
+                                                name="./search/emptySearchResultMsg"/>                                            
+                                            <mostSearchLabel
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="Most searched from users Label"
+                                                name="./search/mostSearchLabel"
+                                                value="Most searched from users"/>
+                                            <links
+                                                jcr:primaryType="nt:unstructured"
+                                                jcr:title="Most searched links"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
+                                                composite="{Boolean}true"
+                                                fieldDescription="Select list of links that are most searched"
+                                                fieldLabel="Most searched links">
+                                                <field
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/container"
+                                                    name="./search/links">
+                                                    <granite:data jcr:primaryType="nt:unstructured"/>
+                                                    <items jcr:primaryType="nt:unstructured">
+                                                        <column
+                                                            jcr:primaryType="nt:unstructured"
+                                                            sling:resourceType="granite/ui/components/coral/foundation/container">
+                                                            <items jcr:primaryType="nt:unstructured">
+                                                                <label
+                                                                    jcr:primaryType="nt:unstructured"
+                                                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                                    fieldLabel="Label"
+                                                                    name="./label"/>
+                                                                <link
+                                                                    jcr:primaryType="nt:unstructured"
+                                                                    sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                                                    fieldLabel="Link"
+                                                                    name="./link"
+                                                                    rootPath="/content/lebara"/>
+                                                            </items>
+                                                        </column>
+                                                    </items>
+                                                </field>
+                                            </links>
+                                        </items>
+                                    </column>
+                                </items>
+                            </columns>
+                        </items>
+                    </search>
                 </items>
             </tabs>
         </items>

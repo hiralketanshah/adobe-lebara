@@ -86,7 +86,7 @@ public class CFUtils {
                 List<SelectBean> countries = convertStringArrayToList(CFUtils.getElementArrayValue(countryFragment, "countryInfo"), SelectBean.class);
                 for (int i = 0; i < countries.size(); i++) {
                     countries.get(i).setKey(String.valueOf(i));
-                    countries.get(i).setUrl(countries.get(i).getValue());
+                    countries.get(i).setUrl(AemUtils.getLinkWithExtension(countries.get(i).getValue(), cfResource.getResourceResolver()));
                     countries.get(i).setValue(countries.get(i).getName());
                 }
                 return countries;
@@ -181,7 +181,7 @@ public class CFUtils {
                     validityLabel = "Month";
                     validityInNumber = validityInNumber / 30;
                 }
-                offerFragmentBean.setValidity( (validityInNumber == 1 ? "" : validityInNumber + " " )+ (i18n == null ? validityLabel : i18n.get(validityLabel)));
+                offerFragmentBean.setValidity( (validityInNumber == 1 ? "" : (validityInNumber + " ") )+ (i18n == null ? validityLabel : i18n.get(validityLabel)));
                 offerFragmentBean.setProductInformationFile(CFUtils.getElementValue(offerFragment,"productInformationFile"));
                 offerFragmentBean.setId(CFUtils.getElementValue(offerFragment, "offerid"));
                 offerFragmentBean.setOfferType(CFUtils.getElementValue(offerFragment, "offerType"));
@@ -217,7 +217,7 @@ public class CFUtils {
             int value = Integer.parseInt(val);
             switch (unit.toLowerCase()) {
                 case "mb":
-                    formattedValue = (value >= 1024) ? new DecimalFormat("#.##").format(value/1024.0) + "GB" : value + "MB";
+                    formattedValue = (value >= 1024) ? (new DecimalFormat("#.##").format(value/1024.0) + "GB") : (value + "MB");
                     break;
                 case "sms":
                     formattedValue = value + " SMS";

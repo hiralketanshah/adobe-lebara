@@ -77,20 +77,22 @@ const Footer: React.FC<FooterProps> = ({
         {getapp?.appTitle}
       </Text>
       <Flex justifyContent="space-between">
-        <IconButton
-          as={Link}
-          href={getapp?.links && getapp?.links[0]?.link}
-          aria-label="Available on the App Store"
-        >
+        <Link href={getapp?.links && getapp?.links[0]?.link} isExternal>
+          <IconButton
+            as={Link}
+            aria-label="Available on the App Store"
+          >
           <Image src={getapp?.links && getapp?.links[0]?.label} height="46" width="156" />
-        </IconButton>
-        <IconButton
-          as={Link}
-          href={getapp?.links && getapp?.links[1]?.link}
-          aria-label="Get it on google Play"
-        >
-          <Image src={getapp?.links && getapp?.links[1]?.label} height="46" width="156" />
-        </IconButton>
+          </IconButton>
+        </Link>
+        <Link href={getapp?.links && getapp?.links[1]?.link} isExternal>
+          <IconButton
+            as={Link}
+            aria-label="Get it on google Play"
+          >
+            <Image src={getapp?.links && getapp?.links[1]?.label} height="46" width="156" />
+          </IconButton>
+        </Link>
       </Flex>
     </Box>
 
