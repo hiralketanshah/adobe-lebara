@@ -46,6 +46,17 @@ MapTo("lebara/components/text")(LazyTextComponent, {
     }
 });
 
+const LazyColorTextComponent = withAsyncImport(
+    () => import(`./ColorText/Text`)
+);
+
+MapTo("lebara/components/colortext")(LazyColorTextComponent, {
+    emptyLabel: "Color Text",
+    isEmpty: function (props) {
+        return !props || !props.text || props.text.trim().length < 1;
+    }
+});
+
 
 //lazyload / code splitting examples of external components
 // MapTo("lebara/components/container")(ContainerV1, {
