@@ -1,4 +1,4 @@
-import { HeaderProps, LoggedInMenus } from "../Header/types";
+import { HeaderProps } from "../Header/types";
 export interface children {
   isDisabled?: boolean;
   showNewText?: string;
@@ -18,4 +18,6 @@ export interface MiniHeaderProps extends HeaderProps {
   logoPath?: string;
   accountLink?: string;
   items?: children[];
+  topupCtaText?: string;
+  topupCtaLink?: string;
 }

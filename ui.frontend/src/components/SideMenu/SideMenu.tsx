@@ -15,7 +15,11 @@ import Button from "../Button/Button";
 import {Box} from "@chakra-ui/layout";
 import {IoClose} from "react-icons/all";
 
-const SideMenu: React.FC<SideMenuProps> = ({ items, onClose, menuTitle = "Menu" }) => {
+const SideMenu: React.FC<SideMenuProps> = ({ 
+  items, onClose, 
+  menuTitle = "Menu",
+  topupCtaText = "Top Up +",
+ }) => {
   const history = useHistory();
   return (
       <Flex flexDirection="column" h="100%">
@@ -48,7 +52,9 @@ const SideMenu: React.FC<SideMenuProps> = ({ items, onClose, menuTitle = "Menu" 
                               h={18}
                           />
                       )}
-                      <Text color="primary.600" fontWeight="bold" fontSize={14}>
+                      <Text color="primary.600" fontWeight="bold" fontSize={14}
+                        onClick={() => item?.linkUrl ? history.push(item?.linkUrl) : null}
+                      >
                         {item.title}
                       </Text>
                     </Flex>
@@ -80,7 +86,7 @@ const SideMenu: React.FC<SideMenuProps> = ({ items, onClose, menuTitle = "Menu" 
         <Spacer/>
         <Box px="20px" my="37px">
           <Button isFullWidth onClick={() => history.push("/top-up")}>
-            Top Up +
+            {topupCtaText}
           </Button>
         </Box>
       </Flex>

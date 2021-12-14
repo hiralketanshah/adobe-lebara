@@ -23,7 +23,6 @@ import { useHistory } from "@lebara/ui/src/hooks/useHistory";
 import { useSelector } from "react-redux";
 import { MiniHeaderProps } from "./types";
 import IconButton from "../IconButton/IconButton";
-import LanguageDropDown from "../LanguageDropDown/LanguageDropDown";
 import SideMenu from "../SideMenu/SideMenu";
 import { ReduxState } from "../../redux/types";
 import { globalConfigs as GC, globalConstants as GCST } from "@lebara/ui/src/configs/globalConfigs.js";
@@ -38,6 +37,8 @@ const MiniHeader: React.FC<MiniHeaderProps> = ({
   items,
   logoutLabel,
   loggedInMenuItems,
+  topupCtaText,
+  topupCtaLink,
 }) => {
   const ref = React.useRef<any>(undefined);
   const cartItems = useSelector((state: ReduxState) => state.cart.items);
@@ -93,16 +94,6 @@ const MiniHeader: React.FC<MiniHeaderProps> = ({
   
   return (
     <Box w="100%">
-      <Flex
-        alignItems="center"
-        px={4}
-        justifyContent="flex-end"
-        background="lightenPrimary.200"
-        color="white"
-      >
-        <LanguageDropDown options={[]} selectProps={{}} />
-      </Flex>
-
       <Flex
         height="56px"
         alignItems="center"
@@ -226,7 +217,7 @@ const MiniHeader: React.FC<MiniHeaderProps> = ({
       <Drawer placement="left" onClose={onClose} isOpen={isOpen}>
         <DrawerContent>
           <DrawerBody p={0}>
-            <SideMenu items={remappedItems} onClose={onClose}/>
+            <SideMenu items={remappedItems} onClose={onClose} topupCtaText={topupCtaText} topupCtaLink={topupCtaLink} />
           </DrawerBody>
         </DrawerContent>
       </Drawer>

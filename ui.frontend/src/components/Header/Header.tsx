@@ -481,7 +481,10 @@ const Header: React.FC<HeaderProps> = ({
         </Box>
       )}
       <Flex display={{ lg: "none", sm: "flex" }} mx={{ lg: "27px" }}>
-        <MiniHeader loggedInMenuItems={loggedInMenuItems} logoutLabel={logoutLabel} logoPath={logoPath} logoLinkURL={logoLinkURL} items={items} />
+        <MiniHeader loggedInMenuItems={loggedInMenuItems} 
+          topupCtaText={topupCtaText}
+          topupCtaLink={topupCtaLink}
+          logoutLabel={logoutLabel} logoPath={logoPath} logoLinkURL={logoLinkURL} items={items} />
       </Flex>
     </Flex>
   );
