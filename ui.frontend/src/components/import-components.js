@@ -65,7 +65,6 @@ import "./FaqFolder/AemConfig.js";
 import "./MiniFooter/AemConfig.js";
 import "../aemConfigs/TopUpRouteAemConfig.js";
 import "./SelectedPlanCard/AemConfig.js";
-import "./Search/AemConfig.js";
 import "../aemConfigs/HelpAemConfig.js";
 import "../aemConfigs/AddonsAemConfig.js";
 import "../aemConfigs/LebaraBreadcrumbAemConfig.js";

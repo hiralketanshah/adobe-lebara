@@ -214,17 +214,21 @@
                                         <items jcr:primaryType="nt:unstructured">
                                             <searchRoot
                                                 jcr:primaryType="nt:unstructured"
-                                                sling:resourceType="cq/gui/components/coral/common/form/pagefield"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
                                                 fieldDescription="The root page from which to search in. Can be a blueprint master, language master or regular page."
                                                 fieldLabel="Search Root"
                                                 name="./search/searchRoot"
-                                                rootPath="/content"
-                                                value="${not empty cqDesign.searchRoot ? cqDesign.searchRoot : ''}"/>
+                                                rootPath="/content"/>
                                             <searchPlaceholder
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="Search Placeholder"
+                                                name="./search/searchPlaceholder"/>
+                                            <emptySearchResultMsg
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                                 fieldLabel="Empty search result error message"
-                                                name="./search/emptySearchResultMsg"/>
+                                                name="./search/emptySearchResultMsg"/>                                            
                                             <mostSearchLabel
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"

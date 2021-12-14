@@ -39,6 +39,7 @@ const MiniHeader: React.FC<MiniHeaderProps> = ({
   loggedInMenuItems,
   topupCtaText,
   topupCtaLink,
+  search,
 }) => {
   const ref = React.useRef<any>(undefined);
   const cartItems = useSelector((state: ReduxState) => state.cart.items);
@@ -189,6 +190,7 @@ const MiniHeader: React.FC<MiniHeaderProps> = ({
           width="100%"
         >
           <Search
+            {...search}
             onCloseClick={onCloseSearch}
           />
         </Flex>

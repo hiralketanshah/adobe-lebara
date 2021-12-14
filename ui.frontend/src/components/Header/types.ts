@@ -1,3 +1,5 @@
+import { SearchProps } from "../Search/types";
+
 export interface HeaderProps {
   isActive?: boolean;
   isDisabled?: boolean;
@@ -13,6 +15,7 @@ export interface HeaderProps {
   searchPlaceholder?: string;
   logoutLabel?: string;
   loggedInMenuItems?: LoggedInMenus[];
+  search?: SearchProps,
 }
 
 export interface children {
