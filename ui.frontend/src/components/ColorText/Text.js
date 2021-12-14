@@ -28,6 +28,9 @@ import "./text.scss";
 class Text extends Component {
 
   get richTextContent() {
+    const styleObj = {
+        color: this.props.fontColor
+    }
     return (
       <div
         id={extractModelId(this.props.cqPath)}
@@ -36,7 +39,7 @@ class Text extends Component {
           __html: sanitizeHtml(this.props.text, sanitizeWhiteList),
         }}
         className="lb-color-text-comp"
-        style={this.props.fontColor}
+        style={styleObj}
       />
     );
   }
