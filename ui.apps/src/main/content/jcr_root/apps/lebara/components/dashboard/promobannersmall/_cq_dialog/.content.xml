@@ -32,13 +32,13 @@
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textarea"
                                                 fieldLabel="Heading Text"
                                                 value="Free Gigabytes"
-                                                name="./headingText"/>
+                                                name="./heading"/>
                                             <subHeadingText
                                                     jcr:primaryType="nt:unstructured"
                                                     sling:resourceType="granite/ui/components/coral/foundation/form/textarea"
                                                     fieldLabel="Plan Name"
                                                     value="Free GBs when you Top up your balannce."
-                                                    name="./subHeadingText"/>
+                                                    name="./subHeading"/>
                                             <knowMoreButtonText
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textarea"
