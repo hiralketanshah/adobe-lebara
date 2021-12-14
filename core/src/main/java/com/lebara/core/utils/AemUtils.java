@@ -158,10 +158,6 @@ public class AemUtils {
         } catch (IOException | EmailException | MessagingException e) {
             LOGGER.error("Error in sending an email  [ {} ]", e.getMessage());
         }
-        catch (Exception e) {
-            LOGGER.error("MailingException {}", e);
-        }
-
         LOGGER.debug("send exit ");
     }
 
