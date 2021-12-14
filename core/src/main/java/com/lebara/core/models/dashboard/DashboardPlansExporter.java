@@ -21,7 +21,7 @@ public class DashboardPlansExporter implements ComponentExporter {
     /**
      * The resource type.
      */
-    protected static final String RESOURCE_TYPE = "lebara/components/dashboard/plans";
+    protected static final String RESOURCE_TYPE = "lebara/components/dashboard/managepostpaidplans";
 
     @ScriptVariable
     private Resource resource;

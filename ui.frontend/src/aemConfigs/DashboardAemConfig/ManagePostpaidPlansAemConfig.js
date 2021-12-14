@@ -9,4 +9,4 @@ const PlansConfig = {
   },
 };
 const componentwithofferDataProp=(props)=> <PlanManagement fetchDataCallback={(id, isOneEntry)=> aemUtils.fetchData(id, isOneEntry)} {...props}/>;
-MapTo("lebara/components/dashboard/plans")(componentwithofferDataProp, PlansConfig);
+MapTo("lebara/components/dashboard/managepostpaidplans")(componentwithofferDataProp, PlansConfig);
