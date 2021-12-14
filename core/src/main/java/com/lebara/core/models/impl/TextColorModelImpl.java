@@ -30,7 +30,7 @@ public class TextColorModelImpl implements TextColorModel {
 	/**
 	 * The resource type.
 	 */
-	protected static final String RESOURCE_TYPE = "lebara/components/textcolor";
+	protected static final String RESOURCE_TYPE = "lebara/components/colortext";
 
 	@Self
 	@Via(type = ResourceSuperType.class)
