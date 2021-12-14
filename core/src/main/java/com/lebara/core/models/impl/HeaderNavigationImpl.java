@@ -63,6 +63,8 @@ public class HeaderNavigationImpl implements HeaderNavigation {
     @ValueMapValue
     private String logoutLabel;
 
+    @ChildResource
+    private SearchModelImpl search;
 
     @Self
     @Via(type = ResourceSuperType.class)
@@ -140,5 +142,9 @@ public class HeaderNavigationImpl implements HeaderNavigation {
 
     public String getLogoutLabel() {
         return logoutLabel;
+    }
+
+    public SearchModelImpl getSearch() {
+        return search;
     }
 }
