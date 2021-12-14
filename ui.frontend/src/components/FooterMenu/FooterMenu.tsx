@@ -101,7 +101,7 @@ const FooterMenu: React.FC<FooterMenuProps> = ({
               </Text>
               {getapp?.links?.length > 1 && (
                 <Flex>
-                  <Link href={getapp?.links[0]?.link}>
+                  <Link href={getapp?.links[0]?.link} isExternal>
                     <IconButton
                       variant="unstyled"
                       href={getapp?.links[0]?.link}
@@ -114,7 +114,7 @@ const FooterMenu: React.FC<FooterMenuProps> = ({
                        />
                     </IconButton>
                   </Link>
-                  <Link href={getapp?.links[1]?.link}>
+                  <Link href={getapp?.links[1]?.link} isExternal>
                     <IconButton
                       href={getapp?.links[1]?.link}
                       variant="unstyled"

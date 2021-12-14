@@ -10,7 +10,7 @@ const SocialMediaButtons: React.FC<SocialMediaButtonsProps> = ({
 }) => (
     <Flex gridGap={{lg: "40px"}} justifyContent={{base: "space-between", lg: "initial"}}>
     {buttons?.map((buttonInfo, index) => (
-    <Link href={buttonInfo?.link}>
+    <Link href={buttonInfo?.link} isExternal>
       <IconButton
         key={index}
         icon={<Image src={buttonInfo?.label} height="24px" width="24px" />}
