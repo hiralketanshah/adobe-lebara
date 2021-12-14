@@ -52,8 +52,6 @@ public class DashboardPlansExporter extends HeadingExporter {
     private String planChangeMessage;
     @ValueMapValue
     private String manageLabel;
-    @ValueMapValue
-    private String managePlanPath;
 
     public String getButtonLabel() {
         return buttonLabel;
@@ -93,10 +91,6 @@ public class DashboardPlansExporter extends HeadingExporter {
 
     public String getManageLabel() {
         return manageLabel;
-    }
-
-    public String getManagePlanPath() {
-        return AemUtils.getLinkWithExtension(managePlanPath, slingRequest);
     }
 
     @Override
