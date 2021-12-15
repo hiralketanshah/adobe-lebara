@@ -5,7 +5,6 @@ import com.day.cq.commons.inherit.HierarchyNodeInheritanceValueMap;
 import com.day.cq.commons.inherit.InheritanceValueMap;
 import com.day.cq.commons.mail.MailTemplate;
 import com.day.cq.i18n.I18n;
-import com.day.cq.mailer.MailingException;
 import com.day.cq.mailer.MessageGatewayService;
 import com.day.cq.wcm.api.Page;
 import com.day.cq.wcm.api.PageManager;
@@ -18,7 +17,9 @@ import org.apache.commons.mail.HtmlEmail;
 import org.apache.jackrabbit.api.security.user.Authorizable;
 import org.apache.jackrabbit.api.security.user.Group;
 import org.apache.sling.api.SlingHttpServletRequest;
-import org.apache.sling.api.resource.*;
+import org.apache.sling.api.resource.Resource;
+import org.apache.sling.api.resource.ResourceResolver;
+import org.apache.sling.api.resource.ValueMap;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -28,7 +29,6 @@ import javax.jcr.Value;
 import javax.mail.MessagingException;
 import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;
-import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 import java.util.*;
 
@@ -195,8 +195,8 @@ public class AemUtils {
         return ((resourceResolver == null) ? payloadPath : resourceResolver.map(payloadPath)) + (isHtmlExtensionRequired(payloadPath) ? LebaraConstants.HTML_EXTENSION : StringUtils.EMPTY);
     }
 
-    private static boolean isExternalLink(String payloadPath) {
-        return payloadPath.startsWith("http") || payloadPath.startsWith("www");
+    public static boolean isExternalLink(String payloadPath) {
+        return payloadPath.startsWith("http") || payloadPath.startsWith("www") || payloadPath.startsWith("mailto:")|| payloadPath.startsWith("tel:");
     }
 
     private static boolean isHtmlExtensionRequired(String payloadPath) {

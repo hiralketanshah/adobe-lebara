@@ -22,9 +22,19 @@ public class SupportProperties extends ImageProperties {
     @ValueMapValue
     private String ctaLink;
 
+    private boolean isExternal= false;
+
     public String getCtaLinkLabel() {
         return ctaLinkLabel;
     }
+
+    public boolean getIsExternal() {
+        if (ctaLink != null) {
+            isExternal= AemUtils.isExternalLink(ctaLink);
+        }
+        return isExternal;
+    }
+
 
     public String getCtaLink() {
         return AemUtils.getLinkWithExtension(ctaLink, resourceResolver);
