@@ -2,18 +2,22 @@ package com.lebara.core.models;
 
 import com.adobe.cq.export.json.ComponentExporter;
 import com.adobe.cq.export.json.ExporterConstants;
-import com.lebara.core.dto.CountryInfo;
 import com.lebara.core.dto.SelectBean;
 import com.lebara.core.utils.CFUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.api.resource.ResourceResolver;
 import org.apache.sling.models.annotations.DefaultInjectionStrategy;
 import org.apache.sling.models.annotations.Exporter;
 import org.apache.sling.models.annotations.Model;
+import org.apache.sling.models.annotations.injectorspecific.ScriptVariable;
 import org.apache.sling.models.annotations.injectorspecific.SlingObject;
 import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
 
+import javax.annotation.PostConstruct;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 @Model(adaptables = {SlingHttpServletRequest.class, Resource.class}, adapters = {WhereToCallExporter.class, ComponentExporter.class},
@@ -29,14 +33,28 @@ public class WhereToCallExporter implements ComponentExporter {
     @SlingObject
     private ResourceResolver resourceResolver;
 
-    @ValueMapValue
-    private String cfPath;
+    @ScriptVariable
+    private Resource resource;
 
     @ValueMapValue
     private String fileReference;
 
     @ValueMapValue
     private String title;
+
+    @ValueMapValue
+    private String fragmentRootPath;
+
+    private List<SelectBean> countryList;
+
+    @PostConstruct
+    private void init() {
+        if (StringUtils.isNotBlank(fragmentRootPath)) {
+            countryList = CFUtils.getWhereToCallRates(resourceResolver, fragmentRootPath);
+        } else {
+            countryList = Collections.emptyList();
+        }
+    }
 
     public String getFileReference() {
         return fileReference;
@@ -46,8 +64,8 @@ public class WhereToCallExporter implements ComponentExporter {
         return title;
     }
 
-    public List<SelectBean> getCountries(){
-        return CFUtils.populateCountryInfo(resourceResolver.getResource(cfPath));
+    public List<SelectBean> getCountries() {
+        return countryList;
     }
 
     @Override
