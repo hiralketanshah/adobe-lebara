@@ -2,12 +2,13 @@ package com.lebara.core.dto;
 
 import com.lebara.core.models.beans.Link;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
 public class PageLink {
     private Link parentLinks;
-    private List<Link> childLinks;
+    private List<Link> childLinks = new ArrayList<>();
 
     public Link getParentLinks() {
         return parentLinks;

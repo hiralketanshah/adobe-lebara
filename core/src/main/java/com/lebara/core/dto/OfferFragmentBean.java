@@ -7,6 +7,7 @@ import org.apache.commons.lang3.math.NumberUtils;
 import org.apache.sling.api.SlingHttpServletRequest;
 
 import java.text.NumberFormat;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Locale;
@@ -21,7 +22,7 @@ public class OfferFragmentBean {
     private String productInformationFile;
     private PlanInfo planInfo;
     private String additionalOffers;
-    private List<CFAllowance> allowanceList;
+    private List<CFAllowance> allowanceList = new ArrayList<>();
     private String recommendedImage;
     private String recommendedURL;
     private String promotionID;
