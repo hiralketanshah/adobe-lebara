@@ -17,6 +17,7 @@ import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
 
 import javax.annotation.PostConstruct;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 @Model(adaptables = {SlingHttpServletRequest.class, Resource.class}, adapters = {WhereToCallExporter.class, ComponentExporter.class},
@@ -51,7 +52,7 @@ public class WhereToCallExporter implements ComponentExporter {
         if (StringUtils.isNotBlank(fragmentRootPath)) {
             countryList = CFUtils.getWhereToCallRates(resourceResolver, fragmentRootPath);
         } else {
-            countryList = new ArrayList<>();
+            countryList = Collections.emptyList();
         }
     }
 
