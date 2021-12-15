@@ -53,7 +53,7 @@ public class CFUtils {
         try {
             list = Arrays.stream(stringArray).map(al -> gson.fromJson(al, T)).collect(Collectors.toList());
         } catch (IllegalStateException | JsonSyntaxException e) {
-            LOGGER.error("[convertStringArrayToList] error while parsing json {}", e);
+            LOGGER.error("[convertStringArrayToList] error while parsing json for stringArray {} : Error message {}", Arrays.toString(stringArray), e.getMessage());
         }
         return list;
     }
@@ -132,6 +132,9 @@ public class CFUtils {
     public static List<SelectOption> getInternationalRates(ResourceResolver resolver, String fragmentRootPath) {
         List<SelectOption> internationalRateBeanList = new ArrayList<>();
         Resource parentResource = resolver.getResource(fragmentRootPath);
+        if (parentResource == null) {
+            return internationalRateBeanList;
+        }
         for (Resource fragment : parentResource.getChildren()) {
             ContentFragment irFragment = fragment.adaptTo(ContentFragment.class);
             if (null != irFragment) {
