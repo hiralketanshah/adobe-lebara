@@ -23,6 +23,7 @@ import org.apache.sling.models.annotations.injectorspecific.SlingObject;
 import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
 
 import javax.annotation.PostConstruct;
+import java.util.Collections;
 import java.util.List;
 
 @Model(adaptables = SlingHttpServletRequest.class, adapters = {InternationalRatesExporter.class, ComponentExporter.class},
@@ -115,7 +116,7 @@ public class InternationalRatesExporter implements ComponentExporter {
     }
 
     public List<SelectOption> getCountryList() {
-        return countryList;
+        return Collections.unmodifiableList(countryList);
     }
 
     public String getLandlineLabel() {

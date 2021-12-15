@@ -8,7 +8,7 @@ import java.util.List;
 
 public class PageLink {
     private Link parentLinks;
-    private List<Link> childLinks = new ArrayList<>();
+    private List<Link> childLinks;
 
     public Link getParentLinks() {
         return parentLinks;
@@ -19,7 +19,7 @@ public class PageLink {
     }
 
     public List<Link> getChildLinks() {
-        return childLinks == null ? Collections.emptyList() : Collections.unmodifiableList(childLinks);
+        return childLinks;
     }
 
     public void setChildLinks(List<Link> childLinks) {
