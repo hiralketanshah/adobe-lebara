@@ -25,6 +25,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import javax.annotation.PostConstruct;
+import java.util.ArrayList;
 import java.util.List;
 
 @Model(adaptables = SlingHttpServletRequest.class, adapters = {InternationalRatesExporter.class, ComponentExporter.class},
@@ -93,6 +94,8 @@ public class InternationalRatesExporter implements ComponentExporter {
             LOGGER.debug("Interntional rates fragmentRootPath is {}", fragmentRootPath);
             if (StringUtils.isNotBlank(fragmentRootPath)) {
                 countryList = CFUtils.getInternationalRates(resourceResolver, fragmentRootPath);
+            } else {
+                countryList = new ArrayList<>();
             }
 
         }
