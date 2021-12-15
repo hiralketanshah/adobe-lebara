@@ -49,7 +49,7 @@ const Search: React.FC<SearchProps> = ({
 
   useEffect(() => {
     if(query && query.length >= MIN_CHARS_SEARCH) {
-      fetchData(query);
+      aemUtils.debounce(fetchData(query)) ;
     } else {
       setSearchResults([]);
       onHandleSearchQuery && onHandleSearchQuery({
@@ -59,8 +59,7 @@ const Search: React.FC<SearchProps> = ({
       return;
     }
 
-    return () => {
-    }
+    return () => {}
   }, [query]);
 
   return (
