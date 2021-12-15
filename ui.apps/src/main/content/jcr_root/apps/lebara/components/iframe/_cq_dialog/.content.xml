@@ -41,6 +41,11 @@
                                                         name="./url"
                                                         required="{Boolean}true">
                                                     </field>
+                                                    <height
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/form/numberfield"
+                                                        fieldLabel="Height"
+                                                        name="./height">
                                                 </items>
                                             </url>
                                             <id
