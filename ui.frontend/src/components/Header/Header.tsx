@@ -485,7 +485,7 @@ const Header: React.FC<HeaderProps> = ({
         </Box>
       )}
       {isProfileDropdownOpen && isAuthenticated && (
-        <Box backgroundColor="white" width="100%" height="100%">
+        <Box backgroundColor="white" width="100%" height="100%" ref={ref}>
           <Flex
             zIndex="3"
             width="18rem"
