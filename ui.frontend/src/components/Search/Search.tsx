@@ -30,17 +30,7 @@ const Search: React.FC<SearchProps> = ({
   const [searchRootValue] = useState(searchRoot);
   const [searchResults, setSearchResults] = useState([]);
 
-  async function fetchData(value: any) {
-    const response = await fetch(aemUtils.getSearchResultsPath(value, searchRootValue, ''));
-    const jsonResp = await response.json();
-
-    // On success response
-    setSearchResults(jsonResp);
-    onHandleSearchQuery && onHandleSearchQuery({
-      isQuery: value,
-      results: [...jsonResp]
-    });
-  }
+  
 
   const handleChange = (e: any) => {
     const { value } = e.target;
@@ -48,6 +38,18 @@ const Search: React.FC<SearchProps> = ({
   }
 
   useEffect(() => {
+    async function fetchData(value: any) {
+      const response = await fetch(aemUtils.getSearchResultsPath(value, searchRootValue, ''));
+      const jsonResp = await response.json();
+  
+      // On success response
+      setSearchResults(jsonResp);
+      onHandleSearchQuery && onHandleSearchQuery({
+        isQuery: value,
+        results: [...jsonResp]
+      });
+    }
+
     if(query && query.length >= MIN_CHARS_SEARCH) {
       aemUtils.debounce(fetchData(query)) ;
     } else {
@@ -60,7 +62,7 @@ const Search: React.FC<SearchProps> = ({
     }
 
     return () => {}
-  }, [query]);
+  }, [query, searchRootValue, onHandleSearchQuery]);
 
   return (
     <>

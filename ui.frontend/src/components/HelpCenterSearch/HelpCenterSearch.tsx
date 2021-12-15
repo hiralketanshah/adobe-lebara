@@ -32,20 +32,6 @@ const HelpCenterSearch: React.FC<HelpCenterSearchProps> = ({
   const [searchRootValue] = useState(searchRoot);
   const [searchResults, setSearchResults] = useState([]);
 
-  async function fetchData(value: any) {
-    const response = await fetch(aemUtils.getSearchResultsPath(value, searchRootValue, 'help'));
-    const jsonResp = await response.json();
-    if(!jsonResp) return;
-    const newSelectOptionsData = jsonResp && jsonResp?.map((item: any) => {
-      return {
-        ...item,
-         value: item?.path, 
-         label: item?.title,
-      }
-    });
-
-    setSearchResults(newSelectOptionsData);
-  }
 
   const handleChange = (option: any) => {
     if(option && option?.value) {
@@ -58,6 +44,21 @@ const HelpCenterSearch: React.FC<HelpCenterSearchProps> = ({
   };
 
   useEffect(() => {
+    async function fetchData(value: any) {
+      const response = await fetch(aemUtils.getSearchResultsPath(value, searchRootValue, 'help'));
+      const jsonResp = await response.json();
+      if(!jsonResp) return;
+      const newSelectOptionsData = jsonResp && jsonResp?.map((item: any) => {
+        return {
+          ...item,
+          value: item?.path, 
+          label: item?.title,
+        }
+      });
+
+      setSearchResults(newSelectOptionsData);
+    }
+
     if(query && query.length >= MIN_CHARS_SEARCH) {
        aemUtils.debounce(fetchData(query)) ;
     } else {
@@ -65,7 +66,7 @@ const HelpCenterSearch: React.FC<HelpCenterSearchProps> = ({
       return;
     }
     return () => {}
-  }, [query]);
+  }, [query, searchRootValue]);
 
   return (
     <>
