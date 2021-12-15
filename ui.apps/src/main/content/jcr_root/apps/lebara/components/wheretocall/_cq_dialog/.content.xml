@@ -71,13 +71,11 @@
                                                 fieldDescription="A title for the CTA."
                                                 fieldLabel="Pretitle"
                                                 name="./title"/>
-                                            <countryFragmentPath
-                                                    cq:showOnCreate="{Boolean}true"
+                                            <internationalfragmentpath
                                                     jcr:primaryType="nt:unstructured"
-                                                    sling:resourceType="dam/cfm/components/cfpicker"
-                                                    fieldLabel="Content Frament path"
-                                                    name="./cfPath"
-                                                    required="{Boolean}true"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/form/pathbrowser"
+                                                    fieldLabel="Path to the root folder of International fragments"
+                                                    name="./fragmentRootPath"
                                                     rootPath="/content/dam/lebara"/>
                                         </items>
                                     </column>
