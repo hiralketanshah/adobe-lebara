@@ -29,6 +29,11 @@ const aemUtils = {
       timer = setTimeout(() => { func.apply(this, args); }, timeout);
     };
   },
+  isCheckExternalLink: function(url) {
+    if(!url || url === "") return false;
+
+    return url.toLowerCase().includes(('http' || 'https' || 'www'))
+  }
 }
 
 export default aemUtils;
