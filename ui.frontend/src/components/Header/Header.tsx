@@ -44,6 +44,7 @@ import { useHistory } from "@lebara/ui/src/hooks/useHistory";
 import axios from "axios";
 import PlanNotEligibleDialog from "@lebara/ui/src/components/PlanNotEligibleDialog/PlanNotEligibleDialog";
 import { toggleDialogState } from "@lebara/ui/src/redux/actions/modalsActions";
+import SearchResults from "../Search/SearchResults";
 
 const SingleMenu = ({ menuItem, newText }: { menuItem: children, newText: any }) => {
   const DEFUALT_GROUP_MENU_UPTO = 5;
@@ -217,12 +218,12 @@ const Header: React.FC<HeaderProps> = ({
   logoPath,
   items,
   newText,
-  accountLink,
   topupCtaText,
   logoLinkURL,
   topupCtaLink,
   logoutLabel,
   loggedInMenuItems,
+  search,
 }) => {
   const ref = React.useRef<any>(undefined);
   const cartItems = useSelector((state: ReduxState) => state.cart.items);
@@ -233,11 +234,18 @@ const Header: React.FC<HeaderProps> = ({
   const [isProfileDropdownOpen, setProfileDropdown] = useState(false);
   const isAuthenticated = useSelector(selectIsAuthenticated);
   const isModalOpen = useSelector((t: ReduxState) => t.modal.open);
+  const [isQuerySearched, setQuerySearched] = useState('');
+  const [results, setResults] : any = useState([]);
 
   useOutsideClick({
     ref,
     handler: () => setProfileDropdown(false),
   });
+
+  const onHandleSearchQuery = ({isQuery, results }: any) => {
+    setQuerySearched(isQuery);
+    setResults([...results]);
+  }
 
   const onSearchClick = () => {
     setIsSearchOpened(true);
@@ -400,7 +408,15 @@ const Header: React.FC<HeaderProps> = ({
                   />
                 </Button>
               ) : (
-                <Search isHeaderSearchInput={true} />
+                <Search
+                  {...search}
+                  key={'search-comp-key-in-header'+isQuerySearched}
+                  onHandleSearchQuery={onHandleSearchQuery}
+                  onCloseClick={onCloseSearch}
+                  isHeaderSearchInput={true}
+                  showSearchResults={false} 
+                  searchValue={isQuerySearched}
+              />
               )}
             </Box>
             <IconButton
@@ -447,7 +463,8 @@ const Header: React.FC<HeaderProps> = ({
           width="100%"
           height="100%"
           display={{ base: "none", md: "block" }}
-        >
+          className="wrapper-search-key-outside-header"
+          >
           <Flex
             zIndex="3"
             width="17.5rem"
@@ -456,14 +473,19 @@ const Header: React.FC<HeaderProps> = ({
             position="absolute"
             flexDirection="column"
           >
-            <Search
+            <SearchResults
+              {...search}
+              key={'search-comp-key-outside-header'+isQuerySearched}
+              queryVal={isQuerySearched}
+              results={results}
+              links={search?.links}
               onCloseClick={onCloseSearch}
               />
           </Flex>
         </Box>
       )}
       {isProfileDropdownOpen && isAuthenticated && (
-        <Box backgroundColor="white" width="100%" height="100%">
+        <Box backgroundColor="white" width="100%" height="100%" ref={ref}>
           <Flex
             zIndex="3"
             width="18rem"
@@ -484,7 +506,9 @@ const Header: React.FC<HeaderProps> = ({
         <MiniHeader loggedInMenuItems={loggedInMenuItems} 
           topupCtaText={topupCtaText}
           topupCtaLink={topupCtaLink}
-          logoutLabel={logoutLabel} logoPath={logoPath} logoLinkURL={logoLinkURL} items={items} />
+          logoutLabel={logoutLabel} logoPath={logoPath} 
+          logoLinkURL={logoLinkURL} items={items}
+          search={search} />
       </Flex>
     </Flex>
   );

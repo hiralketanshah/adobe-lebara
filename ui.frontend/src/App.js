@@ -13,7 +13,7 @@ import "@fontsource/roboto/500.css";
 import "@fontsource/roboto/700.css";
 import "@fontsource/roboto/900.css";
 import store from "@lebara/ui/src/store";
-import Fonts from "@lebara/ui/src/components/Fonts/Fonts";
+import Fonts from "./Fonts";
 
 const theme = extendTheme(
   {

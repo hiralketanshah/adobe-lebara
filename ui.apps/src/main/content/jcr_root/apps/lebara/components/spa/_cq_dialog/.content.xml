@@ -140,7 +140,7 @@
                                                                         <manage-plan
                                                                             jcr:primaryType="nt:unstructured"
                                                                             text="manage-plan"
-                                                                            value="manage-plan"/>
+                                                                            value="/dashboard/manage"/>
                                                                         <postpaid-details
                                                                             jcr:primaryType="nt:unstructured"
                                                                             text="postpaid/details"

@@ -4,34 +4,39 @@ import {
   InputGroup,
   Input,
   InputLeftElement,
-  Link,
 } from "@chakra-ui/react";
-import { BsSearch, MdCancel, FiArrowRight } from "react-icons/all";
-import {AuthoringUtils} from "@adobe/aem-spa-page-model-manager";
-import { SearchProps, SearchResultProps } from "./types";
+import { BsSearch, MdCancel } from "react-icons/all";
+import { SearchProps } from "./types";
 import Button from "../Button/Button";
-import LebaraText from "../LebaraText/LebaraText";
 import aemUtils from "../../utils/aem-utils";
-import HeaderSearchInput from "./HeaderSearchInput";
+import SearchResults from "./SearchResults";
 
 const Search: React.FC<SearchProps> = ({
   links,
-  closeLinkText,
   onCloseClick,
-  mostSearchLabel,
-  searchPlaceholder,
-  searchRootPagePath,
-  emptySearchResultMsg,
+  closeLinkText = "Close",
+  recentSearchLabel = "Your recent searches",
+  mostSearchLabel = "Most searched from users",
+  searchPlaceholder = "Search here",
+  emptySearchResultMsg = "no results found",
+  searchRoot,
   isHeaderSearchInput,
-  isHeaderSearchResult,
+  showSearchResults,
+  onHandleSearchQuery,
+  searchValue = '',
 }) => {
-  const isAemEditor = AuthoringUtils.isEditMode();
   const [query, setQuery] = useState('');
-  const [searchRootValue] = useState(searchRootPagePath);
+  const [searchRootValue] = useState(searchRoot);
   const [searchResults, setSearchResults] = useState([]);
+
   async function fetchData() {
     const response = await fetch(aemUtils.getSearchResultsPath(query, searchRootValue, ''));
     const jsonResp = await response.json();
+
+    if(!isHeaderSearchInput && query === '') {
+      setSearchResults([]);
+      return;
+    }
     setSearchResults(jsonResp);
   }
 
@@ -39,127 +44,90 @@ const Search: React.FC<SearchProps> = ({
     const { value } = e.target;
     setQuery(value);
     
-    if(!value) {
+    onHandleSearchQuery && onHandleSearchQuery({
+      isQuery: value,
+      results: [...searchResults]
+    });
+
+    if(value === '') {
       setSearchResults([]);
+      onHandleSearchQuery && onHandleSearchQuery({
+        isQuery: value,
+        results: []
+      });
     }
   }
 
   const onSearchHandler = aemUtils.debounce(() => fetchData());
-  
-  const SearchResultComp: React.FC<any> = ({links, query, searchResults, emptySearchResultMsg, }) => (<>
-    {/* Need to check for functionality on click of this keywords - need a discussion */}
-    {/* {mostSearchLabel && <LebaraText type="subtitle2" color="white" fontWeight="bold">
-      {mostSearchLabel}
-    </LebaraText>}
-    <Box mt="7px">
-        {recentSearches && recentSearches?.map((keyword: string, idx) => (
-          <Badge 
-            key={`rescentsearch-key-${idx}`}
-            variant="subtle" backgroundColor="badgeColor" ml="7px">
-            <Box display="inline-flex">
-              <LebaraText type="body2" color="white" fontSize="14px">
-                {keyword}
-              </LebaraText>
-              <IoIosClose size={20} color="white" />
-            </Box>
-          </Badge>
-        ))}
-    </Box> */}
-
-    {/* No search results or query searched! */}
-    {query === '' && links?.length !== 0 && (<Box mt="4px" px="4px" py="15px"><Box mt="15px">
-      {mostSearchLabel && <LebaraText type="subtitle2" color="white" fontWeight="bold">
-        {mostSearchLabel}
-      </LebaraText>}
-      <Box>
-          {links?.map((linkItem: any, idx: any) => (
-            <Box
-              key={`mostsearch-key-${idx}`}
-              _notLast={{ borderBottom: "1px solid white" }}
-              pb="9px"
-              mt="12px"
-              display="flex"
-              flexDirection="row"
-              justifyContent="space-between"
-              alignItems="center"
-              color="white"
-            >
-              <Link
-                variant="ghost"
-                padding="initial"
-                height="initial"
-                color="white"
-                _hover={{ bgColor: "transparent" }}
-                to={`${linkItem?.link}` || '/'}
-              >
-                <LebaraText type="body2">{linkItem?.label}</LebaraText>
-              </Link>
-              <FiArrowRight size={20} color="white" />
-            </Box>
-          ))}
-      </Box>
-    </Box></Box>)}
-
-    {/* If search results found  */}
-     {searchResults?.length !== 0 && (<Box mt="4px" px="4px" py="15px"><Box>
-        {searchResults?.map((result: SearchResultProps, idx:number) => (
-          <Box
-            key={`mostsearch-key-${idx}`}
-            _notLast={{ borderBottom: "1px solid white" }}
-            pb="9px"
-            mt="12px"
-            display="flex"
-            flexDirection="row"
-            justifyContent="space-between"
-            alignItems="center"
-            color="white"
-          >
-            <Link
-              variant="ghost"
-              padding="initial"
-              height="initial"
-              color="white"
-              _hover={{ bgColor: "transparent" }}
-              to={`${result?.path}` || '/'}
-            >
-              <LebaraText type="body2">{result?.title}</LebaraText>
-            </Link>
-            <FiArrowRight size={20} color="white" />
-          </Box>
-        ))}
-    </Box>
-    </Box>)}
-
-    {/* If not search results found */}
-    {!searchResults.length && (<Box mt="4px" px="4px" py="0">
-        <Box
-          m={0}
-          p={0}
-          textAlign="center"
-        >{emptySearchResultMsg || "no results found"}</Box>
-      </Box>)}
-  </>);
-
 
   return (
     <>
-      {isHeaderSearchInput && <HeaderSearchInput
-        searchPlaceholder={searchPlaceholder}
-        handleChange={handleChange}
-        onSearchHandler={onSearchHandler}
-       />}
+       {isHeaderSearchInput && !showSearchResults && (<>
+          <InputGroup
+            borderRadius="lg"
+            ml="4%"
+            width={{ md: "auto", lg: "18rem" }}
+          >
+            <InputLeftElement
+              pointerEvents="none"
+              backgroundColor="white"
+              borderRadius="lg"
+              ml="5px"
+            >
+              <BsSearch color="#969696" size={20} />
+              <Box color="black" pl="4px">
+                {" "}
+                |{" "}
+              </Box>
+            </InputLeftElement>
+            <Input
+              ml="4px"
+              name="gdesktopsearch"
+              placeholder={searchPlaceholder}
+              _placeholder={{
+                color: "grey.100",
+                fontSize: "16px",
+                lineHeight: "19px",
+                letterSpacing: "0.25px",
+              }}
+              color="black"
+              bgColor="white"
+              borderRadius="lg"
+              value={searchValue}
+              onChange={handleChange}
+              onKeyUp={onSearchHandler}
+              autoFocus={true}
+            />
+          </InputGroup>
+        </>)}
 
-      {!isHeaderSearchInput && <><Box
+      {/* For Desktop/Default View Search field and Result output! */}
+      {isHeaderSearchInput && showSearchResults && (<>
+        <SearchResults
+            key={'sr-desktop-key'+query}
+            mostSearchLabel={mostSearchLabel}
+            queryVal={query}
+            links={links}
+            emptySearchResultMsg={emptySearchResultMsg}
+            onCloseClick={onCloseClick}
+            closeLinkText={closeLinkText}
+          />
+      </>
+      )}
+
+      {/* For Mobile View Search field and Result output! */}
+      {!isHeaderSearchInput && !showSearchResults && <><Box
         className={'header-search-feature'}
         bgColor="lightenPrimary.500"
         px="20px"
         py={{ base: "15px", md: "initial" }}
-        height="max-content"
+        height={{base: '100%', md: searchResults?.length > 5 ? '315' : 'max-content'}}
         width={{ base: "100%", md: "initial" }}
       >
-        <Box bgColor="lightenPrimary.500" width="100%" height="max-content">
+        <Box bgColor="lightenPrimary.500" width="100%" 
+          height="max-content">
           <Box
-            display={{ md: !isAemEditor ? "none" : "block", base: "flex" }}
+            display={{ md: "none", base: "flex" }}
             justifyContent="space-between"
             borderRadius="lg"
           >
@@ -178,7 +146,7 @@ const Search: React.FC<SearchProps> = ({
               </InputLeftElement>
               <Input
                 ml="4px"
-                name="gsearch"
+                name="gmobilesearch"
                 placeholder={searchPlaceholder}
                 _placeholder={{
                   color: "grey.100",
@@ -189,63 +157,12 @@ const Search: React.FC<SearchProps> = ({
                 color="black"
                 bgColor="white"
                 borderRadius="lg"
+                value={query}
                 onChange={handleChange}
                 onKeyUp={onSearchHandler}
               />
             </InputGroup>
-            <Box width="10px">
-              <> </>
-            </Box>
-            <Button
-              display={{ base: "inline-block", md: "none" }}
-              textTransform="capitalize"
-              color="white"
-              p="initial"
-              variant="ghost"
-              fontSize="14px"
-              lineHeight="20px"
-              fontWeight="500"
-              onClick={onCloseClick}
-            >
-              {closeLinkText || 'Close'}
-            </Button>
-          </Box>
-          
-          <SearchResultComp 
-            query={query}
-            links={links}
-            searchResults={searchResults}
-            emptySearchResultMsg={emptySearchResultMsg}
-          />
-        </Box>
-      </Box>
-      <Box display={{ base: "none", md: "table" }} mt="7px" margin="0 auto">
-        <Button
-          variant="ghost"
-          padding="initial"
-          height="initial"
-          color="white"
-          _hover={{ bgColor: "transparent" }}
-          onClick={onCloseClick}
-        >
-          <MdCancel size={20} color="#00A6EB" />
-        </Button>
-      </Box>
-      </>}
-
-      {isHeaderSearchInput && isHeaderSearchResult && (<Box
-        bgColor="lightenPrimary.500"
-        px="20px"
-        py={{ base: "15px", md: "initial" }}
-        height="max-content"
-        width={{ base: "100%", md: "initial" }}
-      >
-        <Box bgColor="lightenPrimary.500" width="100%" height="max-content">
-          <Box
-            display={{ md: "none", base: "flex" }}
-            justifyContent="space-between"
-            borderRadius="lg"
-          >
+            <Box width="10px" />
             <Button
               display={{ base: "inline-block", md: "none" }}
               textTransform="capitalize"
@@ -260,15 +177,33 @@ const Search: React.FC<SearchProps> = ({
               {closeLinkText}
             </Button>
           </Box>
-          <SearchResultComp 
-            query={query}
-            authoredLinks={links}
-            searchResults={searchResults}
+          
+          <SearchResults
+            key={'sr-mobile-key-'+query}
+            mostSearchLabel={mostSearchLabel}
+            queryVal={query}
+            links={links}
+            results={searchResults}
             emptySearchResultMsg={emptySearchResultMsg}
+            onCloseClick={onCloseClick}
+            closeLinkText={closeLinkText}
           />
         </Box>
-      </Box>)}
-
+      </Box>
+      
+      <Box display={{ base: "none", md: "table" }} mt="7px" margin="0 auto">
+        <Button
+          variant="ghost"
+          padding="initial"
+          height="initial"
+          color="white"
+          _hover={{ bgColor: "transparent" }}
+          onClick={onCloseClick}
+        >
+          <MdCancel size={20} color="#00A6EB" />
+        </Button>
+      </Box>
+      </>}
       
     </>
   )
