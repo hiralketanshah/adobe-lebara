@@ -1,4 +1,4 @@
-import { globalConstants as C } from "@lebara/ui/src/configs/globalConfigs.js";
+import { globalConfigs as GC, globalConstants as C } from "@lebara/ui/src/configs/globalConfigs.js";
 
 const textRegex = /handyvertrag|sim|prepaid|blog/gi;
 const realExternalRegex = /https|http|www/gi;
@@ -23,6 +23,9 @@ const aemUtils = {
     const response = await fetch(aemUtils.getCfOfferDataUrl(offerId));
     const json = await response.json();
     return isOneEntry ? json[0] : json;
+  },
+  isPrivatePage: function (pathname) {
+    return GC.privatePages.includes(pathname);
   },
   debounce: function (func, timeout = 300) {
     let timer;
