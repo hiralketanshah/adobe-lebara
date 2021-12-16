@@ -16,7 +16,7 @@
 
 import React, { Component } from 'react';
 import { Route } from 'react-router-dom';
-
+import PrivateRoute from "../../PrivateRoute";
 /**
  * Helper that facilitate the use of the {@link Route} component
  */
@@ -43,9 +43,9 @@ export const withRoute = (WrappedComponent, extension) => {
         <Route
           key={routePath}
           exact
-          path={ '(.*)' + routePath + '(.' + extension + ')?' }
+          path={'(.*)' + routePath + '(.' + extension + ')?'}
           render={routeProps => {
-            return <WrappedComponent {...this.props} {...routeProps} />;
+            return <PrivateRoute WrappedComponent={WrappedComponent} routeProps={routeProps} {...this.props} />;
           }}
         />
       );

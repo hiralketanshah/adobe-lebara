@@ -10,6 +10,7 @@ import com.google.common.collect.ImmutableMap;
 import com.google.common.net.MediaType;
 import com.lebara.core.services.GlobalOsgiService;
 import com.lebara.core.utils.AemUtils;
+import org.apache.commons.lang3.ArrayUtils;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.SlingHttpServletResponse;
 import org.apache.sling.api.resource.Resource;
@@ -22,10 +23,8 @@ import org.osgi.service.component.annotations.Reference;
 import javax.servlet.Servlet;
 import javax.servlet.ServletException;
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
+import java.util.stream.Collectors;
 
 @Component(service = Servlet.class,
         property = {
@@ -40,6 +39,7 @@ public class GlobalConfigs extends SlingSafeMethodsServlet {
     private static final long serialVersionUID = 1L;
     private static final String CURRENCY_NAME = "currencyName";
     private static final String JOURNEY_PAGES = "journeyPages";
+    private static final String PRIVATE_PAGES = "privatePages";
     @Reference
     private transient GlobalOsgiService globalOsgiService;
 
@@ -66,12 +66,13 @@ public class GlobalConfigs extends SlingSafeMethodsServlet {
                 .put("paymentClientKey", Optional.ofNullable(globalOsgiService.getPaymentClientKey()).orElse(""))
                 .put("paymentAdeyenEnv", Optional.ofNullable(globalOsgiService.getPaymentAdeyenEnv()).orElse(""))
                 .put(CURRENCY_NAME, Optional.ofNullable(inheritedProp.getInherited(CURRENCY_NAME, String.class)).orElse(""))
-                .put(JOURNEY_PAGES, getJourneyPages(request, page)).build();
+                .put(JOURNEY_PAGES, getJourneyPages(request, page))
+                .put(PRIVATE_PAGES, getPrivatePages(request, inheritedProp.getInherited(PRIVATE_PAGES, String[].class))).build();
     }
     protected Object getJourneyPages(SlingHttpServletRequest request, Page currentPage) {
         if (currentPage != null) {
             Map<String, String> items = new HashMap<String, String>();
-            while (currentPage.getContentResource(JOURNEY_PAGES) == null && !currentPage.getAbsoluteParent(1).getPath().equals(currentPage.getPath())) {
+            while (currentPage.getContentResource(JOURNEY_PAGES) == null && currentPage.getAbsoluteParent(1).getPath() != currentPage.getPath()) {
                 currentPage = currentPage.getParent();
             }
             if (currentPage != null && currentPage.getContentResource(JOURNEY_PAGES) != null) {
@@ -85,6 +86,13 @@ public class GlobalConfigs extends SlingSafeMethodsServlet {
             return new com.google.gson.Gson().toJson(items);
         }
         return "{}";
+    }
+
+    protected List<String> getPrivatePages(SlingHttpServletRequest request, String[] privatePages) {
+        if (ArrayUtils.isNotEmpty(privatePages)) {
+            return Arrays.stream(privatePages).map(link  -> AemUtils.getLinkWithExtension(link, request)).collect(Collectors.toList());
+        }
+        return Collections.<String>emptyList();
     }
 }
 

@@ -14,6 +14,7 @@ import { Icon } from "@lebara/ui/src/components/Icon/Icon";
 import Button from "../Button/Button";
 import {Box} from "@chakra-ui/layout";
 import {IoClose} from "react-icons/all";
+import aemUtils from "../../utils/aem-utils";
 
 const SideMenu: React.FC<SideMenuProps> = ({ 
   items, onClose, 
@@ -21,6 +22,12 @@ const SideMenu: React.FC<SideMenuProps> = ({
   topupCtaText = "Top Up +",
  }) => {
   const history = useHistory();
+
+  const onMenuLinkNavigate = (url: any) => {
+    if(!url) return null;
+    return aemUtils.isCheckExternalLink(url) ? window.open(url) : history.push(url);
+  }
+
   return (
       <Flex flexDirection="column" h="100%">
         <Box h="80px" bg="lightenPrimary.500">
@@ -38,10 +45,10 @@ const SideMenu: React.FC<SideMenuProps> = ({
               <AccordionItem key={item.title}>
                 <h2>
                   <AccordionButton h="52px"
-                                   _focus={{
-                                     outline: "none"
-                                   }}
-                    onClick={() => item?.linkUrl && item?.items?.length === 0 ? history.push(item?.linkUrl) : null}>
+                    _focus={{
+                      outline: "none"
+                    }}
+                    onClick={() => item?.linkUrl && item?.items?.length === 0 ? onMenuLinkNavigate(item?.linkUrl) : null}>
                     <Flex textAlign="left" alignItems="center" flex={1}>
                       {item.icon && (
                           <Icon
@@ -53,7 +60,7 @@ const SideMenu: React.FC<SideMenuProps> = ({
                           />
                       )}
                       <Text color="primary.600" fontWeight="bold" fontSize={14}
-                        onClick={() => item?.linkUrl ? history.push(item?.linkUrl) : null}
+                        onClick={() => onMenuLinkNavigate(item?.linkUrl)}
                       >
                         {item.title}
                       </Text>
@@ -72,9 +79,7 @@ const SideMenu: React.FC<SideMenuProps> = ({
                           fontWeight={500}
                           iconSpacing={5}
                           justifyContent="flex-start"
-                          onClick={() =>
-                              subItem.linkUrl ? history.push(subItem.linkUrl) : null
-                          }
+                          onClick={() => onMenuLinkNavigate(subItem?.linkUrl)}
                       >
                         {subItem.title}
                       </Button>
