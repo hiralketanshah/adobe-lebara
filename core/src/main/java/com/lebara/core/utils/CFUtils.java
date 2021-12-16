@@ -53,7 +53,7 @@ public class CFUtils {
         try {
             list = Arrays.stream(stringArray).map(al -> gson.fromJson(al, T)).collect(Collectors.toList());
         } catch (IllegalStateException | JsonSyntaxException e) {
-            LOGGER.error("[convertStringArrayToList] error while parsing json {}", e);
+            LOGGER.error("[convertStringArrayToList] error while parsing json for stringArray {} : Error message {}", Arrays.toString(stringArray), e.getMessage());
         }
         return list;
     }
@@ -79,21 +79,6 @@ public class CFUtils {
         return offerFragmentBean;
     }
 
-    public static List<SelectBean> populateCountryInfo(Resource cfResource) {
-        if (null != cfResource) {
-            ContentFragment countryFragment = cfResource.adaptTo(ContentFragment.class);
-            if (null != countryFragment) {
-                List<SelectBean> countries = convertStringArrayToList(CFUtils.getElementArrayValue(countryFragment, "countryInfo"), SelectBean.class);
-                for (int i = 0; i < countries.size(); i++) {
-                    countries.get(i).setKey(String.valueOf(i));
-                    countries.get(i).setUrl(AemUtils.getLinkWithExtension(countries.get(i).getValue(), cfResource.getResourceResolver()));
-                    countries.get(i).setValue(countries.get(i).getName());
-                }
-                return countries;
-            }
-        }
-        return new ArrayList<>();
-    }
 
     public static List<String> populateTopupInfo(Resource cfResource) {
         List<String> topups = new ArrayList<>();
@@ -132,6 +117,9 @@ public class CFUtils {
     public static List<SelectOption> getInternationalRates(ResourceResolver resolver, String fragmentRootPath) {
         List<SelectOption> internationalRateBeanList = new ArrayList<>();
         Resource parentResource = resolver.getResource(fragmentRootPath);
+        if (parentResource == null) {
+            return internationalRateBeanList;
+        }
         for (Resource fragment : parentResource.getChildren()) {
             ContentFragment irFragment = fragment.adaptTo(ContentFragment.class);
             if (null != irFragment) {
@@ -147,6 +135,47 @@ public class CFUtils {
             }
         }
         return internationalRateBeanList;
+    }
+
+    /**
+     * this methods takes the root path for fragment as an input and iterates through all
+     * its child and returns a list of InternationalRateBean objects.
+     */
+    public static List<SelectBean> getWhereToCallRates(ResourceResolver resolver, String fragmentRootPath) {
+        List<SelectBean> wtcBeanList = new ArrayList<>();
+        Resource parentResource = resolver.getResource(fragmentRootPath);
+        if (parentResource == null) {
+            return wtcBeanList;
+        }
+        int count = 0;
+        for (Resource fragment : parentResource.getChildren()) {
+            ContentFragment irFragment = fragment.adaptTo(ContentFragment.class);
+            if (null != irFragment) {
+                String countryLandingPageUrl = CFUtils.getElementValue(irFragment, "countryLandingPageURL");
+                countryLandingPageUrl = AemUtils.getLinkWithExtension(countryLandingPageUrl, resolver);
+                String countryName = CFUtils.getElementValue(irFragment, "countryName");
+                if (StringUtils.isNoneBlank(countryLandingPageUrl, countryName)) {
+                    SelectBean selectBean = new SelectBean();
+                    selectBean.setKey(String.valueOf(count++));
+                    selectBean.setUrl(countryLandingPageUrl);
+                    selectBean.setValue(countryName);
+                    selectBean.setName(countryName);
+                    wtcBeanList.add(selectBean);
+                }
+            }
+        }
+        Collections.sort(wtcBeanList, new SortbyName());
+        return wtcBeanList;
+    }
+
+    static class SortbyName implements Comparator<SelectBean> {
+        // Sorting in ascending order of name
+        public int compare(SelectBean a, SelectBean b) {
+            if (a != null && b != null) {
+                return a.getName().compareTo(b.getName());
+            }
+            return 0;
+        }
     }
 
     public static OfferFragmentBean populateOffers( Resource cfResource, I18n i18n) {

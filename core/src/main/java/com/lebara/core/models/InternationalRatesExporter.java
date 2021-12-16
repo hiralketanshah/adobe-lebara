@@ -21,6 +21,8 @@ import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.injectorspecific.ScriptVariable;
 import org.apache.sling.models.annotations.injectorspecific.SlingObject;
 import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.annotation.PostConstruct;
 import java.util.Collections;
@@ -35,6 +37,8 @@ public class InternationalRatesExporter implements ComponentExporter {
      * The resource type.
      */
     protected static final String RESOURCE_TYPE = "lebara/components/internationalrates";
+
+    final static Logger LOGGER = LoggerFactory.getLogger(CFUtils.class);
 
     @SlingObject
     private ResourceResolver resourceResolver;
@@ -87,7 +91,13 @@ public class InternationalRatesExporter implements ComponentExporter {
                     smsRate = CFUtils.getElementValue(irFragment, "smsRate");
                 }
             }
-            countryList = CFUtils.getInternationalRates(resourceResolver, fragmentRootPath);
+            LOGGER.debug("Interntional rates fragmentRootPath is {}", fragmentRootPath);
+            if (StringUtils.isNotBlank(fragmentRootPath)) {
+                countryList = CFUtils.getInternationalRates(resourceResolver, fragmentRootPath);
+            } else {
+                countryList = Collections.emptyList();
+            }
+
         }
     }
 
