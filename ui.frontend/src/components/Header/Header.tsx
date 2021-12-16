@@ -15,7 +15,6 @@ import {
   useOutsideClick,
 } from "@chakra-ui/react";
 import {AiOutlineUser, BiSearch, RiShoppingCartLine,} from "react-icons/all";
-import {Link} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 
 import {children, HeaderProps} from "./types";
@@ -40,7 +39,7 @@ import GET_SESSION_STATUS from "../../graphql/GET_SESSION_STATUS";
 import {saveUserInfo} from "@lebara/ui/src/redux/actions/userActions";
 import {setLoading} from "@lebara/ui/src/redux/actions/loadingActions";
 import {setPaymentMethods} from "@lebara/ui/src/redux/actions/paymentMethodsActions";
-import { useHistory } from "@lebara/ui/src/hooks/useHistory";
+import { useHistory, RouterLink } from "@lebara/ui/src/hooks/useHistory";
 import axios from "axios";
 import PlanNotEligibleDialog from "@lebara/ui/src/components/PlanNotEligibleDialog/PlanNotEligibleDialog";
 import { toggleDialogState } from "@lebara/ui/src/redux/actions/modalsActions";
@@ -248,7 +247,7 @@ const Header: React.FC<HeaderProps> = ({
     handler: () => setProfileDropdown(false),
   });
 
-  const onHandleSearchQuery = ({isQuery, results }: any) => {
+  const onHandleSearchQuery = ({ isQuery, results }: any) => {
     setQuerySearched(isQuery);
     setResults([...results]);
   }
@@ -367,9 +366,14 @@ const Header: React.FC<HeaderProps> = ({
           borderBottom="none"
         >
           <ChakraLink>
-            <Link to={logoLinkURL || "/"}>
-              <Image src={logoPath} h="37px" w={{lg: "80px", xl: "116.84px"}} alt="logo" />
-            </Link>
+            <RouterLink to={logoLinkURL || "/"}>
+                <Image 
+                  src={logoPath} 
+                  h="37px" 
+                  w={{lg: "80px", xl: "116.84px"}} 
+                  alt="logo" 
+                />
+              </RouterLink>
           </ChakraLink>
 
           <Flex alignItems="left" ml={{ xl: "60px", lg: "40px", md: "15px" }}  gridGap={{lg: "20px", xl: "30px"}}>
@@ -416,7 +420,6 @@ const Header: React.FC<HeaderProps> = ({
               ) : (
                 <Search
                   {...search}
-                  key={'search-comp-key-in-header'+isQuerySearched}
                   onHandleSearchQuery={onHandleSearchQuery}
                   onCloseClick={onCloseSearch}
                   isHeaderSearchInput={true}

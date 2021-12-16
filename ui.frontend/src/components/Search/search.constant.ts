@@ -1,0 +1,1 @@
+export const MIN_CHARS_SEARCH = 3;
