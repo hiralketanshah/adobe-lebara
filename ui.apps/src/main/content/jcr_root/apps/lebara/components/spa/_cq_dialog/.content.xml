@@ -227,6 +227,20 @@
                                                     </items>
                                                 </field>
                                             </journeypages>
+                                            <privatepages
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
+                                                fieldLabel="Private Pages List"
+                                                metaType="text-single"
+                                                name="./privatePages"
+                                                valueType="string[]">
+                                                <field
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/form/pathbrowser"
+                                                    fieldLabel="Private page"
+                                                    name="./privatePages"
+                                                    rootPath="/content/lebara"/>
+                                            </privatepages>
                                         </items>
                                     </column>
                                 </items>

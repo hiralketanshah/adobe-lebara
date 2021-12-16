@@ -13,7 +13,7 @@ function PrivateRoute({ WrappedComponent, routeProps, ...rest }: any) {
   const isLoading = useSelector(selectIsLoading);
   const location = useLocation();
   return (
-    (isAuthenticated || isLoading) || AuthoringUtils.isInEditor() || !aemUtils.isForbiddenPage(location.pathname) ?
+    (isAuthenticated || isLoading) || AuthoringUtils.isInEditor() || !aemUtils.isPrivatePage(location.pathname) ?
       <WrappedComponent {...rest} {...routeProps} /> :
       <Route
         {...rest}

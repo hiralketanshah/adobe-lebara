@@ -22,8 +22,8 @@ const aemUtils = {
     const json = await response.json();
     return isOneEntry ? json[0] : json;
   },
-  isForbiddenPage: function (pathname) {
-    return pathname === (GC.journeyPages[C.DASHBOARD_MANAGE] || GC.journeyPages[C.DASHBOARD] || GC.journeyPages[C.USAGE_DETAILS] || GC.journeyPages[C.MANAGE_SIM_CARDS] || GC.journeyPages[C.PAYMENT_METHOD] || GC.journeyPages[C.ADD_EDIT_DEBIT_CREDIT_CARD] || GC.journeyPages[C.ADD_PAYPAL] || GC.journeyPages[C.USER_PROFILE] || GC.journeyPages[C.CONFIRM_DELINK_SIM]);
+  isPrivatePage: function (pathname) {
+    return GC.privatePages.includes(pathname);
   },
   debounce: function (func, timeout = 300) {
     let timer;
