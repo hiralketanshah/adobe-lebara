@@ -1,5 +1,5 @@
 import { MapTo } from "@adobe/aem-react-editable-components";
-import OrderHistoryContainer from "@lebara/ui/src/components/OrderHistory/OrderHistoryContainer";
+import PaymentOrderHistoryRoute from "@lebara/ui/src/rotues/PaymentOrderHistoryRoute";
 
 const OrderHistoryContainerConfig = {
   emptyLabel: "Order History Component",
@@ -8,4 +8,4 @@ const OrderHistoryContainerConfig = {
   },
 };
 
-MapTo("lebara/components/orderpaymenthistory")(OrderHistoryContainer, OrderHistoryContainerConfig);
+MapTo("lebara/components/orderpaymenthistory")(PaymentOrderHistoryRoute, OrderHistoryContainerConfig);
