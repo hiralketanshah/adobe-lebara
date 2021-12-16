@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Box,
   InputGroup,
@@ -10,6 +10,7 @@ import { SearchProps } from "./types";
 import Button from "../Button/Button";
 import aemUtils from "../../utils/aem-utils";
 import SearchResults from "./SearchResults";
+import { MIN_CHARS_SEARCH } from "./search.constant";
 
 const Search: React.FC<SearchProps> = ({
   links,
@@ -29,36 +30,39 @@ const Search: React.FC<SearchProps> = ({
   const [searchRootValue] = useState(searchRoot);
   const [searchResults, setSearchResults] = useState([]);
 
-  async function fetchData() {
-    const response = await fetch(aemUtils.getSearchResultsPath(query, searchRootValue, ''));
-    const jsonResp = await response.json();
-
-    if(!isHeaderSearchInput && query === '') {
-      setSearchResults([]);
-      return;
-    }
-    setSearchResults(jsonResp);
-  }
+  
 
   const handleChange = (e: any) => {
     const { value } = e.target;
     setQuery(value);
-    
-    onHandleSearchQuery && onHandleSearchQuery({
-      isQuery: value,
-      results: [...searchResults]
-    });
-
-    if(value === '') {
-      setSearchResults([]);
-      onHandleSearchQuery && onHandleSearchQuery({
-        isQuery: value,
-        results: []
-      });
-    }
   }
 
-  const onSearchHandler = aemUtils.debounce(() => fetchData());
+  useEffect(() => {
+    async function fetchData(value: any) {
+      const response = await fetch(aemUtils.getSearchResultsPath(value, searchRootValue, ''));
+      const jsonResp = await response.json();
+  
+      // On success response
+      setSearchResults(jsonResp);
+      onHandleSearchQuery && onHandleSearchQuery({
+        isQuery: value,
+        results: [...jsonResp]
+      });
+    }
+
+    if(query && query.length >= MIN_CHARS_SEARCH) {
+      aemUtils.debounce(fetchData(query)) ;
+    } else {
+      setSearchResults([]);
+      onHandleSearchQuery && onHandleSearchQuery({
+        isQuery: query,
+        results: []
+      });
+      return;
+    }
+
+    return () => {}
+  }, [query, searchRootValue, onHandleSearchQuery]);
 
   return (
     <>
@@ -93,13 +97,14 @@ const Search: React.FC<SearchProps> = ({
               color="black"
               bgColor="white"
               borderRadius="lg"
-              value={searchValue}
+              defaultValue={query}
               onChange={handleChange}
-              onKeyUp={onSearchHandler}
               autoFocus={true}
+              autoComplete={"false"}
             />
           </InputGroup>
         </>)}
+
 
       {/* For Desktop/Default View Search field and Result output! */}
       {isHeaderSearchInput && showSearchResults && (<>
@@ -157,9 +162,10 @@ const Search: React.FC<SearchProps> = ({
                 color="black"
                 bgColor="white"
                 borderRadius="lg"
-                value={query}
+                defaultValue={query}
                 onChange={handleChange}
-                onKeyUp={onSearchHandler}
+                autoFocus={true}
+                autoComplete={"false"}
               />
             </InputGroup>
             <Box width="10px" />

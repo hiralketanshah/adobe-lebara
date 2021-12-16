@@ -1,12 +1,13 @@
 import React from "react";
 import {
   Box,
-  Link,
 } from "@chakra-ui/react";
 import { FiArrowRight, MdCancel } from "react-icons/all";
 import LebaraText from "../LebaraText/LebaraText";
 import { SearchResultProps } from "./types";
 import Button from "../Button/Button";
+import { RouterLink } from "@lebara/ui/src/hooks/useHistory";
+import { MIN_CHARS_SEARCH } from "./search.constant";
 
 const SearchResults: React.FC<any> = ({
     mostSearchLabel,
@@ -50,7 +51,7 @@ const SearchResults: React.FC<any> = ({
           </Box> */}
 
           {/* No search results or queryVal searched! */}
-          {queryVal === '' && results?.length === 0 && links?.length !== 0 && (<Box mt="4px" px="4px" py="15px">
+          {(queryVal === '' || queryVal.length < MIN_CHARS_SEARCH) && results?.length === 0 && links?.length !== 0 && (<Box mt="4px" px="4px" py="15px">
               <Box mt="7px">
                 {mostSearchLabel && <LebaraText type="subtitle2" color="white" fontWeight="bold">
                   {mostSearchLabel}
@@ -68,16 +69,17 @@ const SearchResults: React.FC<any> = ({
                       alignItems="center"
                       color="white"
                     >
-                      <Link
+                      <RouterLink
                         variant="ghost"
                         padding="initial"
                         height="initial"
                         color="white"
                         _hover={{ bgColor: "transparent" }}
                         to={`${linkItem?.link}` || '/'}
+                        style={{display: 'block', width: '100%'}}
                       >
                         <LebaraText type="body2">{linkItem?.label}</LebaraText>
-                      </Link>
+                      </RouterLink>
                       <FiArrowRight size={20} color="white" />
                     </Box>
                   ))}
@@ -88,8 +90,7 @@ const SearchResults: React.FC<any> = ({
           {/* If search results found  */}
             {queryVal !== '' && results?.length !== 0 && (
             <Box mt="7px" px="4px"
-              className="queryvalue-and-search-result"
-            >
+              className="queryvalue-and-search-result">
               <Box>
               {results?.map((result: SearchResultProps, idx:number) => (
                 <Box
@@ -103,16 +104,17 @@ const SearchResults: React.FC<any> = ({
                   alignItems="center"
                   color="white"
                 >
-                  <Link
+                  <RouterLink
                     variant="ghost"
                     padding="initial"
                     height="initial"
                     color="white"
                     _hover={{ bgColor: "transparent" }}
                     to={`${result?.path}` || '/'}
+                    style={{display: 'block', width: '100%'}}
                   >
                     <LebaraText type="body2">{result?.title}</LebaraText>
-                  </Link>
+                  </RouterLink>
                   <FiArrowRight size={20} color="white" />
                 </Box>
               ))}
@@ -120,7 +122,7 @@ const SearchResults: React.FC<any> = ({
             </Box>)}
 
           {/* If not search results found */}
-          {queryVal !== '' && results.length === 0 && (<Box mt="4px" px="4px" py="4"
+          {queryVal.length >= MIN_CHARS_SEARCH && results.length === 0 && (<Box mt="4px" px="4px" py="4"
             textAlign="center"
             color="white"
             fontSize="14px"
