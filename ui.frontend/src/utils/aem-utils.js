@@ -1,5 +1,7 @@
-import { globalConstants as C } from "@lebara/ui/src/configs/globalConfigs.js";
+import { globalConfigs as GC, globalConstants as C } from "@lebara/ui/src/configs/globalConfigs.js";
 
+const textRegex = /handyvertrag|sim|prepaid|blog/gi;
+const realExternalRegex = /https|http|www/gi;
 const aemUtils = {
   getSearchResultsPath: function(query = '', searchRootPagePath = undefined, type = "") {
     let filename = type === 'help' ? C.HELPCENTER_SEARCH_FILENAME : C.GLOBAL_SEARCH_FILENAME;
@@ -22,6 +24,9 @@ const aemUtils = {
     const json = await response.json();
     return isOneEntry ? json[0] : json;
   },
+  isPrivatePage: function (pathname) {
+    return GC.privatePages.includes(pathname);
+  },
   debounce: function (func, timeout = 1000) {
     let timer;
     return (...args) => {
@@ -29,10 +34,11 @@ const aemUtils = {
       timer = setTimeout(() => { func.apply(this, args); }, timeout);
     };
   },
-  isCheckExternalLink: function(url) {
-    if(!url || url === "") return false;
-
-    return url.toLowerCase().includes(('http' || 'https' || 'www'))
+  isCheckExternalLink: (url) => {
+    if(!url) return;
+    const isRealTest = true;
+    const str = url.toLowerCase();
+    return str.search(isRealTest ? realExternalRegex : textRegex) !== -1 ? true : false;
   }
 }
 
