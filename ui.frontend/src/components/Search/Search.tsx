@@ -30,8 +30,6 @@ const Search: React.FC<SearchProps> = ({
   const [searchRootValue] = useState(searchRoot);
   const [searchResults, setSearchResults] = useState([]);
 
-  
-
   const handleChange = (e: any) => {
     const { value } = e.target;
     setQuery(value);
@@ -51,7 +49,7 @@ const Search: React.FC<SearchProps> = ({
     }
 
     if(query && query.length >= MIN_CHARS_SEARCH) {
-      aemUtils.debounce(fetchData(query)) ;
+      aemUtils.debounce(fetchData(query));
     } else {
       setSearchResults([]);
       onHandleSearchQuery && onHandleSearchQuery({
@@ -61,8 +59,9 @@ const Search: React.FC<SearchProps> = ({
       return;
     }
 
-    return () => {}
-  }, [query, searchRootValue, onHandleSearchQuery]);
+    return () => {};
+
+  }, [query]);
 
   return (
     <>
