@@ -504,7 +504,7 @@ const Header: React.FC<HeaderProps> = ({
             mt="-20px"
             borderBottomRadius="12px"
           >
-            <UserMenu menus={loggedInMenuItems as any} logoutLabel={logoutLabel} />
+            <UserMenu menus={loggedInMenuItems as any} logoutLabel={logoutLabel} logoutLink={logoLinkURL}/>
           </Flex>
         </Box>
       )}
@@ -512,7 +512,9 @@ const Header: React.FC<HeaderProps> = ({
         <MiniHeader loggedInMenuItems={loggedInMenuItems} 
           topupCtaText={topupCtaText}
           topupCtaLink={topupCtaLink}
-          logoutLabel={logoutLabel} logoPath={logoPath} 
+          logoutLabel={logoutLabel}
+          logoutLink={logoLinkURL}
+          logoPath={logoPath}
           logoLinkURL={logoLinkURL} items={items}
           search={search} />
       </Flex>

@@ -20,4 +20,5 @@ export interface MiniHeaderProps extends HeaderProps {
   items?: children[];
   topupCtaText?: string;
   topupCtaLink?: string;
+  logoutLink?: string;
 }
