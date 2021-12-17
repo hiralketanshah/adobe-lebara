@@ -43,13 +43,6 @@
                                     fieldLabel="Cancel Cta Label"
                                     name="./frmFields/ctaCancelLabel"
                                     value="CANCEL"/>
-                            <ctaCancelURL
-                                    jcr:primaryType="nt:unstructured"
-                                    sling:resourceType="granite/ui/components/foundation/form/pathbrowser"
-                                    fieldLabel="Cancel Cta URL"
-                                    name="./frmFields/ctaCancelURL"
-                                    rootPath="/content/dam/lebara"
-                                    value=""/>
                         </items>
                     </column1>
                     <column2
@@ -210,18 +203,6 @@
                                     fieldLabel="Edit Link Label"
                                     value="EDIT"
                                     name="./frmFields/editLinkLabel"/>
-                            <emailEditLinkURL
-                                    jcr:primaryType="nt:unstructured"
-                                    sling:resourceType="granite/ui/components/foundation/form/pathbrowser"
-                                    fieldDescription="Email Edit Link URL"
-                                    fieldLabel="Email Edit Link URL"
-                                    name="./frmFields/emailEditLinkURL"/>
-                            <passwordEditLinkURL
-                                    jcr:primaryType="nt:unstructured"
-                                    sling:resourceType="granite/ui/components/foundation/form/pathbrowser"
-                                    fieldDescription="Password Edit Link URL"
-                                    fieldLabel="Password Edit Link URL"
-                                    name="./frmFields/passwordEditLinkURL"/>
                             <consentManagementlabel
                                     jcr:primaryType="nt:unstructured"
                                     sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
