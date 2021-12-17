@@ -36,7 +36,6 @@
         @include responsiveContainerSpacing();
     }
 }
-
 .page-small-container {
     max-width: 630px;
     width: 100%;
@@ -53,5 +52,12 @@
         flex-direction: column;
         grid-gap: 16px;
         margin: 16px auto;
+    }
+}
+@media (min-width: 320px) {
+    #dashboard-container {
+        .aem-container{
+            width:100%;
+        }
     }
 }

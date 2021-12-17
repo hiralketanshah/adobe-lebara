@@ -33,22 +33,19 @@ class LebaraContainer extends AllowedComponentsContainer<LebaraContainerProps, C
             componentMapping: this.props.componentMapping || ComponentMapping,
         };
         this.mainDiv = React.createRef();
+  }
+
+  componentDidMount() {
+    if (this.mainDiv.current?.parentNode?.parentElement) {
+      if( document.getElementById("dashboard-container")){
+        this.mainDiv.current?.parentElement?.setAttribute('style', `${this.props.backgroundStyle};max-width: none`);
+      }else{
+        this.mainDiv.current?.parentElement?.setAttribute('style', this.props.backgroundStyle);
+      }
+      this.mainDiv.current?.parentNode?.parentElement?.setAttribute('style', this.props.backgroundStyle);
     }
 
-    componentDidMount() {
-        if (this.mainDiv.current?.parentNode?.parentElement) {
-            this.mainDiv.current?.parentElement?.setAttribute('style', this.props.backgroundStyle);
-            this.mainDiv.current?.parentNode?.parentElement?.setAttribute('style', this.props.backgroundStyle);
-        }
-
-    }
-
-    componentDidUpdate() {
-        if (this.mainDiv.current?.parentNode?.parentElement) {
-          this.mainDiv.current?.parentElement?.setAttribute('style', this.props.backgroundStyle);
-          this.mainDiv.current?.parentNode?.parentElement?.setAttribute('style', this.props.backgroundStyle);
-        }
-    }
+  }
 
     get coreContainerProps() {
         return {
