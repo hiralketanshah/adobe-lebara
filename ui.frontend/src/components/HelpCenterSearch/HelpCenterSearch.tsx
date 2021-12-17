@@ -59,13 +59,18 @@ const HelpCenterSearch: React.FC<HelpCenterSearchProps> = ({
       setSearchResults(newSelectOptionsData);
     }
 
-    if(query && query.length >= MIN_CHARS_SEARCH) {
-       aemUtils.debounce(fetchData(query)) ;
-    } else {
-      setSearchResults([]);
-      return;
-    }
-    return () => {}
+    const delayDebounceFn = setTimeout(() => {
+      if(query && query.length >= MIN_CHARS_SEARCH) {
+        fetchData(query);
+      } else {
+        setSearchResults([]);
+        return;
+      }
+    }, 1000);
+
+    return () => {
+      clearTimeout(delayDebounceFn);
+    };
   }, [query, searchRootValue]);
 
   return (
