@@ -60,7 +60,7 @@ const Search: React.FC<SearchProps> = ({
     }
 
     return () => {};
-  }, [query, searchRootValue, onHandleSearchQuery]);
+  }, [query]);
 
   return (
     <>
