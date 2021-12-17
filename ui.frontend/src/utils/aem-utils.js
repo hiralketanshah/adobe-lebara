@@ -27,7 +27,7 @@ const aemUtils = {
   isPrivatePage: function (pathname) {
     return GC.privatePages.includes(pathname);
   },
-  debounce: function (func, timeout = 2000) {
+  debounce: function (func, timeout = 5000) {
     let timer;
     return (...args) => {
       clearTimeout(timer);
