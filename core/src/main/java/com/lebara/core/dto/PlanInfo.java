@@ -21,12 +21,10 @@ public class PlanInfo {
     }
 
     public String[] getListPlanItem() {
-
         return listPlanItem;
     }
 
     public void setListPlanItem(String[] listPlanItem) {
-
         this.listPlanItem = listPlanItem;
     }
 

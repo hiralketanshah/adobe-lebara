@@ -22,6 +22,7 @@ import org.apache.sling.models.annotations.via.ResourceSuperType;
 import com.lebara.core.models.beans.Link;
 import org.apache.sling.models.annotations.injectorspecific.ChildResource;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -137,7 +138,7 @@ public class HeaderNavigationImpl implements HeaderNavigation {
 
     @JsonProperty("loggedInMenuItems")
     public List<Link> getLinks() {
-        return links;
+        return links == null ? (Collections.emptyList()) : (Collections.unmodifiableList(links));
     }
 
     public String getLogoutLabel() {
