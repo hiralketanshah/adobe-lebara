@@ -5,6 +5,7 @@ import {
   DrawerBody,
   DrawerContent,
   Flex,
+  Image,
   Link as ChakraLink,
   Text,
   useDisclosure,
@@ -115,7 +116,7 @@ const MiniHeader: React.FC<MiniHeaderProps> = ({
           />
           <ChakraLink>
             <Link to={logoLinkURL || "/"}>
-              <img src={logoPath} alt="Logo" />
+              <Image src={logoPath} alt="Logo" minW={75} />
             </Link>
           </ChakraLink>
         </Flex>
