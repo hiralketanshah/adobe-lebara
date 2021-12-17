@@ -66,7 +66,7 @@ public class UsageDetailsExporter extends HeadingExporter {
                 tabsName.add(AemUtils.getStringProperty(tab, "tabsName"));
             }
         }
-        return tabsName == null ? Collections.emptyList() : Collections.unmodifiableList(tabsName);
+        return Collections.unmodifiableList(tabsName);
     }
 
     @Override

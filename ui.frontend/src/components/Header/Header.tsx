@@ -369,6 +369,7 @@ const Header: React.FC<HeaderProps> = ({
             <RouterLink to={logoLinkURL || "/"}>
                 <Image 
                   src={logoPath} 
+                  minW={75}
                   h="37px" 
                   w={{lg: "80px", xl: "116.84px"}} 
                   alt="logo" 

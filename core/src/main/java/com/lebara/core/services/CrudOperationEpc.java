@@ -143,14 +143,14 @@ public class CrudOperationEpc {
         if (!CollectionUtils.isEmpty(offers)) {
             logger.debug("total offers returned from epc is {}", offers.size());
             for (Offer offer : offers) {
-                String validOfferName = JcrUtil.createValidName(offer.name);
+                String validOfferName = JcrUtil.createValidName(offer.getName());
                 String cfPath = cfDamPath + "/" + validOfferName;
                 Resource cfPathResource = resourceResolver.getResource(cfPath);
                 if (cfPathResource == null) {
                     String offerId = writeJsonToCf(offer, cfDamPath, resourceResolver, validOfferName, offerType);
                     logger.debug("content fragment created for offer id {}", offerId);
                 } else {
-                    logger.debug("CF already exist with name {} and offer id {} at {}", validOfferName, offer.offerId, cfPath);
+                    logger.debug("CF already exist with name {} and offer id {} at {}", validOfferName, offer.getOfferId(), cfPath);
 
                     // on retrigger of workflow update the allowance
                     ContentFragment offerFragment = cfPathResource.adaptTo(ContentFragment.class);
@@ -208,13 +208,13 @@ public class CrudOperationEpc {
             if (fragmentTemplate == null) {
                 return StringUtils.EMPTY;
             }
-            ContentFragment newFragment = fragmentTemplate.createFragment(resourceResolver.getResource(cfDamPath), validOfferName, offer.name);
+            ContentFragment newFragment = fragmentTemplate.createFragment(resourceResolver.getResource(cfDamPath), validOfferName, offer.getName());
 
-            newFragment.getElement("offerid").setContent(offer.offerId, LebaraConstants.CONTENT_TYPE_TEXT_PLAIN);
-            newFragment.getElement("name").setContent(offer.name, LebaraConstants.CONTENT_TYPE_TEXT_PLAIN);
-            newFragment.getElement("validity").setContent(String.valueOf(offer.validity), LebaraConstants.CONTENT_TYPE_TEXT_PLAIN);
+            newFragment.getElement("offerid").setContent(offer.getOfferId(), LebaraConstants.CONTENT_TYPE_TEXT_PLAIN);
+            newFragment.getElement("name").setContent(offer.getName(), LebaraConstants.CONTENT_TYPE_TEXT_PLAIN);
+            newFragment.getElement("validity").setContent(String.valueOf(offer.getValidity()), LebaraConstants.CONTENT_TYPE_TEXT_PLAIN);
             newFragment.getElement("active").setContent(String.valueOf(true), LebaraConstants.CONTENT_TYPE_TEXT_PLAIN);
-            newFragment.getElement("cost").setContent(String.valueOf(offer.cost), LebaraConstants.CONTENT_TYPE_TEXT_PLAIN);
+            newFragment.getElement("cost").setContent(String.valueOf(offer.getCost()), LebaraConstants.CONTENT_TYPE_TEXT_PLAIN);
             newFragment.getElement("offerType").setContent(offerType, LebaraConstants.CONTENT_TYPE_TEXT_PLAIN);
             List<String> cfAllowanceArray = populateAllowanceArray(offer);
 
@@ -226,7 +226,7 @@ public class CrudOperationEpc {
         } catch (ContentFragmentException e) {
             logger.error("ContentFragmentException {}", e);
         }
-        return offer.offerId;
+        return offer.getOfferId();
 
     }
 
@@ -234,7 +234,7 @@ public class CrudOperationEpc {
         GsonBuilder builder = new GsonBuilder();
         Gson gson = builder.create();
         List<String> cfAllowanceArray = new ArrayList<>();
-        for (Allowance allowances : offer.allowances) {
+        for (Allowance allowances : offer.getAllowances()) {
             CFAllowance cfAllowance = new CFAllowance();
             String value = allowances.getAllowanceValue();
             String name = StringUtils.EMPTY;

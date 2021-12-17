@@ -71,10 +71,10 @@ public class CrudOperationEpcTest {
         Mockito.when(resource.adaptTo(FragmentTemplate.class)).thenReturn(fragmentTemplate);
         if (!offers.isEmpty()) {
             Offer offer = offers.get(0);
-            Mockito.when(fragmentTemplate.createFragment(resource,  offer.name, offer.name)).thenReturn(newFragment);
+            Mockito.when(fragmentTemplate.createFragment(resource,  offer.getName(), offer.getName())).thenReturn(newFragment);
             Mockito.when(newFragment.getElement(anyString())).thenReturn(contentElement);
             Mockito.when(contentElement.getValue()).thenReturn(fragmentData);
-            assert (offer.offerId == crudOperationEpc.writeJsonToCf(offers.get(0), "", resourceResolver,"", "prepaid"));
+            assert (offer.getOfferId() == crudOperationEpc.writeJsonToCf(offers.get(0), "", resourceResolver,"", "prepaid"));
         }
     }
 

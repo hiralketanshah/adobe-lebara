@@ -134,6 +134,7 @@ public class CFUtils {
                 }
             }
         }
+        Collections.sort(internationalRateBeanList, new SortbyNameIR() );
         return internationalRateBeanList;
     }
 
@@ -173,6 +174,16 @@ public class CFUtils {
         public int compare(SelectBean a, SelectBean b) {
             if (a != null && b != null) {
                 return a.getName().compareTo(b.getName());
+            }
+            return 0;
+        }
+    }
+
+    static class SortbyNameIR implements Comparator<SelectOption> {
+        // Sorting in ascending order of name
+        public int compare(SelectOption a, SelectOption b) {
+            if (a != null && b != null) {
+                return a.getLabel().compareTo(b.getLabel());
             }
             return 0;
         }
