@@ -1,15 +1,13 @@
 package com.lebara.core.servlet;
 
-import com.day.cq.search.PredicateGroup;
 import com.day.cq.search.QueryBuilder;
-import com.day.cq.search.result.Hit;
-import com.day.cq.search.result.SearchResult;
-import com.day.cq.wcm.api.NameConstants;
 import com.day.cq.commons.jcr.JcrConstants;
+import com.day.cq.wcm.api.Page;
 import com.google.gson.Gson;
 import com.lebara.core.dto.SearchInfo;
 import com.lebara.core.utils.AemUtils;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.sling.api.resource.Resource;
 import org.apache.sling.api.resource.ResourceResolver;
 import org.apache.sling.api.servlets.HttpConstants;
 import org.apache.sling.api.servlets.SlingSafeMethodsServlet;
@@ -35,9 +33,7 @@ import javax.servlet.ServletException;
 import java.io.IOException;
 import java.text.MessageFormat;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import static org.apache.sling.api.servlets.ServletResolverConstants.*;
 
@@ -66,129 +62,62 @@ public class GlobalSearchServlet extends SlingSafeMethodsServlet {
         String param = request.getParameter("q");
         String searchType = request.getParameter("searchType");
         ResourceResolver resourceResolver = request.getResourceResolver();
-        Session session = resourceResolver.adaptTo(Session.class);
         String searchRoot = request.getParameter("searchRoot");
         if (StringUtils.isEmpty(searchRoot)) {
             searchRoot = DEFAULT_SEARCH_ROOT;
         }
         LOGGER.debug("searchRoot is {}", searchRoot);
-        //Map<String, String> predicate = getGlobalSearchPredicates(param, searchType, searchRoot);
-        //response.getWriter().println(getSearchInfoString(predicate, builder, session, request));
-        final String QUERY_FIND_WORKREF =
-                "SELECT * FROM [cq:PageContent] AS workref WHERE ISDESCENDANTNODE(workref, [{0}])"
-                        + " AND workref.[" + JcrResourceConstants.SLING_RESOURCE_TYPE_PROPERTY + "] = \"{1}\""
-                        + " AND (LOWER(workref.[" + JcrConstants.JCR_TITLE + "]) LIKE \"%{2}%\""
-                        + " OR LOWER(workref.[pageTitle]) LIKE \"%{3}%\""
-                        + " OR LOWER(workref.[navTitle]) LIKE \"%{4}%\")";
-        String paramSearch = param.toLowerCase();
-        final String sqlStatement = MessageFormat.format(QUERY_FIND_WORKREF, searchRoot,"lebara/components/page",
-                paramSearch, paramSearch, paramSearch);
-        final QueryManager queryManager;
+        response.getWriter().println(getSearchInfoString(request, param, resourceResolver, searchRoot));
+    }
+
+    protected String getSearchInfoString(SlingHttpServletRequest request, String param, ResourceResolver resourceResolver, String searchRoot) {
         List<SearchInfo> searchInfoList = new ArrayList<>();
-        try {
-            queryManager = session.getWorkspace().getQueryManager();
-            final Query query = queryManager.createQuery(sqlStatement, Query.JCR_SQL2);
-            query.setLimit(20);
-            final QueryResult result = query.execute();
-            final NodeIterator nodeIterator = result.getNodes();
-
-            while (nodeIterator.hasNext()) {
-                final Node node = nodeIterator.nextNode();
-                LOGGER.debug(node.getPath());
-                SearchInfo searchInfo = new SearchInfo();
-                searchInfo.setPath(AemUtils.getLinkWithExtension(node.getPath(), request));
-                //searchInfo.setTitle(node.getTitle());
-                searchInfoList.add(searchInfo);
-            }
-        } catch (RepositoryException e) {
-            e.printStackTrace();
-        }
-        Gson json = new Gson();
-        response.getWriter().println(json.toJson(searchInfoList));
-    }
-
-
-    /**
-     * Full text or tag based search
-     *
-     * @param param
-     * @param searchType
-     * @param searchRoot
-     * @return
-     */
-    protected Map<String, String> getGlobalSearchPredicates(String param, String searchType, String searchRoot) {
-        Map<String, String> predicate = new HashMap<>();
-        predicate.put("path", searchRoot);
-        predicate.put("type", NameConstants.NT_PAGE);
-        if (null != searchType && searchType.equalsIgnoreCase("fulltext")) {
-            predicate.put("fulltext", param);
-        } else if (null != searchType && searchType.equalsIgnoreCase("tag")){
-            predicate.put("1_property", "jcr:content/cq:tags");
-            predicate.put("1_property.value", "%" + param + "%");
-            predicate.put("1_property.operation", "like");
-        } else {
-            addTitleSearchPredicate(param, predicate);
-        }
-        return predicate;
-    }
-
-    /**
-     * Title based search
-     *
-     * @param param
-     * @param searchRoot
-     * @return
-     */
-    protected Map<String, String> getGlobalSearchPredicates(String param, String searchRoot) {
-        Map<String, String> predicate = new HashMap<>();
-        predicate.put("path", searchRoot);
-        predicate.put("type", NameConstants.NT_PAGE);
-        addTitleSearchPredicate(param, predicate);
-        return predicate;
-    }
-
-    /**
-     * @param param
-     * @param predicate
-     */
-    private void addTitleSearchPredicate(String param, Map<String, String> predicate) {
-        predicate.put("1_group.p.or", "true");
-
-        predicate.put("1_group.1_property", "jcr:content/jcr:title");
-        predicate.put("1_group.1_property.value", "%" + param + "%");
-        predicate.put("1_group.1_property.operation", "like");
-
-        predicate.put("1_group.2_property", "jcr:content/pageTitle");
-        predicate.put("1_group.2_property.value", "%" + param + "%");
-        predicate.put("1_group.2_property.operation", "like");
-
-        predicate.put("1_group.3_property", "jcr:content/navTitle");
-        predicate.put("1_group.3_property.value", "%" + param + "%");
-        predicate.put("1_group.3_property.operation", "like");
-    }
-
-/*    *//**
-     * @param predicate
-     * @param builder
-     * @param session
-     * @return
-     *//*
-    protected String getSearchInfoString(Map<String, String> predicate, QueryBuilder builder, Session session, SlingHttpServletRequest request) {
-        Query query = builder.createQuery(PredicateGroup.create(predicate), session);
-        SearchResult searchResult = query.getResult();
-        List<SearchInfo> searchInfoList = new ArrayList<>();
-        for (Hit hit : searchResult.getHits()) {
+        Session session = resourceResolver.adaptTo(Session.class);
+        if (StringUtils.isNotBlank(param) && session != null) {
+            String paramSearch = param.toLowerCase();
+            final String QUERY_FIND_PAGES =
+                    "SELECT * FROM [cq:PageContent] AS searchResult WHERE ISDESCENDANTNODE(searchResult, [{0}])"
+                            + " AND searchResult.[" + JcrResourceConstants.SLING_RESOURCE_TYPE_PROPERTY + "] = \"{1}\""
+                            + " AND (LOWER(searchResult.[" + JcrConstants.JCR_TITLE + "]) LIKE \"%{2}%\""
+                            + " OR LOWER(searchResult.[pageTitle]) LIKE \"%{3}%\""
+                            + " OR LOWER(searchResult.[navTitle]) LIKE \"%{4}%\")";
+            final String sqlStatement = MessageFormat.format(QUERY_FIND_PAGES, searchRoot, "lebara/components/page",
+                    paramSearch, paramSearch, paramSearch);
+            final QueryManager queryManager;
             try {
-                SearchInfo searchInfo = new SearchInfo();
-                searchInfo.setPath(AemUtils.getLinkWithExtension(hit.getPath(), request));
-                searchInfo.setTitle(hit.getTitle());
-                searchInfoList.add(searchInfo);
+                queryManager = session.getWorkspace().getQueryManager();
+                final Query query = queryManager.createQuery(sqlStatement, Query.JCR_SQL2);
+                query.setLimit(20);
+                final QueryResult result = query.execute();
+                final NodeIterator nodeIterator = result.getNodes();
+
+                while (nodeIterator.hasNext()) {
+                    final Node node = nodeIterator.nextNode();
+                    Resource hitResource = resourceResolver.getResource(node.getPath());
+                    if (hitResource == null) {
+                        continue;
+                    }
+                    Resource parentRes = hitResource.getParent();
+                    if (parentRes == null) {
+                        continue;
+                    }
+                    Page parentPage = parentRes.adaptTo(Page.class);
+                    if (parentPage == null) {
+                        continue;
+                    }
+                    SearchInfo searchInfo = new SearchInfo();
+                    searchInfo.setPath(AemUtils.getLinkWithExtension(parentPage.getPath(), request));
+                    searchInfo.setTitle(parentPage.getTitle());
+                    searchInfoList.add(searchInfo);
+
+                }
             } catch (RepositoryException e) {
-                LOGGER.error("Error in the Search", e);
+                e.printStackTrace();
             }
         }
         Gson json = new Gson();
         return json.toJson(searchInfoList);
-    }*/
+    }
+
 
 }
