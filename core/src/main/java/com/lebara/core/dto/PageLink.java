@@ -19,7 +19,7 @@ public class PageLink {
     }
 
     public List<Link> getChildLinks() {
-        return childLinks;
+        return childLinks == null ? Collections.emptyList() : Collections.unmodifiableList(childLinks);
     }
 
     public void setChildLinks(List<Link> childLinks) {

@@ -126,7 +126,7 @@ public class InternationalRatesExporter implements ComponentExporter {
     }
 
     public List<SelectOption> getCountryList() {
-        return Collections.unmodifiableList(countryList);
+        return countryList == null ? (Collections.emptyList()) : (Collections.unmodifiableList(countryList));
     }
 
     public String getLandlineLabel() {

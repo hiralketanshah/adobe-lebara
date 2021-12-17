@@ -138,7 +138,7 @@ public class HeaderNavigationImpl implements HeaderNavigation {
 
     @JsonProperty("loggedInMenuItems")
     public List<Link> getLinks() {
-        return Collections.unmodifiableList(links);
+        return links == null ? (Collections.emptyList()) : (Collections.unmodifiableList(links));
     }
 
     public String getLogoutLabel() {
