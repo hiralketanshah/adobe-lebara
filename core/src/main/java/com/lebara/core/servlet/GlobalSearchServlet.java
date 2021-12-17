@@ -1,7 +1,6 @@
 package com.lebara.core.servlet;
 
 import com.day.cq.search.PredicateGroup;
-import com.day.cq.search.Query;
 import com.day.cq.search.QueryBuilder;
 import com.day.cq.search.result.Hit;
 import com.day.cq.search.result.SearchResult;
@@ -16,18 +15,25 @@ import org.apache.sling.api.servlets.HttpConstants;
 import org.apache.sling.api.servlets.SlingSafeMethodsServlet;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.SlingHttpServletResponse;
+import org.apache.sling.jcr.resource.api.JcrResourceConstants;
 import org.osgi.framework.Constants;
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Reference;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import javax.jcr.Node;
+import javax.jcr.NodeIterator;
 import javax.jcr.RepositoryException;
 import javax.jcr.Session;
 
+import javax.jcr.query.Query;
+import javax.jcr.query.QueryManager;
+import javax.jcr.query.QueryResult;
 import javax.servlet.Servlet;
 import javax.servlet.ServletException;
 import java.io.IOException;
+import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -66,14 +72,45 @@ public class GlobalSearchServlet extends SlingSafeMethodsServlet {
             searchRoot = DEFAULT_SEARCH_ROOT;
         }
         LOGGER.debug("searchRoot is {}", searchRoot);
-        Map<String, String> predicate = getGlobalSearchPredicates(param, searchType, searchRoot);
-        response.getWriter().println(getSearchInfoString(predicate, builder, session, request));
+        //Map<String, String> predicate = getGlobalSearchPredicates(param, searchType, searchRoot);
+        //response.getWriter().println(getSearchInfoString(predicate, builder, session, request));
+        final String QUERY_FIND_WORKREF =
+                "SELECT * FROM [cq:PageContent] AS workref WHERE ISDESCENDANTNODE(workref, [{0}])"
+                        + " AND workref.[" + JcrResourceConstants.SLING_RESOURCE_TYPE_PROPERTY + "] = \"{1}\""
+                        + " AND LOWER(workref.[" + JcrConstants.JCR_TITLE + "]) LIKE \"%{2}%\""
+                        + " OR LOWER(workref.[pageTitle]) LIKE \"%{3}%\""
+                        + " OR LOWER(workref.[navTitle]) LIKE \"%{4}%\"";
+        String paramSearch = param.toLowerCase();
+        final String sqlStatement = MessageFormat.format(QUERY_FIND_WORKREF, searchRoot,"lebara/components/page",
+                paramSearch, paramSearch, paramSearch);
+        final QueryManager queryManager;
+        List<SearchInfo> searchInfoList = new ArrayList<>();
+        try {
+            queryManager = session.getWorkspace().getQueryManager();
+            final Query query = queryManager.createQuery(sqlStatement, Query.JCR_SQL2);
+            query.setLimit(20);
+            final QueryResult result = query.execute();
+            final NodeIterator nodeIterator = result.getNodes();
+
+            while (nodeIterator.hasNext()) {
+                final Node node = nodeIterator.nextNode();
+                LOGGER.debug(node.getPath());
+                SearchInfo searchInfo = new SearchInfo();
+                searchInfo.setPath(AemUtils.getLinkWithExtension(node.getPath(), request));
+                //searchInfo.setTitle(node.getTitle());
+                searchInfoList.add(searchInfo);
+            }
+        } catch (RepositoryException e) {
+            e.printStackTrace();
+        }
+        Gson json = new Gson();
+        response.getWriter().println(json.toJson(searchInfoList));
     }
 
 
     /**
      * Full text or tag based search
-     * 
+     *
      * @param param
      * @param searchType
      * @param searchRoot
@@ -94,10 +131,10 @@ public class GlobalSearchServlet extends SlingSafeMethodsServlet {
         }
         return predicate;
     }
-    
+
     /**
      * Title based search
-     * 
+     *
      * @param param
      * @param searchRoot
      * @return
@@ -129,13 +166,13 @@ public class GlobalSearchServlet extends SlingSafeMethodsServlet {
         predicate.put("1_group.3_property.value", "%" + param + "%");
         predicate.put("1_group.3_property.operation", "like");
     }
-    
-    /**
+
+/*    *//**
      * @param predicate
      * @param builder
      * @param session
      * @return
-     */
+     *//*
     protected String getSearchInfoString(Map<String, String> predicate, QueryBuilder builder, Session session, SlingHttpServletRequest request) {
         Query query = builder.createQuery(PredicateGroup.create(predicate), session);
         SearchResult searchResult = query.getResult();
@@ -152,6 +189,6 @@ public class GlobalSearchServlet extends SlingSafeMethodsServlet {
         }
         Gson json = new Gson();
         return json.toJson(searchInfoList);
-    }
+    }*/
 
 }
