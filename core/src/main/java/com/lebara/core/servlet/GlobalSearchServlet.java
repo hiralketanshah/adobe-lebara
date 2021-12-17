@@ -90,7 +90,7 @@ public class GlobalSearchServlet extends SlingSafeMethodsServlet {
                 query.setLimit(20);
                 final QueryResult result = query.execute();
                 final NodeIterator nodeIterator = result.getNodes();
-
+                LOGGER.debug("query triggered is {}", query.getStatement());
                 while (nodeIterator.hasNext()) {
                     final Node node = nodeIterator.nextNode();
                     Resource hitResource = resourceResolver.getResource(node.getPath());
@@ -112,7 +112,7 @@ public class GlobalSearchServlet extends SlingSafeMethodsServlet {
 
                 }
             } catch (RepositoryException e) {
-                e.printStackTrace();
+                LOGGER.error("error while triggering searc {}", e);
             }
         }
         Gson json = new Gson();
