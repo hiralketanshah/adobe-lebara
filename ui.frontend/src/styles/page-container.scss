@@ -54,7 +54,7 @@
         margin: 16px auto;
     }
 }
-@media (min-width: 320px) {
+@media (max-width: 767px) {
     #dashboard-container {
         .aem-container{
             width:100%;
