@@ -77,9 +77,9 @@ public class GlobalSearchServlet extends SlingSafeMethodsServlet {
         final String QUERY_FIND_WORKREF =
                 "SELECT * FROM [cq:PageContent] AS workref WHERE ISDESCENDANTNODE(workref, [{0}])"
                         + " AND workref.[" + JcrResourceConstants.SLING_RESOURCE_TYPE_PROPERTY + "] = \"{1}\""
-                        + " AND LOWER(workref.[" + JcrConstants.JCR_TITLE + "]) LIKE \"%{2}%\""
+                        + " AND (LOWER(workref.[" + JcrConstants.JCR_TITLE + "]) LIKE \"%{2}%\""
                         + " OR LOWER(workref.[pageTitle]) LIKE \"%{3}%\""
-                        + " OR LOWER(workref.[navTitle]) LIKE \"%{4}%\"";
+                        + " OR LOWER(workref.[navTitle]) LIKE \"%{4}%\")";
         String paramSearch = param.toLowerCase();
         final String sqlStatement = MessageFormat.format(QUERY_FIND_WORKREF, searchRoot,"lebara/components/page",
                 paramSearch, paramSearch, paramSearch);
