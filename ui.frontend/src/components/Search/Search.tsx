@@ -48,18 +48,22 @@ const Search: React.FC<SearchProps> = ({
       });
     }
 
-    if(query && query.length >= MIN_CHARS_SEARCH) {
-      aemUtils.debounce(fetchData(query));
-    } else {
-      setSearchResults([]);
-      onHandleSearchQuery && onHandleSearchQuery({
-        isQuery: query,
-        results: []
-      });
-      return;
-    }
+    const delayDebounceFn = setTimeout(() => {
+      if(query && query.length >= MIN_CHARS_SEARCH) {
+        fetchData(query);
+      } else {
+        setSearchResults([]);
+        onHandleSearchQuery && onHandleSearchQuery({
+          isQuery: query,
+          results: []
+        });
+        return;
+      }
+    }, 1000);
 
-    return () => {};
+    return () => {
+      clearTimeout(delayDebounceFn);
+    };
   }, [query]);
 
   return (
