@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Flex,
   Box,
@@ -21,6 +21,8 @@ function formatOptionLabel({ label }: any, { inputValue }: any) {
   );
 }
 
+const MIN_CHARS_SEARCH = 3;
+
 const HelpCenterSearch: React.FC<HelpCenterSearchProps> = ({
   searchPlaceholder,
   searchRoot,
@@ -30,19 +32,6 @@ const HelpCenterSearch: React.FC<HelpCenterSearchProps> = ({
   const [searchRootValue] = useState(searchRoot);
   const [searchResults, setSearchResults] = useState([]);
 
-  async function fetchData() {
-    const response = await fetch(aemUtils.getSearchResultsPath(query, searchRootValue, 'help'));
-    const jsonResp = await response.json();
-    const newSelectOptionsData = jsonResp && jsonResp?.map((item: any, idx: number) => {
-
-      return {
-        ...item,
-         value: item?.path, 
-         label: item?.title,
-      }
-    })
-    setSearchResults(newSelectOptionsData);
-  }
 
   const handleChange = (option: any) => {
     if(option && option?.value) {
@@ -52,12 +41,37 @@ const HelpCenterSearch: React.FC<HelpCenterSearchProps> = ({
 
   const onSearchHandler = (value: any) => {
     setQuery(value);
-    
-    if(!value || value === "") {
-      setSearchResults([]);
-      return aemUtils.debounce(() => fetchData());
-    }
   };
+
+  useEffect(() => {
+    async function fetchData(value: any) {
+      const response = await fetch(aemUtils.getSearchResultsPath(value, searchRootValue, 'help'));
+      const jsonResp = await response.json();
+      if(!jsonResp) return;
+      const newSelectOptionsData = jsonResp && jsonResp?.map((item: any) => {
+        return {
+          ...item,
+          value: item?.path, 
+          label: item?.title,
+        }
+      });
+
+      setSearchResults(newSelectOptionsData);
+    }
+
+    const delayDebounceFn = setTimeout(() => {
+      if(query && query.length >= MIN_CHARS_SEARCH) {
+        fetchData(query);
+      } else {
+        setSearchResults([]);
+        return;
+      }
+    }, 1000);
+
+    return () => {
+      clearTimeout(delayDebounceFn);
+    };
+  }, [query, searchRootValue]);
 
   return (
     <>
@@ -114,7 +128,7 @@ const HelpCenterSearch: React.FC<HelpCenterSearchProps> = ({
                 options={searchResults}
                 onChange={handleChange}
                 onInputChange={onSearchHandler}
-                
+                autoFocus={true}
               />
           </Box>
       </Flex>

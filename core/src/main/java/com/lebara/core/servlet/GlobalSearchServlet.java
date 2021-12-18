@@ -9,6 +9,7 @@ import com.day.cq.wcm.api.NameConstants;
 import com.day.cq.commons.jcr.JcrConstants;
 import com.google.gson.Gson;
 import com.lebara.core.dto.SearchInfo;
+import com.lebara.core.utils.AemUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.sling.api.resource.ResourceResolver;
 import org.apache.sling.api.servlets.HttpConstants;
@@ -66,7 +67,7 @@ public class GlobalSearchServlet extends SlingSafeMethodsServlet {
         }
         LOGGER.debug("searchRoot is {}", searchRoot);
         Map<String, String> predicate = getGlobalSearchPredicates(param, searchType, searchRoot);
-        response.getWriter().println(getSearchInfoString(predicate, builder, session));
+        response.getWriter().println(getSearchInfoString(predicate, builder, session, request));
     }
 
 
@@ -135,14 +136,14 @@ public class GlobalSearchServlet extends SlingSafeMethodsServlet {
      * @param session
      * @return
      */
-    protected String getSearchInfoString(Map<String, String> predicate, QueryBuilder builder, Session session) {
+    protected String getSearchInfoString(Map<String, String> predicate, QueryBuilder builder, Session session, SlingHttpServletRequest request) {
         Query query = builder.createQuery(PredicateGroup.create(predicate), session);
         SearchResult searchResult = query.getResult();
         List<SearchInfo> searchInfoList = new ArrayList<>();
         for (Hit hit : searchResult.getHits()) {
             try {
                 SearchInfo searchInfo = new SearchInfo();
-                searchInfo.setPath(hit.getPath());
+                searchInfo.setPath(AemUtils.getLinkWithExtension(hit.getPath(), request));
                 searchInfo.setTitle(hit.getTitle());
                 searchInfoList.add(searchInfo);
             } catch (RepositoryException e) {
