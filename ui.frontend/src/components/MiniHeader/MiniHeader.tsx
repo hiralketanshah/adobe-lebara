@@ -5,6 +5,7 @@ import {
   DrawerBody,
   DrawerContent,
   Flex,
+  Image,
   Link as ChakraLink,
   Text,
   useDisclosure,
@@ -36,6 +37,7 @@ const MiniHeader: React.FC<MiniHeaderProps> = ({
   logoLinkURL,
   items,
   logoutLabel,
+  logoutLink,
   loggedInMenuItems,
   topupCtaText,
   topupCtaLink,
@@ -114,7 +116,7 @@ const MiniHeader: React.FC<MiniHeaderProps> = ({
           />
           <ChakraLink>
             <Link to={logoLinkURL || "/"}>
-              <img src={logoPath} alt="Logo" />
+              <Image src={logoPath} alt="Logo" minW={75} />
             </Link>
           </ChakraLink>
         </Flex>
@@ -210,7 +212,7 @@ const MiniHeader: React.FC<MiniHeaderProps> = ({
             px="11px"
             borderBottomRadius="12px"
           >
-            {loggedInMenuItems && <UserMenu menus={loggedInMenuItems as any} logoutLabel={logoutLabel} />}
+            {loggedInMenuItems && <UserMenu menus={loggedInMenuItems as any} logoutLabel={logoutLabel} logoutLink={logoutLink}/>}
           </Flex>
         </Box>
       ) : (

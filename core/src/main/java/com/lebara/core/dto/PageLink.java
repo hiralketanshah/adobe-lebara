@@ -2,6 +2,7 @@ package com.lebara.core.dto;
 
 import com.lebara.core.models.beans.Link;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 

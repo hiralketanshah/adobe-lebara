@@ -1,7 +1,8 @@
 package com.lebara.core.models.beans;
 
-import java.util.ArrayList;
-import java.util.List;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.lebara.core.utils.AemUtils;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.api.resource.ResourceResolver;
 import org.apache.sling.models.annotations.DefaultInjectionStrategy;
@@ -9,9 +10,9 @@ import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.injectorspecific.ChildResource;
 import org.apache.sling.models.annotations.injectorspecific.SlingObject;
 import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.lebara.core.utils.AemUtils;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @Model(adaptables = {Resource.class}, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
@@ -84,19 +85,10 @@ public class MyProfileFormFields {
     private String  ctaCancelLabel;
 
     @ValueMapValue
-    private String  ctaCancelURL;
-
-    @ValueMapValue
     private String  alternativeContactLabel;
 
     @ValueMapValue
     private String editLinkLabel;
-
-    @ValueMapValue
-    private String emailEditLinkURL;
-
-    @ValueMapValue
-    private String passwordEditLinkURL;
 
     @ValueMapValue
     private String passwordPlaceholder;
@@ -205,10 +197,6 @@ public class MyProfileFormFields {
         return ctaCancelLabel;
     }
 
-    public String getCtaCancelURL() {
-        return ctaCancelURL;
-    }
-
     public String getAlternativeContactLabel()
     {
         return alternativeContactLabel;
@@ -216,14 +204,6 @@ public class MyProfileFormFields {
 
     public String getEditLinkLabel() {
         return editLinkLabel;
-    }
-
-    public String getEmailEditLinkURL() {
-        return emailEditLinkURL;
-    }
-
-    public String getPasswordEditLinkURL() {
-        return passwordEditLinkURL;
     }
 
     public String getPasswordPlaceholder() {

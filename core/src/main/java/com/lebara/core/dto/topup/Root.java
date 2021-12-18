@@ -1,7 +1,7 @@
 package com.lebara.core.dto.topup;
 
 public class Root {
-    public Data data;
+    private Data data;
 
     public Data getData() {
         return data;

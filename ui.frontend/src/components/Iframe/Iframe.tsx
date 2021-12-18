@@ -3,12 +3,12 @@ import { IframeProps } from "./types";
 
 const IframeComp = ({url, height}: any) => {
     return(
-      <div style={{border: '0', height: height || '500px' }}>
+      <div style={{border: '0', height: height+'px' || '500px' }}>
         <iframe src={url || "/"}
           width={'100%'}
           height={'100%'}
           style={{border: 'none', background: 'none'}}
-          title=""
+          title="Lebara Iframe"
           />
       </div>
     )

@@ -25,7 +25,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import javax.annotation.PostConstruct;
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -127,7 +126,7 @@ public class InternationalRatesExporter implements ComponentExporter {
     }
 
     public List<SelectOption> getCountryList() {
-        return countryList;
+        return countryList == null ? (Collections.emptyList()) : (Collections.unmodifiableList(countryList));
     }
 
     public String getLandlineLabel() {

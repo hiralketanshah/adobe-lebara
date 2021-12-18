@@ -308,7 +308,7 @@ const UserDetails: React.FC<UserDetailsProps> = ({
                       frmFields={frmFields}
                       onEmailEdit={() => setEmailEditPopup(true)}
                       onPasswordEdit={() => {
-                          history.push(GC.journeyPages[USER_PROFILE_CHANGE_PASSWORD] || '/user-profile/change-password.html');
+                          history.push(GC.journeyPages[USER_PROFILE_CHANGE_PASSWORD] || '/user-profile/change-password');
                         }
                       }
                     />

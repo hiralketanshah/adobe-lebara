@@ -15,7 +15,6 @@ import {
   useOutsideClick,
 } from "@chakra-ui/react";
 import {AiOutlineUser, BiSearch, RiShoppingCartLine,} from "react-icons/all";
-import {Link} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 
 import {children, HeaderProps} from "./types";
@@ -40,11 +39,12 @@ import GET_SESSION_STATUS from "../../graphql/GET_SESSION_STATUS";
 import {saveUserInfo} from "@lebara/ui/src/redux/actions/userActions";
 import {setLoading} from "@lebara/ui/src/redux/actions/loadingActions";
 import {setPaymentMethods} from "@lebara/ui/src/redux/actions/paymentMethodsActions";
-import { useHistory } from "@lebara/ui/src/hooks/useHistory";
+import { useHistory, RouterLink } from "@lebara/ui/src/hooks/useHistory";
 import axios from "axios";
 import PlanNotEligibleDialog from "@lebara/ui/src/components/PlanNotEligibleDialog/PlanNotEligibleDialog";
 import { toggleDialogState } from "@lebara/ui/src/redux/actions/modalsActions";
 import SearchResults from "../Search/SearchResults";
+import aemUtils from "../../utils/aem-utils";
 
 const SingleMenu = ({ menuItem, newText }: { menuItem: children, newText: any }) => {
   const DEFUALT_GROUP_MENU_UPTO = 5;
@@ -72,20 +72,29 @@ const SingleMenu = ({ menuItem, newText }: { menuItem: children, newText: any })
     setIsOpenMenu(false);
   };
   
-  const onCloseSearch = (url = "") => {
+  const onCloseSearch = () => {
     dispatch(
       headerSearch({
         key: false,
       })
     );
-    if(url) history.push(url);
   };
+
+  const onMenuLinkNavigate = (url: any) => {
+    if(!url) return null;
+    return aemUtils.isCheckExternalLink(url) ? window.open(url) : history.push(url);
+  }
+
+  const onSubMenuHeaderNavigate = (url: any) => {
+    onCloseSearch();
+    if(url) onMenuLinkNavigate(url);
+  }
 
   return (
     <Menu
       isOpen={isOpenMenu}>
       <MenuButton
-        onClick={() => (menuItem.url ? history.push(menuItem.url) : null)}
+        onClick={() => onMenuLinkNavigate(menuItem?.url)}
         onMouseEnter={btnMouseEnterEvent}
         onMouseLeave={btnMouseLeaveEvent}
         _active={{
@@ -100,7 +109,7 @@ const SingleMenu = ({ menuItem, newText }: { menuItem: children, newText: any })
             _hover={{ color: "white", bg: "lightenPrimary.500" }}
             size="sm"
             pl="initial"
-            onClick={() => history.push(`${menuItem.url}`)}
+            onClick={() => onMenuLinkNavigate(menuItem?.url)}
             isDisabled={menuItem.active}
           >
             <Text
@@ -147,7 +156,7 @@ const SingleMenu = ({ menuItem, newText }: { menuItem: children, newText: any })
                         title={subMenuOption?.title}
                         className="menu-group-heading"
                         cursor={subMenuOption?.url ? 'pointer' : 'default'}
-                        onClick={() => onCloseSearch(subMenuOption?.url)}
+                        onClick={() => onSubMenuHeaderNavigate(subMenuOption?.url)}
                         marginRight={menuItem?.children?.length === (2 || 3 || 4 || 5) ? "8rem" : 0}
                         w={"100%"}
                         >
@@ -156,11 +165,7 @@ const SingleMenu = ({ menuItem, newText }: { menuItem: children, newText: any })
                             (menuProps: children, cIdx: any) => (
                               <MenuItem
                                 isDisabled={menuProps.active}
-                                onClick={() =>
-                                  menuProps.url
-                                    ? history.push(menuProps.url)
-                                    : null
-                                }
+                                onClick={() => onMenuLinkNavigate(menuProps?.url)}
                               >
                                 <Text
                                   fontSize="14px"
@@ -242,7 +247,7 @@ const Header: React.FC<HeaderProps> = ({
     handler: () => setProfileDropdown(false),
   });
 
-  const onHandleSearchQuery = ({isQuery, results }: any) => {
+  const onHandleSearchQuery = ({ isQuery, results }: any) => {
     setQuerySearched(isQuery);
     setResults([...results]);
   }
@@ -361,13 +366,19 @@ const Header: React.FC<HeaderProps> = ({
           borderBottom="none"
         >
           <ChakraLink>
-            <Link to={logoLinkURL || "/"}>
-              <Image src={logoPath} h="37px" w={{lg: "80px", xl: "116.84px"}} alt="logo" />
-            </Link>
+            <RouterLink to={logoLinkURL || "/"}>
+                <Image 
+                  src={logoPath} 
+                  minW={75}
+                  h="37px" 
+                  w={{lg: "80px", xl: "116.84px"}} 
+                  alt="logo" 
+                />
+              </RouterLink>
           </ChakraLink>
 
           <Flex alignItems="left" ml={{ xl: "60px", lg: "40px", md: "15px" }}  gridGap={{lg: "20px", xl: "30px"}}>
-          {items?.map((menuItem: children, idx: any) => (
+          {items?.map((menuItem: children) => (
               <React.Fragment key={menuItem.title}>
                 <SingleMenu menuItem={menuItem} newText={newText} />
               </React.Fragment>
@@ -410,7 +421,6 @@ const Header: React.FC<HeaderProps> = ({
               ) : (
                 <Search
                   {...search}
-                  key={'search-comp-key-in-header'+isQuerySearched}
                   onHandleSearchQuery={onHandleSearchQuery}
                   onCloseClick={onCloseSearch}
                   isHeaderSearchInput={true}
@@ -498,7 +508,7 @@ const Header: React.FC<HeaderProps> = ({
             mt="-20px"
             borderBottomRadius="12px"
           >
-            <UserMenu menus={loggedInMenuItems as any} logoutLabel={logoutLabel} />
+            <UserMenu menus={loggedInMenuItems as any} logoutLabel={logoutLabel} logoutLink={logoLinkURL}/>
           </Flex>
         </Box>
       )}
@@ -506,7 +516,9 @@ const Header: React.FC<HeaderProps> = ({
         <MiniHeader loggedInMenuItems={loggedInMenuItems} 
           topupCtaText={topupCtaText}
           topupCtaLink={topupCtaLink}
-          logoutLabel={logoutLabel} logoPath={logoPath} 
+          logoutLabel={logoutLabel}
+          logoutLink={logoLinkURL}
+          logoPath={logoPath}
           logoLinkURL={logoLinkURL} items={items}
           search={search} />
       </Flex>
