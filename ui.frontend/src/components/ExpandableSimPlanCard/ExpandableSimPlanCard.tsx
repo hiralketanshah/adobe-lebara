@@ -223,7 +223,7 @@ const ExpandableSimPlanCard: React.FC<ExpandableSimPlanCardProps> = ({
               </Text>
             </Box>
           </Flex>
-          <Flex alignItems="baseline" color="primary.600" direction="column">
+          <Flex alignItems="baseline" color="primary.600" direction="column" paddingTop={"7px"}>
             {promotionPrice && (
               <Text
                 as="h3"
