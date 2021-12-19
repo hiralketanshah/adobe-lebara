@@ -17,6 +17,7 @@
 import React, { Component } from 'react';
 import { Route } from 'react-router-dom';
 import PrivateRoute from "../../PrivateRoute";
+import {AuthoringUtils} from "@adobe/aem-spa-page-model-manager";
 /**
  * Helper that facilitate the use of the {@link Route} component
  */
@@ -31,19 +32,23 @@ import PrivateRoute from "../../PrivateRoute";
 export const withRoute = (WrappedComponent, extension) => {
   return class CompositeRoute extends Component {
     render() {
+      const PROJECT_URL_ROOT = "/content/lebara";
       let routePath = this.props.cqPath;
       if (!routePath) {
         return <WrappedComponent {...this.props} />;
       }
-
+      let paths = ['(.*)' + routePath + '(.' + extension + ')?'];
       extension = extension || 'html';
-
+      if (!AuthoringUtils.isInEditor() && routePath.startsWith(PROJECT_URL_ROOT)) {
+        paths.push(routePath.substring(PROJECT_URL_ROOT.length) + ".html");
+    }
+    console.log(paths);
       // Context path + route path + extension
       return (
         <Route
           key={routePath}
           exact
-          path={'(.*)' + routePath + '(.' + extension + ')?'}
+          path={paths}
           render={routeProps => {
             return <PrivateRoute WrappedComponent={WrappedComponent} routeProps={routeProps} {...this.props} />;
           }}
