@@ -13,6 +13,8 @@ import org.apache.sling.models.annotations.Exporter;
 import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.injectorspecific.ScriptVariable;
 import org.apache.sling.models.annotations.injectorspecific.SlingObject;
+import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
+
 import javax.annotation.PostConstruct;
 
 @Model(adaptables = SlingHttpServletRequest.class, adapters = {DynamicCartExporter.class, ComponentExporter.class},
@@ -29,6 +31,10 @@ public class DynamicCartExporter extends HeadingExporter {
 
     @SlingObject
     private SlingHttpServletRequest slingRequest;
+
+    @ValueMapValue
+    private String viewPlanAccordianLabel;
+
     /**
      * The resource type.
      */
@@ -37,6 +43,10 @@ public class DynamicCartExporter extends HeadingExporter {
     @PostConstruct
     private void init() {
         i18n = AemUtils.geti18n(resourceResolver, resource, slingRequest);
+    }
+
+    public String getViewPlanAccordianLabel() {
+        return viewPlanAccordianLabel;
     }
 
     @JsonProperty("selectedPlanLabel")
