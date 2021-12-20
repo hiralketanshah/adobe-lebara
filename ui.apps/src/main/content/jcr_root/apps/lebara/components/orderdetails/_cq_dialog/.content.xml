@@ -455,6 +455,30 @@
                                                 fieldLabel="View Plans Label"
                                                 fieldDescription="View Plans"
                                                 name="./viewPlansLabel"/>
+                                            <addToCartLabel
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="Add to Cart Label"
+                                                fieldDescription="Add to cart"
+                                                name="./addToCartLabel"/>
+                                            <buyPlanLabel
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="Buy Plan Label"
+                                                fieldDescription="Buy Plan"
+                                                name="./buyPlanLabel"/>
+                                            <changePlanLabel
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="Change Plan Label"
+                                                fieldDescription="Change Plan"
+                                                name="./changePlanLabel"/>
+                                            <changeAddonLabel
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="Change Addon Label"
+                                                fieldDescription="Change Addon"
+                                                name="./changeAddonLabel"/>
                                         </items>
                                     </column>
                                 </items>
