@@ -1,9 +1,8 @@
 package com.lebara.core.utils;
 
-import java.text.DecimalFormat;
-import java.util.*;
-import java.util.stream.Collectors;
+import com.adobe.cq.dam.cfm.ContentFragment;
 import com.day.cq.i18n.I18n;
+import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
 import com.lebara.core.dto.*;
 import com.lebara.core.models.beans.SelectOption;
@@ -11,11 +10,12 @@ import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.api.resource.ResourceResolver;
-
-import com.adobe.cq.dam.cfm.ContentFragment;
-import com.google.gson.Gson;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.text.DecimalFormat;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class CFUtils {
 
@@ -69,6 +69,8 @@ public class CFUtils {
         return StringUtils.isBlank(cf.getElement(elementName).getContent()) ? new String[0]
                 : cf.getElement(elementName).getValue().getValue(String[].class);
     }
+
+
 
     public static OfferFragmentBean getCfDetails(String cfPath, ResourceResolver resourceResolver, I18n i18n) {
         OfferFragmentBean offerFragmentBean = new OfferFragmentBean();

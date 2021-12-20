@@ -1,17 +1,22 @@
 package com.lebara.core.models;
 
+import com.adobe.cq.dam.cfm.ContentFragment;
 import com.adobe.cq.export.json.ComponentExporter;
 import com.adobe.cq.export.json.ExporterConstants;
+import com.lebara.core.models.beans.SimPortBean;
 import com.lebara.core.utils.CFUtils;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.api.resource.ResourceResolver;
 import org.apache.sling.models.annotations.DefaultInjectionStrategy;
-import org.apache.sling.models.annotations.Model;
-import org.apache.sling.models.annotations.injectorspecific.*;
 import org.apache.sling.models.annotations.Exporter;
-import com.adobe.cq.dam.cfm.ContentFragment;
+import org.apache.sling.models.annotations.Model;
+import org.apache.sling.models.annotations.injectorspecific.ScriptVariable;
+import org.apache.sling.models.annotations.injectorspecific.SlingObject;
+import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
+
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 @Model(adaptables = SlingHttpServletRequest.class, adapters = {SimPortInExporter.class, ComponentExporter.class},
@@ -239,7 +244,7 @@ public class SimPortInExporter implements ComponentExporter {
     }
 
     public String getMobileNumberFieldPattern() { return mobileNumberFieldPattern; }
-
+/*
     public List<Object> getCurrentProvidersOptions() {
         if(currentProvidersOptions != null) {
             Resource currentProvidersResource = resourceResolver.getResource(currentProvidersOptions);
@@ -249,7 +254,31 @@ public class SimPortInExporter implements ComponentExporter {
             }
         }
         return new ArrayList<>();
+    }*/
+
+    public List<SimPortBean> getCurrentProvidersOptions() {
+        List<SimPortBean> simPortBeans = new ArrayList<>();
+        if(currentProvidersOptions != null) {
+            Resource currentProvidersResource = resourceResolver.getResource(currentProvidersOptions);
+            if(currentProvidersResource.hasChildren())
+            {
+                Iterator<Resource> contentFragmentList = currentProvidersResource.listChildren();
+                SimPortBean portInBean = new SimPortBean();
+                while(contentFragmentList.hasNext())
+                {
+                    Resource currentResource = contentFragmentList.next();
+                    ContentFragment currentContentFragment = currentResource.adaptTo(ContentFragment.class);
+                    if(currentContentFragment !=null) {
+                        portInBean.setName(CFUtils.convertStringArrayToList(CFUtils.getElementArrayValue(currentContentFragment, "name"), Object.class).toString());
+                        portInBean.setValue(CFUtils.convertStringArrayToList(CFUtils.getElementArrayValue(currentContentFragment, "value"), Object.class).toString());
+                    }
+                   }
+            }
+
+            }
+        return simPortBeans;
     }
+
 
     @Override
     public String getExportedType() {
