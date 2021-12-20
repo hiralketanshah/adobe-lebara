@@ -12,9 +12,11 @@ const StickyCircle: React.FC<StickyCircleProps> = ({
   return (
     <Box
       position="fixed"
+      paddingRight="20px"
       display={{ lg: "inline-block", base: "none" }}
-      left={{ lg: "calc(50% + 387px)", base: "50px" }}
+     // left={{ lg: "calc(50% + 387px)", base: "50px" }}
       top="450px"
+      right="0"
       className="stickycircle"
     >
       <Circle
