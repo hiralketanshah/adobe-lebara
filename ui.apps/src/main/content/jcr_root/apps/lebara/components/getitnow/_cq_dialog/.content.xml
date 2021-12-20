@@ -33,10 +33,16 @@
                                                 fieldLabel="Background Image Path"
                                                 name="./imagePath"
                                                 rootPath="/content/dam/lebara"/>
+                                            <titleh1
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                    fieldLabel="Title (H1)"
+                                                    fieldDescription="Leave this field Empty for title to be displayed in H2"
+                                                    name="./titleh1"/>
                                             <title
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                                fieldLabel="Title"
+                                                fieldLabel="Title(H2)"
                                                 name="./title"/>
                                             <description
                                                 jcr:primaryType="nt:unstructured"
