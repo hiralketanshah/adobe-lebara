@@ -32,7 +32,7 @@ import {AuthoringUtils} from "@adobe/aem-spa-page-model-manager";
 export const withRoute = (WrappedComponent, extension) => {
   return class CompositeRoute extends Component {
     render() {
-      const PROJECT_URL_ROOT = "/content/lebara";
+      const PROJECT_URL_ROOT = "/content/lebara/de";
       let routePath = this.props.cqPath;
       if (!routePath) {
         return <WrappedComponent {...this.props} />;
