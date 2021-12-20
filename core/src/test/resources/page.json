@@ -752,6 +752,15 @@
             "mobileNumberFieldPattern": "mobileNumberFieldPattern",
             "doitLaterButtonLabel": "doitLaterButtonLabel",
             "offerId": "offerId"
+          },
+          "getitnow": {
+            "description": "get it now description",
+            "imagePath": "/content/dam/lebara/global/footer-bg.jpeg",
+            "title": "Title",
+            "buttonCTALabel": "get it now",
+            "buttonCTALink": "/content/lebara/de/en/SIMONLY/phone.html",
+            "getItNowErrorMessage": "get it now error message",
+            ":type": "lebara/components/getitnow"
           }
         }
       }
