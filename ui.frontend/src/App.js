@@ -1,9 +1,9 @@
+import React from "react";
 import {ChakraProvider, extendTheme, withDefaultColorScheme,} from "@chakra-ui/react";
 import {Page, withModel} from "@adobe/aem-react-editable-components";
-import React from "react";
+import ScrollToTop from "@lebara/ui/src/ScrollToTop";
 
 import {Provider} from "react-redux";
-
 
 import colors from "./theme/colors";
 import "@fontsource/roboto/100.css";
@@ -35,7 +35,8 @@ class App extends Page {
     return (
       <Provider store={store}>
         <ChakraProvider theme={theme}>
-            <Fonts />
+          <ScrollToTop />
+          <Fonts />
           {this.childComponents}
           {this.childPages}
         </ChakraProvider>
