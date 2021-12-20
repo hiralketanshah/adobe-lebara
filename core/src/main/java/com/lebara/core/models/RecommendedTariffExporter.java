@@ -50,11 +50,9 @@ public class RecommendedTariffExporter extends ViewPlanExporter {
     @ChildResource
     protected Resource phases;
 
-    private I18n i18n;
-
     @PostConstruct
-    private void init() {
-        i18n = AemUtils.geti18n(resourceResolver, resource, slingRequest);
+    protected void init() {
+        super.init();
     }
 
     public List<OfferFragmentBean> getOffers() {

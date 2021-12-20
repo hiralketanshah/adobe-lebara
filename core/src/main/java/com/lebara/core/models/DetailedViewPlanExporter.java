@@ -35,8 +35,6 @@ public class DetailedViewPlanExporter extends ViewPlanExporter implements Compon
 
     private static final Logger LOGGER = LoggerFactory.getLogger(DetailedViewPlanExporter.class);
 
-    private I18n i18n;
-
     @SlingObject
     private SlingHttpServletRequest request;
 
@@ -81,6 +79,11 @@ public class DetailedViewPlanExporter extends ViewPlanExporter implements Compon
 
     @ValueMapValue
     private String backgroundColor;
+
+    @PostConstruct
+    protected void init() {
+        super.init();
+    }
 
     public String getProductInformationFile() {
         return (i18n == null ? "Product Information" : i18n.get("product.information.label"));
@@ -127,11 +130,6 @@ public class DetailedViewPlanExporter extends ViewPlanExporter implements Compon
     }
 
     public String getBackgroundColor() { return backgroundColor; }
-
-    @PostConstruct
-    private void init() {
-        i18n = AemUtils.geti18n(resourceResolver, resource, slingRequest);
-    }
 
     public String getProductInformationButtonLabel() {
         return (i18n == null ? "Product Information" : i18n.get("product.information.label"));

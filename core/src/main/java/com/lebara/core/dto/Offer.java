@@ -1,5 +1,6 @@
 package com.lebara.core.dto;
 
+import java.util.Collections;
 import java.util.List;
 
 public class Offer {
@@ -25,6 +26,6 @@ public class Offer {
         return cost;
     }
     public List<Allowance> getAllowances() {
-        return allowances;
+        return allowances == null ? Collections.emptyList() : Collections.unmodifiableList(allowances);
     }
 }

@@ -1,15 +1,13 @@
 package com.lebara.core.dto.topup;
 
+import java.util.Collections;
 import java.util.List;
 
 public class Data {
     private List<String> offers;
 
     public List<String> getOffers() {
-        return offers;
+        return (offers == null ? Collections.emptyList() : Collections.unmodifiableList(offers));
     }
 
-    public void setOffers(List<String> offers) {
-        this.offers = offers;
-    }
 }
