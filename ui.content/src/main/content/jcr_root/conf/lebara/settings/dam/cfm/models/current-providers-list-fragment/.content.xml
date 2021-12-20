@@ -9,10 +9,10 @@
         cq:scaffolding="/conf/lebara/settings/dam/cfm/models/currentproviders1/jcr:content/model"
         cq:templateType="/libs/settings/dam/cfm/model-types/fragment"
         jcr:primaryType="cq:PageContent"
-        jcr:title="Simple Current Provider Model"
+        jcr:title="Current Providers List Fragment"
         sling:resourceSuperType="dam/cfm/models/console/components/data/entity"
         sling:resourceType="dam/cfm/models/console/components/data/entity/default"
-        status="draft">
+        status="enabled">
         <metadata jcr:primaryType="nt:unstructured"/>
         <model
             cq:targetPath="/content/entities"
