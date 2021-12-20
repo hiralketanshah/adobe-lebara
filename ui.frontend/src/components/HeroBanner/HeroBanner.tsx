@@ -20,7 +20,8 @@ const HeroBanner: React.FC<HeroBannerProps> = ({
   description,
   buttonCTALabel,
   buttonCTALink,
-  getItNowErrorMessage
+  getItNowErrorMessage,
+  headingType
 }) => {
   const isAuthenticated = useSelector(selectIsAuthenticated);
   const msisdn = useSelector(selectMsisdn);
@@ -59,6 +60,7 @@ return (
         lineHeight={{ base: "40px", lg: "50px" }}
         color="white"
         letterSpacing="0.25px"
+        as={headingType || 'h1' }
       >
         {title}
       </Heading>
