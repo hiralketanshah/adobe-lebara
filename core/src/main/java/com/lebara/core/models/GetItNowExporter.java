@@ -26,7 +26,7 @@ public class GetItNowExporter extends IntroExporter {
     private String title;
 
     @ValueMapValue
-    private String titleh1;
+    private String headingType;
     @ValueMapValue
     private String buttonCTALabel;
     @ValueMapValue
@@ -42,8 +42,8 @@ public class GetItNowExporter extends IntroExporter {
         return title;
     }
 
-    public String getTitleh1() {
-        return titleh1;
+    public String getHeadingType() {
+        return headingType;
     }
 
     public String getButtonCTALabel() {
