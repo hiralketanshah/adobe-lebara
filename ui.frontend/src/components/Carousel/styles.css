@@ -38,3 +38,14 @@
       width: 512px;
     }
 }
+
+@media (max-width: 767px) {
+    .about-lebara ul li {
+		-webkit-box-align: center;
+		align-items: center;
+		color: var(--chakra-colors-grey-50);
+		font-size: 14px;
+		line-height: 0.93;
+		margin-bottom: 15.92px;
+    }
+}
