@@ -61,7 +61,6 @@
 		<property name="description" />
 		<property name="editLabel" />
 		<property name="limitSelectLabel" />
-		<property name="title" />
 		<property name="topupLabel" />
 		<property name="topupSelectLabel" />
 		<!-- promotion banner props -->
@@ -594,6 +593,12 @@
 		<node pathContains="/cq:annotations">
 			<property name="text" translate="false"/>
 		</node>
+		<node resourceType="lebara/components/viewplans">
+			<property inherit="true" name="cfPath" translate="true" updateDestinationLanguage="true"/>
+		</node>
+		<node resourceType="lebara/components/contentfragment">
+			<property inherit="true" name="fragmentPath" translate="true" updateDestinationLanguage="true"/>
+		</node>
 	</node>
 	<node path="/content/forms">
 		<property name="text" translate="false"/>
@@ -619,16 +624,16 @@
 		<property name="adventureTitle" />
 		<property name="adventureTripLength" />
 		<property name="adventureType" />
+		<!-- Content Fragment -->
 		<property name="promotionalMessage" />
 		<property name="additionalOffers" />
 		<property name="promotionDetails" />
-		<property name="Promotion Data" />
-		<property name="value" />
 		<property name="title" />
 		<property name="listPlanItem" />
 		<property name="countryTitle" />
 		<property name="countryList" />
 		<property name="countryName" />
+		<property name="cityName" />
 
 		<node pathContains="/jcr:content/metadata/predictedTags">
 			<property name="name"/>
@@ -646,4 +651,6 @@
 	<assetNode resourceType="wcm/foundation/components/image" assetReferenceAttribute="fileReference"/>
 	<assetNode resourceType="core/wcm/components/contentfragment/v1/contentfragment" assetReferenceAttribute="fragmentPath"/>
 	<assetNode resourceType="core/wcm/components/image/v2/image" assetReferenceAttribute="fileReference"/>
+	<assetNode resourceType="lebara/components/viewplans" assetReferenceAttribute="cfPath"/>
+	<assetNode resourceType="lebara/components/contentfragment" assetReferenceAttribute="fragmentPath"/>
 </nodelist>
