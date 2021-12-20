@@ -1,7 +1,9 @@
 package com.lebara.core.models.beans;
 
-import java.util.ArrayList;
-import java.util.List;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.lebara.core.utils.AemUtils;
+import com.lebara.core.utils.CFUtils;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.api.resource.ResourceResolver;
 import org.apache.sling.models.annotations.DefaultInjectionStrategy;
@@ -9,11 +11,9 @@ import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.injectorspecific.ChildResource;
 import org.apache.sling.models.annotations.injectorspecific.SlingObject;
 import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
-import com.adobe.cq.dam.cfm.ContentFragment;
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.lebara.core.utils.AemUtils;
-import com.lebara.core.utils.CFUtils;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @Model(adaptables = {Resource.class}, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
@@ -444,16 +444,9 @@ public class PostpaidPersonalDetailsFormFields {
         }
         return options;
     }
-    
+
     @JsonProperty("currentProviderList")
     public List<Object> getCurrentProvidersList() {
-        if(currentProviderList != null) {
-            Resource currentProvidersResource = resourceResolver.getResource(currentProviderList);
-            ContentFragment currentProvidersFragment = currentProvidersResource.adaptTo(ContentFragment.class);
-            if (null != currentProvidersFragment) {
-                return CFUtils.convertStringArrayToList(CFUtils.getElementArrayValue(currentProvidersFragment, "currentProvidersOptions"), Object.class);
-            }
-        }
-        return new ArrayList<>();
+        return CFUtils.getCurrentProvidersOptions(currentProviderList, resourceResolver);
     }
 }

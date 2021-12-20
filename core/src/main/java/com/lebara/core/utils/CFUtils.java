@@ -6,6 +6,7 @@ import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
 import com.lebara.core.dto.*;
 import com.lebara.core.models.beans.SelectOption;
+import com.lebara.core.models.beans.SimPortBean;
 import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.sling.api.resource.Resource;
@@ -305,4 +306,26 @@ public class CFUtils {
        return bundlesList;
    }
 
+    public static List<Object> getCurrentProvidersOptions(String currentProvidersOptions, ResourceResolver resourceResolver) {
+        List<Object> simPortBeans = new ArrayList<>();
+        if(currentProvidersOptions != null) {
+            Resource currentProvidersResource = resourceResolver.getResource(currentProvidersOptions);
+            if(currentProvidersResource.hasChildren())
+            {
+                Iterator<Resource> contentFragmentList = currentProvidersResource.listChildren();
+                while(contentFragmentList.hasNext())
+                {
+                    Resource currentResource = contentFragmentList.next();
+                    SimPortBean portInBean = new SimPortBean();
+                    ContentFragment currentContentFragment = currentResource.adaptTo(ContentFragment.class);
+                    if(currentContentFragment !=null) {
+                        portInBean.setName(CFUtils.getElementValue(currentContentFragment, "name"));
+                        portInBean.setValue(CFUtils.getElementValue(currentContentFragment, "value"));
+                    }
+                        simPortBeans.add(portInBean);
+                }
+            }
+        }
+        return simPortBeans;
+    }
 }
