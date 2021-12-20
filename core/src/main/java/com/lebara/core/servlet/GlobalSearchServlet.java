@@ -60,7 +60,6 @@ public class GlobalSearchServlet extends SlingSafeMethodsServlet {
     protected void doGet(SlingHttpServletRequest request, SlingHttpServletResponse response)
             throws ServletException, IOException {
         String param = request.getParameter("q");
-        String searchType = request.getParameter("searchType");
         ResourceResolver resourceResolver = request.getResourceResolver();
         String searchRoot = request.getParameter("searchRoot");
         if (StringUtils.isEmpty(searchRoot)) {
@@ -69,18 +68,26 @@ public class GlobalSearchServlet extends SlingSafeMethodsServlet {
         LOGGER.debug("searchRoot is {}", searchRoot);
         response.getWriter().println(getSearchInfoString(request, param, resourceResolver, searchRoot));
     }
-
+   
+    /**
+     * @param request
+     * @param param
+     * @param resourceResolver
+     * @param searchRoot
+     * @return
+     */
     protected String getSearchInfoString(SlingHttpServletRequest request, String param, ResourceResolver resourceResolver, String searchRoot) {
         List<SearchInfo> searchInfoList = new ArrayList<>();
         Session session = resourceResolver.adaptTo(Session.class);
         if (StringUtils.isNotBlank(param) && session != null) {
             String paramSearch = param.toLowerCase();
-            final String QUERY_FIND_PAGES =
-                    "SELECT * FROM [cq:PageContent] AS searchResult WHERE ISDESCENDANTNODE(searchResult, [{0}])"
-                            + " AND searchResult.[" + JcrResourceConstants.SLING_RESOURCE_TYPE_PROPERTY + "] = \"{1}\""
-                            + " AND (LOWER(searchResult.[" + JcrConstants.JCR_TITLE + "]) LIKE \"%{2}%\""
-                            + " OR LOWER(searchResult.[pageTitle]) LIKE \"%{3}%\""
-                            + " OR LOWER(searchResult.[navTitle]) LIKE \"%{4}%\")";
+            final String QUERY_FIND_PAGES = "SELECT * FROM [cq:Page] AS searchResult WHERE ISDESCENDANTNODE(searchResult, [{0}])"
+                    + " AND searchResult.[" + JcrConstants.JCR_CONTENT + "/"
+                    + JcrResourceConstants.SLING_RESOURCE_TYPE_PROPERTY + "] = \"{1}\""
+                    + " AND (LOWER(searchResult.[" + JcrConstants.JCR_CONTENT + "/" + JcrConstants.JCR_TITLE
+                    + "]) LIKE \"%{2}%\""
+                    + " OR LOWER(searchResult.[" + JcrConstants.JCR_CONTENT + "/pageTitle]) LIKE \"%{3}%\""
+                    + " OR LOWER(searchResult.[" + JcrConstants.JCR_CONTENT + "/navTitle]) LIKE \"%{4}%\")";
             final String sqlStatement = MessageFormat.format(QUERY_FIND_PAGES, searchRoot, "lebara/components/page",
                     paramSearch, paramSearch, paramSearch);
             final QueryManager queryManager;
@@ -90,24 +97,20 @@ public class GlobalSearchServlet extends SlingSafeMethodsServlet {
                 query.setLimit(20);
                 final QueryResult result = query.execute();
                 final NodeIterator nodeIterator = result.getNodes();
-                LOGGER.debug("query triggered is {}", query.getStatement());
+                LOGGER.info("query triggered is {}", query.getStatement());
                 while (nodeIterator.hasNext()) {
                     final Node node = nodeIterator.nextNode();
                     Resource hitResource = resourceResolver.getResource(node.getPath());
                     if (hitResource == null) {
                         continue;
                     }
-                    Resource parentRes = hitResource.getParent();
-                    if (parentRes == null) {
-                        continue;
-                    }
-                    Page parentPage = parentRes.adaptTo(Page.class);
-                    if (parentPage == null) {
+                    Page page = hitResource.adaptTo(Page.class);
+                    if (page == null) {
                         continue;
                     }
                     SearchInfo searchInfo = new SearchInfo();
-                    searchInfo.setPath(AemUtils.getLinkWithExtension(parentPage.getPath(), request));
-                    searchInfo.setTitle(parentPage.getTitle());
+                    searchInfo.setPath(AemUtils.getLinkWithExtension(page.getPath(), request));
+                    searchInfo.setTitle(page.getTitle());
                     searchInfoList.add(searchInfo);
 
                 }
