@@ -6,6 +6,7 @@
     <filter root="/conf/lebara/settings/dam/cfm/models/city-fragment" mode="replace"/>
     <filter root="/conf/lebara/settings/dam/cfm/models/international-tariffs-fragment" mode="replace"/>
     <filter root="/conf/lebara/settings/dam/cfm/models/planinformation" mode="replace"/>
+    <filter root="/conf/lebara/settings/dam/cfm/models/currentproviders" mode="replace"/>
     <filter root="/conf/lebara/settings/dam/cfm/models/current-providers-list-fragment" mode="replace"/>
     <filter root="/conf/lebara/settings/dam/cfm/models/top-up-fragment" mode="replace"/>
     <filter root="/conf/lebara" mode="merge"/>
