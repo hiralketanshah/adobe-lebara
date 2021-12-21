@@ -1,11 +1,11 @@
 import { MapTo } from "@adobe/aem-react-editable-components";
-import SelectedPlanCard from "./SelectedPlanCard";
-
+import SelectedPlanCard from "@lebara/ui/src/components/SelectedPlanCard/SelectedPlanCard";
+import aemUtils from "../../utils/aem-utils";
 const SelectedPlanCardConfig = {
   emptyLabel: "Dynamic Cart Component",
   isEmpty: function () {
     return true;
   },
 };
-
-MapTo("lebara/components/dynamiccart")(SelectedPlanCard, SelectedPlanCardConfig);
+const componentwithofferDataProp = (props) => <SelectedPlanCard fetchDataCallback={(id, isOneEntry) => aemUtils.fetchData(id, isOneEntry)} {...props} />;
+MapTo("lebara/components/dynamiccart")(componentwithofferDataProp, SelectedPlanCardConfig);

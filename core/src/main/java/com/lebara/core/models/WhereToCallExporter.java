@@ -51,8 +51,6 @@ public class WhereToCallExporter implements ComponentExporter {
     private void init() {
         if (StringUtils.isNotBlank(fragmentRootPath)) {
             countryList = CFUtils.getWhereToCallRates(resourceResolver, fragmentRootPath);
-        } else {
-            countryList = Collections.emptyList();
         }
     }
 
@@ -65,7 +63,7 @@ public class WhereToCallExporter implements ComponentExporter {
     }
 
     public List<SelectBean> getCountries() {
-        return countryList;
+        return (countryList == null) ? Collections.emptyList() : Collections.unmodifiableList(countryList);
     }
 
     @Override

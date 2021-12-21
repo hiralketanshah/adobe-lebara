@@ -42,13 +42,11 @@ public class HelpCenterSearchServlet extends GlobalSearchServlet {
             throws ServletException, IOException {
         String param = request.getParameter("q");
         ResourceResolver resourceResolver = request.getResourceResolver();
-        Session session = resourceResolver.adaptTo(Session.class);
         String searchRoot = request.getParameter("searchRoot");
         if (StringUtils.isEmpty(searchRoot)) {
             searchRoot = DEFAULT_SEARCH_ROOT;
         }
         log.debug("searchRoot is {}", searchRoot);
-        Map<String, String> predicate = getGlobalSearchPredicates(param, searchRoot);
-        response.getWriter().println(getSearchInfoString(predicate, builder, session, request));
+        response.getWriter().println(getSearchInfoString(request, param, resourceResolver, searchRoot));
     }
 }
