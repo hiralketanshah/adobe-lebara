@@ -638,8 +638,6 @@
 		<property name="countryName" />
 		<property name="cityName" />
 
-		<property name="planInfoPath" inherit="true" translate="true" />
-
 		<node pathContains="/jcr:content/metadata/predictedTags">
 			<property name="name"/>
 		</node>
