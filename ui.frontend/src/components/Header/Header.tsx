@@ -27,7 +27,7 @@ import NewSIMOfferCard from "@lebara/ui/src/components/NewSImOfferCard/NewSImOff
 import Search from "../Search/Search";
 import UserMenu from "@lebara/ui/src/components/UserMenu/UserMenu";
 import {headerSearch} from "@lebara/ui/src/redux/actions/headerSearchActions";
-import {selectIsAuthenticated} from "@lebara/ui/src/redux/selectors/userSelectors";
+import {selectCrmId, selectIsAuthenticated} from "@lebara/ui/src/redux/selectors/userSelectors";
 import {globalConfigs as GC, globalConstants as GCST} from "@lebara/ui/src/configs/globalConfigs.js";
 import {useApolloClient, useQuery} from "@apollo/client";
 import GET_CART from "@lebara/ui/src/graphql/GET_CART";
@@ -246,6 +246,7 @@ const Header: React.FC<HeaderProps> = ({
   const isModalOpen = useSelector((t: ReduxState) => t.modal.open);
   const [isQuerySearched, setQuerySearched] = useState('');
   const [results, setResults] : any = useState([]);
+  const crmId = useSelector(selectCrmId);
   
   useOutsideClick({
     ref,
@@ -344,20 +345,22 @@ const Header: React.FC<HeaderProps> = ({
   }, [loadPaymentMethods]);
 
   React.useEffect(() => {
-    if( cartItems.length === 0){
+    if (cartItems.length === 0) {
       getCart();
     }
-    client
-      .query({
-        query: GET_SESSION_STATUS,
-      })
-      .then((res) => {
-        dispatch(saveUserInfo(res.data.getSessionStatus));
-      })
-      .catch(() => {})
-      .finally(() => {
-        dispatch(setLoading(false));
-      });
+    if (!crmId) {
+      client
+        .query({
+          query: GET_SESSION_STATUS,
+        })
+        .then((res) => {
+          dispatch(saveUserInfo(res.data.getSessionStatus));
+        })
+        .catch(() => { })
+        .finally(() => {
+          dispatch(setLoading(false));
+        });
+    }
   }, [client, dispatch]);// eslint-disable-line react-hooks/exhaustive-deps
   const { data: topUps } = useQuery(GET_TOP_UPS, {
     variables: {
