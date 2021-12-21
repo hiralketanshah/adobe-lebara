@@ -178,9 +178,6 @@
 		<property name="internationalMinPlanName" />
 		<property name="leftOfLabel" />
 
-		<!-- Internation Rates -->
-		<property name="selectCountryLabel" />
-
 		<!-- Detailed view Plan -->
 		<property name="subTitle" />
 		<property name="description" />
