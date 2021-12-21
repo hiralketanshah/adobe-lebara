@@ -19,6 +19,12 @@ public class ValidationMsg {
     private String emailInValidMsg;
 
     @ValueMapValue
+    private String mobileRequiredMsg;
+
+    @ValueMapValue
+    private String mobileInValidMsg;
+
+    @ValueMapValue
     private String passwordNotMatchErrorMessage;
 
     @ValueMapValue
@@ -39,6 +45,14 @@ public class ValidationMsg {
 
     public String getEmailInValidMsg() {
         return emailInValidMsg;
+    }
+
+    public String getMobileRequiredMsg() {
+        return mobileRequiredMsg;
+    }
+
+    public String getMobileInValidMsg() {
+        return mobileInValidMsg;
     }
 
     public String getPasswordRequiredMsg() {
