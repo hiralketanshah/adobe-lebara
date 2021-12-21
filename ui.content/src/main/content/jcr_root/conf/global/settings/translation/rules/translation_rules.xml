@@ -604,6 +604,9 @@
 		<node resourceType="lebara/components/viewplans">
 			<property inherit="true" name="cfPath" translate="true" updateDestinationLanguage="true"/>
 		</node>
+		<node resourceType="lebara/components/internationalrates">
+			<property inherit="true" name="selectCountryLabel" translate="true" updateDestinationLanguage="true"/>
+		</node>
 	</node>
 	<node path="/content/forms">
 		<property name="text" translate="false"/>
@@ -630,13 +633,11 @@
 		<property name="adventureTripLength" />
 		<property name="adventureType" />
 		<!-- Content Fragment -->
-		<property name="promotionalMessage" />
 		<property name="additionalOffers" />
 		<property name="promotionDetails" />
 		<property name="title" />
 		<property name="listPlanItem" />
 		<property name="countryTitle" />
-		<property name="countryList" />
 		<property name="countryName" />
 		<property name="cityName" />
 
@@ -660,4 +661,5 @@
 	<assetNode resourceType="core/wcm/components/image/v2/image" assetReferenceAttribute="fileReference"/>
 	<assetNode resourceType="lebara/components/viewplans" assetReferenceAttribute="cfPath"/>
 	<assetNode resourceType="lebara/components/contentfragment" assetReferenceAttribute="fragmentPath"/>
+	<assetNode resourceType="lebara/components/internationalrates" assetReferenceAttribute="cfPath"/>
 </nodelist>
