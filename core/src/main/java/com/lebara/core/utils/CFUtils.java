@@ -6,7 +6,6 @@ import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
 import com.lebara.core.dto.*;
 import com.lebara.core.models.beans.SelectOption;
-import com.lebara.core.models.beans.SimPortBean;
 import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.sling.api.resource.Resource;
@@ -70,9 +69,6 @@ public class CFUtils {
         return StringUtils.isBlank(cf.getElement(elementName).getContent()) ? new String[0]
                 : cf.getElement(elementName).getValue().getValue(String[].class);
     }
-
-
-
     public static OfferFragmentBean getCfDetails(String cfPath, ResourceResolver resourceResolver, I18n i18n) {
         OfferFragmentBean offerFragmentBean = new OfferFragmentBean();
         if (StringUtils.isNotBlank(cfPath)) {
@@ -81,7 +77,6 @@ public class CFUtils {
         }
         return offerFragmentBean;
     }
-
 
     public static List<String> populateTopupInfo(Resource cfResource) {
         List<String> topups = new ArrayList<>();
@@ -305,9 +300,8 @@ public class CFUtils {
        }
        return bundlesList;
    }
-
     public static List<Object> getCurrentProvidersOptions(String currentProvidersOptions, ResourceResolver resourceResolver) {
-        List<Object> simPortBeans = new ArrayList<>();
+        List<Object> currentProviderList = new ArrayList<>();
         if(currentProvidersOptions != null) {
             Resource currentProvidersResource = resourceResolver.getResource(currentProvidersOptions);
             if(currentProvidersResource.hasChildren())
@@ -316,16 +310,16 @@ public class CFUtils {
                 while(contentFragmentList.hasNext())
                 {
                     Resource currentResource = contentFragmentList.next();
-                    SimPortBean portInBean = new SimPortBean();
+                    SelectBean selectBean = new SelectBean();
                     ContentFragment currentContentFragment = currentResource.adaptTo(ContentFragment.class);
                     if(currentContentFragment !=null) {
-                        portInBean.setName(CFUtils.getElementValue(currentContentFragment, "name"));
-                        portInBean.setValue(CFUtils.getElementValue(currentContentFragment, "value"));
+                        selectBean.setName(CFUtils.getElementValue(currentContentFragment, "name"));
+                        selectBean.setValue(CFUtils.getElementValue(currentContentFragment, "value"));
                     }
-                        simPortBeans.add(portInBean);
+                    currentProviderList.add(selectBean);
                 }
             }
         }
-        return simPortBeans;
+        return currentProviderList;
     }
 }
