@@ -178,6 +178,9 @@
 		<property name="internationalMinPlanName" />
 		<property name="leftOfLabel" />
 
+		<!-- Internation Rates -->
+		<property name="selectCountryLabel" />
+
 		<!-- Detailed view Plan -->
 		<property name="subTitle" />
 		<property name="description" />
@@ -188,7 +191,6 @@
 		<property name="ctaDownloadLabel" />
 		<property name="ctaBottomLabel" />
 		<property name="getExploreAllLabel" />
-		
 
 		<!-- Create Password -->
 		<property name="compHeading" />
@@ -588,16 +590,16 @@
 		<property name="orderHistoryEmptyLabel"/>
 		<property name="emptyOrderLabel"/>
 
+		<property inherit="true" name="cfPath" translate="true" updateDestinationLanguage="true"/>
+
 		<!-- Lebara fields ends -->
 		<property name="cq:language" updateDestinationLanguage="true"/>
 		<node pathContains="/cq:annotations">
 			<property name="text" translate="false"/>
 		</node>
+
 		<node resourceType="lebara/components/viewplans">
 			<property inherit="true" name="cfPath" translate="true" updateDestinationLanguage="true"/>
-		</node>
-		<node resourceType="lebara/components/contentfragment">
-			<property inherit="true" name="fragmentPath" translate="true" updateDestinationLanguage="true"/>
 		</node>
 	</node>
 	<node path="/content/forms">
@@ -634,6 +636,8 @@
 		<property name="countryList" />
 		<property name="countryName" />
 		<property name="cityName" />
+
+		<property name="planInfoPath" inherit="true" translate="true" />
 
 		<node pathContains="/jcr:content/metadata/predictedTags">
 			<property name="name"/>
