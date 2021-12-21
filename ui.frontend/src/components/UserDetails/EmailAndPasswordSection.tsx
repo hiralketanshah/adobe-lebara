@@ -59,7 +59,7 @@ const EmailAndPasswordSection: React.FC<ChangeEmailPasswordProfileProps> = ({
               }}>
               <Button
                 padding="initial"
-                bgColor="transparent"
+                variant="link"
                 color="#463C3C"
                 _hover={{ bgColor: "transparent" }}
                 onClick={onEmailEdit}
@@ -88,7 +88,7 @@ const EmailAndPasswordSection: React.FC<ChangeEmailPasswordProfileProps> = ({
             <InputRightElement width="4.5rem" mt="30px">
               <Button
                 padding="initial"
-                bgColor="transparent"
+                variant="link"
                 color="#463C3C"
                 _hover={{ bgColor: "transparent" }}
                 onClick={onPasswordEdit}
