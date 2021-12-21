@@ -483,6 +483,9 @@
 		<property name="currentProviderRequiredMsg"/>
 		<property name="paymentCta"/>
 
+		<!-- Dynamic Cart-->
+		<property name="viewPlanAccordianLabel"/>
+
 		<!-- Section Intro -->
 		<property name="sectionHeading"/>
 		<property name="sectionSubHeading"/>

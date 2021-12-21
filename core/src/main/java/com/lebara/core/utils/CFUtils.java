@@ -204,8 +204,15 @@ public class CFUtils {
                     if (promotionalFragres != null) {
                         ContentFragment promotionFragment = promotionalFragres.adaptTo(ContentFragment.class);
                         if (promotionFragment != null) {
-                            offerFragmentBean.setPromotionPrice(CFUtils.getElementValue(promotionFragment, "promotionalPrice"));
-                            offerFragmentBean.setPromotionData(CFUtils.getElementValue(promotionFragment, "promotionData"));
+                            if (StringUtils.isNotBlank(CFUtils.getElementValue(promotionFragment, "promotionalPrice"))) {
+                                offerFragmentBean.setPromotionPrice(CFUtils.getElementValue(promotionFragment, "promotionalPrice"));
+                            }
+                            if (StringUtils.isNotBlank(CFUtils.getElementValue(promotionFragment, "promotionData"))) {
+                                offerFragmentBean.setPromotionData(CFUtils.getElementValue(promotionFragment, "promotionData"));
+                            }
+                            if (StringUtils.isBlank(CFUtils.getElementValue(offerFragment, "promotionalMessage"))) {
+                                offerFragmentBean.setPromotionMessage(CFUtils.getElementValue(promotionFragment, "promotionDetails"));
+                            }
                         }
                     }
                 }

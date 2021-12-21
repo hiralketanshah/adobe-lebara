@@ -132,8 +132,8 @@ const MiniHeader: React.FC<MiniHeaderProps> = ({
                   icon={<BiSearch />}
                   aria-label="Search"
                   variant="ghost"
-                  fontSize={24}
-                  size="24px"
+                  fontSize={20}
+                  size="20px"
                   paddingRight={{ lg: "26px!important", md: "13px!important" }}
                   paddingLeft={{ lg: "56px!important", md: "26px!important" }}
                   colorScheme="dark"
@@ -144,11 +144,11 @@ const MiniHeader: React.FC<MiniHeaderProps> = ({
             <></>
           )}
           <IconButton
-              mx="24px"
+              mx="20px"
             colorScheme="dark"
             icon={<AiOutlineUser />}
-            fontSize={24}
-            size="24px"
+            fontSize={20}
+            size="20px"
             aria-label="Profile"
             onClick={handleProfileClick}
             variant="ghost"
@@ -157,7 +157,7 @@ const MiniHeader: React.FC<MiniHeaderProps> = ({
             <IconButton
                 height="45px"
               p="absolute"
-              fontSize={24}
+              fontSize={20}
               colorScheme="dark"
               icon={<RiShoppingCartLine />}
               aria-label="Cart"
@@ -172,7 +172,7 @@ const MiniHeader: React.FC<MiniHeaderProps> = ({
                 color="white"
                 fontSize="10px"
                 backgroundColor="secondary.500"
-                borderRadius="24px"
+                borderRadius="20px"
                 w="12px"
                 textAlign="center"
               >
