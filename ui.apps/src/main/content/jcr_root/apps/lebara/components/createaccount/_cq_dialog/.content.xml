@@ -282,6 +282,19 @@
                                                     fieldLabel="Email Error message on Invalid characters"
                                                     name="./validationMessages/emailInValidMsg"
                                                     value="Please check the email address format"/>
+                                            <mobileLabel
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                    fieldDescription ="Mobile"
+                                                    value="Mobile"
+                                                    fieldLabel="Mobile"
+                                                    name="./frmFields/mobileLabel"/>
+                                            <mobilePlaceholder
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                    fieldDescription ="Mobile Placeholder"
+                                                    fieldLabel="Mobile Placeholder"
+                                                    name="./frmFields/mobilePlaceholder"/>
                                             <mobileRequiredMsg
                                                     jcr:primaryType="nt:unstructured"
                                                     sling:resourceType="granite/ui/components/coral/foundation/form/textfield"

@@ -18,6 +18,12 @@ public class FormFields {
     private String emailPlaceholder;
 
     @ValueMapValue
+    private String mobileLabel;
+
+    @ValueMapValue
+    private String mobilePlaceholder;
+
+    @ValueMapValue
     private String ctaButtonLabel;
 
     @ValueMapValue
@@ -32,6 +38,14 @@ public class FormFields {
 
     public String getEmailPlaceholder() {
         return emailPlaceholder;
+    }
+
+    public String getMobileLabel() {
+        return mobileLabel;
+    }
+
+    public String getMobilePlaceholder() {
+        return mobilePlaceholder;
     }
 
     public String getCtaButtonLabel() {
