@@ -761,6 +761,18 @@
             "buttonCTALink": "/content/lebara/de/en/SIMONLY/phone.html",
             "getItNowErrorMessage": "get it now error message",
             ":type": "lebara/components/getitnow"
+          },
+          "heading": {
+            "title": "Heading",
+            ":type": "lebara/components/heading"
+          },
+          "howitworks": {
+            "title": "how it works",
+            "uspList": [
+
+            ],
+            "description": "how it works title description",
+            ":type": "lebara/components/howitworks"
           }
         }
       }
