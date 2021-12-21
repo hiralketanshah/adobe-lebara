@@ -11,9 +11,10 @@ import {
   selectEmail,
   selectIsAuthenticated,
   selectMsisdn,
-} from "../../redux/selectors/userSelectors";
-import { setLoading } from "../../redux/actions/loadingActions";
-import GET_PERSONAL_DETAILS_USER_PROFILE from "../../graphql/GET_PERSONAL_DETAILS_USER_PROFILE";
+} from "@lebara/ui/src/redux/selectors/userSelectors";
+
+import { setLoading } from "@lebara/ui/src/redux/actions/loadingActions";
+import GET_PERSONAL_DETAILS_USER_PROFILE from "@lebara/ui/src/graphql/GET_PERSONAL_DETAILS_USER_PROFILE";
 
 import SingleFormContainer from "../../layouts/SingleFormContainer";
 import { UserDetailsProps } from "./types";

@@ -25,12 +25,12 @@ import { useSelector } from "react-redux";
 import { MiniHeaderProps } from "./types";
 import IconButton from "../IconButton/IconButton";
 import SideMenu from "../SideMenu/SideMenu";
-import { ReduxState } from "../../redux/types";
+import { ReduxState } from "@lebara/ui/src/redux/types";
+import {selectIsAuthenticated} from "@lebara/ui/src/redux/selectors/userSelectors";
 import { globalConfigs as GC, globalConstants as GCST } from "@lebara/ui/src/configs/globalConfigs.js";
 import Button from "../Button/Button";
 import UserMenu from "@lebara/ui/src/components/UserMenu/UserMenu";
 import Search from "../Search/Search";
-import { selectIsAuthenticated } from "../../redux/selectors/userSelectors";
 
 const MiniHeader: React.FC<MiniHeaderProps> = ({
   logoPath,
