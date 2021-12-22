@@ -27,7 +27,7 @@ import NewSIMOfferCard from "@lebara/ui/src/components/NewSImOfferCard/NewSImOff
 import Search from "../Search/Search";
 import UserMenu from "@lebara/ui/src/components/UserMenu/UserMenu";
 import {headerSearch} from "@lebara/ui/src/redux/actions/headerSearchActions";
-import {selectCrmId, selectIsAuthenticated} from "@lebara/ui/src/redux/selectors/userSelectors";
+import {selectIsAuthenticated} from "@lebara/ui/src/redux/selectors/userSelectors";
 import {globalConfigs as GC, globalConstants as GCST} from "@lebara/ui/src/configs/globalConfigs.js";
 import {useApolloClient, useQuery} from "@apollo/client";
 import GET_CART from "@lebara/ui/src/graphql/GET_CART";
@@ -361,7 +361,7 @@ const Header: React.FC<HeaderProps> = ({
     
       return () => {}
   }, [client, dispatch]);// eslint-disable-line react-hooks/exhaustive-deps
-  
+
   const { data: topUps } = useQuery(GET_TOP_UPS, {
     variables: {
       country: GC.country,
