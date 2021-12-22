@@ -708,17 +708,11 @@
                                                     name="./contractSummary"
                                                     fieldDescription="Contract Summary Label"
                                                     value="CONTRACT SUMMARY"/>
-                                            <freeSimPdfLink
+                                            <contractsummarypdfrootpath
                                                     jcr:primaryType="nt:unstructured"
                                                     sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
-                                                    fieldLabel="Free Sim PDF"
-                                                    name="./freeSimPDF"
-                                                    rootPath="/content/dam/lebara"/>
-                                            <planPDFLink
-                                                    jcr:primaryType="nt:unstructured"
-                                                    sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
-                                                    fieldLabel="Plan PDF"
-                                                    name="./planPDF"
+                                                    fieldLabel="Root path for Contract Summary PDF"
+                                                    name="./contractSummaryPdfRootPath"
                                                     rootPath="/content/dam/lebara"/>
                                         </items>
                                     </column>
