@@ -233,9 +233,9 @@ const Header: React.FC<HeaderProps> = ({
 }) => {
   const ref = React.useRef<any>(undefined);
   const headerRef = React.useRef<any>();
-  const isHeaderSearchClicked = useSelector(
-    (state: ReduxState) => state?.headerSearchBox?.key
-  );
+  // const isHeaderSearchClicked = useSelector(
+  //   (state: ReduxState) => state?.headerSearchBox?.key
+  // );
   const cartItems = useSelector((state: ReduxState) => state.cart.items);
   const history = useHistory();
   const client = useApolloClient();
@@ -246,7 +246,6 @@ const Header: React.FC<HeaderProps> = ({
   const isModalOpen = useSelector((t: ReduxState) => t.modal.open);
   const [isQuerySearched, setQuerySearched] = useState('');
   const [results, setResults] : any = useState([]);
-  const crmId = useSelector(selectCrmId);
   
   useOutsideClick({
     ref,
