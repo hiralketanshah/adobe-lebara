@@ -7,7 +7,7 @@ import {
   Flex,
   IconButton,
   Text,
-  useBoolean,
+  useBoolean, useToast,
 } from "@chakra-ui/react";
 import { BiMinusCircle, FaCamera, IoMdAddCircleOutline } from "react-icons/all";
 import { useHistory } from "react-router-dom";
@@ -91,7 +91,7 @@ const UserDetails: React.FC<UserDetailsProps> = ({
     selectedPartnerEmail,
     selectedParterSms,
   };
-
+  const toast = useToast();
   const [lastFormValues, setLastFormValues] = React.useState(initialValues);
   const validationSchema = yup.object({
     emailAddress: yup
