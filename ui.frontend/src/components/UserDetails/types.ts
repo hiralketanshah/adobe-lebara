@@ -32,6 +32,7 @@ export interface UserDetailsProps {
   validationMessages?: ValidationMessages;
   successEmailModal?: SuccessModalProps;
   changePasswordSuccessMsg?: string;
+  settingsUpdatedLabel?: string;
 
   userName?: string;
   userSurname?: string;
