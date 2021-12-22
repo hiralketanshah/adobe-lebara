@@ -29,7 +29,9 @@ class HowItWorksExporterTest {
     void getDescription() {
         aemContext.currentResource(PROPERTIES_JSON);
         howItWorksExporter = aemContext.request().adaptTo(HowItWorksExporter.class);
+        assert howItWorksExporter != null;
         assertEquals("how it works title description", howItWorksExporter.getDescription());
+        assertEquals("lebara/components/howitworks", howItWorksExporter.getExportedType());
     }
 
 }
