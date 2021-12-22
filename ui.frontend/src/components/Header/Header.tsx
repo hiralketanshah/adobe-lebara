@@ -361,6 +361,7 @@ const Header: React.FC<HeaderProps> = ({
     
       return () => {}
   }, [client, dispatch]);// eslint-disable-line react-hooks/exhaustive-deps
+  
   const { data: topUps } = useQuery(GET_TOP_UPS, {
     variables: {
       country: GC.country,
