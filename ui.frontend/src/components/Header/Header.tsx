@@ -30,12 +30,12 @@ import {headerSearch} from "@lebara/ui/src/redux/actions/headerSearchActions";
 import {selectIsAuthenticated} from "@lebara/ui/src/redux/selectors/userSelectors";
 import {globalConfigs as GC, globalConstants as GCST} from "@lebara/ui/src/configs/globalConfigs.js";
 import {useApolloClient, useQuery} from "@apollo/client";
-import GET_CART from "../../graphql/GET_CART";
+import GET_CART from "@lebara/ui/src/graphql/GET_CART";
 import {loadInitialCart, setCartItemsLoading} from "@lebara/ui/src/redux/actions/cartActions";
-import mapMagentoProductToCartItem from "../../utils/mapMagentoProductToCartItem";
+import mapMagentoProductToCartItem from "@lebara/ui/src/utils/mapMagentoProductToCartItem";
 import {saveTopUps} from "@lebara/ui/src/redux/actions/topUpActions";
-import GET_TOP_UPS from "../../graphql/GET_TOP_UPS";
-import GET_SESSION_STATUS from "../../graphql/GET_SESSION_STATUS";
+import GET_TOP_UPS from "@lebara/ui/src/graphql/GET_TOP_UPS";
+import GET_SESSION_STATUS from "@lebara/ui/src/graphql/GET_SESSION_STATUS";
 import {saveUserInfo} from "@lebara/ui/src/redux/actions/userActions";
 import {setLoading} from "@lebara/ui/src/redux/actions/loadingActions";
 import {setPaymentMethods} from "@lebara/ui/src/redux/actions/paymentMethodsActions";
@@ -45,6 +45,7 @@ import PlanNotEligibleDialog from "@lebara/ui/src/components/PlanNotEligibleDial
 import { toggleDialogState } from "@lebara/ui/src/redux/actions/modalsActions";
 import SearchResults from "../Search/SearchResults";
 import aemUtils from "../../utils/aem-utils";
+import { BACKGROUND_OPACITY_SAERCH_BAR } from "@lebara/ui/src/utils/lebara.constants";
 import GoogleAnalytics from "@lebara/ui/src/GoogleAnalytics";
 
 const SingleMenu = ({ menuItem, newText }: { menuItem: children, newText: any }) => {
@@ -232,6 +233,10 @@ const Header: React.FC<HeaderProps> = ({
   search,
 }) => {
   const ref = React.useRef<any>(undefined);
+  const headerRef = React.useRef<any>();
+  // const isHeaderSearchClicked = useSelector(
+  //   (state: ReduxState) => state?.headerSearchBox?.key
+  // );
   const cartItems = useSelector((state: ReduxState) => state.cart.items);
   const history = useHistory();
   const client = useApolloClient();
@@ -242,7 +247,7 @@ const Header: React.FC<HeaderProps> = ({
   const isModalOpen = useSelector((t: ReduxState) => t.modal.open);
   const [isQuerySearched, setQuerySearched] = useState('');
   const [results, setResults] : any = useState([]);
-
+  
   useOutsideClick({
     ref,
     handler: () => setProfileDropdown(false),
@@ -261,6 +266,28 @@ const Header: React.FC<HeaderProps> = ({
       })
     );
   };
+
+  const handleSearchOverlay = (isHeaderSearchClicked: boolean) => {
+    // console.log(headerRef.current);
+
+    if(!headerRef) return;
+
+    if(headerRef.current) {
+      const headerSiblingNode = headerRef.current.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.nextElementSibling;
+      const headerSiblingNode2 = headerRef.current.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.nextElementSibling.nextElementSibling;
+
+      // console.log(headerSiblingNode, isHeaderSearchClicked);
+      
+      if(headerSiblingNode) {
+        headerSiblingNode.style.opacity = isHeaderSearchClicked ? BACKGROUND_OPACITY_SAERCH_BAR : "1";
+        headerSiblingNode.style.pointerEvents = isHeaderSearchClicked ? "none" : "initial";
+      }
+      if(headerSiblingNode2) {
+        headerSiblingNode2.style.opacity = isHeaderSearchClicked ? BACKGROUND_OPACITY_SAERCH_BAR : "1";
+        headerSiblingNode2.style.pointerEvents = isHeaderSearchClicked ? "none" : "initial";
+      }
+    }
+  }
 
   const onCloseSearch = () => {
     setIsSearchOpened(false);
@@ -290,42 +317,6 @@ const Header: React.FC<HeaderProps> = ({
           }));
         });
   }, [dispatch]);
-
-  React.useEffect(() => {
-    loadPaymentMethods();
-  }, [loadPaymentMethods]);
-
-  React.useEffect(() => {
-    if( cartItems.length === 0){
-      getCart();
-    }
-    client
-      .query({
-        query: GET_SESSION_STATUS,
-      })
-      .then((res) => {
-        dispatch(saveUserInfo(res.data.getSessionStatus));
-      })
-      .catch(() => {})
-      .finally(() => {
-        dispatch(setLoading(false));
-      });
-  }, []);// eslint-disable-line react-hooks/exhaustive-deps
-  const { data: topUps } = useQuery(GET_TOP_UPS, {
-    variables: {
-      country: GC.country,
-    },
-  });
-
-  React.useEffect(() => {
-    if (topUps) {
-      dispatch(
-        saveTopUps(
-          topUps.getTopUps.map((t: string) => Number(t.replace("€", "")))
-        )
-      );
-    }
-  }, [topUps, dispatch]);
   
   const handleCartClick = () => {
     onCloseSearch();
@@ -344,6 +335,49 @@ const Header: React.FC<HeaderProps> = ({
     });
   };
 
+  // React.useEffect(() => {
+  //   handleSearchOverlay(isHeaderSearchClicked);
+  // }, [isHeaderSearchClicked]);
+
+  React.useEffect(() => {
+    loadPaymentMethods();
+  }, [loadPaymentMethods]);
+
+  React.useEffect(() => {
+    if (cartItems.length === 0) {
+      getCart();
+    }
+    client
+      .query({
+        query: GET_SESSION_STATUS,
+      })
+      .then((res) => {
+        dispatch(saveUserInfo(res.data.getSessionStatus));
+      })
+      .catch(() => {})
+      .finally(() => {
+        dispatch(setLoading(false));
+      });
+    
+      return () => {}
+  }, [client, dispatch]);// eslint-disable-line react-hooks/exhaustive-deps
+
+  const { data: topUps } = useQuery(GET_TOP_UPS, {
+    variables: {
+      country: GC.country,
+    },
+  });
+
+  React.useEffect(() => {
+    if (topUps) {
+      dispatch(
+        saveTopUps(
+          topUps.getTopUps.map((t: string) => Number(t.replace("€", "")))
+        )
+      );
+    }
+  }, [topUps, dispatch]);
+
   return (
     <>
       <GoogleAnalytics />
@@ -353,6 +387,8 @@ const Header: React.FC<HeaderProps> = ({
           backgroundColor={{ md: "white" }}
           boxShadow={{ md: "8px 4px 15px 3px rgba(0, 0, 0, 0.04)" }}
           borderRadius={{ md: "8px" }}
+          id="headerComp"
+          ref={headerRef}
       >
 
         <PlanNotEligibleDialog
