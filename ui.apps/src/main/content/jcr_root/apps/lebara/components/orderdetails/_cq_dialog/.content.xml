@@ -70,6 +70,13 @@
                                                 fieldLabel="Grand Total Label"
                                                 fieldDescription="Grand Total"
                                                 name="./grandTotalLabel"/>
+                                            <contractSummarylabel
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                    fieldLabel="Contract Summary Label"
+                                                    name="./contractSummary"
+                                                    fieldDescription="Contract Summary Label"
+                                                    value="CONTRACT SUMMARY"/>
                                         </items>
                                     </column>
                                 </items>
@@ -686,46 +693,6 @@
                             </columns>
                         </items>
                     </personaldetails>
-                    <contractSummary
-                            jcr:primaryType="nt:unstructured"
-                            jcr:title="Contract Summary"
-                            sling:resourceType="granite/ui/components/coral/foundation/container"
-                            margin="{Boolean}true">
-                        <items jcr:primaryType="nt:unstructured">
-                            <columns
-                                    jcr:primaryType="nt:unstructured"
-                                    sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
-                                    margin="{Boolean}true">
-                                <items jcr:primaryType="nt:unstructured">
-                                    <column
-                                            jcr:primaryType="nt:unstructured"
-                                            sling:resourceType="granite/ui/components/coral/foundation/container">
-                                        <items jcr:primaryType="nt:unstructured">
-                                            <contractSummarylabel
-                                                    jcr:primaryType="nt:unstructured"
-                                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                                    fieldLabel="Contract Summary Label"
-                                                    name="./contractSummary"
-                                                    fieldDescription="Contract Summary Label"
-                                                    value="CONTRACT SUMMARY"/>
-                                            <freeSimPdfLink
-                                                    jcr:primaryType="nt:unstructured"
-                                                    sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
-                                                    fieldLabel="Free Sim PDF"
-                                                    name="./freeSimPDF"
-                                                    rootPath="/content/dam/lebara"/>
-                                            <planPDFLink
-                                                    jcr:primaryType="nt:unstructured"
-                                                    sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
-                                                    fieldLabel="Plan PDF"
-                                                    name="./planPDF"
-                                                    rootPath="/content/dam/lebara"/>
-                                        </items>
-                                    </column>
-                                </items>
-                            </columns>
-                        </items>
-                    </contractSummary>
                 </items>
             </tabs>
         </items>
