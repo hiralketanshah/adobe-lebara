@@ -335,10 +335,9 @@ const Header: React.FC<HeaderProps> = ({
     });
   };
 
-
-  React.useEffect(() => {
-    handleSearchOverlay(isHeaderSearchClicked);
-  }, [isHeaderSearchClicked])
+  // React.useEffect(() => {
+  //   handleSearchOverlay(isHeaderSearchClicked);
+  // }, [isHeaderSearchClicked]);
 
   React.useEffect(() => {
     loadPaymentMethods();
