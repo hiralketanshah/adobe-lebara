@@ -1,8 +1,8 @@
 import { gql } from "@apollo/client";
 
 export default gql`
-  query getPersonalDetails($msisdn: String!, $country: String!) {
-    getPersonalDetails(msisdn: $msisdn, country: $country) {
+  query getPersonalDetails($country: String!) {
+    getPersonalDetails(country: $country) {
       name {
         firstName
         lastName
