@@ -1,5 +1,5 @@
 import { MapTo } from "@adobe/aem-react-editable-components";
-import VerifyMobileNumber from "@lebara/ui/src/components/VerifyMobileNumberForm/VerifyMobileNumberForm"
+import VerfiyRegisterMobileRoute from "@lebara/ui/src/rotues/VerifyRegisterMobileRoute";
 
 
 const VerifyMobileNumberConfig = {
@@ -9,4 +9,4 @@ const VerifyMobileNumberConfig = {
   },
 };
 
-MapTo("lebara/components/verifymobile")(VerifyMobileNumber, VerifyMobileNumberConfig);
+MapTo("lebara/components/verifymobile")(VerfiyRegisterMobileRoute, VerifyMobileNumberConfig);
