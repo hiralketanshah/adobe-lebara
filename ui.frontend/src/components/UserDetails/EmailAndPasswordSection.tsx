@@ -52,7 +52,11 @@ const EmailAndPasswordSection: React.FC<ChangeEmailPasswordProfileProps> = ({
               removeValidation
               {...disabledEmailProps}
             />
-            <InputRightElement width="4.5rem" mt="30px">
+            <InputRightElement width="auto" mt="30px" 
+              style={{
+                right: "5px",
+                top: "2px",
+              }}>
               <Button
                 padding="initial"
                 bgColor="transparent"
@@ -62,7 +66,9 @@ const EmailAndPasswordSection: React.FC<ChangeEmailPasswordProfileProps> = ({
               >
                 <FiEdit size={24} color="#463C3C" />
                 &nbsp;
-                <LebaraText type="button" color="#FF3182">
+                <LebaraText type="button" color="#FF3182"
+                  style={{whiteSpace: "pre-wrap", 
+                  textTransform: "capitalize"}}>
                   {frmFields?.editLinkLabel}
                 </LebaraText>
               </Button>

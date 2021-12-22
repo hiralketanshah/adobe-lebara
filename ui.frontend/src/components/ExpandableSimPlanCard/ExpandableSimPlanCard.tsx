@@ -211,12 +211,12 @@ const ExpandableSimPlanCard: React.FC<ExpandableSimPlanCardProps> = ({
               )}
               <Text
                 as="h3"
-                fontSize={promotionPrice ? "16px" : "32px"}
+                fontSize={promotionData ? "16px" : "32px"}
                 pr="6px"
                 pl="2px"
-                fontWeight={promotionPrice ? "normal" : "bold"}
+                fontWeight={promotionData ? "normal" : "bold"}
                 color="secondary.500"
-                textDecoration={promotionPrice ? "line-through" : "initial"}
+                textDecoration={promotionData ? "line-through" : "initial"}
                 fontFamily="Chiswick Grotesque Lebara"
               >
                 {filteredAllowanceList.formatedValue}
