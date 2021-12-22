@@ -358,6 +358,8 @@ const Header: React.FC<HeaderProps> = ({
       .finally(() => {
         dispatch(setLoading(false));
       });
+    
+      return () => {}
   }, [client, dispatch]);// eslint-disable-line react-hooks/exhaustive-deps
   const { data: topUps } = useQuery(GET_TOP_UPS, {
     variables: {
