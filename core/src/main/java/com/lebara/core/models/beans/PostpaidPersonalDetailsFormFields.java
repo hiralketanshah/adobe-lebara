@@ -447,8 +447,11 @@ public class PostpaidPersonalDetailsFormFields {
     
     @JsonProperty("currentProviderList")
     public List<Object> getCurrentProvidersList() {
-        if(currentProviderList != null) {
+        if (currentProviderList != null) {
             Resource currentProvidersResource = resourceResolver.getResource(currentProviderList);
+            if (currentProvidersResource == null) {
+                return new ArrayList<>();
+            }
             ContentFragment currentProvidersFragment = currentProvidersResource.adaptTo(ContentFragment.class);
             if (null != currentProvidersFragment) {
                 return CFUtils.convertStringArrayToList(CFUtils.getElementArrayValue(currentProvidersFragment, "currentProvidersOptions"), Object.class);

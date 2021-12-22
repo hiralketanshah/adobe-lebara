@@ -230,32 +230,6 @@
                                     rootPath="/content/dam/lebara/markets"/>
                             <granite:data jcr:primaryType="nt:unstructured"/>
                         </_x0031_638509896404>
-                        <_x0031_638441279167
-                                jcr:primaryType="nt:unstructured"
-                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                fieldLabel="Promotion Id"
-                                listOrder="1"
-                                maxlength="255"
-                                metaType="text-single"
-                                name="promotionId"
-                                renderReadOnly="false"
-                                showEmptyInReadOnly="true"
-                                valueType="string">
-                            <granite:data jcr:primaryType="nt:unstructured"/>
-                        </_x0031_638441279167>
-                        <_x0031_638441536351
-                                jcr:primaryType="nt:unstructured"
-                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                fieldLabel="Promotional Message"
-                                listOrder="22"
-                                maxlength="255"
-                                metaType="text-single"
-                                name="promotionalMessage"
-                                renderReadOnly="false"
-                                showEmptyInReadOnly="true"
-                                valueType="string">
-                            <granite:data jcr:primaryType="nt:unstructured"/>
-                        </_x0031_638441536351>
                     </items>
                 </content>
             </cq:dialog>

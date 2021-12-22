@@ -11,6 +11,7 @@ import {
   Link,
   Image,
 } from "@chakra-ui/react";
+import { RouterLink } from "@lebara/ui/src/hooks/useHistory";
 import { GoPlus, FcMinus } from "react-icons/all";
 import IconButton from "../IconButton/IconButton";
 import SocialMediaButtons from "../SocialMediaButtons/SocialMediaButtons";
@@ -54,7 +55,7 @@ const Footer: React.FC<FooterProps> = ({
               <AccordionPanel pb={4}>
                 {menu.childLinks?.map((subMenuItem, index) => (
                   <Box key={index}>
-                    <Link to={subMenuItem.link} py="10px" display="block">
+                    <Link to={subMenuItem.link} as={RouterLink} py="10px" display="block">
                       {subMenuItem.label}
                     </Link>
                   </Box>

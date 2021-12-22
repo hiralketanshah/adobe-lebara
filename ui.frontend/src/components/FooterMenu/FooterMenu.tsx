@@ -1,5 +1,5 @@
 import React from "react";
-import { RouterLink } from "@hooks/useHistory";
+import { RouterLink } from "@lebara/ui/src/hooks/useHistory";
 import {
   Box,
   Divider,
