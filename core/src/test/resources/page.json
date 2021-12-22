@@ -826,7 +826,17 @@
             "resetPwdButtonCancelLabel": "CANCEL",
             ":type": "lebara/components/resetpassword"
 
+          },
+          "whileyouarehere": {
+            "description": "while you are here desc",
+            "heading": "while you are here",
+            "ctaLiveChatLabel": "START LIVE CHAT",
+            "ctaLiveChatUrl": "www.google.com",
+            "separatorOrText": "OR",
+            ":type": "lebara/components/whileyouarehere"
           }
+
+
         }
       }
     }
