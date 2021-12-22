@@ -113,8 +113,12 @@ const ExpandableSimPlanCard: React.FC<ExpandableSimPlanCardProps> = ({
       case OfferTypes.PREPAID:
       case OfferTypes.POSTPAID: {
         console.log(globalConfigs.journeyPages, globalConstants.ORDER_DETAILS);
-        await addItemToCart(parseInt(id || ''), planName, (JSON.stringify(description || '')), Number(cost?.replaceAll(',', '.') || ''), "plan");
-        isRemoveFromCart && onClose ? onClose() : history.push(userToken ? (globalConfigs.journeyPages[globalConstants.ORDER_DETAILS] || '/') : (globalConfigs.journeyPages[globalConstants.LEBARA_SIM_CHOICE] || '/'));
+        try {
+          isRemoveFromCart && onClose ? onClose() : history.push(userToken ? (globalConfigs.journeyPages[globalConstants.ORDER_DETAILS] || '/') : (globalConfigs.journeyPages[globalConstants.LEBARA_SIM_CHOICE] || '/'));
+          await addItemToCart(parseInt(id || ''), planName, (JSON.stringify(description || '')), Number(cost?.replaceAll(',', '.') || ''), "plan");
+        }catch(e){
+          
+        }
       }
     }
     setIsButtonDisabled(false);

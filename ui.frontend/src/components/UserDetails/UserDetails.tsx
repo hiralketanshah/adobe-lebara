@@ -40,7 +40,7 @@ const UserDetails: React.FC<UserDetailsProps> = ({
   frmFields,
   validationMessages,
   successEmailModal,
-
+  settingsUpdatedLabel = "Your settings have been updated",
   alternateContactNumber,
   city,
   emailAddress,
@@ -112,7 +112,7 @@ const UserDetails: React.FC<UserDetailsProps> = ({
         validationSchema={
           emailPasswordSectionflag ? validationSchema : undefined
         }
-        onSubmit={async (values, { setErrors, resetForm }) => {
+        onSubmit={async (values, { setErrors }) => {
           try {
             await updateMarketingPrefrences({
               variables: {
@@ -124,7 +124,11 @@ const UserDetails: React.FC<UserDetailsProps> = ({
               },
             });
             setLastFormValues(values);
-            resetForm({ values });
+            toast({
+              title: settingsUpdatedLabel,
+              status: "success",
+              isClosable: true,
+            });
           } catch (error: any) {
             if (error.graphQLErrors && error.graphQLErrors[0].message) {
               setErrors({ informedEmail: error.graphQLErrors[0].message });
@@ -132,7 +136,7 @@ const UserDetails: React.FC<UserDetailsProps> = ({
           }
         }}
       >
-        {({ handleSubmit, handleReset, resetForm }) => (
+        {({ handleSubmit, handleReset, resetForm, isSubmitting }) => (
           <form onSubmit={handleSubmit} onReset={handleReset}>
             <Box px="20px" py="26px"
               w={{ base: "100%", lg: "846px" }}
@@ -427,6 +431,7 @@ const UserDetails: React.FC<UserDetailsProps> = ({
                     isFullWidth
                     bgColor="primary.500"
                     type="submit"
+                    disabled={isSubmitting}
                   >
                     {frmFields?.ctaButtonLabel}
                   </Button>
