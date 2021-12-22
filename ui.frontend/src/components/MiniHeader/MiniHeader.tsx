@@ -200,7 +200,7 @@ const MiniHeader: React.FC<MiniHeaderProps> = ({
         <></>
       )}
       {isProfileDropdownOpen && isAuthenticated ? (
-        <Box backgroundColor="white" width="100%" height="100%">
+        <Box backgroundColor="white" width="100%" height="100%" ref={ref}>
           <Flex
             zIndex="3"
             width="18rem"
@@ -212,7 +212,7 @@ const MiniHeader: React.FC<MiniHeaderProps> = ({
             px="11px"
             borderBottomRadius="12px"
           >
-            {loggedInMenuItems && <UserMenu menus={loggedInMenuItems as any} logoutLabel={logoutLabel} logoutLink={logoutLink}/>}
+            <UserMenu menus={loggedInMenuItems as any} logoutLabel={logoutLabel} logoutLink={logoutLink} />
           </Flex>
         </Box>
       ) : (
