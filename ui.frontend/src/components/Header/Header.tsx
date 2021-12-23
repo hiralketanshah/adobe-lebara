@@ -233,10 +233,9 @@ const Header: React.FC<HeaderProps> = ({
   search,
 }) => {
   const ref = React.useRef<any>(undefined);
-  const headerRef = React.useRef<any>();
-  // const isHeaderSearchClicked = useSelector(
-  //   (state: ReduxState) => state?.headerSearchBox?.key
-  // );
+  const isHeaderSearchClicked = useSelector(
+    (state: ReduxState) => state?.headerSearchBox?.key
+  );
   const cartItems = useSelector((state: ReduxState) => state.cart.items);
   const history = useHistory();
   const client = useApolloClient();
@@ -268,25 +267,15 @@ const Header: React.FC<HeaderProps> = ({
   };
 
   const handleSearchOverlay = (isHeaderSearchClicked: boolean) => {
-    // console.log(headerRef.current);
-
-    if(!headerRef) return;
-
-    if(headerRef.current) {
-      const headerSiblingNode = headerRef.current.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.nextElementSibling;
-      const headerSiblingNode2 = headerRef.current.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.nextElementSibling.nextElementSibling;
-
-      // console.log(headerSiblingNode, isHeaderSearchClicked);
-      
-      if(headerSiblingNode) {
-        headerSiblingNode.style.opacity = isHeaderSearchClicked ? BACKGROUND_OPACITY_SAERCH_BAR : "1";
-        headerSiblingNode.style.pointerEvents = isHeaderSearchClicked ? "none" : "initial";
+    const parentGridNodes = document.querySelectorAll<HTMLElement>('.aem-page > div > .aem-container > .aem-GridColumn') || document.querySelectorAll<HTMLElement>('.aem-page > .aem-container > .aem-GridColumn');
+    if(!parentGridNodes || !parentGridNodes.length) return;
+  
+    parentGridNodes.forEach((ele, idx) => {
+      if(idx > 0 && (ele && ele?.style) && idx <= parentGridNodes.length-1) {
+        ele.style.opacity = isHeaderSearchClicked ? BACKGROUND_OPACITY_SAERCH_BAR : "1";
+        ele.style.pointerEvents = isHeaderSearchClicked ? "none" : "initial";
       }
-      if(headerSiblingNode2) {
-        headerSiblingNode2.style.opacity = isHeaderSearchClicked ? BACKGROUND_OPACITY_SAERCH_BAR : "1";
-        headerSiblingNode2.style.pointerEvents = isHeaderSearchClicked ? "none" : "initial";
-      }
-    }
+    });
   }
 
   const onCloseSearch = () => {
@@ -335,9 +324,9 @@ const Header: React.FC<HeaderProps> = ({
     });
   };
 
-  // React.useEffect(() => {
-  //   handleSearchOverlay(isHeaderSearchClicked);
-  // }, [isHeaderSearchClicked]);
+  React.useEffect(() => {
+    handleSearchOverlay(isHeaderSearchClicked);
+  }, [isHeaderSearchClicked]);
 
   React.useEffect(() => {
     loadPaymentMethods();
@@ -388,7 +377,6 @@ const Header: React.FC<HeaderProps> = ({
           boxShadow={{ md: "8px 4px 15px 3px rgba(0, 0, 0, 0.04)" }}
           borderRadius={{ md: "8px" }}
           id="headerComp"
-          ref={headerRef}
       >
 
         <PlanNotEligibleDialog
