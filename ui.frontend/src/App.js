@@ -1,9 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import {ChakraProvider, extendTheme, withDefaultColorScheme,} from "@chakra-ui/react";
-import {Page, withModel} from "@adobe/aem-react-editable-components";
+import { Page, withModel } from "@adobe/aem-react-editable-components";
+import { useApolloClient } from "@apollo/client";
+import { Provider, useDispatch, useSelector } from "react-redux";
+import { ScaleLoader } from "react-spinners";
+import LoadingOverlay from "react-loading-overlay";
 import ScrollToTop from "@lebara/ui/src/ScrollToTop";
 
-import {Provider} from "react-redux";
+import GET_SESSION_STATUS from "@lebara/ui/src/graphql/GET_SESSION_STATUS";
+import { selectIsLoading } from "@lebara/ui/src/redux/selectors/loadingSelectors";
+import { setLoading } from "@lebara/ui/src/redux/actions/loadingActions";
+import { saveUserInfo } from "@lebara/ui/src/redux/actions/userActions";
 
 import colors from "./theme/colors";
 import "@fontsource/roboto/100.css";
@@ -29,20 +36,82 @@ const theme = extendTheme(
   withDefaultColorScheme({ colorScheme: "primary" })
 );
 
+
+function withPageHook(Component) {
+
+  return function WrappedComponent(props) {
+    const pageHookValue = withPageHook();
+    const client = useApolloClient();
+    const dispatch = useDispatch();
+    const isLoading = useSelector(selectIsLoading);
+    const [isAuthLoading, setIsAuthLoading] = useState(true);
+
+    React.useEffect(() => {
+      client
+        .query({
+          query: GET_SESSION_STATUS,
+        })
+        .then((res) => {
+          dispatch(saveUserInfo(res.data.getSessionStatus));
+        })
+        .catch(() => {})
+        .finally(() => {
+          dispatch(setLoading(false));
+          setIsAuthLoading(false);
+        });
+      
+        return () => {}
+    }, [client, dispatch]);// eslint-disable-line react-hooks/exhaustive-deps
+    
+    if (isAuthLoading) {
+      return (
+        <LoadingOverlay
+          active={isLoading}
+          spinner={<ScaleLoader color="#00A6EB" />}
+          styles={{
+            overlay: (base) => ({
+              ...base,
+              position: "fixed",
+              zIndex: 1401,
+            }),
+          }}
+        />
+      );
+    }
+    
+    return <Component {...props} pageHookValue={pageHookValue} isLoading={isLoading} />;
+  }
+}
+
 // This component is the application entry point
 class App extends Page {
+
   render() {
+    const {isLoading} = this.props;
+
     return (
       <Provider store={store}>
         <ChakraProvider theme={theme}>
-          <ScrollToTop />
-          <Fonts />
-          {this.childComponents}
-          {this.childPages}
+          <LoadingOverlay
+            active={isLoading}
+            spinner={<ScaleLoader color="#00A6EB" />}
+            styles={{
+              overlay: (base) => ({
+                ...base,
+                position: "fixed",
+                zIndex: 1401,
+              }),
+            }}
+          >
+            <ScrollToTop />
+            <Fonts />
+            {this.childComponents}
+            {this.childPages}
+          </LoadingOverlay>
         </ChakraProvider>
       </Provider>
     );
   }
 }
 
-export default withModel(App);
+export default withModel(withPageHook(App));
