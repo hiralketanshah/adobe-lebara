@@ -47,6 +47,7 @@ import SearchResults from "../Search/SearchResults";
 import aemUtils from "../../utils/aem-utils";
 import { BACKGROUND_OPACITY_SAERCH_BAR } from "@lebara/ui/src/utils/lebara.constants";
 import GoogleAnalytics from "@lebara/ui/src/GoogleAnalytics";
+import useLoadPaymentMethods from "@lebara/ui/src/hooks/useLoadPaymentMethods";
 
 const SingleMenu = ({ menuItem, newText }: { menuItem: children, newText: any }) => {
   const DEFUALT_GROUP_MENU_UPTO = 5;
@@ -246,7 +247,7 @@ const Header: React.FC<HeaderProps> = ({
   const isModalOpen = useSelector((t: ReduxState) => t.modal.open);
   const [isQuerySearched, setQuerySearched] = useState('');
   const [results, setResults] : any = useState([]);
-  
+  const { loadPaymentMethodsCallback } = useLoadPaymentMethods();
   useOutsideClick({
     ref,
     handler: () => setProfileDropdown(false),
@@ -366,7 +367,9 @@ const Header: React.FC<HeaderProps> = ({
       );
     }
   }, [topUps, dispatch]);
-
+  React.useEffect(() => {
+    loadPaymentMethodsCallback();
+  }, [loadPaymentMethodsCallback, isAuthenticated]);
   return (
     <>
       <GoogleAnalytics />

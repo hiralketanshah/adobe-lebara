@@ -317,6 +317,18 @@
 		<property name="mobileNumberLabel"/>
 		<property name="termsAndConditionsLabel"/>
 
+		<!--Payment Method component -->
+		<property name="preferredPaymentLabel"/>
+		<property name="preferredPaymentDesc"/>
+		<property name="defaultPaymentLabel"/>
+		<property name="otherSavedPaymentMethodLabel"/>
+		<property name="paymentMethodsLabel"/>
+		<property name="howItWorksLabel"/>
+		<property name="howItWorksDesc"/>
+		<property name="creditOrDeditCardLabel"/>
+		<property name="payWithPaypalLabel"/>
+		<property name="setDefaultLabel"/>
+		<property name="deleteLabel"/>
 
 		<!--Support component -->
 		<property name="ctaLinkLabel"/>

@@ -7,12 +7,16 @@ import PlanDetailsDialog from "../PlanDetailsDialog/PlanDetailsDialog";
 import { allowanceListProps } from "../ExpandablePlanCard/types";
 import { useHistory } from "react-router-dom";
 import useAddToCart from "@lebara/ui/src/hooks/useAddToCart";
-import { useLocalStorage } from "@rehooks/local-storage";
 import { globalConfigs, globalConstants } from "@lebara/ui/src/configs/globalConfigs";
 import LebaraText from "@lebara/ui/src/components/LebaraText/LebaraText";
 import PdfDialog from "@lebara/ui/src/components/PdfDialog/PdfDialog";
 import { useMutation } from "@apollo/client";
 import REMOVE_FROM_CART from "../../graphql/REMOVE_FROM_CART";
+import { useSelector } from "react-redux";
+import {
+  selectIsAuthenticated,
+  selectMsisdn,
+} from "@lebara/ui/src/redux/selectors/userSelectors";
 const ExpandableSimPlanCard: React.FC<ExpandableSimPlanCardProps> = ({
   planName,
   previewIcon,
@@ -53,9 +57,10 @@ const ExpandableSimPlanCard: React.FC<ExpandableSimPlanCardProps> = ({
   const [isDialogOpen, setIsDialogOpen] = React.useState(false);
   const [isButtonDisabled, setIsButtonDisabled] = React.useState(false);
   const [isPdfDialogOpen, setIsPdfDialogOpen] = useState(false);
-  const [userToken] = useLocalStorage("userToken");
+  const isAuthenticated = useSelector(selectIsAuthenticated);
+  const msisdn = useSelector(selectMsisdn);
   const handleViewCartClick = () => {
-    history.push(userToken ? (globalConfigs.journeyPages[globalConstants.ORDER_DETAILS] || '/') : (globalConfigs.journeyPages[globalConstants.LOGIN] || ''));
+    history.push(isAuthenticated && msisdn ? (globalConfigs.journeyPages[globalConstants.ORDER_DETAILS] || '/') : (globalConfigs.journeyPages[globalConstants.LOGIN] || ''));
   };
 
   let filteredAllowanceList: allowanceListProps = {};
@@ -114,7 +119,7 @@ const ExpandableSimPlanCard: React.FC<ExpandableSimPlanCardProps> = ({
       case OfferTypes.POSTPAID: {
         console.log(globalConfigs.journeyPages, globalConstants.ORDER_DETAILS);
         try {
-          isRemoveFromCart && onClose ? onClose() : history.push(userToken ? (globalConfigs.journeyPages[globalConstants.ORDER_DETAILS] || '/') : (globalConfigs.journeyPages[globalConstants.LEBARA_SIM_CHOICE] || '/'));
+          isRemoveFromCart && onClose ? onClose() : history.push(isAuthenticated && msisdn ? (globalConfigs.journeyPages[globalConstants.ORDER_DETAILS] || '/') : (globalConfigs.journeyPages[globalConstants.LEBARA_SIM_CHOICE] || '/'));
           await addItemToCart(parseInt(id || ''), planName, (JSON.stringify(description || '')), Number(cost?.replaceAll(',', '.') || ''), "plan");
         }catch(e){
           
