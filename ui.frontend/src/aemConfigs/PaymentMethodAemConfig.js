@@ -8,4 +8,4 @@ const PaymentMethodConfig = {
   },
 };
 
-MapTo("lebara/components/paymentmethod")(PaymentMethodRoute, PaymentMethodConfig);
+MapTo("lebara/components/user/paymentmethod")(PaymentMethodRoute, PaymentMethodConfig);
