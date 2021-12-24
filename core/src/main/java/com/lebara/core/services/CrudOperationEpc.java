@@ -192,7 +192,6 @@ public class CrudOperationEpc {
             fd.setValue(convertedEpcJsonObject.getData().getOffers().toArray(new String[0]));
             newFragment.getElement("value").setValue(fd);
             newFragment.getElement("offerType").setContent(offerType, LebaraConstants.CONTENT_TYPE_TEXT_PLAIN);
-
         } catch (ContentFragmentException e) {
             logger.error("ContentFragmentException {}", e);
         }
