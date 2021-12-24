@@ -2,14 +2,14 @@ import React from "react";
 import { Box, Flex, Heading, useToast } from "@chakra-ui/react";
 import { HeroBannerProps } from "./types";
 import Button from "../Button/Button";
-import { setLoading } from "../../redux/actions/loadingActions";
+import { setLoading } from "@lebara/ui/src/redux/actions/loadingActions";
 import {
   selectIsAuthenticated,
   selectMsisdn,
-} from "../../redux/selectors/userSelectors";
+} from "@lebara/ui/src/redux/selectors/userSelectors";
 import { useDispatch, useSelector } from "react-redux";
 import useAddToCart from "@lebara/ui/src/hooks/useAddToCart";
-import { ReduxState } from "../../redux/types";
+import { ReduxState } from "@lebara/ui/src/redux/types";
 import { useHistory } from "react-router-dom";
 import { globalConfigs as GC, globalConstants as C } from "@lebara/ui/src/configs/globalConfigs.js";
 import { Image } from "@lebara/ui/src/components/Image/Image";
