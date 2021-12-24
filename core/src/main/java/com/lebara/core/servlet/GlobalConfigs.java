@@ -42,7 +42,6 @@ public class GlobalConfigs extends SlingSafeMethodsServlet {
     private static final String JOURNEY_PAGES = "journeyPages";
     private static final String PRIVATE_PAGES = "privatePages";
     private static final String PAYMENT_MESSAGES = "paymentMessages";
-    private static final String SPA_APP_TEMPLATE_PATH = "/conf/lebara/settings/wcm/templates/spa-app-template";
 
     @Reference
     private transient GlobalOsgiService globalOsgiService;
@@ -76,7 +75,7 @@ public class GlobalConfigs extends SlingSafeMethodsServlet {
     }
 
     private PaymentMethods getPaymentMethods(Page page) {
-        Page homePage = getHomePage(page);
+        Page homePage = getRootPage(page);
         if (homePage == null) {
             return new PaymentMethods();
         }
@@ -118,23 +117,16 @@ public class GlobalConfigs extends SlingSafeMethodsServlet {
     }
 
     /**
-     * Recursive logic to return of homepage of current page.
-     *
-     * @param currentPage .
-     * @return homePagePath
+     * Recursive logic to return of root of current page which contains payment message child node in it.
      */
-    public static Page getHomePage(final Page currentPage) {
-        Page parent = currentPage;
-        boolean foundHome = false;
-        while (!foundHome && parent != null) {
-            String template = parent.getProperties().get(NameConstants.PN_TEMPLATE, String.class);
-            if ((template != null && template.equals(SPA_APP_TEMPLATE_PATH))) {
-                foundHome = true;
-                return parent;
-            }
-            parent = parent.getParent();
+    public static Page getRootPage(Page currentPage) {
+        if (currentPage == null) {
+            return null;
         }
-        return null;
+        while (currentPage.getContentResource(PAYMENT_MESSAGES) == null && !currentPage.getAbsoluteParent(1).getPath().equals(currentPage.getPath())) {
+            currentPage = currentPage.getParent();
+        }
+        return currentPage;
     }
 }
 
