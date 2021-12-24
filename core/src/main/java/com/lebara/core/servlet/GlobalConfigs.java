@@ -8,6 +8,7 @@ import com.day.cq.commons.jcr.JcrConstants;
 import com.day.cq.wcm.api.PageManager;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.net.MediaType;
+import com.lebara.core.models.beans.PaymentMethods;
 import com.lebara.core.services.GlobalOsgiService;
 import com.lebara.core.utils.AemUtils;
 import org.apache.commons.lang3.ArrayUtils;
@@ -40,6 +41,9 @@ public class GlobalConfigs extends SlingSafeMethodsServlet {
     private static final String CURRENCY_NAME = "currencyName";
     private static final String JOURNEY_PAGES = "journeyPages";
     private static final String PRIVATE_PAGES = "privatePages";
+    private static final String PAYMENT_MESSAGES = "paymentMessages";
+    private static final String SPA_APP_TEMPLATE_PATH = "/conf/lebara/settings/wcm/templates/spa-app-template";
+
     @Reference
     private transient GlobalOsgiService globalOsgiService;
 
@@ -67,8 +71,22 @@ public class GlobalConfigs extends SlingSafeMethodsServlet {
                 .put("paymentAdeyenEnv", Optional.ofNullable(globalOsgiService.getPaymentAdeyenEnv()).orElse(""))
                 .put(CURRENCY_NAME, Optional.ofNullable(inheritedProp.getInherited(CURRENCY_NAME, String.class)).orElse(""))
                 .put(JOURNEY_PAGES, getJourneyPages(request, page))
-                .put(PRIVATE_PAGES, getPrivatePages(request, inheritedProp.getInherited(PRIVATE_PAGES, String[].class))).build();
+                .put(PRIVATE_PAGES, getPrivatePages(request, inheritedProp.getInherited(PRIVATE_PAGES, String[].class)))
+                .put(PAYMENT_MESSAGES,getPaymentMethods(page)).build();
     }
+
+    private PaymentMethods getPaymentMethods(Page page) {
+        Page homePage = getHomePage(page);
+        if (homePage == null) {
+            return new PaymentMethods();
+        }
+        Resource paymentRes = homePage.getContentResource(PAYMENT_MESSAGES);
+        if (paymentRes == null) {
+            return new PaymentMethods();
+        }
+        return paymentRes.adaptTo(PaymentMethods.class);
+    }
+
     protected Object getJourneyPages(SlingHttpServletRequest request, Page currentPage) {
         if (currentPage != null) {
             Map<String, String> items = new HashMap<String, String>();
@@ -93,6 +111,26 @@ public class GlobalConfigs extends SlingSafeMethodsServlet {
             return Arrays.stream(privatePages).map(link  -> AemUtils.getLinkWithExtension(link, request)).collect(Collectors.toList());
         }
         return Collections.<String>emptyList();
+    }
+
+    /**
+     * Recursive logic to return of homepage of current page.
+     *
+     * @param currentPage .
+     * @return homePagePath
+     */
+    public static Page getHomePage(final Page currentPage) {
+        Page parent = currentPage;
+        boolean foundHome = false;
+        while (!foundHome && parent != null) {
+            String template = parent.getProperties().get(NameConstants.PN_TEMPLATE, String.class);
+            if ((template != null && template.equals(SPA_APP_TEMPLATE_PATH))) {
+                foundHome = true;
+                return parent;
+            }
+            parent = parent.getParent();
+        }
+        return null;
     }
 }
 
