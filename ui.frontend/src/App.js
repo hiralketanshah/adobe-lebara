@@ -40,7 +40,6 @@ const theme = extendTheme(
 function withPageHook(Component) {
 
   return function WrappedComponent(props) {
-    const pageHookValue = withPageHook();
     const client = useApolloClient();
     const dispatch = useDispatch();
     const isLoading = useSelector(selectIsLoading);
@@ -79,7 +78,7 @@ function withPageHook(Component) {
       );
     }
     
-    return <Component {...props} pageHookValue={pageHookValue} isLoading={isLoading} />;
+    return <Component {...props} isLoading={isLoading} />;
   }
 }
 
