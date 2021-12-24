@@ -35,9 +35,6 @@ import {loadInitialCart, setCartItemsLoading} from "@lebara/ui/src/redux/actions
 import mapMagentoProductToCartItem from "@lebara/ui/src/utils/mapMagentoProductToCartItem";
 import {saveTopUps} from "@lebara/ui/src/redux/actions/topUpActions";
 import GET_TOP_UPS from "@lebara/ui/src/graphql/GET_TOP_UPS";
-import GET_SESSION_STATUS from "@lebara/ui/src/graphql/GET_SESSION_STATUS";
-import {saveUserInfo} from "@lebara/ui/src/redux/actions/userActions";
-import {setLoading} from "@lebara/ui/src/redux/actions/loadingActions";
 import {setPaymentMethods} from "@lebara/ui/src/redux/actions/paymentMethodsActions";
 import { useHistory, RouterLink } from "@lebara/ui/src/hooks/useHistory";
 import axios from "axios";
@@ -337,20 +334,7 @@ const Header: React.FC<HeaderProps> = ({
     if (cartItems.length === 0) {
       getCart();
     }
-    client
-      .query({
-        query: GET_SESSION_STATUS,
-      })
-      .then((res) => {
-        dispatch(saveUserInfo(res.data.getSessionStatus));
-      })
-      .catch(() => {})
-      .finally(() => {
-        dispatch(setLoading(false));
-      });
-    
-      return () => {}
-  }, [client, dispatch]);// eslint-disable-line react-hooks/exhaustive-deps
+  }, []);// eslint-disable-line react-hooks/exhaustive-deps
 
   const { data: topUps } = useQuery(GET_TOP_UPS, {
     variables: {
