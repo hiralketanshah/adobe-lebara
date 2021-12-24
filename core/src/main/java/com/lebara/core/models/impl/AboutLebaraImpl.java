@@ -1,28 +1,32 @@
 package com.lebara.core.models.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.lebara.core.models.beans.ListItem;
+import com.lebara.core.utils.AemUtils;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.models.annotations.DefaultInjectionStrategy;
 import org.apache.sling.models.annotations.Exporter;
 import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.Via;
-import org.apache.sling.models.annotations.injectorspecific.ScriptVariable;
-import org.apache.sling.models.annotations.injectorspecific.Self;
-import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
+import org.apache.sling.models.annotations.injectorspecific.*;
 import org.apache.sling.models.annotations.via.ResourceSuperType;
 
 import com.adobe.cq.export.json.ComponentExporter;
 import com.adobe.cq.export.json.ExporterConstants;
-import com.adobe.cq.wcm.core.components.models.ListItem;
 import com.adobe.cq.wcm.core.components.models.Teaser;
 import com.lebara.core.models.AboutLebara;
 
 @Model(adaptables = SlingHttpServletRequest.class, adapters = { AboutLebara.class,
-		ComponentExporter.class }, resourceType = AboutLearaImpl.RESOURCE_TYPE, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
+		ComponentExporter.class }, resourceType = AboutLebaraImpl.RESOURCE_TYPE, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
 @Exporter(name = ExporterConstants.SLING_MODEL_EXPORTER_NAME, extensions = ExporterConstants.SLING_MODEL_EXTENSION)
-public class AboutLearaImpl  implements AboutLebara {
+public class AboutLebaraImpl implements AboutLebara {
+
+	@SlingObject
+	private SlingHttpServletRequest request;
 
 	@ValueMapValue
 	private String backgroundColor;
@@ -33,8 +37,14 @@ public class AboutLearaImpl  implements AboutLebara {
 	@ValueMapValue
 	private String fileReference;
 
+	@ChildResource
+	private List<ListItem> actions;
+
 	@ValueMapValue
 	private String buttonStyle;
+
+	@ValueMapValue
+	private String linkURL;
 
 	@ValueMapValue
 	private String imageAlign;
@@ -66,9 +76,12 @@ public class AboutLearaImpl  implements AboutLebara {
 		return buttonStyle;
 	}
 
-	@Override
-	public List<ListItem> getActions() {
-		return delegate.getActions();
+	@JsonProperty("actions")
+	public List<ListItem> getActionsNew() {
+		if (actions != null) {
+			return actions;
+		}
+		return new ArrayList<>();
 	}
 
 	@Override
@@ -78,7 +91,7 @@ public class AboutLearaImpl  implements AboutLebara {
 
 	@Override
 	public String getLinkURL() {
-		return delegate.getLinkURL();
+		return AemUtils.getLinkWithExtension(linkURL, request);
 	}
 
 	@Override
