@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import {ChakraProvider, extendTheme, withDefaultColorScheme,} from "@chakra-ui/react";
+import { AuthoringUtils } from "@adobe/aem-spa-page-model-manager";
 import { Page, withModel } from "@adobe/aem-react-editable-components";
 import { useApolloClient } from "@apollo/client";
 import { Provider, useDispatch, useSelector } from "react-redux";
@@ -61,8 +62,8 @@ function withPageHook(Component) {
       
         return () => {}
     }, [client, dispatch]);// eslint-disable-line react-hooks/exhaustive-deps
-    
-    if (isAuthLoading) {
+
+    if (!AuthoringUtils.isInEditor() && isAuthLoading) {
       return (
         <LoadingOverlay
           active={isLoading}
@@ -92,7 +93,7 @@ class App extends Page {
       <Provider store={store}>
         <ChakraProvider theme={theme}>
           <LoadingOverlay
-            active={isLoading}
+            active={!AuthoringUtils.isInEditor() ? isLoading : false}
             spinner={<ScaleLoader color="#00A6EB" />}
             styles={{
               overlay: (base) => ({

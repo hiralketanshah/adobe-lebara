@@ -42,7 +42,6 @@ export const withRoute = (WrappedComponent, extension) => {
       if (!AuthoringUtils.isInEditor() && routePath.startsWith(PROJECT_URL_ROOT)) {
         paths.push(routePath.substring(PROJECT_URL_ROOT.length) + ".html");
     }
-    console.log(paths);
       // Context path + route path + extension
       return (
         <Route
