@@ -84,7 +84,11 @@ public class GlobalConfigs extends SlingSafeMethodsServlet {
         if (paymentRes == null) {
             return new PaymentMethods();
         }
-        return paymentRes.adaptTo(PaymentMethods.class);
+        PaymentMethods paymentMethods = paymentRes.adaptTo(PaymentMethods.class);
+        if (paymentMethods == null) {
+            return new PaymentMethods();
+        }
+        return paymentMethods;
     }
 
     protected Object getJourneyPages(SlingHttpServletRequest request, Page currentPage) {
