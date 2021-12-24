@@ -38,6 +38,25 @@
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                                 fieldLabel="Title"
                                                 name="./title"/>
+                                            <headingType
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/foundation/form/select"
+                                                    fieldLabel="Title Heading Type (Choose between H1 and H2)"
+                                                    name="./headingType">
+                                                <items
+                                                        jcr:primaryType="nt:unstructured"
+                                                        text="Select Heading Type">
+                                                    <header1
+                                                            jcr:primaryType="nt:unstructured"
+                                                            text="H1"
+                                                            selected="{Boolean}true"
+                                                            value="h1"/>
+                                                    <header2
+                                                            jcr:primaryType="nt:unstructured"
+                                                            text="H2"
+                                                            value="h2"/>
+                                                </items>
+                                            </headingType>
                                             <description
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="cq/gui/components/authoring/dialog/richtext"                                                

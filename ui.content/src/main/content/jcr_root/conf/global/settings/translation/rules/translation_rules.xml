@@ -61,7 +61,6 @@
 		<property name="description" />
 		<property name="editLabel" />
 		<property name="limitSelectLabel" />
-		<property name="title" />
 		<property name="topupLabel" />
 		<property name="topupSelectLabel" />
 		<!-- promotion banner props -->
@@ -189,7 +188,6 @@
 		<property name="ctaDownloadLabel" />
 		<property name="ctaBottomLabel" />
 		<property name="getExploreAllLabel" />
-		
 
 		<!-- Create Password -->
 		<property name="compHeading" />
@@ -319,6 +317,18 @@
 		<property name="mobileNumberLabel"/>
 		<property name="termsAndConditionsLabel"/>
 
+		<!--Payment Method component -->
+		<property name="preferredPaymentLabel"/>
+		<property name="preferredPaymentDesc"/>
+		<property name="defaultPaymentLabel"/>
+		<property name="otherSavedPaymentMethodLabel"/>
+		<property name="paymentMethodsLabel"/>
+		<property name="howItWorksLabel"/>
+		<property name="howItWorksDesc"/>
+		<property name="creditOrDeditCardLabel"/>
+		<property name="payWithPaypalLabel"/>
+		<property name="setDefaultLabel"/>
+		<property name="deleteLabel"/>
 
 		<!--Support component -->
 		<property name="ctaLinkLabel"/>
@@ -482,6 +492,9 @@
 		<property name="currentProviderRequiredMsg"/>
 		<property name="paymentCta"/>
 
+		<!-- Dynamic Cart-->
+		<property name="viewPlanAccordianLabel"/>
+
 		<!-- Section Intro -->
 		<property name="sectionHeading"/>
 		<property name="sectionSubHeading"/>
@@ -589,10 +602,19 @@
 		<property name="orderHistoryEmptyLabel"/>
 		<property name="emptyOrderLabel"/>
 
+		<property inherit="true" name="cfPath" translate="true" updateDestinationLanguage="true"/>
+
 		<!-- Lebara fields ends -->
 		<property name="cq:language" updateDestinationLanguage="true"/>
 		<node pathContains="/cq:annotations">
 			<property name="text" translate="false"/>
+		</node>
+
+		<node resourceType="lebara/components/viewplans">
+			<property inherit="true" name="cfPath" translate="true" updateDestinationLanguage="true"/>
+		</node>
+		<node resourceType="lebara/components/internationalrates">
+			<property inherit="true" name="selectCountryLabel" translate="true" updateDestinationLanguage="true"/>
 		</node>
 	</node>
 	<node path="/content/forms">
@@ -619,6 +641,15 @@
 		<property name="adventureTitle" />
 		<property name="adventureTripLength" />
 		<property name="adventureType" />
+		<!-- Content Fragment -->
+		<property name="additionalOffers" />
+		<property name="promotionDetails" />
+		<property name="title" />
+		<property name="listPlanItem" />
+		<property name="countryTitle" />
+		<property name="countryName" />
+		<property name="cityName" />
+
 		<node pathContains="/jcr:content/metadata/predictedTags">
 			<property name="name"/>
 		</node>
@@ -635,4 +666,7 @@
 	<assetNode resourceType="wcm/foundation/components/image" assetReferenceAttribute="fileReference"/>
 	<assetNode resourceType="core/wcm/components/contentfragment/v1/contentfragment" assetReferenceAttribute="fragmentPath"/>
 	<assetNode resourceType="core/wcm/components/image/v2/image" assetReferenceAttribute="fileReference"/>
+	<assetNode resourceType="lebara/components/viewplans" assetReferenceAttribute="cfPath"/>
+	<assetNode resourceType="lebara/components/contentfragment" assetReferenceAttribute="fragmentPath"/>
+	<assetNode resourceType="lebara/components/internationalrates" assetReferenceAttribute="cfPath"/>
 </nodelist>

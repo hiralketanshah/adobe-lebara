@@ -25,12 +25,12 @@ import { useSelector } from "react-redux";
 import { MiniHeaderProps } from "./types";
 import IconButton from "../IconButton/IconButton";
 import SideMenu from "../SideMenu/SideMenu";
-import { ReduxState } from "../../redux/types";
+import { ReduxState } from "@lebara/ui/src/redux/types";
+import {selectIsAuthenticated} from "@lebara/ui/src/redux/selectors/userSelectors";
 import { globalConfigs as GC, globalConstants as GCST } from "@lebara/ui/src/configs/globalConfigs.js";
 import Button from "../Button/Button";
 import UserMenu from "@lebara/ui/src/components/UserMenu/UserMenu";
 import Search from "../Search/Search";
-import { selectIsAuthenticated } from "../../redux/selectors/userSelectors";
 
 const MiniHeader: React.FC<MiniHeaderProps> = ({
   logoPath,
@@ -132,8 +132,8 @@ const MiniHeader: React.FC<MiniHeaderProps> = ({
                   icon={<BiSearch />}
                   aria-label="Search"
                   variant="ghost"
-                  fontSize={24}
-                  size="24px"
+                  fontSize={20}
+                  size="20px"
                   paddingRight={{ lg: "26px!important", md: "13px!important" }}
                   paddingLeft={{ lg: "56px!important", md: "26px!important" }}
                   colorScheme="dark"
@@ -144,11 +144,11 @@ const MiniHeader: React.FC<MiniHeaderProps> = ({
             <></>
           )}
           <IconButton
-              mx="24px"
+              mx="20px"
             colorScheme="dark"
             icon={<AiOutlineUser />}
-            fontSize={24}
-            size="24px"
+            fontSize={20}
+            size="20px"
             aria-label="Profile"
             onClick={handleProfileClick}
             variant="ghost"
@@ -157,7 +157,7 @@ const MiniHeader: React.FC<MiniHeaderProps> = ({
             <IconButton
                 height="45px"
               p="absolute"
-              fontSize={24}
+              fontSize={20}
               colorScheme="dark"
               icon={<RiShoppingCartLine />}
               aria-label="Cart"
@@ -172,7 +172,7 @@ const MiniHeader: React.FC<MiniHeaderProps> = ({
                 color="white"
                 fontSize="10px"
                 backgroundColor="secondary.500"
-                borderRadius="24px"
+                borderRadius="20px"
                 w="12px"
                 textAlign="center"
               >
@@ -200,7 +200,7 @@ const MiniHeader: React.FC<MiniHeaderProps> = ({
         <></>
       )}
       {isProfileDropdownOpen && isAuthenticated ? (
-        <Box backgroundColor="white" width="100%" height="100%">
+        <Box backgroundColor="white" width="100%" height="100%" ref={ref}>
           <Flex
             zIndex="3"
             width="18rem"
@@ -212,7 +212,7 @@ const MiniHeader: React.FC<MiniHeaderProps> = ({
             px="11px"
             borderBottomRadius="12px"
           >
-            {loggedInMenuItems && <UserMenu menus={loggedInMenuItems as any} logoutLabel={logoutLabel} logoutLink={logoutLink}/>}
+            <UserMenu menus={loggedInMenuItems as any} logoutLabel={logoutLabel} logoutLink={logoutLink} />
           </Flex>
         </Box>
       ) : (
