@@ -25,5 +25,14 @@ public class InternationalRatesExporterTest {
         aemContext.currentResource(PROPERTIES_JSON);
         InternationalRatesExporter internationalRatesExporter = aemContext.request().adaptTo(InternationalRatesExporter.class);
         internationalRatesExporter.init();
+        internationalRatesExporter.getCountryLabel();
+        internationalRatesExporter.getExportedType();
+        internationalRatesExporter.getLandlineCallRate();
+        internationalRatesExporter.getMobileCallRate();
+        internationalRatesExporter.getMobileLabel();
+        internationalRatesExporter.getSelectCountryLabel();
+        internationalRatesExporter.getSmsRate();
+        internationalRatesExporter.getSmsLabel();
+        internationalRatesExporter.getDescription();
     }
 }
