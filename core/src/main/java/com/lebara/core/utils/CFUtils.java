@@ -155,7 +155,7 @@ public class CFUtils {
                 String countryLandingPageUrl = CFUtils.getElementValue(irFragment, "countryLandingPageURL");
                 countryLandingPageUrl = AemUtils.getLinkWithExtension(countryLandingPageUrl, resolver);
                 String countryName = CFUtils.getElementValue(irFragment, "countryName");
-                if (StringUtils.isNoneBlank(countryLandingPageUrl, countryName)) {
+                if (StringUtils.isNotBlank(countryLandingPageUrl) && StringUtils.isNotBlank(countryName)) {
                     SelectBean selectBean = new SelectBean();
                     selectBean.setKey(String.valueOf(count++));
                     selectBean.setUrl(countryLandingPageUrl);
