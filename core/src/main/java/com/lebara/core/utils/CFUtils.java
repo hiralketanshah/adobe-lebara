@@ -285,10 +285,14 @@ public class CFUtils {
             ContentFragment cfPlanFragment = cfPlanResource.adaptTo(ContentFragment.class);
             if (null != cfPlanFragment) {
                 planInfo = new PlanInfo();
-                planInfo.setTitle(cfPlanFragment.getElement("title").getContent());
-                planInfo.setCountryTitle(cfPlanFragment.getElement("countryTitle").getContent());
+                if (cfPlanFragment.getElement("title") != null) {
+                    planInfo.setTitle(cfPlanFragment.getElement("title").getContent());
+                }
+                if (cfPlanFragment.getElement("countryTitle") != null) {
+                    planInfo.setCountryTitle(cfPlanFragment.getElement("countryTitle").getContent());
+                }
                 planInfo.setListPlanItem(CFUtils.getElementArrayValue(cfPlanFragment, "listPlanItem"));
-                planInfo.setCountryList(CFUtils.convertStringArrayToList(CFUtils.getElementArrayValue( cfPlanFragment, "countryList"), CountryInfo.class));
+                planInfo.setCountryList(CFUtils.convertStringArrayToList(CFUtils.getElementArrayValue(cfPlanFragment, "countryList"), CountryInfo.class));
             }
         }
         return planInfo;

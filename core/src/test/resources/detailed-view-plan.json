@@ -36,7 +36,7 @@
             "item0": {
               "jcr:primaryType": "nt:unstructured",
               "cfPath": "/content/lebara/de/de/detailed-viewplan-test/jcr:content/root/plan",
-              "cfPlanPath": "/content/dam/lebara/markets/de/de/content-fragments/plan-info-fragments/bolton/tuerkei-data-pass-s",
+              "cfPlanPath": "/content/lebara/de/de/detailed-viewplan-test/jcr:content/root/planpath",
               "allowanceType": "data"
             }
           }
@@ -46,6 +46,53 @@
         "jcr:primaryType": "nt:unstructured",
         "fragmentVariationPath": "/content/experience-fragments/lebara/de/de/site/footer/master",
         "sling:resourceType": "lebara/components/experiencefragment"
+      },
+      "planpath": {
+        "jcr:primaryType": "dam:Asset",
+        "jcr:mixinTypes": [
+          "mix:referenceable"
+        ],
+        "jcr:createdBy": "admin",
+        "jcr:created": "Tue Nov 23 2021 13:49:45 GMT+0530",
+        "jcr:uuid": "21fc306a-ab80-432f-8281-ff6e3ab0fdef",
+        "jcr:content": {
+          "jcr:primaryType": "dam:AssetContent",
+          "jcr:title": "15GB Extra Kunden-werben-Aktion",
+          "contentFragment": true,
+          "dam:scene7RequestID": "c26823bb-a5df-4973-b89c-c67caeee659c",
+          "renditions": {
+            "jcr:primaryType": "nt:folder",
+            "jcr:createdBy": "admin",
+            "jcr:created": "Fri Nov 26 2021 13:37:43 GMT+0530"
+          },
+          "related": {
+            "jcr:primaryType": "nt:unstructured"
+          },
+          "metadata": {
+            "jcr:primaryType": "nt:unstructured",
+            "jcr:mixinTypes": [
+              "cq:Taggable"
+            ],
+            "dam:scene7FileStatus": "NotSupported"
+          },
+          "data": {
+            "jcr:primaryType": "nt:unstructured",
+            "cq:model": "/conf/lebara/settings/dam/cfm/models/planinformation",
+            "master": {
+              "jcr:primaryType": "nt:unstructured",
+              "jcr:mixinTypes": [
+                "cq:Taggable",
+                "dam:cfVariationNode"
+              ],
+              "title": "test",
+              "countryTitle": "countryTitle",
+              "title@LastModified": "Thu Nov 18 2021 08:34:02 GMT+0000",
+              "countryTitle@LastModified": "Thu Nov 18 2021 08:34:02 GMT+0000",
+              "countryList@LastModified": "Thu Nov 18 2021 08:34:02 GMT+0000",
+              "listPlanItem@LastModified": "Thu Nov 18 2021 08:34:02 GMT+0000"
+            }
+          }
+        }
       },
       "promotion": {
         "jcr:primaryType": "dam:Asset",
@@ -150,6 +197,7 @@
               "active@LastModified": "Fri Nov 26 2021 13:46:42 GMT+0530",
               "active": true,
               "promotionFragment": "/content/lebara/de/de/detailed-viewplan-test/jcr:content/root/promotion",
+              "planInfoPath": "/content/lebara/de/de/detailed-viewplan-test/jcr:content/root/planpath",
               "validity": "35",
               "additionalOffers": "35",
               "activatePromotion": "true",
