@@ -18,5 +18,10 @@ public class CFUtilsTest {
         assertEquals("FR",CFUtils.getCountryCodeFromPayloadPath("/content/dam/lebara/markets/fr/de/assets"));
         assertEquals("NL",CFUtils.getCountryCodeFromPayloadPath("/content/dam/lebara/markets/nl/de/assets"));
         assertEquals("",CFUtils.getCountryCodeFromPayloadPath("/content/dam/lebara/markets/"));
+
+        CFUtils.formatedValue("mb","1026",null);
+        CFUtils.formatedValue("sms","1026",null);
+        CFUtils.formatedValue("mins","1026",null);
+        CFUtils.formatedValue("","1026",null);
     }
 }
