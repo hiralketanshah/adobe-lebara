@@ -222,8 +222,11 @@ public class CrudOperationEpc {
 
             if (cfAllowanceArray.size() > 0) {
                 FragmentData fd = newFragment.getElement("allowancesList").getValue();
-                fd.setValue(cfAllowanceArray.toArray(new String[0]));
-                newFragment.getElement("allowancesList").setValue(fd);
+                if (fd != null) {
+                    fd.setValue(cfAllowanceArray.toArray(new String[0]));
+                    newFragment.getElement("allowancesList").setValue(fd);
+                }
+
             }
         } catch (ContentFragmentException e) {
             logger.error("ContentFragmentException {}", e);
