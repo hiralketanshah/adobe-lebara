@@ -13,6 +13,7 @@ public class FooterExporterTest {
 
     private final AemContext aemContext=new AemContext();
     private static final String PROPERTIES_JSON_FOLLOW_US = "/content/experience-fragments/lebara/de/de/site/footer/master/jcr:content/root/footer_1975276557/followus";
+    private static final String PROPERTIES_JSON_FOLLOW_US_LINK = "/content/experience-fragments/lebara/de/de/site/footer/master/jcr:content/root/footercopyright/links/item0";
     private static final String PROPERTIES_JSON_FOOTER = "/content/experience-fragments/lebara/de/de/site/footer/master/jcr:content/root/footer_1975276557";
     private static final String PROPERTIES_JSON_GETAPP = "/content/experience-fragments/lebara/de/de/site/footer/master/jcr:content/root/footer_1975276557/getapp";
 
@@ -29,6 +30,19 @@ public class FooterExporterTest {
         followUsExporter.getLinks();
         followUsExporter.getExportedType();
         followUsExporter.getFollowUsText();
+    }
+
+    @Test
+    final void getFollowUsLinkProps(){
+        aemContext.currentResource(PROPERTIES_JSON_FOLLOW_US_LINK);
+        Link link = aemContext.request().getResource().adaptTo(Link.class);
+        link.getLink();
+        link.getLabel();
+        link.getIcon();
+        link.getExtensionlessLink();
+        link.setIcon("");
+        link.setLabel("");
+        link.setLink("");
     }
 
     @Test
