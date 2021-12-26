@@ -1,0 +1,395 @@
+{
+  "jcr:primaryType": "cq:Page",
+  "jcr:createdBy": "admin",
+  "jcr:created": "Tue Nov 23 2021 17:34:37 GMT+0530",
+  "jcr:content": {
+    "jcr:primaryType": "cq:PageContent",
+    "jcr:mixinTypes": [
+      "mix:versionable"
+    ],
+    "jcr:createdBy": "admin",
+    "jcr:title": "Footer",
+    "cq:lastReplicatedBy_publish": "gaurav.sarang-ext@lebara.com",
+    "cq:lastReplicationAction_scene7": "Activate",
+    "cq:lastReplicationAction": "Activate",
+    "jcr:versionHistory": "7d1d5ace-88f3-4892-8792-7812657f1ca5",
+    "cq:template": "/conf/lebara/settings/wcm/templates/xf-web-variation",
+    "cq:lastReplicatedBy": "gaurav.sarang-ext@lebara.com",
+    "cq:lastReplicationAction_publish": "Activate",
+    "jcr:predecessors": [
+      "a5c9faa7-f58c-4c20-8a60-9dd6f4cf5528"
+    ],
+    "cq:lastReplicatedBy_scene7": "gaurav.sarang-ext@lebara.com",
+    "jcr:created": "Tue Nov 23 2021 17:34:37 GMT+0530",
+    "cq:lastReplicated": "Thu Dec 02 2021 15:33:05 GMT+0000",
+    "cq:lastModified": "Thu Dec 02 2021 15:29:33 GMT+0000",
+    "cq:xfVariantType": "web",
+    "cq:lastReplicated_scene7": "Thu Dec 02 2021 15:33:05 GMT+0000",
+    "jcr:baseVersion": "a5c9faa7-f58c-4c20-8a60-9dd6f4cf5528",
+    "jcr:isCheckedOut": true,
+    "cq:tags": [],
+    "jcr:uuid": "fefc8a02-2565-428c-a5bd-7dd2fea74857",
+    "sling:resourceType": "lebara/components/xfpage",
+    "cq:lastReplicated_publish": "Thu Dec 02 2021 15:33:05 GMT+0000",
+    "cq:lastModifiedBy": "gaurav.sarang-ext@lebara.com",
+    "root": {
+      "jcr:primaryType": "nt:unstructured",
+      "layout": "responsiveGrid",
+      "sling:resourceType": "lebara/components/container",
+      "responsivegrid": {
+        "jcr:primaryType": "nt:unstructured",
+        "jcr:createdBy": "devaraj@adobe.com",
+        "jcr:lastModifiedBy": "devaraj@adobe.com",
+        "jcr:created": "Thu Aug 19 2021 03:33:00 GMT+0000",
+        "jcr:lastModified": "Thu Aug 19 2021 03:33:00 GMT+0000",
+        "sling:resourceType": "wcm/foundation/components/responsivegrid",
+        "cq:responsive": {
+          "jcr:primaryType": "nt:unstructured"
+        },
+        "responsivegrid-left": {
+          "jcr:primaryType": "nt:unstructured",
+          "jcr:createdBy": "devaraj@adobe.com",
+          "jcr:lastModifiedBy": "devaraj@adobe.com",
+          "jcr:created": "Thu Aug 19 2021 03:39:02 GMT+0000",
+          "jcr:lastModified": "Thu Aug 19 2021 03:39:02 GMT+0000",
+          "sling:resourceType": "wcm/foundation/components/responsivegrid",
+          "cq:responsive": {
+            "jcr:primaryType": "nt:unstructured",
+            "default": {
+              "jcr:primaryType": "nt:unstructured",
+              "offset": "0",
+              "width": "7"
+            },
+            "phone": {
+              "jcr:primaryType": "nt:unstructured",
+              "offset": "0",
+              "width": "12"
+            }
+          },
+          "footerupperlinks": {
+            "jcr:primaryType": "nt:unstructured",
+            "jcr:createdBy": "devaraj@adobe.com",
+            "jcr:lastModifiedBy": "devaraj@adobe.com",
+            "jcr:created": "Thu Aug 19 2021 03:49:53 GMT+0000",
+            "jcr:lastModified": "Thu Aug 26 2021 06:46:33 GMT+0000",
+            "sling:resourceType": "lebara/components/footer/footerupperlinks",
+            "footerUpperLinks": {
+              "jcr:primaryType": "nt:unstructured",
+              "item0": {
+                "jcr:primaryType": "nt:unstructured",
+                "link": "/content/lebara/de/en/services",
+                "label": "Services"
+              },
+              "item1": {
+                "jcr:primaryType": "nt:unstructured",
+                "link": "/content/lebara/de/en/help"
+              },
+              "item2": {
+                "jcr:primaryType": "nt:unstructured",
+                "link": "/content/lebara/de/en/other"
+              },
+              "item3": {
+                "jcr:primaryType": "nt:unstructured",
+                "link": "/content/lebara/de/en/office"
+              }
+            }
+          }
+        },
+        "responsivegrid-right": {
+          "jcr:primaryType": "nt:unstructured",
+          "jcr:createdBy": "devaraj@adobe.com",
+          "jcr:lastModifiedBy": "devaraj@adobe.com",
+          "jcr:created": "Thu Aug 19 2021 03:52:46 GMT+0000",
+          "jcr:lastModified": "Thu Aug 19 2021 03:52:46 GMT+0000",
+          "sling:resourceType": "wcm/foundation/components/responsivegrid",
+          "cq:responsive": {
+            "jcr:primaryType": "nt:unstructured",
+            "default": {
+              "jcr:primaryType": "nt:unstructured",
+              "offset": "0",
+              "width": "3"
+            },
+            "phone": {
+              "jcr:primaryType": "nt:unstructured",
+              "offset": "0",
+              "width": "12",
+              "behavior": "newline"
+            }
+          },
+          "followus": {
+            "jcr:primaryType": "nt:unstructured",
+            "jcr:createdBy": "devaraj@adobe.com",
+            "jcr:lastModifiedBy": "devaraj@adobe.com",
+            "jcr:created": "Thu Aug 19 2021 03:50:12 GMT+0000",
+            "jcr:lastModified": "Thu Aug 26 2021 06:49:53 GMT+0000",
+            "sling:resourceType": "lebara/components/followus",
+            "followUsText": "Follow Us",
+            "links": {
+              "jcr:primaryType": "nt:unstructured",
+              "item0": {
+                "jcr:primaryType": "nt:unstructured",
+                "link": "https://www.facebook.com/LebaraDE/",
+                "label": "/content/dam/lebara/global/svg-general-icons/Facebook icon.svg"
+              },
+              "item1": {
+                "jcr:primaryType": "nt:unstructured",
+                "link": "https://www.facebook.com/LebaraDE/",
+                "label": "/content/dam/lebara/global/svg-general-icons/Pinterest icon.svg"
+              },
+              "item2": {
+                "jcr:primaryType": "nt:unstructured",
+                "link": "https://www.facebook.com/LebaraDE/",
+                "label": "/content/dam/lebara/global/svg-general-icons/Twitter icon.svg"
+              },
+              "item3": {
+                "jcr:primaryType": "nt:unstructured",
+                "link": "https://www.facebook.com/LebaraDE/",
+                "label": "/content/dam/lebara/global/svg-general-icons/Responsive_Help_icon.svg"
+              },
+              "item4": {
+                "jcr:primaryType": "nt:unstructured",
+                "link": "https://www.facebook.com/LebaraDE/",
+                "label": "/content/dam/lebara/global/svg-general-icons/YouTube icon.svg"
+              }
+            }
+          }
+        }
+      },
+      "footercopyright": {
+        "jcr:primaryType": "nt:unstructured",
+        "jcr:lastModifiedBy": "devaraj@adobe.com",
+        "copyrightText": "Copyright © Lebara 2021",
+        "jcr:lastModified": "Sat Aug 21 2021 13:00:36 GMT+0000",
+        "sling:resourceType": "lebara/components/footer/footercopyright",
+        "links": {
+          "jcr:primaryType": "nt:unstructured",
+          "item0": {
+            "jcr:primaryType": "nt:unstructured",
+            "link": "/content/lebara/de/en/services",
+            "label": "Terms and Conditions"
+          },
+          "item1": {
+            "jcr:primaryType": "nt:unstructured",
+            "link": "/content/lebara/de/en/other",
+            "label": "Privacy Policy"
+          }
+        }
+      },
+      "footer_1975276557": {
+        "jcr:primaryType": "nt:unstructured",
+        "jcr:createdBy": "gaurav.sarang-ext@lebara.com",
+        "jcr:lastModifiedBy": "kaouther.khamassi@lebara.com",
+        "column1Link": "Nützliche Links",
+        "column2Link": "Lebara Tarifwelt",
+        "column3Link": "Hilfe & Kontakt",
+        "column4Link": "Über Lebara",
+        "jcr:created": "Mon Nov 29 2021 16:57:52 GMT+0000",
+        "jcr:lastModified": "Thu Dec 02 2021 13:37:42 GMT+0000",
+        "sling:resourceType": "lebara/components/footer",
+        "footercopyright": {
+          "jcr:primaryType": "nt:unstructured",
+          "copyrightText": "2021 © Lebara",
+          "links": {
+            "jcr:primaryType": "nt:unstructured",
+            "item0": {
+              "jcr:primaryType": "nt:unstructured",
+              "link": "/content/lebara/de/de/ueber-lebara/impressum",
+              "label": "Impressum"
+            },
+            "item1": {
+              "jcr:primaryType": "nt:unstructured",
+              "link": "/content/lebara/de/de/ueber-lebara/agb",
+              "label": "AGB"
+            },
+            "item2": {
+              "jcr:primaryType": "nt:unstructured",
+              "link": "/content/lebara/de/de/ueber-lebara/datenschutz",
+              "label": "Datenschutz"
+            },
+            "item3": {
+              "jcr:primaryType": "nt:unstructured",
+              "link": "/content/lebara/de/de/ueber-lebara/streitbelegung",
+              "label": "Online-Streitbeilegung"
+            }
+          }
+        },
+        "getapp": {
+          "jcr:primaryType": "nt:unstructured",
+          "appTitle": "HOL DIR JETZT DIE MYLEBARA APP!",
+          "links": {
+            "jcr:primaryType": "nt:unstructured",
+            "item0": {
+              "jcr:primaryType": "nt:unstructured",
+              "link": "https://apps.apple.com/de/app/mylebara/id1122491914",
+              "label": "/content/dam/lebara/global/app-store/astore3.png"
+            },
+            "item1": {
+              "jcr:primaryType": "nt:unstructured",
+              "link": "https://play.google.com/store/apps/details?id=com.lebara.wallet&hl=de",
+              "label": "/content/dam/lebara/global/app-store/gplay3.png"
+            }
+          }
+        },
+        "followus": {
+          "jcr:primaryType": "nt:unstructured",
+          "followUsText": "FOLG UNS AUF SOCIAL MEDIA!",
+          "links": {
+            "jcr:primaryType": "nt:unstructured",
+            "item0": {
+              "jcr:primaryType": "nt:unstructured",
+              "link": "https://www.facebook.com/LebaraDE/",
+              "label": "/content/dam/lebara/markets/de/assets-qc/social-media-icons/1200px-Facebook_icon.svg.png"
+            },
+            "item1": {
+              "jcr:primaryType": "nt:unstructured",
+              "link": "https://www.instagram.com/lebara_germany/",
+              "label": "/content/dam/lebara/markets/de/assets-qc/social-media-icons/2048px-Instagram_icon.png"
+            },
+            "item2": {
+              "jcr:primaryType": "nt:unstructured",
+              "link": "https://www.youtube.com/channel/UChJXllhcaoGRmnqqNIyC_lQ",
+              "label": "/content/dam/lebara/markets/de/assets-qc/social-media-icons/youtube icon.png"
+            },
+            "item3": {
+              "jcr:primaryType": "nt:unstructured",
+              "link": "https://www.linkedin.com/company/17712798/admin/",
+              "label": "/content/dam/lebara/markets/de/assets-qc/social-media-icons/LinkedIn_icon.svg.png"
+            }
+          }
+        },
+        "column1": {
+          "jcr:primaryType": "nt:unstructured",
+          "item0": {
+            "jcr:primaryType": "nt:unstructured",
+            "link": "/content/lebara/de/de/prepaid",
+            "label": "Prepaid Tarife im Überblick"
+          },
+          "item1": {
+            "jcr:primaryType": "nt:unstructured",
+            "link": "/content/lebara/de/de/vertrag",
+            "label": "Mobilfunkverträge im Überblick"
+          },
+          "item2": {
+            "jcr:primaryType": "nt:unstructured",
+            "link": "/content/lebara/de/de/prepaid/kostenlose-simkarte",
+            "label": "SIM-Karte bestellen"
+          },
+          "item3": {
+            "jcr:primaryType": "nt:unstructured",
+            "link": "/content/lebara/de/de/hilfe/anleitung/sim-registrierung",
+            "label": "SIM-Registrierungsanleitung"
+          },
+          "item4": {
+            "jcr:primaryType": "nt:unstructured",
+            "link": "/content/lebara/de/de/lebara-empfehlen",
+            "label": "Lebara empfehlen"
+          },
+          "item5": {
+            "jcr:primaryType": "nt:unstructured",
+            "link": "/content/lebara/de/de/leb-connected",
+            "label": "LebConnected"
+          },
+          "item6": {
+            "jcr:primaryType": "nt:unstructured",
+            "link": "/content/lebara/de/de/hilfe/faq",
+            "label": "FAQs"
+          }
+        },
+        "column2": {
+          "jcr:primaryType": "nt:unstructured",
+          "item0": {
+            "jcr:primaryType": "nt:unstructured",
+            "link": "/content/lebara/de/de/vertrag",
+            "label": "LebAllnet Mobilfunkverträge"
+          },
+          "item1": {
+            "jcr:primaryType": "nt:unstructured",
+            "link": "/content/lebara/de/de/vertrag/vorteile",
+            "label": "Vorteile LebAllnet Tarife"
+          },
+          "item2": {
+            "jcr:primaryType": "nt:unstructured",
+            "link": "/content/lebara/de/de/prepaid",
+            "label": "Prepaid Tarife"
+          },
+          "item3": {
+            "jcr:primaryType": "nt:unstructured",
+            "link": "/content/lebara/de/de/prepaid/vorteile",
+            "label": "Vorteile Prepaid Tarife"
+          },
+          "item4": {
+            "jcr:primaryType": "nt:unstructured",
+            "link": "/content/lebara/de/de/prepaid/aktion",
+            "label": "Prepaid Aktionen & Angebote"
+          },
+          "item5": {
+            "jcr:primaryType": "nt:unstructured",
+            "link": "/content/lebara/de/de/minutenpreis-auslandsanrufe",
+            "label": "Auslandstarife & Minutenpreise"
+          }
+        },
+        "column3": {
+          "jcr:primaryType": "nt:unstructured",
+          "item0": {
+            "jcr:primaryType": "nt:unstructured",
+            "link": "/content/lebara/de/de/hilfe/kontakt-kundenservice",
+            "label": "Kundenservice"
+          },
+          "item1": {
+            "jcr:primaryType": "nt:unstructured",
+            "link": "/content/lebara/de/de/hilfe/faq",
+            "label": "FAQs"
+          },
+          "item2": {
+            "jcr:primaryType": "nt:unstructured",
+            "link": "/content/lebara/de/de/hilfe/roaming",
+            "label": "Roaming "
+          },
+          "item3": {
+            "jcr:primaryType": "nt:unstructured",
+            "link": "/content/lebara/de/de/hilfe/anleitung/sim-registrierung",
+            "label": "SIM-Registrierungsanleitung"
+          },
+          "item4": {
+            "jcr:primaryType": "nt:unstructured",
+            "link": "/content/lebara/de/de/hilfe/anleitung/rufnummer-mitnehmen",
+            "label": "Rufnummermitnahme"
+          },
+          "item5": {
+            "jcr:primaryType": "nt:unstructured",
+            "link": "/content/lebara/de/de/hilfe/anleitung",
+            "label": "Besitzerwechsel"
+          },
+          "item6": {
+            "jcr:primaryType": "nt:unstructured",
+            "link": "/content/lebara/de/de/hilfe/versand-und-zahlung",
+            "label": "Versand & Zahlung"
+          }
+        },
+        "column4": {
+          "jcr:primaryType": "nt:unstructured",
+          "item0": {
+            "jcr:primaryType": "nt:unstructured",
+            "link": "/content/lebara/de/de/ueber-lebara",
+            "label": "Über uns"
+          },
+          "item1": {
+            "jcr:primaryType": "nt:unstructured",
+            "link": "/content/lebara/de/de/ueber-lebara/auszeichnungen",
+            "label": "Auszeichnungen"
+          },
+          "item2": {
+            "jcr:primaryType": "nt:unstructured",
+            "link": "/content/lebara/de/de/ueber-lebara/stellenangebote",
+            "label": "Karriere"
+          },
+          "item3": {
+            "jcr:primaryType": "nt:unstructured",
+            "link": "/content/lebara/de/de/ueber-lebara/pressemitteilungen",
+            "label": "Presse"
+          }
+        }
+      }
+    }
+  }
+}
