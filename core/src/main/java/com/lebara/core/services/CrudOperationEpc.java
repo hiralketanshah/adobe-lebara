@@ -158,9 +158,12 @@ public class CrudOperationEpc {
                         List<String> cfAllowanceArray = populateAllowanceArray(offer);
                         try {
                             if (cfAllowanceArray.size() > 0) {
-                                FragmentData fd = offerFragment.getElement("allowancesList").getValue();
-                                fd.setValue(cfAllowanceArray.toArray(new String[0]));
-                                offerFragment.getElement("allowancesList").setValue(fd);
+                                if (offerFragment.getElement("allowancesList") != null) {
+                                    FragmentData fd = offerFragment.getElement("allowancesList").getValue();
+                                    fd.setValue(cfAllowanceArray.toArray(new String[0]));
+                                    offerFragment.getElement("allowancesList").setValue(fd);
+                                }
+
                             }
                         } catch (ContentFragmentException e) {
                             logger.error("ContentFragmentException {}", e);
@@ -242,7 +245,7 @@ public class CrudOperationEpc {
                 name = allowances.getAccount().getName();
                 unit = allowances.getAccount().getUnit().getAbbreviation();
             }
-            if (StringUtils.isNoneBlank(value, name, unit)) {
+            if (StringUtils.isNotBlank(value) && StringUtils.isNotBlank(name) && StringUtils.isNotBlank(unit)) {
                 cfAllowance.setValue(value);
                 cfAllowance.setName(name);
                 cfAllowance.setUnit(unit);

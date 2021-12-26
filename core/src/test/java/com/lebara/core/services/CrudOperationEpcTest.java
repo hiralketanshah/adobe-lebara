@@ -49,7 +49,6 @@ public class CrudOperationEpcTest {
     @BeforeEach
     public void setup() throws Exception {
         json = IOUtils.toString(this.getClass().getResourceAsStream("/epcResponseDate.json"), "UTF-8");
-
     }
 
     @Test
@@ -60,6 +59,7 @@ public class CrudOperationEpcTest {
     @Test
     public void testcreateContentFragment() {
         Mockito.when(resourceResolver.getResource(anyString())).thenReturn(resource);
+        Mockito.when(resource.adaptTo(ContentFragment.class)).thenReturn(newFragment);
         crudOperationEpc.createContentFragment(json, "", resourceResolver, "prepaid");
     }
 
@@ -83,13 +83,5 @@ public class CrudOperationEpcTest {
     public void testConnection() {
         String json = crudOperationEpc.getJsonFromEPC("https://dev-api-aggregator.lebara.com/api-aggregator", "GB","getCurrentOffers");
         assert (json != StringUtils.EMPTY);
-    }
-
-    //@Test
-    public void createTopupContentFragment(){
-        Root convertedEpcJsonObject = new Gson().fromJson(json, Root.class);
-        List<String> offers = convertedEpcJsonObject.getData().getOffers();
-        Mockito.when(resourceResolver.getResource(anyString())).thenReturn(resource);
-
     }
 }
