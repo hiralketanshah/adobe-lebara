@@ -46,10 +46,12 @@ public class CrudOperationEpcTest {
     private FragmentData fragmentData;
 
     static String json;
+    static String jsonTopUp;
 
     @BeforeEach
     public void setup() throws Exception {
         json = IOUtils.toString(this.getClass().getResourceAsStream("/epcResponseDate.json"), "UTF-8");
+        jsonTopUp = IOUtils.toString(this.getClass().getResourceAsStream("/epc_topup.json"), "UTF-8");
     }
 
     @Test
@@ -71,8 +73,17 @@ public class CrudOperationEpcTest {
         Mockito.when(resource.adaptTo(FragmentTemplate.class)).thenReturn(fragmentTemplate);
         Mockito.when(fragmentTemplate.createFragment(any(),anyString(),anyString())).thenReturn(newFragment);
         Mockito.when(newFragment.getElement(anyString())).thenReturn(contentElement);
-        //Mockito.when(contentElement.setContent(anyString(),anyString())).thenReturn(contentElement);
         crudOperationEpc.createContentFragment(json, "", resourceResolver, "prepaid");
+    }
+
+    @Test
+    public void testcreateTopUpContentFragment() throws ContentFragmentException {
+        Mockito.when(resourceResolver.getResource(anyString())).thenReturn(resource);
+        Mockito.when(resource.adaptTo(FragmentTemplate.class)).thenReturn(fragmentTemplate);
+        Mockito.when(fragmentTemplate.createFragment(any(),anyString(),anyString())).thenReturn(newFragment);
+        Mockito.when(newFragment.getElement(anyString())).thenReturn(contentElement);
+        Mockito.when(contentElement.getValue()).thenReturn(fragmentData);
+        crudOperationEpc.createTopupContentFragment(jsonTopUp, "", resourceResolver, "topup");
     }
 
     //this code comes handy to get json response from api-aggregator quickly.
