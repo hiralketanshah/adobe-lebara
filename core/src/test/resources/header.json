@@ -1,0 +1,83 @@
+{
+  "jcr:primaryType": "cq:Page",
+  "jcr:createdBy": "admin",
+  "jcr:created": "Tue Nov 23 2021 17:34:38 GMT+0530",
+  "jcr:content": {
+    "jcr:primaryType": "cq:PageContent",
+    "jcr:mixinTypes": [
+      "mix:versionable"
+    ],
+    "jcr:createdBy": "admin",
+    "jcr:title": "Header",
+    "cq:lastReplicatedBy_publish": "devaraj@adobe.com",
+    "cq:lastReplicationAction_scene7": "Activate",
+    "cq:lastReplicationAction": "Activate",
+    "jcr:versionHistory": "4eb80026-8eaa-4751-b6b5-30a0f7e88884",
+    "cq:template": "/conf/lebara/settings/wcm/templates/xf-web-variation",
+    "cq:lastReplicatedBy": "devaraj@adobe.com",
+    "cq:lastReplicationAction_publish": "Activate",
+    "jcr:predecessors": [
+      "5ea6fe7b-d834-4505-ad94-52156b0bfc5e"
+    ],
+    "cq:lastReplicatedBy_scene7": "devaraj@adobe.com",
+    "jcr:created": "Tue Nov 23 2021 17:34:38 GMT+0530",
+    "cq:lastReplicated": "Fri Nov 26 2021 07:02:15 GMT+0000",
+    "cq:lastModified": "Mon Dec 20 2021 15:55:22 GMT+0530",
+    "cq:xfVariantType": "web",
+    "cq:lastReplicated_scene7": "Fri Nov 26 2021 07:02:15 GMT+0000",
+    "jcr:baseVersion": "5ea6fe7b-d834-4505-ad94-52156b0bfc5e",
+    "jcr:isCheckedOut": true,
+    "cq:tags": [],
+    "jcr:uuid": "09b3d43f-e384-4e2f-9092-a2223880617b",
+    "sling:resourceType": "lebara/components/xfpage",
+    "cq:lastReplicated_publish": "Fri Nov 26 2021 07:02:15 GMT+0000",
+    "cq:lastModifiedBy": "admin",
+    "root": {
+      "jcr:primaryType": "nt:unstructured",
+      "jcr:mixinTypes": [
+        "cq:ReplicationStatus"
+      ],
+      "cq:lastReplicationAction": "Activate",
+      "cq:lastReplicatedBy": "devaraj@adobe.com",
+      "layout": "simple",
+      "cq:lastReplicated": "Wed Oct 20 2021 23:17:09 GMT+0000",
+      "sling:resourceType": "lebara/components/container",
+      "languagenavigation": {
+        "jcr:primaryType": "nt:unstructured",
+        "jcr:lastModifiedBy": "admin",
+        "helpLink": "/content/lebara/de/de/hilfe/kontakt-kundenservice",
+        "navigationRoot": "/content/lebara/de",
+        "storeTitle": "Shop Suche",
+        "jcr:lastModified": "Mon Dec 20 2021 15:55:21 GMT+0530",
+        "sling:resourceType": "lebara/components/header/languagenavigation",
+        "helpTitle": "Hilfe?",
+        "structureDepth": "1",
+        "storeLink": "/content/lebara/de/de/partner/shopsuche"
+      },
+      "headernavigation": {
+        "jcr:primaryType": "nt:unstructured",
+        "fileReference": "/content/dam/lebara/global/logo-Desktop.png",
+        "skipNavigationRoot": "false",
+        "jcr:lastModifiedBy": "admin",
+        "topupCtaLink": "/content/lebara/de/de/prepaid/guthaben-aufladen",
+        "topupCtaText": "Aufladen",
+        "disableShadowing": "false",
+        "navigationRoot": "/content/lebara/de/de",
+        "accountLink": "/content/lebara/de/de/mylebara/profile",
+        "jcr:lastModified": "Thu Dec 16 2021 17:32:24 GMT+0530",
+        "accessibilityLabel": "accessibility",
+        "sling:resourceType": "lebara/components/header/headernavigation",
+        "viewAllButtonLink": "/content/lebara/de/de/home",
+        "viewAllButtonText": "View all",
+        "collectAllPages": "false",
+        "structureDepth": "3",
+        "structureStart": "1",
+        "newText": "New text",
+        "search": {
+          "jcr:primaryType": "nt:unstructured",
+          "searchRoot": "/content/lebara/de"
+        }
+      }
+    }
+  }
+}

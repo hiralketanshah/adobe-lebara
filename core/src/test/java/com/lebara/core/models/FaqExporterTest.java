@@ -26,8 +26,8 @@ class FaqExporterTest {
     }
 
     @Test
-    final void getBackgroundImage(){
-        aemContext.currentResource(PROPERTIES_JSON);
+        final void getBackgroundImage(){
+            aemContext.currentResource(PROPERTIES_JSON);
         faqExporter = aemContext.request().adaptTo(FaqExporter.class);
         assertEquals("lebara/components/faq", faqExporter.getExportedType());
         assertEquals("backgroundColor", faqExporter.getBackgroundColor());

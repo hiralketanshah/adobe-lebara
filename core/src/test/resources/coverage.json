@@ -1,0 +1,231 @@
+{
+  "jcr:primaryType": "cq:Page",
+  "jcr:createdBy": "admin",
+  "jcr:created": "Sun Dec 26 2021 15:24:08 GMT+0530",
+  "jcr:content": {
+    "jcr:primaryType": "cq:PageContent",
+    "jcr:createdBy": "admin",
+    "jcr:title": "coverage",
+    "cq:template": "/conf/lebara/settings/wcm/templates/lebara-page-template",
+    "jcr:created": "Sun Dec 26 2021 15:24:08 GMT+0530",
+    "cq:lastModified": "Sun Dec 26 2021 15:34:07 GMT+0530",
+    "sling:resourceType": "lebara/components/page",
+    "cq:lastModifiedBy": "admin",
+    "root": {
+      "jcr:primaryType": "nt:unstructured",
+      "sling:resourceType": "wcm/foundation/components/responsivegrid",
+      "responsivegrid": {
+        "jcr:primaryType": "nt:unstructured",
+        "sling:resourceType": "wcm/foundation/components/responsivegrid",
+        "aboutlebara": {
+          "jcr:primaryType": "nt:unstructured",
+          "jcr:createdBy": "admin",
+          "fileReference": "/content/dam/lebara/markets/ro/assets-qc/sim-registrierung(temp)/Sim-Reg8.png",
+          "imageAlign": "left",
+          "actionsEnabled": "true",
+          "pretitle": "pre",
+          "jcr:lastModifiedBy": "admin",
+          "imageServerUrl": "http://localhost:4503//is/image/",
+          "buttonHoverBgColor": "rgb(127,127,82)",
+          "buttonBackgroundColor": "rgb(127,226,127)",
+          "jcr:created": "Sun Dec 26 2021 15:24:35 GMT+0530",
+          "titleFromPage": "true",
+          "id": "fgh",
+          "colorsEnabled": "true",
+          "jcr:description": "<p>Pretitle</p>\r\n",
+          "jcr:lastModified": "Sun Dec 26 2021 15:34:07 GMT+0530",
+          "descriptionFromPage": "true",
+          "sling:resourceType": "lebara/components/aboutlebara",
+          "textIsRich": "true",
+          "actions": {
+            "jcr:primaryType": "nt:unstructured",
+            "item0": {
+              "jcr:primaryType": "nt:unstructured",
+              "link": "/content/lebara/us",
+              "text": "us"
+            }
+          }
+        },
+        "addon": {
+          "jcr:primaryType": "nt:unstructured",
+          "jcr:createdBy": "admin",
+          "jcr:lastModifiedBy": "admin",
+          "jcr:created": "Sun Dec 26 2021 15:24:40 GMT+0530",
+          "jcr:lastModified": "Sun Dec 26 2021 15:24:40 GMT+0530",
+          "sling:resourceType": "lebara/components/addon"
+        },
+        "createaccount": {
+          "jcr:primaryType": "nt:unstructured",
+          "jcr:createdBy": "admin",
+          "description": "<p>Account Description</p>\r\n",
+          "jcr:lastModifiedBy": "admin",
+          "subHeading": "While you are here, why not create an account",
+          "jcr:created": "Sun Dec 26 2021 15:26:17 GMT+0530",
+          "heading": "Create Account",
+          "jcr:lastModified": "Sun Dec 26 2021 15:32:27 GMT+0530",
+          "sling:resourceType": "lebara/components/createaccount",
+          "textIsRich": [
+            "true",
+            "true"
+          ],
+          "frmFields": {
+            "jcr:primaryType": "nt:unstructured",
+            "mobileLabel": "Mobile",
+            "passwordLabel": "Password",
+            "emailLabel": "Email",
+            "ctaButtonLabel": "Create Account",
+            "confirmPasswordLabel": "Confirm Password",
+            "mobilePlaceholder": "Mobile",
+            "emailPlaceholder": "aa@ss.dd"
+          },
+          "validationMessages": {
+            "jcr:primaryType": "nt:unstructured",
+            "confirmPasswordRestrictionMsg": "Minimum 8 characters",
+            "passwordRestrictionMsg": "Minimum 8 characters",
+            "confirmPasswordRequiredMsg": "Required",
+            "emailInValidMsg": "Please check the email address format",
+            "passwordNotMatchErrorMessage": "Both password need to be the same",
+            "mobileRequiredMsg": "We need your mobile number to contact you",
+            "mobileInValidMsg": "Please check the mobile Number",
+            "emailRequiredMsg": "We need your email address to contact you",
+            "passwordRequiredMsg": "Required"
+          }
+        },
+        "dynamiccart": {
+          "jcr:primaryType": "nt:unstructured",
+          "jcr:createdBy": "admin",
+          "jcr:lastModifiedBy": "admin",
+          "jcr:created": "Sun Dec 26 2021 15:26:38 GMT+0530",
+          "viewPlanAccordianLabel": "VIEW PLAN DETAILS",
+          "title": "title",
+          "jcr:lastModified": "Sun Dec 26 2021 15:32:05 GMT+0530",
+          "sling:resourceType": "lebara/components/dynamiccart"
+        },
+        "rewardstable": {
+          "jcr:primaryType": "nt:unstructured",
+          "jcr:createdBy": "admin",
+          "description": "Description",
+          "jcr:lastModifiedBy": "admin",
+          "jcr:created": "Sun Dec 26 2021 15:27:33 GMT+0530",
+          "heading": "heading",
+          "jcr:lastModified": "Sun Dec 26 2021 15:31:24 GMT+0530",
+          "sling:resourceType": "lebara/components/rewardstable",
+          "columnHeader1": "Plans",
+          "columnHeader2": "Rewards",
+          "tableItems": {
+            "jcr:primaryType": "nt:unstructured",
+            "item0": {
+              "jcr:primaryType": "nt:unstructured",
+              "label1": "Column f",
+              "label2": "Column  h"
+            }
+          }
+        },
+        "postpaidpersonaldeta": {
+          "jcr:primaryType": "nt:unstructured",
+          "jcr:createdBy": "admin",
+          "jcr:lastModifiedBy": "admin",
+          "jcr:created": "Sun Dec 26 2021 15:28:57 GMT+0530",
+          "heading": "Your personal details",
+          "jcr:lastModified": "Sun Dec 26 2021 15:31:01 GMT+0530",
+          "portingSectionHeading": "Would you like to Port your Number?",
+          "sling:resourceType": "lebara/components/postpaidpersonaldetails",
+          "textIsRich": [
+            "true",
+            "true",
+            "true",
+            "true"
+          ],
+          "frmFields": {
+            "jcr:primaryType": "nt:unstructured",
+            "currentProviderHelperText": "Choose your current provider from the list provided.",
+            "postalcodePlaceholder": "Search For Postal Code",
+            "houseNumberLabel": "House Number",
+            "orTextLabel": "or",
+            "addressKeyInText": "Key in your postal code and find your address",
+            "monthLabel": "Month",
+            "shippingHelperText": "Key in your postal code and find your address",
+            "cityPlaceholder": "Enter Your City",
+            "zipCodePlaceholder": "Enter Your Zip Code",
+            "dayPalceholder": "Enter Day",
+            "currentProviderUsageAcceptanceLabel": "<p>current provider info consent 1</p>\r\n",
+            "streetPlaceholder": "Enter Your Street Name",
+            "portInNumberPlaceHolder": "015100000000",
+            "currentProviderPlaceholder": "Select an option",
+            "cityLabel": "City",
+            "monthPlaceholder": "Enter Month",
+            "lNameLabel": "Last Name",
+            "zipCodeLabel": "Zip Code",
+            "enterAddressManually": "Enter Address Manually?",
+            "yearLabel": "Year",
+            "saveAddress": "Save address for future",
+            "yearPlaceholder": "Enter Year",
+            "currentProviderAdvertisingAcceptanceLabel": "<p>current provider info cns2</p>\r\n",
+            "currentProviderAdvertisingPreviewText": "I consent to trustworthy cooperation partners of Lebara contacting me about their products and services for",
+            "buttonCTALabel": "LOGIN",
+            "exitingPhoneHelperLabel": "In order to be able to port in your Lebara prepaid number, please first",
+            "shippingPlaceholder": "Shipping Place Holder",
+            "fNameLabel": "First Name",
+            "shippingLabel": "Shipping Address",
+            "currentProviderLabel": "Current Provider",
+            "dobLabel": "Date of Birth",
+            "fnamePlaceholder": "Enter Your First Name",
+            "lNamePlaceholder": "Enter Your First Name",
+            "streetLabel": "Street",
+            "linkCTALabel": "CREATE AN ACCOUNT",
+            "ctaContinueLabel": "CONTINUE",
+            "emailLabel": "Email Address",
+            "portInNumberLabel": "Number to port",
+            "consentDescription": "<p>Address Consent</p>\r\n",
+            "houseNumberPlaceholder": "Enter Your House Number",
+            "currentProviderInfoDescription": "<p>current provider info</p>\r\n",
+            "emailPlaceholder": "Enter Your Email Address",
+            "dayLabel": "Day",
+            "consentPreviewText": "I consent to trustworthy cooperation partners of Lebara contacting me about their products and services for",
+            "keyInAddress": "Key in your address manually",
+            "portInOptions": {
+              "jcr:primaryType": "nt:unstructured",
+              "item0": {
+                "jcr:primaryType": "nt:unstructured",
+                "label": "No Thanks",
+                "value": "No"
+              },
+              "item1": {
+                "jcr:primaryType": "nt:unstructured",
+                "label": "I want to port in",
+                "value": "Yes"
+              },
+              "item2": {
+                "jcr:primaryType": "nt:unstructured",
+                "label": "I want to use my Lebara Sim",
+                "value": "ExistingPhone"
+              }
+            }
+          },
+          "validationMessages": {
+            "jcr:primaryType": "nt:unstructured",
+            "dayInValidMsg": "Please Enter Valid Day",
+            "yearInvalidAgeMsg": "You must be older than 18",
+            "currentProviderRequiredMsg": "Please Enter Current Provider Number",
+            "monthInValidMsg": "Please Enter Valid Month",
+            "dayRequiredMsg": "Please Enter Day",
+            "monthRequiredMsg": "Please Enter Month",
+            "firstNameErrorMax": "Must be 50 characters or less",
+            "yearRequiredMsg": "Please Enter Year",
+            "portInNumberRequiredMsg": "Please Enter Port In Number",
+            "fNameRequiredMsg": "Please enter a valid First Name , First name cannot be empty",
+            "emailInValidMsg": "Please enter a valid email address. For example username@domain.com",
+            "shippingRequiredMsg": "Please Enter Shipping Address",
+            "portInNumberInValidMsg": "Please Enter Valid Port In Number",
+            "fNameInValidMsg": "The First name cannot contain any special characters ($, @, #, !, %. * ^() ?)",
+            "yearInValidMsg": "Please Enter Valid Year",
+            "lNameInValidMsg": "The Last name cannot contain any special characters ($, @, #, !, %. * ^() ?)",
+            "lNameRequiredMsg": "Please enter a valid Last Name , Last name cannot be empty",
+            "lastNameErrorMax": "Must be 75 characters or less",
+            "emailRequiredMsg": "The email address field cannot be empty"
+          }
+        }
+      }
+    }
+  }
+}

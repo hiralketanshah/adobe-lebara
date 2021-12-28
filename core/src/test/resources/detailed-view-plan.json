@@ -1,0 +1,226 @@
+{
+  "jcr:primaryType": "cq:Page",
+  "jcr:createdBy": "admin",
+  "jcr:created": "Sat Dec 25 2021 23:56:19 GMT+0530",
+  "jcr:content": {
+    "jcr:primaryType": "cq:PageContent",
+    "jcr:createdBy": "admin",
+    "jcr:title": "detailed-viewplan-test",
+    "cq:template": "/conf/lebara/settings/wcm/templates/lebara-page-template",
+    "jcr:created": "Sat Dec 25 2021 23:56:19 GMT+0530",
+    "cq:lastModified": "Sat Dec 25 2021 23:57:49 GMT+0530",
+    "sling:resourceType": "lebara/components/page",
+    "cq:lastModifiedBy": "admin",
+    "root": {
+      "jcr:primaryType": "nt:unstructured",
+      "sling:resourceType": "wcm/foundation/components/responsivegrid",
+      "experiencefragment-header": {
+        "jcr:primaryType": "nt:unstructured",
+        "fragmentVariationPath": "/content/experience-fragments/lebara/de/de/site/header/master",
+        "sling:resourceType": "lebara/components/experiencefragment"
+      },
+      "responsivegrid": {
+        "jcr:primaryType": "nt:unstructured",
+        "sling:resourceType": "wcm/foundation/components/responsivegrid",
+        "detailedviewplans": {
+          "jcr:primaryType": "nt:unstructured",
+          "jcr:createdBy": "admin",
+          "ctaDownloadLabel": "Download",
+          "jcr:lastModifiedBy": "admin",
+          "jcr:created": "Sat Dec 25 2021 23:56:46 GMT+0530",
+          "ctaCloseLabel": "Close",
+          "jcr:lastModified": "Sat Dec 25 2021 23:57:49 GMT+0530",
+          "sling:resourceType": "lebara/components/detailedviewplans",
+          "phases": {
+            "jcr:primaryType": "nt:unstructured",
+            "item0": {
+              "jcr:primaryType": "nt:unstructured",
+              "cfPath": "/content/lebara/de/de/detailed-viewplan-test/jcr:content/root/plan",
+              "cfPlanPath": "/content/lebara/de/de/detailed-viewplan-test/jcr:content/root/planpath",
+              "allowanceType": "data"
+            }
+          }
+        }
+      },
+      "experiencefragment-footer": {
+        "jcr:primaryType": "nt:unstructured",
+        "fragmentVariationPath": "/content/experience-fragments/lebara/de/de/site/footer/master",
+        "sling:resourceType": "lebara/components/experiencefragment"
+      },
+      "planpath": {
+        "jcr:primaryType": "dam:Asset",
+        "jcr:mixinTypes": [
+          "mix:referenceable"
+        ],
+        "jcr:createdBy": "admin",
+        "jcr:created": "Tue Nov 23 2021 13:49:45 GMT+0530",
+        "jcr:uuid": "21fc306a-ab80-432f-8281-ff6e3ab0fdef",
+        "jcr:content": {
+          "jcr:primaryType": "dam:AssetContent",
+          "jcr:title": "15GB Extra Kunden-werben-Aktion",
+          "contentFragment": true,
+          "dam:scene7RequestID": "c26823bb-a5df-4973-b89c-c67caeee659c",
+          "renditions": {
+            "jcr:primaryType": "nt:folder",
+            "jcr:createdBy": "admin",
+            "jcr:created": "Fri Nov 26 2021 13:37:43 GMT+0530"
+          },
+          "related": {
+            "jcr:primaryType": "nt:unstructured"
+          },
+          "metadata": {
+            "jcr:primaryType": "nt:unstructured",
+            "jcr:mixinTypes": [
+              "cq:Taggable"
+            ],
+            "dam:scene7FileStatus": "NotSupported"
+          },
+          "data": {
+            "jcr:primaryType": "nt:unstructured",
+            "cq:model": "/conf/lebara/settings/dam/cfm/models/planinformation",
+            "master": {
+              "jcr:primaryType": "nt:unstructured",
+              "jcr:mixinTypes": [
+                "cq:Taggable",
+                "dam:cfVariationNode"
+              ],
+              "title": "test",
+              "countryTitle": "countryTitle",
+              "title@LastModified": "Thu Nov 18 2021 08:34:02 GMT+0000",
+              "countryTitle@LastModified": "Thu Nov 18 2021 08:34:02 GMT+0000",
+              "countryList@LastModified": "Thu Nov 18 2021 08:34:02 GMT+0000",
+              "listPlanItem@LastModified": "Thu Nov 18 2021 08:34:02 GMT+0000"
+            }
+          }
+        }
+      },
+      "promotion": {
+        "jcr:primaryType": "dam:Asset",
+        "jcr:mixinTypes": [
+          "mix:referenceable",
+          "mix:versionable"
+        ],
+        "jcr:createdBy": "admin",
+        "jcr:versionHistory": "1688f42a-b514-4c4d-820e-9096d61b3592",
+        "jcr:predecessors": [
+          "9f52b5b5-c238-40e8-9d16-eb0633679530"
+        ],
+        "jcr:created": "Sun Dec 26 2021 01:29:44 GMT+0530",
+        "jcr:baseVersion": "9f52b5b5-c238-40e8-9d16-eb0633679530",
+        "jcr:isCheckedOut": true,
+        "jcr:uuid": "20ef8993-d2b6-421d-9e98-c88192120d68",
+        "jcr:content": {
+          "jcr:primaryType": "dam:AssetContent",
+          "jcr:title": "promotiontest",
+          "jcr:lastModifiedBy": "admin",
+          "contentFragment": true,
+          "cq:name": "promotiontest",
+          "jcr:lastModified": "Sun Dec 26 2021 01:30:13 GMT+0530",
+          "lastFragmentSave": "Sun Dec 26 2021 01:30:13 GMT+0530",
+          "cq:parentPath": "/content/dam/lebara/markets/de/de/content-fragments",
+          "renditions": {
+            "jcr:primaryType": "nt:folder",
+            "jcr:createdBy": "admin",
+            "jcr:created": "Sun Dec 26 2021 01:29:44 GMT+0530"
+          },
+          "related": {
+            "jcr:primaryType": "nt:unstructured"
+          },
+          "metadata": {
+            "jcr:primaryType": "nt:unstructured",
+            "jcr:mixinTypes": [
+              "cq:Taggable"
+            ]
+          },
+          "data": {
+            "jcr:primaryType": "nt:unstructured",
+            "cq:model": "/conf/lebara/settings/dam/cfm/models/promotion-plan-fragment",
+            "master": {
+              "jcr:primaryType": "nt:unstructured",
+              "jcr:mixinTypes": [
+                "dam:cfVariationNode",
+                "cq:Taggable"
+              ],
+              "promotionData@LastModified": "Sun Dec 26 2021 01:30:13 GMT+0530",
+              "promotionDetails": "Promotion Details",
+              "promotionalPrice": "4 $",
+              "promotionDetails@LastModified": "Sun Dec 26 2021 01:30:13 GMT+0530",
+              "promotionalPrice@LastModified": "Sun Dec 26 2021 01:30:13 GMT+0530",
+              "promotionId@LastModified": "Sun Dec 26 2021 01:30:13 GMT+0530",
+              "promotionData": "3 GB",
+              "promotionId": "12345"
+            }
+          }
+        }
+      },
+      "plan": {
+        "jcr:primaryType": "dam:Asset",
+        "jcr:mixinTypes": [
+          "mix:referenceable"
+        ],
+        "jcr:createdBy": "workflow-process-service",
+        "jcr:created": "Fri Nov 26 2021 13:46:42 GMT+0530",
+        "jcr:uuid": "95a567ed-66ae-43c8-a2fa-be5c0ccedb2f",
+        "jcr:content": {
+          "jcr:primaryType": "dam:AssetContent",
+          "jcr:title": "Tuerkiye S",
+          "jcr:lastModifiedBy": "workflow-process-service",
+          "contentFragment": true,
+          "jcr:lastModified": "Fri Nov 26 2021 13:46:42 GMT+0530",
+          "renditions": {
+            "jcr:primaryType": "nt:folder",
+            "jcr:createdBy": "workflow-process-service",
+            "jcr:created": "Fri Nov 26 2021 13:46:42 GMT+0530"
+          },
+          "related": {
+            "jcr:primaryType": "nt:unstructured"
+          },
+          "metadata": {
+            "jcr:primaryType": "nt:unstructured",
+            "jcr:mixinTypes": [
+              "cq:Taggable"
+            ]
+          },
+          "data": {
+            "jcr:primaryType": "nt:unstructured",
+            "cq:model": "/conf/lebara/settings/dam/cfm/models/epcmodels",
+            "master": {
+              "jcr:primaryType": "nt:unstructured",
+              "jcr:mixinTypes": [
+                "dam:cfVariationNode",
+                "cq:Taggable"
+              ],
+              "validity@LastModified": "Fri Nov 26 2021 13:46:42 GMT+0530",
+              "name@LastModified": "Fri Nov 26 2021 13:46:42 GMT+0530",
+              "planInfoPath@LastModified": "Fri Nov 26 2021 13:46:42 GMT+0530",
+              "offerid": "490098",
+              "active@LastModified": "Fri Nov 26 2021 13:46:42 GMT+0530",
+              "active": true,
+              "promotionFragment": "/content/lebara/de/de/detailed-viewplan-test/jcr:content/root/promotion",
+              "planInfoPath": "/content/lebara/de/de/detailed-viewplan-test/jcr:content/root/planpath",
+              "validity": "35",
+              "additionalOffers": "35",
+              "activatePromotion": "true",
+              "offerid@ContentType": "text/plain",
+              "productInformationFile@LastModified": "Fri Nov 26 2021 13:46:42 GMT+0530",
+              "allowancesList@LastModified": "Fri Nov 26 2021 13:46:42 GMT+0530",
+              "offerType@ContentType": "text/plain",
+              "cost@LastModified": "Fri Nov 26 2021 13:46:42 GMT+0530",
+              "offerType@LastModified": "Fri Nov 26 2021 13:46:42 GMT+0530",
+              "cost@ContentType": "text/plain",
+              "validity@ContentType": "text/plain",
+              "cost": 999,
+              "name": "Tuerkiye S",
+              "additionalOffers": "Tuerkiye S",
+              "additionalOffers@LastModified": "Fri Nov 26 2021 13:46:42 GMT+0530",
+              "active@ContentType": "text/plain",
+              "offerid@LastModified": "Fri Nov 26 2021 13:46:42 GMT+0530",
+              "offerType": "prepaid",
+              "name@ContentType": "text/plain"
+            }
+          }
+        }
+      }
+    }
+  }
+}
