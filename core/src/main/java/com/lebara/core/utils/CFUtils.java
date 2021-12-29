@@ -313,17 +313,15 @@ public class CFUtils {
    }
     public static List<Object> getCurrentProvidersOptions(String currentProvidersOptions, ResourceResolver resourceResolver) {
         List<Object> currentProviderList = new ArrayList<>();
-        if(currentProvidersOptions != null) {
+        if (currentProvidersOptions != null) {
             Resource currentProvidersResource = resourceResolver.getResource(currentProvidersOptions);
-            if(currentProvidersResource!=null && currentProvidersResource.hasChildren())
-            {
+            if (currentProvidersResource != null && currentProvidersResource.hasChildren()) {
                 Iterator<Resource> contentFragmentList = currentProvidersResource.listChildren();
-                while(contentFragmentList.hasNext())
-                {
+                while (contentFragmentList.hasNext()) {
                     Resource currentResource = contentFragmentList.next();
                     SelectBean selectBean = new SelectBean();
                     ContentFragment currentContentFragment = currentResource.adaptTo(ContentFragment.class);
-                    if(currentContentFragment !=null) {
+                    if (currentContentFragment != null) {
                         selectBean.setName(CFUtils.getElementValue(currentContentFragment, "name"));
                         selectBean.setValue(CFUtils.getElementValue(currentContentFragment, "value"));
                     }
