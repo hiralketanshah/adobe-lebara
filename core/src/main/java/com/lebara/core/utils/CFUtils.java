@@ -124,7 +124,7 @@ public class CFUtils {
                 String countryLandingPageUrl = CFUtils.getElementValue(irFragment, "countryLandingPageURL");
                 countryLandingPageUrl = AemUtils.getLinkWithExtension(countryLandingPageUrl, resolver);
                 String countryName = CFUtils.getElementValue(irFragment, "countryName");
-                if (StringUtils.isNoneBlank(countryLandingPageUrl, countryName)) {
+                if (StringUtils.isNotBlank(countryLandingPageUrl) && StringUtils.isNotBlank(countryName)) {
                     SelectOption selectOption = new SelectOption();
                     selectOption.setLabel(countryName);
                     selectOption.setValue(countryLandingPageUrl);
@@ -153,7 +153,7 @@ public class CFUtils {
                 String countryLandingPageUrl = CFUtils.getElementValue(irFragment, "countryLandingPageURL");
                 countryLandingPageUrl = AemUtils.getLinkWithExtension(countryLandingPageUrl, resolver);
                 String countryName = CFUtils.getElementValue(irFragment, "countryName");
-                if (StringUtils.isNoneBlank(countryLandingPageUrl, countryName)) {
+                if (StringUtils.isNotBlank(countryLandingPageUrl) && StringUtils.isNotBlank(countryName)) {
                     SelectBean selectBean = new SelectBean();
                     selectBean.setKey(String.valueOf(count++));
                     selectBean.setUrl(countryLandingPageUrl);
@@ -202,8 +202,15 @@ public class CFUtils {
                     if (promotionalFragres != null) {
                         ContentFragment promotionFragment = promotionalFragres.adaptTo(ContentFragment.class);
                         if (promotionFragment != null) {
-                            offerFragmentBean.setPromotionPrice(CFUtils.getElementValue(promotionFragment, "promotionalPrice"));
-                            offerFragmentBean.setPromotionData(CFUtils.getElementValue(promotionFragment, "promotionData"));
+                            if (StringUtils.isNotBlank(CFUtils.getElementValue(promotionFragment, "promotionalPrice"))) {
+                                offerFragmentBean.setPromotionPrice(CFUtils.getElementValue(promotionFragment, "promotionalPrice"));
+                            }
+                            if (StringUtils.isNotBlank(CFUtils.getElementValue(promotionFragment, "promotionData"))) {
+                                offerFragmentBean.setPromotionData(CFUtils.getElementValue(promotionFragment, "promotionData"));
+                            }
+                            if (StringUtils.isBlank(CFUtils.getElementValue(offerFragment, "promotionalMessage"))) {
+                                offerFragmentBean.setPromotionMessage(CFUtils.getElementValue(promotionFragment, "promotionDetails"));
+                            }
                         }
                     }
                 }
@@ -249,7 +256,7 @@ public class CFUtils {
         return offerFragmentBean;
     }
 
-    private static String formatedValue(String unit, String val, I18n i18n) {
+    public static String formatedValue(String unit, String val, I18n i18n) {
         String formattedValue = StringUtils.EMPTY;
         if (StringUtils.isNotBlank(unit) && StringUtils.isNumeric(val)) {
             int value = Integer.parseInt(val);
@@ -276,10 +283,14 @@ public class CFUtils {
             ContentFragment cfPlanFragment = cfPlanResource.adaptTo(ContentFragment.class);
             if (null != cfPlanFragment) {
                 planInfo = new PlanInfo();
-                planInfo.setTitle(cfPlanFragment.getElement("title").getContent());
-                planInfo.setCountryTitle(cfPlanFragment.getElement("countryTitle").getContent());
+                if (cfPlanFragment.getElement("title") != null) {
+                    planInfo.setTitle(cfPlanFragment.getElement("title").getContent());
+                }
+                if (cfPlanFragment.getElement("countryTitle") != null) {
+                    planInfo.setCountryTitle(cfPlanFragment.getElement("countryTitle").getContent());
+                }
                 planInfo.setListPlanItem(CFUtils.getElementArrayValue(cfPlanFragment, "listPlanItem"));
-                planInfo.setCountryList(CFUtils.convertStringArrayToList(CFUtils.getElementArrayValue( cfPlanFragment, "countryList"), CountryInfo.class));
+                planInfo.setCountryList(CFUtils.convertStringArrayToList(CFUtils.getElementArrayValue(cfPlanFragment, "countryList"), CountryInfo.class));
             }
         }
         return planInfo;
@@ -304,7 +315,7 @@ public class CFUtils {
         List<Object> currentProviderList = new ArrayList<>();
         if(currentProvidersOptions != null) {
             Resource currentProvidersResource = resourceResolver.getResource(currentProvidersOptions);
-            if(currentProvidersResource.hasChildren())
+            if(currentProvidersResource!=null && currentProvidersResource.hasChildren())
             {
                 Iterator<Resource> contentFragmentList = currentProvidersResource.listChildren();
                 while(contentFragmentList.hasNext())

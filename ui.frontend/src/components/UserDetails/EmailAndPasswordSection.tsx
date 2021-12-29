@@ -6,7 +6,7 @@ import {
   SimpleGrid,
 } from "@chakra-ui/react";
 import { FiEdit } from "react-icons/all";
-import FormikInput from "../Formik/FormikInput/FormikInput";
+import FormikInput from "@lebara/ui/src/components/Formik/FormikInput/FormikInput";
 import Button from "../Button/Button";
 import LebaraText from "../LebaraText/LebaraText";
 import { ChangeEmailPasswordProfileProps } from "./types";
@@ -52,17 +52,23 @@ const EmailAndPasswordSection: React.FC<ChangeEmailPasswordProfileProps> = ({
               removeValidation
               {...disabledEmailProps}
             />
-            <InputRightElement width="4.5rem" mt="30px">
+            <InputRightElement width="auto" mt="30px" 
+              style={{
+                right: "5px",
+                top: "2px",
+              }}>
               <Button
                 padding="initial"
-                bgColor="transparent"
+                variant="link"
                 color="#463C3C"
                 _hover={{ bgColor: "transparent" }}
                 onClick={onEmailEdit}
               >
                 <FiEdit size={24} color="#463C3C" />
                 &nbsp;
-                <LebaraText type="button" color="#FF3182">
+                <LebaraText type="button" color="#FF3182"
+                  style={{whiteSpace: "pre-wrap", 
+                  textTransform: "capitalize"}}>
                   {frmFields?.editLinkLabel}
                 </LebaraText>
               </Button>
@@ -82,7 +88,7 @@ const EmailAndPasswordSection: React.FC<ChangeEmailPasswordProfileProps> = ({
             <InputRightElement width="4.5rem" mt="30px">
               <Button
                 padding="initial"
-                bgColor="transparent"
+                variant="link"
                 color="#463C3C"
                 _hover={{ bgColor: "transparent" }}
                 onClick={onPasswordEdit}

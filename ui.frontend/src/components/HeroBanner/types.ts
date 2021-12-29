@@ -5,4 +5,5 @@ export interface HeroBannerProps {
   buttonCTALabel?: string;
   buttonCTALink?: string;
   getItNowErrorMessage?: string;
+  headingType?: any;
 }

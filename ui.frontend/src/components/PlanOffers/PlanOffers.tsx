@@ -5,9 +5,10 @@ import { PlanOffersProps } from "./types";
 import Link from "@lebara/ui/src/components/Link/Link";
 import ExpandableSimPlanCard from "../ExpandableSimPlanCard/ExpandableSimPlanCard";
 import Button from "../Button/Button";
-import { useHistory } from "react-router-dom";
+import { useHistory } from "@lebara/ui/src/hooks/useHistory";
 import TickInCircle from "../../icons/TickInCircle";
-import {globalConfigs, globalConstants} from  '@lebara/ui/src/configs/globalConfigs.js';
+import React from "react";
+import {googleAnalytics} from "../../utils/gtm";
 const PlanOffers: React.FC<PlanOffersProps> = ({
   offers,
   heading,
@@ -38,6 +39,33 @@ const PlanOffers: React.FC<PlanOffersProps> = ({
     fontWeight: "bold",
   };
 
+  React.useEffect(() => {
+    const impressions = offers.map(plan => {
+      const data = plan?.offerType === "prepaid" ? plan?.allowanceList.find(t => t.name === "Data")?.formatedValue : plan?.allowanceList.find(t => t.name === "DE_Postpaid_Data")?.formatedValue;
+      const internationalMinutes = plan?.offerType === "prepaid" ? plan?.allowanceList.find(t => t.name === "DE_Srilanka_India_EU_voice")?.value : plan?.allowanceList.find(t => t.name === "DE_Postpaid_Intl_Mins")?.value;
+      const minutes = plan?.offerType === "prepaid" ? plan?.allowanceList.find(t => t.name === "DE_National_Voice")?.value : "Unlimited";
+      return {
+        currencyCode: "EUR",
+        detail: {
+          products: [
+            {
+              id: plan?.id,
+              name: plan.planName,
+              price: plan.cost,
+              brand: "Lebara",
+              category: `plan/${plan.planName}///${data} - ${minutes} national minutes - ${internationalMinutes} International Minutes`,
+              variant: "DE",
+              quantity: 1,
+            },
+          ],
+        },
+      };
+    });
+    googleAnalytics("EElistPage", {
+      currencyCode: "EUR",
+      impressions,
+    });
+  }, [offers]);
   return (
     <Box
       backgroundColor={backgroundColor ? backgroundColor : `lightenPrimary.50`}
@@ -127,7 +155,7 @@ const PlanOffers: React.FC<PlanOffersProps> = ({
             minW={{ base: "100%", lg: "320px" }}
             alignSelf="center"
             onClick={() => {
-              history.push((ctaBottomLink || globalConfigs.journeyPages[globalConstants.PREPAID] || '/'), history.location.state);
+              history.push((ctaBottomLink || "/prepaid"), history.location.state);
             }}
           >
             {ctaBottomLabel}

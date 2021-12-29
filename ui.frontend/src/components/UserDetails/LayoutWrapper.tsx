@@ -3,17 +3,16 @@ import { useLocation } from "react-router-dom";
 import { Box } from "@chakra-ui/layout";
 import { useApolloClient } from "@apollo/client";
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory } from "react-router";
+import { useHistory } from "@lebara/ui/src/hooks/useHistory";
 import ChangePasswordSuccess from "./ChangePasswordSuccesMessage";
-
-import { globalConfigs as GC} from "@lebara/ui/src/configs/globalConfigs.js";
 import {
   selectEmail,
   selectIsAuthenticated,
   selectMsisdn,
-} from "../../redux/selectors/userSelectors";
-import { setLoading } from "../../redux/actions/loadingActions";
-import GET_PERSONAL_DETAILS_USER_PROFILE from "../../graphql/GET_PERSONAL_DETAILS_USER_PROFILE";
+} from "@lebara/ui/src/redux/selectors/userSelectors";
+
+import { setLoading } from "@lebara/ui/src/redux/actions/loadingActions";
+import GET_PERSONAL_DETAILS_USER_PROFILE from "@lebara/ui/src/graphql/GET_PERSONAL_DETAILS_USER_PROFILE";
 
 import SingleFormContainer from "../../layouts/SingleFormContainer";
 import { UserDetailsProps } from "./types";
@@ -34,7 +33,6 @@ const LayoutWrapper: React.FC<UserDetailsProps> = ({ ...rest }) => {
   const dispatch = useDispatch();
   const isAuthenticated = useSelector(selectIsAuthenticated);
   const history = useHistory();
-  const USER_PROFILE= 'user-profile';
   React.useEffect(() => {
     dispatch(setLoading(true));
   }, [dispatch]);
@@ -44,7 +42,7 @@ const LayoutWrapper: React.FC<UserDetailsProps> = ({ ...rest }) => {
       return;
     }
 
-    history.replace(GC.journeyPages[`${USER_PROFILE}`], {
+    history.replace("/user-profile", {
       passwordUpdated: false,
     });
   }, [history, passwordUpdated]);

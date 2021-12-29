@@ -64,10 +64,10 @@ public class ViewPlanExporter implements ComponentExporter {
     @ValueMapValue
     private String exploreAllLink;
 
-    private I18n i18n;
+    protected I18n i18n;
 
     @PostConstruct
-    private void init() {
+    protected void init() {
         i18n = AemUtils.geti18n(resourceResolver, resource, slingRequest);
     }
 

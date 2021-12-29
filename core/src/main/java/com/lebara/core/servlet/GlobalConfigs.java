@@ -8,6 +8,7 @@ import com.day.cq.commons.jcr.JcrConstants;
 import com.day.cq.wcm.api.PageManager;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.net.MediaType;
+import com.lebara.core.models.beans.PaymentMethods;
 import com.lebara.core.services.GlobalOsgiService;
 import com.lebara.core.utils.AemUtils;
 import org.apache.commons.lang3.ArrayUtils;
@@ -40,6 +41,8 @@ public class GlobalConfigs extends SlingSafeMethodsServlet {
     private static final String CURRENCY_NAME = "currencyName";
     private static final String JOURNEY_PAGES = "journeyPages";
     private static final String PRIVATE_PAGES = "privatePages";
+    private static final String PAYMENT_MESSAGES = "paymentMessages";
+
     @Reference
     private transient GlobalOsgiService globalOsgiService;
 
@@ -67,12 +70,30 @@ public class GlobalConfigs extends SlingSafeMethodsServlet {
                 .put("paymentAdeyenEnv", Optional.ofNullable(globalOsgiService.getPaymentAdeyenEnv()).orElse(""))
                 .put(CURRENCY_NAME, Optional.ofNullable(inheritedProp.getInherited(CURRENCY_NAME, String.class)).orElse(""))
                 .put(JOURNEY_PAGES, getJourneyPages(request, page))
-                .put(PRIVATE_PAGES, getPrivatePages(request, inheritedProp.getInherited(PRIVATE_PAGES, String[].class))).build();
+                .put(PRIVATE_PAGES, getPrivatePages(request, inheritedProp.getInherited(PRIVATE_PAGES, String[].class)))
+                .put(PAYMENT_MESSAGES,getPaymentMethods(page)).build();
     }
+
+    private PaymentMethods getPaymentMethods(Page page) {
+        Page homePage = getRootPage(page);
+        if (homePage == null) {
+            return new PaymentMethods();
+        }
+        Resource paymentRes = homePage.getContentResource(PAYMENT_MESSAGES);
+        if (paymentRes == null) {
+            return new PaymentMethods();
+        }
+        PaymentMethods paymentMethods = paymentRes.adaptTo(PaymentMethods.class);
+        if (paymentMethods == null) {
+            return new PaymentMethods();
+        }
+        return paymentMethods;
+    }
+
     protected Object getJourneyPages(SlingHttpServletRequest request, Page currentPage) {
         if (currentPage != null) {
             Map<String, String> items = new HashMap<String, String>();
-            while (currentPage.getContentResource(JOURNEY_PAGES) == null && currentPage.getAbsoluteParent(1).getPath() != currentPage.getPath()) {
+            while (currentPage.getContentResource(JOURNEY_PAGES) == null && !currentPage.getAbsoluteParent(1).getPath().equals(currentPage.getPath())) {
                 currentPage = currentPage.getParent();
             }
             if (currentPage != null && currentPage.getContentResource(JOURNEY_PAGES) != null) {
@@ -93,6 +114,19 @@ public class GlobalConfigs extends SlingSafeMethodsServlet {
             return Arrays.stream(privatePages).map(link  -> AemUtils.getLinkWithExtension(link, request)).collect(Collectors.toList());
         }
         return Collections.<String>emptyList();
+    }
+
+    /**
+     * Recursive logic to return of root of current page which contains payment message child node in it.
+     */
+    public static Page getRootPage(Page currentPage) {
+        if (currentPage == null) {
+            return null;
+        }
+        while (currentPage.getContentResource(PAYMENT_MESSAGES) == null && !currentPage.getAbsoluteParent(1).getPath().equals(currentPage.getPath())) {
+            currentPage = currentPage.getParent();
+        }
+        return currentPage;
     }
 }
 

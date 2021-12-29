@@ -4,9 +4,9 @@ import { Box, Flex, Text, Link } from "@chakra-ui/react";
 import { PlanCardProps } from "./types";
 import ExpandableSimPlanCard from "../ExpandableSimPlanCard/ExpandableSimPlanCard";
 import Button from "../Button/Button";
-import { useHistory } from "react-router-dom";
+import { useHistory } from "@lebara/ui/src/hooks/useHistory";
 import TickInCircle from "../../icons/TickInCircle";
-import {globalConfigs, globalConstants} from  '@lebara/ui/src/configs/globalConfigs.js';
+import {googleAnalytics} from "../../utils/gtm";
 
 const ViewPlans: React.FC<PlanCardProps> = ({
   title,
@@ -34,6 +34,35 @@ const ViewPlans: React.FC<PlanCardProps> = ({
     fontWeight: "bold",
     color: "var(--chakra-colors-pink-500);"
   };
+
+  React.useEffect(() => {
+    const impressions = offers.map(plan => {
+      const data = plan?.offerType === "prepaid" ? plan?.allowanceList.find(t => t.name === "Data")?.formatedValue : plan?.allowanceList.find(t => t.name === "DE_Postpaid_Data")?.formatedValue;
+      const internationalMinutes = plan?.offerType === "prepaid" ? plan?.allowanceList.find(t => t.name === "DE_Srilanka_India_EU_voice")?.value : plan?.allowanceList.find(t => t.name === "DE_Postpaid_Intl_Mins")?.value;
+      const minutes = plan?.offerType === "prepaid" ? plan?.allowanceList.find(t => t.name === "DE_National_Voice")?.value : "Unlimited";
+      return {
+        currencyCode: "EUR",
+        detail: {
+          products: [
+            {
+              id: plan?.id,
+              name: plan.planName,
+              price: plan.cost,
+              brand: "Lebara",
+              category: `plan/${plan.planName}///${data} - ${minutes} national minutes - ${internationalMinutes} International Minutes`,
+              variant: "DE",
+              quantity: 1,
+            },
+          ],
+        },
+      };
+    });
+    googleAnalytics("EElistPage", {
+      currencyCode: "EUR",
+      impressions,
+    });
+  }, [offers]);
+
 
   return (
     <Box
@@ -107,7 +136,7 @@ const ViewPlans: React.FC<PlanCardProps> = ({
             minW={{ base: "100%", lg: "320px" }}
             alignSelf="center"
             onClick={() => {
-               history.push((exploreAllLink || globalConfigs.journeyPages[globalConstants.PREPAID]  || '/'), history.location.state);
+               history.push((exploreAllLink || "/prepaid"), history.location.state);
             }}
           >
             {exploreAllLabel}

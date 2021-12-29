@@ -11,7 +11,7 @@ import { useMutation } from "@apollo/client";
 import { Formik } from "formik";
 import CHANGE_EMAIL from "../../graphql/CHANGE_EMAIL";
 import { ChangeEmailProps, ChangeEmailSchema } from "./types";
-import FormikInput from "../Formik/FormikInput/FormikInput";
+import FormikInput from "@lebara/ui/src/components/Formik/FormikInput/FormikInput";
 import Button from "../Button/Button";
 
 const ChangeEmail: React.FC<ChangeEmailProps> = ({ 

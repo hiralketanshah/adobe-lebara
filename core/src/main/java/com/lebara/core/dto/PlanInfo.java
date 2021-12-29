@@ -21,11 +21,11 @@ public class PlanInfo {
     }
 
     public String[] getListPlanItem() {
-        return listPlanItem;
+        return listPlanItem == null ? new String[0] : listPlanItem.clone();
     }
 
     public void setListPlanItem(String[] listPlanItem) {
-        this.listPlanItem = listPlanItem;
+        this.listPlanItem = (listPlanItem == null ? new String[0] : listPlanItem.clone());
     }
 
     public List<CountryInfo> getCountryList() {
@@ -33,7 +33,7 @@ public class PlanInfo {
     }
 
     public void setCountryList(List<CountryInfo> countryList) {
-        this.countryList = countryList;
+        this.countryList = (countryList == null ? Collections.emptyList() : Collections.unmodifiableList(countryList));
     }
 
     public String getCountryTitle() {

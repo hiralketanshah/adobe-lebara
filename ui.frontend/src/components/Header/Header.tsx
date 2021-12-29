@@ -28,16 +28,13 @@ import Search from "../Search/Search";
 import UserMenu from "@lebara/ui/src/components/UserMenu/UserMenu";
 import {headerSearch} from "@lebara/ui/src/redux/actions/headerSearchActions";
 import {selectIsAuthenticated} from "@lebara/ui/src/redux/selectors/userSelectors";
-import {globalConfigs as GC, globalConstants as GCST} from "@lebara/ui/src/configs/globalConfigs.js";
+import {globalConfigs as GC} from "@lebara/ui/src/configs/globalConfigs.js";
 import {useApolloClient, useQuery} from "@apollo/client";
-import GET_CART from "../../graphql/GET_CART";
+import GET_CART from "@lebara/ui/src/graphql/GET_CART";
 import {loadInitialCart, setCartItemsLoading} from "@lebara/ui/src/redux/actions/cartActions";
-import mapMagentoProductToCartItem from "../../utils/mapMagentoProductToCartItem";
+import mapMagentoProductToCartItem from "@lebara/ui/src/utils/mapMagentoProductToCartItem";
 import {saveTopUps} from "@lebara/ui/src/redux/actions/topUpActions";
-import GET_TOP_UPS from "../../graphql/GET_TOP_UPS";
-import GET_SESSION_STATUS from "../../graphql/GET_SESSION_STATUS";
-import {saveUserInfo} from "@lebara/ui/src/redux/actions/userActions";
-import {setLoading} from "@lebara/ui/src/redux/actions/loadingActions";
+import GET_TOP_UPS from "@lebara/ui/src/graphql/GET_TOP_UPS";
 import {setPaymentMethods} from "@lebara/ui/src/redux/actions/paymentMethodsActions";
 import { useHistory, RouterLink } from "@lebara/ui/src/hooks/useHistory";
 import axios from "axios";
@@ -45,6 +42,9 @@ import PlanNotEligibleDialog from "@lebara/ui/src/components/PlanNotEligibleDial
 import { toggleDialogState } from "@lebara/ui/src/redux/actions/modalsActions";
 import SearchResults from "../Search/SearchResults";
 import aemUtils from "../../utils/aem-utils";
+import { BACKGROUND_OPACITY_SAERCH_BAR } from "@lebara/ui/src/utils/lebara.constants";
+import GoogleAnalytics from "@lebara/ui/src/GoogleAnalytics";
+import useLoadPaymentMethods from "@lebara/ui/src/hooks/useLoadPaymentMethods";
 
 const SingleMenu = ({ menuItem, newText }: { menuItem: children, newText: any }) => {
   const DEFUALT_GROUP_MENU_UPTO = 5;
@@ -125,10 +125,10 @@ const SingleMenu = ({ menuItem, newText }: { menuItem: children, newText: any })
           </Button>
         </Box>
       </MenuButton>
-      {menuItem && menuItem?.children?.length !== 0 && 
-        (<MenuList 
-          marginLeft="-135px" 
-          marginTop="5px" 
+      {menuItem && menuItem?.children?.length !== 0 &&
+        (<MenuList
+          marginLeft="-135px"
+          marginTop="5px"
           zIndex={2}
           onMouseEnter={menuListMouseEnterEvent}
           onMouseLeave={menuListMouseLeaveEvent}>
@@ -231,6 +231,9 @@ const Header: React.FC<HeaderProps> = ({
   search,
 }) => {
   const ref = React.useRef<any>(undefined);
+  const isHeaderSearchClicked = useSelector(
+    (state: ReduxState) => state?.headerSearchBox?.key
+  );
   const cartItems = useSelector((state: ReduxState) => state.cart.items);
   const history = useHistory();
   const client = useApolloClient();
@@ -241,7 +244,7 @@ const Header: React.FC<HeaderProps> = ({
   const isModalOpen = useSelector((t: ReduxState) => t.modal.open);
   const [isQuerySearched, setQuerySearched] = useState('');
   const [results, setResults] : any = useState([]);
-
+  const { loadPaymentMethodsCallback } = useLoadPaymentMethods();
   useOutsideClick({
     ref,
     handler: () => setProfileDropdown(false),
@@ -260,6 +263,18 @@ const Header: React.FC<HeaderProps> = ({
       })
     );
   };
+
+  const handleSearchOverlay = (isHeaderSearchClicked: boolean) => {
+    const parentGridNodes = document.querySelectorAll<HTMLElement>('.aem-page > div > .aem-container > .aem-GridColumn') || document.querySelectorAll<HTMLElement>('.aem-page > .aem-container > .aem-GridColumn');
+    if(!parentGridNodes || !parentGridNodes.length) return;
+  
+    parentGridNodes.forEach((ele, idx) => {
+      if(idx > 0 && (ele && ele?.style) && idx <= parentGridNodes.length-1) {
+        ele.style.opacity = isHeaderSearchClicked ? BACKGROUND_OPACITY_SAERCH_BAR : "1";
+        ele.style.pointerEvents = isHeaderSearchClicked ? "none" : "initial";
+      }
+    });
+  }
 
   const onCloseSearch = () => {
     setIsSearchOpened(false);
@@ -289,27 +304,38 @@ const Header: React.FC<HeaderProps> = ({
           }));
         });
   }, [dispatch]);
+  
+  const handleCartClick = () => {
+    onCloseSearch();
+    history.push(cartItems.length === 0 ?"/empty-cart"  : "/order-details");
+  };
+
+  const handleProfileClick = () => {
+    onCloseSearch();
+    if (isAuthenticated) {
+      setProfileDropdown(!isProfileDropdownOpen);
+      return;
+    }
+    
+    history.push("/register", {
+      fromHeader: true,
+    });
+  };
+
+  React.useEffect(() => {
+    handleSearchOverlay(isHeaderSearchClicked);
+  }, [isHeaderSearchClicked]);
 
   React.useEffect(() => {
     loadPaymentMethods();
   }, [loadPaymentMethods]);
 
   React.useEffect(() => {
-    if( cartItems.length === 0){
+    if (cartItems.length === 0) {
       getCart();
     }
-    client
-      .query({
-        query: GET_SESSION_STATUS,
-      })
-      .then((res) => {
-        dispatch(saveUserInfo(res.data.getSessionStatus));
-      })
-      .catch(() => {})
-      .finally(() => {
-        dispatch(setLoading(false));
-      });
   }, []);// eslint-disable-line react-hooks/exhaustive-deps
+
   const { data: topUps } = useQuery(GET_TOP_UPS, {
     variables: {
       country: GC.country,
@@ -325,204 +351,194 @@ const Header: React.FC<HeaderProps> = ({
       );
     }
   }, [topUps, dispatch]);
-  
-  const handleCartClick = () => {
-    onCloseSearch();
-    history.push(cartItems.length === 0 ? GC.journeyPages[GCST.EMPTY_CART]  : GC.journeyPages[GCST.ORDER_DETAILS]);
-  };
-
-  const handleProfileClick = () => {
-    onCloseSearch();
-    if (isAuthenticated) {
-      setProfileDropdown(!isProfileDropdownOpen);
-      return;
-    }
-    
-    history.push(GC.journeyPages[GCST.REGISTER]  || '/', {
-      fromHeader: true,
-    });
-  };
-
+  React.useEffect(() => {
+    loadPaymentMethodsCallback();
+  }, [loadPaymentMethodsCallback, isAuthenticated]);
   return (
-    <Flex
-      flexDirection="column"
-      backgroundColor={{ md: "white" }}
-      boxShadow={{ md: "8px 4px 15px 3px rgba(0, 0, 0, 0.04)" }}
-      borderRadius={{ md: "8px" }}
-    >
+    <>
+      <GoogleAnalytics />
 
-      <PlanNotEligibleDialog
-          open={isModalOpen}
-          onClose={() => dispatch(toggleDialogState(false))}
-      />
-      <Flex display={{ base: "none", lg: "block" }}>
-        <Flex
-          alignItems="center"
-          px={{lg: "20px", xl: "87.88px"}}
-          py={{ lg: "12px", md: "6px" }}
-          background="lightenPrimary.500"
-          color="white"
-          height="95px"
-          borderBottom="none"
-        >
-          <ChakraLink>
-            <RouterLink to={logoLinkURL || "/"}>
-                <Image 
-                  src={logoPath} 
-                  minW={75}
-                  h="37px" 
-                  w={{lg: "80px", xl: "116.84px"}} 
-                  alt="logo" 
+      <Flex
+          flexDirection="column"
+          backgroundColor={{ md: "white" }}
+          boxShadow={{ md: "8px 4px 15px 3px rgba(0, 0, 0, 0.04)" }}
+          borderRadius={{ md: "8px" }}
+          id="headerComp"
+      >
+
+        <PlanNotEligibleDialog
+            open={isModalOpen}
+            onClose={() => dispatch(toggleDialogState(false))}
+        />
+        <Flex display={{ base: "none", md: "none", lg: "none", xl: "block" }}>
+          <Flex
+              alignItems="center"
+              px={{lg: "20px", xl: "87.88px"}}
+              py={{ lg: "12px", md: "6px" }}
+              background="lightenPrimary.500"
+              color="white"
+              height="95px"
+              borderBottom="none"
+          >
+            <ChakraLink>
+              <RouterLink to={logoLinkURL || "/"}>
+                <Image
+                    src={logoPath}
+                    minW={75}
+                    h="37px"
+                    w={{lg: "80px", xl: "116.84px"}}
+                    alt="logo"
                 />
               </RouterLink>
-          </ChakraLink>
+            </ChakraLink>
 
-          <Flex alignItems="left" ml={{ xl: "60px", lg: "40px", md: "15px" }}  gridGap={{lg: "20px", xl: "30px"}}>
-          {items?.map((menuItem: children) => (
-              <React.Fragment key={menuItem.title}>
-                <SingleMenu menuItem={menuItem} newText={newText} />
-              </React.Fragment>
-            ))}
-          </Flex>
-          <Spacer />
-          <Box>
-            <Button
-                w={{lg: "100px", xl: "130px"}}
-                fontSize={{ lg: "14px", md: "12px" }}
-              onClick={() => history.push(`${GC.journeyPages[GCST.TOP_UP]}`)}
-            >
-              {topupCtaText}
-            </Button>
-          </Box>
-          <Flex>
+            <Flex alignItems="left" ml={{ xl: "60px", lg: "40px", md: "15px" }}  gridGap={{lg: "20px", xl: "30px"}}>
+              {items?.map((menuItem: children) => (
+                  <React.Fragment key={menuItem.title}>
+                    <SingleMenu menuItem={menuItem} newText={newText} />
+                  </React.Fragment>
+              ))}
+            </Flex>
+            <Spacer />
             <Box>
-              {!isSearchOpened ? (
-                <Button
-                  padding="initial"
-                  bgColor="transparent"
-                  _hover={{ bgColor: "transparent" }}
-                  _active={{ bgColor: "transparent" }}
-                  onClick={onSearchClick}
-                >
-                  <IconButton
-                    className="header-search-icon"
-                    icon={<BiSearch size={24} />}
-                    aria-label="Search"
-                    variant="ghost"
-                    size="md"
-                    paddingRight={{
-                      lg: "26px!important",
-                      md: "13px!important",
-                    }}
-                    paddingLeft={{ lg: "56px!important", md: "26px!important" }}
-                    colorScheme="dark"
-                  />
-                </Button>
-              ) : (
-                <Search
-                  {...search}
-                  onHandleSearchQuery={onHandleSearchQuery}
-                  onCloseClick={onCloseSearch}
-                  isHeaderSearchInput={true}
-                  showSearchResults={false} 
-                  searchValue={isQuerySearched}
-              />
-              )}
+              <Button
+                  w={{lg: "100px", xl: "130px"}}
+                  fontSize={{ lg: "14px", md: "12px" }}
+                  onClick={() => history.push("/top-up")}
+              >
+                {topupCtaText}
+              </Button>
             </Box>
-            <IconButton
-              colorScheme="dark"
-              icon={<AiOutlineUser size={24} />}
-              px={{ lg: "26px!important", md: "13px!important" }}
-              aria-label="Profile"
-              size="md"
-              variant="ghost"
-              onClick={handleProfileClick}
-            />
-            <Box pos="relative" onClick={handleCartClick}>
+            <Flex>
+              <Box>
+                {!isSearchOpened ? (
+                    <Button
+                        padding="initial"
+                        bgColor="transparent"
+                        _hover={{ bgColor: "transparent" }}
+                        _active={{ bgColor: "transparent" }}
+                        onClick={onSearchClick}
+                    >
+                      <IconButton
+                          className="header-search-icon"
+                          icon={<BiSearch size={24} />}
+                          aria-label="Search"
+                          variant="ghost"
+                          size="md"
+                          paddingRight={{
+                            lg: "26px!important",
+                            md: "13px!important",
+                          }}
+                          paddingLeft={{ lg: "56px!important", md: "26px!important" }}
+                          colorScheme="dark"
+                      />
+                    </Button>
+                ) : (
+                    <Search
+                        {...search}
+                        onHandleSearchQuery={onHandleSearchQuery}
+                        onCloseClick={onCloseSearch}
+                        isHeaderSearchInput={true}
+                        showSearchResults={false}
+                        searchValue={isQuerySearched}
+                    />
+                )}
+              </Box>
               <IconButton
-                p="absolute"
-                px={{ lg: "26px!important", md: "13px!important" }}
-                colorScheme="dark"
-                icon={<RiShoppingCartLine size={24} />}
-                aria-label="Cart"
-                variant="ghost"
+                  colorScheme="dark"
+                  icon={<AiOutlineUser size={24} />}
+                  px={{ lg: "26px!important", md: "13px!important" }}
+                  aria-label="Profile"
+                  size="md"
+                  variant="ghost"
+                  onClick={handleProfileClick}
               />
-              {cartItems.length > 0 && (
-                <Text
-                  pos="absolute"
-                  bottom="4px"
-                  right="12px"
-                  fontWeight="bold"
-                  color="white"
-                  fontSize="10px"
-                  backgroundColor="secondary.500"
-                  borderRadius="24px"
-                  w="12px"
-                  textAlign="center"
-                >
-                  {cartItems.length}
-                </Text>
-              )}
-            </Box>
+              <Box pos="relative" onClick={handleCartClick}>
+                <IconButton
+                    p="absolute"
+                    px={{ lg: "26px!important", md: "13px!important" }}
+                    colorScheme="dark"
+                    icon={<RiShoppingCartLine size={24} />}
+                    aria-label="Cart"
+                    variant="ghost"
+                />
+                {cartItems.length > 0 && (
+                    <Text
+                        pos="absolute"
+                        bottom="4px"
+                        right="12px"
+                        fontWeight="bold"
+                        color="white"
+                        fontSize="10px"
+                        backgroundColor="secondary.500"
+                        borderRadius="24px"
+                        w="12px"
+                        textAlign="center"
+                    >
+                      {cartItems.length}
+                    </Text>
+                )}
+              </Box>
+            </Flex>
           </Flex>
         </Flex>
+        {isSearchOpened && (
+            <Box
+                backgroundColor="rgba(0,0,0,0.5)"
+                width="100%"
+                height="100%"
+                display={{ base: "none", md: "block" }}
+                className="wrapper-search-key-outside-header"
+            >
+              <Flex
+                  zIndex="3"
+                  width="17.5rem"
+                  // ml="calc(100vw - 32.5rem)"
+                  right={{ lg: "13.5rem", md: "4rem" }}
+                  position="absolute"
+                  flexDirection="column"
+              >
+                <SearchResults
+                    {...search}
+                    key={'search-comp-key-outside-header'+isQuerySearched}
+                    queryVal={isQuerySearched}
+                    results={results}
+                    links={search?.links}
+                    onCloseClick={onCloseSearch}
+                />
+              </Flex>
+            </Box>
+        )}
+        {isProfileDropdownOpen && isAuthenticated && (
+            <Box backgroundColor="white" width="100%" height="100%" ref={ref}>
+              <Flex
+                  zIndex="3"
+                  width="18rem"
+                  ml="calc(100vw - 24rem)"
+                  position="absolute"
+                  flexDirection="column"
+                  background="white"
+                  w="360px"
+                  px="11px"
+                  mt="-20px"
+                  borderBottomRadius="12px"
+              >
+                <UserMenu menus={loggedInMenuItems as any} logoutLabel={logoutLabel} logoutLink={logoLinkURL}/>
+              </Flex>
+            </Box>
+        )}
+        <Flex display={{ xl: "none", lg: "flex", md: "flex", sm: "flex" }} mx={{ xl: "27px" }}>
+          <MiniHeader loggedInMenuItems={loggedInMenuItems}
+                      topupCtaText={topupCtaText}
+                      topupCtaLink={topupCtaLink}
+                      logoutLabel={logoutLabel}
+                      logoutLink={logoLinkURL}
+                      logoPath={logoPath}
+                      logoLinkURL={logoLinkURL} items={items}
+                      search={search} />
+        </Flex>
       </Flex>
-      {isSearchOpened && (
-        <Box
-          backgroundColor="rgba(0,0,0,0.5)"
-          width="100%"
-          height="100%"
-          display={{ base: "none", md: "block" }}
-          className="wrapper-search-key-outside-header"
-          >
-          <Flex
-            zIndex="3"
-            width="17.5rem"
-            // ml="calc(100vw - 32.5rem)"
-            right={{ lg: "13.5rem", md: "4rem" }}
-            position="absolute"
-            flexDirection="column"
-          >
-            <SearchResults
-              {...search}
-              key={'search-comp-key-outside-header'+isQuerySearched}
-              queryVal={isQuerySearched}
-              results={results}
-              links={search?.links}
-              onCloseClick={onCloseSearch}
-              />
-          </Flex>
-        </Box>
-      )}
-      {isProfileDropdownOpen && isAuthenticated && (
-        <Box backgroundColor="white" width="100%" height="100%" ref={ref}>
-          <Flex
-            zIndex="3"
-            width="18rem"
-            ml="calc(100vw - 24rem)"
-            position="absolute"
-            flexDirection="column"
-            background="white"
-            w="360px"
-            px="11px"
-            mt="-20px"
-            borderBottomRadius="12px"
-          >
-            <UserMenu menus={loggedInMenuItems as any} logoutLabel={logoutLabel} logoutLink={logoLinkURL}/>
-          </Flex>
-        </Box>
-      )}
-      <Flex display={{ lg: "none", sm: "flex" }} mx={{ lg: "27px" }}>
-        <MiniHeader loggedInMenuItems={loggedInMenuItems} 
-          topupCtaText={topupCtaText}
-          topupCtaLink={topupCtaLink}
-          logoutLabel={logoutLabel}
-          logoutLink={logoLinkURL}
-          logoPath={logoPath}
-          logoLinkURL={logoLinkURL} items={items}
-          search={search} />
-      </Flex>
-    </Flex>
+    </>
   );
 };
 

@@ -455,6 +455,30 @@
                                                 fieldLabel="View Plans Label"
                                                 fieldDescription="View Plans"
                                                 name="./viewPlansLabel"/>
+                                            <addToCartLabel
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="Add to Cart Label"
+                                                fieldDescription="Add to cart"
+                                                name="./addToCartLabel"/>
+                                            <buyPlanLabel
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="Buy Plan Label"
+                                                fieldDescription="Buy Plan"
+                                                name="./buyPlanLabel"/>
+                                            <changePlanLabel
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="Change Plan Label"
+                                                fieldDescription="Change Plan"
+                                                name="./changePlanLabel"/>
+                                            <changeAddonLabel
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="Change Addon Label"
+                                                fieldDescription="Change Addon"
+                                                name="./changeAddonLabel"/>
                                         </items>
                                     </column>
                                 </items>
@@ -586,6 +610,13 @@
                                                 fieldLabel="Select Plan Label"
                                                 fieldDescription="Select Plan"
                                                 name="./selectPlanLabel"/>
+                                            <hidechangeplan
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                                name="./hideChangePlan"
+                                                text="Hide Change Plan?"
+                                                uncheckedValue="{Boolean}false"
+                                                value="{Boolean}true"/>
                                         </items>
                                     </column>
                                 </items>
@@ -677,17 +708,11 @@
                                                     name="./contractSummary"
                                                     fieldDescription="Contract Summary Label"
                                                     value="CONTRACT SUMMARY"/>
-                                            <freeSimPdfLink
+                                            <contractsummarypdfrootpath
                                                     jcr:primaryType="nt:unstructured"
                                                     sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
-                                                    fieldLabel="Free Sim PDF"
-                                                    name="./freeSimPDF"
-                                                    rootPath="/content/dam/lebara"/>
-                                            <planPDFLink
-                                                    jcr:primaryType="nt:unstructured"
-                                                    sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
-                                                    fieldLabel="Plan PDF"
-                                                    name="./planPDF"
+                                                    fieldLabel="Root path for Contract Summary PDF"
+                                                    name="./contractSummaryPdfRootPath"
                                                     rootPath="/content/dam/lebara"/>
                                         </items>
                                     </column>

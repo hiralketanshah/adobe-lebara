@@ -2,16 +2,15 @@ import React from "react";
 import { Box, Flex, Heading, useToast } from "@chakra-ui/react";
 import { HeroBannerProps } from "./types";
 import Button from "../Button/Button";
-import { setLoading } from "../../redux/actions/loadingActions";
+import { setLoading } from "@lebara/ui/src/redux/actions/loadingActions";
 import {
   selectIsAuthenticated,
   selectMsisdn,
-} from "../../redux/selectors/userSelectors";
+} from "@lebara/ui/src/redux/selectors/userSelectors";
 import { useDispatch, useSelector } from "react-redux";
 import useAddToCart from "@lebara/ui/src/hooks/useAddToCart";
-import { ReduxState } from "../../redux/types";
-import { useHistory } from "react-router-dom";
-import { globalConfigs as GC, globalConstants as C } from "@lebara/ui/src/configs/globalConfigs.js";
+import { ReduxState } from "@lebara/ui/src/redux/types";
+import { useHistory } from "@lebara/ui/src/hooks/useHistory";
 import { Image } from "@lebara/ui/src/components/Image/Image";
 
 const HeroBanner: React.FC<HeroBannerProps> = ({
@@ -20,7 +19,8 @@ const HeroBanner: React.FC<HeroBannerProps> = ({
   description,
   buttonCTALabel,
   buttonCTALink,
-  getItNowErrorMessage
+  getItNowErrorMessage,
+  headingType
 }) => {
   const isAuthenticated = useSelector(selectIsAuthenticated);
   const msisdn = useSelector(selectMsisdn);
@@ -59,6 +59,7 @@ return (
         lineHeight={{ base: "40px", lg: "50px" }}
         color="white"
         letterSpacing="0.25px"
+        as={headingType || 'h1' }
       >
         {title}
       </Heading>
@@ -93,7 +94,7 @@ return (
       }catch (e){
       }
       dispatch(setLoading(false));
-      history.push((GC.journeyPages[C.ORDER_DETAILS] || '/'));
+      history.push("/order-details");
     }}>
         {buttonCTALabel}
       </Button>

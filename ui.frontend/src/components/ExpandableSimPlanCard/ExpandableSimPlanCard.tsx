@@ -5,14 +5,18 @@ import OfferTypes from "./types";
 import Button from "@lebara/ui/src/components/Button/Button";
 import PlanDetailsDialog from "../PlanDetailsDialog/PlanDetailsDialog";
 import { allowanceListProps } from "../ExpandablePlanCard/types";
-import { useHistory } from "react-router-dom";
+import { useHistory } from "@lebara/ui/src/hooks/useHistory";
 import useAddToCart from "@lebara/ui/src/hooks/useAddToCart";
-import { useLocalStorage } from "@rehooks/local-storage";
-import { globalConfigs, globalConstants } from "@lebara/ui/src/configs/globalConfigs";
+import { globalConfigs } from "@lebara/ui/src/configs/globalConfigs";
 import LebaraText from "@lebara/ui/src/components/LebaraText/LebaraText";
 import PdfDialog from "@lebara/ui/src/components/PdfDialog/PdfDialog";
 import { useMutation } from "@apollo/client";
 import REMOVE_FROM_CART from "../../graphql/REMOVE_FROM_CART";
+import { useSelector } from "react-redux";
+import {
+  selectIsAuthenticated,
+  selectMsisdn,
+} from "@lebara/ui/src/redux/selectors/userSelectors";
 const ExpandableSimPlanCard: React.FC<ExpandableSimPlanCardProps> = ({
   planName,
   previewIcon,
@@ -53,9 +57,10 @@ const ExpandableSimPlanCard: React.FC<ExpandableSimPlanCardProps> = ({
   const [isDialogOpen, setIsDialogOpen] = React.useState(false);
   const [isButtonDisabled, setIsButtonDisabled] = React.useState(false);
   const [isPdfDialogOpen, setIsPdfDialogOpen] = useState(false);
-  const [userToken] = useLocalStorage("userToken");
+  const isAuthenticated = useSelector(selectIsAuthenticated);
+  const msisdn = useSelector(selectMsisdn);
   const handleViewCartClick = () => {
-    history.push(userToken ? (globalConfigs.journeyPages[globalConstants.ORDER_DETAILS] || '/') : (globalConfigs.journeyPages[globalConstants.LOGIN] || ''));
+    history.push(isAuthenticated && msisdn ? "/order-details" : "/login");
   };
 
   let filteredAllowanceList: allowanceListProps = {};
@@ -112,9 +117,12 @@ const ExpandableSimPlanCard: React.FC<ExpandableSimPlanCardProps> = ({
       }
       case OfferTypes.PREPAID:
       case OfferTypes.POSTPAID: {
-        console.log(globalConfigs.journeyPages, globalConstants.ORDER_DETAILS);
-        await addItemToCart(parseInt(id || ''), planName, (JSON.stringify(description || '')), Number(cost?.replaceAll(',', '.') || ''), "plan");
-        isRemoveFromCart && onClose ? onClose() : history.push(userToken ? (globalConfigs.journeyPages[globalConstants.ORDER_DETAILS] || '/') : (globalConfigs.journeyPages[globalConstants.LEBARA_SIM_CHOICE] || '/'));
+        try {
+          isRemoveFromCart && onClose ? onClose() : history.push(isAuthenticated && msisdn ? "/order-details" : "/lebara-sim-choice");
+          await addItemToCart(parseInt(id || ''), planName, (JSON.stringify(description || '')), Number(cost?.replaceAll(',', '.') || ''), "plan");
+        }catch(e){
+          
+        }
       }
     }
     setIsButtonDisabled(false);
@@ -211,19 +219,19 @@ const ExpandableSimPlanCard: React.FC<ExpandableSimPlanCardProps> = ({
               )}
               <Text
                 as="h3"
-                fontSize={promotionPrice ? "16px" : "32px"}
+                fontSize={promotionData ? "16px" : "32px"}
                 pr="6px"
                 pl="2px"
-                fontWeight={promotionPrice ? "normal" : "bold"}
+                fontWeight={promotionData ? "normal" : "bold"}
                 color="secondary.500"
-                textDecoration={promotionPrice ? "line-through" : "initial"}
+                textDecoration={promotionData ? "line-through" : "initial"}
                 fontFamily="Chiswick Grotesque Lebara"
               >
                 {filteredAllowanceList.formatedValue}
               </Text>
             </Box>
           </Flex>
-          <Flex alignItems="baseline" color="primary.600" direction="column">
+          <Flex alignItems="baseline" color="primary.600" direction="column" paddingTop={"7px"}>
             {promotionPrice && (
               <Text
                 as="h3"

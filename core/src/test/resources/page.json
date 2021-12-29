@@ -692,7 +692,7 @@
             "pwdMinHint": "pwdMinHint",
             "frmLabelReEnterNewPwd": "frmLabelReEnterNewPwd",
             "showLabel": "showLabel",
-            "hideLabel": "hideLabel",
+          "hideLabel": "hideLabel",
             "frmBtnPrimaryLabel": "frmBtnPrimaryLabel",
             "frmBtnSecondaryLabel": "frmBtnSecondaryLabel",
             "registrationCtaLink": "registrationCtaLink",
@@ -752,7 +752,91 @@
             "mobileNumberFieldPattern": "mobileNumberFieldPattern",
             "doitLaterButtonLabel": "doitLaterButtonLabel",
             "offerId": "offerId"
+          },
+          "getitnow": {
+            "description": "get it now description",
+            "imagePath": "/content/dam/lebara/global/footer-bg.jpeg",
+            "title": "Title",
+            "buttonCTALabel": "get it now",
+            "buttonCTALink": "/content/lebara/de/en/SIMONLY/phone.html",
+            "getItNowErrorMessage": "get it now error message",
+            ":type": "lebara/components/getitnow"
+          },
+          "heading": {
+            "title": "Heading",
+            ":type": "lebara/components/heading"
+          },
+          "howitworks": {
+            "title": "how it works",
+            "uspList": [
+            ],
+            "description": "how it works title description",
+            ":type": "lebara/components/howitworks"
+          },
+
+
+
+
+
+          "loginmodule": {
+            "loginModuleType": "loginGuest",
+            "loginTabLabel": "Login",
+            "registrationTabLabel": "Registration",
+            "guestTabLabel": "Guest",
+            "loginEmailAddressLabel": "Email Address /Mobile Number",
+            "loginPasswordLabel": "Password",
+            "loginForgotPassWordmsg": "Forgot password Message",
+            "loginResetLinkLabel": "Reset it",
+            "loginButton": "Login",
+            "registrationEmailAddress": "Email Address",
+            "registrationPassword": "Password",
+            "registrationConfirmPassword": "Confirm Password",
+            "registrationCtaLabel": "Register",
+            "showLabel": "Show",
+            "hideLabel": "Hide",
+            "guestEmailAddressLabel": "Email Address /Mobile Number",
+            "guestMobileNumberLabel": "Lebara Mobile Number",
+            "guestContinueLabel": "Continue",
+            "emailFieldErrorMessage": "Error for Email",
+            "validEmailFieldErrorMessage": "Error for Valid Email",
+            "passwordFieldErrorMessage": "Error for Password",
+            "confirmPasswordFieldErrorMessage": "Error for Confirm Password",
+            "validMobileNumberErrorMessage": "Error for Valid Mobile Number",
+            "mobileNumberNotMatchErrorMessage": "Error for Mobile Number Not Match Message",
+            "mobileNumberMaxLength": "Error for Mobile Number Max Length",
+            "mobileNumberFieldPattern": "Error for Mobile Number Field Pattern",
+            "guestMobileNumberConfirmLabel": "Confirm Lebara Mobile Number",
+            "loginEmailMobileErrMessage": "Error for email address/mobile number",
+            "confirmPasswordFieldErrorMsg": "Error for Confirm Password Field",
+            "errorEmailPatternValidMsg": "Error for valid Email Pattern",
+            "errorPasswordPatternMinMsg": "Error for Password Pattern",
+            "errorConfirmPasswordPatternNotMatchMsg": "Error for Confirm Password Pattern Not Matching",
+            "secondSubscriptionDisplayText": "To manage/upgrade your plan. If you would like to order a second subscription, please use a different email address.",
+            "exitingUserErrorMsg": "This email address is already registered with us.",
+            "postalCodeText": "Key in your postal code and find your address.",
+            "extraBlockLoginText": "New to Lebara?",
+            ":type": "lebara/components/loginmodule"
+          },
+          "resetpassword": {
+            "resetPwdTitle": "Reset Password",
+            "resetPwdDescription": "Kindy enter email address or phone number and we will send you a link to reset your password",
+            "resetPwdEmailLabel": "Email Address",
+            "resetPwdMobileLabel": "Mobile Number",
+            "resetPwdButtonLabel": "RESET PASSWORD",
+            "resetPwdButtonCancelLabel": "CANCEL",
+            ":type": "lebara/components/resetpassword"
+
+          },
+          "whileyouarehere": {
+            "description": "while you are here desc",
+            "heading": "while you are here",
+            "ctaLiveChatLabel": "START LIVE CHAT",
+            "ctaLiveChatUrl": "www.google.com",
+            "separatorOrText": "OR",
+            ":type": "lebara/components/whileyouarehere"
           }
+
+
         }
       }
     }
