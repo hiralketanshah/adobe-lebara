@@ -8,6 +8,7 @@ import { useLocation } from 'react-router-dom';
 import aemUtils from "./utils/aem-utils";
 import {globalConstants as C } from "@lebara/ui/src/configs/globalConfigs.js";
 import {AuthoringUtils} from "@adobe/aem-spa-page-model-manager";
+declare let window:any;
 function PrivateRoute({ WrappedComponent, routeProps, ...rest }: any) {
   const isAuthenticated = useSelector(selectIsAuthenticated);
   const isLoading = useSelector(selectIsLoading);

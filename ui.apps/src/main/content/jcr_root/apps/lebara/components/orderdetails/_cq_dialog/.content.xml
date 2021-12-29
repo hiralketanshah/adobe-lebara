@@ -437,6 +437,12 @@
                                                 fieldLabel="Payment Button Label"
                                                 fieldDescription="Proceed to payment"
                                                 name="./paymentButtonLabel"/>
+                                            <ctaContinueLabel
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="CTA Continue Label"
+                                                fieldDescription="Continue"
+                                                name="./ctaContinueLabel"/>
                                             <removelabel
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
