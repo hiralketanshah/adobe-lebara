@@ -4,6 +4,7 @@ import { Box, Text, Heading } from "@chakra-ui/react";
 import { TextBlockProps } from "./types";
 import Button from "../Button/Button";
 import sanitizeHtml from "sanitize-html";
+import { useHistory } from "react-router-dom";
 // import sanitizeWhiteList from "../sanitize-html.whitelist";
 // import List from "../List/List";
 // import TickInCircle from "../../icons/TickInCircle";
@@ -18,7 +19,9 @@ const TextBlock: React.FC<TextBlockProps> = ({
   linkURL,
   buttonStyle,
   buttonCustomMakeup,
-}) => (
+}) => {
+const history = useHistory();
+return (
     <Box
       px={{ base: "20px" }}
       py={{ base: "30px" }}
@@ -66,7 +69,7 @@ const TextBlock: React.FC<TextBlockProps> = ({
             mt={{ base: "20px", lg: "40px" }}
             maxW={{ lg: "306px" }}
             variant={buttonStyle? buttonStyle : "outline"}
-            onClick={() => window.open(linkURL ,"_self")}
+            onClick={() => history.push(linkURL)}
             backgroundColor={buttonCustomMakeup?.buttonBackgroundColor || "inherit"}
             color={buttonCustomMakeup?.buttonTextColor || "white"}
             _hover={{ backgroundColor: buttonCustomMakeup?.buttonHoverBgColor || "inherit", 
@@ -92,5 +95,5 @@ const TextBlock: React.FC<TextBlockProps> = ({
       </Box> */}
     </Box>
   );
-
+}
 export default TextBlock;
