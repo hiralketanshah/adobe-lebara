@@ -1,6 +1,6 @@
 import React from "react";
 import { Box, SimpleGrid } from "@chakra-ui/react";
-import FormikInput from "../Formik/FormikInput/FormikInput";
+import FormikInput from "@lebara/ui/src/components/Formik/FormikInput/FormikInput";
 import { UserDetailsProps } from "./types";
 
 const AddressSection: React.FC<UserDetailsProps> = ({

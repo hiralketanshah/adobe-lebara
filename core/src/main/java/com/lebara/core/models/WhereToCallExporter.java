@@ -15,8 +15,6 @@ import org.apache.sling.models.annotations.injectorspecific.ScriptVariable;
 import org.apache.sling.models.annotations.injectorspecific.SlingObject;
 import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
 
-import javax.annotation.PostConstruct;
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -47,13 +45,6 @@ public class WhereToCallExporter implements ComponentExporter {
 
     private List<SelectBean> countryList;
 
-    @PostConstruct
-    private void init() {
-        if (StringUtils.isNotBlank(fragmentRootPath)) {
-            countryList = CFUtils.getWhereToCallRates(resourceResolver, fragmentRootPath);
-        }
-    }
-
     public String getFileReference() {
         return fileReference;
     }
@@ -63,6 +54,9 @@ public class WhereToCallExporter implements ComponentExporter {
     }
 
     public List<SelectBean> getCountries() {
+        if (StringUtils.isNotBlank(fragmentRootPath)) {
+            countryList = CFUtils.getWhereToCallRates(resourceResolver, fragmentRootPath);
+        }
         return (countryList == null) ? Collections.emptyList() : Collections.unmodifiableList(countryList);
     }
 

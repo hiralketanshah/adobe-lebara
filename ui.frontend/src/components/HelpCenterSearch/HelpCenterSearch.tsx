@@ -6,7 +6,7 @@ import {
 import Select from "react-select";
 import Highlighter from "react-highlight-words";
 import { FiSearch } from "react-icons/all";
-import { useHistory } from "react-router-dom";
+import { useHistory } from "@lebara/ui/src/hooks/useHistory";
 import { HelpCenterSearchProps } from "./types";
 import aemUtils from "../../utils/aem-utils";
 import colors from "../../theme/colors";

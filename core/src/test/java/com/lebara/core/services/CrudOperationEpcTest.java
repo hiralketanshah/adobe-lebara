@@ -5,6 +5,7 @@ import com.google.gson.Gson;
 import com.lebara.core.dto.Offer;
 import com.lebara.core.dto.RootRead;
 import com.lebara.core.dto.topup.Root;
+import com.lebara.core.utils.LebaraConstants;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.sling.api.resource.ResourceResolver;
@@ -19,7 +20,7 @@ import org.apache.sling.api.resource.Resource;
 
 import java.util.List;
 
-import static org.mockito.ArgumentMatchers.anyString;
+import static org.mockito.ArgumentMatchers.*;
 
 @ExtendWith({MockitoExtension.class})
 public class CrudOperationEpcTest {
@@ -45,11 +46,12 @@ public class CrudOperationEpcTest {
     private FragmentData fragmentData;
 
     static String json;
+    static String jsonTopUp;
 
     @BeforeEach
     public void setup() throws Exception {
         json = IOUtils.toString(this.getClass().getResourceAsStream("/epcResponseDate.json"), "UTF-8");
-
+        jsonTopUp = IOUtils.toString(this.getClass().getResourceAsStream("/epc_topup.json"), "UTF-8");
     }
 
     @Test
@@ -60,22 +62,28 @@ public class CrudOperationEpcTest {
     @Test
     public void testcreateContentFragment() {
         Mockito.when(resourceResolver.getResource(anyString())).thenReturn(resource);
+        Mockito.when(resource.adaptTo(ContentFragment.class)).thenReturn(newFragment);
         crudOperationEpc.createContentFragment(json, "", resourceResolver, "prepaid");
     }
 
-//    @Test
+    @Test
     public void testcreateContentFragment2() throws ContentFragmentException {
-        RootRead convertedEpcJsonObject = new Gson().fromJson(json, RootRead.class);
-        List<Offer> offers = convertedEpcJsonObject.getData().getOffers();
+        Mockito.when(resourceResolver.getResource("/uk_plus_7_95")).thenReturn(null);
+        Mockito.when(resourceResolver.getResource(LebaraConstants.CONTENT_FRAGMENT_MODEL_PATH)).thenReturn(resource);
+        Mockito.when(resource.adaptTo(FragmentTemplate.class)).thenReturn(fragmentTemplate);
+        Mockito.when(fragmentTemplate.createFragment(any(),anyString(),anyString())).thenReturn(newFragment);
+        Mockito.when(newFragment.getElement(anyString())).thenReturn(contentElement);
+        crudOperationEpc.createContentFragment(json, "", resourceResolver, "prepaid");
+    }
+
+    @Test
+    public void testcreateTopUpContentFragment() throws ContentFragmentException {
         Mockito.when(resourceResolver.getResource(anyString())).thenReturn(resource);
         Mockito.when(resource.adaptTo(FragmentTemplate.class)).thenReturn(fragmentTemplate);
-        if (!offers.isEmpty()) {
-            Offer offer = offers.get(0);
-            Mockito.when(fragmentTemplate.createFragment(resource,  offer.getName(), offer.getName())).thenReturn(newFragment);
-            Mockito.when(newFragment.getElement(anyString())).thenReturn(contentElement);
-            Mockito.when(contentElement.getValue()).thenReturn(fragmentData);
-            assert (offer.getOfferId() == crudOperationEpc.writeJsonToCf(offers.get(0), "", resourceResolver,"", "prepaid"));
-        }
+        Mockito.when(fragmentTemplate.createFragment(any(),anyString(),anyString())).thenReturn(newFragment);
+        Mockito.when(newFragment.getElement(anyString())).thenReturn(contentElement);
+        Mockito.when(contentElement.getValue()).thenReturn(fragmentData);
+        crudOperationEpc.createTopupContentFragment(jsonTopUp, "", resourceResolver, "topup");
     }
 
     //this code comes handy to get json response from api-aggregator quickly.
@@ -83,13 +91,5 @@ public class CrudOperationEpcTest {
     public void testConnection() {
         String json = crudOperationEpc.getJsonFromEPC("https://dev-api-aggregator.lebara.com/api-aggregator", "GB","getCurrentOffers");
         assert (json != StringUtils.EMPTY);
-    }
-
-    //@Test
-    public void createTopupContentFragment(){
-        Root convertedEpcJsonObject = new Gson().fromJson(json, Root.class);
-        List<String> offers = convertedEpcJsonObject.getData().getOffers();
-        Mockito.when(resourceResolver.getResource(anyString())).thenReturn(resource);
-
     }
 }

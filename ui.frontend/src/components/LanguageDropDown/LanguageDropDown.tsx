@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useHistory } from "react-router-dom";
+import { useHistory } from "@lebara/ui/src/hooks/useHistory";
 import { IoChevronDownCircleSharp } from "react-icons/all";
 import { LanguageDropDownProps } from "./types";
 import Select from "@lebara/ui/src/components/Select/Select";

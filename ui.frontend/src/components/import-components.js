@@ -47,6 +47,7 @@ import "../aemConfigs/OrderPaymentHistoryAemConfig.js";
 import "../aemConfigs/CreateAccountAemConfig.js";
 import "../aemConfigs/PaymentMethodAemConfig.js";
 import "../aemConfigs/AddEditCreditDebitCardAemConfig.js";
+import "../aemConfigs/AddPaypalAemConfig.js";
 import "../rotues/AemConfig.js";
 
 import "./Teaser/AemConfig.js";
