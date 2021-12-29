@@ -370,7 +370,7 @@ const Header: React.FC<HeaderProps> = ({
             open={isModalOpen}
             onClose={() => dispatch(toggleDialogState(false))}
         />
-        <Flex display={{ base: "none", lg: "block" }}>
+        <Flex display={{ base: "none", md: "none", lg: "none", xl: "block" }}>
           <Flex
               alignItems="center"
               px={{lg: "20px", xl: "87.88px"}}
@@ -527,7 +527,7 @@ const Header: React.FC<HeaderProps> = ({
               </Flex>
             </Box>
         )}
-        <Flex display={{ lg: "none", sm: "flex" }} mx={{ lg: "27px" }}>
+        <Flex display={{ xl: "none", lg: "flex", md: "flex", sm: "flex" }} mx={{ xl: "27px" }}>
           <MiniHeader loggedInMenuItems={loggedInMenuItems}
                       topupCtaText={topupCtaText}
                       topupCtaLink={topupCtaLink}

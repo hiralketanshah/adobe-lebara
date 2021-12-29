@@ -77,14 +77,16 @@ const MiniHeader: React.FC<MiniHeaderProps> = ({
   const remapToSideMenuArr = (arr: any, parent: boolean) => {
     return arr?.map((k:any) => {
       let subItems = {};
-      const icon = parent ? BiShoppingBag : <BiMessageSquareDetail color="secondary.600" />;
+      const icon = parent ? BiShoppingBag : BiMessageSquareDetail;
+      const buttonIcon = parent ? BiShoppingBag : <BiMessageSquareDetail color="secondary.600" />;
 
       if(k && k.children) {
-        subItems = remapToSideMenuArr(k.children, false);
+        subItems = remapToSideMenuArr(k.children, true);
       }
 
       return {
         icon: icon,
+        buttonIcon,
         title: k.title,
         linkUrl: k.path, 
         items: subItems,
