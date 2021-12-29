@@ -28,7 +28,7 @@ import Search from "../Search/Search";
 import UserMenu from "@lebara/ui/src/components/UserMenu/UserMenu";
 import {headerSearch} from "@lebara/ui/src/redux/actions/headerSearchActions";
 import {selectIsAuthenticated} from "@lebara/ui/src/redux/selectors/userSelectors";
-import {globalConfigs as GC, globalConstants as GCST} from "@lebara/ui/src/configs/globalConfigs.js";
+import {globalConfigs as GC} from "@lebara/ui/src/configs/globalConfigs.js";
 import {useApolloClient, useQuery} from "@apollo/client";
 import GET_CART from "@lebara/ui/src/graphql/GET_CART";
 import {loadInitialCart, setCartItemsLoading} from "@lebara/ui/src/redux/actions/cartActions";
@@ -307,7 +307,7 @@ const Header: React.FC<HeaderProps> = ({
   
   const handleCartClick = () => {
     onCloseSearch();
-    history.push(cartItems.length === 0 ? GC.journeyPages[GCST.EMPTY_CART]  : GC.journeyPages[GCST.ORDER_DETAILS]);
+    history.push(cartItems.length === 0 ?"/empty-cart"  : "/order-details");
   };
 
   const handleProfileClick = () => {
@@ -317,7 +317,7 @@ const Header: React.FC<HeaderProps> = ({
       return;
     }
     
-    history.push(GC.journeyPages[GCST.REGISTER]  || '/', {
+    history.push("/register", {
       fromHeader: true,
     });
   };
@@ -404,7 +404,7 @@ const Header: React.FC<HeaderProps> = ({
               <Button
                   w={{lg: "100px", xl: "130px"}}
                   fontSize={{ lg: "14px", md: "12px" }}
-                  onClick={() => history.push(`${GC.journeyPages[GCST.TOP_UP]}`)}
+                  onClick={() => history.push("/top-up")}
               >
                 {topupCtaText}
               </Button>

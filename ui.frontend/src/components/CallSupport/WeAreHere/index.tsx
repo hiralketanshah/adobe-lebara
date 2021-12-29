@@ -2,7 +2,7 @@ import React from "react";
 import Button from "../../Button/Button";
 
 import { Flex, Text, Box } from "@chakra-ui/react";
-import { useHistory } from "react-router-dom";
+import { useHistory } from "@lebara/ui/src/hooks/useHistory";
 import { WeAreHereProps } from "../types";
 
 const WeAreHere: React.FC<WeAreHereProps> = ({

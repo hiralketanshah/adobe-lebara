@@ -10,8 +10,7 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import useAddToCart from "@lebara/ui/src/hooks/useAddToCart";
 import { ReduxState } from "@lebara/ui/src/redux/types";
-import { useHistory } from "react-router-dom";
-import { globalConfigs as GC, globalConstants as C } from "@lebara/ui/src/configs/globalConfigs.js";
+import { useHistory } from "@lebara/ui/src/hooks/useHistory";
 import { Image } from "@lebara/ui/src/components/Image/Image";
 
 const HeroBanner: React.FC<HeroBannerProps> = ({
@@ -95,7 +94,7 @@ return (
       }catch (e){
       }
       dispatch(setLoading(false));
-      history.push((GC.journeyPages[C.ORDER_DETAILS] || '/'));
+      history.push("/order-details");
     }}>
         {buttonCTALabel}
       </Button>

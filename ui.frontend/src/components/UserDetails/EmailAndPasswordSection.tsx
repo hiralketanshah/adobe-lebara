@@ -6,7 +6,7 @@ import {
   SimpleGrid,
 } from "@chakra-ui/react";
 import { FiEdit } from "react-icons/all";
-import FormikInput from "../Formik/FormikInput/FormikInput";
+import FormikInput from "@lebara/ui/src/components/Formik/FormikInput/FormikInput";
 import Button from "../Button/Button";
 import LebaraText from "../LebaraText/LebaraText";
 import { ChangeEmailPasswordProfileProps } from "./types";
