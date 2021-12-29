@@ -69,7 +69,7 @@ public class InternationalRatesExporter implements ComponentExporter {
     private List<SelectOption> countryList;
 
     @PostConstruct
-    private void init() {
+    public void init() {
         if (StringUtils.isNotBlank(cfPath)) {
             i18n = AemUtils.geti18n(resourceResolver, resource, slingRequest);
             PageManager pageManager = resourceResolver.adaptTo(PageManager.class);

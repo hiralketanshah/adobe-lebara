@@ -5,9 +5,9 @@ import OfferTypes from "./types";
 import Button from "@lebara/ui/src/components/Button/Button";
 import PlanDetailsDialog from "../PlanDetailsDialog/PlanDetailsDialog";
 import { allowanceListProps } from "../ExpandablePlanCard/types";
-import { useHistory } from "react-router-dom";
+import { useHistory } from "@lebara/ui/src/hooks/useHistory";
 import useAddToCart from "@lebara/ui/src/hooks/useAddToCart";
-import { globalConfigs, globalConstants } from "@lebara/ui/src/configs/globalConfigs";
+import { globalConfigs } from "@lebara/ui/src/configs/globalConfigs";
 import LebaraText from "@lebara/ui/src/components/LebaraText/LebaraText";
 import PdfDialog from "@lebara/ui/src/components/PdfDialog/PdfDialog";
 import { useMutation } from "@apollo/client";
@@ -60,7 +60,7 @@ const ExpandableSimPlanCard: React.FC<ExpandableSimPlanCardProps> = ({
   const isAuthenticated = useSelector(selectIsAuthenticated);
   const msisdn = useSelector(selectMsisdn);
   const handleViewCartClick = () => {
-    history.push(isAuthenticated && msisdn ? (globalConfigs.journeyPages[globalConstants.ORDER_DETAILS] || '/') : (globalConfigs.journeyPages[globalConstants.LOGIN] || ''));
+    history.push(isAuthenticated && msisdn ? "/order-details" : "/login");
   };
 
   let filteredAllowanceList: allowanceListProps = {};
@@ -117,9 +117,8 @@ const ExpandableSimPlanCard: React.FC<ExpandableSimPlanCardProps> = ({
       }
       case OfferTypes.PREPAID:
       case OfferTypes.POSTPAID: {
-        console.log(globalConfigs.journeyPages, globalConstants.ORDER_DETAILS);
         try {
-          isRemoveFromCart && onClose ? onClose() : history.push(isAuthenticated && msisdn ? (globalConfigs.journeyPages[globalConstants.ORDER_DETAILS] || '/') : (globalConfigs.journeyPages[globalConstants.LEBARA_SIM_CHOICE] || '/'));
+          isRemoveFromCart && onClose ? onClose() : history.push(isAuthenticated && msisdn ? "/order-details" : "/lebara-sim-choice");
           await addItemToCart(parseInt(id || ''), planName, (JSON.stringify(description || '')), Number(cost?.replaceAll(',', '.') || ''), "plan");
         }catch(e){
           

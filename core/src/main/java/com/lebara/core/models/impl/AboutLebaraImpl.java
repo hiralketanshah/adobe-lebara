@@ -1,6 +1,7 @@
 package com.lebara.core.models.impl;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -79,7 +80,7 @@ public class AboutLebaraImpl implements AboutLebara {
 	@JsonProperty("actions")
 	public List<ListItem> getActionsNew() {
 		if (actions != null) {
-			return actions;
+			return Collections.unmodifiableList(actions);
 		}
 		return new ArrayList<>();
 	}

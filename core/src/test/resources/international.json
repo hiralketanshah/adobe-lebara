@@ -1,0 +1,708 @@
+{
+  "jcr:primaryType": "cq:Page",
+  "jcr:createdBy": "admin",
+  "jcr:created": "Sun Dec 26 2021 02:55:10 GMT+0530",
+  "jcr:content": {
+    "jcr:primaryType": "cq:PageContent",
+    "jcr:createdBy": "admin",
+    "jcr:title": "international",
+    "cq:template": "/conf/lebara/settings/wcm/templates/lebara-page-template",
+    "jcr:created": "Sun Dec 26 2021 02:55:10 GMT+0530",
+    "cq:lastModified": "Sun Dec 26 2021 02:56:01 GMT+0530",
+    "sling:resourceType": "lebara/components/page",
+    "cq:lastModifiedBy": "admin",
+    "internationalRatesRootPath": "/content/lebara/de/de/international/jcr:content/root/countries",
+    "root": {
+      "jcr:primaryType": "nt:unstructured",
+      "sling:resourceType": "wcm/foundation/components/responsivegrid",
+      "experiencefragment-header": {
+        "jcr:primaryType": "nt:unstructured",
+        "fragmentVariationPath": "/content/experience-fragments/lebara/de/de/site/header/master",
+        "sling:resourceType": "lebara/components/experiencefragment"
+      },
+      "responsivegrid": {
+        "jcr:primaryType": "nt:unstructured",
+        "sling:resourceType": "wcm/foundation/components/responsivegrid",
+        "internationalrates": {
+          "jcr:primaryType": "nt:unstructured",
+          "jcr:createdBy": "admin",
+          "selectCountryLabel": "Select Your Country",
+          "description": "Our Rates per minute(plus connection fee of 19ct. per outgoing call)",
+          "cfPath": "/content/lebara/de/de/international/jcr:content/root/int",
+          "jcr:lastModifiedBy": "admin",
+          "jcr:created": "Sun Dec 26 2021 02:55:31 GMT+0530",
+          "jcr:lastModified": "Sun Dec 26 2021 02:56:01 GMT+0530",
+          "sling:resourceType": "lebara/components/internationalrates"
+        }
+      },
+      "experiencefragment-footer": {
+        "jcr:primaryType": "nt:unstructured",
+        "fragmentVariationPath": "/content/experience-fragments/lebara/de/de/site/footer/master",
+        "sling:resourceType": "lebara/components/experiencefragment"
+      },
+
+      "int": {
+        "jcr:primaryType": "dam:Asset",
+        "jcr:mixinTypes": [
+          "mix:referenceable",
+          "mix:versionable"
+        ],
+        "jcr:createdBy": "admin",
+        "jcr:versionHistory": "890eeb7d-c6c9-4483-ad70-ba8728700e0c",
+        "jcr:predecessors": [
+          "65a9ccbf-611d-4044-a0f5-a3c54bc546e6"
+        ],
+        "jcr:created": "Wed Dec 15 2021 09:49:11 GMT+0530",
+        "jcr:baseVersion": "65a9ccbf-611d-4044-a0f5-a3c54bc546e6",
+        "jcr:isCheckedOut": true,
+        "jcr:uuid": "2b93be7f-4739-4455-8c82-565016770ddd",
+        "jcr:content": {
+          "jcr:primaryType": "dam:AssetContent",
+          "jcr:mixinTypes": [
+            "cq:ReplicationStatus"
+          ],
+          "jcr:title": "Cyprus",
+          "cq:lastReplicatedBy_publish": "gaurav.sarang-ext@lebara.com",
+          "cq:lastReplicationAction_scene7": "Activate",
+          "cq:lastReplicationAction": "Activate",
+          "cq:lastReplicatedBy": "gaurav.sarang-ext@lebara.com",
+          "jcr:lastModifiedBy": "gaurav.sarang-ext@lebara.com",
+          "cq:lastReplicationAction_publish": "Activate",
+          "cq:lastReplicatedBy_scene7": "gaurav.sarang-ext@lebara.com",
+          "cq:lastReplicated": "Sat Dec 11 2021 16:18:11 GMT+0000",
+          "cq:lastReplicated_scene7": "Sat Dec 11 2021 16:18:11 GMT+0000",
+          "contentFragment": true,
+          "cq:name": "cyprus",
+          "jcr:lastModified": "Sat Dec 11 2021 16:18:08 GMT+0000",
+          "lastFragmentSave": "Sat Dec 11 2021 16:18:08 GMT+0000",
+          "dam:scene7RequestID": "8696e170-ff96-4c19-ba2f-a3e2fc6475d2",
+          "cq:parentPath": "/content/dam/lebara/markets/de/de/content-fragments/internation-rates",
+          "cq:lastReplicated_publish": "Sat Dec 11 2021 16:18:11 GMT+0000",
+          "renditions": {
+            "jcr:primaryType": "nt:folder",
+            "jcr:createdBy": "admin",
+            "jcr:created": "Wed Dec 15 2021 09:49:11 GMT+0530"
+          },
+          "related": {
+            "jcr:primaryType": "nt:unstructured"
+          },
+          "metadata": {
+            "jcr:primaryType": "nt:unstructured",
+            "jcr:mixinTypes": [
+              "cq:Taggable"
+            ],
+            "dam:scene7FileStatus": "NotSupported"
+          },
+          "data": {
+            "jcr:primaryType": "nt:unstructured",
+            "cq:model": "/conf/lebara/settings/dam/cfm/models/international-tariffs-fragment",
+            "master": {
+              "jcr:primaryType": "nt:unstructured",
+              "jcr:mixinTypes": [
+                "cq:Taggable",
+                "dam:cfVariationNode"
+              ],
+              "countryName@LastModified": "Sat Dec 11 2021 16:18:08 GMT+0000",
+              "smsRate": "€ 0.07",
+              "mobileCallRate@LastModified": "Sat Dec 11 2021 16:18:08 GMT+0000",
+              "countryName": "Cyprus",
+              "countryLandingPageURL": "/content/lebara/de/de/minutenpreis-auslandsanrufe/cyprus-anrufen",
+              "landlineCallRate@LastModified": "Sat Dec 11 2021 16:18:08 GMT+0000",
+              "mobileCallRate": "€ 0.22",
+              "smsRate@LastModified": "Sat Dec 11 2021 16:18:08 GMT+0000",
+              "landlineCallRate": "€ 0.05",
+              "countryLandingPageURL@LastModified": "Sat Dec 11 2021 16:18:08 GMT+0000"
+            }
+          }
+        }
+      },
+      "countries": {
+        "jcr:primaryType": "sling:Folder",
+        "jcr:createdBy": "admin",
+        "jcr:created": "Wed Dec 15 2021 09:49:09 GMT+0530",
+        "cyprus": {
+          "jcr:primaryType": "dam:Asset",
+          "jcr:mixinTypes": [
+            "mix:referenceable",
+            "mix:versionable"
+          ],
+          "jcr:createdBy": "admin",
+          "jcr:versionHistory": "890eeb7d-c6c9-4483-ad70-ba8728700e0c",
+          "jcr:predecessors": [
+            "65a9ccbf-611d-4044-a0f5-a3c54bc546e6"
+          ],
+          "jcr:created": "Wed Dec 15 2021 09:49:11 GMT+0530",
+          "jcr:baseVersion": "65a9ccbf-611d-4044-a0f5-a3c54bc546e6",
+          "jcr:isCheckedOut": true,
+          "jcr:uuid": "2b93be7f-4739-4455-8c82-565016770ddd",
+          "jcr:content": {
+            "jcr:primaryType": "dam:AssetContent",
+            "jcr:mixinTypes": [
+              "cq:ReplicationStatus"
+            ],
+            "jcr:title": "Cyprus",
+            "cq:lastReplicatedBy_publish": "gaurav.sarang-ext@lebara.com",
+            "cq:lastReplicationAction_scene7": "Activate",
+            "cq:lastReplicationAction": "Activate",
+            "cq:lastReplicatedBy": "gaurav.sarang-ext@lebara.com",
+            "jcr:lastModifiedBy": "gaurav.sarang-ext@lebara.com",
+            "cq:lastReplicationAction_publish": "Activate",
+            "cq:lastReplicatedBy_scene7": "gaurav.sarang-ext@lebara.com",
+            "cq:lastReplicated": "Sat Dec 11 2021 16:18:11 GMT+0000",
+            "cq:lastReplicated_scene7": "Sat Dec 11 2021 16:18:11 GMT+0000",
+            "contentFragment": true,
+            "cq:name": "cyprus",
+            "jcr:lastModified": "Sat Dec 11 2021 16:18:08 GMT+0000",
+            "lastFragmentSave": "Sat Dec 11 2021 16:18:08 GMT+0000",
+            "dam:scene7RequestID": "8696e170-ff96-4c19-ba2f-a3e2fc6475d2",
+            "cq:parentPath": "/content/dam/lebara/markets/de/de/content-fragments/internation-rates",
+            "cq:lastReplicated_publish": "Sat Dec 11 2021 16:18:11 GMT+0000",
+            "renditions": {
+              "jcr:primaryType": "nt:folder",
+              "jcr:createdBy": "admin",
+              "jcr:created": "Wed Dec 15 2021 09:49:11 GMT+0530"
+            },
+            "related": {
+              "jcr:primaryType": "nt:unstructured"
+            },
+            "metadata": {
+              "jcr:primaryType": "nt:unstructured",
+              "jcr:mixinTypes": [
+                "cq:Taggable"
+              ],
+              "dam:scene7FileStatus": "NotSupported"
+            },
+            "data": {
+              "jcr:primaryType": "nt:unstructured",
+              "cq:model": "/conf/lebara/settings/dam/cfm/models/international-tariffs-fragment",
+              "master": {
+                "jcr:primaryType": "nt:unstructured",
+                "jcr:mixinTypes": [
+                  "cq:Taggable",
+                  "dam:cfVariationNode"
+                ],
+                "countryName@LastModified": "Sat Dec 11 2021 16:18:08 GMT+0000",
+                "smsRate": "€ 0.07",
+                "mobileCallRate@LastModified": "Sat Dec 11 2021 16:18:08 GMT+0000",
+                "countryName": "Cyprus",
+                "countryLandingPageURL": "/content/lebara/de/de/minutenpreis-auslandsanrufe/cyprus-anrufen",
+                "landlineCallRate@LastModified": "Sat Dec 11 2021 16:18:08 GMT+0000",
+                "mobileCallRate": "€ 0.22",
+                "smsRate@LastModified": "Sat Dec 11 2021 16:18:08 GMT+0000",
+                "landlineCallRate": "€ 0.05",
+                "countryLandingPageURL@LastModified": "Sat Dec 11 2021 16:18:08 GMT+0000"
+              }
+            }
+          }
+        },
+        "australien": {
+          "jcr:primaryType": "dam:Asset",
+          "jcr:mixinTypes": [
+            "mix:referenceable",
+            "mix:versionable"
+          ],
+          "jcr:createdBy": "admin",
+          "jcr:versionHistory": "5eecd377-7df7-45f4-b244-6fa251fd1054",
+          "jcr:predecessors": [
+            "1d13b4db-b8fd-4718-8035-d0d6aef94f36"
+          ],
+          "jcr:created": "Wed Dec 15 2021 09:49:09 GMT+0530",
+          "jcr:baseVersion": "1d13b4db-b8fd-4718-8035-d0d6aef94f36",
+          "jcr:isCheckedOut": true,
+          "jcr:uuid": "133e3bef-0a6d-4626-9201-d08f883ef920",
+          "jcr:content": {
+            "jcr:primaryType": "dam:AssetContent",
+            "jcr:mixinTypes": [
+              "cq:ReplicationStatus"
+            ],
+            "jcr:title": "Australien",
+            "cq:lastReplicatedBy_publish": "gaurav.sarang-ext@lebara.com",
+            "cq:lastReplicationAction_scene7": "Activate",
+            "cq:lastReplicationAction": "Activate",
+            "cq:lastReplicatedBy": "gaurav.sarang-ext@lebara.com",
+            "jcr:lastModifiedBy": "gaurav.sarang-ext@lebara.com",
+            "cq:lastReplicationAction_publish": "Activate",
+            "cq:lastReplicatedBy_scene7": "gaurav.sarang-ext@lebara.com",
+            "cq:lastReplicated": "Sat Dec 11 2021 06:57:18 GMT+0000",
+            "cq:lastReplicated_scene7": "Sat Dec 11 2021 06:57:18 GMT+0000",
+            "contentFragment": true,
+            "cq:name": "australien",
+            "jcr:lastModified": "Sat Dec 11 2021 06:56:06 GMT+0000",
+            "lastFragmentSave": "Sat Dec 11 2021 06:56:06 GMT+0000",
+            "dam:scene7RequestID": "16e4d5f0-243b-4855-9c46-a87c5c3cb8ae",
+            "cq:parentPath": "/content/dam/lebara/markets/de/de/content-fragments/internation-rates",
+            "cq:lastReplicated_publish": "Sat Dec 11 2021 06:57:18 GMT+0000",
+            "renditions": {
+              "jcr:primaryType": "nt:folder",
+              "jcr:createdBy": "admin",
+              "jcr:created": "Wed Dec 15 2021 09:49:09 GMT+0530"
+            },
+            "related": {
+              "jcr:primaryType": "nt:unstructured"
+            },
+            "metadata": {
+              "jcr:primaryType": "nt:unstructured",
+              "jcr:mixinTypes": [
+                "cq:Taggable"
+              ],
+              "dam:scene7FileStatus": "NotSupported"
+            },
+            "data": {
+              "jcr:primaryType": "nt:unstructured",
+              "cq:model": "/conf/lebara/settings/dam/cfm/models/international-tariffs-fragment",
+              "master": {
+                "jcr:primaryType": "nt:unstructured",
+                "jcr:mixinTypes": [
+                  "cq:Taggable",
+                  "dam:cfVariationNode"
+                ],
+                "countryName@LastModified": "Sat Dec 11 2021 06:56:06 GMT+0000",
+                "smsRate": "€ 0.19",
+                "mobileCallRate@LastModified": "Sat Dec 11 2021 06:56:06 GMT+0000",
+                "countryName": "Australien",
+                "countryLandingPageURL": "/content/lebara/de/de/minutenpreis-auslandsanrufe/australien-anrufen",
+                "landlineCallRate@LastModified": "Sat Dec 11 2021 06:56:06 GMT+0000",
+                "mobileCallRate": "€ 0.29",
+                "smsRate@LastModified": "Sat Dec 11 2021 06:56:06 GMT+0000",
+                "landlineCallRate": "€ 0.05",
+                "countryLandingPageURL@LastModified": "Sat Dec 11 2021 06:56:06 GMT+0000"
+              }
+            }
+          }
+        },
+        "dschibuti": {
+          "jcr:primaryType": "dam:Asset",
+          "jcr:mixinTypes": [
+            "mix:referenceable"
+          ],
+          "jcr:createdBy": "admin",
+          "jcr:created": "Wed Dec 15 2021 09:49:11 GMT+0530",
+          "jcr:uuid": "130a4bf2-a98e-421d-95d6-18e72c52809c",
+          "jcr:content": {
+            "jcr:primaryType": "dam:AssetContent",
+            "jcr:mixinTypes": [
+              "cq:ReplicationStatus"
+            ],
+            "jcr:title": "Dschibuti",
+            "cq:lastReplicatedBy_publish": "gaurav.sarang-ext@lebara.com",
+            "cq:lastReplicationAction_scene7": "Activate",
+            "cq:lastReplicationAction": "Activate",
+            "cq:lastReplicatedBy": "gaurav.sarang-ext@lebara.com",
+            "jcr:lastModifiedBy": "gaurav.sarang-ext@lebara.com",
+            "cq:lastReplicationAction_publish": "Activate",
+            "cq:lastReplicatedBy_scene7": "gaurav.sarang-ext@lebara.com",
+            "cq:lastReplicated": "Mon Dec 13 2021 06:27:11 GMT+0000",
+            "cq:lastReplicated_scene7": "Mon Dec 13 2021 06:27:11 GMT+0000",
+            "contentFragment": true,
+            "jcr:lastModified": "Mon Dec 13 2021 06:27:08 GMT+0000",
+            "lastFragmentSave": "Mon Dec 13 2021 06:27:08 GMT+0000",
+            "dam:scene7RequestID": "acf2d10e-1593-4a8d-8a50-f9d07eaab97a",
+            "cq:lastReplicated_publish": "Mon Dec 13 2021 06:27:11 GMT+0000",
+            "renditions": {
+              "jcr:primaryType": "nt:folder",
+              "jcr:createdBy": "admin",
+              "jcr:created": "Wed Dec 15 2021 09:49:11 GMT+0530"
+            },
+            "related": {
+              "jcr:primaryType": "nt:unstructured"
+            },
+            "metadata": {
+              "jcr:primaryType": "nt:unstructured",
+              "jcr:mixinTypes": [
+                "cq:Taggable"
+              ],
+              "dam:scene7FileStatus": "NotSupported"
+            },
+            "data": {
+              "jcr:primaryType": "nt:unstructured",
+              "cq:model": "/conf/lebara/settings/dam/cfm/models/international-tariffs-fragment",
+              "master": {
+                "jcr:primaryType": "nt:unstructured",
+                "jcr:mixinTypes": [
+                  "cq:Taggable",
+                  "dam:cfVariationNode"
+                ],
+                "countryName@LastModified": "Mon Dec 13 2021 06:27:08 GMT+0000",
+                "smsRate": "€ 0.19",
+                "mobileCallRate@LastModified": "Mon Dec 13 2021 06:27:08 GMT+0000",
+                "countryName": "Dschibuti",
+                "countryLandingPageURL": "/content/lebara/de/de/minutenpreis-auslandsanrufe/dschibuti-anrufen",
+                "landlineCallRate@LastModified": "Mon Dec 13 2021 06:27:08 GMT+0000",
+                "mobileCallRate": "€ 0.35",
+                "smsRate@LastModified": "Mon Dec 13 2021 06:27:08 GMT+0000",
+                "landlineCallRate": "€ 0.29",
+                "countryLandingPageURL@LastModified": "Mon Dec 13 2021 06:27:08 GMT+0000"
+              }
+            }
+          }
+        },
+        "colombia": {
+          "jcr:primaryType": "dam:Asset",
+          "jcr:mixinTypes": [
+            "mix:referenceable",
+            "mix:versionable"
+          ],
+          "jcr:createdBy": "admin",
+          "jcr:versionHistory": "7e9cdbdf-1fe6-4bea-bbe8-635fc5c44785",
+          "jcr:predecessors": [
+            "8e0944c4-91b1-4b1a-85a0-8186418600c6"
+          ],
+          "jcr:created": "Wed Dec 15 2021 09:49:11 GMT+0530",
+          "jcr:baseVersion": "8e0944c4-91b1-4b1a-85a0-8186418600c6",
+          "jcr:isCheckedOut": true,
+          "jcr:uuid": "3d6b5dba-dae2-4d68-bd48-6cc7f32504e5",
+          "jcr:content": {
+            "jcr:primaryType": "dam:AssetContent",
+            "jcr:mixinTypes": [
+              "cq:ReplicationStatus"
+            ],
+            "jcr:title": "Colombia",
+            "cq:lastReplicatedBy_publish": "gaurav.sarang-ext@lebara.com",
+            "cq:lastReplicationAction_scene7": "Activate",
+            "cq:lastReplicationAction": "Activate",
+            "cq:lastReplicatedBy": "gaurav.sarang-ext@lebara.com",
+            "jcr:lastModifiedBy": "gaurav.sarang-ext@lebara.com",
+            "cq:lastReplicationAction_publish": "Activate",
+            "cq:lastReplicatedBy_scene7": "gaurav.sarang-ext@lebara.com",
+            "cq:lastReplicated": "Sat Dec 11 2021 15:16:42 GMT+0000",
+            "cq:lastReplicated_scene7": "Sat Dec 11 2021 15:16:42 GMT+0000",
+            "contentFragment": true,
+            "cq:name": "colombia",
+            "jcr:lastModified": "Sat Dec 11 2021 15:16:40 GMT+0000",
+            "lastFragmentSave": "Sat Dec 11 2021 15:16:40 GMT+0000",
+            "dam:scene7RequestID": "b8b718cc-7dbb-4567-ae3c-4a2579ad2819",
+            "cq:parentPath": "/content/dam/lebara/markets/de/de/content-fragments/internation-rates",
+            "cq:lastReplicated_publish": "Sat Dec 11 2021 15:16:42 GMT+0000",
+            "renditions": {
+              "jcr:primaryType": "nt:folder",
+              "jcr:createdBy": "admin",
+              "jcr:created": "Wed Dec 15 2021 09:49:11 GMT+0530"
+            },
+            "related": {
+              "jcr:primaryType": "nt:unstructured"
+            },
+            "metadata": {
+              "jcr:primaryType": "nt:unstructured",
+              "jcr:mixinTypes": [
+                "cq:Taggable"
+              ],
+              "dam:scene7FileStatus": "NotSupported"
+            },
+            "data": {
+              "jcr:primaryType": "nt:unstructured",
+              "cq:model": "/conf/lebara/settings/dam/cfm/models/international-tariffs-fragment",
+              "master": {
+                "jcr:primaryType": "nt:unstructured",
+                "jcr:mixinTypes": [
+                  "cq:Taggable",
+                  "dam:cfVariationNode"
+                ],
+                "countryName@LastModified": "Sat Dec 11 2021 15:16:40 GMT+0000",
+                "smsRate": "€ 0.19",
+                "mobileCallRate@LastModified": "Sat Dec 11 2021 15:16:40 GMT+0000",
+                "countryName": "Colombia",
+                "countryLandingPageURL": "/content/lebara/de/de/minutenpreis-auslandsanrufe/colombia-anrufen",
+                "landlineCallRate@LastModified": "Sat Dec 11 2021 15:16:40 GMT+0000",
+                "mobileCallRate": "€ 0.15",
+                "smsRate@LastModified": "Sat Dec 11 2021 15:16:40 GMT+0000",
+                "landlineCallRate": "€ 0.05",
+                "countryLandingPageURL@LastModified": "Sat Dec 11 2021 15:16:40 GMT+0000"
+              }
+            }
+          }
+        },
+        "angola": {
+          "jcr:primaryType": "dam:Asset",
+          "jcr:mixinTypes": [
+            "mix:referenceable",
+            "mix:versionable"
+          ],
+          "jcr:createdBy": "admin",
+          "jcr:versionHistory": "a6de8991-954a-4d86-858a-3b387f66c023",
+          "jcr:predecessors": [
+            "718f5ca1-5ecd-495f-a810-985fa6bdc747"
+          ],
+          "jcr:created": "Wed Dec 15 2021 09:49:09 GMT+0530",
+          "jcr:baseVersion": "718f5ca1-5ecd-495f-a810-985fa6bdc747",
+          "jcr:isCheckedOut": true,
+          "jcr:uuid": "ec69ddce-736d-4df7-af11-3135ee599dce",
+          "jcr:content": {
+            "jcr:primaryType": "dam:AssetContent",
+            "jcr:mixinTypes": [
+              "cq:ReplicationStatus"
+            ],
+            "jcr:title": "Angola",
+            "cq:lastReplicatedBy_publish": "gaurav.sarang-ext@lebara.com",
+            "cq:lastReplicationAction_scene7": "Activate",
+            "cq:lastReplicationAction": "Activate",
+            "cq:lastReplicatedBy": "gaurav.sarang-ext@lebara.com",
+            "jcr:lastModifiedBy": "reference-adjustment-service",
+            "cq:lastReplicationAction_publish": "Activate",
+            "cq:lastReplicatedBy_scene7": "gaurav.sarang-ext@lebara.com",
+            "cq:lastReplicated": "Sat Dec 11 2021 06:41:46 GMT+0000",
+            "cq:lastReplicated_scene7": "Sat Dec 11 2021 06:41:46 GMT+0000",
+            "contentFragment": true,
+            "cq:name": "angola",
+            "jcr:lastModified": "Sat Dec 11 2021 06:41:45 GMT+0000",
+            "lastFragmentSave": "Sat Dec 11 2021 06:41:45 GMT+0000",
+            "dam:scene7RequestID": "8a25b244-1196-4a29-8ae2-427f07439666",
+            "cq:parentPath": "/content/dam/lebara/markets/de/de/content-fragments/internation-rates",
+            "cq:lastReplicated_publish": "Sat Dec 11 2021 06:41:46 GMT+0000",
+            "renditions": {
+              "jcr:primaryType": "nt:folder",
+              "jcr:createdBy": "admin",
+              "jcr:created": "Wed Dec 15 2021 09:49:09 GMT+0530"
+            },
+            "related": {
+              "jcr:primaryType": "nt:unstructured"
+            },
+            "metadata": {
+              "jcr:primaryType": "nt:unstructured",
+              "jcr:mixinTypes": [
+                "cq:Taggable"
+              ],
+              "dam:scene7FileStatus": "NotSupported"
+            },
+            "data": {
+              "jcr:primaryType": "nt:unstructured",
+              "cq:model": "/conf/lebara/settings/dam/cfm/models/international-tariffs-fragment",
+              "master": {
+                "jcr:primaryType": "nt:unstructured",
+                "jcr:mixinTypes": [
+                  "cq:Taggable",
+                  "dam:cfVariationNode"
+                ],
+                "countryName@LastModified": "Sat Dec 11 2021 06:25:53 GMT+0000",
+                "smsRate": "€ 0.19",
+                "mobileCallRate@LastModified": "Sat Dec 11 2021 06:25:53 GMT+0000",
+                "countryName": "Angola",
+                "countryLandingPageURL": "/content/lebara/de/de/minutenpreis-auslandsanrufe/angola-anrufen",
+                "landlineCallRate@LastModified": "Sat Dec 11 2021 06:25:53 GMT+0000",
+                "mobileCallRate": "€ 0.29",
+                "smsRate@LastModified": "Sat Dec 11 2021 06:25:53 GMT+0000",
+                "landlineCallRate": "€ 0.09",
+                "countryLandingPageURL@LastModified": "Sat Dec 11 2021 06:25:53 GMT+0000"
+              }
+            }
+          }
+        },
+        "costa-rica": {
+          "jcr:primaryType": "dam:Asset",
+          "jcr:mixinTypes": [
+            "mix:referenceable",
+            "mix:versionable"
+          ],
+          "jcr:createdBy": "admin",
+          "jcr:versionHistory": "fbcd60f1-89aa-4a14-b79b-510586350ab3",
+          "jcr:predecessors": [
+            "27628c74-2feb-4c37-8a34-01e585714d4c"
+          ],
+          "jcr:created": "Wed Dec 15 2021 09:49:11 GMT+0530",
+          "jcr:baseVersion": "27628c74-2feb-4c37-8a34-01e585714d4c",
+          "jcr:isCheckedOut": true,
+          "jcr:uuid": "7a939921-6cdc-46fb-b3ab-2c436ecc0c52",
+          "jcr:content": {
+            "jcr:primaryType": "dam:AssetContent",
+            "jcr:mixinTypes": [
+              "cq:ReplicationStatus"
+            ],
+            "jcr:title": "Costa Rica",
+            "cq:lastReplicatedBy_publish": "gaurav.sarang-ext@lebara.com",
+            "cq:lastReplicationAction_scene7": "Activate",
+            "cq:lastReplicationAction": "Activate",
+            "cq:lastReplicatedBy": "gaurav.sarang-ext@lebara.com",
+            "jcr:lastModifiedBy": "gaurav.sarang-ext@lebara.com",
+            "cq:lastReplicationAction_publish": "Activate",
+            "cq:lastReplicatedBy_scene7": "gaurav.sarang-ext@lebara.com",
+            "cq:lastReplicated": "Sat Dec 11 2021 16:07:10 GMT+0000",
+            "cq:lastReplicated_scene7": "Sat Dec 11 2021 16:07:10 GMT+0000",
+            "contentFragment": true,
+            "cq:name": "costa-rica",
+            "jcr:lastModified": "Sat Dec 11 2021 16:07:08 GMT+0000",
+            "lastFragmentSave": "Sat Dec 11 2021 16:07:08 GMT+0000",
+            "dam:scene7RequestID": "6227ffe9-1b46-4801-a2fd-394f167f2d21",
+            "cq:parentPath": "/content/dam/lebara/markets/de/de/content-fragments/internation-rates",
+            "cq:lastReplicated_publish": "Sat Dec 11 2021 16:07:10 GMT+0000",
+            "renditions": {
+              "jcr:primaryType": "nt:folder",
+              "jcr:createdBy": "admin",
+              "jcr:created": "Wed Dec 15 2021 09:49:11 GMT+0530"
+            },
+            "related": {
+              "jcr:primaryType": "nt:unstructured"
+            },
+            "metadata": {
+              "jcr:primaryType": "nt:unstructured",
+              "jcr:mixinTypes": [
+                "cq:Taggable"
+              ],
+              "dam:scene7FileStatus": "NotSupported"
+            },
+            "data": {
+              "jcr:primaryType": "nt:unstructured",
+              "cq:model": "/conf/lebara/settings/dam/cfm/models/international-tariffs-fragment",
+              "master": {
+                "jcr:primaryType": "nt:unstructured",
+                "jcr:mixinTypes": [
+                  "cq:Taggable",
+                  "dam:cfVariationNode"
+                ],
+                "countryName@LastModified": "Sat Dec 11 2021 16:07:08 GMT+0000",
+                "smsRate": "€ 0.19",
+                "mobileCallRate@LastModified": "Sat Dec 11 2021 16:07:08 GMT+0000",
+                "countryName": "Costa Rica",
+                "countryLandingPageURL": "/content/lebara/de/de/minutenpreis-auslandsanrufe/costa-rica-anrufen",
+                "landlineCallRate@LastModified": "Sat Dec 11 2021 16:07:08 GMT+0000",
+                "mobileCallRate": "€ 0.19",
+                "smsRate@LastModified": "Sat Dec 11 2021 16:07:08 GMT+0000",
+                "landlineCallRate": "€ 0.09",
+                "countryLandingPageURL@LastModified": "Sat Dec 11 2021 16:07:08 GMT+0000"
+              }
+            }
+          }
+        },
+        "democratic-republic-of-congo": {
+          "jcr:primaryType": "dam:Asset",
+          "jcr:mixinTypes": [
+            "mix:referenceable",
+            "mix:versionable"
+          ],
+          "jcr:createdBy": "admin",
+          "jcr:versionHistory": "01ff5598-abf6-4065-ad8a-068a0ade5e81",
+          "jcr:predecessors": [
+            "7d2b9122-b566-4453-9e81-4b3ca30e9eb7"
+          ],
+          "jcr:created": "Wed Dec 15 2021 09:49:11 GMT+0530",
+          "jcr:baseVersion": "7d2b9122-b566-4453-9e81-4b3ca30e9eb7",
+          "jcr:isCheckedOut": true,
+          "jcr:uuid": "83f2e88d-be19-4087-a338-f5d7b5105b10",
+          "jcr:content": {
+            "jcr:primaryType": "dam:AssetContent",
+            "jcr:mixinTypes": [
+              "cq:ReplicationStatus"
+            ],
+            "jcr:title": "Democratic Republic of Congo",
+            "cq:lastReplicatedBy_publish": "gaurav.sarang-ext@lebara.com",
+            "cq:lastReplicationAction_scene7": "Activate",
+            "cq:lastReplicationAction": "Activate",
+            "cq:lastReplicatedBy": "gaurav.sarang-ext@lebara.com",
+            "jcr:lastModifiedBy": "gaurav.sarang-ext@lebara.com",
+            "cq:lastReplicationAction_publish": "Activate",
+            "cq:lastReplicatedBy_scene7": "gaurav.sarang-ext@lebara.com",
+            "cq:lastReplicated": "Sat Dec 11 2021 16:28:03 GMT+0000",
+            "cq:lastReplicated_scene7": "Sat Dec 11 2021 16:28:03 GMT+0000",
+            "contentFragment": true,
+            "cq:name": "democratic-republic-of-congo",
+            "jcr:lastModified": "Sat Dec 11 2021 16:28:01 GMT+0000",
+            "lastFragmentSave": "Sat Dec 11 2021 16:28:01 GMT+0000",
+            "dam:scene7RequestID": "bd21c32d-df4e-4d25-ace5-f9aa956acd77",
+            "cq:parentPath": "/content/dam/lebara/markets/de/de/content-fragments/internation-rates",
+            "cq:lastReplicated_publish": "Sat Dec 11 2021 16:28:03 GMT+0000",
+            "renditions": {
+              "jcr:primaryType": "nt:folder",
+              "jcr:createdBy": "admin",
+              "jcr:created": "Wed Dec 15 2021 09:49:11 GMT+0530"
+            },
+            "related": {
+              "jcr:primaryType": "nt:unstructured"
+            },
+            "metadata": {
+              "jcr:primaryType": "nt:unstructured",
+              "jcr:mixinTypes": [
+                "cq:Taggable"
+              ],
+              "dam:scene7FileStatus": "NotSupported"
+            },
+            "data": {
+              "jcr:primaryType": "nt:unstructured",
+              "cq:model": "/conf/lebara/settings/dam/cfm/models/international-tariffs-fragment",
+              "master": {
+                "jcr:primaryType": "nt:unstructured",
+                "jcr:mixinTypes": [
+                  "cq:Taggable",
+                  "dam:cfVariationNode"
+                ],
+                "countryName@LastModified": "Sat Dec 11 2021 16:27:07 GMT+0000",
+                "smsRate": "€ 0.19",
+                "mobileCallRate@LastModified": "Sat Dec 11 2021 16:28:01 GMT+0000",
+                "countryName": "Democratic Republic of Congo",
+                "countryLandingPageURL": "/content/lebara/de/de/minutenpreis-auslandsanrufe/democratic-republic-of-congo-anrufen",
+                "landlineCallRate@LastModified": "Sat Dec 11 2021 16:28:01 GMT+0000",
+                "mobileCallRate": "€ 0.45",
+                "smsRate@LastModified": "Sat Dec 11 2021 16:28:01 GMT+0000",
+                "landlineCallRate": "€ 0.35",
+                "countryLandingPageURL@LastModified": "Sat Dec 11 2021 16:28:01 GMT+0000"
+              }
+            }
+          }
+        },
+        "dominican-republic": {
+          "jcr:primaryType": "dam:Asset",
+          "jcr:mixinTypes": [
+            "mix:referenceable"
+          ],
+          "jcr:createdBy": "admin",
+          "jcr:created": "Wed Dec 15 2021 09:49:11 GMT+0530",
+          "jcr:uuid": "ebf7dbc0-97c9-431d-8d0b-10f5aac8c386",
+          "jcr:content": {
+            "jcr:primaryType": "dam:AssetContent",
+            "jcr:mixinTypes": [
+              "cq:ReplicationStatus"
+            ],
+            "jcr:title": "Dominican Republic",
+            "cq:lastReplicatedBy_publish": "gaurav.sarang-ext@lebara.com",
+            "cq:lastReplicationAction_scene7": "Activate",
+            "cq:lastReplicationAction": "Activate",
+            "cq:lastReplicatedBy": "gaurav.sarang-ext@lebara.com",
+            "jcr:lastModifiedBy": "gaurav.sarang-ext@lebara.com",
+            "cq:lastReplicationAction_publish": "Activate",
+            "cq:lastReplicatedBy_scene7": "gaurav.sarang-ext@lebara.com",
+            "cq:lastReplicated": "Mon Dec 13 2021 06:34:22 GMT+0000",
+            "cq:lastReplicated_scene7": "Mon Dec 13 2021 06:34:22 GMT+0000",
+            "contentFragment": true,
+            "jcr:lastModified": "Mon Dec 13 2021 06:34:20 GMT+0000",
+            "lastFragmentSave": "Mon Dec 13 2021 06:34:20 GMT+0000",
+            "dam:scene7RequestID": "81330de0-62bc-41ca-bd7e-b4baa3e715e4",
+            "cq:lastReplicated_publish": "Mon Dec 13 2021 06:34:22 GMT+0000",
+            "renditions": {
+              "jcr:primaryType": "nt:folder",
+              "jcr:createdBy": "admin",
+              "jcr:created": "Wed Dec 15 2021 09:49:11 GMT+0530"
+            },
+            "related": {
+              "jcr:primaryType": "nt:unstructured"
+            },
+            "metadata": {
+              "jcr:primaryType": "nt:unstructured",
+              "jcr:mixinTypes": [
+                "cq:Taggable"
+              ],
+              "dam:scene7FileStatus": "NotSupported"
+            },
+            "data": {
+              "jcr:primaryType": "nt:unstructured",
+              "cq:model": "/conf/lebara/settings/dam/cfm/models/international-tariffs-fragment",
+              "master": {
+                "jcr:primaryType": "nt:unstructured",
+                "jcr:mixinTypes": [
+                  "cq:Taggable",
+                  "dam:cfVariationNode"
+                ],
+                "countryName@LastModified": "Mon Dec 13 2021 06:34:20 GMT+0000",
+                "smsRate": "€ 0.19",
+                "mobileCallRate@LastModified": "Mon Dec 13 2021 06:34:20 GMT+0000",
+                "countryName": "Dominican Republic",
+                "countryLandingPageURL": "/content/lebara/de/de/minutenpreis-auslandsanrufe/dominican-republic-anrufen",
+                "landlineCallRate@LastModified": "Mon Dec 13 2021 06:34:20 GMT+0000",
+                "mobileCallRate": "€ 0.12",
+                "smsRate@LastModified": "Mon Dec 13 2021 06:34:20 GMT+0000",
+                "landlineCallRate": "€ 0.07",
+                "countryLandingPageURL@LastModified": "Mon Dec 13 2021 06:34:20 GMT+0000"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

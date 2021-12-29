@@ -6,7 +6,7 @@ import { selectIsAuthenticated } from "@lebara/ui/src/redux/selectors/userSelect
 import { selectIsLoading } from "@lebara/ui/src/redux/selectors/loadingSelectors";
 import { useLocation } from 'react-router-dom';
 import aemUtils from "./utils/aem-utils";
-import { globalConfigs as GC, globalConstants as C } from "@lebara/ui/src/configs/globalConfigs.js";
+import {globalConstants as C } from "@lebara/ui/src/configs/globalConfigs.js";
 import {AuthoringUtils} from "@adobe/aem-spa-page-model-manager";
 function PrivateRoute({ WrappedComponent, routeProps, ...rest }: any) {
   const isAuthenticated = useSelector(selectIsAuthenticated);
@@ -20,7 +20,7 @@ function PrivateRoute({ WrappedComponent, routeProps, ...rest }: any) {
         render={(props) =>
           <Redirect
             to={{
-              pathname: (GC.journeyPages[C.REGISTER] || "/"),
+              pathname: (JSON.parse(window.lebaraGlobalConfigs.journeyPages)[C.REGISTER] || "/"),
               state: { from: props.location },
             }}
           />

@@ -1,7 +1,7 @@
 import React from "react";
 import { Text, Box, Button, Circle } from "@chakra-ui/react";
 import { StickyCircleProps } from "./types";
-import { useHistory } from "react-router-dom";
+import { useHistory } from "@lebara/ui/src/hooks/useHistory";
 import './styles.css';
 
 const StickyCircle: React.FC<StickyCircleProps> = ({

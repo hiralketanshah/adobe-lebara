@@ -126,7 +126,7 @@ public class CFUtils {
                 String countryLandingPageUrl = CFUtils.getElementValue(irFragment, "countryLandingPageURL");
                 countryLandingPageUrl = AemUtils.getLinkWithExtension(countryLandingPageUrl, resolver);
                 String countryName = CFUtils.getElementValue(irFragment, "countryName");
-                if (StringUtils.isNoneBlank(countryLandingPageUrl, countryName)) {
+                if (StringUtils.isNotBlank(countryLandingPageUrl) && StringUtils.isNotBlank(countryName)) {
                     SelectOption selectOption = new SelectOption();
                     selectOption.setLabel(countryName);
                     selectOption.setValue(countryLandingPageUrl);
@@ -155,7 +155,7 @@ public class CFUtils {
                 String countryLandingPageUrl = CFUtils.getElementValue(irFragment, "countryLandingPageURL");
                 countryLandingPageUrl = AemUtils.getLinkWithExtension(countryLandingPageUrl, resolver);
                 String countryName = CFUtils.getElementValue(irFragment, "countryName");
-                if (StringUtils.isNoneBlank(countryLandingPageUrl, countryName)) {
+                if (StringUtils.isNotBlank(countryLandingPageUrl) && StringUtils.isNotBlank(countryName)) {
                     SelectBean selectBean = new SelectBean();
                     selectBean.setKey(String.valueOf(count++));
                     selectBean.setUrl(countryLandingPageUrl);
@@ -258,7 +258,7 @@ public class CFUtils {
         return offerFragmentBean;
     }
 
-    private static String formatedValue(String unit, String val, I18n i18n) {
+    public static String formatedValue(String unit, String val, I18n i18n) {
         String formattedValue = StringUtils.EMPTY;
         if (StringUtils.isNotBlank(unit) && StringUtils.isNumeric(val)) {
             int value = Integer.parseInt(val);
@@ -285,10 +285,14 @@ public class CFUtils {
             ContentFragment cfPlanFragment = cfPlanResource.adaptTo(ContentFragment.class);
             if (null != cfPlanFragment) {
                 planInfo = new PlanInfo();
-                planInfo.setTitle(cfPlanFragment.getElement("title").getContent());
-                planInfo.setCountryTitle(cfPlanFragment.getElement("countryTitle").getContent());
+                if (cfPlanFragment.getElement("title") != null) {
+                    planInfo.setTitle(cfPlanFragment.getElement("title").getContent());
+                }
+                if (cfPlanFragment.getElement("countryTitle") != null) {
+                    planInfo.setCountryTitle(cfPlanFragment.getElement("countryTitle").getContent());
+                }
                 planInfo.setListPlanItem(CFUtils.getElementArrayValue(cfPlanFragment, "listPlanItem"));
-                planInfo.setCountryList(CFUtils.convertStringArrayToList(CFUtils.getElementArrayValue( cfPlanFragment, "countryList"), CountryInfo.class));
+                planInfo.setCountryList(CFUtils.convertStringArrayToList(CFUtils.getElementArrayValue(cfPlanFragment, "countryList"), CountryInfo.class));
             }
         }
         return planInfo;

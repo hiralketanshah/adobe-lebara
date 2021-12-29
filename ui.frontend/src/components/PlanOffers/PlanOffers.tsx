@@ -5,9 +5,8 @@ import { PlanOffersProps } from "./types";
 import Link from "@lebara/ui/src/components/Link/Link";
 import ExpandableSimPlanCard from "../ExpandableSimPlanCard/ExpandableSimPlanCard";
 import Button from "../Button/Button";
-import { useHistory } from "react-router-dom";
+import { useHistory } from "@lebara/ui/src/hooks/useHistory";
 import TickInCircle from "../../icons/TickInCircle";
-import {globalConfigs, globalConstants} from  '@lebara/ui/src/configs/globalConfigs.js';
 import React from "react";
 import {googleAnalytics} from "../../utils/gtm";
 const PlanOffers: React.FC<PlanOffersProps> = ({
@@ -156,7 +155,7 @@ const PlanOffers: React.FC<PlanOffersProps> = ({
             minW={{ base: "100%", lg: "320px" }}
             alignSelf="center"
             onClick={() => {
-              history.push((ctaBottomLink || globalConfigs.journeyPages[globalConstants.PREPAID] || '/'), history.location.state);
+              history.push((ctaBottomLink || "/prepaid"), history.location.state);
             }}
           >
             {ctaBottomLabel}
