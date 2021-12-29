@@ -4,9 +4,8 @@ import { Box, Flex, Text, Link } from "@chakra-ui/react";
 import { PlanCardProps } from "./types";
 import ExpandableSimPlanCard from "../ExpandableSimPlanCard/ExpandableSimPlanCard";
 import Button from "../Button/Button";
-import { useHistory } from "react-router-dom";
+import { useHistory } from "@lebara/ui/src/hooks/useHistory";
 import TickInCircle from "../../icons/TickInCircle";
-import {globalConfigs, globalConstants} from  '@lebara/ui/src/configs/globalConfigs.js';
 import {googleAnalytics} from "../../utils/gtm";
 
 const ViewPlans: React.FC<PlanCardProps> = ({
@@ -137,7 +136,7 @@ const ViewPlans: React.FC<PlanCardProps> = ({
             minW={{ base: "100%", lg: "320px" }}
             alignSelf="center"
             onClick={() => {
-               history.push((exploreAllLink || globalConfigs.journeyPages[globalConstants.PREPAID]  || '/'), history.location.state);
+               history.push((exploreAllLink || "/prepaid"), history.location.state);
             }}
           >
             {exploreAllLabel}

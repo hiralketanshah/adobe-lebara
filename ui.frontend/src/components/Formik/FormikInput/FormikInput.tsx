@@ -9,7 +9,6 @@ import {
   Input,
   InputGroup,
   InputRightElement,
-  Link,
   Text,
 } from "@chakra-ui/react";
 import {
@@ -18,9 +17,8 @@ import {
   MdCheckCircle,
 } from "react-icons/all";
 import { useField } from "formik";
-import { Link as ReachLink } from "react-router-dom";
+import { RouterLink } from "@lebara/ui/src/hooks/useHistory";
 import { FormikInputProps } from "./types";
-import { globalConfigs as GC, globalConstants as GCST } from  '@lebara/ui/src/configs/globalConfigs.js';
 
 const FormikInput: React.FC<FormikInputProps> = ({
   name,
@@ -151,18 +149,18 @@ const FormikInput: React.FC<FormikInputProps> = ({
               letterSpacing="0.23px"
             >
               {exitingUserErrorMsg}{" "}
-              <Link
-                as={ReachLink}
+              <RouterLink
+                as={RouterLink}
                 color="secondary.500"
                 to={{
-                  pathname: (GC.journeyPages[GCST.LOGIN]  || '/'),
+                  pathname: ("/login"),
                   state: {
                     fromPostPaid: true,
                   },
                 }}
               >
                 {loginButtonLabel}
-              </Link>{" "}
+              </RouterLink>{" "}
               {secondSubscriptionDisplayText}
             </Text>
           </Flex>
@@ -182,18 +180,18 @@ const FormikInput: React.FC<FormikInputProps> = ({
               letterSpacing="0.23px"
             >
               {exitingUserErrorMsg}{" "}
-              <Link
-                as={ReachLink}
+              <RouterLink
+                as={RouterLink}
                 color="secondary.500"
                 to={{
-                  pathname: (GC.journeyPages[GCST.LOGIN]  || '/'),
+                  pathname: ("/login"),
                   state: {
                     fromPostPaid: true,
                   },
                 }}
               >
                  {loginButtonLabel}
-              </Link>
+              </RouterLink>
             </Text>
           </Flex>
         </FormErrorMessage>

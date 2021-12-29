@@ -27,7 +27,6 @@ import IconButton from "../IconButton/IconButton";
 import SideMenu from "../SideMenu/SideMenu";
 import { ReduxState } from "@lebara/ui/src/redux/types";
 import {selectIsAuthenticated} from "@lebara/ui/src/redux/selectors/userSelectors";
-import { globalConfigs as GC, globalConstants as GCST } from "@lebara/ui/src/configs/globalConfigs.js";
 import Button from "../Button/Button";
 import UserMenu from "@lebara/ui/src/components/UserMenu/UserMenu";
 import Search from "../Search/Search";
@@ -50,7 +49,7 @@ const MiniHeader: React.FC<MiniHeaderProps> = ({
   const isAuthenticated = useSelector(selectIsAuthenticated);
 
   const handleCartClick = () => {
-    history.push(cartItems.length === 0 ? GC.journeyPages[GCST.EMPTY_CART] : GC.journeyPages[GCST.ORDER_DETAILS]);
+    history.push(cartItems.length === 0 ? "/empty-cart" : "/order-details");
   };
 
   const { isOpen, onClose, onOpen } = useDisclosure();
@@ -67,7 +66,7 @@ const MiniHeader: React.FC<MiniHeaderProps> = ({
       setProfileDropdown(!isProfileDropdownOpen);
       return;
     }
-    history.push((GC.journeyPages[GCST.REGISTER]  || '/'), {
+    history.push(("/register"), {
       fromHeader: true,
     });
   };
