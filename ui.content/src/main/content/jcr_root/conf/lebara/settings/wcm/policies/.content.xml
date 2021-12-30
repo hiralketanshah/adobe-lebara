@@ -341,6 +341,7 @@
                         jcr:title="Lebara SPA Page Policy"
                         sling:resourceType="wcm/core/components/policy/policy"
                         renderAlternateLanguageLinks="true"
+                        structureDepth="3"
                         clientlibs="[lebara.react]">
                     <jcr:content jcr:primaryType="nt:unstructured"/>
                 </policy_spa>
