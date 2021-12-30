@@ -209,6 +209,10 @@
                                                                                 jcr:primaryType="nt:unstructured"
                                                                                 text="user-profile"
                                                                                 value="user-profile"/>
+                                                                        <user-profile-change-password
+                                                                                jcr:primaryType="nt:unstructured"
+                                                                                text="user-profile/change-password"
+                                                                                value="user-profile/change-password"/>
                                                                         <confirm-delink-sim
                                                                                 jcr:primaryType="nt:unstructured"
                                                                                 text="confirm-delink-sim"

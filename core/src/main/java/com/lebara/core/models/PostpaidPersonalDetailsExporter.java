@@ -35,7 +35,26 @@ public class PostpaidPersonalDetailsExporter implements ComponentExporter{
     @ValueMapValue
     private  String portingSectionHeading;
 
-    
+    @ValueMapValue
+    private String orderTotalLabel;
+    @ValueMapValue
+    private String yourOrdersimPlanLabel;
+    @ValueMapValue
+    private String yourOrderMinutesInGermanyValue;
+    @ValueMapValue
+    private String yourOrderContractdurationLabel;
+    @ValueMapValue
+    private String yourOrderDataLabel;
+    @ValueMapValue
+    private String yourOrderInternationalMinLabel;
+    @ValueMapValue
+    private String yourOrderMinutesInGermany;
+    @ValueMapValue
+    private String yourOrderPerMonthOrderTotalLabel;
+    @ValueMapValue
+    private String yourOrderOneTimeActivationFeeLabel;
+    @ValueMapValue
+    private String yourOrderOneTimeActivationFee;
     @ChildResource
     private PostpaidPersonalDetailsFormFields frmFields;
 
@@ -58,6 +77,46 @@ public class PostpaidPersonalDetailsExporter implements ComponentExporter{
     
     public String getPortingSectionHeading() {
         return portingSectionHeading;
+    }
+
+    public String getOrderTotalLabel() {
+        return orderTotalLabel;
+    }
+
+    public String getYourOrderContractdurationLabel() {
+        return yourOrderContractdurationLabel;
+    }
+
+    public String getYourOrderDataLabel() {
+        return yourOrderDataLabel;
+    }
+
+    public String getYourOrderInternationalMinLabel() {
+        return yourOrderInternationalMinLabel;
+    }
+
+    public String getYourOrderMinutesInGermany() {
+        return yourOrderMinutesInGermany;
+    }
+
+    public String getYourOrderPerMonthOrderTotalLabel() {
+        return yourOrderPerMonthOrderTotalLabel;
+    }
+
+    public String getYourOrderOneTimeActivationFeeLabel() {
+        return yourOrderOneTimeActivationFeeLabel;
+    }
+
+    public String getYourOrderOneTimeActivationFee() {
+        return yourOrderOneTimeActivationFee;
+    }
+
+    public String getYourOrdersimPlanLabel() {
+        return yourOrdersimPlanLabel;
+    }
+
+    public String getYourOrderMinutesInGermanyValue() {
+        return yourOrderMinutesInGermanyValue;
     }
 
     @Override

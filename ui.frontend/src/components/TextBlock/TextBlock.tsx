@@ -4,7 +4,7 @@ import { Box, Text, Heading } from "@chakra-ui/react";
 import { TextBlockProps } from "./types";
 import Button from "../Button/Button";
 import sanitizeHtml from "sanitize-html";
-import { useHistory } from "react-router-dom";
+import { useHistory } from "@lebara/ui/src/hooks/useHistory";
 // import sanitizeWhiteList from "../sanitize-html.whitelist";
 // import List from "../List/List";
 // import TickInCircle from "../../icons/TickInCircle";
