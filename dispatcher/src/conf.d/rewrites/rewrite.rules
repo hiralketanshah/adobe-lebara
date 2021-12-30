@@ -7,6 +7,24 @@
 
 Include conf.d/rewrites/default_rewrite.rules
 
+# rewrite for root redirect
+RewriteCond %{REQUEST_URI} !.js$
+RewriteCond %{REQUEST_URI} !.css$
+RewriteCond %{REQUEST_URI} !.json$
+RewriteCond %{REQUEST_URI} !.ico$
+RewriteCond %{REQUEST_URI} !.png$
+RewriteCond %{REQUEST_URI} !.svg$
+RewriteCond %{REQUEST_URI} !.gif$
+RewriteCond %{REQUEST_URI} !.jpg$
+RewriteCond %{REQUEST_URI} !.jpeg$
+RewriteCond %{REQUEST_URI} !.pdf$
+RewriteCond %{REQUEST_URI} !.otf$
+RewriteCond %{REQUEST_URI} !.woff$
+RewriteCond %{REQUEST_URI} !.woff2$
+RewriteCond %{REQUEST_URI} !.html$
+RewriteRule ^/(.*)$ /$1.html [PT]
+
+
 RewriteRule ^/([a-z]+)$	/$1/home.html [L,R=301]
 RewriteRule ^/([a-z]+)/komplett-plans/c/payg-komplett	/$1/prepaid/komplett-tarif.html [L,R=301]
 RewriteRule ^/([a-z]+)/my-mobile/dashboard	/$1/mylebara/login.html [L,R=301]
