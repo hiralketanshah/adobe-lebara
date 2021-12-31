@@ -118,7 +118,7 @@ const ExpandableSimPlanCard: React.FC<ExpandableSimPlanCardProps> = ({
       case OfferTypes.PREPAID:
       case OfferTypes.POSTPAID: {
         try {
-          isRemoveFromCart && onClose ? onClose() : history.push(isAuthenticated && msisdn ? "/order-details" : "/lebara-sim-choice");
+          isRemoveFromCart && onClose ? onClose() : history.push(offerType === OfferTypes.POSTPAID ? isAuthenticated && msisdn ? "/postpaid/preview" : "/postpaid/details" : isAuthenticated && msisdn ? "/order-details" : "/lebara-sim-choice");
           await addItemToCart(parseInt(id || ''), planName, (JSON.stringify(description || '')), Number(cost?.replaceAll(',', '.') || ''), "plan");
         }catch(e){
           
