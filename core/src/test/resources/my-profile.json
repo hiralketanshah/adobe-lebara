@@ -1,0 +1,135 @@
+{
+  "jcr:primaryType": "cq:Page",
+  "jcr:createdBy": "admin",
+  "jcr:created": "Mon Jan 03 2022 11:17:20 GMT+0530",
+  "jcr:content": {
+    "jcr:primaryType": "cq:PageContent",
+    "jcr:createdBy": "admin",
+    "jcr:title": "my-profile",
+    "cq:template": "/conf/lebara/settings/wcm/templates/lebara-page-template",
+    "jcr:created": "Mon Jan 03 2022 11:17:20 GMT+0530",
+    "cq:lastModified": "Mon Jan 03 2022 11:18:16 GMT+0530",
+    "sling:resourceType": "lebara/components/page",
+    "cq:lastModifiedBy": "admin",
+    "root": {
+      "jcr:primaryType": "nt:unstructured",
+      "sling:resourceType": "wcm/foundation/components/responsivegrid",
+      "experiencefragment-header": {
+        "jcr:primaryType": "nt:unstructured",
+        "jcr:lastModifiedBy": "admin",
+        "fragmentVariationPath": "/content/experience-fragments/lebara/de/en/site/header/master",
+        "jcr:lastModified": "Mon Jan 03 2022 11:17:42 GMT+0530",
+        "sling:resourceType": "lebara/components/experiencefragment"
+      },
+      "responsivegrid": {
+        "jcr:primaryType": "nt:unstructured",
+        "sling:resourceType": "wcm/foundation/components/responsivegrid",
+        "myprofile": {
+          "jcr:primaryType": "nt:unstructured",
+          "jcr:createdBy": "admin",
+          "description": "Prsonal Details Title Description",
+          "sectionConsentHeading": "Consent Management",
+          "jcr:lastModifiedBy": "admin",
+          "sectionUsernameHeading": "Name and Surname",
+          "jcr:created": "Mon Jan 03 2022 11:18:10 GMT+0530",
+          "changeEmailHeading": "Change Email Address",
+          "heading": "Prsonal Details",
+          "sectionAddressHeading": "Address",
+          "jcr:lastModified": "Mon Jan 03 2022 11:18:16 GMT+0530",
+          "sectionEmailPasswordHeading": "Email and Password",
+          "sling:resourceType": "lebara/components/user/myprofile",
+          "changePasswordSuccessMsg": "Password Successfully Updated",
+          "textIsRich": "true",
+          "frmFields": {
+            "jcr:primaryType": "nt:unstructured",
+            "newEmailLabel": "New Email Address",
+            "houseNumberLabel": "House Number",
+            "cityPlaceholder": "Enter Your City",
+            "zipCodePlaceholder": "Enter Your Zip Code",
+            "newEmailPlacehodler": "Enter New Email Address",
+            "streetPlaceholder": "Enter Your Street Name",
+            "cityLabel": "City",
+            "lNameLabel": "Surname",
+            "zipCodeLabel": "Pin Code",
+            "editLinkLabel": "EDIT",
+            "fNamePlaceholder": "Enter Your Name",
+            "newConfirmEmailLabel": "Confirm New Email Address",
+            "modalCancelCTALabel": "CANCEL",
+            "alternativeNumberPlaceholder": "Enter Your Alternative Contact No",
+            "newConfirmEmailPlacehodler": "Confirm New Email Address Placeholder",
+            "fNameLabel": "Name",
+            "passwordLabel": "Password",
+            "alternativeContactLabel": "Alternative Contact Number",
+            "lNamePlaceholder": "Enter Your Surname",
+            "streetLabel": "Street Name",
+            "ctaContinueLabel": "CONTINUE",
+            "emailLabel": "Email Address",
+            "ctaButtonLabel": "SAVE",
+            "ctaCancelLabel": "CANCEL",
+            "houseNumberPlaceholder": "Enter Your House Number",
+            "emailPlaceholder": "Enter Your Email Address",
+            "passwordPlaceholder": "Password Placeholder",
+            "subscribeOptions": {
+              "jcr:primaryType": "nt:unstructured",
+              "item0": {
+                "jcr:primaryType": "nt:unstructured",
+                "label": "Email",
+                "value": "email"
+              },
+              "item1": {
+                "jcr:primaryType": "nt:unstructured",
+                "label": "SMS",
+                "value": "sms"
+              },
+              "item2": {
+                "jcr:primaryType": "nt:unstructured",
+                "label": "Phone",
+                "value": "phone"
+              }
+            }
+          },
+          "validationMessages": {
+            "jcr:primaryType": "nt:unstructured",
+            "zipCodeErrorMax": "Must be 10 characters or less",
+            "zipCodeErrorMin": "Must be 5 characters or more",
+            "zipCodeErrorRequired": "Post code is required",
+            "altContactNumberRequiredMsg": "Please Enter Port In Number",
+            "firstNameErrorMax": "Must be 50 characters or less",
+            "alternativeNumberInValidMsg": "Please Enter Valid Alternative Number",
+            "houseNumberErrorPattern": "Invalid house number",
+            "fNameRequiredMsg": "Please enter a valid First Name , First name cannot be empty",
+            "streetLabelErrorPattern": "Invalid street name",
+            "emailInValidMsg": "Please enter a valid email address. For example username@domain.com",
+            "fNameInValidMsg": "The First name cannot contain any special characters ($, @, #, !, %. * ^() ?)",
+            "cityErrorRequired": "Town/city is required",
+            "cityErrorMax": "Must be 20 characters or less",
+            "streetLabelErrorMax": "Must be 250 characters or less",
+            "zipCodeErrorPattern": "Invalid post code",
+            "lNameInValidMsg": "The surname cannot contain any special characters ($, @, #, !, %. * ^() ?)",
+            "streetLabelErrorRequired": "Street name is required",
+            "lNameRequiredMsg": "Please enter a valid surname, surname cannot be empty",
+            "houseNumberErrorRequired": "House number is required",
+            "confirmEmailNotMatchMsg": "Email address and Confirm email address should be same",
+            "houseNumberErrorMax": "Must be 20 characters or less",
+            "lastNameErrorMax": "Must be 75 characters or less",
+            "emailRequiredMsg": "The email address field cannot be empty"
+          },
+          "successEmailModal": {
+            "jcr:primaryType": "nt:unstructured",
+            "beforeEmailText": "Kindly click on the link sent to",
+            "afterEmailText": "to validate your email.",
+            "description": "Email on My Profile won't be update until the verification is made.",
+            "heading": "Email Update Request has been successfully sent !"
+          }
+        }
+      },
+      "experiencefragment-footer": {
+        "jcr:primaryType": "nt:unstructured",
+        "jcr:lastModifiedBy": "admin",
+        "fragmentVariationPath": "/content/experience-fragments/lebara/de/en/site/footer/master",
+        "jcr:lastModified": "Mon Jan 03 2022 11:17:58 GMT+0530",
+        "sling:resourceType": "lebara/components/experiencefragment"
+      }
+    }
+  }
+}
