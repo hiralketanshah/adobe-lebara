@@ -73,7 +73,7 @@ const ExpandableSimPlanCard: React.FC<ExpandableSimPlanCardProps> = ({
   }
 
   const handleAddToCart = async () => {
-    const isLoggedInUser: boolean = isAuthenticated && msisdn;
+    const isLoggedInUser: boolean = !!(isAuthenticated && msisdn);
     const description: string | undefined = additionalOffers?.match(/<li>.*?<\/li>/g)?.length ? additionalOffers.replaceAll('\n', '').replaceAll('&nbsp;', '').match(/<li>.*?<\/li>/g)?.map(list => list?.replaceAll(/<li>|<\/li>/g, ''))?.join('+') : additionalOffers;
     setIsButtonDisabled(true);
     if (isRemoveFromCart) {
