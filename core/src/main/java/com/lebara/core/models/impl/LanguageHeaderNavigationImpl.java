@@ -5,7 +5,10 @@ import com.adobe.cq.export.json.ExporterConstants;
 import com.adobe.cq.wcm.core.components.models.LanguageNavigation;
 import com.adobe.cq.wcm.core.components.models.NavigationItem;
 import com.adobe.cq.wcm.core.components.models.datalayer.ComponentData;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.lebara.core.models.LanguageHeaderNavigation;
+import com.lebara.core.models.beans.LanguageNavListItem;
+import com.lebara.core.models.beans.ListItem;
 import com.lebara.core.utils.AemUtils;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;
@@ -19,6 +22,7 @@ import org.apache.sling.models.annotations.injectorspecific.SlingObject;
 import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
 import org.apache.sling.models.annotations.via.ResourceSuperType;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Model(
@@ -56,9 +60,17 @@ public class LanguageHeaderNavigationImpl implements LanguageHeaderNavigation {
      */
     protected static final String RESOURCE_TYPE = "lebara/components/header/languagenavigation";
 
-    @Override
-    public List<NavigationItem> getItems() {
-        return delegate.getItems();
+    @JsonProperty("items")
+    public List<LanguageNavListItem> getLangNavItems() {
+        List<LanguageNavListItem> langNavList = new ArrayList<>();
+        for (NavigationItem items : delegate.getItems()) {
+            LanguageNavListItem languageNavListItem = new LanguageNavListItem();
+            languageNavListItem.setActive(items.isActive());
+            languageNavListItem.setTitle(items.getTitle());
+            languageNavListItem.setUrl(AemUtils.getLinkWithExtension(items.getURL(), request));
+            langNavList.add(languageNavListItem);
+        }
+        return langNavList;
     }
 
 
