@@ -8,7 +8,6 @@ import com.adobe.cq.wcm.core.components.models.datalayer.ComponentData;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.lebara.core.models.LanguageHeaderNavigation;
 import com.lebara.core.models.beans.LanguageNavListItem;
-import com.lebara.core.models.beans.ListItem;
 import com.lebara.core.utils.AemUtils;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;
