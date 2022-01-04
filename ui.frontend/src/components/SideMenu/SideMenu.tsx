@@ -25,10 +25,9 @@ const SideMenu: React.FC<SideMenuProps> = ({
 
   const onMenuLinkNavigate = (url: any) => {
     if(!url) return null;
-    return aemUtils.isCheckExternalLink(url) ? window.open(url) : history.push(url);
+    return aemUtils.isCheckExternalLink(url) ? window.open(url, "_blank") : history.push(url);
   }
 
-  console.log({items});
   return (
       <Flex flexDirection="column" h="100%">
         <Box h="80px" bg="lightenPrimary.500">
