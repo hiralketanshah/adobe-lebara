@@ -45,7 +45,7 @@ const StickyCircle: React.FC<StickyCircleProps> = ({
                     99999998,
                     "Free Sim Top Up",
                     "",
-                    0,
+                    10,
                     "free-sim-top-up",
                     undefined,
                     undefined,
