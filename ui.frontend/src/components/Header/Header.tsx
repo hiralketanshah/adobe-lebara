@@ -82,7 +82,7 @@ const SingleMenu = ({ menuItem, newText }: { menuItem: children, newText: any })
 
   const onMenuLinkNavigate = (url: any) => {
     if(!url) return null;
-    return aemUtils.isCheckExternalLink(url) ? window.open(url) : history.push(url);
+    return aemUtils.isCheckExternalLink(url) ? window.open(url, "_blank") : history.push(url);
   }
 
   const onSubMenuHeaderNavigate = (url: any) => {

@@ -88,7 +88,7 @@ const MiniHeader: React.FC<MiniHeaderProps> = ({
         icon: icon,
         buttonIcon,
         title: k.title,
-        linkUrl: k.path, 
+        linkUrl: k.url || k.path,
         items: subItems,
       };
     });
