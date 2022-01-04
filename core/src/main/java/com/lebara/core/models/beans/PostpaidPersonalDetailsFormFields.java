@@ -159,6 +159,9 @@ public class PostpaidPersonalDetailsFormFields {
     public String enterAddressManually;
     
     @ValueMapValue
+    public String changeAddressLabel;
+
+    @ValueMapValue
     public String streetPlaceholder;
     
     @ValueMapValue
@@ -365,6 +368,10 @@ public class PostpaidPersonalDetailsFormFields {
 
     public String getEnterAddressManually() {
         return enterAddressManually;
+    }
+
+    public String getChangeAddressLabel() {
+        return changeAddressLabel;
     }
 
     public String getStreetPlaceholder() {
