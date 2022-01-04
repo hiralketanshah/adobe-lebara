@@ -40,15 +40,12 @@ const StickyCircle: React.FC<StickyCircleProps> = ({
           onClick={linkPath ? ()=> history.push(linkPath) : async () => {
             dispatch(setLoading(true));
             try{
-              if (!cartItems.find((t : any) => t.id === 99999999)) {
-                await addItemToCart(99999999, "Free Sim", "", 0, "free-sim");
-              }
               if (!cartItems.find((t : any) => t.id === 99999998)) {
                 await addItemToCart(
                     99999998,
                     "Free Sim Top Up",
                     "",
-                    0,
+                    10,
                     "free-sim-top-up",
                     undefined,
                     undefined,

@@ -77,6 +77,7 @@ const SearchResults: React.FC<any> = ({
                         _hover={{ bgColor: "transparent" }}
                         to={`${linkItem?.link}` || '/'}
                         style={{display: 'block', width: '100%'}}
+                        onClick={onCloseClick}
                       >
                         <LebaraText type="body2">{linkItem?.label}</LebaraText>
                       </RouterLink>
@@ -112,7 +113,8 @@ const SearchResults: React.FC<any> = ({
                     _hover={{ bgColor: "transparent" }}
                     to={`${result?.path}` || '/'}
                     style={{display: 'block', width: '100%'}}
-                  >
+                    onClick={onCloseClick}
+                    >
                     <LebaraText type="body2">{result?.title}</LebaraText>
                   </RouterLink>
                   <FiArrowRight size={20} color="white" />
