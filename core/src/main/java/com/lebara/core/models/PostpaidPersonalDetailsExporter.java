@@ -36,6 +36,9 @@ public class PostpaidPersonalDetailsExporter implements ComponentExporter{
     private  String portingSectionHeading;
 
     @ValueMapValue
+    private  String termsAndConditionsLabel;
+
+    @ValueMapValue
     private String orderTotalLabel;
     @ValueMapValue
     private String yourOrdersimPlanLabel;
@@ -117,6 +120,10 @@ public class PostpaidPersonalDetailsExporter implements ComponentExporter{
 
     public String getYourOrderMinutesInGermanyValue() {
         return yourOrderMinutesInGermanyValue;
+    }
+
+    public String getTermsAndConditionsLabel() {
+        return termsAndConditionsLabel;
     }
 
     @Override

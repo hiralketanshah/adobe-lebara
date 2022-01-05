@@ -34,6 +34,7 @@ import java.io.IOException;
 import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.List;
+import com.google.common.net.MediaType;
 
 import static org.apache.sling.api.servlets.ServletResolverConstants.*;
 
@@ -65,7 +66,8 @@ public class GlobalSearchServlet extends SlingSafeMethodsServlet {
         if (StringUtils.isEmpty(searchRoot)) {
             searchRoot = DEFAULT_SEARCH_ROOT;
         }
-        LOGGER.debug("searchRoot is {}", searchRoot);
+        LOGGER.debug("searchRoot is {}", searchRoot);        
+        response.setContentType(MediaType.JSON_UTF_8.toString());
         response.getWriter().println(getSearchInfoString(request, param, resourceResolver, searchRoot));
     }
    

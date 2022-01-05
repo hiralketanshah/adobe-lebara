@@ -1,5 +1,5 @@
 import { MapTo } from "@adobe/aem-react-editable-components";
-import AddPaypal from "@lebara/ui/src/components/AddPaypal/AddPaypal";
+import PaypalRoute from "@lebara/ui/src/rotues/PaypalRoute";
 
 const AddPaypalConfig = {
   emptyLabel: "Add Paypal component",
@@ -8,4 +8,4 @@ const AddPaypalConfig = {
   },
 };
 
-MapTo("lebara/components/user/addpaypal")(AddPaypal, AddPaypalConfig);
+MapTo("lebara/components/user/addpaypal")(PaypalRoute, AddPaypalConfig);

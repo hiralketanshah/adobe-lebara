@@ -16,7 +16,7 @@ const LanguageDropDown: React.FC<LanguageDropDownProps> = ({
     const { target } = event;
     if (target.type === 'select-one') {
       const selectedValue = target.selectedOptions[0].value;
-      history.push(selectedValue);
+      window.open(selectedValue, "_self");
     }
   }
 
