@@ -316,7 +316,7 @@
 		<property name="editLabel"/>
 		<property name="mobileNumberLabel"/>
 		<property name="termsAndConditionsLabel"/>
-
+		<property name="contractSummary"/>
 		<!--Payment Method component -->
 		<property name="preferredPaymentLabel"/>
 		<property name="preferredPaymentDesc"/>

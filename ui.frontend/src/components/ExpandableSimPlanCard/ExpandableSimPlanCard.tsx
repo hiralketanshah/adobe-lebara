@@ -73,6 +73,7 @@ const ExpandableSimPlanCard: React.FC<ExpandableSimPlanCardProps> = ({
   }
 
   const handleAddToCart = async () => {
+    const isLoggedInUser: boolean = !!(isAuthenticated && msisdn);
     const description: string | undefined = additionalOffers?.match(/<li>.*?<\/li>/g)?.length ? additionalOffers.replaceAll('\n', '').replaceAll('&nbsp;', '').match(/<li>.*?<\/li>/g)?.map(list => list?.replaceAll(/<li>|<\/li>/g, ''))?.join('+') : additionalOffers;
     setIsButtonDisabled(true);
     if (isRemoveFromCart) {
@@ -115,13 +116,21 @@ const ExpandableSimPlanCard: React.FC<ExpandableSimPlanCardProps> = ({
         }
         break;
       }
-      case OfferTypes.PREPAID:
+      case OfferTypes.PREPAID: {
+        try {
+          isRemoveFromCart && onClose ? onClose() : history.push(isLoggedInUser ? "/order-details" : "/lebara-sim-choice");
+          await addItemToCart(parseInt(id || ''), planName, (JSON.stringify(description || '')), Number(cost?.replaceAll(',', '.') || ''), "plan");
+        } catch (e) {
+
+        }
+        break;
+      }
       case OfferTypes.POSTPAID: {
         try {
-          isRemoveFromCart && onClose ? onClose() : history.push(isAuthenticated && msisdn ? "/order-details" : "/lebara-sim-choice");
+          isRemoveFromCart && onClose ? onClose() : history.push(isLoggedInUser ? "/postpaid/preview" : "/postpaid/details");
           await addItemToCart(parseInt(id || ''), planName, (JSON.stringify(description || '')), Number(cost?.replaceAll(',', '.') || ''), "plan");
-        }catch(e){
-          
+        } catch (e) {
+
         }
       }
     }

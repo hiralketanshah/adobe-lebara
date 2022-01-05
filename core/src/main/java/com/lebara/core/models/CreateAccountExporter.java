@@ -19,7 +19,6 @@ public class CreateAccountExporter extends IntroExporter {
 
     protected static final String RESOURCE_TYPE = "lebara/components/createaccount";
 
-
     @ChildResource
     private ValidationMsg validationMessages;
 
