@@ -7,7 +7,6 @@
 
 Include conf.d/rewrites/default_rewrite.rules
 
-
 RewriteRule ^/([a-z]+)$	/$1/home.html [L,R=301]
 RewriteRule ^/([a-z]+)/komplett-plans/c/payg-komplett	/$1/prepaid/komplett-tarif.html [L,R=301]
 RewriteRule ^/([a-z]+)/my-mobile/dashboard	/$1/mylebara/login.html [L,R=301]
@@ -170,7 +169,6 @@ RewriteCond %{REQUEST_URI} !^/tmp
 RewriteCond %{REQUEST_URI} !^/var
 RewriteCond %{REQUEST_URI} (.html|.jpe?g|.png|.svg|.json)$
 RewriteRule ^/(.*)$ /content/${CONTENT_FOLDER_NAME}/de/$1 [PT,L]
-
 
 
 # rewrite for root redirect extensionless urls
