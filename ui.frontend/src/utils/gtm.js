@@ -1,11 +1,11 @@
 import { globalConfigs as GC } from "@lebara/ui/src/configs/globalConfigs.js";
 export function googleAnalytics(event, obj) {
    event
-    ? window?.dataLayer.push({
+    ? window?.dataLayer?.push({
         event,
         ecommerce: obj,
       })
-    : window?.dataLayer.push(obj);
+    : window?.dataLayer?.push(obj);
 }
 export function googleAnalyticsCheckout(eventName, step, cartItems) {
   const products = cartItems?.map((product) => ({
@@ -29,7 +29,7 @@ export function googleAnalyticsCheckout(eventName, step, cartItems) {
     if (!window.mt) {
       return null;
     }
-    return window?.dataLayer.push({
+    return window?.dataLayer?.push({
       event: eventName,
       ecommerce: {
         currencyCode: "EUR",
@@ -76,7 +76,7 @@ export function googleAnalyticsTransaction(
       quantity: 1,
     };
   });
-  return window?.dataLayer.push({
+  return window?.dataLayer?.push({
     event: "EEtransaction",
     ecommerce: {
       currencyCode: GC.currencyCode,

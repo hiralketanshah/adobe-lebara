@@ -1,7 +1,7 @@
 import React from "react";
 import "@adyen/adyen-web/dist/adyen.css";
 import { Box, Flex, Text } from "@chakra-ui/react";
-import { useHistory } from "react-router-dom";
+import { useHistory } from "@lebara/ui/src/hooks/useHistory";
 import BuyPlanLayout from "@lebara/ui/src/layouts/BuyPlanLayout";
 import EmptyCartShopCard from "./EmptyCartShopCard";
 import Button from "@lebara/ui/src/components/Button/Button";

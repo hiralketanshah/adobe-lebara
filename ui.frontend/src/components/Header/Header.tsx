@@ -28,7 +28,7 @@ import Search from "../Search/Search";
 import UserMenu from "@lebara/ui/src/components/UserMenu/UserMenu";
 import {headerSearch} from "@lebara/ui/src/redux/actions/headerSearchActions";
 import {selectIsAuthenticated} from "@lebara/ui/src/redux/selectors/userSelectors";
-import {globalConfigs as GC, globalConstants as GCST} from "@lebara/ui/src/configs/globalConfigs.js";
+import {globalConfigs as GC} from "@lebara/ui/src/configs/globalConfigs.js";
 import {useApolloClient, useQuery} from "@apollo/client";
 import GET_CART from "@lebara/ui/src/graphql/GET_CART";
 import {loadInitialCart, setCartItemsLoading} from "@lebara/ui/src/redux/actions/cartActions";
@@ -82,7 +82,7 @@ const SingleMenu = ({ menuItem, newText }: { menuItem: children, newText: any })
 
   const onMenuLinkNavigate = (url: any) => {
     if(!url) return null;
-    return aemUtils.isCheckExternalLink(url) ? window.open(url) : history.push(url);
+    return aemUtils.isCheckExternalLink(url) ? window.open(url, "_blank") : history.push(url);
   }
 
   const onSubMenuHeaderNavigate = (url: any) => {
@@ -307,7 +307,7 @@ const Header: React.FC<HeaderProps> = ({
   
   const handleCartClick = () => {
     onCloseSearch();
-    history.push(cartItems.length === 0 ? GC.journeyPages[GCST.EMPTY_CART]  : GC.journeyPages[GCST.ORDER_DETAILS]);
+    history.push(cartItems.length === 0 ?"/empty-cart"  : "/order-details");
   };
 
   const handleProfileClick = () => {
@@ -317,7 +317,7 @@ const Header: React.FC<HeaderProps> = ({
       return;
     }
     
-    history.push(GC.journeyPages[GCST.REGISTER]  || '/', {
+    history.push("/register", {
       fromHeader: true,
     });
   };
@@ -370,7 +370,7 @@ const Header: React.FC<HeaderProps> = ({
             open={isModalOpen}
             onClose={() => dispatch(toggleDialogState(false))}
         />
-        <Flex display={{ base: "none", lg: "block" }}>
+        <Flex display={{ base: "none", md: "none", lg: "none", xl: "block" }}>
           <Flex
               alignItems="center"
               px={{lg: "20px", xl: "87.88px"}}
@@ -404,7 +404,7 @@ const Header: React.FC<HeaderProps> = ({
               <Button
                   w={{lg: "100px", xl: "130px"}}
                   fontSize={{ lg: "14px", md: "12px" }}
-                  onClick={() => history.push(`${GC.journeyPages[GCST.TOP_UP]}`)}
+                  onClick={() => history.push("/top-up")}
               >
                 {topupCtaText}
               </Button>
@@ -527,7 +527,7 @@ const Header: React.FC<HeaderProps> = ({
               </Flex>
             </Box>
         )}
-        <Flex display={{ lg: "none", sm: "flex" }} mx={{ lg: "27px" }}>
+        <Flex display={{ xl: "none", lg: "flex", md: "flex", sm: "flex" }} mx={{ xl: "27px" }}>
           <MiniHeader loggedInMenuItems={loggedInMenuItems}
                       topupCtaText={topupCtaText}
                       topupCtaLink={topupCtaLink}

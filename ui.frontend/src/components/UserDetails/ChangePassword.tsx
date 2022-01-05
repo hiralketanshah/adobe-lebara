@@ -2,7 +2,7 @@ import React from "react";
 import { useMutation } from "@apollo/client";
 import { Formik } from "formik";
 import { Flex, Text } from "@chakra-ui/react";
-import { useHistory } from "react-router-dom";
+import { useHistory } from "@lebara/ui/src/hooks/useHistory";
 import CHANGE_PASSWORD from "../../graphql/CHANGE_PASSWORD";
 import FormikPassword from "../Formik/FormikPassword/FormikPassword";
 import { ChangePasswordSchema, ChangePasswordProps, CompCPDefaultBindings } from "./types";

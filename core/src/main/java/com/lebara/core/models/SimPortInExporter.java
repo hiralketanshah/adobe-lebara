@@ -2,16 +2,18 @@ package com.lebara.core.models;
 
 import com.adobe.cq.export.json.ComponentExporter;
 import com.adobe.cq.export.json.ExporterConstants;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.lebara.core.utils.CFUtils;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.api.resource.ResourceResolver;
 import org.apache.sling.models.annotations.DefaultInjectionStrategy;
-import org.apache.sling.models.annotations.Model;
-import org.apache.sling.models.annotations.injectorspecific.*;
 import org.apache.sling.models.annotations.Exporter;
-import com.adobe.cq.dam.cfm.ContentFragment;
-import java.util.ArrayList;
+import org.apache.sling.models.annotations.Model;
+import org.apache.sling.models.annotations.injectorspecific.ScriptVariable;
+import org.apache.sling.models.annotations.injectorspecific.SlingObject;
+import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
+
 import java.util.List;
 
 @Model(adaptables = SlingHttpServletRequest.class, adapters = {SimPortInExporter.class, ComponentExporter.class},
@@ -240,15 +242,9 @@ public class SimPortInExporter implements ComponentExporter {
 
     public String getMobileNumberFieldPattern() { return mobileNumberFieldPattern; }
 
+    @JsonProperty("currentProvidersOptions")
     public List<Object> getCurrentProvidersOptions() {
-        if(currentProvidersOptions != null) {
-            Resource currentProvidersResource = resourceResolver.getResource(currentProvidersOptions);
-            ContentFragment currentProvidersFragment = currentProvidersResource.adaptTo(ContentFragment.class);
-            if (null != currentProvidersFragment) {
-                return CFUtils.convertStringArrayToList(CFUtils.getElementArrayValue(currentProvidersFragment, "currentProvidersOptions"), Object.class);
-            }
-        }
-        return new ArrayList<>();
+        return CFUtils.getCurrentProvidersOptions(currentProvidersOptions,resourceResolver);
     }
 
     @Override

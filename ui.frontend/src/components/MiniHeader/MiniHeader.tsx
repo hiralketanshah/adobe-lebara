@@ -27,7 +27,6 @@ import IconButton from "../IconButton/IconButton";
 import SideMenu from "../SideMenu/SideMenu";
 import { ReduxState } from "@lebara/ui/src/redux/types";
 import {selectIsAuthenticated} from "@lebara/ui/src/redux/selectors/userSelectors";
-import { globalConfigs as GC, globalConstants as GCST } from "@lebara/ui/src/configs/globalConfigs.js";
 import Button from "../Button/Button";
 import UserMenu from "@lebara/ui/src/components/UserMenu/UserMenu";
 import Search from "../Search/Search";
@@ -50,7 +49,7 @@ const MiniHeader: React.FC<MiniHeaderProps> = ({
   const isAuthenticated = useSelector(selectIsAuthenticated);
 
   const handleCartClick = () => {
-    history.push(cartItems.length === 0 ? GC.journeyPages[GCST.EMPTY_CART] : GC.journeyPages[GCST.ORDER_DETAILS]);
+    history.push(cartItems.length === 0 ? "/empty-cart" : "/order-details");
   };
 
   const { isOpen, onClose, onOpen } = useDisclosure();
@@ -67,7 +66,7 @@ const MiniHeader: React.FC<MiniHeaderProps> = ({
       setProfileDropdown(!isProfileDropdownOpen);
       return;
     }
-    history.push((GC.journeyPages[GCST.REGISTER]  || '/'), {
+    history.push(("/register"), {
       fromHeader: true,
     });
   };
@@ -78,16 +77,18 @@ const MiniHeader: React.FC<MiniHeaderProps> = ({
   const remapToSideMenuArr = (arr: any, parent: boolean) => {
     return arr?.map((k:any) => {
       let subItems = {};
-      const icon = parent ? BiShoppingBag : <BiMessageSquareDetail color="secondary.600" />;
+      const icon = parent ? BiShoppingBag : BiMessageSquareDetail;
+      const buttonIcon = parent ? BiShoppingBag : <BiMessageSquareDetail color="secondary.600" />;
 
       if(k && k.children) {
-        subItems = remapToSideMenuArr(k.children, false);
+        subItems = remapToSideMenuArr(k.children, true);
       }
 
       return {
         icon: icon,
+        buttonIcon,
         title: k.title,
-        linkUrl: k.path, 
+        linkUrl: k.url || k.path,
         items: subItems,
       };
     });

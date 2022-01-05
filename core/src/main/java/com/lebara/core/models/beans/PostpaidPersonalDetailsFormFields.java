@@ -159,6 +159,9 @@ public class PostpaidPersonalDetailsFormFields {
     public String enterAddressManually;
     
     @ValueMapValue
+    public String changeAddressLabel;
+
+    @ValueMapValue
     public String streetPlaceholder;
     
     @ValueMapValue
@@ -367,6 +370,10 @@ public class PostpaidPersonalDetailsFormFields {
         return enterAddressManually;
     }
 
+    public String getChangeAddressLabel() {
+        return changeAddressLabel;
+    }
+
     public String getStreetPlaceholder() {
         return streetPlaceholder;
     }
@@ -447,16 +454,6 @@ public class PostpaidPersonalDetailsFormFields {
     
     @JsonProperty("currentProviderList")
     public List<Object> getCurrentProvidersList() {
-        if (currentProviderList != null) {
-            Resource currentProvidersResource = resourceResolver.getResource(currentProviderList);
-            if (currentProvidersResource == null) {
-                return new ArrayList<>();
-            }
-            ContentFragment currentProvidersFragment = currentProvidersResource.adaptTo(ContentFragment.class);
-            if (null != currentProvidersFragment) {
-                return CFUtils.convertStringArrayToList(CFUtils.getElementArrayValue(currentProvidersFragment, "currentProvidersOptions"), Object.class);
-            }
-        }
-        return new ArrayList<>();
+        return CFUtils.getCurrentProvidersOptions(currentProviderList, resourceResolver);
     }
 }

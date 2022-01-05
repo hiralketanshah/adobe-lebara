@@ -42,6 +42,10 @@ public class AemUtils {
     }
 
     final static Logger LOGGER = LoggerFactory.getLogger(AemUtils.class);
+    public static final String HTTP = "http";
+    public static final String WWW = "www";
+    public static final String MAIL_TO = "mailto:";
+    public static final String TEL = "tel:";
 
     /**
      * Gets property.
@@ -196,7 +200,7 @@ public class AemUtils {
     }
 
     public static boolean isExternalLink(String payloadPath) {
-        return payloadPath.startsWith("http") || payloadPath.startsWith("www") || payloadPath.startsWith("mailto:")|| payloadPath.startsWith("tel:");
+        return payloadPath.startsWith(HTTP) || payloadPath.startsWith(WWW) || payloadPath.startsWith(MAIL_TO)|| payloadPath.startsWith(TEL);
     }
 
     private static boolean isHtmlExtensionRequired(String payloadPath) {

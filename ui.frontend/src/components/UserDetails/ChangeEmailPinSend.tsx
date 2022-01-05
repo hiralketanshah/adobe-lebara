@@ -10,7 +10,7 @@ import {
 } from "@chakra-ui/react";
 import { Formik } from "formik";
 import { ChangeEmailPinSendProps, PinSendSchema } from "./types";
-import FormikInput from "../Formik/FormikInput/FormikInput";
+import FormikInput from "@lebara/ui/src/components/Formik/FormikInput/FormikInput";
 import Button from "../Button/Button";
 
 const ChangeEmailPinSend: React.FC<ChangeEmailPinSendProps> = ({

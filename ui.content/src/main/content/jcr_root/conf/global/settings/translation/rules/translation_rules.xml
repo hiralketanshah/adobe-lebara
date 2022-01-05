@@ -316,7 +316,7 @@
 		<property name="editLabel"/>
 		<property name="mobileNumberLabel"/>
 		<property name="termsAndConditionsLabel"/>
-
+		<property name="contractSummary"/>
 		<!--Payment Method component -->
 		<property name="preferredPaymentLabel"/>
 		<property name="preferredPaymentDesc"/>
@@ -329,6 +329,21 @@
 		<property name="payWithPaypalLabel"/>
 		<property name="setDefaultLabel"/>
 		<property name="deleteLabel"/>
+
+		<!--Add paypal component -->
+		<property name="modalHeadingTerms"/>
+		<property name="modalHeadingPPPayment"/>
+		<property name="termsFullDescription"/>
+
+		<!--Add/edit debit/credit card component -->
+		<property name="morePaymentMethodsLabel"/>
+		<property name="payButtonLabel"/>
+		<property name="streetLabel"/>
+		<property name="stateOrProvinceLabel"/>
+		<property name="countryLabel"/>
+		<property name="houseNumberOrNameLabel"/>
+		<property name="creditOrDebitLabel"/>
+		<property name="cancelLabel"/>
 
 		<!--Support component -->
 		<property name="ctaLinkLabel"/>

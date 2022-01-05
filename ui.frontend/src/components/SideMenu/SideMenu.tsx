@@ -11,7 +11,7 @@ import {
 import { useHistory } from "@lebara/ui/src/hooks/useHistory";
 import { SideMenuProps } from "./types";
 import { Icon } from "@lebara/ui/src/components/Icon/Icon";
-import Button from "../Button/Button";
+import Button from "@lebara/ui/src/components/Button/Button";
 import {Box} from "@chakra-ui/layout";
 import {IoClose} from "react-icons/all";
 import aemUtils from "../../utils/aem-utils";
@@ -25,7 +25,7 @@ const SideMenu: React.FC<SideMenuProps> = ({
 
   const onMenuLinkNavigate = (url: any) => {
     if(!url) return null;
-    return aemUtils.isCheckExternalLink(url) ? window.open(url) : history.push(url);
+    return aemUtils.isCheckExternalLink(url) ? window.open(url, "_blank") : history.push(url);
   }
 
   return (
@@ -35,7 +35,7 @@ const SideMenu: React.FC<SideMenuProps> = ({
             <Heading color="white" fontSize={26} lineHeight="34px">
               {menuTitle}
             </Heading>
-            <Spacer/>
+            <Spacer />
             <IoClose size="24px" color="white" onClick={onClose}/>
           </Flex>
         </Box>
@@ -69,10 +69,67 @@ const SideMenu: React.FC<SideMenuProps> = ({
                   </AccordionButton>
                 </h2>
                 {item.items && item.items.length !== 0 && <AccordionPanel pb={4}>
-                  {item.items?.map((subItem) => (
+                {item.items?.map((subItem) => (<>
+                    {subItem?.items && subItem?.items.length > 0 ? (
+                        <ChakraAccordion allowToggle>
+                          <AccordionItem key={subItem.title}>
+                            <h2>
+                              <AccordionButton
+                                h="52px"
+                                _focus={{
+                                  outline: "none",
+                                }}
+                              >
+                                <Flex textAlign="left" alignitem="center" flex={1}>
+                                  {subItem.icon && (
+                                    <Icon
+                                      icon={subItem.icon}
+                                      mr="24px"
+                                      color="secondary.500"
+                                      w={18}
+                                      h={18}
+                                    />
+                                  )}
+      
+                                  <Text
+                                    color="primary.600"
+                                    fontWeight="bold"
+                                    fontSize={14}
+                                    onClick={() => onMenuLinkNavigate(subItem?.linkUrl)}
+                                    >
+                                    {subItem.title}
+                                  </Text>
+                                </Flex>
+                                <AccordionIcon />
+                              </AccordionButton>
+                            </h2>
+                            <AccordionPanel pb={4}>
+                              {item.items?.map((childSubItem) => (
+                                <Button
+                                  variant="ghost"
+                                  leftIcon={childSubItem?.buttonIcon as JSX.Element}
+                                  color="grey.300"
+                                  isFullWidth
+                                  fontSize={14}
+                                  fontWeight={500}
+                                  iconSpacing={5}
+                                  justifyContent="flex-start"
+                                  onClick={() =>
+                                    childSubItem.linkUrl
+                                      ? history.push(childSubItem.linkUrl)
+                                      : null
+                                  }
+                                >
+                                  {childSubItem.title}
+                                </Button>
+                              ))}
+                            </AccordionPanel>
+                          </AccordionItem>
+                        </ChakraAccordion>
+                      ) : (
                       <Button
                           variant="ghost"
-                          leftIcon={subItem.icon as JSX.Element}
+                          leftIcon={subItem?.buttonIcon as JSX.Element}
                           color="grey.300"
                           isFullWidth
                           fontSize={14}
@@ -83,12 +140,14 @@ const SideMenu: React.FC<SideMenuProps> = ({
                       >
                         {subItem.title}
                       </Button>
-                  ))}
+                    )}
+                    </>)
+                )}
                 </AccordionPanel>}
               </AccordionItem>
           ))}
         </ChakraAccordion>
-        <Spacer/>
+        <Spacer />
         <Box px="20px" my="37px">
           <Button isFullWidth onClick={() => history.push("/top-up")}>
             {topupCtaText}
