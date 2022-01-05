@@ -12,11 +12,10 @@ import org.osgi.service.component.annotations.Reference;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import javax.jcr.Session;
 import javax.servlet.Servlet;
 import javax.servlet.ServletException;
 import java.io.IOException;
-import java.util.Map;
+import com.google.common.net.MediaType;
 
 import static org.apache.sling.api.servlets.ServletResolverConstants.*;
 
@@ -47,6 +46,7 @@ public class HelpCenterSearchServlet extends GlobalSearchServlet {
             searchRoot = DEFAULT_SEARCH_ROOT;
         }
         log.debug("searchRoot is {}", searchRoot);
+        response.setContentType(MediaType.JSON_UTF_8.toString());
         response.getWriter().println(getSearchInfoString(request, param, resourceResolver, searchRoot));
     }
 }
