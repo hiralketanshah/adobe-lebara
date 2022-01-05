@@ -631,6 +631,100 @@
 		<node resourceType="lebara/components/internationalrates">
 			<property inherit="true" name="selectCountryLabel" translate="true" updateDestinationLanguage="true"/>
 		</node>
+		<!--new-->
+		<node resourceType="lebara/components/addon">
+			<property inherit="true" name="intlPlans" translate="true" updateDestinationLanguage="true"/>
+			<property inherit="true" name="dataPlans" translate="true" updateDestinationLanguage="true"/>
+			<property inherit="true" name="flexiPlans" translate="true" updateDestinationLanguage="true"/>
+		</node>
+		<node resourceType="lebara/components/emptycart">
+			<property inherit="true" name="image" translate="true" updateDestinationLanguage="true"/>
+			<property inherit="true" name="cfPath" translate="true" updateDestinationLanguage="true"/>
+		</node>
+		<node resourceType="lebara/components/awards">
+			<property inherit="true" name="continueBrowsinglink" translate="true" updateDestinationLanguage="true"/>
+		</node>
+		<node resourceType="lebara/components/detailedviewplans">
+			<property inherit="true" name="cfPlanPath" translate="true" updateDestinationLanguage="true"/>
+			<property inherit="true" name="ctaBottomLink" translate="true" updateDestinationLanguage="true"/>
+		</node>
+		<node resourceType="lebara/components/banner">
+			<property inherit="true" name="backgroundImage" translate="true" updateDestinationLanguage="true"/>
+			<property inherit="true" name="knowMoreLink" translate="true" updateDestinationLanguage="true"/>
+		</node>
+		<node resourceType="lebara/components/followus">
+			<property inherit="true" name="label" translate="true" updateDestinationLanguage="true"/>
+			<property inherit="true" name="link" translate="true" updateDestinationLanguage="true"/>
+		</node>
+		<node resourceType="lebara/components/footer">
+			<property inherit="true" name="link" translate="true" updateDestinationLanguage="true"/>
+		</node>
+		<node resourceType="lebara/components/getitnow">
+			<property inherit="true" name="imagePath" translate="true" updateDestinationLanguage="true"/>
+			<property inherit="true" name="buttonCTALink" translate="true" updateDestinationLanguage="true"/>
+		</node>
+		<node resourceType="lebara/components/getapp">
+			<property inherit="true" name="link" translate="true" updateDestinationLanguage="true"/>
+			<property inherit="true" name="backgroundImageDesktop" translate="true" updateDestinationLanguage="true"/>
+			<property inherit="true" name="backgroundImageMobile" translate="true" updateDestinationLanguage="true"/>
+		</node>
+		<node resourceType="lebara/components/header/headernavigation">
+			<property inherit="true" name="logoLinkURL" translate="true" updateDestinationLanguage="true"/>
+			<property inherit="true" name="topupCtaLink" translate="true" updateDestinationLanguage="true"/>
+			<property inherit="true" name="link" translate="true" updateDestinationLanguage="true"/>
+		</node>
+		<node resourceType="lebara/components/helpcenter/faq">
+			<property inherit="true" name="link" translate="true" updateDestinationLanguage="true"/>
+		</node>
+		<node resourceType="lebara/components/helpcenter/search">
+			<property inherit="true" name="searchRoot" translate="true" updateDestinationLanguage="true"/>
+			<property inherit="true" name="link" translate="true" updateDestinationLanguage="true"/>
+		</node>
+		<node resourceType="lebara/components/mini-footer">
+			<property inherit="true" name="link" translate="true" updateDestinationLanguage="true"/>
+		</node>
+		<node resourceType="lebara/components/orderdetails">
+			<property inherit="true" name="privacyPolicyLink" translate="true" updateDestinationLanguage="true"/>
+		</node>
+		<node resourceType="lebara/components/orderpaymenthistory">
+			<property inherit="true" name="backgroundImage" translate="true" updateDestinationLanguage="true"/>
+			<property inherit="true" name="frmFields/nodataImage" translate="true" updateDestinationLanguage="true"/>
+		</node>
+		<node resourceType="lebara/components/plans/recommendedtariff">
+			<property inherit="true" name="recommendedURL" translate="true" updateDestinationLanguage="true"/>
+			<property inherit="true" name="recommendedImage" translate="true" updateDestinationLanguage="true"/>
+		</node>
+		<node resourceType="lebara/components/orderpaymenthistory">
+			<property inherit="true" name="pageIcon" translate="true" updateDestinationLanguage="true"/>
+			<property inherit="true" name="simImageFile" translate="true" updateDestinationLanguage="true"/>
+			<property inherit="true" name="imagePath" translate="true" updateDestinationLanguage="true"/>
+		</node>
+		<node resourceType="lebara/components/porting">
+			<property inherit="true" name="ctaOneLink" translate="true" updateDestinationLanguage="true"/>
+			<property inherit="true" name="ctaTwoLink" translate="true" updateDestinationLanguage="true"/>
+		</node>
+		<node resourceType="lebara/components/progressstep">
+			<property inherit="true" name="link" translate="true" updateDestinationLanguage="true"/>
+		</node>
+		<node resourceType="lebara/components/sectionintro">
+			<property inherit="true" name="linkPath" translate="true" updateDestinationLanguage="true"/>
+		</node>
+		<node resourceType="lebara/components/usp">
+			<property inherit="true" name="icon" translate="true" updateDestinationLanguage="true"/>
+		</node>
+		<node resourceType="lebara/components/whileyouarehere">
+			<property inherit="true" name="ctaLiveChatUrl" translate="true" updateDestinationLanguage="true"/>
+		</node>
+		<node resourceType="lebara/components/wheretocall">
+			<property inherit="true" name="fragmentRootPath" translate="true" updateDestinationLanguage="true"/>
+			<property inherit="true" name="fileName" translate="true" updateDestinationLanguage="true"/>
+		</node>
+		<node resourceType="lebara/components/spa">
+			<property inherit="true" name="internationalRatesRootPath" translate="true" updateDestinationLanguage="true"/>
+			<property inherit="true" name="path" translate="true" updateDestinationLanguage="true"/>
+			<property inherit="true" name="privatePages" translate="true" updateDestinationLanguage="true"/>
+			<property inherit="true" name="name" translate="false" updateDestinationLanguage="false"/>
+		</node>
 	</node>
 	<node path="/content/forms">
 		<property name="text" translate="false"/>
