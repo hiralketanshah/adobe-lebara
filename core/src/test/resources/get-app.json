@@ -1,0 +1,62 @@
+{
+  "jcr:primaryType": "cq:Page",
+  "jcr:createdBy": "admin",
+  "jcr:created": "Thu Dec 30 2021 11:01:12 GMT+0530",
+  "jcr:content": {
+    "jcr:primaryType": "cq:PageContent",
+    "jcr:createdBy": "admin",
+    "jcr:title": "get-app",
+    "cq:template": "/conf/lebara/settings/wcm/templates/lebara-page-template",
+    "jcr:created": "Thu Dec 30 2021 11:01:12 GMT+0530",
+    "cq:lastModified": "Thu Dec 30 2021 11:03:32 GMT+0530",
+    "sling:resourceType": "lebara/components/page",
+    "cq:lastModifiedBy": "admin",
+    "root": {
+      "jcr:primaryType": "nt:unstructured",
+      "sling:resourceType": "wcm/foundation/components/responsivegrid",
+      "experiencefragment-header": {
+        "jcr:primaryType": "nt:unstructured",
+        "jcr:lastModifiedBy": "admin",
+        "fragmentVariationPath": "/content/experience-fragments/lebara/de/en/site/header/master",
+        "jcr:lastModified": "Thu Dec 30 2021 11:01:48 GMT+0530",
+        "sling:resourceType": "lebara/components/experiencefragment"
+      },
+      "responsivegrid": {
+        "jcr:primaryType": "nt:unstructured",
+        "sling:resourceType": "wcm/foundation/components/responsivegrid",
+        "getapp": {
+          "jcr:primaryType": "nt:unstructured",
+          "jcr:createdBy": "admin",
+          "jcr:lastModifiedBy": "admin",
+          "backgroundImageMobile": "/content/dam/lebara/global/footer-bg.jpeg",
+          "getAppLabel": "Get Apps",
+          "textCol1": "multiline text 1",
+          "textCol2": "multiline text 2",
+          "jcr:created": "Thu Dec 30 2021 11:02:20 GMT+0530",
+          "textDescription": "<p>Get app description</p>\r\n",
+          "jcr:lastModified": "Thu Dec 30 2021 11:03:32 GMT+0530",
+          "appTitle": "main title",
+          "sling:resourceType": "lebara/components/getapp",
+          "backgroundColor": "rgba(153,102,51,0.84)",
+          "textIsRich": "true",
+          "backgroundImageDesktop": "/content/dam/lebara/global/footer-bg.jpeg",
+          "links": {
+            "jcr:primaryType": "nt:unstructured",
+            "item0": {
+              "jcr:primaryType": "nt:unstructured",
+              "link": "/content/dam/lebara/global/footer-bg.jpeg",
+              "label": "/content/dam/lebara/global/footer-bg.jpeg"
+            }
+          }
+        }
+      },
+      "experiencefragment-footer": {
+        "jcr:primaryType": "nt:unstructured",
+        "jcr:lastModifiedBy": "admin",
+        "fragmentVariationPath": "/content/experience-fragments/lebara/de/en/site/footer/master",
+        "jcr:lastModified": "Thu Dec 30 2021 11:02:03 GMT+0530",
+        "sling:resourceType": "lebara/components/experiencefragment"
+      }
+    }
+  }
+}
