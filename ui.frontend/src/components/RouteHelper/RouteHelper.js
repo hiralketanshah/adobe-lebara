@@ -40,7 +40,7 @@ export const withRoute = (WrappedComponent, extension) => {
       let paths = ['(.*)' + routePath + '(.' + extension + ')?'];
       extension = extension || 'html';
       if (!AuthoringUtils.isInEditor() && routePath.startsWith(PROJECT_URL_ROOT)) {
-        paths.push(routePath.substring(PROJECT_URL_ROOT.length) + ".html");
+        paths.push(routePath.substring(PROJECT_URL_ROOT.length) + "(.html)?");
     }
       // Context path + route path + extension
       return (
