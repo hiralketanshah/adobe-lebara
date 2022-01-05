@@ -35,6 +35,7 @@ import javax.servlet.Servlet;
 import javax.servlet.ServletException;
 import java.io.IOException;
 import java.util.*;
+import com.google.common.net.MediaType;
 
 @Component(service = {Servlet.class})
 @SlingServletResourceTypes(
@@ -93,6 +94,7 @@ public class FragmentInfoServlet extends SlingSafeMethodsServlet {
                 );
         ObjectMapper mapper = new ObjectMapper();
         String prettyPrintedJson = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(offerFragmentBeanList);
+        response.setContentType(MediaType.JSON_UTF_8.toString());
         response.getWriter().println(prettyPrintedJson);
     }
 
