@@ -121,6 +121,9 @@
 		<property name="yourOrderPerMonthOrderTotalLabel" />
 		<property name="yourOrderOneTimeActivationFeeLabel" />
 		<property name="yourOrderOneTimeActivationFee" />
+		<property name="yourOrderMinutesLabel" />
+		<property name="yourOrderTwentyFourMonthsLabel" />
+		<property name="yourOrderOneMonthLabel" />
 		<property name="dataVolumeRadioLabel" />
 		<property name="abroadMinutesRadioLabel" />
 		<property name="yourOrdersimPlanLabel" />
