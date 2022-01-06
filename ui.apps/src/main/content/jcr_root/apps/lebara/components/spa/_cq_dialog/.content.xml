@@ -291,7 +291,7 @@
                                             <paymethod
                                                     jcr:primaryType="nt:unstructured"
                                                     sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                                    fieldLabel="Payment Method"
+                                                    fieldLabel="Payment Method Title"
                                                     fieldDescription="Select payment method"
                                                     name="./paymentMessages/paymentMethodTitle"/>
                                             <cardname
