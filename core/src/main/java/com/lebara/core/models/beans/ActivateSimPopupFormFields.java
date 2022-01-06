@@ -1,36 +1,33 @@
 package com.lebara.core.models.beans;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonProperty;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.models.annotations.DefaultInjectionStrategy;
 import org.apache.sling.models.annotations.Model;
-import org.apache.sling.models.annotations.injectorspecific.ChildResource;
 import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @Model(adaptables = {Resource.class}, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
-public class AttachSimBean {
+public class ActivateSimPopupFormFields {
 
     @ValueMapValue
-    private String heading;
+    private String mobileLabel;
 
     @ValueMapValue
-    private String description;
+    private String ctaButtonLabel;
 
-    @ChildResource
-    private AttachSimPopupFormFields frmFields;
+    @ValueMapValue
+    private String ctaLinkLabel;
 
-    @JsonProperty("frmFields")
-    public AttachSimPopupFormFields getFrmFields() {
-        return frmFields;
+   @ValueMapValue
+    private String ctaButtonLink;
+
+    public String getMobileLabel() {
+        return mobileLabel;
     }
-
-    public String getHeading() {
-        return heading;
+    public String getCtaButtonLabel() {
+        return ctaButtonLabel;
     }
-
-    public String getDescription() {
-        return description;
-    }
+    public String getCtaLinkLabel() { return ctaLinkLabel; }
+    public String getCtaButtonLink() { return ctaButtonLink; }
 }

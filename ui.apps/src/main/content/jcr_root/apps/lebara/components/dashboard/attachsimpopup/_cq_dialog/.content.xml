@@ -179,38 +179,18 @@
                                     fieldLabel="CTA Button Label"
                                     name="./attachSimModal/frmFields/ctaButtonLabel"
                                     value="CONTINUE"/>
-                            <ctaButtonLink
-                                    jcr:primaryType="nt:unstructured"
-                                    sling:resourceType="granite/ui/components/coral/foundation/form/pathbrowser"
-                                    fieldLabel="CTA Button Link"
-                                    name="./attachSimModal/frmFields/ctaButtonLink"
-                                    rootPath="/content/lebara"/>
-
-                            <ctaContinueLabel
+                            <ctaLinkLabel
                                     jcr:primaryType="nt:unstructured"
                                     sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                     fieldDescription="Continue Browing Label"
-                                    fieldLabel="Continue Browing Label"
-                                    name="./attachSimModal/frmFields/ctaContinueLabel"
+                                    fieldLabel="CTA Link Label"
+                                    name="./attachSimModal/frmFields/ctaLinkLabel"
                                     value="Continue Browing"/>
-                            <ctaContinueURL
+                            <ctaLink
                                     jcr:primaryType="nt:unstructured"
                                     sling:resourceType="granite/ui/components/coral/foundation/form/pathbrowser"
-                                    fieldLabel="Continue Browing URL"
-                                    name="./attachSimModal/frmFields/ctaContinueURL"
-                                    rootPath="/content/lebara"/>
-                            <ctaContinueorEditLabel
-                                    jcr:primaryType="nt:unstructured"
-                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                    fieldDescription="Continue OR Edit Label"
-                                    fieldLabel="Continue OR Edit Label"
-                                    name="./attachSimModal/frmFields/ctaContinueorEditLabel"
-                                    value=""/>
-                            <ctaContinueorEditLink
-                                    jcr:primaryType="nt:unstructured"
-                                    sling:resourceType="granite/ui/components/coral/foundation/form/pathbrowser"
-                                    fieldLabel="Continue OR Edit Link"
-                                    name="./attachSimModal/frmFields/ctaContinueorEditLink"
+                                    fieldLabel="CTA Link URL"
+                                    name="./attachSimModal/frmFields/ctaLink"
                                     rootPath="/content/lebara"/>
 
                         </items>
@@ -224,9 +204,9 @@
                                     jcr:primaryType="nt:unstructured"
                                     sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                     fieldDescription="Change Password Label"
-                                    fieldLabel="Attach Your SIM Label"
+                                    fieldLabel="Activate Your SIM Label"
                                     name="./activateSimModal/heading"
-                                    value="Attach your SIM"/>
+                                    value="Activate your SIM"/>
 
                             <description
                                     jcr:primaryType="nt:unstructured"
@@ -357,9 +337,8 @@
                                                 jcr:primaryType="nt:unstructured"
                                                 toolbar="[table#insertcolumn-before,table#insertcolumn-after,table#removecolumn,-,table#insertrow-before,table#insertrow-after,table#removerow,-,table#mergecells-right,table#mergecells-down,table#mergecells,table#splitcell-horizontal,table#splitcell-vertical,-,table#selectrow,table#selectcolumn,-,table#ensureparagraph,-,table#modifytableandcell,table#removetable,-,undo#undo,undo#redo,-,table#exitTableEditing,-]"/>
                                     </cui>
-                                </uiSettings>mobilePlaceHolder
+                                </uiSettings>
                             </description>
-
                             <lebaraMobileLabel
                                     jcr:primaryType="nt:unstructured"
                                     sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
@@ -367,59 +346,30 @@
                                     fieldLabel="Lebara Mobile Number"
                                     name="./activateSimModal/frmFields/mobileLabel"
                                     value="Lebara Mobile Number"/>
-                            <lebaraMobileNumberPlacehodler
-                                    jcr:primaryType="nt:unstructured"
-                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                    fieldDescription="Lebara Mobile Number Placeholder"
-                                    fieldLabel="Lebara Mobile Number Placeholder"
-                                    name="./activateSimModal/frmFields/mobilePlaceHolder"
-                                    value="0000000000"/>
-
                             <ctaButtonLabel
                                     jcr:primaryType="nt:unstructured"
                                     sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                     fieldDescription="CTA Button Label"
                                     fieldLabel="CTA Button Label"
                                     name="./activateSimModal/frmFields/ctaButtonLabel"
-                                    value="CONTINUE"/>
+                                    value="CLICK HERE TO ACTIVATE"/>
+
+                            <ctaLinkLabel
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                    fieldDescription="CTA Link Label"
+                                    fieldLabel="CTA Link Label"
+                                    name="./activateSimModal/frmFields/ctaLinkLabel"
+                                    value="Edit"/>
+
                             <ctaButtonLink
                                     jcr:primaryType="nt:unstructured"
                                     sling:resourceType="granite/ui/components/coral/foundation/form/pathbrowser"
                                     fieldLabel="CTA Button Link"
                                     name="./activateSimModal/frmFields/ctaButtonLink"
                                     rootPath="/content/lebara"/>
-
-                            <ctaContinueLabel
-                                    jcr:primaryType="nt:unstructured"
-                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                    fieldDescription="Continue Browing Label"
-                                    fieldLabel="Continue Browing Label"
-                                    name="./activateSimModal/frmFields/ctaContinueLabel"
-                                    value="Continue Browing"/>
-                            <ctaContinueURL
-                                    jcr:primaryType="nt:unstructured"
-                                    sling:resourceType="granite/ui/components/coral/foundation/form/pathbrowser"
-                                    fieldLabel="Continue Browing URL"
-                                    name="./activateSimModal/frmFields/ctaContinueURL"
-                                    rootPath="/content/lebara"/>
-                            <ctaContinueorEditLabel
-                                    jcr:primaryType="nt:unstructured"
-                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                    fieldDescription="Continue OR Edit Label"
-                                    fieldLabel="Continue OR Edit Label"
-                                    name="./activateSimModal/frmFields/ctaContinueorEditLabel"
-                                    value=""/>
-                            <ctaContinueorEditLink
-                                    jcr:primaryType="nt:unstructured"
-                                    sling:resourceType="granite/ui/components/coral/foundation/form/pathbrowser"
-                                    fieldLabel="Continue OR Edit Link"
-                                    name="./activateSimModal/frmFields/ctaContinueorEditLink"
-                                    rootPath="/content/lebara"/>
-
                         </items>
                     </column2>
-
-
                  </items>
             </tabs>
         </items>

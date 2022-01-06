@@ -2,18 +2,13 @@ package com.lebara.core.models.beans;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import org.apache.sling.api.resource.Resource;
-import org.apache.sling.api.resource.ResourceResolver;
 import org.apache.sling.models.annotations.DefaultInjectionStrategy;
 import org.apache.sling.models.annotations.Model;
-import org.apache.sling.models.annotations.injectorspecific.SlingObject;
 import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @Model(adaptables = {Resource.class}, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
 public class AttachSimPopupFormFields {
-
-    @SlingObject
-    private ResourceResolver resourceResolver;
 
     @ValueMapValue
     private String mobileLabel;
@@ -25,19 +20,10 @@ public class AttachSimPopupFormFields {
     private String ctaButtonLabel;
 
     @ValueMapValue
-    private String ctaButtonLink;
+    private String ctaLinkLabel;
 
     @ValueMapValue
-    private String ctaContinueLabel;
-
-    @ValueMapValue
-    private String ctaContinueURL;
-
-    @ValueMapValue
-    private String ctaContinueorEditLabel;
-
-    @ValueMapValue
-    private String ctaContinueorEditLink;
+    private String ctaLink;
 
     public String getMobileLabel() {
         return mobileLabel;
@@ -51,23 +37,7 @@ public class AttachSimPopupFormFields {
         return ctaButtonLabel;
     }
 
-    public String getCtaButtonLink() {
-        return ctaButtonLink;
-    }
+    public String getCtaLinkLabel() { return ctaLinkLabel; }
+    public String getCtaLink() { return ctaLink;}
 
-    public String getCtaContinueLabel() {
-        return ctaContinueLabel;
-    }
-
-    public String getCtaContinueURL() {
-        return ctaContinueURL;
-    }
-
-    public String getCtaContinueorEditLabel() {
-        return ctaContinueorEditLabel;
-    }
-
-    public String getCtaContinueorEditLink() {
-        return ctaContinueorEditLink;
-    }
 }
