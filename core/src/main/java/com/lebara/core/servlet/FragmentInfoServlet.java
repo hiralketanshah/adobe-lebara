@@ -118,10 +118,12 @@ public class FragmentInfoServlet extends SlingSafeMethodsServlet {
     private Map<String, String> getPredicatesMap(List<String> offerIdList) {
         Map<String, String> predicate = new HashMap<>();
         predicate.put("path", offerRootPath);
+        predicate.put("p.limit", "-1");
         predicate.put("type",  DamConstants.NT_DAM_ASSET);
-
-        predicate.put("property", "jcr:content/data/master/offerid");
-        offerIdList.forEach(id-> predicate.put("property.{0}_value".replace("{0}", String.valueOf(offerIdList.indexOf(id))), id));
+        if(!String.valueOf(offerIdList.get(0)).toLowerCase().equals("all")) {
+        	predicate.put("property", "jcr:content/data/master/offerid");
+            offerIdList.forEach(id-> predicate.put("property.{0}_value".replace("{0}", String.valueOf(offerIdList.indexOf(id))), id));
+        }        
         return predicate;
     }
 }
