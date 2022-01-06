@@ -18,6 +18,8 @@ export interface EmptyCartShopCardProps {
   addToCartLabel?: string;
   continueBrowsinglink?: string;
   fullWidth?: boolean;
+  viewCartLabel?: string;
+  addedtoCartLabel?: string;
 }
 
 export interface CountriesList extends CountriesListOption {}
