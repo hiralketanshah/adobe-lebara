@@ -23,9 +23,19 @@ import {globalConfigs} from '@lebara/ui/src/configs/globalConfigs.js';
 import store from "@lebara/ui/src/store";
 import { pdfjs } from "react-pdf";
 pdfjs.GlobalWorkerOptions.workerSrc = '/etc.clientlibs/lebara/clientlibs/clientlib-react/resources/pdf.worker.js';
+const defaultOptions = {
+    watchQuery: {
+        fetchPolicy: "no-cache",
+    },
+    query: {
+        fetchPolicy: "no-cache",
+    },
+};
+
 const client = new ApolloClient({
   uri: `${globalConfigs.apiHostUri}${globalConfigs.gqlEndpoint}`,
   credentials: "include",
+  defaultOptions,
   cache: new InMemoryCache(),
 });
 
