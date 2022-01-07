@@ -121,6 +121,9 @@
 		<property name="yourOrderPerMonthOrderTotalLabel" />
 		<property name="yourOrderOneTimeActivationFeeLabel" />
 		<property name="yourOrderOneTimeActivationFee" />
+		<property name="yourOrderMinutesLabel" />
+		<property name="yourOrderTwentyFourMonthsLabel" />
+		<property name="yourOrderOneMonthLabel" />
 		<property name="dataVolumeRadioLabel" />
 		<property name="abroadMinutesRadioLabel" />
 		<property name="yourOrdersimPlanLabel" />
@@ -171,6 +174,8 @@
 		<property name="storeTitle" />
 		<property name="helpText" />
 		<property name="lookText" />
+		<property name="newText" />
+		<property name="topupCtaText" />
 
 		<!-- Page props -->
 		<property name="imageText" />
@@ -617,19 +622,18 @@
 		<property name="orderHistoryEmptyLabel"/>
 		<property name="emptyOrderLabel"/>
 
-		<property inherit="true" name="cfPath" translate="true" updateDestinationLanguage="true"/>
-
 		<!-- Lebara fields ends -->
 		<property name="cq:language" updateDestinationLanguage="true"/>
 		<node pathContains="/cq:annotations">
 			<property name="text" translate="false"/>
 		</node>
 
-		<node resourceType="lebara/components/viewplans">
-			<property inherit="true" name="cfPath" translate="true" updateDestinationLanguage="true"/>
-		</node>
 		<node resourceType="lebara/components/internationalrates">
 			<property inherit="true" name="selectCountryLabel" translate="true" updateDestinationLanguage="true"/>
+		</node>
+		<!--new-->
+		<node resourceType="lebara/components/spa">
+			<property inherit="true" name="name" translate="false" updateDestinationLanguage="false"/>
 		</node>
 	</node>
 	<node path="/content/forms">
@@ -682,6 +686,17 @@
 	<assetNode resourceType="core/wcm/components/contentfragment/v1/contentfragment" assetReferenceAttribute="fragmentPath"/>
 	<assetNode resourceType="core/wcm/components/image/v2/image" assetReferenceAttribute="fileReference"/>
 	<assetNode resourceType="lebara/components/viewplans" assetReferenceAttribute="cfPath"/>
+	<assetNode resourceType="lebara/components/emptycart" assetReferenceAttribute="cfPath"/>
 	<assetNode resourceType="lebara/components/contentfragment" assetReferenceAttribute="fragmentPath"/>
 	<assetNode resourceType="lebara/components/internationalrates" assetReferenceAttribute="cfPath"/>
+	<assetNode resourceType="lebara/components/spa" assetReferenceAttribute="internationalRatesRootPath" />
+	<assetNode resourceType="lebara/components/footer" assetReferenceAttribute="link" />
+	<assetNode resourceType="lebara/components/mini-footer" assetReferenceAttribute="link" />
+	<assetNode resourceType="lebara/components/progressstep" assetReferenceAttribute="link" />
+	<assetNode resourceType="lebara/components/header/headernavigation" assetReferenceAttribute="link" />
+	<assetNode resourceType="lebara/components/helpcenter/faq" assetReferenceAttribute="link" />
+	<assetNode resourceType="lebara/components/wheretocall" assetReferenceAttribute="fragmentRootPath" />
+	<assetNode resourceType="lebara/components/whileyouarehere" assetReferenceAttribute="ctaLiveChatUrl" />
+	<assetNode resourceType="lebara/components/sectionintro" assetReferenceAttribute="linkPath" />
+	<assetNode resourceType="lebara/components/usp" assetReferenceAttribute="icon" />
 </nodelist>

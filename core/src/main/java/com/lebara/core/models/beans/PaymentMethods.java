@@ -15,6 +15,15 @@ public class PaymentMethods {
     private String card;
 
     @ValueMapValue
+    private String paymentMethodTitle;
+
+    @ValueMapValue
+    private String creditCardName;
+
+    @ValueMapValue
+    private String sepaName;
+
+    @ValueMapValue
     private String paypal;
 
     @ValueMapValue
@@ -115,6 +124,18 @@ public class PaymentMethods {
 
     public String getRecurringLabel() {
         return getUTFStr(recurringLabel);
+    }
+
+    public String getPaymentMethodTitle() {
+        return paymentMethodTitle;
+    }
+
+    public String getCreditCardName() {
+        return creditCardName;
+    }
+
+    public String getSepaName() {
+        return sepaName;
     }
 
     private String getUTFStr(String rawString) {

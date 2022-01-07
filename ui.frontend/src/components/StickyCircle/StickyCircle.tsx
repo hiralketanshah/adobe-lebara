@@ -62,7 +62,9 @@ const StickyCircle: React.FC<StickyCircleProps> = ({
           }}
           background="none"
         >
-          <Text textTransform="capitalize" fontSize="17px" color="white" whiteSpace="break-spaces">
+          <Text textTransform="capitalize" 
+            fontSize={linkLabel && linkLabel?.length > 7 ? '.75rem' : '17px'} 
+            color="white" whiteSpace="break-spaces">
             {linkLabel}
           </Text>
         </Button>
