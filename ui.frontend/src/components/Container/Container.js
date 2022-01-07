@@ -9,7 +9,6 @@ const ContainerConfig = {
     emptyLabel: 'Core Lebara Container',
     
     isEmpty: function(props) {
-        console.log({props})
         return !props || !props.cqItemsOrder || props.cqItemsOrder.length === 0;
     }
 };
