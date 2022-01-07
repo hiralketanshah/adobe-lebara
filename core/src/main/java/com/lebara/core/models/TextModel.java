@@ -39,7 +39,7 @@ public class TextModel implements Text {
 
     @Override
     public String getText() {
-        return jsoup(delegate.getText());
+        return AemUtils.jsoup(delegate.getText(),slingRequest);
     }
 
     @Override
@@ -50,20 +50,5 @@ public class TextModel implements Text {
     @Override
     public String getExportedType() {
         return resource.getResourceType();
-    }
-
-    public String jsoup(String text) {
-        if (StringUtils.isNotBlank(text)) {
-            Document doc = Jsoup.parse(text);
-            Elements val = doc.getElementsByTag("a");
-            for (Element aTag : val) {
-                String hrefURL = aTag.attr("href"); //.replace("/content/lebara","");
-                String shortURL = AemUtils.getLinkWithExtension(hrefURL, slingRequest);
-                text.replace(hrefURL, shortURL);
-            }
-        } else {
-            return StringUtils.EMPTY;
-        }
-        return text;
     }
 }
