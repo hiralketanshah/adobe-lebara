@@ -52,8 +52,8 @@ public class InternationalRatesExporter implements ComponentExporter {
     @ValueMapValue
     private String cfPath;
 
-    @ValueMapValue
     private String selectCountryLabel;
+
     private String countryLabel;
 
     @ValueMapValue
