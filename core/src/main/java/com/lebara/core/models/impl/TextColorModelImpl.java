@@ -5,6 +5,8 @@ import com.adobe.cq.export.json.ExporterConstants;
 import com.adobe.cq.wcm.core.components.models.Text;
 import com.adobe.cq.wcm.core.components.models.datalayer.ComponentData;
 import com.lebara.core.models.TextColorModel;
+import com.lebara.core.utils.AemUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.models.annotations.DefaultInjectionStrategy;
@@ -13,8 +15,13 @@ import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.Via;
 import org.apache.sling.models.annotations.injectorspecific.ScriptVariable;
 import org.apache.sling.models.annotations.injectorspecific.Self;
+import org.apache.sling.models.annotations.injectorspecific.SlingObject;
 import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
 import org.apache.sling.models.annotations.via.ResourceSuperType;
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
 
 @Model(adaptables = SlingHttpServletRequest.class, adapters = { TextColorModelImpl.class,
 		ComponentExporter.class }, resourceType = TextColorModelImpl.RESOURCE_TYPE, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
@@ -26,6 +33,9 @@ public class TextColorModelImpl implements TextColorModel {
 
 	@ScriptVariable
 	protected Resource resource;
+
+	@SlingObject
+	private SlingHttpServletRequest slingRequest;
 
 	/**
 	 * The resource type.
@@ -58,7 +68,22 @@ public class TextColorModelImpl implements TextColorModel {
 
 	@Override
 	public String getText() {
-		return delegate.getText();
+		return jsoup(delegate.getText());
+	}
+
+	public String jsoup(String text) {
+		if (StringUtils.isNotBlank(text)) {
+			Document doc = Jsoup.parse(text);
+			Elements val = doc.getElementsByTag("a");
+			for (Element aTag : val) {
+				String hrefURL = aTag.attr("href"); //.replace("/content/lebara","");
+				String shortURL = AemUtils.getLinkWithExtension(hrefURL, slingRequest);
+				text.replace(hrefURL, shortURL);
+			}
+		} else {
+			return StringUtils.EMPTY;
+		}
+		return text;
 	}
 
 	@Override

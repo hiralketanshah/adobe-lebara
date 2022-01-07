@@ -16,5 +16,6 @@
   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 <workspaceFilter version="1.0">
     <filter root="/apps/lebara-packages"/>
+    <filter root="/apps/lebara/install"/>
     <filter root="/apps/lebara-vendor-packages"/>
 </workspaceFilter>

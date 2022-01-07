@@ -87,6 +87,11 @@
                             <artifactId>spa.project.core.ui.apps</artifactId>
                             <target>/apps/lebara-vendor-packages/application/install</target>
                         </embedded>
+                        <embedded>
+                            <groupId>org.jsoup</groupId>
+                            <artifactId>jsoup</artifactId>
+                            <target>/apps/lebara/install</target>
+                        </embedded>
                     </embeddeds>
                 </configuration>
             </plugin>
@@ -205,6 +210,10 @@
             <artifactId>lebara.ui.config</artifactId>
             <version>${project.version}</version>
             <type>zip</type>
+        </dependency>
+        <dependency>
+            <groupId>org.jsoup</groupId>
+            <artifactId>jsoup</artifactId>
         </dependency>
 
         <!-- SPA Project Core (includes hierarchy page) -->
