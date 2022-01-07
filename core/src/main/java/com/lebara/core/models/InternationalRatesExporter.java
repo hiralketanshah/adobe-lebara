@@ -102,7 +102,7 @@ public class InternationalRatesExporter implements ComponentExporter {
     }
 
     public String getSelectCountryLabel() {
-        return selectCountryLabel;
+        return (i18n == null ? "Please select a country" : i18n.get("lebara.SelectCountry.label"));
     }
 
     public String getCountryLabel() {
