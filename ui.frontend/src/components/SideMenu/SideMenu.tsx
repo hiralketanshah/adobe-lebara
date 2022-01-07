@@ -42,7 +42,9 @@ const SideMenu: React.FC<SideMenuProps> = ({
 
         <ChakraAccordion>
           {items?.map((item) => (
-              <AccordionItem key={item.title}>
+              <AccordionItem 
+                key={item.title}
+                className={`sidemenu-parent-level`}>
                 <h2>
                   <AccordionButton h="52px"
                     _focus={{
@@ -69,10 +71,13 @@ const SideMenu: React.FC<SideMenuProps> = ({
                   </AccordionButton>
                 </h2>
                 {item.items && item.items.length !== 0 && <AccordionPanel pb={4}>
-                {item.items?.map((subItem) => (<>
+                {item.items?.map((subItem, cidx1) => (<>
                     {subItem?.items && subItem?.items.length > 0 ? (
                         <ChakraAccordion allowToggle>
-                          <AccordionItem key={subItem.title}>
+                          <AccordionItem key={subItem.title}
+                            className={`sidemenu-child-level1`}
+                            borderBottomWidth={`${(cidx1 === (item?.items && item?.items?.length-1)) ? '0 !important' : '1px'}`}
+                            >
                             <h2>
                               <AccordionButton
                                 h="52px"
@@ -104,7 +109,7 @@ const SideMenu: React.FC<SideMenuProps> = ({
                               </AccordionButton>
                             </h2>
                             <AccordionPanel pb={4}>
-                              {item.items?.map((childSubItem) => (
+                              {subItem.items?.map((childSubItem) => (
                                 <Button
                                   variant="ghost"
                                   leftIcon={childSubItem?.buttonIcon as JSX.Element}
