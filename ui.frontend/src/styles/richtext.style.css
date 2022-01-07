@@ -1,5 +1,11 @@
 
 /* Common RichText Component Stylings */
+.lb-text-comp ul,
+.lb-text-comp ol {
+    padding-left: 35px;
+    margin: .87rem 0;
+}
+
 .rich-text h3 {
 	font-weight: var(--chakra-fontWeights-bold);
     font-size: 16px;
