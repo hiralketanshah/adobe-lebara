@@ -1,5 +1,5 @@
 import { MapTo } from "@adobe/aem-react-editable-components";
-import ChangePasswordContainer from "../components/UserDetails/ChangePasswordContainer";
+import ChangePasswordContainer from "@lebara/ui/src/components/UserDetails/ChangePasswordContainer";
 
 const ChangePasswordConfig = {
   emptyLabel: "Change Password Component",

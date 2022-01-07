@@ -370,6 +370,24 @@
                                 fieldLabel="Sim plan label"
                                 name="./yourOrdersimPlanLabel"
                                 value="Your Order"/>
+                            <minuteslabel
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldLabel="Minutes label"
+                                name="./yourOrderMinutesLabel"
+                                value="Minutes"/>
+                            <twentyfourmonthslabel
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldLabel="24 Months Label"
+                                name="./yourOrderTwentyFourMonthsLabel"
+                                value="24 Months"/>
+                            <onemonthlabel
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldLabel="One Month label"
+                                name="./yourOrderOneMonthLabel"
+                                value="1 Month"/>
                             <contractdurationLabel
                                 jcr:primaryType="nt:unstructured"
                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"

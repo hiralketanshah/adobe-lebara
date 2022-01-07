@@ -87,6 +87,12 @@ public class PostpaidExporter implements ComponentExporter {
     private String yourOrderMinutesInGermanyValue;
     @ValueMapValue
     private String popupDownloadLabel;
+    @ValueMapValue
+    private String yourOrderMinutesLabel;
+    @ValueMapValue
+    private String yourOrderTwentyFourMonthsLabel;
+    @ValueMapValue
+    private String yourOrderOneMonthLabel;
     public List<Labels> getDurationRadioLabelList() {
         return durationRadioLabelList == null ? Collections.emptyList() : Collections.unmodifiableList(durationRadioLabelList);
     }
@@ -209,6 +215,18 @@ public class PostpaidExporter implements ComponentExporter {
 
     public String getPopupDownloadLabel() {
         return popupDownloadLabel;
+    }
+
+    public String getYourOrderMinutesLabel() {
+        return yourOrderMinutesLabel;
+    }
+
+    public String getYourOrderTwentyFourMonthsLabel() {
+        return yourOrderTwentyFourMonthsLabel;
+    }
+
+    public String getYourOrderOneMonthLabel() {
+        return yourOrderOneMonthLabel;
     }
     @Override
     public String getExportedType() {

@@ -58,6 +58,12 @@ public class PostpaidPersonalDetailsExporter implements ComponentExporter{
     private String yourOrderOneTimeActivationFeeLabel;
     @ValueMapValue
     private String yourOrderOneTimeActivationFee;
+    @ValueMapValue
+    private String yourOrderMinutesLabel;
+    @ValueMapValue
+    private String yourOrderTwentyFourMonthsLabel;
+    @ValueMapValue
+    private String yourOrderOneMonthLabel;
     @ChildResource
     private PostpaidPersonalDetailsFormFields frmFields;
 
@@ -124,6 +130,18 @@ public class PostpaidPersonalDetailsExporter implements ComponentExporter{
 
     public String getTermsAndConditionsLabel() {
         return termsAndConditionsLabel;
+    }
+
+    public String getYourOrderMinutesLabel() {
+        return yourOrderMinutesLabel;
+    }
+
+    public String getYourOrderTwentyFourMonthsLabel() {
+        return yourOrderTwentyFourMonthsLabel;
+    }
+
+    public String getYourOrderOneMonthLabel() {
+        return yourOrderOneMonthLabel;
     }
 
     @Override
