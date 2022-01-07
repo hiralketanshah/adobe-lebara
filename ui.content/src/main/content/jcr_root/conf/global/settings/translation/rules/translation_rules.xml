@@ -627,10 +627,6 @@
 		<node pathContains="/cq:annotations">
 			<property name="text" translate="false"/>
 		</node>
-
-		<node resourceType="lebara/components/internationalrates">
-			<property inherit="true" name="selectCountryLabel" translate="true" updateDestinationLanguage="true"/>
-		</node>
 		<!--new-->
 		<node resourceType="lebara/components/spa">
 			<property inherit="true" name="name" translate="false" updateDestinationLanguage="false"/>

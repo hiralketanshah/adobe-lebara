@@ -5,6 +5,7 @@ import com.adobe.cq.export.json.ExporterConstants;
 import com.adobe.cq.wcm.core.components.models.Text;
 import com.adobe.cq.wcm.core.components.models.datalayer.ComponentData;
 import com.lebara.core.models.TextColorModel;
+import com.lebara.core.utils.AemUtils;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.models.annotations.DefaultInjectionStrategy;
@@ -13,6 +14,7 @@ import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.Via;
 import org.apache.sling.models.annotations.injectorspecific.ScriptVariable;
 import org.apache.sling.models.annotations.injectorspecific.Self;
+import org.apache.sling.models.annotations.injectorspecific.SlingObject;
 import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
 import org.apache.sling.models.annotations.via.ResourceSuperType;
 
@@ -26,6 +28,9 @@ public class TextColorModelImpl implements TextColorModel {
 
 	@ScriptVariable
 	protected Resource resource;
+
+	@SlingObject
+	private SlingHttpServletRequest slingRequest;
 
 	/**
 	 * The resource type.
@@ -58,7 +63,7 @@ public class TextColorModelImpl implements TextColorModel {
 
 	@Override
 	public String getText() {
-		return delegate.getText();
+		return AemUtils.updateShortenLinksInRichText(delegate.getText(),slingRequest);
 	}
 
 	@Override
