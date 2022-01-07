@@ -267,6 +267,11 @@
                                                     name="./privatePages"
                                                     rootPath="/content/lebara"/>
                                             </privatepages>
+                                            <errorPages
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/foundation/form/pathbrowser"
+                                                fieldLabel="Error pages root path"
+                                                name="./errorPages"/>
                                         </items>
                                     </column>
                                 </items>
