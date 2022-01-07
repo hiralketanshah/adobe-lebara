@@ -3,7 +3,6 @@ package com.lebara.core.models;
 import javax.inject.Inject;
 
 import com.lebara.core.utils.AemUtils;
-import org.apache.commons.lang3.StringUtils;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.models.annotations.Exporter;
@@ -15,10 +14,6 @@ import com.adobe.cq.export.json.ExporterConstants;
 import com.adobe.cq.wcm.core.components.models.Text;
 import org.apache.sling.models.annotations.injectorspecific.SlingObject;
 import org.apache.sling.models.annotations.via.ResourceSuperType;
-import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
-import org.jsoup.nodes.Element;
-import org.jsoup.select.Elements;
 
 @Model(adaptables = SlingHttpServletRequest.class, adapters = { Text.class, ComponentExporter.class }, resourceType = {
     TextModel.RESOURCE_TYPE})
@@ -39,7 +34,7 @@ public class TextModel implements Text {
 
     @Override
     public String getText() {
-        return AemUtils.jsoup(delegate.getText(),slingRequest);
+        return AemUtils.updateShortenLinksInRichText(delegate.getText(),slingRequest);
     }
 
     @Override

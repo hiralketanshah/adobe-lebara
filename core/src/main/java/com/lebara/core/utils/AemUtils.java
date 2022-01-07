@@ -203,7 +203,7 @@ public class AemUtils {
         return ((resourceResolver == null) ? payloadPath : resourceResolver.map(payloadPath)) + (isHtmlExtensionRequired(payloadPath) ? LebaraConstants.HTML_EXTENSION : StringUtils.EMPTY);
     }
 
-    public static String jsoup(String text, SlingHttpServletRequest slingRequest) {
+    public static String updateShortenLinksInRichText(String text, SlingHttpServletRequest slingRequest) {
         if (StringUtils.isNotBlank(text)) {
             Document document = Jsoup.parse(text);
             Elements ancTag = document.getElementsByTag("a");

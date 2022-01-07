@@ -90,7 +90,7 @@
                         <embedded>
                             <groupId>org.jsoup</groupId>
                             <artifactId>jsoup</artifactId>
-                            <target>/apps/lebara/install</target>
+                            <target>/apps/lebara-vendor-packages/application/install</target>
                         </embedded>
                     </embeddeds>
                 </configuration>
