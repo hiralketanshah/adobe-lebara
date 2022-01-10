@@ -57,10 +57,10 @@ public class FragmentInfoServlet extends SlingSafeMethodsServlet {
         LOGGER.debug("request path {}", request.getPathInfo());
         List<String> offerIdList;
         if (request.getRequestParameter("offerId") != null) {
-        	String offerId = request.getRequestParameter("offerId").getString();
+            String offerId = request.getRequestParameter("offerId").getString();
             offerIdList = Arrays.asList(offerId.split(","));
-        }else {
-        	offerIdList = Collections.emptyList();
+        } else {
+            offerIdList = Collections.emptyList();
         }
         ResourceResolver resourceResolver = request.getResourceResolver();
         PageManager pageManager = resourceResolver.adaptTo(PageManager.class);
@@ -120,11 +120,11 @@ public class FragmentInfoServlet extends SlingSafeMethodsServlet {
         predicate.put("p.limit", "-1");
         predicate.put("type",  DamConstants.NT_DAM_ASSET);
         if(CollectionUtils.isNotEmpty(offerIdList)) {
-        	predicate.put("property", "jcr:content/data/master/offerid");
+            predicate.put("property", "jcr:content/data/master/offerid");
             offerIdList.forEach(id-> predicate.put("property.{0}_value".replace("{0}", String.valueOf(offerIdList.indexOf(id))), id));
         } else {
-        	predicate.put("property", "jcr:content/data/cq:model");
-        	predicate.put("property.value", "/conf/lebara/settings/dam/cfm/models/epcmodels");
+            predicate.put("property", "jcr:content/data/cq:model");
+            predicate.put("property.value", "/conf/lebara/settings/dam/cfm/models/epcmodels");
         }
         return predicate;
     }
