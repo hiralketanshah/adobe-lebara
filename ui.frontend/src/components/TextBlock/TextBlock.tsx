@@ -15,6 +15,7 @@ const TextBlock: React.FC<TextBlockProps> = ({
   header,
   subHeader,
   buttonText,
+  headingType = "h1",
   // imagePath,
   linkURL,
   buttonStyle,
@@ -36,7 +37,7 @@ return (
           </Text>
         )}
         <Heading
-          as="h1"
+          as={headingType}
           fontSize={{ base: "32px", lg: "47px" }}
           fontWeight="semibold"
           color="white"
