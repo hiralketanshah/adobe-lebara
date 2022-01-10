@@ -42,6 +42,7 @@ public class GlobalConfigs extends SlingSafeMethodsServlet {
     private static final String JOURNEY_PAGES = "journeyPages";
     private static final String PRIVATE_PAGES = "privatePages";
     private static final String PAYMENT_MESSAGES = "paymentMessages";
+    private static final String PLAN_NOT_ELIGIBLE_ERROR_MESSAGE = "planNotEligibleErrorMessage";
 
     @Reference
     private transient GlobalOsgiService globalOsgiService;
@@ -71,6 +72,7 @@ public class GlobalConfigs extends SlingSafeMethodsServlet {
                 .put(CURRENCY_NAME, Optional.ofNullable(inheritedProp.getInherited(CURRENCY_NAME, String.class)).orElse(""))
                 .put(JOURNEY_PAGES, getJourneyPages(request, page))
                 .put(PRIVATE_PAGES, getPrivatePages(request, inheritedProp.getInherited(PRIVATE_PAGES, String[].class)))
+                .put(PLAN_NOT_ELIGIBLE_ERROR_MESSAGE, page.getProperties().get("planNotEligibleErrorMessage", String.class))
                 .put(PAYMENT_MESSAGES,getPaymentMethods(page)).build();
     }
 
