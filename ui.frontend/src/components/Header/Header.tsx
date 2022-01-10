@@ -351,9 +351,15 @@ const Header: React.FC<HeaderProps> = ({
       );
     }
   }, [topUps, dispatch]);
+
   React.useEffect(() => {
     loadPaymentMethodsCallback();
   }, [loadPaymentMethodsCallback, isAuthenticated]);
+
+  React.useEffect(() => {
+    if(isHeaderSearchClicked) onCloseSearch();
+  },[history?.location?.pathname]);
+  
   return (
     <>
       <GoogleAnalytics />
