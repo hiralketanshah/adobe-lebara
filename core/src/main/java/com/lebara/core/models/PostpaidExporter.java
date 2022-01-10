@@ -3,6 +3,7 @@ package com.lebara.core.models;
 import com.adobe.cq.export.json.ComponentExporter;
 import com.adobe.cq.export.json.ExporterConstants;
 import com.lebara.core.models.beans.Labels;
+import com.lebara.core.utils.AemUtils;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.models.annotations.DefaultInjectionStrategy;
@@ -10,6 +11,7 @@ import org.apache.sling.models.annotations.Exporter;
 import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.injectorspecific.ChildResource;
 import org.apache.sling.models.annotations.injectorspecific.ScriptVariable;
+import org.apache.sling.models.annotations.injectorspecific.SlingObject;
 import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
 import java.util.*;
 
@@ -22,6 +24,9 @@ public class PostpaidExporter implements ComponentExporter {
      * The resource type.
      */
     protected static final String RESOURCE_TYPE = "lebara/components/postpaid";
+
+    @SlingObject
+    private SlingHttpServletRequest slingRequest;
 
     @ScriptVariable
     private Resource resource;
@@ -124,7 +129,7 @@ public class PostpaidExporter implements ComponentExporter {
     }
 
     public String getContractPeriodPopupInfo() {
-        return contractPeriodPopupInfo;
+        return AemUtils.updateShortenLinksInRichText(contractPeriodPopupInfo,slingRequest);
     }
 
     public String getDataVolumeLabel() {
