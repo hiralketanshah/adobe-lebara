@@ -72,7 +72,7 @@ public class GlobalConfigs extends SlingSafeMethodsServlet {
                 .put(CURRENCY_NAME, Optional.ofNullable(inheritedProp.getInherited(CURRENCY_NAME, String.class)).orElse(""))
                 .put(JOURNEY_PAGES, getJourneyPages(request, page))
                 .put(PRIVATE_PAGES, getPrivatePages(request, inheritedProp.getInherited(PRIVATE_PAGES, String[].class)))
-                .put(PLAN_NOT_ELIGIBLE_ERROR_MESSAGE, page.getProperties().get("planNotEligibleErrorMessage", String.class))
+                .put(PLAN_NOT_ELIGIBLE_ERROR_MESSAGE, inheritedProp.getInherited(PLAN_NOT_ELIGIBLE_ERROR_MESSAGE, String.class))
                 .put(PAYMENT_MESSAGES,getPaymentMethods(page)).build();
     }
 
