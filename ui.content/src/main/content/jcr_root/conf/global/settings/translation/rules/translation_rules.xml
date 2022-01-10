@@ -159,6 +159,14 @@
 		<property name="mobileNumberMaxLength" />
 		<property name="mobileNumberFieldPattern" />
 
+		<!-- Order Submitted / Confirmation Message -->
+		<property name="orderIdTitle" />
+		<property name="simOnlyTitle" />
+		<property name="orderIdSubtitle" />
+		<property name="simOnlySubtitle" />
+		<property name="planChangeSubtitle" />
+		<property name="dashboardButtonLabel" />
+
 		<!-- Lebara fields -->
 		<property name="knowMoreText" />
 		<property name="thankYouMessage" />
