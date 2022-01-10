@@ -15,7 +15,7 @@ const componentwithofferDataProp = (props) => <Flex flexDirection="column" align
     px={{ base: "20px", lg: 0 }}
     gridGap={{ base: "17px", lg: "20px" }}
     pt={{ base: "17px", lg: "20px" }}
-  ><DashboardPlans fetchDataCallback={(id, isOneEntry) => aemUtils.fetchData(id, isOneEntry)} {...props} />
+  ><DashboardPlans {...props} fetchDataCallback={(id, isOneEntry) => aemUtils.fetchData(id, isOneEntry)} />
   </Flex>
 </Flex>;
 MapTo("lebara/components/dashboard/dashboardplans")(componentwithofferDataProp, DashboardPlansConfig);
