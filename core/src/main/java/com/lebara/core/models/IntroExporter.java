@@ -36,7 +36,7 @@ public class IntroExporter implements ComponentExporter {
     }
 
     public String getDescription() {
-        return AemUtils.updateShortenLinksInRichText(description,request);
+        return description;
     }
 
     @Override

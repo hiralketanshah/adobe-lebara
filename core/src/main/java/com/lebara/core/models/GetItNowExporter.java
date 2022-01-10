@@ -33,7 +33,13 @@ public class GetItNowExporter extends IntroExporter {
     private String buttonCTALink;
     @ValueMapValue
     private String getItNowErrorMessage;
-    
+
+    private String description;
+
+    @Override
+    public String getDescription() {
+        return AemUtils.updateShortenLinksInRichText(description,request);
+    }
 
     public String getImagePath() {
         return imagePath;
