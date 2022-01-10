@@ -103,6 +103,7 @@ const ExpandableSimPlanCard: React.FC<ExpandableSimPlanCardProps> = ({
                   <Text py="12px">{updatedAddtoCart}</Text>
                   <Button
                       variant="ghost"
+                      style={{ whiteSpace: "normal" }}
                       colorScheme="secondary"
                       onClick={handleViewCartClick}
                   >
@@ -118,8 +119,8 @@ const ExpandableSimPlanCard: React.FC<ExpandableSimPlanCardProps> = ({
       }
       case OfferTypes.PREPAID: {
         try {
-          isRemoveFromCart && onClose ? onClose() : history.push(isLoggedInUser ? "/order-details" : "/lebara-sim-choice");
           await addItemToCart(parseInt(id || ''), planName, (JSON.stringify(description || '')), Number(cost?.replaceAll(',', '.') || ''), "plan");
+          isRemoveFromCart && onClose ? onClose() : history.push(isLoggedInUser ? "/order-details" : "/lebara-sim-choice");
         } catch (e) {
 
         }
@@ -127,8 +128,8 @@ const ExpandableSimPlanCard: React.FC<ExpandableSimPlanCardProps> = ({
       }
       case OfferTypes.POSTPAID: {
         try {
+          await addItemToCart(parseInt(id || ''), planName, (JSON.stringify(description || '')), Number(cost?.replaceAll(',', '.') || ''), "postpaid");
           isRemoveFromCart && onClose ? onClose() : history.push(isLoggedInUser ? "/postpaid/preview" : "/postpaid/details");
-          await addItemToCart(parseInt(id || ''), planName, (JSON.stringify(description || '')), Number(cost?.replaceAll(',', '.') || ''), "plan");
         } catch (e) {
 
         }
