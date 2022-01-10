@@ -3,12 +3,10 @@ package com.lebara.core.models;
 import com.adobe.cq.export.json.ComponentExporter;
 import com.adobe.cq.export.json.ExporterConstants;
 import com.fasterxml.jackson.annotation.JsonInclude;
-import com.lebara.core.utils.AemUtils;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.models.annotations.DefaultInjectionStrategy;
 import org.apache.sling.models.annotations.Exporter;
 import org.apache.sling.models.annotations.Model;
-import org.apache.sling.models.annotations.injectorspecific.SlingObject;
 import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
@@ -21,9 +19,6 @@ public class IntroExporter implements ComponentExporter {
      * The resource type.
      */
     protected static final String RESOURCE_TYPE = "lebara/components/intro";
-
-    @SlingObject
-    private SlingHttpServletRequest request;
 
     @ValueMapValue
     private String description;
