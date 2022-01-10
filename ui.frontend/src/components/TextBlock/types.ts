@@ -7,6 +7,7 @@ export interface TextBlockProps {
   imagePath?: string;
   buttonStyle?: string;
   isFullWidthButton?: boolean;
+  headingType?: string;
   desktopListItems?: string[];
   buttonCustomMakeup?: {
     buttonBackgroundColor?: string;
