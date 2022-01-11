@@ -64,6 +64,8 @@ public class EmailSupportExporter extends IntroExporter {
     @ValueMapValue
     private List<String> dropDownValues;
 
+    private String description;
+
     public List<String> getDropDownValues() {
         return dropDownValues == null ? Collections.emptyList() : Collections.unmodifiableList(dropDownValues);
     }
@@ -132,6 +134,7 @@ public class EmailSupportExporter extends IntroExporter {
     public String getExportedType() {
         return resource.getResourceType();
     }
+
 
 
 }

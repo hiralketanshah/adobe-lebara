@@ -2,6 +2,8 @@ package com.lebara.core.models.beans;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.api.resource.ResourceResolver;
 import org.apache.sling.models.annotations.DefaultInjectionStrategy;
@@ -25,6 +27,9 @@ public class PostpaidPersonalDetailsFormFields {
     
     @SlingObject
     private ResourceResolver resourceResolver;
+
+    @SlingObject
+    private SlingHttpServletRequest request;
 
     @ValueMapValue
     private String emailLabel;
@@ -284,7 +289,7 @@ public class PostpaidPersonalDetailsFormFields {
     }
 
     public String getConsentDescription() {
-        return consentDescription;
+        return AemUtils.updateShortenLinksInRichText(consentDescription,request);
     }
 
     public String getExitingPhoneHelperLabel() {
