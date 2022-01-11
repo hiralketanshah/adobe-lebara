@@ -290,13 +290,47 @@ public class CFUtils {
                     planInfo.setCountryTitle(cfPlanFragment.getElement("countryTitle").getContent());
                 }
                 planInfo.setListPlanItem(CFUtils.getElementArrayValue(cfPlanFragment, "listPlanItem"));
-                planInfo.setCountryList(CFUtils.convertStringArrayToList(CFUtils.getElementArrayValue(cfPlanFragment, "countryList"), CountryInfo.class));
+                planInfo.setCountryList(setPlanInfoCountryList(cfPlanResource, cfPlanFragment));
             }
         }
         return planInfo;
     }
 
-   public static  List<OfferFragmentBean>  getCfList( Resource cfResource,  ResourceResolver resourceResolver, I18n i18n) {
+    private static List<CountryInfo> setPlanInfoCountryList(Resource cfPlanResource, ContentFragment cfPlanFragment) {
+        String countryListFragmentPath = CFUtils.getElementValue(cfPlanFragment, "countryList");
+        List<CountryInfo> countryData = new ArrayList<>();
+        if (StringUtils.isBlank(countryListFragmentPath)) {
+            return countryData;
+        }
+        Resource countryListFragRes = cfPlanResource.getResourceResolver().getResource(countryListFragmentPath);
+        if (countryListFragRes == null) {
+            return countryData;
+        }
+        ContentFragment countryListFrag = countryListFragRes.adaptTo(ContentFragment.class);
+        if (countryListFrag == null) {
+            return countryData;
+        }
+        String[] individualCountryFragment = CFUtils.getElementArrayValue(countryListFrag, "countries");
+        if (ArrayUtils.isEmpty(individualCountryFragment)) {
+            return countryData;
+        }
+        CountryInfo countryInfo = null;
+        for (String countryPath : individualCountryFragment) {
+            countryInfo = new CountryInfo();
+            Resource countryFragRes = cfPlanResource.getResourceResolver().getResource(countryPath);
+            if (countryFragRes != null) {
+                ContentFragment planFragment = countryFragRes.adaptTo(ContentFragment.class);
+                if (planFragment != null) {
+                    countryInfo.setCountryName(CFUtils.getElementValue(planFragment, "countryName"));
+                    countryInfo.setCountryCode(CFUtils.getElementValue(planFragment, "countryCode"));
+                    countryData.add(countryInfo);
+                }
+            }
+        }
+        return countryData;
+    }
+
+    public static  List<OfferFragmentBean>  getCfList( Resource cfResource,  ResourceResolver resourceResolver, I18n i18n) {
        List<OfferFragmentBean> bundlesList = new ArrayList<OfferFragmentBean>();
        if (null != cfResource) {
            for (Resource offer : cfResource.getChildren()) {
