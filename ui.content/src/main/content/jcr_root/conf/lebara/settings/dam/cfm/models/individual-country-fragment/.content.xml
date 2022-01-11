@@ -38,7 +38,7 @@
                             listOrder="21"
                             maxlength="255"
                             metaType="text-single"
-                            name="contryName"
+                            name="countryName"
                             renderReadOnly="false"
                             showEmptyInReadOnly="true"
                             valueType="string">
