@@ -5,6 +5,8 @@
     <filter root="/conf/lebara/settings/dam/cfm/models/epcmodels" mode="replace"/>
     <filter root="/conf/lebara/settings/dam/cfm/models/city-fragment" mode="replace"/>
     <filter root="/conf/lebara/settings/dam/cfm/models/international-tariffs-fragment" mode="replace"/>
+    <filter root="/conf/lebara/settings/dam/cfm/models/individual-country-fragment" mode="replace"/>
+    <filter root="/conf/lebara/settings/dam/cfm/models/countries-list-fragment" mode="replace"/>
     <filter root="/conf/lebara/settings/dam/cfm/models/planinformation" mode="replace"/>
     <filter root="/conf/lebara/settings/dam/cfm/models/current-providers-list-fragment" mode="replace"/>
     <filter root="/conf/lebara/settings/dam/cfm/models/top-up-fragment" mode="replace"/>
