@@ -287,7 +287,7 @@ const ExpandableSimPlanCard: React.FC<ExpandableSimPlanCardProps> = ({
           </Flex>
         </Flex>
         {additionalOffers && (
-          <Box mt="7px" color="primary.700">
+          <Box mt="7px" color="primary.700" flexGrow={1}>
             {additionalOffers.match(/<li>.*?<\/li>/g)?.length ? additionalOffers.match(/<li>.*?<\/li>/g)?.map((t) => (
               <Flex width="100%" alignItems="center" mb={1}>
                 {previewIcon}
