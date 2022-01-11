@@ -59,6 +59,9 @@ public class AboutLebaraImpl implements AboutLebara {
 	@ValueMapValue
 	private boolean colorsEnabled;
 
+	@ValueMapValue
+	private String headingType;
+
 	/**
 	 * The resource type.
 	 */
@@ -76,6 +79,7 @@ public class AboutLebaraImpl implements AboutLebara {
 	public String getButtonStyle() {
 		return buttonStyle;
 	}
+	
 
 	@JsonProperty("actions")
 	public List<ListItem> getActionsNew() {
@@ -147,4 +151,7 @@ public class AboutLebaraImpl implements AboutLebara {
 		return fileReference;
 	}
 
+	public String getHeadingType() {
+		return headingType;
+	}
 }
