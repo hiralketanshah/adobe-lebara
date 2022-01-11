@@ -43,8 +43,6 @@ public class DashboardPlansExporter extends HeadingExporter {
     @ValueMapValue
     private String autoRenewTurnOnLabel;
     @ValueMapValue
-    private String fetchDataCallback;
-    @ValueMapValue
     private String buttonText;
     @ValueMapValue
     private String cancelLabel;
@@ -71,10 +69,6 @@ public class DashboardPlansExporter extends HeadingExporter {
 
     public String getAutoRenewTurnOnLabel() {
         return autoRenewTurnOnLabel;
-    }
-
-    public String getFetchDataCallback() {
-        return fetchDataCallback;
     }
 
     public String getButtonText() {

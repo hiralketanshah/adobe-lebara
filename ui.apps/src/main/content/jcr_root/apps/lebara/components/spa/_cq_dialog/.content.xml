@@ -76,6 +76,13 @@
                                                         value="EUR"/>
                                                 </items>
                                             </currencyname>
+                                            <PlanNotEligibleErrorMessage
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                    fieldLabel="Plan Not Eligible Error Message"
+                                                    fieldDescription="Plan Not Eligible Error Message"
+                                                    name="./planNotEligibleErrorMessage"/>
+
                                             <journeypages
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/multifield"

@@ -73,7 +73,7 @@ const HomeFaqs: React.FC<HomeFaqsProps> = ({ title, options,
       <Heading color="primary.500" fontSize={{ base: "32px", lg: " 47px" }}>
         {title}
       </Heading>
-      <Accordion defaultIndex={[0]} color="primary.500">
+      <Accordion color="primary.500">
         <Flex
           flexDirection={{ base: "column", lg: "row" }}
           gridGap={{ base: 0, lg: "24px" }}
