@@ -3,10 +3,12 @@ package com.lebara.core.models;
 import com.adobe.cq.export.json.ComponentExporter;
 import com.adobe.cq.export.json.ExporterConstants;
 import com.fasterxml.jackson.annotation.JsonInclude;
+import com.lebara.core.utils.AemUtils;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.models.annotations.DefaultInjectionStrategy;
 import org.apache.sling.models.annotations.Exporter;
 import org.apache.sling.models.annotations.Model;
+import org.apache.sling.models.annotations.injectorspecific.SlingObject;
 import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
@@ -19,6 +21,9 @@ public class AddPayPalExporter extends IntroExporter implements ComponentExporte
      * The resource type.
      */
     protected static final String RESOURCE_TYPE = "lebara/components/user/addpaypal";
+
+    @SlingObject
+    private SlingHttpServletRequest slingRequest;
 
     @ValueMapValue
     private String labelTermsandConditions;
@@ -66,7 +71,7 @@ public class AddPayPalExporter extends IntroExporter implements ComponentExporte
     }
 
     public String getTermsFullDescription() {
-        return termsFullDescription;
+        return AemUtils.updateShortenLinksInRichText(termsFullDescription,slingRequest);
     }
 
     @Override
