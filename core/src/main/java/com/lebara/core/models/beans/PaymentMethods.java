@@ -96,7 +96,7 @@ public class PaymentMethods {
     }
 
     public String getDirectDebitCheckboxText() {
-        return AemUtils.updateShortenLinksInRichText(directDebitCheckboxText,slingRequest);
+        return AemUtils.updateShortenLinksInRichText(getUTFStr(directDebitCheckboxText),slingRequest);
     }
 
     public String getGiroPayRedirectMessage() {
