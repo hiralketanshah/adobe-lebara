@@ -169,7 +169,7 @@
                                                                         <dashboard-manage
                                                                             jcr:primaryType="nt:unstructured"
                                                                             text="dashboard-manage"
-                                                                            value="/dashboard/manage"/>
+                                                                            value="dashboard/manage"/>
                                                                         <postpaid-details
                                                                             jcr:primaryType="nt:unstructured"
                                                                             text="postpaid/details"
