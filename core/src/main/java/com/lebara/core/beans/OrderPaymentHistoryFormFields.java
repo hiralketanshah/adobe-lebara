@@ -76,6 +76,11 @@ public class OrderPaymentHistoryFormFields {
     @ValueMapValue
     private String orderStatusLabel;
 
+    @ValueMapValue
+    private String orderStatusErrorMsg;
+
+    @ValueMapValue
+    private String orderStatusSuccessMsg;
 
     public String getShopNowCTA() {
         return shopNowCTA;
@@ -153,5 +158,13 @@ public class OrderPaymentHistoryFormFields {
 
     public String getOrderStatusLabel() {
         return orderStatusLabel;
+    }
+
+    public String getOrderStatusErrorMsg() {
+        return orderStatusErrorMsg;
+    }
+
+    public String getOrderStatusSuccessMsg() {
+        return orderStatusSuccessMsg;
     }
 }
