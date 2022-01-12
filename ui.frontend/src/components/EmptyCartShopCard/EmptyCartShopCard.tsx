@@ -120,7 +120,7 @@ const EmptyCartShopCard: React.FC<EmptyCartShopCardProps> = ({
               >
                 {expandableAddOnsCardProps.map(
                   (addOnPlan: ExpandableSimPlanCardProps) => (
-                    <Box>
+                    <Box display="flex">
                       <ExpandableSimPlanCard {...addOnPlan}
                         showLabel={showDetailsLabel}
                         buttonLabel={buyPlanLabel}
@@ -142,7 +142,7 @@ const EmptyCartShopCard: React.FC<EmptyCartShopCardProps> = ({
               >
                 {expandableSimPlanCardProps.map(
                   (planCard: ExpandableSimPlanCardProps) => (
-                    <Box>
+                    <Box display="flex">
                       <ExpandableSimPlanCard {...planCard}
                         showLabel={showDetailsLabel}
                         buttonLabel={addToCartLabel}
@@ -163,7 +163,7 @@ const EmptyCartShopCard: React.FC<EmptyCartShopCardProps> = ({
               >
                 {expandablePlanCardProps.map(
                   (simCardPlan: ExpandableSimPlanCardProps) => (
-                    <Box>
+                    <Box display="flex">
                       <ExpandableSimPlanCard {...simCardPlan}
                         showLabel={showDetailsLabel}
                         buttonLabel={buyPlanLabel}

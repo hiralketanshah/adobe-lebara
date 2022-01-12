@@ -26,7 +26,7 @@ const Footer: React.FC<FooterProps> = ({
   theme = { color: "lightenPrimary.50", bgColor: "primary.500" },
 }) => (
   <Box bg={theme?.bgColor} color={theme?.color}>
-    <Accordion defaultIndex={[0]} allowMultiple>
+    <Accordion allowMultiple>
       {footerUpperLinks?.map((menu, index) => (
         <AccordionItem key={index} borderTop="none" borderBottomWidth="1px">
           {({ isExpanded }) => (
