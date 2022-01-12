@@ -6,6 +6,7 @@ import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
 import com.lebara.core.dto.*;
 import com.lebara.core.models.beans.SelectOption;
+import org.apache.commons.collections.ListUtils;
 import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.sling.api.resource.Resource;
@@ -298,22 +299,22 @@ public class CFUtils {
 
     private static List<CountryInfo> setPlanInfoCountryList(Resource cfPlanResource, ContentFragment cfPlanFragment) {
         String countryListFragmentPath = CFUtils.getElementValue(cfPlanFragment, "countryList");
-        List<CountryInfo> countryData = new ArrayList<>();
         if (StringUtils.isBlank(countryListFragmentPath)) {
-            return countryData;
+            return ListUtils.EMPTY_LIST;
         }
         Resource countryListFragRes = cfPlanResource.getResourceResolver().getResource(countryListFragmentPath);
         if (countryListFragRes == null) {
-            return countryData;
+            return ListUtils.EMPTY_LIST;
         }
         ContentFragment countryListFrag = countryListFragRes.adaptTo(ContentFragment.class);
         if (countryListFrag == null) {
-            return countryData;
+            return ListUtils.EMPTY_LIST;
         }
         String[] individualCountryFragment = CFUtils.getElementArrayValue(countryListFrag, "countries");
         if (ArrayUtils.isEmpty(individualCountryFragment)) {
-            return countryData;
+            return ListUtils.EMPTY_LIST;
         }
+        List<CountryInfo> countryData = new ArrayList<>();
         CountryInfo countryInfo = null;
         for (String countryPath : individualCountryFragment) {
             countryInfo = new CountryInfo();
