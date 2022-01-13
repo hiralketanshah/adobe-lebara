@@ -50,12 +50,12 @@
                                         <items jcr:primaryType="nt:unstructured">
                                             <offerRootPath
                                                 jcr:primaryType="nt:unstructured"
-                                                sling:resourceType="granite/ui/components/coral/foundation/form/pathbrowser"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
                                                 fieldLabel="Root path for Offer Fragments"
                                                 name="./offerRootPath"/>
                                             <internationalRatesRootPath
                                                 jcr:primaryType="nt:unstructured"
-                                                sling:resourceType="granite/ui/components/coral/foundation/form/pathbrowser"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
                                                 rootPath="/content/dam/lebara"
                                                 fieldLabel="Root path for Internation Rates Fragment"
                                                 name="./internationalRatesRootPath"/>
@@ -76,6 +76,13 @@
                                                         value="EUR"/>
                                                 </items>
                                             </currencyname>
+                                            <PlanNotEligibleErrorMessage
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                    fieldLabel="Plan Not Eligible Error Message"
+                                                    fieldDescription="Plan Not Eligible Error Message"
+                                                    name="./planNotEligibleErrorMessage"/>
+
                                             <journeypages
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
@@ -162,7 +169,7 @@
                                                                         <dashboard-manage
                                                                             jcr:primaryType="nt:unstructured"
                                                                             text="dashboard-manage"
-                                                                            value="/dashboard/manage"/>
+                                                                            value="dashboard/manage"/>
                                                                         <postpaid-details
                                                                             jcr:primaryType="nt:unstructured"
                                                                             text="postpaid/details"
@@ -253,6 +260,27 @@
                                                     </items>
                                                 </field>
                                             </journeypages>
+                                        </items>
+                                    </column>
+                                </items>
+                            </columns>
+                        </items>
+                    </globalconfigs>
+                    <privateRoute
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Private Route Pages"
+                        sling:resourceType="granite/ui/components/coral/foundation/container"
+                        margin="{Boolean}true">
+                        <items jcr:primaryType="nt:unstructured">
+                            <columns
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+                                margin="{Boolean}true">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <column
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                                        <items jcr:primaryType="nt:unstructured">
                                             <privatepages
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
@@ -262,7 +290,7 @@
                                                 valueType="string[]">
                                                 <field
                                                     jcr:primaryType="nt:unstructured"
-                                                    sling:resourceType="granite/ui/components/coral/foundation/form/pathbrowser"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
                                                     fieldLabel="Private page"
                                                     name="./privatePages"
                                                     rootPath="/content/lebara"/>
@@ -272,7 +300,7 @@
                                 </items>
                             </columns>
                         </items>
-                    </globalconfigs>
+                    </privateRoute>
                     <paymentMessages
                             jcr:primaryType="nt:unstructured"
                             jcr:title="Payment Messages"
@@ -288,6 +316,24 @@
                                             jcr:primaryType="nt:unstructured"
                                             sling:resourceType="granite/ui/components/coral/foundation/container">
                                         <items jcr:primaryType="nt:unstructured">
+                                            <paymethod
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                    fieldLabel="Payment Method Title"
+                                                    fieldDescription="Select payment method"
+                                                    name="./paymentMessages/paymentMethodTitle"/>
+                                            <cardname
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                    fieldLabel="Card Name"
+                                                    fieldDescription="Credit or debit card"
+                                                    name="./paymentMessages/creditCardName"/>
+                                            <sepaname
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                    fieldLabel="SEPA Name"
+                                                    fieldDescription="SEPA Direct Debit"
+                                                    name="./paymentMessages/sepaName"/>
                                             <card
                                                     jcr:primaryType="nt:unstructured"
                                                     sling:resourceType="granite/ui/components/coral/foundation/form/textarea"

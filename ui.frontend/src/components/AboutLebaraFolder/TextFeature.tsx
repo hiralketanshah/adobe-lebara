@@ -7,6 +7,7 @@ import { Image } from "@lebara/ui/src/components/Image/Image";
 const TextFeature: React.FC<AboutLebaraProps> = ({
   pretitle,
   title,
+  headingType,
   actionsEnabled,
   actions,
   description,
@@ -58,6 +59,7 @@ const TextFeature: React.FC<AboutLebaraProps> = ({
             header={title}
             subHeader={description}
             buttonStyle={buttonStyle}
+            headingType={headingType}
             buttonCustomMakeup={buttonCustomMakeup}
           />
         </Flex>

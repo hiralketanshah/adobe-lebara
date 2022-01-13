@@ -76,6 +76,9 @@ public class PostpaidPersonalDetailsFormFields {
     
     @ValueMapValue
     private String consentPreviewText;
+
+    @ValueMapValue
+    private String consentMarketingText;
     
     @ValueMapValue
     private String consentDescription;
@@ -206,6 +209,9 @@ public class PostpaidPersonalDetailsFormFields {
     @ValueMapValue
     public String ctaSkipLabel;
 
+    public String getConsentMarketingText() {
+        return consentMarketingText;
+    }
 
     public String getEmailLabel() {
         return emailLabel;

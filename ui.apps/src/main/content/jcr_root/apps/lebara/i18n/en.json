@@ -9,5 +9,6 @@
   "product.information.label": "Product Information",
   "landline": "Landline",
   "mobile": "Mobile",
-  "sms": "SMS"
+  "sms": "SMS",
+  "lebara.SelectCountry.label": "Please select a country"
 }

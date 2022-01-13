@@ -48,6 +48,8 @@ import "../aemConfigs/CreateAccountAemConfig.js";
 import "../aemConfigs/PaymentMethodAemConfig.js";
 import "../aemConfigs/AddEditCreditDebitCardAemConfig.js";
 import "../aemConfigs/AddPaypalAemConfig.js";
+import "../aemConfigs/UserProfileAemConfig.js";
+import "../aemConfigs/DashboardAemConfig/AttachSimModelAemConfig.js";
 import "../rotues/AemConfig.js";
 
 import "./Teaser/AemConfig.js";
@@ -76,7 +78,6 @@ import "./LbSectionIntro/AemConfig.js";
 import "./StickyCircle/AemConfig.js";
 import "./LbFAQ/AemConfig.js";
 import "./LbBrowseCategories/AemConfig.js";
-import "./UserDetails/AemConfig.js";
 import "./HelpCenterSearch/AemConfig.js";
 import "./EmailSupport/AemConfig.js";
 import "./HeroBanner/AemConfig.js";

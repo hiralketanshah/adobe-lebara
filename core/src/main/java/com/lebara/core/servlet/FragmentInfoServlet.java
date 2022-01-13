@@ -55,13 +55,12 @@ public class FragmentInfoServlet extends SlingSafeMethodsServlet {
     @Override
     protected void doGet(SlingHttpServletRequest request, SlingHttpServletResponse response) throws ServletException, IOException {
         LOGGER.debug("request path {}", request.getPathInfo());
-        if (request.getRequestParameter("offerId") == null) {
-            return;
-        }
-        String offerId = request.getRequestParameter("offerId").getString();
-        List<String> offerIdList = Arrays.asList(offerId.split(","));
-        if (StringUtils.isBlank(offerId)) {
-            return;
+        List<String> offerIdList;
+        if (request.getRequestParameter("offerId") != null) {
+            String offerId = request.getRequestParameter("offerId").getString();
+            offerIdList = Arrays.asList(offerId.split(","));
+        } else {
+            offerIdList = Collections.emptyList();
         }
         ResourceResolver resourceResolver = request.getResourceResolver();
         PageManager pageManager = resourceResolver.adaptTo(PageManager.class);
@@ -118,10 +117,15 @@ public class FragmentInfoServlet extends SlingSafeMethodsServlet {
     private Map<String, String> getPredicatesMap(List<String> offerIdList) {
         Map<String, String> predicate = new HashMap<>();
         predicate.put("path", offerRootPath);
+        predicate.put("p.limit", "-1");
         predicate.put("type",  DamConstants.NT_DAM_ASSET);
-
-        predicate.put("property", "jcr:content/data/master/offerid");
-        offerIdList.forEach(id-> predicate.put("property.{0}_value".replace("{0}", String.valueOf(offerIdList.indexOf(id))), id));
+        if(CollectionUtils.isNotEmpty(offerIdList)) {
+            predicate.put("property", "jcr:content/data/master/offerid");
+            offerIdList.forEach(id-> predicate.put("property.{0}_value".replace("{0}", String.valueOf(offerIdList.indexOf(id))), id));
+        } else {
+            predicate.put("property", "jcr:content/data/cq:model");
+            predicate.put("property.value", "/conf/lebara/settings/dam/cfm/models/epcmodels");
+        }
         return predicate;
     }
 }

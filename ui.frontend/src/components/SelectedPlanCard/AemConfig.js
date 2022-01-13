@@ -7,5 +7,5 @@ const SelectedPlanCardConfig = {
     return true;
   },
 };
-const componentwithofferDataProp = (props) => <SelectedPlanCard fetchDataCallback={(id, isOneEntry) => aemUtils.fetchData(id, isOneEntry)} {...props} />;
+const componentwithofferDataProp = (props) => <SelectedPlanCard {...props} fetchDataCallback={(id, isOneEntry) => aemUtils.fetchData(id, isOneEntry)} />;
 MapTo("lebara/components/dynamiccart")(componentwithofferDataProp, SelectedPlanCardConfig);

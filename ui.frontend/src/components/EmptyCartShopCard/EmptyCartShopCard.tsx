@@ -27,6 +27,8 @@ const EmptyCartShopCard: React.FC<EmptyCartShopCardProps> = ({
   showDetailsLabel,
   buyPlanLabel,
   addToCartLabel,
+  viewCartLabel,
+  addedtoCartLabel
 }) => {
   const location = useLocation<{ selectedType: string }>();
   const selectedType = location.state?.selectedType || "plan";
@@ -118,10 +120,12 @@ const EmptyCartShopCard: React.FC<EmptyCartShopCardProps> = ({
               >
                 {expandableAddOnsCardProps.map(
                   (addOnPlan: ExpandableSimPlanCardProps) => (
-                    <Box>
+                    <Box display="flex">
                       <ExpandableSimPlanCard {...addOnPlan}
                         showLabel={showDetailsLabel}
                         buttonLabel={buyPlanLabel}
+                        addedtoCartLabel={addedtoCartLabel}
+                        viewCartLabel={viewCartLabel}
                         previewIcon={<TickInCircle fill="#13357A" tickFill="#EA4984" />}
                       />
                     </Box>
@@ -138,10 +142,12 @@ const EmptyCartShopCard: React.FC<EmptyCartShopCardProps> = ({
               >
                 {expandableSimPlanCardProps.map(
                   (planCard: ExpandableSimPlanCardProps) => (
-                    <Box>
+                    <Box display="flex">
                       <ExpandableSimPlanCard {...planCard}
                         showLabel={showDetailsLabel}
                         buttonLabel={addToCartLabel}
+                        addedtoCartLabel={addedtoCartLabel}
+                        viewCartLabel={viewCartLabel}
                         previewIcon={<TickInCircle fill="#13357A" tickFill="#EA4984" />} />
                     </Box>
                   )
@@ -157,10 +163,12 @@ const EmptyCartShopCard: React.FC<EmptyCartShopCardProps> = ({
               >
                 {expandablePlanCardProps.map(
                   (simCardPlan: ExpandableSimPlanCardProps) => (
-                    <Box>
+                    <Box display="flex">
                       <ExpandableSimPlanCard {...simCardPlan}
                         showLabel={showDetailsLabel}
                         buttonLabel={buyPlanLabel}
+                        addedtoCartLabel={addedtoCartLabel}
+                        viewCartLabel={viewCartLabel}
                         previewIcon={<TickInCircle fill="#13357A" tickFill="#EA4984" />} />
                     </Box>
                   )

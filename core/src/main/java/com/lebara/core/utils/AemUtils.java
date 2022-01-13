@@ -20,6 +20,10 @@ import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.api.resource.ResourceResolver;
 import org.apache.sling.api.resource.ValueMap;
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -197,6 +201,21 @@ public class AemUtils {
             return payloadPath;
         }
         return ((resourceResolver == null) ? payloadPath : resourceResolver.map(payloadPath)) + (isHtmlExtensionRequired(payloadPath) ? LebaraConstants.HTML_EXTENSION : StringUtils.EMPTY);
+    }
+
+    public static String updateShortenLinksInRichText(String text, SlingHttpServletRequest slingRequest) {
+        if (StringUtils.isNotBlank(text)) {
+            Document document = Jsoup.parse(text);
+            Elements ancTag = document.getElementsByTag("a");
+            for (Element aTag : ancTag) {
+                String hrefURL = aTag.attr("href");
+                String shortURL = AemUtils.getLinkWithExtension(hrefURL, slingRequest);
+                text.replace(hrefURL, shortURL);
+            }
+        } else {
+            return StringUtils.EMPTY;
+        }
+        return text;
     }
 
     public static boolean isExternalLink(String payloadPath) {

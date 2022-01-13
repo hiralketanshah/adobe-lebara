@@ -3,6 +3,7 @@ package com.lebara.core.models;
 import com.adobe.cq.export.json.ComponentExporter;
 import com.adobe.cq.export.json.ExporterConstants;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.lebara.core.utils.AemUtils;
 import com.lebara.core.utils.CFUtils;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;
@@ -128,7 +129,12 @@ public class SimPortInExporter implements ComponentExporter {
     @ValueMapValue
     private String currentProvidersOptions;
 
-    public String getPretitle() {return pretitle;}
+    @ValueMapValue
+    private String moreLabel;
+
+    public String getPretitle() {
+        return pretitle;
+    }
 
     public String getDoitLaterButtonLabel() {
         return doitLaterButtonLabel;
@@ -177,7 +183,7 @@ public class SimPortInExporter implements ComponentExporter {
     }
 
     public String getContractInfo() {
-        return contractInfo;
+        return AemUtils.updateShortenLinksInRichText(contractInfo,slingRequest);
     }
 
     public String getPortingInfo() {
@@ -240,7 +246,13 @@ public class SimPortInExporter implements ComponentExporter {
         return mobileNumberMaxLength;
     }
 
-    public String getMobileNumberFieldPattern() { return mobileNumberFieldPattern; }
+    public String getMobileNumberFieldPattern() {
+        return mobileNumberFieldPattern;
+    }
+
+    public String getMoreLabel() {
+        return moreLabel;
+    }
 
     @JsonProperty("currentProvidersOptions")
     public List<Object> getCurrentProvidersOptions() {
