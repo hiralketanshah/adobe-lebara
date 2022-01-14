@@ -12,7 +12,6 @@ import GET_SESSION_STATUS from "@lebara/ui/src/graphql/GET_SESSION_STATUS";
 import { selectIsLoading } from "@lebara/ui/src/redux/selectors/loadingSelectors";
 import { setLoading } from "@lebara/ui/src/redux/actions/loadingActions";
 import { saveUserInfo } from "@lebara/ui/src/redux/actions/userActions";
-import { useHistory } from "@lebara/ui/src/hooks/useHistory";
 
 import colors from "./theme/colors";
 import "@fontsource/roboto/100.css";
@@ -42,19 +41,10 @@ const theme = extendTheme(
 function withPageHook(Component) {
 
   return function WrappedComponent(props) {
-    const history = useHistory();
     const client = useApolloClient();
     const dispatch = useDispatch();
     const isLoading = useSelector(selectIsLoading);
     const [isAuthLoading, setIsAuthLoading] = useState(true);
-
-    React.useEffect(() => {
-      history.listen((location) => {
-        if(location?.pathname !== props?.locationPathname) {
-          dispatch(setLoading(true));
-        }
-      });
-     },[history?.location?.pathname]);// eslint-disable-line react-hooks/exhaustive-deps
 
     React.useEffect(() => {
       client
