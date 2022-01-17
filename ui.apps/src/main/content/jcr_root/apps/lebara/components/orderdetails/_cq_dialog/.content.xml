@@ -101,7 +101,7 @@
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                                 fieldLabel="Add Voucher Code Label"
-                                                fieldDescription="Add voucher code"
+                                                fieldDescription="This field is visible only if the voucher exists"
                                                 name="./addVoucherCodeLabel"/>
                                             <applyvoucherlabel
                                                 jcr:primaryType="nt:unstructured"
