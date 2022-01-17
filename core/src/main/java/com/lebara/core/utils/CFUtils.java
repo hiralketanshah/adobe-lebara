@@ -6,6 +6,7 @@ import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
 import com.lebara.core.dto.*;
 import com.lebara.core.models.beans.SelectOption;
+import org.apache.commons.collections.ListUtils;
 import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.sling.api.resource.Resource;
@@ -290,13 +291,47 @@ public class CFUtils {
                     planInfo.setCountryTitle(cfPlanFragment.getElement("countryTitle").getContent());
                 }
                 planInfo.setListPlanItem(CFUtils.getElementArrayValue(cfPlanFragment, "listPlanItem"));
-                planInfo.setCountryList(CFUtils.convertStringArrayToList(CFUtils.getElementArrayValue(cfPlanFragment, "countryList"), CountryInfo.class));
+                planInfo.setCountryList(setPlanInfoCountryList(cfPlanResource, cfPlanFragment));
             }
         }
         return planInfo;
     }
 
-   public static  List<OfferFragmentBean>  getCfList( Resource cfResource,  ResourceResolver resourceResolver, I18n i18n) {
+    private static List<CountryInfo> setPlanInfoCountryList(Resource cfPlanResource, ContentFragment cfPlanFragment) {
+        String countryListFragmentPath = CFUtils.getElementValue(cfPlanFragment, "countryList");
+        if (StringUtils.isBlank(countryListFragmentPath)) {
+            return ListUtils.EMPTY_LIST;
+        }
+        Resource countryListFragRes = cfPlanResource.getResourceResolver().getResource(countryListFragmentPath);
+        if (countryListFragRes == null) {
+            return ListUtils.EMPTY_LIST;
+        }
+        ContentFragment countryListFrag = countryListFragRes.adaptTo(ContentFragment.class);
+        if (countryListFrag == null) {
+            return ListUtils.EMPTY_LIST;
+        }
+        String[] individualCountryFragment = CFUtils.getElementArrayValue(countryListFrag, "countries");
+        if (ArrayUtils.isEmpty(individualCountryFragment)) {
+            return ListUtils.EMPTY_LIST;
+        }
+        List<CountryInfo> countryData = new ArrayList<>();
+        CountryInfo countryInfo = null;
+        for (String countryPath : individualCountryFragment) {
+            countryInfo = new CountryInfo();
+            Resource countryFragRes = cfPlanResource.getResourceResolver().getResource(countryPath);
+            if (countryFragRes != null) {
+                ContentFragment planFragment = countryFragRes.adaptTo(ContentFragment.class);
+                if (planFragment != null) {
+                    countryInfo.setCountryName(CFUtils.getElementValue(planFragment, "countryName"));
+                    countryInfo.setCountryCode(CFUtils.getElementValue(planFragment, "countryCode"));
+                    countryData.add(countryInfo);
+                }
+            }
+        }
+        return countryData;
+    }
+
+    public static  List<OfferFragmentBean>  getCfList( Resource cfResource,  ResourceResolver resourceResolver, I18n i18n) {
        List<OfferFragmentBean> bundlesList = new ArrayList<OfferFragmentBean>();
        if (null != cfResource) {
            for (Resource offer : cfResource.getChildren()) {

@@ -33,8 +33,8 @@ const ProgressStep: React.FC<ProgressStepProps> = ({
                 position="absolute"
                 bottom="-30px"
                 opacity={index > activeStepIndex ? 0.2 : 1}
-                left={index === 0 ? -4 : undefined}
-                right={index === lastStepIndex ? -5 : undefined}
+                left={index === 0 ? 0 : undefined}
+                right={index === lastStepIndex ? 0 : undefined}
                 whiteSpace="nowrap"
               >
                 {step?.label}
