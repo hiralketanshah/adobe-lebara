@@ -17,6 +17,10 @@ import { ModelClient } from '@adobe/aem-spa-page-model-manager';
   };
   
 export default class LebaraModelClient extends ModelClient {
+    constructor(props) {
+        super(props)
+        renderLoader(true);
+    }
 
     fetch(modelPath) {
         if (!modelPath) {
