@@ -8,6 +8,7 @@ import React from "react";
 import {render} from "react-dom";
 import {Router} from "react-router-dom";
 import App from "./App";
+import LebaraModelClient from "./LebaraModelClient";
 import "./components/import-components";
 import "./index.css";
 import "./styles/index.scss";
@@ -39,8 +40,10 @@ const client = new ApolloClient({
   cache: new InMemoryCache(),
 });
 
+const modelClient = new LebaraModelClient();
+
 const renderApp = () => {
-  ModelManager.initialize().then((pageModel) => {
+  ModelManager.initialize({modelClient: modelClient}).then((pageModel) => {
     const history = createBrowserHistory();
     render(
       <Router history={history}>
