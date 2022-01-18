@@ -119,7 +119,7 @@ const ExpandableSimPlanCard: React.FC<ExpandableSimPlanCardProps> = ({
       }
       case OfferTypes.PREPAID: {
         try {
-          await addItemToCart(parseInt(id || ''), planName, (JSON.stringify(description || '')), Number(cost?.replaceAll(',', '.') || ''), "plan");
+          await addItemToCart(parseInt(id || ''), planName, (JSON.stringify(description || '')), Number(cost?.replaceAll(',', '.') || ''), "plan", true);
           isRemoveFromCart && onClose ? onClose() : history.push(isLoggedInUser ? "/order-details" : "/lebara-sim-choice");
         } catch (e) {
 
@@ -128,7 +128,7 @@ const ExpandableSimPlanCard: React.FC<ExpandableSimPlanCardProps> = ({
       }
       case OfferTypes.POSTPAID: {
         try {
-          await addItemToCart(parseInt(id || ''), planName, (JSON.stringify(description || '')), Number(cost?.replaceAll(',', '.') || ''), "postpaid");
+          await addItemToCart(parseInt(id || ''), planName, (JSON.stringify(description || '')), Number(cost?.replaceAll(',', '.') || ''), "postpaid", true);
           isRemoveFromCart && onClose ? onClose() : history.push(isLoggedInUser ? "/postpaid/preview" : "/postpaid/details");
         } catch (e) {
 
