@@ -34,7 +34,7 @@ export default class LebaraModelClient extends ModelClient {
             if ((response.status >= 200) && (response.status < 300)) {
                 return response.json();
             }
-            throw { response };
+            throw new Error("error occured");
         }).catch((error) => {
             return Promise.reject(error);
         }).finally(() => {
