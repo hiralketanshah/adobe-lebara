@@ -67,6 +67,21 @@ public class OrderPaymentHistoryFormFields {
     @ValueMapValue
     private String nodataImage;
 
+    @ValueMapValue
+    private String paymentModeLabel;
+
+    @ValueMapValue
+    private String referenceNoLabel;
+
+    @ValueMapValue
+    private String orderStatusLabel;
+
+    @ValueMapValue
+    private String orderStatusErrorMsg;
+
+    @ValueMapValue
+    private String orderStatusSuccessMsg;
+
     public String getShopNowCTA() {
         return shopNowCTA;
     }
@@ -132,4 +147,24 @@ public class OrderPaymentHistoryFormFields {
     }
 
     public String getNodataImage() { return nodataImage;}
+
+    public String getPaymentModeLabel() {
+        return paymentModeLabel;
+    }
+
+    public String getReferenceNoLabel() {
+        return referenceNoLabel;
+    }
+
+    public String getOrderStatusLabel() {
+        return orderStatusLabel;
+    }
+
+    public String getOrderStatusErrorMsg() {
+        return orderStatusErrorMsg;
+    }
+
+    public String getOrderStatusSuccessMsg() {
+        return orderStatusSuccessMsg;
+    }
 }

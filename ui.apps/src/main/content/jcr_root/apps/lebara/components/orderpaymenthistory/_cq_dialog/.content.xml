@@ -52,6 +52,27 @@
                                 fieldLabel="Months Label"
                                 name="./frmFields/monthLabel"
                                 value="Months"/>
+                            <paymentModeLabel
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                    fieldDescription="Payment Mode Label"
+                                    fieldLabel="Payment Mode Label"
+                                    name="./frmFields/paymentModeLabel"
+                                    value="Payment Mode"/>
+                            <referenceNoLabel
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                    fieldDescription="Reference No. Label"
+                                    fieldLabel="Reference No. Label"
+                                    name="./frmFields/referenceNoLabel"
+                                    value="Reference Number"/>
+                            <paymentModelLabel
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                    fieldDescription="Order Status Label"
+                                    fieldLabel="Order Status Label"
+                                    name="./frmFields/orderStatusLabel"
+                                    value="Status"/>
                             <backgroundImage
                                     jcr:primaryType="nt:unstructured"
                                     sling:resourceType="granite/ui/components/foundation/form/pathbrowser"
@@ -154,7 +175,7 @@
                     </column2>
                     <column3
                         jcr:primaryType="nt:unstructured"
-                        jcr:title="Error Messages"
+                        jcr:title="Error and Success Messages "
                         sling:resourceType="granite/ui/components/coral/foundation/container">
                         <items jcr:primaryType="nt:unstructured">
                             <emailRequiredMsg
@@ -171,6 +192,20 @@
                                 fieldLabel="Email Error message on Invalid characters"
                                 name="./validationMessages/emailInValidMsg"
                                 value="Please enter a valid email address. For example username@domain.com"/>
+                            <orderStatusErrorMsg
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                    fieldDescription="Order Status Error Message"
+                                    fieldLabel="Order Status Error Message Label"
+                                    name="./frmFields/orderStatusErrorMsg"
+                                    value="Faliure"/>
+                            <orderStatusSuccessMsg
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                    fieldDescription="Order Status Success Message Label"
+                                    fieldLabel="Order Status Success Message Label"
+                                    name="./frmFields/orderStatusSuccessMsg"
+                                    value="Success"/>
 
                         </items>
                     </column3>
