@@ -178,6 +178,10 @@
                                                                             jcr:primaryType="nt:unstructured"
                                                                             text="postpaid/preview"
                                                                             value="postpaid/preview"/>
+                                                                        <postpaid-missing-details
+                                                                            jcr:primaryType="nt:unstructured"
+                                                                            text="postpaid-missing-details"
+                                                                            value="postpaid-missing-details"/>
                                                                         <add-ons
                                                                             jcr:primaryType="nt:unstructured"
                                                                             text="add-ons"
