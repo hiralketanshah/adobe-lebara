@@ -4,23 +4,20 @@ import { ModelClient } from '@adobe/aem-spa-page-model-manager';
  * Used to show the loader image before any model call.
  */
 
- const renderLoader = (isLoading) => {
+const renderLoader = (isLoading) => {
+    const modelRootLoader = document.querySelector("body #modelRootLoader");
     if(isLoading) {
-        if(document.querySelector("body #modelRootLoader")) {
-            document.querySelector("body #modelRootLoader").style.display = "block";
+        if(modelRootLoader) {
+            modelRootLoader.style.display = "block";
         }
     } else {
-        if(document.querySelector("body #modelRootLoader")) {
-            document.querySelector("body #modelRootLoader").style.display = "none";
+        if(modelRootLoader) {
+            modelRootLoader.style.display = "none";
         }
     }
-  };
+};
   
 export default class LebaraModelClient extends ModelClient {
-    constructor(props) {
-        super(props)
-        renderLoader(true);
-    }
 
     fetch(modelPath) {
         if (!modelPath) {
