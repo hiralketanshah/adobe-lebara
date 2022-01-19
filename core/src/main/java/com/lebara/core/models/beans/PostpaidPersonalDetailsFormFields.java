@@ -9,7 +9,6 @@ import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.injectorspecific.ChildResource;
 import org.apache.sling.models.annotations.injectorspecific.SlingObject;
 import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
-import com.adobe.cq.dam.cfm.ContentFragment;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.lebara.core.utils.AemUtils;
@@ -210,7 +209,7 @@ public class PostpaidPersonalDetailsFormFields {
     public String ctaSkipLabel;
 
     public String getConsentMarketingText() {
-        return consentMarketingText;
+        return AemUtils.updateShortenLinksInRichText(consentMarketingText, resourceResolver);
     }
 
     public String getEmailLabel() {
@@ -286,11 +285,11 @@ public class PostpaidPersonalDetailsFormFields {
     }
 
     public String getCurrentProviderInfoDescription() {
-        return currentProviderInfoDescription;
+        return AemUtils.updateShortenLinksInRichText(currentProviderInfoDescription, resourceResolver);
     }
 
     public String getConsentDescription() {
-        return consentDescription;
+        return AemUtils.updateShortenLinksInRichText(consentDescription, resourceResolver);
     }
 
     public String getExitingPhoneHelperLabel() {
@@ -326,11 +325,11 @@ public class PostpaidPersonalDetailsFormFields {
     }
 
     public String getCurrentProviderUsageAcceptanceLabel() {
-        return currentProviderUsageAcceptanceLabel;
+        return AemUtils.updateShortenLinksInRichText(currentProviderUsageAcceptanceLabel, resourceResolver);
     }
 
     public String getCurrentProviderAdvertisingAcceptanceLabel() {
-        return currentProviderAdvertisingAcceptanceLabel;
+        return AemUtils.updateShortenLinksInRichText(currentProviderAdvertisingAcceptanceLabel, resourceResolver);
     }
 
     public String getCtaContinueLabel() {
