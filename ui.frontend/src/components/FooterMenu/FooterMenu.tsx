@@ -27,7 +27,7 @@ const FooterMenu: React.FC<FooterMenuProps> = ({
 }) => (
   <>
     <Box
-      px="80px"
+      px="40px"
       pt="116px"
       display={{ md: "block", base: "none" }}
       bg={theme?.bgColor}
@@ -42,7 +42,7 @@ const FooterMenu: React.FC<FooterMenuProps> = ({
         <Flex gridGap="70px">
           {footerUpperLinks?.map((menu: MenuProps, fmIdx) => (
             <Box key={`fm-key-${fmIdx}`}>
-              <Text fontSize={14} fontWeight="bold" textTransform="uppercase">
+              <Text fontSize={14} fontWeight="bold" textTransform="uppercase" whiteSpace={'pre'}>
                 {menu?.parentLinks?.label}
               </Text>
               <Flex direction="column">
@@ -52,7 +52,6 @@ const FooterMenu: React.FC<FooterMenuProps> = ({
                     fontSize="14px"
                     fontWeight="500"
                     lineHeight="14.06px"
-                    whiteSpace="pre"
                     mt="30px"
                     color={theme?.color === "white" ? "white" : "black"}
                   >
@@ -67,9 +66,9 @@ const FooterMenu: React.FC<FooterMenuProps> = ({
             </Box>
           ))}
         </Flex>
-        <Box width="10rem">
+        {/* <Box width="1rem">
           <></>
-        </Box>
+        </Box> */}
         <Divider display={{ lg: "none", md: "block" }} mt="2em" />
         <Box>
           <Box
@@ -86,7 +85,7 @@ const FooterMenu: React.FC<FooterMenuProps> = ({
             >
               {followus?.followUsText}
             </Text>
-            <Box width="350px">
+            <Box>
               <SocialMediaButtons buttons={followus?.links} color={theme?.color} />
             </Box>
             <Box px="10px">
