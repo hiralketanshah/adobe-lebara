@@ -107,6 +107,13 @@
                                     value="Enter Address Manually?"
                                     fieldDescription="Enter Address Manually?"
                                     name="./enterAddressManually"/>
+                            <changeAddressLabel
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                    fieldLabel="Change Address label"
+                                    value="Change Address"
+                                    fieldDescription="Change Address"
+                                    name="./changeAddressLabel"/>
                             <streetLabel
                                     jcr:primaryType="nt:unstructured"
                                     sling:resourceType="granite/ui/components/coral/foundation/form/textfield"

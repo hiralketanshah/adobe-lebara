@@ -72,6 +72,8 @@ public class PersonalDetailsExporter implements ComponentExporter {
     @ValueMapValue
     public String enterAddressManually;
     @ValueMapValue
+    public String changeAddressLabel;
+    @ValueMapValue
     public String streetLabel;
     @ValueMapValue
     public String streetLabelErrorMax;

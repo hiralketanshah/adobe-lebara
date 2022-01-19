@@ -220,6 +220,7 @@ const ExpandableSimPlanCard: React.FC<ExpandableSimPlanCardProps> = ({
                   fontSize={32}
                   pr="6px"
                   pl="2px"
+                  whiteSpace={'nowrap'}
                   fontWeight="bold"
                   color="secondary.500"
                   fontFamily="Chiswick Grotesque Lebara"
@@ -232,6 +233,7 @@ const ExpandableSimPlanCard: React.FC<ExpandableSimPlanCardProps> = ({
                 fontSize={promotionData ? "16px" : "32px"}
                 pr="6px"
                 pl="2px"
+                whiteSpace={'nowrap'}
                 fontWeight={promotionData ? "normal" : "bold"}
                 color="secondary.500"
                 textDecoration={promotionData ? "line-through" : "initial"}
@@ -248,6 +250,7 @@ const ExpandableSimPlanCard: React.FC<ExpandableSimPlanCardProps> = ({
                 fontSize={16}
                 pr="6px"
                 pl="2px"
+                whiteSpace={'nowrap'}
                 color="secondary.500"
                 fontWeight="normal"
                 textDecoration="line-through"
@@ -262,6 +265,7 @@ const ExpandableSimPlanCard: React.FC<ExpandableSimPlanCardProps> = ({
                   fontSize={24}
                   pr="6px"
                   pl="2px"
+                  whiteSpace={'nowrap'}
                   color="secondary.500"
                   fontWeight={500}
                 >
@@ -272,6 +276,7 @@ const ExpandableSimPlanCard: React.FC<ExpandableSimPlanCardProps> = ({
                   as="h3"
                   fontSize={24}
                   pr="6px"
+                  whiteSpace={'nowrap'}
                   pl="2px"
                   color="secondary.500"
                   fontWeight={500}
@@ -279,7 +284,7 @@ const ExpandableSimPlanCard: React.FC<ExpandableSimPlanCardProps> = ({
                   {cost} {globalConfigs.currencySymbol}
                 </Text>
               )}
-              {!(offerType === OfferTypes.BOLTON) ? <Text as="p" fontSize={14} color="lightenPrimary.150">
+              {!(offerType === OfferTypes.BOLTON) ? <Text as="p" fontSize={14}  whiteSpace={'nowrap'} color="lightenPrimary.150">
                 {" "}
                 {validity && `/ ${validity}`}
               </Text> : ''}
