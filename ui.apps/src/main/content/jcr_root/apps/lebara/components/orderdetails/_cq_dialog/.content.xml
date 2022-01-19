@@ -265,18 +265,6 @@
                                                     </cui>
                                                 </uiSettings>
                                             </consentlabel>
-                                            <privacypolicylabel
-                                                jcr:primaryType="nt:unstructured"
-                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                                fieldLabel="Privacy Policy Label"
-                                                fieldDescription="Privacy Policy"
-                                                name="./privacyPolicyLabel"/>
-                                            <privacypolicylink
-                                                jcr:primaryType="nt:unstructured"
-                                                sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
-                                                fieldLabel="Privacy Policy Link"
-                                                name="./privacyPolicyLink"
-                                                rootPath="/content/lebara"/>
                                             <termsandconditionslabel
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="cq/gui/components/authoring/dialog/richtext"
