@@ -210,7 +210,22 @@ public class AemUtils {
             for (Element aTag : ancTag) {
                 String hrefURL = aTag.attr("href");
                 String shortURL = AemUtils.getLinkWithExtension(hrefURL, slingRequest);
-                text.replace(hrefURL, shortURL);
+                text = text.replace(hrefURL, shortURL);
+            }
+        } else {
+            return StringUtils.EMPTY;
+        }
+        return text;
+    }
+
+    public static String updateShortenLinksInRichText(String text, ResourceResolver resourceResolver) {
+        if (StringUtils.isNotBlank(text)) {
+            Document document = Jsoup.parse(text);
+            Elements ancTag = document.getElementsByTag("a");
+            for (Element aTag : ancTag) {
+                String hrefURL = aTag.attr("href");
+                String shortURL = AemUtils.getLinkWithExtension(hrefURL, resourceResolver);
+                text = text.replace(hrefURL, shortURL);
             }
         } else {
             return StringUtils.EMPTY;
