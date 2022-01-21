@@ -131,6 +131,13 @@
 		<property name="label1" />
 		<property name="label2" />
 		<property name="popupDownloadLabel" />
+		<property name="streetLabelErrorRequired" />
+		<property name="streetLabelErrorPattern" />
+		<property name="houseNumberErrorRequired" />
+		<property name="houseNumberErrorPattern" />
+		<property name="zipCodeErrorRequired" />
+		<property name="zipCodeErrorPattern" />
+		<property name="cityErrorRequired" />
 		<!-- sim portin props -->
 		<property name="pretitle" />
 		<property name="doitLaterButtonLabel" />
@@ -357,6 +364,25 @@
 		<property name="houseNumberOrNameLabel"/>
 		<property name="creditOrDebitLabel"/>
 		<property name="cancelLabel"/>
+
+		<!--Payment on Global Confligs -->
+		<property name="card"/>
+		<property name="paymentMethodTitle"/>
+		<property name="creditCardName"/>
+		<property name="sepaName"/>
+		<property name="paypal"/>
+		<property name="giropay"/>
+		<property name="sepadirectdebit"/>
+		<property name="defaultMessage"/>
+		<property name="directEbanking"/>
+		<property name="giroPayRedirectMessage"/>
+		<property name="sofortRedirectMessage"/>
+		<property name="giroPayNote"/>
+		<property name="postpaidCreditCheckFail"/>
+		<property name="fraudErrorMessage"/>
+		<property name="cancelledPaymentErrorMessage"/>
+		<property name="topUpRecurringLabel"/>
+		<property name="recurringLabel"/>
 
 		<!--Support component -->
 		<property name="ctaLinkLabel"/>
