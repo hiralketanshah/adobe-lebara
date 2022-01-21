@@ -1237,6 +1237,48 @@
                                 fieldLabel="Error Message Empty Current Provider Number"
                                 name="./validationMessages/currentProviderRequiredMsg"
                                 value="Please Enter Current Provider Number"/>
+                            <streetLabelErrorRequired
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldLabel="Error Message Empty Street name"
+                                name="./validationMessages/streetLabelErrorRequired"
+                                value="Street name is Required"/>
+                            <streetLabelErrorPattern
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldLabel="Error Message on invalid Street name"
+                                name="./validationMessages/streetLabelErrorPattern"
+                                value="Please enter valid street name"/>
+                            <houseNumberErrorRequired
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldLabel="Error Message Empty House number"
+                                name="./validationMessages/houseNumberErrorRequired"
+                                value="House number is Required"/>
+                            <houseNumberErrorPattern
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldLabel="Error Message on invalid House number"
+                                name="./validationMessages/houseNumberErrorPattern"
+                                value="Please enter valid house number"/>
+                            <zipCodeErrorRequired
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldLabel="Error Message on Empty Zip code"
+                                name="./validationMessages/zipCodeErrorRequired"
+                                value="Zip code is Required"/>
+                            <zipCodeErrorPattern
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldLabel="Error Message on invalid Zip code"
+                                name="./validationMessages/zipCodeErrorPattern"
+                                value="Please enter valid postcode"/>
+                            <cityErrorRequired
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldLabel="Error Message on Empty city name"
+                                name="./validationMessages/cityErrorRequired"
+                                value="Town/city is Required"/>
                         </items>
                     </column5>
                     <yourOrder

@@ -73,6 +73,55 @@ public class PostpaidPersonalDetailsErrorMsg {
     @ValueMapValue
     private String verifyCodeRequiredMsg;
 
+    @ValueMapValue
+    private String streetLabelErrorRequired;
+
+    @ValueMapValue
+    private String streetLabelErrorPattern;
+
+    @ValueMapValue
+    private String houseNumberErrorRequired;
+
+    @ValueMapValue
+    private String houseNumberErrorPattern;
+
+    @ValueMapValue
+    private String zipCodeErrorRequired;
+
+    @ValueMapValue
+    private String zipCodeErrorPattern;
+
+    @ValueMapValue
+    private String cityErrorRequired;
+
+    public String getCityErrorRequired() {
+        return cityErrorRequired;
+    }
+
+    public String getStreetLabelErrorRequired() {
+        return streetLabelErrorRequired;
+    }
+
+    public String getStreetLabelErrorPattern() {
+        return streetLabelErrorPattern;
+    }
+
+    public String getHouseNumberErrorRequired() {
+        return houseNumberErrorRequired;
+    }
+
+    public String getHouseNumberErrorPattern() {
+        return houseNumberErrorPattern;
+    }
+
+    public String getZipCodeErrorRequired() {
+        return zipCodeErrorRequired;
+    }
+
+    public String getZipCodeErrorPattern() {
+        return zipCodeErrorPattern;
+    }
+
     public String getfNameRequiredMsg() {
         return fNameRequiredMsg;
     }
