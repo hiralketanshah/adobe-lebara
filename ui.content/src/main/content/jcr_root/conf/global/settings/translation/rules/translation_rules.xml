@@ -131,13 +131,6 @@
 		<property name="label1" />
 		<property name="label2" />
 		<property name="popupDownloadLabel" />
-		<property name="streetLabelErrorRequired" />
-		<property name="streetLabelErrorPattern" />
-		<property name="houseNumberErrorRequired" />
-		<property name="houseNumberErrorPattern" />
-		<property name="zipCodeErrorRequired" />
-		<property name="zipCodeErrorPattern" />
-		<property name="cityErrorRequired" />
 		<!-- sim portin props -->
 		<property name="pretitle" />
 		<property name="doitLaterButtonLabel" />
