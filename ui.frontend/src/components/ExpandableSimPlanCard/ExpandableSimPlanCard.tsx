@@ -16,7 +16,14 @@ import { useSelector } from "react-redux";
 import {
   selectIsAuthenticated,
   selectMsisdn,
+  selectEmail
 } from "@lebara/ui/src/redux/selectors/userSelectors";
+import { useApolloClient } from "@apollo/client";
+import GET_PERSONAL_DETAILS from "@lebara/ui/src/graphql/GET_PERSONAL_DETAILS";
+import { hasMissingDetails } from "@lebara/ui/src/components/NewPostpaidNumber/utils";
+import moment from "moment";
+import { setLoading } from "@lebara/ui/src/redux/actions/loadingActions";
+import { useDispatch } from "react-redux";
 const ExpandableSimPlanCard: React.FC<ExpandableSimPlanCardProps> = ({
   planName,
   previewIcon,
@@ -59,6 +66,9 @@ const ExpandableSimPlanCard: React.FC<ExpandableSimPlanCardProps> = ({
   const [isPdfDialogOpen, setIsPdfDialogOpen] = useState(false);
   const isAuthenticated = useSelector(selectIsAuthenticated);
   const msisdn = useSelector(selectMsisdn);
+  const client = useApolloClient();
+  const email = useSelector(selectEmail);
+  const dispatch = useDispatch();
   const handleViewCartClick = () => {
     history.push(isAuthenticated && msisdn ? "/order-details" : "/login");
   };
@@ -129,7 +139,47 @@ const ExpandableSimPlanCard: React.FC<ExpandableSimPlanCardProps> = ({
       case OfferTypes.POSTPAID: {
         try {
           await addItemToCart(parseInt(id || ''), planName, (JSON.stringify(description || '')), Number(cost?.replaceAll(',', '.') || ''), "postpaid", true);
-          isRemoveFromCart && onClose ? onClose() : history.push(isLoggedInUser ? "/postpaid/preview" : "/postpaid/details");
+          isRemoveFromCart && onClose ? onClose() : isLoggedInUser ? client
+            .query({ query: GET_PERSONAL_DETAILS })
+            .then((personalDetailsRes) => {
+              const personalDetails =
+                personalDetailsRes.data.getPersonalDetails;
+              if (hasMissingDetails(personalDetails)) {
+                history.push("/postpaid-missing-details");
+                return;
+              }
+
+              history.push("/postpaid/preview", {
+                personalDetails: {
+                  firstName: personalDetails?.name?.firstName,
+                  lastName: personalDetails?.name?.lastName,
+                  emailId: email,
+                  streetName: personalDetails?.addresses[0].street || "",
+                  houseNumber:
+                    personalDetails?.addresses[0].houseNumber || "",
+                  townCity: personalDetails?.addresses[0].city || "",
+                  zipCode: personalDetails?.addresses[0].postCode || "",
+                  addressLabel:
+                    personalDetails?.addresses?.length > 0
+                      ? `${personalDetails.addresses[0].street} ${
+                          personalDetails?.addresses[0].houseNumber || ""
+                        }, ${personalDetails.addresses[0].city}, ${
+                          personalDetails.addresses[0].postCode
+                        }, Germany`
+                      : undefined,
+                },
+                portIn: {
+                  dob: personalDetails?.dateOfBirth
+                    ? moment
+                        .utc(personalDetails?.dateOfBirth)
+                        .format("DD/MM/YYYY")
+                    : "",
+                },
+              });
+            })
+            .finally(() => {
+              dispatch(setLoading(false));
+            }) : history.push("/postpaid/details");
         } catch (e) {
 
         }
