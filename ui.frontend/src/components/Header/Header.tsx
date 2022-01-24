@@ -233,7 +233,6 @@ const Header: React.FC<HeaderProps> = ({
     (state: ReduxState) => state?.headerSearchBox?.key
   );
   const cartItems = useSelector((state: ReduxState) => state.cart.items);
-  console.log(cartItems);
   const history = useHistory();
   const client = useApolloClient();
   const dispatch = useDispatch();
