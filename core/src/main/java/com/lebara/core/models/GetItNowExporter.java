@@ -33,7 +33,7 @@ public class GetItNowExporter extends IntroExporter {
     private String buttonCTALink;
     @ValueMapValue
     private String getItNowErrorMessage;
-
+    @ValueMapValue
     private String description;
 
     @Override
