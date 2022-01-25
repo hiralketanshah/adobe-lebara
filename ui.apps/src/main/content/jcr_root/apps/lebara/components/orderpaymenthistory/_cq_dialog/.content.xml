@@ -104,6 +104,12 @@
                                     fieldLabel="Shop Now CTA Label"
                                     name="./frmFields/shopNowCTA"
                                     value="SHOP NOW"/>
+                            <shopnowlink
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                    fieldLabel="Show Now Link"
+                                    rootPath="/content/lebara"
+                                    name="./frmFields/shopNowLink"/>
 
                         </items>
                     </column1>

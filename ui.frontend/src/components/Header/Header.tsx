@@ -35,9 +35,7 @@ import {loadInitialCart, setCartItemsLoading} from "@lebara/ui/src/redux/actions
 import mapMagentoProductToCartItem from "@lebara/ui/src/utils/mapMagentoProductToCartItem";
 import {saveTopUps} from "@lebara/ui/src/redux/actions/topUpActions";
 import GET_TOP_UPS from "@lebara/ui/src/graphql/GET_TOP_UPS";
-import {setPaymentMethods} from "@lebara/ui/src/redux/actions/paymentMethodsActions";
 import { useHistory, RouterLink } from "@lebara/ui/src/hooks/useHistory";
-import axios from "axios";
 import PlanNotEligibleDialog from "@lebara/ui/src/components/PlanNotEligibleDialog/PlanNotEligibleDialog";
 import { toggleDialogState } from "@lebara/ui/src/redux/actions/modalsActions";
 import SearchResults from "../Search/SearchResults";
@@ -294,17 +292,6 @@ const Header: React.FC<HeaderProps> = ({
     });
   }, [client, dispatch]);
 
-  const loadPaymentMethods = useCallback(() => {
-    axios.post(`${GC.apiHostUri}/payments/adyen/paymentMethods`, {
-      channel: "Web",
-    })
-        .then((res) => {
-          dispatch(setPaymentMethods({
-            paymentMethods: res.data.paymentMethods.filter((t: any) => t.name !== "Local Polish Payment Methods")
-          }));
-        });
-  }, [dispatch]);
-  
   const handleCartClick = () => {
     onCloseSearch();
     history.push(cartItems.length === 0 ?"/empty-cart"  : "/order-details");
@@ -326,9 +313,6 @@ const Header: React.FC<HeaderProps> = ({
     handleSearchOverlay(isHeaderSearchClicked);
   }, [isHeaderSearchClicked]);
 
-  React.useEffect(() => {
-    loadPaymentMethods();
-  }, [loadPaymentMethods]);
 
   React.useEffect(() => {
     if (cartItems.length === 0) {
