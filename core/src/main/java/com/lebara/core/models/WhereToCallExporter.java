@@ -41,6 +41,9 @@ public class WhereToCallExporter implements ComponentExporter {
     private String title;
 
     @ValueMapValue
+    private String placeholder;
+
+    @ValueMapValue
     private String fragmentRootPath;
 
     private List<SelectBean> countryList;
@@ -58,7 +61,11 @@ public class WhereToCallExporter implements ComponentExporter {
             countryList = CFUtils.getWhereToCallRates(resourceResolver, fragmentRootPath);
         }
         return (countryList == null) ? Collections.emptyList() : Collections.unmodifiableList(countryList);
-    }
+    }    
+
+    public String getPlaceholder() {
+        return placeholder;
+    }    
 
     @Override
     public String getExportedType() {

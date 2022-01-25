@@ -71,6 +71,12 @@
                                                 fieldDescription="A title for the CTA."
                                                 fieldLabel="Pretitle"
                                                 name="./title"/>
+                                            <placeholder
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                value="Select a country"
+                                                fieldLabel="Select Placeholder"
+                                                name="./placeholder"/>
                                             <internationalfragmentpath
                                                     jcr:primaryType="nt:unstructured"
                                                     sling:resourceType="granite/ui/components/coral/foundation/form/pathbrowser"
