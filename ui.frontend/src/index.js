@@ -46,7 +46,7 @@ const renderApp = () => {
   
   //get the errorPageRoot folder
   const errorPageRoot = PathUtils.getMetaPropertyValue('cq:errorpages') + '/';
-  ModelManager.initialize({modelClient: modelClient,errorPageRoot}).then((pageModel) => {
+  ModelManager.initialize({modelClient: modelClient, errorPageRoot: errorPageRoot}).then((pageModel) => {
     const history = createBrowserHistory();
     render(
       <Router history={history}>
