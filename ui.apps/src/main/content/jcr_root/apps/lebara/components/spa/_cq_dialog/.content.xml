@@ -238,6 +238,14 @@
                                                                                 jcr:primaryType="nt:unstructured"
                                                                                 text="add-paypal"
                                                                                 value="add-paypal"/>
+                                                                        <add-klarna
+                                                                                jcr:primaryType="nt:unstructured"
+                                                                                text="add-klarna"
+                                                                                value="add-klarna"/>
+                                                                        <add-giropay
+                                                                                jcr:primaryType="nt:unstructured"
+                                                                                text="add-giropay"
+                                                                                value="add-giropay"/>
                                                                         <user-profile
                                                                                 jcr:primaryType="nt:unstructured"
                                                                                 text="user-profile"
