@@ -280,7 +280,7 @@
                     </globalconfigs>
                     <privateRoute
                         jcr:primaryType="nt:unstructured"
-                        jcr:title="Private Route Pages"
+                        jcr:title="Private/Error Pages"
                         sling:resourceType="granite/ui/components/coral/foundation/container"
                         margin="{Boolean}true">
                         <items jcr:primaryType="nt:unstructured">
@@ -293,6 +293,12 @@
                                         jcr:primaryType="nt:unstructured"
                                         sling:resourceType="granite/ui/components/coral/foundation/container">
                                         <items jcr:primaryType="nt:unstructured">
+                                            <errorPages
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                                rootPath="/content/lebara"
+                                                fieldLabel="Error pages root path"
+                                                name="./errorPages"/>
                                             <privatepages
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
@@ -306,7 +312,7 @@
                                                     fieldLabel="Private page"
                                                     name="./privatePages"
                                                     rootPath="/content/lebara"/>
-                                            </privatepages>
+                                            </privatepages>                                            
                                         </items>
                                     </column>
                                 </items>

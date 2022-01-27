@@ -2,7 +2,7 @@ import "react-app-polyfill/stable";
 import "react-app-polyfill/ie9";
 import "custom-event-polyfill";
 
-import {Constants, ModelManager} from "@adobe/aem-spa-page-model-manager";
+import {Constants, ModelManager, PathUtils} from "@adobe/aem-spa-page-model-manager";
 import {createBrowserHistory} from "history";
 import React from "react";
 import {render} from "react-dom";
@@ -43,7 +43,10 @@ const client = new ApolloClient({
 const modelClient = new LebaraModelClient();
 
 const renderApp = () => {
-  ModelManager.initialize({modelClient: modelClient}).then((pageModel) => {
+  
+  //get the errorPageRoot folder
+  const errorPageRoot = PathUtils.getMetaPropertyValue('cq:errorpages') + '/';
+  ModelManager.initialize({modelClient: modelClient, errorPageRoot: errorPageRoot}).then((pageModel) => {
     const history = createBrowserHistory();
     render(
       <Router history={history}>
