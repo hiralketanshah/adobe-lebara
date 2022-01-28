@@ -347,7 +347,9 @@
 		<property name="modalHeadingTerms"/>
 		<property name="modalHeadingPPPayment"/>
 		<property name="termsFullDescription"/>
-
+		<!--Failed order component -->
+		<property name="errorMessage"/>
+		<property name="errorBody"/>
 		<!--Add/edit debit/credit card component -->
 		<property name="morePaymentMethodsLabel"/>
 		<property name="payButtonLabel"/>
