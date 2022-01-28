@@ -182,6 +182,10 @@
                                                                             jcr:primaryType="nt:unstructured"
                                                                             text="postpaid-missing-details"
                                                                             value="postpaid-missing-details"/>
+                                                                        <contract-exists
+                                                                            jcr:primaryType="nt:unstructured"
+                                                                            text="contract-exists"
+                                                                            value="contract-exists"/>
                                                                         <add-ons
                                                                             jcr:primaryType="nt:unstructured"
                                                                             text="add-ons"
