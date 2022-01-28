@@ -29,6 +29,9 @@ Include conf.d/variables/custom.vars
 		Header always set Access-Control-Allow-Credentials "true"
 		Header always set Access-Control-Request-Headers "Content-Type, Authorization"
 		Header always set Access-Control-Request-Method "*"
+		Header always set X-Forwarded-Proto "https"
+		Header always set X-XSS-Protection "1"
+		#Header always set Content-Security-Policy "script-src 'self' 'unsafe-inline' 'unsafe-eval' *.trustpilot.com *.googletagmanager.com *.googleapis.com sit-api-aggregator.lebara.com api-aggregator.lebara.com *.exactag.com *.cookielaw.org ;  object-src 'self'"
 	</IfModule>
 	<Directory />
 		<IfModule disp_apache2.c>
