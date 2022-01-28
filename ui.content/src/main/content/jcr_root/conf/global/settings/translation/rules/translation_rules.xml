@@ -270,6 +270,16 @@
 		<property name="guestResetLinkLabel" />
 		<property name="guestContinueLabel" />
 
+		<!-- Reset Password -->
+		<property name="resetPwdTitle" />
+		<property name="resetPwdDescription" />
+		<property name="resetPwdEmailLabel" />
+		<property name="resetPwdMobileLabel" />
+		<property name="resetPwdButtonLabel" />
+		<property name="resetPwdButtonCancelLabel" />
+		<property name="emptyMobileError" />
+		<property name="invalidMobileError" />
+
 		<!-- Login/Register/Guest : Error messages -->
 		<property name="emailFieldErrorMessage" />
 		<property name="validEmailFieldErrorMessage" />
