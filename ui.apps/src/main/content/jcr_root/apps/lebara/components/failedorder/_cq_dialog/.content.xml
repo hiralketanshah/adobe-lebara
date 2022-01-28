@@ -33,6 +33,11 @@
                                                 fieldLabel="error message"
                                                 value="order failed"
                                                 name="./errorMessage"/>
+                                            <errorBody
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textarea"
+                                                fieldLabel="Error Body"
+                                                name="./errorBody"/>
                                             <dashboardButtonLabel
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textarea"
