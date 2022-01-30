@@ -249,6 +249,7 @@
 		<property name="loginButton" />
 		<property name="loginRegistrationMessage" />
 		<property name="loginRegistrationCtaLabel" />		
+		<property name="loginTabLabel" />		
 		<property name="extraBlockOrText" />
 		<property name="extraBlockLoginText" />
 		<property name="extraBlockLoginLinkText" />
@@ -259,8 +260,11 @@
 		<property name="registrationContinueButton" />
 		<property name="registrationMessage" />
 		<property name="registrationCtaLabel" />
+		<property name="registrationTabLabel" />
 		<property name="extraBlockRegisterText" />
 		<property name="extraBlockRegisterLinkText" />
+		<property name="extraBlockGuestText" />
+		<property name="extraBlockGuestLinkText" />
 		<property name="guestLoginLabel" />
 		<property name="guestEmailAddressLabel" />
 		<property name="guestMobileNumberLabel" />
@@ -269,6 +273,7 @@
 		<property name="guestResetLinkTextLabel" />
 		<property name="guestResetLinkLabel" />
 		<property name="guestContinueLabel" />
+		<property name="guestTabLabel" />
 
 		<!-- Reset Password -->
 		<property name="resetPwdTitle" />
@@ -357,6 +362,8 @@
 		<property name="modalHeadingTerms"/>
 		<property name="modalHeadingPPPayment"/>
 		<property name="termsFullDescription"/>
+		<property name="labelTermsandConditions"/>
+		<property name="ctaClose"/>
 		<!--Failed order component -->
 		<property name="errorMessage"/>
 		<property name="errorBody"/>
@@ -660,6 +667,18 @@
 		<property name="transactionSummery"/>
 		<property name="orderHistoryEmptyLabel"/>
 		<property name="emptyOrderLabel"/>
+		<property name="paymentModeLabel"/>
+		<property name="referenceNoLabel"/>
+		<property name="orderStatusLabel"/>
+		<property name="shopNowCTA"/>
+		<property name="filterLabel"/>
+		<property name="modalTitle"/>
+		<property name="fromLabel"/>
+		<property name="toLabel"/>
+		<property name="continueCTALabel"/>
+		<property name="cancelCTALabel"/>
+		<property name="orderStatusErrorMsg"/>
+		<property name="orderStatusSuccessMsg"/>
 
 		<!-- Lebara fields ends -->
 		<property name="cq:language" updateDestinationLanguage="true"/>
