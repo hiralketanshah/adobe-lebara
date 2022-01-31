@@ -50,6 +50,19 @@ public class ResetPasswordExporter implements ComponentExporter {
     @ValueMapValue
     private String resetPwdButtonCancelLabel;
 
+    @ValueMapValue
+    private String emptyMobileError;
+
+    @ValueMapValue
+    private String invalidMobileError;
+
+    public String getEmptyMobileError() {
+        return emptyMobileError;
+    }
+
+    public String getInvalidMobileError() {
+        return invalidMobileError;
+    }
 
     public String getResetPwdTitle() {
         return resetPwdTitle;
