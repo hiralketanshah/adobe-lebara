@@ -24,6 +24,8 @@ import { hasMissingDetails } from "@lebara/ui/src/components/NewPostpaidNumber/u
 import moment from "moment";
 import { setLoading } from "@lebara/ui/src/redux/actions/loadingActions";
 import { useDispatch } from "react-redux";
+import { ReduxState } from "@lebara/ui/src/redux/types";
+import PlanNotEligibleDialog from "@lebara/ui/src/components/PlanNotEligibleDialog/PlanNotEligibleDialog";
 const ExpandableSimPlanCard: React.FC<ExpandableSimPlanCardProps> = ({
   planName,
   previewIcon,
@@ -64,11 +66,13 @@ const ExpandableSimPlanCard: React.FC<ExpandableSimPlanCardProps> = ({
   const [isDialogOpen, setIsDialogOpen] = React.useState(false);
   const [isButtonDisabled, setIsButtonDisabled] = React.useState(false);
   const [isPdfDialogOpen, setIsPdfDialogOpen] = useState(false);
+  const [isFailedtoAddOpen, setIsFailedtoAddOpen] = useState(false);
   const isAuthenticated = useSelector(selectIsAuthenticated);
   const msisdn = useSelector(selectMsisdn);
   const client = useApolloClient();
   const email = useSelector(selectEmail);
   const dispatch = useDispatch();
+  const cartItems = useSelector((state: ReduxState) => state.cart.items);
   const handleViewCartClick = () => {
     history.push(isAuthenticated && msisdn ? "/order-details" : "/login");
   };
@@ -96,6 +100,10 @@ const ExpandableSimPlanCard: React.FC<ExpandableSimPlanCardProps> = ({
     switch (offerType) {
       case OfferTypes.BOLTON:
       case OfferTypes.TOPUP: {
+        if (cartItems?.some(item => !!item.isPostPaid)) {
+          setIsFailedtoAddOpen(true);
+          break;
+        }
         const updatedAddtoCart: string = addedtoCartLabel?.replace('{0}', planName) || '';
         try {
           await addItemToCart(parseInt(id || ''), planName, (JSON.stringify(description || '')), Number(cost?.replaceAll(',','.') || ''), "addon");
@@ -230,7 +238,10 @@ const ExpandableSimPlanCard: React.FC<ExpandableSimPlanCardProps> = ({
           ctaCloseLabel={ctaCloseLabel}
           ctaDownloadLabel={ctaDownloadLabel}
         />
-
+        <PlanNotEligibleDialog
+          open={isFailedtoAddOpen}
+          onClose={() => setIsFailedtoAddOpen(false)}
+        />
         <PlanDetailsDialog
           isOpen={isDialogOpen}
           onClose={() => setIsDialogOpen(false)}
