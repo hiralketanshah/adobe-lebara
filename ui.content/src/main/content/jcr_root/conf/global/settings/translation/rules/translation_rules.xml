@@ -444,6 +444,10 @@
 		<property name="ctaResendVerificationLabel"/>
 		<property name="ctaEditMobileLabel"/>
 		<property name="ctaSkipLabel"/>
+		<property name="mobileRequiredMsg"/>
+		<property name="mobileInValidMsg"/>
+		<property name="verifyCodeRequiredMsg"/>
+		<property name="verifyCodeInvalidMsg"/>
 
 		<!-- Wheretocall -->
 		<!-- XfPage -->
@@ -644,6 +648,7 @@
 		<property name="beforeEmailText"/>
 		<property name="afterEmailText"/>
 		<property name="changePasswordSuccessMsg"/>
+		<property name="fNamePlaceholder"/>
 
 		<!-- Change Password -->
 		<property name="changePasswordHeading"/>
