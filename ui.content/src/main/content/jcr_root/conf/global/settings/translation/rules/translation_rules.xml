@@ -731,14 +731,10 @@
 	<assetNode resourceType="lebara/components/experiencefragment" assetReferenceAttribute="fragmentVariationPath"/>
 	<assetNode resourceType="dam/cfm/components/contentfragment" assetReferenceAttribute="fileReference"/>
 	<assetNode resourceType="docs/components/download" />
-	<assetNode resourceType="docs/components/image" />
-	<assetNode resourceType="foundation/components/image" assetReferenceAttribute="fileReference"/>
 	<assetNode resourceType="foundation/components/video" assetReferenceAttribute="asset"/>
 	<assetNode resourceType="foundation/components/download" assetReferenceAttribute="fileReference"/>
 	<assetNode resourceType="core/wcm/components/download/v1/download" assetReferenceAttribute="fileReference"/>
-	<assetNode resourceType="wcm/foundation/components/image" assetReferenceAttribute="fileReference"/>
 	<assetNode resourceType="core/wcm/components/contentfragment/v1/contentfragment" assetReferenceAttribute="fragmentPath"/>
-	<assetNode resourceType="core/wcm/components/image/v2/image" assetReferenceAttribute="fileReference"/>
 	<assetNode resourceType="lebara/components/viewplans" assetReferenceAttribute="cfPath"/>
 	<assetNode resourceType="lebara/components/emptycart" assetReferenceAttribute="cfPath"/>
 	<assetNode resourceType="lebara/components/contentfragment" assetReferenceAttribute="fragmentPath"/>
