@@ -79,6 +79,7 @@
 		<property name="termsConditionsLabel" />
 		<property name="contractConsentLabel" />
 		<property name="confirmLabel" />
+		<property name="allActivePlansLabel" />
 		<!-- addons props -->
 		<property name="addMoreLabel" />
 		<property name="leftOfText" />
