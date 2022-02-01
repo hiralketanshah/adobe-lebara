@@ -27,7 +27,7 @@ const FooterMenu: React.FC<FooterMenuProps> = ({
 }) => (
   <>
     <Box
-      px="40px"
+      px="80px"
       pt="116px"
       display={{ md: "block", base: "none" }}
       bg={theme?.bgColor}
@@ -35,7 +35,7 @@ const FooterMenu: React.FC<FooterMenuProps> = ({
     >
       <Box
         height="initial"
-        display={{ lg: "flex", md: "block" }}
+        display={{ xl: "flex", lg:"block", md: "block" }}
         justifyContent="space-between"
         mb="8.135rem"
       >
@@ -69,11 +69,11 @@ const FooterMenu: React.FC<FooterMenuProps> = ({
         {/* <Box width="1rem">
           <></>
         </Box> */}
-        <Divider display={{ lg: "none", md: "block" }} mt="2em" />
+        <Divider display={{ xl: "none", lg: "block" , md: "block" }} mt="2em" />
         <Box>
           <Box
-            pl={{ lg: "5em", md: "initial" }}
-            mt={{ lg: "initial", md: "2em" }}
+            pl={{ xl: "5em", lg:'initial', md: "initial" }}
+            mt={{ xl: "initial", lg:'2em' ,md: "2em" }}
           >
             <Text
               fontSize={14}
