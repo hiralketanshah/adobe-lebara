@@ -273,13 +273,13 @@
                                     value="Please enter a valid email address. For example username@domain.com"
                                     fieldDescription="Please enter a valid email address. For example username@domain.com"
                                     name="./emailErrorPattern"/>
-                            <exitingUserErrorMsg
+                            <existingUserErrorMsg
                                     jcr:primaryType="nt:unstructured"
                                     sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                     fieldLabel="Existig user error message"
                                     value="This email already has an account attached. Please use a different email"
                                     fieldDescription="This email already has an account attached. Please use a different email"
-                                    name="./exitingUserErrorMsg"/>
+                                    name="./existingUserErrorMsg"/>
                             <addressErrorRequired
                                     jcr:primaryType="nt:unstructured"
                                     sling:resourceType="granite/ui/components/coral/foundation/form/textfield"

@@ -120,7 +120,7 @@ public class PersonalDetailsExporter implements ComponentExporter {
     @ValueMapValue
     public String paymentCta;
     @ValueMapValue
-    public String exitingUserErrorMsg;
+    public String existingUserErrorMsg;
 
     @ValueMapValue
     private String cfPath;
