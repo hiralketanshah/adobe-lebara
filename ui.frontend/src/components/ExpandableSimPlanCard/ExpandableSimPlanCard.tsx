@@ -85,7 +85,37 @@ const ExpandableSimPlanCard: React.FC<ExpandableSimPlanCardProps> = ({
       || !list.name.toLowerCase().includes('l2l')))) || {};
     filteredAllowanceList['formatedValue'] = filteredAllowanceList['value'] + ' ' + minutesLabel;
   }
+  const handleToastView = async (description: string) => {
+    const updatedAddtoCart: string = addedtoCartLabel?.replace('{0}', planName) || '';
+    try {
+      await addItemToCart(parseInt(id || ''), planName, (JSON.stringify(description || '')), Number(cost?.replaceAll(',', '.') || ''), "addon");
+      toast({
+        position: "bottom",
+        render: () => (
+          <Flex
+            color="white"
+            p={3}
+            bg="primary.700"
+            borderRadius="4px"
+            justifyContent="space-between"
+            maxW="420px"
+          >
+            <Text py="12px">{updatedAddtoCart}</Text>
+            <Button
+              variant="ghost"
+              style={{ whiteSpace: "normal" }}
+              colorScheme="secondary"
+              onClick={handleViewCartClick}
+            >
+              {viewCartLabel}
+            </Button>
+          </Flex>
+        ),
+      });
+    } catch (e) {
 
+    }
+  };
   const handleAddToCart = async () => {
     const isLoggedInUser: boolean = !!(isAuthenticated && msisdn);
     const description: string | undefined = additionalOffers?.match(/<li>.*?<\/li>/g)?.length ? additionalOffers.replaceAll('\n', '').replaceAll('&nbsp;', '').match(/<li>.*?<\/li>/g)?.map(list => list?.replaceAll(/<li>|<\/li>/g, ''))?.join('+') : additionalOffers;
@@ -98,41 +128,16 @@ const ExpandableSimPlanCard: React.FC<ExpandableSimPlanCardProps> = ({
       });
     }
     switch (offerType) {
-      case OfferTypes.BOLTON:
-      case OfferTypes.TOPUP: {
+      case OfferTypes.BOLTON: {
         if (cartItems?.some(item => !!item.isPostPaid)) {
           setIsFailedtoAddOpen(true);
           break;
         }
-        const updatedAddtoCart: string = addedtoCartLabel?.replace('{0}', planName) || '';
-        try {
-          await addItemToCart(parseInt(id || ''), planName, (JSON.stringify(description || '')), Number(cost?.replaceAll(',','.') || ''), "addon");
-          toast({
-            position: "bottom",
-            render: () => (
-                <Flex
-                    color="white"
-                    p={3}
-                    bg="primary.700"
-                    borderRadius="4px"
-                    justifyContent="space-between"
-                    maxW="420px"
-                >
-                  <Text py="12px">{updatedAddtoCart}</Text>
-                  <Button
-                      variant="ghost"
-                      style={{ whiteSpace: "normal" }}
-                      colorScheme="secondary"
-                      onClick={handleViewCartClick}
-                  >
-                    {viewCartLabel}
-                  </Button>
-                </Flex>
-            ),
-          });
-        }catch(e){
-
-        }
+        handleToastView(description || "");
+        break;
+      }
+      case OfferTypes.TOPUP: {
+        handleToastView(description || "");
         break;
       }
       case OfferTypes.PREPAID: {
