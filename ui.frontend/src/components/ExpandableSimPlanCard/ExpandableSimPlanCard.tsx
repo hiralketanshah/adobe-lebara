@@ -72,7 +72,7 @@ const ExpandableSimPlanCard: React.FC<ExpandableSimPlanCardProps> = ({
   const client = useApolloClient();
   const email = useSelector(selectEmail);
   const dispatch = useDispatch();
-  const cartItems = useSelector((state: ReduxState) => state.cart.items);
+  const cartItems = useSelector((state: ReduxState) => state?.cart?.items);
   const handleViewCartClick = () => {
     history.push(isAuthenticated && msisdn ? "/order-details" : "/login");
   };
@@ -131,9 +131,9 @@ const ExpandableSimPlanCard: React.FC<ExpandableSimPlanCardProps> = ({
       case OfferTypes.BOLTON: {
         if (cartItems?.some(item => !!item.isPostPaid)) {
           setIsFailedtoAddOpen(true);
-          break;
+        } else {
+          handleToastView(description || "");
         }
-        handleToastView(description || "");
         break;
       }
       case OfferTypes.TOPUP: {
