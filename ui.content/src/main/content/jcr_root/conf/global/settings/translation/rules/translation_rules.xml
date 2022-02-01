@@ -561,6 +561,12 @@
 		<property name="portInNumberInValidMsg"/>
 		<property name="currentProviderRequiredMsg"/>
 		<property name="paymentCta"/>
+		<property name="address"/>
+		<property name="customerSupportText"/>
+		<property name="productAndServicePreviewText"/>
+		<property name="productAndServiceDescription"/>
+		<property name="privacyPolicyTextDescription"/>
+		<property name="orderTotalLabel"/>
 
 		<!-- Dynamic Cart-->
 		<property name="viewPlanAccordianLabel"/>
