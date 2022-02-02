@@ -378,7 +378,10 @@
 		<property name="creditOrDebitLabel"/>
 		<property name="cancelLabel"/>
 
-		<!--Payment on Global Confligs -->
+		<!--Global Configs -->
+		<property name="planNotEligibleErrorMessage"/>
+		
+		<!--Payment on Global Configs -->
 		<property name="card"/>
 		<property name="paymentMethodTitle"/>
 		<property name="creditCardName"/>
@@ -396,6 +399,7 @@
 		<property name="cancelledPaymentErrorMessage"/>
 		<property name="topUpRecurringLabel"/>
 		<property name="recurringLabel"/>
+		<property name="directDebitCheckboxText"/>
 
 		<!--Support component -->
 		<property name="ctaLinkLabel"/>
