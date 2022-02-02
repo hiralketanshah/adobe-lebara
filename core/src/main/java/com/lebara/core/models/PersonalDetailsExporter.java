@@ -119,6 +119,8 @@ public class PersonalDetailsExporter implements ComponentExporter {
     public String orderDetailsCta;
     @ValueMapValue
     public String paymentCta;
+    @ValueMapValue
+    public String existingUserErrorMsg;
 
     @ValueMapValue
     private String cfPath;

@@ -471,6 +471,7 @@
 		<property name="lastNameErrorRequired"/>
 		<property name="lastNameErrorPattern"/>
 		<property name="emailErrorMax"/>
+		<property name="existingUserErrorMsg"/>
 		<property name="emailErrorRequired"/>
 		<property name="emailErrorPattern"/>
 		<property name="addressErrorRequired"/>
