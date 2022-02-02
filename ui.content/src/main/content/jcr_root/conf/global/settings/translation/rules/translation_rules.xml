@@ -79,6 +79,7 @@
 		<property name="termsConditionsLabel" />
 		<property name="contractConsentLabel" />
 		<property name="confirmLabel" />
+		<property name="allActivePlansLabel" />
 		<!-- addons props -->
 		<property name="addMoreLabel" />
 		<property name="leftOfText" />
@@ -249,6 +250,7 @@
 		<property name="loginButton" />
 		<property name="loginRegistrationMessage" />
 		<property name="loginRegistrationCtaLabel" />		
+		<property name="loginTabLabel" />		
 		<property name="extraBlockOrText" />
 		<property name="extraBlockLoginText" />
 		<property name="extraBlockLoginLinkText" />
@@ -259,8 +261,11 @@
 		<property name="registrationContinueButton" />
 		<property name="registrationMessage" />
 		<property name="registrationCtaLabel" />
+		<property name="registrationTabLabel" />
 		<property name="extraBlockRegisterText" />
 		<property name="extraBlockRegisterLinkText" />
+		<property name="extraBlockGuestText" />
+		<property name="extraBlockGuestLinkText" />
 		<property name="guestLoginLabel" />
 		<property name="guestEmailAddressLabel" />
 		<property name="guestMobileNumberLabel" />
@@ -269,6 +274,7 @@
 		<property name="guestResetLinkTextLabel" />
 		<property name="guestResetLinkLabel" />
 		<property name="guestContinueLabel" />
+		<property name="guestTabLabel" />
 
 		<!-- Reset Password -->
 		<property name="resetPwdTitle" />
@@ -357,6 +363,8 @@
 		<property name="modalHeadingTerms"/>
 		<property name="modalHeadingPPPayment"/>
 		<property name="termsFullDescription"/>
+		<property name="labelTermsandConditions"/>
+		<property name="ctaClose"/>
 		<!--Failed order component -->
 		<property name="errorMessage"/>
 		<property name="errorBody"/>
@@ -437,6 +445,10 @@
 		<property name="ctaResendVerificationLabel"/>
 		<property name="ctaEditMobileLabel"/>
 		<property name="ctaSkipLabel"/>
+		<property name="mobileRequiredMsg"/>
+		<property name="mobileInValidMsg"/>
+		<property name="verifyCodeRequiredMsg"/>
+		<property name="verifyCodeInvalidMsg"/>
 
 		<!-- Wheretocall -->
 		<!-- XfPage -->
@@ -551,6 +563,12 @@
 		<property name="portInNumberInValidMsg"/>
 		<property name="currentProviderRequiredMsg"/>
 		<property name="paymentCta"/>
+		<property name="address"/>
+		<property name="customerSupportText"/>
+		<property name="productAndServicePreviewText"/>
+		<property name="productAndServiceDescription"/>
+		<property name="privacyPolicyTextDescription"/>
+		<property name="orderTotalLabel"/>
 
 		<!-- Dynamic Cart-->
 		<property name="viewPlanAccordianLabel"/>
@@ -638,6 +656,7 @@
 		<property name="beforeEmailText"/>
 		<property name="afterEmailText"/>
 		<property name="changePasswordSuccessMsg"/>
+		<property name="fNamePlaceholder"/>
 
 		<!-- Change Password -->
 		<property name="changePasswordHeading"/>
@@ -661,6 +680,18 @@
 		<property name="transactionSummery"/>
 		<property name="orderHistoryEmptyLabel"/>
 		<property name="emptyOrderLabel"/>
+		<property name="paymentModeLabel"/>
+		<property name="referenceNoLabel"/>
+		<property name="orderStatusLabel"/>
+		<property name="shopNowCTA"/>
+		<property name="filterLabel"/>
+		<property name="modalTitle"/>
+		<property name="fromLabel"/>
+		<property name="toLabel"/>
+		<property name="continueCTALabel"/>
+		<property name="cancelCTALabel"/>
+		<property name="orderStatusErrorMsg"/>
+		<property name="orderStatusSuccessMsg"/>
 
 		<!-- Lebara fields ends -->
 		<property name="cq:language" updateDestinationLanguage="true"/>
@@ -713,14 +744,10 @@
 	<assetNode resourceType="lebara/components/experiencefragment" assetReferenceAttribute="fragmentVariationPath"/>
 	<assetNode resourceType="dam/cfm/components/contentfragment" assetReferenceAttribute="fileReference"/>
 	<assetNode resourceType="docs/components/download" />
-	<assetNode resourceType="docs/components/image" />
-	<assetNode resourceType="foundation/components/image" assetReferenceAttribute="fileReference"/>
 	<assetNode resourceType="foundation/components/video" assetReferenceAttribute="asset"/>
 	<assetNode resourceType="foundation/components/download" assetReferenceAttribute="fileReference"/>
 	<assetNode resourceType="core/wcm/components/download/v1/download" assetReferenceAttribute="fileReference"/>
-	<assetNode resourceType="wcm/foundation/components/image" assetReferenceAttribute="fileReference"/>
 	<assetNode resourceType="core/wcm/components/contentfragment/v1/contentfragment" assetReferenceAttribute="fragmentPath"/>
-	<assetNode resourceType="core/wcm/components/image/v2/image" assetReferenceAttribute="fileReference"/>
 	<assetNode resourceType="lebara/components/viewplans" assetReferenceAttribute="cfPath"/>
 	<assetNode resourceType="lebara/components/emptycart" assetReferenceAttribute="cfPath"/>
 	<assetNode resourceType="lebara/components/contentfragment" assetReferenceAttribute="fragmentPath"/>
