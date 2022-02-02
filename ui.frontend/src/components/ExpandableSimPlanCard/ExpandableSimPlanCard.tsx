@@ -24,6 +24,8 @@ import { hasMissingDetails } from "@lebara/ui/src/components/NewPostpaidNumber/u
 import moment from "moment";
 import { setLoading } from "@lebara/ui/src/redux/actions/loadingActions";
 import { useDispatch } from "react-redux";
+import { ReduxState } from "@lebara/ui/src/redux/types";
+import PlanNotEligibleDialog from "@lebara/ui/src/components/PlanNotEligibleDialog/PlanNotEligibleDialog";
 const ExpandableSimPlanCard: React.FC<ExpandableSimPlanCardProps> = ({
   planName,
   previewIcon,
@@ -64,11 +66,13 @@ const ExpandableSimPlanCard: React.FC<ExpandableSimPlanCardProps> = ({
   const [isDialogOpen, setIsDialogOpen] = React.useState(false);
   const [isButtonDisabled, setIsButtonDisabled] = React.useState(false);
   const [isPdfDialogOpen, setIsPdfDialogOpen] = useState(false);
+  const [isFailedtoAddOpen, setIsFailedtoAddOpen] = useState(false);
   const isAuthenticated = useSelector(selectIsAuthenticated);
   const msisdn = useSelector(selectMsisdn);
   const client = useApolloClient();
   const email = useSelector(selectEmail);
   const dispatch = useDispatch();
+  const cartItems = useSelector((state: ReduxState) => state?.cart?.items);
   const handleViewCartClick = () => {
     history.push(isAuthenticated && msisdn ? "/order-details" : "/login");
   };
@@ -81,7 +85,37 @@ const ExpandableSimPlanCard: React.FC<ExpandableSimPlanCardProps> = ({
       || !list.name.toLowerCase().includes('l2l')))) || {};
     filteredAllowanceList['formatedValue'] = filteredAllowanceList['value'] + ' ' + minutesLabel;
   }
+  const handleToastView = async (description: string) => {
+    const updatedAddtoCart: string = addedtoCartLabel?.replace('{0}', planName) || '';
+    try {
+      await addItemToCart(parseInt(id || ''), planName, (JSON.stringify(description || '')), Number(cost?.replaceAll(',', '.') || ''), "addon");
+      toast({
+        position: "bottom",
+        render: () => (
+          <Flex
+            color="white"
+            p={3}
+            bg="primary.700"
+            borderRadius="4px"
+            justifyContent="space-between"
+            maxW="420px"
+          >
+            <Text py="12px">{updatedAddtoCart}</Text>
+            <Button
+              variant="ghost"
+              style={{ whiteSpace: "normal" }}
+              colorScheme="secondary"
+              onClick={handleViewCartClick}
+            >
+              {viewCartLabel}
+            </Button>
+          </Flex>
+        ),
+      });
+    } catch (e) {
 
+    }
+  };
   const handleAddToCart = async () => {
     const isLoggedInUser: boolean = !!(isAuthenticated && msisdn);
     const description: string | undefined = additionalOffers?.match(/<li>.*?<\/li>/g)?.length ? additionalOffers.replaceAll('\n', '').replaceAll('&nbsp;', '').match(/<li>.*?<\/li>/g)?.map(list => list?.replaceAll(/<li>|<\/li>/g, ''))?.join('+') : additionalOffers;
@@ -94,37 +128,16 @@ const ExpandableSimPlanCard: React.FC<ExpandableSimPlanCardProps> = ({
       });
     }
     switch (offerType) {
-      case OfferTypes.BOLTON:
-      case OfferTypes.TOPUP: {
-        const updatedAddtoCart: string = addedtoCartLabel?.replace('{0}', planName) || '';
-        try {
-          await addItemToCart(parseInt(id || ''), planName, (JSON.stringify(description || '')), Number(cost?.replaceAll(',','.') || ''), "addon");
-          toast({
-            position: "bottom",
-            render: () => (
-                <Flex
-                    color="white"
-                    p={3}
-                    bg="primary.700"
-                    borderRadius="4px"
-                    justifyContent="space-between"
-                    maxW="420px"
-                >
-                  <Text py="12px">{updatedAddtoCart}</Text>
-                  <Button
-                      variant="ghost"
-                      style={{ whiteSpace: "normal" }}
-                      colorScheme="secondary"
-                      onClick={handleViewCartClick}
-                  >
-                    {viewCartLabel}
-                  </Button>
-                </Flex>
-            ),
-          });
-        }catch(e){
-
+      case OfferTypes.BOLTON: {
+        if (cartItems?.some(item => !!item.isPostPaid)) {
+          setIsFailedtoAddOpen(true);
+        } else {
+          handleToastView(description || "");
         }
+        break;
+      }
+      case OfferTypes.TOPUP: {
+        handleToastView(description || "");
         break;
       }
       case OfferTypes.PREPAID: {
@@ -230,7 +243,10 @@ const ExpandableSimPlanCard: React.FC<ExpandableSimPlanCardProps> = ({
           ctaCloseLabel={ctaCloseLabel}
           ctaDownloadLabel={ctaDownloadLabel}
         />
-
+        <PlanNotEligibleDialog
+          open={isFailedtoAddOpen}
+          onClose={() => setIsFailedtoAddOpen(false)}
+        />
         <PlanDetailsDialog
           isOpen={isDialogOpen}
           onClose={() => setIsDialogOpen(false)}
