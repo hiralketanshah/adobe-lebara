@@ -98,6 +98,17 @@
 		<property name="internationalMinPlanName" />
 		<property name="internationalMinDataType" />
 		<property name="leftOfLabel" />
+		<!-- Dashboard Allowances -->
+		<property name="dataLabel" />
+		<property name="dataValue" />
+		<property name="minutesLabel" />
+		<property name="minutesValue" />
+		<property name="smsLabel" />
+		<property name="smsValue" />
+		<property name="validUntilLabel" />
+		<property name="aioLabel" />
+		<property name="l2lLabel" />
+		<property name="localLabel" />
 		<!-- postpaid props -->
 		<property name="moreDetailsLabel" />
 		<property name="popupCloseLabel" />
@@ -668,6 +679,7 @@
 		<property name="oldPasswordPlacehodler"/>
 		<property name="newPasswordLabel"/>
 		<property name="newPasswordPlacehodler"/>
+		<property name="confirmNewPasswordLabel"/>
 		<property name="confirmPasswordPlacehodler"/>
 		<property name="oldPasswordRequiredMsg"/>
 		<property name="newPasswordRequiredMsg"/>
