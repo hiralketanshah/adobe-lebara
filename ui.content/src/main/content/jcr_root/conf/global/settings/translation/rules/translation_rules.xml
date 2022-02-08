@@ -588,6 +588,7 @@
 		<property name="privacyPolicyTextDescription"/>
 		<property name="orderTotalLabel"/>
 		<property name="consentMarketingText"/>
+		<property name="consentPreviewText"/>
 
 		<!-- Dynamic Cart-->
 		<property name="viewPlanAccordianLabel"/>
