@@ -157,6 +157,8 @@
 		<property name="currentProviderDesc" />
 		<property name="contractInfo" />
 		<property name="portingInfo" />
+		<property name="advertisingInfo" />
+		<property name="partnersInfo" />
 		<property name="consentOne" />
 		<property name="consentTwo" />
 		<property name="dataProtectionMessage" />
@@ -478,6 +480,7 @@
 		<property name="emailAddressPlaceholder"/>
 		<property name="keyInAddress"/>
 		<property name="addressLabel"/>
+		<property name="changeAddressLabel"/>
 		<property name="addressKeyInText"/>
 		<property name="postalcodePlaceholder"/>
 		<property name="enterAddressManually"/>
@@ -584,6 +587,7 @@
 		<property name="productAndServiceDescription"/>
 		<property name="privacyPolicyTextDescription"/>
 		<property name="orderTotalLabel"/>
+		<property name="consentMarketingText"/>
 
 		<!-- Dynamic Cart-->
 		<property name="viewPlanAccordianLabel"/>
