@@ -38,6 +38,9 @@ const client = new ApolloClient({
   credentials: "include",
   defaultOptions,
   cache: new InMemoryCache(),
+  headers: {
+      channel: "Web",
+  },
 });
 
 const modelClient = new LebaraModelClient();
