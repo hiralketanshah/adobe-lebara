@@ -23,6 +23,8 @@ import "@fontsource/roboto/900.css";
 import {globalConfigs} from '@lebara/ui/src/configs/globalConfigs.js';
 import store from "@lebara/ui/src/store";
 import { pdfjs } from "react-pdf";
+import axios from "axios";
+
 pdfjs.GlobalWorkerOptions.workerSrc = '/etc.clientlibs/lebara/clientlibs/clientlib-react/resources/pdf.worker.js';
 const defaultOptions = {
     watchQuery: {
@@ -42,6 +44,10 @@ const client = new ApolloClient({
       channel: "Web",
   },
 });
+
+axios.defaults.headers = {
+    channel: "Web",
+};
 
 const modelClient = new LebaraModelClient();
 
