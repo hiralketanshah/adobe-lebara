@@ -98,6 +98,17 @@
 		<property name="internationalMinPlanName" />
 		<property name="internationalMinDataType" />
 		<property name="leftOfLabel" />
+		<!-- Dashboard Allowances -->
+		<property name="dataLabel" />
+		<property name="dataValue" />
+		<property name="minutesLabel" />
+		<property name="minutesValue" />
+		<property name="smsLabel" />
+		<property name="smsValue" />
+		<property name="validUntilLabel" />
+		<property name="aioLabel" />
+		<property name="l2lLabel" />
+		<property name="localLabel" />
 		<!-- postpaid props -->
 		<property name="moreDetailsLabel" />
 		<property name="popupCloseLabel" />
@@ -146,6 +157,8 @@
 		<property name="currentProviderDesc" />
 		<property name="contractInfo" />
 		<property name="portingInfo" />
+		<property name="advertisingInfo" />
+		<property name="partnersInfo" />
 		<property name="consentOne" />
 		<property name="consentTwo" />
 		<property name="dataProtectionMessage" />
@@ -378,7 +391,10 @@
 		<property name="creditOrDebitLabel"/>
 		<property name="cancelLabel"/>
 
-		<!--Payment on Global Confligs -->
+		<!--Global Configs -->
+		<property name="planNotEligibleErrorMessage"/>
+		
+		<!--Payment on Global Configs -->
 		<property name="card"/>
 		<property name="paymentMethodTitle"/>
 		<property name="creditCardName"/>
@@ -396,6 +412,7 @@
 		<property name="cancelledPaymentErrorMessage"/>
 		<property name="topUpRecurringLabel"/>
 		<property name="recurringLabel"/>
+		<property name="directDebitCheckboxText"/>
 
 		<!--Support component -->
 		<property name="ctaLinkLabel"/>
@@ -463,6 +480,7 @@
 		<property name="emailAddressPlaceholder"/>
 		<property name="keyInAddress"/>
 		<property name="addressLabel"/>
+		<property name="changeAddressLabel"/>
 		<property name="addressKeyInText"/>
 		<property name="postalcodePlaceholder"/>
 		<property name="enterAddressManually"/>
@@ -569,6 +587,8 @@
 		<property name="productAndServiceDescription"/>
 		<property name="privacyPolicyTextDescription"/>
 		<property name="orderTotalLabel"/>
+		<property name="consentMarketingText"/>
+		<property name="consentPreviewText"/>
 
 		<!-- Dynamic Cart-->
 		<property name="viewPlanAccordianLabel"/>
@@ -664,6 +684,7 @@
 		<property name="oldPasswordPlacehodler"/>
 		<property name="newPasswordLabel"/>
 		<property name="newPasswordPlacehodler"/>
+		<property name="confirmNewPasswordLabel"/>
 		<property name="confirmPasswordPlacehodler"/>
 		<property name="oldPasswordRequiredMsg"/>
 		<property name="newPasswordRequiredMsg"/>
