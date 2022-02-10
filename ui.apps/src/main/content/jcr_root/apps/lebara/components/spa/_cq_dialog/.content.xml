@@ -110,6 +110,10 @@
                                                                             jcr:primaryType="nt:unstructured"
                                                                             text="(Default)"
                                                                             value=""/>
+                                                                        <home
+                                                                            jcr:primaryType="nt:unstructured"
+                                                                            text="home"
+                                                                            value="home"/>
                                                                         <lebara-sim-choice
                                                                             jcr:primaryType="nt:unstructured"
                                                                             text="lebara-sim-choice"

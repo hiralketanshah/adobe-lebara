@@ -12,6 +12,7 @@ import com.lebara.core.models.beans.PaymentMethods;
 import com.lebara.core.services.GlobalOsgiService;
 import com.lebara.core.utils.AemUtils;
 import org.apache.commons.lang3.ArrayUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.SlingHttpServletResponse;
 import org.apache.sling.api.resource.Resource;
@@ -102,7 +103,11 @@ public class GlobalConfigs extends SlingSafeMethodsServlet {
                 Iterator<Resource> children = currentPage.getContentResource(JOURNEY_PAGES).listChildren();
                 while (children.hasNext()) {
                     Resource child = children.next();
-                    items.put("/".concat(child.getValueMap().get("name", String.class)), AemUtils.getLinkWithExtension(child.getValueMap().get("path", String.class), request));
+                    if (StringUtils.equalsIgnoreCase(child.getValueMap().get("name", String.class), "home")) {
+                        items.put("/", AemUtils.getLinkWithExtension(child.getValueMap().get("path", String.class), request));
+                    } else {
+                        items.put("/".concat(child.getValueMap().get("name", String.class)), AemUtils.getLinkWithExtension(child.getValueMap().get("path", String.class), request));
+                    }
                 }
 
             }
