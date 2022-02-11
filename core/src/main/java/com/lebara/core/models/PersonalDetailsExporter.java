@@ -34,15 +34,11 @@ public class PersonalDetailsExporter implements ComponentExporter {
     @ValueMapValue
     public String firstNamePlaceholder;
     @ValueMapValue
-    public String firstNameErrorMax;
-    @ValueMapValue
     public String firstNameErrorRequired;
     @ValueMapValue
     public String firstNameErrorPattern;
     @ValueMapValue
     public String lastNameLabel;
-    @ValueMapValue
-    public String lastNameErrorMax;
     @ValueMapValue
     public String lastNameErrorRequired;
     @ValueMapValue
