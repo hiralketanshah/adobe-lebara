@@ -208,12 +208,6 @@
                             jcr:title="First and last Name Error Messages"
                             sling:resourceType="granite/ui/components/coral/foundation/container">
                         <items jcr:primaryType="nt:unstructured">
-                            <firstNameErrorMax
-                                    jcr:primaryType="nt:unstructured"
-                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                    fieldLabel="First Name Error message on character limit"
-                                    value="Must be 50 characters or less"
-                                    name="./firstNameErrorMax"/>
                             <firstNameErrorRequired
                                     jcr:primaryType="nt:unstructured"
                                     sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
@@ -226,13 +220,6 @@
                                     fieldLabel="First Name Error message on Invalid characters"
                                     value="The First name cannot contain any special characters ($, @, #, !, %. * ^() ?)"
                                     name="./firstNameErrorPattern"/>
-                            <lastNameErrorMax
-                                    jcr:primaryType="nt:unstructured"
-                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                    fieldLabel="Last Name Error message on character limit"
-                                    value="Must be 75 characters or less"
-                                    fieldDescription="Must be 75 characters or less"
-                                    name="./lastNameErrorMax"/>
                             <lastNameErrorRequired
                                     jcr:primaryType="nt:unstructured"
                                     sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
