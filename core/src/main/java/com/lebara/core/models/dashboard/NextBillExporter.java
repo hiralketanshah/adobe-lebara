@@ -25,6 +25,8 @@ public class NextBillExporter implements ComponentExporter {
     private ResourceResolver resourceResolver;
 
     @ValueMapValue
+    public String heading;
+    @ValueMapValue
     public String title;
     @ValueMapValue
     public String durationLabel;
