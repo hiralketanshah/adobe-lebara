@@ -72,6 +72,7 @@
 		<property name="manageLabel" />
 		<property name="autoRenewLabel" />
 		<property name="autoRenewDesc" />
+		<property name="autoRenewTurnOnLabel" />
 		<property name="buttonText" />
 		<property name="planChangeTitle" />
 		<property name="planChangeDesc" />
@@ -109,6 +110,10 @@
 		<property name="aioLabel" />
 		<property name="l2lLabel" />
 		<property name="localLabel" />
+		<!-- Next Bill Component -->
+		<property name="monthlyChargesLabel" />
+		<property name="totalEstimatedLabel" />
+		<property name="additionalChargesLabel" />
 		<!-- postpaid props -->
 		<property name="moreDetailsLabel" />
 		<property name="popupCloseLabel" />
