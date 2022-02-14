@@ -238,6 +238,9 @@ public class AemUtils {
     }
 
     private static boolean isHtmlExtensionRequired(String payloadPath) {
+        if (StringUtils.startsWithIgnoreCase(payloadPath, "/content/dam")) {
+            return false;
+        }
         return !payloadPath.contains(".html");
     }
     /**
