@@ -238,7 +238,7 @@ public class AemUtils {
     }
 
     private static boolean isHtmlExtensionRequired(String payloadPath) {
-        if (StringUtils.endsWithIgnoreCase(payloadPath, ".pdf") || StringUtils.endsWithIgnoreCase(payloadPath, ".jpg") || StringUtils.endsWithIgnoreCase(payloadPath, ".jpeg")) {
+        if (StringUtils.startsWithIgnoreCase(payloadPath, "/content/dam")) {
             return false;
         }
         return !payloadPath.contains(".html");
