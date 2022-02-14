@@ -2,12 +2,13 @@ import "react-app-polyfill/stable";
 import "react-app-polyfill/ie9";
 import "custom-event-polyfill";
 
-import {Constants, ModelManager} from "@adobe/aem-spa-page-model-manager";
+import {Constants, ModelManager, PathUtils} from "@adobe/aem-spa-page-model-manager";
 import {createBrowserHistory} from "history";
 import React from "react";
 import {render} from "react-dom";
 import {Router} from "react-router-dom";
 import App from "./App";
+import LebaraModelClient from "./LebaraModelClient";
 import "./components/import-components";
 import "./index.css";
 import "./styles/index.scss";
@@ -22,6 +23,8 @@ import "@fontsource/roboto/900.css";
 import {globalConfigs} from '@lebara/ui/src/configs/globalConfigs.js';
 import store from "@lebara/ui/src/store";
 import { pdfjs } from "react-pdf";
+import axios from "axios";
+
 pdfjs.GlobalWorkerOptions.workerSrc = '/etc.clientlibs/lebara/clientlibs/clientlib-react/resources/pdf.worker.js';
 const defaultOptions = {
     watchQuery: {
@@ -37,10 +40,22 @@ const client = new ApolloClient({
   credentials: "include",
   defaultOptions,
   cache: new InMemoryCache(),
+  headers: {
+      channel: "Web",
+  },
 });
 
+axios.defaults.headers = {
+    channel: "Web",
+};
+
+const modelClient = new LebaraModelClient();
+
 const renderApp = () => {
-  ModelManager.initialize().then((pageModel) => {
+  
+  //get the errorPageRoot folder
+  const errorPageRoot = PathUtils.getMetaPropertyValue('cq:errorpages') + '/';
+  ModelManager.initialize({modelClient: modelClient, errorPageRoot: errorPageRoot}).then((pageModel) => {
     const history = createBrowserHistory();
     render(
       <Router history={history}>

@@ -65,7 +65,19 @@
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                                 fieldLabel="Cancel Button Label"
                                                 value="CANCEL"
-                                                name="./resetPwdButtonCancelLabel"/>                                            
+                                                name="./resetPwdButtonCancelLabel"/>
+                                            <emptyMobileError
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="Error message if mobile number is not entered"
+                                                value="Please enter your number to reset passwords"
+                                                name="./emptyMobileError"/>
+                                            <invalidMobileError
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="Error message if mobile number is incorrect"
+                                                value="Please enter 10-12 digits including 0"
+                                                name="./invalidMobileError"/>
                                         </items>
                                     </column>
                                 </items>

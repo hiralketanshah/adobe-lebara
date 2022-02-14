@@ -1,6 +1,8 @@
 package com.lebara.core.beans;
 
+import com.lebara.core.utils.AemUtils;
 import com.fasterxml.jackson.annotation.JsonInclude;
+import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.api.resource.ResourceResolver;
 import org.apache.sling.models.annotations.DefaultInjectionStrategy;
@@ -12,12 +14,17 @@ import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
 @Model(adaptables = {Resource.class}, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
 public class OrderPaymentHistoryFormFields {
 	
+    @SlingObject
+    private SlingHttpServletRequest request;
 
     @SlingObject
     private ResourceResolver resourceResolver;
 
     @ValueMapValue
     private String shopNowCTA;
+
+    @ValueMapValue
+    private String shopNowLink;
 
     @ValueMapValue
     private String emptyOrderLabel;
@@ -67,8 +74,27 @@ public class OrderPaymentHistoryFormFields {
     @ValueMapValue
     private String nodataImage;
 
+    @ValueMapValue
+    private String paymentModeLabel;
+
+    @ValueMapValue
+    private String referenceNoLabel;
+
+    @ValueMapValue
+    private String orderStatusLabel;
+
+    @ValueMapValue
+    private String orderStatusErrorMsg;
+
+    @ValueMapValue
+    private String orderStatusSuccessMsg;
+
     public String getShopNowCTA() {
         return shopNowCTA;
+    }
+
+    public String getShopNowLink() {
+        return AemUtils.getLinkWithExtension(shopNowLink, request);
     }
 
     public String getEmptyOrderLabel() {
@@ -132,4 +158,24 @@ public class OrderPaymentHistoryFormFields {
     }
 
     public String getNodataImage() { return nodataImage;}
+
+    public String getPaymentModeLabel() {
+        return paymentModeLabel;
+    }
+
+    public String getReferenceNoLabel() {
+        return referenceNoLabel;
+    }
+
+    public String getOrderStatusLabel() {
+        return orderStatusLabel;
+    }
+
+    public String getOrderStatusErrorMsg() {
+        return orderStatusErrorMsg;
+    }
+
+    public String getOrderStatusSuccessMsg() {
+        return orderStatusSuccessMsg;
+    }
 }

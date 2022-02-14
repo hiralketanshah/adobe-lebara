@@ -12,6 +12,7 @@ import com.lebara.core.models.beans.PaymentMethods;
 import com.lebara.core.services.GlobalOsgiService;
 import com.lebara.core.utils.AemUtils;
 import org.apache.commons.lang3.ArrayUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.SlingHttpServletResponse;
 import org.apache.sling.api.resource.Resource;
@@ -42,6 +43,7 @@ public class GlobalConfigs extends SlingSafeMethodsServlet {
     private static final String JOURNEY_PAGES = "journeyPages";
     private static final String PRIVATE_PAGES = "privatePages";
     private static final String PAYMENT_MESSAGES = "paymentMessages";
+    private static final String PLAN_NOT_ELIGIBLE_ERROR_MESSAGE = "planNotEligibleErrorMessage";
 
     @Reference
     private transient GlobalOsgiService globalOsgiService;
@@ -71,6 +73,7 @@ public class GlobalConfigs extends SlingSafeMethodsServlet {
                 .put(CURRENCY_NAME, Optional.ofNullable(inheritedProp.getInherited(CURRENCY_NAME, String.class)).orElse(""))
                 .put(JOURNEY_PAGES, getJourneyPages(request, page))
                 .put(PRIVATE_PAGES, getPrivatePages(request, inheritedProp.getInherited(PRIVATE_PAGES, String[].class)))
+                .put(PLAN_NOT_ELIGIBLE_ERROR_MESSAGE, Optional.ofNullable(inheritedProp.getInherited(PLAN_NOT_ELIGIBLE_ERROR_MESSAGE, String.class)).orElse(""))
                 .put(PAYMENT_MESSAGES,getPaymentMethods(page)).build();
     }
 
@@ -100,7 +103,11 @@ public class GlobalConfigs extends SlingSafeMethodsServlet {
                 Iterator<Resource> children = currentPage.getContentResource(JOURNEY_PAGES).listChildren();
                 while (children.hasNext()) {
                     Resource child = children.next();
-                    items.put("/".concat(child.getValueMap().get("name", String.class)), AemUtils.getLinkWithExtension(child.getValueMap().get("path", String.class), request));
+                    if (StringUtils.equalsIgnoreCase(child.getValueMap().get("name", String.class), "home")) {
+                        items.put("/", AemUtils.getLinkWithExtension(child.getValueMap().get("path", String.class), request));
+                    } else {
+                        items.put("/".concat(child.getValueMap().get("name", String.class)), AemUtils.getLinkWithExtension(child.getValueMap().get("path", String.class), request));
+                    }
                 }
 
             }

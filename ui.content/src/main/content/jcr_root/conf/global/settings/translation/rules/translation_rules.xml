@@ -72,6 +72,7 @@
 		<property name="manageLabel" />
 		<property name="autoRenewLabel" />
 		<property name="autoRenewDesc" />
+		<property name="autoRenewTurnOnLabel" />
 		<property name="buttonText" />
 		<property name="planChangeTitle" />
 		<property name="planChangeDesc" />
@@ -79,6 +80,7 @@
 		<property name="termsConditionsLabel" />
 		<property name="contractConsentLabel" />
 		<property name="confirmLabel" />
+		<property name="allActivePlansLabel" />
 		<!-- addons props -->
 		<property name="addMoreLabel" />
 		<property name="leftOfText" />
@@ -97,6 +99,21 @@
 		<property name="internationalMinPlanName" />
 		<property name="internationalMinDataType" />
 		<property name="leftOfLabel" />
+		<!-- Dashboard Allowances -->
+		<property name="dataLabel" />
+		<property name="dataValue" />
+		<property name="minutesLabel" />
+		<property name="minutesValue" />
+		<property name="smsLabel" />
+		<property name="smsValue" />
+		<property name="validUntilLabel" />
+		<property name="aioLabel" />
+		<property name="l2lLabel" />
+		<property name="localLabel" />
+		<!-- Next Bill Component -->
+		<property name="monthlyChargesLabel" />
+		<property name="totalEstimatedLabel" />
+		<property name="additionalChargesLabel" />
 		<!-- postpaid props -->
 		<property name="moreDetailsLabel" />
 		<property name="popupCloseLabel" />
@@ -145,6 +162,8 @@
 		<property name="currentProviderDesc" />
 		<property name="contractInfo" />
 		<property name="portingInfo" />
+		<property name="advertisingInfo" />
+		<property name="partnersInfo" />
 		<property name="consentOne" />
 		<property name="consentTwo" />
 		<property name="dataProtectionMessage" />
@@ -249,6 +268,7 @@
 		<property name="loginButton" />
 		<property name="loginRegistrationMessage" />
 		<property name="loginRegistrationCtaLabel" />		
+		<property name="loginTabLabel" />		
 		<property name="extraBlockOrText" />
 		<property name="extraBlockLoginText" />
 		<property name="extraBlockLoginLinkText" />
@@ -259,8 +279,11 @@
 		<property name="registrationContinueButton" />
 		<property name="registrationMessage" />
 		<property name="registrationCtaLabel" />
+		<property name="registrationTabLabel" />
 		<property name="extraBlockRegisterText" />
 		<property name="extraBlockRegisterLinkText" />
+		<property name="extraBlockGuestText" />
+		<property name="extraBlockGuestLinkText" />
 		<property name="guestLoginLabel" />
 		<property name="guestEmailAddressLabel" />
 		<property name="guestMobileNumberLabel" />
@@ -269,6 +292,17 @@
 		<property name="guestResetLinkTextLabel" />
 		<property name="guestResetLinkLabel" />
 		<property name="guestContinueLabel" />
+		<property name="guestTabLabel" />
+
+		<!-- Reset Password -->
+		<property name="resetPwdTitle" />
+		<property name="resetPwdDescription" />
+		<property name="resetPwdEmailLabel" />
+		<property name="resetPwdMobileLabel" />
+		<property name="resetPwdButtonLabel" />
+		<property name="resetPwdButtonCancelLabel" />
+		<property name="emptyMobileError" />
+		<property name="invalidMobileError" />
 
 		<!-- Login/Register/Guest : Error messages -->
 		<property name="emailFieldErrorMessage" />
@@ -347,7 +381,11 @@
 		<property name="modalHeadingTerms"/>
 		<property name="modalHeadingPPPayment"/>
 		<property name="termsFullDescription"/>
-
+		<property name="labelTermsandConditions"/>
+		<property name="ctaClose"/>
+		<!--Failed order component -->
+		<property name="errorMessage"/>
+		<property name="errorBody"/>
 		<!--Add/edit debit/credit card component -->
 		<property name="morePaymentMethodsLabel"/>
 		<property name="payButtonLabel"/>
@@ -357,6 +395,29 @@
 		<property name="houseNumberOrNameLabel"/>
 		<property name="creditOrDebitLabel"/>
 		<property name="cancelLabel"/>
+
+		<!--Global Configs -->
+		<property name="planNotEligibleErrorMessage"/>
+		
+		<!--Payment on Global Configs -->
+		<property name="card"/>
+		<property name="paymentMethodTitle"/>
+		<property name="creditCardName"/>
+		<property name="sepaName"/>
+		<property name="paypal"/>
+		<property name="giropay"/>
+		<property name="sepadirectdebit"/>
+		<property name="defaultMessage"/>
+		<property name="directEbanking"/>
+		<property name="giroPayRedirectMessage"/>
+		<property name="sofortRedirectMessage"/>
+		<property name="giroPayNote"/>
+		<property name="postpaidCreditCheckFail"/>
+		<property name="fraudErrorMessage"/>
+		<property name="cancelledPaymentErrorMessage"/>
+		<property name="topUpRecurringLabel"/>
+		<property name="recurringLabel"/>
+		<property name="directDebitCheckboxText"/>
 
 		<!--Support component -->
 		<property name="ctaLinkLabel"/>
@@ -406,6 +467,10 @@
 		<property name="ctaResendVerificationLabel"/>
 		<property name="ctaEditMobileLabel"/>
 		<property name="ctaSkipLabel"/>
+		<property name="mobileRequiredMsg"/>
+		<property name="mobileInValidMsg"/>
+		<property name="verifyCodeRequiredMsg"/>
+		<property name="verifyCodeInvalidMsg"/>
 
 		<!-- Wheretocall -->
 		<!-- XfPage -->
@@ -420,6 +485,7 @@
 		<property name="emailAddressPlaceholder"/>
 		<property name="keyInAddress"/>
 		<property name="addressLabel"/>
+		<property name="changeAddressLabel"/>
 		<property name="addressKeyInText"/>
 		<property name="postalcodePlaceholder"/>
 		<property name="enterAddressManually"/>
@@ -440,6 +506,7 @@
 		<property name="lastNameErrorRequired"/>
 		<property name="lastNameErrorPattern"/>
 		<property name="emailErrorMax"/>
+		<property name="existingUserErrorMsg"/>
 		<property name="emailErrorRequired"/>
 		<property name="emailErrorPattern"/>
 		<property name="addressErrorRequired"/>
@@ -519,6 +586,14 @@
 		<property name="portInNumberInValidMsg"/>
 		<property name="currentProviderRequiredMsg"/>
 		<property name="paymentCta"/>
+		<property name="address"/>
+		<property name="customerSupportText"/>
+		<property name="productAndServicePreviewText"/>
+		<property name="productAndServiceDescription"/>
+		<property name="privacyPolicyTextDescription"/>
+		<property name="orderTotalLabel"/>
+		<property name="consentMarketingText"/>
+		<property name="consentPreviewText"/>
 
 		<!-- Dynamic Cart-->
 		<property name="viewPlanAccordianLabel"/>
@@ -606,6 +681,7 @@
 		<property name="beforeEmailText"/>
 		<property name="afterEmailText"/>
 		<property name="changePasswordSuccessMsg"/>
+		<property name="fNamePlaceholder"/>
 
 		<!-- Change Password -->
 		<property name="changePasswordHeading"/>
@@ -613,6 +689,7 @@
 		<property name="oldPasswordPlacehodler"/>
 		<property name="newPasswordLabel"/>
 		<property name="newPasswordPlacehodler"/>
+		<property name="confirmNewPasswordLabel"/>
 		<property name="confirmPasswordPlacehodler"/>
 		<property name="oldPasswordRequiredMsg"/>
 		<property name="newPasswordRequiredMsg"/>
@@ -629,6 +706,18 @@
 		<property name="transactionSummery"/>
 		<property name="orderHistoryEmptyLabel"/>
 		<property name="emptyOrderLabel"/>
+		<property name="paymentModeLabel"/>
+		<property name="referenceNoLabel"/>
+		<property name="orderStatusLabel"/>
+		<property name="shopNowCTA"/>
+		<property name="filterLabel"/>
+		<property name="modalTitle"/>
+		<property name="fromLabel"/>
+		<property name="toLabel"/>
+		<property name="continueCTALabel"/>
+		<property name="cancelCTALabel"/>
+		<property name="orderStatusErrorMsg"/>
+		<property name="orderStatusSuccessMsg"/>
 
 		<!-- Lebara fields ends -->
 		<property name="cq:language" updateDestinationLanguage="true"/>
@@ -681,14 +770,10 @@
 	<assetNode resourceType="lebara/components/experiencefragment" assetReferenceAttribute="fragmentVariationPath"/>
 	<assetNode resourceType="dam/cfm/components/contentfragment" assetReferenceAttribute="fileReference"/>
 	<assetNode resourceType="docs/components/download" />
-	<assetNode resourceType="docs/components/image" />
-	<assetNode resourceType="foundation/components/image" assetReferenceAttribute="fileReference"/>
 	<assetNode resourceType="foundation/components/video" assetReferenceAttribute="asset"/>
 	<assetNode resourceType="foundation/components/download" assetReferenceAttribute="fileReference"/>
 	<assetNode resourceType="core/wcm/components/download/v1/download" assetReferenceAttribute="fileReference"/>
-	<assetNode resourceType="wcm/foundation/components/image" assetReferenceAttribute="fileReference"/>
 	<assetNode resourceType="core/wcm/components/contentfragment/v1/contentfragment" assetReferenceAttribute="fragmentPath"/>
-	<assetNode resourceType="core/wcm/components/image/v2/image" assetReferenceAttribute="fileReference"/>
 	<assetNode resourceType="lebara/components/viewplans" assetReferenceAttribute="cfPath"/>
 	<assetNode resourceType="lebara/components/emptycart" assetReferenceAttribute="cfPath"/>
 	<assetNode resourceType="lebara/components/contentfragment" assetReferenceAttribute="fragmentPath"/>

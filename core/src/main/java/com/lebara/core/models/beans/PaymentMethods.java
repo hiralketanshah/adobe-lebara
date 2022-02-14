@@ -1,15 +1,21 @@
 package com.lebara.core.models.beans;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
+import com.lebara.core.utils.AemUtils;
 import org.apache.commons.codec.binary.StringUtils;
+import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.models.annotations.DefaultInjectionStrategy;
 import org.apache.sling.models.annotations.Model;
+import org.apache.sling.models.annotations.injectorspecific.SlingObject;
 import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @Model(adapters = {PaymentMethods.class}, adaptables = {Resource.class}, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
 public class PaymentMethods {
+
+    @SlingObject
+    private SlingHttpServletRequest slingRequest;
 
     @ValueMapValue
     private String card;
@@ -65,7 +71,6 @@ public class PaymentMethods {
     @ValueMapValue
     private String recurringLabel;
 
-
     public String getCard() {
         return getUTFStr(card);
     }
@@ -91,7 +96,7 @@ public class PaymentMethods {
     }
 
     public String getDirectDebitCheckboxText() {
-        return getUTFStr(directDebitCheckboxText);
+        return AemUtils.updateShortenLinksInRichText(getUTFStr(directDebitCheckboxText),slingRequest);
     }
 
     public String getGiroPayRedirectMessage() {

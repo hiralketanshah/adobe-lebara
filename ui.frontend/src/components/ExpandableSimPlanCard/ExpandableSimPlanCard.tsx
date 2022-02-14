@@ -16,7 +16,16 @@ import { useSelector } from "react-redux";
 import {
   selectIsAuthenticated,
   selectMsisdn,
+  selectEmail
 } from "@lebara/ui/src/redux/selectors/userSelectors";
+import { useApolloClient } from "@apollo/client";
+import GET_PERSONAL_DETAILS from "@lebara/ui/src/graphql/GET_PERSONAL_DETAILS";
+import { hasMissingDetails } from "@lebara/ui/src/components/NewPostpaidNumber/utils";
+import moment from "moment";
+import { setLoading } from "@lebara/ui/src/redux/actions/loadingActions";
+import { useDispatch } from "react-redux";
+import { ReduxState } from "@lebara/ui/src/redux/types";
+import PlanNotEligibleDialog from "@lebara/ui/src/components/PlanNotEligibleDialog/PlanNotEligibleDialog";
 const ExpandableSimPlanCard: React.FC<ExpandableSimPlanCardProps> = ({
   planName,
   previewIcon,
@@ -57,8 +66,13 @@ const ExpandableSimPlanCard: React.FC<ExpandableSimPlanCardProps> = ({
   const [isDialogOpen, setIsDialogOpen] = React.useState(false);
   const [isButtonDisabled, setIsButtonDisabled] = React.useState(false);
   const [isPdfDialogOpen, setIsPdfDialogOpen] = useState(false);
+  const [isFailedtoAddOpen, setIsFailedtoAddOpen] = useState(false);
   const isAuthenticated = useSelector(selectIsAuthenticated);
   const msisdn = useSelector(selectMsisdn);
+  const client = useApolloClient();
+  const email = useSelector(selectEmail);
+  const dispatch = useDispatch();
+  const cartItems = useSelector((state: ReduxState) => state?.cart?.items);
   const handleViewCartClick = () => {
     history.push(isAuthenticated && msisdn ? "/order-details" : "/login");
   };
@@ -71,7 +85,37 @@ const ExpandableSimPlanCard: React.FC<ExpandableSimPlanCardProps> = ({
       || !list.name.toLowerCase().includes('l2l')))) || {};
     filteredAllowanceList['formatedValue'] = filteredAllowanceList['value'] + ' ' + minutesLabel;
   }
+  const handleToastView = async (description: string) => {
+    const updatedAddtoCart: string = addedtoCartLabel?.replace('{0}', planName) || '';
+    try {
+      await addItemToCart(parseInt(id || ''), planName, (JSON.stringify(description || '')), Number(cost?.replaceAll(',', '.') || ''), "addon");
+      toast({
+        position: "bottom",
+        render: () => (
+          <Flex
+            color="white"
+            p={3}
+            bg="primary.700"
+            borderRadius="4px"
+            justifyContent="space-between"
+            maxW="420px"
+          >
+            <Text py="12px">{updatedAddtoCart}</Text>
+            <Button
+              variant="ghost"
+              style={{ whiteSpace: "normal" }}
+              colorScheme="secondary"
+              onClick={handleViewCartClick}
+            >
+              {viewCartLabel}
+            </Button>
+          </Flex>
+        ),
+      });
+    } catch (e) {
 
+    }
+  };
   const handleAddToCart = async () => {
     const isLoggedInUser: boolean = !!(isAuthenticated && msisdn);
     const description: string | undefined = additionalOffers?.match(/<li>.*?<\/li>/g)?.length ? additionalOffers.replaceAll('\n', '').replaceAll('&nbsp;', '').match(/<li>.*?<\/li>/g)?.map(list => list?.replaceAll(/<li>|<\/li>/g, ''))?.join('+') : additionalOffers;
@@ -84,42 +128,21 @@ const ExpandableSimPlanCard: React.FC<ExpandableSimPlanCardProps> = ({
       });
     }
     switch (offerType) {
-      case OfferTypes.BOLTON:
-      case OfferTypes.TOPUP: {
-        const updatedAddtoCart: string = addedtoCartLabel?.replace('{0}', planName) || '';
-        try {
-          await addItemToCart(parseInt(id || ''), planName, (JSON.stringify(description || '')), Number(cost?.replaceAll(',','.') || ''), "addon");
-          toast({
-            position: "bottom",
-            render: () => (
-                <Flex
-                    color="white"
-                    p={3}
-                    bg="primary.700"
-                    borderRadius="4px"
-                    justifyContent="space-between"
-                    maxW="420px"
-                >
-                  <Text py="12px">{updatedAddtoCart}</Text>
-                  <Button
-                      variant="ghost"
-                      style={{ whiteSpace: "normal" }}
-                      colorScheme="secondary"
-                      onClick={handleViewCartClick}
-                  >
-                    {viewCartLabel}
-                  </Button>
-                </Flex>
-            ),
-          });
-        }catch(e){
-
+      case OfferTypes.BOLTON: {
+        if (cartItems?.some(item => !!item.isPostPaid)) {
+          setIsFailedtoAddOpen(true);
+        } else {
+          handleToastView(description || "");
         }
+        break;
+      }
+      case OfferTypes.TOPUP: {
+        handleToastView(description || "");
         break;
       }
       case OfferTypes.PREPAID: {
         try {
-          await addItemToCart(parseInt(id || ''), planName, (JSON.stringify(description || '')), Number(cost?.replaceAll(',', '.') || ''), "plan");
+          await addItemToCart(parseInt(id || ''), planName, (JSON.stringify(description || '')), Number(cost?.replaceAll(',', '.') || ''), "plan", true);
           isRemoveFromCart && onClose ? onClose() : history.push(isLoggedInUser ? "/order-details" : "/lebara-sim-choice");
         } catch (e) {
 
@@ -128,8 +151,48 @@ const ExpandableSimPlanCard: React.FC<ExpandableSimPlanCardProps> = ({
       }
       case OfferTypes.POSTPAID: {
         try {
-          await addItemToCart(parseInt(id || ''), planName, (JSON.stringify(description || '')), Number(cost?.replaceAll(',', '.') || ''), "postpaid");
-          isRemoveFromCart && onClose ? onClose() : history.push(isLoggedInUser ? "/postpaid/preview" : "/postpaid/details");
+          await addItemToCart(parseInt(id || ''), planName, (JSON.stringify(description || '')), Number(cost?.replaceAll(',', '.') || ''), "postpaid", true);
+          isRemoveFromCart && onClose ? onClose() : isLoggedInUser ? client
+            .query({ query: GET_PERSONAL_DETAILS })
+            .then((personalDetailsRes) => {
+              const personalDetails =
+                personalDetailsRes.data.getPersonalDetails;
+              if (hasMissingDetails(personalDetails)) {
+                history.push("/postpaid-missing-details");
+                return;
+              }
+
+              history.push("/postpaid/preview", {
+                personalDetails: {
+                  firstName: personalDetails?.name?.firstName,
+                  lastName: personalDetails?.name?.lastName,
+                  emailId: email,
+                  streetName: personalDetails?.addresses[0].street || "",
+                  houseNumber:
+                    personalDetails?.addresses[0].houseNumber || "",
+                  townCity: personalDetails?.addresses[0].city || "",
+                  zipCode: personalDetails?.addresses[0].postCode || "",
+                  addressLabel:
+                    personalDetails?.addresses?.length > 0
+                      ? `${personalDetails.addresses[0].street} ${
+                          personalDetails?.addresses[0].houseNumber || ""
+                        }, ${personalDetails.addresses[0].city}, ${
+                          personalDetails.addresses[0].postCode
+                        }, Germany`
+                      : undefined,
+                },
+                portIn: {
+                  dob: personalDetails?.dateOfBirth
+                    ? moment
+                        .utc(personalDetails?.dateOfBirth)
+                        .format("DD/MM/YYYY")
+                    : "",
+                },
+              });
+            })
+            .finally(() => {
+              dispatch(setLoading(false));
+            }) : history.push("/postpaid/details");
         } catch (e) {
 
         }
@@ -180,7 +243,10 @@ const ExpandableSimPlanCard: React.FC<ExpandableSimPlanCardProps> = ({
           ctaCloseLabel={ctaCloseLabel}
           ctaDownloadLabel={ctaDownloadLabel}
         />
-
+        <PlanNotEligibleDialog
+          open={isFailedtoAddOpen}
+          onClose={() => setIsFailedtoAddOpen(false)}
+        />
         <PlanDetailsDialog
           isOpen={isDialogOpen}
           onClose={() => setIsDialogOpen(false)}
@@ -220,6 +286,7 @@ const ExpandableSimPlanCard: React.FC<ExpandableSimPlanCardProps> = ({
                   fontSize={32}
                   pr="6px"
                   pl="2px"
+                  whiteSpace={'nowrap'}
                   fontWeight="bold"
                   color="secondary.500"
                   fontFamily="Chiswick Grotesque Lebara"
@@ -232,6 +299,7 @@ const ExpandableSimPlanCard: React.FC<ExpandableSimPlanCardProps> = ({
                 fontSize={promotionData ? "16px" : "32px"}
                 pr="6px"
                 pl="2px"
+                whiteSpace={'nowrap'}
                 fontWeight={promotionData ? "normal" : "bold"}
                 color="secondary.500"
                 textDecoration={promotionData ? "line-through" : "initial"}
@@ -248,6 +316,7 @@ const ExpandableSimPlanCard: React.FC<ExpandableSimPlanCardProps> = ({
                 fontSize={16}
                 pr="6px"
                 pl="2px"
+                whiteSpace={'nowrap'}
                 color="secondary.500"
                 fontWeight="normal"
                 textDecoration="line-through"
@@ -262,6 +331,7 @@ const ExpandableSimPlanCard: React.FC<ExpandableSimPlanCardProps> = ({
                   fontSize={24}
                   pr="6px"
                   pl="2px"
+                  whiteSpace={'nowrap'}
                   color="secondary.500"
                   fontWeight={500}
                 >
@@ -272,6 +342,7 @@ const ExpandableSimPlanCard: React.FC<ExpandableSimPlanCardProps> = ({
                   as="h3"
                   fontSize={24}
                   pr="6px"
+                  whiteSpace={'nowrap'}
                   pl="2px"
                   color="secondary.500"
                   fontWeight={500}
@@ -279,7 +350,7 @@ const ExpandableSimPlanCard: React.FC<ExpandableSimPlanCardProps> = ({
                   {cost} {globalConfigs.currencySymbol}
                 </Text>
               )}
-              {!(offerType === OfferTypes.BOLTON) ? <Text as="p" fontSize={14} color="lightenPrimary.150">
+              {!(offerType === OfferTypes.BOLTON) ? <Text as="p" fontSize={14}  whiteSpace={'nowrap'} color="lightenPrimary.150">
                 {" "}
                 {validity && `/ ${validity}`}
               </Text> : ''}
@@ -287,7 +358,7 @@ const ExpandableSimPlanCard: React.FC<ExpandableSimPlanCardProps> = ({
           </Flex>
         </Flex>
         {additionalOffers && (
-          <Box mt="7px" color="primary.700">
+          <Box mt="7px" color="primary.700" flexGrow={1}>
             {additionalOffers.match(/<li>.*?<\/li>/g)?.length ? additionalOffers.match(/<li>.*?<\/li>/g)?.map((t) => (
               <Flex width="100%" alignItems="center" mb={1}>
                 {previewIcon}

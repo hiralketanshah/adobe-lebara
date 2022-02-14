@@ -105,6 +105,19 @@ class App extends Page {
           >
             <ScrollToTop />
             <Fonts />
+            <div id="modelRootLoader" style={{display: 'none'}}>
+              <LoadingOverlay
+                active={true}
+                spinner={<ScaleLoader color="#00A6EB" />}
+                styles={{
+                  overlay: (base) => ({
+                    ...base,
+                    position: "fixed",
+                    zIndex: 1401,
+                  }),
+                }}
+              />
+            </div>
             {this.childComponents}
             {this.childPages}
           </LoadingOverlay>

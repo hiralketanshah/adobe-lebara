@@ -35,14 +35,14 @@ const FooterMenu: React.FC<FooterMenuProps> = ({
     >
       <Box
         height="initial"
-        display={{ lg: "flex", md: "block" }}
+        display={{ xl: "flex", lg:"block", md: "block" }}
         justifyContent="space-between"
         mb="8.135rem"
       >
         <Flex gridGap="70px">
           {footerUpperLinks?.map((menu: MenuProps, fmIdx) => (
             <Box key={`fm-key-${fmIdx}`}>
-              <Text fontSize={14} fontWeight="bold" textTransform="uppercase">
+              <Text fontSize={14} fontWeight="bold" textTransform="uppercase" whiteSpace={'pre'}>
                 {menu?.parentLinks?.label}
               </Text>
               <Flex direction="column">
@@ -52,7 +52,6 @@ const FooterMenu: React.FC<FooterMenuProps> = ({
                     fontSize="14px"
                     fontWeight="500"
                     lineHeight="14.06px"
-                    whiteSpace="pre"
                     mt="30px"
                     color={theme?.color === "white" ? "white" : "black"}
                   >
@@ -67,14 +66,14 @@ const FooterMenu: React.FC<FooterMenuProps> = ({
             </Box>
           ))}
         </Flex>
-        <Box width="10rem">
+        {/* <Box width="1rem">
           <></>
-        </Box>
-        <Divider display={{ lg: "none", md: "block" }} mt="2em" />
+        </Box> */}
+        <Divider display={{ xl: "none", lg: "block" , md: "block" }} mt="2em" />
         <Box>
           <Box
-            pl={{ lg: "5em", md: "initial" }}
-            mt={{ lg: "initial", md: "2em" }}
+            pl={{ xl: "5em", lg:'initial', md: "initial" }}
+            mt={{ xl: "initial", lg:'2em' ,md: "2em" }}
           >
             <Text
               fontSize={14}
@@ -86,7 +85,7 @@ const FooterMenu: React.FC<FooterMenuProps> = ({
             >
               {followus?.followUsText}
             </Text>
-            <Box width="350px">
+            <Box>
               <SocialMediaButtons buttons={followus?.links} color={theme?.color} />
             </Box>
             <Box px="10px">

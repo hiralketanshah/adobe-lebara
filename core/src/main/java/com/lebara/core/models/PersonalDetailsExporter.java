@@ -34,15 +34,11 @@ public class PersonalDetailsExporter implements ComponentExporter {
     @ValueMapValue
     public String firstNamePlaceholder;
     @ValueMapValue
-    public String firstNameErrorMax;
-    @ValueMapValue
     public String firstNameErrorRequired;
     @ValueMapValue
     public String firstNameErrorPattern;
     @ValueMapValue
     public String lastNameLabel;
-    @ValueMapValue
-    public String lastNameErrorMax;
     @ValueMapValue
     public String lastNameErrorRequired;
     @ValueMapValue
@@ -71,6 +67,8 @@ public class PersonalDetailsExporter implements ComponentExporter {
     public String postalcodePlaceholder;
     @ValueMapValue
     public String enterAddressManually;
+    @ValueMapValue
+    public String changeAddressLabel;
     @ValueMapValue
     public String streetLabel;
     @ValueMapValue
@@ -117,6 +115,8 @@ public class PersonalDetailsExporter implements ComponentExporter {
     public String orderDetailsCta;
     @ValueMapValue
     public String paymentCta;
+    @ValueMapValue
+    public String existingUserErrorMsg;
 
     @ValueMapValue
     private String cfPath;

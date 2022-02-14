@@ -76,6 +76,26 @@
                                                 fieldLabel="Cancel Label"
                                                 name="./cancelLabel"
                                                 value="Cancel"/>
+                                            <paymentType
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                                fieldLabel="Payment Type"
+                                                name="./paymentType">
+                                                <items jcr:primaryType="nt:unstructured">
+                                                    <scheme
+                                                        jcr:primaryType="nt:unstructured"
+                                                        text="scheme"
+                                                        value="scheme"/>
+                                                    <giropay
+                                                        jcr:primaryType="nt:unstructured"
+                                                        text="giropay"
+                                                        value="giropay"/>
+                                                    <directEbanking
+                                                        jcr:primaryType="nt:unstructured"
+                                                        text="directEbanking"
+                                                        value="directEbanking"/>
+                                                </items>
+                                            </paymentType>
                                         </items>
                                     </column>
                                 </items>

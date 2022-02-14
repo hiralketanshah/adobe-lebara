@@ -35,9 +35,7 @@ import {loadInitialCart, setCartItemsLoading} from "@lebara/ui/src/redux/actions
 import mapMagentoProductToCartItem from "@lebara/ui/src/utils/mapMagentoProductToCartItem";
 import {saveTopUps} from "@lebara/ui/src/redux/actions/topUpActions";
 import GET_TOP_UPS from "@lebara/ui/src/graphql/GET_TOP_UPS";
-import {setPaymentMethods} from "@lebara/ui/src/redux/actions/paymentMethodsActions";
 import { useHistory, RouterLink } from "@lebara/ui/src/hooks/useHistory";
-import axios from "axios";
 import PlanNotEligibleDialog from "@lebara/ui/src/components/PlanNotEligibleDialog/PlanNotEligibleDialog";
 import { toggleDialogState } from "@lebara/ui/src/redux/actions/modalsActions";
 import SearchResults from "../Search/SearchResults";
@@ -294,17 +292,6 @@ const Header: React.FC<HeaderProps> = ({
     });
   }, [client, dispatch]);
 
-  const loadPaymentMethods = useCallback(() => {
-    axios.post(`${GC.apiHostUri}/payments/adyen/paymentMethods`, {
-      channel: "Web",
-    })
-        .then((res) => {
-          dispatch(setPaymentMethods({
-            paymentMethods: res.data.paymentMethods.filter((t: any) => t.name !== "Local Polish Payment Methods")
-          }));
-        });
-  }, [dispatch]);
-  
   const handleCartClick = () => {
     onCloseSearch();
     history.push(cartItems.length === 0 ?"/empty-cart"  : "/order-details");
@@ -326,9 +313,6 @@ const Header: React.FC<HeaderProps> = ({
     handleSearchOverlay(isHeaderSearchClicked);
   }, [isHeaderSearchClicked]);
 
-  React.useEffect(() => {
-    loadPaymentMethods();
-  }, [loadPaymentMethods]);
 
   React.useEffect(() => {
     if (cartItems.length === 0) {
@@ -379,7 +363,7 @@ const Header: React.FC<HeaderProps> = ({
         <Flex display={{ base: "none", md: "none", lg: "none", xl: "block" }}>
           <Flex
               alignItems="center"
-              px={{lg: "20px", xl: "87.88px"}}
+              px={{lg: "20px", xl: "50.88px"}}
               py={{ lg: "12px", md: "6px" }}
               background="lightenPrimary.500"
               color="white"
@@ -432,10 +416,10 @@ const Header: React.FC<HeaderProps> = ({
                           variant="ghost"
                           size="md"
                           paddingRight={{
-                            lg: "26px!important",
+                           lg: "26px!important",
                             md: "13px!important",
                           }}
-                          paddingLeft={{ lg: "56px!important", md: "26px!important" }}
+                          paddingLeft={{ lg: "35px!important", md: "26px!important" }}
                           colorScheme="dark"
                       />
                     </Button>
@@ -453,7 +437,7 @@ const Header: React.FC<HeaderProps> = ({
               <IconButton
                   colorScheme="dark"
                   icon={<AiOutlineUser size={24} />}
-                  px={{ lg: "26px!important", md: "13px!important" }}
+                  px={{ lg: "20px!important", md: "13px!important" }}
                   aria-label="Profile"
                   size="md"
                   variant="ghost"
@@ -462,7 +446,7 @@ const Header: React.FC<HeaderProps> = ({
               <Box pos="relative" onClick={handleCartClick}>
                 <IconButton
                     p="absolute"
-                    px={{ lg: "26px!important", md: "13px!important" }}
+                    px={{ lg: "20px!important", md: "13px!important" }}
                     colorScheme="dark"
                     icon={<RiShoppingCartLine size={24} />}
                     aria-label="Cart"
