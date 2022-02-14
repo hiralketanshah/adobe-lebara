@@ -238,7 +238,7 @@ public class AemUtils {
     }
 
     private static boolean isHtmlExtensionRequired(String payloadPath) {
-        if (StringUtils.startsWithIgnoreCase(payloadPath, "/content/dam")) {
+        if (StringUtils.startsWithIgnoreCase(payloadPath, LebaraConstants.DAM_ROOT_PATH)) {
             return false;
         }
         return !payloadPath.contains(".html");
