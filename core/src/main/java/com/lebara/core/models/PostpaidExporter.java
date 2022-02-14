@@ -159,7 +159,7 @@ public class PostpaidExporter implements ComponentExporter {
     }
 
     public String getAbroadMinutesPopupInfoTop() {
-        return abroadMinutesPopupInfoTop;
+        return AemUtils.updateShortenLinksInRichText(abroadMinutesPopupInfoTop,slingRequest);
     }
 
     public String getCountryFlagFrom() {

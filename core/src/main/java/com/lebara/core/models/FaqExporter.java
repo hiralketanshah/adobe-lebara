@@ -3,6 +3,7 @@ package com.lebara.core.models;
 import com.adobe.cq.export.json.ComponentExporter;
 import com.adobe.cq.export.json.ExporterConstants;
 import com.lebara.core.models.beans.Option;
+import com.lebara.core.utils.AemUtils;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.models.annotations.DefaultInjectionStrategy;
@@ -10,6 +11,7 @@ import org.apache.sling.models.annotations.Exporter;
 import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.injectorspecific.ChildResource;
 import org.apache.sling.models.annotations.injectorspecific.ScriptVariable;
+import org.apache.sling.models.annotations.injectorspecific.SlingObject;
 import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
 
 import java.util.Collections;
@@ -34,11 +36,21 @@ public class FaqExporter extends HeadingExporter {
     @ValueMapValue
     private String backgroundColor;
 
+    @ValueMapValue
+    private String answer;
+
+    @SlingObject
+    private SlingHttpServletRequest slingRequest;
+
     public List<Option> getOptions() {
         return (options == null) ? Collections.emptyList() : options;
     }
 
     public String getBackgroundColor() { return backgroundColor; }
+
+    public String getAnswer() {
+        return AemUtils.updateShortenLinksInRichText(answer,slingRequest);
+    }
 
     @Override
     public String getExportedType() {
