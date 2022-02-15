@@ -50,7 +50,7 @@ import static org.apache.sling.api.servlets.ServletResolverConstants.*;
 )
 public class GlobalSearchServlet extends SlingSafeMethodsServlet {
 
-	@Reference
+    @Reference
     private transient QueryBuilder builder;
 
     transient Logger LOGGER = LoggerFactory.getLogger(getClass());
