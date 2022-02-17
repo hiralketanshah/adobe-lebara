@@ -81,6 +81,7 @@ import "./LbBrowseCategories/AemConfig.js";
 import "./HelpCenterSearch/AemConfig.js";
 import "./EmailSupport/AemConfig.js";
 import "./HeroBanner/AemConfig.js";
+import "./App/WelcomeScreen/AemConfig.js";
 import "../aemConfigs/AttachYourSimAemConfig.js";
 import "./CallSupport/AemConfig.js";
 import "./CallSupport/WeAreHere/AemConfig.js";
