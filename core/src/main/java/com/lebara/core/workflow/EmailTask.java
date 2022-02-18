@@ -136,7 +136,7 @@ public class EmailTask implements WorkflowProcess {
             Set<InternetAddress> emailIdList = getEmailIdList(authorizable);
             Map<String, String> emailParams = new HashMap<>();
             emailParams.put("senderName", authorizable.getPrincipal().getName());
-            emailParams.put("payloadPath", AemUtils.getPathWithAssetDetails(payloadPath));
+            emailParams.put("payloadPath", AemUtils.getModifiedPath(payloadPath));
             emailParams.put("userComment", getUserComment(workItem, workflowSession));
             AemUtils.sendEmail(workflowSession.adaptTo(Session.class), emailParams, templatePath, emailIdList, messageGatewayService);
 

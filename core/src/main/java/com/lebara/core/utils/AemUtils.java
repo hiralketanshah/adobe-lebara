@@ -178,11 +178,11 @@ public class AemUtils {
      * @param payloadPath path of image
      * @return payloadpath with assetsdetails in url
      */
-    public static String getPathWithAssetDetails(String payloadPath) {
-        if (StringUtils.contains(payloadPath, "/content/")) {
+    public static String getModifiedPath(String payloadPath) {
+        if (StringUtils.contains(payloadPath, "/content/dam")) {
             return payloadPath.replace("/content/", "/assetdetails.html/content/");
         }
-        return payloadPath;
+        return payloadPath + LebaraConstants.HTML_EXTENSION;
     }
 
     /**
