@@ -156,6 +156,9 @@ RewriteRule ^/?$ /de/home.html [L,R=301,NE]
 # rewrite for removing trailing slash
 RewriteRule ^/(.*)/$ $1 [L,R=301,NE]
 
+# Sitemap rewrite
+RewriteRule ^/sitemap.xml$ /content/${CONTENT_FOLDER_NAME}/de.sitemap.xml [NC,PT]
+
 RewriteCond %{REQUEST_URI} !^/apps
 RewriteCond %{REQUEST_URI} !^/bin
 RewriteCond %{REQUEST_URI} !^/content
@@ -166,9 +169,8 @@ RewriteCond %{REQUEST_URI} !^/saml_login
 RewriteCond %{REQUEST_URI} !^/system
 RewriteCond %{REQUEST_URI} !^/tmp
 RewriteCond %{REQUEST_URI} !^/var
-RewriteCond %{REQUEST_URI} (.html|.jpe?g|.png|.svg|.json)$
+RewriteCond %{REQUEST_URI} (.html|.jpe?g|.png|.svg|.json|.xml)$
 RewriteRule ^/(.*)$ /content/${CONTENT_FOLDER_NAME}/de/$1 [PT,L]
-
 
 # rewrite for root redirect extensionless urls
 RewriteCond %{REQUEST_URI} !^/apps
