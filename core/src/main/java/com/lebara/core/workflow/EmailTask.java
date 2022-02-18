@@ -96,6 +96,9 @@ public class EmailTask implements WorkflowProcess {
     private void sendEmailToReceipients(WorkItem workItem, WorkflowSession workflowSession, String userType, String templatePath) {
         String emailRecepientUserOrGroupName = StringUtils.EMPTY;
         String payloadPath = workItem.getWorkflow().getWorkflowData().getMetaDataMap().get("newPayloadPath", StringUtils.EMPTY);
+        if (StringUtils.isBlank(payloadPath)) {
+            payloadPath = workItem.getWorkflow().getWorkflowData().getPayload().toString();
+        }
         ResourceResolver resourceResolver = workflowSession.adaptTo(ResourceResolver.class);
         if (null == resourceResolver) {
             return;

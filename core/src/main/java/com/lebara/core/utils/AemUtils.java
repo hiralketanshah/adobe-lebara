@@ -5,6 +5,7 @@ import com.day.cq.commons.inherit.HierarchyNodeInheritanceValueMap;
 import com.day.cq.commons.inherit.InheritanceValueMap;
 import com.day.cq.commons.mail.MailTemplate;
 import com.day.cq.i18n.I18n;
+import com.day.cq.mailer.MailingException;
 import com.day.cq.mailer.MessageGatewayService;
 import com.day.cq.wcm.api.Page;
 import com.day.cq.wcm.api.PageManager;
@@ -163,7 +164,9 @@ public class AemUtils {
             email.setTo(emailIds);
             email.setFrom(senderEmail);
             messageGatewayService.getGateway(HtmlEmail.class).send(email);
-        } catch (IOException | EmailException | MessagingException e) {
+        }catch (MailingException e) {
+            LOGGER.error(" MailingException Error in sending an email  [ {} ]", e.getMessage());
+        }catch (IOException | EmailException | MessagingException e) {
             LOGGER.error("Error in sending an email  [ {} ]", e.getMessage());
         }
         LOGGER.debug("send exit ");
