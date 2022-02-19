@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:granite="http://www.adobe.com/jcr/granite/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="nt:unstructured"
+    jcr:title="App - Navigation"
+    sling:resourceType="cq/gui/components/authoring/dialog"
+    extraClientlibs="[lebara.touchui]">
+    <content
+        granite:class="cmp-navigation__editor"
+        jcr:primaryType="nt:unstructured"
+        sling:resourceType="granite/ui/components/coral/foundation/container">
+        <items jcr:primaryType="nt:unstructured">
+            <tabs
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="granite/ui/components/coral/foundation/tabs"
+                maximized="{Boolean}true">
+                <items jcr:primaryType="nt:unstructured">
+                    <navigationLinks
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Navigation Links"
+                        sling:resourceType="granite/ui/components/coral/foundation/container"
+                        margin="{Boolean}true">
+                        <items jcr:primaryType="nt:unstructured">
+                            <columns
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+                                margin="{Boolean}true">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <column
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <title
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="Title"
+                                                fieldLabel="Title"
+                                                name="./title"/>
+                                            <list
+                                                granite:class="lebara-multifield__editor"
+                                                jcr:primaryType="nt:unstructured"
+                                                jcr:title="Navigation List"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
+                                                composite="{Boolean}true"
+                                                fieldDescription="Add the Navigation Links"
+                                                fieldLabel="Navigation List">
+                                                <granite:data
+                                                    jcr:primaryType="nt:unstructured"
+                                                    maxItems="{Long}15"/>
+                                                <field
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/container"
+                                                    name="./navigationLinks">
+                                                    <items jcr:primaryType="nt:unstructured">
+                                                        <column
+                                                            jcr:primaryType="nt:unstructured"
+                                                            sling:resourceType="granite/ui/components/coral/foundation/container">
+                                                            <items jcr:primaryType="nt:unstructured">
+                                                                <image
+                                                                    jcr:primaryType="nt:unstructured"
+                                                                    sling:resourceType="granite/ui/components/coral/foundation/form/pathbrowser"
+                                                                    fieldDescription="Choose Image"
+                                                                    fieldLabel="Link Image"
+                                                                    name="./icon"
+                                                                    rootPath="/content/dam/lebara"/>
+                                                                <name
+                                                                   jcr:primaryType="nt:unstructured"
+                                                                   sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                                   fieldDescription="Navigation Title"
+                                                                   fieldLabel="Navigation Title"
+                                                                   required="true"
+                                                                   name="./label"/>
+                                                                <link
+                                                                   jcr:primaryType="nt:unstructured"
+                                                                   sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                                   fieldDescription="Navigation Link"
+                                                                   fieldLabel="Navigation Link"
+                                                                   required="true"
+                                                                   name="./link"/>
+                                                            </items>
+                                                        </column>
+                                                    </items>
+                                                </field>
+                                            </list>
+                                        </items>
+                                    </column>
+                                </items>
+                            </columns>
+                        </items>
+                    </navigationLinks>
+                </items>
+            </tabs>
+        </items>
+    </content>
+</jcr:root>
