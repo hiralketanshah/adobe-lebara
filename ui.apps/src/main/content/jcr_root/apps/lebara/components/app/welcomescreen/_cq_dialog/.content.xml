@@ -12,9 +12,70 @@
                 sling:resourceType="granite/ui/components/coral/foundation/tabs"
                 maximized="{Boolean}true">
                 <items jcr:primaryType="nt:unstructured">
-                    <generic
+                    <screenone
                         jcr:primaryType="nt:unstructured"
-                        jcr:title="Generic"
+                        jcr:title="App Loading Screen"
+                        sling:resourceType="granite/ui/components/coral/foundation/container"
+                        margin="{Boolean}true">
+                        <items jcr:primaryType="nt:unstructured">
+                            <columns
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+                                margin="{Boolean}true">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <column
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                                        <items jcr:primaryType="nt:unstructured">
+                                             <titleone
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="Title screen one"
+                                                name="./titleone"/>
+                                            <ctaButtonLabelOne
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="Button label screen one"
+                                                name="./ctaButtonLabelOne"
+                                                value="Get Started"/>
+                                             <titletwo
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="Title screen two"
+                                                name="./titletwo"/>
+                                            <ctaButtonLabelTwo
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="Button label screen two"
+                                                name="./ctaButtonLabelTwo"
+                                                value="Get Started"/>
+                                            <nextLabel
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="Next Label"
+                                                name="./nextLabel"
+                                                value="Next"/>
+                                            <previousLabel
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="Previous Label"
+                                                name="./previousLabel"
+                                                value="Previous"/>
+                                            <copyrightText
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="Copyright Text"
+                                                name="./copyrightText"
+                                                value="2021 Lebara"/>
+                                        </items>
+                                    </column>
+                                </items>
+                            </columns>
+                        </items>
+                    </screenone>
+                    <screentwo
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Welcome Screen"
                         sling:resourceType="granite/ui/components/coral/foundation/container"
                         margin="{Boolean}true">
                         <items jcr:primaryType="nt:unstructured">
@@ -60,7 +121,7 @@
                                 </items>
                             </columns>
                         </items>
-                    </generic>
+                    </screentwo>
                 </items>
             </tabs>
         </items>

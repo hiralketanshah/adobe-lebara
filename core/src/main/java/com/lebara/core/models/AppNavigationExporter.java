@@ -1,8 +1,8 @@
 package com.lebara.core.models;
 
-import com.adobe.cq.export.json.ComponentExporter;
-import com.adobe.cq.export.json.ExporterConstants;
-import com.lebara.core.models.beans.Link;
+import java.util.Collections;
+import java.util.List;
+
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.models.annotations.DefaultInjectionStrategy;
@@ -12,8 +12,9 @@ import org.apache.sling.models.annotations.injectorspecific.ChildResource;
 import org.apache.sling.models.annotations.injectorspecific.ScriptVariable;
 import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
 
-import java.util.Collections;
-import java.util.List;
+import com.adobe.cq.export.json.ComponentExporter;
+import com.adobe.cq.export.json.ExporterConstants;
+import com.lebara.core.models.beans.AppNavigation;
 
 @Model(adaptables = {SlingHttpServletRequest.class, Resource.class}, adapters = {AppNavigationExporter.class, ComponentExporter.class},
         resourceType = AppNavigationExporter.RESOURCE_TYPE, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
@@ -30,13 +31,13 @@ public class AppNavigationExporter implements ComponentExporter {
     @ValueMapValue
     private String title;
     @ChildResource
-    private List<Link> navigationLinks;
+    private List<AppNavigation> navigationLinks;
 
     public String getTitle() {
         return title;
     }
 
-    public List<Link> getNavigationLinks() {
+    public List<AppNavigation> getNavigationLinks() {
         return navigationLinks == null ? Collections.emptyList() : Collections.unmodifiableList(navigationLinks);
     }
 
