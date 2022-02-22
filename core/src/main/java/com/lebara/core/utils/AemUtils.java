@@ -182,7 +182,7 @@ public class AemUtils {
         if (StringUtils.contains(payloadPath, "/content/dam")) {
             return payloadPath.replace("/content/", "/assetdetails.html/content/");
         }
-        return payloadPath + LebaraConstants.HTML_EXTENSION;
+        return payloadPath.replace("/content/", "/editor.html/content/") + LebaraConstants.HTML_EXTENSION;
     }
 
     /**
