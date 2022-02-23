@@ -2,10 +2,8 @@
 <jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:granite="http://www.adobe.com/jcr/granite/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
     jcr:primaryType="nt:unstructured"
     jcr:title="App - Navigation"
-    sling:resourceType="cq/gui/components/authoring/dialog"
-    extraClientlibs="[lebara.touchui]">
+    sling:resourceType="cq/gui/components/authoring/dialog">
     <content
-        granite:class="cmp-navigation__editor"
         jcr:primaryType="nt:unstructured"
         sling:resourceType="granite/ui/components/coral/foundation/container">
         <items jcr:primaryType="nt:unstructured">
@@ -29,12 +27,6 @@
                                         jcr:primaryType="nt:unstructured"
                                         sling:resourceType="granite/ui/components/coral/foundation/container">
                                         <items jcr:primaryType="nt:unstructured">
-                                            <title
-                                                jcr:primaryType="nt:unstructured"
-                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                                fieldDescription="Title"
-                                                fieldLabel="Title"
-                                                name="./title"/>
                                             <list
                                                 granite:class="lebara-multifield__editor"
                                                 jcr:primaryType="nt:unstructured"
@@ -55,11 +47,11 @@
                                                             jcr:primaryType="nt:unstructured"
                                                             sling:resourceType="granite/ui/components/coral/foundation/container">
                                                             <items jcr:primaryType="nt:unstructured">
-                                                                <image
+                                                                <icon
                                                                     jcr:primaryType="nt:unstructured"
                                                                     sling:resourceType="granite/ui/components/coral/foundation/form/pathbrowser"
                                                                     fieldDescription="Choose Image"
-                                                                    fieldLabel="Link Image"
+                                                                    fieldLabel="Link Icon"
                                                                     name="./icon"
                                                                     rootPath="/content/dam/lebara"/>
                                                                 <name
@@ -70,83 +62,93 @@
                                                                    required="true"
                                                                    name="./label"/>
                                                                 <link
-					                                                jcr:primaryType="nt:unstructured"
-					                                                sling:resourceType="granite/ui/components/coral/foundation/form/select"
-					                                                fieldDescription="Navigation Link"
-					                                                fieldLabel="Navigation Link"
-					                                                name="./link">
-					                                                <items jcr:primaryType="nt:unstructured">
-					                                                    <registersim
-					                                                        jcr:primaryType="nt:unstructured"
-					                                                        text="register_sim"
-					                                                        value="register_sim"/>
-					                                                    <language
-					                                                        jcr:primaryType="nt:unstructured"
-					                                                        text="language"
-					                                                        value="language"/>
-					                                                    <myprofile
-					                                                        jcr:primaryType="nt:unstructured"
-					                                                        text="my_profile"
-					                                                        value="my_profile"/>
-					                                                    <managesim
-					                                                        jcr:primaryType="nt:unstructured"
-					                                                        text="manage_sim"
-					                                                        value="manage_sim"/>
-					                                                    <paymenthistory
-					                                                        jcr:primaryType="nt:unstructured"
-					                                                        text="payment_history"
-					                                                        value="payment_history"/>
-					                                                    <savedpayments
-					                                                        jcr:primaryType="nt:unstructured"
-					                                                        text="saved_payments"
-					                                                        value="saved_payments"/>
-					                                                    <statements
-					                                                        jcr:primaryType="nt:unstructured"
-					                                                        text="statements"
-					                                                        value="statements"/>
-					                                                    <prepaid
-					                                                        jcr:primaryType="nt:unstructured"
-					                                                        text="prepaid"
-					                                                        value="prepaid"/>
-					                                                    <postpaid
-					                                                        jcr:primaryType="nt:unstructured"
-					                                                        text="postpaid"
-					                                                        value="postpaid"/>
-					                                                    <addon
-					                                                        jcr:primaryType="nt:unstructured"
-					                                                        text="add_on"
-					                                                        value="add_on"/>
-					                                                    <topup
-					                                                        jcr:primaryType="nt:unstructured"
-					                                                        text="top_up"
-					                                                        value="top_up"/>
-					                                                    <freesim
-					                                                        jcr:primaryType="nt:unstructured"
-					                                                        text="free_sim"
-					                                                        value="free_sim"/>
-					                                                    <mylebara
-					                                                        jcr:primaryType="nt:unstructured"
-					                                                        text="mylebara"
-					                                                        value="mylebara"/>
-					                                                    <usage
-					                                                        jcr:primaryType="nt:unstructured"
-					                                                        text="usage"
-					                                                        value="usage"/>
-					                                                    <help
-					                                                        jcr:primaryType="nt:unstructured"
-					                                                        text="help"
-					                                                        value="help"/>
-					                                                    <shop
-					                                                        jcr:primaryType="nt:unstructured"
-					                                                        text="shop"
-					                                                        value="shop"/>
-					                                                </items>
-					                                            </link>
+                                                                    jcr:primaryType="nt:unstructured"
+                                                                    sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                                                    fieldDescription="Navigation Link"
+                                                                    fieldLabel="Navigation Link"
+                                                                    name="./appNavigationLink">
+                                                                    <items jcr:primaryType="nt:unstructured">
+                                                                        <addon
+                                                                            jcr:primaryType="nt:unstructured"
+                                                                            text="add_on"
+                                                                            value="add_on"/>
+                                                                        <freesim
+                                                                            jcr:primaryType="nt:unstructured"
+                                                                            text="free_sim"
+                                                                            value="free_sim"/>
+                                                                        <help
+                                                                            jcr:primaryType="nt:unstructured"
+                                                                            text="help"
+                                                                            value="help"/>
+                                                                        <language
+                                                                            jcr:primaryType="nt:unstructured"
+                                                                            text="language"
+                                                                            value="language"/>
+                                                                        <more
+                                                                            jcr:primaryType="nt:unstructured"
+                                                                            text="more"
+                                                                            value="more"/>
+                                                                        <mylebara
+                                                                            jcr:primaryType="nt:unstructured"
+                                                                            text="mylebara"
+                                                                            value="mylebara"/>
+                                                                        <myprofile
+                                                                            jcr:primaryType="nt:unstructured"
+                                                                            text="my_profile"
+                                                                            value="my_profile"/>
+                                                                        <managesim
+                                                                            jcr:primaryType="nt:unstructured"
+                                                                            text="manage_sim"
+                                                                            value="manage_sim"/>
+                                                                        <paymenthistory
+                                                                            jcr:primaryType="nt:unstructured"
+                                                                            text="payment_history"
+                                                                            value="payment_history"/>
+                                                                        <postpaid
+                                                                            jcr:primaryType="nt:unstructured"
+                                                                            text="postpaid"
+                                                                            value="postpaid"/>
+                                                                        <prepaid
+                                                                            jcr:primaryType="nt:unstructured"
+                                                                            text="prepaid"
+                                                                            value="prepaid"/>
+                                                                        <registersim
+                                                                            jcr:primaryType="nt:unstructured"    
+                                                                            text="register_sim"
+                                                                            value="register_sim"/>
+                                                                        <savedpayments
+                                                                            jcr:primaryType="nt:unstructured"
+                                                                            text="saved_payments"
+                                                                            value="saved_payments"/>
+                                                                        <shop
+                                                                            jcr:primaryType="nt:unstructured"
+                                                                            text="shop"
+                                                                            value="shop"/>
+                                                                        <statements
+                                                                            jcr:primaryType="nt:unstructured"
+                                                                            text="statements"
+                                                                            value="statements"/>
+                                                                        <topup
+                                                                            jcr:primaryType="nt:unstructured"
+                                                                            text="top_up"
+                                                                            value="top_up"/>
+                                                                        <usage
+                                                                            jcr:primaryType="nt:unstructured"
+                                                                            text="usage"
+                                                                            value="usage"/>
+                                                                    </items>
+                                                                </link>
                                                             </items>
                                                         </column>
                                                     </items>
                                                 </field>
                                             </list>
+                                            <title
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="Close Button Label"
+                                                fieldLabel="Close Button Label"
+                                                name="./closeButtonLabel"/>
                                         </items>
                                     </column>
                                 </items>

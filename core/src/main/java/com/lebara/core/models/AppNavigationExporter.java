@@ -28,13 +28,15 @@ public class AppNavigationExporter implements ComponentExporter {
 
     @ScriptVariable
     private Resource resource;
+    
     @ValueMapValue
-    private String title;
+    private String closeButtonLabel;
+    
     @ChildResource
     private List<AppNavigation> navigationLinks;
 
-    public String getTitle() {
-        return title;
+    public String getCloseButtonLabel() {
+        return closeButtonLabel;
     }
 
     public List<AppNavigation> getNavigationLinks() {

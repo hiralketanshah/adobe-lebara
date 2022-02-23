@@ -12,20 +12,20 @@ public class AppNavigation {
     private String label;
 
     @ValueMapValue
-    protected String link;
+    protected String appNavigationLink;
 
-	@ValueMapValue
+    @ValueMapValue
     protected String icon;
 
     public String getLabel() {
         return label;
     }
 
-    public String getLink() {
-		return link;
-	}
+    public String getAppNavigationLink() {
+        return appNavigationLink;
+    }
 
-	public String getIcon() {
-		return icon;
-	}
+    public String getIcon() {
+        return icon;
+    }
 }
