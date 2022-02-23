@@ -722,7 +722,6 @@
 		<!-- App - Welcome Screen -->
 		<property name="nextLabel" />
 		<property name="previousLabel" />
-		<property name="welcomeScreenIcon" />
 		<property name="welcomeScreenTitle" />
 		<property name="welcomeScreenDescription" />
 		<property name="buttonCTALabelYes" />
