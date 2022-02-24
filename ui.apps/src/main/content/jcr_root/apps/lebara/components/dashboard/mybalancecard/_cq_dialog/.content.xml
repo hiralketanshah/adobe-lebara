@@ -58,12 +58,24 @@
                                                 fieldLabel="Active Label"
                                                 name="./activeLabel"
                                                 value="Active"/>
+                                            <inactivelabel
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="Inactive Label"
+                                                name="./inactiveLabel"
+                                                value="Inactive"/>
                                             <activedesc
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                                 fieldLabel="Active Description"
                                                 name="./activeDesc"
                                                 value="Every time your credit reaches {0} it will be topped up by {1}"/>
+                                            <inactivedesc
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="Inactive Description"
+                                                name="./inactiveDesc"
+                                                value="Turn on your automatic top-up now. Don’t worry you can adjust your top up limit and stay in full control"/>
                                             <editlabel
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"

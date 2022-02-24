@@ -54,6 +54,8 @@
 		<property name="simName" />
 		<!-- Balance Card props -->
 		<property name="activeDesc" />
+		<property name="inactiveLabel" />
+		<property name="inactiveDesc" />
 		<property name="activeLabel" />
 		<property name="autoTopupButtonLabel" />
 		<property name="autoTopupLabel" />
