@@ -42,7 +42,13 @@ public class MyBalanceCardExporter implements ComponentExporter {
     private String activeLabel;
 
     @ValueMapValue
+    private String inactiveLabel;
+
+    @ValueMapValue
     private String activeDesc;
+
+    @ValueMapValue
+    private String inactiveDesc;
 
     @ValueMapValue
     private String editLabel;
@@ -108,6 +114,14 @@ public class MyBalanceCardExporter implements ComponentExporter {
 
     public String getAutoTopupButtonLabel() {
         return autoTopupButtonLabel;
+    }
+
+    public String getInactiveLabel() {
+        return inactiveLabel;
+    }
+
+    public String getInactiveDesc() {
+        return inactiveDesc;
     }
 
     @Override

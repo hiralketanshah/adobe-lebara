@@ -42,7 +42,7 @@ class EmptyCartExporterTest {
         assertEquals("continueBrowsingLabel", emptyCartExporter.getContinueBrowsingLabel());
         assertEquals("goBackText", emptyCartExporter.getGoBackText());
         assertEquals("emptyBasketText", emptyCartExporter.getEmptyBasketText());
-        assertEquals("continueBrowsinglink", emptyCartExporter.getContinueBrowsinglink());
+        assertEquals("continueBrowsinglink.html", emptyCartExporter.getContinueBrowsinglink());
         assertEquals(false, emptyCartExporter.isFullWidth());
 
     }
