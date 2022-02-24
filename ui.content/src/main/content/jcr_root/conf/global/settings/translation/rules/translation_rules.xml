@@ -552,6 +552,7 @@
 		<property name="shippingLabel"/>
 		<property name="shippingPlaceholder"/>
 		<property name="shippingHelperText"/>
+		<property name="moreLabel"/>
 		<property name="portingSectionHeading"/>
 		<property name="portInNumberLabel"/>
 		<property name="portInNumberPlaceHolder"/>
