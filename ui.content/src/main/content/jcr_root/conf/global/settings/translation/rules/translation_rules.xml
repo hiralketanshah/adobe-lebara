@@ -719,6 +719,15 @@
 		<property name="orderStatusErrorMsg"/>
 		<property name="orderStatusSuccessMsg"/>
 
+		<!-- App - Welcome Screen -->
+		<property name="nextLabel" />
+		<property name="previousLabel" />
+		<property name="welcomeScreenTitle" />
+		<property name="welcomeScreenDescription" />
+		<property name="buttonCTALabelYes" />
+		<property name="buttonCTALabelNo" />
+		<property name="closeButtonLabel" />
+
 		<!-- Lebara fields ends -->
 		<property name="cq:language" updateDestinationLanguage="true"/>
 		<node pathContains="/cq:annotations">

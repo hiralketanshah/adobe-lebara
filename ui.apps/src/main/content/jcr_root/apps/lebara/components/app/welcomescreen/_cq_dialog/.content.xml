@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:granite="http://www.adobe.com/jcr/granite/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="nt:unstructured"
+    jcr:title="App - Welcome Screen"
+    sling:resourceType="cq/gui/components/authoring/dialog">
+    <content
+        jcr:primaryType="nt:unstructured"
+        sling:resourceType="granite/ui/components/coral/foundation/container">
+        <items jcr:primaryType="nt:unstructured">
+            <tabs
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="granite/ui/components/coral/foundation/tabs"
+                maximized="{Boolean}true">
+                <items jcr:primaryType="nt:unstructured">
+                    <screenone
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Introduction Screen"
+                        sling:resourceType="granite/ui/components/coral/foundation/container"
+                        margin="{Boolean}true">
+                        <items jcr:primaryType="nt:unstructured">
+                            <columns
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+                                margin="{Boolean}true">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <column
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                                        <items jcr:primaryType="nt:unstructured">
+                                             <list
+                                                granite:class="lebara-multifield__editor"
+                                                jcr:primaryType="nt:unstructured"
+                                                jcr:title="Intrduction Screen Labels"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
+                                                composite="{Boolean}true"
+                                                fieldDescription="Add Introduction Screens"
+                                                fieldLabel="Intrduction Screen Labels">
+                                                <field
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/container"
+                                                    name="./introductionScreens">
+                                                    <items jcr:primaryType="nt:unstructured">
+                                                        <column
+                                                            jcr:primaryType="nt:unstructured"
+                                                            sling:resourceType="granite/ui/components/coral/foundation/container">
+                                                            <items jcr:primaryType="nt:unstructured">
+                                                                <title
+                                                                   jcr:primaryType="nt:unstructured"
+                                                                   sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                                   fieldLabel="Introduction Screen Title"
+                                                                   name="./title"/>
+                                                                <ctaButtonLabel
+                                                                   jcr:primaryType="nt:unstructured"
+                                                                   sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                                   fieldLabel="Introduction Screen Button Label"
+                                                                   name="./ctaButtonLabel"/>                                                                
+                                                            </items>
+                                                        </column>
+                                                    </items>
+                                                </field>
+                                            </list>                                            
+                                            <nextLabel
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="Next Label"
+                                                name="./nextLabel"
+                                                value="Next"/>
+                                            <previousLabel
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="Previous Label"
+                                                name="./previousLabel"
+                                                value="Previous"/>
+                                            <copyrightText
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="Copyright Text"
+                                                name="./copyrightText"
+                                                value="2021 Lebara"/>
+                                        </items>
+                                    </column>
+                                </items>
+                            </columns>
+                        </items>
+                    </screenone>
+                    <screentwo
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Welcome Screen"
+                        sling:resourceType="granite/ui/components/coral/foundation/container"
+                        margin="{Boolean}true">
+                        <items jcr:primaryType="nt:unstructured">
+                            <columns
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+                                margin="{Boolean}true">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <column
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <icon
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                                fieldLabel="Icon Path"
+                                                name="./welcomeScreenIcon"
+                                                rootPath="/content/dam/lebara"/>
+                                             <title
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="Title"
+                                                name="./welcomeScreenTitle"/>
+                                            <description
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="Description"
+                                                name="./welcomeScreenDescription"/>
+                                            <ctaButtonLabelYes
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="CTA button label one"
+                                                name="./buttonCTALabelYes"
+                                                value="Yes, I am"/>
+                                            <ctaButtonLabelNo
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="CTA button label two"
+                                                name="./buttonCTALabelNo"
+                                                value="Not Yet, I am here to explore"/>
+                                        </items>
+                                    </column>
+                                </items>
+                            </columns>
+                        </items>
+                    </screentwo>
+                </items>
+            </tabs>
+        </items>
+    </content>
+</jcr:root>
