@@ -231,6 +231,13 @@
                                 fieldLabel="Shipping Helper Text"
                                 name="./frmFields/shippingHelperText"
                                 value="Key in your postal code and find your address"/>
+                            <moreLabel
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldLabel="More Label"
+                                value="More.."
+                                fieldDescription="More.."
+                                name="./frmFields/moreLabel"/>
                             <consentPreviewText
                                 jcr:primaryType="nt:unstructured"
                                 sling:resourceType="granite/ui/components/coral/foundation/form/textarea"

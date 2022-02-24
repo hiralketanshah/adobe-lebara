@@ -208,6 +208,9 @@ public class PostpaidPersonalDetailsFormFields {
     @ValueMapValue
     public String ctaSkipLabel;
 
+    @ValueMapValue
+    public String moreLabel;
+
     public String getConsentMarketingText() {
         return AemUtils.updateShortenLinksInRichText(consentMarketingText, resourceResolver);
     }
@@ -442,6 +445,11 @@ public class PostpaidPersonalDetailsFormFields {
     public String getCtaSkipLabel() {
         return ctaSkipLabel;
     }
+
+    public String getMoreLabel() {
+        return moreLabel;
+    }
+
 
     @JsonProperty("portInOptions")
     public List<SelectOption> getPortInOptionArray() {

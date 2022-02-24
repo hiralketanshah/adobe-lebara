@@ -77,6 +77,7 @@
             "monthPlaceholder": "Enter Month",
             "lNameLabel": "Last Name",
             "zipCodeLabel": "Zip Code",
+            "moreLabel": "More..",
             "enterAddressManually": "Enter Address Manually?",
             "yearLabel": "Year",
             "saveAddress": "Save address for future",
