@@ -161,7 +161,7 @@ public class EmptyCartExporter implements ComponentExporter {
     }
 
     public String getContinueBrowsinglink() {
-        return continueBrowsinglink;
+        return AemUtils.getLinkWithExtension(continueBrowsinglink, slingRequest);
     }
 
     public boolean isFullWidth() {
