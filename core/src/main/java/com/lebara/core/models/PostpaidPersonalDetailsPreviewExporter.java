@@ -101,7 +101,7 @@ public class PostpaidPersonalDetailsPreviewExporter extends IntroExporter implem
     private String privacyPolicyTextDescription;
 
     @ValueMapValue
-    private String labelTermsandConditions;
+    private String termsAndConditionsLabel;
 
     public String getfNameLabel() {
         return fNameLabel;
@@ -201,6 +201,10 @@ public class PostpaidPersonalDetailsPreviewExporter extends IntroExporter implem
 
     public String getPrivacyPolicyTextDescription() {
         return AemUtils.updateShortenLinksInRichText(privacyPolicyTextDescription,slingRequest);
+    }
+    
+    public String getTermsAndConditionsLabel() {
+    	return AemUtils.updateShortenLinksInRichText(termsAndConditionsLabel,slingRequest);
     }
 
     @Override
