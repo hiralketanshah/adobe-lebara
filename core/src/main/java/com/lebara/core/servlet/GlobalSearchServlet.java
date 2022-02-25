@@ -56,6 +56,8 @@ public class GlobalSearchServlet extends SlingSafeMethodsServlet {
     transient Logger LOGGER = LoggerFactory.getLogger(getClass());
 
     public static final String DEFAULT_SEARCH_ROOT = "/content/lebara";
+    
+    public static final String JCR_CONTENT_CQ_ROBOTS_TAGS = JcrConstants.JCR_CONTENT+"/cq:robotsTags";
 
     @Override
     protected void doGet(SlingHttpServletRequest request, SlingHttpServletResponse response)
@@ -86,12 +88,13 @@ public class GlobalSearchServlet extends SlingSafeMethodsServlet {
             final String QUERY_FIND_PAGES = "SELECT * FROM [cq:Page] AS searchResult WHERE ISDESCENDANTNODE(searchResult, [{0}])"
                     + " AND searchResult.[" + JcrConstants.JCR_CONTENT + "/"
                     + JcrResourceConstants.SLING_RESOURCE_TYPE_PROPERTY + "] = \"{1}\""
+                    + " AND searchResult.["+JCR_CONTENT_CQ_ROBOTS_TAGS+"] NOT LIKE \"%{2}%\""
                     + " AND (LOWER(searchResult.[" + JcrConstants.JCR_CONTENT + "/" + JcrConstants.JCR_TITLE
-                    + "]) LIKE \"%{2}%\""
-                    + " OR LOWER(searchResult.[" + JcrConstants.JCR_CONTENT + "/pageTitle]) LIKE \"%{3}%\""
-                    + " OR LOWER(searchResult.[" + JcrConstants.JCR_CONTENT + "/navTitle]) LIKE \"%{4}%\")";
+                    + "]) LIKE \"%{3}%\""
+                    + " OR LOWER(searchResult.[" + JcrConstants.JCR_CONTENT + "/pageTitle]) LIKE \"%{4}%\""
+                    + " OR LOWER(searchResult.[" + JcrConstants.JCR_CONTENT + "/navTitle]) LIKE \"%{5}%\")";
             final String sqlStatement = MessageFormat.format(QUERY_FIND_PAGES, searchRoot, "lebara/components/page",
-                    paramSearch, paramSearch, paramSearch);
+                    "noindex", paramSearch, paramSearch, paramSearch);
             final QueryManager queryManager;
             try {
                 queryManager = session.getWorkspace().getQueryManager();

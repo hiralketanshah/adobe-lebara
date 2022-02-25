@@ -228,6 +228,7 @@ const ExpandableSimPlanCard: React.FC<ExpandableSimPlanCardProps> = ({
         px={isRelatedPlan ? undefined : { base: "15px", lg: "27.23px" }}
         pt={promotionPrice ? "8px" : "12px"}
         pb="8px"
+        minH={promotionMessage ? '86.7%': '100%'}
       >
         <Box>
           {planName && (

@@ -54,6 +54,8 @@
 		<property name="simName" />
 		<!-- Balance Card props -->
 		<property name="activeDesc" />
+		<property name="inactiveLabel" />
+		<property name="inactiveDesc" />
 		<property name="activeLabel" />
 		<property name="autoTopupButtonLabel" />
 		<property name="autoTopupLabel" />
@@ -718,6 +720,15 @@
 		<property name="cancelCTALabel"/>
 		<property name="orderStatusErrorMsg"/>
 		<property name="orderStatusSuccessMsg"/>
+
+		<!-- App - Welcome Screen -->
+		<property name="nextLabel" />
+		<property name="previousLabel" />
+		<property name="welcomeScreenTitle" />
+		<property name="welcomeScreenDescription" />
+		<property name="buttonCTALabelYes" />
+		<property name="buttonCTALabelNo" />
+		<property name="closeButtonLabel" />
 
 		<!-- Lebara fields ends -->
 		<property name="cq:language" updateDestinationLanguage="true"/>
