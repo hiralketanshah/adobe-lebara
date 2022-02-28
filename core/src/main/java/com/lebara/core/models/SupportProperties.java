@@ -22,6 +22,9 @@ public class SupportProperties extends ImageProperties {
     @ValueMapValue
     private String ctaLink;
 
+    @ValueMapValue
+    private Boolean isChat;
+
     private boolean isExternal= false;
 
     public String getCtaLinkLabel() {
@@ -38,6 +41,10 @@ public class SupportProperties extends ImageProperties {
 
     public String getCtaLink() {
         return AemUtils.getLinkWithExtension(ctaLink, resourceResolver);
+    }
+
+    public Boolean getIsChat() {
+        return isChat;
     }
 
 }
