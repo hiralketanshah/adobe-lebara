@@ -55,27 +55,27 @@ public class AppNavigationExporter implements ComponentExporter {
     }
 
     public List<AppNavigation> getBottomNavigationLinks() {
-    	return bottomNavigationLinks == null ? Collections.emptyList() : Collections.unmodifiableList(bottomNavigationLinks);
+        return bottomNavigationLinks == null ? Collections.emptyList() : Collections.unmodifiableList(bottomNavigationLinks);
     }
     
     public List<AppNavigation> getMoreNavigationItems() {
-    	return moreNavigationItems == null ? Collections.emptyList() : Collections.unmodifiableList(moreNavigationItems);
+        return moreNavigationItems == null ? Collections.emptyList() : Collections.unmodifiableList(moreNavigationItems);
     }
     
     public List<AppNavigation> getShopNavigationItems() {
-    	return shopNavigationItems == null ? Collections.emptyList() : Collections.unmodifiableList(shopNavigationItems);
+        return shopNavigationItems == null ? Collections.emptyList() : Collections.unmodifiableList(shopNavigationItems);
     }
     
     public List<AppNavigation> getPrepaidNavData() {
-    	return prepaidNavData == null ? Collections.emptyList() : Collections.unmodifiableList(prepaidNavData);
+        return prepaidNavData == null ? Collections.emptyList() : Collections.unmodifiableList(prepaidNavData);
     }
     
     public List<AppNavigation> getPostpaidNavData() {
-    	return postpaidNavData == null ? Collections.emptyList() : Collections.unmodifiableList(postpaidNavData);
+        return postpaidNavData == null ? Collections.emptyList() : Collections.unmodifiableList(postpaidNavData);
     }
     
     public List<AppNavigation> getAddonNavData() {
-    	return addonNavData == null ? Collections.emptyList() : Collections.unmodifiableList(addonNavData);
+        return addonNavData == null ? Collections.emptyList() : Collections.unmodifiableList(addonNavData);
     }
 
     @Override
