@@ -33,14 +33,49 @@ public class AppNavigationExporter implements ComponentExporter {
     private String closeButtonLabel;
     
     @ChildResource
-    private List<AppNavigation> navigationLinks;
+    private List<AppNavigation> bottomNavigationLinks;
+    
+    @ChildResource
+    private List<AppNavigation> moreNavigationItems;
+    
+    @ChildResource
+    private List<AppNavigation> shopNavigationItems;
+    
+    @ChildResource
+    private List<AppNavigation> prepaidNavData;
+    
+    @ChildResource
+    private List<AppNavigation> postpaidNavData;
+    
+    @ChildResource
+    private List<AppNavigation> addonNavData;
 
     public String getCloseButtonLabel() {
         return closeButtonLabel;
     }
 
-    public List<AppNavigation> getNavigationLinks() {
-        return navigationLinks == null ? Collections.emptyList() : Collections.unmodifiableList(navigationLinks);
+    public List<AppNavigation> getBottomNavigationLinks() {
+    	return bottomNavigationLinks == null ? Collections.emptyList() : Collections.unmodifiableList(bottomNavigationLinks);
+    }
+    
+    public List<AppNavigation> getMoreNavigationItems() {
+    	return moreNavigationItems == null ? Collections.emptyList() : Collections.unmodifiableList(moreNavigationItems);
+    }
+    
+    public List<AppNavigation> getShopNavigationItems() {
+    	return shopNavigationItems == null ? Collections.emptyList() : Collections.unmodifiableList(shopNavigationItems);
+    }
+    
+    public List<AppNavigation> getPrepaidNavData() {
+    	return prepaidNavData == null ? Collections.emptyList() : Collections.unmodifiableList(prepaidNavData);
+    }
+    
+    public List<AppNavigation> getPostpaidNavData() {
+    	return postpaidNavData == null ? Collections.emptyList() : Collections.unmodifiableList(postpaidNavData);
+    }
+    
+    public List<AppNavigation> getAddonNavData() {
+    	return addonNavData == null ? Collections.emptyList() : Collections.unmodifiableList(addonNavData);
     }
 
     @Override

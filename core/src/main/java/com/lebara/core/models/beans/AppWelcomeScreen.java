@@ -11,14 +11,7 @@ public class AppWelcomeScreen {
     @ValueMapValue
     private String title;
 
-    @ValueMapValue
-    protected String ctaButtonLabel;
-
     public String getTitle() {
         return title;
-    }
-
-    public String getCtaButtonLabel() {
-        return ctaButtonLabel;
     }
 }

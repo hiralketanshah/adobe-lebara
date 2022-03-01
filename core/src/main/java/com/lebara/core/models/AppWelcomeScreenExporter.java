@@ -49,6 +49,9 @@ public class AppWelcomeScreenExporter implements ComponentExporter {
     @ValueMapValue
     private String buttonCTALabelNo;
     
+    @ValueMapValue
+    private String introductionScreensCtaButtonLabel;
+    
     @ChildResource
     private List<AppWelcomeScreen> introductionScreens;
 
@@ -86,6 +89,10 @@ public class AppWelcomeScreenExporter implements ComponentExporter {
 
     public String getButtonCTALabelNo() {
         return buttonCTALabelNo;
+    }
+    
+    public String getIntroductionScreensCtaButtonLabel() {
+        return introductionScreensCtaButtonLabel;
     }
 
     @Override
