@@ -57,7 +57,7 @@ const ViewPlans: React.FC<PlanCardProps> = ({
         },
       };
     });
-    googleAnalytics("EElistPage", {
+    googleAnalytics("EElistPageB", {
       currencyCode: "EUR",
       impressions,
     });

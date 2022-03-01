@@ -61,7 +61,7 @@ const PlanOffers: React.FC<PlanOffersProps> = ({
         },
       };
     });
-    googleAnalytics("EElistPage", {
+    googleAnalytics("EElistPageA", {
       currencyCode: "EUR",
       impressions,
     });
