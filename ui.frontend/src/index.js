@@ -13,7 +13,7 @@ import "./components/import-components";
 import "./index.css";
 import "./styles/index.scss";
 import {Provider} from "react-redux";
-import {ApolloClient, ApolloProvider, InMemoryCache} from "@apollo/client";
+import {ApolloClient, ApolloProvider, HttpLink, InMemoryCache} from "@apollo/client";
 import "@fontsource/roboto/100.css";
 import "@fontsource/roboto/300.css";
 import "@fontsource/roboto/400.css";
@@ -24,6 +24,7 @@ import {globalConfigs} from '@lebara/ui/src/configs/globalConfigs.js';
 import store from "@lebara/ui/src/store";
 import { pdfjs } from "react-pdf";
 import axios from "axios";
+import {onError} from "@apollo/client/link/error";
 
 pdfjs.GlobalWorkerOptions.workerSrc = '/etc.clientlibs/lebara/clientlibs/clientlib-react/resources/pdf.worker.js';
 const defaultOptions = {
@@ -35,14 +36,34 @@ const defaultOptions = {
     },
 };
 
+const httpLink = new HttpLink({
+    uri: `${globalConfigs.apiHostUri}${globalConfigs.gqlEndpoint}`,
+    credentials: "include",
+    headers: {
+        channel: "Web",
+    },
+});
+
+let isLoading = false;
+const logoutLink = onError(({ networkError, operation }) => {
+    if (
+        networkError &&
+        networkError.statusCode === 401 &&
+        operation.operationName !== "getSessionStatus"
+    ) {
+        if (isLoading) return;
+        isLoading = true;
+        window.location.reload();
+        setTimeout(() => {
+            isLoading = false;
+        }, 500);
+    }
+});
+
 const client = new ApolloClient({
-  uri: `${globalConfigs.apiHostUri}${globalConfigs.gqlEndpoint}`,
-  credentials: "include",
-  defaultOptions,
-  cache: new InMemoryCache(),
-  headers: {
-      channel: "Web",
-  },
+    cache: new InMemoryCache(),
+    defaultOptions,
+    link: logoutLink.concat(httpLink),
 });
 
 axios.defaults.headers = {
