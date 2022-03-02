@@ -49,16 +49,17 @@
                                                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                                                    fieldLabel="Introduction Screen Title"
                                                                    name="./title"/>
-                                                                <ctaButtonLabel
-                                                                   jcr:primaryType="nt:unstructured"
-                                                                   sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                                                   fieldLabel="Introduction Screen Button Label"
-                                                                   name="./ctaButtonLabel"/>                                                                
                                                             </items>
                                                         </column>
                                                     </items>
                                                 </field>
-                                            </list>                                            
+                                            </list>
+                                            <introductionScreensCtaButtonLabel
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="Introduction CTA Label"
+                                                name="./introductionScreensCtaButtonLabel"
+                                                value="Get Strated"/>
                                             <nextLabel
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
