@@ -117,7 +117,22 @@ public class PersonalDetailsExporter implements ComponentExporter {
     public String paymentCta;
     @ValueMapValue
     public String existingUserErrorMsg;
-
+    @ValueMapValue
+    public String passwordField;
+    @ValueMapValue
+    public String confirmPasswordField;
+    @ValueMapValue
+    public String enterPasswordLabel;
+    @ValueMapValue
+    public String confirmPasswordLabel;
+    @ValueMapValue
+    public String minimumCharactersLabel;
+    @ValueMapValue
+    public String samePasswordLabel;
+    @ValueMapValue
+    public String showPasswordLabel;
+    @ValueMapValue
+    public String hidePasswordLabel;
     @ValueMapValue
     private String cfPath;
 
