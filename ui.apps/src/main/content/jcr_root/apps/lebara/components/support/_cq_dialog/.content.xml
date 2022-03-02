@@ -204,6 +204,13 @@
                                                                         fieldLabel="CTA Button Link URL"
                                                                         name="./ctaLink"
                                                                         rootPath="/content/lebara"/>
+                                                                <isChat
+                                                                        jcr:primaryType="nt:unstructured"
+                                                                        sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                                                        text="is Chat?"
+                                                                        name="./isChat"
+                                                                        uncheckedValue="{Boolean}false"
+                                                                        value="{Boolean}true"/>
                                                             </items>
                                                         </column>
                                                     </items>
