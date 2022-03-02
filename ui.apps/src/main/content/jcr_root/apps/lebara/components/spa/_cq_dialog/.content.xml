@@ -590,6 +590,13 @@
                                                     value="You are subscribing to a recurring product. Select your desired payment method below then authorize it for repeat payments."
                                                     fieldDescription="You are subscribing to a recurring product. Select your desired payment method below then authorize it for repeat payments."
                                                     name="./paymentMessages/recurringLabel"/>
+                                            <mandatoryCheckBoxLabel
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                    fieldLabel="SEPA Mandatory Checkbox label"
+                                                    value="Please select the checkbox"
+                                                    fieldDescription="SEPA Mandatory Checkbox label"
+                                                    name="./paymentMessages/mandatoryCheckBoxLabel"/>
                                         </items>
                                     </column>
                                 </items>

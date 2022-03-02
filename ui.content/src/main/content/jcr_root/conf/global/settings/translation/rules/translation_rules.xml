@@ -424,6 +424,7 @@
 		<property name="topUpRecurringLabel"/>
 		<property name="recurringLabel"/>
 		<property name="directDebitCheckboxText"/>
+		<property name="mandatoryCheckBoxLabel"/>
 
 		<!--Support component -->
 		<property name="ctaLinkLabel"/>
