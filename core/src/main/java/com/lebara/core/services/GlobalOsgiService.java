@@ -29,6 +29,10 @@ public class GlobalOsgiService {
     public String getPaymentClientKey() {
         return globalOsgiConfigs.getPaymentClientKey();
     }
+
+    public boolean getIsCaptchaEnabled() {
+        return globalOsgiConfigs.getIsCaptchaEnabled();
+    }
 }
 
 

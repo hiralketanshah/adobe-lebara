@@ -57,6 +57,7 @@ class GlobalConfigsTest {
         lenient().when(globalOsgiService.getGqlEndpoint()).thenReturn("endPoint");
         lenient().when(globalOsgiService.getPaymentClientKey()).thenReturn("payemntKey");
         lenient().when(globalOsgiService.getPaymentAdeyenEnv()).thenReturn("getPaymentAdeyenEnv");
+        lenient().when(globalOsgiService.getIsCaptchaEnabled()).thenReturn(false);
         lenient().when(inheritanceValueMap.getInherited("currencyName", String.class)).thenReturn("rupee");
         globalConfigs.doGet(request,response);
     }

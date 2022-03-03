@@ -4,4 +4,5 @@
     getApiHostUri="https://api-aggregator.lebara.de"
     getGqlEndpoint="/api-aggregator"
     getPaymentAdeyenEnv="live"
-    getPaymentClientKey="live_DUKE2HHZGNDXDG5R6NI5TGDYV4E2FA6Y"/>
+    getPaymentClientKey="live_DUKE2HHZGNDXDG5R6NI5TGDYV4E2FA6Y"
+    getIsCaptchaEnabled="true"/>

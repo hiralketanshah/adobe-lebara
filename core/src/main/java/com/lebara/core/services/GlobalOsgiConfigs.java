@@ -17,4 +17,7 @@ public @interface GlobalOsgiConfigs {
 
 	@AttributeDefinition(name = "Payment Adeyen Env", type = AttributeType.STRING)
 	String getPaymentAdeyenEnv() default "test";
+
+	@AttributeDefinition(name = "Is Captcha Enabled", type = AttributeType.BOOLEAN)
+	boolean getIsCaptchaEnabled() default false;
 }
