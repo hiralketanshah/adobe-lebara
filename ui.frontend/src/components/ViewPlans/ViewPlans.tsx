@@ -6,7 +6,7 @@ import ExpandableSimPlanCard from "../ExpandableSimPlanCard/ExpandableSimPlanCar
 import Button from "../Button/Button";
 import { useHistory } from "@lebara/ui/src/hooks/useHistory";
 import TickInCircle from "../../icons/TickInCircle";
-import {googleAnalytics} from "../../utils/gtm";
+import {googleAnalytics, getTypes} from "../../utils/gtm";
 
 const ViewPlans: React.FC<PlanCardProps> = ({
   title,
@@ -36,28 +36,16 @@ const ViewPlans: React.FC<PlanCardProps> = ({
   };
 
   React.useEffect(() => {
-    const impressions = offers.map(plan => {
-      const data = plan?.offerType === "prepaid" ? plan?.allowanceList.find(t => t.name === "Data")?.formatedValue : plan?.allowanceList.find(t => t.name === "DE_Postpaid_Data")?.formatedValue;
-      const internationalMinutes = plan?.offerType === "prepaid" ? plan?.allowanceList.find(t => t.name === "DE_Srilanka_India_EU_voice")?.value : plan?.allowanceList.find(t => t.name === "DE_Postpaid_Intl_Mins")?.value;
-      const minutes = plan?.offerType === "prepaid" ? plan?.allowanceList.find(t => t.name === "DE_National_Voice")?.value : "Unlimited";
-      return {
-        currencyCode: "EUR",
-        detail: {
-          products: [
-            {
-              id: plan?.id,
-              name: plan.planName,
-              price: plan.cost,
-              brand: "Lebara",
-              category: `plan/${plan.planName}///${data} - ${minutes} national minutes - ${internationalMinutes} International Minutes`,
-              variant: "DE",
-              quantity: 1,
-            },
-          ],
-        },
-      };
-    });
-    googleAnalytics("EElistPageB", {
+    const impressions = offers.map((plan, index) => ({
+      id: plan?.id,
+      name: plan.planName,
+      price: plan.cost,
+      brand: "Lebara",
+      category: `plan/${plan.planName}///`,
+      variant: getTypes(plan),
+      position: index + 1,
+    }));
+    googleAnalytics(offers?.every(t => t.offerType === "postpaid") ? "EElistPageA" : offers?.every(t => t.offerType === "prepaid") ? "EElistPageB" : "EElistPageC", {
       currencyCode: "EUR",
       impressions,
     });

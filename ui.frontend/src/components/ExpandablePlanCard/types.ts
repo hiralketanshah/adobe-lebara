@@ -12,6 +12,7 @@ export interface ExpandablePlanCardProps {
     showLabel?: string;
     buttonLabel?: string;
     offer?: PlanCardOffer;
+    offerType?: string;
     unlimitedTextField?: string;
     allowanceList?: allowanceListProps[];
     onDetailsClick?: (id: number, status: boolean) => void;

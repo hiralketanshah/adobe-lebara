@@ -15,22 +15,21 @@ export function googleAnalytics(event, obj, disableEcommerce) {
       })
     : window?.dataLayer?.push(obj);
 }
-function getTypes(products){
-  return products.map((t) =>
-    t.isPostPaid
-      ? "Post Paid"
-      : t.isPrepaid && t.isAutoRenew
+export function getTypes(product) {
+  return Array.isArray(product) ? product?.map((t) => getTypes(t)) : product ? (product.isPostPaid || product.offerType === "postpaid"
+    ? "Post Paid"
+    : (product.isPrepaid && product.isAutoRenew) || product.offerType === "prepaid"
       ? "SIMO"
-      : t.isPrepaid && !t.isAutoRenew
-      ? "Bundle"
-      : t.isAddon
-      ? "Add Ons"
-      : t.isTopUp || t.isFreeSimTopup || t.isFreeSimTopup
-      ? "PAYG"
-      : t.isFreeSim
-      ? "Free SIM"
-      : "Other"
-  );
+      : product.isPrepaid && !product.isAutoRenew
+        ? "Bundle"
+        : product.isAddon || product.offerType === "bolton"
+          ? "Add Ons"
+          : product.isTopUp || product.isFreeSimTopup || product.isFreeSimTopup || product.offerType === "topup"
+            ? "PAYG"
+            : product.isFreeSim
+              ? "Free SIM"
+              : "Other" )
+              : ""
 }
 export function googleAnalyticsCheckout(eventName, step, cartItems) {
   if (process.env.REACT_APP_DISABLE_GOOGLE_ANALYTICS === "true") {
@@ -50,15 +49,9 @@ export function googleAnalyticsCheckout(eventName, step, cartItems) {
         : product?.isTopUp
         ? "topup"
         : "bolton"
-    }/${product?.duration}//${product.promotionId}/${
-      product?.isPrepaid || product?.isPostPaid
-        ? `${product.details[1]}`?.split("+")?.[0].concat(` - ${product.details?.[2]} - ${product.details?.[3]}`)
-        : product?.isAddon
-        ? `${product.details?.[1]}`.split("+")?.[0]
-        : ""
-    }`,
-    variant: getTypes(cartItems).join(" - "),
-    position: 1,
+    }/${product?.duration}//${product.promotionId || ''}/`,
+    variant: getTypes(product),
+    quantity: 1,
   }));
 
   return window?.dataLayer?.push({
@@ -100,15 +93,9 @@ export function googleAnalyticsTransaction(
           : product.isTopUp || product.isFreeSimTopup
           ? "topup"
           : "bolton"
-      }/${product.duration}//${product.promotionId}/${
-        product.isPrepaid
-          ? `${product.details[1]}`?.split("+")?.[0].concat(` - ${product.details?.[2]} - ${product.details?.[3]}`)
-          : product.isAddon
-          ? `${product.details?.[1]}`.split("+")?.[0]
-          : ""
-      }`,
-      variant: getTypes(products).join(" - "),
-      position: 1,
+      }/${product.duration}//${product.promotionId || ''}/`,
+      variant: getTypes(product),
+      quantity: 1,
     };
   });
   return window?.dataLayer?.push({
