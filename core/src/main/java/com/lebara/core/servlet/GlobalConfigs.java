@@ -70,6 +70,7 @@ public class GlobalConfigs extends SlingSafeMethodsServlet {
                 .put("gqlEndpoint", Optional.ofNullable(globalOsgiService.getGqlEndpoint()).orElse(""))
                 .put("paymentClientKey", Optional.ofNullable(globalOsgiService.getPaymentClientKey()).orElse(""))
                 .put("paymentAdeyenEnv", Optional.ofNullable(globalOsgiService.getPaymentAdeyenEnv()).orElse(""))
+                .put("isCaptchaEnabled", Optional.ofNullable(globalOsgiService.getIsCaptchaEnabled()).orElse(false))
                 .put(CURRENCY_NAME, Optional.ofNullable(inheritedProp.getInherited(CURRENCY_NAME, String.class)).orElse(""))
                 .put(JOURNEY_PAGES, getJourneyPages(request, page))
                 .put(PRIVATE_PAGES, getPrivatePages(request, inheritedProp.getInherited(PRIVATE_PAGES, String[].class)))
