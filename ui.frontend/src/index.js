@@ -66,6 +66,19 @@ const client = new ApolloClient({
     link: logoutLink.concat(httpLink),
 });
 
+axios.interceptors.response.use(response => response, error => {
+    if (error.response.status === 401) {
+        if (isLoading) return error;
+        isLoading = true;
+        window.location.reload();
+        setTimeout(() => {
+            isLoading = false;
+        }, 500);
+
+    }
+    return error;
+});
+
 axios.defaults.headers = {
     channel: "Web",
 };
