@@ -4,4 +4,5 @@
     getApiHostUri="https://sit-api-aggregator.lebara.com"
     getGqlEndpoint="/api-aggregator"
     getPaymentAdeyenEnv="test"
-    getPaymentClientKey="test_H6OSQDTUINBCDPAD2QBO2CBX2AKULOWL"/>
+    getPaymentClientKey="test_H6OSQDTUINBCDPAD2QBO2CBX2AKULOWL"
+    getIsCaptchaEnabled="false"/>

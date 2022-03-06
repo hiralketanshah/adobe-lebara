@@ -41,7 +41,6 @@ import { toggleDialogState } from "@lebara/ui/src/redux/actions/modalsActions";
 import SearchResults from "../Search/SearchResults";
 import aemUtils from "../../utils/aem-utils";
 import { BACKGROUND_OPACITY_SAERCH_BAR } from "@lebara/ui/src/utils/lebara.constants";
-import GoogleAnalytics from "@lebara/ui/src/GoogleAnalytics";
 import useLoadPaymentMethods from "@lebara/ui/src/hooks/useLoadPaymentMethods";
 
 const SingleMenu = ({ menuItem, newText }: { menuItem: children, newText: any }) => {
@@ -346,7 +345,6 @@ const Header: React.FC<HeaderProps> = ({
   
   return (
     <>
-      <GoogleAnalytics />
 
       <Flex
           flexDirection="column"

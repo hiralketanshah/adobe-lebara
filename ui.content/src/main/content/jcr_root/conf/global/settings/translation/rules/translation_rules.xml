@@ -179,6 +179,8 @@
 		<property name="mobileNumberErrorMessage" />
 		<property name="mobileNumberMaxLength" />
 		<property name="mobileNumberFieldPattern" />
+		<property name="currentProviderDefaultSelectValue" />
+		<property name="moreLabel" />
 
 		<!-- Order Submitted / Confirmation Message -->
 		<property name="orderIdTitle" />
@@ -363,6 +365,8 @@
 		<property name="emailLabel"/>
 		<property name="shippingAddressLabel"/>
 		<property name="editLabel"/>
+		<property name="changePlanLabel"/>
+		<property name="changeAddonLabel"/>
 		<property name="mobileNumberLabel"/>
 		<property name="termsAndConditionsLabel"/>
 		<property name="contractSummary"/>
@@ -420,6 +424,7 @@
 		<property name="topUpRecurringLabel"/>
 		<property name="recurringLabel"/>
 		<property name="directDebitCheckboxText"/>
+		<property name="mandatoryCheckBoxLabel"/>
 
 		<!--Support component -->
 		<property name="ctaLinkLabel"/>
@@ -552,6 +557,7 @@
 		<property name="shippingLabel"/>
 		<property name="shippingPlaceholder"/>
 		<property name="shippingHelperText"/>
+		<property name="moreLabel"/>
 		<property name="portingSectionHeading"/>
 		<property name="portInNumberLabel"/>
 		<property name="portInNumberPlaceHolder"/>

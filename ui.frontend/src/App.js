@@ -22,7 +22,7 @@ import "@fontsource/roboto/700.css";
 import "@fontsource/roboto/900.css";
 import store from "@lebara/ui/src/store";
 import Fonts from "./Fonts";
-
+import GoogleAnalytics from "@lebara/ui/src/GoogleAnalytics";
 const theme = extendTheme(
   {
     // colors,
@@ -104,6 +104,7 @@ class App extends Page {
             }}
           >
             <ScrollToTop />
+            <GoogleAnalytics />
             <Fonts />
             <div id="modelRootLoader" style={{display: 'none'}}>
               <LoadingOverlay

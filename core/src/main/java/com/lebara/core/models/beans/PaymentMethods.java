@@ -70,6 +70,9 @@ public class PaymentMethods {
 
     @ValueMapValue
     private String recurringLabel;
+    
+    @ValueMapValue
+    private String mandatoryCheckBoxLabel;
 
     public String getCard() {
         return getUTFStr(card);
@@ -141,6 +144,10 @@ public class PaymentMethods {
 
     public String getSepaName() {
         return sepaName;
+    }
+    
+    public String getMandatoryCheckBoxLabel() {
+    	return mandatoryCheckBoxLabel;
     }
 
     private String getUTFStr(String rawString) {
