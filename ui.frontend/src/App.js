@@ -12,6 +12,7 @@ import GET_SESSION_STATUS from "@lebara/ui/src/graphql/GET_SESSION_STATUS";
 import { selectIsLoading } from "@lebara/ui/src/redux/selectors/loadingSelectors";
 import { setLoading } from "@lebara/ui/src/redux/actions/loadingActions";
 import { saveUserInfo } from "@lebara/ui/src/redux/actions/userActions";
+import { selectSocket } from "@lebara/ui/src/redux/selectors/socketSelectors";
 
 import colors from "./theme/colors";
 import "@fontsource/roboto/100.css";
@@ -45,6 +46,7 @@ function withPageHook(Component) {
     const dispatch = useDispatch();
     const isLoading = useSelector(selectIsLoading);
     const [isAuthLoading, setIsAuthLoading] = useState(true);
+    const socket = useSelector(selectSocket);
 
     React.useEffect(() => {
       client
@@ -52,7 +54,11 @@ function withPageHook(Component) {
           query: GET_SESSION_STATUS,
         })
         .then((res) => {
-          dispatch(saveUserInfo(res.data.getSessionStatus));
+            socket.auth = {
+                crmId: res.data.getSessionStatus.crmId,
+            };
+            socket.connect();
+            dispatch(saveUserInfo(res.data.getSessionStatus));
         })
         .catch(() => {})
         .finally(() => {
