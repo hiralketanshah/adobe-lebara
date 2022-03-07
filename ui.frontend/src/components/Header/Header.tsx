@@ -36,12 +36,15 @@ import mapMagentoProductToCartItem from "@lebara/ui/src/utils/mapMagentoProductT
 import {saveTopUps} from "@lebara/ui/src/redux/actions/topUpActions";
 import GET_TOP_UPS from "@lebara/ui/src/graphql/GET_TOP_UPS";
 import { useHistory, RouterLink } from "@lebara/ui/src/hooks/useHistory";
+import fetchUserPaymentMethods from "@lebara/ui/src/redux/redux-actions/fetchUserPaymentMethods";
+import {saveSocket} from "@lebara/ui/src/redux/actions/socketActions";
 import PlanNotEligibleDialog from "@lebara/ui/src/components/PlanNotEligibleDialog/PlanNotEligibleDialog";
 import { toggleDialogState } from "@lebara/ui/src/redux/actions/modalsActions";
 import SearchResults from "../Search/SearchResults";
 import aemUtils from "../../utils/aem-utils";
 import { BACKGROUND_OPACITY_SAERCH_BAR } from "@lebara/ui/src/utils/lebara.constants";
 import useLoadPaymentMethods from "@lebara/ui/src/hooks/useLoadPaymentMethods";
+import io from "socket.io-client";
 
 const SingleMenu = ({ menuItem, newText }: { menuItem: children, newText: any }) => {
   const DEFUALT_GROUP_MENU_UPTO = 5;
@@ -242,6 +245,32 @@ const Header: React.FC<HeaderProps> = ({
   const [isQuerySearched, setQuerySearched] = useState('');
   const [results, setResults] : any = useState([]);
   const { loadPaymentMethodsCallback } = useLoadPaymentMethods();
+
+  const loadPaymentMethods = useCallback(async () => {
+    await dispatch(fetchUserPaymentMethods(client));
+  }, [client, dispatch]);
+
+  const cpaUpdatedKey = "cpaUpdated";
+
+  const cpaUpdateListener = useCallback(async () => {
+    await loadPaymentMethods();
+  }, [loadPaymentMethods]);
+
+  React.useEffect(() => {
+    const newSocket = io(GC.apiHostUri, {
+      autoConnect: false,
+      withCredentials: true,
+      transports: ["websocket"],
+    });
+    newSocket.on(cpaUpdatedKey, cpaUpdateListener);
+    dispatch(saveSocket(newSocket));
+    return () => {
+      newSocket.off(cpaUpdatedKey, cpaUpdateListener);
+      newSocket.close();
+    };
+  }, [cpaUpdateListener, dispatch]);
+
+
   useOutsideClick({
     ref,
     handler: () => setProfileDropdown(false),
