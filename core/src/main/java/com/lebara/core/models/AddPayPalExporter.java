@@ -47,7 +47,7 @@ public class AddPayPalExporter extends IntroExporter implements ComponentExporte
     private String termsFullDescription;
 
     public String getLabelTermsandConditions() {
-        return labelTermsandConditions;
+        return AemUtils.updateShortenLinksInRichText(labelTermsandConditions,slingRequest);
     }
 
     public String getCtaButtonLabel() {
