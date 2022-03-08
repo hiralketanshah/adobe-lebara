@@ -187,7 +187,28 @@ public class CFUtils {
             return 0;
         }
     }
-
+    public static PromotionFragmentBean populatePromotions(ResourceResolver resourceResolver, String promotionFragPath){
+        Resource promotionalFragres = resourceResolver.getResource(promotionFragPath);
+        PromotionFragmentBean promotionFragmentBean = new PromotionFragmentBean();
+        if (promotionalFragres != null) {
+            ContentFragment promotionFragment = promotionalFragres.adaptTo(ContentFragment.class);
+            if (promotionFragment != null) {
+                if (StringUtils.isNotBlank(CFUtils.getElementValue(promotionFragment, "promotionId"))) {
+                    promotionFragmentBean.setPromotionId(CFUtils.getElementValue(promotionFragment, "promotionId"));
+                }
+                if (StringUtils.isNotBlank(CFUtils.getElementValue(promotionFragment, "promotionDetails"))) {
+                    promotionFragmentBean.setPromotionDetails(CFUtils.getElementValue(promotionFragment, "promotionDetails"));
+                }
+                if (StringUtils.isNotBlank(CFUtils.getElementValue(promotionFragment, "promotionalPrice"))) {
+                    promotionFragmentBean.setPromotionalPrice(CFUtils.getElementValue(promotionFragment, "promotionalPrice"));
+                }
+                if (StringUtils.isNotBlank(CFUtils.getElementValue(promotionFragment, "promotionData"))) {
+                    promotionFragmentBean.setPromotionData(CFUtils.getElementValue(promotionFragment, "promotionData"));
+                }
+            }
+        }
+        return promotionFragmentBean;
+    }
     public static OfferFragmentBean populateOffers( Resource cfResource, I18n i18n) {
         OfferFragmentBean offerFragmentBean = null;
         if (null != cfResource) {
