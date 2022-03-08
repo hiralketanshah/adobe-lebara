@@ -16,11 +16,11 @@ const aemUtils = {
 
     return returnUrl;
   },
-  getCfOfferDataUrl: function (offerIds) {
-    return `${window.location.pathname.replace('.html', '')}.offer.json?offerId=${offerIds}`;
+  getCfOfferDataUrl: function (offerIds, isPromotion) {
+    return `${window.location.pathname.replace('.html', '')}.${isPromotion ? 'promotions.json': `offer.json?offerId=${offerIds}`}`;
   },
-  fetchData: async function(offerId, isOneEntry) {
-    const response = await fetch(aemUtils.getCfOfferDataUrl(offerId));
+  fetchData: async function(offerId, isOneEntry, isPromotion = false) {
+    const response = await fetch(aemUtils.getCfOfferDataUrl(offerId, isPromotion));
     const json = await response.json();
     return isOneEntry ? json[0] : json;
   },
