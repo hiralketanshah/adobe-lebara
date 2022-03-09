@@ -67,8 +67,8 @@ const client = new ApolloClient({
 });
 
 axios.interceptors.response.use(response => response, error => {
-    if (error.response.status === 401) {
-        if (isLoading) return error;
+    if (error?.response?.status === 401) {
+        if (isLoading) return Promise.reject(error);
         isLoading = true;
         window.location.reload();
         setTimeout(() => {
@@ -76,7 +76,7 @@ axios.interceptors.response.use(response => response, error => {
         }, 500);
 
     }
-    return error;
+    return Promise.reject(error);
 });
 
 axios.defaults.headers = {
