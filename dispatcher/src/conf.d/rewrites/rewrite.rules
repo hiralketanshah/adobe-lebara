@@ -162,7 +162,7 @@ RewriteRule ^/([a-z]+)/presse/pressemitteilung/lebara-partner-der-communicate	/$
 RewriteRule ^/([a-z]+)/my-mobile/change-plan/confirmation	/$1/mylebara/login.html [L,R=301]
 
 # Robots rewrite
-RewriteRule ^/robots.xml$ /content/dam/${CONTENT_FOLDER_NAME}/global/robots.txt [NC,PT]
+RewriteRule ^/robots.txt$ /content/dam/${CONTENT_FOLDER_NAME}/markets/de/robots.txt [NC,PT]
 
 # Sitemap rewrite
 RewriteRule ^/sitemap.xml$ /content/${CONTENT_FOLDER_NAME}/de.sitemap.xml [NC,PT]
