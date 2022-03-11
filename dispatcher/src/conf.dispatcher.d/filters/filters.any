@@ -15,3 +15,6 @@ $include "./default_filters.any"
 
 # Allow AEM WCM Core Components sitemaps
 /0103 { /type "allow" /path "/content/*" /selectors '(sitemap-index|sitemap)' /extension "xml" }
+
+# Allow robots.txt file
+/0104 { /type "allow" /extension '(txt)' /path "/content/*" }
