@@ -17,10 +17,10 @@ import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
 import java.util.Collections;
 import java.util.List;
 
-@Model(adaptables = {SlingHttpServletRequest.class, Resource.class}, adapters = {OderDetailsExporter.class, ComponentExporter.class},
-        resourceType = OderDetailsExporter.RESOURCE_TYPE, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
+@Model(adaptables = {SlingHttpServletRequest.class, Resource.class}, adapters = {OrderDetailsExporter.class, ComponentExporter.class},
+        resourceType = OrderDetailsExporter.RESOURCE_TYPE, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
 @Exporter(name = ExporterConstants.SLING_MODEL_EXPORTER_NAME, extensions = ExporterConstants.SLING_MODEL_EXTENSION)
-public class OderDetailsExporter implements ComponentExporter {
+public class OrderDetailsExporter implements ComponentExporter {
 
     /**
      * The resource type.
@@ -46,10 +46,16 @@ public class OderDetailsExporter implements ComponentExporter {
     private String freeSimLabel;
 
     @ValueMapValue
-    private String autoRenewLabel;
+    private String topupAutoRenewLabel;
 
     @ValueMapValue
-    private String autoRenewDesc;
+    private String topupAutoRenewDesc;
+
+    @ValueMapValue
+    private String prepaidAutoRenewDesc;
+
+    @ValueMapValue
+    private String postpaidAutoRenewDesc;
 
     @ValueMapValue
     private String grandTotalLabel;
@@ -190,12 +196,20 @@ public class OderDetailsExporter implements ComponentExporter {
         return freeSimLabel;
     }
 
-    public String getAutoRenewLabel() {
-        return autoRenewLabel;
+    public String getTopupAutoRenewLabel() {
+        return topupAutoRenewLabel;
     }
 
-    public String getAutoRenewDesc() {
-        return autoRenewDesc;
+    public String getTopupAutoRenewDesc() {
+        return topupAutoRenewDesc;
+    }
+
+    public String getPrepaidAutoRenewDesc() {
+        return prepaidAutoRenewDesc;
+    }
+
+    public String getPostpaidAutoRenewDesc() {
+        return postpaidAutoRenewDesc;
     }
 
     public String getGrandTotalLabel() {
