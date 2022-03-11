@@ -38,7 +38,7 @@ const theme = extendTheme(
   withDefaultColorScheme({ colorScheme: "primary" })
 );
 
-
+let isSocketConnected = false;
 function withPageHook(Component) {
 
   return function WrappedComponent(props) {
@@ -54,10 +54,13 @@ function withPageHook(Component) {
           query: GET_SESSION_STATUS,
         })
         .then((res) => {
-            socket.auth = {
-                crmId: res.data.getSessionStatus.crmId,
-            };
-            socket.connect();
+            if(socket && !isSocketConnected) {
+                socket.auth = {
+                    crmId: res.data.getSessionStatus.crmId,
+                };
+                isSocketConnected = true;
+                socket.connect();
+            }
             dispatch(saveUserInfo(res.data.getSessionStatus));
         })
         .catch(() => {})
@@ -67,7 +70,7 @@ function withPageHook(Component) {
         });
       
         return () => {}
-    }, [client, dispatch]);// eslint-disable-line react-hooks/exhaustive-deps
+    }, [client, dispatch, socket]);
 
     if (!AuthoringUtils.isInEditor() && isAuthLoading) {
       return (

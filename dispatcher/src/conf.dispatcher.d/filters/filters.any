@@ -7,7 +7,7 @@
 $include "./default_filters.any"
 
 # Allow components JSON model
-/0101 { /type "allow" /extension "json" /selectors '(model|offer|globalsearch|helpcentersearch)' /path "/content/*" }
+/0101 { /type "allow" /extension "json" /selectors '(model|offer|globalsearch|helpcentersearch|promotions)' /path "/content/*" }
 
 # Allow manifest.webmanifest files located in the content
 /0102 { /type "allow" /extension "webmanifest" /path "/content/*/manifest" }

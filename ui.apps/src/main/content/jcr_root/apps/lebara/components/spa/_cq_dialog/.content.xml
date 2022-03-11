@@ -51,8 +51,15 @@
                                             <offerRootPath
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                                rootPath="/content/dam/lebara/markets"
                                                 fieldLabel="Root path for Offer Fragments"
                                                 name="./offerRootPath"/>
+                                            <promotionsRootPath
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                                rootPath="/content/dam/lebara/markets"
+                                                fieldLabel="Root path for Promotions Fragments"
+                                                name="./promotionsRootPath"/>
                                             <internationalRatesRootPath
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
