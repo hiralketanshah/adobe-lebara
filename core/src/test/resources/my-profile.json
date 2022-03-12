@@ -69,6 +69,9 @@
             "houseNumberPlaceholder": "Enter Your House Number",
             "emailPlaceholder": "Enter Your Email Address",
             "passwordPlaceholder": "Password Placeholder",
+            "additionalInfoLabel" : "Additional Information",
+            "additionalInfoPlaceholder": "Some notes",
+            "editAddressLabel": "Edit Address",
             "subscribeOptions": {
               "jcr:primaryType": "nt:unstructured",
               "item0": {
@@ -120,6 +123,16 @@
             "afterEmailText": "to validate your email.",
             "description": "Email on My Profile won't be update until the verification is made.",
             "heading": "Email Update Request has been successfully sent !"
+          },
+          "changeAddressPopup": {
+            "jcr:primaryType": "nt:unstructured",
+            "changeAddressLabel": "Chaneg Address",
+            "changeAddressDesc": "Key in your postal code",
+            "yourAddressPlaceholder": "Your address",
+            "manualAddressLabel": "Enter manual address",
+            "typeAddressLabel": " Please type in your address",
+            "successTitle": "Address changed",
+            "successDesc": "Address has been successfully changed!"
           }
         }
       },

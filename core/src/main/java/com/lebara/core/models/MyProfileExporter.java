@@ -6,6 +6,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.lebara.core.models.beans.MyProfileErrorAndSuccessMsg;
 import com.lebara.core.models.beans.MyProfileFormFields;
 import com.lebara.core.models.beans.MyProfileSuccessEmailModal;
+import com.lebara.core.models.beans.MyProfileChangeAddressPopup;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.models.annotations.DefaultInjectionStrategy;
 import org.apache.sling.models.annotations.Exporter;
@@ -53,6 +54,9 @@ public class MyProfileExporter implements ComponentExporter{
     @ChildResource
     private MyProfileSuccessEmailModal successEmailModal;
 
+    @ChildResource
+    private MyProfileChangeAddressPopup changeAddressPopup;
+
     @JsonProperty("frmFields")
     public MyProfileFormFields getFrmFields() {
         return frmFields;
@@ -66,6 +70,10 @@ public class MyProfileExporter implements ComponentExporter{
     @JsonProperty("successEmailModal")
     public MyProfileSuccessEmailModal getSuccessEmailModal() { return successEmailModal; }
 
+    @JsonProperty("changeAddressPopup")
+    public MyProfileChangeAddressPopup getChangeAddressPopup() {
+        return changeAddressPopup;
+    }
     public String getDescription() {
         return description;
     }
