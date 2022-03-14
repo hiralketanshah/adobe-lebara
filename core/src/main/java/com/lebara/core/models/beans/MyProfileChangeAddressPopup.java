@@ -31,17 +31,31 @@ public class MyProfileChangeAddressPopup {
     @ValueMapValue
     private String successDesc;
 
-    public String getChangeAddressLabel() { return changeAddressLabel; }
+    public String getChangeAddressLabel() {
+        return changeAddressLabel;
+    }
 
-    public String getChangeAddressDesc() { return changeAddressDesc; }
+    public String getChangeAddressDesc() {
+        return changeAddressDesc;
+    }
 
-    public String getYourAddressPlaceholder() { return yourAddressPlaceholder; }
+    public String getYourAddressPlaceholder() {
+        return yourAddressPlaceholder;
+    }
 
-    public String getManualAddressLabel() { return manualAddressLabel; }
+    public String getManualAddressLabel() {
+        return manualAddressLabel;
+    }
 
-    public String getTypeAddressLabel() { return typeAddressLabel; }
+    public String getTypeAddressLabel() {
+        return typeAddressLabel;
+    }
 
-    public String getSuccessTitle() { return successTitle; }
+    public String getSuccessTitle() {
+        return successTitle;
+    }
 
-    public String getSuccessDesc() { return successDesc; }
+    public String getSuccessDesc() {
+    return successDesc;
+    }
 }
