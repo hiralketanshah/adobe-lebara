@@ -346,8 +346,10 @@
 		<property name="selectedProductLabel" />
 		<property name="phoneNumberLabel" />
 		<property name="freeSimLabel" />
-		<property name="autoRenewLabel" />
-		<property name="autoRenewDesc" />
+		<property name="topupAutoRenewLabel" />
+		<property name="topupAutoRenewDesc" />
+		<property name="prepaidAutoRenewDesc" />
+		<property name="postpaidAutoRenewDesc" />
 		<property name="grandTotalLabel"/>
 		<property name="addVoucherCodeLabel"/>
 		<property name="applyVoucherLabel"/>

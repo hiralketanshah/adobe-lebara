@@ -52,18 +52,30 @@
                                                 fieldLabel="Free Sim Label"
                                                 fieldDescription="Free sim"
                                                 name="./freeSimLabel"/>
-                                            <autorenewlabel
+                                            <topupautorenewlabel
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                                 fieldLabel="Auto Renew Label"
                                                 fieldDescription="Auto Renew"
-                                                name="./autoRenewLabel"/>
-                                            <autorenewdesc
+                                                name="./topupAutoRenewLabel"/>
+                                            <topupautorenewdesc
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                                 fieldLabel="Auto Renew Desc"
-                                                fieldDescription="Every time your credit reaches €3 it will be topped up by €"
-                                                name="./autoRenewDesc"/>
+                                                fieldDescription="Every time your credit reaches €3 it will be topped up by {0}"
+                                                name="./topupAutoRenewDesc"/>
+                                            <prepaidautorenewdesc
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="Prepaid Auto Renew Desc"
+                                                fieldDescription="Your plan will renew every 28 days and you may cancel any time."
+                                                name="./prepaidAutoRenewDesc"/>
+                                            <postpaidautorenewdesc
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="Postpaid Auto Renew Desc"
+                                                fieldDescription="Your plan will renew every 28 days and you may cancel any time."
+                                                name="./postpaidAutoRenewDesc"/>
                                             <grandtotallabel
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
