@@ -150,6 +150,12 @@
 		<property name="label1" />
 		<property name="label2" />
 		<property name="popupDownloadLabel" />
+		<property name="changePlanHeading" />
+		<property name="changePlanSubHeading" />
+		<property name="changePlanCheckboxTop" />
+		<property name="changePlanCheckboxBottom" />
+		<property name="changePlanConfirmLabel" />
+		<property name="changePlanCancelLabel" />
 		<!-- sim portin props -->
 		<property name="pretitle" />
 		<property name="doitLaterButtonLabel" />
