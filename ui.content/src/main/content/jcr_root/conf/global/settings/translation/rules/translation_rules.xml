@@ -49,6 +49,13 @@
 		<property name="actionText" />
 
 		<!-- Dashboard props -->
+		<property name="cancelChangePlanHeading" />
+		<property name="cancelChangePlanSubHeading" />
+		<property name="cancelChangePlanCheckboxTop" />
+		<property name="cancelChangePlanCheckboxBottom" />
+		<property name="cancelChangePlanConfirmLabel" />
+		<property name="cancelChangePlanCancelLabel" />
+
 		<!-- simswitch props -->
 		<property name="balanceLabel" />
 		<property name="simName" />

@@ -652,7 +652,7 @@
                     </yourOrder>
                     <changePlan
                             jcr:primaryType="nt:unstructured"
-                            jcr:title="Change Plan"
+                            jcr:title="Change Plan Popup"
                             sling:resourceType="granite/ui/components/coral/foundation/container">
                         <items jcr:primaryType="nt:unstructured">
                             <changePlanHeading
@@ -664,8 +664,8 @@
                             <changePlanSubHeading
                                     jcr:primaryType="nt:unstructured"
                                     sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                    fieldDescription="Change Plan Heading"
-                                    fieldLabel="Change Plan Heading"
+                                    fieldDescription="Change Plan SubHeading"
+                                    fieldLabel="Change Plan SubHeading"
                                     value="Are you sure you want to change your plan?"
                                     name="./changePlanSubHeading"/>
                             <changePlanCheckboxTop
