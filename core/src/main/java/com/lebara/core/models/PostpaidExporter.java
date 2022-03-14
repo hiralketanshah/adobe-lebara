@@ -98,6 +98,19 @@ public class PostpaidExporter implements ComponentExporter {
     private String yourOrderTwentyFourMonthsLabel;
     @ValueMapValue
     private String yourOrderOneMonthLabel;
+    @ValueMapValue
+    private String changePlanCancelLabel;
+    @ValueMapValue
+    private String changePlanConfirmLabel;
+    @ValueMapValue
+    private String changePlanCheckboxBottom;
+    @ValueMapValue
+    private String changePlanCheckboxTop;
+    @ValueMapValue
+    private String changePlanSubHeading;
+    @ValueMapValue
+    private String changePlanHeading;
+
     public List<Labels> getDurationRadioLabelList() {
         return durationRadioLabelList == null ? Collections.emptyList() : Collections.unmodifiableList(durationRadioLabelList);
     }
@@ -233,6 +246,31 @@ public class PostpaidExporter implements ComponentExporter {
     public String getYourOrderOneMonthLabel() {
         return yourOrderOneMonthLabel;
     }
+
+    public String getChangePlanCancelLabel() {
+        return changePlanCancelLabel;
+    }
+
+    public String getChangePlanConfirmLabel() {
+        return changePlanConfirmLabel;
+    }
+
+    public String getChangePlanCheckboxBottom() {
+        return AemUtils.updateShortenLinksInRichText(changePlanCheckboxBottom, slingRequest);
+    }
+
+    public String getChangePlanCheckboxTop() {
+        return AemUtils.updateShortenLinksInRichText(changePlanCheckboxTop, slingRequest);
+    }
+
+    public String getChangePlanSubHeading() {
+        return changePlanSubHeading;
+    }
+
+    public String getChangePlanHeading() {
+        return changePlanHeading;
+    }
+
     @Override
     public String getExportedType() {
         return RESOURCE_TYPE;

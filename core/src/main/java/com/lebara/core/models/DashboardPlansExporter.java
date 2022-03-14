@@ -51,6 +51,19 @@ public class DashboardPlansExporter extends HeadingExporter {
     @ValueMapValue
     private String manageLabel;
 
+    @ValueMapValue
+    private String cancelChangePlanHeading;
+    @ValueMapValue
+    private String cancelChangePlanSubHeading;
+    @ValueMapValue
+    private String cancelChangePlanCheckboxTop;
+    @ValueMapValue
+    private String cancelChangePlanCheckboxBottom;
+    @ValueMapValue
+    private String cancelChangePlanConfirmLabel;
+    @ValueMapValue
+    private String cancelChangePlanCancelLabel;
+
     public String getButtonLabel() {
         return buttonLabel;
     }
@@ -85,6 +98,30 @@ public class DashboardPlansExporter extends HeadingExporter {
 
     public String getManageLabel() {
         return manageLabel;
+    }
+
+    public String getCancelChangePlanHeading() {
+        return cancelChangePlanHeading;
+    }
+
+    public String getCancelChangePlanSubHeading() {
+        return cancelChangePlanSubHeading;
+    }
+
+    public String getCancelChangePlanCheckboxTop() {
+        return AemUtils.updateShortenLinksInRichText(cancelChangePlanCheckboxTop, slingRequest);
+    }
+
+    public String getCancelChangePlanCheckboxBottom() {
+        return AemUtils.updateShortenLinksInRichText(cancelChangePlanCheckboxBottom, slingRequest);
+    }
+
+    public String getCancelChangePlanConfirmLabel() {
+        return cancelChangePlanConfirmLabel;
+    }
+
+    public String getCancelChangePlanCancelLabel() {
+        return cancelChangePlanCancelLabel;
     }
 
     @Override

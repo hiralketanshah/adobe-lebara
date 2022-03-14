@@ -49,6 +49,13 @@
 		<property name="actionText" />
 
 		<!-- Dashboard props -->
+		<property name="cancelChangePlanHeading" />
+		<property name="cancelChangePlanSubHeading" />
+		<property name="cancelChangePlanCheckboxTop" />
+		<property name="cancelChangePlanCheckboxBottom" />
+		<property name="cancelChangePlanConfirmLabel" />
+		<property name="cancelChangePlanCancelLabel" />
+
 		<!-- simswitch props -->
 		<property name="balanceLabel" />
 		<property name="simName" />
@@ -150,6 +157,12 @@
 		<property name="label1" />
 		<property name="label2" />
 		<property name="popupDownloadLabel" />
+		<property name="changePlanHeading" />
+		<property name="changePlanSubHeading" />
+		<property name="changePlanCheckboxTop" />
+		<property name="changePlanCheckboxBottom" />
+		<property name="changePlanConfirmLabel" />
+		<property name="changePlanCancelLabel" />
 		<!-- sim portin props -->
 		<property name="pretitle" />
 		<property name="doitLaterButtonLabel" />
