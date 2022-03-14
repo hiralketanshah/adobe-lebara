@@ -93,6 +93,15 @@ public class MyProfileFormFields {
     @ValueMapValue
     private String passwordPlaceholder;
 
+    @ValueMapValue
+    private String additionalInfoLabel;
+
+    @ValueMapValue
+    private String additionalInfoPlaceholder;
+
+    @ValueMapValue
+    private String editAddressLabel;
+
     /* Edit Email Modal Fields */
 
     @ValueMapValue
@@ -232,6 +241,18 @@ public class MyProfileFormFields {
 
     public String getModalCancelCTALabel() {
         return modalCancelCTALabel;
+    }
+
+    public String getAdditionalInfoLabel() {
+        return additionalInfoLabel;
+    }
+
+    public String getAdditionalInfoPlaceholder() {
+        return additionalInfoPlaceholder;
+    }
+
+    public String getEditAddressLabel() {
+        return editAddressLabel;
     }
 
 

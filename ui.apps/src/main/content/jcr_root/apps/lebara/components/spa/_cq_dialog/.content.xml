@@ -273,6 +273,10 @@
                                                                                 jcr:primaryType="nt:unstructured"
                                                                                 text="confirm-delink-sim"
                                                                                 value="confirm-delink-sim"/>
+                                                                        <address-change-otp
+                                                                                jcr:primaryType="nt:unstructured"
+                                                                                text="address-change-otp"
+                                                                                value="address-change-otp"/>
                                                                     </items>
                                                                 </name>
                                                                 <path

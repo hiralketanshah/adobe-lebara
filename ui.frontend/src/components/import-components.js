@@ -49,6 +49,7 @@ import "../aemConfigs/PaymentMethodAemConfig.js";
 import "../aemConfigs/AddEditCreditDebitCardAemConfig.js";
 import "../aemConfigs/AddPaypalAemConfig.js";
 import "../aemConfigs/UserProfileAemConfig.js";
+import "../aemConfigs/AddressChangeOtpAemConfig.js";
 import "../aemConfigs/DashboardAemConfig/AttachSimModelAemConfig.js";
 import "../rotues/AemConfig.js";
 

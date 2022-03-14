@@ -37,6 +37,8 @@ class MyProfileExporterTest {
         myProfileExporter.getHeading();
         myProfileExporter.getChangeEmailHeading();
         myProfileExporter.getChangePasswordSuccessMsg();
+        myProfileExporter.getChangeAddressPopup();
+        myProfileExporter.getChangeAddressButtonLabel();
     }
 
 }
