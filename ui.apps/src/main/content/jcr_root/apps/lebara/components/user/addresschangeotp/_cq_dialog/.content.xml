@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
     jcr:primaryType="nt:unstructured"
-    jcr:title="OTAC Verification"
+    jcr:title="Address Change OTP"
     sling:resourceType="cq/gui/components/authoring/dialog"
     extraClientlibs="[lebara.touchui]">
     <content
@@ -13,64 +13,9 @@
                 sling:resourceType="granite/ui/components/coral/foundation/tabs"
                 maximized="{Boolean}true">
                 <items jcr:primaryType="nt:unstructured">
-                    <formfields
-                        jcr:primaryType="nt:unstructured"
-                        jcr:title="Form Fields"
-                        sling:resourceType="granite/ui/components/coral/foundation/container"
-                        margin="{Boolean}true">
-                        <items jcr:primaryType="nt:unstructured">
-                            <columns
-                                jcr:primaryType="nt:unstructured"
-                                sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
-                                margin="{Boolean}true">
-                                <items jcr:primaryType="nt:unstructured">
-                                    <column
-                                        jcr:primaryType="nt:unstructured"
-                                        sling:resourceType="granite/ui/components/coral/foundation/container">
-                                        <items jcr:primaryType="nt:unstructured">
-                                            <otacVerifyLabel
-                                                jcr:primaryType="nt:unstructured"
-                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                                fieldDescription="Verify with OTAC"
-                                                fieldLabel="OTAC Verification Label"
-                                                name="./otacVerifyLabel"
-                                                value="Verify with OTAC"/>
-                                            <otacVerifyDesc
-                                                jcr:primaryType="nt:unstructured"
-                                                sling:resourceType="granite/ui/components/coral/foundation/form/textarea"
-                                                fieldDescription="To continue you need to put verification code."
-                                                fieldLabel="OTAC verification  Description"
-                                                name="./otacVerifyDesc"/>
-                                            <mobileLabel
-                                                jcr:primaryType="nt:unstructured"
-                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                                fieldDescription="Mobile Number"
-                                                fieldLabel="Mobile Number Label"
-                                                name="./mobileLabel"
-                                                value="Mobile Number"/>
-                                            <mobileDesc
-                                                jcr:primaryType="nt:unstructured"
-                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                                fieldDescription="ENter your X digits mobile number"
-                                                fieldLabel="Mobile Number Description"
-                                                name="./mobileDesc"
-                                                value="ENter your X digits mobile number"/>
-                                            <ctaContinueLabel
-                                                jcr:primaryType="nt:unstructured"
-                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                                fieldDescription="Continue"
-                                                fieldLabel="Continue Button Label"
-                                                name="./ctaContinueLabel"
-                                                value="Continue"/>
-                                        </items>
-                                    </column>
-                                </items>
-                            </columns>
-                        </items>
-                    </formfields>
                     <verificationlabels
                         jcr:primaryType="nt:unstructured"
-                        jcr:title="Error Messages"
+                        jcr:title="General"
                         sling:resourceType="granite/ui/components/coral/foundation/container"
                         margin="{Boolean}true">
                         <items jcr:primaryType="nt:unstructured">
@@ -83,19 +28,19 @@
                                         jcr:primaryType="nt:unstructured"
                                         sling:resourceType="granite/ui/components/coral/foundation/container">
                                         <items jcr:primaryType="nt:unstructured">
-                                            <continueVerifyLabel
+                                            <heading
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                                 fieldDescription="Verify to continue"
-                                                fieldLabel="Continue Verify Label"
-                                                name="./continueVerifyLabel"
+                                                fieldLabel="Heading"
+                                                name="./heading"
                                                 value="Verify to continue"/>
-                                            <continueVerifyDesc
+                                            <subHeading
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textarea"
                                                 fieldDescription="To continue change of address get the verification address and put it below/"
-                                                fieldLabel="OTAC verification  Description"
-                                                name="./continueVerifyDesc"/>
+                                                fieldLabel="Sub Heading"
+                                                name="./subHeading"/>
                                             <enterCodeLabel
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
@@ -138,13 +83,27 @@
                                                 fieldLabel="Resend verification code Label"
                                                 name="./resendVerifyCodeLabel"
                                                 value="Resend verification code"/>
-                                            <verifyCodeInValidMsg
+                                            <otpSentSuccessMessage
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                                fieldDescription="Verification code is incorrect"
-                                                fieldLabel="Verification Code Invalid Error Message"
-                                                name="./verifyCodeInvalidMsg"
-                                                value="Verification code is incorrect"/>
+                                                fieldDescription="OTP is sent successfully."
+                                                fieldLabel="OTP Sent Success Message"
+                                                name="./otpSentSuccessMessage"
+                                                value="OTP is sent successfully."/>
+                                            <otpExpiredErrorMessage
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="Expired OTP Code Error Message"
+                                                fieldLabel="Expired OTP code label"
+                                                name="./otpExpiredErrorMessage"
+                                                value="Expired OTP Code"/>
+                                            <otpInvalidErrorMessage
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="Invalid OTP Code"
+                                                fieldLabel="Invalid OTP code Error Message"
+                                                name="./otpInvalidErrorMessage"
+                                                value="Invalid OTP Code"/>
                                             <exceededLimitLabel
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
@@ -158,6 +117,13 @@
                                                 fieldDescription="You have exceeded the code limit entry in ( 3 times in 60 secs). Verify with OTAC is blocked to 30 mins"
                                                 fieldLabel="Exceeded Limit Description"
                                                 name="./exceededLimitDesc"/>
+                                            <ctaContinueLabel
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="Continue"
+                                                fieldLabel="Continue Button Label"
+                                                name="./ctaContinueLabel"
+                                                value="Continue"/>
                                         </items>
                                     </column>
                                 </items>

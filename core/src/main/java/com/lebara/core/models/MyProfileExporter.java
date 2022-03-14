@@ -45,6 +45,9 @@ public class MyProfileExporter implements ComponentExporter{
     @ValueMapValue
     private String changePasswordSuccessMsg;
 
+    @ValueMapValue
+    private String changeAddressButtonLabel;
+
     @ChildResource
     private MyProfileFormFields frmFields;
 
@@ -103,6 +106,10 @@ public class MyProfileExporter implements ComponentExporter{
 
     public String getChangeEmailHeading() {
         return changeEmailHeading;
+    }
+
+    public String getChangeAddressButtonLabel() {
+        return changeAddressButtonLabel;
     }
 
     public String getChangePasswordSuccessMsg() { return changePasswordSuccessMsg;}

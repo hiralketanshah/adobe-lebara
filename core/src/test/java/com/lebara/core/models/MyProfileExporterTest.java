@@ -38,6 +38,7 @@ class MyProfileExporterTest {
         myProfileExporter.getChangeEmailHeading();
         myProfileExporter.getChangePasswordSuccessMsg();
         myProfileExporter.getChangeAddressPopup();
+        myProfileExporter.getChangeAddressButtonLabel();
     }
 
 }

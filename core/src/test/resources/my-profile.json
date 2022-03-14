@@ -40,6 +40,7 @@
           "sling:resourceType": "lebara/components/user/myprofile",
           "changePasswordSuccessMsg": "Password Successfully Updated",
           "textIsRich": "true",
+          "changeAddressButtonLabel": "change address",
           "frmFields": {
             "jcr:primaryType": "nt:unstructured",
             "newEmailLabel": "New Email Address",

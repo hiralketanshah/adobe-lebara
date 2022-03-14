@@ -674,6 +674,10 @@
 		<property name="sectionEmailPasswordHeading"/>
 		<property name="passwordLabel"/>
 		<property name="passwordPlaceholder"/>
+		<property name="additionalInfoLabel"/>
+		<property name="additionalInfoPlaceholder"/>
+		<property name="changeAddressButtonLabel"/>
+		<property name="editAddressLabel"/>
 		<property name="editLinkLabel"/>
 		<property name="sectionConsentHeading"/>
 		<property name="consentDescription"/>
@@ -690,6 +694,25 @@
 		<property name="afterEmailText"/>
 		<property name="changePasswordSuccessMsg"/>
 		<property name="fNamePlaceholder"/>
+		<property name="changeAddressLabel"/>
+		<property name="changeAddressDesc"/>
+		<property name="yourAddressPlaceholder"/>
+		<property name="manualAddressLabel"/>
+		<property name="typeAddressLabel"/>
+		<property name="successTitle"/>
+		<property name="successDesc"/>
+		<!-- address change otp -->
+		<property name="resendVerifyCodeInLabel"/>
+		<property name="enterCodeLabel"/>
+		<property name="resendVerifyCodeLabel"/>
+		<property name="otpSentSuccessMessage"/>
+		<property name="otpExpiredErrorMessage"/>
+		<property name="otpInvalidErrorMessage"/>
+		<property name="simCardLabel"/>
+		<property name="verifyCodeLabel"/>
+		<property name="exceededLimitLabel"/>
+		<property name="verifyCodePlaceholder"/>
+		<property name="exceededLimitDesc"/>
 
 		<!-- Change Password -->
 		<property name="changePasswordHeading"/>
