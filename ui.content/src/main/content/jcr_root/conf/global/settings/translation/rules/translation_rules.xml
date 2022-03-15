@@ -745,6 +745,10 @@
 		<!-- Logged in user menu -->
 		<property name="logoutLabel"/>
 
+		<!-- confirm delink -->
+		<property name="successMessage"/>
+		<property name="errorMessage"/>
+
 		<!-- Order Payment History-->
 		<property name="nodataImage"/>
 		<property name="historyLabel"/>
