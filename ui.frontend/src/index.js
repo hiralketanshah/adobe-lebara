@@ -25,6 +25,7 @@ import store from "@lebara/ui/src/store";
 import { pdfjs } from "react-pdf";
 import axios from "axios";
 import {onError} from "@apollo/client/link/error";
+import { AuthoringUtils } from "@adobe/aem-spa-page-model-manager";
 
 pdfjs.GlobalWorkerOptions.workerSrc = '/etc.clientlibs/lebara/clientlibs/clientlib-react/resources/pdf.worker.js';
 const defaultOptions = {
@@ -66,18 +67,22 @@ const client = new ApolloClient({
     link: logoutLink.concat(httpLink),
 });
 
-axios.interceptors.response.use(response => response, error => {
-    if (error?.response?.status === 401) {
-        if (isLoading) return Promise.reject(error);
-        isLoading = true;
-        window.location.reload();
-        setTimeout(() => {
+if (!AuthoringUtils.isInEditor()) {
+    axios.interceptors.response.use(
+      (response) => response,
+      (error) => {
+        if (error?.response?.status === 401) {
+          if (isLoading) return Promise.reject(error);
+          isLoading = true;
+          window.location.reload();
+          setTimeout(() => {
             isLoading = false;
-        }, 500);
-
-    }
-    return Promise.reject(error);
-});
+          }, 500);
+        }
+        return Promise.reject(error);
+      }
+    );
+  }
 
 axios.defaults.headers = {
     channel: "Web",
