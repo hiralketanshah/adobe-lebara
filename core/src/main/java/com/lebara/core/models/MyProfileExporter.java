@@ -48,6 +48,12 @@ public class MyProfileExporter implements ComponentExporter{
     @ValueMapValue
     private String changeAddressButtonLabel;
 
+    @ValueMapValue
+    private String exceededLimitLabel;
+
+    @ValueMapValue
+    private String exceededLimitDesc;
+
     @ChildResource
     private MyProfileFormFields frmFields;
 
@@ -110,6 +116,14 @@ public class MyProfileExporter implements ComponentExporter{
 
     public String getChangeAddressButtonLabel() {
         return changeAddressButtonLabel;
+    }
+
+    public String getExceededLimitLabel() {
+        return exceededLimitLabel;
+    }
+
+    public String getExceededLimitDesc() {
+        return exceededLimitDesc;
     }
 
     public String getChangePasswordSuccessMsg() { return changePasswordSuccessMsg;}

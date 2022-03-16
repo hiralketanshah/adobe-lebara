@@ -38,6 +38,20 @@
                                     value="Change Address"
                                     fieldDescription="Change Address"
                                     name="./changeAddressButtonLabel"/>
+                            <exceededLimitLabel
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                    fieldDescription="Exceeded the limit"
+                                    fieldLabel="Exceeded Limit Label"
+                                    name="./exceededLimitLabel"
+                                    value="Exceeded the limit"/>
+                            <exceededLimitDesc
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                    fieldLabel="Exceeded Limit Description"
+                                    value="You have exceeded the code limit entry in ( 3 times in 60 secs). Verify with OTAC is blocked to 30 mins"
+                                    fieldDescription="You have exceeded the code limit entry in ( 3 times in 60 secs). Verify with OTAC is blocked to 30 mins"
+                                    name="./exceededLimitDesc"/>
                             <saveLabel
                                     jcr:primaryType="nt:unstructured"
                                     sling:resourceType="granite/ui/components/coral/foundation/form/textfield"

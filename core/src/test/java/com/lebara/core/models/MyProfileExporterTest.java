@@ -39,6 +39,8 @@ class MyProfileExporterTest {
         myProfileExporter.getChangePasswordSuccessMsg();
         myProfileExporter.getChangeAddressPopup();
         myProfileExporter.getChangeAddressButtonLabel();
+        myProfileExporter.getExceededLimitDesc();
+        myProfileExporter.getExceededLimitLabel();
     }
 
 }
