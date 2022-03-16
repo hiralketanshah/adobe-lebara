@@ -41,6 +41,8 @@
           "changePasswordSuccessMsg": "Password Successfully Updated",
           "textIsRich": "true",
           "changeAddressButtonLabel": "change address",
+          "exceededLimitLabel" : "Exceeded the limit",
+          "exceededLimitDesc" : "You have exceeded the code entry limit (3 times in 60 sec). Verify with OTAC is blocked for {0} minutes",
           "frmFields": {
             "jcr:primaryType": "nt:unstructured",
             "newEmailLabel": "New Email Address",
