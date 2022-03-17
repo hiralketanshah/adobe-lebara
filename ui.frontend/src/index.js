@@ -26,6 +26,7 @@ import { pdfjs } from "react-pdf";
 import axios from "axios";
 import {onError} from "@apollo/client/link/error";
 import { AuthoringUtils } from "@adobe/aem-spa-page-model-manager";
+import { isAddressUpdateBlockedCookieKey } from "@components/UserDetails/constats";
 
 pdfjs.GlobalWorkerOptions.workerSrc = '/etc.clientlibs/lebara/clientlibs/clientlib-react/resources/pdf.worker.js';
 const defaultOptions = {
@@ -54,6 +55,7 @@ const logoutLink = onError(({ networkError, operation }) => {
     ) {
         if (isLoading) return;
         isLoading = true;
+        new Cookies().remove(isAddressUpdateBlockedCookieKey);
         window.location.reload();
         setTimeout(() => {
             isLoading = false;
@@ -74,6 +76,7 @@ if (!AuthoringUtils.isInEditor()) {
         if (error?.response?.status === 401) {
           if (isLoading) return Promise.reject(error);
           isLoading = true;
+          new Cookies().remove(isAddressUpdateBlockedCookieKey);
           window.location.reload();
           setTimeout(() => {
             isLoading = false;
