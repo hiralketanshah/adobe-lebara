@@ -26,7 +26,8 @@ import { pdfjs } from "react-pdf";
 import axios from "axios";
 import {onError} from "@apollo/client/link/error";
 import { AuthoringUtils } from "@adobe/aem-spa-page-model-manager";
-import { isAddressUpdateBlockedCookieKey } from "@components/UserDetails/constats";
+import Cookies from "universal-cookie";
+import { isAddressUpdateBlockedCookieKey } from "@lebara/ui/src/components/UserDetails/constats";
 
 pdfjs.GlobalWorkerOptions.workerSrc = '/etc.clientlibs/lebara/clientlibs/clientlib-react/resources/pdf.worker.js';
 const defaultOptions = {
