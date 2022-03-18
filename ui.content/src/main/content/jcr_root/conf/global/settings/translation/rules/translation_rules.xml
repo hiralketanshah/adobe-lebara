@@ -398,6 +398,20 @@
 		<property name="setDefaultLabel"/>
 		<property name="deleteLabel"/>
 
+		<!--activatesimonly component -->
+		<property name="heading"/>
+		<property name="iccidRequired"/>
+		<property name="iccidInvalidMsg"/>
+		<property name="step1Heading"/>
+		<property name="step2Heading"/>
+		<property name="step2InputPlaceholder"/>
+		<property name="step1Description"/>
+		<property name="mobileRequired"/>
+		<property name="step1Subheading"/>
+		<property name="step1InputPlaceholder"/>
+		<property name="step2Subheading"/>
+		<property name="mobileInvalidMsg"/>
+
 		<!--Add paypal component -->
 		<property name="modalHeadingTerms"/>
 		<property name="modalHeadingPPPayment"/>
