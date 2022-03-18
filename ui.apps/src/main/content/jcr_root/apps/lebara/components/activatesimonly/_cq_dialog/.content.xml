@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="nt:unstructured"
+    jcr:title="Activate Sim Only Form"
+    sling:resourceType="cq/gui/components/authoring/dialog">
+    <content
+        jcr:primaryType="nt:unstructured"
+        sling:resourceType="granite/ui/components/coral/foundation/container">
+        <items jcr:primaryType="nt:unstructured">
+            <tabs
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="granite/ui/components/coral/foundation/tabs"
+                maximized="{Boolean}true">
+                <items jcr:primaryType="nt:unstructured">
+                    <activatesimonlylabels
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="General"
+                        sling:resourceType="granite/ui/components/coral/foundation/container"
+                        margin="{Boolean}true">
+                        <items jcr:primaryType="nt:unstructured">
+                            <columns
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+                                margin="{Boolean}true">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <column
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <heading
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="Heading"
+                                                fieldLabel="Heading"
+                                                name="./heading"
+                                                value="Start your subscription in 2 simple steps."/>
+                                            <step1heading
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="Step 1 Heading"
+                                                fieldLabel="Step 1 Heading"
+                                                name="./step1Heading"
+                                                value="1.Enter your Lebara number"/>
+                                            <step1subheading
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="Step 1 Sub Heading"
+                                                fieldLabel="Step 1 Sub Heading"
+                                                name="./step1Subheading"
+                                                value="Lebara phone number to be activated"/>
+                                            <step1inputplaceholder
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="Step 1 Text Box PlaceHolder"
+                                                fieldLabel="Step 1 Text Box PlaceHolder"
+                                                name="./step1InputPlaceholder"
+                                                value="05171917185"/>
+                                            <step1description
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="Step 1 description"
+                                                fieldLabel="Step 1 description"
+                                                name="./step1Description"
+                                                value="Requested number porting and your number has been transferred to Lebara? Then enter this number in the field above"/>                                            
+                                            <mobileRequired
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="Mobile required error message"
+                                                fieldLabel="Mobile required error message"
+                                                name="./mobileRequired"
+                                                value="Please enter your number to activate"/>  
+                                            <mobileInvalidMsg
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="Mobile invalid error message"
+                                                fieldLabel="Mobile invalid error message"
+                                                name="./mobileInvalidMsg"
+                                                value="Please enter 10-12 digits including 0"/>  
+                                            <step2heading
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="Step 2 Heading"
+                                                fieldLabel="Step 2 Heading"
+                                                name="./step2Heading"
+                                                value="2.Enter the last 4 digits of your SIM serial number (ICCID). You can find this number on your SIM card chip.Last 4 digits of SIM serial number (ICCID)"/>
+                                            <step2image
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                                fieldDescription="Step 2 Image"
+                                                fieldLabel="Step 2 Image"
+                                                rootPath="/content/dam/lebara"
+                                                name="./step2Image"/>
+                                            <step2subheading
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="Step 2 Sub Heading"
+                                                fieldLabel="Step 2 Sub Heading"
+                                                name="./step2Subheading"
+                                                value="Last 4 digits of SIM serial number (ICCID)"/>
+                                            <step2inputplaceholder
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="Step 2 Text Box PlaceHolder"
+                                                fieldLabel="Step 2 Text Box PlaceHolder"
+                                                name="./step2InputPlaceholder"
+                                                value="1234"/>
+                                            <iccidRequired
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="ICCID required message"
+                                                fieldLabel="ICCID required message"
+                                                name="./iccidRequired"
+                                                value="Please enter ICCID"/>                                            
+                                            <iccidInvalidMsg
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="ICCID invalid message"
+                                                fieldLabel="ICCID invalid message"
+                                                name="./iccidInvalidMsg"
+                                                value="Please enter valid ICCID"/>                                            
+                                        </items>
+                                    </column>
+                                </items>
+                            </columns>
+                        </items>
+                    </activatesimonlylabels>
+                </items>
+            </tabs>
+        </items>
+    </content>
+</jcr:root>
