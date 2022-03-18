@@ -399,7 +399,6 @@
 		<property name="deleteLabel"/>
 
 		<!--activatesimonly component -->
-		<property name="heading"/>
 		<property name="iccidRequired"/>
 		<property name="iccidInvalidMsg"/>
 		<property name="step1Heading"/>
