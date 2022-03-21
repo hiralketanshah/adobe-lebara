@@ -26,7 +26,7 @@ import java.util.Iterator;
         property = {
                 Constants.SERVICE_RANKING + ":Integer=-99",
                 "sling.filter.scope=REQUEST",
-                "sling.filter.pattern=.*.model.json"
+                "sling.filter.pattern=.*sitemap.xml"
         }
 )
 public class SitemapFilter implements Filter {
@@ -48,7 +48,7 @@ public class SitemapFilter implements Filter {
         final SlingHttpServletRequest slingRequest = (SlingHttpServletRequest) request;
 
         String uri = slingRequest.getRequestURI();
-        if(!uri.endsWith(".model.json")){
+        if(!uri.endsWith("sitemap.xml")){
             chain.doFilter(request, response);
             return;
         }
