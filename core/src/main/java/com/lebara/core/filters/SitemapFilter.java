@@ -15,7 +15,6 @@ import java.io.CharArrayWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-//todo: add correct pattern used for sitemap instead of model.json
 @Component(
         service = Filter.class,
         immediate = true,
