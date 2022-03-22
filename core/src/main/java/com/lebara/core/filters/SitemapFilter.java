@@ -1,5 +1,6 @@
 package com.lebara.core.filters;
 
+import com.lebara.core.services.LebaraCaConfig;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.SlingHttpServletResponse;
@@ -7,6 +8,7 @@ import org.apache.sling.api.resource.Resource;
 import org.apache.sling.api.resource.ResourceResolver;
 import org.apache.sling.api.resource.ValueMap;
 import org.apache.sling.api.wrappers.SlingHttpServletResponseWrapper;
+import org.apache.sling.caconfig.ConfigurationBuilder;
 import org.apache.sling.commons.json.JSONObject;
 import org.osgi.framework.Constants;
 import org.osgi.service.component.annotations.Component;
@@ -18,6 +20,7 @@ import java.io.CharArrayWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Iterator;
+
 //todo: add correct pattern used for sitemap instead of model.json
 @Component(
         service = Filter.class,
@@ -30,6 +33,9 @@ import java.util.Iterator;
         }
 )
 public class SitemapFilter implements Filter {
+
+    static String CONTENT_ROOT_PATH = "/content/lebara/de";
+
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
 
@@ -44,11 +50,10 @@ public class SitemapFilter implements Filter {
             return;
         }
 
-        final SlingHttpServletResponse slingResponse = (SlingHttpServletResponse) response;
         final SlingHttpServletRequest slingRequest = (SlingHttpServletRequest) request;
 
         String uri = slingRequest.getRequestURI();
-        if(!uri.endsWith("sitemap.xml")){
+        if (!uri.endsWith("sitemap.xml")) {
             chain.doFilter(request, response);
             return;
         }
@@ -56,19 +61,28 @@ public class SitemapFilter implements Filter {
         SlingHttpServletResponse modelResponse = getModelResponse((SlingHttpServletResponse) response);
         //sending modelResponse instead of response object in filter chain as it doesn't write anything.
         //chain.doFilter(request, response);
-        chain.doFilter(request, modelResponse);
-        String modelResponseStr = modelResponse.toString();
-        response.getWriter().write(getModifiedContent(modelResponse.toString(), slingRequest));
+        if (modelResponse != null) {
+            chain.doFilter(request, modelResponse);
+            response.getWriter().write(getModifiedContent(modelResponse.toString(), slingRequest));
+        }
     }
 
-    private String getModifiedContent(String origContent, SlingHttpServletRequest slingRequest){
-        //todo : add logic to pick this from context aware configs
-        return origContent.replaceAll("/content/lebara/de","https://www.lebara.de/content/lebara/de");
+    private String getModifiedContent(String originalContent, SlingHttpServletRequest slingRequest) {
+        Resource currentResource = slingRequest.getResource();
+        String externalPath = CONTENT_ROOT_PATH;
+        ConfigurationBuilder configurationBuilder = currentResource.adaptTo(ConfigurationBuilder.class);
+        if (configurationBuilder != null) {
+            LebaraCaConfig caConfig = configurationBuilder.as(LebaraCaConfig.class);
+            externalPath = caConfig.externalSitePath();
+        }
+        if (StringUtils.isNotBlank(externalPath)) {
+            return originalContent.replaceAll(CONTENT_ROOT_PATH, externalPath);
+        }
+        return originalContent;
     }
 
     SlingHttpServletResponse getModelResponse(SlingHttpServletResponse response) {
-        SlingHttpServletResponse modelResponse = new DefaultSlingModelResponseWrapper(response);
-        return modelResponse;
+        return new DefaultSlingModelResponseWrapper(response);
     }
 
     @Override
@@ -76,10 +90,10 @@ public class SitemapFilter implements Filter {
 
     }
 
-    private class DefaultSlingModelResponseWrapper extends SlingHttpServletResponseWrapper {
+    private static class DefaultSlingModelResponseWrapper extends SlingHttpServletResponseWrapper {
         private CharArrayWriter writer;
 
-        public DefaultSlingModelResponseWrapper (final SlingHttpServletResponse response) {
+        public DefaultSlingModelResponseWrapper(final SlingHttpServletResponse response) {
             super(response);
             writer = new CharArrayWriter();
         }
