@@ -52,7 +52,7 @@ const logoutLink = onError(({ networkError, operation }) => {
     if (
         networkError &&
         networkError.statusCode === 401 &&
-        operation.operationName !== "getSessionStatus"
+        operation.operationName !== "getSessionStatus" && !AuthoringUtils.isInEditor()
     ) {
         if (isLoading) return;
         isLoading = true;
