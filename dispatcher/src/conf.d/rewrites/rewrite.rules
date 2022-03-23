@@ -161,6 +161,9 @@ RewriteRule ^/([a-z]+)/lte-abo-s/c/abo-s	/$1/prepaid/lte-abo-tarif.html [L,R=301
 RewriteRule ^/([a-z]+)/presse/pressemitteilung/lebara-partner-der-communicate	/$1/ueber-lebara/pressemitteilungen/lebara-partner-communicate-08-2021.html [L,R=301]
 RewriteRule ^/([a-z]+)/my-mobile/change-plan/confirmation	/$1/mylebara/login.html [L,R=301]
 
+# Robots rewrite
+RewriteRule ^/robots.txt$ /content/dam/${CONTENT_FOLDER_NAME}/markets/de/robots.txt [NC,PT]
+
 # Sitemap rewrite
 RewriteRule ^/sitemap.xml$ /content/${CONTENT_FOLDER_NAME}/de.sitemap.xml [NC,PT]
 

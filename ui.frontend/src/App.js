@@ -13,7 +13,7 @@ import { selectIsLoading } from "@lebara/ui/src/redux/selectors/loadingSelectors
 import { setLoading } from "@lebara/ui/src/redux/actions/loadingActions";
 import { saveUserInfo } from "@lebara/ui/src/redux/actions/userActions";
 import { selectSocket } from "@lebara/ui/src/redux/selectors/socketSelectors";
-
+import TelemetryProvider from "@lebara/ui/src/TelemetryProvider";
 import colors from "./theme/colors";
 import "@fontsource/roboto/100.css";
 import "@fontsource/roboto/300.css";
@@ -37,6 +37,10 @@ const theme = extendTheme(
   },
   withDefaultColorScheme({ colorScheme: "primary" })
 );
+const {
+    REACT_APP_APPLICATION_INSIGHT_INSTRUMENTATION_KEY
+} = process.env;
+
 
 let isSocketConnected = false;
 function withPageHook(Component) {
@@ -68,7 +72,7 @@ function withPageHook(Component) {
           dispatch(setLoading(false));
           setIsAuthLoading(false);
         });
-      
+
         return () => {}
     }, [client, dispatch, socket]);
 
@@ -87,7 +91,7 @@ function withPageHook(Component) {
         />
       );
     }
-    
+
     return <Component {...props} isLoading={isLoading} />;
   }
 }
@@ -112,24 +116,28 @@ class App extends Page {
               }),
             }}
           >
-            <ScrollToTop />
-            <GoogleAnalytics />
-            <Fonts />
-            <div id="modelRootLoader" style={{display: 'none'}}>
-              <LoadingOverlay
-                active={true}
-                spinner={<ScaleLoader color="#00A6EB" />}
-                styles={{
-                  overlay: (base) => ({
-                    ...base,
-                    position: "fixed",
-                    zIndex: 1401,
-                  }),
-                }}
-              />
-            </div>
-            {this.childComponents}
-            {this.childPages}
+              <TelemetryProvider
+                  instrumentationKey={REACT_APP_APPLICATION_INSIGHT_INSTRUMENTATION_KEY}
+              >
+                  <ScrollToTop/>
+                  <GoogleAnalytics/>
+                  <Fonts/>
+                  <div id="modelRootLoader" style={{display: 'none'}}>
+                      <LoadingOverlay
+                          active={true}
+                          spinner={<ScaleLoader color="#00A6EB"/>}
+                          styles={{
+                              overlay: (base) => ({
+                                  ...base,
+                                  position: "fixed",
+                                  zIndex: 1401,
+                              }),
+                          }}
+                      />
+                  </div>
+                  {this.childComponents}
+                  {this.childPages}
+              </TelemetryProvider>
           </LoadingOverlay>
         </ChakraProvider>
       </Provider>
