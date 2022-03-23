@@ -6,7 +6,7 @@ import {
   IoIosArrowForward,
 } from "react-icons/all";
 import { CompProps } from "./types";
-
+import { useHistory } from "@lebara/ui/src/hooks/useHistory";
 import "./../../styles/helpcenter.scss";
 
 const LbBrowseCategories: React.FC<CompProps> = ({
@@ -16,7 +16,7 @@ const LbBrowseCategories: React.FC<CompProps> = ({
 }) => {
   const [show, setShow] = useState(false);
   const [selectedCategoryIndex, setSelectedCategoryIndex] = useState(-1);
-
+  const history = useHistory();
   return (
     <Box className="helpcenter-bc">
       {title && <Text
@@ -99,7 +99,7 @@ const LbBrowseCategories: React.FC<CompProps> = ({
                         {childLink?.label}
                       </Text>
                       <Box ml="auto" cursor="pointer">
-                        <IoIosArrowForward onClick={onCategoryClick} />
+                        <IoIosArrowForward onClick={() => history.push(childLink?.link)} />
                       </Box>
                     </Flex>
                   ))}
