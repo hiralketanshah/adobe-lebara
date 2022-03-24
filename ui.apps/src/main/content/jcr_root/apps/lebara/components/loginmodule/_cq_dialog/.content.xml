@@ -79,6 +79,13 @@
                                                 fieldLabel="Email Address /Mobile Number Label"
                                                 value="Email Address /Mobile Number"
                                                 name="./loginEmailAddressLabel"/>
+                                            <emailaddressplaceholder
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="Enter your email address"
+                                                fieldLabel="Email Address /Mobile Number Placeholder"
+                                                value="Enter your email address"
+                                                name="./loginEmailAddressPlaceholder"/>
                                             <passwordlabel
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"

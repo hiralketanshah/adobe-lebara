@@ -47,6 +47,9 @@ public class LoginExporter implements ComponentExporter {
     private String loginEmailAddressLabel;
 
     @ValueMapValue
+    private String loginEmailAddressPlaceholder;
+
+    @ValueMapValue
     private String loginPasswordLabel;
 
     @ValueMapValue
@@ -197,6 +200,10 @@ public class LoginExporter implements ComponentExporter {
 
     public String getLoginEmailAddressLabel() {
         return loginEmailAddressLabel;
+    }
+
+    public String getLoginEmailAddressPlaceholder() {
+        return loginEmailAddressPlaceholder;
     }
     public String getLoginPasswordLabel() {
         return loginPasswordLabel;

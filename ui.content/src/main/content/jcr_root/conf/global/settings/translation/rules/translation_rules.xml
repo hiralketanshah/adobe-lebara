@@ -278,6 +278,7 @@
 		<!-- Login/Register/Guest -->
 		<property name="loginLabel" />
 		<property name="loginEmailAddressLabel" />
+		<property name="loginEmailAddressPlaceholder" />
 		<property name="loginPasswordLabel" />
 		<property name="loginForgotPassWordmsg" />
 		<property name="loginResetLinkTextLabel" />
