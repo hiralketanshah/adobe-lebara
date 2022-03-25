@@ -177,6 +177,7 @@ RewriteCond %{REQUEST_URI} !^/saml_login
 RewriteCond %{REQUEST_URI} !^/system
 RewriteCond %{REQUEST_URI} !^/tmp
 RewriteCond %{REQUEST_URI} !^/var
+RewriteCond %{REQUEST_URI} !^/api
 RewriteCond %{REQUEST_URI} (.html|.jpe?g|.png|.svg|.json|.xml)$
 RewriteRule ^/(.*)$ /content/${CONTENT_FOLDER_NAME}/de/$1 [PT,L]
 
@@ -192,5 +193,6 @@ RewriteCond %{REQUEST_URI} !^/saml_login
 RewriteCond %{REQUEST_URI} !^/system
 RewriteCond %{REQUEST_URI} !^/tmp
 RewriteCond %{REQUEST_URI} !^/var
+RewriteCond %{REQUEST_URI} !^/api
 RewriteCond %{REQUEST_URI} !.html$
 RewriteRule ^/(.*)$ /content/${CONTENT_FOLDER_NAME}/de/$1.html [PT,L]
