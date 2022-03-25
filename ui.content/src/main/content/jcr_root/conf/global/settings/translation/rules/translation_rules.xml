@@ -736,6 +736,8 @@
 		<property name="otpSentSuccessMessage"/>
 		<property name="otpExpiredErrorMessage"/>
 		<property name="otpInvalidErrorMessage"/>
+		<property name="requiredErrorMessage"/>
+		<property name="digitsErrorMessage"/>
 		<property name="simCardLabel"/>
 		<property name="verifyCodeLabel"/>
 		<property name="exceededLimitLabel"/>
