@@ -28,7 +28,7 @@ import {onError} from "@apollo/client/link/error";
 import { AuthoringUtils } from "@adobe/aem-spa-page-model-manager";
 import Cookies from "universal-cookie";
 import { isAddressUpdateBlockedCookieKey } from "@lebara/ui/src/components/UserDetails/constats";
-import useLocale from "@lebara/ui/src/hooks/useLocale";
+import {getLocale} from "@lebara/ui/src/hooks/useLocale";
 
 pdfjs.GlobalWorkerOptions.workerSrc = '/etc.clientlibs/lebara/clientlibs/clientlib-react/resources/pdf.worker.js';
 const defaultOptions = {
@@ -39,7 +39,7 @@ const defaultOptions = {
         fetchPolicy: "no-cache",
     },
 };
-const locale = useLocale();
+const locale = getLocale();
 
 const httpLink = new HttpLink({
     uri: `${globalConfigs.apiHostUri}${globalConfigs.gqlEndpoint}`,
