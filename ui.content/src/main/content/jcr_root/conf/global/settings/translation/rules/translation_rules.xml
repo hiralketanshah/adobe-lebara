@@ -633,6 +633,7 @@
 
 		<!-- Dynamic Cart-->
 		<property name="viewPlanAccordianLabel"/>
+		<property name="hidePlanAccordianLabel"/>
 
 		<!-- Section Intro -->
 		<property name="sectionHeading"/>
