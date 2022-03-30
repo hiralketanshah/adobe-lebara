@@ -101,6 +101,35 @@
                                 fieldLabel="Sim Image Path"
                                 name="./simimage"
                                 rootPath="/content/dam/lebara"/>
+                            <componentType
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                fieldDescription="Configure the type : postpaid Activation flow or migration flow "
+                                fieldLabel="Component flow type : postpaid Activation flow or migration flow"
+                                name="./componentType">
+                            <items jcr:primaryType="nt:unstructured">
+                                <activation
+                                        jcr:primaryType="nt:unstructured"
+                                        text="activation"
+                                        value="activation"/>
+                                <migration
+                                        jcr:primaryType="nt:unstructured"
+                                        text="migration"
+                                        value="migration"/>
+                            </items>
+                            </componentType>
+                            <activationLinkURL
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/foundation/form/pathbrowser"
+                                rootPath="/content/lebara"
+                                fieldLabel="Link URL for postpaid activation flow"
+                                name="./activationLinkURL"/>
+                            <migrationLinkURL
+                                jcr:primaryType="nt:unstructured"
+                                rootPath="/content/lebara"
+                                sling:resourceType="granite/ui/components/foundation/form/pathbrowser"
+                                fieldLabel="Link Url for for postpaid migration flow"
+                                name="./migrationLinkURL"/>
                         </items>
                     </column2>
                     <column3
