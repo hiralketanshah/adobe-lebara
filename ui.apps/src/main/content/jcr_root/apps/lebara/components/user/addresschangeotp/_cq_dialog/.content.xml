@@ -117,6 +117,20 @@
                                                 fieldDescription="You have exceeded the code limit entry in ( 3 times in 60 secs). Verify with OTAC is blocked to 30 mins"
                                                 fieldLabel="Exceeded Limit Description"
                                                 name="./exceededLimitDesc"/>
+                                            <requiredErrorMessage
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="Required"
+                                                fieldLabel="Required Error Message"
+                                                name="./requiredErrorMessage"
+                                                value="Required"/>
+                                            <digitsErrorMessage
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="Must be 5 digits"
+                                                fieldLabel="Digits Error Message"
+                                                name="./digitsErrorMessage"
+                                                value="Must be 5 digits"/>
                                             <ctaContinueLabel
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"

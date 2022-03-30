@@ -18,3 +18,6 @@ $include "./default_filters.any"
 
 # Allow robots.txt file
 /0104 { /type "allow" /extension '(txt)' /path "/content/*" }
+
+# Allow content fragment json
+/0105 { /type "allow" /method "GET" /extension "json" /path "/api/*" }
