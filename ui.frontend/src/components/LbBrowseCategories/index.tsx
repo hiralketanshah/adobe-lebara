@@ -49,7 +49,7 @@ const LbBrowseCategories: React.FC<CompProps> = ({
                     : "0.25px solid black"
                 }
               >
-                <Box py="19px">
+                <Box py="19px" cursor="pointer" onClick={() => history.push(browseCategory?.pageLinks?.parentLinks?.link)}>
                   <Text
                     fontWeight="500"
                     fontSize="20px"
@@ -68,7 +68,7 @@ const LbBrowseCategories: React.FC<CompProps> = ({
                     {browseCategory?.pageLinks?.parentLinks?.description}
                   </Text>
                 </Box>
-                <Box
+                {!!browseCategory?.pageLinks?.childLinks?.length && <Box
                   ml="auto"
                   cursor="pointer"
                   onClick={() => {
@@ -81,7 +81,7 @@ const LbBrowseCategories: React.FC<CompProps> = ({
                   ) : (
                     <IoIosArrowDown />
                   )}
-                </Box>
+                </Box>}
               </Flex>
               {show && selectedCategoryIndex === idx ? (
                 <Box bgColor="grey.800" px="14px">
