@@ -6,7 +6,7 @@ import {
   IoIosArrowForward,
 } from "react-icons/all";
 import { CompProps } from "./types";
-
+import { useHistory } from "@lebara/ui/src/hooks/useHistory";
 import "./../../styles/helpcenter.scss";
 
 const LbBrowseCategories: React.FC<CompProps> = ({
@@ -16,7 +16,7 @@ const LbBrowseCategories: React.FC<CompProps> = ({
 }) => {
   const [show, setShow] = useState(false);
   const [selectedCategoryIndex, setSelectedCategoryIndex] = useState(-1);
-
+  const history = useHistory();
   return (
     <Box className="helpcenter-bc">
       {title && <Text
@@ -49,7 +49,7 @@ const LbBrowseCategories: React.FC<CompProps> = ({
                     : "0.25px solid black"
                 }
               >
-                <Box py="19px">
+                <Box py="19px" cursor="pointer" onClick={() => history.push(browseCategory?.pageLinks?.parentLinks?.link)}>
                   <Text
                     fontWeight="500"
                     fontSize="20px"
@@ -68,7 +68,7 @@ const LbBrowseCategories: React.FC<CompProps> = ({
                     {browseCategory?.pageLinks?.parentLinks?.description}
                   </Text>
                 </Box>
-                <Box
+                {!!browseCategory?.pageLinks?.childLinks?.length && <Box
                   ml="auto"
                   cursor="pointer"
                   onClick={() => {
@@ -81,7 +81,7 @@ const LbBrowseCategories: React.FC<CompProps> = ({
                   ) : (
                     <IoIosArrowDown />
                   )}
-                </Box>
+                </Box>}
               </Flex>
               {show && selectedCategoryIndex === idx ? (
                 <Box bgColor="grey.800" px="14px">
@@ -99,7 +99,7 @@ const LbBrowseCategories: React.FC<CompProps> = ({
                         {childLink?.label}
                       </Text>
                       <Box ml="auto" cursor="pointer">
-                        <IoIosArrowForward onClick={onCategoryClick} />
+                        <IoIosArrowForward onClick={() => history.push(childLink?.link)} />
                       </Box>
                     </Flex>
                   ))}
