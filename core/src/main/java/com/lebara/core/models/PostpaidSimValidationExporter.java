@@ -69,6 +69,10 @@ public class PostpaidSimValidationExporter implements ComponentExporter   {
     private String errorIfMigrationAlreadyRequested;
     @ValueMapValue
     private String errorIfIncorrectPukOrSim;
+    @ValueMapValue
+    private String infographicsLabel;
+    @ValueMapValue
+    private String whiteSpaceErrorMessage;
 
     public String getVerifySimHeading() {
         return verifySimHeading;
@@ -140,6 +144,14 @@ public class PostpaidSimValidationExporter implements ComponentExporter   {
 
     public String getEmptypukCodeError() {
         return emptypukCodeError;
+    }
+
+    public String getInfographicsLabel() {
+        return infographicsLabel;
+    }
+
+    public String getWhiteSpaceErrorMessage() {
+        return whiteSpaceErrorMessage;
     }
 
     @Override

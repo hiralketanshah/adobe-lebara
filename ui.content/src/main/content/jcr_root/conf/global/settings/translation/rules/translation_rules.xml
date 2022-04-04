@@ -70,6 +70,8 @@
 		<property name="emptySimCodeError" />
 		<property name="errorIfMigrationAlreadyRequested" />
 		<property name="errorIfIncorrectPukOrSim" />
+		<property name="whiteSpaceErrorMessage" />
+		<property name="infographicsLabel" />
 
 
 		<!-- simswitch props -->
