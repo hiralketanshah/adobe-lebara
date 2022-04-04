@@ -2,6 +2,7 @@ export interface SwitchRouteProps {
   loginModuleType : string;
   loginTabLabel : string;
   loginEmailAddressLabel : string;
+  loginEmailAddressPlaceholder?: string;
   loginEmailMobileErrMessage: string;
   loginPasswordLabel : string;
   loginForgotPassWordmsg : string;
