@@ -35,6 +35,9 @@ public class DynamicCartExporter extends HeadingExporter {
     @ValueMapValue
     private String viewPlanAccordianLabel;
 
+    @ValueMapValue
+    private String hidePlanAccordianLabel;
+
     /**
      * The resource type.
      */
@@ -47,6 +50,10 @@ public class DynamicCartExporter extends HeadingExporter {
 
     public String getViewPlanAccordianLabel() {
         return viewPlanAccordianLabel;
+    }
+
+    public String getHidePlanAccordianLabel() {
+        return hidePlanAccordianLabel;
     }
 
     @JsonProperty("selectedPlanLabel")
