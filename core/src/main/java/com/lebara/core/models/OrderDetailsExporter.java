@@ -180,6 +180,12 @@ public class OrderDetailsExporter implements ComponentExporter {
     @ValueMapValue
     private String contractSummaryPdfRootPath;
 
+    @ValueMapValue
+    private String pdfDownloadLabel;
+
+    @ValueMapValue
+    private String pdfCloseLabel;
+
     public String getSelectedProductLabel() {
         return selectedProductLabel;
     }
@@ -374,6 +380,14 @@ public class OrderDetailsExporter implements ComponentExporter {
 
     public String getContractSummaryPdfRootPath() {
         return contractSummaryPdfRootPath;
+    }
+
+    public String getPdfDownloadLabel() {
+        return pdfDownloadLabel;
+    }
+
+    public String getPdfCloseLabel() {
+        return pdfCloseLabel;
     }
 
 

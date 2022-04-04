@@ -726,6 +726,20 @@
                                                     fieldLabel="Root path for Contract Summary PDF"
                                                     name="./contractSummaryPdfRootPath"
                                                     rootPath="/content/dam/lebara"/>
+                                            <pdfdownloadlabel
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                    fieldLabel="PDF Download Label"
+                                                    name="./pdfDownloadLabel"
+                                                    fieldDescription="PDF Download Label"
+                                                    value="Download"/>
+                                            <pdfcloselabel
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                    fieldLabel="PDF Close Label"
+                                                    name="./pdfCloseLabel"
+                                                    fieldDescription="PDF Close Label"
+                                                    value="Close"/>
                                         </items>
                                     </column>
                                 </items>

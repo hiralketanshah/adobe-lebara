@@ -385,6 +385,8 @@
 		<property name="mobileNumberLabel"/>
 		<property name="termsAndConditionsLabel"/>
 		<property name="contractSummary"/>
+		<property name="pdfDownloadLabel"/>
+		<property name="pdfCloseLabel"/>
 		<!--Payment Method component -->
 		<property name="preferredPaymentLabel"/>
 		<property name="preferredPaymentDesc"/>
