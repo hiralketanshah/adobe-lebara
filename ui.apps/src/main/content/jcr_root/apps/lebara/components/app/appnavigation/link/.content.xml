@@ -94,5 +94,9 @@
             jcr:primaryType="nt:unstructured"
             text="usage"
             value="usage"/>
+        <usage
+            jcr:primaryType="nt:unstructured"
+            text="logout"
+            value="logout"/>
     </items>
 </jcr:root>
