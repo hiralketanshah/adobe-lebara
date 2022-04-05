@@ -94,7 +94,7 @@
             jcr:primaryType="nt:unstructured"
             text="usage"
             value="usage"/>
-        <usage
+        <logout
             jcr:primaryType="nt:unstructured"
             text="logout"
             value="logout"/>

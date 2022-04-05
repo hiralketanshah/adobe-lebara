@@ -77,6 +77,8 @@ public class PostpaidSimValidationExporter implements ComponentExporter   {
     private String pukDigitsErrorMessage;
     @ValueMapValue
     private String simDigitsErrorMessage;
+    @ValueMapValue
+    private String iccidCountryCode;
 
     public String getVerifySimHeading() {
         return verifySimHeading;
@@ -164,6 +166,10 @@ public class PostpaidSimValidationExporter implements ComponentExporter   {
 
     public String getSimDigitsErrorMessage() {
         return simDigitsErrorMessage;
+    }
+
+    public String getIccidCountryCode() {
+        return iccidCountryCode;
     }
 
     @Override
