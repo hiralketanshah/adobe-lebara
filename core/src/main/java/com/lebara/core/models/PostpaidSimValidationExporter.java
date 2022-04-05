@@ -73,6 +73,10 @@ public class PostpaidSimValidationExporter implements ComponentExporter   {
     private String infographicsLabel;
     @ValueMapValue
     private String whiteSpaceErrorMessage;
+    @ValueMapValue
+    private String pukDigitsErrorMessage;
+    @ValueMapValue
+    private String simDigitsErrorMessage;
 
     public String getVerifySimHeading() {
         return verifySimHeading;
@@ -152,6 +156,14 @@ public class PostpaidSimValidationExporter implements ComponentExporter   {
 
     public String getWhiteSpaceErrorMessage() {
         return whiteSpaceErrorMessage;
+    }
+
+    public String getPukDigitsErrorMessage() {
+        return pukDigitsErrorMessage;
+    }
+
+    public String getSimDigitsErrorMessage() {
+        return simDigitsErrorMessage;
     }
 
     @Override
