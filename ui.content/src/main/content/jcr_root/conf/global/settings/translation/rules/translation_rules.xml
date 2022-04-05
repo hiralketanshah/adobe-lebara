@@ -72,6 +72,8 @@
 		<property name="errorIfIncorrectPukOrSim" />
 		<property name="whiteSpaceErrorMessage" />
 		<property name="infographicsLabel" />
+		<property name="pukDigitsErrorMessage" />
+		<property name="simDigitsErrorMessage" />
 
 
 		<!-- simswitch props -->

@@ -179,6 +179,20 @@
                                 fieldLabel="White Space Error Message"
                                 name="./whiteSpaceErrorMessage"
                                 value="White Space is not allowed."/>
+                            <pukDigitsErrorMessage
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldDescription="Must be 7 digits"
+                                fieldLabel="PUK Digits Error Message"
+                                name="./pukDigitsErrorMessage"
+                                value="Must be 7 digits"/>
+                            <simDigitsErrorMessage
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldDescription="Must be 10 digits"
+                                fieldLabel="SIM Digits Error Message"
+                                name="./simDigitsErrorMessage"
+                                value="Must be 10 digits"/>
                         </items>
                     </column3>
 
