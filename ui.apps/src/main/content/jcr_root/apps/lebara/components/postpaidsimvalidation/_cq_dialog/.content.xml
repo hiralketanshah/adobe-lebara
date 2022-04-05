@@ -125,6 +125,13 @@
                                         value="migration"/>
                             </items>
                             </componentType>
+                            <iccidCountryCode
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldDescription="8949430000"
+                                fieldLabel="Enter ICCID Country Code"
+                                name="./iccidCountryCode"
+                                value="8949430000"/>
                             <activationLinkURL
                                 jcr:primaryType="nt:unstructured"
                                 sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
