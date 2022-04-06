@@ -69,7 +69,7 @@ public class SitemapFilter implements Filter {
             rootPath = caConfig.rootPath();
         }
         if (StringUtils.isNotBlank(externalPath)) {
-            return originalContent.replaceAll(rootPath, externalPath);
+            return originalContent.replaceAll("<loc>", "<loc>"+externalPath);
         }
         return originalContent;
     }
