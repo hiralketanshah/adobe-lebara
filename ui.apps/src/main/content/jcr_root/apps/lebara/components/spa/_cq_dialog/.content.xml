@@ -29,6 +29,20 @@
                                                     name="./breadcrumbTitle"/>
                                         </items>
                                     </pageNav>
+                                    <contextAwareConfigs
+                                            jcr:primaryType="nt:unstructured"
+                                            jcr:title="Context Aware Configs"
+                                            sling:orderBefore="branding"
+                                            sling:resourceType="granite/ui/components/coral/foundation/form/fieldset">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <configPath
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                    fieldLabel="Add the Context Aware Config path"
+                                                    fieldDescription="Context Aware Config path inside Conf"
+                                                    name="./sling:configRef"/>
+                                        </items>
+                                    </contextAwareConfigs>
                                 </items>
                             </column>
                         </items>
