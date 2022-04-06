@@ -222,6 +222,8 @@
 		<property name="simOnlySubtitle" />
 		<property name="planChangeSubtitle" />
 		<property name="dashboardButtonLabel" />
+		<property name="fmvnoConfirmationtitle" />
+		<property name="fmvnoConfirmationSubtitle" />
 
 		<!-- Lebara fields -->
 		<property name="knowMoreText" />
