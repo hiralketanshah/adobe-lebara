@@ -5,7 +5,6 @@
         cq:template="/conf/lebara/settings/wcm/templates/spa-app-template"
         jcr:primaryType="cq:PageContent"
         jcr:title="Polish"
-        sling:configRef="/conf/lebara/de/pl"
         sling:resourceType="lebara/components/spa">
         <root
             jcr:primaryType="nt:unstructured"
