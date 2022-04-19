@@ -8,7 +8,4 @@ public @interface LebaraCaConfig {
 
     @Property(label = "Externalized path", description = "Lebara Context aware configuration for Externalized path")
     String externalSitePath() default "https://www.lebara.de";
-
-    @Property(label = "Externalized path", description = "Lebara Context aware configuration for Externalized path")
-    String rootPath() default "/content/lebara/de";
 }

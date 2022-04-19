@@ -61,15 +61,15 @@ public class SitemapFilter implements Filter {
     private String getModifiedContent(String originalContent, SlingHttpServletRequest slingRequest) {
         Resource currentResource = slingRequest.getResource();
         String externalPath = StringUtils.EMPTY;
-        String rootPath = StringUtils.EMPTY;
         ConfigurationBuilder configurationBuilder = currentResource.adaptTo(ConfigurationBuilder.class);
         if (configurationBuilder != null) {
             LebaraCaConfig caConfig = configurationBuilder.as(LebaraCaConfig.class);
-            externalPath = caConfig.externalSitePath();
-            rootPath = caConfig.rootPath();
+            if (caConfig != null) {
+                externalPath = caConfig.externalSitePath();
+            }
         }
         if (StringUtils.isNotBlank(externalPath)) {
-            return originalContent.replaceAll("<loc>", "<loc>"+externalPath);
+            return originalContent.replaceAll("<loc>", "<loc>" + externalPath);
         }
         return originalContent;
     }
