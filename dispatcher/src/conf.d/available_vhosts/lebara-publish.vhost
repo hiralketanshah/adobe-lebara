@@ -12,27 +12,20 @@
 Include conf.d/variables/custom.vars
 
 <VirtualHost *:80>
-	ServerName	"lebara-de-publish"
+	ServerName	"publish"
 	# Put names of which domains are used for your published site/content here
-	ServerAlias	 lebara.de  *.lebara.de
+	ServerAlias	 "publish-*"
+	ServerAlias	 "preview-*"
+	ServerAlias	 "localhost"
+	ServerAlias	 "*.local"
+
 	# Use a document root that matches the one in conf.dispatcher.d/default.farm
 	DocumentRoot "${DOCROOT}"
+	# URI dereferencing algorithm is applied at Sling's level, do not decode parameters here
+	AllowEncodedSlashes NoDecode
 	# Add header breadcrumbs for help in troubleshooting
 	<IfModule mod_headers.c>
-		Header add X-Vhost "lebara-de"
-		SetEnvIf Origin "https?://(api-aggregator.lebara.de|sit-api-aggregator.lebara.com|staging-api-aggregator.lebara.de)(/api-aggregator)$" AccessControlAllowOrigin=$0$1
-		Header add Access-Control-Allow-Origin %{AccessControlAllowOrigin}e env=AccessControlAllowOrigin
-		Header always set Access-Control-Allow-Methods "POST, GET, OPTIONS"
-		Header always set Access-Control-Allow-Headers "Origin, Content-Type, X-Auth-Token, Authorization"
-		Header always set Access-Control-Expose-Headers "Content-Security-Policy, Location"
-		Header always set Access-Control-Max-Age "600"
-		Header always set Access-Control-Allow-Credentials "true"
-		Header always set Access-Control-Request-Headers "Content-Type, Authorization"
-		Header always set Access-Control-Request-Method "*"
-		Header always set X-Forwarded-Proto "https"
-		Header always set X-XSS-Protection "1; mode=block"
-		Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
-		Header always set Content-Security-Policy "script-src 'self' 'unsafe-inline' 'unsafe-eval' *.trustpilot.com *.googletagmanager.com *.googleapis.com *.exactag.com *.cookielaw.org *.mxapis.com *.google-analytics.com *.bing.com *.googleadservices.com *.doubleclick.net *.facebook.net *.lebara.com *.lebara.de *.criteo.com *.criteo.net *.clarity.ms *.google.com *.decibelinsight.net *.gstatic.com *.paypal.com *.adyen.com *.sofort.com *.giropay.de *.azureedge.net;  object-src 'self'"
+		Header add X-Vhost "lebara-publish"
 	</IfModule>
 	<Directory />
 		<IfModule disp_apache2.c>
@@ -52,8 +45,6 @@ Include conf.d/variables/custom.vars
 		SetOutputFilter DEFLATE
 		# Don't compress images
 		SetEnvIfNoCase Request_URI \.(?:gif|jpe?g|png)$ no-gzip dont-vary
-		# Make sure proxies don't deliver the wrong content
-		Header append Vary User-Agent env=!dont-vary
 		# Prevent clickjacking
 		Header always append X-Frame-Options SAMEORIGIN
 	</Directory>
@@ -75,5 +66,4 @@ Include conf.d/variables/custom.vars
 		RewriteRule "^(/?)$" "/index.html" [PT]
 
 	</IfModule>
-	ErrorDocument 404 /de/errors/404.html
 </VirtualHost>

@@ -1,0 +1,57 @@
+#
+# This file contains the rewrite rules, and can be customized.
+#
+# By default, it includes just the rewrite rules. You can
+# add rewrite rules to this file but you should still include
+# the default rewrite rules.
+
+Include conf.d/rewrites/default_rewrite.rules
+
+# rewrite for root redirect
+RewriteRule ^/?$ /dk/home.html [L,R=301,NE]
+
+# rewrite for removing trailing slash
+RewriteRule ^/(.*)/$ $1 [L,R=301,NE]
+
+# Remove /content/lebara from URL
+RewriteCond %{REQUEST_URI} ^/content/lebara
+RewriteCond %{REQUEST_URI} (.html)$
+RewriteRule ^/content/lebara/dk(.*)$ $1 [L,R=301,NE]
+
+RewriteRule ^/([a-z]+)$	/$1/home.html [L,R=301]
+
+# Robots rewrite
+RewriteRule ^/robots.txt$ /content/dam/${CONTENT_FOLDER_NAME}/markets/dk/robots.txt [NC,PT]
+
+# Sitemap rewrite
+RewriteRule ^/sitemap.xml$ /content/${CONTENT_FOLDER_NAME}/dk.sitemap.xml [NC,PT]
+
+RewriteCond %{REQUEST_URI} !^/apps
+RewriteCond %{REQUEST_URI} !^/bin
+RewriteCond %{REQUEST_URI} !^/content
+RewriteCond %{REQUEST_URI} !^/etc
+RewriteCond %{REQUEST_URI} !^/home
+RewriteCond %{REQUEST_URI} !^/libs
+RewriteCond %{REQUEST_URI} !^/saml_login
+RewriteCond %{REQUEST_URI} !^/system
+RewriteCond %{REQUEST_URI} !^/tmp
+RewriteCond %{REQUEST_URI} !^/var
+RewriteCond %{REQUEST_URI} !^/api
+RewriteCond %{REQUEST_URI} (.html|.jpe?g|.png|.svg|.json|.xml)$
+RewriteRule ^/(.*)$ /content/${CONTENT_FOLDER_NAME}/dk/$1 [PT,L]
+
+
+# rewrite for root redirect extensionless urls
+RewriteCond %{REQUEST_URI} !^/apps
+RewriteCond %{REQUEST_URI} !^/bin
+RewriteCond %{REQUEST_URI} !^/content
+RewriteCond %{REQUEST_URI} !^/etc
+RewriteCond %{REQUEST_URI} !^/home
+RewriteCond %{REQUEST_URI} !^/libs
+RewriteCond %{REQUEST_URI} !^/saml_login
+RewriteCond %{REQUEST_URI} !^/system
+RewriteCond %{REQUEST_URI} !^/tmp
+RewriteCond %{REQUEST_URI} !^/var
+RewriteCond %{REQUEST_URI} !^/api
+RewriteCond %{REQUEST_URI} !.html$
+RewriteRule ^/(.*)$ /content/${CONTENT_FOLDER_NAME}/dk/$1.html [PT,L]
