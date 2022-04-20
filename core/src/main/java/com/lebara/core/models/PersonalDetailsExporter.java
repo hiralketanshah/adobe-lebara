@@ -134,6 +134,10 @@ public class PersonalDetailsExporter implements ComponentExporter {
     @ValueMapValue
     public String hidePasswordLabel;
     @ValueMapValue
+    public String confirmPasswordPatternError;
+    @ValueMapValue
+    public String passwordPatternError;
+    @ValueMapValue
     private String cfPath;
 
     public List<SelectBean> getCities(){
