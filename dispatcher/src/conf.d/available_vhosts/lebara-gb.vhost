@@ -20,7 +20,7 @@ Include conf.d/variables/custom.vars
 	# Add header breadcrumbs for help in troubleshooting
 	<IfModule mod_headers.c>
 		Header add X-Vhost "lebara-gb"
-		SetEnvIf Origin "https?://(api-aggregator.lebara.de|sit-api-aggregator.lebara.com|staging-api-aggregator.lebara.de)(/api-aggregator)$" AccessControlAllowOrigin=$0$1
+		SetEnvIf Origin "https?://(api-aggregator.lebara.co.uk|staging-api-aggregator.lebara.co.uk|sit-api-aggregator.lebara.co.uk)(/api-aggregator)$" AccessControlAllowOrigin=$0$1
 		Header add Access-Control-Allow-Origin %{AccessControlAllowOrigin}e env=AccessControlAllowOrigin
 		Header always set Access-Control-Allow-Methods "POST, GET, OPTIONS"
 		Header always set Access-Control-Allow-Headers "Origin, Content-Type, X-Auth-Token, Authorization"
@@ -32,7 +32,7 @@ Include conf.d/variables/custom.vars
 		Header always set X-Forwarded-Proto "https"
 		Header always set X-XSS-Protection "1; mode=block"
 		Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
-		Header always set Content-Security-Policy "script-src 'self' 'unsafe-inline' 'unsafe-eval' *.trustpilot.com *.googletagmanager.com *.googleapis.com *.exactag.com *.cookielaw.org *.mxapis.com *.google-analytics.com *.bing.com *.googleadservices.com *.doubleclick.net *.facebook.net *.lebara.com *.lebara.de *.criteo.com *.criteo.net *.clarity.ms *.google.com *.decibelinsight.net *.gstatic.com *.paypal.com *.adyen.com *.sofort.com *.giropay.de *.azureedge.net;  object-src 'self'"
+		Header always set Content-Security-Policy "script-src 'self' 'unsafe-inline' 'unsafe-eval' *.trustpilot.com *.googletagmanager.com *.googleapis.com *.exactag.com *.cookielaw.org *.mxapis.com *.google-analytics.com *.bing.com *.googleadservices.com *.doubleclick.net *.facebook.net *.lebara.com *.lebara.co.uk *.criteo.com *.criteo.net *.clarity.ms *.google.com *.decibelinsight.net *.gstatic.com *.paypal.com *.adyen.com *.sofort.com *.giropay.de *.azureedge.net;  object-src 'self'"
 	</IfModule>
 	<Directory />
 		<IfModule disp_apache2.c>
