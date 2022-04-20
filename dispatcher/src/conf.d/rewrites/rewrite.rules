@@ -13,7 +13,7 @@ RewriteRule ^/AGBneu$ /de/AGBneu.html [L,R=302]
 RewriteRule ^/aktivieren$ https://de-videoident-customer-onboarding.lebara.com/ [L,R=301]
 RewriteRule ^/shopident$ /de/partner/shopsuche.html [L,R=301]
 RewriteRule ^/online-aufladen$ /de/prepaid/guthaben-aufladen.html [L,R=301]
-RewriteRule ^/SIMneu$ /de/neue_sim_karte.html [L,R=301]
+RewriteRule ^/SIMneu$ /de/neue_sim_karte.html [L,R=302]
 RewriteRule ^/agb$ /de/ueber-lebara/agb.html [L,R=301]
 RewriteRule ^/aktivieren-hilfe$ /de/hilfe/anleitung/sim-registrierung.html [L,R=301]
 
