@@ -277,6 +277,10 @@
                                                                                 jcr:primaryType="nt:unstructured"
                                                                                 text="address-change-otp"
                                                                                 value="address-change-otp"/>
+                                                                        <fmvno-verify-sim
+                                                                                jcr:primaryType="nt:unstructured"
+                                                                                text="fmvno-verify-sim"
+                                                                                value="fmvno-verify-sim"/>
                                                                     </items>
                                                                 </name>
                                                                 <path
