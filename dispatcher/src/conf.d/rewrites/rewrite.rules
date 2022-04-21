@@ -571,6 +571,7 @@ RewriteRule ^/([a-z]+)/call-cyprus	/$1/minutenpreis-auslandsanrufe.html [L,R=301
 RewriteRule ^/([a-z]+)/blog/index.php/author/backlinked-agentur	/$1/leb-connected.html [L,R=301]
 RewriteRule ^/([a-z]+)/call-liechtenstein	/$1/minutenpreis-auslandsanrufe.html [L,R=301]
 RewriteRule ^/([a-z]+)/blog/index.php/author/kaouther-khamassi	/$1/leb-connected.html [L,R=301]
+RewriteRule ^/([a-z]+)/change-ownership	/$1.html [L,R=301]
 RewriteRule ^/([a-z]+)/call-democratic-republic-of-congo	/$1/minutenpreis-auslandsanrufe.html [L,R=301]
 RewriteRule ^/([a-z]+)/call-mali	/$1/minutenpreis-auslandsanrufe.html [L,R=301]
 RewriteRule ^/([a-z]+)/call-costa-rica	/$1/minutenpreis-auslandsanrufe.html [L,R=301]
