@@ -131,6 +131,18 @@
                                     fieldDescription="CTA Bottom link"
                                     fieldLabel="Bottom Link"
                                     name="./ctaBottomLink"/>
+                            <ctaCloseLabel
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                    fieldLabel="Popup Close Label"
+                                    value="Close"
+                                    name="./ctaCloseLabel"/>
+                            <ctaDownloadLabel
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                    fieldLabel="Popup Downdload Label"
+                                    value="Download"
+                                    name="./ctaDownloadLabel"/>
                         </items>
                     </column2>
                 </items>
