@@ -405,6 +405,18 @@
                                 fieldDescription="Hide"
                                 fieldLabel="Hide Password Label"
                                 name="./hidePasswordLabel"/>
+                            <confirmpasswordpatternerror
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldDescription="Password must contain minimum 8 characters including Alpha numeric, Upper case, Lower case, Number and Special character."
+                                fieldLabel="Confirm Password Pattern Error"
+                                name="./confirmPasswordPatternError"/>
+                            <passwordpatternerror
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldDescription="Password must contain minimum 8 characters including Alpha numeric, Upper case, Lower case, Number and Special character."
+                                fieldLabel="Password Pattern Error"
+                                name="./passwordPatternError"/>
                         </items>
                     </column6>
                 </items>

@@ -591,6 +591,8 @@
 		<property name="samePasswordLabel"/>
 		<property name="showPasswordLabel"/>
 		<property name="hidePasswordLabel"/>
+		<property name="confirmPasswordPatternError"/>
+		<property name="passwordPatternError"/>
 
 		<!-- Postpaid personal details -->
 		<property name="emailLabel"/>
