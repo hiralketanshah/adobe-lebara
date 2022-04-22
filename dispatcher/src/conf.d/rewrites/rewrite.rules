@@ -21,12 +21,6 @@ RewriteRule ^/sim$ /de/hilfe/netzwechsel.html [L,R=301]
 # rewrite for root redirect
 RewriteRule ^/?$ /de/home.html [L,R=301,NE]
 
-# rewrite for all locales of de
-RewriteRule ^/(de|en|pl|ro|)$	/$1/home.html [L,R=301]
-
-# rewriting all blanket requests like lebara.de/abc to lebara.de/de.html
-RewriteRule ^/([a-z]+)$	/de/home.html [L,R=301]
-
 # rewrite for removing trailing slash
 RewriteRule ^/(.*)/$ $1 [L,R=301,NE]
 
@@ -35,6 +29,8 @@ RewriteCond %{REQUEST_URI} ^/content/lebara
 RewriteCond %{REQUEST_URI} (.html)$
 RewriteRule ^/content/lebara/de(.*)$ $1 [L,R=301,NE]
 
+#rewrites request like lebara.de/abc to lebara.de/abc/home.html , needed for lebara.de/de
+RewriteRule ^/([a-z]+)$ /$1/home.html [L,R=301]
 
 #old to new site rewrites
 RewriteRule ^/([a-z]+)/blog/index.php/2021/10/27/einwanderung-nach-deutschland-anlaufstellen-wenn-du-neu-in-deutschland-bist$	/$1/leb-connected/neu-in-deutschland/einwanderung-nach-deutschland.html [L,R=301]
