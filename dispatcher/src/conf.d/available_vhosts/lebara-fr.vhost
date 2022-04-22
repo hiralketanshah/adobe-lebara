@@ -75,5 +75,5 @@ Include conf.d/variables/custom.vars
 		RewriteRule "^(/?)$" "/index.html" [PT]
 
 	</IfModule>
-	ErrorDocument 404 /de/errors/404.html
+	ErrorDocument 404 /fr/errors/404.html
 </VirtualHost>
