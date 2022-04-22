@@ -16,6 +16,7 @@ RewriteRule ^/online-aufladen$ /de/prepaid/guthaben-aufladen.html [L,R=301]
 RewriteRule ^/SIMneu$ /de/neue_sim_karte.html [L,R=302]
 RewriteRule ^/agb$ /de/ueber-lebara/agb.html [L,R=301]
 RewriteRule ^/aktivieren-hilfe$ /de/hilfe/anleitung/sim-registrierung.html [L,R=301]
+RewriteRule ^/sim$ /de/hilfe/netzwechsel.html [L,R=301]
 
 # rewrite for root redirect
 RewriteRule ^/?$ /de/home.html [L,R=301,NE]
@@ -597,7 +598,6 @@ RewriteRule ^/([a-z]+)/blog/index.php/2021/11/22/internet-telefonie-anrufen-uber
 RewriteRule ^/([a-z]+)/blog/index.php/2022/02/01/mobile-security-zum-andere-dein-passwort-tag	/$1/leb-connected/blog/Mobile-Security.html [L,R=301]
 RewriteRule ^/([a-z]+)/blog/index.php/2022/02/10/auslandstelefonie-unlimited-jetzt-2-monate-kostenlos-in-uber-130-lander-telefonieren	/$1/leb-connected/neu-in-deutschland/Auslandstelefonie-unlimited.html [L,R=301]
 RewriteRule ^/([a-z]+)/blog/index.php/2022/02/17/messenger-dienste-im-uberblick	/$1/leb-connected/blog/Messenger-Dienste-im-%C3%9Cberblick.html [L,R=301]
-RewriteRule ^/([a-z]+)/sim	/$1/hilfe/netzwechsel.html [L,R=301]
 
 
 # Robots rewrite
