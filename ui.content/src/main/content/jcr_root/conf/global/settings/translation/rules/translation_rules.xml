@@ -593,6 +593,16 @@
 		<property name="hidePasswordLabel"/>
 		<property name="confirmPasswordPatternError"/>
 		<property name="passwordPatternError"/>
+		<property name="registerLaterLabel"/>
+		<property name="simRegistrationInfo"/>
+		<property name="documentLabel"/>
+		<property name="documentPlaceholder"/>
+		<property name="documentNumberLabel"/>
+		<property name="documentNumberPlacholder"/>
+		<property name="titleLabel"/>
+		<property name="titlePlaceholder"/>
+		<property name="dobLabel"/>
+		<property name="dobPlaceholder"/>
 
 		<!-- Postpaid personal details -->
 		<property name="emailLabel"/>
