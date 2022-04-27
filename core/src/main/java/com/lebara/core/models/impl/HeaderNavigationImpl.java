@@ -2,15 +2,16 @@ package com.lebara.core.models.impl;
 
 import com.adobe.cq.export.json.ComponentExporter;
 import com.adobe.cq.export.json.ExporterConstants;
-import com.fasterxml.jackson.annotation.JsonInclude;
+import com.day.cq.wcm.api.Page;
+import com.day.cq.wcm.api.PageManager;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.lebara.core.models.CustomNavigationItem;
-import com.lebara.core.models.HeaderNavigation;
 import com.lebara.core.models.beans.HeaderPageBean;
 import com.lebara.core.utils.AemUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;
+import org.apache.sling.api.resource.ResourceResolver;
+import org.apache.sling.api.resource.ValueMap;
 import org.apache.sling.models.annotations.DefaultInjectionStrategy;
 import org.apache.sling.models.annotations.Exporter;
 import org.apache.sling.models.annotations.Model;
@@ -20,7 +21,6 @@ import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
 import com.lebara.core.models.beans.Link;
 import org.apache.sling.models.annotations.injectorspecific.ChildResource;
 
-import javax.annotation.PostConstruct;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -32,6 +32,9 @@ public class HeaderNavigationImpl implements ComponentExporter {
 
     @SlingObject
     private SlingHttpServletRequest request;
+
+    @ScriptVariable
+    private PageManager pageManager;
 
     @ScriptVariable
     protected Resource resource;
@@ -120,11 +123,11 @@ public class HeaderNavigationImpl implements ComponentExporter {
     @ChildResource
     private List<Resource> header6;
 
+    private ResourceResolver resourceResolver;
     /**
      * The resource type.
      */
     protected static final String RESOURCE_TYPE = "lebara/components/header/headernavigation";
-
 
     @Override
     public String getExportedType() {
@@ -155,7 +158,6 @@ public class HeaderNavigationImpl implements ComponentExporter {
         return newText;
     }
 
-
     @JsonProperty("loggedInMenuItems")
     public List<Link> getLinks() {
         return links == null ? (Collections.emptyList()) : (Collections.unmodifiableList(links));
@@ -182,14 +184,8 @@ public class HeaderNavigationImpl implements ComponentExporter {
     }
 
     public HeaderPageBean getLevel0List(String link, String label, List<Resource> header) {
-        Resource parentResource = resource.getResourceResolver().getResource(link);
-        HeaderPageBean headerPageBean = new HeaderPageBean();
-        headerPageBean.setPath(link);
-        headerPageBean.setUrl(link);
-        headerPageBean.setTitle(label);
-        headerPageBean.setChildren(getLevel1List(header1));
-        headerPageBean.setLevel(0);
-        return headerPageBean;
+        ValueMap properties = getValueMapFromPageLink(link);
+        return new HeaderPageBean(properties, AemUtils.getLinkWithExtension(link, request), getTitle(label, link), 0, getLevel1List(header));
     }
 
     private List<HeaderPageBean> getLevel1List(List<Resource> header) {
@@ -198,12 +194,8 @@ public class HeaderNavigationImpl implements ComponentExporter {
             for (Resource level1Res : header) {
                 String headerlabel = AemUtils.getStringProperty(level1Res, "label");
                 String headerlink = AemUtils.getStringProperty(level1Res, "link");
-                HeaderPageBean headerPageBean = new HeaderPageBean();
-                headerPageBean.setPath(headerlink);
-                headerPageBean.setUrl(headerlink);
-                headerPageBean.setTitle(headerlabel);
-                headerPageBean.setLevel(1);
-                headerPageBean.setChildren(getLevel2List(level1Res));
+                ValueMap properties = getValueMapFromPageLink(headerlink);
+                HeaderPageBean headerPageBean = new HeaderPageBean(properties, AemUtils.getLinkWithExtension(headerlink, request), getTitle(headerlabel, headerlink), 1, getLevel2List(level1Res));
                 outerList.add(headerPageBean);
             }
         }
@@ -217,12 +209,9 @@ public class HeaderNavigationImpl implements ComponentExporter {
             for (Resource headerChild : child.getChildren()) {
                 String headerlabell2 = AemUtils.getStringProperty(headerChild, "label");
                 String headerlinkl2 = AemUtils.getStringProperty(headerChild, "link");
-                HeaderPageBean headerPageBeanl2 = new HeaderPageBean();
-                headerPageBeanl2.setPath(headerlinkl2);
-                headerPageBeanl2.setUrl(headerlinkl2);
-                headerPageBeanl2.setTitle(headerlabell2);
-                headerPageBeanl2.setLevel(2);
-                innerList.add(headerPageBeanl2);
+                ValueMap properties = getValueMapFromPageLink(headerlinkl2);
+                HeaderPageBean headerPageBean = new HeaderPageBean(properties, AemUtils.getLinkWithExtension(headerlinkl2, request), getTitle(headerlabell2, headerlinkl2), 2, new ArrayList<>());
+                innerList.add(headerPageBean);
             }
         }
         return innerList;
@@ -232,5 +221,21 @@ public class HeaderNavigationImpl implements ComponentExporter {
         if (StringUtils.isNotBlank(link)) {
             headerPageBeanList.add(getLevel0List(link, label, header));
         }
+    }
+
+    private String getTitle(String overriddenTitle, String pagePath) {
+        if (StringUtils.isBlank(overriddenTitle)) {
+            return AemUtils.getTitle(pageManager.getContainingPage(pagePath));
+        }
+        return overriddenTitle;
+    }
+
+    private ValueMap getValueMapFromPageLink(String link) {
+        Page page = pageManager.getContainingPage(link);
+        ValueMap properties = null;
+        if (page != null) {
+            properties = page.getContentResource().getValueMap();
+        }
+        return properties;
     }
 }
