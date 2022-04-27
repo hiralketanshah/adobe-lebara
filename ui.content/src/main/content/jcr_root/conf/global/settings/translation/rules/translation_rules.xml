@@ -76,6 +76,9 @@
 		<property name="simDigitsErrorMessage" />
 
 
+		<!-- selection props -->
+		<property name="cardCtaText" />
+
 		<!-- simswitch props -->
 		<property name="balanceLabel" />
 		<property name="simName" />

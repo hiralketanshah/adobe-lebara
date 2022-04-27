@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:granite="http://www.adobe.com/jcr/granite/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+          jcr:primaryType="nt:unstructured"
+          jcr:title="Selection Component"
+          sling:resourceType="cq/gui/components/authoring/dialog">
+    <content
+            jcr:primaryType="nt:unstructured"
+            sling:resourceType="granite/ui/components/coral/foundation/container">
+        <items jcr:primaryType="nt:unstructured">
+            <tabs
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="granite/ui/components/coral/foundation/tabs"
+                    maximized="{Boolean}true">
+                <items jcr:primaryType="nt:unstructured">
+                    <column1
+                            jcr:primaryType="nt:unstructured"
+                            jcr:title="Selection fields"
+                            sling:resourceType="granite/ui/components/coral/foundation/container">
+                        <items jcr:primaryType="nt:unstructured">
+                            <header
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldDescription="Enter Header Text for Add On"
+                                fieldLabel="Header"
+                                name="./heading"
+                                value="Are you on the New Lebara Network?"/>
+                            <subheader
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldDescription="Enter Subheader Header Text"
+                                fieldLabel="Sub Header"
+                                name="./subheading"
+                                value="Please choose one of the options below"/>
+                            <cards
+                                    jcr:primaryType="nt:unstructured"
+                                    jcr:title="Cards"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
+                                    composite="{Boolean}true"
+                                    fieldDescription="Add each card details"
+                                    fieldLabel="Cards">
+                                <field
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/container"
+                                    name="./card">
+                                    <granite:data jcr:primaryType="nt:unstructured"/>
+                                    <items jcr:primaryType="nt:unstructured">
+                                        <column
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/container">
+                                            <items jcr:primaryType="nt:unstructured">
+                                                <cardHeading
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                    fieldDescription="Enter Header Text for card"
+                                                    fieldLabel="Card Header"
+                                                    name="./heading"
+                                                    value="Ich habe eine ate sim-karte"/>
+                                                <cardSubHeading
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                    fieldDescription="Enter sub Heading Text for card"
+                                                    fieldLabel="Card Sub Heading"
+                                                    name="./subheading"
+                                                    value="Du erkenest die alte sim-karte daran,dass der Hintergrund Komplett Blau eingefarbt ist."/>
+                                                <cardCtaText
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                    fieldDescription="Enter CTA text for the card"
+                                                    fieldLabel="Cta Text"
+                                                    name="./cardCtaText"
+                                                    value="Weiter Mit ALter sim-karte"/>
+                                                <cardCtaColor
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/form/colorfield"
+                                                    classicPaletteType="true"
+                                                    editType="true"
+                                                    fieldLabel="CTA Background color"
+                                                    name="./ctaColor"/>
+                                                <cardCtaLink
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                                    fieldDescription="Cta LInk"
+                                                    fieldLabel="CTA Link"
+                                                    rootPath="/content/lebara"
+                                                    name="./cardCtaLink"/>
+                                                <cardImage
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                                    fieldDescription="Card Image path"
+                                                    fieldLabel="Card Image path"
+                                                    rootPath="/content/dam/lebara"
+                                                    name="./cardImage"/>
+                                            </items>
+                                        </column>
+                                    </items>
+                                </field>
+                            </cards>
+                        </items>
+                    </column1>
+                </items>
+            </tabs>
+        </items>
+    </content>
+</jcr:root>
