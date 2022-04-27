@@ -186,6 +186,15 @@ public class OrderDetailsExporter implements ComponentExporter {
     @ValueMapValue
     private String pdfCloseLabel;
 
+    @ValueMapValue
+    private boolean showDeactivatedContent;
+
+    @ValueMapValue
+    private String alertMessageText;
+
+    @ValueMapValue
+    private String freeSimJourneyRoute;
+
     public String getSelectedProductLabel() {
         return selectedProductLabel;
     }
@@ -390,6 +399,17 @@ public class OrderDetailsExporter implements ComponentExporter {
         return pdfCloseLabel;
     }
 
+    public boolean getShowDeactivatedContent() {
+        return showDeactivatedContent;
+    }
+
+    public String getAlertMessageText() {
+        return alertMessageText;
+    }
+
+    public String getFreeSimJourneyRoute() {
+        return AemUtils.getLinkWithExtension(freeSimJourneyRoute, slingRequest);
+    }
 
     @Override
     public String getExportedType() {

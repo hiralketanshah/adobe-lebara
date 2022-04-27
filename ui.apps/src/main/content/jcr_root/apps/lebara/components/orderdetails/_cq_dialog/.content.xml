@@ -491,6 +491,40 @@
                                                 fieldLabel="Change Addon Label"
                                                 fieldDescription="Change Addon"
                                                 name="./changeAddonLabel"/>
+                                            <showDeactivatedContent
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                                name="./showDeactivatedContent"
+                                                text="Show Deactivation Content"
+                                                uncheckedValue="{Boolean}false"
+                                                value="{Boolean}true">
+                                                <granite:data
+                                                    jcr:primaryType="nt:unstructured"
+                                                    acs-cq-dialog-dropdown-checkbox-showhide=""
+                                                    acs-cq-dialog-dropdown-checkbox-showhide-target=".dropdown-checkbox-showhide-target"/>
+                                            </showDeactivatedContent>
+                                            <alertMessageText
+                                                granite:class="hide dropdown-checkbox-showhide-target"
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="The mobile number is deactivated. Please buy a new SIM card."
+                                                fieldLabel="Alert Message Text"
+                                                name="./alertMessageText">
+                                                <granite:data
+                                                    jcr:primaryType="nt:unstructured"
+                                                    acs-checkboxshowhidetargetvalue="true"/>
+                                            </alertMessageText>
+                                            <freeSimJourneyRoute
+                                                granite:class="hide dropdown-checkbox-showhide-target"
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/pathbrowser"
+                                                fieldLabel="Free Sim Journey Page Path"
+                                                name="./freeSimJourneyRoute"
+                                                rootPath="/content/lebara">
+                                                <granite:data
+                                                    jcr:primaryType="nt:unstructured"
+                                                    acs-checkboxshowhidetargetvalue="true"/>
+                                            </freeSimJourneyRoute>
                                         </items>
                                     </column>
                                 </items>
