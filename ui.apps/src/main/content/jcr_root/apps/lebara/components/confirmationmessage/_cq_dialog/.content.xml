@@ -52,6 +52,12 @@
                                                 fieldDescription="Thank you!"
                                                 fieldLabel="Sim Migration Title"
                                                 name="./fmvnoConfirmationtitle"/>
+                                            <congratulations
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="congratulations !"
+                                                fieldLabel="Sim Validation Title"
+                                                name="./congratulations"/>
                                             <orderidsubtitle
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
@@ -76,6 +82,12 @@
                                                 fieldDescription="Your migration request is completed. You will receive a confirmation SMS with your date of migration. The day of the migration, simply insert the new SIM on your phone. All your credit and bundles will be kept."
                                                 fieldLabel="Sim Migration Subtitle"
                                                 name="./fmvnoConfirmationSubtitle"/>
+                                            <validationConfirmationSubtitle
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="You have successfully activated {0}."
+                                                fieldLabel="Sim Validation Subtitle"
+                                                name="./validationConfirmationSubtitle"/>
                                             <dashboardbuttonlabel
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
