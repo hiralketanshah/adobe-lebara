@@ -431,6 +431,7 @@
 		<!--activatesimonly component -->
 		<property name="iccidRequired"/>
 		<property name="iccidInvalidMsg"/>
+		<property name="swrMessage"/>
 		<property name="step1Heading"/>
 		<property name="step2Heading"/>
 		<property name="step2InputPlaceholder"/>
