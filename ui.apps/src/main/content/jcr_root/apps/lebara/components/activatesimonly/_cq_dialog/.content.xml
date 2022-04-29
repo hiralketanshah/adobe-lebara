@@ -131,8 +131,120 @@
                             </columns>
                         </items>
                     </activatesimonlylabels>
+                    <errormessages
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Activation Error Messages"
+                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                        <items jcr:primaryType="nt:unstructured">
+                            <activationerrors
+                                jcr:primaryType="nt:unstructured"
+                                jcr:title="Activation Error Messages"
+                                sling:resourceType="granite/ui/components/coral/foundation/container"
+                                margin="{Boolean}true">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <columns
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+                                        margin="{Boolean}true">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <column
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/container">
+                                                <items jcr:primaryType="nt:unstructured">
+                                                    <list
+                                                        granite:class="lebara-multifield__editor"
+                                                        jcr:primaryType="nt:unstructured"
+                                                        jcr:title="Error Type &amp; Text"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
+                                                        composite="{Boolean}true"
+                                                        fieldLabel="Addon Navigation List">
+                                                        <field
+                                                            jcr:primaryType="nt:unstructured"
+                                                            sling:resourceType="granite/ui/components/coral/foundation/container"
+                                                            name="./activationErrorMessages">
+                                                            <items jcr:primaryType="nt:unstructured">
+                                                                <column
+                                                                    jcr:primaryType="nt:unstructured"
+                                                                    sling:resourceType="granite/ui/components/coral/foundation/container">
+                                                                    <items jcr:primaryType="nt:unstructured">
+                                                                        <errorcode
+                                                                            jcr:primaryType="nt:unstructured"
+                                                                            sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                                                            fieldLabel="Error Code"
+                                                                            name="./errorCode">
+                                                                            <items jcr:primaryType="nt:unstructured">
+                                                                                <ICCID_DO_NOT_MATCH
+                                                                                    jcr:primaryType="nt:unstructured"
+                                                                                    text="ICCID_DO_NOT_MATCH"
+                                                                                    value="ICCID_DO_NOT_MATCH"/>
+                                                                                <CUSTOMER_ALREADY_ACTIVATED
+                                                                                    jcr:primaryType="nt:unstructured"
+                                                                                    text="CUSTOMER_ALREADY_ACTIVATED"
+                                                                                    value="CUSTOMER_ALREADY_ACTIVATED"/>
+                                                                                <CUSTOMER_OCS_PLAN_ALREADY_PROVISIONED
+                                                                                    jcr:primaryType="nt:unstructured"
+                                                                                    text="CUSTOMER_OCS_PLAN_ALREADY_PROVISIONED"
+                                                                                    value="CUSTOMER_OCS_PLAN_ALREADY_PROVISIONED"/>
+                                                                                <SUBSCRIPTION_NOT_FOUND
+                                                                                    jcr:primaryType="nt:unstructured"
+                                                                                    text="SUBSCRIPTION_NOT_FOUND"
+                                                                                    value="SUBSCRIPTION_NOT_FOUND"/>
+                                                                                <LIFECYCLE_STATE_ERROR
+                                                                                    jcr:primaryType="nt:unstructured"
+                                                                                    text="LIFECYCLE_STATE_ERROR"
+                                                                                    value="LIFECYCLE_STATE_ERROR"/>
+                                                                                <CONTRACT_NOT_FOUND
+                                                                                    jcr:primaryType="nt:unstructured"
+                                                                                    text="CONTRACT_NOT_FOUND"
+                                                                                    value="CONTRACT_NOT_FOUND"/>
+                                                                                <PP_USER_NOT_FOUND
+                                                                                    jcr:primaryType="nt:unstructured"
+                                                                                    text="PP_USER_NOT_FOUND"
+                                                                                    value="PP_USER_NOT_FOUND"/>
+                                                                                <CUSTOMER_PAYMENT_REQUIRED
+                                                                                    jcr:primaryType="nt:unstructured"
+                                                                                    text="CUSTOMER_PAYMENT_REQUIRED"
+                                                                                    value="CUSTOMER_PAYMENT_REQUIRED"/>
+                                                                                <FAILED_TO_GET_CUSTOMER
+                                                                                    jcr:primaryType="nt:unstructured"
+                                                                                    text="FAILED_TO_GET_CUSTOMER"
+                                                                                    value="FAILED_TO_GET_CUSTOMER"/>
+                                                                                <PAYMENT_NOT_FOUND
+                                                                                    jcr:primaryType="nt:unstructured"
+                                                                                    text="PAYMENT_NOT_FOUND"
+                                                                                    value="PAYMENT_NOT_FOUND"/>
+                                                                                <too_many_requests
+                                                                                    jcr:primaryType="nt:unstructured"
+                                                                                    text="too_many_requests"
+                                                                                    value="too_many_requests"/>
+                                                                                <DEFAULT_ERROR
+                                                                                    jcr:primaryType="nt:unstructured"
+                                                                                    text="DEFAULT_ERROR"
+                                                                                    value="DEFAULT_ERROR"/>
+                                                                            </items>
+                                                                        </errorcode>
+                                                                        <message
+                                                                            jcr:primaryType="nt:unstructured"
+                                                                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                                            fieldLabel="Error Message"
+                                                                            name="./errorMessage"
+                                                                            required="true"/>
+                                                                    </items>
+                                                                </column>
+                                                            </items>
+                                                        </field>
+                                                    </list>
+                                                </items>
+                                            </column>
+                                        </items>
+                                    </columns>
+                                </items>
+                            </activationerrors>
+                        </items>
+                    </errormessages>
                 </items>
             </tabs>
         </items>
     </content>
 </jcr:root>
+
