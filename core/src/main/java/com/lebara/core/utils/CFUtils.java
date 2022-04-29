@@ -215,7 +215,7 @@ public class CFUtils {
             ContentFragment offerFragment = cfResource.adaptTo(ContentFragment.class);
             if (null != offerFragment) {
                 offerFragmentBean = new OfferFragmentBean();
-                String autoRenew = CFUtils.getElementValue(offerFragment, "autoRenew");
+                String autoRenew = CFUtils.getElementValue(offerFragment, "showAutorenewOnCheckout");
                 if (StringUtils.equalsIgnoreCase(autoRenew, "true")) {
                     offerFragmentBean.setAutoRenew("true");
                 }else{
