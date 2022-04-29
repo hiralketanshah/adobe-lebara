@@ -215,6 +215,12 @@ public class CFUtils {
             ContentFragment offerFragment = cfResource.adaptTo(ContentFragment.class);
             if (null != offerFragment) {
                 offerFragmentBean = new OfferFragmentBean();
+                String autoRenew = CFUtils.getElementValue(offerFragment, "autoRenew");
+                if (StringUtils.equalsIgnoreCase(autoRenew, "true")) {
+                    offerFragmentBean.setAutoRenew("true");
+                }else{
+                    offerFragmentBean.setAutoRenew("false");
+                }
                 String activePromotion = CFUtils.getElementValue(offerFragment, "activatePromotion");
                 if (StringUtils.equalsIgnoreCase(activePromotion, "true")) {
                     offerFragmentBean.setPromotionID(CFUtils.getElementValue(offerFragment, "promotionId"));
