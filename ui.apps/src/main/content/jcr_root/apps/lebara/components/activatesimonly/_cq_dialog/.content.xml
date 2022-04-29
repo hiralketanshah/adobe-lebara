@@ -221,6 +221,10 @@
                                                                                     jcr:primaryType="nt:unstructured"
                                                                                     text="DEFAULT_ERROR"
                                                                                     value="DEFAULT_ERROR"/>
+                                                                                <not-found
+                                                                                    jcr:primaryType="nt:unstructured"
+                                                                                    text="Not found"
+                                                                                    value="Not found"/>
                                                                             </items>
                                                                         </errorcode>
                                                                         <message
