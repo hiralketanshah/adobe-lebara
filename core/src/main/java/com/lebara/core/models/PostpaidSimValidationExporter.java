@@ -79,6 +79,18 @@ public class PostpaidSimValidationExporter implements ComponentExporter   {
     private String simDigitsErrorMessage;
     @ValueMapValue
     private String iccidCountryCode;
+    @ValueMapValue
+    private boolean validateSim;
+    @ValueMapValue
+    private String swrMessage;
+
+    public boolean getValidateSim() {
+        return validateSim;
+    }
+
+    public String getswrMessage() {
+        return swrMessage;
+    }
 
     public String getVerifySimHeading() {
         return verifySimHeading;

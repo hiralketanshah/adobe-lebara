@@ -117,7 +117,14 @@
                                                 fieldDescription="ICCID invalid message"
                                                 fieldLabel="ICCID invalid message"
                                                 name="./iccidInvalidMsg"
-                                                value="Please enter valid ICCID"/>                                            
+                                                value="Please enter valid ICCID"/>
+                                            <swrMessage
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="URL params missing"
+                                                fieldLabel="URL params missing Error Message"
+                                                name="./swrMessage"
+                                                value="URL params missing"/>
                                         </items>
                                     </column>
                                 </items>
