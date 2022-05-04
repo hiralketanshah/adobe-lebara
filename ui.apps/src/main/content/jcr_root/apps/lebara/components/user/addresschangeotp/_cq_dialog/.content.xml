@@ -131,6 +131,34 @@
                                                 fieldLabel="Digits Error Message"
                                                 name="./digitsErrorMessage"
                                                 value="Must be 5 digits"/>
+                                            <whiteSpaceErrorMessage
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="White space is not allowed."
+                                                fieldLabel="White Space Error Message"
+                                                name="./whiteSpaceErrorMessage"
+                                                value="White space is not allowed."/>
+                                            <msisdnPatternErrorMessage
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="Sim number is not valid."
+                                                fieldLabel="MSISDN pattern Error Message"
+                                                name="./msisdnPatternErrorMessage"
+                                                value="Sim number is not valid."/>
+                                            <failedToSendSmsErrorMessage
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="Failed to send SMS"
+                                                fieldLabel="Failed to send SMS Error Message"
+                                                name="./failedToSendSmsErrorMessage"
+                                                value="Failed to send SMS"/>
+                                            <failedToGetCustomer
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="Failed to get customer"
+                                                fieldLabel="Failed to get customer Error Message"
+                                                name="./failedToGetCustomer"
+                                                value="Failed to get customer"/>
                                             <termsAndConditions
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="cq/gui/components/authoring/dialog/richtext"

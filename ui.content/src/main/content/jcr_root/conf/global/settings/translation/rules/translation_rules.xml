@@ -772,6 +772,10 @@
 		<property name="otpInvalidErrorMessage"/>
 		<property name="requiredErrorMessage"/>
 		<property name="digitsErrorMessage"/>
+		<property name="whiteSpaceErrorMessage"/>
+		<property name="msisdnPatternErrorMessage"/>
+		<property name="failedToSendSmsErrorMessage"/>
+		<property name="failedToGetCustomer"/>
 		<property name="simCardLabel"/>
 		<property name="verifyCodeLabel"/>
 		<property name="exceededLimitLabel"/>
