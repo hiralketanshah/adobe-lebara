@@ -415,6 +415,7 @@
 		<property name="contractSummary"/>
 		<property name="pdfDownloadLabel"/>
 		<property name="pdfCloseLabel"/>
+		<property name="alertMessageText"/>
 		<!--Payment Method component -->
 		<property name="preferredPaymentLabel"/>
 		<property name="preferredPaymentDesc"/>
