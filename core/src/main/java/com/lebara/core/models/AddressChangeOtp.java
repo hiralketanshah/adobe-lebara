@@ -81,7 +81,7 @@ public class AddressChangeOtp implements ComponentExporter {
 	private String failedToSendSmsErrorMessage;
 
 	@ValueMapValue
-	private String failedToGetCustomer;
+	private String failedToGetCustomerErrorMessage;
 
 	@ValueMapValue
 	private String termsAndConditions;
