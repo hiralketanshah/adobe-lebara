@@ -5,6 +5,7 @@ import com.adobe.cq.export.json.ExporterConstants;
 import com.lebara.core.dto.SelectBean;
 import com.lebara.core.utils.CFUtils;
 import org.apache.sling.api.SlingHttpServletRequest;
+import com.lebara.core.utils.AemUtils;
 import org.apache.sling.api.resource.ResourceResolver;
 import org.apache.sling.models.annotations.DefaultInjectionStrategy;
 import org.apache.sling.models.annotations.Exporter;
@@ -26,7 +27,8 @@ public class PersonalDetailsExporter implements ComponentExporter {
 
     @SlingObject
     private ResourceResolver resourceResolver;
-
+    @SlingObject
+    private SlingHttpServletRequest slingRequest;
     @ValueMapValue
     public String yourPersonalDetailsLabel;
     @ValueMapValue
@@ -138,11 +140,119 @@ public class PersonalDetailsExporter implements ComponentExporter {
     @ValueMapValue
     public String passwordPatternError;
     @ValueMapValue
+    private boolean showRegistration;
+    @ValueMapValue
+    private String registrationLabel;
+    @ValueMapValue
+    private String simRegistrationInfo;
+    @ValueMapValue
+    private String registerLaterLabel;
+    @ValueMapValue
+    private String documentLabel;
+    @ValueMapValue
+    private String documentPlaceholder;
+    @ValueMapValue
+    private String documentNumberLabel;
+    @ValueMapValue
+    private String documentNumberPlacholder;
+    @ValueMapValue
+    private String documentTypesPath;
+    @ValueMapValue
     private String cfPath;
+    @ValueMapValue
+    private boolean showTermsAndConditions;
+    @ValueMapValue
+    private String termsAndConditionsLabel;
+    @ValueMapValue
+    private boolean showTitle;
+    @ValueMapValue
+    private String titleLabel;
+    @ValueMapValue
+    private String titlePlaceholder;
+    @ValueMapValue
+    private String titleFragmentPath;
+    @ValueMapValue
+    private boolean showDob;
+    @ValueMapValue
+    private String dobLabel;
+    @ValueMapValue
+    private String dobPlaceholder;
 
     public List<SelectBean> getCities(){
         return CFUtils.populateCityInfo(resourceResolver.getResource(cfPath));
     }
+
+	public boolean getShowRegistration() {
+		return showRegistration;
+	}
+
+	public String getRegistrationLabel() {
+		return registrationLabel;
+	}
+
+	public String getSimRegistrationInfo() {
+		return simRegistrationInfo;
+	}
+
+	public String getRegisterLaterLabel() {
+		return registerLaterLabel;
+	}
+
+	public String getDocumentLabel() {
+		return documentLabel;
+	}
+
+	public String getDocumentPlaceholder() {
+		return documentPlaceholder;
+	}
+
+	public String getDocumentNumberLabel() {
+		return documentNumberLabel;
+	}
+
+	public String getDocumentNumberPlacholder() {
+		return documentNumberPlacholder;
+	}
+
+    public List<Object> getDocumentTypes() {
+        return CFUtils.getCurrentProvidersOptions(documentTypesPath,resourceResolver);
+    }
+
+	public boolean getShowTermsAndConditions() {
+		return showTermsAndConditions;
+	}
+
+    public String getTermsAndConditionsLabel() {
+        return AemUtils.updateShortenLinksInRichText(termsAndConditionsLabel,slingRequest);
+    }
+
+	public boolean getShowTitle() {
+		return showTitle;
+	}
+
+	public String getTitleLabel() {
+		return titleLabel;
+	}
+
+	public String getTitlePlaceholder() {
+		return titlePlaceholder;
+	}
+
+    public List<Object> getTitleOptions() {
+        return CFUtils.getCurrentProvidersOptions(titleFragmentPath,resourceResolver);
+    }
+
+	public boolean getShowDob() {
+		return showDob;
+	}
+
+	public String getDobLabel() {
+		return dobLabel;
+	}
+
+	public String getDobPlaceholder() {
+		return dobPlaceholder;
+	}
 
     @Override
     public String getExportedType() {
