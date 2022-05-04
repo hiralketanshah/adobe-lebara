@@ -162,8 +162,8 @@ public class AddressChangeOtp implements ComponentExporter {
         return failedToSendSmsErrorMessage;
     }
 
-    public String getFailedToGetCustomer() {
-        return failedToGetCustomer;
+    public String getFailedToGetCustomerErrorMessage() {
+        return failedToGetCustomerErrorMessage;
     }
 
     public String getTermsAndConditions() {

@@ -152,12 +152,12 @@
                                                 fieldLabel="Failed to send SMS Error Message"
                                                 name="./failedToSendSmsErrorMessage"
                                                 value="Failed to send SMS"/>
-                                            <failedToGetCustomer
+                                            <failedToGetCustomerErrorMessage
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                                 fieldDescription="Failed to get customer"
                                                 fieldLabel="Failed to get customer Error Message"
-                                                name="./failedToGetCustomer"
+                                                name="./failedToGetCustomerErrorMessage"
                                                 value="Failed to get customer"/>
                                             <termsAndConditions
                                                 jcr:primaryType="nt:unstructured"

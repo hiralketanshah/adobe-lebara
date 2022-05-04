@@ -775,7 +775,7 @@
 		<property name="whiteSpaceErrorMessage"/>
 		<property name="msisdnPatternErrorMessage"/>
 		<property name="failedToSendSmsErrorMessage"/>
-		<property name="failedToGetCustomer"/>
+		<property name="failedToGetCustomerErrorMessage"/>
 		<property name="simCardLabel"/>
 		<property name="verifyCodeLabel"/>
 		<property name="exceededLimitLabel"/>
