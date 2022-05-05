@@ -56,6 +56,26 @@
 		<property name="cancelChangePlanConfirmLabel" />
 		<property name="cancelChangePlanCancelLabel" />
 
+		<!-- Postpaid Sim Validation props -->
+		<property name="verifySimHeading" />
+		<property name="verifySimSubHeading" />
+		<property name="continueLabel" />
+		<property name="pukHeading" />
+		<property name="pukSubHeading" />
+		<property name="pukPlaceHolder" />
+		<property name="simheading" />
+		<property name="simSubHeading" />
+		<property name="simPlaceHolder" />
+		<property name="emptypukCodeError" />
+		<property name="emptySimCodeError" />
+		<property name="errorIfMigrationAlreadyRequested" />
+		<property name="errorIfIncorrectPukOrSim" />
+		<property name="whiteSpaceErrorMessage" />
+		<property name="infographicsLabel" />
+		<property name="pukDigitsErrorMessage" />
+		<property name="simDigitsErrorMessage" />
+
+
 		<!-- simswitch props -->
 		<property name="balanceLabel" />
 		<property name="simName" />
@@ -202,6 +222,8 @@
 		<property name="simOnlySubtitle" />
 		<property name="planChangeSubtitle" />
 		<property name="dashboardButtonLabel" />
+		<property name="fmvnoConfirmationtitle" />
+		<property name="fmvnoConfirmationSubtitle" />
 
 		<!-- Lebara fields -->
 		<property name="knowMoreText" />
@@ -278,6 +300,7 @@
 		<!-- Login/Register/Guest -->
 		<property name="loginLabel" />
 		<property name="loginEmailAddressLabel" />
+		<property name="loginEmailAddressPlaceholder" />
 		<property name="loginPasswordLabel" />
 		<property name="loginForgotPassWordmsg" />
 		<property name="loginResetLinkTextLabel" />
@@ -385,6 +408,8 @@
 		<property name="mobileNumberLabel"/>
 		<property name="termsAndConditionsLabel"/>
 		<property name="contractSummary"/>
+		<property name="pdfDownloadLabel"/>
+		<property name="pdfCloseLabel"/>
 		<!--Payment Method component -->
 		<property name="preferredPaymentLabel"/>
 		<property name="preferredPaymentDesc"/>
@@ -633,6 +658,7 @@
 
 		<!-- Dynamic Cart-->
 		<property name="viewPlanAccordianLabel"/>
+		<property name="hidePlanAccordianLabel"/>
 
 		<!-- Section Intro -->
 		<property name="sectionHeading"/>

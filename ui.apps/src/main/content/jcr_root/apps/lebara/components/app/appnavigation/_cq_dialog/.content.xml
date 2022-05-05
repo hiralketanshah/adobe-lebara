@@ -55,112 +55,23 @@
                                                                     name="./icon"
                                                                     rootPath="/content/dam/lebara"/>
                                                                 <name
-                                                                   jcr:primaryType="nt:unstructured"
-                                                                   sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                                                   fieldDescription="Navigation Title"
-                                                                   fieldLabel="Navigation Title"
-                                                                   required="true"
-                                                                   name="./label"/>
+                                                                    jcr:primaryType="nt:unstructured"
+                                                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                                    fieldDescription="Navigation Title"
+                                                                    fieldLabel="Navigation Title"
+                                                                    name="./label"
+                                                                    required="true"/>
                                                                 <url
-                                                                   jcr:primaryType="nt:unstructured"
-                                                                   sling:resourceType="granite/ui/components/coral/foundation/form/pathbrowser"
-                                                                   fieldDescription="URL"
-                                                                   fieldLabel="URL"
-                                                                   name="./url"
-                                                                   rootPath="/content/lebara"/>
+                                                                    jcr:primaryType="nt:unstructured"
+                                                                    sling:resourceType="granite/ui/components/coral/foundation/form/pathbrowser"
+                                                                    fieldDescription="URL"
+                                                                    fieldLabel="URL"
+                                                                    name="./url"
+                                                                    rootPath="/content/lebara"/>
                                                                 <link
                                                                     jcr:primaryType="nt:unstructured"
-                                                                    sling:resourceType="granite/ui/components/coral/foundation/form/select"
-                                                                    fieldDescription="Navigation Link"
-                                                                    fieldLabel="Navigation Link"
-                                                                    name="./appNavigationLink">
-                                                                    <items jcr:primaryType="nt:unstructured">
-                                                                        <addon
-                                                                            jcr:primaryType="nt:unstructured"
-                                                                            text="add_on"
-                                                                            value="add_on"/>
-                                                                        <coveragemap
-                                                                            jcr:primaryType="nt:unstructured"
-                                                                            text="coverage_map"
-                                                                            value="coverage_map"/>
-                                                                        <findstore
-                                                                            jcr:primaryType="nt:unstructured"
-                                                                            text="findstore"
-                                                                            value="findstore"/>
-                                                                        <freesim
-                                                                            jcr:primaryType="nt:unstructured"
-                                                                            text="free_sim"
-                                                                            value="free_sim"/>
-                                                                        <help
-                                                                            jcr:primaryType="nt:unstructured"
-                                                                            text="help"
-                                                                            value="help"/>
-                                                                        <language
-                                                                            jcr:primaryType="nt:unstructured"
-                                                                            text="language"
-                                                                            value="language"/>
-                                                                        <more
-                                                                            jcr:primaryType="nt:unstructured"
-                                                                            text="more"
-                                                                            value="more"/>
-                                                                        <mylebara
-                                                                            jcr:primaryType="nt:unstructured"
-                                                                            text="mylebara"
-                                                                            value="mylebara"/>
-                                                                        <myprofile
-                                                                            jcr:primaryType="nt:unstructured"
-                                                                            text="my_profile"
-                                                                            value="my_profile"/>
-                                                                        <managesim
-                                                                            jcr:primaryType="nt:unstructured"
-                                                                            text="manage_sim"
-                                                                            value="manage_sim"/>
-                                                                        <paymenthistory
-                                                                            jcr:primaryType="nt:unstructured"
-                                                                            text="payment_history"
-                                                                            value="payment_history"/>
-                                                                        <postpaid
-                                                                            jcr:primaryType="nt:unstructured"
-                                                                            text="postpaid"
-                                                                            value="postpaid"/>
-                                                                        <prepaid
-                                                                            jcr:primaryType="nt:unstructured"
-                                                                            text="prepaid"
-                                                                            value="prepaid"/>
-                                                                        <privacy
-                                                                            jcr:primaryType="nt:unstructured"
-                                                                            text="privacy_policy"
-                                                                            value="privacy_policy"/>
-                                                                        <registersim
-                                                                            jcr:primaryType="nt:unstructured"    
-                                                                            text="register_sim"
-                                                                            value="register_sim"/>
-                                                                        <savedpayments
-                                                                            jcr:primaryType="nt:unstructured"
-                                                                            text="saved_payments"
-                                                                            value="saved_payments"/>
-                                                                        <shop
-                                                                            jcr:primaryType="nt:unstructured"
-                                                                            text="shop"
-                                                                            value="shop"/>
-                                                                        <statements
-                                                                            jcr:primaryType="nt:unstructured"
-                                                                            text="statements"
-                                                                            value="statements"/>
-                                                                        <terms
-                                                                            jcr:primaryType="nt:unstructured"
-                                                                            text="terms_and_conditions"
-                                                                            value="terms_and_conditions"/>
-                                                                        <topup
-                                                                            jcr:primaryType="nt:unstructured"
-                                                                            text="top_up"
-                                                                            value="top_up"/>
-                                                                        <usage
-                                                                            jcr:primaryType="nt:unstructured"
-                                                                            text="usage"
-                                                                            value="usage"/>
-                                                                    </items>
-                                                                </link>
+                                                                    sling:resourceType="granite/ui/components/coral/foundation/include"
+                                                                    path="/apps/lebara/components/app/appnavigation/link"/>
                                                             </items>
                                                         </column>
                                                     </items>
@@ -215,112 +126,23 @@
                                                                     name="./icon"
                                                                     rootPath="/content/dam/lebara"/>
                                                                 <name
-                                                                   jcr:primaryType="nt:unstructured"
-                                                                   sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                                                   fieldDescription="Navigation Title"
-                                                                   fieldLabel="Navigation Title"
-                                                                   required="true"
-                                                                   name="./label"/>
+                                                                    jcr:primaryType="nt:unstructured"
+                                                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                                    fieldDescription="Navigation Title"
+                                                                    fieldLabel="Navigation Title"
+                                                                    name="./label"
+                                                                    required="true"/>
                                                                 <url
-                                                                   jcr:primaryType="nt:unstructured"
-                                                                   sling:resourceType="granite/ui/components/coral/foundation/form/pathbrowser"
-                                                                   fieldDescription="URL"
-                                                                   fieldLabel="URL"
-                                                                   name="./url"
-                                                                   rootPath="/content/lebara"/>
+                                                                    jcr:primaryType="nt:unstructured"
+                                                                    sling:resourceType="granite/ui/components/coral/foundation/form/pathbrowser"
+                                                                    fieldDescription="URL"
+                                                                    fieldLabel="URL"
+                                                                    name="./url"
+                                                                    rootPath="/content/lebara"/>
                                                                 <link
                                                                     jcr:primaryType="nt:unstructured"
-                                                                    sling:resourceType="granite/ui/components/coral/foundation/form/select"
-                                                                    fieldDescription="Navigation Link"
-                                                                    fieldLabel="Navigation Link"
-                                                                    name="./appNavigationLink">
-                                                                    <items jcr:primaryType="nt:unstructured">
-                                                                        <addon
-                                                                            jcr:primaryType="nt:unstructured"
-                                                                            text="add_on"
-                                                                            value="add_on"/>
-                                                                        <coveragemap
-                                                                            jcr:primaryType="nt:unstructured"
-                                                                            text="coverage_map"
-                                                                            value="coverage_map"/>
-                                                                        <findstore
-                                                                            jcr:primaryType="nt:unstructured"
-                                                                            text="findstore"
-                                                                            value="findstore"/>
-                                                                        <freesim
-                                                                            jcr:primaryType="nt:unstructured"
-                                                                            text="free_sim"
-                                                                            value="free_sim"/>
-                                                                        <help
-                                                                            jcr:primaryType="nt:unstructured"
-                                                                            text="help"
-                                                                            value="help"/>
-                                                                        <language
-                                                                            jcr:primaryType="nt:unstructured"
-                                                                            text="language"
-                                                                            value="language"/>
-                                                                        <more
-                                                                            jcr:primaryType="nt:unstructured"
-                                                                            text="more"
-                                                                            value="more"/>
-                                                                        <mylebara
-                                                                            jcr:primaryType="nt:unstructured"
-                                                                            text="mylebara"
-                                                                            value="mylebara"/>
-                                                                        <myprofile
-                                                                            jcr:primaryType="nt:unstructured"
-                                                                            text="my_profile"
-                                                                            value="my_profile"/>
-                                                                        <managesim
-                                                                            jcr:primaryType="nt:unstructured"
-                                                                            text="manage_sim"
-                                                                            value="manage_sim"/>
-                                                                        <paymenthistory
-                                                                            jcr:primaryType="nt:unstructured"
-                                                                            text="payment_history"
-                                                                            value="payment_history"/>
-                                                                        <postpaid
-                                                                            jcr:primaryType="nt:unstructured"
-                                                                            text="postpaid"
-                                                                            value="postpaid"/>
-                                                                        <prepaid
-                                                                            jcr:primaryType="nt:unstructured"
-                                                                            text="prepaid"
-                                                                            value="prepaid"/>
-                                                                        <privacy
-                                                                            jcr:primaryType="nt:unstructured"
-                                                                            text="privacy_policy"
-                                                                            value="privacy_policy"/>
-                                                                        <registersim
-                                                                            jcr:primaryType="nt:unstructured"    
-                                                                            text="register_sim"
-                                                                            value="register_sim"/>
-                                                                        <savedpayments
-                                                                            jcr:primaryType="nt:unstructured"
-                                                                            text="saved_payments"
-                                                                            value="saved_payments"/>
-                                                                        <shop
-                                                                            jcr:primaryType="nt:unstructured"
-                                                                            text="shop"
-                                                                            value="shop"/>
-                                                                        <statements
-                                                                            jcr:primaryType="nt:unstructured"
-                                                                            text="statements"
-                                                                            value="statements"/>
-                                                                        <terms
-                                                                            jcr:primaryType="nt:unstructured"
-                                                                            text="terms_and_conditions"
-                                                                            value="terms_and_conditions"/>
-                                                                        <topup
-                                                                            jcr:primaryType="nt:unstructured"
-                                                                            text="top_up"
-                                                                            value="top_up"/>
-                                                                        <usage
-                                                                            jcr:primaryType="nt:unstructured"
-                                                                            text="usage"
-                                                                            value="usage"/>
-                                                                    </items>
-                                                                </link>
+                                                                    sling:resourceType="granite/ui/components/coral/foundation/include"
+                                                                    path="/apps/lebara/components/app/appnavigation/link"/>
                                                             </items>
                                                         </column>
                                                     </items>
@@ -375,112 +197,23 @@
                                                                     name="./icon"
                                                                     rootPath="/content/dam/lebara"/>
                                                                 <name
-                                                                   jcr:primaryType="nt:unstructured"
-                                                                   sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                                                   fieldDescription="Navigation Title"
-                                                                   fieldLabel="Navigation Title"
-                                                                   required="true"
-                                                                   name="./label"/>
+                                                                    jcr:primaryType="nt:unstructured"
+                                                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                                    fieldDescription="Navigation Title"
+                                                                    fieldLabel="Navigation Title"
+                                                                    name="./label"
+                                                                    required="true"/>
                                                                 <url
-                                                                   jcr:primaryType="nt:unstructured"
-                                                                   sling:resourceType="granite/ui/components/coral/foundation/form/pathbrowser"
-                                                                   fieldDescription="URL"
-                                                                   fieldLabel="URL"
-                                                                   name="./url"
-                                                                   rootPath="/content/lebara"/>
+                                                                    jcr:primaryType="nt:unstructured"
+                                                                    sling:resourceType="granite/ui/components/coral/foundation/form/pathbrowser"
+                                                                    fieldDescription="URL"
+                                                                    fieldLabel="URL"
+                                                                    name="./url"
+                                                                    rootPath="/content/lebara"/>
                                                                 <link
                                                                     jcr:primaryType="nt:unstructured"
-                                                                    sling:resourceType="granite/ui/components/coral/foundation/form/select"
-                                                                    fieldDescription="Navigation Link"
-                                                                    fieldLabel="Navigation Link"
-                                                                    name="./appNavigationLink">
-                                                                    <items jcr:primaryType="nt:unstructured">
-                                                                        <addon
-                                                                            jcr:primaryType="nt:unstructured"
-                                                                            text="add_on"
-                                                                            value="add_on"/>
-                                                                        <coveragemap
-                                                                            jcr:primaryType="nt:unstructured"
-                                                                            text="coverage_map"
-                                                                            value="coverage_map"/>
-                                                                        <findstore
-                                                                            jcr:primaryType="nt:unstructured"
-                                                                            text="findstore"
-                                                                            value="findstore"/>
-                                                                        <freesim
-                                                                            jcr:primaryType="nt:unstructured"
-                                                                            text="free_sim"
-                                                                            value="free_sim"/>
-                                                                        <help
-                                                                            jcr:primaryType="nt:unstructured"
-                                                                            text="help"
-                                                                            value="help"/>
-                                                                        <language
-                                                                            jcr:primaryType="nt:unstructured"
-                                                                            text="language"
-                                                                            value="language"/>
-                                                                        <more
-                                                                            jcr:primaryType="nt:unstructured"
-                                                                            text="more"
-                                                                            value="more"/>
-                                                                        <mylebara
-                                                                            jcr:primaryType="nt:unstructured"
-                                                                            text="mylebara"
-                                                                            value="mylebara"/>
-                                                                        <myprofile
-                                                                            jcr:primaryType="nt:unstructured"
-                                                                            text="my_profile"
-                                                                            value="my_profile"/>
-                                                                        <managesim
-                                                                            jcr:primaryType="nt:unstructured"
-                                                                            text="manage_sim"
-                                                                            value="manage_sim"/>
-                                                                        <paymenthistory
-                                                                            jcr:primaryType="nt:unstructured"
-                                                                            text="payment_history"
-                                                                            value="payment_history"/>
-                                                                        <postpaid
-                                                                            jcr:primaryType="nt:unstructured"
-                                                                            text="postpaid"
-                                                                            value="postpaid"/>
-                                                                        <prepaid
-                                                                            jcr:primaryType="nt:unstructured"
-                                                                            text="prepaid"
-                                                                            value="prepaid"/>
-                                                                        <privacy
-                                                                            jcr:primaryType="nt:unstructured"
-                                                                            text="privacy_policy"
-                                                                            value="privacy_policy"/>
-                                                                        <registersim
-                                                                            jcr:primaryType="nt:unstructured"    
-                                                                            text="register_sim"
-                                                                            value="register_sim"/>
-                                                                        <savedpayments
-                                                                            jcr:primaryType="nt:unstructured"
-                                                                            text="saved_payments"
-                                                                            value="saved_payments"/>
-                                                                        <shop
-                                                                            jcr:primaryType="nt:unstructured"
-                                                                            text="shop"
-                                                                            value="shop"/>
-                                                                        <statements
-                                                                            jcr:primaryType="nt:unstructured"
-                                                                            text="statements"
-                                                                            value="statements"/>
-                                                                        <terms
-                                                                            jcr:primaryType="nt:unstructured"
-                                                                            text="terms_and_conditions"
-                                                                            value="terms_and_conditions"/>
-                                                                        <topup
-                                                                            jcr:primaryType="nt:unstructured"
-                                                                            text="top_up"
-                                                                            value="top_up"/>
-                                                                        <usage
-                                                                            jcr:primaryType="nt:unstructured"
-                                                                            text="usage"
-                                                                            value="usage"/>
-                                                                    </items>
-                                                                </link>
+                                                                    sling:resourceType="granite/ui/components/coral/foundation/include"
+                                                                    path="/apps/lebara/components/app/appnavigation/link"/>
                                                             </items>
                                                         </column>
                                                     </items>
@@ -535,112 +268,23 @@
                                                                     name="./icon"
                                                                     rootPath="/content/dam/lebara"/>
                                                                 <name
-                                                                   jcr:primaryType="nt:unstructured"
-                                                                   sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                                                   fieldDescription="Navigation Title"
-                                                                   fieldLabel="Navigation Title"
-                                                                   required="true"
-                                                                   name="./label"/>
+                                                                    jcr:primaryType="nt:unstructured"
+                                                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                                    fieldDescription="Navigation Title"
+                                                                    fieldLabel="Navigation Title"
+                                                                    name="./label"
+                                                                    required="true"/>
                                                                 <url
-                                                                   jcr:primaryType="nt:unstructured"
-                                                                   sling:resourceType="granite/ui/components/coral/foundation/form/pathbrowser"
-                                                                   fieldDescription="URL"
-                                                                   fieldLabel="URL"
-                                                                   name="./url"
-                                                                   rootPath="/content/lebara"/>
+                                                                    jcr:primaryType="nt:unstructured"
+                                                                    sling:resourceType="granite/ui/components/coral/foundation/form/pathbrowser"
+                                                                    fieldDescription="URL"
+                                                                    fieldLabel="URL"
+                                                                    name="./url"
+                                                                    rootPath="/content/lebara"/>
                                                                 <link
                                                                     jcr:primaryType="nt:unstructured"
-                                                                    sling:resourceType="granite/ui/components/coral/foundation/form/select"
-                                                                    fieldDescription="Navigation Link"
-                                                                    fieldLabel="Navigation Link"
-                                                                    name="./appNavigationLink">
-                                                                    <items jcr:primaryType="nt:unstructured">
-                                                                        <addon
-                                                                            jcr:primaryType="nt:unstructured"
-                                                                            text="add_on"
-                                                                            value="add_on"/>
-                                                                        <coveragemap
-                                                                            jcr:primaryType="nt:unstructured"
-                                                                            text="coverage_map"
-                                                                            value="coverage_map"/>
-                                                                        <findstore
-                                                                            jcr:primaryType="nt:unstructured"
-                                                                            text="findstore"
-                                                                            value="findstore"/>
-                                                                        <freesim
-                                                                            jcr:primaryType="nt:unstructured"
-                                                                            text="free_sim"
-                                                                            value="free_sim"/>
-                                                                        <help
-                                                                            jcr:primaryType="nt:unstructured"
-                                                                            text="help"
-                                                                            value="help"/>
-                                                                        <language
-                                                                            jcr:primaryType="nt:unstructured"
-                                                                            text="language"
-                                                                            value="language"/>
-                                                                        <more
-                                                                            jcr:primaryType="nt:unstructured"
-                                                                            text="more"
-                                                                            value="more"/>
-                                                                        <mylebara
-                                                                            jcr:primaryType="nt:unstructured"
-                                                                            text="mylebara"
-                                                                            value="mylebara"/>
-                                                                        <myprofile
-                                                                            jcr:primaryType="nt:unstructured"
-                                                                            text="my_profile"
-                                                                            value="my_profile"/>
-                                                                        <managesim
-                                                                            jcr:primaryType="nt:unstructured"
-                                                                            text="manage_sim"
-                                                                            value="manage_sim"/>
-                                                                        <paymenthistory
-                                                                            jcr:primaryType="nt:unstructured"
-                                                                            text="payment_history"
-                                                                            value="payment_history"/>
-                                                                        <postpaid
-                                                                            jcr:primaryType="nt:unstructured"
-                                                                            text="postpaid"
-                                                                            value="postpaid"/>
-                                                                        <prepaid
-                                                                            jcr:primaryType="nt:unstructured"
-                                                                            text="prepaid"
-                                                                            value="prepaid"/>
-                                                                        <privacy
-                                                                            jcr:primaryType="nt:unstructured"
-                                                                            text="privacy_policy"
-                                                                            value="privacy_policy"/>
-                                                                        <registersim
-                                                                            jcr:primaryType="nt:unstructured"    
-                                                                            text="register_sim"
-                                                                            value="register_sim"/>
-                                                                        <savedpayments
-                                                                            jcr:primaryType="nt:unstructured"
-                                                                            text="saved_payments"
-                                                                            value="saved_payments"/>
-                                                                        <shop
-                                                                            jcr:primaryType="nt:unstructured"
-                                                                            text="shop"
-                                                                            value="shop"/>
-                                                                        <statements
-                                                                            jcr:primaryType="nt:unstructured"
-                                                                            text="statements"
-                                                                            value="statements"/>
-                                                                        <terms
-                                                                            jcr:primaryType="nt:unstructured"
-                                                                            text="terms_and_conditions"
-                                                                            value="terms_and_conditions"/>
-                                                                        <topup
-                                                                            jcr:primaryType="nt:unstructured"
-                                                                            text="top_up"
-                                                                            value="top_up"/>
-                                                                        <usage
-                                                                            jcr:primaryType="nt:unstructured"
-                                                                            text="usage"
-                                                                            value="usage"/>
-                                                                    </items>
-                                                                </link>   
+                                                                    sling:resourceType="granite/ui/components/coral/foundation/include"
+                                                                    path="/apps/lebara/components/app/appnavigation/link"/>
                                                             </items>
                                                         </column>
                                                     </items>
@@ -695,112 +339,23 @@
                                                                     name="./icon"
                                                                     rootPath="/content/dam/lebara"/>
                                                                 <name
-                                                                   jcr:primaryType="nt:unstructured"
-                                                                   sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                                                   fieldDescription="Navigation Title"
-                                                                   fieldLabel="Navigation Title"
-                                                                   required="true"
-                                                                   name="./label"/>
+                                                                    jcr:primaryType="nt:unstructured"
+                                                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                                    fieldDescription="Navigation Title"
+                                                                    fieldLabel="Navigation Title"
+                                                                    name="./label"
+                                                                    required="true"/>
                                                                 <url
-                                                                   jcr:primaryType="nt:unstructured"
-                                                                   sling:resourceType="granite/ui/components/coral/foundation/form/pathbrowser"
-                                                                   fieldDescription="URL"
-                                                                   fieldLabel="URL"
-                                                                   name="./url"
-                                                                   rootPath="/content/lebara"/>
+                                                                    jcr:primaryType="nt:unstructured"
+                                                                    sling:resourceType="granite/ui/components/coral/foundation/form/pathbrowser"
+                                                                    fieldDescription="URL"
+                                                                    fieldLabel="URL"
+                                                                    name="./url"
+                                                                    rootPath="/content/lebara"/>
                                                                 <link
                                                                     jcr:primaryType="nt:unstructured"
-                                                                    sling:resourceType="granite/ui/components/coral/foundation/form/select"
-                                                                    fieldDescription="Navigation Link"
-                                                                    fieldLabel="Navigation Link"
-                                                                    name="./appNavigationLink">
-                                                                    <items jcr:primaryType="nt:unstructured">
-                                                                        <addon
-                                                                            jcr:primaryType="nt:unstructured"
-                                                                            text="add_on"
-                                                                            value="add_on"/>
-                                                                        <coveragemap
-                                                                            jcr:primaryType="nt:unstructured"
-                                                                            text="coverage_map"
-                                                                            value="coverage_map"/>
-                                                                        <findstore
-                                                                            jcr:primaryType="nt:unstructured"
-                                                                            text="findstore"
-                                                                            value="findstore"/>
-                                                                        <freesim
-                                                                            jcr:primaryType="nt:unstructured"
-                                                                            text="free_sim"
-                                                                            value="free_sim"/>
-                                                                        <help
-                                                                            jcr:primaryType="nt:unstructured"
-                                                                            text="help"
-                                                                            value="help"/>
-                                                                        <language
-                                                                            jcr:primaryType="nt:unstructured"
-                                                                            text="language"
-                                                                            value="language"/>
-                                                                        <more
-                                                                            jcr:primaryType="nt:unstructured"
-                                                                            text="more"
-                                                                            value="more"/>
-                                                                        <mylebara
-                                                                            jcr:primaryType="nt:unstructured"
-                                                                            text="mylebara"
-                                                                            value="mylebara"/>
-                                                                        <myprofile
-                                                                            jcr:primaryType="nt:unstructured"
-                                                                            text="my_profile"
-                                                                            value="my_profile"/>
-                                                                        <managesim
-                                                                            jcr:primaryType="nt:unstructured"
-                                                                            text="manage_sim"
-                                                                            value="manage_sim"/>
-                                                                        <paymenthistory
-                                                                            jcr:primaryType="nt:unstructured"
-                                                                            text="payment_history"
-                                                                            value="payment_history"/>
-                                                                        <postpaid
-                                                                            jcr:primaryType="nt:unstructured"
-                                                                            text="postpaid"
-                                                                            value="postpaid"/>
-                                                                        <prepaid
-                                                                            jcr:primaryType="nt:unstructured"
-                                                                            text="prepaid"
-                                                                            value="prepaid"/>
-                                                                        <privacy
-                                                                            jcr:primaryType="nt:unstructured"
-                                                                            text="privacy_policy"
-                                                                            value="privacy_policy"/>
-                                                                        <registersim
-                                                                            jcr:primaryType="nt:unstructured"    
-                                                                            text="register_sim"
-                                                                            value="register_sim"/>
-                                                                        <savedpayments
-                                                                            jcr:primaryType="nt:unstructured"
-                                                                            text="saved_payments"
-                                                                            value="saved_payments"/>
-                                                                        <shop
-                                                                            jcr:primaryType="nt:unstructured"
-                                                                            text="shop"
-                                                                            value="shop"/>
-                                                                        <statements
-                                                                            jcr:primaryType="nt:unstructured"
-                                                                            text="statements"
-                                                                            value="statements"/>
-                                                                        <terms
-                                                                            jcr:primaryType="nt:unstructured"
-                                                                            text="terms_and_conditions"
-                                                                            value="terms_and_conditions"/>
-                                                                        <topup
-                                                                            jcr:primaryType="nt:unstructured"
-                                                                            text="top_up"
-                                                                            value="top_up"/>
-                                                                        <usage
-                                                                            jcr:primaryType="nt:unstructured"
-                                                                            text="usage"
-                                                                            value="usage"/>
-                                                                    </items>
-                                                                </link>
+                                                                    sling:resourceType="granite/ui/components/coral/foundation/include"
+                                                                    path="/apps/lebara/components/app/appnavigation/link"/>
                                                             </items>
                                                         </column>
                                                     </items>
@@ -855,112 +410,23 @@
                                                                     name="./icon"
                                                                     rootPath="/content/dam/lebara"/>
                                                                 <name
-                                                                   jcr:primaryType="nt:unstructured"
-                                                                   sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                                                   fieldDescription="Navigation Title"
-                                                                   fieldLabel="Navigation Title"
-                                                                   required="true"
-                                                                   name="./label"/>
+                                                                    jcr:primaryType="nt:unstructured"
+                                                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                                    fieldDescription="Navigation Title"
+                                                                    fieldLabel="Navigation Title"
+                                                                    name="./label"
+                                                                    required="true"/>
                                                                 <url
-                                                                   jcr:primaryType="nt:unstructured"
-                                                                   sling:resourceType="granite/ui/components/coral/foundation/form/pathbrowser"
-                                                                   fieldDescription="URL"
-                                                                   fieldLabel="URL"
-                                                                   name="./url"
-                                                                   rootPath="/content/lebara"/>
+                                                                    jcr:primaryType="nt:unstructured"
+                                                                    sling:resourceType="granite/ui/components/coral/foundation/form/pathbrowser"
+                                                                    fieldDescription="URL"
+                                                                    fieldLabel="URL"
+                                                                    name="./url"
+                                                                    rootPath="/content/lebara"/>
                                                                 <link
                                                                     jcr:primaryType="nt:unstructured"
-                                                                    sling:resourceType="granite/ui/components/coral/foundation/form/select"
-                                                                    fieldDescription="Navigation Link"
-                                                                    fieldLabel="Navigation Link"
-                                                                    name="./appNavigationLink">
-                                                                    <items jcr:primaryType="nt:unstructured">
-                                                                        <addon
-                                                                            jcr:primaryType="nt:unstructured"
-                                                                            text="add_on"
-                                                                            value="add_on"/>
-                                                                        <coveragemap
-                                                                            jcr:primaryType="nt:unstructured"
-                                                                            text="coverage_map"
-                                                                            value="coverage_map"/>
-                                                                        <findstore
-                                                                            jcr:primaryType="nt:unstructured"
-                                                                            text="findstore"
-                                                                            value="findstore"/>
-                                                                        <freesim
-                                                                            jcr:primaryType="nt:unstructured"
-                                                                            text="free_sim"
-                                                                            value="free_sim"/>
-                                                                        <help
-                                                                            jcr:primaryType="nt:unstructured"
-                                                                            text="help"
-                                                                            value="help"/>
-                                                                        <language
-                                                                            jcr:primaryType="nt:unstructured"
-                                                                            text="language"
-                                                                            value="language"/>
-                                                                        <more
-                                                                            jcr:primaryType="nt:unstructured"
-                                                                            text="more"
-                                                                            value="more"/>
-                                                                        <mylebara
-                                                                            jcr:primaryType="nt:unstructured"
-                                                                            text="mylebara"
-                                                                            value="mylebara"/>
-                                                                        <myprofile
-                                                                            jcr:primaryType="nt:unstructured"
-                                                                            text="my_profile"
-                                                                            value="my_profile"/>
-                                                                        <managesim
-                                                                            jcr:primaryType="nt:unstructured"
-                                                                            text="manage_sim"
-                                                                            value="manage_sim"/>
-                                                                        <paymenthistory
-                                                                            jcr:primaryType="nt:unstructured"
-                                                                            text="payment_history"
-                                                                            value="payment_history"/>
-                                                                        <postpaid
-                                                                            jcr:primaryType="nt:unstructured"
-                                                                            text="postpaid"
-                                                                            value="postpaid"/>
-                                                                        <prepaid
-                                                                            jcr:primaryType="nt:unstructured"
-                                                                            text="prepaid"
-                                                                            value="prepaid"/>
-                                                                        <privacy
-                                                                            jcr:primaryType="nt:unstructured"
-                                                                            text="privacy_policy"
-                                                                            value="privacy_policy"/>
-                                                                        <registersim
-                                                                            jcr:primaryType="nt:unstructured"    
-                                                                            text="register_sim"
-                                                                            value="register_sim"/>
-                                                                        <savedpayments
-                                                                            jcr:primaryType="nt:unstructured"
-                                                                            text="saved_payments"
-                                                                            value="saved_payments"/>
-                                                                        <shop
-                                                                            jcr:primaryType="nt:unstructured"
-                                                                            text="shop"
-                                                                            value="shop"/>
-                                                                        <statements
-                                                                            jcr:primaryType="nt:unstructured"
-                                                                            text="statements"
-                                                                            value="statements"/>
-                                                                        <terms
-                                                                            jcr:primaryType="nt:unstructured"
-                                                                            text="terms_and_conditions"
-                                                                            value="terms_and_conditions"/>
-                                                                        <topup
-                                                                            jcr:primaryType="nt:unstructured"
-                                                                            text="top_up"
-                                                                            value="top_up"/>
-                                                                        <usage
-                                                                            jcr:primaryType="nt:unstructured"
-                                                                            text="usage"
-                                                                            value="usage"/>
-                                                                    </items>
-                                                                </link>
+                                                                    sling:resourceType="granite/ui/components/coral/foundation/include"
+                                                                    path="/apps/lebara/components/app/appnavigation/link"/>
                                                             </items>
                                                         </column>
                                                     </items>

@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="nt:unstructured"
+    jcr:title="Postpaid Sim Validation Component"
+    sling:resourceType="cq/gui/components/authoring/dialog">
+    <content
+        jcr:primaryType="nt:unstructured"
+        sling:resourceType="granite/ui/components/coral/foundation/container">
+        <items jcr:primaryType="nt:unstructured">
+            <tabs
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="granite/ui/components/coral/foundation/tabs"
+                maximized="{Boolean}true">
+                <items jcr:primaryType="nt:unstructured">
+                    <column1
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Common Section"
+                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                        <items jcr:primaryType="nt:unstructured">
+                            <verifySimHeading
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldDescription="Verify Sim heading"
+                                fieldLabel="Verify Sim heading"
+                                name="./verifySimHeading"
+                                value="Verify Your new Sim Number"/>
+                            <verifySimSubHeading
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldDescription="Verify Sim Subheading"
+                                fieldLabel="Verify Sim Subheading"
+                                name="./verifySimSubHeading"
+                                value="Please enter the details of your new Lebara Sim card that you will use in replacement of your existing Lebara Sim Card"/>
+                            <continueLabel
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldDescription="continue Label"
+                                fieldLabel="continue Label"
+                                name="./continueLabel"
+                                value="Continue"/>
+                        </items>
+                    </column1>
+                    <column2
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="PUK/SIM Section"
+                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                        <items jcr:primaryType="nt:unstructured">
+                            <pukHeading
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldDescription="PUK Heading Text"
+                                fieldLabel="PUK Heading Text"
+                                name="./pukHeading"
+                                value="PUK"/>
+                            <pukSubHeading
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldDescription="PUK subHeading Text"
+                                fieldLabel="Puk SubHeading Text"
+                                name="./pukSubHeading"
+                                value="you can find the sim and Puk on the back of the sim"/>
+                            <pukPlaceHolder
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldDescription="PUK Placeholder"
+                                fieldLabel="PUK Placeholder"
+                                name="./pukPlaceHolder"
+                                value="eg: 12345678"/>
+                            <simheading
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldDescription="Sim Card Heading Text"
+                                fieldLabel="Sim Card Heading Text"
+                                name="./simheading"
+                                value="Sim Card Number"/>
+                            <simSubHeading
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldDescription="Sim Card SubHeading Text"
+                                fieldLabel="Sim Card SubHeading Text"
+                                name="./simSubHeading"
+                                value="Enter last 10 digits of sim serial number"/>
+                            <simPlaceHolder
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldDescription="Sim Placeholder"
+                                fieldLabel="Sim Placeholder"
+                                name="./simPlaceHolder"
+                                value="eg: 1234567890"/>
+                            <countryCode
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldDescription="Country code"
+                                fieldLabel="Country code"
+                                name="./countryCode"
+                                value="+49"/>
+                            <simimage
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                fieldDescription="Sim Image Path"
+                                fieldLabel="Sim Image Path"
+                                name="./simimage"
+                                rootPath="/content/dam/lebara"/>
+                            <infographicsLabel
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldDescription="You can find the SIM number on the back of your SIM card."
+                                fieldLabel="Infographics Label"
+                                name="./infographicsLabel"
+                                value="You can find the SIM number on the back of your SIM card."/>
+                            <componentType
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                fieldDescription="Configure the type : postpaid Activation flow or migration flow "
+                                fieldLabel="Component flow type : postpaid Activation flow or migration flow"
+                                name="./componentType">
+                            <items jcr:primaryType="nt:unstructured">
+                                <activation
+                                        jcr:primaryType="nt:unstructured"
+                                        text="activation"
+                                        value="activation"/>
+                                <migration
+                                        jcr:primaryType="nt:unstructured"
+                                        text="migration"
+                                        value="migration"/>
+                            </items>
+                            </componentType>
+                            <iccidCountryCode
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldDescription="8949430000"
+                                fieldLabel="Enter ICCID Country Code"
+                                name="./iccidCountryCode"
+                                value="8949430000"/>
+                            <activationLinkURL
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                rootPath="/content/lebara"
+                                fieldLabel="Link URL for postpaid activation flow"
+                                name="./activationLinkURL"/>
+                            <migrationLinkURL
+                                jcr:primaryType="nt:unstructured"
+                                rootPath="/content/lebara"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                fieldLabel="Link Url for for postpaid migration flow"
+                                name="./migrationLinkURL"/>
+                        </items>
+                    </column2>
+                    <column3
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Error Messages"
+                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                        <items jcr:primaryType="nt:unstructured">
+                            <emptypukCodeError
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldDescription="Error message when PUK code is empty"
+                                fieldLabel="Error message when PUK code is empty"
+                                name="./emptypukCodeError"
+                                value="Required"/>
+                            <emptySimCodeError
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldDescription="Error message when Sim card number is empty"
+                                fieldLabel="Error message when Sim card number is empty"
+                                name="./emptySimCodeError"
+                                value="Required"/>
+                            <errorIfMigrationAlreadyRequested
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldDescription="Error message postpaid migration is already triggered"
+                                fieldLabel="Error message postpaid migration is already triggered"
+                                name="./errorIfMigrationAlreadyRequested"
+                                value="Sorry we have identified that a migration has already been requested for this number, so we can not initiate a new one"/>
+                            <errorIfIncorrectPukOrSim
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldDescription="Error message if PUK or sim number entered is empty"
+                                fieldLabel="Error message if PUK or sim number entered is empty"
+                                name="./errorIfIncorrectPukOrSim"
+                                value="Your PUK or ICICD code is incorrect. please check and modify the information"/>
+                            <whiteSpaceErrorMessage
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldDescription="White Space is not allowed."
+                                fieldLabel="White Space Error Message"
+                                name="./whiteSpaceErrorMessage"
+                                value="White Space is not allowed."/>
+                            <pukDigitsErrorMessage
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldDescription="Must be 7 digits"
+                                fieldLabel="PUK Digits Error Message"
+                                name="./pukDigitsErrorMessage"
+                                value="Must be 7 digits"/>
+                            <simDigitsErrorMessage
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldDescription="Must be 10 digits"
+                                fieldLabel="SIM Digits Error Message"
+                                name="./simDigitsErrorMessage"
+                                value="Must be 10 digits"/>
+                        </items>
+                    </column3>
+
+                </items>
+            </tabs>
+        </items>
+    </content>
+</jcr:root>

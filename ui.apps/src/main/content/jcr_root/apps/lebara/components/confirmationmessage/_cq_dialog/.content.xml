@@ -46,6 +46,12 @@
                                                 fieldDescription="Thank you. We have received your request for a SIM only plan change."
                                                 fieldLabel="Title"
                                                 name="./title"/>
+                                            <fmvnoConfirmationtitle
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="Thank you!"
+                                                fieldLabel="Sim Migration Title"
+                                                name="./fmvnoConfirmationtitle"/>
                                             <orderidsubtitle
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
@@ -64,6 +70,12 @@
                                                 fieldDescription="The plan change for the number {0} from the {1} to the {2} will take place on the first day of the following month. You will receive an email with further details about your new SIM only plan shortly."
                                                 fieldLabel="Plan Change Subtitle"
                                                 name="./planChangeSubtitle"/>
+                                            <fmvnoConfirmationSubtitle
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="Your migration request is completed. You will receive a confirmation SMS with your date of migration. The day of the migration, simply insert the new SIM on your phone. All your credit and bundles will be kept."
+                                                fieldLabel="Sim Migration Subtitle"
+                                                name="./fmvnoConfirmationSubtitle"/>
                                             <dashboardbuttonlabel
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"

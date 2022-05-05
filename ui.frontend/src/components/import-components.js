@@ -41,6 +41,7 @@ import "../aemConfigs/HowItWorksAemConfig.js";
 import "../aemConfigs/ContactUsAemConfig.js";
 import "../aemConfigs/RewardOverviewAemConfig.js";
 import "../aemConfigs/PostpaidPersonalDetailsPreviewAemConfig.js";
+import "../aemConfigs/PostpaidSimValidationAemConfig.js";
 import "../aemConfigs/OrderSubmittedAemConfig.js";
 import "../aemConfigs/ChangePasswordAemConfig.js";
 import "../aemConfigs/OrderPaymentHistoryAemConfig.js";
@@ -52,6 +53,7 @@ import "../aemConfigs/UserProfileAemConfig.js";
 import "../aemConfigs/AddressChangeOtpAemConfig.js";
 import "../aemConfigs/DashboardAemConfig/AttachSimModelAemConfig.js";
 import "../aemConfigs/ConfirmDelinkSimAemConfig.js";
+import "../aemConfigs/ConfirmEmailTokenAemConfig.js";
 import "../aemConfigs/ActivateSimOnlyAemConfig.js";
 import "../rotues/AemConfig.js";
 

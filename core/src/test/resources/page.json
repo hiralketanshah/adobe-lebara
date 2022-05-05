@@ -784,6 +784,7 @@
             "registrationTabLabel": "Registration",
             "guestTabLabel": "Guest",
             "loginEmailAddressLabel": "Email Address /Mobile Number",
+            "loginEmailAddressPlaceholder": "Enter your email address",
             "loginPasswordLabel": "Password",
             "loginForgotPassWordmsg": "Forgot password Message",
             "loginResetLinkLabel": "Reset it",

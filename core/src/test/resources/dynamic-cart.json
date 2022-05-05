@@ -30,6 +30,7 @@
           "jcr:lastModifiedBy": "admin",
           "jcr:created": "Fri Dec 31 2021 12:23:17 GMT+0530",
           "viewPlanAccordianLabel": "VIEW PLAN DETAILS",
+          "hidePlanAccordianLabel": "HIDE PLAN DETAILS",
           "title": "Title",
           "jcr:lastModified": "Fri Dec 31 2021 12:23:28 GMT+0530",
           "sling:resourceType": "lebara/components/dynamiccart"
