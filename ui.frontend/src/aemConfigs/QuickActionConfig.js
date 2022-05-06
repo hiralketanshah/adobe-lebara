@@ -1,5 +1,5 @@
 import { MapTo } from "@adobe/aem-react-editable-components";
-import Selection from "@lebara/ui/src/components/LebaraNetwork/LebaraNetwork";
+import QuickActionButtons from "@lebara/ui/src/components/QuickActionButtons/QuickActionButtons";
 
 const QuickActionConfig = {
   emptyLabel: "Quick Action Component",
@@ -8,4 +8,4 @@ const QuickActionConfig = {
   },
 };
 
-MapTo("lebara/components/quickaction")(Selection, QuickActionConfig);
+MapTo("lebara/components/quickaction")(QuickActionButtons, QuickActionConfig);
