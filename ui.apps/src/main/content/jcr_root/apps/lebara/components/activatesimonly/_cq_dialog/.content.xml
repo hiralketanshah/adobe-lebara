@@ -213,6 +213,30 @@
                                                                                     jcr:primaryType="nt:unstructured"
                                                                                     text="PAYMENT_NOT_FOUND"
                                                                                     value="PAYMENT_NOT_FOUND"/>
+                                                                                <FMVNO_POSTPAY_ERROR
+                                                                                    jcr:primaryType="nt:unstructured"
+                                                                                    text="FMVNO_POSTPAY_ERROR"
+                                                                                    value="FMVNO_POSTPAY_ERROR"/>
+                                                                                <ICCID_NOT_FOUND_HLR
+                                                                                    jcr:primaryType="nt:unstructured"
+                                                                                    text="ICCID_NOT_FOUND_HLR"
+                                                                                    value="ICCID_NOT_FOUND_HLR"/>
+                                                                                <LOGISTIC_INFO_NOT_FOUND
+                                                                                    jcr:primaryType="nt:unstructured"
+                                                                                    text="LOGISTIC_INFO_NOT_FOUND"
+                                                                                    value="LOGISTIC_INFO_NOT_FOUND"/>
+                                                                                <SUBSCRIPTION_WAS_NOT_FOUND_BY_ICCID
+                                                                                    jcr:primaryType="nt:unstructured"
+                                                                                    text="SUBSCRIPTION_WAS_NOT_FOUND_BY_ICCID"
+                                                                                    value="SUBSCRIPTION_WAS_NOT_FOUND_BY_ICCID"/>
+                                                                                <RETAILER_NOT_FOUND
+                                                                                    jcr:primaryType="nt:unstructured"
+                                                                                    text="RETAILER_NOT_FOUND"
+                                                                                    value="RETAILER_NOT_FOUND"/>
+                                                                                <RISK_FREE_CHECK_FAILED
+                                                                                    jcr:primaryType="nt:unstructured"
+                                                                                    text="RISK_FREE_CHECK_FAILED"
+                                                                                    value="RISK_FREE_CHECK_FAILED"/>
                                                                                 <too_many_requests
                                                                                     jcr:primaryType="nt:unstructured"
                                                                                     text="too_many_requests"
