@@ -257,6 +257,10 @@
                                                                                     jcr:primaryType="nt:unstructured"
                                                                                     text="FAILED_TO_LINK_MSISDN"
                                                                                     value="FAILED_TO_LINK_MSISDN"/>
+                                                                                <NO_FREE_MSISDN_AVAILABLE
+                                                                                    jcr:primaryType="nt:unstructured"
+                                                                                    text="NO_FREE_MSISDN_AVAILABLE"
+                                                                                    value="NO_FREE_MSISDN_AVAILABLE"/>
                                                                                 <DEFAULT_ERROR
                                                                                     jcr:primaryType="nt:unstructured"
                                                                                     text="DEFAULT_ERROR"
