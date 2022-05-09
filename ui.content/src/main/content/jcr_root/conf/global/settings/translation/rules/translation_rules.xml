@@ -608,8 +608,12 @@
 		<property name="documentNumberPlacholder"/>
 		<property name="titleLabel"/>
 		<property name="titlePlaceholder"/>
+		<property name="titleErrorRequired"/>
 		<property name="dobLabel"/>
 		<property name="dobPlaceholder"/>
+		<property name="dobErrorRequired"/>
+		<property name="dobError"/>
+		<property name="termsConditionsError"/>
 
 		<!-- Postpaid personal details -->
 		<property name="emailLabel"/>

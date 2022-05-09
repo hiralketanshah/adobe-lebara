@@ -100,6 +100,17 @@
                                     jcr:primaryType="nt:unstructured"
                                     acs-checkboxshowhidetargetvalue="true"/>
                             </titlePlaceholder>
+                            <titleErrorRequired
+                                granite:class="hide dropdown-checkbox-showhide-target"
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldDescription="This is a required field."
+                                fieldLabel="Title Required Error Message"
+                                name="./titleErrorRequired">
+                                <granite:data
+                                    jcr:primaryType="nt:unstructured"
+                                    acs-checkboxshowhidetargetvalue="true"/>
+                            </titleErrorRequired>
                             <titleFragmentPath
                                 cq:showOnCreate="{Boolean}true"
                                 granite:class="hide dropdown-checkbox-showhide-target"
@@ -147,6 +158,28 @@
                                     jcr:primaryType="nt:unstructured"
                                     acs-checkboxshowhidetargetvalue="true"/>
                             </dobPlaceholder>
+                            <dobErrorRequired
+                                granite:class="hide dropdown-checkbox-showhide-target"
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldDescription="This is a required field."
+                                fieldLabel="DOB Required Error Message"
+                                name="./dobErrorRequired">
+                                <granite:data
+                                    jcr:primaryType="nt:unstructured"
+                                    acs-checkboxshowhidetargetvalue="true"/>
+                            </dobErrorRequired>
+                            <dobError
+                                granite:class="hide dropdown-checkbox-showhide-target"
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldDescription="Please select above 18 years of age."
+                                fieldLabel="DOB Age Error Message"
+                                name="./dobError">
+                                <granite:data
+                                    jcr:primaryType="nt:unstructured"
+                                    acs-checkboxshowhidetargetvalue="true"/>
+                            </dobError>
                         </items>
                     </column1>
                     <column2
@@ -410,13 +443,13 @@
                                     acs-cq-dialog-dropdown-checkbox-showhide=""
                                     acs-cq-dialog-dropdown-checkbox-showhide-target=".dropdown-checkbox-showhide-target"/>
                             </showTermsAndConditions>
-                            <termsandconditionslabel
+                            <termsConditionsLabel
                                 granite:class="hide dropdown-checkbox-showhide-target"
                                 jcr:primaryType="nt:unstructured"
                                 sling:resourceType="cq/gui/components/authoring/dialog/richtext"
                                 fieldDescription="Requested information is required for delivery and payment purposes.By providing the information you accept the privacy policies &amp; terms and conditions."
                                 fieldLabel="Terms and conditions label"
-                                name="./termsAndConditionsLabel"
+                                name="./termsConditionsLabel"
                                 useFixedInlineToolbar="{Boolean}true">
                                 <granite:data
                                     jcr:primaryType="nt:unstructured"
@@ -545,7 +578,18 @@
                                             toolbar="[table#insertcolumn-before,table#insertcolumn-after,table#removecolumn,-,table#insertrow-before,table#insertrow-after,table#removerow,-,table#mergecells-right,table#mergecells-down,table#mergecells,table#splitcell-horizontal,table#splitcell-vertical,-,table#selectrow,table#selectcolumn,-,table#ensureparagraph,-,table#modifytableandcell,table#removetable,-,undo#undo,undo#redo,-,table#exitTableEditing,-]"/>
                                     </cui>
                                 </uiSettings>
-                            </termsandconditionslabel>
+                            </termsConditionsLabel>
+                            <termsConditionsError
+                                granite:class="hide dropdown-checkbox-showhide-target"
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldDescription="This is a required field"
+                                fieldLabel="Terms and conditions Error Message"
+                                name="./termsConditionsError">
+                                <granite:data
+                                    jcr:primaryType="nt:unstructured"
+                                    acs-checkboxshowhidetargetvalue="true"/>
+                            </termsConditionsError>
                         </items>
                     </column3>
                     <column4
