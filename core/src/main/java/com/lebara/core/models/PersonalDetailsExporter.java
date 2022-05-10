@@ -185,6 +185,10 @@ public class PersonalDetailsExporter implements ComponentExporter {
     private String dobErrorRequired;
     @ValueMapValue
     private String dobError;
+    @ValueMapValue
+    private String additionalDeliveryLabel;
+    @ValueMapValue
+    private String additionalDeliveryPlaceholder;
 
     public List<SelectBean> getCities(){
         return CFUtils.populateCityInfo(resourceResolver.getResource(cfPath));
@@ -276,6 +280,14 @@ public class PersonalDetailsExporter implements ComponentExporter {
 
 	public String getDobError() {
 		return dobError;
+	}
+
+	public String getAdditionalDeliveryLabel() {
+		return additionalDeliveryLabel;
+	}
+
+	public String getAdditionalDeliveryPlaceholder() {
+		return additionalDeliveryPlaceholder;
 	}
 
     @Override
