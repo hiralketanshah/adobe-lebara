@@ -614,6 +614,8 @@
 		<property name="dobErrorRequired"/>
 		<property name="dobError"/>
 		<property name="termsConditionsError"/>
+		<property name="additionalDeliveryLabel"/>
+		<property name="additionalDeliveryPlaceholder"/>
 
 		<!-- Postpaid personal details -->
 		<property name="emailLabel"/>
