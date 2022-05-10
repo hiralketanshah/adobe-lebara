@@ -750,6 +750,7 @@
 		<property name="newConfirmEmailPlacehodler"/>
 		<property name="modalCancelCTALabel"/>
 		<property name="confirmEmailNotMatchMsg"/>
+		<property name="emailAlreadyExistsErrorMsg"/>
 		<property name="altContactNumberRequiredMsg"/>
 		<property name="alternativeNumberInValidMsg"/>
 		<property name="beforeEmailText"/>

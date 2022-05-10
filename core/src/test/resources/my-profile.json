@@ -116,6 +116,7 @@
             "lNameRequiredMsg": "Please enter a valid surname, surname cannot be empty",
             "houseNumberErrorRequired": "House number is required",
             "confirmEmailNotMatchMsg": "Email address and Confirm email address should be same",
+            "emailAlreadyExistsErrorMsg": "Email address exists",
             "houseNumberErrorMax": "Must be 20 characters or less",
             "lastNameErrorMax": "Must be 75 characters or less",
             "emailRequiredMsg": "The email address field cannot be empty"
