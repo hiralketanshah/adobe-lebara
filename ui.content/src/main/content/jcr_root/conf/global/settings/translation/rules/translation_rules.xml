@@ -218,6 +218,15 @@
 		<property name="currentProviderDefaultSelectValue" />
 		<property name="moreLabel" />
 
+		<property name="rioCodeLabel" />
+		<property name="portDateLabel" />
+		<property name="rioCodePlaceHolder" />
+		<property name="portDatePlaceHolder" />
+		<property name="rioErrorMessage" />
+		<property name="portDateErrorMessage" />
+		<property name="rioCodeDesc" />
+		<property name="portDateDesc" />
+
 		<!-- Order Submitted / Confirmation Message -->
 		<property name="orderIdTitle" />
 		<property name="simOnlyTitle" />
