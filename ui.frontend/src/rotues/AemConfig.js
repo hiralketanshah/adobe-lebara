@@ -16,4 +16,5 @@ const OrderDetailsConfig = {
 };
 const componentwithofferDataProp=(props)=> <OrderDetailsRoute {...props} fetchDataCallback={(id, isOneEntry, isPromotion)=> aemUtils.fetchData(id, isOneEntry, isPromotion)}/>;
 MapTo("lebara/components/simportin")(SimPortInRoute, SimPortInConfig);
+MapTo("lebara/components/frsimportin")(SimPortInRoute, SimPortInConfig);
 MapTo("lebara/components/orderdetails")(componentwithofferDataProp, OrderDetailsConfig);
