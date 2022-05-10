@@ -73,6 +73,9 @@ public class MyProfileErrorAndSuccessMsg {
     @ValueMapValue
     private String confirmEmailNotMatchMsg;
 
+    @ValueMapValue
+    private String emailAlreadyExistsErrorMsg;
+
     public String getfNameRequiredMsg() {
         return fNameRequiredMsg;
     }
@@ -150,6 +153,10 @@ public class MyProfileErrorAndSuccessMsg {
 
     public String getConfirmEmailNotMatchMsg() {
         return confirmEmailNotMatchMsg;
+    }
+
+    public String getEmailAlreadyExistsErrorMsg() {
+        return emailAlreadyExistsErrorMsg;
     }
 
 
