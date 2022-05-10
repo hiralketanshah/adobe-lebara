@@ -2,20 +2,11 @@ package com.lebara.core.models;
 
 import com.adobe.cq.export.json.ComponentExporter;
 import com.adobe.cq.export.json.ExporterConstants;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.lebara.core.utils.AemUtils;
-import com.lebara.core.utils.CFUtils;
 import org.apache.sling.api.SlingHttpServletRequest;
-import org.apache.sling.api.resource.Resource;
-import org.apache.sling.api.resource.ResourceResolver;
 import org.apache.sling.models.annotations.DefaultInjectionStrategy;
 import org.apache.sling.models.annotations.Exporter;
 import org.apache.sling.models.annotations.Model;
-import org.apache.sling.models.annotations.injectorspecific.ScriptVariable;
-import org.apache.sling.models.annotations.injectorspecific.SlingObject;
 import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
-
-import java.util.List;
 
 @Model(adaptables = SlingHttpServletRequest.class, adapters = {FRSimPortInExporter.class, ComponentExporter.class},
         resourceType = FRSimPortInExporter.RESOURCE_TYPE, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
@@ -26,15 +17,6 @@ public class FRSimPortInExporter implements ComponentExporter {
      * The resource type.
      */
     protected static final String RESOURCE_TYPE = "lebara/components/frsimportin";
-
-    @SlingObject
-    private SlingHttpServletRequest slingRequest;
-
-    @SlingObject
-    private ResourceResolver resourceResolver;
-
-    @ScriptVariable
-    private Resource resource;
 
     @ValueMapValue
     private String doitLaterButtonLabel;
@@ -55,13 +37,27 @@ public class FRSimPortInExporter implements ComponentExporter {
     private String continueButtonLabel;
 
     @ValueMapValue
-    private String cancelbuttonlabel;
-
-    @ValueMapValue
     private String mobileNumberErrorMessage;
 
     @ValueMapValue
     private String mobileNumberFieldPattern;
+
+    @ValueMapValue
+    private String rioCodeLabel;
+    @ValueMapValue
+    private String portDateLabel;
+    @ValueMapValue
+    private String rioCodePlaceHolder;
+    @ValueMapValue
+    private String portDatePlaceHolder;
+    @ValueMapValue
+    private String rioErrorMessage;
+    @ValueMapValue
+    private String portDateErrorMessage;
+    @ValueMapValue
+    private String rioCodeDesc;
+    @ValueMapValue
+    private String portDateDesc;
 
     public String getDoitLaterButtonLabel() {
         return doitLaterButtonLabel;
@@ -88,11 +84,6 @@ public class FRSimPortInExporter implements ComponentExporter {
         return continueButtonLabel;
     }
 
-    public String getCancelbuttonlabel() {
-        return cancelbuttonlabel;
-    }
-
-
     public String getMobileNumberErrorMessage() {
         return mobileNumberErrorMessage;
     }
@@ -102,8 +93,40 @@ public class FRSimPortInExporter implements ComponentExporter {
         return mobileNumberFieldPattern;
     }
 
+    public String getRioCodeLabel() {
+        return rioCodeLabel;
+    }
+
+    public String getPortDateLabel() {
+        return portDateLabel;
+    }
+
+    public String getRioCodePlaceHolder() {
+        return rioCodePlaceHolder;
+    }
+
+    public String getPortDatePlaceHolder() {
+        return portDatePlaceHolder;
+    }
+
+    public String getRioErrorMessage() {
+        return rioErrorMessage;
+    }
+
+    public String getPortDateErrorMessage() {
+        return portDateErrorMessage;
+    }
+
+    public String getRioCodeDesc() {
+        return rioCodeDesc;
+    }
+
+    public String getPortDateDesc() {
+        return portDateDesc;
+    }
+
     @Override
     public String getExportedType() {
-        return resource.getResourceType();
+        return RESOURCE_TYPE;
     }
 }

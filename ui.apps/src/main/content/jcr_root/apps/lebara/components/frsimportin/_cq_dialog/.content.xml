@@ -38,6 +38,7 @@
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                                 fieldLabel="Title"
+                                                value="Sim Port In"
                                                 name="./title"/>
                                         </items>
                                     </column>
@@ -70,6 +71,7 @@
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                                 fieldLabel="Mobile Number Description"
+                                                value="This is the mobile number you want to keep."
                                                 name="./mobileNumberDesc"/>
                                             <rioCodeLabel
                                                 jcr:primaryType="nt:unstructured"
@@ -135,6 +137,7 @@
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                                 fieldLabel="Terms and Conditions Acceptance Message"
+                                                value="I confirm that I want to keep my current mobile number and give Lebara a mandate to cancel my line with my current operator."
                                                 name="./termsAndConditions"/>
                                         </items>
                                     </column>
@@ -194,11 +197,13 @@
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                                 fieldLabel="Mobile Number Error Message"
+                                                value="Please enter your number to port"
                                                 name="./mobileNumberErrorMessage"/>
                                             <mobilenumberfieldpattern
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                                 fieldLabel="Mobile Number Field Pattern"
+                                                value="Please enter 10-12 digits including 0"
                                                 name="./mobileNumberFieldPattern"/>
                                             <rioErrorMessage
                                                 jcr:primaryType="nt:unstructured"
