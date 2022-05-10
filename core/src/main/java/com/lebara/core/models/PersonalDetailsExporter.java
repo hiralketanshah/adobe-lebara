@@ -162,13 +162,17 @@ public class PersonalDetailsExporter implements ComponentExporter {
     @ValueMapValue
     private boolean showTermsAndConditions;
     @ValueMapValue
-    private String termsAndConditionsLabel;
+    private String termsConditionsLabel;
+    @ValueMapValue
+    private String termsConditionsError;
     @ValueMapValue
     private boolean showTitle;
     @ValueMapValue
     private String titleLabel;
     @ValueMapValue
     private String titlePlaceholder;
+    @ValueMapValue
+    private String titleErrorRequired;
     @ValueMapValue
     private String titleFragmentPath;
     @ValueMapValue
@@ -177,6 +181,10 @@ public class PersonalDetailsExporter implements ComponentExporter {
     private String dobLabel;
     @ValueMapValue
     private String dobPlaceholder;
+    @ValueMapValue
+    private String dobErrorRequired;
+    @ValueMapValue
+    private String dobError;
 
     public List<SelectBean> getCities(){
         return CFUtils.populateCityInfo(resourceResolver.getResource(cfPath));
@@ -222,9 +230,13 @@ public class PersonalDetailsExporter implements ComponentExporter {
 		return showTermsAndConditions;
 	}
 
-    public String getTermsAndConditionsLabel() {
-        return AemUtils.updateShortenLinksInRichText(termsAndConditionsLabel,slingRequest);
+    public String getTermsConditionsLabel() {
+        return AemUtils.updateShortenLinksInRichText(termsConditionsLabel,slingRequest);
     }
+
+	public String getTermsConditionsError() {
+		return termsConditionsError;
+	}
 
 	public boolean getShowTitle() {
 		return showTitle;
@@ -236,6 +248,10 @@ public class PersonalDetailsExporter implements ComponentExporter {
 
 	public String getTitlePlaceholder() {
 		return titlePlaceholder;
+	}
+
+	public String geTtitleErrorRequired() {
+		return titleErrorRequired;
 	}
 
     public List<Object> getTitleOptions() {
@@ -252,6 +268,14 @@ public class PersonalDetailsExporter implements ComponentExporter {
 
 	public String getDobPlaceholder() {
 		return dobPlaceholder;
+	}
+
+	public String getDobErrorRequired() {
+		return dobErrorRequired;
+	}
+
+	public String getDobError() {
+		return dobError;
 	}
 
     @Override
