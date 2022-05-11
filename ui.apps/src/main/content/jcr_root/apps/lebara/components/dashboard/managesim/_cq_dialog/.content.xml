@@ -94,7 +94,7 @@
                                                 granite:class="hide dropdown-checkbox-showhide-target"
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="cq/gui/components/authoring/dialog/richtext"
-                                                fieldDescription="Click here for <a href='/terms-and-conditions'>Terms and Conditions</a>"
+                                                fieldDescription="Click here for Terms and Conditions"
                                                 fieldLabel="Terms and conditions"
                                                 name="./termsAndConditionsLabel"
                                                 useFixedInlineToolbar="{Boolean}true">
