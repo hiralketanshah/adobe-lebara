@@ -189,6 +189,8 @@ public class PersonalDetailsExporter implements ComponentExporter {
     private String additionalDeliveryLabel;
     @ValueMapValue
     private String additionalDeliveryPlaceholder;
+    @ValueMapValue
+    private boolean showUpdatedAddressFields;
 
     public List<SelectBean> getCities(){
         return CFUtils.populateCityInfo(resourceResolver.getResource(cfPath));
@@ -288,6 +290,10 @@ public class PersonalDetailsExporter implements ComponentExporter {
 
 	public String getAdditionalDeliveryPlaceholder() {
 		return additionalDeliveryPlaceholder;
+	}
+
+	public boolean gethowUpdatedAddressFields() {
+		return showUpdatedAddressFields;
 	}
 
     @Override
