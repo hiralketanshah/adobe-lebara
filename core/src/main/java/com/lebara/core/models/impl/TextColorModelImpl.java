@@ -26,6 +26,9 @@ public class TextColorModelImpl implements TextColorModel {
 	@ValueMapValue
 	private String fontColor;
 
+	@ValueMapValue
+	private String textalignment;
+
 	@ScriptVariable
 	protected Resource resource;
 
@@ -59,6 +62,11 @@ public class TextColorModelImpl implements TextColorModel {
 	@Override
 	public String getFontColor() {
 		return fontColor;
+	}
+
+	@Override
+	public String getTextalignment() {
+		return textalignment;
 	}
 
 	@Override

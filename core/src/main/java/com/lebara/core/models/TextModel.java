@@ -13,6 +13,7 @@ import com.adobe.cq.export.json.ComponentExporter;
 import com.adobe.cq.export.json.ExporterConstants;
 import com.adobe.cq.wcm.core.components.models.Text;
 import org.apache.sling.models.annotations.injectorspecific.SlingObject;
+import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
 import org.apache.sling.models.annotations.via.ResourceSuperType;
 
 @Model(adaptables = SlingHttpServletRequest.class, adapters = { Text.class, ComponentExporter.class }, resourceType = {
@@ -26,6 +27,9 @@ public class TextModel implements Text {
     @Via(type = ResourceSuperType.class)
     private Text delegate;
 
+    @ValueMapValue
+    private String textalignment;
+
     @Inject
     private Resource resource;
 
@@ -35,6 +39,10 @@ public class TextModel implements Text {
     @Override
     public String getText() {
         return AemUtils.updateShortenLinksInRichText(delegate.getText(),slingRequest);
+    }
+
+    public String getTextalignment() {
+        return textalignment;
     }
 
     @Override
