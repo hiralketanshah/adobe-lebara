@@ -91,5 +91,6 @@ import "./App/AppNavigation/AemConfig.js";
 import "../aemConfigs/AttachYourSimAemConfig.js";
 import "./CallSupport/AemConfig.js";
 import "./CallSupport/WeAreHere/AemConfig.js";
+import "../aemConfigs/SimDetails.js";
 import "../aemConfigs/SelectionConfig.js";
 import "../aemConfigs/QuickActionConfig.js";
