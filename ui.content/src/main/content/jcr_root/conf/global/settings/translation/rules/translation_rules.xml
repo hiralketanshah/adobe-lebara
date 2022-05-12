@@ -76,6 +76,9 @@
 		<property name="simDigitsErrorMessage" />
 
 
+		<!-- selection props -->
+		<property name="cardCtaText" />
+
 		<!-- simswitch props -->
 		<property name="balanceLabel" />
 		<property name="simName" />
@@ -218,12 +221,14 @@
 		<!-- Order Submitted / Confirmation Message -->
 		<property name="orderIdTitle" />
 		<property name="simOnlyTitle" />
+		<property name="congratulations" />
 		<property name="orderIdSubtitle" />
 		<property name="simOnlySubtitle" />
 		<property name="planChangeSubtitle" />
 		<property name="dashboardButtonLabel" />
 		<property name="fmvnoConfirmationtitle" />
 		<property name="fmvnoConfirmationSubtitle" />
+		<property name="validationConfirmationSubtitle" />
 
 		<!-- Lebara fields -->
 		<property name="knowMoreText" />
@@ -426,6 +431,7 @@
 		<!--activatesimonly component -->
 		<property name="iccidRequired"/>
 		<property name="iccidInvalidMsg"/>
+		<property name="swrMessage"/>
 		<property name="step1Heading"/>
 		<property name="step2Heading"/>
 		<property name="step2InputPlaceholder"/>
@@ -591,6 +597,8 @@
 		<property name="samePasswordLabel"/>
 		<property name="showPasswordLabel"/>
 		<property name="hidePasswordLabel"/>
+		<property name="confirmPasswordPatternError"/>
+		<property name="passwordPatternError"/>
 
 		<!-- Postpaid personal details -->
 		<property name="emailLabel"/>
@@ -742,6 +750,7 @@
 		<property name="newConfirmEmailPlacehodler"/>
 		<property name="modalCancelCTALabel"/>
 		<property name="confirmEmailNotMatchMsg"/>
+		<property name="emailAlreadyExistsErrorMsg"/>
 		<property name="altContactNumberRequiredMsg"/>
 		<property name="alternativeNumberInValidMsg"/>
 		<property name="beforeEmailText"/>
@@ -764,6 +773,10 @@
 		<property name="otpInvalidErrorMessage"/>
 		<property name="requiredErrorMessage"/>
 		<property name="digitsErrorMessage"/>
+		<property name="whiteSpaceErrorMessage"/>
+		<property name="msisdnPatternErrorMessage"/>
+		<property name="failedToSendSmsErrorMessage"/>
+		<property name="failedToGetCustomerErrorMessage"/>
 		<property name="simCardLabel"/>
 		<property name="verifyCodeLabel"/>
 		<property name="exceededLimitLabel"/>

@@ -12,7 +12,11 @@ import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.injectorspecific.ScriptVariable;
 import org.apache.sling.models.annotations.injectorspecific.SlingObject;
 import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
-
+import com.lebara.core.models.beans.ErrorMessageFields;
+import java.util.Map;
+import java.util.HashMap;
+import java.util.List;
+import org.apache.sling.models.annotations.injectorspecific.ChildResource;
 @Model(adaptables = SlingHttpServletRequest.class, adapters = {PostpaidSimValidationExporter.class, ComponentExporter.class},
         resourceType = PostpaidSimValidationExporter.RESOURCE_TYPE, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
 @Exporter(name = ExporterConstants.SLING_MODEL_EXPORTER_NAME, extensions = ExporterConstants.SLING_MODEL_EXTENSION)
@@ -79,6 +83,20 @@ public class PostpaidSimValidationExporter implements ComponentExporter   {
     private String simDigitsErrorMessage;
     @ValueMapValue
     private String iccidCountryCode;
+    @ValueMapValue
+    private boolean validateSim;
+    @ValueMapValue
+    private String swrMessage;
+
+    @ChildResource
+    private List<ErrorMessageFields> activationErrorMessages;
+    public boolean getValidateSim() {
+        return validateSim;
+    }
+
+    public String getswrMessage() {
+        return swrMessage;
+    }
 
     public String getVerifySimHeading() {
         return verifySimHeading;
@@ -170,6 +188,15 @@ public class PostpaidSimValidationExporter implements ComponentExporter   {
 
     public String getIccidCountryCode() {
         return iccidCountryCode;
+    }
+
+    public Map<String,String> getActivationErrorMessages() {
+        if(activationErrorMessages != null && !activationErrorMessages.isEmpty()){
+            Map<String,String> map = new HashMap<String,String>();
+            activationErrorMessages.stream().forEach(item -> map.put(item.getErrorCode(), item.getErrorMessage()));
+            return map;
+        }
+        return new HashMap<String,String>();
     }
 
     @Override

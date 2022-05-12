@@ -80,6 +80,12 @@ public class DetailedViewPlanExporter extends ViewPlanExporter implements Compon
     @ValueMapValue
     private String backgroundColor;
 
+    @ValueMapValue
+    private String ctaDownloadLabel;
+
+    @ValueMapValue
+    private String ctaCloseLabel;
+
     @PostConstruct
     protected void init() {
         super.init();
@@ -127,6 +133,14 @@ public class DetailedViewPlanExporter extends ViewPlanExporter implements Compon
 
     public String getCtaBottomLink() {
         return AemUtils.getLinkWithExtension(ctaBottomLink, request);
+    }
+
+    public String getCtaDownloadLabel() {
+        return ctaDownloadLabel;
+    }
+
+    public String getCtaCloseLabel() {
+        return ctaCloseLabel;
     }
 
     public String getBackgroundColor() { return backgroundColor; }
