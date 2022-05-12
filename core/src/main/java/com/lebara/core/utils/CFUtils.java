@@ -230,6 +230,9 @@ public class CFUtils {
                     if (promotionalFragres != null) {
                         ContentFragment promotionFragment = promotionalFragres.adaptTo(ContentFragment.class);
                         if (promotionFragment != null) {
+                            if (StringUtils.isNotBlank(CFUtils.getElementValue(promotionFragment, "promotionId"))) {
+                                offerFragmentBean.setPromotionID(CFUtils.getElementValue(promotionFragment, "promotionId"));
+                            }
                             if (StringUtils.isNotBlank(CFUtils.getElementValue(promotionFragment, "promotionalPrice"))) {
                                 offerFragmentBean.setPromotionPrice(CFUtils.getElementValue(promotionFragment, "promotionalPrice"));
                             }

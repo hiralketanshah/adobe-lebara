@@ -72,6 +72,18 @@ public class AddressChangeOtp implements ComponentExporter {
 	private String digitsErrorMessage;
 
 	@ValueMapValue
+	private String whiteSpaceErrorMessage;
+
+	@ValueMapValue
+	private String msisdnPatternErrorMessage;
+
+	@ValueMapValue
+	private String failedToSendSmsErrorMessage;
+
+	@ValueMapValue
+	private String failedToGetCustomerErrorMessage;
+
+	@ValueMapValue
 	private String termsAndConditions;
 
 	@ValueMapValue
@@ -136,6 +148,22 @@ public class AddressChangeOtp implements ComponentExporter {
 
     public String getDigitsErrorMessage() {
         return digitsErrorMessage;
+    }
+
+    public String getWhiteSpaceErrorMessage() {
+        return whiteSpaceErrorMessage;
+    }
+
+    public String getMsisdnPatternErrorMessage() {
+        return msisdnPatternErrorMessage;
+    }
+
+    public String getFailedToSendSmsErrorMessage() {
+        return failedToSendSmsErrorMessage;
+    }
+
+    public String getFailedToGetCustomerErrorMessage() {
+        return failedToGetCustomerErrorMessage;
     }
 
     public String getTermsAndConditions() {
