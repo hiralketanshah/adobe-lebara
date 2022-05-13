@@ -224,6 +224,7 @@
 		<property name="portDatePlaceHolder" />
 		<property name="rioErrorMessage" />
 		<property name="portDateErrorMessage" />
+		<property name="portNotAllowedErrorMessage" />
 		<property name="rioCodeDesc" />
 		<property name="portDateDesc" />
 

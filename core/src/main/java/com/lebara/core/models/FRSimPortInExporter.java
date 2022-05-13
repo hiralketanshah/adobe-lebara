@@ -55,6 +55,8 @@ public class FRSimPortInExporter implements ComponentExporter {
     @ValueMapValue
     private String portDateErrorMessage;
     @ValueMapValue
+    private String portNotAllowedErrorMessage;
+    @ValueMapValue
     private String rioCodeDesc;
     @ValueMapValue
     private String portDateDesc;
@@ -115,6 +117,10 @@ public class FRSimPortInExporter implements ComponentExporter {
 
     public String getPortDateErrorMessage() {
         return portDateErrorMessage;
+    }
+
+    public String getPortNotAllowedErrorMessage() {
+        return portNotAllowedErrorMessage;
     }
 
     public String getRioCodeDesc() {

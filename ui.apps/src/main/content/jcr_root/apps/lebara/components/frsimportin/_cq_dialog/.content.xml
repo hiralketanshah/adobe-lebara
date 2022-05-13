@@ -217,6 +217,12 @@
                                                 value="Please select valid date"
                                                 fieldLabel="Port Date Error Message"
                                                 name="./portDateErrorMessage"/>
+                                            <portNotAllowedErrorMessage
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                value="Port not allowed"
+                                                fieldLabel="Port not allowed Error Message"
+                                                name="./portNotAllowedErrorMessage"/>
                                         </items>
                                     </column>
                                 </items>
