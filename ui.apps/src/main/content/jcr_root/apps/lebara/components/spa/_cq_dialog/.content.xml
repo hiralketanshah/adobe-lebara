@@ -295,6 +295,10 @@
                                                                                 jcr:primaryType="nt:unstructured"
                                                                                 text="fmvno-verify-sim"
                                                                                 value="fmvno-verify-sim"/>
+                                                                        <sim-details
+                                                                                jcr:primaryType="nt:unstructured"
+                                                                                text="sim-details"
+                                                                                value="sim-details"/>
                                                                     </items>
                                                                 </name>
                                                                 <path
