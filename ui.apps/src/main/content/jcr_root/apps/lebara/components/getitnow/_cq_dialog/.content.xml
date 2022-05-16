@@ -167,6 +167,13 @@
                                                 rootPath="/content/lebara"
                                                 fieldLabel="CTA button Link"
                                                 name="./buttonCTALink"/>
+                                            <isSimChoiceFlow
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                                name="./isSimChoiceFlow"
+                                                text="Is Sim Choice Flow?"
+                                                uncheckedValue="{Boolean}false"
+                                                value="{Boolean}true"/>
                                         </items>
                                     </column>
                                 </items>
