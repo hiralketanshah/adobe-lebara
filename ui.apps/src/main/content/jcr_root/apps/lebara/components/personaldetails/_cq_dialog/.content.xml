@@ -18,6 +18,20 @@
                             jcr:title="Name Section"
                             sling:resourceType="granite/ui/components/coral/foundation/container">
                         <items jcr:primaryType="nt:unstructured">
+                            <enableEmailCheckbox
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                    name="./enableEmailCheckbox"
+                                    text="Enable Email?"
+                                    uncheckedValue="{Boolean}false"
+                                    value="{Boolean}true"/>
+                            <enableSmsCheckbox
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                    name="./enableSmsCheckbox"
+                                    text="Enable SMS?"
+                                    uncheckedValue="{Boolean}false"
+                                    value="{Boolean}true"/>
                             <yourPersonalDetailsLabel
                                     jcr:primaryType="nt:unstructured"
                                     sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
