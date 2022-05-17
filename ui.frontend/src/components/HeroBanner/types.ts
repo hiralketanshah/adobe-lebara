@@ -6,4 +6,5 @@ export interface HeroBannerProps {
   buttonCTALink?: string;
   getItNowErrorMessage?: string;
   headingType?: any;
+  isSimChoiceFlow?: boolean;
 }

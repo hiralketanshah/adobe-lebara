@@ -760,6 +760,7 @@
             "buttonCTALabel": "get it now",
             "buttonCTALink": "/content/lebara/de/en/SIMONLY/phone.html",
             "getItNowErrorMessage": "get it now error message",
+            "isSimChoiceFlow": false,
             ":type": "lebara/components/getitnow"
           },
           "heading": {

@@ -191,6 +191,10 @@ public class PersonalDetailsExporter implements ComponentExporter {
     private String additionalDeliveryPlaceholder;
     @ValueMapValue
     private boolean showUpdatedAddressFields;
+    @ValueMapValue
+    private boolean enableEmailCheckbox;
+    @ValueMapValue
+    private boolean enableSmsCheckbox;
 
     public List<SelectBean> getCities(){
         return CFUtils.populateCityInfo(resourceResolver.getResource(cfPath));
@@ -294,6 +298,14 @@ public class PersonalDetailsExporter implements ComponentExporter {
 
 	public boolean gethowUpdatedAddressFields() {
 		return showUpdatedAddressFields;
+	}
+
+	public boolean getEnableEmailCheckbox() {
+		return enableEmailCheckbox;
+	}
+
+	public boolean getEnableSmsCheckbox() {
+		return enableSmsCheckbox;
 	}
 
     @Override
