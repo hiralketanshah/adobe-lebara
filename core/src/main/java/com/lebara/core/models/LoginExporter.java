@@ -194,6 +194,9 @@ public class LoginExporter implements ComponentExporter {
     @ValueMapValue
     private String extraBlockRegisterLinkText;
 
+    @ValueMapValue
+    private String alertMessageText;
+
     public String getLoginModuleType() {
         return loginModuleType;
     }
@@ -388,6 +391,10 @@ public class LoginExporter implements ComponentExporter {
 
     public String getExtraBlockGuestLinkText() {
         return extraBlockGuestLinkText;
+    }
+
+    public String getAlertMessageText() {
+        return alertMessageText;
     }
 
     @Override
