@@ -29,20 +29,22 @@ const Footer: React.FC<FooterProps> = ({
 }) => {
   const { pathname } = useLocation();
   useEffect(() => {
-    const jwtCookie =getCookie(jwtToken);
-    function getCookie(name : string) {
-        var cookieArr = document.cookie.split(";");
-        for(var i = 0; i < cookieArr.length; i++) {
-            var cookiePair = cookieArr[i].split("=");
-            if(name == cookiePair[0].trim()) {
-                return decodeURIComponent(cookiePair[1]);
-            }
-        }
-        return "";
-    }
-    if(jwtCookie){
-      document.getElementById("aklamio")?.setAttribute("data-aklamio-authentication-token", jwtCookie);
-    }
+    setTimeout(() => {
+      const jwtCookie =getCookie("jwt_token");
+      function getCookie(name : string) {
+          var cookieArr = document.cookie.split(";");
+          for(var i = 0; i < cookieArr.length; i++) {
+              var cookiePair = cookieArr[i].split("=");
+              if(name == cookiePair[0].trim()) {
+                  return decodeURIComponent(cookiePair[1]);
+              }
+          }
+          return "";
+      }
+      if(jwtCookie){
+        document.getElementById("aklamio")?.setAttribute("data-aklamio-authentication-token", jwtCookie);
+      }
+    }, 500);
   }, [pathname]);
   return (
   <Box bg={theme?.bgColor} color={theme?.color}>
