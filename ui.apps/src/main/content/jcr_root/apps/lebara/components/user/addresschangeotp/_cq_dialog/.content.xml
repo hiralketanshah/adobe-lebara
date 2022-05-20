@@ -55,6 +55,13 @@
                                                 fieldLabel="Sim card number Label"
                                                 name="./simCardLabel"
                                                 value="Sim card number"/>
+                                            <simCardNumberLabel
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="Mobile Number"
+                                                fieldLabel="Sim card number Label"
+                                                name="./simCardNumberLabel"
+                                                value="Mobile Number"/>
                                             <simCardNumberPlaceholder
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"

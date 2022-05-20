@@ -42,6 +42,9 @@ public class AddressChangeOtp implements ComponentExporter {
 	private String simCardLabel;
 
     @ValueMapValue
+	private String simCardNumberLabel;
+
+    @ValueMapValue
 	private String simCardNumberDescription;
 
     @ValueMapValue
@@ -49,6 +52,9 @@ public class AddressChangeOtp implements ComponentExporter {
 
 	@ValueMapValue
 	private String verifyCodeLabel;
+
+    @ValueMapValue
+	private String verifyCodePlaceholder;
 
 	@ValueMapValue
 	private String resendVerifyCodeInLabel;
@@ -118,6 +124,14 @@ public class AddressChangeOtp implements ComponentExporter {
 
     public String getSimCardNumberDescription() {
         return simCardNumberDescription;
+    }
+
+    public String getSimCardNumberLabel() {
+        return simCardNumberLabel;
+    }
+
+    public String getVerifyCodePlaceholder() {
+        return verifyCodePlaceholder;
     }
 
     public String getSimCardNumberPlaceholder() {
