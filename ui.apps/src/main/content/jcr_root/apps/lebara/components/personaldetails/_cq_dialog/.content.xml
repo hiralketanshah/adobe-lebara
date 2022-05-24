@@ -437,6 +437,42 @@
                                     jcr:primaryType="nt:unstructured"
                                     acs-checkboxshowhidetargetvalue="true"/>
                             </documentNumberPlacholder>
+                            <documentErrorRequired
+                                granite:class="hide dropdown-checkbox-showhide-target"
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldDescription="Please select type of the document"
+                                fieldLabel="Document Required Error"
+                                name="./documentErrorRequired"
+                                value="Please select type of the document">
+                                <granite:data
+                                    jcr:primaryType="nt:unstructured"
+                                    acs-checkboxshowhidetargetvalue="true"/>
+                            </documentErrorRequired>
+                            <documentNumberErrorRequired
+                                granite:class="hide dropdown-checkbox-showhide-target"
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldDescription="This is a required field"
+                                fieldLabel="Document Number Required Error"
+                                name="./documentNumberErrorRequired"
+                                value="This is a required field">
+                                <granite:data
+                                    jcr:primaryType="nt:unstructured"
+                                    acs-checkboxshowhidetargetvalue="true"/>
+                            </documentNumberErrorRequired>
+                            <documentNumberErrorPattern
+                                granite:class="hide dropdown-checkbox-showhide-target"
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldDescription="Enter a valid identity number"
+                                fieldLabel="Document Number Error Pattern"
+                                name="./documentNumberErrorPattern"
+                                value="Enter a valid identity number">
+                                <granite:data
+                                    jcr:primaryType="nt:unstructured"
+                                    acs-checkboxshowhidetargetvalue="true"/>
+                            </documentNumberErrorPattern>
                             <documentTypesFragmentPath
                                 cq:showOnCreate="{Boolean}true"
                                 granite:class="hide dropdown-checkbox-showhide-target"

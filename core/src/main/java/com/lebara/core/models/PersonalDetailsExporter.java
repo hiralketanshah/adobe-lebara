@@ -156,6 +156,12 @@ public class PersonalDetailsExporter implements ComponentExporter {
     @ValueMapValue
     private String documentNumberPlacholder;
     @ValueMapValue
+    private String documentErrorRequired;
+    @ValueMapValue
+    private String documentNumberErrorRequired;
+    @ValueMapValue
+    private String documentNumberErrorPattern;
+    @ValueMapValue
     private String documentTypesPath;
     @ValueMapValue
     private String cfPath;
@@ -230,8 +236,20 @@ public class PersonalDetailsExporter implements ComponentExporter {
 		return documentNumberLabel;
 	}
 
+	public String getDocumentErrorRequired() {
+		return documentErrorRequired;
+	}
+
+	public String getDocumentNumberErrorRequired() {
+		return documentNumberErrorRequired;
+	}
+
 	public String getDocumentNumberPlacholder() {
 		return documentNumberPlacholder;
+	}
+
+	public String getDocumentNumberErrorPattern() {
+		return documentNumberErrorPattern;
 	}
 
     public List<Object> getDocumentTypes() {
