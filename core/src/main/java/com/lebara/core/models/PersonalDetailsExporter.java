@@ -164,6 +164,8 @@ public class PersonalDetailsExporter implements ComponentExporter {
     @ValueMapValue
     private String termsConditionsLabel;
     @ValueMapValue
+    private String termsAndConditions;
+    @ValueMapValue
     private String termsConditionsError;
     @ValueMapValue
     private boolean showTitle;
@@ -242,6 +244,10 @@ public class PersonalDetailsExporter implements ComponentExporter {
 
     public String getTermsConditionsLabel() {
         return AemUtils.updateShortenLinksInRichText(termsConditionsLabel,slingRequest);
+    }
+
+    public String getTermsAndConditions() {
+        return AemUtils.updateShortenLinksInRichText(termsAndConditions,slingRequest);
     }
 
 	public String getTermsConditionsError() {
