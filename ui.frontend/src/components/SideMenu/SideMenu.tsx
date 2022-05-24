@@ -153,7 +153,7 @@ const SideMenu: React.FC<SideMenuProps> = ({
           ))}
         </ChakraAccordion>
         <Spacer />
-        <Box px="20px" my="37px">
+        <Box px="20px" mb={320}>
           <Button isFullWidth onClick={() => history.push("/top-up")}>
             {topupCtaText}
           </Button>
