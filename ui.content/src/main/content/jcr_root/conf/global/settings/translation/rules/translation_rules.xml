@@ -474,6 +474,8 @@
 
 		<!--Global Configs -->
 		<property name="planNotEligibleErrorMessage"/>
+		<property name="planNotEligibleErrorTitle"/>
+		<property name="planNotEligibleErrorButtonText"/>
 		
 		<!--Payment on Global Configs -->
 		<property name="card"/>
