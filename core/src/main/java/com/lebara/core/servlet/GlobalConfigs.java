@@ -40,6 +40,7 @@ public class GlobalConfigs extends SlingSafeMethodsServlet {
 
     private static final long serialVersionUID = 1L;
     private static final String CURRENCY_NAME = "currencyName";
+    private static final String COUNTRY = "country";
     private static final String JOURNEY_PAGES = "journeyPages";
     private static final String PRIVATE_PAGES = "privatePages";
     private static final String PAYMENT_MESSAGES = "paymentMessages";
@@ -67,7 +68,7 @@ public class GlobalConfigs extends SlingSafeMethodsServlet {
         }
         return (new ImmutableMap.Builder())
                 .put("locale", page!=null?Optional.ofNullable(page.getLanguage(false).toLanguageTag()).orElse(""):"")
-                .put("country", page!=null?Optional.ofNullable(page.getLanguage(false).getCountry()).orElse(""):"")
+                .put("country", Optional.ofNullable(inheritedProp.getInherited(COUNTRY, String.class)).orElse("DE"))
                 .put("apiHostUri", Optional.ofNullable(globalOsgiService.getApiHostUri()).orElse(""))
                 .put("gqlEndpoint", Optional.ofNullable(globalOsgiService.getGqlEndpoint()).orElse(""))
                 .put("paymentClientKey", Optional.ofNullable(globalOsgiService.getPaymentClientKey()).orElse(""))
