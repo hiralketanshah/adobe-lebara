@@ -320,7 +320,7 @@ public class PersonalDetailsExporter implements ComponentExporter {
 		return additionalDeliveryPlaceholder;
 	}
 
-	public boolean gethowUpdatedAddressFields() {
+	public boolean getShowUpdatedAddressFields() {
 		return showUpdatedAddressFields;
 	}
 
