@@ -618,6 +618,9 @@
 		<property name="documentPlaceholder"/>
 		<property name="documentNumberLabel"/>
 		<property name="documentNumberPlacholder"/>
+		<property name="documentErrorRequired"/>
+		<property name="documentNumberErrorRequired"/>
+		<property name="documentNumberErrorPattern"/>
 		<property name="titleLabel"/>
 		<property name="titlePlaceholder"/>
 		<property name="titleErrorRequired"/>

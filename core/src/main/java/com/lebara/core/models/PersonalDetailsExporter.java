@@ -156,6 +156,12 @@ public class PersonalDetailsExporter implements ComponentExporter {
     @ValueMapValue
     private String documentNumberPlacholder;
     @ValueMapValue
+    private String documentErrorRequired;
+    @ValueMapValue
+    private String documentNumberErrorRequired;
+    @ValueMapValue
+    private String documentNumberErrorPattern;
+    @ValueMapValue
     private String documentTypesPath;
     @ValueMapValue
     private String cfPath;
@@ -163,6 +169,8 @@ public class PersonalDetailsExporter implements ComponentExporter {
     private boolean showTermsAndConditions;
     @ValueMapValue
     private String termsConditionsLabel;
+    @ValueMapValue
+    private String termsAndConditions;
     @ValueMapValue
     private String termsConditionsError;
     @ValueMapValue
@@ -228,8 +236,20 @@ public class PersonalDetailsExporter implements ComponentExporter {
 		return documentNumberLabel;
 	}
 
+	public String getDocumentErrorRequired() {
+		return documentErrorRequired;
+	}
+
+	public String getDocumentNumberErrorRequired() {
+		return documentNumberErrorRequired;
+	}
+
 	public String getDocumentNumberPlacholder() {
 		return documentNumberPlacholder;
+	}
+
+	public String getDocumentNumberErrorPattern() {
+		return documentNumberErrorPattern;
 	}
 
     public List<Object> getDocumentTypes() {
@@ -242,6 +262,10 @@ public class PersonalDetailsExporter implements ComponentExporter {
 
     public String getTermsConditionsLabel() {
         return AemUtils.updateShortenLinksInRichText(termsConditionsLabel,slingRequest);
+    }
+
+    public String getTermsAndConditions() {
+        return AemUtils.updateShortenLinksInRichText(termsAndConditions,slingRequest);
     }
 
 	public String getTermsConditionsError() {
