@@ -474,6 +474,8 @@
 
 		<!--Global Configs -->
 		<property name="planNotEligibleErrorMessage"/>
+		<property name="planNotEligibleErrorTitle"/>
+		<property name="planNotEligibleErrorButtonText"/>
 		
 		<!--Payment on Global Configs -->
 		<property name="card"/>
@@ -616,6 +618,9 @@
 		<property name="documentPlaceholder"/>
 		<property name="documentNumberLabel"/>
 		<property name="documentNumberPlacholder"/>
+		<property name="documentErrorRequired"/>
+		<property name="documentNumberErrorRequired"/>
+		<property name="documentNumberErrorPattern"/>
 		<property name="titleLabel"/>
 		<property name="titlePlaceholder"/>
 		<property name="titleErrorRequired"/>

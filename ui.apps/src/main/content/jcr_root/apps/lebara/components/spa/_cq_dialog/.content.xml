@@ -114,12 +114,24 @@
                                                         value="FR"/>
                                                 </items>
                                             </country>
+                                            <planNotEligibleErrorTitle
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                    fieldLabel="Plan Not Eligible Error Title"
+                                                    fieldDescription="Plan Not Eligible Error Title"
+                                                    name="./planNotEligibleErrorTitle"/>
                                             <PlanNotEligibleErrorMessage
                                                     jcr:primaryType="nt:unstructured"
                                                     sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                                     fieldLabel="Plan Not Eligible Error Message"
                                                     fieldDescription="Plan Not Eligible Error Message"
                                                     name="./planNotEligibleErrorMessage"/>
+                                            <planNotEligibleErrorButtonText
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                    fieldLabel="Plan Not Eligible Button Text"
+                                                    fieldDescription="Plan Not Eligible Button Text"
+                                                    name="./planNotEligibleErrorButtonText"/>
 
                                             <journeypages
                                                 jcr:primaryType="nt:unstructured"
