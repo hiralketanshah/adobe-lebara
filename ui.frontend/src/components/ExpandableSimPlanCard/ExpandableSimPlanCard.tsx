@@ -57,7 +57,8 @@ const ExpandableSimPlanCard: React.FC<ExpandableSimPlanCardProps> = ({
   isRemoveFromCart,
   onClose,
   minutesLabel,
-  isResponsivePlan
+  isResponsivePlan,
+  autoRenew
 }) => {
   const history = useHistory();
   const [addItemToCart] = useAddToCart();
@@ -142,7 +143,7 @@ const ExpandableSimPlanCard: React.FC<ExpandableSimPlanCardProps> = ({
       }
       case OfferTypes.PREPAID: {
         try {
-          await addItemToCart(parseInt(id || ''), planName, (JSON.stringify(description || '')), Number(cost?.replaceAll(',', '.') || ''), "plan", true);
+          await addItemToCart(parseInt(id || ''), planName, (JSON.stringify(description || '')), Number(cost?.replaceAll(',', '.') || ''), "plan", true, undefined, undefined, autoRenew);
           isRemoveFromCart && onClose ? onClose() : history.push(isLoggedInUser ? "/order-details" : "/lebara-sim-choice");
         } catch (e) {
 
@@ -151,7 +152,7 @@ const ExpandableSimPlanCard: React.FC<ExpandableSimPlanCardProps> = ({
       }
       case OfferTypes.POSTPAID: {
         try {
-          await addItemToCart(parseInt(id || ''), planName, (JSON.stringify(description || '')), Number(cost?.replaceAll(',', '.') || ''), "postpaid", true);
+          await addItemToCart(parseInt(id || ''), planName, (JSON.stringify(description || '')), Number(cost?.replaceAll(',', '.') || ''), "postpaid", true, undefined, undefined, autoRenew);
           isRemoveFromCart && onClose ? onClose() : isLoggedInUser ? client
             .query({ query: GET_PERSONAL_DETAILS })
             .then((personalDetailsRes) => {
