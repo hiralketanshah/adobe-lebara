@@ -57,7 +57,8 @@ const ExpandableSimPlanCard: React.FC<ExpandableSimPlanCardProps> = ({
   isRemoveFromCart,
   onClose,
   minutesLabel,
-  isResponsivePlan
+  isResponsivePlan,
+  autoRenew
 }) => {
   const history = useHistory();
   const location = useLocation<{}>();
