@@ -148,6 +148,12 @@ public class PersonalDetailsExporter implements ComponentExporter {
     @ValueMapValue
     private String registrationLabel;
     @ValueMapValue
+    private String legalRegistrationLabel;
+    @ValueMapValue
+    private String legalRegistrationSucess;
+    @ValueMapValue
+    private String legalRegistrationSucessSubtitle;
+    @ValueMapValue
     private String simRegistrationInfo;
     @ValueMapValue
     private String registerLaterLabel;
@@ -342,6 +348,18 @@ public class PersonalDetailsExporter implements ComponentExporter {
 
     public String getCityErrorPattern() {
         return cityErrorPattern;
+    }
+
+    public String getLegalRegistrationLabel() {
+        return legalRegistrationLabel;
+    }
+
+    public String getLegalRegistrationSucess() {
+        return legalRegistrationSucess;
+    }
+
+    public String getLegalRegistrationSucessSubtitle() {
+        return legalRegistrationSucessSubtitle;
     }
 
     @Override

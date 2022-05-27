@@ -597,6 +597,9 @@
 		<property name="houseNumberErrorRequired"/>
 		<property name="cityErrorMax"/>
 		<property name="cityErrorPattern"/>
+		<property name="legalRegistrationSucess"/>
+		<property name="legalRegistrationLabel"/>
+		<property name="legalRegistrationSucessSubtitle"/>
 		<property name="cityErrorRequired"/>
 		<property name="houseNumberErrorPattern"/>
 		<property name="zipCodeErrorMin"/>
