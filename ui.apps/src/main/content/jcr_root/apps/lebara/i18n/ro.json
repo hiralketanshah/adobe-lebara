@@ -2,6 +2,8 @@
   "Days" : "Zile",
   "Month" : "Lună",
   "Minutes" : "Minute",
+  "GB" : "GB",
+  "MB" : "MB",
   "lebara.viewcart.label":"Vizualizare coș",
   "lebara.addon.addedtocart.label":"Addon {0} a fost adăugat în coș",
   "lebara.emptycart.addedtocart.label":"Credit suplimentar {0} adăugat în coș",
