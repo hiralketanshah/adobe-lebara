@@ -556,6 +556,7 @@
 
 		<!-- Personal Details -->
 		<property name="yourPersonalDetailsLabel"/>
+		<property name="simChoiceButtonLabel"/>
 		<property name="firstNameLabel"/>
 		<property name="firstNamePlaceholder"/>
 		<property name="lastNameLabel"/>
@@ -595,6 +596,7 @@
 		<property name="houseNumberErrorMax"/>
 		<property name="houseNumberErrorRequired"/>
 		<property name="cityErrorMax"/>
+		<property name="cityErrorPattern"/>
 		<property name="cityErrorRequired"/>
 		<property name="houseNumberErrorPattern"/>
 		<property name="zipCodeErrorMin"/>

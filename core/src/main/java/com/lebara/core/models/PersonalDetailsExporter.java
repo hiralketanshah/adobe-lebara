@@ -32,6 +32,8 @@ public class PersonalDetailsExporter implements ComponentExporter {
     @ValueMapValue
     public String yourPersonalDetailsLabel;
     @ValueMapValue
+    private String simChoiceButtonLabel;
+    @ValueMapValue
     public String firstNameLabel;
     @ValueMapValue
     public String firstNamePlaceholder;
@@ -107,6 +109,8 @@ public class PersonalDetailsExporter implements ComponentExporter {
     public String cityLabel;
     @ValueMapValue
     public String cityErrorMax;
+    @ValueMapValue
+    private String cityErrorPattern;
     @ValueMapValue
     public String cityErrorRequired;
     @ValueMapValue
@@ -331,6 +335,14 @@ public class PersonalDetailsExporter implements ComponentExporter {
 	public boolean getEnableSmsCheckbox() {
 		return enableSmsCheckbox;
 	}
+
+    public String getSimChoiceButtonLabel() {
+        return simChoiceButtonLabel;
+    }
+
+    public String getCityErrorPattern() {
+        return cityErrorPattern;
+    }
 
     @Override
     public String getExportedType() {

@@ -32,6 +32,13 @@
                                     text="Enable SMS?"
                                     uncheckedValue="{Boolean}false"
                                     value="{Boolean}true"/>
+                            <simChoiceButtonLabel
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                    fieldLabel="Sim Choice Button Label"
+                                    value="Register"
+                                    fieldDescription="Register"
+                                    name="./simChoiceButtonLabel"/>
                             <yourPersonalDetailsLabel
                                     jcr:primaryType="nt:unstructured"
                                     sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
@@ -926,6 +933,13 @@
                                     value="Town/City is required"
                                     fieldDescription="Town/City is required"
                                     name="./cityErrorRequired"/>
+                            <cityErrorPattern
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                    fieldLabel="Address Error message on invalid city"
+                                    value="Please enter valid City"
+                                    fieldDescription="Please enter valid City"
+                                    name="./cityErrorPattern"/>
                             <houseNumberErrorPattern
                                     jcr:primaryType="nt:unstructured"
                                     sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
