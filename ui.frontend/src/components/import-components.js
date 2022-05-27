@@ -94,3 +94,4 @@ import "./CallSupport/WeAreHere/AemConfig.js";
 import "../aemConfigs/SimDetails.js";
 import "../aemConfigs/SelectionConfig.js";
 import "../aemConfigs/QuickActionConfig.js";
+import "../aemConfigs/DestinationTableAemConfig.js";
