@@ -63,43 +63,6 @@
 <!--/*
     SPA-specific meta tags
 */-->
- <!-- consented paragraph HiddenOmniChannelScriptComponentDE -->
-<script type="text/javascript">
-  var locale = window.lebaraGlobalConfigs ? window.lebaraGlobalConfigs.locale : "en";
-  var appId = "a55aebb8-b933-4884-ade6-f9f3ea397430";
-  if (locale === "de") {
-    appId = "d9206fa1-b9c9-4a5c-8968-fa81e8e81ed4";
-  } else if (locale === "pl") {
-    appId = "38e87b64-9fb1-47c5-820e-c10a52ddbb19";
-  } else if (locale === "ro") {
-    appId = "43ef4de2-95fe-47ea-a602-b901fc99a69e";
-  }
-
-  var script = document.createElement('script');
-  script.setAttribute('id', 'Microsoft_Omnichannel_LCWidget');
-  script.setAttribute('src', 'https://oc-cdn-public-eur.azureedge.net/livechatwidget/scripts/LiveChatBootstrapper.js');
-  script.setAttribute('data-app-id', appId);
-  script.setAttribute('data-lcw-version', 'prod');
-  script.setAttribute('data-org-id', '755b89f5-a567-47f4-b48f-6ba517937172');
-  script.setAttribute('data-org-url', 'https://lebara-crm4.omnichannelengagementhub.com');
-  script.setAttribute('data-hide-chat-button', 'true');
-  document.head.appendChild(script);
-
-  window.addEventListener("lcw:ready", function handleLivechatReadyEvent() {
-    var contextProvider = function () {
-      return {
-        'Site': { 'value': 'en-de', 'isDisplayable': true }
-      };
-    };
-    Microsoft.Omnichannel.LiveChatWidget.SDK.setContextProvider(contextProvider);
-    window.isChatLoaded = true;
-  });
-
-</script>
-<script type="text/javascript">
-  new Microsoft.Omnichannel.LiveChatWidget.LiveChatBootstrapperWebChat().initializeLiveChat();
-
-</script>
 <meta name="theme-color" content="#000000" />
 <link
   rel="icon"
