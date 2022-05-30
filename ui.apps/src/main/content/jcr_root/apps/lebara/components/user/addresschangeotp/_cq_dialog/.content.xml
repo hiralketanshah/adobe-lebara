@@ -55,6 +55,27 @@
                                                 fieldLabel="Sim card number Label"
                                                 name="./simCardLabel"
                                                 value="Sim card number"/>
+                                            <simCardNumberLabel
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="Mobile Number"
+                                                fieldLabel="Sim card number Label"
+                                                name="./simCardNumberLabel"
+                                                value="Mobile Number"/>
+                                            <simCardNumberPlaceholder
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="Enter your mobile number"
+                                                fieldLabel="sim Card Number Placeholder"
+                                                name="./simCardNumberPlaceholder"
+                                                value="Enter your mobile number"/>
+                                            <simCardNumberDescription
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="Enter your x digits mobile number"
+                                                fieldLabel="sim Card Number Description"
+                                                name="./simCardNumberDescription"
+                                                value="Enter your x digits mobile number"/>
                                             <verifyCodeLabel
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"

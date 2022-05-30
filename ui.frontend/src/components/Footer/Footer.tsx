@@ -11,11 +11,13 @@ import {
   Link,
   Image,
 } from "@chakra-ui/react";
-import { RouterLink } from "@lebara/ui/src/hooks/useHistory";
+import { RouterLink, useLocation } from "@lebara/ui/src/hooks/useHistory";
 import { GoPlus, FcMinus } from "react-icons/all";
 import IconButton from "../IconButton/IconButton";
 import SocialMediaButtons from "../SocialMediaButtons/SocialMediaButtons";
 import { FooterProps } from "./types";
+import { useEffect } from "react";
+import { jwtToken } from "@lebara/ui/src/components/UserDetails/constats";
 
 const Footer: React.FC<FooterProps> = ({
   socialButtons,
@@ -24,7 +26,27 @@ const Footer: React.FC<FooterProps> = ({
   getapp,
   followus,
   theme = { color: "lightenPrimary.50", bgColor: "primary.500" },
-}) => (
+}) => {
+  const { pathname } = useLocation();
+  useEffect(() => {
+    setTimeout(() => {
+      const jwtCookie =getCookie("jwt_token");
+      function getCookie(name : string) {
+          var cookieArr = document.cookie.split(";");
+          for(var i = 0; i < cookieArr.length; i++) {
+              var cookiePair = cookieArr[i].split("=");
+              if(name == cookiePair[0].trim()) {
+                  return decodeURIComponent(cookiePair[1]);
+              }
+          }
+          return "";
+      }
+      if(jwtCookie){
+        document.getElementById("aklamio")?.setAttribute("data-aklamio-authentication-token", jwtCookie);
+      }
+    }, 500);
+  }, [pathname]);
+  return (
   <Box bg={theme?.bgColor} color={theme?.color}>
     <Accordion allowMultiple>
       {footerUpperLinks?.map((menu, index) => (
@@ -117,6 +139,7 @@ const Footer: React.FC<FooterProps> = ({
       {copyrightText}
     </Text>
   </Box>
-);
+)
+};
 
 export default Footer;

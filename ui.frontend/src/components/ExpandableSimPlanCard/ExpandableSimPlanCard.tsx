@@ -5,7 +5,7 @@ import OfferTypes from "./types";
 import Button from "@lebara/ui/src/components/Button/Button";
 import PlanDetailsDialog from "../PlanDetailsDialog/PlanDetailsDialog";
 import { allowanceListProps } from "../ExpandablePlanCard/types";
-import { useHistory } from "@lebara/ui/src/hooks/useHistory";
+import { useHistory, useLocation } from "@lebara/ui/src/hooks/useHistory";
 import useAddToCart from "@lebara/ui/src/hooks/useAddToCart";
 import { globalConfigs } from "@lebara/ui/src/configs/globalConfigs";
 import LebaraText from "@lebara/ui/src/components/LebaraText/LebaraText";
@@ -60,6 +60,7 @@ const ExpandableSimPlanCard: React.FC<ExpandableSimPlanCardProps> = ({
   isResponsivePlan
 }) => {
   const history = useHistory();
+  const location = useLocation<{}>();
   const [addItemToCart] = useAddToCart();
   const [removeFromCartApi] = useMutation(REMOVE_FROM_CART);
   const toast = useToast();
@@ -143,7 +144,7 @@ const ExpandableSimPlanCard: React.FC<ExpandableSimPlanCardProps> = ({
       case OfferTypes.PREPAID: {
         try {
           await addItemToCart(parseInt(id || ''), planName, (JSON.stringify(description || '')), Number(cost?.replaceAll(',', '.') || ''), "plan", true);
-          isRemoveFromCart && onClose ? onClose() : history.push(isLoggedInUser ? "/order-details" : "/lebara-sim-choice");
+          isRemoveFromCart && onClose ? onClose() : history.push(isLoggedInUser ? "/order-details" : new URLSearchParams(location.search).has("aid") ? "/mobile-number-from-another-operator-choice" : "/lebara-sim-choice");
         } catch (e) {
 
         }

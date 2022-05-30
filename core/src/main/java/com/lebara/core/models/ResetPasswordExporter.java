@@ -2,6 +2,7 @@ package com.lebara.core.models;
 
 import com.adobe.cq.export.json.ComponentExporter;
 import com.adobe.cq.export.json.ExporterConstants;
+import com.lebara.core.utils.AemUtils;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.api.resource.ResourceResolver;
@@ -69,7 +70,7 @@ public class ResetPasswordExporter implements ComponentExporter {
     }
 
     public String getResetPwdDescription() {
-        return resetPwdDescription;
+        return AemUtils.updateShortenLinksInRichText(resetPwdDescription, slingRequest);
     }
 
     public String getResetPwdEmailLabel() {
