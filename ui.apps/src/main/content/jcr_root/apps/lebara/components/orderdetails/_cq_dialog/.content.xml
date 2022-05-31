@@ -82,6 +82,20 @@
                                                 fieldLabel="Grand Total Label"
                                                 fieldDescription="Grand Total"
                                                 name="./grandTotalLabel"/>
+                                            <oneTimeActivationFeeLabel
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="One-time activation fee"
+                                                fieldLabel="One-time activation fee Label"
+                                                name="./yourOrderOneTimeActivationFeeLabel"
+                                                value="One-time activation fee"/>
+                                            <oneTimeActivationFee
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="15"
+                                                fieldLabel="One-time activation fee"
+                                                name="./yourOrderOneTimeActivationFee"
+                                                value="15"/>
                                         </items>
                                     </column>
                                 </items>
