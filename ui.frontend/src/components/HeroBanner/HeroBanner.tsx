@@ -95,7 +95,7 @@ return (
       }catch (e){
       }
       dispatch(setLoading(false));
-      history.push(isSimChoiceFlow ? "/lebara-sim-choice" : "/order-details");
+      history.push(isSimChoiceFlow ? "/mobile-number-from-another-operator-choice" : "/order-details");
     }}>
         {buttonCTALabel}
       </Button>
