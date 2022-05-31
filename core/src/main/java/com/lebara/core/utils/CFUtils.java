@@ -389,8 +389,8 @@ public class CFUtils {
                     if (currentContentFragment != null) {
                         selectBean.setName(CFUtils.getElementValue(currentContentFragment, "name"));
                         selectBean.setValue(CFUtils.getElementValue(currentContentFragment, "value"));
+                        currentProviderList.add(selectBean);
                     }
-                    currentProviderList.add(selectBean);
                 }
             }
         }
