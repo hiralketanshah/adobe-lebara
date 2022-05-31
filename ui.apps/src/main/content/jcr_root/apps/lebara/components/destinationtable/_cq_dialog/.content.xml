@@ -14,12 +14,28 @@
                 sling:resourceType="granite/ui/components/coral/foundation/tabs"
                 maximized="{Boolean}true">
                 <items jcr:primaryType="nt:unstructured">
-                    <title
+                    <column
                         jcr:primaryType="nt:unstructured"
-                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                        fieldDescription="Title"
-                        fieldLabel="Title"
-                        name="./title"/>
+                        jcr:title="Destination Table"
+                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                        <items jcr:primaryType="nt:unstructured">
+                            <title
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldDescription="Title to be rendered"
+                                fieldLabel="Title"
+                                name="./title"/>
+                            <cfpath
+                                cq:showOnCreate="{Boolean}true"
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="dam/cfm/components/cfpicker"
+                                fieldDescription="Select the content fragment for the list of countries"
+                                fieldLabel="Content Fragment For CountryList"
+                                name="./countryList"
+                                required="{Boolean}true"
+                                rootPath="/content/dam/lebara"/>
+                        </items>
+                    </column>
                 </items>
             </tabs>
         </items>
