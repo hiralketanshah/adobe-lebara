@@ -27,8 +27,8 @@ import javax.annotation.PostConstruct;
 import java.util.ArrayList;
 import java.util.List;
 
-@Model(adaptables = SlingHttpServletRequest.class, adapters = {DestinationTableExporter.class, ComponentExporter.class},
-        resourceType = DestinationTableExporter.RESOURCE_TYPE, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
+@Model(adaptables = SlingHttpServletRequest.class, adapters = { DestinationTableExporter.class,
+        ComponentExporter.class }, resourceType = DestinationTableExporter.RESOURCE_TYPE, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
 @Exporter(name = ExporterConstants.SLING_MODEL_EXPORTER_NAME, extensions = ExporterConstants.SLING_MODEL_EXTENSION)
 public class DestinationTableExporter implements ComponentExporter {
 
@@ -53,28 +53,55 @@ public class DestinationTableExporter implements ComponentExporter {
 
     @ValueMapValue
     private String title;
-    
+
     @ValueMapValue
     private String countryList;
+
+    @ValueMapValue
+    private String searchText;
+
+    @ValueMapValue
+    private String paginationText;
+
+    @ValueMapValue
+    private String previous;
+
+    @ValueMapValue
+    private String next;
 
     public String getTitle() {
         return title;
     }
 
-
     public List<CountryInfo> getCountryList() {
         List<CountryInfo> listOfCounties = new ArrayList<>();
-        if(null != countryList) {
+        if (null != countryList) {
             Resource cfResource = resourceResolver.getResource(countryList);
-            if(null!=cfResource) {
+            if (null != cfResource) {
                 ContentFragment cfPlanFragment = cfResource.adaptTo(ContentFragment.class);
-                listOfCounties =  CFUtils.getCountryList(cfResource, countryList);
-                
+                listOfCounties = CFUtils.getCountryList(cfResource, countryList);
+
             }
         }
-        
+
         return listOfCounties;
-        
+
+    }
+
+    public String getSearchText() {
+        return searchText;
+    }
+
+    public String getPaginationText() {
+        return paginationText;
+    }
+
+    public String getPrevious() {
+        return previous;
+    }
+
+    public String getNext() {
+        return next;
     }
 
     @Override

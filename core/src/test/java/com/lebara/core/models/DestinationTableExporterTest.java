@@ -36,5 +36,9 @@ class DestinationTableExporterTest {
         DestinationTableExporter destinationTable = aemContext.request().adaptTo(DestinationTableExporter.class);
         destinationTable.getTitle();
         destinationTable.getCountryList();
+        destinationTable.getNext();
+        destinationTable.getPrevious();
+        destinationTable.getSearchText();
+        destinationTable.getPaginationText();
     }
 }
