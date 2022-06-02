@@ -95,6 +95,8 @@
 		<property name="limitSelectLabel" />
 		<property name="topupLabel" />
 		<property name="topupSelectLabel" />
+		<property name="successOverlayTitle" />
+		<property name="successOverlaySubTitle" />
 		<!-- promotion banner props -->
 		<property name="fileReference" />
 		<!-- Postpaid Plans props -->
