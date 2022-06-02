@@ -32,6 +32,13 @@
                                     text="Enable SMS?"
                                     uncheckedValue="{Boolean}false"
                                     value="{Boolean}true"/>
+                            <makePaymentOnCart
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                    name="./makePaymentOnCart"
+                                    text="Make Payment on Cart?"
+                                    uncheckedValue="{Boolean}false"
+                                    value="{Boolean}true"/>
                             <simChoiceButtonLabel
                                     jcr:primaryType="nt:unstructured"
                                     sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
