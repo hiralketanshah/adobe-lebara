@@ -213,6 +213,8 @@ public class PersonalDetailsExporter implements ComponentExporter {
     private boolean enableEmailCheckbox;
     @ValueMapValue
     private boolean enableSmsCheckbox;
+    @ValueMapValue
+    private boolean makePaymentOnCart;
 
     public List<SelectBean> getCities(){
         return CFUtils.populateCityInfo(resourceResolver.getResource(cfPath));
@@ -340,6 +342,10 @@ public class PersonalDetailsExporter implements ComponentExporter {
 
 	public boolean getEnableSmsCheckbox() {
 		return enableSmsCheckbox;
+	}
+
+	public boolean getMakePaymentOnCart() {
+		return makePaymentOnCart;
 	}
 
     public String getSimChoiceButtonLabel() {
