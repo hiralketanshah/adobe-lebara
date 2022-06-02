@@ -192,6 +192,8 @@ public class PersonalDetailsExporter implements ComponentExporter {
     @ValueMapValue
     private String titleErrorRequired;
     @ValueMapValue
+    private String addressRequired;
+    @ValueMapValue
     private String titleFragmentPath;
     @ValueMapValue
     private boolean showDob;
@@ -294,8 +296,12 @@ public class PersonalDetailsExporter implements ComponentExporter {
 		return titlePlaceholder;
 	}
 
-	public String geTtitleErrorRequired() {
+	public String getTitleErrorRequired() {
 		return titleErrorRequired;
+	}
+
+	public String getAddressRequired() {
+		return addressRequired;
 	}
 
     public List<Object> getTitleOptions() {

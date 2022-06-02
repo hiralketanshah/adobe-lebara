@@ -308,6 +308,13 @@
                                     value="Save address for future"
                                     fieldDescription="Save address for future"
                                     name="./saveAddress"/>
+                            <addressRequired
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                    fieldLabel="Address Required Error Message"
+                                    value="Please start typing your address"
+                                    fieldDescription="Please start typing your address"
+                                    name="./addressRequired"/>
                             <showUpdatedAddressFields
                                 jcr:primaryType="nt:unstructured"
                                 sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"

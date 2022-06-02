@@ -629,6 +629,7 @@
 		<property name="titleLabel"/>
 		<property name="titlePlaceholder"/>
 		<property name="titleErrorRequired"/>
+		<property name="addressRequired"/>
 		<property name="dobLabel"/>
 		<property name="dobPlaceholder"/>
 		<property name="dobErrorRequired"/>
