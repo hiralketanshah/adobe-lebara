@@ -82,6 +82,12 @@
                                                 fieldLabel="Grand Total Label"
                                                 fieldDescription="Grand Total"
                                                 name="./grandTotalLabel"/>
+                                            <totalLabel
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="Total Label"
+                                                fieldDescription="Total"
+                                                name="./totalLabel"/>
                                             <oneTimeActivationFeeLabel
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
