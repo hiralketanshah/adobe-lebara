@@ -54,6 +54,7 @@ public class SitemapFilter implements Filter {
         //chain.doFilter(request, response);
         if (modelResponse != null) {
             chain.doFilter(request, modelResponse);
+            response.setContentType("application/xml");
             response.getWriter().write(getModifiedContent(modelResponse.toString(), slingRequest));
         }
     }
