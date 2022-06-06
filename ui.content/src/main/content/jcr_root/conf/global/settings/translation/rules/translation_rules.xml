@@ -78,7 +78,12 @@
 
 		<!-- selection props -->
 		<property name="cardCtaText" />
-
+		<!-- sim register alert props -->
+		<property name="registerWarningMessage" />
+		<property name="suspendedWarningMessage" />
+		<property name="overlayHeader" />
+		<property name="overlaySuccessLabel" />
+		<property name="overlaySkipLabel" />
 		<!-- simswitch props -->
 		<property name="balanceLabel" />
 		<property name="simName" />
