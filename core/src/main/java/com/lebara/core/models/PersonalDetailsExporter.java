@@ -217,6 +217,8 @@ public class PersonalDetailsExporter implements ComponentExporter {
     private boolean enableSmsCheckbox;
     @ValueMapValue
     private boolean makePaymentOnCart;
+    @ValueMapValue
+    private String additionFieldLengthError;
 
     public List<SelectBean> getCities(){
         return CFUtils.populateCityInfo(resourceResolver.getResource(cfPath));
@@ -372,6 +374,10 @@ public class PersonalDetailsExporter implements ComponentExporter {
 
     public String getLegalRegistrationSucessSubtitle() {
         return legalRegistrationSucessSubtitle;
+    }
+
+    public String getAdditionFieldLengthError() {
+        return additionFieldLengthError;
     }
 
     @Override

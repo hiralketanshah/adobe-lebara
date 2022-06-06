@@ -644,6 +644,7 @@
 		<property name="termsConditionsError"/>
 		<property name="additionalDeliveryLabel"/>
 		<property name="additionalDeliveryPlaceholder"/>
+		<property name="additionFieldLengthError"/>
 
 		<!-- Postpaid personal details -->
 		<property name="emailLabel"/>
