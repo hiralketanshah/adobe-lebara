@@ -82,6 +82,8 @@
 		<!-- simswitch props -->
 		<property name="balanceLabel" />
 		<property name="simName" />
+		<property name="activeLabel" />
+		<property name="inActiveLabel" />
 		<!-- Balance Card props -->
 		<property name="activeDesc" />
 		<property name="inactiveLabel" />
@@ -141,6 +143,7 @@
 		<property name="smsLabel" />
 		<property name="smsValue" />
 		<property name="validUntilLabel" />
+		<property name="validLabel" />
 		<property name="aioLabel" />
 		<property name="l2lLabel" />
 		<property name="localLabel" />

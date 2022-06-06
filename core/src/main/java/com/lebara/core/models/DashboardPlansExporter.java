@@ -73,6 +73,8 @@ public class DashboardPlansExporter extends HeadingExporter {
     private String smsValue;
     @ValueMapValue
     private String leftOfLabel;
+    @ValueMapValue
+    private String validLabel;
 
     public String getButtonLabel() {
         return buttonLabel;
@@ -152,6 +154,10 @@ public class DashboardPlansExporter extends HeadingExporter {
 
     public String getLeftOfLabel() {
         return leftOfLabel;
+    }
+
+    public String getValidLabel() {
+        return validLabel;
     }
 
     @Override
