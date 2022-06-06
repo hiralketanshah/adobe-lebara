@@ -1008,6 +1008,12 @@
                                     fieldLabel="zipCode Error message on Max character limit"
                                     value="Must be 10 characters or less"
                                     name="./zipCodeErrorMax"/>
+                            <additionFieldLengthError
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                    fieldLabel="Additional Field Length Error"
+                                    fieldDescription="Additional info shouldn't exceed 255 characters"
+                                    name="./additionFieldLengthError"/>
                         </items>
                     </column5>
                     <column6

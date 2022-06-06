@@ -78,7 +78,12 @@
 
 		<!-- selection props -->
 		<property name="cardCtaText" />
-
+		<!-- sim register alert props -->
+		<property name="registerWarningMessage" />
+		<property name="suspendedWarningMessage" />
+		<property name="overlayHeader" />
+		<property name="overlaySuccessLabel" />
+		<property name="overlaySkipLabel" />
 		<!-- simswitch props -->
 		<property name="balanceLabel" />
 		<property name="simName" />
@@ -642,6 +647,7 @@
 		<property name="termsConditionsError"/>
 		<property name="additionalDeliveryLabel"/>
 		<property name="additionalDeliveryPlaceholder"/>
+		<property name="additionFieldLengthError"/>
 
 		<!-- Postpaid personal details -->
 		<property name="emailLabel"/>

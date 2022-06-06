@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="nt:unstructured"
+    jcr:title="Sim Register Alert"
+    sling:resourceType="cq/gui/components/authoring/dialog">
+    <content
+        jcr:primaryType="nt:unstructured"
+        sling:resourceType="granite/ui/components/coral/foundation/container">
+        <items jcr:primaryType="nt:unstructured">
+            <tabs
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="granite/ui/components/coral/foundation/tabs"
+                maximized="{Boolean}true">
+                <items jcr:primaryType="nt:unstructured">
+                    <column1
+                            jcr:primaryType="nt:unstructured"
+                            jcr:title="Sim Register Alert"
+                            sling:resourceType="granite/ui/components/coral/foundation/container">
+                        <items jcr:primaryType="nt:unstructured">
+                            <registerWarningMessage
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                    fieldDescription="You only have {0} days to register your sim. Kindly register now to enjoy uninterrupted services"
+                                    fieldLabel="Register Warning Message"
+                                    name="./registerWarningMessage"
+                                    value="You only have {0} days to register your sim. Kindly register now to enjoy uninterrupted services"/>
+                            <suspendedWarningMessage
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                    fieldDescription="Your SIM card has been suspended because you did not registered legally within 5 days. Please register now to enjoy your services"
+                                    fieldLabel="Suspended Warning Message"
+                                    name="./suspendedWarningMessage"
+                                    value="Your SIM card has been suspended because you did not registered legally within 5 days. Please register now to enjoy your services"/>
+                            <overlayHeader
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                    fieldDescription="It looks like you are Missing Something"
+                                    fieldLabel="Overlay Header"
+                                    name="./overlayHeader"
+                                    value="It looks like you are Missing Something"/>
+                            <overlaySuccessLabel
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                    fieldDescription="REGISTER NOW"
+                                    fieldLabel="Overlay Success Label"
+                                    name="./overlaySuccessLabel"
+                                    value="REGISTER NOW"/>
+                            <overlaySkipLabel
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                    fieldDescription="SKIP FOR NOW"
+                                    fieldLabel="Overlay Skip Label"
+                                    name="./overlaySkipLabel"
+                                    value="SKIP FOR NOW"/>
+                        </items>
+                    </column1>
+                 </items>
+            </tabs>
+        </items>
+    </content>
+</jcr:root>
