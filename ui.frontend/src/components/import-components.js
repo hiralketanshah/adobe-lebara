@@ -77,6 +77,7 @@ import "../aemConfigs/TopUpRouteAemConfig.js";
 import "./SelectedPlanCard/AemConfig.js";
 import "../aemConfigs/HelpAemConfig.js";
 import "../aemConfigs/AddonsAemConfig.js";
+import "../aemConfigs/UspListConfig.js";
 import "../aemConfigs/LebaraBreadcrumbAemConfig.js";
 import "./LbIntro/AemConfig.js";
 import "./LbSectionIntro/AemConfig.js";

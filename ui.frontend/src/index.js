@@ -94,7 +94,7 @@ if (!AuthoringUtils.isInEditor()) {
 
 axios.defaults.headers = {
     channel: "Web",
-    country: "DE",
+    country: `${globalConfigs.country}`,
     locale,
 };
 
