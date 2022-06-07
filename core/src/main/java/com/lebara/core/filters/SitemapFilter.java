@@ -70,7 +70,8 @@ public class SitemapFilter implements Filter {
             }
         }
         if (StringUtils.isNotBlank(externalPath)) {
-            return originalContent.replaceAll("/content/lebara", externalPath + "/content/lebara");
+            return originalContent.replaceAll("<loc>", "<loc>" + externalPath).replaceAll("href=\"/","href=\"" +externalPath+
+                    "/");
         }
         return originalContent;
     }
