@@ -59,6 +59,12 @@
                                                 fieldLabel="Inactive Label"
                                                 name="./inActiveLabel"
                                                 fieldDescription="In-Active"/>
+                                            <noSimAttach
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="No sim attach Label"
+                                                name="./noSimAttach"
+                                                fieldDescription="No sim attached"/>
                                         </items>
                                     </column>
                                 </items>
