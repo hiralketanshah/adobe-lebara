@@ -379,6 +379,7 @@
 		<property name="prepaidAutoRenewDesc" />
 		<property name="postpaidAutoRenewDesc" />
 		<property name="grandTotalLabel"/>
+		<property name="totalLabel" />
 		<property name="addVoucherCodeLabel"/>
 		<property name="applyVoucherLabel"/>
 		<property name="enterVoucherCodeLabel"/>

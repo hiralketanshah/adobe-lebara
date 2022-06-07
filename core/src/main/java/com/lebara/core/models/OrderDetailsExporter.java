@@ -192,6 +192,9 @@ public class OrderDetailsExporter implements ComponentExporter {
     @ValueMapValue
     private String yourOrderOneTimeActivationFee;
 
+    @ValueMapValue
+    private String totalLabel;
+
     public String getSelectedProductLabel() {
         return selectedProductLabel;
     }
@@ -226,6 +229,10 @@ public class OrderDetailsExporter implements ComponentExporter {
 
     public String getGrandTotalLabel() {
         return grandTotalLabel;
+    }
+
+    public String getTotalLabel() {
+        return totalLabel;
     }
 
     public String getAddVoucherCodeLabel() {
