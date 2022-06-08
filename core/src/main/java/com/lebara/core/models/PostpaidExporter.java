@@ -120,6 +120,8 @@ public class PostpaidExporter implements ComponentExporter {
     private String changePlanSubHeading;
     @ValueMapValue
     private String changePlanHeading;
+    @ValueMapValue
+    private String notMigratedToFmvnoErrorMessage;
 
     public List<Labels> getDurationRadioLabelList() {
         return durationRadioLabelList == null ? Collections.emptyList() : Collections.unmodifiableList(durationRadioLabelList);
@@ -199,6 +201,10 @@ public class PostpaidExporter implements ComponentExporter {
 
     public String getAbroadMinutesPopupInfoTop() {
         return AemUtils.updateShortenLinksInRichText(abroadMinutesPopupInfoTop,slingRequest);
+    }
+
+    public String getNotMigratedToFmvnoErrorMessage() {
+        return notMigratedToFmvnoErrorMessage;
     }
 
     public String getCountryFlagFrom() {
