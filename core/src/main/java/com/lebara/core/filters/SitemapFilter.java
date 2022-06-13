@@ -54,6 +54,7 @@ public class SitemapFilter implements Filter {
         //chain.doFilter(request, response);
         if (modelResponse != null) {
             chain.doFilter(request, modelResponse);
+            response.setContentType("application/xml");
             response.getWriter().write(getModifiedContent(modelResponse.toString(), slingRequest));
         }
     }
@@ -69,7 +70,8 @@ public class SitemapFilter implements Filter {
             }
         }
         if (StringUtils.isNotBlank(externalPath)) {
-            return originalContent.replaceAll("<loc>", "<loc>" + externalPath);
+            return originalContent.replaceAll("<loc>", "<loc>" + externalPath).replaceAll("href=\"/","href=\"" +externalPath+
+                    "/");
         }
         return originalContent;
     }

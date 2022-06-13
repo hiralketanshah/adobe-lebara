@@ -576,6 +576,20 @@
                                 value="15"/>
                         </items>
                     </yourOrder>
+                    <errormessages
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Error Messages"
+                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                        <items jcr:primaryType="nt:unstructured">
+                            <notMigratedToFmvnoErrorMessage
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldLabel="Error Message if user is not migrated to FMVNO"
+                                fieldDescription="Error Message if user is not migrated to FMVNO"
+                                name="./notMigratedToFmvnoErrorMessage"
+                                value="Your current SIM card is on the old network; please migrate to the new Lebara network to continue with this plan and receive additional benefits."/>
+                        </items>
+                    </errormessages>
                 </items>
             </tabs>
         </items>
