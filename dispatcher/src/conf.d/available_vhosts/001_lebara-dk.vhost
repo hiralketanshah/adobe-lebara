@@ -34,6 +34,9 @@ Include conf.d/variables/custom.vars
 		Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
 		Header always set Content-Security-Policy "script-src 'self' 'unsafe-inline' 'unsafe-eval' *.trustpilot.com *.googletagmanager.com *.googleapis.com *.exactag.com *.cookielaw.org *.mxapis.com *.google-analytics.com *.bing.com *.googleadservices.com *.doubleclick.net *.facebook.net *.lebara.com *.lebara.dk *.criteo.com *.criteo.net *.clarity.ms *.google.com *.decibelinsight.net *.gstatic.com *.paypal.com *.adyen.com *.sofort.com *.giropay.de *.azureedge.net;  object-src 'self'"
 	</IfModule>
+	<filesMatch ".(xml)$">
+                         Header set Content-type "application/xml; charset=utf-8"
+    </filesMatch>
 	<Directory />
 		<IfModule disp_apache2.c>
 			# Some items cache with the wrong mime type

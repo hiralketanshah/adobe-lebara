@@ -18,6 +18,7 @@ RewriteCond %{REQUEST_URI} ^/content/lebara
 RewriteCond %{REQUEST_URI} (.html)$
 RewriteRule ^/content/lebara/dk(.*)$ $1 [L,R=301,NE]
 
+#rewrites request like lebara.dk/abc to lebara.dk/abc/home.html , needed for lebara.dk/dk
 RewriteRule ^/([a-z]+)$	/$1/home.html [L,R=301]
 
 # Robots rewrite
