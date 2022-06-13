@@ -44,7 +44,7 @@ const Footer: React.FC<FooterProps> = ({
       if(jwtCookie){
         document.getElementById("aklamio")?.setAttribute("data-aklamio-authentication-token", jwtCookie);
       }
-    }, 500);
+    }, 10);
   }, [pathname]);
   return (
   <Box bg={theme?.bgColor} color={theme?.color}>

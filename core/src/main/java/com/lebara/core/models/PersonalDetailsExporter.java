@@ -139,9 +139,15 @@ public class PersonalDetailsExporter implements ComponentExporter {
     public String passwordPatternError;
     @ValueMapValue
     private String cfPath;
+    @ValueMapValue
+    private String addressRequired;
 
     public List<SelectBean> getCities(){
         return CFUtils.populateCityInfo(resourceResolver.getResource(cfPath));
+    }
+
+    public String getAddressRequired() {
+        return addressRequired;
     }
 
     @Override

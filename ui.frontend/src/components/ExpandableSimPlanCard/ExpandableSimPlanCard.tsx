@@ -119,7 +119,7 @@ const ExpandableSimPlanCard: React.FC<ExpandableSimPlanCardProps> = ({
   };
   const handleAddToCart = async () => {
     const isLoggedInUser: boolean = !!(isAuthenticated && msisdn);
-    const description: string | undefined = additionalOffers?.match(/<li>.*?<\/li>/g)?.length ? additionalOffers.replaceAll('\n', '').replaceAll('&nbsp;', '').match(/<li>.*?<\/li>/g)?.map(list => list?.replaceAll(/<li>|<\/li>/g, ''))?.join('+') : additionalOffers;
+    const description: string | undefined = additionalOffers?.match(/<li>.*?<\/li>/g)?.length ? additionalOffers.replaceAll('\n', '').replaceAll('&nbsp;', '').match(/<li>.*?<\/li>/g)?.map(list => list?.replaceAll(/<(.|\n)*?>/g, ''))?.join('+') : additionalOffers;
     setIsButtonDisabled(true);
     if (isRemoveFromCart) {
       await removeFromCartApi({
@@ -143,7 +143,7 @@ const ExpandableSimPlanCard: React.FC<ExpandableSimPlanCardProps> = ({
       }
       case OfferTypes.PREPAID: {
         try {
-          await addItemToCart(parseInt(id || ''), planName, (JSON.stringify(description || '')), Number(cost?.replaceAll(',', '.') || ''), "plan", true);
+          await addItemToCart(parseInt(id || ''), planName, (JSON.stringify(description || '')), Number(promotionPrice?.replaceAll(',', '.') || cost?.replaceAll(',', '.') || ''), "plan", true);
           isRemoveFromCart && onClose ? onClose() : history.push(isLoggedInUser ? "/order-details" : new URLSearchParams(location.search).has("aid") ? "/mobile-number-from-another-operator-choice" : "/lebara-sim-choice");
         } catch (e) {
 
@@ -152,7 +152,7 @@ const ExpandableSimPlanCard: React.FC<ExpandableSimPlanCardProps> = ({
       }
       case OfferTypes.POSTPAID: {
         try {
-          await addItemToCart(parseInt(id || ''), planName, (JSON.stringify(description || '')), Number(cost?.replaceAll(',', '.') || ''), "postpaid", true);
+          await addItemToCart(parseInt(id || ''), planName, (JSON.stringify(description || '')), Number(promotionPrice?.replaceAll(',', '.') || cost?.replaceAll(',', '.') || ''), "postpaid", true);
           isRemoveFromCart && onClose ? onClose() : isLoggedInUser ? client
             .query({ query: GET_PERSONAL_DETAILS })
             .then((personalDetailsRes) => {

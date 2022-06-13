@@ -186,6 +186,15 @@ public class OrderDetailsExporter implements ComponentExporter {
     @ValueMapValue
     private String pdfCloseLabel;
 
+    @ValueMapValue
+    private String yourOrderOneTimeActivationFeeLabel;
+
+    @ValueMapValue
+    private String yourOrderOneTimeActivationFee;
+
+    @ValueMapValue
+    private String totalLabel;
+
     public String getSelectedProductLabel() {
         return selectedProductLabel;
     }
@@ -220,6 +229,10 @@ public class OrderDetailsExporter implements ComponentExporter {
 
     public String getGrandTotalLabel() {
         return grandTotalLabel;
+    }
+
+    public String getTotalLabel() {
+        return totalLabel;
     }
 
     public String getAddVoucherCodeLabel() {
@@ -388,6 +401,14 @@ public class OrderDetailsExporter implements ComponentExporter {
 
     public String getPdfCloseLabel() {
         return pdfCloseLabel;
+    }
+
+    public String getYourOrderOneTimeActivationFeeLabel() {
+        return yourOrderOneTimeActivationFeeLabel;
+    }
+
+    public String getYourOrderOneTimeActivationFee() {
+        return yourOrderOneTimeActivationFee;
     }
 
 
