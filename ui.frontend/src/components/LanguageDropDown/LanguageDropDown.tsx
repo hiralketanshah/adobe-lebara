@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { IoChevronDownCircleSharp } from "react-icons/all";
 import { LanguageDropDownProps } from "./types";
 import Select from "@lebara/ui/src/components/Select/Select";
+import { useLocation } from "@lebara/ui/src/hooks/useHistory";
 
 const LanguageDropDown: React.FC<LanguageDropDownProps> = ({
   options,
@@ -9,12 +10,12 @@ const LanguageDropDown: React.FC<LanguageDropDownProps> = ({
 }) => {
   const [selectOptions, setSelectOptions] = useState([]);
   const [selectedValue, setSelectedValue] = useState("");
-
+  const location = useLocation<{}>();
   const handleChange = (event: any) => {
     const { target } = event;
     if (target.type === 'select-one') {
       const selectedValue = target.selectedOptions[0].value;
-      window.open(selectedValue, "_self");
+      window.open(`${selectedValue}${location.search}`, "_self");
     }
   }
 

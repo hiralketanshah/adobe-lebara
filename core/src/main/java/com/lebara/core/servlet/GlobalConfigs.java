@@ -8,6 +8,7 @@ import com.day.cq.commons.jcr.JcrConstants;
 import com.day.cq.wcm.api.PageManager;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.net.MediaType;
+import com.lebara.core.models.beans.AttachSimBean;
 import com.lebara.core.models.beans.PaymentMethods;
 import com.lebara.core.services.GlobalOsgiService;
 import com.lebara.core.utils.AemUtils;
@@ -40,10 +41,14 @@ public class GlobalConfigs extends SlingSafeMethodsServlet {
 
     private static final long serialVersionUID = 1L;
     private static final String CURRENCY_NAME = "currencyName";
+    private static final String COUNTRY = "country";
     private static final String JOURNEY_PAGES = "journeyPages";
+    private static final String ATTACH_SIM_MODAL = "attachSimModal";
     private static final String PRIVATE_PAGES = "privatePages";
     private static final String PAYMENT_MESSAGES = "paymentMessages";
     private static final String PLAN_NOT_ELIGIBLE_ERROR_MESSAGE = "planNotEligibleErrorMessage";
+    private static final String PLAN_NOT_ELIGIBLE_ERROR_TITLE = "planNotEligibleErrorTitle";
+    private static final String PLAN_NOT_ELIGIBLE_ERROR_BUTTON_TEXT = "planNotEligibleErrorButtonText";
 
     @Reference
     private transient GlobalOsgiService globalOsgiService;
@@ -65,7 +70,7 @@ public class GlobalConfigs extends SlingSafeMethodsServlet {
         }
         return (new ImmutableMap.Builder())
                 .put("locale", page!=null?Optional.ofNullable(page.getLanguage(false).toLanguageTag()).orElse(""):"")
-                .put("country", page!=null?Optional.ofNullable(page.getLanguage(false).getCountry()).orElse(""):"")
+                .put("country", Optional.ofNullable(inheritedProp.getInherited(COUNTRY, String.class)).orElse("DE"))
                 .put("apiHostUri", Optional.ofNullable(globalOsgiService.getApiHostUri()).orElse(""))
                 .put("gqlEndpoint", Optional.ofNullable(globalOsgiService.getGqlEndpoint()).orElse(""))
                 .put("paymentClientKey", Optional.ofNullable(globalOsgiService.getPaymentClientKey()).orElse(""))
@@ -75,7 +80,10 @@ public class GlobalConfigs extends SlingSafeMethodsServlet {
                 .put(JOURNEY_PAGES, getJourneyPages(request, page))
                 .put(PRIVATE_PAGES, getPrivatePages(request, inheritedProp.getInherited(PRIVATE_PAGES, String[].class)))
                 .put(PLAN_NOT_ELIGIBLE_ERROR_MESSAGE, Optional.ofNullable(inheritedProp.getInherited(PLAN_NOT_ELIGIBLE_ERROR_MESSAGE, String.class)).orElse(""))
-                .put(PAYMENT_MESSAGES,getPaymentMethods(page)).build();
+                .put(PLAN_NOT_ELIGIBLE_ERROR_TITLE, Optional.ofNullable(inheritedProp.getInherited(PLAN_NOT_ELIGIBLE_ERROR_TITLE, String.class)).orElse(""))
+                .put(PLAN_NOT_ELIGIBLE_ERROR_BUTTON_TEXT, Optional.ofNullable(inheritedProp.getInherited(PLAN_NOT_ELIGIBLE_ERROR_BUTTON_TEXT, String.class)).orElse(""))
+                .put(PAYMENT_MESSAGES,getPaymentMethods(page))
+                .put("attachSim",getAttachSimModelData(request, page)).build();
     }
 
     private PaymentMethods getPaymentMethods(Page page) {
@@ -115,6 +123,20 @@ public class GlobalConfigs extends SlingSafeMethodsServlet {
             return new com.google.gson.Gson().toJson(items);
         }
         return "{}";
+    }
+
+    protected AttachSimBean getAttachSimModelData(SlingHttpServletRequest request, Page currentPage) {
+        AttachSimBean attachSim = new AttachSimBean();
+        if (currentPage != null) {
+            while (currentPage.getContentResource(ATTACH_SIM_MODAL) == null && !currentPage.getAbsoluteParent(1).getPath().equals(currentPage.getPath())) {
+                currentPage = currentPage.getParent();
+            }
+            if (currentPage != null && currentPage.getContentResource(ATTACH_SIM_MODAL) != null) {
+                 attachSim = currentPage.getContentResource(ATTACH_SIM_MODAL).adaptTo(AttachSimBean.class);
+
+            }
+        }
+        return attachSim;
     }
 
     protected List<String> getPrivatePages(SlingHttpServletRequest request, String[] privatePages) {

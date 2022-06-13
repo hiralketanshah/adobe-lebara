@@ -5,6 +5,7 @@ import com.adobe.cq.export.json.ExporterConstants;
 import com.lebara.core.dto.SelectBean;
 import com.lebara.core.utils.CFUtils;
 import org.apache.sling.api.SlingHttpServletRequest;
+import com.lebara.core.utils.AemUtils;
 import org.apache.sling.api.resource.ResourceResolver;
 import org.apache.sling.models.annotations.DefaultInjectionStrategy;
 import org.apache.sling.models.annotations.Exporter;
@@ -26,9 +27,12 @@ public class PersonalDetailsExporter implements ComponentExporter {
 
     @SlingObject
     private ResourceResolver resourceResolver;
-
+    @SlingObject
+    private SlingHttpServletRequest slingRequest;
     @ValueMapValue
     public String yourPersonalDetailsLabel;
+    @ValueMapValue
+    private String simChoiceButtonLabel;
     @ValueMapValue
     public String firstNameLabel;
     @ValueMapValue
@@ -106,6 +110,8 @@ public class PersonalDetailsExporter implements ComponentExporter {
     @ValueMapValue
     public String cityErrorMax;
     @ValueMapValue
+    private String cityErrorPattern;
+    @ValueMapValue
     public String cityErrorRequired;
     @ValueMapValue
     public String cityPlaceholder;
@@ -138,10 +144,240 @@ public class PersonalDetailsExporter implements ComponentExporter {
     @ValueMapValue
     public String passwordPatternError;
     @ValueMapValue
+    private boolean showRegistration;
+    @ValueMapValue
+    private String registrationLabel;
+    @ValueMapValue
+    private String legalRegistrationLabel;
+    @ValueMapValue
+    private String legalRegistrationSucess;
+    @ValueMapValue
+    private String legalRegistrationSucessSubtitle;
+    @ValueMapValue
+    private String simRegistrationInfo;
+    @ValueMapValue
+    private String registerLaterLabel;
+    @ValueMapValue
+    private String documentLabel;
+    @ValueMapValue
+    private String documentPlaceholder;
+    @ValueMapValue
+    private String documentNumberLabel;
+    @ValueMapValue
+    private String documentNumberPlacholder;
+    @ValueMapValue
+    private String documentErrorRequired;
+    @ValueMapValue
+    private String documentNumberErrorRequired;
+    @ValueMapValue
+    private String documentNumberErrorPattern;
+    @ValueMapValue
+    private String documentTypesPath;
+    @ValueMapValue
     private String cfPath;
-
+    @ValueMapValue
+    private boolean showTermsAndConditions;
+    @ValueMapValue
+    private String termsConditionsLabel;
+    @ValueMapValue
+    private String termsAndConditions;
+    @ValueMapValue
+    private String termsConditionsError;
+    @ValueMapValue
+    private boolean showTitle;
+    @ValueMapValue
+    private String titleLabel;
+    @ValueMapValue
+    private String titlePlaceholder;
+    @ValueMapValue
+    private String titleErrorRequired;
+    @ValueMapValue
+    private String addressRequired;
+    @ValueMapValue
+    private String titleFragmentPath;
+    @ValueMapValue
+    private boolean showDob;
+    @ValueMapValue
+    private String dobLabel;
+    @ValueMapValue
+    private String dobPlaceholder;
+    @ValueMapValue
+    private String dobErrorRequired;
+    @ValueMapValue
+    private String dobError;
+    @ValueMapValue
+    private String additionalDeliveryLabel;
+    @ValueMapValue
+    private String additionalDeliveryPlaceholder;
+    @ValueMapValue
+    private boolean showUpdatedAddressFields;
+    @ValueMapValue
+    private boolean enableEmailCheckbox;
+    @ValueMapValue
+    private boolean enableSmsCheckbox;
+    @ValueMapValue
+    private boolean makePaymentOnCart;
+    @ValueMapValue
+    private String additionFieldLengthError;
+    
     public List<SelectBean> getCities(){
         return CFUtils.populateCityInfo(resourceResolver.getResource(cfPath));
+    }
+
+	public boolean getShowRegistration() {
+		return showRegistration;
+	}
+
+	public String getRegistrationLabel() {
+		return registrationLabel;
+	}
+
+	public String getSimRegistrationInfo() {
+		return simRegistrationInfo;
+	}
+
+	public String getRegisterLaterLabel() {
+		return registerLaterLabel;
+	}
+
+	public String getDocumentLabel() {
+		return documentLabel;
+	}
+
+	public String getDocumentPlaceholder() {
+		return documentPlaceholder;
+	}
+
+	public String getDocumentNumberLabel() {
+		return documentNumberLabel;
+	}
+
+	public String getDocumentErrorRequired() {
+		return documentErrorRequired;
+	}
+
+	public String getDocumentNumberErrorRequired() {
+		return documentNumberErrorRequired;
+	}
+
+	public String getDocumentNumberPlacholder() {
+		return documentNumberPlacholder;
+	}
+
+	public String getDocumentNumberErrorPattern() {
+		return documentNumberErrorPattern;
+	}
+
+    public List<Object> getDocumentTypes() {
+        return CFUtils.getCurrentProvidersOptions(documentTypesPath,resourceResolver);
+    }
+
+	public boolean getShowTermsAndConditions() {
+		return showTermsAndConditions;
+	}
+
+    public String getTermsConditionsLabel() {
+        return AemUtils.updateShortenLinksInRichText(termsConditionsLabel,slingRequest);
+    }
+
+    public String getTermsAndConditions() {
+        return AemUtils.updateShortenLinksInRichText(termsAndConditions,slingRequest);
+    }
+
+	public String getTermsConditionsError() {
+		return termsConditionsError;
+	}
+
+	public boolean getShowTitle() {
+		return showTitle;
+	}
+
+	public String getTitleLabel() {
+		return titleLabel;
+	}
+
+	public String getTitlePlaceholder() {
+		return titlePlaceholder;
+	}
+
+	public String getTitleErrorRequired() {
+		return titleErrorRequired;
+	}
+
+    public List<Object> getTitleOptions() {
+        return CFUtils.getCurrentProvidersOptions(titleFragmentPath,resourceResolver);
+    }
+
+	public boolean getShowDob() {
+		return showDob;
+	}
+
+	public String getDobLabel() {
+		return dobLabel;
+	}
+
+	public String getDobPlaceholder() {
+		return dobPlaceholder;
+	}
+
+	public String getDobErrorRequired() {
+		return dobErrorRequired;
+	}
+
+	public String getDobError() {
+		return dobError;
+	}
+
+	public String getAdditionalDeliveryLabel() {
+		return additionalDeliveryLabel;
+	}
+
+	public String getAdditionalDeliveryPlaceholder() {
+		return additionalDeliveryPlaceholder;
+	}
+
+	public boolean getShowUpdatedAddressFields() {
+		return showUpdatedAddressFields;
+	}
+
+	public boolean getEnableEmailCheckbox() {
+		return enableEmailCheckbox;
+	}
+
+	public boolean getEnableSmsCheckbox() {
+		return enableSmsCheckbox;
+	}
+
+	public boolean getMakePaymentOnCart() {
+		return makePaymentOnCart;
+	}
+
+    public String getSimChoiceButtonLabel() {
+        return simChoiceButtonLabel;
+    }
+
+    public String getCityErrorPattern() {
+        return cityErrorPattern;
+    }
+
+    public String getLegalRegistrationLabel() {
+        return legalRegistrationLabel;
+    }
+
+    public String getLegalRegistrationSucess() {
+        return legalRegistrationSucess;
+    }
+
+    public String getLegalRegistrationSucessSubtitle() {
+        return legalRegistrationSucessSubtitle;
+    }
+
+    public String getAdditionFieldLengthError() {
+        return additionFieldLengthError;
+    }
+
+    public String getAddressRequired() {
+        return addressRequired;
     }
 
     @Override

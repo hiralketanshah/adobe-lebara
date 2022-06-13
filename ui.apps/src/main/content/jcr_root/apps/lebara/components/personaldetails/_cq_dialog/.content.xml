@@ -2,7 +2,8 @@
 <jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:granite="http://www.adobe.com/jcr/granite/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
           jcr:primaryType="nt:unstructured"
           jcr:title="Personal Details Component"
-          sling:resourceType="cq/gui/components/authoring/dialog">
+          sling:resourceType="cq/gui/components/authoring/dialog"
+          extraClientlibs="[acs-commons.widgets.showhidedialogfields]">
     <content
             jcr:primaryType="nt:unstructured"
             sling:resourceType="granite/ui/components/coral/foundation/container">
@@ -17,6 +18,34 @@
                             jcr:title="Name Section"
                             sling:resourceType="granite/ui/components/coral/foundation/container">
                         <items jcr:primaryType="nt:unstructured">
+                            <enableEmailCheckbox
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                    name="./enableEmailCheckbox"
+                                    text="Enable Email?"
+                                    uncheckedValue="{Boolean}false"
+                                    value="{Boolean}true"/>
+                            <enableSmsCheckbox
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                    name="./enableSmsCheckbox"
+                                    text="Enable SMS?"
+                                    uncheckedValue="{Boolean}false"
+                                    value="{Boolean}true"/>
+                            <makePaymentOnCart
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                    name="./makePaymentOnCart"
+                                    text="Make Payment on Cart?"
+                                    uncheckedValue="{Boolean}false"
+                                    value="{Boolean}true"/>
+                            <simChoiceButtonLabel
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                    fieldLabel="Sim Choice Button Label"
+                                    value="Register"
+                                    fieldDescription="Register"
+                                    name="./simChoiceButtonLabel"/>
                             <yourPersonalDetailsLabel
                                     jcr:primaryType="nt:unstructured"
                                     sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
@@ -65,6 +94,120 @@
                                     value="Enter Your Email Address"
                                     fieldDescription="Enter Your Email Address"
                                     name="./emailAddressPlaceholder"/>
+                            <showTitle
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                name="./showTitle"
+                                text="Show Title"
+                                uncheckedValue="{Boolean}false"
+                                value="{Boolean}true">
+                                <granite:data
+                                    jcr:primaryType="nt:unstructured"
+                                    acs-cq-dialog-dropdown-checkbox-showhide=""
+                                    acs-cq-dialog-dropdown-checkbox-showhide-target=".dropdown-checkbox-showhide-target"/>
+                            </showTitle>
+                            <titleLabel
+                                granite:class="hide dropdown-checkbox-showhide-target"
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldDescription="Title"
+                                fieldLabel="Title Label"
+                                name="./titleLabel">
+                                <granite:data
+                                    jcr:primaryType="nt:unstructured"
+                                    acs-checkboxshowhidetargetvalue="true"/>
+                            </titleLabel>
+                            <titlePlaceholder
+                                granite:class="hide dropdown-checkbox-showhide-target"
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldDescription="Please select an option"
+                                fieldLabel="Title Placeholder"
+                                name="./titlePlaceholder">
+                                <granite:data
+                                    jcr:primaryType="nt:unstructured"
+                                    acs-checkboxshowhidetargetvalue="true"/>
+                            </titlePlaceholder>
+                            <titleErrorRequired
+                                granite:class="hide dropdown-checkbox-showhide-target"
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldDescription="This is a required field."
+                                fieldLabel="Title Required Error Message"
+                                name="./titleErrorRequired">
+                                <granite:data
+                                    jcr:primaryType="nt:unstructured"
+                                    acs-checkboxshowhidetargetvalue="true"/>
+                            </titleErrorRequired>
+                            <titleFragmentPath
+                                cq:showOnCreate="{Boolean}true"
+                                granite:class="hide dropdown-checkbox-showhide-target"
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="dam/cfm/components/cfpicker"
+                                fieldDescription="Title Frament path"
+                                fieldLabel="Title Frament path"
+                                name="./titleFragmentPath"
+                                rootPath="/content/dam/lebara">
+                                <granite:data
+                                    jcr:primaryType="nt:unstructured"
+                                    acs-checkboxshowhidetargetvalue="true"/>
+                            </titleFragmentPath>
+                            <showDob
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                name="./showDob"
+                                text="Show Date of Birth"
+                                uncheckedValue="{Boolean}false"
+                                value="{Boolean}true">
+                                <granite:data
+                                    jcr:primaryType="nt:unstructured"
+                                    acs-cq-dialog-dropdown-checkbox-showhide=""
+                                    acs-cq-dialog-dropdown-checkbox-showhide-target=".dropdown-checkbox-showhide-target"/>
+                            </showDob>
+                            <dobLabel
+                                granite:class="hide dropdown-checkbox-showhide-target"
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldDescription="Date of Birth"
+                                fieldLabel="DOB Label"
+                                name="./dobLabel">
+                                <granite:data
+                                    jcr:primaryType="nt:unstructured"
+                                    acs-checkboxshowhidetargetvalue="true"/>
+                            </dobLabel>
+                            <dobPlaceholder
+                                granite:class="hide dropdown-checkbox-showhide-target"
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldDescription="DD/MM/YY"
+                                fieldLabel="DOB Placeholder"
+                                name="./dobPlaceholder">
+                                <granite:data
+                                    jcr:primaryType="nt:unstructured"
+                                    acs-checkboxshowhidetargetvalue="true"/>
+                            </dobPlaceholder>
+                            <dobErrorRequired
+                                granite:class="hide dropdown-checkbox-showhide-target"
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldDescription="This is a required field."
+                                fieldLabel="DOB Required Error Message"
+                                name="./dobErrorRequired">
+                                <granite:data
+                                    jcr:primaryType="nt:unstructured"
+                                    acs-checkboxshowhidetargetvalue="true"/>
+                            </dobErrorRequired>
+                            <dobError
+                                granite:class="hide dropdown-checkbox-showhide-target"
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldDescription="Please select above 18 years of age."
+                                fieldLabel="DOB Age Error Message"
+                                name="./dobError">
+                                <granite:data
+                                    jcr:primaryType="nt:unstructured"
+                                    acs-checkboxshowhidetargetvalue="true"/>
+                            </dobError>
                         </items>
                     </column1>
                     <column2
@@ -172,8 +315,221 @@
                                     value="Save address for future"
                                     fieldDescription="Save address for future"
                                     name="./saveAddress"/>
+                            <addressRequired
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                    fieldLabel="Address Required Error Message"
+                                    value="Please start typing your address"
+                                    fieldDescription="Please start typing your address"
+                                    name="./addressRequired"/>
+                            <showUpdatedAddressFields
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                name="./showUpdatedAddressFields"
+                                text="Show Update address fields?"
+                                uncheckedValue="{Boolean}false"
+                                value="{Boolean}true">
+                                <granite:data
+                                    jcr:primaryType="nt:unstructured"
+                                    acs-cq-dialog-dropdown-checkbox-showhide=""
+                                    acs-cq-dialog-dropdown-checkbox-showhide-target=".dropdown-checkbox-showhide-target"/>
+                            </showUpdatedAddressFields>
+                            <additionalDeliveryLabel
+                                jcr:primaryType="nt:unstructured"
+                                granite:class="hide dropdown-checkbox-showhide-target"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldLabel="Additional Delivery Label"
+                                name="./additionalDeliveryLabel"
+                                fieldDescription="Additional Delivery Details">
+                                <granite:data
+                                    jcr:primaryType="nt:unstructured"
+                                    acs-checkboxshowhidetargetvalue="true"/>
+                            </additionalDeliveryLabel>
+                            <additionalDeliveryPlaceholder
+                                jcr:primaryType="nt:unstructured"
+                                granite:class="hide dropdown-checkbox-showhide-target"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldLabel="Additional Delivery Placeholder"
+                                name="./additionalDeliveryPlaceholder"
+                                fieldDescription="Type in Delivery Details">
+                                <granite:data
+                                    jcr:primaryType="nt:unstructured"
+                                    acs-checkboxshowhidetargetvalue="true"/>
+                            </additionalDeliveryPlaceholder>
                         </items>
                     </column2>
+                    <registration
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Registration Section"
+                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                        <items jcr:primaryType="nt:unstructured">
+                            <legalRegistrationLabel
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldLabel="Legal Registration"
+                                value="Legal Registration"
+                                fieldDescription="Legal Registration"
+                                name="./legalRegistrationLabel"/>
+                            <legalRegistrationSucess
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldLabel="Legal Registration Success Message"
+                                value="Success"
+                                fieldDescription="Legal Registration Success Message"
+                                name="./legalRegistrationSucess"/>
+                            <legalRegistrationSucessSubtitle
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldLabel="Legal Registration Success Subtitle"
+                                value="Thank you for completing the legal registration."
+                                fieldDescription="Legal Registration Success Subtitle"
+                                name="./legalRegistrationSucessSubtitle"/>
+                            <showRegistration
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                name="./showRegistration"
+                                text="Show Registration"
+                                uncheckedValue="{Boolean}false"
+                                value="{Boolean}true">
+                                <granite:data
+                                    jcr:primaryType="nt:unstructured"
+                                    acs-cq-dialog-dropdown-checkbox-showhide=""
+                                    acs-cq-dialog-dropdown-checkbox-showhide-target=".dropdown-checkbox-showhide-target"/>
+                            </showRegistration>
+                            <registrationLabel
+                                granite:class="hide dropdown-checkbox-showhide-target"
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldDescription="Registration"
+                                fieldLabel="Registration Label"
+                                name="./registrationLabel">
+                                <granite:data
+                                    jcr:primaryType="nt:unstructured"
+                                    acs-checkboxshowhidetargetvalue="true"/>
+                            </registrationLabel>
+                            <simRegistrationInfo
+                                granite:class="hide dropdown-checkbox-showhide-target"
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldDescription="In accordance with French law, you have 5 days to register your SIM card"
+                                fieldLabel="Sim Registration Info Label"
+                                name="./simRegistrationInfo"
+                                value="In accordance with French law, you have 5 days to register your SIM card">
+                                <granite:data
+                                    jcr:primaryType="nt:unstructured"
+                                    acs-checkboxshowhidetargetvalue="true"/>
+                            </simRegistrationInfo>
+                            <registerLaterLabel
+                                granite:class="hide dropdown-checkbox-showhide-target"
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldDescription="Register Later"
+                                fieldLabel="Register Later label"
+                                name="./registerLaterLabel"
+                                value="Register Later">
+                                <granite:data
+                                    jcr:primaryType="nt:unstructured"
+                                    acs-checkboxshowhidetargetvalue="true"/>
+                            </registerLaterLabel>
+                            <documentLabel
+                                granite:class="hide dropdown-checkbox-showhide-target"
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldDescription="Document"
+                                fieldLabel="Document Label"
+                                name="./documentLabel"
+                                value="Document">
+                                <granite:data
+                                    jcr:primaryType="nt:unstructured"
+                                    acs-checkboxshowhidetargetvalue="true"/>
+                            </documentLabel>
+                            <documentPlaceholder
+                                granite:class="hide dropdown-checkbox-showhide-target"
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldDescription="Select an option"
+                                fieldLabel="Document Placeholder Label"
+                                name="./documentPlaceholder"
+                                value="Select an option">
+                                <granite:data
+                                    jcr:primaryType="nt:unstructured"
+                                    acs-checkboxshowhidetargetvalue="true"/>
+                            </documentPlaceholder>
+                            <documentNumberLabel
+                                granite:class="hide dropdown-checkbox-showhide-target"
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldDescription="Document Number"
+                                fieldLabel="Document Number label"
+                                name="./documentNumberLabel"
+                                value="Document Number">
+                                <granite:data
+                                    jcr:primaryType="nt:unstructured"
+                                    acs-checkboxshowhidetargetvalue="true"/>
+                            </documentNumberLabel>
+                            <documentNumberPlacholder
+                                granite:class="hide dropdown-checkbox-showhide-target"
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldDescription="Enter your identity number"
+                                fieldLabel="Document Number Placeholder label"
+                                name="./documentNumberPlacholder"
+                                value="Enter your identity number">
+                                <granite:data
+                                    jcr:primaryType="nt:unstructured"
+                                    acs-checkboxshowhidetargetvalue="true"/>
+                            </documentNumberPlacholder>
+                            <documentErrorRequired
+                                granite:class="hide dropdown-checkbox-showhide-target"
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldDescription="Please select type of the document"
+                                fieldLabel="Document Required Error"
+                                name="./documentErrorRequired"
+                                value="Please select type of the document">
+                                <granite:data
+                                    jcr:primaryType="nt:unstructured"
+                                    acs-checkboxshowhidetargetvalue="true"/>
+                            </documentErrorRequired>
+                            <documentNumberErrorRequired
+                                granite:class="hide dropdown-checkbox-showhide-target"
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldDescription="This is a required field"
+                                fieldLabel="Document Number Required Error"
+                                name="./documentNumberErrorRequired"
+                                value="This is a required field">
+                                <granite:data
+                                    jcr:primaryType="nt:unstructured"
+                                    acs-checkboxshowhidetargetvalue="true"/>
+                            </documentNumberErrorRequired>
+                            <documentNumberErrorPattern
+                                granite:class="hide dropdown-checkbox-showhide-target"
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldDescription="Enter a valid identity number"
+                                fieldLabel="Document Number Error Pattern"
+                                name="./documentNumberErrorPattern"
+                                value="Enter a valid identity number">
+                                <granite:data
+                                    jcr:primaryType="nt:unstructured"
+                                    acs-checkboxshowhidetargetvalue="true"/>
+                            </documentNumberErrorPattern>
+                            <documentTypesFragmentPath
+                                cq:showOnCreate="{Boolean}true"
+                                granite:class="hide dropdown-checkbox-showhide-target"
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="dam/cfm/components/cfpicker"
+                                fieldDescription="Document Types Frament path"
+                                fieldLabel="Document Types Frament path"
+                                name="./documentTypesPath"
+                                rootPath="/content/dam/lebara">
+                                <granite:data
+                                    jcr:primaryType="nt:unstructured"
+                                    acs-checkboxshowhidetargetvalue="true"/>
+                            </documentTypesFragmentPath>
+                        </items>
+                    </registration>
                     <column3
                             jcr:primaryType="nt:unstructured"
                             jcr:title="Order Details CTA"
@@ -201,6 +557,301 @@
                                 fieldDescription="PROCEED TO PAYMENT"
                                 fieldLabel="Payment CTA"
                                 name="./paymentCta"/>
+                            <showTermsAndConditions
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                name="./showTermsAndConditions"
+                                text="Show Terms &amp; Conditions"
+                                uncheckedValue="{Boolean}false"
+                                value="{Boolean}true">
+                                <granite:data
+                                    jcr:primaryType="nt:unstructured"
+                                    acs-cq-dialog-dropdown-checkbox-showhide=""
+                                    acs-cq-dialog-dropdown-checkbox-showhide-target=".dropdown-checkbox-showhide-target"/>
+                            </showTermsAndConditions>
+                            <termsConditionsLabel
+                                granite:class="hide dropdown-checkbox-showhide-target"
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="cq/gui/components/authoring/dialog/richtext"
+                                fieldDescription="I have read the terms and conditions of Lebara, by checking this box, I accept them"
+                                fieldLabel="Terms and conditions label - Logged in users"
+                                name="./termsConditionsLabel"
+                                useFixedInlineToolbar="{Boolean}true">
+                                <granite:data
+                                    jcr:primaryType="nt:unstructured"
+                                    acs-checkboxshowhidetargetvalue="true"/>
+                                <rtePlugins jcr:primaryType="nt:unstructured">
+                                    <format
+                                        jcr:primaryType="nt:unstructured"
+                                        features="bold,italic"/>
+                                    <justify
+                                        jcr:primaryType="nt:unstructured"
+                                        features="-"/>
+                                    <links
+                                        jcr:primaryType="nt:unstructured"
+                                        features="modifylink,unlink"/>
+                                    <lists
+                                        jcr:primaryType="nt:unstructured"
+                                        features="*"/>
+                                    <misctools jcr:primaryType="nt:unstructured">
+                                        <specialCharsConfig jcr:primaryType="nt:unstructured">
+                                            <chars jcr:primaryType="nt:unstructured">
+                                                <default_copyright
+                                                    jcr:primaryType="nt:unstructured"
+                                                    entity="&amp;copy;"
+                                                    name="copyright"/>
+                                                <default_euro
+                                                    jcr:primaryType="nt:unstructured"
+                                                    entity="&amp;euro;"
+                                                    name="euro"/>
+                                                <default_registered
+                                                    jcr:primaryType="nt:unstructured"
+                                                    entity="&amp;reg;"
+                                                    name="registered"/>
+                                                <default_trademark
+                                                    jcr:primaryType="nt:unstructured"
+                                                    entity="&amp;trade;"
+                                                    name="trademark"/>
+                                            </chars>
+                                        </specialCharsConfig>
+                                    </misctools>
+                                    <paraformat
+                                        jcr:primaryType="nt:unstructured"
+                                        features="*">
+                                        <formats jcr:primaryType="nt:unstructured">
+                                            <default_p
+                                                jcr:primaryType="nt:unstructured"
+                                                description="Paragraph"
+                                                tag="p"/>
+                                            <default_h1
+                                                jcr:primaryType="nt:unstructured"
+                                                description="Heading 1"
+                                                tag="h1"/>
+                                            <default_h2
+                                                jcr:primaryType="nt:unstructured"
+                                                description="Heading 2"
+                                                tag="h2"/>
+                                            <default_h3
+                                                jcr:primaryType="nt:unstructured"
+                                                description="Heading 3"
+                                                tag="h3"/>
+                                            <default_h4
+                                                jcr:primaryType="nt:unstructured"
+                                                description="Heading 4"
+                                                tag="h4"/>
+                                            <default_h5
+                                                jcr:primaryType="nt:unstructured"
+                                                description="Heading 5"
+                                                tag="h5"/>
+                                            <default_h6
+                                                jcr:primaryType="nt:unstructured"
+                                                description="Heading 6"
+                                                tag="h6"/>
+                                            <default_blockquote
+                                                jcr:primaryType="nt:unstructured"
+                                                description="Quote"
+                                                tag="blockquote"/>
+                                            <default_pre
+                                                jcr:primaryType="nt:unstructured"
+                                                description="Preformatted"
+                                                tag="pre"/>
+                                        </formats>
+                                    </paraformat>
+                                    <table
+                                        jcr:primaryType="nt:unstructured"
+                                        features="-">
+                                        <hiddenHeaderConfig
+                                            jcr:primaryType="nt:unstructured"
+                                            hiddenHeaderClassName="cq-wcm-foundation-aria-visuallyhidden"
+                                            hiddenHeaderEditingCSS="cq-RichText-hiddenHeader--editing"/>
+                                    </table>
+                                    <tracklinks
+                                        jcr:primaryType="nt:unstructured"
+                                        features="*"/>
+                                </rtePlugins>
+                                <uiSettings jcr:primaryType="nt:unstructured">
+                                    <cui jcr:primaryType="nt:unstructured">
+                                        <inline
+                                            jcr:primaryType="nt:unstructured"
+                                            toolbar="[format#bold,format#italic,format#underline,#justify,#lists,links#modifylink,links#unlink,#paraformat]">
+                                            <popovers jcr:primaryType="nt:unstructured">
+                                                <justify
+                                                    jcr:primaryType="nt:unstructured"
+                                                    items="[justify#justifyleft,justify#justifycenter,justify#justifyright]"
+                                                    ref="justify"/>
+                                                <lists
+                                                    jcr:primaryType="nt:unstructured"
+                                                    items="[lists#unordered,lists#ordered,lists#outdent,lists#indent]"
+                                                    ref="lists"/>
+                                                <paraformat
+                                                    jcr:primaryType="nt:unstructured"
+                                                    items="paraformat:getFormats:paraformat-pulldown"
+                                                    ref="paraformat"/>
+                                            </popovers>
+                                        </inline>
+                                        <dialogFullScreen
+                                            jcr:primaryType="nt:unstructured"
+                                            toolbar="[format#bold,format#italic,format#underline,justify#justifyleft,justify#justifycenter,justify#justifyright,lists#unordered,lists#ordered,lists#outdent,lists#indent,links#modifylink,links#unlink,table#createoredit,#paraformat,image#imageProps]">
+                                            <popovers jcr:primaryType="nt:unstructured">
+                                                <paraformat
+                                                    jcr:primaryType="nt:unstructured"
+                                                    items="paraformat:getFormats:paraformat-pulldown"
+                                                    ref="paraformat"/>
+                                            </popovers>
+                                        </dialogFullScreen>
+                                        <tableEditOptions
+                                            jcr:primaryType="nt:unstructured"
+                                            toolbar="[table#insertcolumn-before,table#insertcolumn-after,table#removecolumn,-,table#insertrow-before,table#insertrow-after,table#removerow,-,table#mergecells-right,table#mergecells-down,table#mergecells,table#splitcell-horizontal,table#splitcell-vertical,-,table#selectrow,table#selectcolumn,-,table#ensureparagraph,-,table#modifytableandcell,table#removetable,-,undo#undo,undo#redo,-,table#exitTableEditing,-]"/>
+                                    </cui>
+                                </uiSettings>
+                            </termsConditionsLabel>
+                            <termsAndConditions
+                                granite:class="hide dropdown-checkbox-showhide-target"
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="cq/gui/components/authoring/dialog/richtext"
+                                fieldDescription="Requested information is required for delivery and payment purposes.By providing the information you accept the privacy policies &amp; terms and conditions."
+                                fieldLabel="Terms and conditions label - Non Logged in users"
+                                name="./termsAndConditions"
+                                useFixedInlineToolbar="{Boolean}true">
+                                <granite:data
+                                    jcr:primaryType="nt:unstructured"
+                                    acs-checkboxshowhidetargetvalue="true"/>
+                                <rtePlugins jcr:primaryType="nt:unstructured">
+                                    <format
+                                        jcr:primaryType="nt:unstructured"
+                                        features="bold,italic"/>
+                                    <justify
+                                        jcr:primaryType="nt:unstructured"
+                                        features="-"/>
+                                    <links
+                                        jcr:primaryType="nt:unstructured"
+                                        features="modifylink,unlink"/>
+                                    <lists
+                                        jcr:primaryType="nt:unstructured"
+                                        features="*"/>
+                                    <misctools jcr:primaryType="nt:unstructured">
+                                        <specialCharsConfig jcr:primaryType="nt:unstructured">
+                                            <chars jcr:primaryType="nt:unstructured">
+                                                <default_copyright
+                                                    jcr:primaryType="nt:unstructured"
+                                                    entity="&amp;copy;"
+                                                    name="copyright"/>
+                                                <default_euro
+                                                    jcr:primaryType="nt:unstructured"
+                                                    entity="&amp;euro;"
+                                                    name="euro"/>
+                                                <default_registered
+                                                    jcr:primaryType="nt:unstructured"
+                                                    entity="&amp;reg;"
+                                                    name="registered"/>
+                                                <default_trademark
+                                                    jcr:primaryType="nt:unstructured"
+                                                    entity="&amp;trade;"
+                                                    name="trademark"/>
+                                            </chars>
+                                        </specialCharsConfig>
+                                    </misctools>
+                                    <paraformat
+                                        jcr:primaryType="nt:unstructured"
+                                        features="*">
+                                        <formats jcr:primaryType="nt:unstructured">
+                                            <default_p
+                                                jcr:primaryType="nt:unstructured"
+                                                description="Paragraph"
+                                                tag="p"/>
+                                            <default_h1
+                                                jcr:primaryType="nt:unstructured"
+                                                description="Heading 1"
+                                                tag="h1"/>
+                                            <default_h2
+                                                jcr:primaryType="nt:unstructured"
+                                                description="Heading 2"
+                                                tag="h2"/>
+                                            <default_h3
+                                                jcr:primaryType="nt:unstructured"
+                                                description="Heading 3"
+                                                tag="h3"/>
+                                            <default_h4
+                                                jcr:primaryType="nt:unstructured"
+                                                description="Heading 4"
+                                                tag="h4"/>
+                                            <default_h5
+                                                jcr:primaryType="nt:unstructured"
+                                                description="Heading 5"
+                                                tag="h5"/>
+                                            <default_h6
+                                                jcr:primaryType="nt:unstructured"
+                                                description="Heading 6"
+                                                tag="h6"/>
+                                            <default_blockquote
+                                                jcr:primaryType="nt:unstructured"
+                                                description="Quote"
+                                                tag="blockquote"/>
+                                            <default_pre
+                                                jcr:primaryType="nt:unstructured"
+                                                description="Preformatted"
+                                                tag="pre"/>
+                                        </formats>
+                                    </paraformat>
+                                    <table
+                                        jcr:primaryType="nt:unstructured"
+                                        features="-">
+                                        <hiddenHeaderConfig
+                                            jcr:primaryType="nt:unstructured"
+                                            hiddenHeaderClassName="cq-wcm-foundation-aria-visuallyhidden"
+                                            hiddenHeaderEditingCSS="cq-RichText-hiddenHeader--editing"/>
+                                    </table>
+                                    <tracklinks
+                                        jcr:primaryType="nt:unstructured"
+                                        features="*"/>
+                                </rtePlugins>
+                                <uiSettings jcr:primaryType="nt:unstructured">
+                                    <cui jcr:primaryType="nt:unstructured">
+                                        <inline
+                                            jcr:primaryType="nt:unstructured"
+                                            toolbar="[format#bold,format#italic,format#underline,#justify,#lists,links#modifylink,links#unlink,#paraformat]">
+                                            <popovers jcr:primaryType="nt:unstructured">
+                                                <justify
+                                                    jcr:primaryType="nt:unstructured"
+                                                    items="[justify#justifyleft,justify#justifycenter,justify#justifyright]"
+                                                    ref="justify"/>
+                                                <lists
+                                                    jcr:primaryType="nt:unstructured"
+                                                    items="[lists#unordered,lists#ordered,lists#outdent,lists#indent]"
+                                                    ref="lists"/>
+                                                <paraformat
+                                                    jcr:primaryType="nt:unstructured"
+                                                    items="paraformat:getFormats:paraformat-pulldown"
+                                                    ref="paraformat"/>
+                                            </popovers>
+                                        </inline>
+                                        <dialogFullScreen
+                                            jcr:primaryType="nt:unstructured"
+                                            toolbar="[format#bold,format#italic,format#underline,justify#justifyleft,justify#justifycenter,justify#justifyright,lists#unordered,lists#ordered,lists#outdent,lists#indent,links#modifylink,links#unlink,table#createoredit,#paraformat,image#imageProps]">
+                                            <popovers jcr:primaryType="nt:unstructured">
+                                                <paraformat
+                                                    jcr:primaryType="nt:unstructured"
+                                                    items="paraformat:getFormats:paraformat-pulldown"
+                                                    ref="paraformat"/>
+                                            </popovers>
+                                        </dialogFullScreen>
+                                        <tableEditOptions
+                                            jcr:primaryType="nt:unstructured"
+                                            toolbar="[table#insertcolumn-before,table#insertcolumn-after,table#removecolumn,-,table#insertrow-before,table#insertrow-after,table#removerow,-,table#mergecells-right,table#mergecells-down,table#mergecells,table#splitcell-horizontal,table#splitcell-vertical,-,table#selectrow,table#selectcolumn,-,table#ensureparagraph,-,table#modifytableandcell,table#removetable,-,undo#undo,undo#redo,-,table#exitTableEditing,-]"/>
+                                    </cui>
+                                </uiSettings>
+                            </termsAndConditions>
+                            <termsConditionsError
+                                granite:class="hide dropdown-checkbox-showhide-target"
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldDescription="This is a required field"
+                                fieldLabel="Terms and conditions Error Message"
+                                name="./termsConditionsError">
+                                <granite:data
+                                    jcr:primaryType="nt:unstructured"
+                                    acs-checkboxshowhidetargetvalue="true"/>
+                            </termsConditionsError>
                         </items>
                     </column3>
                     <column4
@@ -317,6 +968,13 @@
                                     value="Town/City is required"
                                     fieldDescription="Town/City is required"
                                     name="./cityErrorRequired"/>
+                            <cityErrorPattern
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                    fieldLabel="Address Error message on invalid city"
+                                    value="Please enter valid City"
+                                    fieldDescription="Please enter valid City"
+                                    name="./cityErrorPattern"/>
                             <houseNumberErrorPattern
                                     jcr:primaryType="nt:unstructured"
                                     sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
@@ -350,6 +1008,12 @@
                                     fieldLabel="zipCode Error message on Max character limit"
                                     value="Must be 10 characters or less"
                                     name="./zipCodeErrorMax"/>
+                            <additionFieldLengthError
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                    fieldLabel="Additional Field Length Error"
+                                    fieldDescription="Additional info shouldn't exceed 255 characters"
+                                    name="./additionFieldLengthError"/>
                         </items>
                     </column5>
                     <column6

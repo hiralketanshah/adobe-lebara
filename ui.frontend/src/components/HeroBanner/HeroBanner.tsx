@@ -20,7 +20,8 @@ const HeroBanner: React.FC<HeroBannerProps> = ({
   buttonCTALabel,
   buttonCTALink,
   getItNowErrorMessage,
-  headingType
+  headingType,
+  isSimChoiceFlow
 }) => {
   const isAuthenticated = useSelector(selectIsAuthenticated);
   const msisdn = useSelector(selectMsisdn);
@@ -94,7 +95,7 @@ return (
       }catch (e){
       }
       dispatch(setLoading(false));
-      history.push("/order-details");
+      history.push(isSimChoiceFlow ? "/mobile-number-from-another-operator-choice" : "/order-details");
     }}>
         {buttonCTALabel}
       </Button>
