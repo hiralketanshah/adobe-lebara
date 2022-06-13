@@ -370,20 +370,6 @@
                                 value="Legal Registration"
                                 fieldDescription="Legal Registration"
                                 name="./legalRegistrationLabel"/>
-                            <legalRegistrationSucess
-                                jcr:primaryType="nt:unstructured"
-                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                fieldLabel="Legal Registration Success Message"
-                                value="Success"
-                                fieldDescription="Legal Registration Success Message"
-                                name="./legalRegistrationSucess"/>
-                            <legalRegistrationSucessSubtitle
-                                jcr:primaryType="nt:unstructured"
-                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                fieldLabel="Legal Registration Success Subtitle"
-                                value="Thank you for completing the legal registration."
-                                fieldDescription="Legal Registration Success Subtitle"
-                                name="./legalRegistrationSucessSubtitle"/>
                             <showRegistration
                                 jcr:primaryType="nt:unstructured"
                                 sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
