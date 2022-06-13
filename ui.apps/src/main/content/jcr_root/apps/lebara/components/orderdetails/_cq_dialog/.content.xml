@@ -636,6 +636,12 @@
                                                 fieldLabel="Top Up Cap Desc"
                                                 fieldDescription="Per Month Exceed limit for Auto Top Up"
                                                 name="./topUpCapDesc"/>
+                                            <creditListCount
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/numberfield"
+                                                fieldLabel="Credit List Count"
+                                                fieldDescription="5"
+                                                name="./creditListCount"/>
                                         </items>
                                     </column>
                                 </items>

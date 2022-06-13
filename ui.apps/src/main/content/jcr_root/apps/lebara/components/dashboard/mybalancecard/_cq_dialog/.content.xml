@@ -134,6 +134,12 @@
                                                 name="./cfTopupPlanPath"
                                                 required="{Boolean}true"
                                                 rootPath="/content/dam/lebara"/>
+                                            <creditListCount
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/numberfield"
+                                                fieldLabel="Credit List Count"
+                                                fieldDescription="5"
+                                                name="./creditListCount"/>
                                         </items>
                                     </column>
                                 </items>
