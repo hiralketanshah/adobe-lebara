@@ -195,6 +195,15 @@ public class OrderDetailsExporter implements ComponentExporter {
     @ValueMapValue
     private String freeSimJourneyRoute;
 
+    @ValueMapValue
+    private String yourOrderOneTimeActivationFeeLabel;
+
+    @ValueMapValue
+    private String yourOrderOneTimeActivationFee;
+
+    @ValueMapValue
+    private String totalLabel;
+
     public String getSelectedProductLabel() {
         return selectedProductLabel;
     }
@@ -410,6 +419,14 @@ public class OrderDetailsExporter implements ComponentExporter {
     public String getFreeSimJourneyRoute() {
         return AemUtils.getLinkWithExtension(freeSimJourneyRoute, slingRequest);
     }
+    public String getYourOrderOneTimeActivationFeeLabel() {
+        return yourOrderOneTimeActivationFeeLabel;
+    }
+
+    public String getYourOrderOneTimeActivationFee() {
+        return yourOrderOneTimeActivationFee;
+    }
+
 
     @Override
     public String getExportedType() {

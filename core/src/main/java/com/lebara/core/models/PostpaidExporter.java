@@ -39,6 +39,16 @@ public class PostpaidExporter implements ComponentExporter {
     @ValueMapValue
     private String switchCtaLabel;
     @ValueMapValue
+    private String extraboltOnDescriptionLabel;
+    @ValueMapValue
+    private String yourOrderInternationalBoltOnLabel;
+    @ValueMapValue
+    private String boltOnLabel;
+    @ValueMapValue
+    private String boltOnRadioLabel;
+    @ValueMapValue
+    private String dataVolumeDescriptionLabel;
+    @ValueMapValue
     private String durationLabel;
     @ValueMapValue
     private String contractPeriodPopupHeading;
@@ -110,6 +120,8 @@ public class PostpaidExporter implements ComponentExporter {
     private String changePlanSubHeading;
     @ValueMapValue
     private String changePlanHeading;
+    @ValueMapValue
+    private String notMigratedToFmvnoErrorMessage;
 
     public List<Labels> getDurationRadioLabelList() {
         return durationRadioLabelList == null ? Collections.emptyList() : Collections.unmodifiableList(durationRadioLabelList);
@@ -129,6 +141,22 @@ public class PostpaidExporter implements ComponentExporter {
 
     public String getMoreDetailsLabel() {
         return moreDetailsLabel;
+    }
+
+    public String getExtraboltOnDescriptionLabel() {
+        return extraboltOnDescriptionLabel;
+    }
+
+    public String getBoltOnLabel() {
+        return boltOnLabel;
+    }
+
+    public String getBoltOnRadioLabel() {
+        return boltOnRadioLabel;
+    }
+
+    public String getDataVolumeDescriptionLabel() {
+        return dataVolumeDescriptionLabel;
     }
 
     public String getOrderNowLabel() {
@@ -173,6 +201,10 @@ public class PostpaidExporter implements ComponentExporter {
 
     public String getAbroadMinutesPopupInfoTop() {
         return AemUtils.updateShortenLinksInRichText(abroadMinutesPopupInfoTop,slingRequest);
+    }
+
+    public String getNotMigratedToFmvnoErrorMessage() {
+        return notMigratedToFmvnoErrorMessage;
     }
 
     public String getCountryFlagFrom() {
@@ -257,6 +289,10 @@ public class PostpaidExporter implements ComponentExporter {
 
     public String getChangePlanCheckboxBottom() {
         return AemUtils.updateShortenLinksInRichText(changePlanCheckboxBottom, slingRequest);
+    }
+
+    public String getYourOrderInternationalBoltOnLabel() {
+        return yourOrderInternationalBoltOnLabel;
     }
 
     public String getChangePlanCheckboxTop() {

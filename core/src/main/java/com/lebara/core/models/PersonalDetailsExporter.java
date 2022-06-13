@@ -219,7 +219,7 @@ public class PersonalDetailsExporter implements ComponentExporter {
     private boolean makePaymentOnCart;
     @ValueMapValue
     private String additionFieldLengthError;
-
+    
     public List<SelectBean> getCities(){
         return CFUtils.populateCityInfo(resourceResolver.getResource(cfPath));
     }
@@ -304,10 +304,6 @@ public class PersonalDetailsExporter implements ComponentExporter {
 		return titleErrorRequired;
 	}
 
-	public String getAddressRequired() {
-		return addressRequired;
-	}
-
     public List<Object> getTitleOptions() {
         return CFUtils.getCurrentProvidersOptions(titleFragmentPath,resourceResolver);
     }
@@ -378,6 +374,10 @@ public class PersonalDetailsExporter implements ComponentExporter {
 
     public String getAdditionFieldLengthError() {
         return additionFieldLengthError;
+    }
+
+    public String getAddressRequired() {
+        return addressRequired;
     }
 
     @Override

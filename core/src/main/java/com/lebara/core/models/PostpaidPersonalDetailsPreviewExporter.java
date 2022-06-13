@@ -26,6 +26,9 @@ public class PostpaidPersonalDetailsPreviewExporter extends IntroExporter implem
     private SlingHttpServletRequest slingRequest;
 
     @ValueMapValue
+    private String notMigratedToFmvnoErrorMessage;
+
+    @ValueMapValue
     private String fNameLabel;
 
     @ValueMapValue
@@ -205,6 +208,10 @@ public class PostpaidPersonalDetailsPreviewExporter extends IntroExporter implem
     
     public String getTermsAndConditionsLabel() {
     	return AemUtils.updateShortenLinksInRichText(termsAndConditionsLabel,slingRequest);
+    }
+
+    public String getNotMigratedToFmvnoErrorMessage() {
+        return notMigratedToFmvnoErrorMessage;
     }
 
     @Override
