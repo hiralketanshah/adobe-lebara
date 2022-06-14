@@ -201,6 +201,13 @@
                         jcr:title="Data Volume"
                         sling:resourceType="granite/ui/components/coral/foundation/container">
                         <items jcr:primaryType="nt:unstructured">
+                            <dataVolumeSubHeading
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldLabel="Data Volume Sub heading"
+                                fieldDescription="All plans come with Unlimited National Calls"
+                                name="./dataVolumeDescriptionLabel"
+                                value="All plans come with Unlimited National Calls"/>
                             <dataVolumeLabel
                                 jcr:primaryType="nt:unstructured"
                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
@@ -550,6 +557,32 @@
                             </abroadMinutesPopupInfoBottom>
                         </items>
                     </abroadMinutes>
+                    <internationalBoltons
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="International Bolt Ons"
+                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                        <items jcr:primaryType="nt:unstructured">
+                            <intMinBoltOnSubHeading
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldLabel="International Minute BoltOn Sub heading"
+                                fieldDescription="All plans come with 120 international minutes. You can buy more bolt ons as needed"
+                                name="./extraboltOnDescriptionLabel"
+                                value="All plans come with 120 international minutes. You can buy more bolt ons as needed"/>
+                            <boltOnLabel
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldLabel="International Bolt Ons Label"
+                                name="./boltOnLabel"
+                                value="International Bolt Ons"/>
+                            <boltOnRadioLabel
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldLabel="International Minutes Radio Label"
+                                name="./boltOnRadioLabel"
+                                value="International Minutes"/>
+                        </items>
+                    </internationalBoltons>
                     <yourOrder
                         jcr:primaryType="nt:unstructured"
                         jcr:title="Your Order"
@@ -581,6 +614,12 @@
                                 fieldLabel="Minutes label"
                                 name="./yourOrderMinutesLabel"
                                 value="Minutes"/>
+                            <yourOrderInternationalBoltOnLabel
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldLabel="yourOrder International BoltOn label"
+                                name="./yourOrderInternationalBoltOnLabel"
+                                value="International Bolt On"/>
                             <twentyfourmonthslabel
                                 jcr:primaryType="nt:unstructured"
                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
@@ -655,6 +694,13 @@
                             jcr:title="Change Plan Popup"
                             sling:resourceType="granite/ui/components/coral/foundation/container">
                         <items jcr:primaryType="nt:unstructured">
+                            <notMigratedToFmvnoErrorMessage
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                    fieldLabel="Lmvno Error Message"
+                                    fieldDescription="Your current SIM card is on the old network; please migrate to the new Lebara network to continue with this plan and receive additional benefits."
+                                    name="./notMigratedToFmvnoErrorMessage"
+                                    value="Your current SIM card is on the old network; please migrate to the new Lebara network to continue with this plan and receive additional benefits."/>
                             <changePlanHeading
                                     jcr:primaryType="nt:unstructured"
                                     sling:resourceType="granite/ui/components/coral/foundation/form/textfield"

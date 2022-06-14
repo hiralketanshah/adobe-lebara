@@ -108,9 +108,9 @@ public class PersonalDetailsExporter implements ComponentExporter {
     @ValueMapValue
     public String cityLabel;
     @ValueMapValue
-    public String cityErrorMax;
+    public String cityMaxCharError;
     @ValueMapValue
-    private String cityErrorPattern;
+    private String cityPatternError;
     @ValueMapValue
     public String cityErrorRequired;
     @ValueMapValue
@@ -149,10 +149,6 @@ public class PersonalDetailsExporter implements ComponentExporter {
     private String registrationLabel;
     @ValueMapValue
     private String legalRegistrationLabel;
-    @ValueMapValue
-    private String legalRegistrationSucess;
-    @ValueMapValue
-    private String legalRegistrationSucessSubtitle;
     @ValueMapValue
     private String simRegistrationInfo;
     @ValueMapValue
@@ -219,7 +215,7 @@ public class PersonalDetailsExporter implements ComponentExporter {
     private boolean makePaymentOnCart;
     @ValueMapValue
     private String additionFieldLengthError;
-
+    
     public List<SelectBean> getCities(){
         return CFUtils.populateCityInfo(resourceResolver.getResource(cfPath));
     }
@@ -304,10 +300,6 @@ public class PersonalDetailsExporter implements ComponentExporter {
 		return titleErrorRequired;
 	}
 
-	public String getAddressRequired() {
-		return addressRequired;
-	}
-
     public List<Object> getTitleOptions() {
         return CFUtils.getCurrentProvidersOptions(titleFragmentPath,resourceResolver);
     }
@@ -360,24 +352,24 @@ public class PersonalDetailsExporter implements ComponentExporter {
         return simChoiceButtonLabel;
     }
 
-    public String getCityErrorPattern() {
-        return cityErrorPattern;
+    public String getCityPatternError() {
+        return cityPatternError;
+    }
+
+    public String getCityMaxCharError() {
+        return cityMaxCharError;
     }
 
     public String getLegalRegistrationLabel() {
         return legalRegistrationLabel;
     }
 
-    public String getLegalRegistrationSucess() {
-        return legalRegistrationSucess;
-    }
-
-    public String getLegalRegistrationSucessSubtitle() {
-        return legalRegistrationSucessSubtitle;
-    }
-
     public String getAdditionFieldLengthError() {
         return additionFieldLengthError;
+    }
+
+    public String getAddressRequired() {
+        return addressRequired;
     }
 
     @Override

@@ -52,6 +52,9 @@ public class OrderDetailsExporter implements ComponentExporter {
     private String topupAutoRenewDesc;
 
     @ValueMapValue
+    private String autoRenewLabel;
+
+    @ValueMapValue
     private String prepaidAutoRenewDesc;
 
     @ValueMapValue
@@ -195,6 +198,18 @@ public class OrderDetailsExporter implements ComponentExporter {
     @ValueMapValue
     private String freeSimJourneyRoute;
 
+    @ValueMapValue
+    private String yourOrderOneTimeActivationFeeLabel;
+
+    @ValueMapValue
+    private String yourOrderOneTimeActivationFee;
+
+    @ValueMapValue
+    private String totalLabel;
+
+    @ValueMapValue
+    private Number creditListCount;
+
     public String getSelectedProductLabel() {
         return selectedProductLabel;
     }
@@ -213,6 +228,10 @@ public class OrderDetailsExporter implements ComponentExporter {
 
     public String getTopupAutoRenewLabel() {
         return topupAutoRenewLabel;
+    }
+
+    public String getAutoRenewLabel() {
+        return autoRenewLabel;
     }
 
     public String getTopupAutoRenewDesc() {
@@ -410,6 +429,18 @@ public class OrderDetailsExporter implements ComponentExporter {
     public String getFreeSimJourneyRoute() {
         return AemUtils.getLinkWithExtension(freeSimJourneyRoute, slingRequest);
     }
+    public String getYourOrderOneTimeActivationFeeLabel() {
+        return yourOrderOneTimeActivationFeeLabel;
+    }
+
+    public String getYourOrderOneTimeActivationFee() {
+        return yourOrderOneTimeActivationFee;
+    }
+
+    public Number getCreditListCount() {
+        return creditListCount;
+    }
+
 
     @Override
     public String getExportedType() {
