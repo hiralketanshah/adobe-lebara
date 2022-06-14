@@ -80,6 +80,9 @@ public class MyBalanceCardExporter implements ComponentExporter {
     @ValueMapValue
     private Boolean deactivateSuccessOverlaySubTitle;
 
+    @ValueMapValue
+    private Number creditListCount;
+
     public List<String> getTopUpOptions() {
         return CFUtils.populateTopupInfo(resourceResolver.getResource(cfTopupPlanPath));
     }
@@ -150,6 +153,10 @@ public class MyBalanceCardExporter implements ComponentExporter {
 
     public Boolean getDeactivateSuccessOverlaySubTitle() {
         return deactivateSuccessOverlaySubTitle;
+    }
+
+    public Number getCreditListCount() {
+        return creditListCount;
     }
 
     @Override

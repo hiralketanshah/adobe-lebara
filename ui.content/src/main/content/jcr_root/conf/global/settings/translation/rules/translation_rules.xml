@@ -395,10 +395,12 @@
 		<property name="phoneNumberLabel" />
 		<property name="freeSimLabel" />
 		<property name="topupAutoRenewLabel" />
+		<property name="autoRenewLabel" />
 		<property name="topupAutoRenewDesc" />
 		<property name="prepaidAutoRenewDesc" />
 		<property name="postpaidAutoRenewDesc" />
 		<property name="grandTotalLabel"/>
+		<property name="totalLabel" />
 		<property name="addVoucherCodeLabel"/>
 		<property name="applyVoucherLabel"/>
 		<property name="enterVoucherCodeLabel"/>
@@ -605,8 +607,8 @@
 		<property name="streetLabelErrorPattern"/>
 		<property name="houseNumberErrorMax"/>
 		<property name="houseNumberErrorRequired"/>
-		<property name="cityErrorMax"/>
-		<property name="cityErrorPattern"/>
+		<property name="cityMaxCharError"/>
+		<property name="cityPatternError"/>
 		<property name="legalRegistrationSucess"/>
 		<property name="legalRegistrationLabel"/>
 		<property name="legalRegistrationSucessSubtitle"/>
@@ -656,6 +658,7 @@
 		<property name="fnamePlaceholder"/>
 		<property name="lNameLabel"/>
 		<property name="lNamePlaceholder"/>
+		<property name="addressRequired"/>
 		<property name="dobLabel"/>
 		<property name="dayLabel"/>
 		<property name="dayPalceholder"/>

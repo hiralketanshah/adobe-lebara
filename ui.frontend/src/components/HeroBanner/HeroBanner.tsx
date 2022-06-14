@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Box, Flex, Heading, useToast } from "@chakra-ui/react";
 import { HeroBannerProps } from "./types";
 import Button from "../Button/Button";
@@ -6,12 +6,15 @@ import { setLoading } from "@lebara/ui/src/redux/actions/loadingActions";
 import {
   selectIsAuthenticated,
   selectMsisdn,
+  selectLogout
 } from "@lebara/ui/src/redux/selectors/userSelectors";
 import { useDispatch, useSelector } from "react-redux";
 import useAddToCart from "@lebara/ui/src/hooks/useAddToCart";
 import { ReduxState } from "@lebara/ui/src/redux/types";
 import { useHistory } from "@lebara/ui/src/hooks/useHistory";
 import { Image } from "@lebara/ui/src/components/Image/Image";
+import AttachSimModels from "@lebara/ui/src/components/AttachSim/AttachSimModels";
+import { selectIsLoading } from "@lebara/ui/src/redux/selectors/loadingSelectors";
 
 const HeroBanner: React.FC<HeroBannerProps> = ({
   imagePath,
@@ -30,7 +33,12 @@ const HeroBanner: React.FC<HeroBannerProps> = ({
   const [addItemToCart] = useAddToCart();
   const cartItems = useSelector((state: ReduxState) => state.cart.items);
   const history = useHistory();
+  const [isAttachSim, setAttachSim] = useState(false);
+  const isLoading = useSelector(selectIsLoading);
+  const isLogout = useSelector(selectLogout);
 return (
+  <>
+  {isAttachSim && <AttachSimModels />}
   <Flex
     flexDirection={{ base: "column", lg: "row" }}
     alignItems={{ lg: "center" }}
@@ -66,6 +74,11 @@ return (
       </Heading>
       <span className="about-lebara" dangerouslySetInnerHTML={{ __html: description || ""}} />
       <Button my="20px" fontSize={{ lg: "16px" }} onClick={buttonCTALink ? ()=> history.push(buttonCTALink) : async () => {
+        setAttachSim(false);
+        if (isAuthenticated && !isLoading && !msisdn && !isLogout) {
+          setAttachSim(true);
+          return;
+        }
       if (isAuthenticated && msisdn) {
         toast.closeAll();
         toast({
@@ -101,6 +114,7 @@ return (
       </Button>
     </Flex>
   </Flex>
+  </>
 );
   }
 

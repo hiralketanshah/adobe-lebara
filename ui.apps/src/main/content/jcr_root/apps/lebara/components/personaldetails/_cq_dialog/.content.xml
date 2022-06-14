@@ -370,20 +370,6 @@
                                 value="Legal Registration"
                                 fieldDescription="Legal Registration"
                                 name="./legalRegistrationLabel"/>
-                            <legalRegistrationSucess
-                                jcr:primaryType="nt:unstructured"
-                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                fieldLabel="Legal Registration Success Message"
-                                value="Success"
-                                fieldDescription="Legal Registration Success Message"
-                                name="./legalRegistrationSucess"/>
-                            <legalRegistrationSucessSubtitle
-                                jcr:primaryType="nt:unstructured"
-                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                fieldLabel="Legal Registration Success Subtitle"
-                                value="Thank you for completing the legal registration."
-                                fieldDescription="Legal Registration Success Subtitle"
-                                name="./legalRegistrationSucessSubtitle"/>
                             <showRegistration
                                 jcr:primaryType="nt:unstructured"
                                 sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
@@ -955,12 +941,12 @@
                                     fieldLabel="House Number Error message on Empty Street Names"
                                     value="House number is required"
                                     name="./houseNumberErrorRequired"/>
-                            <cityErrorMax
+                            <cityMaxCharError
                                     jcr:primaryType="nt:unstructured"
                                     sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                     fieldLabel="Town/City Error message on character limit"
-                                    value="Must be 20 characters or less"
-                                    name="./cityErrorMax"/>
+                                    fieldDescription="The city name can have a maximum of 20 characters. Please enter your city."
+                                    name="./cityMaxCharError"/>
                             <cityErrorRequired
                                     jcr:primaryType="nt:unstructured"
                                     sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
@@ -968,13 +954,13 @@
                                     value="Town/City is required"
                                     fieldDescription="Town/City is required"
                                     name="./cityErrorRequired"/>
-                            <cityErrorPattern
+                            <cityPatternError
                                     jcr:primaryType="nt:unstructured"
                                     sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                     fieldLabel="Address Error message on invalid city"
                                     value="Please enter valid City"
                                     fieldDescription="Please enter valid City"
-                                    name="./cityErrorPattern"/>
+                                    name="./cityPatternError"/>
                             <houseNumberErrorPattern
                                     jcr:primaryType="nt:unstructured"
                                     sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
