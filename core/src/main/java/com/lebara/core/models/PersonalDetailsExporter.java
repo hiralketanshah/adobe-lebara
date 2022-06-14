@@ -108,9 +108,9 @@ public class PersonalDetailsExporter implements ComponentExporter {
     @ValueMapValue
     public String cityLabel;
     @ValueMapValue
-    public String cityErrorMax;
+    public String cityMaxCharError;
     @ValueMapValue
-    private String cityErrorPattern;
+    private String cityPatternError;
     @ValueMapValue
     public String cityErrorRequired;
     @ValueMapValue
@@ -352,8 +352,12 @@ public class PersonalDetailsExporter implements ComponentExporter {
         return simChoiceButtonLabel;
     }
 
-    public String getCityErrorPattern() {
-        return cityErrorPattern;
+    public String getCityPatternError() {
+        return cityPatternError;
+    }
+
+    public String getCityMaxCharError() {
+        return cityMaxCharError;
     }
 
     public String getLegalRegistrationLabel() {

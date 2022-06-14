@@ -607,8 +607,8 @@
 		<property name="streetLabelErrorPattern"/>
 		<property name="houseNumberErrorMax"/>
 		<property name="houseNumberErrorRequired"/>
-		<property name="cityErrorMax"/>
-		<property name="cityErrorPattern"/>
+		<property name="cityMaxCharError"/>
+		<property name="cityPatternError"/>
 		<property name="legalRegistrationSucess"/>
 		<property name="legalRegistrationLabel"/>
 		<property name="legalRegistrationSucessSubtitle"/>
