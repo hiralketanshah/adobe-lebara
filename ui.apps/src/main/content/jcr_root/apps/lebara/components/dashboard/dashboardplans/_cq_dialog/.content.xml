@@ -122,6 +122,12 @@
                                                 fieldLabel="Valid to Label"
                                                 fieldDescription="valid to"
                                                 name="./validLabel"/>
+                                            <offlinePlanRenewalMessage
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="Offline Plan Renewal Message"
+                                                fieldDescription="Renews in 28 days from top up balance. You can turn it off via customer care"
+                                                name="./offlinePlanRenewalMessage"/>
                                         </items>
                                     </column>
                                 </items>

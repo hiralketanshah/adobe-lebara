@@ -55,6 +55,7 @@
 		<property name="cancelChangePlanCheckboxBottom" />
 		<property name="cancelChangePlanConfirmLabel" />
 		<property name="cancelChangePlanCancelLabel" />
+		<property name="offlinePlanRenewalMessage" />
 
 		<!-- Postpaid Sim Validation props -->
 		<property name="verifySimHeading" />
