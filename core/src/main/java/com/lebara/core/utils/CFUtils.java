@@ -329,6 +329,12 @@ public class CFUtils {
 
     private static List<CountryInfo> setPlanInfoCountryList(Resource cfPlanResource, ContentFragment cfPlanFragment) {
         String countryListFragmentPath = CFUtils.getElementValue(cfPlanFragment, "countryList");
+        List<CountryInfo> countryData = getCountryList(cfPlanResource, countryListFragmentPath);
+
+        return countryData;
+    }
+
+    public static List<CountryInfo> getCountryList(Resource cfPlanResource, String countryListFragmentPath) {
         if (StringUtils.isBlank(countryListFragmentPath)) {
             return ListUtils.EMPTY_LIST;
         }
