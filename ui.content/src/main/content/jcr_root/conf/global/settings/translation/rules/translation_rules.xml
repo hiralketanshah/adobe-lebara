@@ -395,6 +395,7 @@
 		<property name="phoneNumberLabel" />
 		<property name="freeSimLabel" />
 		<property name="topupAutoRenewLabel" />
+		<property name="autoRenewLabel" />
 		<property name="topupAutoRenewDesc" />
 		<property name="prepaidAutoRenewDesc" />
 		<property name="postpaidAutoRenewDesc" />
