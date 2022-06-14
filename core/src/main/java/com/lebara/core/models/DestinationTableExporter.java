@@ -79,7 +79,7 @@ public class DestinationTableExporter implements ComponentExporter {
             Resource cfResource = resourceResolver.getResource(countryList);
             if (null != cfResource) {
                 ContentFragment cfPlanFragment = cfResource.adaptTo(ContentFragment.class);
-                listOfCounties = CFUtils.getCountryList(cfResource, countryList);
+                //listOfCounties = CFUtils.getCountryList(cfResource, countryList);
 
             }
         }
