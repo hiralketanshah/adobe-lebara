@@ -78,10 +78,17 @@
 
 		<!-- selection props -->
 		<property name="cardCtaText" />
-
+		<!-- sim register alert props -->
+		<property name="registerWarningMessage" />
+		<property name="suspendedWarningMessage" />
+		<property name="overlayHeader" />
+		<property name="overlaySuccessLabel" />
+		<property name="overlaySkipLabel" />
 		<!-- simswitch props -->
 		<property name="balanceLabel" />
 		<property name="simName" />
+		<property name="activeLabel" />
+		<property name="inActiveLabel" />
 		<!-- Balance Card props -->
 		<property name="activeDesc" />
 		<property name="inactiveLabel" />
@@ -95,6 +102,8 @@
 		<property name="limitSelectLabel" />
 		<property name="topupLabel" />
 		<property name="topupSelectLabel" />
+		<property name="successOverlayTitle" />
+		<property name="successOverlaySubTitle" />
 		<!-- promotion banner props -->
 		<property name="fileReference" />
 		<!-- Postpaid Plans props -->
@@ -139,6 +148,7 @@
 		<property name="smsLabel" />
 		<property name="smsValue" />
 		<property name="validUntilLabel" />
+		<property name="validLabel" />
 		<property name="aioLabel" />
 		<property name="l2lLabel" />
 		<property name="localLabel" />
@@ -629,6 +639,7 @@
 		<property name="titleLabel"/>
 		<property name="titlePlaceholder"/>
 		<property name="titleErrorRequired"/>
+		<property name="addressRequired"/>
 		<property name="dobLabel"/>
 		<property name="dobPlaceholder"/>
 		<property name="dobErrorRequired"/>
@@ -636,6 +647,7 @@
 		<property name="termsConditionsError"/>
 		<property name="additionalDeliveryLabel"/>
 		<property name="additionalDeliveryPlaceholder"/>
+		<property name="additionFieldLengthError"/>
 
 		<!-- Postpaid personal details -->
 		<property name="emailLabel"/>

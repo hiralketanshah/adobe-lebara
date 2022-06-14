@@ -85,6 +85,43 @@
                                                     fieldLabel="Manage"
                                                     value="Manage"
                                                     name="./manageLabel"/>
+                                            <showPlansWithProgress
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                                name="./showPlansWithProgress"
+                                                text="Show Plans with progress?"
+                                                uncheckedValue="{Boolean}false"
+                                                value="{Boolean}true"/>
+                                            <dataValue
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="Data Value"
+                                                value="MB"
+                                                fieldDescription="./dataValue"/>
+                                            <minutesValue
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="minutesValue"
+                                                fieldDescription="MIN"
+                                                name="./minutesValue"/>
+                                            <smsValue
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="SMS Value"
+                                                fieldDescription="SMS"
+                                                name="./smsValue"/>
+                                            <leftOfLabel
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="Left Of Label Label"
+                                                fieldDescription="0 left of 1"
+                                                name="./leftOfLabel"/>
+                                            <validLabel
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="Valid to Label"
+                                                fieldDescription="valid to"
+                                                name="./validLabel"/>
                                         </items>
                                     </column>
                                 </items>

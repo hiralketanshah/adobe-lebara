@@ -38,14 +38,6 @@ public class CountryInfo {
         return StringUtils.isNotBlank(countryCode) ?
                 LebaraConstants.COUNTRY_FLAG_DAM_PATH.concat(countryCode).concat(".png") : StringUtils.EMPTY;
     }
-    
-    public String getName() {
-        return countryName;
-    }
-    
-    public String getImage() {
-        return getCountryFlag();
-    }
 
 
 }

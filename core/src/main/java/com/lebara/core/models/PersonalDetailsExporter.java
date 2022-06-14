@@ -192,6 +192,8 @@ public class PersonalDetailsExporter implements ComponentExporter {
     @ValueMapValue
     private String titleErrorRequired;
     @ValueMapValue
+    private String addressRequired;
+    @ValueMapValue
     private String titleFragmentPath;
     @ValueMapValue
     private boolean showDob;
@@ -213,6 +215,10 @@ public class PersonalDetailsExporter implements ComponentExporter {
     private boolean enableEmailCheckbox;
     @ValueMapValue
     private boolean enableSmsCheckbox;
+    @ValueMapValue
+    private boolean makePaymentOnCart;
+    @ValueMapValue
+    private String additionFieldLengthError;
 
     public List<SelectBean> getCities(){
         return CFUtils.populateCityInfo(resourceResolver.getResource(cfPath));
@@ -294,8 +300,12 @@ public class PersonalDetailsExporter implements ComponentExporter {
 		return titlePlaceholder;
 	}
 
-	public String geTtitleErrorRequired() {
+	public String getTitleErrorRequired() {
 		return titleErrorRequired;
+	}
+
+	public String getAddressRequired() {
+		return addressRequired;
 	}
 
     public List<Object> getTitleOptions() {
@@ -342,6 +352,10 @@ public class PersonalDetailsExporter implements ComponentExporter {
 		return enableSmsCheckbox;
 	}
 
+	public boolean getMakePaymentOnCart() {
+		return makePaymentOnCart;
+	}
+
     public String getSimChoiceButtonLabel() {
         return simChoiceButtonLabel;
     }
@@ -360,6 +374,10 @@ public class PersonalDetailsExporter implements ComponentExporter {
 
     public String getLegalRegistrationSucessSubtitle() {
         return legalRegistrationSucessSubtitle;
+    }
+
+    public String getAdditionFieldLengthError() {
+        return additionFieldLengthError;
     }
 
     @Override

@@ -329,12 +329,6 @@ public class CFUtils {
 
     private static List<CountryInfo> setPlanInfoCountryList(Resource cfPlanResource, ContentFragment cfPlanFragment) {
         String countryListFragmentPath = CFUtils.getElementValue(cfPlanFragment, "countryList");
-        List<CountryInfo> countryData = getCountryList(cfPlanResource, countryListFragmentPath);
-        
-        return countryData;
-    }
-
-    public static List<CountryInfo> getCountryList(Resource cfPlanResource, String countryListFragmentPath) {
         if (StringUtils.isBlank(countryListFragmentPath)) {
             return ListUtils.EMPTY_LIST;
         }
@@ -395,8 +389,8 @@ public class CFUtils {
                     if (currentContentFragment != null) {
                         selectBean.setName(CFUtils.getElementValue(currentContentFragment, "name"));
                         selectBean.setValue(CFUtils.getElementValue(currentContentFragment, "value"));
+                        currentProviderList.add(selectBean);
                     }
-                    currentProviderList.add(selectBean);
                 }
             }
         }

@@ -99,6 +99,13 @@
                                                     fieldLabel="Left Of Label Label"
                                                     value="of"
                                                     name="./leftOfLabel"/>
+                                            <showPlansWithProgress
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                                name="./showPlansWithProgress"
+                                                text="Show Plans with progress?"
+                                                uncheckedValue="{Boolean}false"
+                                                value="{Boolean}true"/>
                                         </items>
                                     </column>
                                 </items>
