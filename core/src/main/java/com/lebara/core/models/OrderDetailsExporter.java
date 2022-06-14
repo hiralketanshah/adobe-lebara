@@ -52,6 +52,9 @@ public class OrderDetailsExporter implements ComponentExporter {
     private String topupAutoRenewDesc;
 
     @ValueMapValue
+    private String autoRenewLabel;
+
+    @ValueMapValue
     private String prepaidAutoRenewDesc;
 
     @ValueMapValue
@@ -222,6 +225,10 @@ public class OrderDetailsExporter implements ComponentExporter {
 
     public String getTopupAutoRenewLabel() {
         return topupAutoRenewLabel;
+    }
+
+    public String getAutoRenewLabel() {
+        return autoRenewLabel;
     }
 
     public String getTopupAutoRenewDesc() {

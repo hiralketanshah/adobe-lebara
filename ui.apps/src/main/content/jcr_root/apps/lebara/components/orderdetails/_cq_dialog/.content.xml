@@ -56,7 +56,7 @@
                                             <topupautorenewlabel
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                                fieldLabel="Auto Renew Label"
+                                                fieldLabel="Topup Auto Renew Label"
                                                 fieldDescription="Auto Renew"
                                                 name="./topupAutoRenewLabel"/>
                                             <topupautorenewdesc
@@ -65,6 +65,12 @@
                                                 fieldLabel="Auto Renew Desc"
                                                 fieldDescription="Every time your credit reaches €3 it will be topped up by {0}"
                                                 name="./topupAutoRenewDesc"/>
+                                            <autoRenewLabel
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="Auto Renew Label"
+                                                fieldDescription="Auto-Renew"
+                                                name="./autoRenewLabel"/>
                                             <prepaidautorenewdesc
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
