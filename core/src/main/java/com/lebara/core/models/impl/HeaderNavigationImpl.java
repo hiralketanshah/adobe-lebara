@@ -2,37 +2,39 @@ package com.lebara.core.models.impl;
 
 import com.adobe.cq.export.json.ComponentExporter;
 import com.adobe.cq.export.json.ExporterConstants;
-import com.adobe.cq.wcm.core.components.models.Navigation;
-import com.adobe.cq.wcm.core.components.models.datalayer.ComponentData;
+import com.day.cq.wcm.api.Page;
+import com.day.cq.wcm.api.PageManager;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.lebara.core.models.CustomNavigationItem;
-import com.lebara.core.models.HeaderNavigation;
+import com.lebara.core.models.beans.HeaderPageBean;
 import com.lebara.core.utils.AemUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;
+import org.apache.sling.api.resource.ResourceResolver;
+import org.apache.sling.api.resource.ValueMap;
 import org.apache.sling.models.annotations.DefaultInjectionStrategy;
 import org.apache.sling.models.annotations.Exporter;
 import org.apache.sling.models.annotations.Model;
-import org.apache.sling.models.annotations.Via;
 import org.apache.sling.models.annotations.injectorspecific.ScriptVariable;
-import org.apache.sling.models.annotations.injectorspecific.Self;
 import org.apache.sling.models.annotations.injectorspecific.SlingObject;
 import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
-import org.apache.sling.models.annotations.via.ResourceSuperType;
 import com.lebara.core.models.beans.Link;
 import org.apache.sling.models.annotations.injectorspecific.ChildResource;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.stream.Collectors;
 
-@Model(adaptables = SlingHttpServletRequest.class, adapters = {HeaderNavigation.class, ComponentExporter.class},
+@Model(adaptables = SlingHttpServletRequest.class, adapters = {HeaderNavigationImpl.class, ComponentExporter.class},
         resourceType = HeaderNavigationImpl.RESOURCE_TYPE, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
 @Exporter(name = ExporterConstants.SLING_MODEL_EXPORTER_NAME, extensions = ExporterConstants.SLING_MODEL_EXTENSION)
-public class HeaderNavigationImpl implements HeaderNavigation {
+public class HeaderNavigationImpl implements ComponentExporter {
 
     @SlingObject
     private SlingHttpServletRequest request;
+
+    @ScriptVariable
+    private PageManager pageManager;
 
     @ScriptVariable
     protected Resource resource;
@@ -58,6 +60,42 @@ public class HeaderNavigationImpl implements HeaderNavigation {
     @ValueMapValue
     private String viewAllButtonLink;
 
+    @ValueMapValue
+    private String header1Link;
+
+    @ValueMapValue
+    private String header1Label;
+
+    @ValueMapValue
+    private String header2Link;
+
+    @ValueMapValue
+    private String header2Label;
+
+    @ValueMapValue
+    private String header3Link;
+
+    @ValueMapValue
+    private String header3Label;
+
+    @ValueMapValue
+    private String header4Link;
+
+    @ValueMapValue
+    private String header4Label;
+
+    @ValueMapValue
+    private String header5Link;
+
+    @ValueMapValue
+    private String header5Label;
+
+    @ValueMapValue
+    private String header6Link;
+
+    @ValueMapValue
+    private String header6Label;
+
     @ChildResource
     private List<Link> links;
 
@@ -67,51 +105,47 @@ public class HeaderNavigationImpl implements HeaderNavigation {
     @ChildResource
     private SearchModelImpl search;
 
-    @Self
-    @Via(type = ResourceSuperType.class)
-    private Navigation delegate;
+    @ChildResource
+    private List<Resource> header1;
 
+    @ChildResource
+    private List<Resource> header2;
+
+    @ChildResource
+    private List<Resource> header3;
+
+    @ChildResource
+    private List<Resource> header4;
+
+    @ChildResource
+    private List<Resource> header5;
+
+    @ChildResource
+    private List<Resource> header6;
+
+    private ResourceResolver resourceResolver;
     /**
      * The resource type.
      */
     protected static final String RESOURCE_TYPE = "lebara/components/header/headernavigation";
 
     @Override
-    public String getAccessibilityLabel() {
-        return delegate.getAccessibilityLabel();
-    }
-
-    @Override
-    public String getId() {
-        return delegate.getId();
-    }
-
-    @Override
-    public ComponentData getData() {
-        return delegate.getData();
-    }
-
-    @Override
     public String getExportedType() {
-        return resource.getResourceType();
+        return RESOURCE_TYPE;
     }
 
-    @Override
     public String getLogoPath() {
         return fileReference;
     }
 
-    @Override
     public String getTopupCtaText() {
         return topupCtaText;
     }
 
-    @Override
     public String getTopupCtaLink() {
         return AemUtils.getLinkWithExtension(topupCtaLink, request);
     }
 
-    @Override
     public String getLogoLinkURL() {
         return AemUtils.getLinkWithExtension(logoLinkURL, request);
     }
@@ -120,20 +154,8 @@ public class HeaderNavigationImpl implements HeaderNavigation {
         return AemUtils.getLinkWithExtension(accountLink, request);
     }
 
-    @Override
-    public String getNewText(){
+    public String getNewText() {
         return newText;
-    }
-
-    /** Navigation Items from resourceSuperType
-     *  with additional custom properties
-     * @return List of custom navigation items
-     */
-    @JsonProperty("items")
-    public List<CustomNavigationItem> getCustomItems() {
-        return delegate.getItems().stream()
-                .map(navItem -> new CustomNavigationItem(resource, navItem, request))
-                .collect(Collectors.toList());
     }
 
     @JsonProperty("loggedInMenuItems")
@@ -147,5 +169,73 @@ public class HeaderNavigationImpl implements HeaderNavigation {
 
     public SearchModelImpl getSearch() {
         return search;
+    }
+
+    @JsonProperty("items")
+    public List<HeaderPageBean> getParentList() {
+        List<HeaderPageBean> headerPageBeanList = new ArrayList<>();
+        populateParentList(headerPageBeanList, header1Link, header1Label, header1);
+        populateParentList(headerPageBeanList, header2Link, header2Label, header2);
+        populateParentList(headerPageBeanList, header3Link, header3Label, header3);
+        populateParentList(headerPageBeanList, header4Link, header4Label, header4);
+        populateParentList(headerPageBeanList, header5Link, header5Label, header5);
+        populateParentList(headerPageBeanList, header6Link, header6Label, header6);
+        return headerPageBeanList;
+    }
+
+    public HeaderPageBean getLevel0List(String link, String label, List<Resource> header) {
+        ValueMap properties = getValueMapFromPageLink(link);
+        return new HeaderPageBean(properties, AemUtils.getLinkWithExtension(link, request), getTitle(label, link), 0, getLevel1List(header));
+    }
+
+    private List<HeaderPageBean> getLevel1List(List<Resource> header) {
+        List<HeaderPageBean> outerList = new ArrayList<>();
+        if (header != null) {
+            for (Resource level1Res : header) {
+                String headerlabel = AemUtils.getStringProperty(level1Res, "label");
+                String headerlink = AemUtils.getStringProperty(level1Res, "link");
+                ValueMap properties = getValueMapFromPageLink(headerlink);
+                HeaderPageBean headerPageBean = new HeaderPageBean(properties, AemUtils.getLinkWithExtension(headerlink, request), getTitle(headerlabel, headerlink), 1, getLevel2List(level1Res));
+                outerList.add(headerPageBean);
+            }
+        }
+        return outerList;
+    }
+
+    private List<HeaderPageBean> getLevel2List(Resource level1Res) {
+        Resource child = level1Res.getChild("header");
+        List<HeaderPageBean> innerList = new ArrayList<>();
+        if (child != null) {
+            for (Resource headerChild : child.getChildren()) {
+                String headerlabell2 = AemUtils.getStringProperty(headerChild, "label");
+                String headerlinkl2 = AemUtils.getStringProperty(headerChild, "link");
+                ValueMap properties = getValueMapFromPageLink(headerlinkl2);
+                HeaderPageBean headerPageBean = new HeaderPageBean(properties, AemUtils.getLinkWithExtension(headerlinkl2, request), getTitle(headerlabell2, headerlinkl2), 2, new ArrayList<>());
+                innerList.add(headerPageBean);
+            }
+        }
+        return innerList;
+    }
+
+    private void populateParentList(List<HeaderPageBean> headerPageBeanList, String link, String label, List<Resource> header) {
+        if (StringUtils.isNotBlank(link)) {
+            headerPageBeanList.add(getLevel0List(link, label, header));
+        }
+    }
+
+    private String getTitle(String overriddenTitle, String pagePath) {
+        if (StringUtils.isBlank(overriddenTitle)) {
+            return AemUtils.getTitle(pageManager.getContainingPage(pagePath));
+        }
+        return overriddenTitle;
+    }
+
+    private ValueMap getValueMapFromPageLink(String link) {
+        Page page = pageManager.getContainingPage(link);
+        ValueMap properties = null;
+        if (page != null) {
+            properties = page.getContentResource().getValueMap();
+        }
+        return properties;
     }
 }
