@@ -196,14 +196,22 @@ public class AemUtils {
         if (StringUtils.isBlank(payloadPath) || isExternalLink(payloadPath)) {
             return payloadPath;
         }
-        return ((request == null) ? payloadPath : request.getResourceResolver().map(payloadPath)) + (isHtmlExtensionRequired(payloadPath) ? LebaraConstants.HTML_EXTENSION : StringUtils.EMPTY);
+        return ((request == null) ? payloadPath : trimmedPath(payloadPath)) + (isHtmlExtensionRequired(payloadPath) ? LebaraConstants.HTML_EXTENSION : StringUtils.EMPTY);
+    }
+
+    private static String trimmedPath(String payloadPath) {
+        if(StringUtils.isNotBlank(payloadPath)){
+            payloadPath = StringUtils.replace(payloadPath,"/content/lebara/de","");
+            payloadPath = StringUtils.replace(payloadPath,"/content/lebara/fr","");
+        }
+        return payloadPath;
     }
 
     public static String getLinkWithExtension(String payloadPath, ResourceResolver resourceResolver) {
         if (StringUtils.isBlank(payloadPath) || isExternalLink(payloadPath)) {
             return payloadPath;
         }
-        return ((resourceResolver == null) ? payloadPath : resourceResolver.map(payloadPath)) + (isHtmlExtensionRequired(payloadPath) ? LebaraConstants.HTML_EXTENSION : StringUtils.EMPTY);
+        return ((resourceResolver == null) ? payloadPath : trimmedPath(payloadPath)) + (isHtmlExtensionRequired(payloadPath) ? LebaraConstants.HTML_EXTENSION : StringUtils.EMPTY);
     }
 
     public static String updateShortenLinksInRichText(String text, SlingHttpServletRequest slingRequest) {
