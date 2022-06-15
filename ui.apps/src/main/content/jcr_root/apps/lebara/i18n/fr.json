@@ -1,0 +1,16 @@
+{
+  "Days" : "Jours",
+  "Month" : "Mois",
+  "Minutes" : "Minutes",
+  "GB" : "Go",
+  "MB" : "Mo",
+  "lebara.viewcart.label":"Voir le panier",
+  "lebara.addon.addedtocart.label":"Ajouter {0} ajouté au panier",
+  "lebara.emptycart.addedtocart.label":"Crédit de recharge {0} ajouté au panier",
+  "lebara.selectedplan.label": "Forfait sélectionné",
+  "product.information.label": "Information produit",
+  "landline": "Fixe",
+  "mobile": "Mobile",
+  "sms": "SMS",
+  "lebara.SelectCountry.label": "Veuillez sélectionner un pays"
+}

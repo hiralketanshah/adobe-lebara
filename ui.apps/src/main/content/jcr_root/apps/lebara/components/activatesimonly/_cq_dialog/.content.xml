@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:granite="http://www.adobe.com/jcr/granite/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
     jcr:primaryType="nt:unstructured"
     jcr:title="Activate Sim Only Form"
     sling:resourceType="cq/gui/components/authoring/dialog">
@@ -117,15 +117,182 @@
                                                 fieldDescription="ICCID invalid message"
                                                 fieldLabel="ICCID invalid message"
                                                 name="./iccidInvalidMsg"
-                                                value="Please enter valid ICCID"/>                                            
+                                                value="Please enter valid ICCID"/>
+                                            <swrMessage
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="URL params missing"
+                                                fieldLabel="URL params missing Error Message"
+                                                name="./swrMessage"
+                                                value="URL params missing"/>
                                         </items>
                                     </column>
                                 </items>
                             </columns>
                         </items>
                     </activatesimonlylabels>
+                    <errormessages
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Activation Error Messages"
+                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                        <items jcr:primaryType="nt:unstructured">
+                            <activationerrors
+                                jcr:primaryType="nt:unstructured"
+                                jcr:title="Activation Error Messages"
+                                sling:resourceType="granite/ui/components/coral/foundation/container"
+                                margin="{Boolean}true">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <columns
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+                                        margin="{Boolean}true">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <column
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/container">
+                                                <items jcr:primaryType="nt:unstructured">
+                                                    <list
+                                                        granite:class="lebara-multifield__editor"
+                                                        jcr:primaryType="nt:unstructured"
+                                                        jcr:title="Error Type &amp; Text"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
+                                                        composite="{Boolean}true"
+                                                        fieldLabel="Addon Navigation List">
+                                                        <field
+                                                            jcr:primaryType="nt:unstructured"
+                                                            sling:resourceType="granite/ui/components/coral/foundation/container"
+                                                            name="./activationErrorMessages">
+                                                            <items jcr:primaryType="nt:unstructured">
+                                                                <column
+                                                                    jcr:primaryType="nt:unstructured"
+                                                                    sling:resourceType="granite/ui/components/coral/foundation/container">
+                                                                    <items jcr:primaryType="nt:unstructured">
+                                                                        <errorcode
+                                                                            jcr:primaryType="nt:unstructured"
+                                                                            sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                                                            fieldLabel="Error Code"
+                                                                            name="./errorCode">
+                                                                            <items jcr:primaryType="nt:unstructured">
+                                                                                <ICCID_DO_NOT_MATCH
+                                                                                    jcr:primaryType="nt:unstructured"
+                                                                                    text="ICCID_DO_NOT_MATCH"
+                                                                                    value="ICCID_DO_NOT_MATCH"/>
+                                                                                <CUSTOMER_ALREADY_ACTIVATED
+                                                                                    jcr:primaryType="nt:unstructured"
+                                                                                    text="CUSTOMER_ALREADY_ACTIVATED"
+                                                                                    value="CUSTOMER_ALREADY_ACTIVATED"/>
+                                                                                <CUSTOMER_OCS_PLAN_ALREADY_PROVISIONED
+                                                                                    jcr:primaryType="nt:unstructured"
+                                                                                    text="CUSTOMER_OCS_PLAN_ALREADY_PROVISIONED"
+                                                                                    value="CUSTOMER_OCS_PLAN_ALREADY_PROVISIONED"/>
+                                                                                <SUBSCRIPTION_NOT_FOUND
+                                                                                    jcr:primaryType="nt:unstructured"
+                                                                                    text="SUBSCRIPTION_NOT_FOUND"
+                                                                                    value="SUBSCRIPTION_NOT_FOUND"/>
+                                                                                <LIFECYCLE_STATE_ERROR
+                                                                                    jcr:primaryType="nt:unstructured"
+                                                                                    text="LIFECYCLE_STATE_ERROR"
+                                                                                    value="LIFECYCLE_STATE_ERROR"/>
+                                                                                <CONTRACT_NOT_FOUND
+                                                                                    jcr:primaryType="nt:unstructured"
+                                                                                    text="CONTRACT_NOT_FOUND"
+                                                                                    value="CONTRACT_NOT_FOUND"/>
+                                                                                <PP_USER_NOT_FOUND
+                                                                                    jcr:primaryType="nt:unstructured"
+                                                                                    text="PP_USER_NOT_FOUND"
+                                                                                    value="PP_USER_NOT_FOUND"/>
+                                                                                <CUSTOMER_PAYMENT_REQUIRED
+                                                                                    jcr:primaryType="nt:unstructured"
+                                                                                    text="CUSTOMER_PAYMENT_REQUIRED"
+                                                                                    value="CUSTOMER_PAYMENT_REQUIRED"/>
+                                                                                <FAILED_TO_GET_CUSTOMER
+                                                                                    jcr:primaryType="nt:unstructured"
+                                                                                    text="FAILED_TO_GET_CUSTOMER"
+                                                                                    value="FAILED_TO_GET_CUSTOMER"/>
+                                                                                <PAYMENT_NOT_FOUND
+                                                                                    jcr:primaryType="nt:unstructured"
+                                                                                    text="PAYMENT_NOT_FOUND"
+                                                                                    value="PAYMENT_NOT_FOUND"/>
+                                                                                <FMVNO_POSTPAY_ERROR
+                                                                                    jcr:primaryType="nt:unstructured"
+                                                                                    text="FMVNO_POSTPAY_ERROR"
+                                                                                    value="FMVNO_POSTPAY_ERROR"/>
+                                                                                <ICCID_NOT_FOUND_HLR
+                                                                                    jcr:primaryType="nt:unstructured"
+                                                                                    text="ICCID_NOT_FOUND_HLR"
+                                                                                    value="ICCID_NOT_FOUND_HLR"/>
+                                                                                <LOGISTIC_INFO_NOT_FOUND
+                                                                                    jcr:primaryType="nt:unstructured"
+                                                                                    text="LOGISTIC_INFO_NOT_FOUND"
+                                                                                    value="LOGISTIC_INFO_NOT_FOUND"/>
+                                                                                <SUBSCRIPTION_WAS_NOT_FOUND_BY_ICCID
+                                                                                    jcr:primaryType="nt:unstructured"
+                                                                                    text="SUBSCRIPTION_WAS_NOT_FOUND_BY_ICCID"
+                                                                                    value="SUBSCRIPTION_WAS_NOT_FOUND_BY_ICCID"/>
+                                                                                <RETAILER_NOT_FOUND
+                                                                                    jcr:primaryType="nt:unstructured"
+                                                                                    text="RETAILER_NOT_FOUND"
+                                                                                    value="RETAILER_NOT_FOUND"/>
+                                                                                <RISK_FREE_CHECK_FAILED
+                                                                                    jcr:primaryType="nt:unstructured"
+                                                                                    text="RISK_FREE_CHECK_FAILED"
+                                                                                    value="RISK_FREE_CHECK_FAILED"/>
+                                                                                <too_many_requests
+                                                                                    jcr:primaryType="nt:unstructured"
+                                                                                    text="too_many_requests"
+                                                                                    value="too_many_requests"/>
+                                                                                <BAD_REQUEST_ERROR
+                                                                                    jcr:primaryType="nt:unstructured"
+                                                                                    text="BAD_REQUEST_ERROR"
+                                                                                    value="BAD_REQUEST_ERROR"/>
+                                                                                <MSISDN_ALREADY_PRESENT
+                                                                                    jcr:primaryType="nt:unstructured"
+                                                                                    text="MSISDN_ALREADY_PRESENT"
+                                                                                    value="MSISDN_ALREADY_PRESENT"/>
+                                                                                <CUSTOMER_IS_NOT_PRESENT
+                                                                                    jcr:primaryType="nt:unstructured"
+                                                                                    text="CUSTOMER_IS_NOT_PRESENT"
+                                                                                    value="CUSTOMER_IS_NOT_PRESENT"/>
+                                                                                <FAILED_TO_LINK_MSISDN
+                                                                                    jcr:primaryType="nt:unstructured"
+                                                                                    text="FAILED_TO_LINK_MSISDN"
+                                                                                    value="FAILED_TO_LINK_MSISDN"/>
+                                                                                <NO_FREE_MSISDN_AVAILABLE
+                                                                                    jcr:primaryType="nt:unstructured"
+                                                                                    text="NO_FREE_MSISDN_AVAILABLE"
+                                                                                    value="NO_FREE_MSISDN_AVAILABLE"/>
+                                                                                <DEFAULT_ERROR
+                                                                                    jcr:primaryType="nt:unstructured"
+                                                                                    text="DEFAULT_ERROR"
+                                                                                    value="DEFAULT_ERROR"/>
+                                                                                <not-found
+                                                                                    jcr:primaryType="nt:unstructured"
+                                                                                    text="Not found"
+                                                                                    value="Not found"/>
+                                                                            </items>
+                                                                        </errorcode>
+                                                                        <message
+                                                                            jcr:primaryType="nt:unstructured"
+                                                                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                                            fieldLabel="Error Message"
+                                                                            name="./errorMessage"
+                                                                            required="true"/>
+                                                                    </items>
+                                                                </column>
+                                                            </items>
+                                                        </field>
+                                                    </list>
+                                                </items>
+                                            </column>
+                                        </items>
+                                    </columns>
+                                </items>
+                            </activationerrors>
+                        </items>
+                    </errormessages>
                 </items>
             </tabs>
         </items>
     </content>
 </jcr:root>
+

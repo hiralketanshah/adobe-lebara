@@ -18,6 +18,15 @@ public class AttachSimBean {
     @ValueMapValue
     private String description;
 
+    @ValueMapValue
+    private String noSimLable;
+
+    @ValueMapValue
+    private String keyMobileSim;
+
+    @ValueMapValue
+    private String simAttachInfo;
+
     @ChildResource
     private AttachSimPopupFormFields frmFields;
 
@@ -32,5 +41,17 @@ public class AttachSimBean {
 
     public String getDescription() {
         return description;
+    }
+
+    public String getNoSimLable() {
+        return noSimLable;
+    }
+
+    public String getKeyMobileSim() {
+        return keyMobileSim;
+    }
+
+    public String getSimAttachInfo() {
+        return simAttachInfo;
     }
 }

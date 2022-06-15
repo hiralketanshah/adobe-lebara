@@ -5,7 +5,7 @@ import OfferTypes from "./types";
 import Button from "@lebara/ui/src/components/Button/Button";
 import PlanDetailsDialog from "../PlanDetailsDialog/PlanDetailsDialog";
 import { allowanceListProps } from "../ExpandablePlanCard/types";
-import { useHistory } from "@lebara/ui/src/hooks/useHistory";
+import { useHistory, useLocation } from "@lebara/ui/src/hooks/useHistory";
 import useAddToCart from "@lebara/ui/src/hooks/useAddToCart";
 import { globalConfigs } from "@lebara/ui/src/configs/globalConfigs";
 import LebaraText from "@lebara/ui/src/components/LebaraText/LebaraText";
@@ -16,7 +16,8 @@ import { useSelector } from "react-redux";
 import {
   selectIsAuthenticated,
   selectMsisdn,
-  selectEmail
+  selectEmail,
+  selectLogout,
 } from "@lebara/ui/src/redux/selectors/userSelectors";
 import { useApolloClient } from "@apollo/client";
 import GET_PERSONAL_DETAILS from "@lebara/ui/src/graphql/GET_PERSONAL_DETAILS";
@@ -26,6 +27,8 @@ import { setLoading } from "@lebara/ui/src/redux/actions/loadingActions";
 import { useDispatch } from "react-redux";
 import { ReduxState } from "@lebara/ui/src/redux/types";
 import PlanNotEligibleDialog from "@lebara/ui/src/components/PlanNotEligibleDialog/PlanNotEligibleDialog";
+import AttachSimModels from "@lebara/ui/src/components/AttachSim/AttachSimModels";
+import { selectIsLoading } from "@lebara/ui/src/redux/selectors/loadingSelectors";
 const ExpandableSimPlanCard: React.FC<ExpandableSimPlanCardProps> = ({
   planName,
   previewIcon,
@@ -57,9 +60,11 @@ const ExpandableSimPlanCard: React.FC<ExpandableSimPlanCardProps> = ({
   isRemoveFromCart,
   onClose,
   minutesLabel,
-  isResponsivePlan
+  isResponsivePlan,
+  autoRenew
 }) => {
   const history = useHistory();
+  const location = useLocation<{}>();
   const [addItemToCart] = useAddToCart();
   const [removeFromCartApi] = useMutation(REMOVE_FROM_CART);
   const toast = useToast();
@@ -69,6 +74,9 @@ const ExpandableSimPlanCard: React.FC<ExpandableSimPlanCardProps> = ({
   const [isFailedtoAddOpen, setIsFailedtoAddOpen] = useState(false);
   const isAuthenticated = useSelector(selectIsAuthenticated);
   const msisdn = useSelector(selectMsisdn);
+  const isLoading = useSelector(selectIsLoading);
+  const isLogout = useSelector(selectLogout);
+  const [isAttachSim, setAttachSim] = useState(false);
   const client = useApolloClient();
   const email = useSelector(selectEmail);
   const dispatch = useDispatch();
@@ -118,8 +126,15 @@ const ExpandableSimPlanCard: React.FC<ExpandableSimPlanCardProps> = ({
   };
   const handleAddToCart = async () => {
     const isLoggedInUser: boolean = !!(isAuthenticated && msisdn);
-    const description: string | undefined = additionalOffers?.match(/<li>.*?<\/li>/g)?.length ? additionalOffers.replaceAll('\n', '').replaceAll('&nbsp;', '').match(/<li>.*?<\/li>/g)?.map(list => list?.replaceAll(/<li>|<\/li>/g, ''))?.join('+') : additionalOffers;
+    const description: string | undefined = additionalOffers?.match(/<li>.*?<\/li>/g)?.length ? additionalOffers.replaceAll('\n', '').replaceAll('&nbsp;', '').match(/<li>.*?<\/li>/g)?.map(list => list?.replaceAll(/<(.|\n)*?>/g, ''))?.join('+') : additionalOffers;
+    setAttachSim(false);
     setIsButtonDisabled(true);
+    if (isAuthenticated && !isLoading && !msisdn && !isLogout) {
+      setAttachSim(true);
+      setIsButtonDisabled(false);
+      return;
+    }
+    setAttachSim(false);
     if (isRemoveFromCart) {
       await removeFromCartApi({
         variables: {
@@ -142,8 +157,8 @@ const ExpandableSimPlanCard: React.FC<ExpandableSimPlanCardProps> = ({
       }
       case OfferTypes.PREPAID: {
         try {
-          await addItemToCart(parseInt(id || ''), planName, (JSON.stringify(description || '')), Number(cost?.replaceAll(',', '.') || ''), "plan", true);
-          isRemoveFromCart && onClose ? onClose() : history.push(isLoggedInUser ? "/order-details" : "/lebara-sim-choice");
+          await addItemToCart(parseInt(id || ''), planName, (JSON.stringify(description || '')), Number(cost?.replaceAll(',', '.') || ''), "plan", true, undefined, undefined, autoRenew);
+          isRemoveFromCart && onClose ? onClose() : history.push(isLoggedInUser ? "/order-details" : new URLSearchParams(location.search).has("aid") ? "/mobile-number-from-another-operator-choice" : "/lebara-sim-choice");
         } catch (e) {
 
         }
@@ -151,7 +166,7 @@ const ExpandableSimPlanCard: React.FC<ExpandableSimPlanCardProps> = ({
       }
       case OfferTypes.POSTPAID: {
         try {
-          await addItemToCart(parseInt(id || ''), planName, (JSON.stringify(description || '')), Number(cost?.replaceAll(',', '.') || ''), "postpaid", true);
+          await addItemToCart(parseInt(id || ''), planName, (JSON.stringify(description || '')), Number(cost?.replaceAll(',', '.') || ''), "postpaid", true, undefined, undefined, autoRenew);
           isRemoveFromCart && onClose ? onClose() : isLoggedInUser ? client
             .query({ query: GET_PERSONAL_DETAILS })
             .then((personalDetailsRes) => {
@@ -202,6 +217,7 @@ const ExpandableSimPlanCard: React.FC<ExpandableSimPlanCardProps> = ({
   };
   return (
     <>
+    {isAttachSim && <AttachSimModels />}
       {promotionMessage && (
         <Box
           bgColor="#FF3182"

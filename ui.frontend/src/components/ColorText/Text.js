@@ -29,7 +29,8 @@ class Text extends Component {
 
   get richTextContent() {
     const styleObj = {
-        color: this.props.fontColor
+        color: this.props.fontColor,
+        textAlign: this.props.textalignment
     }
     return (
       <div
@@ -45,7 +46,7 @@ class Text extends Component {
   }
 
   get textContent() {
-    return <div>{this.props.text}</div>;
+    return <div style={{textAlign: this.props.textalignment}}>{this.props.text}</div>;
   }
 
   render() {

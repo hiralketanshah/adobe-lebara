@@ -23,6 +23,7 @@ function PrivateRoute({ WrappedComponent, routeProps, ...rest }: any) {
             to={{
               pathname: (JSON.parse(window.lebaraGlobalConfigs.journeyPages)[C.REGISTER] || "/"),
               state: { from: props.location },
+              search: props.location.search
             }}
           />
         }

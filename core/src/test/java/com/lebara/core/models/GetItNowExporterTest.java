@@ -34,5 +34,6 @@ class GetItNowExporterTest {
         assertEquals("get it now error message", getItNowExporter.getGetItNowErrorMessage());
         assertEquals("/content/lebara/de/en/SIMONLY/phone.html", getItNowExporter.getButtonCTALink());
         assertEquals("lebara/components/getitnow", getItNowExporter.getExportedType());
+        assertEquals(false, getItNowExporter.getIsSimChoiceFlow());
     }
 }

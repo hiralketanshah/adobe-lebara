@@ -101,7 +101,7 @@ const MiniHeader: React.FC<MiniHeaderProps> = ({
       <Flex
         height="56px"
         alignItems="center"
-        px="26px"
+        pl="10px"
         justifyContent="space-between"
         background="lightenPrimary.500"
         color="white"
@@ -122,6 +122,22 @@ const MiniHeader: React.FC<MiniHeaderProps> = ({
           </ChakraLink>
         </Flex>
         <Flex>
+        <Button
+            data-testid="top-up-btn"
+            fontSize="12px"
+            padding={2}
+            bg="secondary.500"
+            onClick={() => {
+              history.push(topupCtaLink || "/top-up");
+              onCloseSearch();
+            }}
+            borderRadius="5"
+            height="30px"
+            mr="10px"
+            mt="8px"
+          >
+            {topupCtaText}
+          </Button>
         {!isSearchOpened ? (
             <Box>
               <Button

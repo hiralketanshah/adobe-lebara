@@ -35,6 +35,8 @@ public class GetItNowExporter extends IntroExporter {
     private String getItNowErrorMessage;
     @ValueMapValue
     private String description;
+    @ValueMapValue
+    private boolean isSimChoiceFlow;
 
     @Override
     public String getDescription() {
@@ -63,6 +65,10 @@ public class GetItNowExporter extends IntroExporter {
 
     public String getGetItNowErrorMessage() {
         return getItNowErrorMessage;
+    }
+
+    public boolean getIsSimChoiceFlow() {
+        return isSimChoiceFlow;
     }
 
     @Override

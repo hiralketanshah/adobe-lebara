@@ -39,6 +39,7 @@ export interface ExpandableSimPlanCardProps {
   isRemoveFromCart?: boolean;
   onClose?: () => void;
   isResponsivePlan?: boolean;
+  autoRenew?: string;
 }
 
 const OfferTypes = {

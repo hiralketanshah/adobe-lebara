@@ -2,6 +2,8 @@
   "Days" : "Dni",
   "Month" : "Miesiąc",
   "Minutes" : "Minuty",
+  "GB" : "GB",
+  "MB" : "MB",
   "lebara.viewcart.label":"Zobacz Koszyk",
   "lebara.addon.addedtocart.label":"Dodatek {0} dodany do koszyka",
   "lebara.emptycart.addedtocart.label":"Doładuj kredyt {0} dodany do koszyka",

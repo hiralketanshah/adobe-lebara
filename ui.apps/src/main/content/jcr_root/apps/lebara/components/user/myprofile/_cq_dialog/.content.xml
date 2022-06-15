@@ -488,6 +488,13 @@
                                 fieldLabel="Email Error Message on Empty Email"
                                 name="./validationMessages/emailRequiredMsg"
                                 value="The email address field cannot be empty"/>
+                            <emailAlreadyExistsErrorMsg
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldDescription="The email address already exists"
+                                fieldLabel="Email already exists Error Message"
+                                name="./validationMessages/emailAlreadyExistsErrorMsg"
+                                value="The email address already exists"/>
                             <confirmEmailNotMatchMsg
                                     jcr:primaryType="nt:unstructured"
                                     sling:resourceType="granite/ui/components/coral/foundation/form/textfield"

@@ -21,7 +21,7 @@ public class HeaderExporterTest {
         aemContext.load().json("/header.json","/content/experience-fragments/lebara/de/de/site/header/master");
     }
 
-    @Test
+    //@Test
     final void getHeaderProps(){
         aemContext.currentResource(PROPERTIES_JSON_HEADER_NAV);
         HeaderNavigation headerNavigationImpl = aemContext.request().adaptTo(HeaderNavigation.class);
