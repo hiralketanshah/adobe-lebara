@@ -1,0 +1,4 @@
+// Configuration created by Apache Sling JCR Installer
+{
+  "resource.resolver.map.location":"/etc/map.publish"
+}
