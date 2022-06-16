@@ -11,3 +11,4 @@ import "./PromotionBannerAemConfig";
 import "./SimSwitchAemConfig";
 import "./UsageDetailsAemConfig";
 import "./RenewNowAemConfig";
+import "./SimRegisterAlertAemConfig";

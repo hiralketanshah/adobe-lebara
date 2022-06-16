@@ -33,13 +33,14 @@ export const withRoute = (WrappedComponent, extension) => {
   return class CompositeRoute extends Component {
     render() {
       const PROJECT_URL_ROOT = "/content/lebara/de";
+	  const PROJECT_URL_ROOT_FR = "/content/lebara/fr";
       let routePath = this.props.cqPath;
       if (!routePath) {
         return <WrappedComponent {...this.props} />;
       }
       let paths = ['(.*)' + routePath + '(.' + extension + ')?'];
       extension = extension || 'html';
-      if (!AuthoringUtils.isInEditor() && routePath.startsWith(PROJECT_URL_ROOT)) {
+       if (!AuthoringUtils.isInEditor() && (routePath.startsWith(PROJECT_URL_ROOT) || routePath.startsWith(PROJECT_URL_ROOT_FR))) {
         paths.push(routePath.substring(PROJECT_URL_ROOT.length) + "(.html)?");
     }
       // Context path + route path + extension

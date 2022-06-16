@@ -1,6 +1,4 @@
+// Configuration created by Apache Sling JCR Installer
 {
-  "resource.resolver.mapping": [
-    "/:/",
-	"/content/lebara/de/:/"
-  ]
+  "resource.resolver.map.location":"/etc/map.publish"
 }

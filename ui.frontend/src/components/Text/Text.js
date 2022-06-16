@@ -30,6 +30,7 @@ class Text extends Component {
   get richTextContent() {
     return (
       <div
+        style={{textAlign: this.props.textalignment}}
         id={extractModelId(this.props.cqPath)}
         data-rte-editelement
         dangerouslySetInnerHTML={{
@@ -41,7 +42,7 @@ class Text extends Component {
   }
 
   get textContent() {
-    return <div>{this.props.text}</div>;
+    return <div style={{textAlign: this.props.textalignment}}>{this.props.text}</div>;
   }
 
   render() {

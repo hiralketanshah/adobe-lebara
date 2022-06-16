@@ -12,15 +12,15 @@
 Include conf.d/variables/custom.vars
 
 <VirtualHost *:80>
-	ServerName	"publish"
+	ServerName	"lebara-fr-publish"
 	# Put names of which domains are used for your published site/content here
-	ServerAlias	 "*"
+	ServerAlias	 lebara.fr  *.lebara.fr
 	# Use a document root that matches the one in conf.dispatcher.d/default.farm
 	DocumentRoot "${DOCROOT}"
 	# Add header breadcrumbs for help in troubleshooting
 	<IfModule mod_headers.c>
-		Header add X-Vhost "lebara-de-publish"
-		SetEnvIf Origin "https?://(api-aggregator.lebara.de|sit-api-aggregator.lebara.com|staging-api-aggregator.lebara.de)(/api-aggregator)$" AccessControlAllowOrigin=$0$1
+		Header add X-Vhost "lebara-fr"
+		SetEnvIf Origin "https?://(api-aggregator.lebara.de|sit-api-aggregator.lebara.com|staging-api-aggregator.lebara.de|sit-api-aggregator.lebara.de)(/api-aggregator)$" AccessControlAllowOrigin=$0$1
 		Header add Access-Control-Allow-Origin %{AccessControlAllowOrigin}e env=AccessControlAllowOrigin
 		Header always set Access-Control-Allow-Methods "POST, GET, OPTIONS"
 		Header always set Access-Control-Allow-Headers "Origin, Content-Type, X-Auth-Token, Authorization"
@@ -32,13 +32,11 @@ Include conf.d/variables/custom.vars
 		Header always set X-Forwarded-Proto "https"
 		Header always set X-XSS-Protection "1; mode=block"
 		Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
-		Header always set Content-Security-Policy "script-src 'self' 'unsafe-inline' 'unsafe-eval' *.trustpilot.com *.baqend.com *.googletagmanager.com *.aklamio.com *.googleapis.com *.exactag.com *.cookielaw.org *.mxapis.com *.google-analytics.com *.bing.com *.googleadservices.com *.doubleclick.net *.facebook.net *.lebara.com *.lebara.de *.criteo.com *.criteo.net *.clarity.ms *.google.com *.decibelinsight.net *.gstatic.com *.paypal.com *.adyen.com *.sofort.com *.giropay.de *.azureedge.net *.spatialbuzz.net;  object-src 'self'"
+		Header always set Content-Security-Policy "script-src 'self' 'unsafe-inline' 'unsafe-eval' *.trustpilot.com *.googletagmanager.com *.googleapis.com *.exactag.com *.cookielaw.org *.mxapis.com *.google-analytics.com *.bing.com *.googleadservices.com *.doubleclick.net *.facebook.net *.lebara.com *.lebara.fr *.lebara.de *.criteo.com *.criteo.net *.clarity.ms *.google.com *.decibelinsight.net *.gstatic.com *.paypal.com *.adyen.com *.sofort.com *.giropay.de *.azureedge.net;  object-src 'self'"
 	</IfModule>
-
 	<filesMatch ".(xml)$">
-                 Header set Content-type "application/xml; charset=utf-8"
+                         Header set Content-type "application/xml; charset=utf-8"
     </filesMatch>
-
 	<Directory />
 		<IfModule disp_apache2.c>
 			# Some items cache with the wrong mime type
@@ -74,11 +72,11 @@ Include conf.d/variables/custom.vars
 	</IfModule>
 	<IfModule mod_rewrite.c>
 		RewriteEngine	on
-		Include conf.d/rewrites/rewrite.rules
+		Include conf.d/rewrites/fr-rewrite.rules
 
 		# Rewrite index page internally, pass through (PT)
 		RewriteRule "^(/?)$" "/index.html" [PT]
 
 	</IfModule>
-	ErrorDocument 404 /de/errors/404.html
+	ErrorDocument 404 /fr/errors/404.html
 </VirtualHost>

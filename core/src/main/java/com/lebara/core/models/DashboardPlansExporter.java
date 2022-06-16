@@ -63,6 +63,18 @@ public class DashboardPlansExporter extends HeadingExporter {
     private String cancelChangePlanConfirmLabel;
     @ValueMapValue
     private String cancelChangePlanCancelLabel;
+    @ValueMapValue
+    private Boolean showPlansWithProgress;
+    @ValueMapValue
+    private String dataValue;
+    @ValueMapValue
+    private String minutesValue;
+    @ValueMapValue
+    private String smsValue;
+    @ValueMapValue
+    private String leftOfLabel;
+    @ValueMapValue
+    private String validLabel;
 
     public String getButtonLabel() {
         return buttonLabel;
@@ -122,6 +134,30 @@ public class DashboardPlansExporter extends HeadingExporter {
 
     public String getCancelChangePlanCancelLabel() {
         return cancelChangePlanCancelLabel;
+    }
+
+    public Boolean getShowPlansWithProgress() {
+        return showPlansWithProgress;
+    }
+
+    public String getDataValue() {
+        return dataValue;
+    }
+
+    public String getMinutesValue() {
+        return minutesValue;
+    }
+
+    public String getSmsValue() {
+        return smsValue;
+    }
+
+    public String getLeftOfLabel() {
+        return leftOfLabel;
+    }
+
+    public String getValidLabel() {
+        return validLabel;
     }
 
     @Override

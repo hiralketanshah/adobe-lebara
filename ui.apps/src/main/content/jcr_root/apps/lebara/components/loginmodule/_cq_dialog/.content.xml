@@ -390,6 +390,12 @@
                                                 fieldLabel="Error Message For Postal Code"
                                                 value="Key in your postal code and find your address."
                                                 name="./postalCodeText"/>
+                                            <alertMessageText
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="The session is expired. Please Login to continue."
+                                                fieldLabel="Alert Message Text"
+                                                name="./alertMessageText"/>
                                         </items>
                                     </column>
                                 </items>

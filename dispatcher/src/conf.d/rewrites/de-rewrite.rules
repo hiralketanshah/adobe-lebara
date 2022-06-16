@@ -7,7 +7,6 @@
 
 Include conf.d/rewrites/default_rewrite.rules
 
-
 #new site rewrites
 RewriteRule ^/AGBneu$ /de/AGBneu.html [L,R=302]
 RewriteRule ^/aktivieren$ https://de-videoident-customer-onboarding.lebara.com/ [L,R=301]
@@ -607,7 +606,6 @@ RewriteRule ^/([a-z]+)/call-virgin-islands-united-states$	/$1/minutenpreis-ausla
 RewriteRule ^/([a-z]+)/call-yemen$	/$1/minutenpreis-auslandsanrufe/jemen-anrufen.html [L,R=301]
 RewriteRule ^/([a-z]+)/call-zambia$	/$1/minutenpreis-auslandsanrufe/sambia-anrufen.html [L,R=301]
 RewriteRule ^/([a-z]+)/call-zimbabwe$	/$1/minutenpreis-auslandsanrufe/simbabwe-anrufen.html [L,R=301]
-
 
 # Robots rewrite
 RewriteRule ^/robots.txt$ /content/dam/${CONTENT_FOLDER_NAME}/markets/de/robots.txt [NC,PT]

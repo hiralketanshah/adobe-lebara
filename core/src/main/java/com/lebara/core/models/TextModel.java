@@ -1,10 +1,8 @@
 package com.lebara.core.models;
 
-import javax.inject.Inject;
-
 import com.lebara.core.utils.AemUtils;
 import org.apache.sling.api.SlingHttpServletRequest;
-import org.apache.sling.api.resource.Resource;
+import org.apache.sling.models.annotations.DefaultInjectionStrategy;
 import org.apache.sling.models.annotations.Exporter;
 import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.Via;
@@ -13,10 +11,11 @@ import com.adobe.cq.export.json.ComponentExporter;
 import com.adobe.cq.export.json.ExporterConstants;
 import com.adobe.cq.wcm.core.components.models.Text;
 import org.apache.sling.models.annotations.injectorspecific.SlingObject;
+import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
 import org.apache.sling.models.annotations.via.ResourceSuperType;
 
-@Model(adaptables = SlingHttpServletRequest.class, adapters = { Text.class, ComponentExporter.class }, resourceType = {
-    TextModel.RESOURCE_TYPE})
+@Model(adaptables = SlingHttpServletRequest.class, adapters = { TextModel.class, ComponentExporter.class }, resourceType = {
+    TextModel.RESOURCE_TYPE}, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
 @Exporter(name = ExporterConstants.SLING_MODEL_EXPORTER_NAME, extensions = ExporterConstants.SLING_MODEL_EXTENSION)
 public class TextModel implements Text {
 
@@ -26,8 +25,9 @@ public class TextModel implements Text {
     @Via(type = ResourceSuperType.class)
     private Text delegate;
 
-    @Inject
-    private Resource resource;
+    @ValueMapValue
+    private String textalignment;
+
 
     @SlingObject
     private SlingHttpServletRequest slingRequest;
@@ -37,6 +37,10 @@ public class TextModel implements Text {
         return AemUtils.updateShortenLinksInRichText(delegate.getText(),slingRequest);
     }
 
+    public String getTextalignment() {
+        return textalignment;
+    }
+
     @Override
     public boolean isRichText() {
         return delegate.isRichText();
@@ -44,6 +48,6 @@ public class TextModel implements Text {
 
     @Override
     public String getExportedType() {
-        return resource.getResourceType();
+        return RESOURCE_TYPE;
     }
 }

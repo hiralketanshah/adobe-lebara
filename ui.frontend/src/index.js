@@ -46,7 +46,7 @@ const httpLink = new HttpLink({
     credentials: "include",
     headers: {
         channel: "Web",
-        country: "DE",
+        country: `${globalConfigs.country}`,
         locale,
     },
 });
@@ -94,7 +94,7 @@ if (!AuthoringUtils.isInEditor()) {
 
 axios.defaults.headers = {
     channel: "Web",
-    country: "DE",
+    country: `${globalConfigs.country}`,
     locale,
 };
 
