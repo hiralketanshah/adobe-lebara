@@ -20,7 +20,7 @@ Include conf.d/variables/custom.vars
 	# Add header breadcrumbs for help in troubleshooting
 	<IfModule mod_headers.c>
 		Header add X-Vhost "lebara-de"
-		SetEnvIf Origin "https?://(api-aggregator.lebara.de|sit-api-aggregator.lebara.com|staging-api-aggregator.lebara.de|sit-api-aggregator.lebara.de)(/api-aggregator)$" AccessControlAllowOrigin=$0$1
+		SetEnvIf Origin "https?://(api-aggregator.lebara.de|dev-api-aggregator.lebara.com|sit-api-aggregator.lebara.com|staging-api-aggregator.lebara.de|sit-api-aggregator.lebara.de)(/api-aggregator)$" AccessControlAllowOrigin=$0$1
 		Header add Access-Control-Allow-Origin %{AccessControlAllowOrigin}e env=AccessControlAllowOrigin
 		Header always set Access-Control-Allow-Methods "POST, GET, OPTIONS"
 		Header always set Access-Control-Allow-Headers "Origin, Content-Type, X-Auth-Token, Authorization"
