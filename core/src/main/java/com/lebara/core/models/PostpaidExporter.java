@@ -31,6 +31,8 @@ public class PostpaidExporter implements ComponentExporter {
     @ScriptVariable
     private Resource resource;
     @ValueMapValue
+    private String showBoltOn;
+    @ValueMapValue
     private String moreDetailsLabel;
     @ValueMapValue
     private String popupCloseLabel;
@@ -122,6 +124,10 @@ public class PostpaidExporter implements ComponentExporter {
     private String changePlanHeading;
     @ValueMapValue
     private String notMigratedToFmvnoErrorMessage;
+
+    public String getShowBoltOn() {
+        return showBoltOn;
+    }
 
     public List<Labels> getDurationRadioLabelList() {
         return durationRadioLabelList == null ? Collections.emptyList() : Collections.unmodifiableList(durationRadioLabelList);
