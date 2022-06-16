@@ -31,7 +31,7 @@ public class PostpaidExporter implements ComponentExporter {
     @ScriptVariable
     private Resource resource;
     @ValueMapValue
-    private String showBoltOn;
+    private boolean showBoltOn;
     @ValueMapValue
     private String moreDetailsLabel;
     @ValueMapValue
@@ -125,7 +125,7 @@ public class PostpaidExporter implements ComponentExporter {
     @ValueMapValue
     private String notMigratedToFmvnoErrorMessage;
 
-    public String getShowBoltOn() {
+    public boolean getShowBoltOn() {
         return showBoltOn;
     }
 
