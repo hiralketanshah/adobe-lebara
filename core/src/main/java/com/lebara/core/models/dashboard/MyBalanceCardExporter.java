@@ -81,7 +81,7 @@ public class MyBalanceCardExporter implements ComponentExporter {
     private Boolean deactivateSuccessOverlaySubTitle;
 
     @ValueMapValue
-    private Number creditListCount;
+    private int creditListCount;
 
     public List<String> getTopUpOptions() {
         return CFUtils.populateTopupInfo(resourceResolver.getResource(cfTopupPlanPath));
@@ -155,7 +155,7 @@ public class MyBalanceCardExporter implements ComponentExporter {
         return deactivateSuccessOverlaySubTitle;
     }
 
-    public Number getCreditListCount() {
+    public int getCreditListCount() {
         return creditListCount;
     }
 
