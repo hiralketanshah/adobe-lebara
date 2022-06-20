@@ -47,12 +47,18 @@ public class GetAppExporter implements ComponentExporter {
 
     @ValueMapValue
     private List<String> textCol2;
-    
+
     @ValueMapValue
     private boolean show;
 
     @ValueMapValue
     private String backgroundColor;
+
+    @ValueMapValue
+    private String boxBackgroundColor;
+
+    @ValueMapValue
+    private String labelTextColor;
 
     @SlingObject
     private SlingHttpServletRequest slingRequest;
@@ -72,6 +78,14 @@ public class GetAppExporter implements ComponentExporter {
     public String getGetAppLabel() { return getAppLabel; }
 
     public String getBackgroundColor() { return backgroundColor;}
+
+    public String getBoxBackgroundColor() {
+        return boxBackgroundColor;
+    }
+
+    public String getLabelTextColor() {
+        return labelTextColor;
+    }
 
     public List<String> getTextCol1() {
         if (textCol1 != null) {

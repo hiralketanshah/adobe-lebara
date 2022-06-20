@@ -87,9 +87,6 @@ public class DetailedViewPlanExporter extends ViewPlanExporter implements Compon
     private String ctaCloseLabel;
 
     @ValueMapValue
-    private String boxBackgroundColor;
-
-    @ValueMapValue
     private boolean textAlignment;
 
     @ValueMapValue
@@ -156,10 +153,6 @@ public class DetailedViewPlanExporter extends ViewPlanExporter implements Compon
     }
 
     public String getBackgroundColor() { return backgroundColor; }
-
-    public String getBoxBackgroundColor() {
-        return boxBackgroundColor;
-    }
 
     public boolean isTextAlignment() {
         return textAlignment;
