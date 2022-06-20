@@ -69,7 +69,7 @@ const PlanOffers: React.FC<PlanOffersProps> = ({
     >
       {heading && (
         <Heading
-          color="primary.600"
+          color={labelTextColor || "primary.600"}
           as="h1"
           fontWeight="bold"
           lineHeight={{ base: "40px", lg: "50px" }}
@@ -82,7 +82,7 @@ const PlanOffers: React.FC<PlanOffersProps> = ({
       <Flex flexDir="column" align="stretch">
         {title && (
           <Heading
-            color="primary.500"
+            color = {labelTextColor || "primary.500"}
             as="h2"
             textAlign={textAlignment}
             mb={{ base: "12.11px", lg: "10px" }}
@@ -140,7 +140,8 @@ const PlanOffers: React.FC<PlanOffersProps> = ({
                   addedtoCartLabel={addedtoCartLabel}
                   viewCartLabel={viewCartLabel}
                   minutesLabel={minutesLabel}
-                  previewIcon={<TickInCircle fill="#13357A" tickFill="#EA4984" />} />
+                  previewIcon={<TickInCircle fill="#13357A" tickFill="#EA4984" />}
+                  textAlignment={textAlignment} />
               </Box>
             ))}
         </Flex>

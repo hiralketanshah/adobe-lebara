@@ -87,10 +87,10 @@ public class DetailedViewPlanExporter extends ViewPlanExporter implements Compon
     private String ctaCloseLabel;
 
     @ValueMapValue
-    private boolean textAlignment;
+    private String textAlignment;
 
     @ValueMapValue
-    private boolean columnsView;
+    private int columnsView;
 
     @ValueMapValue
     private String labelTextColor;
@@ -154,11 +154,11 @@ public class DetailedViewPlanExporter extends ViewPlanExporter implements Compon
 
     public String getBackgroundColor() { return backgroundColor; }
 
-    public boolean isTextAlignment() {
+    public String getTextAlignment() {
         return textAlignment;
     }
 
-    public boolean isColumnsView() {
+    public int getColumnsView() {
         return columnsView;
     }
 

@@ -69,8 +69,8 @@
                                 sling:resourceType="granite/ui/components/coral/foundation/form/colorfield"
                                 classicPaletteType="true"
                                 editType="true"
-                                fieldLabel="BoxBackgroundColor"
-                                name="./boxBackgroundColor"/>
+                                fieldLabel="backgroundColor"
+                                name="./backgroundColor"/>
                         </items>
                     </column>
                     <column2
@@ -143,31 +143,47 @@
                                     fieldLabel="Popup Downdload Label"
                                     value="Download"
                                     name="./ctaDownloadLabel"/>
-							<centerAlignment
-									jcr:primaryType="nt:unstructured"
-									sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
-									defaultChecked="{Boolean}false"
-									fieldDescription="Check the checkbox to text be centre-aligned"
-									fieldLabel="TextAlignment"
-									name="./textAlignment"
-									text="TextAlignment"
-									value="{Boolean}true"/>
+                            <textAlignment
+                                   jcr:primaryType="nt:unstructured"
+                                   sling:resourceType="granite/ui/components/foundation/form/select"
+                                   fieldLabel="Text Alignment"
+                                   name="./textAlignment">
+                                <items
+                                        jcr:primaryType="nt:unstructured"
+                                        text="Select Alignment">
+                                        <select
+                                                jcr:primaryType="nt:unstructured"
+                                                text="Select"
+                                                value=""/>
+                                        <leftAligned
+                                                jcr:primaryType="nt:unstructured"
+                                                text="Left Aligned"
+                                                value="left"/>
+                                        <rightAligned
+                                                jcr:primaryType="nt:unstructured"
+                                                text="Right Aligned"
+                                                value="right"/>
+                                        <centerAligned
+                                                jcr:primaryType="nt:unstructured"
+                                                text="Center Aligned"
+                                                value="center"/>
+                                </items>
+                            </textAlignment>
                             <columnsView
-									jcr:primaryType="nt:unstructured"
-									sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
-									defaultChecked="{Boolean}false"
-									fieldDescription="Check the checkbox to view more than three columns"
-									fieldLabel="ColumnsView"
-									name="./columnsView"
-									text="ColumnsView"
-									value="{Boolean}true"/>
-                            <labelTextColor
-									jcr:primaryType="nt:unstructured"
-									sling:resourceType="granite/ui/components/coral/foundation/form/colorfield"
-									classicPaletteType="true"
-									editType="true"
-									fieldLabel="LabelTextColor"
-									name="./labelTextColor"/>		
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/numberfield"
+                                fieldDescription="Default is 3"
+                                fieldLabel="No. of columns in row"
+                                name="./columnsView"
+                                text="ColumnsView"
+                                defaultValue="3"/>
+                           <labelTextColor
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/colorfield"
+                                classicPaletteType="true"
+                                editType="true"
+                                fieldLabel="LabelTextColor"
+                                name="./labelTextColor"/>
                         </items>
                     </column2>
                 </items>

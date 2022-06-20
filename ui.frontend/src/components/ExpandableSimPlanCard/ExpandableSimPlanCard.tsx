@@ -61,7 +61,8 @@ const ExpandableSimPlanCard: React.FC<ExpandableSimPlanCardProps> = ({
   onClose,
   minutesLabel,
   isResponsivePlan,
-  autoRenew
+  autoRenew,
+  textAlignment
 }) => {
   const history = useHistory();
   const location = useLocation<{}>();
@@ -248,7 +249,7 @@ const ExpandableSimPlanCard: React.FC<ExpandableSimPlanCardProps> = ({
       >
         <Box>
           {planName && (
-            <Text color="primary.500" fontWeight="bold" textAlign="left">
+            <Text color="primary.500" fontWeight="bold" textAlign={textAlignment || "left"}>
               {planName}
             </Text>
           )}
