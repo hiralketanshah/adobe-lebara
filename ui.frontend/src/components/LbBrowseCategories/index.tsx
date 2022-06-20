@@ -49,7 +49,7 @@ const LbBrowseCategories: React.FC<CompProps> = ({
                     : "0.25px solid black"
                 }
               >
-                <Box py="19px" cursor="pointer" onClick={() => history.push(browseCategory?.pageLinks?.parentLinks?.link)}>
+                <Box py="19px" {...browseCategory?.pageLinks?.parentLinks?.link ?{ cursor:"pointer", onClick:() => history.push(browseCategory?.pageLinks?.parentLinks?.link)} : {}}>
                   <Text
                     fontWeight="500"
                     fontSize="20px"
