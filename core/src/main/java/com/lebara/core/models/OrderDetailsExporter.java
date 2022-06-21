@@ -208,7 +208,7 @@ public class OrderDetailsExporter implements ComponentExporter {
     private String totalLabel;
 
     @ValueMapValue
-    private Number creditListCount;
+    private int creditListCount;
 
     public String getSelectedProductLabel() {
         return selectedProductLabel;
@@ -437,7 +437,7 @@ public class OrderDetailsExporter implements ComponentExporter {
         return yourOrderOneTimeActivationFee;
     }
 
-    public Number getCreditListCount() {
+    public int getCreditListCount() {
         return creditListCount;
     }
 
