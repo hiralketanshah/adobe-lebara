@@ -25,6 +25,9 @@ export interface PlanOffersProps {
   ctaDownloadLabel?: string;
   minutesLabel?: string;
   noPadding?: string;
+  textAlignment?: string;
+  columnsView?: number;
+  labelTextColor?: string;
 }
 
 export interface allowanceListProps {

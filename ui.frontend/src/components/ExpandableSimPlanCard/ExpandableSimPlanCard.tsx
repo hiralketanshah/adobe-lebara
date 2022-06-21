@@ -61,7 +61,8 @@ const ExpandableSimPlanCard: React.FC<ExpandableSimPlanCardProps> = ({
   onClose,
   minutesLabel,
   isResponsivePlan,
-  autoRenew
+  autoRenew,
+  textAlignment
 }) => {
   const history = useHistory();
   const location = useLocation<{}>();
@@ -84,7 +85,7 @@ const ExpandableSimPlanCard: React.FC<ExpandableSimPlanCardProps> = ({
   const handleViewCartClick = () => {
     history.push(isAuthenticated && msisdn ? "/order-details" : "/login");
   };
-
+  const isCenterAligned: boolean = (textAlignment === "center");
   let filteredAllowanceList: allowanceListProps = {};
   if ((!allowanceType || allowanceType === '' || allowanceType?.toLowerCase() === 'data')) {
     filteredAllowanceList = (allowanceList && allowanceList.find((list) => list.name && list.name.toLowerCase().includes('data'))) || {};
@@ -248,7 +249,7 @@ const ExpandableSimPlanCard: React.FC<ExpandableSimPlanCardProps> = ({
       >
         <Box>
           {planName && (
-            <Text color="primary.500" fontWeight="bold" textAlign="left">
+            <Text color="primary.500" fontWeight="bold" textAlign={textAlignment || "left"}>
               {planName}
             </Text>
           )}
@@ -282,8 +283,9 @@ const ExpandableSimPlanCard: React.FC<ExpandableSimPlanCardProps> = ({
           hideButton={isRelatedPlan}
         />
         <Flex justifyContent="space-between"
+            {...isCenterAligned ? {flexDirection:"column"} : {}}
             direction={promotionPrice ? "row" : "row"}
-            alignItems={promotionData ? "flex-end" : "initial"}>
+            alignItems={promotionData ? "flex-end" : isCenterAligned ? "center" : "initial"}>
           <Flex
             justifyContent="space-between"
             gridGap="12px"
@@ -407,6 +409,7 @@ const ExpandableSimPlanCard: React.FC<ExpandableSimPlanCardProps> = ({
           alignItems="center"
           color="primary"
           gridGap="16px"
+          {...isCenterAligned ? {flexDirection:"column"} : {}}
           direction={isResponsivePlan ? { base: "row", lg: "column" } : "row"}
         >
           <Button

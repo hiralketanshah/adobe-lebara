@@ -1,3 +1,4 @@
+import { ResponsiveValue } from "@chakra-ui/react";
 import { allowanceListProps, planDetails } from "../ExpandablePlanCard/types";
 
 export interface ExpandableSimPlanCardProps {
@@ -40,6 +41,7 @@ export interface ExpandableSimPlanCardProps {
   onClose?: () => void;
   isResponsivePlan?: boolean;
   autoRenew?: string;
+  textAlignment?: ResponsiveValue<any>;
 }
 
 const OfferTypes = {
