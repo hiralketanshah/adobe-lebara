@@ -17,6 +17,15 @@ public class PostpaidPersonalDetailsErrorMsg {
     private String emailInValidMsg;
 
     @ValueMapValue
+    private String loginButtonLabel;
+
+    @ValueMapValue
+    private String existingUserErrorMsg;
+
+    @ValueMapValue
+    private String secondSubscriptionDisplayText;
+
+    @ValueMapValue
     private String fNameRequiredMsg;
 
     @ValueMapValue
@@ -144,6 +153,18 @@ public class PostpaidPersonalDetailsErrorMsg {
 
     public String getEmailInValidMsg() {
         return emailInValidMsg;
+    }
+
+    public String getLoginButtonLabel() {
+        return loginButtonLabel;
+    }
+
+    public String getExistingUserErrorMsg() {
+        return existingUserErrorMsg;
+    }
+
+    public String getSecondSubscriptionDisplayText() {
+        return secondSubscriptionDisplayText;
     }
 
     public String getDayRequiredMsg() {
