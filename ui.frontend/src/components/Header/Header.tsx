@@ -257,6 +257,12 @@ const Header: React.FC<HeaderProps> = ({
   }, [loadPaymentMethods]);
 
   React.useEffect(() => {
+    if (window?.history?.state?.state?.sessionExpired) {
+      const { sessionExpired, ...rest } = window.history.state.state;
+      window.history.replaceState(rest, "");
+    }
+  }, []);
+  React.useEffect(() => {
     const newSocket = io(GC.apiHostUri, {
       autoConnect: false,
       withCredentials: true,

@@ -12,6 +12,8 @@ function PrivateRoute({ WrappedComponent, routeProps, ...rest }: any) {
   const isAuthenticated = useSelector(selectIsAuthenticated);
   const isLoading = useSelector(selectIsLoading);
   const location = useLocation();
+  const queryParams = new URLSearchParams(window.location.search);
+  const isSessionExpired = !!queryParams.get("sessionExpired");
 
   return (
     (isAuthenticated || isLoading) || AuthoringUtils.isInEditor() || !aemUtils.isPrivatePage(location.pathname) ?
@@ -22,7 +24,7 @@ function PrivateRoute({ WrappedComponent, routeProps, ...rest }: any) {
           <Redirect
             to={{
               pathname: (JSON.parse(window.lebaraGlobalConfigs.journeyPages)[C.REGISTER] || "/"),
-              state: { from: props.location },
+              state: { from: props.location, sessionExpired: isSessionExpired ? true : "" },
               search: props.location.search
             }}
           />

@@ -61,7 +61,7 @@ const logoutLink = onError(({ networkError, operation }) => {
         if (isLoading) return;
         isLoading = true;
         new Cookies().remove(isAddressUpdateBlockedCookieKey);
-        window.location.reload();
+        window.location.href = `${window.location.protocol}//${window.location.host}${window.location.pathname}?sessionExpired=true`;
         setTimeout(() => {
             isLoading = false;
         }, 500);
@@ -82,7 +82,7 @@ if (!AuthoringUtils.isInEditor()) {
           if (isLoading) return Promise.reject(error);
           isLoading = true;
           new Cookies().remove(isAddressUpdateBlockedCookieKey);
-          window.location.reload();
+          window.location.href = `${window.location.protocol}//${window.location.host}${window.location.pathname}?sessionExpired=true`;
           setTimeout(() => {
             isLoading = false;
           }, 500);
