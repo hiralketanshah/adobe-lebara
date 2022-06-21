@@ -98,7 +98,7 @@ return (
               99999998,
               "Free Sim Top Up",
               "",
-              10,
+              0,
               "free-sim-top-up",
               undefined,
               undefined,
