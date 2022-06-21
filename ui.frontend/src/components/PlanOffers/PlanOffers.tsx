@@ -30,7 +30,7 @@ const PlanOffers: React.FC<PlanOffersProps> = ({
   ctaDownloadLabel,
   ctaBottomLink,
   minutesLabel,
-  textAlignment = "center",
+  textAlignment,
   columnsView = 3,
   labelTextColor = "primary.600"
 }) => {
