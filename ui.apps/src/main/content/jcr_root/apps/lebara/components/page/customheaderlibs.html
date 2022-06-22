@@ -99,6 +99,6 @@
 sample speed kit script
 <script src="https://lebara-new.app.baqend.com/v1/speedkit/install.js?d=production" async crossorigin="anonymous"></script>
 -->
-<sly data-sly-test="${inheritedPageProperties.showSpeedkit}" >
-  ${inheritedPageProperties.speedkitVal @ context='unsafe'}
+<sly data-sly-test="${inheritedPageProperties.scriptVal}" >
+  ${inheritedPageProperties.scriptVal @ context='unsafe'}
 </sly>
