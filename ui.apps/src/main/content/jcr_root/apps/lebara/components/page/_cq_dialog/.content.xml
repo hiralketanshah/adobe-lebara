@@ -36,11 +36,17 @@
                                                 text="Show New Text"
                                                 value="true"/>
                                             <bctitle
-                                                    jcr:primaryType="nt:unstructured"
-                                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                                    fieldLabel="Enter Breadcrumb Title"
-                                                    fieldDescription="If not added, the navtitle takes priority"
-                                                    name="./breadcrumbTitle"/>
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="Enter Breadcrumb Title"
+                                                fieldDescription="If not added, the navtitle takes priority"
+                                                name="./breadcrumbTitle"/>
+                                            <scriptVal
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textarea"
+                                                fieldLabel="Enter Script for Speedkit or other third party sources"
+                                                fieldDescription="Enter Script"
+                                                name="./scriptVal"/>
                                         </items>
                                     </pageNav>
                                 </items>
