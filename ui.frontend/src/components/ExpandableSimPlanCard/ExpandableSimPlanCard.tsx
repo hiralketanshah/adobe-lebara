@@ -381,10 +381,10 @@ const ExpandableSimPlanCard: React.FC<ExpandableSimPlanCardProps> = ({
             {additionalOffers.match(/<li>.*?<\/li>/g)?.length ? additionalOffers.match(/<li>.*?<\/li>/g)?.map((t) => (
               <Flex width="100%" alignItems="center" mb={1}>
                 {previewIcon}
-                <Text ml="8px" dangerouslySetInnerHTML={{ __html: t.replace(/<li>|<\/li>/g, '') }}></Text>
+                <Text ml="8px" textAlign="left" dangerouslySetInnerHTML={{ __html: t.replace(/<li>|<\/li>/g, '') }}></Text>
               </Flex>
             )) : <Flex width="100%" alignItems="center" mb={1}>
-              <Text ml="8px" dangerouslySetInnerHTML={{ __html: additionalOffers }}></Text>
+              <Text ml="8px" textAlign="left" dangerouslySetInnerHTML={{ __html: additionalOffers }}></Text>
             </Flex>}
           </Box>
         )}
