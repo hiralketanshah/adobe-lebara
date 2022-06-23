@@ -3,4 +3,5 @@
     jcr:primaryType="sling:Mapping"
     sling:internalRedirect="[/content/lebara/de]">
     <redirect/>
+    <clientlib/>
 </jcr:root>

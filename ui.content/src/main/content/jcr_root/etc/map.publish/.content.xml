@@ -1,4 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0"
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0"
+    cq:lastReplicated="{Date}2022-06-23T09:24:16.539Z"
+    cq:lastReplicated_publish="{Date}2022-06-23T09:24:16.539Z"
+    cq:lastReplicated_scene7="{Date}2022-06-23T09:24:16.539Z"
+    cq:lastReplicatedBy="vishal.sah@lebara.com"
+    cq:lastReplicatedBy_publish="vishal.sah@lebara.com"
+    cq:lastReplicatedBy_scene7="vishal.sah@lebara.com"
+    cq:lastReplicationAction="Activate"
+    cq:lastReplicationAction_publish="Activate"
+    cq:lastReplicationAction_scene7="Activate"
+    jcr:mixinTypes="[cq:ReplicationStatus]"
     jcr:primaryType="sling:Folder"
     hidden="true"/>
