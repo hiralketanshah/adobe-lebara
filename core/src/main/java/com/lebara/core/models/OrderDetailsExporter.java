@@ -210,6 +210,12 @@ public class OrderDetailsExporter implements ComponentExporter {
     @ValueMapValue
     private int creditListCount;
 
+    @ValueMapValue
+    private boolean hideContract;
+
+    @ValueMapValue
+    private boolean showUpdatedAddressFormat;
+
     public String getSelectedProductLabel() {
         return selectedProductLabel;
     }
@@ -439,6 +445,14 @@ public class OrderDetailsExporter implements ComponentExporter {
 
     public int getCreditListCount() {
         return creditListCount;
+    }
+
+    public boolean getHideContract() {
+        return hideContract;
+    }
+
+    public boolean getShowUpdatedAddressFormat() {
+        return showUpdatedAddressFormat;
     }
 
 
