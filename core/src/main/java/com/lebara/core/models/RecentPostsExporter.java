@@ -50,6 +50,6 @@ public class RecentPostsExporter implements ComponentExporter{
 
     @Override
     public String getExportedType() {
-        return null;
+        return RESOURCE_TYPE;
     }
 }

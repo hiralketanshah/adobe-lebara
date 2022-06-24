@@ -49,6 +49,6 @@ public class OurPromotionsExporter implements ComponentExporter{
 
     @Override
     public String getExportedType() {
-        return null;
+        return RESOURCE_TYPE;
     }
 }
