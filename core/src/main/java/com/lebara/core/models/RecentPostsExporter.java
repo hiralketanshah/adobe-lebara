@@ -29,8 +29,12 @@ public class RecentPostsExporter implements ComponentExporter{
     @ValueMapValue
     private String link;
 
-    @ChildResource(name = "field/.")
-    public List<RecentPostImpl> recentpost;
+    @ChildResource
+    private List<RecentPostImpl> recentpost;
+
+    public List<RecentPostImpl> getRecentpost() {
+        return recentpost;
+    }
 
     public String getTitle() {
         return title;
@@ -44,9 +48,6 @@ public class RecentPostsExporter implements ComponentExporter{
         return link;
     }
 
-    public List<RecentPostImpl> getRecentpost() {
-        return recentpost;
-    }
 
     @Override
     public String getExportedType() {
