@@ -1,10 +1,11 @@
 import { MapTo } from "@adobe/aem-react-editable-components";
-import OurPromotion from "@lebara/ui/src/components/SideBar/PromotionSidebar";
+import SidePromotion from "@lebara/ui/src/components/SideBar/PromotionSidebar";
+
 const OurPromotionConfig = {
   emptyLabel: "Our Promotion",
   isEmpty: function (props) {
-    return !props.title;
+    return !props.ourPromotion;
   },
 };
 
-MapTo("lebara/components/ourpromotions")(OurPromotion, OurPromotionConfig);
+MapTo("lebara/components/ourpromotions")(SidePromotion, OurPromotionConfig);
