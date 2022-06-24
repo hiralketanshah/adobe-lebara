@@ -58,12 +58,14 @@
                                                         <articleLink
                                                             jcr:primaryType="nt:unstructured"
                                                             sling:resourceType="granite/ui/components/foundation/form/pathbrowser"
-                                                            fieldLabel="Heading"
+                                                            fieldLabel="Article Link"
+                                                            rootPath="/content/lebara"
                                                             name="./articleLink"/>
                                                         <image
                                                             jcr:primaryType="nt:unstructured"
-                                                            sling:resourceType="granite/ui/components/coral/foundation/form/fileupload"
+                                                            sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
                                                             fieldLabel="Image"
+                                                            rootPath="/content/dam/lebara"
                                                             name="./image"/>
                                                         <date
                                                             jcr:primaryType="nt:unstructured"
