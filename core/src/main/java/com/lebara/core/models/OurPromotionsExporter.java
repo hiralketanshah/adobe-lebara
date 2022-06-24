@@ -13,7 +13,7 @@ import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
 
 import java.util.List;
 
-@Model(adaptables = {SlingHttpServletRequest.class, Resource.class}, adapters = {OurPromotionsExporter.class, ComponentExporter.class},
+@Model(adaptables = {SlingHttpServletRequest.class, Resource.class}, adapters = {ComponentExporter.class},
         resourceType = OurPromotionsExporter.RESOURCE_TYPE, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
 @Exporter(name = ExporterConstants.SLING_MODEL_EXPORTER_NAME, extensions = ExporterConstants.SLING_MODEL_EXTENSION)
 public class OurPromotionsExporter implements ComponentExporter{
@@ -28,8 +28,8 @@ public class OurPromotionsExporter implements ComponentExporter{
     @ValueMapValue
     private String link;
 
-    @ChildResource(name = "field/.")
-    public List<OurPromotionImpl> ourpromotion;
+    @ChildResource
+    public List<OurPromotionBean> ourpromotion;
 
     public String getTitle() {
         return title;
@@ -43,7 +43,7 @@ public class OurPromotionsExporter implements ComponentExporter{
         return link;
     }
 
-    public List<OurPromotionImpl> getOurpromotion() {
+    public List<OurPromotionBean> getOurpromotion() {
         return ourpromotion;
     }
 

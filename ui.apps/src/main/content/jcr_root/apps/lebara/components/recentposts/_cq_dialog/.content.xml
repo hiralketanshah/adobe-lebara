@@ -33,7 +33,7 @@
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                                 fieldLabel="Title"
-                                                name="./title"/>
+                                                name="./recentPostsLabel"/>
                                             <cards
                                                 jcr:primaryType="nt:unstructured"
                                                 jcr:title="Cards"
@@ -43,7 +43,7 @@
                                                 <field
                                                     jcr:primaryType="nt:unstructured"
                                                     sling:resourceType="granite/ui/components/coral/foundation/container"
-                                                    name="./recentpost">
+                                                    name="./recentPostData">
                                                     <items jcr:primaryType="nt:unstructured">
                                                         <category
                                                             jcr:primaryType="nt:unstructured"
@@ -55,6 +55,11 @@
                                                             sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                                             fieldLabel="Heading"
                                                             name="./heading"/>
+                                                        <articleLink
+                                                            jcr:primaryType="nt:unstructured"
+                                                            sling:resourceType="granite/ui/components/foundation/form/pathbrowser"
+                                                            fieldLabel="Heading"
+                                                            name="./articleLink"/>
                                                         <image
                                                             jcr:primaryType="nt:unstructured"
                                                             sling:resourceType="granite/ui/components/coral/foundation/form/fileupload"
@@ -68,17 +73,12 @@
                                                     </items>
                                                 </field>
                                             </cards>
-                                            <labellink
-                                                jcr:primaryType="nt:unstructured"
-                                                sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
-                                                fieldLabel="Link"
-                                                name="./link"/>
                                             <label
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                                 defaultValue="READ MORE"
                                                 fieldLabel="Label"
-                                                name="./label"/>
+                                                name="./buttonLabel"/>
                                         </items>
                                     </column>
                                 </items>

@@ -21,33 +21,25 @@ public class RecentPostsExporter implements ComponentExporter{
     protected static final String RESOURCE_TYPE = "lebara/components/recentposts";
 
     @ValueMapValue
-    private String title;
+    private String recentPostsLabel;
 
     @ValueMapValue
-    private String label;
-
-    @ValueMapValue
-    private String link;
+    private String buttonLabel;
 
     @ChildResource
-    private List<RecentPostImpl> recentpost;
+    private List<RecentPostBean> recentPostData;
 
-    public List<RecentPostImpl> getRecentpost() {
-        return recentpost;
+    public String getRecentPostsLabel() {
+        return recentPostsLabel;
     }
 
-    public String getTitle() {
-        return title;
+    public String getButtonLabel() {
+        return buttonLabel;
     }
 
-    public String getLabel() {
-        return label;
+    public List<RecentPostBean> getRecentPostData() {
+        return recentPostData;
     }
-
-    public String getLink() {
-        return link;
-    }
-
 
     @Override
     public String getExportedType() {
