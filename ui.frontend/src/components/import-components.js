@@ -92,3 +92,5 @@ import "../aemConfigs/AttachYourSimAemConfig.js";
 import "./CallSupport/AemConfig.js";
 import "./CallSupport/WeAreHere/AemConfig.js";
 import "../aemConfigs/SelectionConfig.js";
+import "../aemConfigs/OurPromotionsAemConfig.js";
+import "../aemConfigs/RecentPostsAemConfig.js";
