@@ -215,6 +215,8 @@ public class PersonalDetailsExporter implements ComponentExporter {
     private boolean makePaymentOnCart;
     @ValueMapValue
     private String additionFieldLengthError;
+    @ValueMapValue
+    private boolean weekStartFromMonday;
     
     public List<SelectBean> getCities(){
         return CFUtils.populateCityInfo(resourceResolver.getResource(cfPath));
@@ -370,6 +372,10 @@ public class PersonalDetailsExporter implements ComponentExporter {
 
     public String getAddressRequired() {
         return addressRequired;
+    }
+
+    public boolean getWeekStartFromMonday() {
+        return weekStartFromMonday;
     }
 
     @Override
