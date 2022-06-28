@@ -48,6 +48,26 @@ public class RecentPostBean {
     }
 
     public String getArticleLink() {
-        return AemUtils.getLinkWithExtension(articleLink, resourceResolver);
+        return articleLink;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
+    }
+
+    public void setHeading(String heading) {
+        this.heading = heading;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+    public void setArticleLink(String articleLink) {
+        this.articleLink = articleLink;
     }
 }
