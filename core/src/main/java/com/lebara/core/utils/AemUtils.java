@@ -7,6 +7,8 @@ import com.day.cq.commons.mail.MailTemplate;
 import com.day.cq.i18n.I18n;
 import com.day.cq.mailer.MailingException;
 import com.day.cq.mailer.MessageGatewayService;
+import com.day.cq.tagging.Tag;
+import com.day.cq.tagging.TagManager;
 import com.day.cq.wcm.api.Page;
 import com.day.cq.wcm.api.PageManager;
 import com.lebara.core.dto.DashboardLabels;
@@ -35,6 +37,7 @@ import javax.mail.MessagingException;
 import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 /**
@@ -310,5 +313,28 @@ public class AemUtils {
             return new I18n(resourceBundle);
         }
         return null;
+    }
+
+    public static String getFormattedDate(Date date, String datePattern) {
+        if (date == null) {
+            return StringUtils.EMPTY;
+        }
+        try {
+            SimpleDateFormat formatter = new SimpleDateFormat(datePattern);
+            return formatter.format(date);
+        } catch (IllegalArgumentException e) {
+            return StringUtils.EMPTY;
+        }
+    }
+
+    public static String getTagValue(String blogTag, TagManager tagManager) {
+        if (StringUtils.isBlank(blogTag)) {
+            return StringUtils.EMPTY;
+        }
+        Tag tag = tagManager.resolve(blogTag);
+        if (tag == null) {
+            return StringUtils.EMPTY;
+        }
+        return tag.getTitle();
     }
 }
