@@ -94,7 +94,7 @@ const PlanDetailsDialog: React.FC<PlanDetailsDialogProps> = ({
             ))}
           </Box>
         )}
-        {countries.length && <Text
+        {countries.length > 0 &&  <Text
           color="primary.600"
           fontSize={14}
           fontWeight="bold"

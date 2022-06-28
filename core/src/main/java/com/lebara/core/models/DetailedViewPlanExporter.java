@@ -90,7 +90,7 @@ public class DetailedViewPlanExporter extends ViewPlanExporter implements Compon
     private String textAlignment;
 
     @ValueMapValue
-    private int columnsView;
+    private int columnsView = 3;
 
     @ValueMapValue
     private String labelTextColor;
