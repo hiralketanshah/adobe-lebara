@@ -96,6 +96,7 @@
 		<property name="inactiveDesc" />
 		<property name="activeLabel" />
 		<property name="autoTopupButtonLabel" />
+		<property name="saveAutoTopupButtonLabel" />
 		<property name="autoTopupLabel" />
 		<property name="autoTopupStatusLabel" />
 		<property name="description" />

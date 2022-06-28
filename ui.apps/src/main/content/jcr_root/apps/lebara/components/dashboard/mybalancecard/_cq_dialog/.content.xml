@@ -127,6 +127,12 @@
                                                 fieldLabel="Auto Top up Button Label"
                                                 name="./autoTopupButtonLabel"
                                                 value="Save auto topup"/>
+                                            <saveautotopupbuttonlabel
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="Save auto topup"
+                                                name="./saveAutoTopupButtonLabel"
+                                                value="Save auto topup"/>
                                             <cftopupplanpath
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="dam/cfm/components/cfpicker"
