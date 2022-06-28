@@ -109,6 +109,20 @@
                                                 fieldLabel="Port Date PlaceHolder"
                                                 value="DD / MM / YYYY"
                                                 name="./portDatePlaceHolder"/>
+                                            <weekStartFromMonday
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                                name="./weekStartFromMonday"
+                                                text="On Datefield is week starts from Monday?"
+                                                uncheckedValue="{Boolean}false"
+                                                value="{Boolean}true"/>
+                                            <blockSunday
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                                name="./blockSunday"
+                                                text="On datefield block sunday?"
+                                                uncheckedValue="{Boolean}false"
+                                                value="{Boolean}true"/>
                                         </items>
                                     </column>
                                 </items>
