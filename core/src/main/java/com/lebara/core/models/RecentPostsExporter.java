@@ -14,7 +14,6 @@ import org.apache.sling.models.annotations.DefaultInjectionStrategy;
 import org.apache.sling.models.annotations.Exporter;
 import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.injectorspecific.ChildResource;
-import org.apache.sling.models.annotations.injectorspecific.ScriptVariable;
 import org.apache.sling.models.annotations.injectorspecific.SlingObject;
 import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
 
@@ -53,9 +52,15 @@ public class RecentPostsExporter implements ComponentExporter {
 
     public List<RecentPostBean> getRecentPostData() {
         List<RecentPostBean> recentPostBeans = new ArrayList<>();
-        for (final RecentPostBean bean : recentPostData) {
+        if (recentPostData == null) {
+            return recentPostBeans;
+        }
+        for (RecentPostBean bean : recentPostData) {
+            if (bean == null) {
+                continue;
+            }
             String blogPath = bean.getArticleLink();
-            if(resourceResolver == null){
+            if (resourceResolver == null) {
                 continue;
             }
             Resource blogRes = resourceResolver.getResource(blogPath);
