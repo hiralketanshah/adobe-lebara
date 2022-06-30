@@ -114,6 +114,39 @@
                                                         value="FR"/>
                                                 </items>
                                             </country>
+                                            <locale
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                                fieldDescription="Configure in language or root level to access in all child pages. "
+                                                fieldLabel="Locale"
+                                                name="./locale">
+                                                <items jcr:primaryType="nt:unstructured">
+                                                    <default
+                                                        jcr:primaryType="nt:unstructured"
+                                                        text="en-US"
+                                                        value="en-US"/>
+                                                    <german
+                                                        jcr:primaryType="nt:unstructured"
+                                                        text="de-DE"
+                                                        value="de-DE"/>
+                                                    <polish
+                                                        jcr:primaryType="nt:unstructured"
+                                                        text="pl-PL"
+                                                        value="pl-PL"/>
+                                                    <romanian
+                                                        jcr:primaryType="nt:unstructured"
+                                                        text="ro-RO"
+                                                        value="ro-RO"/>
+                                                    <france
+                                                        jcr:primaryType="nt:unstructured"
+                                                        text="fr-FR"
+                                                        value="fr-FR"/>
+                                                    <netherlands
+                                                        jcr:primaryType="nt:unstructured"
+                                                        text="nl-NL"
+                                                        value="nl-NL"/>
+                                                </items>
+                                            </locale>
                                             <planNotEligibleErrorTitle
                                                     jcr:primaryType="nt:unstructured"
                                                     sling:resourceType="granite/ui/components/coral/foundation/form/textfield"

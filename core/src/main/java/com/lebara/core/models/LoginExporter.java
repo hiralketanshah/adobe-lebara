@@ -197,6 +197,9 @@ public class LoginExporter implements ComponentExporter {
     @ValueMapValue
     private String alertMessageText;
 
+    @ValueMapValue
+    private boolean showExpiryMessage;
+
     public String getLoginModuleType() {
         return loginModuleType;
     }
@@ -395,6 +398,10 @@ public class LoginExporter implements ComponentExporter {
 
     public String getAlertMessageText() {
         return alertMessageText;
+    }
+
+    public boolean getShowExpiryMessage() {
+        return showExpiryMessage;
     }
 
     @Override

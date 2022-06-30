@@ -390,6 +390,13 @@
                                                 fieldLabel="Error Message For Postal Code"
                                                 value="Key in your postal code and find your address."
                                                 name="./postalCodeText"/>
+                                            <showExpiryMessage
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                                name="./showExpiryMessage"
+                                                text="Show Alert Message?"
+                                                uncheckedValue="{Boolean}false"
+                                                value="{Boolean}true"/>
                                             <alertMessageText
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
