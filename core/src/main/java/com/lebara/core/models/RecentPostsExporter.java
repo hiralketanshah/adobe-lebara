@@ -86,7 +86,7 @@ public class RecentPostsExporter implements ComponentExporter {
             }
             bean.setArticleLink(AemUtils.getLinkWithExtension(bean.getArticleLink(), resourceResolver));
             Date date = AemUtils.getProperty(blogContentRes, "blogDate", Date.class);
-            String tag = AemUtils.getStringProperty(blogContentRes, "articleTags");
+            String tag = AemUtils.getStringProperty(blogContentRes, "category");
             bean.setDate(AemUtils.getFormattedDate(date, "dd/MM/yyyy"));
             bean.setCategory(AemUtils.getTagValue(tag, resourceResolver.adaptTo(TagManager.class)));
             recentPostBeans.add(bean);
