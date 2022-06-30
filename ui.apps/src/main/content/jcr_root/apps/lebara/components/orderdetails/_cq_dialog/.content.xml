@@ -304,6 +304,13 @@
                                                     </cui>
                                                 </uiSettings>
                                             </consentlabel>
+                                            <hideTermsAndConditions
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                                text="Hide Terms and Conditions?"
+                                                name="./hideTermsAndConditions"
+                                                uncheckedValue="{Boolean}false"
+                                                value="{Boolean}true"/>
                                             <termsandconditionslabel
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="cq/gui/components/authoring/dialog/richtext"
@@ -759,6 +766,13 @@
                                                 name="./shippingAddressLabel"
                                                 fieldDescription="Your shipping address:"
                                                 value="Your shipping address:"/>
+                                            <additionalDeliveryLabel
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="Additional Delivery Label"
+                                                name="./additionalDeliveryLabel"
+                                                fieldDescription="Additional Delivery Label"
+                                                value="Additional Delivery Label"/>
                                             <editlabel
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"

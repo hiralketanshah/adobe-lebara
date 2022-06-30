@@ -410,6 +410,7 @@
 		<property name="voucherCodeExpiredMessage"/>
 		<property name="voucherCodeDiscountLabel"/>
 		<property name="consentLabel"/>
+		<property name="additionalDeliveryLabel"/>
 		<property name="privacyPolicyLabel"/>		
 		<property name="paymentMethodLabel"/>
 		<property name="paymentButtonLabel"/>

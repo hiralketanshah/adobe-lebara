@@ -94,6 +94,13 @@
                                                 fieldLabel="Delete Label"
                                                 name="./deleteLabel"
                                                 value="Delete"/>
+                                            <hideKlarnaAndGiroPay
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                                text="Hide Klarna and Giropay?"
+                                                name="./hideKlarnaAndGiroPay"
+                                                uncheckedValue="{Boolean}false"
+                                                value="{Boolean}true"/>
                                         </items>
                                     </column>
                                 </items>
