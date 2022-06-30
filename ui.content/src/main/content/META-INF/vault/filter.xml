@@ -22,5 +22,6 @@
     <filter root="/etc/notifications" mode="merge"/>
     <filter root="/etc/map.publish" mode="merge"/>
     <filter root="/content/lebara" mode="merge"/>
+    <filter root="/content/cq:tags/lebara" mode="merge"/>
     <filter root="/content/experience-fragments/lebara" mode="merge"/>
 </workspaceFilter>

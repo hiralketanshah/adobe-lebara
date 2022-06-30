@@ -216,6 +216,18 @@ public class OrderDetailsExporter implements ComponentExporter {
     @ValueMapValue
     private boolean showUpdatedAddressFormat;
 
+    @ValueMapValue
+    private String promotionsAppliedLabel;
+
+    @ValueMapValue
+    private String appliedLabel;
+
+    @ValueMapValue
+    private String voucherCodeLabel;
+
+    @ValueMapValue
+    private String discountLabel;
+
     public String getSelectedProductLabel() {
         return selectedProductLabel;
     }
@@ -254,6 +266,26 @@ public class OrderDetailsExporter implements ComponentExporter {
 
     public String getGrandTotalLabel() {
         return grandTotalLabel;
+    }
+
+    public String getPromotionsAppliedLabel() {
+        return promotionsAppliedLabel;
+    }
+
+    public String getAppliedLabel() {
+        return appliedLabel;
+    }
+
+    public String getVoucherCodeLabel() {
+        return voucherCodeLabel;
+    }
+
+    public String getDiscountLabel() {
+        return discountLabel;
+    }
+
+    public String getTotalLabel() {
+        return totalLabel;
     }
 
     public String getAddVoucherCodeLabel() {
