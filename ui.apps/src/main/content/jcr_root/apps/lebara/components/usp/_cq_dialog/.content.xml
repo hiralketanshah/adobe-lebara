@@ -19,6 +19,13 @@
                         jcr:title="USP"
                         sling:resourceType="granite/ui/components/coral/foundation/container"
                         margin="{Boolean}true">
+                    <backgroundColor
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/coral/foundation/form/colorfield"
+                        classicPaletteType="true"
+                        editType="true"
+                        fieldLabel="Background color"
+                        name="./boxBackgroundColor"/>
                         <items jcr:primaryType="nt:unstructured">
                             <columns
                                 jcr:primaryType="nt:unstructured"
