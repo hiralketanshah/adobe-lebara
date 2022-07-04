@@ -17,6 +17,12 @@ public class AttachSimPopupFormFields {
     private SlingHttpServletRequest request;
 
     @ValueMapValue
+    private String simPatternErrorMsg;
+
+    @ValueMapValue
+    private String simRequiredErrorMsg;
+
+    @ValueMapValue
     private String mobileLabel;
 
     @ValueMapValue
@@ -44,6 +50,14 @@ public class AttachSimPopupFormFields {
     }
     public String getCtaLinkLabel() {
         return ctaLinkLabel;
+    }
+
+    public String getSimPatternErrorMsg() {
+        return simPatternErrorMsg;
+    }
+
+    public String getSimRequiredErrorMsg() {
+        return simRequiredErrorMsg;
     }
 
     public String getCtaLink() {

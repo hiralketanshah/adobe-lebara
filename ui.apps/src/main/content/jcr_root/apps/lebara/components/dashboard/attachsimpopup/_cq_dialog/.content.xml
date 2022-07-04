@@ -192,7 +192,20 @@
                                     fieldLabel="CTA Link URL"
                                     name="./attachSimModal/frmFields/ctaLink"
                                     rootPath="/content/lebara"/>
-
+                            <simPatternErrorMsg
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                    fieldDescription="Sim Pattern Error Message"
+                                    fieldLabel="Sim Pattern Error Message"
+                                    name="./attachSimModal/frmFields/simPatternErrorMsg"
+                                    value="Please enter 10-12 digits including 0"/>
+                            <simRequiredErrorMsg
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                    fieldDescription="sim Required Error Message"
+                                    fieldLabel="Sim Required Error Message"
+                                    name="./attachSimModal/frmFields/simRequiredErrorMsg"
+                                    value="Required"/>
                         </items>
                     </column1>
                     <column2
