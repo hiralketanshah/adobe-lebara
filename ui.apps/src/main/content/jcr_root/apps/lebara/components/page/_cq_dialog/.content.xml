@@ -36,11 +36,17 @@
                                                 text="Show New Text"
                                                 value="true"/>
                                             <bctitle
-                                                    jcr:primaryType="nt:unstructured"
-                                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                                    fieldLabel="Enter Breadcrumb Title"
-                                                    fieldDescription="If not added, the navtitle takes priority"
-                                                    name="./breadcrumbTitle"/>
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="Enter Breadcrumb Title"
+                                                fieldDescription="If not added, the navtitle takes priority"
+                                                name="./breadcrumbTitle"/>
+                                            <scriptVal
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textarea"
+                                                fieldLabel="Enter Script for Speedkit or other third party sources"
+                                                fieldDescription="Enter Script"
+                                                name="./scriptVal"/>
                                         </items>
                                     </pageNav>
                                 </items>
@@ -68,18 +74,21 @@
                                                 fieldDescription="Image Path"
                                                 fieldLabel="Sim Image Path"
                                                 name="./simImageFile"
+                                                cq:showOnCreate="{Boolean}true"
                                                 rootPath="/content/dam/lebara"/>
                                             <imageText
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                                 fieldDescription="Text Over Image"
                                                 fieldLabel="Text"
+                                                cq:showOnCreate="{Boolean}true"
                                                 name="./imageText"/>
                                             <imagePath
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
                                                 fieldDescription="Image Path"
                                                 fieldLabel="Image Path"
+                                                cq:showOnCreate="{Boolean}true"
                                                 name="./imagePath"
                                                 rootPath="/content/dam/lebara"/>
                                         </items>
@@ -88,6 +97,45 @@
                             </columns>
                         </items>
                     </offerDetails>
+                    <blogs
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Blogs"
+                        sling:resourceType="granite/ui/components/coral/foundation/container"
+                        margin="{Boolean}true">
+                        <items jcr:primaryType="nt:unstructured">
+                            <columns
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+                                margin="{Boolean}true">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <column
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <date
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/datepicker"
+                                                fieldLabel="Blog Creation Date"
+                                                name="./blogDate"/>
+                                            <tags
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="cq/gui/components/coral/common/form/tagfield"
+                                                fieldLabel="Blog Page tags"
+                                                rootPath="/content/cq:tags/lebara"
+                                                name="./category"/>
+                                            <blogimagePath
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                                fieldDescription="Blog Image Path"
+                                                fieldLabel="Blog Image Path"
+                                                name="./blogImagePath"
+                                                rootPath="/content/dam/lebara"/>
+                                        </items>
+                                    </column>
+                                </items>
+                            </columns>
+                        </items>
+                    </blogs>
                 </items>
             </tabs>
         </items>

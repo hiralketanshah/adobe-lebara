@@ -208,6 +208,18 @@
                                     jcr:primaryType="nt:unstructured"
                                     acs-checkboxshowhidetargetvalue="true"/>
                             </dobError>
+                            <weekStartFromMonday
+                                granite:class="hide dropdown-checkbox-showhide-target"
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                name="./weekStartFromMonday"
+                                text="On Datefield is week starts from Monday?"
+                                uncheckedValue="{Boolean}false"
+                                value="{Boolean}true">
+                                <granite:data
+                                    jcr:primaryType="nt:unstructured"
+                                    acs-checkboxshowhidetargetvalue="true"/>
+                            </weekStartFromMonday>
                         </items>
                     </column1>
                     <column2

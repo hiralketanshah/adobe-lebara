@@ -86,6 +86,15 @@ public class DetailedViewPlanExporter extends ViewPlanExporter implements Compon
     @ValueMapValue
     private String ctaCloseLabel;
 
+    @ValueMapValue
+    private String textAlignment;
+
+    @ValueMapValue
+    private int columnsView = 3;
+
+    @ValueMapValue
+    private String labelTextColor;
+
     @PostConstruct
     protected void init() {
         super.init();
@@ -144,6 +153,18 @@ public class DetailedViewPlanExporter extends ViewPlanExporter implements Compon
     }
 
     public String getBackgroundColor() { return backgroundColor; }
+
+    public String getTextAlignment() {
+        return textAlignment;
+    }
+
+    public int getColumnsView() {
+        return columnsView;
+    }
+
+    public String getLabelTextColor() {
+        return labelTextColor;
+    }
 
     public String getProductInformationButtonLabel() {
         return (i18n == null ? "Product Information" : i18n.get("product.information.label"));

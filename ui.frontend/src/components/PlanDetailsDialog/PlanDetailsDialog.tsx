@@ -94,7 +94,7 @@ const PlanDetailsDialog: React.FC<PlanDetailsDialogProps> = ({
             ))}
           </Box>
         )}
-        <Text
+        {countries.length > 0 &&  <Text
           color="primary.600"
           fontSize={14}
           fontWeight="bold"
@@ -102,7 +102,7 @@ const PlanDetailsDialog: React.FC<PlanDetailsDialogProps> = ({
           pb="10px"
         >
           {countryTitle}
-        </Text>
+        </Text>}
 
         <Flex flexDirection="row" overflow="auto" py="8px">
           {countries && countries.map((country, i) => (

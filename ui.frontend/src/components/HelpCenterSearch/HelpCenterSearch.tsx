@@ -128,7 +128,6 @@ const HelpCenterSearch: React.FC<HelpCenterSearchProps> = ({
                 options={searchResults}
                 onChange={handleChange}
                 onInputChange={onSearchHandler}
-                autoFocus={true}
               />
           </Box>
       </Flex>

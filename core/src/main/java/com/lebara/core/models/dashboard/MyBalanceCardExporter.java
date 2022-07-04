@@ -66,6 +66,9 @@ public class MyBalanceCardExporter implements ComponentExporter {
     private String autoTopupButtonLabel;
 
     @ValueMapValue
+    private String saveAutoTopupButtonLabel;
+
+    @ValueMapValue
     private String cfTopupPlanPath;
 
     @ValueMapValue
@@ -81,7 +84,7 @@ public class MyBalanceCardExporter implements ComponentExporter {
     private Boolean deactivateSuccessOverlaySubTitle;
 
     @ValueMapValue
-    private Number creditListCount;
+    private int creditListCount;
 
     public List<String> getTopUpOptions() {
         return CFUtils.populateTopupInfo(resourceResolver.getResource(cfTopupPlanPath));
@@ -131,6 +134,10 @@ public class MyBalanceCardExporter implements ComponentExporter {
         return autoTopupButtonLabel;
     }
 
+    public String getSaveAutoTopupButtonLabel() {
+        return saveAutoTopupButtonLabel;
+    }
+
     public String getInactiveLabel() {
         return inactiveLabel;
     }
@@ -155,7 +162,7 @@ public class MyBalanceCardExporter implements ComponentExporter {
         return deactivateSuccessOverlaySubTitle;
     }
 
-    public Number getCreditListCount() {
+    public int getCreditListCount() {
         return creditListCount;
     }
 

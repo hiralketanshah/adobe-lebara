@@ -60,6 +60,10 @@ public class FRSimPortInExporter implements ComponentExporter {
     private String rioCodeDesc;
     @ValueMapValue
     private String portDateDesc;
+    @ValueMapValue
+    private boolean weekStartFromMonday;
+    @ValueMapValue
+    private boolean blockSunday;
 
     public String getDoitLaterButtonLabel() {
         return doitLaterButtonLabel;
@@ -129,6 +133,14 @@ public class FRSimPortInExporter implements ComponentExporter {
 
     public String getPortDateDesc() {
         return portDateDesc;
+    }
+
+    public boolean getWeekStartFromMonday() {
+        return weekStartFromMonday;
+    }
+
+    public boolean getBlockSunday() {
+        return blockSunday;
     }
 
     @Override

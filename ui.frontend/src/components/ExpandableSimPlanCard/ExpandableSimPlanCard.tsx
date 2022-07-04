@@ -27,6 +27,7 @@ import { setLoading } from "@lebara/ui/src/redux/actions/loadingActions";
 import { useDispatch } from "react-redux";
 import { ReduxState } from "@lebara/ui/src/redux/types";
 import PlanNotEligibleDialog from "@lebara/ui/src/components/PlanNotEligibleDialog/PlanNotEligibleDialog";
+import { isPromotionalAmount } from "@lebara/ui/src/redux/actions/cartActions";
 import AttachSimModels from "@lebara/ui/src/components/AttachSim/AttachSimModels";
 import { selectIsLoading } from "@lebara/ui/src/redux/selectors/loadingSelectors";
 const ExpandableSimPlanCard: React.FC<ExpandableSimPlanCardProps> = ({
@@ -61,7 +62,8 @@ const ExpandableSimPlanCard: React.FC<ExpandableSimPlanCardProps> = ({
   onClose,
   minutesLabel,
   isResponsivePlan,
-  autoRenew
+  autoRenew,
+  textAlignment
 }) => {
   const history = useHistory();
   const location = useLocation<{}>();
@@ -84,7 +86,7 @@ const ExpandableSimPlanCard: React.FC<ExpandableSimPlanCardProps> = ({
   const handleViewCartClick = () => {
     history.push(isAuthenticated && msisdn ? "/order-details" : "/login");
   };
-
+  const isCenterAligned: boolean = (textAlignment === "center");
   let filteredAllowanceList: allowanceListProps = {};
   if ((!allowanceType || allowanceType === '' || allowanceType?.toLowerCase() === 'data')) {
     filteredAllowanceList = (allowanceList && allowanceList.find((list) => list.name && list.name.toLowerCase().includes('data'))) || {};
@@ -126,7 +128,7 @@ const ExpandableSimPlanCard: React.FC<ExpandableSimPlanCardProps> = ({
   };
   const handleAddToCart = async () => {
     const isLoggedInUser: boolean = !!(isAuthenticated && msisdn);
-    const description: string | undefined = additionalOffers?.match(/<li>.*?<\/li>/g)?.length ? additionalOffers.replaceAll('\n', '').replaceAll('&nbsp;', '').match(/<li>.*?<\/li>/g)?.map(list => list?.replaceAll(/<(.|\n)*?>/g, ''))?.join('+') : additionalOffers;
+    const description: string | undefined = additionalOffers?.match(/<li>.*?<\/li>/g)?.length ? additionalOffers.replaceAll('\n', '').replaceAll('&nbsp;', '').match(/<li>.*?<\/li>/g)?.map(list => list?.replaceAll(/<(.|\n)*?>/g, ''))?.join(' + ') : additionalOffers;
     setAttachSim(false);
     setIsButtonDisabled(true);
     if (isAuthenticated && !isLoading && !msisdn && !isLogout) {
@@ -142,6 +144,7 @@ const ExpandableSimPlanCard: React.FC<ExpandableSimPlanCardProps> = ({
         },
       });
     }
+    dispatch(isPromotionalAmount(promotionPrice));
     switch (offerType) {
       case OfferTypes.BOLTON: {
         if (cartItems?.some(item => !!item.isPostPaid)) {
@@ -248,7 +251,7 @@ const ExpandableSimPlanCard: React.FC<ExpandableSimPlanCardProps> = ({
       >
         <Box>
           {planName && (
-            <Text color="primary.500" fontWeight="bold" textAlign="left">
+            <Text color="primary.500" fontWeight="bold" textAlign={textAlignment || "left"}>
               {planName}
             </Text>
           )}
@@ -282,8 +285,9 @@ const ExpandableSimPlanCard: React.FC<ExpandableSimPlanCardProps> = ({
           hideButton={isRelatedPlan}
         />
         <Flex justifyContent="space-between"
+            {...isCenterAligned ? {flexDirection:"column"} : {}}
             direction={promotionPrice ? "row" : "row"}
-            alignItems={promotionData ? "flex-end" : "initial"}>
+            alignItems={promotionData ? "flex-end" : isCenterAligned ? "center" : "initial"}>
           <Flex
             justifyContent="space-between"
             gridGap="12px"
@@ -379,10 +383,10 @@ const ExpandableSimPlanCard: React.FC<ExpandableSimPlanCardProps> = ({
             {additionalOffers.match(/<li>.*?<\/li>/g)?.length ? additionalOffers.match(/<li>.*?<\/li>/g)?.map((t) => (
               <Flex width="100%" alignItems="center" mb={1}>
                 {previewIcon}
-                <Text ml="8px" dangerouslySetInnerHTML={{ __html: t.replace(/<li>|<\/li>/g, '') }}></Text>
+                <Text ml="8px" textAlign="left" dangerouslySetInnerHTML={{ __html: t.replace(/<li>|<\/li>/g, '') }}></Text>
               </Flex>
             )) : <Flex width="100%" alignItems="center" mb={1}>
-              <Text ml="8px" dangerouslySetInnerHTML={{ __html: additionalOffers }}></Text>
+              <Text ml="8px" textAlign="left" dangerouslySetInnerHTML={{ __html: additionalOffers }}></Text>
             </Flex>}
           </Box>
         )}
@@ -407,6 +411,7 @@ const ExpandableSimPlanCard: React.FC<ExpandableSimPlanCardProps> = ({
           alignItems="center"
           color="primary"
           gridGap="16px"
+          {...isCenterAligned ? {flexDirection:"column"} : {}}
           direction={isResponsivePlan ? { base: "row", lg: "column" } : "row"}
         >
           <Button

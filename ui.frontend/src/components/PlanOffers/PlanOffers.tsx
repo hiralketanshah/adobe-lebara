@@ -30,7 +30,9 @@ const PlanOffers: React.FC<PlanOffersProps> = ({
   ctaDownloadLabel,
   ctaBottomLink,
   minutesLabel,
-
+  textAlignment,
+  columnsView = 3,
+  labelTextColor = "primary.600"
 }) => {
   const history = useHistory();
   const linkStyles = {
@@ -59,13 +61,15 @@ const PlanOffers: React.FC<PlanOffersProps> = ({
     <Box
       backgroundColor={backgroundColor ? backgroundColor : `lightenPrimary.50`}
       backgroundPosition="center right"
+      textAlign={textAlignment || "left"}
       backgroundRepeat="no-repeat"
       py={{ base: "30.68px", lg: "60px" }}
       px={{ base: "20px", lg: "80px" }}
+      color={labelTextColor}
     >
       {heading && (
         <Heading
-          color="primary.600"
+          color={labelTextColor || "primary.600"}
           as="h1"
           fontWeight="bold"
           lineHeight={{ base: "40px", lg: "50px" }}
@@ -78,8 +82,9 @@ const PlanOffers: React.FC<PlanOffersProps> = ({
       <Flex flexDir="column" align="stretch">
         {title && (
           <Heading
-            color="primary.500"
+            color = {labelTextColor || "primary.500"}
             as="h2"
+            textAlign={textAlignment}
             mb={{ base: "12.11px", lg: "10px" }}
             mt={{ base: "20px", lg: "30px" }}
             lineHeight={{ base: "22px", lg: "30px" }}
@@ -90,7 +95,7 @@ const PlanOffers: React.FC<PlanOffersProps> = ({
           </Heading>
         )}
         {subTitle && (
-          <Heading as="h3" fontWeight="bold" fontSize="16px" lineHeight="22px" mb="8px">
+          <Heading as="h3" fontWeight="bold" fontSize="16px" lineHeight="22px" mb="8px" textAlign={textAlignment}>
             {subTitle}
           </Heading>
         )}
@@ -99,6 +104,7 @@ const PlanOffers: React.FC<PlanOffersProps> = ({
             <Text
               lineHeight={{ base: "22px", lg: "30px" }}
               fontSize="16px"
+              textAlign={textAlignment}
               mb={{ base: "15.31px", lg: 0 }}
             >
               {description}
@@ -112,14 +118,15 @@ const PlanOffers: React.FC<PlanOffersProps> = ({
         <Flex
           flexWrap="wrap"
           flexDirection={{ base: "column", lg: "row" }}
-          gridGap={{ base: "10px", lg: "19px" }}
+          gridGap={{ base: "10px", lg: "15px" }}
           mt={{ base: "15.31px", lg: "20px" }}
         >
           {offers &&
             offers?.map((plan: ExpandableSimPlanCardProps) => (
               <Box
-                maxW={{ lg: "400px" }}
-                minW={{ base: "285px", lg: "400px" }}
+                flex={1}
+                maxW={{ lg: `${100 / columnsView - 2}%` }}
+                minW={{ base: "285px", lg: `${100 / columnsView - 2}%` }}
                 w="100%"
                 key={plan.planName}
               >
@@ -133,7 +140,8 @@ const PlanOffers: React.FC<PlanOffersProps> = ({
                   addedtoCartLabel={addedtoCartLabel}
                   viewCartLabel={viewCartLabel}
                   minutesLabel={minutesLabel}
-                  previewIcon={<TickInCircle fill="#13357A" tickFill="#EA4984" />} />
+                  previewIcon={<TickInCircle fill="#13357A" tickFill="#EA4984" />}
+                  textAlignment={textAlignment} />
               </Box>
             ))}
         </Flex>
