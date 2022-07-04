@@ -619,6 +619,9 @@ RewriteRule ^/wrapper-sw.js$ /etc.clientlibs/lebara/clientlibs/clientlib-speedki
 # Google Merchant Center rewrite
 RewriteRule ^/google331b37d915cf40bc.html$ /content/dam/${CONTENT_FOLDER_NAME}/markets/google331b37d915cf40bc.html [NC,PT]
 
+# SpeedKit rewrite
+RewriteRule ^/wrapper-sw.js$ /etc.clientlibs/lebara/clientlibs/clientlib-speedkit-de.js [NC,PT]
+
 RewriteCond %{REQUEST_URI} !^/apps
 RewriteCond %{REQUEST_URI} !^/bin
 RewriteCond %{REQUEST_URI} !^/content
