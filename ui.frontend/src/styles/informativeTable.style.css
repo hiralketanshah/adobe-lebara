@@ -2,6 +2,10 @@
     display: table;
 }
 
+.informative-table table{
+    margin: auto;
+}
+
 .informative-table table th {
     font-family: Chiswick Grotesque Lebara;
     font-weight: 700;

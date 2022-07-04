@@ -5,7 +5,7 @@ import "../styles/informativeTable.style.css";
 const InformativeTableConfig = {
   emptyLabel: "Informative Table component",
   isEmpty: function (props) {
-    return false;
+    return !props.text;
   },
 };
 
