@@ -217,6 +217,12 @@ public class OrderDetailsExporter implements ComponentExporter {
     private boolean showUpdatedAddressFormat;
 
     @ValueMapValue
+    private String additionalDeliveryLabel;
+
+    @ValueMapValue
+    private boolean hideTermsAndConditions;
+
+    @ValueMapValue
     private String promotionsAppliedLabel;
 
     @ValueMapValue
@@ -485,6 +491,14 @@ public class OrderDetailsExporter implements ComponentExporter {
 
     public boolean getShowUpdatedAddressFormat() {
         return showUpdatedAddressFormat;
+    }
+
+    public boolean getHideTermsAndConditions() {
+        return hideTermsAndConditions;
+    }
+
+    public String getAdditionalDeliveryLabel() {
+        return additionalDeliveryLabel ;
     }
 
 
