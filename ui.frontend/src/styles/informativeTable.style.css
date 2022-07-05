@@ -4,6 +4,11 @@
 
 .informative-table table{
     margin: auto;
+	width: 80%;
+}
+
+.informative-table table tr:last-child td {
+    border-bottom: none;
 }
 
 .informative-table table th {
