@@ -199,7 +199,7 @@ public class AemUtils {
         if (StringUtils.isBlank(payloadPath) || isExternalLink(payloadPath)) {
             return payloadPath;
         }
-        return ((request == null) ? payloadPath : trimmedPath(payloadPath)) + (isHtmlExtensionRequired(payloadPath) ? LebaraConstants.HTML_EXTENSION : StringUtils.EMPTY);
+        return (trimmedPath(payloadPath)) + (isHtmlExtensionRequired(payloadPath) ? LebaraConstants.HTML_EXTENSION : StringUtils.EMPTY);
     }
 
     private static String trimmedPath(String payloadPath) {
@@ -214,7 +214,7 @@ public class AemUtils {
         if (StringUtils.isBlank(payloadPath) || isExternalLink(payloadPath)) {
             return payloadPath;
         }
-        return ((resourceResolver == null) ? payloadPath : trimmedPath(payloadPath)) + (isHtmlExtensionRequired(payloadPath) ? LebaraConstants.HTML_EXTENSION : StringUtils.EMPTY);
+        return (trimmedPath(payloadPath)) + (isHtmlExtensionRequired(payloadPath) ? LebaraConstants.HTML_EXTENSION : StringUtils.EMPTY);
     }
 
     public static String updateShortenLinksInRichText(String text, SlingHttpServletRequest slingRequest) {
