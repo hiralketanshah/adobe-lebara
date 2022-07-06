@@ -94,6 +94,7 @@ import "./CallSupport/AemConfig.js";
 import "./CallSupport/WeAreHere/AemConfig.js";
 import "../aemConfigs/SimDetails.js";
 import "../aemConfigs/SelectionConfig.js";
+import "../aemConfigs/FailedLegalRegConfig.js";
 import "../aemConfigs/OurPromotionsAemConfig.js";
 import "../aemConfigs/RecentPostsAemConfig.js";
 import "../aemConfigs/QuickActionConfig.js";
