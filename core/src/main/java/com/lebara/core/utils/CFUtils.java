@@ -103,9 +103,9 @@ public class CFUtils {
                     city.setKey(String.valueOf(i));
                     cities.add(city);
                 }
-                return cities;
             }
         }
+        Collections.sort(cities, new SortbyName() );
         return cities;
     }
 
