@@ -27,6 +27,7 @@ import { setLoading } from "@lebara/ui/src/redux/actions/loadingActions";
 import { useDispatch } from "react-redux";
 import { ReduxState } from "@lebara/ui/src/redux/types";
 import PlanNotEligibleDialog from "@lebara/ui/src/components/PlanNotEligibleDialog/PlanNotEligibleDialog";
+import { isPromotionalAmount } from "@lebara/ui/src/redux/actions/cartActions";
 import AttachSimModels from "@lebara/ui/src/components/AttachSim/AttachSimModels";
 import { selectIsLoading } from "@lebara/ui/src/redux/selectors/loadingSelectors";
 const ExpandableSimPlanCard: React.FC<ExpandableSimPlanCardProps> = ({
@@ -144,6 +145,7 @@ const ExpandableSimPlanCard: React.FC<ExpandableSimPlanCardProps> = ({
         },
       });
     }
+    dispatch(isPromotionalAmount(promotionPrice));
     switch (offerType) {
       case OfferTypes.BOLTON: {
         if (cartItems?.some(item => !!item.isPostPaid)) {

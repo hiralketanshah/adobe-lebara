@@ -24,6 +24,9 @@ public class UspExporter extends HeadingExporter {
      */
     protected static final String RESOURCE_TYPE = "lebara/components/usp";
 
+    @ValueMapValue
+    private String boxBackgroundColor;
+
     @ScriptVariable
     private Resource resource;
 
@@ -37,6 +40,10 @@ public class UspExporter extends HeadingExporter {
 
     public List<ImageProperties> getUspList() {
         return (uspList == null) ? Collections.emptyList() : uspList;
+    }
+
+    public String getBoxBackgroundColor() {
+        return boxBackgroundColor;
     }
 
 }

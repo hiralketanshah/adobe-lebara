@@ -83,6 +83,24 @@
                                                 fieldLabel="Postpaid Auto Renew Desc"
                                                 fieldDescription="Your plan will renew every 28 days and you may cancel any time."
                                                 name="./postpaidAutoRenewDesc"/>
+                                            <promotionsAppliedLabel
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="Promotions Applied Label"
+                                                fieldDescription="Promotions Applied"
+                                                name="./promotionsAppliedLabel"/>
+                                            <appliedLabel
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="Applied Label"
+                                                fieldDescription="Applied"
+                                                name="./appliedLabel"/>
+                                            <discountLabel
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="Discount Label"
+                                                fieldDescription="Discount"
+                                                name="./discountLabel"/>
                                             <grandtotallabel
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
