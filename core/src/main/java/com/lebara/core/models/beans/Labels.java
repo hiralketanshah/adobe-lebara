@@ -14,11 +14,18 @@ public class Labels {
     @ValueMapValue
     private String label2;
 
+    @ValueMapValue
+    private String sectionLabel;
+
     public String getLabel1() {
         return label1;
     }
 
     public String getLabel2() {
         return label2;
+    }
+
+    public String getSectionLabel() {
+        return sectionLabel;
     }
 }
