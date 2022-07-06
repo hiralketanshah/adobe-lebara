@@ -42,6 +42,7 @@ export interface ExpandableSimPlanCardProps {
   isResponsivePlan?: boolean;
   autoRenew?: string;
   textAlignment?: ResponsiveValue<any>;
+  showModelOnAddtoCart?: boolean;
 }
 
 const OfferTypes = {

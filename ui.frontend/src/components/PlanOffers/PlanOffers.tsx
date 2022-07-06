@@ -32,7 +32,8 @@ const PlanOffers: React.FC<PlanOffersProps> = ({
   minutesLabel,
   textAlignment,
   columnsView = 3,
-  labelTextColor = "primary.600"
+  labelTextColor = "primary.600",
+  showModelOnAddtoCart =false
 }) => {
   const history = useHistory();
   const linkStyles = {
@@ -141,7 +142,8 @@ const PlanOffers: React.FC<PlanOffersProps> = ({
                   viewCartLabel={viewCartLabel}
                   minutesLabel={minutesLabel}
                   previewIcon={<TickInCircle fill="#13357A" tickFill="#EA4984" />}
-                  textAlignment={textAlignment} />
+                  textAlignment={textAlignment}
+                  showModelOnAddtoCart={showModelOnAddtoCart} />
               </Box>
             ))}
         </Flex>

@@ -28,6 +28,7 @@ export interface PlanOffersProps {
   textAlignment?: string;
   columnsView?: number;
   labelTextColor?: string;
+  showModelOnAddtoCart ?: boolean;
 }
 
 export interface allowanceListProps {
