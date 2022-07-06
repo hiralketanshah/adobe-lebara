@@ -429,13 +429,13 @@ RewriteRule ^/([a-z]+)/blog/index.php/2022/02/01/mobile-security-zum-andere-dein
 RewriteRule ^/([a-z]+)/blog/index.php/2022/02/10/auslandstelefonie-unlimited-jetzt-2-monate-kostenlos-in-uber-130-lander-telefonieren$	/$1/leb-connected/neu-in-deutschland/Auslandstelefonie-unlimited.html [L,R=301]
 RewriteRule ^/([a-z]+)/blog/index.php/2022/02/17/messenger-dienste-im-uberblick$	/$1/leb-connected/blog/Messenger-Dienste-im-Ueberblick.html [L,R=301]
 RewriteRule ^/([a-z]+)/leb-connected/blog/Messenger-Dienste-im-%C3%9Cberblick.html$	/$1/leb-connected/blog/Messenger-Dienste-im-Ueberblick.html [L,R=301]
-RewriteRule ^/([a-z]+)/prepaid/vorteile/bestes-d-netz.html$	/$1.html [L,R=301]
-#RewriteRule ^/de/sim-aktivierung/erfolg$	/de/sim-registrierung/success.html [L,R=301]
-#RewriteRule ^/en/sim-aktivierung/erfolg$	/en/vertrag/simonly-activation.html [L,R=301]
-#RewriteRule ^/pl/sim-aktivierung/erfolg$	/pl/vertrag/simonly-activation.html [L,R=301]
-#RewriteRule ^/ro/sim-aktivierung/erfolg$	/ro/vertrag/simonly-activation.html [L,R=301]
-#RewriteRule ^/([a-z]+)/sim-aktivieren$ https://de-videoident-customer-onboarding.lebara.com/ [L,R=301]
-#RewriteRule ^/([a-z]+)/sim-aktivierung$ https://de-videoident-customer-onboarding.lebara.com/ [L,R=301]
+RewriteRule ^/de/sim-aktivierung/erfolg$	/de/sim-registrierung/success.html [L,R=301]
+RewriteRule ^/en/sim-aktivierung/erfolg$	/en/vertrag/simonly-activation.html [L,R=301]
+RewriteRule ^/pl/sim-aktivierung/erfolg$	/pl/vertrag/simonly-activation.html [L,R=301]
+RewriteRule ^/ro/sim-aktivierung/erfolg$	/ro/vertrag/simonly-activation.html [L,R=301]
+RewriteRule ^/([a-z]+)/prepaid/vorteile/bestes-d-netz$	/$1.html [L,R=301]
+RewriteRule ^/([a-z]+)/sim-aktivieren$ https://de-videoident-customer-onboarding.lebara.com/ [L,R=301]
+RewriteRule ^/([a-z]+)/sim-aktivierung$ https://de-videoident-customer-onboarding.lebara.com/ [L,R=301]
 
 RewriteRule ^/([a-z]+)/komplett-plans/c/payg-komplett$	/$1/prepaid/hello-tarife.html [L,R=301]
 RewriteRule ^/([a-z]+)/komplett-plans/komplett-m/p/490127$	/$1/prepaid/hello-tarife.html [L,R=301]
@@ -496,7 +496,6 @@ RewriteRule ^/([a-z]+)/vertrag/leb-allnet-tarif/leb-allnet-m-easy.html	/$1/vertr
 RewriteRule ^/([a-z]+)/vertrag/leb-allnet-tarif/leb-allnet-s-easy.html	/$1/vertrag.html [L,R=301]
 RewriteRule ^/([a-z]+)/vertrag/leb-allnet-tarif.html	/$1/vertrag.html [L,R=301]
 RewriteRule ^/([a-z]+)/prepaid/vorteile/bestes-d-netz.html	/$1/prepaid/vorteile.html [L,R=301]
-
 
 #ALL Country Rewrites
 RewriteRule ^/([a-z]+)/call-afghanistan$	/$1/minutenpreis-auslandsanrufe/afghanistan-anrufen.html [L,R=301]
