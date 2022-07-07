@@ -46,4 +46,40 @@ public class PageFormFields {
     @ValueMapValue
     private String verifyCodePlaceholder;
 
+    public String getButtonCTALabel() {
+        return buttonCTALabel;
+    }
+
+    public String getCtaContinueLabel() {
+        return ctaContinueLabel;
+    }
+
+    public String getCtaEditMobileLabel() {
+        return ctaEditMobileLabel;
+    }
+
+    public String getCtaResendVerificationLabel() {
+        return ctaResendVerificationLabel;
+    }
+
+    public String getMobileLabel() {
+        return mobileLabel;
+    }
+
+    public String getSubMobileLabel() {
+        return subMobileLabel;
+    }
+
+    public String getMobilePlaceholder() {
+        return mobilePlaceholder;
+    }
+
+    public String getVerifyCodeLabel() {
+        return verifyCodeLabel;
+    }
+
+    public String getVerifyCodePlaceholder() {
+        return verifyCodePlaceholder;
+    }
+
 }
