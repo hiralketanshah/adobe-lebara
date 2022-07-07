@@ -187,6 +187,15 @@ public class CFUtils {
             return 0;
         }
     }
+
+    public static ContentFragment getContentFragment(ResourceResolver resourceResolver, String cfPath) {
+        Resource cfResource = resourceResolver.getResource(cfPath);
+        if (cfResource != null) {
+            return cfResource.adaptTo(ContentFragment.class);
+        }
+        return null;
+    }
+
     public static PromotionFragmentBean populatePromotions(ResourceResolver resourceResolver, String promotionFragPath){
         Resource promotionalFragres = resourceResolver.getResource(promotionFragPath);
         PromotionFragmentBean promotionFragmentBean = new PromotionFragmentBean();

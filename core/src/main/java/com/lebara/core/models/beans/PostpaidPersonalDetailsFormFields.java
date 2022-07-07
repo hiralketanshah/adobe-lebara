@@ -343,6 +343,18 @@ public class PostpaidPersonalDetailsFormFields {
         return consentPreviewText;
     }
 
+    public void setConsentPreviewText(String consentPreviewText) {
+        this.consentPreviewText = consentPreviewText;
+    }
+
+    public void setConsentMarketingText(String consentMarketingText) {
+        this.consentMarketingText = consentMarketingText;
+    }
+
+    public void setConsentDescription(String consentDescription) {
+        this.consentDescription = consentDescription;
+    }
+
     public String getShippingHelperText() {
         return shippingHelperText;
     }
