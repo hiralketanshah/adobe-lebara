@@ -245,7 +245,7 @@
                         jcr:title="Consent Section"
                         sling:resourceType="granite/ui/components/coral/foundation/container">
                         <items jcr:primaryType="nt:unstructured">
-                            <dataPlanPath
+                            <consentFragmentPath
                                 jcr:primaryType="nt:unstructured"
                                 sling:resourceType="dam/cfm/components/cfpicker"
                                 fieldLabel="Select Consent Fragment"
