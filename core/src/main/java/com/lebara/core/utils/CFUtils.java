@@ -96,6 +96,7 @@ public class CFUtils {
             ContentFragment cityFragment = cfResource.adaptTo(ContentFragment.class);
             if (null != cityFragment) {
                 String[] cityArray = CFUtils.getElementArrayValue(cityFragment, "value");
+                Arrays.sort(cityArray);
                 for (int i = 0; i < cityArray.length; i++) {
                     SelectBean city = new SelectBean();
                     city.setValue(cityArray[i]);
@@ -103,7 +104,6 @@ public class CFUtils {
                     city.setKey(String.valueOf(i));
                     cities.add(city);
                 }
-                return cities;
             }
         }
         return cities;
