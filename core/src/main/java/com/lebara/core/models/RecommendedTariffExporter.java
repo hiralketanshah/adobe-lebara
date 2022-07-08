@@ -14,6 +14,7 @@ import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.injectorspecific.ChildResource;
 import org.apache.sling.models.annotations.injectorspecific.ScriptVariable;
 import org.apache.sling.models.annotations.injectorspecific.SlingObject;
+import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
 
 import com.adobe.cq.export.json.ComponentExporter;
 import com.adobe.cq.export.json.ExporterConstants;
@@ -50,6 +51,15 @@ public class RecommendedTariffExporter extends ViewPlanExporter {
     @ChildResource
     protected Resource phases;
 
+    @ValueMapValue
+    private boolean enableCarousel;
+
+    @ValueMapValue
+    private String title;
+
+    @ValueMapValue
+    private String subTitle;
+
     @PostConstruct
     protected void init() {
         super.init();
@@ -67,6 +77,18 @@ public class RecommendedTariffExporter extends ViewPlanExporter {
             }
         }
         return offers;
+    }
+
+    public boolean getEnableCarousel() {
+        return enableCarousel;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public String getSubTitle() {
+        return subTitle;
     }
 
     @Override

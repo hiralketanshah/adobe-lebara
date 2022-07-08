@@ -227,6 +227,7 @@
 		<property name="mobileNumberErrorMessage" />
 		<property name="mobileNumberMaxLength" />
 		<property name="mobileNumberFieldPattern" />
+		<property name="mobileNumberFieldNumber" />
 		<property name="currentProviderDefaultSelectValue" />
 		<property name="moreLabel" />
 

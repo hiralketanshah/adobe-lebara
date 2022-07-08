@@ -127,6 +127,9 @@ public class SimPortInExporter implements ComponentExporter {
     private String mobileNumberFieldPattern;
 
     @ValueMapValue
+    private String mobileNumberFieldNumber;
+
+    @ValueMapValue
     private String currentProvidersOptions;
 
     @ValueMapValue
@@ -248,6 +251,10 @@ public class SimPortInExporter implements ComponentExporter {
 
     public String getMobileNumberFieldPattern() {
         return mobileNumberFieldPattern;
+    }
+
+    public String getMobileNumberFieldNumber() {
+        return mobileNumberFieldNumber;
     }
 
     public String getMoreLabel() {
