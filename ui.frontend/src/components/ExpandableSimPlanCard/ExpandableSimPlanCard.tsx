@@ -63,7 +63,8 @@ const ExpandableSimPlanCard: React.FC<ExpandableSimPlanCardProps> = ({
   minutesLabel,
   isResponsivePlan,
   autoRenew,
-  textAlignment
+  textAlignment,
+  showModelOnAddtoCart
 }) => {
   const history = useHistory();
   const location = useLocation<{}>();
@@ -220,7 +221,7 @@ const ExpandableSimPlanCard: React.FC<ExpandableSimPlanCardProps> = ({
   };
   return (
     <>
-    {isAttachSim && <AttachSimModels />}
+    {isAttachSim && showModelOnAddtoCart && <AttachSimModels />}
       {promotionMessage && (
         <Box
           bgColor="#FF3182"
