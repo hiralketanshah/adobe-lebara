@@ -33,6 +33,9 @@ public class VerifyRegisterMobileBean {
     @ChildResource
     private TimeCounter timeCounter;
 
+    @ChildResource
+    private SelectOption ctaLink;
+
     public String getHeading() {
         return heading;
     }
@@ -51,6 +54,10 @@ public class VerifyRegisterMobileBean {
 
     public TimeCounter getTimeCounter() {
         return timeCounter;
+    }
+
+    public SelectOption getCtaLink() {
+        return ctaLink;
     }
 
     public SuccessMessage getSuccessMessages() {
