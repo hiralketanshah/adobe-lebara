@@ -22,6 +22,9 @@ public class FRSimPortInExporter implements ComponentExporter {
     private String doitLaterButtonLabel;
 
     @ValueMapValue
+    private String heading;
+
+    @ValueMapValue
     private String title;
 
     @ValueMapValue
@@ -67,6 +70,10 @@ public class FRSimPortInExporter implements ComponentExporter {
 
     public String getDoitLaterButtonLabel() {
         return doitLaterButtonLabel;
+    }
+
+    public String getHeading() {
+        return heading;
     }
 
     public String getTitle() {
