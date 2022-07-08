@@ -30,6 +30,8 @@ public class RewardsTableExporter extends IntroExporter {
     private String columnHeader1;
     @ValueMapValue
     private String columnHeader2;
+    @ValueMapValue
+    private boolean isBonusView;
 
     @Override
     public String getExportedType() {
@@ -46,6 +48,10 @@ public class RewardsTableExporter extends IntroExporter {
 
     public String getColumnHeader2() {
         return columnHeader2;
+    }
+
+    public boolean getIsBonusView() {
+        return isBonusView;
     }
 
 }

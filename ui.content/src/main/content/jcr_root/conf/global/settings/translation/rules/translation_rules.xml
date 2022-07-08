@@ -562,6 +562,7 @@
 		<property name="otpSentSuccessfullyMsg"/>
 		<property name="label1"/>
 		<property name="label2"/>
+		<property name="sectionLabel"/>
 		<property name="verifyCodePlaceholder"/>
 		<property name="ctaResendVerificationLabel"/>
 		<property name="ctaEditMobileLabel"/>
