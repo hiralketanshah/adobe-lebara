@@ -89,12 +89,12 @@ const ExpandableSimPlanCard: React.FC<ExpandableSimPlanCardProps> = ({
   };
   const isCenterAligned: boolean = (textAlignment === "center");
   let filteredAllowanceList: allowanceListProps = {};
-  if ((!allowanceType || allowanceType === '' || allowanceType?.toLowerCase() === 'data')) {
-    filteredAllowanceList = (allowanceList && allowanceList.find((list) => list.name && list.name.toLowerCase().includes('data'))) || {};
-  } else if (allowanceType && (allowanceType?.toLowerCase() === 'minutes')) {
+  const dataAllowanceType: allowanceListProps | undefined = allowanceList && allowanceList.find((list) => list.name && list.name.toLowerCase().includes('data'));
+  if (dataAllowanceType) {
+    filteredAllowanceList = dataAllowanceType;
+  } else {
     filteredAllowanceList = (allowanceList && allowanceList.find((list) => list.name && (!list.name.toLowerCase().includes('data') || !list.name.toLowerCase().includes('national_voice')
       || !list.name.toLowerCase().includes('l2l')))) || {};
-    filteredAllowanceList['formatedValue'] = filteredAllowanceList['value'] + ' ' + minutesLabel;
   }
   const handleToastView = async (description: string) => {
     const updatedAddtoCart: string = addedtoCartLabel?.replace('{0}', planName) || '';
