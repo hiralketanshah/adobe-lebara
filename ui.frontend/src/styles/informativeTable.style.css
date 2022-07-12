@@ -1,0 +1,43 @@
+.informative-table {
+    display: table;
+}
+
+.informative-table table{
+    margin: auto;
+	width: 100%;
+}
+
+.informative-table table tr:last-child td {
+    border-bottom: none;
+}
+
+.informative-table table th {
+    font-family: Chiswick Grotesque Lebara;
+    font-weight: 700;
+    font-size: 26px;
+    line-height: 32px;
+    letter-spacing: 0px;
+    padding: 16px 12px;
+    border-bottom: 0.5px solid;
+    border-right: 0.5px solid;
+    border-top: none;
+    border-left: none;
+    color: var(--chakra-colors-primary-800);
+    text-transform: none;
+    text-align: center;
+    border-color: var(--chakra-colors-greySuccess);
+}
+
+.informative-table table td {
+    font-family: Roboto;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 20px;
+    letter-spacing: 0.5px;
+    padding: 12px;
+    border-right: 0.5px solid;
+    color: var(--chakra-colors-primary-800);
+    border-bottom: 0.5px solid;
+    border-color: var(--chakra-colors-greySuccess);
+    text-align: center;
+}
