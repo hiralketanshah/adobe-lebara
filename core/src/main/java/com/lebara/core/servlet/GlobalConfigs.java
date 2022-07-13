@@ -56,6 +56,11 @@ public class GlobalConfigs extends SlingSafeMethodsServlet {
     private static final String PLAN_NOT_ELIGIBLE_ERROR_MESSAGE = "planNotEligibleErrorMessage";
     private static final String PLAN_NOT_ELIGIBLE_ERROR_TITLE = "planNotEligibleErrorTitle";
     private static final String PLAN_NOT_ELIGIBLE_ERROR_BUTTON_TEXT = "planNotEligibleErrorButtonText";
+    private static final String DE_ROOT_PATH = "/content/lebara/de";
+    private static final String FR_ROOT_PATH = "/content/lebara/fr";
+    private static final String NL_ROOT_PATH = "/content/lebara/nl";
+    private static final String DK_ROOT_PATH = "/content/lebara/dk";
+    private static final String UK_ROOT_PATH = "/content/lebara/uk";
 
     @Reference
     private transient GlobalOsgiService globalOsgiService;
@@ -75,10 +80,12 @@ public class GlobalConfigs extends SlingSafeMethodsServlet {
         if (pageManager != null) {
             page = pageManager.getContainingPage(request.getResource());
         }
+        String apiHostUri = globalOsgiService.getApiHostUri() + getCountrySpecificUri(request.getResource().getPath());
+
         return (new ImmutableMap.Builder())
                 .put("locale", Optional.ofNullable(inheritedProp.getInherited(LOCALE, String.class)).orElse("en-US"))
                 .put("country", Optional.ofNullable(inheritedProp.getInherited(COUNTRY, String.class)).orElse("DE"))
-                .put("apiHostUri", Optional.ofNullable(globalOsgiService.getApiHostUri()).orElse(""))
+                .put("apiHostUri", Optional.ofNullable(apiHostUri).orElse(""))
                 .put("gqlEndpoint", Optional.ofNullable(globalOsgiService.getGqlEndpoint()).orElse(""))
                 .put("paymentClientKey", Optional.ofNullable(globalOsgiService.getPaymentClientKey()).orElse(""))
                 .put("paymentAdeyenEnv", Optional.ofNullable(globalOsgiService.getPaymentAdeyenEnv()).orElse(""))
@@ -89,11 +96,30 @@ public class GlobalConfigs extends SlingSafeMethodsServlet {
                 .put(PLAN_NOT_ELIGIBLE_ERROR_MESSAGE, Optional.ofNullable(inheritedProp.getInherited(PLAN_NOT_ELIGIBLE_ERROR_MESSAGE, String.class)).orElse(""))
                 .put(PLAN_NOT_ELIGIBLE_ERROR_TITLE, Optional.ofNullable(inheritedProp.getInherited(PLAN_NOT_ELIGIBLE_ERROR_TITLE, String.class)).orElse(""))
                 .put(PLAN_NOT_ELIGIBLE_ERROR_BUTTON_TEXT, Optional.ofNullable(inheritedProp.getInherited(PLAN_NOT_ELIGIBLE_ERROR_BUTTON_TEXT, String.class)).orElse(""))
-                .put(PAYMENT_MESSAGES,getPaymentMethods(page))
-                .put("attachSim",getAttachSimModelData(request, page))
-                .put("verifyMobileNumberModal",getVerifySimModelData(request, page))
-                .put("activateSimModal",getActivateSimModelData(request, page))
-                .put("activateYourSimModal",getActivateYourSimModelData(request, page)).build();
+                .put(PAYMENT_MESSAGES, getPaymentMethods(page))
+                .put("attachSim", getAttachSimModelData(request, page))
+                .put("verifyMobileNumberModal", getVerifySimModelData(request, page))
+                .put("activateSimModal", getActivateSimModelData(request, page))
+                .put("activateYourSimModal", getActivateYourSimModelData(request, page)).build();
+    }
+
+    private String getCountrySpecificUri(String pagePath) {
+        if (StringUtils.startsWith(pagePath, DE_ROOT_PATH)) {
+            return "de";
+        }
+        if (StringUtils.startsWith(pagePath, FR_ROOT_PATH)) {
+            return "fr";
+        }
+        if (StringUtils.startsWith(pagePath, NL_ROOT_PATH)) {
+            return "nl";
+        }
+        if (StringUtils.startsWith(pagePath, DK_ROOT_PATH)) {
+            return "dk";
+        }
+        if (StringUtils.startsWith(pagePath, UK_ROOT_PATH)) {
+            return "uk";
+        }
+        return "de";
     }
 
     private PaymentMethods getPaymentMethods(Page page) {

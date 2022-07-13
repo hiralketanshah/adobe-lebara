@@ -7,4 +7,5 @@ export interface HeroBannerProps {
   getItNowErrorMessage?: string;
   headingType?: any;
   isSimChoiceFlow?: boolean;
+  showAttachSim?: boolean;
 }

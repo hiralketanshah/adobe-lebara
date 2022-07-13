@@ -37,6 +37,8 @@ public class GetItNowExporter extends IntroExporter {
     private String description;
     @ValueMapValue
     private boolean isSimChoiceFlow;
+    @ValueMapValue
+    private boolean showAttachSim;
 
     @Override
     public String getDescription() {
@@ -69,6 +71,10 @@ public class GetItNowExporter extends IntroExporter {
 
     public boolean getIsSimChoiceFlow() {
         return isSimChoiceFlow;
+    }
+    
+    public boolean getShowAttachSim() {
+        return showAttachSim;
     }
 
     @Override
