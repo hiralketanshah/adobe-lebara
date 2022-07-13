@@ -7,7 +7,7 @@ import org.osgi.service.metatype.annotations.ObjectClassDefinition;
 @ObjectClassDefinition(name="Lebara Global Configuration", description="This configurations will be used to fetch the global values specific to Lebara")
 public @interface GlobalOsgiConfigs {
 	@AttributeDefinition(name = "Host URI", description = "API Aggregator host URI", type = AttributeType.STRING)
-	String getApiHostUri() default "https://api-aggregator.lebara.de";
+	String getApiHostUri() default "https://api-aggregator.lebara.";
 
 	@AttributeDefinition(name = "GQL Endpoint", type = AttributeType.STRING)
 	String getGqlEndpoint() default "/api-aggregator";
