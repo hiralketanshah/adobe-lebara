@@ -24,7 +24,8 @@ const HeroBanner: React.FC<HeroBannerProps> = ({
   buttonCTALink,
   getItNowErrorMessage,
   headingType,
-  isSimChoiceFlow
+  isSimChoiceFlow,
+  showAttachSim
 }) => {
   const isAuthenticated = useSelector(selectIsAuthenticated);
   const msisdn = useSelector(selectMsisdn);
@@ -75,7 +76,7 @@ return (
       <span className="about-lebara" dangerouslySetInnerHTML={{ __html: description || ""}} />
       <Button my="20px" fontSize={{ lg: "16px" }} onClick={buttonCTALink ? ()=> history.push(buttonCTALink) : async () => {
         setAttachSim(false);
-        if (isAuthenticated && !isLoading && !msisdn && !isLogout) {
+        if (isAuthenticated && !isLoading && !msisdn && !isLogout && showAttachSim) {
           setAttachSim(true);
           return;
         }
