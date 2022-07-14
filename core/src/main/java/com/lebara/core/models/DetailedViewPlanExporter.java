@@ -1,15 +1,12 @@
 package com.lebara.core.models;
 
-import com.day.cq.commons.inherit.HierarchyNodeInheritanceValueMap;
-import com.day.cq.commons.inherit.InheritanceValueMap;
-import com.day.cq.commons.jcr.JcrConstants;
-import com.adobe.cq.export.json.ComponentExporter;
-import com.adobe.cq.export.json.ExporterConstants;
-import com.day.cq.i18n.I18n;
-import com.lebara.core.dto.OfferFragmentBean;
-import com.lebara.core.dto.PlanInfo;
-import com.lebara.core.utils.AemUtils;
-import com.lebara.core.utils.CFUtils;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+
+import javax.annotation.PostConstruct;
+import javax.inject.Inject;
+
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.api.resource.ResourceResolver;
@@ -22,10 +19,13 @@ import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import javax.annotation.PostConstruct;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
+import com.adobe.cq.export.json.ComponentExporter;
+import com.adobe.cq.export.json.ExporterConstants;
+import com.day.cq.commons.inherit.InheritanceValueMap;
+import com.lebara.core.dto.OfferFragmentBean;
+import com.lebara.core.dto.PlanInfo;
+import com.lebara.core.utils.AemUtils;
+import com.lebara.core.utils.CFUtils;
 
 @Model(adaptables = SlingHttpServletRequest.class, adapters = {DetailedViewPlanExporter.class, ComponentExporter.class},
         resourceType = DetailedViewPlanExporter.RESOURCE_TYPE, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
@@ -41,6 +41,9 @@ public class DetailedViewPlanExporter extends ViewPlanExporter implements Compon
 
     @SlingObject
     private SlingHttpServletRequest request;
+
+    @Inject
+    private InheritanceValueMap pageProperties;
 
     @SlingObject
     private ResourceResolver resourceResolver;
@@ -206,10 +209,8 @@ public class DetailedViewPlanExporter extends ViewPlanExporter implements Compon
         return (i18n == null ? "Addon {0} added to cart" : i18n.get("lebara.addon.addedtocart.label"));
     }
 
-    public boolean getShowModelOnAddtoCart() {
-        Resource res = request.getResource().getChild(JcrConstants.JCR_CONTENT);
-        InheritanceValueMap inheritedProp = new HierarchyNodeInheritanceValueMap(res);
-        return Optional.ofNullable(inheritedProp.getInherited("showModelOnAddtoCart", Boolean.class)).orElse(false);
+    public boolean getShowModelOnAddtoCart(){
+        return Optional.ofNullable(pageProperties.getInherited("showModelOnAddtoCart", Boolean.class)).orElse(false);
     }
     @Override
     public String getExportedType() {
