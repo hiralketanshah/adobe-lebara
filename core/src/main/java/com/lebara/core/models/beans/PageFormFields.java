@@ -26,6 +26,9 @@ public class PageFormFields {
     private String ctaContinueLabel;
 
     @ValueMapValue
+    private String ctaSkipLabel;
+
+    @ValueMapValue
     private String ctaEditMobileLabel;
 
     @ValueMapValue
@@ -52,6 +55,10 @@ public class PageFormFields {
 
     public String getCtaContinueLabel() {
         return ctaContinueLabel;
+    }
+
+    public String getCtaSkipLabel() {
+        return ctaSkipLabel;
     }
 
     public String getCtaEditMobileLabel() {
