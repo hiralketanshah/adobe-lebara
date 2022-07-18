@@ -132,7 +132,7 @@ const ExpandableSimPlanCard: React.FC<ExpandableSimPlanCardProps> = ({
     const description: string | undefined = additionalOffers?.match(/<li>.*?<\/li>/g)?.length ? additionalOffers.replaceAll('\n', '').replaceAll('&nbsp;', '').match(/<li>.*?<\/li>/g)?.map(list => list?.replaceAll(/<(.|\n)*?>/g, ''))?.join(' + ') : additionalOffers;
     setAttachSim(false);
     setIsButtonDisabled(true);
-    if (isAuthenticated && !isLoading && !msisdn && !isLogout) {
+    if (isAuthenticated && !isLoading && !msisdn && !isLogout && showModelOnAddtoCart) {
       setAttachSim(true);
       setIsButtonDisabled(false);
       return;
