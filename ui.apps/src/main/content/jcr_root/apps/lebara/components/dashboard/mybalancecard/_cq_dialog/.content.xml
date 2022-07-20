@@ -186,6 +186,12 @@
                                                 fieldLabel="Success Overlay Subtitle"
                                                 name="./successOverlaySubTitle"
                                                 fieldDescription="Auto topup has been done successfully"/>
+                                            <ctaCloseLabel
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="Close CTA Label"
+                                                name="./ctaCloseLabel"
+                                                fieldDescription="Close"/>
                                             <deactivateSuccessOverlaySubTitle
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
