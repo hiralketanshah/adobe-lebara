@@ -54,12 +54,6 @@
                                                 fieldLabel="Link Sim Label"
                                                 name="./linkSimLabel"
                                                 value="Please complete the below to link your SIM."/>
-                                            <noSimLabel
-                                                jcr:primaryType="nt:unstructured"
-                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                                fieldLabel="No Sim Label"
-                                                name="./noSimLabel"
-                                                value="I don't have a sim"/>
                                             <activeMonthPlanLabel
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
@@ -72,6 +66,18 @@
                                                 fieldLabel="No Label"
                                                 name="./noLabel"
                                                 value="No"/>
+                                            <mobileLabel
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="Mobile Label"
+                                                name="./mobileLabel"
+                                                fieldDescription="Enter Mobile Number"/>
+                                            <subMobileLabel
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="Sub Mobile Label"
+                                                name="./subMobileLabel"
+                                                value="Enter number to be added to the account"/>
                                             <mobilePlaceholderLabel
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
