@@ -692,6 +692,18 @@
                                                     value="Please select the checkbox"
                                                     fieldDescription="SEPA Mandatory Checkbox label"
                                                     name="./paymentMessages/mandatoryCheckBoxLabel"/>
+                                            <postpaidMsisdnToKeepFail
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                    fieldLabel="Postpaid MSISDN alredy exists in portin Label"
+                                                    fieldDescription="Postpaid MSISDN already exist in PortIn"
+                                                    name="./paymentMessages/postpaidMsisdnToKeepFail"/>
+                                            <prepaidMsisdnToKeepFail
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                    fieldLabel="Prepaid MSISDN already exist in PortIn Label"
+                                                    fieldDescription="Prepaid MSISDN already exist in PortIn"
+                                                    name="./paymentMessages/prepaidMsisdnToKeepFail"/>
                                         </items>
                                     </column>
                                 </items>
