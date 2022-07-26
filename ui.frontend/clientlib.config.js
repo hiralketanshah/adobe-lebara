@@ -63,3 +63,26 @@ module.exports = {
     }
   }
 };
+
+module.exports = {
+  context: BUILD_DIR,
+  clientLibRoot: CLIENTLIB_DIR,
+  libs: {
+    name: 'clientlib-chat',
+    allowProxy: true,
+    categories: ['lebara.chat'],
+    //serializationFormat: 'xml',
+    cssProcessor: ['default:none', 'min:none'],
+    jsProcessor: ['default:none', 'min:none'],
+    // assets: {
+    //   js: [
+    //     {src:"./packages/lebara-client/public/scripts/microsoftOmniChat.js",
+    //     dest: "microsoftOmniChat.js"}
+    //   ],
+    //   css: [
+    //    {src: "./packages/lebara-client/public/styles/chatWidget.css",
+    //     dest: "chatWidget.css"}
+    //   ]
+    // }
+  }
+};
