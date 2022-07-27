@@ -53,7 +53,7 @@
                                                                         fieldLabel="FAQ">
                                                                         <granite:data
                                                                             jcr:primaryType="nt:unstructured"
-                                                                            maxItems="{Long}10"/>
+                                                                            maxItems="{Long}50"/>
                                                                         <field
                                                                             jcr:primaryType="nt:unstructured"
                                                                             sling:resourceType="granite/ui/components/coral/foundation/container"
