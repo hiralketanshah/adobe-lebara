@@ -65,7 +65,6 @@ module.exports = {
 };
 
 module.exports = {
- // context: BUILD_DIR,
   clientLibRoot: CLIENTLIB_DIR,
   libs: {
     name: 'clientlib-chat',
