@@ -26,6 +26,7 @@ Include conf.d/variables/custom.vars
 	# Add header breadcrumbs for help in troubleshooting
 	<IfModule mod_headers.c>
 		Header add X-Vhost "lebara-publish"
+		Header set Surrogate-Control "max-age=0"
 		<LocationMatch "^/content/dam/.*\.(?i:jpe?g|gif|js|mov|mp4|png|svg|txt|zip|ico|webp|pdf)$">
 		   Header set Cache-Control "public, max-age=600, immutable"
 		   Header set Age 0
