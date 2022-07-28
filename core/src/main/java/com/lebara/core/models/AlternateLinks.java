@@ -24,31 +24,52 @@ public class AlternateLinks {
     private ResourceResolver resourceResolver;
     private String path;
     private String defaultLink;
-    private String DOMAIN_NAME = "https://www.lebara.de";
+    private String currentDomain = "";
+    private String DE_DOMAIN_NAME = "https://www.lebara.de";
+    private String FR_DOMAIN_NAME = "https://www.lebara.fr";
     List<SelectOption> altLangLinks = new ArrayList<>();
 
     @PostConstruct
     private void init() {
         Resource currentResource = request.getResource();
-        if (currentResource == null) {
-            return;
-        }
+
         resourceResolver = currentResource.getResourceResolver();
         path = currentResource.getPath().replace("/jcr:content", "");
-        Map<String, String> countryMap = new HashMap<>();
-        countryMap.put("/de/de", "de-de");
-        countryMap.put("/de/pl", "pl-de");
-        countryMap.put("/de/ro", "ro-de");
-        countryMap.put("/de/en", "en-de");
+        String country = AemUtils.getCountrySpecificCode(path);
+
+        String de_default = "/de/de";
+        Map<String, String> deCountryMap = new HashMap<>();
+        deCountryMap.put("/de/de", "de-de");
+        deCountryMap.put("/de/pl", "pl-de");
+        deCountryMap.put("/de/ro", "ro-de");
+        deCountryMap.put("/de/en", "en-de");
+
+        String fr_default = "/fr/fr";
+        Map<String, String> frCountryMap = new HashMap<>();
+        frCountryMap.put("/fr/fr", "fr-fr");
+        frCountryMap.put("/fr/en", "fr-en");
+
+        //String nl_default = "/nl/nl";
+        if (StringUtils.equalsIgnoreCase(country, "de")) {
+            currentDomain = DE_DOMAIN_NAME;
+            setAltLinks(de_default, DE_DOMAIN_NAME, deCountryMap);
+        }
+        if (StringUtils.equalsIgnoreCase(country, "fr")) {
+            currentDomain = FR_DOMAIN_NAME;
+            setAltLinks(fr_default, FR_DOMAIN_NAME, frCountryMap);
+        }
+    }
+
+    private void setAltLinks(String dafaultStr, String domainName, Map<String, String> countryMap) {
         //first for loop acts as a switch case as path in the if condition will have only either of the locales.
         for (Map.Entry<String, String> entry : countryMap.entrySet()) {
-            if (path.contains("/de/de")) {
-                defaultLink = DOMAIN_NAME + AemUtils.getLinkWithExtension(path, request);
+            if (path.contains(dafaultStr)) {
+                defaultLink = domainName + AemUtils.getLinkWithExtension(path, request);
             }
             if (path.contains(entry.getKey())) {
                 String currentLocale = entry.getKey();
                 SelectOption option = new SelectOption();
-                option.setValue(DOMAIN_NAME + AemUtils.getLinkWithExtension(path, request));
+                option.setValue(domainName + AemUtils.getLinkWithExtension(path, request));
                 option.setLabel(entry.getValue());
                 altLangLinks.add(option);
                 for (Map.Entry<String, String> nestedEntry : countryMap.entrySet()) {
@@ -59,11 +80,11 @@ public class AlternateLinks {
                     if (resourceResolver.getResource(otherLocalePath) == null) {
                         continue;
                     }
-                    if (otherLocalePath.contains("/de/de")) {
-                        defaultLink = DOMAIN_NAME + AemUtils.getLinkWithExtension(otherLocalePath, request);
+                    if (otherLocalePath.contains(dafaultStr)) {
+                        defaultLink = domainName + AemUtils.getLinkWithExtension(otherLocalePath, request);
                     }
                     option = new SelectOption();
-                    option.setValue(DOMAIN_NAME + AemUtils.getLinkWithExtension(otherLocalePath, request));
+                    option.setValue(domainName + AemUtils.getLinkWithExtension(otherLocalePath, request));
                     option.setLabel(nestedEntry.getValue());
                     altLangLinks.add(option);
                 }
@@ -73,7 +94,7 @@ public class AlternateLinks {
     }
 
     public String getCanonicalLink() {
-        return DOMAIN_NAME + AemUtils.getLinkWithExtension(path, request);
+        return currentDomain + AemUtils.getLinkWithExtension(path, request);
     }
 
     public String getDefaultLink() {
