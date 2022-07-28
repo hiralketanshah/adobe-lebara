@@ -27,6 +27,9 @@ public class AlternateLinks {
     private String currentDomain = "";
     private String DE_DOMAIN_NAME = "https://www.lebara.de";
     private String FR_DOMAIN_NAME = "https://www.lebara.fr";
+    private String NL_DOMAIN_NAME = "https://www.lebara.nl";
+    private String DK_DOMAIN_NAME = "https://www.lebara.dk";
+    private String UK_DOMAIN_NAME = "https://www.lebara.uk";
     List<SelectOption> altLangLinks = new ArrayList<>();
 
     @PostConstruct
@@ -49,7 +52,17 @@ public class AlternateLinks {
         frCountryMap.put("/fr/fr", "fr-fr");
         frCountryMap.put("/fr/en", "fr-en");
 
-        //String nl_default = "/nl/nl";
+        String nl_default = "/nl/nl";
+        Map<String, String> nlCountryMap = new HashMap<>();
+        frCountryMap.put("/nl/nl", "nl-nl");
+        frCountryMap.put("/nl/pl", "nl-pl");
+        frCountryMap.put("/nl/en", "nl-en");
+
+        String dk_default = "/dk/da";
+        Map<String, String> dkCountryMap = new HashMap<>();
+        frCountryMap.put("/dk/da", "dk-da");
+        frCountryMap.put("/dk/en", "dk-en");
+
         if (StringUtils.equalsIgnoreCase(country, "de")) {
             currentDomain = DE_DOMAIN_NAME;
             setAltLinks(de_default, DE_DOMAIN_NAME, deCountryMap);
@@ -57,6 +70,17 @@ public class AlternateLinks {
         if (StringUtils.equalsIgnoreCase(country, "fr")) {
             currentDomain = FR_DOMAIN_NAME;
             setAltLinks(fr_default, FR_DOMAIN_NAME, frCountryMap);
+        }
+        if (StringUtils.equalsIgnoreCase(country, "nl")) {
+            currentDomain = NL_DOMAIN_NAME;
+            setAltLinks(nl_default, NL_DOMAIN_NAME, nlCountryMap);
+        }
+        if (StringUtils.equalsIgnoreCase(country, "dk")) {
+            currentDomain = DK_DOMAIN_NAME;
+            setAltLinks(dk_default, DK_DOMAIN_NAME, dkCountryMap);
+        }
+        if (StringUtils.equalsIgnoreCase(country, "uk")) {
+            currentDomain = UK_DOMAIN_NAME;
         }
     }
 
