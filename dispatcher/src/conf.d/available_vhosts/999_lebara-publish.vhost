@@ -30,7 +30,11 @@ Include conf.d/variables/custom.vars
 		   Header set Cache-Control "public, max-age=600, immutable"
 		   Header set Age 0
 		</LocationMatch>
-		<LocationMatch "^/content/.*\.model\.json$">
+		<LocationMatch "^/content/lebara/.*\.model\.json$">
+		   Header set Cache-Control "public, max-age=600, immutable"
+		   Header set Age 0
+		</LocationMatch>
+		<LocationMatch "^/content/lebara/.*\.globalConfigs\.js$">
 		   Header set Cache-Control "public, max-age=600, immutable"
 		   Header set Age 0
 		</LocationMatch>
