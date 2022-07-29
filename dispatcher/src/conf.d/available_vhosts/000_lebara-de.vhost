@@ -33,15 +33,15 @@ Include conf.d/variables/custom.vars
 		Header always set X-XSS-Protection "1; mode=block"
 		Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
 		Header always set Content-Security-Policy "script-src 'self' 'unsafe-inline' 'unsafe-eval' *.trustpilot.com *.trustedshops.com *.baqend.com *.googletagmanager.com *.aklamio.com *.googleapis.com *.exactag.com *.cookielaw.org *.mxapis.com *.google-analytics.com *.bing.com *.googleadservices.com *.doubleclick.net *.facebook.net *.lebara.com *.lebara.de *.criteo.com *.criteo.net *.clarity.ms *.google.com *.decibelinsight.net *.gstatic.com *.paypal.com *.adyen.com *.sofort.com *.giropay.de *.azureedge.net *.spatialbuzz.net;  object-src 'self'"
-		<LocationMatch "^/content/dam/.*\.(?i:jpe?g|gif|js|mov|mp4|png|svg|txt|zip|ico|webp|pdf)$">
+		<LocationMatch "^/content/dam/.*\.(?i:jpe?g|gif|mov|mp4|png|svg|txt|zip|ico|webp|pdf)$">
 		   Header set Cache-Control "public, max-age=600, immutable"
 		   Header set Age 0
 		</LocationMatch>
-		<LocationMatch "^/content/lebara/de/.*\.model\.json$">
+		<LocationMatch "^/content/lebara/.*\.model\.json$">
 		   Header set Cache-Control "public, max-age=600, immutable"
 		   Header set Age 0
 		</LocationMatch>
-		<LocationMatch "^/content/lebara/de/.*\.globalConfigs\.js$">
+		<LocationMatch "^/content/lebara/.*\.globalConfigs\.js$">
 		   Header set Cache-Control "public, max-age=600, immutable"
 		   Header set Age 0
 		</LocationMatch>
