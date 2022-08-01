@@ -55,6 +55,12 @@ public class AemUtils {
     public static final String MAIL_TO = "mailto:";
     public static final String TEL = "tel:";
 
+    private static final String DE_ROOT_PATH = "/content/lebara/de";
+    private static final String FR_ROOT_PATH = "/content/lebara/fr";
+    private static final String NL_ROOT_PATH = "/content/lebara/nl";
+    private static final String DK_ROOT_PATH = "/content/lebara/dk";
+    private static final String UK_ROOT_PATH = "/content/lebara/uk";
+
     /**
      * Gets property.
      *
@@ -344,5 +350,24 @@ public class AemUtils {
             return StringUtils.EMPTY;
         }
         return tag.getTitle();
+    }
+
+    public static String getCountrySpecificCode(String pagePath) {
+        if (StringUtils.startsWith(pagePath, DE_ROOT_PATH)) {
+            return "de";
+        }
+        if (StringUtils.startsWith(pagePath, FR_ROOT_PATH)) {
+            return "fr";
+        }
+        if (StringUtils.startsWith(pagePath, NL_ROOT_PATH)) {
+            return "nl";
+        }
+        if (StringUtils.startsWith(pagePath, DK_ROOT_PATH)) {
+            return "dk";
+        }
+        if (StringUtils.startsWith(pagePath, UK_ROOT_PATH)) {
+            return "uk";
+        }
+        return "de";
     }
 }
