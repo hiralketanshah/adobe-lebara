@@ -556,6 +556,7 @@
 		<property name="emailLabel"/>
 		<property name="emailPlaceholder"/>
 		<property name="mobileLabel"/>
+		<property name="subMobileLabel"/>
 		<property name="mobilePlaceholder"/>
 		<property name="buttonCTALabel"/>
 		<property name="verifyCodeLabel"/>
