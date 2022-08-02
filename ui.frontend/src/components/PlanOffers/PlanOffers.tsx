@@ -42,8 +42,11 @@ const PlanOffers: React.FC<PlanOffersProps> = ({
     fontWeight: "bold",
   };
   const location = useLocation();
+  const filteredOffers = offers?.filter( offer => {
+    return offer?.channels?.length === 0 || offer?.channels?.includes("web");
+  });
   React.useEffect(() => {
-    const impressions = offers?.map((plan, index) => ({
+    const impressions = filteredOffers?.map((plan, index) => ({
       id: plan?.id,
       name: plan.planName,
       price: plan.cost,
@@ -53,11 +56,11 @@ const PlanOffers: React.FC<PlanOffersProps> = ({
       list: location.pathname,
       position: index + 1
     }));
-    googleAnalytics(offers?.every(t => t.offerType === "postpaid") ? "EElistPageA" : offers?.every(t => t.offerType === "prepaid") ? "EElistPageB" : "EElistPageC", {
+    googleAnalytics(filteredOffers?.every(t => t.offerType === "postpaid") ? "EElistPageA" : filteredOffers?.every(t => t.offerType === "prepaid") ? "EElistPageB" : "EElistPageC", {
       currencyCode: "EUR",
       impressions,
     });
-  }, [offers]);
+  }, [filteredOffers]);
   return (
     <Box
       backgroundColor={backgroundColor ? backgroundColor : `lightenPrimary.50`}
