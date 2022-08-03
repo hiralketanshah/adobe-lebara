@@ -81,7 +81,13 @@ public class SitemapFilter implements Filter {
             originalContent = originalContent.replaceAll(AemUtils.UK_ROOT_PATH, "");
         }
         if (StringUtils.isNotBlank(externalPath)) {
-            return originalContent.replaceAll("<loc>", "<loc>" + externalPath)
+            String content_without_countries = originalContent
+                    .replaceAll(AemUtils.DE_ROOT_PATH, "")
+                    .replaceAll(AemUtils.FR_ROOT_PATH, "")
+                    .replaceAll(AemUtils.NL_ROOT_PATH, "")
+                    .replaceAll(AemUtils.DK_ROOT_PATH, "")
+                    .replaceAll(AemUtils.UK_ROOT_PATH, "");
+            return content_without_countries.replaceAll("<loc>", "<loc>" + externalPath)
                     .replaceAll("href=\"/", "href=\"" + externalPath + "/");
         }
         return originalContent;
