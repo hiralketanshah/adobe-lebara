@@ -25,11 +25,7 @@ public class AlternateLinks {
     private String path;
     private String defaultLink;
     private String currentDomain = "";
-    private String DE_DOMAIN_NAME = "https://www.lebara.de";
-    private String FR_DOMAIN_NAME = "https://www.lebara.fr";
-    private String NL_DOMAIN_NAME = "https://www.lebara.nl";
-    private String DK_DOMAIN_NAME = "https://www.lebara.dk";
-    private String UK_DOMAIN_NAME = "https://www.lebara.uk";
+
     List<SelectOption> altLangLinks = new ArrayList<>();
 
     @PostConstruct
@@ -64,23 +60,23 @@ public class AlternateLinks {
         frCountryMap.put("/dk/en", "dk-en");
 
         if (StringUtils.equalsIgnoreCase(country, "de")) {
-            currentDomain = DE_DOMAIN_NAME;
-            setAltLinks(de_default, DE_DOMAIN_NAME, deCountryMap);
+            currentDomain = AemUtils.DE_DOMAIN_NAME;
+            setAltLinks(de_default, AemUtils.DE_DOMAIN_NAME, deCountryMap);
         }
         if (StringUtils.equalsIgnoreCase(country, "fr")) {
-            currentDomain = FR_DOMAIN_NAME;
-            setAltLinks(fr_default, FR_DOMAIN_NAME, frCountryMap);
+            currentDomain = AemUtils.FR_DOMAIN_NAME;
+            setAltLinks(fr_default, AemUtils.FR_DOMAIN_NAME, frCountryMap);
         }
         if (StringUtils.equalsIgnoreCase(country, "nl")) {
-            currentDomain = NL_DOMAIN_NAME;
-            setAltLinks(nl_default, NL_DOMAIN_NAME, nlCountryMap);
+            currentDomain = AemUtils.NL_DOMAIN_NAME;
+            setAltLinks(nl_default, AemUtils.NL_DOMAIN_NAME, nlCountryMap);
         }
         if (StringUtils.equalsIgnoreCase(country, "dk")) {
-            currentDomain = DK_DOMAIN_NAME;
-            setAltLinks(dk_default, DK_DOMAIN_NAME, dkCountryMap);
+            currentDomain = AemUtils.DK_DOMAIN_NAME;
+            setAltLinks(dk_default, AemUtils.DK_DOMAIN_NAME, dkCountryMap);
         }
         if (StringUtils.equalsIgnoreCase(country, "uk")) {
-            currentDomain = UK_DOMAIN_NAME;
+            currentDomain = AemUtils.UK_DOMAIN_NAME;
         }
     }
 

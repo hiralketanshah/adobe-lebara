@@ -55,11 +55,17 @@ public class AemUtils {
     public static final String MAIL_TO = "mailto:";
     public static final String TEL = "tel:";
 
-    private static final String DE_ROOT_PATH = "/content/lebara/de";
-    private static final String FR_ROOT_PATH = "/content/lebara/fr";
-    private static final String NL_ROOT_PATH = "/content/lebara/nl";
-    private static final String DK_ROOT_PATH = "/content/lebara/dk";
-    private static final String UK_ROOT_PATH = "/content/lebara/uk";
+    public static final String DE_ROOT_PATH = "/content/lebara/de";
+    public static final String FR_ROOT_PATH = "/content/lebara/fr";
+    public static final String NL_ROOT_PATH = "/content/lebara/nl";
+    public static final String DK_ROOT_PATH = "/content/lebara/dk";
+    public static final String UK_ROOT_PATH = "/content/lebara/uk";
+
+    public static String DE_DOMAIN_NAME = "https://www.lebara.de";
+    public static String FR_DOMAIN_NAME = "https://www.lebara.fr";
+    public static String NL_DOMAIN_NAME = "https://www.lebara.nl";
+    public static String DK_DOMAIN_NAME = "https://www.lebara.dk";
+    public static String UK_DOMAIN_NAME = "https://www.lebara.uk";
 
     /**
      * Gets property.
