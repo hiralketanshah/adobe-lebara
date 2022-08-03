@@ -794,6 +794,7 @@
 		<property name="sectionUsernameHeading"/>
 		<property name="sectionAddressHeading"/>
 		<property name="alternativeContactLabel"/>
+		<property name="settingsUpdatedLabel"/>
 		<property name="alternativeNumberPlaceholder"/>
 		<property name="sectionEmailPasswordHeading"/>
 		<property name="passwordLabel"/>

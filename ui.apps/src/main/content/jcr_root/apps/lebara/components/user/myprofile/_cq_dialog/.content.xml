@@ -669,6 +669,12 @@
                                     fieldLabel="Password Successfully Updated Success Message"
                                     name="./changePasswordSuccessMsg"
                                     value="Password Successfully Updated"/>
+                            <settingsUpdatedLabel
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                    fieldLabel="Settings Updated Success Message"
+                                    name="./settingsUpdatedLabel"
+                                    fieldDescription="Your settings have been updated"/>
                         </items>
                     </column5>
                     <column6
