@@ -64,23 +64,21 @@ public class SitemapFilter implements Filter {
     private String getModifiedContent(String originalContent, SlingHttpServletRequest slingRequest) {
         Resource currentResource = slingRequest.getResource();
         String externalPath = StringUtils.EMPTY;
-        /*ConfigurationBuilder configurationBuilder = currentResource.adaptTo(ConfigurationBuilder.class);
-        if (configurationBuilder != null) {
-            LebaraCaConfig caConfig = configurationBuilder.as(LebaraCaConfig.class);
-            if (caConfig != null) {
-                externalPath = caConfig.externalSitePath();
-            }
-        }*/
         if (currentResource.getPath().startsWith(AemUtils.DE_ROOT_PATH)) {
             externalPath = AemUtils.DE_DOMAIN_NAME;
+            originalContent = originalContent.replaceAll(AemUtils.DE_ROOT_PATH, "");
         } else if (currentResource.getPath().startsWith(AemUtils.FR_ROOT_PATH)) {
             externalPath = AemUtils.FR_DOMAIN_NAME;
+            originalContent = originalContent.replaceAll(AemUtils.FR_ROOT_PATH, "");
         } else if (currentResource.getPath().startsWith(AemUtils.NL_ROOT_PATH)) {
             externalPath = AemUtils.NL_DOMAIN_NAME;
+            originalContent = originalContent.replaceAll(AemUtils.NL_ROOT_PATH, "");
         } else if (currentResource.getPath().startsWith(AemUtils.DK_ROOT_PATH)) {
             externalPath = AemUtils.DK_DOMAIN_NAME;
+            originalContent = originalContent.replaceAll(AemUtils.DK_ROOT_PATH, "");
         } else if (currentResource.getPath().startsWith(AemUtils.UK_ROOT_PATH)) {
             externalPath = AemUtils.UK_DOMAIN_NAME;
+            originalContent = originalContent.replaceAll(AemUtils.UK_ROOT_PATH, "");
         }
         if (StringUtils.isNotBlank(externalPath)) {
             String content_without_countries = originalContent
