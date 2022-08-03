@@ -1,6 +1,7 @@
 package com.lebara.core.filters;
 
 import com.lebara.core.services.LebaraCaConfig;
+import com.lebara.core.utils.AemUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.SlingHttpServletResponse;
@@ -14,6 +15,7 @@ import javax.servlet.*;
 import java.io.CharArrayWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
+
 
 @Component(
         service = Filter.class,
@@ -62,16 +64,33 @@ public class SitemapFilter implements Filter {
     private String getModifiedContent(String originalContent, SlingHttpServletRequest slingRequest) {
         Resource currentResource = slingRequest.getResource();
         String externalPath = StringUtils.EMPTY;
-        ConfigurationBuilder configurationBuilder = currentResource.adaptTo(ConfigurationBuilder.class);
+        /*ConfigurationBuilder configurationBuilder = currentResource.adaptTo(ConfigurationBuilder.class);
         if (configurationBuilder != null) {
             LebaraCaConfig caConfig = configurationBuilder.as(LebaraCaConfig.class);
             if (caConfig != null) {
                 externalPath = caConfig.externalSitePath();
             }
+        }*/
+        if (currentResource.getPath().startsWith(AemUtils.DE_ROOT_PATH)) {
+            externalPath = AemUtils.DE_DOMAIN_NAME;
+        } else if (currentResource.getPath().startsWith(AemUtils.FR_ROOT_PATH)) {
+            externalPath = AemUtils.FR_DOMAIN_NAME;
+        } else if (currentResource.getPath().startsWith(AemUtils.NL_ROOT_PATH)) {
+            externalPath = AemUtils.NL_DOMAIN_NAME;
+        } else if (currentResource.getPath().startsWith(AemUtils.DK_ROOT_PATH)) {
+            externalPath = AemUtils.DK_DOMAIN_NAME;
+        } else if (currentResource.getPath().startsWith(AemUtils.UK_ROOT_PATH)) {
+            externalPath = AemUtils.UK_DOMAIN_NAME;
         }
         if (StringUtils.isNotBlank(externalPath)) {
-            return originalContent.replaceAll("<loc>", "<loc>" + externalPath).replaceAll("href=\"/","href=\"" +externalPath+
-                    "/");
+            String content_without_countries = originalContent
+                    .replaceAll(AemUtils.DE_ROOT_PATH, "")
+                    .replaceAll(AemUtils.FR_ROOT_PATH, "")
+                    .replaceAll(AemUtils.NL_ROOT_PATH, "")
+                    .replaceAll(AemUtils.DK_ROOT_PATH, "")
+                    .replaceAll(AemUtils.UK_ROOT_PATH, "");
+            return content_without_countries.replaceAll("<loc>", "<loc>" + externalPath)
+                    .replaceAll("href=\"/", "href=\"" + externalPath + "/");
         }
         return originalContent;
     }
