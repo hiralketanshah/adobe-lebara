@@ -9,6 +9,7 @@ import { useHistory, useLocation } from "@lebara/ui/src/hooks/useHistory";
 import TickInCircle from "../../icons/TickInCircle";
 import React from "react";
 import {googleAnalytics, getTypes} from "../../utils/gtm";
+import aemUtils from "../../utils/aem-utils";
 const PlanOffers: React.FC<PlanOffersProps> = ({
   offers,
   heading,
@@ -42,9 +43,7 @@ const PlanOffers: React.FC<PlanOffersProps> = ({
     fontWeight: "bold",
   };
   const location = useLocation();
-  const filteredOffers = offers?.filter( offer => {
-    return offer?.channels?.length === 0 || offer?.channels?.includes("web");
-  });
+  const filteredOffers = offers?.filter(aemUtils.filterByWebChannel);
   React.useEffect(() => {
     const impressions = filteredOffers?.map((plan, index) => ({
       id: plan?.id,
@@ -125,8 +124,8 @@ const PlanOffers: React.FC<PlanOffersProps> = ({
           gridGap={{ base: "10px", lg: "15px" }}
           mt={{ base: "15.31px", lg: "20px" }}
         >
-          {offers &&
-            offers?.map((plan: ExpandableSimPlanCardProps) => (
+          {filteredOffers &&
+            filteredOffers?.map((plan: ExpandableSimPlanCardProps) => (
               <Box
                 flex={1}
                 maxW={{ lg: `${100 / columnsView - 2}%` }}

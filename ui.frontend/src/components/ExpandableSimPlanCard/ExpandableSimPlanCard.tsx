@@ -33,7 +33,6 @@ import { selectIsLoading } from "@lebara/ui/src/redux/selectors/loadingSelectors
 const ExpandableSimPlanCard: React.FC<ExpandableSimPlanCardProps> = ({
   planName,
   previewIcon,
-  channels,
   showProductInformationButton,
   showAddToCart,
   productInformationFile,
@@ -220,9 +219,6 @@ const ExpandableSimPlanCard: React.FC<ExpandableSimPlanCardProps> = ({
     }
     setIsButtonDisabled(false);
   };
-  if(channels?.length === 1 && channels?.includes("app")){
-    return <></>;
-  }
   return (
     <>
     {isAttachSim && showModelOnAddtoCart && <AttachSimModels />}

@@ -7,6 +7,7 @@ import Button from "../Button/Button";
 import { useHistory } from "@lebara/ui/src/hooks/useHistory";
 import TickInCircle from "../../icons/TickInCircle";
 import {googleAnalytics, getTypes} from "../../utils/gtm";
+import aemUtils from "../../utils/aem-utils";
 
 const ViewPlans: React.FC<PlanCardProps> = ({
   title,
@@ -34,9 +35,9 @@ const ViewPlans: React.FC<PlanCardProps> = ({
     fontWeight: "bold",
     color: "var(--chakra-colors-pink-500);"
   };
-
+  const filteredOffers = offers?.filter(aemUtils.filterByWebChannel);
   React.useEffect(() => {
-    const impressions = offers.map((plan, index) => ({
+    const impressions = filteredOffers.map((plan, index) => ({
       id: plan?.id,
       name: plan.planName,
       price: plan.cost,
@@ -45,11 +46,11 @@ const ViewPlans: React.FC<PlanCardProps> = ({
       variant: getTypes(plan),
       position: index + 1,
     }));
-    googleAnalytics(offers?.every(t => t.offerType === "postpaid") ? "EElistPageA" : offers?.every(t => t.offerType === "prepaid") ? "EElistPageB" : "EElistPageC", {
+    googleAnalytics(filteredOffers?.every(t => t.offerType === "postpaid") ? "EElistPageA" : filteredOffers?.every(t => t.offerType === "prepaid") ? "EElistPageB" : "EElistPageC", {
       currencyCode: "EUR",
       impressions,
     });
-  }, [offers]);
+  }, [filteredOffers]);
 
 
   return (
@@ -95,8 +96,8 @@ const ViewPlans: React.FC<PlanCardProps> = ({
           gridGap={{ base: "10px", lg: "19px" }}
           mt={{ base: "15.31px", lg: "20px" }}
         >
-          {offers &&
-            offers?.map((plan: ExpandableSimPlanCardProps) => (
+          {filteredOffers &&
+            filteredOffers?.map((plan: ExpandableSimPlanCardProps) => (
               <Box
                 maxW={{ lg: "400px" }}
                 minW={{ base: "320px", lg: "400px" }}
