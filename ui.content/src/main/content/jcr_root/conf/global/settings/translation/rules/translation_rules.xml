@@ -361,6 +361,7 @@
 		<property name="guestResetLinkLabel" />
 		<property name="guestContinueLabel" />
 		<property name="guestTabLabel" />
+		<property name="captchaFieldErrorMessage" />
 
 		<!-- Reset Password -->
 		<property name="resetPwdTitle" />

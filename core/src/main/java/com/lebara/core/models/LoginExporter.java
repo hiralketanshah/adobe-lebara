@@ -174,6 +174,9 @@ public class LoginExporter implements ComponentExporter {
     private String  exitingUserErrorMsg;
 
     @ValueMapValue
+    private String  captchaFieldErrorMessage;
+
+    @ValueMapValue
     private String  postalCodeText;
 
     @ValueMapValue
@@ -357,6 +360,10 @@ public class LoginExporter implements ComponentExporter {
 
     public String getExitingUserErrorMsg() {
         return exitingUserErrorMsg;
+    }
+
+    public String getCaptchaFieldErrorMessage() {
+        return captchaFieldErrorMessage;
     }
 
     public String getPostalCodeText() {
