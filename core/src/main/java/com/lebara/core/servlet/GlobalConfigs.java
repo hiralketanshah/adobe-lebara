@@ -56,11 +56,6 @@ public class GlobalConfigs extends SlingSafeMethodsServlet {
     private static final String PLAN_NOT_ELIGIBLE_ERROR_MESSAGE = "planNotEligibleErrorMessage";
     private static final String PLAN_NOT_ELIGIBLE_ERROR_TITLE = "planNotEligibleErrorTitle";
     private static final String PLAN_NOT_ELIGIBLE_ERROR_BUTTON_TEXT = "planNotEligibleErrorButtonText";
-    private static final String DE_ROOT_PATH = "/content/lebara/de";
-    private static final String FR_ROOT_PATH = "/content/lebara/fr";
-    private static final String NL_ROOT_PATH = "/content/lebara/nl";
-    private static final String DK_ROOT_PATH = "/content/lebara/dk";
-    private static final String UK_ROOT_PATH = "/content/lebara/uk";
 
     @Reference
     private transient GlobalOsgiService globalOsgiService;
@@ -80,7 +75,7 @@ public class GlobalConfigs extends SlingSafeMethodsServlet {
         if (pageManager != null) {
             page = pageManager.getContainingPage(request.getResource());
         }
-        String apiHostUri = globalOsgiService.getApiHostUri() + getCountrySpecificUri(request.getResource().getPath());
+        String apiHostUri = globalOsgiService.getApiHostUri() + AemUtils.getCountrySpecificCode(request.getResource().getPath());
 
         return (new ImmutableMap.Builder())
                 .put("locale", Optional.ofNullable(inheritedProp.getInherited(LOCALE, String.class)).orElse("en-US"))
@@ -101,25 +96,6 @@ public class GlobalConfigs extends SlingSafeMethodsServlet {
                 .put("verifyMobileNumberModal", getVerifySimModelData(request, page))
                 .put("activateSimModal", getActivateSimModelData(request, page))
                 .put("activateYourSimModal", getActivateYourSimModelData(request, page)).build();
-    }
-
-    private String getCountrySpecificUri(String pagePath) {
-        if (StringUtils.startsWith(pagePath, DE_ROOT_PATH)) {
-            return "de";
-        }
-        if (StringUtils.startsWith(pagePath, FR_ROOT_PATH)) {
-            return "fr";
-        }
-        if (StringUtils.startsWith(pagePath, NL_ROOT_PATH)) {
-            return "nl";
-        }
-        if (StringUtils.startsWith(pagePath, DK_ROOT_PATH)) {
-            return "dk";
-        }
-        if (StringUtils.startsWith(pagePath, UK_ROOT_PATH)) {
-            return "uk";
-        }
-        return "de";
     }
 
     private PaymentMethods getPaymentMethods(Page page) {
