@@ -361,6 +361,7 @@
 		<property name="guestResetLinkLabel" />
 		<property name="guestContinueLabel" />
 		<property name="guestTabLabel" />
+		<property name="captchaFieldErrorMessage" />
 
 		<!-- Reset Password -->
 		<property name="resetPwdTitle" />
@@ -794,6 +795,7 @@
 		<property name="sectionUsernameHeading"/>
 		<property name="sectionAddressHeading"/>
 		<property name="alternativeContactLabel"/>
+		<property name="settingsUpdatedLabel"/>
 		<property name="alternativeNumberPlaceholder"/>
 		<property name="sectionEmailPasswordHeading"/>
 		<property name="passwordLabel"/>

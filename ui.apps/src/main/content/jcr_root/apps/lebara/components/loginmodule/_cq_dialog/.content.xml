@@ -397,6 +397,12 @@
                                                 fieldLabel="Error Message For Existing User"
                                                 value="This email address is already registered with us."
                                                 name="./exitingUserErrorMsg"/>
+                                            <captchaFieldErrorMessage
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="Error Message For Invalid Captcha"
+                                                fieldDescription="Invalid Captcha"
+                                                name="./captchaFieldErrorMessage"/>
                                             <postalcodetext
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
