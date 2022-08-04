@@ -64,33 +64,4 @@ module.exports = {
   }
 };
 
-module.exports = {
-  clientLibRoot: CLIENTLIB_DIR,
-  libs: {
-    name: 'clientlib-chat',
-    allowProxy: true,
-    categories: ['lebara.chat'],
-    serializationFormat: 'xml',
-    jsProcessor: ["default:none", "min:gcc;compilationLevel=whitespace"],
-    assets: {
-      js: {
-        base: "js",
-        files: [
-          {
-            src: "packages/lebara-client/public/scripts/microsoftOmniChat.js",
-            dest: "microsoftOmniChat.js",
-          },
-        ],
-      },
-      css: {
-        base: "css",
-        files: [
-          {
-            src: "packages/lebara-client/public/styles/chatWidget.css",
-            dest: "chatWidget.css",
-          },
-        ],
-      },
-  }
-}
-};
+
