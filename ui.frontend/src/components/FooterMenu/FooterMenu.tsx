@@ -13,7 +13,12 @@ import { FooterMenuProps, MenuProps, SubMenuProps } from "./types";
 import SocialMediaButtons from "../SocialMediaButtons/SocialMediaButtons";
 import IconButton from "../IconButton/IconButton";
 import Footer from "../Footer/Footer";
+import aemUtils from "../../utils/aem-utils";
 
+const isCheckExternalLink = (url: any) => {
+  if(!url) return false;
+  return aemUtils.isCheckExternalLink(url);
+}
 const FooterMenu: React.FC<FooterMenuProps> = ({
   footerUpperLinks,
   copyrightText,
@@ -136,10 +141,9 @@ const FooterMenu: React.FC<FooterMenuProps> = ({
       <Divider ml="-80px" w="calc(100% + 160px)" opacity={0.38} borderColor="grey.50"/>
       <Box color={theme?.color === "white" ? undefined : "grey.300"}>
         <Flex py="25px">
-          {copyrightLinks?.map((linkItem, idx) => (<Link
+          {copyrightLinks?.map((linkItem, idx) => (<Link isExternal = {isCheckExternalLink(linkItem?.link)}
             key={`copyright-link-${idx}`}
-            as={RouterLink}
-            to={linkItem?.link}
+            {... isCheckExternalLink(linkItem?.link) ? {href:linkItem?.link} : {as:RouterLink,to: linkItem?.link}}
             py="10px"
             display="block"
             fontSize={14}
