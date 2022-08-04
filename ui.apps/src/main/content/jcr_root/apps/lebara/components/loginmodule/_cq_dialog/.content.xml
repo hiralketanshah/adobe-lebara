@@ -298,8 +298,8 @@
                                             <loginemailfielderrormessage
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                                fieldLabel="Login Error for Email Field"
-                                                value="Login Error for Email"
+                                                fieldLabel="Login Error for Email and Password Field"
+                                                value="Login Error for Email and Password"
                                                 name="./loginEmailFieldErrorMessage"/>
                                             <validemailfielderrormessage
                                                 jcr:primaryType="nt:unstructured"
