@@ -23,18 +23,30 @@
   data-sly-test="${wcmmode.edit || wcmmode.preview}"
   data-sly-call="${clientLib.js @ categories='cq.authoring.pagemodel.messaging'}"
 ></sly>
-
+<sly data-sly-test="${inheritedPageProperties.enableChat}">
+<sly data-sly-call="${clientLib.all @ categories='lebara.chat'}"></sly>
 <!-- consented paragraph HiddenOmniChannelScriptComponentDE -->
 <script type="text/javascript">
-  var locale = window.lebaraGlobalConfigs ? window.lebaraGlobalConfigs.locale : "en";
-  var appId = "a55aebb8-b933-4884-ade6-f9f3ea397430";
-  if (locale === "de") {
-    appId = "d9206fa1-b9c9-4a5c-8968-fa81e8e81ed4";
-  } else if (locale === "pl") {
-    appId = "38e87b64-9fb1-47c5-820e-c10a52ddbb19";
-  } else if (locale === "ro") {
-    appId = "43ef4de2-95fe-47ea-a602-b901fc99a69e";
-  }
+    var locale = window.lebaraGlobalConfigs ? window.lebaraGlobalConfigs.locale : "en";
+    var country = window.lebaraGlobalConfigs ? window.lebaraGlobalConfigs.country : "DE";
+    var appId;
+    if (country === "DE") {
+      if (locale === "de-DE") {
+        appId = "d9206fa1-b9c9-4a5c-8968-fa81e8e81ed4";
+      } else if (locale === "pl-PL") {
+        appId = "38e87b64-9fb1-47c5-820e-c10a52ddbb19";
+      } else if (locale === "ro-RO") {
+        appId = "43ef4de2-95fe-47ea-a602-b901fc99a69e";
+      } else {
+        appId = "a55aebb8-b933-4884-ade6-f9f3ea397430";
+      }
+    } else if (country === "FR") {
+      if (locale === "fr-FR") {
+        appId = "e706e092-dc7e-4e74-9d79-8c1f0a90d26c";
+      } else {
+        appId = "21da2ba5-ae8e-4d02-ac3f-53ad13e6b5c2";
+      }
+    }
 
   var script = document.createElement('script');
   script.setAttribute('id', 'Microsoft_Omnichannel_LCWidget');
@@ -61,3 +73,20 @@
   new Microsoft.Omnichannel.LiveChatWidget.LiveChatBootstrapperWebChat().initializeLiveChat();
 
 </script>
+<div
+id="bubble-chat-btn"
+class="lebara-live-chat-btn open-omni-chat-btn hidden">
+<div class="lebara-live-chat-btn-content icon-bubble-chat-3">
+  <svg viewBox="0 0 80 77" fill="white" width="25" height="25">
+    <path
+      d="M70.6413 0H9.35868C4.19834 0 0 4.22834 0 9.42604V48.2385C0 53.436 4.19813 57.6645 9.35868 57.6645H52.312C52.7714 57.6645 53.1981 57.8726 53.483 58.2359L67.3541 75.923C67.9008 76.6201 68.6984 77 69.5336 77C69.8441 77 70.1599 76.9475 70.4697 76.839C71.6125 76.4393 72.351 75.3936 72.351 74.1751V57.5036C76.6901 56.6872 80 52.8234 80 48.2385V9.42582C80 4.22834 75.8019 0 70.6413 0ZM76.7819 48.2385C76.7819 51.6044 74.063 54.3779 70.7211 54.4207C69.8407 54.4321 69.1327 55.1543 69.1327 56.0413V72.9618L56.0084 56.2267C55.1097 55.0804 53.7623 54.4231 52.312 54.4231H9.35868C5.97281 54.4231 3.21811 51.6485 3.21811 48.2383V9.42582C3.21811 6.01558 5.97259 3.24105 9.35868 3.24105H70.6413C74.0272 3.24105 76.7819 6.01558 76.7819 9.42582V48.2385Z"
+    />
+  </svg>
+  <span class="lebara-live-chat-received"></span>
+  <div class="lebara-live-chat-btn-points-wrap">
+    <div class="lebara-live-chat-btn-points"></div>
+  </div>
+  <div class="lebara-live-chat-btn-action"></div>
+</div>
+</div>
+</sly>
