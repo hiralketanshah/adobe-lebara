@@ -34,6 +34,9 @@ public class AttachSimBean {
 
     @ChildResource
     private AttachSimPopupFormFields frmFields;
+    
+    @ValueMapValue
+    private String msisdnPatternErrorMessage;
 
     @ChildResource
     private List<ErrorMessageFields> sendSMSOtpErrorMessages;
@@ -57,6 +60,10 @@ public class AttachSimBean {
 
     public String getKeyMobileSim() {
         return keyMobileSim;
+    }
+    
+    public String getMsisdnPatternErrorMessage() {
+        return msisdnPatternErrorMessage;
     }
 
     public Map<String,String> getSendSMSOtpErrorMessages() {
