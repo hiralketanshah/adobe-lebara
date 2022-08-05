@@ -2,6 +2,11 @@ package com.lebara.core.models.beans;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.models.annotations.DefaultInjectionStrategy;
 import org.apache.sling.models.annotations.Model;
@@ -30,6 +35,9 @@ public class AttachSimBean {
     @ChildResource
     private AttachSimPopupFormFields frmFields;
 
+    @ChildResource
+    private List<ErrorMessageFields> sendSMSOtpErrorMessages;
+
     @JsonProperty("frmFields")
     public AttachSimPopupFormFields getFrmFields() {
         return frmFields;
@@ -49,6 +57,14 @@ public class AttachSimBean {
 
     public String getKeyMobileSim() {
         return keyMobileSim;
+    }
+
+    public Map<String,String> getSendSMSOtpErrorMessages() {
+        Map<String,String> map = new HashMap<String,String>();
+        if(sendSMSOtpErrorMessages != null && !sendSMSOtpErrorMessages.isEmpty()){
+            sendSMSOtpErrorMessages.forEach(item -> map.put(item.getErrorCode(), item.getErrorMessage()));
+        }
+        return map;
     }
 
     public String getSimAttachInfo() {
