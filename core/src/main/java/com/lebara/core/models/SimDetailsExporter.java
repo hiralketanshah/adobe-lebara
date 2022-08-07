@@ -29,6 +29,8 @@ public class SimDetailsExporter implements ComponentExporter {
     @ValueMapValue
     private String legalRegFailedLink;
     @ValueMapValue
+    private String legalRegSuccessLink;
+    @ValueMapValue
     private String mobileNumberLabel;
     @ValueMapValue
     private String mobileNumberDescription;
@@ -67,6 +69,10 @@ public class SimDetailsExporter implements ComponentExporter {
 
     public String getLegalRegFailedLink() {
         return AemUtils.getLinkWithExtension(legalRegFailedLink, slingRequest);
+    }
+
+    public String getLegalRegSuccessLink() {
+        return AemUtils.getLinkWithExtension(legalRegSuccessLink, slingRequest);
     }
 
     public String getMobileNumberLabel() {
