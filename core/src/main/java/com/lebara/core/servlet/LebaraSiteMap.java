@@ -76,9 +76,9 @@ public class LebaraSiteMap extends SlingSafeMethodsServlet {
 
         }
 
-        String innerContent = "";
+        StringBuilder innerContent = new StringBuilder("");
         for (String pagePath : pageList) {
-            innerContent += "<url><loc>" + currentDomain + pagePath + ".html" + "</loc>" + getAlt(pagePath) + "</url>";
+            innerContent.append("<url><loc>" + currentDomain + pagePath + ".html" + "</loc>" + getAlt(pagePath) + "</url>");
         }
         resp.setContentType(MediaType.XML_UTF_8.toString());
         resp.getWriter().println("<?xml version=\"1.0\" encoding=\"UTF-8\"?><urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\" xmlns:xhtml=\"http://www.w3.org/1999/xhtml\" xmlns:video=\"http://www.google.com/schemas/sitemap-video/1.1\" xmlns:image=\"http://www.google.com/schemas/sitemap-image/1.1\" xmlns:news=\"http://www.google.com/schemas/sitemap-news/0.9\">" + innerContent + "</urlset>");
@@ -86,15 +86,15 @@ public class LebaraSiteMap extends SlingSafeMethodsServlet {
 
     private String getAlt(String pagePath) {
         List<SelectOption> altLangLinks = AltLinkUtils.populateAlternateLinks(pagePath, resourceResolver);
-        String altLinks = "";
+        StringBuilder altLinks = new StringBuilder("");
         for (SelectOption option : altLangLinks) {
-            altLinks += "<xhtml:link rel=\"alternate\" hreflang=\"" +
+            altLinks.append("<xhtml:link rel=\"alternate\" hreflang=\"" +
                     option.getLabel() +
                     "\" href=\"" +
                     option.getValue() +
-                    "\" />";
+                    "\" />");
         }
-        return altLinks;
+        return altLinks.toString();
     }
 
 

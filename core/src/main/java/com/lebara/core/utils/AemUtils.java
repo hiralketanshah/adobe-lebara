@@ -223,8 +223,11 @@ public class AemUtils {
 
     private static String trimmedPath(String payloadPath) {
         if(StringUtils.isNotBlank(payloadPath)){
-            payloadPath = StringUtils.replace(payloadPath,"/content/lebara/de","");
-            payloadPath = StringUtils.replace(payloadPath,"/content/lebara/fr","");
+            payloadPath = StringUtils.replace(payloadPath,DE_ROOT_PATH,"");
+            payloadPath = StringUtils.replace(payloadPath,FR_ROOT_PATH,"");
+            payloadPath = StringUtils.replace(payloadPath,NL_ROOT_PATH,"");
+            payloadPath = StringUtils.replace(payloadPath,DK_ROOT_PATH,"");
+            payloadPath = StringUtils.replace(payloadPath,UK_ROOT_PATH,"");
         }
         return payloadPath;
     }
