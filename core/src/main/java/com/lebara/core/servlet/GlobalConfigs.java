@@ -6,6 +6,7 @@ import com.day.cq.wcm.api.Page;
 import com.day.cq.wcm.api.NameConstants;
 import com.day.cq.commons.jcr.JcrConstants;
 import com.day.cq.wcm.api.PageManager;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.net.MediaType;
 import com.lebara.core.models.beans.ActivateSimBean;
@@ -64,7 +65,7 @@ public class GlobalConfigs extends SlingSafeMethodsServlet {
     protected void doGet(final SlingHttpServletRequest req,
                          final SlingHttpServletResponse resp) throws ServletException, IOException {
         resp.setContentType(MediaType.JAVASCRIPT_UTF_8.toString());
-        resp.getWriter().println("var lebaraGlobalConfigs =" + new com.google.gson.Gson().toJson(getGlobalData(req)) + ";");
+        resp.getWriter().println("var lebaraGlobalConfigs =" + new ObjectMapper().writeValueAsString(getGlobalData(req)) + ";");
     }
 
     protected Object getGlobalData(SlingHttpServletRequest request) {

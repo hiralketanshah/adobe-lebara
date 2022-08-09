@@ -926,6 +926,44 @@
                                                                 fieldLabel="CTA Link URL"
                                                                 name="./attachSimModal/frmFields/ctaLink"
                                                                 rootPath="/content/lebara"/>
+                                                            <msisdnPatternErrorLabel
+                                                                jcr:primaryType="nt:unstructured"
+                                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                                fieldDescription="MSIDDN Pattern Error Message"
+                                                                fieldLabel="MSIDDN Pattern Error Message"
+                                                                name="./attachSimModal/msisdnPatternErrorMessage"
+                                                                value="Sim number is not valid."/>
+		                                                    <errorcodes
+		                                                        granite:class="lebara-multifield__editor"
+		                                                        jcr:primaryType="nt:unstructured"
+		                                                        jcr:title="Error Type &amp; Text"
+		                                                        sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
+		                                                        composite="{Boolean}true"
+		                                                        fieldLabel="Error Type &amp; Text">
+		                                                        <field
+		                                                            jcr:primaryType="nt:unstructured"
+		                                                            sling:resourceType="granite/ui/components/coral/foundation/container"
+		                                                            name="./attachSimModal/sendSMSOtpErrorMessages">
+		                                                            <items jcr:primaryType="nt:unstructured">
+		                                                                <column
+		                                                                    jcr:primaryType="nt:unstructured"
+		                                                                    sling:resourceType="granite/ui/components/coral/foundation/container">
+		                                                                    <items jcr:primaryType="nt:unstructured">
+		                                                                        <errorcode
+		                                                                            jcr:primaryType="nt:unstructured"
+		                                                                            sling:resourceType="granite/ui/components/coral/foundation/include"
+		                                                                            path="/apps/lebara/components/dialogutils/errorcode"/>
+		                                                                        <message
+		                                                                            jcr:primaryType="nt:unstructured"
+		                                                                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+		                                                                            fieldLabel="Error Message"
+		                                                                            name="./errorMessage"
+		                                                                            required="true"/>
+		                                                                    </items>
+		                                                                </column>
+		                                                            </items>
+		                                                        </field>
+		                                                    </errorcodes>
                                                         </items>
                                                         <parentConfig
                                                             jcr:primaryType="nt:unstructured"
@@ -1163,6 +1201,44 @@
                                                                     </cui>
                                                                 </uiSettings>
                                                             </termsconditions>
+                                                            <enterValidOtpErrorMessage
+                                                                jcr:primaryType="nt:unstructured"
+                                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                                fieldDescription="Error Message for Invalid OTP"
+                                                                fieldLabel="Enter Valid OTP Error Message"
+                                                                name="./verifySimModal/enterValidOtpErrorMessage"
+                                                                value="Error: Invalid OTP:"/>
+                                                            <errorcodes
+		                                                        granite:class="lebara-multifield__editor"
+		                                                        jcr:primaryType="nt:unstructured"
+		                                                        jcr:title="Error Type &amp; Text"
+		                                                        sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
+		                                                        composite="{Boolean}true"
+		                                                        fieldLabel="Error Type &amp; Text">
+		                                                        <field
+		                                                            jcr:primaryType="nt:unstructured"
+		                                                            sling:resourceType="granite/ui/components/coral/foundation/container"
+		                                                            name="./verifySimModal/sendSMSOtpErrorMessages">
+		                                                            <items jcr:primaryType="nt:unstructured">
+		                                                                <column
+		                                                                    jcr:primaryType="nt:unstructured"
+		                                                                    sling:resourceType="granite/ui/components/coral/foundation/container">
+		                                                                    <items jcr:primaryType="nt:unstructured">
+		                                                                        <errorcode
+		                                                                            jcr:primaryType="nt:unstructured"
+		                                                                            sling:resourceType="granite/ui/components/coral/foundation/include"
+		                                                                            path="/apps/lebara/components/dialogutils/errorcode"/>
+		                                                                        <message
+		                                                                            jcr:primaryType="nt:unstructured"
+		                                                                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+		                                                                            fieldLabel="Error Message"
+		                                                                            name="./errorMessage"
+		                                                                            required="true"/>
+		                                                                    </items>
+		                                                                </column>
+		                                                            </items>
+		                                                        </field>
+		                                                    </errorcodes>
                                                         </items>
                                                     </verifymobilemodel>
                                                     <activatesimmodel

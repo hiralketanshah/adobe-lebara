@@ -29,6 +29,8 @@ class VerifyRegisterMobileExporterTest {
         verifyRegisterMobileExporter.getVerifyMobileNumberModal().getTimeCounter();
         verifyRegisterMobileExporter.getVerifyMobileNumberModal().getSuccessMessages();
         verifyRegisterMobileExporter.getVerifyMobileNumberModal().getInitalCountdownValue();
+        verifyRegisterMobileExporter.getVerifyMobileNumberModal().getEnterValidOtpErrorMessage();
+        verifyRegisterMobileExporter.getVerifyMobileNumberModal().getSendSMSOtpErrorMessages();
         verifyRegisterMobileExporter.getExportedType();
 
     }
