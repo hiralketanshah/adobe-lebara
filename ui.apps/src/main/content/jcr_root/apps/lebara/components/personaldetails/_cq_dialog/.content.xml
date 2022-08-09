@@ -909,7 +909,7 @@
                                     value="Please enter a valid email address. For example username@domain.com"
                                     fieldDescription="Please enter a valid email address. For example username@domain.com"
                                     name="./emailErrorPattern"/>
-                                    <existingUserErrorMsg
+                            <existingUserErrorMsg
                                     jcr:primaryType="nt:unstructured"
                                     sling:resourceType="cq/gui/components/authoring/dialog/richtext"
                                     fieldLabel="Existing user error message"
