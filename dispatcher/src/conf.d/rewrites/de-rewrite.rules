@@ -611,7 +611,7 @@ RewriteRule ^/([a-z]+)/call-zimbabwe$	/$1/minutenpreis-auslandsanrufe/simbabwe-a
 RewriteRule ^/robots.txt$ /content/dam/${CONTENT_FOLDER_NAME}/markets/de/robots.txt [NC,PT]
 
 # Sitemap rewrite
-RewriteRule ^/sitemap.xml$ /content/${CONTENT_FOLDER_NAME}/de.sitemap.xml [NC,PT]
+RewriteRule ^/sitemap.xml$ /content/${CONTENT_FOLDER_NAME}/de.lebarasitemap.xml [NC,PT]
 
 # SpeedKit rewrite
 RewriteRule ^/wrapper-sw.js$ /etc.clientlibs/lebara/clientlibs/clientlib-speedkit-de.js [NC,PT]
