@@ -20,6 +20,7 @@ export interface EmptyCartShopCardProps {
   fullWidth?: boolean;
   viewCartLabel?: string;
   addedtoCartLabel?: string;
+  showModelOnAddtoCart?: boolean;
 }
 
 export interface CountriesList extends CountriesListOption {}
