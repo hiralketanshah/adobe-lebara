@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import javax.inject.Inject;
+
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.lebara.core.models.beans.ListItem;
 import com.lebara.core.utils.AemUtils;
@@ -12,6 +14,7 @@ import org.apache.sling.api.resource.Resource;
 import org.apache.sling.models.annotations.DefaultInjectionStrategy;
 import org.apache.sling.models.annotations.Exporter;
 import org.apache.sling.models.annotations.Model;
+import org.apache.sling.models.annotations.Source;
 import org.apache.sling.models.annotations.Via;
 import org.apache.sling.models.annotations.injectorspecific.*;
 import org.apache.sling.models.annotations.via.ResourceSuperType;
@@ -19,6 +22,7 @@ import org.apache.sling.models.annotations.via.ResourceSuperType;
 import com.adobe.cq.export.json.ComponentExporter;
 import com.adobe.cq.export.json.ExporterConstants;
 import com.adobe.cq.wcm.core.components.models.Teaser;
+import com.day.cq.wcm.api.designer.Style;
 import com.lebara.core.models.AboutLebara;
 
 @Model(adaptables = SlingHttpServletRequest.class, adapters = { AboutLebara.class,
@@ -28,6 +32,9 @@ public class AboutLebaraImpl implements AboutLebara {
 
 	@SlingObject
 	private SlingHttpServletRequest request;
+	
+	@Inject @Source("script-bindings")
+	private Style currentStyle;
 
 	@ValueMapValue
 	private String backgroundColor;
@@ -148,7 +155,7 @@ public class AboutLebaraImpl implements AboutLebara {
 
 	@Override
 	public String getImagePath() {
-		return fileReference;
+		return AemUtils.getImageRendition(fileReference, currentStyle.get("rendition",String.class), request.getResourceResolver());
 	}
 
 	public String getHeadingType() {

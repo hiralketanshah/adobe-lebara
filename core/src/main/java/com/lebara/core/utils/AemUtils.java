@@ -386,4 +386,33 @@ public class AemUtils {
         }
         return "de";
     }
+    
+    public static String getImageRendition(String fileReference, String rendition, ResourceResolver resourceResolver) {
+        if(null != resourceResolver && StringUtils.isNotBlank(fileReference) && null != resourceResolver.getResource(fileReference) && StringUtils.isNotBlank(rendition)) {
+            Resource imageRes = resourceResolver.getResource(fileReference);
+            Resource metadata = imageRes.getChild("jcr:content/metadata");
+            if(null != metadata) {
+                ValueMap metadataProps = metadata.adaptTo(ValueMap.class);
+                String format = StringUtils.EMPTY;
+                if(metadataProps.containsKey("dc:format")) {
+                    String[] whitelistedFormats = {"image/png", "image/jpeg"};
+                    format = metadataProps.get("dc:format", String.class);
+                    if(!Arrays.asList(whitelistedFormats).contains(format)) {
+                        return fileReference;
+                    }
+                }
+                Resource renditionRes = imageRes.getChild("jcr:content/renditions/"+getRendition(rendition, format));
+                if(null != renditionRes) {
+                    return renditionRes.getPath();
+                }
+            }
+        }
+        return fileReference;
+    }
+    private static String getRendition(String rendition, String format) {
+        if(format.equalsIgnoreCase("image/png")) {
+            return rendition.concat("-png");
+        }
+            return rendition.concat(".jpeg");
+    }
 }
