@@ -54,6 +54,9 @@ public class MyProfileExporter implements ComponentExporter{
     @ValueMapValue
     private String exceededLimitDesc;
 
+    @ValueMapValue
+    private String settingsUpdatedLabel;
+
     @ChildResource
     private MyProfileFormFields frmFields;
 
@@ -124,6 +127,10 @@ public class MyProfileExporter implements ComponentExporter{
 
     public String getExceededLimitDesc() {
         return exceededLimitDesc;
+    }
+
+    public String getSettingsUpdatedLabel() {
+        return settingsUpdatedLabel;
     }
 
     public String getChangePasswordSuccessMsg() { return changePasswordSuccessMsg;}
