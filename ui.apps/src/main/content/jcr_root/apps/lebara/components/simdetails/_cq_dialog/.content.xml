@@ -34,6 +34,12 @@
                                                 value="SIM Card"
                                                 fieldDescription="SIM Card"
                                                 name="./simLabel"/>
+                                            <legalRegPersonalDetailsLink
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/pathbrowser"
+                                                fieldLabel="Legal Reg Personal Details Link"
+                                                name="./legalRegPersonalDetailsLink"
+                                                rootPath="/content/lebara"/>
                                             <legalRegFailedLink
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/pathbrowser"
