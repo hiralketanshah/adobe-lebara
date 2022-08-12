@@ -13,10 +13,10 @@ import org.apache.sling.models.annotations.injectorspecific.ScriptVariable;
 import org.apache.sling.models.annotations.injectorspecific.SlingObject;
 import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
 
-@Model(adaptables = SlingHttpServletRequest.class, adapters = {DashboardPlansExporter.class, ComponentExporter.class},
-        resourceType = DashboardPlansExporter.RESOURCE_TYPE, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
+@Model(adaptables = SlingHttpServletRequest.class, adapters = {ManagePostpaidPlansExporter.class, ComponentExporter.class},
+        resourceType = ManagePostpaidPlansExporter.RESOURCE_TYPE, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
 @Exporter(name = ExporterConstants.SLING_MODEL_EXPORTER_NAME, extensions = ExporterConstants.SLING_MODEL_EXTENSION)
-public class DashboardPlansExporter implements ComponentExporter {
+public class ManagePostpaidPlansExporter implements ComponentExporter {
 
     /**
      * The resource type.
