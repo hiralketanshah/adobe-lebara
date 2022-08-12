@@ -346,7 +346,6 @@
                                         sling:resourceType="granite/ui/components/coral/foundation/container">
                                         <items jcr:primaryType="nt:unstructured">
                                             <errorcodes
-                                                granite:class="lebara-multifield__editor"
                                                 jcr:primaryType="nt:unstructured"
                                                 jcr:title="Error Type &amp; Text"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
