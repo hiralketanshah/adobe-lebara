@@ -75,6 +75,14 @@ public class DashboardPlansExporter extends HeadingExporter {
     private String leftOfLabel;
     @ValueMapValue
     private String validLabel;
+    @ValueMapValue
+    private String dataTabName;
+    @ValueMapValue
+    private String minTabName;
+    @ValueMapValue
+    private String smsTabName;
+    @ValueMapValue
+    private String internationalMinTabName;
 
     public String getButtonLabel() {
         return buttonLabel;
@@ -158,6 +166,22 @@ public class DashboardPlansExporter extends HeadingExporter {
 
     public String getValidLabel() {
         return validLabel;
+    }
+
+    public String getDataTabName() {
+        return dataTabName;
+    }
+
+    public String getMinTabName() {
+        return minTabName;
+    }
+
+    public String getSmsTabName() {
+        return smsTabName;
+    }
+
+    public String getInternationalMinTabName() {
+        return internationalMinTabName;
     }
 
     @Override

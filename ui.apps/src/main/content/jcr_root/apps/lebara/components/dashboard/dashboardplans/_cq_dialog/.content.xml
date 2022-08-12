@@ -14,7 +14,7 @@
                 <items jcr:primaryType="nt:unstructured">
                     <messages
                         jcr:primaryType="nt:unstructured"
-                        jcr:title="Error Message"
+                        jcr:title="Generic Labels"
                         sling:resourceType="granite/ui/components/coral/foundation/container"
                         margin="{Boolean}true">
                         <items jcr:primaryType="nt:unstructured">
@@ -128,6 +128,34 @@
                                                 fieldLabel="Offline Plan Renewal Message"
                                                 fieldDescription="Renews in 28 days from top up balance. You can turn it off via customer care"
                                                 name="./offlinePlanRenewalMessage"/>
+                                            <dataTabName
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="Data Tab Name"
+                                                fieldDescription="Label that will appear on Data Tab e.g. Data"
+                                                value="Data"
+                                                name="./dataTabName"/>
+                                            <minTabName
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="Minutes Tab Name"
+                                                value="Min"
+                                                fieldDescription="Label that will appear on Minutes Tab e.g. Min"
+                                                name="./minTabName"/>
+                                            <smsTabName
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="SMS Tab Name"
+                                                value="SMS"
+                                                fieldDescription="Label that will appear on SMS Tab e.g. SMS"
+                                                name="./smsTabName"/>
+                                            <internationalMinTabName
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="International Minutes Tab Name"
+                                                value="International min"
+                                                fieldDescription="Label that will appear on International Minutes Tab e.g. International min"
+                                                name="./internationalMinTabName"/>
                                         </items>
                                     </column>
                                 </items>
