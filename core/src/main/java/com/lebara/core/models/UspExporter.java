@@ -37,7 +37,7 @@ public class UspExporter extends HeadingExporter {
     private ResourceResolver resourceResolver;
     
     @Inject @Source("script-bindings")
-	private Style currentStyle;
+    private Style currentStyle;
 
     @ValueMapValue
     private String boxBackgroundColor;
@@ -54,15 +54,16 @@ public class UspExporter extends HeadingExporter {
     }
 
     public List<ImageProperties> getUspList() {
-    	if(null == uspList) {
-    		return Collections.emptyList();
-    	}
-    	for(ImageProperties image : uspList) {
-    		String rendition = AemUtils.getImageRendition(image.getIcon(), currentStyle.get("rendition",String.class), resourceResolver);
-    		image.setIcon(rendition);
-    	}
-    	
-        return uspList;
+		if (null == uspList) {
+			return Collections.emptyList();
+		}
+		for (ImageProperties image : uspList) {
+			String rendition = AemUtils.getImageRendition(image.getIcon(), currentStyle.get("rendition", String.class),
+					resourceResolver);
+			image.setIcon(rendition);
+		}
+
+		return uspList;
     }
 
     public String getBoxBackgroundColor() {

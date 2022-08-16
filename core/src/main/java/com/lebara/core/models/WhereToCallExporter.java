@@ -37,7 +37,7 @@ public class WhereToCallExporter implements ComponentExporter {
     private ResourceResolver resourceResolver;
     
     @ScriptVariable
-	private Style currentStyle;
+    private Style currentStyle;
 
     @ScriptVariable
     private Resource resource;
@@ -64,12 +64,12 @@ public class WhereToCallExporter implements ComponentExporter {
         return title;
     }
 
-    public List<SelectBean> getCountries() {
-        if (StringUtils.isNotBlank(fragmentRootPath)) {
-            countryList = CFUtils.getWhereToCallRates(resourceResolver, fragmentRootPath);
-        }
-        return (countryList == null) ? Collections.emptyList() : Collections.unmodifiableList(countryList);
-    }    
+	public List<SelectBean> getCountries() {
+		if (StringUtils.isNotBlank(fragmentRootPath)) {
+			countryList = CFUtils.getWhereToCallRates(resourceResolver, fragmentRootPath);
+		}
+		return (countryList == null) ? Collections.emptyList() : Collections.unmodifiableList(countryList);
+	}
 
     public String getPlaceholder() {
         return placeholder;

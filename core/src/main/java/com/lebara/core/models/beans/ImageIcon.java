@@ -22,7 +22,7 @@ public class ImageIcon {
         return name;
     }
     
-	public void setImage(String image) {
-		this.image = image;
-	}
+    public void setImage(String image) {
+        this.image = image;
+    }
 }

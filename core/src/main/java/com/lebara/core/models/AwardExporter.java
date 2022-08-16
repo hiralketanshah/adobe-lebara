@@ -52,17 +52,17 @@ public class AwardExporter implements ComponentExporter {
         return title;
     }
 
-    public List<ImageIcon> getAwards() {
-    	if(null == awards) {
-    		return Collections.emptyList();
-    	}
-    	for(ImageIcon image : awards) {
-    		String rendition = AemUtils.getImageRendition(image.getImage(), currentStyle.get("rendition",String.class), resourceResolver);
-    		image.setImage(rendition);
-    	}
-    	
-        return Collections.unmodifiableList(awards);    	
-    }
+	public List<ImageIcon> getAwards() {
+		if (null == awards) {
+			return Collections.emptyList();
+		}
+		for (ImageIcon image : awards) {
+			String rendition = AemUtils.getImageRendition(image.getImage(), currentStyle.get("rendition", String.class),
+					resourceResolver);
+			image.setImage(rendition);
+		}
+		return Collections.unmodifiableList(awards);
+	}
 
     @Override
     public String getExportedType() {
