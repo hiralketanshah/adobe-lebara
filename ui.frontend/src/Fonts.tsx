@@ -1,6 +1,9 @@
 import { Global } from "@emotion/react";
 import * as React from "react";
 
+import {TestComponent} from "@lebara/core/components"
+
+console.log(TestComponent);
 const Fonts = () => (
   <Global
     styles={`
