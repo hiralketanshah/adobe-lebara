@@ -14,8 +14,6 @@ module.exports = {
             '@lebara/germany': path.resolve(__dirname, "packages/lebara-client/packages/germany/src/"),
         },
         configure: webpackConfig => {
-            console.log("configureconfigureconfigureconfigureconfigureconfigureconfigure");
-
             const scopePlugin = webpackConfig.resolve.plugins.find(
                 ({constructor}) => constructor && constructor.name === 'ModuleScopePlugin'
             );
