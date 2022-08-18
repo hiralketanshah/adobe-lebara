@@ -81,6 +81,9 @@ public class MyBalanceCardExporter implements ComponentExporter {
     private String successOverlaySubTitle;
 
     @ValueMapValue
+    private String ctaCloseLabel;
+
+    @ValueMapValue
     private Boolean deactivateSuccessOverlaySubTitle;
 
     @ValueMapValue
@@ -156,6 +159,10 @@ public class MyBalanceCardExporter implements ComponentExporter {
 
     public String getSuccessOverlaySubTitle() {
         return successOverlaySubTitle;
+    }
+
+    public String getCtaCloseLabel() {
+        return ctaCloseLabel;
     }
 
     public Boolean getDeactivateSuccessOverlaySubTitle() {

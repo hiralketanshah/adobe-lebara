@@ -54,12 +54,6 @@
                                                 fieldLabel="Link Sim Label"
                                                 name="./linkSimLabel"
                                                 value="Please complete the below to link your SIM."/>
-                                            <noSimLabel
-                                                jcr:primaryType="nt:unstructured"
-                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                                fieldLabel="No Sim Label"
-                                                name="./noSimLabel"
-                                                value="I don't have a sim"/>
                                             <activeMonthPlanLabel
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
@@ -72,6 +66,18 @@
                                                 fieldLabel="No Label"
                                                 name="./noLabel"
                                                 value="No"/>
+                                            <mobileLabel
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="Mobile Label"
+                                                name="./mobileLabel"
+                                                fieldDescription="Enter Mobile Number"/>
+                                            <subMobileLabel
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="Sub Mobile Label"
+                                                name="./subMobileLabel"
+                                                value="Enter number to be added to the account"/>
                                             <mobilePlaceholderLabel
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
@@ -324,6 +330,57 @@
                             </columns>
                         </items>
                     </delinkconfirmationdialog>
+                    <errorCodesTab
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Error Codes"
+                        sling:resourceType="granite/ui/components/coral/foundation/container"
+                        margin="{Boolean}true">
+                        <items jcr:primaryType="nt:unstructured">
+                            <columns
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+                                margin="{Boolean}true">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <column
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <errorcodes
+                                                jcr:primaryType="nt:unstructured"
+                                                jcr:title="Error Type &amp; Text"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
+                                                composite="{Boolean}true"
+                                                fieldLabel="Error Type &amp; Text">
+                                                <field
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/container"
+                                                    name="./sendSMSOtpErrorMessages">
+                                                    <items jcr:primaryType="nt:unstructured">
+                                                        <column
+                                                            jcr:primaryType="nt:unstructured"
+                                                            sling:resourceType="granite/ui/components/coral/foundation/container">
+                                                            <items jcr:primaryType="nt:unstructured">
+                                                                <errorcode
+                                                                    jcr:primaryType="nt:unstructured"
+                                                                    sling:resourceType="granite/ui/components/coral/foundation/include"
+                                                                    path="/apps/lebara/components/dialogutils/errorcode"/>
+                                                                <message
+                                                                    jcr:primaryType="nt:unstructured"
+                                                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                                    fieldLabel="Error Message"
+                                                                    name="./errorMessage"
+                                                                    required="true"/>
+                                                            </items>
+                                                        </column>
+                                                    </items>
+                                                </field>
+                                            </errorcodes>
+                                        </items>
+                                    </column>
+                                </items>
+                            </columns>
+                        </items>
+                    </errorCodesTab>
                 </items>
             </tabs>
         </items>

@@ -378,6 +378,10 @@ public class PersonalDetailsExporter implements ComponentExporter {
         return weekStartFromMonday;
     }
 
+    public String getExistingUserErrorMsg() {
+        return AemUtils.updateShortenLinksInRichText(existingUserErrorMsg,slingRequest);
+    }
+
     @Override
     public String getExportedType() {
         return RESOURCE_TYPE;

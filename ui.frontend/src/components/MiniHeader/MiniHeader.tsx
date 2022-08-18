@@ -115,7 +115,7 @@ const MiniHeader: React.FC<MiniHeaderProps> = ({
             colorScheme="dark"
             onClick={onOpen}
           />
-          <ChakraLink>
+          <ChakraLink mr={{ base: "5px" }}>
             <Link to={logoLinkURL || "/"}>
               <Image src={logoPath} alt="Logo" minW={75} />
             </Link>

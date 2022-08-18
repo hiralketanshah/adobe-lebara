@@ -72,6 +72,9 @@ public class LoginExporter implements ComponentExporter {
 
     @ValueMapValue
     private String registrationEmailAddress;
+    
+    @ValueMapValue
+    private String registrationEmailAddressPlaceholder;
 
     @ValueMapValue
     private String registrationPassword;
@@ -124,6 +127,9 @@ public class LoginExporter implements ComponentExporter {
      */
     @ValueMapValue
     private String emailFieldErrorMessage;
+    
+    @ValueMapValue
+    private String loginEmailFieldErrorMessage;
 
     @ValueMapValue
     private String validEmailFieldErrorMessage;
@@ -172,6 +178,9 @@ public class LoginExporter implements ComponentExporter {
 
     @ValueMapValue
     private String  exitingUserErrorMsg;
+
+    @ValueMapValue
+    private String  captchaFieldErrorMessage;
 
     @ValueMapValue
     private String  postalCodeText;
@@ -234,6 +243,10 @@ public class LoginExporter implements ComponentExporter {
     public String getRegistrationEmailAddress() {
         return registrationEmailAddress;
     }
+    
+    public String getRegistrationEmailAddressPlaceholder() {
+        return registrationEmailAddressPlaceholder;
+    }
 
     public String getRegistrationPassword() {
         return registrationPassword;
@@ -293,6 +306,10 @@ public class LoginExporter implements ComponentExporter {
 
     public String getEmailFieldErrorMessage() {
         return emailFieldErrorMessage;
+    }
+    
+    public String getLoginEmailFieldErrorMessage() {
+        return loginEmailFieldErrorMessage;
     }
 
     public String getValidEmailFieldErrorMessage() {
@@ -357,6 +374,10 @@ public class LoginExporter implements ComponentExporter {
 
     public String getExitingUserErrorMsg() {
         return exitingUserErrorMsg;
+    }
+
+    public String getCaptchaFieldErrorMessage() {
+        return captchaFieldErrorMessage;
     }
 
     public String getPostalCodeText() {

@@ -156,6 +156,13 @@
                                                 fieldLabel="Email Address Label"
                                                 value="Email Address"
                                                 name="./registrationEmailAddress"/>
+                                            <emailaddressplaceholder
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="Enter your email address"
+                                                fieldLabel="Email Address /Mobile Number Placeholder"
+                                                value="Enter your email address"
+                                                name="./registrationEmailAddressPlaceholder"/>
                                             <password
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
@@ -288,6 +295,12 @@
                                                 fieldLabel="Error for Email Field"
                                                 value="Error for Email"
                                                 name="./emailFieldErrorMessage"/>
+                                            <loginemailfielderrormessage
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="Login Error for Email and Password Field"
+                                                value="Login Error for Email and Password"
+                                                name="./loginEmailFieldErrorMessage"/>
                                             <validemailfielderrormessage
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
@@ -384,6 +397,12 @@
                                                 fieldLabel="Error Message For Existing User"
                                                 value="This email address is already registered with us."
                                                 name="./exitingUserErrorMsg"/>
+                                            <captchaFieldErrorMessage
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="Error Message For Invalid Captcha"
+                                                fieldDescription="Invalid Captcha"
+                                                name="./captchaFieldErrorMessage"/>
                                             <postalcodetext
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"

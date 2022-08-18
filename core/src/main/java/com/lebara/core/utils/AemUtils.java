@@ -55,6 +55,18 @@ public class AemUtils {
     public static final String MAIL_TO = "mailto:";
     public static final String TEL = "tel:";
 
+    public static final String DE_ROOT_PATH = "/content/lebara/de";
+    public static final String FR_ROOT_PATH = "/content/lebara/fr";
+    public static final String NL_ROOT_PATH = "/content/lebara/nl";
+    public static final String DK_ROOT_PATH = "/content/lebara/dk";
+    public static final String UK_ROOT_PATH = "/content/lebara/uk";
+
+    public static String DE_DOMAIN_NAME = "https://www.lebara.de";
+    public static String FR_DOMAIN_NAME = "https://www.lebara.fr";
+    public static String NL_DOMAIN_NAME = "https://www.lebara.nl";
+    public static String DK_DOMAIN_NAME = "https://www.lebara.dk";
+    public static String UK_DOMAIN_NAME = "https://www.lebara.uk";
+
     /**
      * Gets property.
      *
@@ -202,10 +214,20 @@ public class AemUtils {
         return ((request == null) ? payloadPath : trimmedPath(payloadPath)) + (isHtmlExtensionRequired(payloadPath) ? LebaraConstants.HTML_EXTENSION : StringUtils.EMPTY);
     }
 
+    public static String getLinkWithExtension(String payloadPath) {
+        if (StringUtils.isBlank(payloadPath) || isExternalLink(payloadPath)) {
+            return payloadPath;
+        }
+        return trimmedPath(payloadPath) + (isHtmlExtensionRequired(payloadPath) ? LebaraConstants.HTML_EXTENSION : StringUtils.EMPTY);
+    }
+
     private static String trimmedPath(String payloadPath) {
         if(StringUtils.isNotBlank(payloadPath)){
-            payloadPath = StringUtils.replace(payloadPath,"/content/lebara/de","");
-            payloadPath = StringUtils.replace(payloadPath,"/content/lebara/fr","");
+            payloadPath = StringUtils.replace(payloadPath,DE_ROOT_PATH,"");
+            payloadPath = StringUtils.replace(payloadPath,FR_ROOT_PATH,"");
+            payloadPath = StringUtils.replace(payloadPath,NL_ROOT_PATH,"");
+            payloadPath = StringUtils.replace(payloadPath,DK_ROOT_PATH,"");
+            payloadPath = StringUtils.replace(payloadPath,UK_ROOT_PATH,"");
         }
         return payloadPath;
     }
@@ -344,5 +366,24 @@ public class AemUtils {
             return StringUtils.EMPTY;
         }
         return tag.getTitle();
+    }
+
+    public static String getCountrySpecificCode(String pagePath) {
+        if (StringUtils.startsWith(pagePath, DE_ROOT_PATH)) {
+            return "de";
+        }
+        if (StringUtils.startsWith(pagePath, FR_ROOT_PATH)) {
+            return "fr";
+        }
+        if (StringUtils.startsWith(pagePath, NL_ROOT_PATH)) {
+            return "nl";
+        }
+        if (StringUtils.startsWith(pagePath, DK_ROOT_PATH)) {
+            return "dk";
+        }
+        if (StringUtils.startsWith(pagePath, UK_ROOT_PATH)) {
+            return "uk";
+        }
+        return "de";
     }
 }

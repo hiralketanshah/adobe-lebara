@@ -28,7 +28,8 @@ const EmptyCartShopCard: React.FC<EmptyCartShopCardProps> = ({
   buyPlanLabel,
   addToCartLabel,
   viewCartLabel,
-  addedtoCartLabel
+  addedtoCartLabel,
+  showModelOnAddtoCart
 }) => {
   const location = useLocation<{ selectedType: string }>();
   const selectedType = location.state?.selectedType || "plan";
@@ -122,6 +123,7 @@ const EmptyCartShopCard: React.FC<EmptyCartShopCardProps> = ({
                   (addOnPlan: ExpandableSimPlanCardProps) => (
                     <Box display="flex">
                       <ExpandableSimPlanCard {...addOnPlan}
+                        showModelOnAddtoCart={showModelOnAddtoCart}
                         showLabel={showDetailsLabel}
                         buttonLabel={buyPlanLabel}
                         addedtoCartLabel={addedtoCartLabel}
@@ -144,6 +146,7 @@ const EmptyCartShopCard: React.FC<EmptyCartShopCardProps> = ({
                   (planCard: ExpandableSimPlanCardProps) => (
                     <Box display="flex">
                       <ExpandableSimPlanCard {...planCard}
+                        showModelOnAddtoCart={showModelOnAddtoCart}
                         showLabel={showDetailsLabel}
                         buttonLabel={addToCartLabel}
                         addedtoCartLabel={addedtoCartLabel}
@@ -165,6 +168,7 @@ const EmptyCartShopCard: React.FC<EmptyCartShopCardProps> = ({
                   (simCardPlan: ExpandableSimPlanCardProps) => (
                     <Box display="flex">
                       <ExpandableSimPlanCard {...simCardPlan}
+                        showModelOnAddtoCart={showModelOnAddtoCart}
                         showLabel={showDetailsLabel}
                         buttonLabel={buyPlanLabel}
                         addedtoCartLabel={addedtoCartLabel}

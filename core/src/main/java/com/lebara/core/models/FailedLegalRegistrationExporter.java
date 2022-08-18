@@ -31,6 +31,9 @@ public class FailedLegalRegistrationExporter implements ComponentExporter {
     @ValueMapValue
     private String dashboardButtonLabel;
 
+    @ValueMapValue
+    private boolean isSuccessFlow;
+
     public String getErrorLegalRegistrationMessage() {
         return errorLegalRegistrationMessage;
     }
@@ -41,6 +44,10 @@ public class FailedLegalRegistrationExporter implements ComponentExporter {
 
     public String getDashboardButtonLabel() {
         return dashboardButtonLabel;
+    }
+
+    public boolean getIsSuccessFlow() {
+        return isSuccessFlow;
     }
 
     @Override
