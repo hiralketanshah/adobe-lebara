@@ -121,7 +121,7 @@ const EmptyCartShopCard: React.FC<EmptyCartShopCardProps> = ({
               >
                 {expandableAddOnsCardProps.map(
                   (addOnPlan: ExpandableSimPlanCardProps) => (
-                    <Box display="flex">
+                    <Box flexDirection="column">
                       <ExpandableSimPlanCard {...addOnPlan}
                         showModelOnAddtoCart={showModelOnAddtoCart}
                         showLabel={showDetailsLabel}
@@ -144,7 +144,7 @@ const EmptyCartShopCard: React.FC<EmptyCartShopCardProps> = ({
               >
                 {expandableSimPlanCardProps.map(
                   (planCard: ExpandableSimPlanCardProps) => (
-                    <Box display="flex">
+                    <Box flexDirection="column">
                       <ExpandableSimPlanCard {...planCard}
                         showModelOnAddtoCart={showModelOnAddtoCart}
                         showLabel={showDetailsLabel}
@@ -166,7 +166,7 @@ const EmptyCartShopCard: React.FC<EmptyCartShopCardProps> = ({
               >
                 {expandablePlanCardProps.map(
                   (simCardPlan: ExpandableSimPlanCardProps) => (
-                    <Box display="flex">
+                    <Box flexDirection="column">
                       <ExpandableSimPlanCard {...simCardPlan}
                         showModelOnAddtoCart={showModelOnAddtoCart}
                         showLabel={showDetailsLabel}
