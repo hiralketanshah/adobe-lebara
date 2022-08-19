@@ -64,7 +64,7 @@ public class DashboardPlansExporter extends HeadingExporter {
     @ValueMapValue
     private String cancelChangePlanCancelLabel;
     @ValueMapValue
-    private Boolean showPlansWithProgress;
+    private boolean showPlansWithProgress;
     @ValueMapValue
     private String dataValue;
     @ValueMapValue
@@ -144,7 +144,7 @@ public class DashboardPlansExporter extends HeadingExporter {
         return cancelChangePlanCancelLabel;
     }
 
-    public Boolean getShowPlansWithProgress() {
+    public boolean getShowPlansWithProgress() {
         return showPlansWithProgress;
     }
 
