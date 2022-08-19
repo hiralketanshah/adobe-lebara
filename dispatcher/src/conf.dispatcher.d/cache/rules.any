@@ -7,7 +7,7 @@
 $include "./default_rules.any"
 
 /9999 {
-	/glob "/content/dam/*.{jpeg,jpg,png}"
+	/glob "/content/dam/*.png"
 	/type "deny"
 }
 
