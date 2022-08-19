@@ -6,8 +6,15 @@
 
 $include "./default_rules.any"
 
-/9999 {
-	/glob "/content/dam/*.{jpeg|jpg|png}"
+/9997 {
+	/glob "/content/dam/*.png"
 	/type "deny"
 }
-
+/9998 {
+	/glob "/content/dam/*.jpeg"
+	/type "deny"
+}
+/9999 {
+	/glob "/content/dam/*.jpg"
+	/type "deny"
+}
