@@ -13,15 +13,12 @@ import org.apache.sling.api.resource.ResourceResolver;
 import org.apache.sling.models.annotations.DefaultInjectionStrategy;
 import org.apache.sling.models.annotations.Exporter;
 import org.apache.sling.models.annotations.Model;
-import org.apache.sling.models.annotations.Source;
 import org.apache.sling.models.annotations.injectorspecific.ScriptVariable;
 import org.apache.sling.models.annotations.injectorspecific.SlingObject;
 import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
 
 import java.util.Collections;
 import java.util.List;
-
-import javax.inject.Inject;
 
 @Model(adaptables = {SlingHttpServletRequest.class, Resource.class}, adapters = {WhereToCallExporter.class, ComponentExporter.class},
         resourceType = WhereToCallExporter.RESOURCE_TYPE, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
@@ -56,9 +53,9 @@ public class WhereToCallExporter implements ComponentExporter {
 
     private List<SelectBean> countryList;
 
-    public String getFileReference() {
-        return AemUtils.getImageRendition(fileReference, currentStyle.get("rendition",String.class), resourceResolver);
-    }
+	public String getFileReference() {
+		return AemUtils.getImageRendition(fileReference, currentStyle.get("rendition", String.class), resourceResolver);
+	}
 
     public String getTitle() {
         return title;

@@ -155,7 +155,8 @@ public class AboutLebaraImpl implements AboutLebara {
 
 	@Override
 	public String getImagePath() {
-		return AemUtils.getImageRendition(fileReference, currentStyle.get("rendition",String.class), request.getResourceResolver());
+		return AemUtils.getImageRendition(fileReference, currentStyle.get("rendition", String.class),
+				request.getResourceResolver());
 	}
 
 	public String getHeadingType() {

@@ -53,7 +53,7 @@ public class UspExporter extends HeadingExporter {
         return resource.getResourceType();
     }
 
-    public List<ImageProperties> getUspList() {
+	public List<ImageProperties> getUspList() {
 		if (null == uspList) {
 			return Collections.emptyList();
 		}
@@ -64,7 +64,7 @@ public class UspExporter extends HeadingExporter {
 		}
 
 		return uspList;
-    }
+	}
 
     public String getBoxBackgroundColor() {
         return boxBackgroundColor;

@@ -4,7 +4,6 @@ import com.adobe.cq.export.json.ComponentExporter;
 import com.adobe.cq.export.json.ExporterConstants;
 import com.day.cq.wcm.api.designer.Style;
 import com.lebara.core.models.beans.ImageIcon;
-import com.lebara.core.models.beans.ImageProperties;
 import com.lebara.core.utils.AemUtils;
 
 import org.apache.sling.api.SlingHttpServletRequest;
@@ -19,7 +18,6 @@ import org.apache.sling.models.annotations.injectorspecific.ScriptVariable;
 import org.apache.sling.models.annotations.injectorspecific.SlingObject;
 import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
 
-import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
