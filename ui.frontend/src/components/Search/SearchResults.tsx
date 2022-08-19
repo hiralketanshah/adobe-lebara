@@ -6,7 +6,7 @@ import { FiArrowRight, MdCancel } from "react-icons/all";
 import LebaraText from "../LebaraText/LebaraText";
 import { SearchResultProps } from "./types";
 import Button from "../Button/Button";
-import { RouterLink } from "@lebara/ui/src/hooks/useHistory";
+import { RouterLink } from "@lebara/core/hooks/useHistory";
 import { MIN_CHARS_SEARCH } from "./search.constant";
 
 const SearchResults: React.FC<any> = ({

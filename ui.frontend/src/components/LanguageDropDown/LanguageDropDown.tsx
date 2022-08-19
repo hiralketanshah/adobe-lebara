@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { IoChevronDownCircleSharp } from "react-icons/all";
 import { LanguageDropDownProps } from "./types";
-import Select from "@lebara/ui/src/components/Select/Select";
-import { useLocation } from "@lebara/ui/src/hooks/useHistory";
+import Select from "@lebara/core/components/Select/Select";
+import { useLocation } from "@lebara/core/hooks/useHistory";
 
 const LanguageDropDown: React.FC<LanguageDropDownProps> = ({
   options,

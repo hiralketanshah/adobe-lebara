@@ -1,6 +1,6 @@
 import { MapTo } from "@adobe/aem-react-editable-components";
-import OrderDetailsRoute from "@lebara/ui/src/rotues/OrderDetailsRoute";
-import SimPortInRoute from "@lebara/ui/src/rotues/SimPortInRoute";
+import OrderDetailsRoute from "@lebara/core/rotues/OrderDetailsRoute";
+import SimPortInRoute from "@lebara/core/rotues/SimPortInRoute";
 import aemUtils from "../utils/aem-utils";
 const SimPortInConfig = {
   emptyLabel: "Sim Port In Component",

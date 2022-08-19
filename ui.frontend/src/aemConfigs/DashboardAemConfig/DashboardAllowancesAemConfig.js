@@ -1,5 +1,5 @@
 import { MapTo } from "@adobe/aem-react-editable-components";
-import DashboardAllowances from "@lebara/ui/src/components/DashboardAllowances/DashboardAllowances"
+import DashboardAllowances from "@lebara/core/components/DashboardAllowances/DashboardAllowances"
 import { Flex } from "@chakra-ui/react";
 const DashboardAllowancesConfig = {
   emptyLabel: "Dashboard Allowances component",

@@ -2,7 +2,7 @@ import React from "react";
 import { Flex, Spacer } from "@chakra-ui/react";
 import { AboutLebaraProps } from "./types";
 import TextBlock from "../TextBlock/TextBlock";
-import { Image } from "@lebara/ui/src/components/Image/Image";
+import { Image } from "@lebara/core/components/Image/Image";
 
 const TextFeature: React.FC<AboutLebaraProps> = ({
   pretitle,

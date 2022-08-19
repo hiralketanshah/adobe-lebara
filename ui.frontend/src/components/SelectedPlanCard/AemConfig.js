@@ -1,5 +1,5 @@
 import { MapTo } from "@adobe/aem-react-editable-components";
-import SelectedPlanCard from "@lebara/ui/src/components/SelectedPlanCard/SelectedPlanCard";
+import SelectedPlanCard from "@lebara/core/components/SelectedPlanCard/SelectedPlanCard";
 import aemUtils from "../../utils/aem-utils";
 const SelectedPlanCardConfig = {
   emptyLabel: "Dynamic Cart Component",

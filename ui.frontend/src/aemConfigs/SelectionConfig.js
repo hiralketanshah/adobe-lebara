@@ -1,5 +1,5 @@
 import { MapTo } from "@adobe/aem-react-editable-components";
-import Selection from "@lebara/ui/src/components/LebaraNetwork/LebaraNetwork";
+import Selection from "@lebara/core/components/LebaraNetwork/LebaraNetwork";
 
 const SelectionConfig = {
   emptyLabel: "Selection Component",

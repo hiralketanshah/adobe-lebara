@@ -20,15 +20,15 @@ import {
   RiShoppingCartLine,
 } from "react-icons/all";
 import { Link } from "react-router-dom";
-import { useHistory } from "@lebara/ui/src/hooks/useHistory";
+import { useHistory } from "@lebara/core/hooks/useHistory";
 import { useSelector } from "react-redux";
 import { MiniHeaderProps } from "./types";
 import IconButton from "../IconButton/IconButton";
 import SideMenu from "../SideMenu/SideMenu";
-import { ReduxState } from "@lebara/ui/src/redux/types";
-import {selectIsAuthenticated} from "@lebara/ui/src/redux/selectors/userSelectors";
+import { ReduxState } from "@lebara/core/redux/types";
+import {selectIsAuthenticated} from "@lebara/core/redux/selectors/userSelectors";
 import Button from "../Button/Button";
-import UserMenu from "@lebara/ui/src/components/UserMenu/UserMenu";
+import UserMenu from "@lebara/core/components/UserMenu/UserMenu";
 import Search from "../Search/Search";
 
 const MiniHeader: React.FC<MiniHeaderProps> = ({

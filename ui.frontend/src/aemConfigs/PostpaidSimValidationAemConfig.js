@@ -1,5 +1,5 @@
 import { MapTo } from "@adobe/aem-react-editable-components";
-import FMVNOSimMigrationRoute from "@lebara/ui/src/rotues/FMVNOSimMigrationRoute";
+import FMVNOSimMigrationRoute from "@lebara/core/rotues/FMVNOSimMigrationRoute";
 
 const PostpaidSimValidationConfig = {
   emptyLabel: "Postpaid Sim Validation component",

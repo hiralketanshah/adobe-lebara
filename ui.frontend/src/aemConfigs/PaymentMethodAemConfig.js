@@ -1,5 +1,5 @@
 import { MapTo } from "@adobe/aem-react-editable-components";
-import PaymentMethodRoute from "@lebara/ui/src/rotues/PaymentMethodRoute";
+import PaymentMethodRoute from "@lebara/core/rotues/PaymentMethodRoute";
 
 const PaymentMethodConfig = {
   emptyLabel: "Payment Method component",

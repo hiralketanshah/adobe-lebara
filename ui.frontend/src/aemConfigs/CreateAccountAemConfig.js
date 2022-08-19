@@ -1,5 +1,5 @@
 import { MapTo } from "@adobe/aem-react-editable-components";
-import DesktopCreateAccountForm from "@lebara/ui/src/components/DesktopCreateAccountForm/DesktopCreateAccountForm";
+import DesktopCreateAccountForm from "@lebara/core/components/DesktopCreateAccountForm/DesktopCreateAccountForm";
 
 const DesktopCreateAccountFormConfig = {
   emptyLabel: "Create Account Form Component",

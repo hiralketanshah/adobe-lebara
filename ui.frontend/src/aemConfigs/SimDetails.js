@@ -1,5 +1,5 @@
 import { MapTo } from "@adobe/aem-react-editable-components";
-import SimDetails from "@lebara/ui/src/components/SimDetails/SimDetails";
+import SimDetails from "@lebara/core/components/SimDetails/SimDetails";
 
 const SimDetailsConfig = {
   emptyLabel: "Legal Registration Sim Details",

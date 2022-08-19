@@ -1,5 +1,5 @@
 import { MapTo } from "@adobe/aem-react-editable-components";
-import UserPersonalDetailsRoute from "@lebara/ui/src/rotues/UserPersonalDetailsRoute";
+import UserPersonalDetailsRoute from "@lebara/core/rotues/UserPersonalDetailsRoute";
 
 const UserPersonalDetailsRouteConfig = {
   emptyLabel: "User Details Component",

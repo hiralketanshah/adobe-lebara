@@ -2,19 +2,19 @@ import React, { useState } from "react";
 import { Box, Flex, Heading, useToast } from "@chakra-ui/react";
 import { HeroBannerProps } from "./types";
 import Button from "../Button/Button";
-import { setLoading } from "@lebara/ui/src/redux/actions/loadingActions";
+import { setLoading } from "@lebara/core/redux/actions/loadingActions";
 import {
   selectIsAuthenticated,
   selectMsisdn,
   selectLogout
-} from "@lebara/ui/src/redux/selectors/userSelectors";
+} from "@lebara/core/redux/selectors/userSelectors";
 import { useDispatch, useSelector } from "react-redux";
-import useAddToCart from "@lebara/ui/src/hooks/useAddToCart";
-import { ReduxState } from "@lebara/ui/src/redux/types";
-import { useHistory } from "@lebara/ui/src/hooks/useHistory";
-import { Image } from "@lebara/ui/src/components/Image/Image";
-import AttachSimModels from "@lebara/ui/src/components/AttachSim/AttachSimModels";
-import { selectIsLoading } from "@lebara/ui/src/redux/selectors/loadingSelectors";
+import useAddToCart from "@lebara/core/hooks/useAddToCart";
+import { ReduxState } from "@lebara/core/redux/types";
+import { useHistory } from "@lebara/core/hooks/useHistory";
+import { Image } from "@lebara/core/components/Image/Image";
+import AttachSimModels from "@lebara/core/components/AttachSim/AttachSimModels";
+import { selectIsLoading } from "@lebara/core/redux/selectors/loadingSelectors";
 
 const HeroBanner: React.FC<HeroBannerProps> = ({
   imagePath,

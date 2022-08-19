@@ -1,5 +1,5 @@
 import { MapTo } from "@adobe/aem-react-editable-components";
-import DashboardPlans from "@lebara/ui/src/components/DashboardPlans/DashboardPlans"
+import DashboardPlans from "@lebara/core/components/DashboardPlans/DashboardPlans"
 import aemUtils from "../../utils/aem-utils";
 import { Flex } from "@chakra-ui/react";
 const DashboardPlansConfig = {

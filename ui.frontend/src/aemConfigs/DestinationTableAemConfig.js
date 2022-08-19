@@ -1,5 +1,5 @@
 import { MapTo } from "@adobe/aem-react-editable-components";
-import DestinationTable from "@lebara/ui/src/components/DestinationTable/DestinationTable";
+import DestinationTable from "@lebara/core/components/DestinationTable/DestinationTable";
 
 const DestinationTableConfig = {
   emptyLabel: "Destination Table component",

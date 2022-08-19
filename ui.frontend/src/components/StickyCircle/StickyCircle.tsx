@@ -1,12 +1,12 @@
 import React from "react";
 import { Text, Box, Button, Circle } from "@chakra-ui/react";
 import { StickyCircleProps } from "./types";
-import { useHistory } from "@lebara/ui/src/hooks/useHistory";
+import { useHistory } from "@lebara/core/hooks/useHistory";
 import './styles.css';
 import { useDispatch, useSelector } from "react-redux";
-import useAddToCart from "@lebara/ui/src/hooks/useAddToCart";
-import { ReduxState } from "@lebara/ui/src/redux/types";
-import { setLoading } from "@lebara/ui/src/redux/actions/loadingActions";
+import useAddToCart from "@lebara/core/hooks/useAddToCart";
+import { ReduxState } from "@lebara/core/redux/types";
+import { setLoading } from "@lebara/core/redux/actions/loadingActions";
 const StickyCircle: React.FC<StickyCircleProps> = ({
   linkLabel,
   linkPath

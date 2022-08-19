@@ -20,15 +20,15 @@ import "@fontsource/roboto/400.css";
 import "@fontsource/roboto/500.css";
 import "@fontsource/roboto/700.css";
 import "@fontsource/roboto/900.css";
-import {globalConfigs} from '@lebara/ui/src/configs/globalConfigs.js';
-import store from "@lebara/ui/src/store";
+import {globalConfigs} from '@lebara/core/configs/globalConfigs';
+import store from "@lebara/core/store";
 import { pdfjs } from "react-pdf";
 import axios from "axios";
 import {onError} from "@apollo/client/link/error";
 import { AuthoringUtils } from "@adobe/aem-spa-page-model-manager";
 import Cookies from "universal-cookie";
-import { isAddressUpdateBlockedCookieKey } from "@lebara/ui/src/components/UserDetails/constats";
-import {getLocale} from "@lebara/ui/src/hooks/useLocale";
+import { isAddressUpdateBlockedCookieKey } from "@lebara/core/components/UserDetails/constats";
+import {getLocale} from "@lebara/core/hooks/useLocale";
 
 pdfjs.GlobalWorkerOptions.workerSrc = '/etc.clientlibs/lebara/clientlibs/clientlib-react/resources/pdf.worker.js';
 const defaultOptions = {

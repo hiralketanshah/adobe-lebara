@@ -6,7 +6,7 @@ import {
   IoIosArrowForward,
 } from "react-icons/all";
 import { CompProps } from "./types";
-import { useHistory } from "@lebara/ui/src/hooks/useHistory";
+import { useHistory } from "@lebara/core/hooks/useHistory";
 import "./../../styles/helpcenter.scss";
 
 const LbBrowseCategories: React.FC<CompProps> = ({

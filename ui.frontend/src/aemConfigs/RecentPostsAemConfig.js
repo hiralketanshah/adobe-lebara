@@ -1,5 +1,5 @@
 import { MapTo } from "@adobe/aem-react-editable-components";
-import RecentPost from "@lebara/ui/src/components/SideBar/PostSidebar";
+import RecentPost from "@lebara/core/components/SideBar/PostSidebar";
 const RecentPostConfig = {
   emptyLabel: "Recent post",
   isEmpty: function (props) {

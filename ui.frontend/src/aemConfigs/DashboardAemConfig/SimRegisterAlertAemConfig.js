@@ -1,5 +1,5 @@
 import { MapTo } from "@adobe/aem-react-editable-components";
-import SimRegisterAlert from "@lebara/ui/src/layouts/SimRegisterAlert"
+import SimRegisterAlert from "@lebara/core/layouts/SimRegisterAlert"
 
 const SimRegisterAlertConfig = {
   emptyLabel: "Sim Register Alert component",

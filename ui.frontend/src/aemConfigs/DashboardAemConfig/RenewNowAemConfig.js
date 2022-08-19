@@ -1,5 +1,5 @@
 import { MapTo } from "@adobe/aem-react-editable-components";
-import RenewNow from "@lebara/ui/src/components/RenewNow/RenewNow";
+import RenewNow from "@lebara/core/components/RenewNow/RenewNow";
 
 const RenewNowConfig = {
   emptyLabel: "Dashboard - Renew Now",

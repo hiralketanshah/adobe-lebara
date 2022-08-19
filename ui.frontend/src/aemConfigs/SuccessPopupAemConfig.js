@@ -1,5 +1,5 @@
 import { MapTo } from "@adobe/aem-react-editable-components";
-import DelinkSuccessMessage from "@lebara/ui/src/components/DLinkSim/DelinkSuccessMessage";
+import DelinkSuccessMessage from "@lebara/core/components/DLinkSim/DelinkSuccessMessage";
 const SuccessPopupConfig = {
   emptyLabel: "Success Popup",
   isEmpty: function (props) {

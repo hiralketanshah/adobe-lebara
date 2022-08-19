@@ -1,7 +1,7 @@
 import React from "react";
 import { Flex, Text } from "@chakra-ui/react";
 import { MiniFooterProps } from "./types";
-import Link from "@lebara/ui/src/components/Link/Link";
+import Link from "@lebara/core/components/Link/Link";
 
 const MiniFooter: React.FC<MiniFooterProps> = ({helpText, lookText, links}) => (
   <Flex

@@ -1,5 +1,5 @@
 import { MapTo } from "@adobe/aem-react-editable-components";
-import MyBalanceCard from "@lebara/ui/src/components/MyBalanceCard/MyBalanceCard"
+import MyBalanceCard from "@lebara/core/components/MyBalanceCard/MyBalanceCard"
 
 const MyBalanceCardConfig = {
   emptyLabel: "My Balance Card component",

@@ -11,13 +11,13 @@ import {
   Link,
   Image,
 } from "@chakra-ui/react";
-import { RouterLink, useLocation } from "@lebara/ui/src/hooks/useHistory";
+import { RouterLink, useLocation } from "@lebara/core/hooks/useHistory";
 import { GoPlus, FcMinus } from "react-icons/all";
 import IconButton from "../IconButton/IconButton";
 import SocialMediaButtons from "../SocialMediaButtons/SocialMediaButtons";
 import { FooterProps } from "./types";
 import { useEffect } from "react";
-import { jwtToken } from "@lebara/ui/src/components/UserDetails/constats";
+import { jwtToken } from "@lebara/core/components/UserDetails/constats";
 
 const Footer: React.FC<FooterProps> = ({
   socialButtons,

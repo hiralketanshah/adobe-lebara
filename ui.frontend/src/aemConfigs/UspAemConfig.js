@@ -1,5 +1,5 @@
 import { MapTo } from "@adobe/aem-react-editable-components";
-import Usp from "@lebara/ui/src/components/WhyChooseLebara/WhyChooseLebara"
+import Usp from "@lebara/core/components/WhyChooseLebara/WhyChooseLebara"
 const UspConfig = {
   emptyLabel: "Usp",
   isEmpty: function (props) {

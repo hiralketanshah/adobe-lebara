@@ -1,5 +1,5 @@
 import { MapTo } from "@adobe/aem-react-editable-components";
-import CongratulationsPopUp from "@lebara/ui/src/components/CongratulationsPopUp/CongratulationsPopUp";
+import CongratulationsPopUp from "@lebara/core/components/CongratulationsPopUp/CongratulationsPopUp";
 
 const CongratulationsPopupConfig = {
   emptyLabel: "Congratulations Popup component",

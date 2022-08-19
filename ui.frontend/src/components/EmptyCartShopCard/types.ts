@@ -1,4 +1,4 @@
-import { CountriesListOption } from "@lebara/ui/src/components/CountriesList/types";
+import { CountriesListOption } from "@lebara/core/components/CountriesList/types";
 import { ExpandableSimPlanCardProps } from "../ExpandableSimPlanCard/types";
 
 export interface EmptyCartShopCardProps {

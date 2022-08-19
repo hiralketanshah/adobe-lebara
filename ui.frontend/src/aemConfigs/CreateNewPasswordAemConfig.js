@@ -1,5 +1,5 @@
 import { MapTo } from "@adobe/aem-react-editable-components";
-import CreateNewPasswordRoute from "@lebara/ui/src/rotues/CreateNewPasswordRoute";
+import CreateNewPasswordRoute from "@lebara/core/rotues/CreateNewPasswordRoute";
 
 const CreateNewPasswordConfig = {
     emptyLabel: "Create New Password Component",

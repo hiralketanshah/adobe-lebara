@@ -1,5 +1,5 @@
 import { MapTo } from "@adobe/aem-react-editable-components";
-import FailedOrderRoute from "@lebara/ui/src/rotues/FailedOrderRoute";
+import FailedOrderRoute from "@lebara/core/rotues/FailedOrderRoute";
 
 const OrderFailedRouteAemConfig = {
   emptyLabel: "Order Failed",

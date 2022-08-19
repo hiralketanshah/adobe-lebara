@@ -1,5 +1,5 @@
 import { MapTo } from "@adobe/aem-react-editable-components";
-import ActivateSimOnly from "@lebara/ui/src/components/ActivateSimOnly/ActivateSimOnlyForm";
+import ActivateSimOnly from "@lebara/core/components/ActivateSimOnly/ActivateSimOnlyForm";
 
 const ActivateSimOnlyConfig = {
   emptyLabel: "Activate Sim Only Form",

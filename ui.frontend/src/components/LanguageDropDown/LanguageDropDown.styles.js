@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import mediaquery from "../../mediaquery";
-import Select from "@lebara/ui/src/components/Select/Select";
+import Select from "@lebara/core/components/Select/Select";
 
 export const SelectWrapper = styled(Select)`
   ${mediaquery.desktop`

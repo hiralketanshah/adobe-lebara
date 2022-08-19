@@ -1,5 +1,5 @@
 import { MapTo } from "@adobe/aem-react-editable-components";
-import NextBill from "@lebara/ui/src/components/NextBill/NextBill";
+import NextBill from "@lebara/core/components/NextBill/NextBill";
 
 const NextBillConfig = {
   emptyLabel: "Next Bill component",

@@ -2,14 +2,14 @@ import { Box, Divider, Flex, Text, useToast } from "@chakra-ui/react";
 import React, { useState } from "react";
 import { ExpandableSimPlanCardProps } from "./types";
 import OfferTypes from "./types";
-import Button from "@lebara/ui/src/components/Button/Button";
+import Button from "@lebara/core/components/Button/Button";
 import PlanDetailsDialog from "../PlanDetailsDialog/PlanDetailsDialog";
 import { allowanceListProps } from "../ExpandablePlanCard/types";
-import { useHistory, useLocation } from "@lebara/ui/src/hooks/useHistory";
-import useAddToCart from "@lebara/ui/src/hooks/useAddToCart";
-import { globalConfigs } from "@lebara/ui/src/configs/globalConfigs";
-import LebaraText from "@lebara/ui/src/components/LebaraText/LebaraText";
-import PdfDialog from "@lebara/ui/src/components/PdfDialog/PdfDialog";
+import { useHistory, useLocation } from "@lebara/core/hooks/useHistory";
+import useAddToCart from "@lebara/core/hooks/useAddToCart";
+import { globalConfigs } from "@lebara/core/configs/globalConfigs";
+import LebaraText from "@lebara/core/components/LebaraText/LebaraText";
+import PdfDialog from "@lebara/core/components/PdfDialog/PdfDialog";
 import { useMutation } from "@apollo/client";
 import REMOVE_FROM_CART from "../../graphql/REMOVE_FROM_CART";
 import { useSelector } from "react-redux";
@@ -18,18 +18,18 @@ import {
   selectMsisdn,
   selectEmail,
   selectLogout,
-} from "@lebara/ui/src/redux/selectors/userSelectors";
+} from "@lebara/core/redux/selectors/userSelectors";
 import { useApolloClient } from "@apollo/client";
-import GET_PERSONAL_DETAILS from "@lebara/ui/src/graphql/GET_PERSONAL_DETAILS";
-import { hasMissingDetails } from "@lebara/ui/src/components/NewPostpaidNumber/utils";
+import GET_PERSONAL_DETAILS from "@lebara/core/graphql/GET_PERSONAL_DETAILS";
+import { hasMissingDetails } from "@lebara/core/components/NewPostpaidNumber/utils";
 import moment from "moment";
-import { setLoading } from "@lebara/ui/src/redux/actions/loadingActions";
+import { setLoading } from "@lebara/core/redux/actions/loadingActions";
 import { useDispatch } from "react-redux";
-import { ReduxState } from "@lebara/ui/src/redux/types";
-import PlanNotEligibleDialog from "@lebara/ui/src/components/PlanNotEligibleDialog/PlanNotEligibleDialog";
-import { isPromotionalAmount } from "@lebara/ui/src/redux/actions/cartActions";
-import AttachSimModels from "@lebara/ui/src/components/AttachSim/AttachSimModels";
-import { selectIsLoading } from "@lebara/ui/src/redux/selectors/loadingSelectors";
+import { ReduxState } from "@lebara/core/redux/types";
+import PlanNotEligibleDialog from "@lebara/core/components/PlanNotEligibleDialog/PlanNotEligibleDialog";
+import { isPromotionalAmount } from "@lebara/core/redux/actions/cartActions";
+import AttachSimModels from "@lebara/core/components/AttachSim/AttachSimModels";
+import { selectIsLoading } from "@lebara/core/redux/selectors/loadingSelectors";
 const ExpandableSimPlanCard: React.FC<ExpandableSimPlanCardProps> = ({
   planName,
   previewIcon,

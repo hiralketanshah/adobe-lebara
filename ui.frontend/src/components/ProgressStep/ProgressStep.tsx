@@ -1,7 +1,7 @@
 import React from "react";
 import { Divider, Flex, Text, Box, Center } from "@chakra-ui/react";
 import { ProgressStepProps } from "./types";
-import ProgressStepEllipse from "@lebara/ui/src/components/ProgressStepEllipse/ProgressStepEllipse";
+import ProgressStepEllipse from "@lebara/core/components/ProgressStepEllipse/ProgressStepEllipse";
 
 const ProgressStep: React.FC<ProgressStepProps> = ({
   activeStepIndex,

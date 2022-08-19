@@ -1,5 +1,5 @@
 import { MapTo } from "@adobe/aem-react-editable-components";
-import PromotionBanner from "@lebara/ui/src/components/PromotionBanner/PromotionBanner";
+import PromotionBanner from "@lebara/core/components/PromotionBanner/PromotionBanner";
 
 const PromotionBannerConfig = {
   emptyLabel: "Promotion Banner",

@@ -7,23 +7,21 @@ const libraries = [path.resolve(__dirname, "./src"), path.resolve(__dirname, "./
 module.exports = {
     webpack: {
         alias: {
-            '@components': path.resolve(__dirname, "packages/lebara-client/src/components/"),
-            'rotues': path.resolve(__dirname, "packages/lebara-client/src/rotues/"),
-            '@hooks': path.resolve(__dirname, "packages/lebara-client/src/hooks/"),
             '@lebara/core': path.resolve(__dirname, "packages/lebara-client/packages/core/src/"),
             '@lebara/germany': path.resolve(__dirname, "packages/lebara-client/packages/germany/src/"),
+            '@lebara/france': path.resolve(__dirname, "packages/lebara-client/packages/france/src/"),
+            '@lebara/denmark': path.resolve(__dirname, "packages/lebara-client/packages/denmark/src/"),
+            '@lebara/netherlands': path.resolve(__dirname, "packages/lebara-client/packages/netherlands/src/"),
         },
         configure: webpackConfig => {
             const scopePlugin = webpackConfig.resolve.plugins.find(
                 ({constructor}) => constructor && constructor.name === 'ModuleScopePlugin'
             );
             const {matches} = getLoaders(webpackConfig, loaderByName('babel-loader'));
-            console.log(matches[0]);
             addBeforeLoader(webpackConfig, loaderByName('babel-loader'), {
                 ...matches[0].loader,
                 include: [...libraries],
             });
-            console.log(scopePlugin.appSrcs);
             scopePlugin.appSrcs = [...scopePlugin.appSrcs, ...libraries]
             return webpackConfig;
         }

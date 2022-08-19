@@ -1,5 +1,5 @@
 import { MapTo } from "@adobe/aem-react-editable-components";
-import SidePromotion from "@lebara/ui/src/components/SideBar/PromotionSidebar";
+import SidePromotion from "@lebara/core/components/SideBar/PromotionSidebar";
 
 const OurPromotionConfig = {
   emptyLabel: "Our Promotion",

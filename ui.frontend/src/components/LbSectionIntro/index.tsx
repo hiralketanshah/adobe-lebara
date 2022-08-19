@@ -1,7 +1,7 @@
 import React from "react";
 import {Flex, Box, Text, Heading} from "@chakra-ui/react";
 import { CompProps } from "./types";
-import Link from "@lebara/ui/src/components/Link/Link";
+import Link from "@lebara/core/components/Link/Link";
 
 const LbSectionIntro: React.FC<CompProps> = ({ 
   heading, 

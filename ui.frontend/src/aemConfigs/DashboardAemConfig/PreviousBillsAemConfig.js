@@ -1,5 +1,5 @@
 import { MapTo } from "@adobe/aem-react-editable-components";
-import PreviousBills from "@lebara/ui/src/components/PreviousBills/PreviousBills";
+import PreviousBills from "@lebara/core/components/PreviousBills/PreviousBills";
 
 const PreviousBillsConfig = {
   emptyLabel: "Dashboard - Previous Bills",

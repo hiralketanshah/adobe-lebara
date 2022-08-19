@@ -11,7 +11,7 @@ import {
 } from "@chakra-ui/react";
 import { useLocation } from "react-router-dom";
 import ExpandableSimPlanCard from "../ExpandableSimPlanCard/ExpandableSimPlanCard";
-import TickInCircle from "@lebara/ui/src/icons/TickInCircle";
+import TickInCircle from "@lebara/core/icons/TickInCircle";
 import { EmptyCartShopCardProps } from "./types";
 import { ExpandableSimPlanCardProps } from "../ExpandableSimPlanCard/types";
 

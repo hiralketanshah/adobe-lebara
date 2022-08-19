@@ -1,5 +1,5 @@
 import { MapTo } from "@adobe/aem-react-editable-components";
-import PlanManagement from "@lebara/ui/src/components/PlanManagement/PlanManagement";
+import PlanManagement from "@lebara/core/components/PlanManagement/PlanManagement";
 import aemUtils from "../../utils/aem-utils";
 
 const PlansConfig = {

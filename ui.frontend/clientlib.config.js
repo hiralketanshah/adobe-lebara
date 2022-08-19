@@ -72,7 +72,7 @@ module.exports = {
         base: "js",
         files: [
           {
-            src: "../packages/lebara-client/public/scripts/microsoftOmniChat.js",
+            src: "../packages/lebara-client/packages/core/public/scripts/microsoftOmniChat.js",
             dest: "microsoftOmniChat.js",
           },
         ],
@@ -81,7 +81,7 @@ module.exports = {
         base: "css",
         files: [
           {
-            src: "../packages/lebara-client/public/styles/chatWidget.css",
+            src: "../packages/lebara-client/packages/core/public/styles/chatWidget.css",
             dest: "chatWidget.css",
           },
         ],

@@ -1,12 +1,12 @@
 {
   "compilerOptions": {
-    "baseUrl": "./packages/lebara-client",
+    "baseUrl": "./",
     "paths": {
-      "rotues/*" : ["./src/rotues/*"],
-      "@components/*" : ["./src/components/*"],
-      "@hooks/*" : ["./src/hooks/*"],
-      "@lebara/core" : ["./packages/core/src/*"],
-      "@lebara/germany" : ["./packages/germany/src/*"]
+      "@lebara/core" : ["./packages/lebara-client/packages/core/src/*"],
+      "@lebara/germany" : ["./packages/lebara-client/packages/germany/src/*"],
+      "@lebara/france" : ["./packages/lebara-client/packages/france/src/*"],
+      "@lebara/denmark" : ["./packages/lebara-client/packages/denmark/src/*"],
+      "@lebara/netherlands" : ["./packages/lebara-client/packages/netherlands/src/*"],
     }
   }
 }

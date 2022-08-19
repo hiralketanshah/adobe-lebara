@@ -1,5 +1,5 @@
 import { MapTo } from "@adobe/aem-react-editable-components";
-import NewPostpaidNumberRoute from "@lebara/ui/src/rotues/NewPostpaidNumberRoute";
+import NewPostpaidNumberRoute from "@lebara/core/rotues/NewPostpaidNumberRoute";
 import aemUtils from "../utils/aem-utils";
 
 const NewPostpaidNumberConfig = {

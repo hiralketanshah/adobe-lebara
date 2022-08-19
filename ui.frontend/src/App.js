@@ -6,14 +6,14 @@ import { useApolloClient } from "@apollo/client";
 import { Provider, useDispatch, useSelector } from "react-redux";
 import { ScaleLoader } from "react-spinners";
 import LoadingOverlay from "react-loading-overlay";
-import ScrollToTop from "@lebara/ui/src/ScrollToTop";
+import ScrollToTop from "@lebara/core/ScrollToTop";
 
-import GET_SESSION_STATUS from "@lebara/ui/src/graphql/GET_SESSION_STATUS";
-import { selectIsLoading } from "@lebara/ui/src/redux/selectors/loadingSelectors";
-import { setLoading } from "@lebara/ui/src/redux/actions/loadingActions";
-import { saveUserInfo } from "@lebara/ui/src/redux/actions/userActions";
-import { selectSocket } from "@lebara/ui/src/redux/selectors/socketSelectors";
-import TelemetryProvider from "@lebara/ui/src/TelemetryProvider";
+import GET_SESSION_STATUS from "@lebara/core/graphql/GET_SESSION_STATUS";
+import { selectIsLoading } from "@lebara/core/redux/selectors/loadingSelectors";
+import { setLoading } from "@lebara/core/redux/actions/loadingActions";
+import { saveUserInfo } from "@lebara/core/redux/actions/userActions";
+import { selectSocket } from "@lebara/core/redux/selectors/socketSelectors";
+import TelemetryProvider from "@lebara/core/TelemetryProvider";
 import colors from "./theme/colors";
 import "@fontsource/roboto/100.css";
 import "@fontsource/roboto/300.css";
@@ -21,9 +21,9 @@ import "@fontsource/roboto/400.css";
 import "@fontsource/roboto/500.css";
 import "@fontsource/roboto/700.css";
 import "@fontsource/roboto/900.css";
-import store from "@lebara/ui/src/store";
+import store from "@lebara/core/store";
 import Fonts from "./Fonts";
-import GoogleAnalytics from "@lebara/ui/src/GoogleAnalytics";
+import GoogleAnalytics from "@lebara/core/GoogleAnalytics";
 const theme = extendTheme(
   {
     // colors,

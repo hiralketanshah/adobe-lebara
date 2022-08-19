@@ -1,5 +1,5 @@
 import { MapTo } from "@adobe/aem-react-editable-components";
-import ConfirmEmailTokenRoute from "@lebara/ui/src/rotues/ConfirmEmailTokenRoute";
+import ConfirmEmailTokenRoute from "@lebara/core/rotues/ConfirmEmailTokenRoute";
 
 const ConfirmEmailTokenConfig = {
   emptyLabel: "Confirm Email Token Component",

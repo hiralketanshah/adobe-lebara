@@ -1,5 +1,5 @@
 import { MapTo } from "@adobe/aem-react-editable-components";
-import Trustpilot from "@lebara/ui/src/components/Trustpilot/Trustpilot";
+import Trustpilot from "@lebara/core/components/Trustpilot/Trustpilot";
 
 const TrustpilotConfig = {
     emptyLabel: "Trust Pilot",

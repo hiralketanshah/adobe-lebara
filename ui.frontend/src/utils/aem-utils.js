@@ -1,4 +1,4 @@
-import { globalConfigs as GC, globalConstants as C } from "@lebara/ui/src/configs/globalConfigs.js";
+import { globalConfigs as GC, globalConstants as C } from "@lebara/core/configs/globalConfigs";
 
 const textRegex = /handyvertrag|sim|prepaid|blog/gi;
 const realExternalRegex = /https|http|www/gi;

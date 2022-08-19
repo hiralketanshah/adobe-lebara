@@ -8,10 +8,10 @@ import {
   Flex,
   Text, Heading, Spacer,
 } from "@chakra-ui/react";
-import { useHistory } from "@lebara/ui/src/hooks/useHistory";
+import { useHistory } from "@lebara/core/hooks/useHistory";
 import { SideMenuProps } from "./types";
-import { Icon } from "@lebara/ui/src/components/Icon/Icon";
-import Button from "@lebara/ui/src/components/Button/Button";
+import { Icon } from "@lebara/core/components/Icon/Icon";
+import Button from "@lebara/core/components/Button/Button";
 import {Box} from "@chakra-ui/layout";
 import {IoClose} from "react-icons/all";
 import aemUtils from "../../utils/aem-utils";
