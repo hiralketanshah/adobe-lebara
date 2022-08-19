@@ -25,10 +25,10 @@ Include conf.d/variables/custom.vars
 	AllowEncodedSlashes NoDecode
 	# Add header breadcrumbs for help in troubleshooting
 	<IfModule mod_headers.c>
-		Header add X-Vhost "lebara-publish"
+		Header add X-Vhost "lebara-publish-1"
 		<LocationMatch "^/content/dam/.*\.(?i:jpe?g|gif|mov|mp4|png|svg|txt|zip|ico|webp|pdf)$">
 		   Header set Cache-Control "public, max-age=1800, immutable"
-		   Header set Surrogate-Control "public, max-age=600, immutable"
+		   Header set Surrogate-Control "public, max-age=0, immutable"
 		   Header set Age 0
 		</LocationMatch>
 		<LocationMatch "^/content/lebara/.*\.model\.json$">
