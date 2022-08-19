@@ -5,3 +5,9 @@
 #
 
 $include "./default_rules.any"
+
+/9999 {
+	/glob "/content/dam/*.{jpeg,jpg,png}"
+	/type "deny"
+}
+
