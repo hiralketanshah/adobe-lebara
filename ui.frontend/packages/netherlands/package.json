@@ -1,0 +1,13 @@
+{
+  "name": "@lebara/aem-netherlands",
+  "parser": "react-scripts/node_modules/babel-eslint",
+  "version": "1.0.0",
+  "license": "ISC",
+  "scripts": {
+    "start": "craco start",
+    "build": "craco build && clientlib --verbose"
+  },
+  "dependencies": {
+    "@lebara/core": "*"
+  }
+}

@@ -1,18 +1,11 @@
-const path = require('path')
+const path = require("path");
 const {addBeforeLoader} = require("@craco/craco");
 const {loaderByName} = require("@craco/craco");
 const {getLoaders} = require("@craco/craco");
-const libraries = [path.resolve(__dirname, "./src"), path.resolve(__dirname, "./packages/lebara-client/src"), path.resolve(__dirname, "./packages/lebara-client/packages/core/src"), ];
+const libraries = [path.resolve(__dirname, "../packages/core/src"), path.resolve(__dirname, "../packages/lebara-client/packages/core/src"), ];
 
 module.exports = {
     webpack: {
-        alias: {
-            '@lebara/core': path.resolve(__dirname, "packages/lebara-client/packages/core/src/"),
-            '@lebara/germany': path.resolve(__dirname, "packages/lebara-client/packages/germany/src/"),
-            '@lebara/france': path.resolve(__dirname, "packages/lebara-client/packages/france/src/"),
-            '@lebara/denmark': path.resolve(__dirname, "packages/lebara-client/packages/denmark/src/"),
-            '@lebara/netherlands': path.resolve(__dirname, "packages/lebara-client/packages/netherlands/src/"),
-        },
         configure: webpackConfig => {
             const scopePlugin = webpackConfig.resolve.plugins.find(
                 ({constructor}) => constructor && constructor.name === 'ModuleScopePlugin'
@@ -24,7 +17,13 @@ module.exports = {
             });
             scopePlugin.appSrcs = [...scopePlugin.appSrcs, ...libraries]
             return webpackConfig;
+        },
+        alias: {
+            '@lebara/core': path.resolve(__dirname, "../packages/lebara-client/packages/core/src"),
+            '@lebara/germany': path.resolve(__dirname, "../packages/lebara-client/packages/germany/src"),
+            '@lebara/france': path.resolve(__dirname, "../packages/lebara-client/packages/france/src"),
+            '@lebara/denmark': path.resolve(__dirname, "../packages/lebara-client/packages/denmark/src"),
+            '@lebara/netherlands': path.resolve(__dirname, "../packages/lebara-client/packages/netherlands/src"),
         }
-
     }
 }

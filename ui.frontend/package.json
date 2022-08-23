@@ -98,10 +98,15 @@
     "yup": "^0.32.9"
   },
   "scripts": {
-    "start": "craco start",
-    "build": "craco build && clientlib --verbose",
-    "test": "craco test",
-    "eject": "craco eject",
+    "@germany/start": "yarn workspace @lebara/aem-germany start",
+    "@germany/build": "yarn workspace @lebara/aem-germany build",
+    "@france/start": "yarn workspace @lebara/aem-france start",
+    "@france/build": "yarn workspace @lebara/aem-france build",
+    "@denmark/start": "yarn workspace @lebara/aem-denmark start",
+    "@denmark/build": "yarn workspace @lebara/aem-denmark build",
+    "@netherlands/start": "yarn workspace @lebara/aem-netherlands start",
+    "@netherlands/build": "yarn workspace @lebara/aem-netherlands build",
+    "build": "yarn workspace @lebara/aem-germany build && yarn workspace @lebara/aem-france build && yarn workspace @lebara/aem-denmark build && yarn workspace @lebara/aem-netherlands build",
     "sync": "aemsync -d -w ../ui.apps/src/main/content"
   },
   "eslintConfig": {
@@ -113,7 +118,7 @@
   "workspaces": {
     "packages": [
       "packages/*",
-      "packages/lebara-client/*"
+      "packages/lebara-client/packages/*"
     ],
     "nohoist": []
   },
@@ -164,6 +169,16 @@
     "webpack-cli": "^3.0.8",
     "webpack-dev-server": "3.11.1",
     "webpack-node-externals": "^1.7.2",
-    "webpack-shell-plugin": "^0.5.0"
+    "webpack-shell-plugin": "^0.5.0",
+    "@lebara/core": "file:./packages/lebara-client/packages/core/src",
+    "@lebara/germany": "file:./packages/lebara-client/packages/germany/src",
+    "@lebara/france": "file:./packages/lebara-client/packages/france/src",
+    "@lebara/denmark": "file:./packages/lebara-client/packages/denmark/src",
+    "@lebara/netherlands": "file:./packages/lebara-client/packages/netherlands/src",
+    "@lebara/aem-core": "file:./packages/lebara-client/packages/core/src",
+    "@lebara/aem-germany": "file:./packages/lebara-client/packages/germany/src",
+    "@lebara/aem-france": "file:./packages/lebara-client/packages/france/src",
+    "@lebara/aem-netherlands": "file:./packages/lebara-client/packages/netherlands/src",
+    "@lebara/aem-denmark": "file:./packages/lebara-client/packages/denmark/src"
   }
 }

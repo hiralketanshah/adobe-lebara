@@ -15,7 +15,7 @@
  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 
 const path = require('path');
-const getEntrypoints = require('./utils/entrypoints');
+const getEntrypoints = require('../core/utils/entrypoints');
 
 const BUILD_DIR = path.join(__dirname, 'build');
 const CLIENTLIB_DIR = path.join(
@@ -72,7 +72,7 @@ module.exports = {
         base: "js",
         files: [
           {
-            src: "../packages/lebara-client/packages/core/public/scripts/microsoftOmniChat.js",
+            src: "../../lebara-client/packages/core/public/scripts/microsoftOmniChat.js",
             dest: "microsoftOmniChat.js",
           },
         ],
@@ -81,7 +81,7 @@ module.exports = {
         base: "css",
         files: [
           {
-            src: "../packages/lebara-client/packages/core/public/styles/chatWidget.css",
+            src: "../../lebara-client/packages/core/public/styles/chatWidget.css",
             dest: "chatWidget.css",
           },
         ],
