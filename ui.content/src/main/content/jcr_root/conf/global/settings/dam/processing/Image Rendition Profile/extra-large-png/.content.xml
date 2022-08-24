@@ -10,5 +10,5 @@
         includeMimeTypes="image/png"
         name="extra-large-png"
         watermark="{Boolean}false"
-        wid="{Long}3000"/>
+        wid="{Long}1500"/>
 </jcr:root>
