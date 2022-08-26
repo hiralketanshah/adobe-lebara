@@ -73,6 +73,15 @@ public class PaymentMethods {
     
     @ValueMapValue
     private String mandatoryCheckBoxLabel;
+    
+    @ValueMapValue
+    private String paymentFailHeader;
+    
+    @ValueMapValue
+    private String paymentFailContent;
+    
+    @ValueMapValue
+    private String paymentFailButtonText;
 
     public String getCard() {
         return getUTFStr(card);
@@ -150,7 +159,19 @@ public class PaymentMethods {
     	return mandatoryCheckBoxLabel;
     }
 
-    private String getUTFStr(String rawString) {
+    public String getPaymentFailHeader() {
+		return paymentFailHeader;
+	}
+
+	public String getPaymentFailContent() {
+		return paymentFailContent;
+	}
+
+	public String getPaymentFailButtonText() {
+		return paymentFailButtonText;
+	}
+
+	private String getUTFStr(String rawString) {
         if (rawString != null) {
             byte[] bytes = StringUtils.getBytesUtf8(rawString);
             return StringUtils.newStringUtf8(bytes);
