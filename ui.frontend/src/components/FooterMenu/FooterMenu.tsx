@@ -105,33 +105,22 @@ const FooterMenu: React.FC<FooterMenuProps> = ({
               </Text>
               {getapp?.links?.length > 1 && (
                 <Flex>
-                  <Link href={getapp?.links[0]?.link} isExternal>
+                  {getapp?.links.map((obj, key)=>(
+                    <Link href={obj?.link} isExternal>
                     <IconButton
                       variant="unstyled"
-                      href={getapp?.links[0]?.link}
-                      aria-label="Available on the App Store"
+                      href={obj?.link}
+                      ml={key > 0 ? "10px" : "0px"}
+                      aria-label={obj?.ariaLabel!}
                       >
                       <Image
-                        src={getapp?.links[0]?.label}
+                        src={obj?.label}
                         height="46"
                         width="156"
                        />
                     </IconButton>
                   </Link>
-                  <Link href={getapp?.links[1]?.link} isExternal>
-                    <IconButton
-                      href={getapp?.links[1]?.link}
-                      variant="unstyled"
-                      ml="10px"
-                      aria-label="Get it on google Play"
-                    >
-                      <Image
-                        src={getapp?.links[1]?.label}
-                        height="46"
-                        width="156"
-                      />
-                    </IconButton>
-                  </Link>
+                  ))}
                 </Flex>
               )}
             </Box>
