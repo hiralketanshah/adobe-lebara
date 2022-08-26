@@ -21,6 +21,8 @@ const BUILD_DIR = path.join(__dirname, 'build');
 const CLIENTLIB_DIR = path.join(
   __dirname,
   '..',
+  '..',
+  '..',
   'ui.apps',
   'src',
   'main',
@@ -39,9 +41,9 @@ module.exports = {
   context: BUILD_DIR,
   clientLibRoot: CLIENTLIB_DIR,
   libs: [{
-    name: 'clientlib-react',
+    name: 'clientlib-react-DE',
     allowProxy: true,
-    categories: ['lebara.react'],
+    categories: ['lebara.react-DE'],
     serializationFormat: 'xml',
     cssProcessor: ['default:none', 'min:none'],
     jsProcessor: ['default:none', 'min:none'],

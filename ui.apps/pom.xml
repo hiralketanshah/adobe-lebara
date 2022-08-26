@@ -87,7 +87,7 @@
                         <configuration>
                             <generateJavaClasses>true</generateJavaClasses>
                             <generatedJavaClassesPrefix>org.apache.sling.scripting.sightly</generatedJavaClassesPrefix>
-                            <sourceDirectory>${project.build.sourceDirectory}</sourceDirectory>
+                            <sourceDirectory>${project.build.scriptSourceDirectory}</sourceDirectory>
                             <allowedExpressionOptions>
                                 <allowedExpressionOption>cssClassName</allowedExpressionOption>
                                 <allowedExpressionOption>decoration</allowedExpressionOption>

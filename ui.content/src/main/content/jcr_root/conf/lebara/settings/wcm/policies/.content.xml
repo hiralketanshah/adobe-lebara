@@ -340,8 +340,7 @@
                         jcr:primaryType="nt:unstructured"
                         jcr:title="Lebara SPA Page Policy"
                         sling:resourceType="wcm/core/components/policy/policy"
-                        renderAlternateLanguageLinks="true"
-                        clientlibs="[lebara.react]">
+                        renderAlternateLanguageLinks="true">
                     <jcr:content jcr:primaryType="nt:unstructured"/>
                 </policy_spa>
                 <policy_spa_journey
@@ -349,8 +348,7 @@
                     jcr:primaryType="nt:unstructured"
                     jcr:title="Lebara SPA Journey Page Policy"
                     renderAlternateLanguageLinks="true"
-                    sling:resourceType="wcm/core/components/policy/policy"
-                    clientlibs="[lebara.react]">
+                    sling:resourceType="wcm/core/components/policy/policy">
                     <jcr:content jcr:primaryType="nt:unstructured"/>
                 </policy_spa_journey>
             </page>
@@ -359,7 +357,6 @@
                         jcr:primaryType="nt:unstructured"
                         jcr:title="Lebara App Policy"
                         sling:resourceType="wcm/core/components/policy/policy"
-                        clientlibs="[lebara.react]"
                         isRoot="{Boolean}true"
                         structureDepth="0"
                 />

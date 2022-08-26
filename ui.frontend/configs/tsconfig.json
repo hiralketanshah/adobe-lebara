@@ -6,7 +6,8 @@
       "@lebara/germany" : ["./packages/lebara-client/packages/germany/src/*"],
       "@lebara/france" : ["./packages/lebara-client/packages/france/src/*"],
       "@lebara/denmark" : ["./packages/lebara-client/packages/denmark/src/*"],
-      "@lebara/netherlands" : ["./packages/lebara-client/packages/netherlands/src/*"]
+      "@lebara/netherlands" : ["./packages/lebara-client/packages/netherlands/src/*"],
+      "@lebara/aem-core" : ["./packages/core/src/*"],
     },
     "target": "es5",
     "lib": [
