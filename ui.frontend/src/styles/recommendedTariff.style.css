@@ -6,4 +6,5 @@
 }
 .tarrif-slider .slick-prev {
     left: 0px;
+    z-index: 1; 
 }
