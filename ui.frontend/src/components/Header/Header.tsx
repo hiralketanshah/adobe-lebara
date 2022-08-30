@@ -91,7 +91,7 @@ const SingleMenu = ({ menuItem, newText }: { menuItem: children, newText: any })
   }
 
   return (
-    <Menu
+    <Menu 
       isOpen={isOpenMenu}>
       <MenuButton
         onClick={() => onMenuLinkNavigate(menuItem?.url)}
@@ -114,11 +114,12 @@ const SingleMenu = ({ menuItem, newText }: { menuItem: children, newText: any })
           >
             <Text
               textTransform="capitalize"
-              fontSize={{ lg: "14px", md: "12px" }}
+              fontSize={{ lg: "16px", md: "12px" }}
               lineHeight="20px"
               align="left"
               color="white"
-              fontWeight="normal"
+              fontFamily="Roboto"
+              fontWeight="400"
             >
               {menuItem.title}
             </Text>
@@ -415,7 +416,7 @@ const Header: React.FC<HeaderProps> = ({
               </RouterLink>
             </ChakraLink>
 
-            <Flex alignItems="left" ml={{ xl: "60px", lg: "40px", md: "15px" }}  gridGap={{lg: "20px", xl: "30px"}}>
+            <Flex alignItems="left" mx={{ md: "50px" }} gridGap={{md: "30px"}}>
               {items?.map((menuItem: children) => (
                   <React.Fragment key={menuItem.title}>
                     <SingleMenu menuItem={menuItem} newText={newText} />
@@ -425,8 +426,10 @@ const Header: React.FC<HeaderProps> = ({
             <Spacer />
             <Box>
               <Button
-                  w={{lg: "100px", xl: "130px"}}
-                  fontSize={{ lg: "14px", md: "12px" }}
+                  w="auto"
+                  px="30px"
+                  fontSize={{ lg: "16px", md: "12px" }}
+                  fontFamily="Roboto"
                   onClick={() => history.push("/top-up")}
               >
                 {topupCtaText}
