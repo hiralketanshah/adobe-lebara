@@ -3,7 +3,7 @@
     jcr:primaryType="cq:Page">
     <jcr:content
         jcr:primaryType="nt:unstructured"
-        jcr:title="Image Rendition Profile"
+        jcr:title="Lebara Image Rendition Profile"
         sling:resourceType="dam/processing/profile"/>
     <extra-large/>
     <extra-large-png/>

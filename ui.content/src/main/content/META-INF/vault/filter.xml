@@ -24,5 +24,5 @@
     <filter root="/content/lebara" mode="merge"/>
     <filter root="/content/cq:tags/lebara" mode="merge"/>
     <filter root="/content/experience-fragments/lebara" mode="merge"/>
-    <filter root="/conf/global/settings/dam/processing" mode="merge"/>
+    <filter root="/conf/global/settings/dam/processing" mode="replace"/>
 </workspaceFilter>
