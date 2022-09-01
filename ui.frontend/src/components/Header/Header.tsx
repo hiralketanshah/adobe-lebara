@@ -46,7 +46,7 @@ import { BACKGROUND_OPACITY_SAERCH_BAR } from "@lebara/ui/src/utils/lebara.const
 import useLoadPaymentMethods from "@lebara/ui/src/hooks/useLoadPaymentMethods";
 import io from "socket.io-client";
 
-const SingleMenu = ({ menuItem, newText }: { menuItem: children, newText: any }) => {
+const SingleMenu = ({ menuItem, index, newText }: { menuItem: children, index : number ,newText: any }) => {
   const DEFUALT_GROUP_MENU_UPTO = 5;
   const history = useHistory();
   const timerRef = useRef<any>();
@@ -111,6 +111,7 @@ const SingleMenu = ({ menuItem, newText }: { menuItem: children, newText: any })
             pl="initial"
             onClick={() => onMenuLinkNavigate(menuItem?.url)}
             isDisabled={menuItem.active}
+            data-testid={`${index}-singlemenu-btn`}
           >
             <Text
               textTransform="capitalize"
@@ -167,6 +168,7 @@ const SingleMenu = ({ menuItem, newText }: { menuItem: children, newText: any })
                               <MenuItem
                                 isDisabled={menuProps.active}
                                 onClick={() => onMenuLinkNavigate(menuProps?.url)}
+                                data-testid={`${index}-${cgIdx}-${cIdx}-header-btn`}
                               >
                                 <Text
                                   fontSize="14px"
@@ -417,9 +419,9 @@ const Header: React.FC<HeaderProps> = ({
             </ChakraLink>
 
             <Flex alignItems="left" mx={{ md: "50px" }} gridGap={{md: "30px"}}>
-              {items?.map((menuItem: children) => (
+              {items?.map((menuItem: children, index : number) => (
                   <React.Fragment key={menuItem.title}>
-                    <SingleMenu menuItem={menuItem} newText={newText} />
+                    <SingleMenu index={index} menuItem={menuItem} newText={newText} />
                   </React.Fragment>
               ))}
             </Flex>
@@ -431,6 +433,7 @@ const Header: React.FC<HeaderProps> = ({
                   fontSize={{ lg: "16px", md: "12px" }}
                   fontFamily="Roboto"
                   onClick={() => history.push("/top-up")}
+                  data-testid="header-topup-btn"
               >
                 {topupCtaText}
               </Button>
@@ -457,6 +460,7 @@ const Header: React.FC<HeaderProps> = ({
                           }}
                           paddingLeft={{ lg: "35px!important", md: "26px!important" }}
                           colorScheme="dark"
+                          data-testid="header-search-icon"
                       />
                     </Button>
                 ) : (
@@ -478,6 +482,7 @@ const Header: React.FC<HeaderProps> = ({
                   size="md"
                   variant="ghost"
                   onClick={handleProfileClick}
+                  data-testid="header-profile-icon"
               />
               <Box pos="relative" onClick={handleCartClick}>
                 <IconButton
@@ -487,6 +492,7 @@ const Header: React.FC<HeaderProps> = ({
                     icon={<RiShoppingCartLine size={24} />}
                     aria-label="Cart"
                     variant="ghost"
+                    data-testid="header-cart-icon"
                 />
                 {cartItems.length > 0 && (
                     <Text
