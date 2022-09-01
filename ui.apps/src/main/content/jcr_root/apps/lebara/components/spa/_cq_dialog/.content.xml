@@ -154,12 +154,6 @@
                                                         value="nl-NL"/>
                                                 </items>
                                             </locale>
-                                            <languageIcon
-                                                jcr:primaryType="nt:unstructured"
-                                                sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
-                                                rootPath="/content/dam/lebara"
-                                                fieldLabel="Language Icon"
-                                                name="./languageIcon"/>
                                             <planNotEligibleErrorTitle
                                                     jcr:primaryType="nt:unstructured"
                                                     sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
@@ -920,12 +914,12 @@
                                                                 name="./attachSimModal/frmFields/ctaButtonLabel"
                                                                 value="CONTINUE"/>
                                                             <ctaLinkLabel
-                                                                jcr:primaryType="nt:unstructured"
-                                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                                                fieldDescription="Continue Browing Label"
-                                                                fieldLabel="CTA Link Label"
-                                                                name="./attachSimModal/frmFields/ctaLinkLabel"
-                                                                value="Continue Browing"/>
+							        jcr:primaryType="nt:unstructured"
+							        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+							        fieldDescription="Continue Browing Label"
+							        fieldLabel="CTA Link Label"
+							        name="./attachSimModal/frmFields/ctaLinkLabel"
+							        value="Continue Browing"/>
                                                             <ctaLink
                                                                 jcr:primaryType="nt:unstructured"
                                                                 sling:resourceType="granite/ui/components/coral/foundation/form/pathbrowser"
