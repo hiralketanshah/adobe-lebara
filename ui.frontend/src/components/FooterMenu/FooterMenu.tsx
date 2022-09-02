@@ -60,11 +60,12 @@ const FooterMenu: React.FC<FooterMenuProps> = ({
                     mt="30px"
                     color={theme?.color === "white" ? "white" : "black"}
                   >
-                    <RouterLink to={subMenuItem?.link}
+                    <Link isExternal = {isCheckExternalLink(subMenuItem?.link)}
                       style={{color: theme?.color === "white" ? "white" : "black"}}
+                      {... isCheckExternalLink(subMenuItem?.link) ? {href:subMenuItem?.link} : {as:RouterLink,to: subMenuItem?.link}}
                       >
                       {subMenuItem.label}
-                    </RouterLink>
+                    </Link>
                   </Text>
                 ))}
               </Flex>
