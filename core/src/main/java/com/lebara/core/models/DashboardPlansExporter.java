@@ -6,6 +6,7 @@ import com.lebara.core.utils.AemUtils;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.api.resource.ResourceResolver;
+import org.apache.sling.models.annotations.Default;
 import org.apache.sling.models.annotations.DefaultInjectionStrategy;
 import org.apache.sling.models.annotations.Exporter;
 import org.apache.sling.models.annotations.Model;
@@ -83,6 +84,8 @@ public class DashboardPlansExporter extends HeadingExporter {
     private String smsTabName;
     @ValueMapValue
     private String internationalMinTabName;
+    @ValueMapValue @Default(values="{0} {1} Used")
+    private String usedLabel;
 
     public String getButtonLabel() {
         return buttonLabel;
@@ -182,6 +185,10 @@ public class DashboardPlansExporter extends HeadingExporter {
 
     public String getInternationalMinTabName() {
         return internationalMinTabName;
+    }
+
+    public String getUsedLabel() {
+        return usedLabel;
     }
 
     @Override
