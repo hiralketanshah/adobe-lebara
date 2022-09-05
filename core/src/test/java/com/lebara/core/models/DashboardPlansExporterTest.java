@@ -163,7 +163,7 @@ class DashboardPlansExporterTest {
     
     @Test
     void testConsumedLabel() {
-        assertEquals("Consumed", dashboardPlansExporter.getConsumedLabel());
+        assertEquals("Consumed", dashboardPlansExporter.getUsedLabel());
     }
 
 }

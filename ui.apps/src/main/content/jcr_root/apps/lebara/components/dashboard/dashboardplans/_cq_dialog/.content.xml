@@ -156,12 +156,12 @@
                                                 value="International min"
                                                 fieldDescription="Label that will appear on International Minutes Tab e.g. International min"
                                                 name="./internationalMinTabName"/>
-                                            <consumedLabel
+                                            <usedLabel
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                                 fieldLabel="Consumption Label for Unlimited Plan"
                                                 fieldDescription="Label that will appear for showing consumption for Unlimited Plan e.g. {0} {1} Used"
-                                                name="./consumedLabel"/>
+                                                name="./usedLabel"/>
                                         </items>
                                     </column>
                                 </items>
