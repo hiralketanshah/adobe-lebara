@@ -83,6 +83,8 @@ public class DashboardPlansExporter extends HeadingExporter {
     private String smsTabName;
     @ValueMapValue
     private String internationalMinTabName;
+    @ValueMapValue
+    private String consumedLabel;
 
     public String getButtonLabel() {
         return buttonLabel;
@@ -182,6 +184,10 @@ public class DashboardPlansExporter extends HeadingExporter {
 
     public String getInternationalMinTabName() {
         return internationalMinTabName;
+    }
+
+    public String getConsumedLabel() {
+        return consumedLabel;
     }
 
     @Override
