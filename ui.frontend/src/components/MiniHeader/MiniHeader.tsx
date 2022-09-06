@@ -114,7 +114,6 @@ const MiniHeader: React.FC<MiniHeaderProps> = ({
             variant="ghost"
             colorScheme="dark"
             onClick={onOpen}
-            data-testid="miniheader-hamburger-icon"
           />
           <ChakraLink ml={{ base: "4px" }} mr={{ base: "5px" }}>
             <Link to={logoLinkURL || "/"}>
@@ -144,7 +143,6 @@ const MiniHeader: React.FC<MiniHeaderProps> = ({
                 onClick={onSearchClick}
                 padding="initial"
                 variant="unstyled"
-                data-testid="miniheader-search-button"
               >
                 <IconButton
                   icon={<BiSearch />}
@@ -155,7 +153,6 @@ const MiniHeader: React.FC<MiniHeaderProps> = ({
                   paddingRight={{ lg: "26px!important", md: "13px!important" }}
                   paddingLeft={{ lg: "56px!important", md: "26px!important" }}
                   colorScheme="dark"
-                  data-testid="miniheader-search-icon"
                 />
               </Button>
             </Box>
@@ -171,7 +168,6 @@ const MiniHeader: React.FC<MiniHeaderProps> = ({
             aria-label="Profile"
             onClick={handleProfileClick}
             variant="ghost"
-            data-testid="miniheader-profile-icon"
           />
           <Box pos="relative" onClick={handleCartClick}>
             <IconButton
@@ -182,7 +178,6 @@ const MiniHeader: React.FC<MiniHeaderProps> = ({
               icon={<RiShoppingCartLine />}
               aria-label="Cart"
               variant="ghost"
-              data-testid="miniheader-cart-icon"
             />
             {cartItems.length > 0 && (
               <Text
@@ -223,7 +218,7 @@ const MiniHeader: React.FC<MiniHeaderProps> = ({
       {isProfileDropdownOpen && isAuthenticated ? (
         <Box backgroundColor="white" width="100%" height="100%" ref={ref}>
           <Flex
-            zIndex="999999999"
+            zIndex="3"
             width="18rem"
             ml="0px"
             position="absolute"
