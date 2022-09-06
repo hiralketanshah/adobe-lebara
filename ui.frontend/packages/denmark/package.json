@@ -7,6 +7,7 @@
     "start": "craco start",
     "build": "craco build && clientlib --verbose"
   },
+  "proxy": "http://localhost:4502",
   "dependencies": {
     "@lebara/core": "*"
   }
