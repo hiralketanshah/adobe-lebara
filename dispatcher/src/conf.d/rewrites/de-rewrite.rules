@@ -482,6 +482,9 @@ RewriteRule ^/([a-z]+)/prepaid/vorteile/bestes-d-netz.html$	/$1.html [L,R=301]
 #RewriteRule ^/([a-z]+)/sim-aktivieren$ https://de-videoident-customer-onboarding.lebara.com/ [L,R=301]
 #RewriteRule ^/([a-z]+)/sim-aktivierung$ https://de-videoident-customer-onboarding.lebara.com/ [L,R=301]
 
+RewriteRule ^/([a-z]+)/confirmation$ /$1.html [L,R=301]
+RewriteRule ^/([a-z]+)/confirmation?(.*)$ /$1/mylebara/email-bestatigen.html?$2 [L,R=301]
+
 #ALL Country Rewrites
 RewriteRule ^/([a-z]+)/call-afghanistan$	/$1/minutenpreis-auslandsanrufe/afghanistan-anrufen.html [L,R=301]
 RewriteRule ^/([a-z]+)/call-albania$	/$1/minutenpreis-auslandsanrufe/albanien-anrufen.html [L,R=301]
@@ -617,7 +620,7 @@ RewriteRule ^/sitemap.xml$ /content/${CONTENT_FOLDER_NAME}/de.lebarasitemap.xml 
 RewriteRule ^/wrapper-sw.js$ /etc.clientlibs/lebara/clientlibs/clientlib-speedkit-de.js [NC,PT]
 
 # Google Merchant Center rewrite
-RewriteRule ^/google331b37d915cf40bc.html$ /content/dam/${CONTENT_FOLDER_NAME}/markets/google331b37d915cf40bc.html [NC,PT]
+RewriteRule ^/google331b37d915cf40bc.html$ /content/dam/${CONTENT_FOLDER_NAME}/markets/de/google331b37d915cf40bc.html [NC,PT]
 
 # SpeedKit rewrite
 RewriteRule ^/wrapper-sw.js$ /etc.clientlibs/lebara/clientlibs/clientlib-speedkit-de.js [NC,PT]

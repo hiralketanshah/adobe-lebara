@@ -653,7 +653,7 @@ RewriteRule ^/sitemap.xml$ /content/${CONTENT_FOLDER_NAME}/fr.lebarasitemap.xml 
 RewriteRule ^/wrapper-sw.js$ /etc.clientlibs/lebara/clientlibs/clientlib-speedkit-fr.js [NC,PT]
 
 # Google Merchant Center rewrite
-RewriteRule ^/google331b37d915cf40bc.html$ /content/dam/${CONTENT_FOLDER_NAME}/markets/google331b37d915cf40bc.html [NC,PT]
+RewriteRule ^/google331b37d915cf40bc.html$ /content/dam/${CONTENT_FOLDER_NAME}/markets/fr/google9be4f2d15d5c65d6.html [NC,PT]
 
 RewriteCond %{REQUEST_URI} !^/apps
 RewriteCond %{REQUEST_URI} !^/bin
