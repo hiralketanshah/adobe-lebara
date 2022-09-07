@@ -391,13 +391,10 @@ RewriteRule ^/([a-z]+)/topup-login?error=true$ /$1/mylebara/register.html [L,R=3
 
 #email redirects
 RewriteRule ^/([a-z]+)/activation/sim$ /$1.html [L,R=301]
-RewriteRule ^/([a-z]+)/confirmation$ /$1.html [L,R=301]
-RewriteRule ^/([a-z]+)/confirmation?(.*)$ /$1/mylebara/email-bestatigen.html?$2 [L,R=301]
-RewriteRule ^/([a-z]+)/rnesimo$ /$1.html [L,R=301]
-RewriteRule ^/([a-z]+)/rnesimo?(.*)$ /$1/parrainage/products.html?$2 [L,R=301]
-
+RewriteRule ^/([a-z]+)/confirmation$ /$1/mylebara/email-bestatigen.html [L,R=301]
+RewriteRule ^/([a-z]+)/rnesimo$ /$1/parrainage/products.html [L,R=301]
 RewriteRule ^/([a-z]+)/how-to-refer-and-earn$ /$1/parrainage.html [L,R=301]
-#RewriteRule ^/([a-z]+)/how-to-refer-and-earn?(.*)$ /$1/parrainage.html?$2 [L,R=301]
+
 #https://mobile.lebara.com/fr/fr/challenge/confirmation?token={{TOKEN}}
 #https://mobile.lebara.com/fr/fr/special-offer/sim?token={{TOKEN}}
 #https://mobile.lebara.com/fr/fr/special-offer/sim-{{PRODUCTDEEPLINK}}?token={{TOKEN}}
@@ -653,7 +650,7 @@ RewriteRule ^/sitemap.xml$ /content/${CONTENT_FOLDER_NAME}/fr.lebarasitemap.xml 
 RewriteRule ^/wrapper-sw.js$ /etc.clientlibs/lebara/clientlibs/clientlib-speedkit-fr.js [NC,PT]
 
 # Google Merchant Center rewrite
-RewriteRule ^/google331b37d915cf40bc.html$ /content/dam/${CONTENT_FOLDER_NAME}/markets/fr/google9be4f2d15d5c65d6.html [NC,PT]
+RewriteRule ^/google9be4f2d15d5c65d6.html$ /content/dam/${CONTENT_FOLDER_NAME}/markets/fr/google9be4f2d15d5c65d6.html [NC,PT]
 
 RewriteCond %{REQUEST_URI} !^/apps
 RewriteCond %{REQUEST_URI} !^/bin

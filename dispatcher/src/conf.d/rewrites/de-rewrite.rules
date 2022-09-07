@@ -482,8 +482,8 @@ RewriteRule ^/([a-z]+)/prepaid/vorteile/bestes-d-netz.html$	/$1.html [L,R=301]
 #RewriteRule ^/([a-z]+)/sim-aktivieren$ https://de-videoident-customer-onboarding.lebara.com/ [L,R=301]
 #RewriteRule ^/([a-z]+)/sim-aktivierung$ https://de-videoident-customer-onboarding.lebara.com/ [L,R=301]
 
-RewriteRule ^/([a-z]+)/confirmation$ /$1.html [L,R=301]
-RewriteRule ^/([a-z]+)/confirmation?(.*)$ /$1/mylebara/email-bestatigen.html?$2 [L,R=301]
+#email redirect
+RewriteRule ^/([a-z]+)/confirmation$ /$1/mylebara/email-bestatigen.html [L,R=301]
 
 #ALL Country Rewrites
 RewriteRule ^/([a-z]+)/call-afghanistan$	/$1/minutenpreis-auslandsanrufe/afghanistan-anrufen.html [L,R=301]
