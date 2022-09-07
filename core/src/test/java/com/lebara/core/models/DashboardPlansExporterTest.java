@@ -160,5 +160,10 @@ class DashboardPlansExporterTest {
     void testGetTitle() {
         assertEquals("My bundles", dashboardPlansExporter.getTitle());
     }
+    
+    @Test
+    void testConsumedLabel() {
+        assertEquals("Consumed", dashboardPlansExporter.getUsedLabel());
+    }
 
 }
