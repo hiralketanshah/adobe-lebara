@@ -208,6 +208,9 @@ public class AemUtils {
      * @return externalized path.
      */
     public static String getLinkWithExtension(String payloadPath, SlingHttpServletRequest request) {
+    	if(null!=request) {
+    		payloadPath = getRedirectedPath(payloadPath, request.getResourceResolver());
+    	}
         if (StringUtils.isBlank(payloadPath) || isExternalLink(payloadPath)) {
             return payloadPath;
         }
@@ -220,6 +223,22 @@ public class AemUtils {
         }
         return trimmedPath(payloadPath) + (isHtmlExtensionRequired(payloadPath) ? LebaraConstants.HTML_EXTENSION : StringUtils.EMPTY);
     }
+    
+    private static String getRedirectedPath(String payloadPath, ResourceResolver resourceResolver) {
+		if(null!=resourceResolver) {
+			Resource page = resourceResolver.getResource(payloadPath+"/jcr:content");
+			if(null!=page) {
+				String redirectPath = getStringProperty(page, "cq:redirectTarget");
+				if(null!=redirectPath)
+				{
+					return redirectPath;
+				}
+				
+			}
+		}
+		return payloadPath;
+	}
+
 
     private static String trimmedPath(String payloadPath) {
         if(StringUtils.isNotBlank(payloadPath)){
@@ -233,6 +252,7 @@ public class AemUtils {
     }
 
     public static String getLinkWithExtension(String payloadPath, ResourceResolver resourceResolver) {
+    	payloadPath = getRedirectedPath(payloadPath, resourceResolver);
         if (StringUtils.isBlank(payloadPath) || isExternalLink(payloadPath)) {
             return payloadPath;
         }
