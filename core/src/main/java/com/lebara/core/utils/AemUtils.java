@@ -225,21 +225,19 @@ public class AemUtils {
         return trimmedPath(payloadPath) + (isHtmlExtensionRequired(payloadPath) ? LebaraConstants.HTML_EXTENSION : StringUtils.EMPTY);
     }
     
-    private static String getRedirectedPath(String payloadPath, ResourceResolver resourceResolver) {
-		if(null!=resourceResolver) {
-			Resource page = resourceResolver.getResource(payloadPath+"/"+JcrConstants.JCR_CONTENT);
-			if(null!=page) {
+	private static String getRedirectedPath(String payloadPath, ResourceResolver resourceResolver) {
+		if (null != resourceResolver) {
+			Resource page = resourceResolver.getResource(payloadPath + "/" + JcrConstants.JCR_CONTENT);
+			if (null != page) {
 				String redirectPath = getStringProperty(page, LebaraConstants.PN_REDIRECT_TARGET);
-				if(null!=redirectPath)
-				{
+				if (null != redirectPath) {
 					return redirectPath;
 				}
-				
+
 			}
 		}
 		return payloadPath;
 	}
-
 
     private static String trimmedPath(String payloadPath) {
         if(StringUtils.isNotBlank(payloadPath)){
