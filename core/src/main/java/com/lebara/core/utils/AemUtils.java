@@ -229,7 +229,7 @@ public class AemUtils {
 		if(null!=resourceResolver) {
 			Resource page = resourceResolver.getResource(payloadPath+"/"+JcrConstants.JCR_CONTENT);
 			if(null!=page) {
-				String redirectPath = getStringProperty(page, "cq:redirectTarget");
+				String redirectPath = getStringProperty(page, LebaraConstants.PN_REDIRECT_TARGET);
 				if(null!=redirectPath)
 				{
 					return redirectPath;
