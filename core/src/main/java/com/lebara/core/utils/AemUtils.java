@@ -3,6 +3,7 @@ package com.lebara.core.utils;
 
 import com.day.cq.commons.inherit.HierarchyNodeInheritanceValueMap;
 import com.day.cq.commons.inherit.InheritanceValueMap;
+import com.day.cq.commons.jcr.JcrConstants;
 import com.day.cq.commons.mail.MailTemplate;
 import com.day.cq.i18n.I18n;
 import com.day.cq.mailer.MailingException;
@@ -226,7 +227,7 @@ public class AemUtils {
     
     private static String getRedirectedPath(String payloadPath, ResourceResolver resourceResolver) {
 		if(null!=resourceResolver) {
-			Resource page = resourceResolver.getResource(payloadPath+"/jcr:content");
+			Resource page = resourceResolver.getResource(payloadPath+"/"+JcrConstants.JCR_CONTENT);
 			if(null!=page) {
 				String redirectPath = getStringProperty(page, "cq:redirectTarget");
 				if(null!=redirectPath)
