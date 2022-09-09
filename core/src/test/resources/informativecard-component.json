@@ -1,0 +1,16 @@
+{
+  "jcr:primaryType": "nt:unstructured",
+  "subTitle": "+3120-8945548",
+  "description": "Available on working days from 9 a.m. - 5 p.m. And on Saturday from 10 a.m. - 4 p.m.",
+  "fileReference": "/content/dam/lebara/global/BlogBanner.png",
+  "imageAlign": "center",
+  "jcr:created": "Thu Sep 08 2022 22:20:42 GMT+0530",
+  "alt": "Alt Text here",
+  "title": "Questions about ordering?",
+  "width": "600px",
+  "boxBgColor": "#0074D9",
+  "linkURL": "/content/lebara/fr/en/3300151",
+  "jcr:lastModified": "Fri Sep 09 2022 10:46:20 GMT+0530",
+  "sling:resourceType": "lebara/components/informativecard",
+  "textIsRich": "true"
+}
