@@ -1,19 +1,16 @@
 package com.lebara.core.models;
 
-import javax.inject.Inject;
 import javax.inject.Named;
 
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.models.annotations.DefaultInjectionStrategy;
 import org.apache.sling.models.annotations.Exporter;
 import org.apache.sling.models.annotations.Model;
-import org.apache.sling.models.annotations.Source;
 import org.apache.sling.models.annotations.injectorspecific.SlingObject;
 import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
 
 import com.adobe.cq.export.json.ComponentExporter;
 import com.adobe.cq.export.json.ExporterConstants;
-import com.day.cq.wcm.api.designer.Style;
 import com.lebara.core.utils.AemUtils;
 
 @Model(adaptables = SlingHttpServletRequest.class, adapters = { InformativeCardExporter.class,
@@ -25,10 +22,6 @@ public class InformativeCardExporter implements ComponentExporter {
      * The resource type.
      */
     protected static final String RESOURCE_TYPE = "lebara/components/informativecard";
-
-    @Inject
-    @Source("script-bindings")
-    private Style currentStyle;
 
     @SlingObject
     private SlingHttpServletRequest request;
