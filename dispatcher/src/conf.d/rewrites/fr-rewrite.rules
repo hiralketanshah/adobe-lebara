@@ -391,11 +391,12 @@ RewriteRule ^/([a-z]+)/topup-login?error=true$ /$1/mylebara/register.html [L,R=3
 
 #email redirects
 RewriteRule ^/([a-z]+)/activation/sim$ /$1.html [L,R=301]
-RewriteRule ^/([a-z]+)/confirmation$ /$1/mylebara/email-bestatigen.html [L,R=301]
+RewriteRule ^/([a-z]+)/confirmation$ /$1/mylebara/email-verification.html [L,R=301]
+RewriteRule ^/([a-z]+)/challenge/confirmation$ /$1/mylebara/manage-sim.html [L,R=301]
 RewriteRule ^/([a-z]+)/rnesimo$ /$1/parrainage/products.html [L,R=301]
 RewriteRule ^/([a-z]+)/how-to-refer-and-earn$ /$1/parrainage.html [L,R=301]
 
-#https://mobile.lebara.com/fr/fr/challenge/confirmation?token={{TOKEN}}
+
 #https://mobile.lebara.com/fr/fr/special-offer/sim?token={{TOKEN}}
 #https://mobile.lebara.com/fr/fr/special-offer/sim-{{PRODUCTDEEPLINK}}?token={{TOKEN}}
 
