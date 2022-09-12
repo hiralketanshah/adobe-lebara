@@ -50,6 +50,13 @@
                                                 min="{Long}1"
                                                 value="{Long}1"
                                                 name="./mobileReviewCount"/>
+                                            <link
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                                fieldDescription="Link to Trust Pilot Ratings. example : https://nl.trustpilot.com/review/mobile.lebara.com/nl/nl"
+                                                rootPath="/content/lebara"
+                                                fieldLabel="Trust Pilot Bar Link"
+                                                name="./trustPilotBarLink"/>
                                         </items>
                                     </column>
                                 </items>
