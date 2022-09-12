@@ -84,7 +84,7 @@ public class InformativeCardExporter implements ComponentExporter {
     }
 
     public String getMoreInfo() {
-        return moreInfo;
+        return AemUtils.updateShortenLinksInRichText(moreInfo, request);
     }
 
     public String getExportedType() {

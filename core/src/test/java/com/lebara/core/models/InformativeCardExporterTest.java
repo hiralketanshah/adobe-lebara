@@ -45,12 +45,11 @@ class InformativeCardExporterTest {
     void testGetWidth() {
         assertEquals("600px", informativeCardExporter.getWidth());
     }
-    
+
     @Test
     void testGetBoxBgColor() {
         assertEquals("#0074D9", informativeCardExporter.getBoxBgColor());
     }
-
 
     @Test
     void testGetHeading() {
