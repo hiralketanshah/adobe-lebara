@@ -1,0 +1,8 @@
+{
+  "jcr:primaryType": "nt:unstructured",
+  "title": "Our Customers Say",
+  "desktopReviewCount" : 4,
+  "mobileReviewCount" : 3,
+  "trustPilotBarLink" : "/content/lebara/fr/en/home",
+  "sling:resourceType": "lebara/components/trustpilot"
+}
