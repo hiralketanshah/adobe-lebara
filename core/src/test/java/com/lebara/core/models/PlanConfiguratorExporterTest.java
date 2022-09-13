@@ -157,7 +157,7 @@ class PlanConfiguratorExporterTest {
 
     @Test
     void testGetExportedType() {
-        assertEquals("6 Months 50% Off", planConfiguratorExporter.getPromotionalLabel());
+        assertEquals(PlanConfiguratorExporter.RESOURCE_TYPE, planConfiguratorExporter.getExportedType());
     }
 
 }
