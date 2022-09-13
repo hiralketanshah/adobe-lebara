@@ -2,7 +2,7 @@ const path = require("path");
 const {addBeforeLoader} = require("@craco/craco");
 const {loaderByName} = require("@craco/craco");
 const {getLoaders} = require("@craco/craco");
-const libraries = [path.resolve(__dirname, "../packages/core/src"), path.resolve(__dirname, "../packages/lebara-client/packages/core/src"), ];
+const libraries = [path.resolve(__dirname, "../packages/core/src"), path.resolve(__dirname, "../packages/lebara-client/packages/core/src"), path.resolve(__dirname, "../packages/lebara-client/packages/netherlands/src"), path.resolve(__dirname, "../packages/lebara-client/packages/germany/src"), path.resolve(__dirname, "../packages/lebara-client/packages/france/src"), ];
 
 module.exports = {
     webpack: {
