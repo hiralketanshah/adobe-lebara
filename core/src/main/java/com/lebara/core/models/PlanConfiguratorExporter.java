@@ -19,7 +19,7 @@ public class PlanConfiguratorExporter implements ComponentExporter {
     /**
      * The resource type.
      */
-    protected static final String RESOURCE_TYPE = "lebara/components/addon";
+    protected static final String RESOURCE_TYPE = "lebara/components/planconfigurator";
 
     @SlingObject
     private SlingHttpServletRequest slingRequest;

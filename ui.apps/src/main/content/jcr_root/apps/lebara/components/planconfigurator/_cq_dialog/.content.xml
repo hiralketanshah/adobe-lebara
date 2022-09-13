@@ -189,9 +189,9 @@
                                 jcr:primaryType="nt:unstructured"
                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                 fieldLabel="Twelve Months Plan Description"
-								fieldDescription="Example : Be flexible & save 2€ monthly"
+								fieldDescription="Example : Be flexible &amp; save 2€ monthly"
                                 name="./twelveMonthDescription"
-                                value="Be flexible & save 2€ monthly"/>
+                                value="Be flexible &amp; save 2€ monthly"/>
                         </items>
                     </duration>
                     <bundle
@@ -316,7 +316,7 @@
                     </bundle>
                     <callingandtexting
                         jcr:primaryType="nt:unstructured"
-                        jcr:title="Abroad Minutes"
+                        jcr:title="Calling &amp; Texting"
                         sling:resourceType="granite/ui/components/coral/foundation/container">
                         <items jcr:primaryType="nt:unstructured">
                             <callingandtextinglabel
@@ -324,19 +324,19 @@
                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                 fieldLabel="Calling And Texting Label"
                                 name="./callingAndtextingLabel"
-                                value="Calling & Texting"/>
+                                value="Calling &amp; Texting"/>
                             <callingtextingpopupheading
                                 jcr:primaryType="nt:unstructured"
                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                fieldLabel="Calling & Texting Info Popup Heading"
-								fieldDescription="Heading for Calling And Texting Info Popup Example : Calling & Texting"
+                                fieldLabel="Calling &amp; Texting Info Popup Heading"
+								fieldDescription="Heading for Calling And Texting Info Popup Example : Calling &amp; Texting"
                                 name="./callingtextingPopupHeading"
-                                value="Calling & Texting"/>
+                                value="Calling &amp; Texting"/>
                             <callingtextingpopupinfo
                                 jcr:primaryType="nt:unstructured"
                                 sling:resourceType="cq/gui/components/authoring/dialog/richtext"
-                                fieldLabel="Calling & Texting Info"
-								fieldDescription="Description for Calling & Texting Info Popup"
+                                fieldLabel="Calling &amp; Texting Info"
+								fieldDescription="Description for Calling &amp; Texting Info Popup"
                                 name="./callingtextingPopupInfo"
                                 useFixedInlineToolbar="{Boolean}true">
                                 <rtePlugins jcr:primaryType="nt:unstructured">
@@ -435,7 +435,7 @@
                                 jcr:primaryType="nt:unstructured"
                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                 fieldLabel="Unlimited Mins/SMS Text"
-                                fieldDescription="Label to show Unlimited Calling & Texting Plan. example : Unlimited min/text"
+                                fieldDescription="Label to show Unlimited Calling &amp; Texting Plan. example : Unlimited min/text"
                                 name="./unlimitedMinsSmsText"
                                 value="Unlimited min/text"/>
                         </items>
@@ -680,9 +680,9 @@
                                 jcr:primaryType="nt:unstructured"
                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                 fieldLabel="Unlimited Calls/SMS Text"
-                                fieldDescription="Label to show Unlimited International Calling Plan. example : Unlimited Calling & Texting"
+                                fieldDescription="Label to show Unlimited International Calling Plan. example : Unlimited Calling &amp; Texting"
                                 name="./unlimitedCallsSmsText"
-                                value="Unlimited Calling & Texting"/>
+                                value="Unlimited Calling &amp; Texting"/>
 							<unlimitedcallsmsdescription
                                 jcr:primaryType="nt:unstructured"
                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
