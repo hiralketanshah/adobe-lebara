@@ -36,11 +36,6 @@ class TrustPilotExporterTest {
     }
 
     @Test
-    void testGetMobileReviewCount() {
-        assertEquals(3, trustPilotExporter.getMobileReviewCount());
-    }
-
-    @Test
     void testGetTrustPilotBarLink() {
         assertEquals("/en/home.html", trustPilotExporter.getTrustPilotBarLink());
     }

@@ -24,6 +24,7 @@ import "../aemConfigs/OrderFailedRouteAemConfig";
 import "../aemConfigs/UspAemConfig.js";
 import "../aemConfigs/SimPortInAemConfig";
 import "../aemConfigs/TrustPilotAemConfig";
+import "../aemConfigs/TrustPilotRatingAemConfig.js";
 import "../aemConfigs/CallPricesAemConfig.js";
 import "../aemConfigs/TrustedShopAemConfig.js";
 import "../aemConfigs/PersonalDetailsFormAemConfig.js";

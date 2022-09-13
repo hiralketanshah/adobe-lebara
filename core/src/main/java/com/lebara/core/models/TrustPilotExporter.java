@@ -31,9 +31,6 @@ public class TrustPilotExporter implements ComponentExporter {
     private int desktopReviewCount;
 
     @ValueMapValue
-    private int mobileReviewCount;
-
-    @ValueMapValue
     private String trustPilotBarLink;
 
     public String getTitle() {
@@ -42,10 +39,6 @@ public class TrustPilotExporter implements ComponentExporter {
 
     public int getDesktopReviewCount() {
         return desktopReviewCount;
-    }
-
-    public int getMobileReviewCount() {
-        return mobileReviewCount;
     }
 
     public String getTrustPilotBarLink() {

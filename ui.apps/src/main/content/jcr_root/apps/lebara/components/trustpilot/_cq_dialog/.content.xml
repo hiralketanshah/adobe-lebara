@@ -42,14 +42,6 @@
                                                 min="{Long}2"
                                                 value="{Long}2"
                                                 name="./desktopReviewCount"/>
-                                            <mobilereviewcount
-                                                jcr:primaryType="nt:unstructured"
-                                                sling:resourceType="granite/ui/components/coral/foundation/form/numberfield"
-                                                fieldLabel="Number of Reviews to Show - Mobile"
-                                                fieldDescription="Total Number of reviews that will be displayed in Mobile View"
-                                                min="{Long}1"
-                                                value="{Long}1"
-                                                name="./mobileReviewCount"/>
                                             <link
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
