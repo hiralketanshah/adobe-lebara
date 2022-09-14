@@ -1,0 +1,13 @@
+{
+"jcr:primaryType": "nt:unstructured",
+"title": "Sim Only 24 Months",
+"buttonLabel": "Order Now",
+"editLabel": "Edit",
+"businessSubscriptionLabel": "Business Subscription",
+"unlimitedCallingTextingLabel": "Unlimited calling and texting",
+"paymentOptionLabel": "The first 6 months",
+"paymentOptionSublabel": "After per month",
+"activationFeeLabel": "Activation Fee",
+"discountLabel": "Discount",
+"sling:resourceType": "lebara/components/purchasesummary"
+}
