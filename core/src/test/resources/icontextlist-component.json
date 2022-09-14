@@ -1,0 +1,9 @@
+{
+	"icontextlist": {
+		"id": "0",
+		"icon": "/content/dam/lebara/netherlands/free-icon.png",
+		"text": "Free number porting"
+	},
+
+	"sling:resourceType": "lebara/components/icontextlist"
+}
