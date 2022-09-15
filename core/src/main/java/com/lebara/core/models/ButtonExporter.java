@@ -39,10 +39,6 @@ public class ButtonExporter implements Button{
 	
 	@ValueMapValue
 	private String buttonStyle;
-
-	/*
-	 * @ValueMapValue private boolean colorsEnabled;
-	 */
 	
 	@ValueMapValue
 	private String buttonBackgroundColor;
