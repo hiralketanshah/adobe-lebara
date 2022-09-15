@@ -17,7 +17,7 @@ public class IconTextBean {
     private ResourceResolver resourceResolver;
 	
 	@ValueMapValue
-    private String id;
+    private int id;
 	
 	@ValueMapValue
     private String icon;
@@ -25,7 +25,7 @@ public class IconTextBean {
     @ValueMapValue
     private String text;
     
-	public String getId() {
+	public int getId() {
 		return id;
 	}
 

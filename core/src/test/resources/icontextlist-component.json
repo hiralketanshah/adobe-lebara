@@ -1,9 +1,13 @@
 {
-	"icontextlist": {
-		"id": "0",
-		"icon": "/content/dam/lebara/netherlands/free-icon.png",
-		"text": "Free number porting"
-	},
-
-	"sling:resourceType": "lebara/components/icontextlist"
+	"jcr:primaryType": "nt:unstructured",
+	"sling:resourceType": "lebara/components/icontextlist",
+	"listData": {
+		"jcr:primaryType": "nt:unstructured",
+		"item0": {
+			"jcr:primaryType": "nt:unstructured",
+			"id": "0",
+			"icon": "/content/dam/lebara/netherlands/free-icon.png",
+			"text": "Free number porting"
+		}
+	}
 }

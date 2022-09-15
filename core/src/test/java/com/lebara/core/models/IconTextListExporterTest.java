@@ -7,11 +7,10 @@ import java.util.List;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
+import org.junit.jupiter.api.TestInstance.Lifecycle;
 import org.junit.jupiter.api.extension.ExtendWith;
 
 import com.lebara.core.models.beans.IconTextBean;
-
-import org.junit.jupiter.api.TestInstance.Lifecycle;
 
 import io.wcm.testing.mock.aem.junit5.AemContext;
 import io.wcm.testing.mock.aem.junit5.AemContextExtension;
@@ -28,6 +27,15 @@ public class IconTextListExporterTest {
         aemContext.currentResource("/icontextlist");
         iconTextListExporter = aemContext.request().adaptTo(IconTextListExporter.class);
     }
+	
+	@Test
+	void testGetListData() {
+		List<IconTextBean> icontext = iconTextListExporter.getListData();
+		
+		assertEquals(0, icontext.get(0).getId());
+		assertEquals("/content/dam/lebara/netherlands/free-icon.png", icontext.get(0).getIcon());
+		assertEquals("Free number porting", icontext.get(0).getText());
+	}
 	
 	@Test
     void testGetExportedType() {
