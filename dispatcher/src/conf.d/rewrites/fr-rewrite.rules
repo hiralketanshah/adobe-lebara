@@ -7,6 +7,9 @@
 
 Include conf.d/rewrites/default_rewrite.rules
 
+#new site rewrites
+RewriteRule ^/conditions-generales$ /fr/mentions-legales.html [L,R=301]
+
 # rewrite for root redirect
 RewriteRule ^/?$ /fr/home.html [L,R=301,NE]
 
@@ -80,6 +83,7 @@ RewriteRule ^/([a-z]+)/national-plans/unlimited-bundle-2499/p/330112$ /$1/forfai
 RewriteRule ^/([a-z]+)/national-plans/unlimited-bundle-499/p/330118$ /$1/forfait-mensuel.html [L,R=301]
 RewriteRule ^/([a-z]+)/national-plans/unlimited-bundle-999/p/330117$ /$1/forfait-mensuel.html [L,R=301]
 RewriteRule ^/([a-z]+)/p/3300141$ /$1/forfait-mensuel/3300141.html [L,R=301]
+RewriteRule ^/([a-z]+)/forfait-mobile-80go$ /$1/forfait-mensuel/3300150.html [L,R=301]
 
 #parrainage redirects
 RewriteRule ^/([a-z]+)/refer-and-earn$ /$1/parrainage.html [L,R=301]
@@ -229,7 +233,7 @@ RewriteRule ^/([a-z]+)/j_spring_security_check$ /$1.html [L,R=301]
 RewriteRule ^/([a-z]+)/migration/sim/verify-rio-code$ /$1.html [L,R=301]
 RewriteRule ^/([a-z]+)/my-mobile/change-email$ /$1.html [L,R=301]
 RewriteRule ^/([a-z]+)/my-mobile/change-password$ /$1.html [L,R=301]
-RewriteRule ^/([a-z]+)/my-mobile/dashboard$ /$1.html [L,R=301]
+RewriteRule ^/([a-z]+)/my-mobile/dashboard$ /$1/mylebara/register.html [L,R=301]
 RewriteRule ^/([a-z]+)/my-mobile/payment$ /$1.html [L,R=301]
 RewriteRule ^/([a-z]+)/my-mobile/payment/card$ /$1.html [L,R=301]
 RewriteRule ^/([a-z]+)/my-mobile/payment/vpv/payment-button$ /$1.html [L,R=301]
@@ -390,7 +394,7 @@ RewriteRule ^/([a-z]+)/topup-login/validateregister$ /$1/mylebara/register.html 
 RewriteRule ^/([a-z]+)/topup-login?error=true$ /$1/mylebara/register.html [L,R=301]
 
 #email redirects
-RewriteRule ^/([a-z]+)/activation/sim$ /$1.html [L,R=301]
+RewriteRule ^/([a-z]+)/activation/sim$ /$1/enregistrement.html [L,R=301]
 RewriteRule ^/([a-z]+)/confirmation$ /$1/mylebara/email-verification.html [L,R=301]
 RewriteRule ^/([a-z]+)/challenge/confirmation$ /$1/mylebara/manage-sim.html [L,R=301]
 RewriteRule ^/([a-z]+)/rnesimo$ /$1/parrainage/products.html [L,R=301]
