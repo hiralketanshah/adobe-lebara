@@ -7,11 +7,11 @@
 
 Include conf.d/rewrites/default_rewrite.rules
 
-#new site rewrites
-RewriteRule ^/conditions-generales$ /fr/mentions-legales.html [L,R=301]
-
 # rewrite for root redirect
 RewriteRule ^/?$ /fr/home.html [L,R=301,NE]
+
+#new site rewrites
+RewriteRule ^/conditions-generales$ /fr/mentions-legales.html [L,R=301]
 
 # rewrite for removing trailing slash
 RewriteRule ^/(.*)/$ $1 [L,R=301,NE]
