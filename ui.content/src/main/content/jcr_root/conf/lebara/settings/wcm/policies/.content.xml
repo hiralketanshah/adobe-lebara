@@ -348,7 +348,7 @@
                             jcr:primaryType="nt:unstructured">
                             <cq:styles jcr:primaryType="nt:unstructured">
                                 <item0
-                                    cq:styleClasses="blue-bg-color"
+                                    cq:styleClasses="page-bg-color-blue"
                                     cq:styleId="1663162527132"
                                     cq:styleLabel="Blue"
                                     jcr:primaryType="nt:unstructured"/>
