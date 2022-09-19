@@ -31,6 +31,13 @@
                                 name="./mostPopularLabel"
 								fieldDescription="Label to display Most Popular label for plan. Example : Most Popular"
                                 value="Most Popular"/>
+                            <mostpopularbundleid
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldLabel="Most Popular Bundle ID"
+                                name="./mostPopularBundleId"
+								fieldDescription="ID of the Bundle/Offer to show as Most Popular Bundle. Example : 319902"
+                                value="319902"/>
 							<infopopupcloselabel
                                 jcr:primaryType="nt:unstructured"
                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
@@ -178,19 +185,19 @@
 								fieldDescription="Example : Without Fixed Term"
                                 name="./oneMonthDescription"
                                 value="Without Fixed Term"/>
-                            <twelvemonthtitle
+                            <twentyfourmonthstitle
                                 jcr:primaryType="nt:unstructured"
                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                fieldLabel="Twelve Months Plan Title"
-								fieldDescription="Example : 12 Months"
-                                name="./twelveMonthTitle"
-                                value="12 Months"/>
-							<twelvemonthdescription
+                                fieldLabel="Twenty Four Months Plan Title"
+								fieldDescription="Example : 24 Months"
+                                name="./twentyFourMonthsTitle"
+                                value="24 Months"/>
+							<twentyfourmonthsdescription
                                 jcr:primaryType="nt:unstructured"
                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                fieldLabel="Twelve Months Plan Description"
+                                fieldLabel="Twenty Four Plan Description"
 								fieldDescription="Example : Be flexible &amp; save 2€ monthly"
-                                name="./twelveMonthDescription"
+                                name="./twentyFourMonthsDescription"
                                 value="Be flexible &amp; save 2€ monthly"/>
                         </items>
                     </duration>

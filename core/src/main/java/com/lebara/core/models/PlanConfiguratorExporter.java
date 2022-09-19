@@ -28,6 +28,8 @@ public class PlanConfiguratorExporter implements ComponentExporter {
     @ValueMapValue
     private String mostPopularLabel;
     @ValueMapValue
+    private String mostPopularBundleId;
+    @ValueMapValue
     private String infoPopupCloseLabel;
     @ValueMapValue
     private String extraOptionLabel;
@@ -42,9 +44,9 @@ public class PlanConfiguratorExporter implements ComponentExporter {
     @ValueMapValue
     private String oneMonthDescription;
     @ValueMapValue
-    private String twelveMonthTitle;
+    private String twentyFourMonthsTitle;
     @ValueMapValue
-    private String twelveMonthDescription;
+    private String twentyFourMonthsDescription;
     @ValueMapValue
     private String bundleLabel;
     @ValueMapValue
@@ -84,6 +86,10 @@ public class PlanConfiguratorExporter implements ComponentExporter {
         return mostPopularLabel;
     }
 
+    public String getMostPopularBundleId() {
+        return mostPopularBundleId;
+    }
+
     public String getInfoPopupCloseLabel() {
         return infoPopupCloseLabel;
     }
@@ -112,12 +118,12 @@ public class PlanConfiguratorExporter implements ComponentExporter {
         return oneMonthDescription;
     }
 
-    public String getTwelveMonthTitle() {
-        return twelveMonthTitle;
+    public String getTwentyFourMonthsTitle() {
+        return twentyFourMonthsTitle;
     }
 
-    public String getTwelveMonthDescription() {
-        return AemUtils.updateShortenLinksInRichText(twelveMonthDescription, slingRequest);
+    public String getTwentyFourMonthsDescription() {
+        return AemUtils.updateShortenLinksInRichText(twentyFourMonthsDescription, slingRequest);
     }
 
     public String getBundleLabel() {

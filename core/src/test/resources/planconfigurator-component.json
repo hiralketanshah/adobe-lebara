@@ -14,7 +14,7 @@
   "unlimitedCallsSmsDescription": "45 Countries",
   "bundleLabel": "Bundle",
   "durationLabel": "Duration",
-  "twelveMonthTitle": "12 Months",
+  "twentyFourMonthsTitle": "12 Months",
   "internationalCallingLabel": "International Calling",
   "speedLabel": "Speed",
   "unlimitedCallsSmsText": "Unlimited Calling & Texting",
@@ -25,6 +25,7 @@
   "callingAndtextingLabel": "Calling & Texting",
   "callingtextingPopupInfo": "Test Content",
   "speedPopupInfo": "Test Content",
-  "twelveMonthDescription": "Be flexible & save 2€ monthly",
-  "callingtextingPopupHeading": "Calling & Texting"
+  "twentyFourMonthsDescription": "Be flexible & save 2€ monthly",
+  "callingtextingPopupHeading": "Calling & Texting",
+  "mostPopularBundleId": "bundle1"
 }

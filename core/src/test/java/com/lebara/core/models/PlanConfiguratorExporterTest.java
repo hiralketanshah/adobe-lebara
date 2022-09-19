@@ -34,6 +34,11 @@ class PlanConfiguratorExporterTest {
     void testGetMostPopularLabel() {
         assertEquals("Most Popular", planConfiguratorExporter.getMostPopularLabel());
     }
+    
+    @Test
+    void testGetMostPopularBundleId() {
+        assertEquals("bundle1", planConfiguratorExporter.getMostPopularBundleId());
+    }
 
     @Test
     void testGetInfoPopupCloseLabel() {
@@ -71,13 +76,13 @@ class PlanConfiguratorExporterTest {
     }
 
     @Test
-    void testGetTwelveMonthTitle() {
-        assertEquals("12 Months", planConfiguratorExporter.getTwelveMonthTitle());
+    void testGetTwentyFourMonthsTitle() {
+        assertEquals("12 Months", planConfiguratorExporter.getTwentyFourMonthsTitle());
     }
 
     @Test
-    void testGetTwelveMonthDescription() {
-        assertEquals("Be flexible & save 2€ monthly", planConfiguratorExporter.getTwelveMonthDescription());
+    void testGetTwentyFourMonthsDescription() {
+        assertEquals("Be flexible & save 2€ monthly", planConfiguratorExporter.getTwentyFourMonthsDescription());
     }
 
     @Test
