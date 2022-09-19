@@ -64,6 +64,9 @@ public class MyBalanceCardExporter implements ComponentExporter {
 
     @ValueMapValue
     private String autoTopupButtonLabel;
+    
+    @ValueMapValue
+    private String notActiveAutoTopupButtonLabel;
 
     @ValueMapValue
     private String saveAutoTopupButtonLabel;
@@ -136,8 +139,12 @@ public class MyBalanceCardExporter implements ComponentExporter {
     public String getAutoTopupButtonLabel() {
         return autoTopupButtonLabel;
     }
+    
+    public String getNotActiveAutoTopupButtonLabel() {
+		return notActiveAutoTopupButtonLabel;
+	}
 
-    public String getSaveAutoTopupButtonLabel() {
+	public String getSaveAutoTopupButtonLabel() {
         return saveAutoTopupButtonLabel;
     }
 
