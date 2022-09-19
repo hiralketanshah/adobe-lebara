@@ -34,7 +34,8 @@ export const withRoute = (WrappedComponent, extension) => {
     render() {
       const PROJECT_URL_ROOT = "/content/lebara/de";
 	  const PROJECT_URL_ROOT_FR = "/content/lebara/fr";
-      let routePath = this.props.cqPath;
+      let routePath = (/\%/).test(this.props.cqPath) ? decodeURIComponent(this.props.cqPath) : this.props.cqPath;
+      
       document.title = this.props.pageTitle;
       if (!routePath) {
         return <WrappedComponent {...this.props} />;
