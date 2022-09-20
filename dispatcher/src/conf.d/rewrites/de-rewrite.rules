@@ -10,6 +10,7 @@ Include conf.d/rewrites/default_rewrite.rules
 #new site rewrites
 RewriteRule ^/AGBneu$ /de/AGBneu.html [L,R=302]
 RewriteRule ^/aktivieren$ https://de-videoident-customer-onboarding.lebara.com/ [L,R=301]
+RewriteRule ^/aktivierung$ https://de-videoident-customer-onboarding.lebara.com/ [L,R=301]
 RewriteRule ^/shopident$ /de/partner/shopsuche.html [L,R=301]
 RewriteRule ^/online-aufladen$ /de/prepaid/guthaben-aufladen.html [L,R=301]
 RewriteRule ^/SIMneu$ /de/neue_sim_karte.html [L,R=302]
@@ -480,7 +481,7 @@ RewriteRule ^/([a-z]+)/prepaid/vorteile/bestes-d-netz.html$	/$1.html [L,R=301]
 #RewriteRule ^/pl/sim-aktivierung/erfolg$	/pl/vertrag/simonly-activation.html [L,R=301]
 #RewriteRule ^/ro/sim-aktivierung/erfolg$	/ro/vertrag/simonly-activation.html [L,R=301]
 #RewriteRule ^/([a-z]+)/sim-aktivieren$ https://de-videoident-customer-onboarding.lebara.com/ [L,R=301]
-#RewriteRule ^/([a-z]+)/sim-aktivierung$ https://de-videoident-customer-onboarding.lebara.com/ [L,R=301]
+RewriteRule ^/([a-z]+)/sim-aktivierung.html$	https://de-videoident-customer-onboarding.lebara.com/ [L,R=301]
 
 #email redirect
 RewriteRule ^/([a-z]+)/confirmation$ /$1/mylebara/email-bestatigen.html [L,R=301]
