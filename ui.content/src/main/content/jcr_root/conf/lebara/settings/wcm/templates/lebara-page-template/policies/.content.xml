@@ -20,9 +20,29 @@
                             jcr:primaryType="nt:unstructured"
                             sling:resourceType="wcm/core/components/policies/mapping"/>
                         <embed
-                                cq:policy="lebara/components/embed/policy_1639144570135"
-                                jcr:primaryType="nt:unstructured"
-                                sling:resourceType="wcm/core/components/policies/mapping"/>
+							cq:policy="lebara/components/embed/policy_1639144570135"
+							jcr:primaryType="nt:unstructured"
+							sling:resourceType="wcm/core/components/policies/mapping"/>
+						<planconfigurator
+                            cq:policy="lebara/components/planconfigurator/policy_1663592440963"
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="wcm/core/components/policies/mapping"/>
+                        <informativecard
+                            cq:policy="lebara/components/informativecard/policy_1663592440963"
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="wcm/core/components/policies/mapping"/>
+                        <icontextlist
+                            cq:policy="lebara/components/icontextlist/policy_1663592440963"
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="wcm/core/components/policies/mapping"/>
+                        <purchasesummary
+                            cq:policy="lebara/components/purchasesummary/policy_1663592440963"
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="wcm/core/components/policies/mapping"/>
+                        <trustpilot
+                            cq:policy="lebara/components/trustpilot/policy_1663592440963"
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="wcm/core/components/policies/mapping"/>
                     </components>
                 </lebara>
             </responsivegrid>
