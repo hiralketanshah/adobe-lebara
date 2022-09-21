@@ -47,6 +47,12 @@
                                                 fieldLabel="Enter Script for Speedkit or other third party sources"
                                                 fieldDescription="Enter Script"
                                                 name="./scriptVal"/>
+											<noScriptVal
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textarea"
+                                                fieldDescription="Enter noScript"
+                                                fieldLabel="Enter noScript that enables GTM as an image"
+                                                name="./noScriptVal"/>
                                         </items>
                                     </pageNav>
                                 </items>
