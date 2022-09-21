@@ -70,6 +70,11 @@ public class PurchaseSummaryExporterTest {
     }
     
     @Test
+    void testGetAppliedStyles() {
+        assertEquals("", purchaseSummaryExporter.getAppliedStyles());
+    }
+    
+    @Test
     void testGetExportedType() {
         assertEquals(PurchaseSummaryExporter.RESOURCE_TYPE, purchaseSummaryExporter.getExportedType());
     }
