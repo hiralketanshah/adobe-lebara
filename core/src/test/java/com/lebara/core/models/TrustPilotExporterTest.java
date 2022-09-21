@@ -39,6 +39,11 @@ class TrustPilotExporterTest {
     void testGetTrustPilotBarLink() {
         assertEquals("/en/home.html", trustPilotExporter.getTrustPilotBarLink());
     }
+    
+    @Test
+    void testGetAppliedStyles() {
+        assertEquals("", trustPilotExporter.getAppliedStyles());
+    }
 
     @Test
     void testGetExportedType() {

@@ -1,6 +1,9 @@
 package com.lebara.core.models;
 
+import java.util.Optional;
+
 import org.apache.sling.api.SlingHttpServletRequest;
+import org.apache.sling.api.resource.Resource;
 import org.apache.sling.models.annotations.DefaultInjectionStrategy;
 import org.apache.sling.models.annotations.Exporter;
 import org.apache.sling.models.annotations.Model;
@@ -9,6 +12,7 @@ import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
 
 import com.adobe.cq.export.json.ComponentExporter;
 import com.adobe.cq.export.json.ExporterConstants;
+import com.adobe.cq.wcm.style.ComponentStyleInfo;
 import com.lebara.core.utils.AemUtils;
 
 @Model(adaptables = SlingHttpServletRequest.class, adapters = { TrustPilotExporter.class,
@@ -22,6 +26,9 @@ public class TrustPilotExporter implements ComponentExporter {
     protected static final String RESOURCE_TYPE = "lebara/components/trustpilot";
 
     @SlingObject
+    Resource resource;
+
+    @SlingObject
     private SlingHttpServletRequest slingRequest;
 
     @ValueMapValue
@@ -33,6 +40,8 @@ public class TrustPilotExporter implements ComponentExporter {
     @ValueMapValue
     private String trustPilotBarLink;
 
+    private String appliedStyles;
+
     public String getTitle() {
         return title;
     }
@@ -43,6 +52,11 @@ public class TrustPilotExporter implements ComponentExporter {
 
     public String getTrustPilotBarLink() {
         return AemUtils.getLinkWithExtension(trustPilotBarLink, slingRequest);
+    }
+
+    public String getAppliedStyles() {
+        return Optional.of(resource).map(resource -> resource.adaptTo(ComponentStyleInfo.class))
+                .map(cmpStyleInfo -> cmpStyleInfo.getAppliedCssClasses()).orElse("");
     }
 
     @Override
