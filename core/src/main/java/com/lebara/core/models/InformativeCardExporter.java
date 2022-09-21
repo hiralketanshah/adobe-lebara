@@ -1,8 +1,11 @@
 package com.lebara.core.models;
 
+import java.util.Optional;
+
 import javax.inject.Named;
 
 import org.apache.sling.api.SlingHttpServletRequest;
+import org.apache.sling.api.resource.Resource;
 import org.apache.sling.models.annotations.DefaultInjectionStrategy;
 import org.apache.sling.models.annotations.Exporter;
 import org.apache.sling.models.annotations.Model;
@@ -11,6 +14,7 @@ import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
 
 import com.adobe.cq.export.json.ComponentExporter;
 import com.adobe.cq.export.json.ExporterConstants;
+import com.adobe.cq.wcm.style.ComponentStyleInfo;
 import com.lebara.core.utils.AemUtils;
 
 @Model(adaptables = SlingHttpServletRequest.class, adapters = { InformativeCardExporter.class,
@@ -25,6 +29,9 @@ public class InformativeCardExporter implements ComponentExporter {
 
     @SlingObject
     private SlingHttpServletRequest request;
+
+    @SlingObject
+    Resource resource;
 
     @ValueMapValue
     @Named("imageAlign")
@@ -54,6 +61,8 @@ public class InformativeCardExporter implements ComponentExporter {
     @ValueMapValue
     @Named("description")
     private String moreInfo;
+
+    private String appliedStyles;
 
     public String getSrc() {
         return src;
@@ -85,6 +94,10 @@ public class InformativeCardExporter implements ComponentExporter {
 
     public String getMoreInfo() {
         return AemUtils.updateShortenLinksInRichText(moreInfo, request);
+    }
+
+    public String getAppliedStyles() {
+        return Optional.of(resource).map(resource -> resource.adaptTo(ComponentStyleInfo.class)).map(cmpStyleInfo -> cmpStyleInfo.getAppliedCssClasses()).orElse("");
     }
 
     public String getExportedType() {

@@ -68,6 +68,11 @@ class InformativeCardExporterTest {
     }
 
     @Test
+    void testGetAppliedStyles() {
+        assertEquals("", informativeCardExporter.getAppliedStyles());
+    }
+
+    @Test
     void testGetExportedType() {
         assertEquals(InformativeCardExporter.RESOURCE_TYPE, informativeCardExporter.getExportedType());
     }
