@@ -37,6 +37,11 @@ public class IconTextListExporterTest {
 		assertEquals("Free number porting", icontext.get(0).getText());
 	}
 	
+    @Test
+    void testGetAppliedStyles() {
+        assertEquals("", iconTextListExporter.getAppliedStyles());
+    }
+    
 	@Test
     void testGetExportedType() {
         assertEquals(IconTextListExporter.RESOURCE_TYPE, iconTextListExporter.getExportedType());
