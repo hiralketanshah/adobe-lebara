@@ -159,6 +159,10 @@ class PlanConfiguratorExporterTest {
     void testGetUnlimitedCallsSmsDescription() {
         assertEquals("45 Countries", planConfiguratorExporter.getUnlimitedCallsSmsDescription());
     }
+    @Test
+    void testGetAppliedStyles() {
+        assertEquals("", planConfiguratorExporter.getAppliedStyles());
+    }
 
     @Test
     void testGetExportedType() {

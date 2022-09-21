@@ -1,6 +1,9 @@
 package com.lebara.core.models;
 
+import java.util.Optional;
+
 import org.apache.sling.api.SlingHttpServletRequest;
+import org.apache.sling.api.resource.Resource;
 import org.apache.sling.models.annotations.DefaultInjectionStrategy;
 import org.apache.sling.models.annotations.Exporter;
 import org.apache.sling.models.annotations.Model;
@@ -9,6 +12,7 @@ import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
 
 import com.adobe.cq.export.json.ComponentExporter;
 import com.adobe.cq.export.json.ExporterConstants;
+import com.adobe.cq.wcm.style.ComponentStyleInfo;
 import com.lebara.core.utils.AemUtils;
 
 @Model(adaptables = SlingHttpServletRequest.class, adapters = { PlanConfiguratorExporter.class,
@@ -21,6 +25,8 @@ public class PlanConfiguratorExporter implements ComponentExporter {
      */
     protected static final String RESOURCE_TYPE = "lebara/components/planconfigurator";
 
+    @SlingObject
+    Resource resource;
     @SlingObject
     private SlingHttpServletRequest slingRequest;
     @ValueMapValue
@@ -77,6 +83,8 @@ public class PlanConfiguratorExporter implements ComponentExporter {
     private String unlimitedCallsSmsText;
     @ValueMapValue
     private String unlimitedCallsSmsDescription;
+
+    private String appliedStyles;
 
     public String getPromotionalLabel() {
         return promotionalLabel;
@@ -184,6 +192,11 @@ public class PlanConfiguratorExporter implements ComponentExporter {
 
     public String getUnlimitedCallsSmsDescription() {
         return AemUtils.updateShortenLinksInRichText(unlimitedCallsSmsDescription, slingRequest);
+    }
+
+    public String getAppliedStyles() {
+        return Optional.of(resource).map(resource -> resource.adaptTo(ComponentStyleInfo.class))
+                .map(cmpStyleInfo -> cmpStyleInfo.getAppliedCssClasses()).orElse("");
     }
 
     @Override
