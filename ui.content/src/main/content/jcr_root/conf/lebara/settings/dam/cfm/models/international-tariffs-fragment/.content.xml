@@ -4,7 +4,7 @@
     allowedPaths="[/content/entities(/.*)?]"
     ranking="{Long}100">
     <jcr:content
-        cq:lastModified="{Date}2021-12-01T18:47:39.180+05:30"
+        cq:lastModified="{Date}2022-09-21T14:06:16.032+05:30"
         cq:lastModifiedBy="admin"
         cq:scaffolding="/conf/lebara/settings/dam/cfm/models/international-tariffs-fragment/jcr:content/model"
         cq:templateType="/libs/settings/dam/cfm/model-types/fragment"
@@ -24,13 +24,13 @@
                 jcr:primaryType="nt:unstructured"
                 sling:resourceType="cq/gui/components/authoring/dialog">
                 <content
-                    jcr:lastModified="{Date}2021-12-01T18:47:39.180+05:30"
+                    jcr:lastModified="{Date}2022-09-21T14:06:16.032+05:30"
                     jcr:lastModifiedBy="admin"
                     jcr:primaryType="nt:unstructured"
                     sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns">
                     <items
                         jcr:primaryType="nt:unstructured"
-                        maxGeneratedOrder="21">
+                        maxGeneratedOrder="20">
                         <_x0031_638357556781
                             jcr:primaryType="nt:unstructured"
                             sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
@@ -50,7 +50,7 @@
                             sling:resourceType="dam/cfm/models/editor/components/contentreference"
                             fieldLabel="Country Landing Page"
                             filter="hierarchy"
-                            listOrder="21"
+                            listOrder="8"
                             metaType="reference"
                             name="countryLandingPageURL"
                             nameSuffix="contentReference"
@@ -63,45 +63,84 @@
                                 jcr:primaryType="nt:unstructured"
                                 thumbnail-validation="cfm.validation.thumbnail.show"/>
                         </_x0031_638364306347>
+                        <_x0031_663843659136
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="dam/cfm/models/editor/components/contentreference"
+                            fieldLabel="Country Flag"
+                            filter="hierarchy"
+                            listOrder="21"
+                            metaType="reference"
+                            name="countryFlag"
+                            nameSuffix="contentReference"
+                            renderReadOnly="false"
+                            rootPath="/content/dam/lebara/global/country-flags"
+                            showEmptyInReadOnly="true"
+                            showThumbnail="false"
+                            valueType="string/reference">
+                            <granite:data
+                                jcr:primaryType="nt:unstructured"
+                                thumbnail-validation="cfm.validation.thumbnail.show"/>
+                        </_x0031_663843659136>
                         <_x0031_638357694850
                             jcr:primaryType="nt:unstructured"
-                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                            fieldLabel="Landline Call Rate"
-                            listOrder="1"
-                            maxlength="255"
-                            metaType="text-single"
-                            name="landlineCallRate"
+                            sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
+                            composite="{Boolean}true"
+                            fieldLabel="Call/SMS rates based on the contract type"
+                            metaType="text-multi"
+                            name="contracts"
                             renderReadOnly="false"
                             showEmptyInReadOnly="true"
-                            valueType="string">
+                            valueType="string[]">
+                            <field
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/container"
+                                name="./contracts">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <column
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <typeofcontracts
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="Add the contract title. eg : Postpaid, Prepaid, etc."
+                                                fieldLabel="Contract Title"
+                                                name="./contractTitle"
+                                                valueType="string"/>
+                                            <landline
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="Update the charges for Landline"
+                                                fieldLabel="Landline"
+                                                name="./landlineCallRate"
+                                                valueType="string"/>
+                                            <mobile
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="Update the charges for Mobile"
+                                                fieldLabel="Mobile"
+                                                name="./mobileCallRate"
+                                                valueType="string"/>
+                                            <sms
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="Update the charges for SMS"
+                                                fieldLabel="SMS"
+                                                name="./smsRate"
+                                                valueType="string"/>
+                                            <message
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="Update the message for the contract. eg : Price for the first minute to all EU countries (fixed and mobile) only 1 ct."
+                                                fieldLabel="Message"
+                                                name="./message"
+                                                valueType="string"/>
+                                        </items>
+                                    </column>
+                                </items>
+                            </field>
                             <granite:data jcr:primaryType="nt:unstructured"/>
                         </_x0031_638357694850>
-                        <_x0031_638360376950
-                            jcr:primaryType="nt:unstructured"
-                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                            fieldLabel="Mobile Call Rate"
-                            listOrder="1"
-                            maxlength="255"
-                            metaType="text-single"
-                            name="mobileCallRate"
-                            renderReadOnly="false"
-                            showEmptyInReadOnly="true"
-                            valueType="string">
-                            <granite:data jcr:primaryType="nt:unstructured"/>
-                        </_x0031_638360376950>
-                        <_x0031_638360371297
-                            jcr:primaryType="nt:unstructured"
-                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                            fieldLabel="SMS Rate"
-                            listOrder="1"
-                            maxlength="255"
-                            metaType="text-single"
-                            name="smsRate"
-                            renderReadOnly="false"
-                            showEmptyInReadOnly="true"
-                            valueType="string">
-                            <granite:data jcr:primaryType="nt:unstructured"/>
-                        </_x0031_638360371297>
                     </items>
                 </content>
             </cq:dialog>
