@@ -40,23 +40,23 @@ public class PurchaseSummaryExporterTest {
     }
     
     @Test
+    void testGetEditCTALink() {
+    	assertEquals("en/postpaid.html", purchaseSummaryExporter.getEditCTALink());
+    }
+    
+    @Test
     void testGetBusinessSubscriptionLabel() {
     	assertEquals("Business Subscription", purchaseSummaryExporter.getBusinessSubscriptionLabel());
     }
     
     @Test
-    void testGetUnlimitedCallingTextingLabel() {
-    	assertEquals("Unlimited calling and texting", purchaseSummaryExporter.getUnlimitedCallingTextingLabel());
+    void testGetInitialDiscountHeaderLabel() {
+    	assertEquals("The first 6 months", purchaseSummaryExporter.getInitialDiscountHeaderLabel());
     }
     
     @Test
-    void testGetPaymentOptionLabel() {
-    	assertEquals("The first 6 months", purchaseSummaryExporter.getPaymentOptionLabel());
-    }
-    
-    @Test
-    void testGetPaymentOptionSublabel() {
-    	assertEquals("After per month", purchaseSummaryExporter.getPaymentOptionSublabel());
+    void testGetAfterDiscountLabel() {
+    	assertEquals("After per month", purchaseSummaryExporter.getAfterDiscountLabel());
     }
     
     @Test

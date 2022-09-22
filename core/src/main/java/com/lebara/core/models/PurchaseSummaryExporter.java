@@ -13,6 +13,7 @@ import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
 import com.adobe.cq.export.json.ComponentExporter;
 import com.adobe.cq.export.json.ExporterConstants;
 import com.adobe.cq.wcm.style.ComponentStyleInfo;
+import com.lebara.core.utils.AemUtils;
 
 @Model(adaptables = SlingHttpServletRequest.class, adapters = { PurchaseSummaryExporter.class,
         ComponentExporter.class }, resourceType = PurchaseSummaryExporter.RESOURCE_TYPE, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
@@ -32,18 +33,18 @@ public class PurchaseSummaryExporter implements ComponentExporter {
 
     @ValueMapValue
     private String editLabel;
+    
+    @ValueMapValue
+    private String editCTALink;
 
     @ValueMapValue
     private String businessSubscriptionLabel;
 
     @ValueMapValue
-    private String unlimitedCallingTextingLabel;
+    private String initialDiscountHeaderLabel;
 
     @ValueMapValue
-    private String paymentOptionLabel;
-
-    @ValueMapValue
-    private String paymentOptionSublabel;
+    private String afterDiscountLabel;
 
     @ValueMapValue
     private String activationFeeLabel;
@@ -64,21 +65,21 @@ public class PurchaseSummaryExporter implements ComponentExporter {
     public String getEditLabel() {
         return editLabel;
     }
+    
+    public String getEditCTALink() {
+        return AemUtils.getLinkWithExtension(editCTALink);
+    }
 
     public String getBusinessSubscriptionLabel() {
         return businessSubscriptionLabel;
     }
 
-    public String getUnlimitedCallingTextingLabel() {
-        return unlimitedCallingTextingLabel;
+    public String getInitialDiscountHeaderLabel() {
+        return initialDiscountHeaderLabel;
     }
 
-    public String getPaymentOptionLabel() {
-        return paymentOptionLabel;
-    }
-
-    public String getPaymentOptionSublabel() {
-        return paymentOptionSublabel;
+    public String getAfterDiscountLabel() {
+        return afterDiscountLabel;
     }
 
     public String getActivationFeeLabel() {

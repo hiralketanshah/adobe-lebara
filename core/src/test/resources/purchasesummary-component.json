@@ -3,10 +3,10 @@
 "title": "Sim Only 24 Months",
 "buttonLabel": "Order Now",
 "editLabel": "Edit",
+"editCTALink": "en/postpaid.html",
 "businessSubscriptionLabel": "Business Subscription",
-"unlimitedCallingTextingLabel": "Unlimited calling and texting",
-"paymentOptionLabel": "The first 6 months",
-"paymentOptionSublabel": "After per month",
+"initialDiscountHeaderLabel": "The first 6 months",
+"afterDiscountLabel": "After per month",
 "activationFeeLabel": "Activation Fee",
 "discountLabel": "Discount",
 "sling:resourceType": "lebara/components/purchasesummary"

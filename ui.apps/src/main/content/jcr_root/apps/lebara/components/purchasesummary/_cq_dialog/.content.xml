@@ -46,30 +46,31 @@
                                                 fieldDescription="EditLabel"
                                                 fieldLabel="EditLabel"
                                                 name="./editLabel"/>
+											<editCTALink
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                                fieldDescription="Edit button link"
+                                                fieldLabel="Edit Button Link"
+                                                name="./editCTALink"
+												rootPath="/content/lebara"/>
                                             <businesssubscriotionlabel
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                                 fieldDescription="Business Subscription Label"
                                                 fieldLabel="Business Subscription Label"
                                                 name="./businessSubscriptionLabel"/>
-                                            <unlimitedcallingandtextinglabel
-                                                jcr:primaryType="nt:unstructured"
-                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                                fieldDescription="Unlimited calling and texting label"
-                                                fieldLabel="Unlimited Calling and Texting Label"
-                                                name="./unlimitedCallingTextingLabel"/>
-                                            <paymentoptionlabel
+                                            <initialDiscountHeaderLabel
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                                 fieldDescription="Ex: The first 6 months"
-                                                fieldLabel="Payment Option Label"
-                                                name="./paymentOptionLabel"/>
-                                            <paymentoptionsublabel
+                                                fieldLabel="Initial Discount Label"
+                                                name="./initialDiscountHeaderLabel"/>
+                                            <afterDiscountLabel
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                                 fieldDescription="Ex: After per month"
-                                                fieldLabel="Payment Option Sublabel"
-                                                name="./paymentOptionSublabel"/>
+                                                fieldLabel="After Discount Label "
+                                                name="./afterDiscountLabel"/>
                                             <activationfeelabel
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
