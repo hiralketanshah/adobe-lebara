@@ -159,9 +159,20 @@ class PlanConfiguratorExporterTest {
     void testGetUnlimitedCallsSmsDescription() {
         assertEquals("45 Countries", planConfiguratorExporter.getUnlimitedCallsSmsDescription());
     }
+    
     @Test
     void testGetAppliedStyles() {
         assertEquals("", planConfiguratorExporter.getAppliedStyles());
+    }
+    
+    @Test
+    void testGetBasicSpeedTitle() {
+        assertEquals("4G", planConfiguratorExporter.getBasicSpeedTitle());
+    }
+    
+    @Test
+    void testGetAdvancedSpeedTitle() {
+        assertEquals("4G Extra", planConfiguratorExporter.getAdvancedSpeedTitle());
     }
 
     @Test

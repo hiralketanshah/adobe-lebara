@@ -70,6 +70,10 @@ public class PlanConfiguratorExporter implements ComponentExporter {
     @ValueMapValue
     private String speedLabel;
     @ValueMapValue
+    private String basicSpeedTitle;
+    @ValueMapValue
+    private String advancedSpeedTitle;
+    @ValueMapValue
     private String speedPopupHeading;
     @ValueMapValue
     private String speedPopupInfo;
@@ -197,6 +201,14 @@ public class PlanConfiguratorExporter implements ComponentExporter {
     public String getAppliedStyles() {
         return Optional.of(resource).map(resource -> resource.adaptTo(ComponentStyleInfo.class))
                 .map(cmpStyleInfo -> cmpStyleInfo.getAppliedCssClasses()).orElse("");
+    }
+    
+    public String getBasicSpeedTitle() {
+        return basicSpeedTitle;
+    }
+
+    public String getAdvancedSpeedTitle() {
+        return advancedSpeedTitle;
     }
 
     @Override

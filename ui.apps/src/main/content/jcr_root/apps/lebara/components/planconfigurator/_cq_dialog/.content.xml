@@ -465,6 +465,20 @@
 								fieldDescription="Heading for Speed Info Popup Example : Speed"
                                 name="./speedPopupHeading"
                                 value="Speed"/>
+                            <basicspeedtitle
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldLabel="Basic Speed Title"
+                                fieldDescription="Title for Basic Speed Plan Example : 4G"
+                                name="./basicSpeedTitle"
+                                value="4G"/>
+                            <advancedspeedtitle
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldLabel="Advanced Speed Title"
+                                fieldDescription="Title for Advanced Speed Plan Example : 4G Extra Fast"
+                                name="./advancedSpeedTitle"
+                                value="4G Extra Fast"/>
                             <speedpopupinfo
                                 jcr:primaryType="nt:unstructured"
                                 sling:resourceType="cq/gui/components/authoring/dialog/richtext"
