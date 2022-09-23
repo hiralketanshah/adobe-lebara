@@ -40,6 +40,13 @@
                                                 fieldDescription="Button Label"
                                                 fieldLabel="Button Label"
                                                 name="./buttonLabel"/>
+											<buttonCTALink
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                                fieldDescription="Button CTA Link"
+                                                fieldLabel="Button CTA Link"
+                                                name="./buttonCTALink"
+												rootPath="/content/lebara"/>	
                                             <editlabel
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"

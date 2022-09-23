@@ -30,7 +30,10 @@ public class PurchaseSummaryExporter implements ComponentExporter {
 
     @ValueMapValue
     private String buttonLabel;
-
+    
+    @ValueMapValue
+    private String buttonCTALink;
+    
     @ValueMapValue
     private String editLabel;
     
@@ -61,8 +64,12 @@ public class PurchaseSummaryExporter implements ComponentExporter {
     public String getButtonLabel() {
         return buttonLabel;
     }
+    
+    public String getButtonCTALink() {
+		return AemUtils.getLinkWithExtension(buttonCTALink);
+	}
 
-    public String getEditLabel() {
+	public String getEditLabel() {
         return editLabel;
     }
     

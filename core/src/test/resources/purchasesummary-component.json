@@ -2,6 +2,7 @@
 "jcr:primaryType": "nt:unstructured",
 "title": "Sim Only 24 Months",
 "buttonLabel": "Order Now",
+"buttonCTALink": "en/postpaid/details.html",
 "editLabel": "Edit",
 "editCTALink": "en/postpaid.html",
 "businessSubscriptionLabel": "Business Subscription",

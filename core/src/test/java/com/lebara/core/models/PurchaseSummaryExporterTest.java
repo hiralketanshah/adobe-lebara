@@ -35,6 +35,11 @@ public class PurchaseSummaryExporterTest {
     }
     
     @Test
+    void testButtonCTALink() {
+    	assertEquals("en/postpaid/details.html", purchaseSummaryExporter.getButtonCTALink());
+    }
+    
+    @Test
     void testGetEditLabel() {
     	assertEquals("Edit", purchaseSummaryExporter.getEditLabel());
     }
