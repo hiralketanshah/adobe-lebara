@@ -1,0 +1,87 @@
+package com.lebara.core.models;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestInstance;
+import org.junit.jupiter.api.extension.ExtendWith;
+
+import org.junit.jupiter.api.TestInstance.Lifecycle;
+
+import io.wcm.testing.mock.aem.junit5.AemContext;
+import io.wcm.testing.mock.aem.junit5.AemContextExtension;
+
+@ExtendWith({ AemContextExtension.class })
+@TestInstance(value = Lifecycle.PER_CLASS)
+public class PostpaidBuyPersonalDetailsExporterTest {
+
+	private final AemContext aemContext = new AemContext();
+	PostpaidBuyPersonalDetailsExporter postpaidBuyPersonalDetailsExporter = new PostpaidBuyPersonalDetailsExporter();
+	
+	@BeforeAll
+    void setUpBeforeClass() {
+        aemContext.load().json("/postpaidbuypersonaldetails-component.json", "/postpaidbuypersonaldetails");
+        aemContext.currentResource("/postpaidbuypersonaldetails");
+        postpaidBuyPersonalDetailsExporter = aemContext.request().adaptTo(PostpaidBuyPersonalDetailsExporter.class);
+    }
+	
+	@Test
+	void testGetFrmFields() {
+		assertEquals(true , postpaidBuyPersonalDetailsExporter.getFrmFields().isShowTitle());
+		assertEquals("Title" , postpaidBuyPersonalDetailsExporter.getFrmFields().getTitleLabel());
+		assertEquals("Select title" , postpaidBuyPersonalDetailsExporter.getFrmFields().getTitlePlaceholder());
+		assertEquals("<p>Number transfer is requested easily after purchase</p>" , postpaidBuyPersonalDetailsExporter.getFrmFields().getYesPortInDescription());
+		assertEquals("Month" , postpaidBuyPersonalDetailsExporter.getFrmFields().getMonthLabel());
+		assertEquals(false , postpaidBuyPersonalDetailsExporter.getFrmFields().isEnableEmailCheckbox());
+		assertEquals("Enter Day" , postpaidBuyPersonalDetailsExporter.getFrmFields().getDayPalceholder());
+		assertEquals(false , postpaidBuyPersonalDetailsExporter.getFrmFields().isTitleIsFirst());
+		assertEquals(true , postpaidBuyPersonalDetailsExporter.getFrmFields().isShowContinueButton());
+		assertEquals("Enter your mobile number" , postpaidBuyPersonalDetailsExporter.getFrmFields().getPortInNumberPlaceHolder());
+		assertEquals("Enter Month" , postpaidBuyPersonalDetailsExporter.getFrmFields().getMonthPlaceholder());
+		assertEquals("Last Name", postpaidBuyPersonalDetailsExporter.getFrmFields().getlNameLabel());
+		assertEquals(false , postpaidBuyPersonalDetailsExporter.getFrmFields().isShowPersonalDetailsLabel());
+		assertEquals(false , postpaidBuyPersonalDetailsExporter.getFrmFields().isDayOfBirthByFields());
+		assertEquals("Year" , postpaidBuyPersonalDetailsExporter.getFrmFields().getYearLabel());
+		assertEquals("Enter Year" , postpaidBuyPersonalDetailsExporter.getFrmFields().getYearPlaceholder());
+		assertEquals(false , postpaidBuyPersonalDetailsExporter.getFrmFields().isCardMode());
+		assertEquals("First Name" , postpaidBuyPersonalDetailsExporter.getFrmFields().getfNameLabel());
+		assertEquals(true , postpaidBuyPersonalDetailsExporter.getFrmFields().isShowAddressCard());
+		assertEquals("Date of Birth" , postpaidBuyPersonalDetailsExporter.getFrmFields().getDobLabel());
+		assertEquals("Enter Your First Name" , postpaidBuyPersonalDetailsExporter.getFrmFields().getFnamePlaceholder());
+		assertEquals("Personal/Contact Details" , postpaidBuyPersonalDetailsExporter.getFrmFields().getHeading());
+		assertEquals("Would you like to Port your Number?" , postpaidBuyPersonalDetailsExporter.getFrmFields().getPortingSectionHeading());
+		assertEquals("Enter Your First Name" , postpaidBuyPersonalDetailsExporter.getFrmFields().getlNamePlaceholder());
+		assertEquals("Continue" , postpaidBuyPersonalDetailsExporter.getFrmFields().getCtaContinueLabel());
+		assertEquals("<p>You can activate and start using your subscription immediately </p>" , postpaidBuyPersonalDetailsExporter.getFrmFields().getNoPortInDescription());
+		assertEquals("Email Address" , postpaidBuyPersonalDetailsExporter.getFrmFields().getEmailLabel());
+		assertEquals("Number to ported to Sim only" , postpaidBuyPersonalDetailsExporter.getFrmFields().getPortInNumberLabel());
+		assertEquals("Enter Your Email Address" , postpaidBuyPersonalDetailsExporter.getFrmFields().getEmailPlaceholder());
+		assertEquals("Day" , postpaidBuyPersonalDetailsExporter.getFrmFields().getDayLabel());
+		assertEquals(true , postpaidBuyPersonalDetailsExporter.getFrmFields().isShowDob());
+		assertEquals("No, I want a new number" , postpaidBuyPersonalDetailsExporter.getFrmFields().getPortInOptionArray().get(0).getLabel());
+		assertEquals( "No" , postpaidBuyPersonalDetailsExporter.getFrmFields().getPortInOptionArray().get(0).getValue());
+	}
+	
+	@Test
+	void testGetValidationMessages() {
+		assertEquals("The title cannot be empty" , postpaidBuyPersonalDetailsExporter.getValidationMessages().getTitleRequiredMsg());
+		assertEquals("Please Select Day" , postpaidBuyPersonalDetailsExporter.getValidationMessages().getDayRequiredMsg());
+		assertEquals("Please Select Month" , postpaidBuyPersonalDetailsExporter.getValidationMessages().getMonthRequiredMsg());
+		assertEquals("Please Select Year" , postpaidBuyPersonalDetailsExporter.getValidationMessages().getYearRequiredMsg());
+		assertEquals("Please Enter Port In Number" , postpaidBuyPersonalDetailsExporter.getValidationMessages().getPortInNumberRequiredMsg());
+		assertEquals("Please enter a valid First Name , First name cannot be empty" , postpaidBuyPersonalDetailsExporter.getValidationMessages().getfNameRequiredMsg());
+		assertEquals("Please enter a valid email address. For example username@domain.com" , postpaidBuyPersonalDetailsExporter.getValidationMessages().getEmailInValidMsg());
+		assertEquals("Please Enter Valid Port In Number" , postpaidBuyPersonalDetailsExporter.getValidationMessages().getPortInNumberInValidMsg());
+		assertEquals("The First name cannot contain any special characters ($, @, #, !, %. * ^() ?)" , postpaidBuyPersonalDetailsExporter.getValidationMessages().getfNameInValidMsg());
+		assertEquals("Please Select Year" , postpaidBuyPersonalDetailsExporter.getValidationMessages().getYearInValidMsg());
+		assertEquals("The Last name cannot contain any special characters ($, @, #, !, %. * ^() ?)" , postpaidBuyPersonalDetailsExporter.getValidationMessages().getlNameInValidMsg());
+		assertEquals("Please enter a valid Last Name , Last name cannot be empty" , postpaidBuyPersonalDetailsExporter.getValidationMessages().getlNameRequiredMsg());
+		assertEquals("The email address field cannot be empty" , postpaidBuyPersonalDetailsExporter.getValidationMessages().getEmailRequiredMsg());
+	}
+	
+	@Test
+    void testGetExportedType() {
+        assertEquals(PostpaidBuyPersonalDetailsExporter.RESOURCE_TYPE, postpaidBuyPersonalDetailsExporter.getExportedType());
+    }
+}

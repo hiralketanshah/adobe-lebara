@@ -1,0 +1,67 @@
+{
+	"jcr:primaryType": "nt:unstructured",
+	"sling:resourceType": "lebara/components/postpaidbuypersonaldetails",
+	"frmFields": {
+		"jcr:primaryType": "nt:unstructured",
+		"showTitle": "true",
+		"titleLabel": "Title",
+		"titlePlaceholder": "Select title",
+		"yesPortInDescription": "<p>Number transfer is requested easily after purchase</p>",
+		"monthLabel": "Month",
+		"enableEmailCheckbox": "false",
+		"dayPalceholder": "Enter Day",
+		"titleIsFirst": "false",
+		"showContinueButton": "true",
+		"portInNumberPlaceHolder": "Enter your mobile number",
+		"monthPlaceholder": "Enter Month",
+		"lNameLabel": "Last Name",
+		"showPersonalDetailsLabel": "false",
+		"dayOfBirthByFields": "false",
+		"yearLabel": "Year",
+		"yearPlaceholder": "Enter Year",
+		"cardMode": "false",
+		"fNameLabel": "First Name",
+		"showAddressCard": "true",
+		"dobLabel": "Date of Birth",
+		"fnamePlaceholder": "Enter Your First Name",
+		"heading": "Personal/Contact Details",
+		"portingSectionHeading": "Would you like to Port your Number?",
+		"lNamePlaceholder": "Enter Your First Name",
+		"ctaContinueLabel": "Continue",
+		"noPortInDescription": "<p>You can activate and start using your subscription immediately </p>",
+		"emailLabel": "Email Address",
+		"portInNumberLabel": "Number to ported to Sim only",
+		"emailPlaceholder": "Enter Your Email Address",
+		"dayLabel": "Day",
+		"showDob": "true",
+		"portInOptions": {
+			"jcr:primaryType": "nt:unstructured",
+			"item0": {
+				"jcr:primaryType": "nt:unstructured",
+				"label": "No, I want a new number",
+				"value": "No"
+			},
+			"item1": {
+				"jcr:primaryType": "nt:unstructured",
+				"label": "Yes, I would like to transfer my number",
+				"value": "Yes"
+			}
+		}
+	},
+	"validationMessages": {
+		"jcr:primaryType": "nt:unstructured",
+		"titleRequiredMsg": "The title cannot be empty",
+		"dayRequiredMsg": "Please Select Day",
+		"monthRequiredMsg": "Please Select Month",
+		"yearRequiredMsg": "Please Select Year",
+		"portInNumberRequiredMsg": "Please Enter Port In Number",
+		"fNameRequiredMsg": "Please enter a valid First Name , First name cannot be empty",
+		"emailInValidMsg": "Please enter a valid email address. For example username@domain.com",
+		"portInNumberInValidMsg": "Please Enter Valid Port In Number",
+		"fNameInValidMsg": "The First name cannot contain any special characters ($, @, #, !, %. * ^() ?)",
+		"yearInValidMsg": "Please Select Year",
+		"lNameInValidMsg": "The Last name cannot contain any special characters ($, @, #, !, %. * ^() ?)",
+		"lNameRequiredMsg": "Please enter a valid Last Name , Last name cannot be empty",
+		"emailRequiredMsg": "The email address field cannot be empty"
+	}
+}
