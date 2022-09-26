@@ -10,5 +10,6 @@
 "afterDiscountLabel": "After per month",
 "activationFeeLabel": "Activation Fee",
 "discountLabel": "Discount",
+"headerLabel": "Your Orders",
 "sling:resourceType": "lebara/components/purchasesummary"
 }

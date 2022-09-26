@@ -54,6 +54,9 @@ public class PurchaseSummaryExporter implements ComponentExporter {
 
     @ValueMapValue
     private String discountLabel;
+    
+    @ValueMapValue
+    private String headerLabel;
 
     private String appliedStyles;
 
@@ -97,7 +100,11 @@ public class PurchaseSummaryExporter implements ComponentExporter {
         return discountLabel;
     }
 
-    public String getAppliedStyles() {
+    public String getHeaderLabel() {
+		return headerLabel;
+	}
+
+	public String getAppliedStyles() {
         return Optional.of(resource).map(resource -> resource.adaptTo(ComponentStyleInfo.class))
                 .map(cmpStyleInfo -> cmpStyleInfo.getAppliedCssClasses()).orElse("");
     }

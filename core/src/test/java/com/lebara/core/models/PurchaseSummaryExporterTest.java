@@ -75,6 +75,11 @@ public class PurchaseSummaryExporterTest {
     }
     
     @Test
+    void testGetHeaderLabel() {
+    	assertEquals("Your Orders", purchaseSummaryExporter.getHeaderLabel());
+    }
+    
+    @Test
     void testGetAppliedStyles() {
         assertEquals("", purchaseSummaryExporter.getAppliedStyles());
     }

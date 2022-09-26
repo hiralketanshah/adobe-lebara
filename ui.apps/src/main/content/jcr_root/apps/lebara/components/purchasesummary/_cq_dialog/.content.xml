@@ -90,6 +90,12 @@
                                                 fieldDescription="Discount"
                                                 fieldLabel="Discount Label"
                                                 name="./discountLabel"/>
+											<headerLabel
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="Header label for mobile"
+                                                fieldLabel="Mobile Header Label"
+                                                name="./headerLabel"/>
                                         </items>
                                     </column>
                                 </items>
