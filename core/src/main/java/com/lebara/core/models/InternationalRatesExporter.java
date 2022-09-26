@@ -57,20 +57,15 @@ public class InternationalRatesExporter implements ComponentExporter {
 	@ValueMapValue
 	private String cfPath;
 
-	private String selectCountryLabel;
-
-	private String countryLabel;
-
 	@ValueMapValue
 	private String description;
+
+	private String countryLabel;
 
 	private String fragmentRootPath;
 
 	private I18n i18n;
 
-	private String landlineCallRate;
-	private String mobileCallRate;
-	private String smsRate;
 	private String[] contracts;
 	private List<SelectOption> countryList;
 
@@ -99,7 +94,7 @@ public class InternationalRatesExporter implements ComponentExporter {
 			}
 			LOGGER.debug("Interntional rates fragmentRootPath is {}", fragmentRootPath);
 			if (StringUtils.isNotBlank(fragmentRootPath)) {
-				countryList = CFUtils.getInternationalRates(resourceResolver, fragmentRootPath);				
+				countryList = CFUtils.getInternationalRates(resourceResolver, fragmentRootPath);
 			} else {
 				countryList = Collections.emptyList();
 			}
@@ -110,12 +105,9 @@ public class InternationalRatesExporter implements ComponentExporter {
 	private List<InternationalRatesItem> getInternationRates() {
 		Gson gson = new Gson();
 		List<InternationalRatesItem> listOfRates = new LinkedList<>();
-		int count = 0;
 		for (String contract : contracts) {
 			InternationalRatesItem item = gson.fromJson(contract, InternationalRatesItem.class);
-			item.setValue(count);
 			listOfRates.add(item);
-			count++;
 		}
 		return listOfRates;
 	}

@@ -23,8 +23,6 @@ public class InternationalRatesItem {
 	@ValueMapValue
 	private String message;
 
-	private int value;
-
 	public String getContractTitle() {
 		return contractTitle;
 	}
@@ -43,14 +41,6 @@ public class InternationalRatesItem {
 
 	public String getMessage() {
 		return message;
-	}
-
-	public int getValue() {
-		return value;
-	}
-
-	public void setValue(int value) {
-		this.value = value;
 	}
 
 }
