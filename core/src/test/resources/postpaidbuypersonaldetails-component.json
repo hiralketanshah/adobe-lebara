@@ -1,31 +1,32 @@
 {
 	"jcr:primaryType": "nt:unstructured",
 	"sling:resourceType": "lebara/components/postpaidbuypersonaldetails",
+	"heading": "Contact Details",
+	"portingSectionHeading": "Number Port-in",
+	"showTitle": "true",
+	"hideOrderSummary": "true",
+	"hideConsentTrustworthy": "true",
+	"hideAddressSection": "true",
+	"numberInSimOnly": "true",
+	"onlyExternalHeading": "true",
+	"formPaddingsForCardMode": "true",
+	"bigHeading": "true",
+	"dobSelectsMode": "true",
 	"frmFields": {
 		"jcr:primaryType": "nt:unstructured",
-		"showTitle": "true",
 		"titleLabel": "Title",
 		"titlePlaceholder": "Select title",
 		"yesPortInDescription": "<p>Number transfer is requested easily after purchase</p>",
 		"monthLabel": "Month",
-		"enableEmailCheckbox": "false",
 		"dayPalceholder": "Enter Day",
-		"titleIsFirst": "false",
-		"showContinueButton": "true",
 		"portInNumberPlaceHolder": "Enter your mobile number",
 		"monthPlaceholder": "Enter Month",
 		"lNameLabel": "Last Name",
-		"showPersonalDetailsLabel": "false",
-		"dayOfBirthByFields": "false",
 		"yearLabel": "Year",
 		"yearPlaceholder": "Enter Year",
-		"cardMode": "false",
 		"fNameLabel": "First Name",
-		"showAddressCard": "true",
 		"dobLabel": "Date of Birth",
 		"fnamePlaceholder": "Enter Your First Name",
-		"heading": "Personal/Contact Details",
-		"portingSectionHeading": "Would you like to Port your Number?",
 		"lNamePlaceholder": "Enter Your First Name",
 		"ctaContinueLabel": "Continue",
 		"noPortInDescription": "<p>You can activate and start using your subscription immediately </p>",
@@ -33,7 +34,6 @@
 		"portInNumberLabel": "Number to ported to Sim only",
 		"emailPlaceholder": "Enter Your Email Address",
 		"dayLabel": "Day",
-		"showDob": "true",
 		"portInOptions": {
 			"jcr:primaryType": "nt:unstructured",
 			"item0": {
@@ -45,6 +45,23 @@
 				"jcr:primaryType": "nt:unstructured",
 				"label": "Yes, I would like to transfer my number",
 				"value": "Yes"
+			}
+		},
+		"titleOptions": {
+			"item0": {
+				"jcr:primaryType": "nt:unstructured",
+				"name": "Mr.",
+				"value": "Mr"
+			},
+			"item1": {
+				"jcr:primaryType": "nt:unstructured",
+				"name": "Mrs.",
+				"value": "Mrs"
+			},
+			"item2": {
+				"jcr:primaryType": "nt:unstructured",
+				"name": "Miss",
+				"value": "Miss"
 			}
 		}
 	},

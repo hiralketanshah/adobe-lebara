@@ -1,5 +1,5 @@
 import { MapTo } from "@adobe/aem-react-editable-components";
-import PostpaidBuyPlanDetails from "@lebara/netherlands/pages/PostpaidBuyPlanDetails";
+import PostpaidPersonalDetails from "@lebara/core/components/PostpaidPersonalDetails/PostpaidPersonalDetails";
 const PostpaidPersonalDetailsConfig = {
   emptyLabel: "Postpaid Buy Personal Details component",
   isEmpty: function (props) {
@@ -7,4 +7,4 @@ const PostpaidPersonalDetailsConfig = {
   },
 };
 
-MapTo("lebara/components/postpaidbuypersonaldetails")(PostpaidBuyPlanDetails, PostpaidPersonalDetailsConfig);
+MapTo("lebara/components/postpaidbuypersonaldetails")(PostpaidPersonalDetails, PostpaidPersonalDetailsConfig);

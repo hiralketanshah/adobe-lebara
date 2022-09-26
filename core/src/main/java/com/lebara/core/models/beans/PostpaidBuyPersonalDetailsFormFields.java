@@ -19,9 +19,7 @@ public class PostpaidBuyPersonalDetailsFormFields {
 
 	private static final String VALUE = "value";
 	private static final String LABEL = "label";
-
-	@ValueMapValue
-	private String heading;
+	private static final String NAME = "name";
 
 	@ValueMapValue
 	private String titleLabel;
@@ -69,9 +67,6 @@ public class PostpaidBuyPersonalDetailsFormFields {
 	private String yearPlaceholder;
 
 	@ValueMapValue
-	private String portingSectionHeading;
-
-	@ValueMapValue
 	private String portInNumberLabel;
 
 	@ValueMapValue
@@ -89,36 +84,8 @@ public class PostpaidBuyPersonalDetailsFormFields {
 	@ChildResource
 	protected Resource portInOptions;
 	
-	@ValueMapValue
-	private boolean showDob;
-	
-	@ValueMapValue
-	private boolean showTitle;
-	
-	@ValueMapValue
-	private boolean enableEmailCheckbox;
-	
-	@ValueMapValue
-	private boolean showContinueButton;
-	
-	@ValueMapValue
-	private boolean showAddressCard;
-	
-	@ValueMapValue
-	private boolean showPersonalDetailsLabel;
-	
-	@ValueMapValue
-	private boolean cardMode;
-	
-	@ValueMapValue
-	private boolean titleIsFirst;
-	
-	@ValueMapValue
-	private boolean dayOfBirthByFields;
-
-	public String getHeading() {
-		return heading;
-	}
+	@ChildResource
+	protected Resource titleOptions;
 
 	public String getTitleLabel() {
 		return titleLabel;
@@ -180,10 +147,6 @@ public class PostpaidBuyPersonalDetailsFormFields {
 		return yearPlaceholder;
 	}
 
-	public String getPortingSectionHeading() {
-		return portingSectionHeading;
-	}
-
 	public String getPortInNumberLabel() {
 		return portInNumberLabel;
 	}
@@ -217,41 +180,20 @@ public class PostpaidBuyPersonalDetailsFormFields {
 		}
 		return options;
 	}
-
-	public boolean isShowDob() {
-		return showDob;
+	
+	@JsonProperty("titleOptions")
+	public List<SelectTitle> getTitleOptionArray() {
+		List<SelectTitle> titles = new ArrayList<>();
+		if (titleOptions != null) {
+			for (Resource item : titleOptions.getChildren()) {
+				SelectTitle title = new SelectTitle();
+				title.setName(AemUtils.getStringProperty(item, NAME));
+				title.setValue(AemUtils.getStringProperty(item, VALUE));
+				titles.add(title);
+			}
+		}
+		return titles;
 	}
 
-	public boolean isShowTitle() {
-		return showTitle;
-	}
-
-	public boolean isEnableEmailCheckbox() {
-		return enableEmailCheckbox;
-	}
-
-	public boolean isShowContinueButton() {
-		return showContinueButton;
-	}
-
-	public boolean isShowAddressCard() {
-		return showAddressCard;
-	}
-
-	public boolean isShowPersonalDetailsLabel() {
-		return showPersonalDetailsLabel;
-	}
-
-	public boolean isCardMode() {
-		return cardMode;
-	}
-
-	public boolean isTitleIsFirst() {
-		return titleIsFirst;
-	}
-
-	public boolean isDayOfBirthByFields() {
-		return dayOfBirthByFields;
-	}
 	
 }

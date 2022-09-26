@@ -22,15 +22,8 @@
                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                 fieldDescription="Your personal details"
                                 fieldLabel="Personal Details Title"
-                                name="./frmFields/heading"
+                                name="./heading"
                                 value="Your personal details"/>
-                            <showPersonalDetailsLabel
-                                jcr:primaryType="nt:unstructured"
-                                sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
-                                name="./frmFields/showPersonalDetailsLabel"
-                                text="Show Personal Details Label"
-                                uncheckedValue="{Boolean}false"
-                                value="{Boolean}true"/>
                             <titleLabel
                                 jcr:primaryType="nt:unstructured"
                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
@@ -48,17 +41,50 @@
                             <showTitle
                                 jcr:primaryType="nt:unstructured"
                                 sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
-                                name="./frmFields/showTitle"
+                                checked="{Boolean}true"
+                                name="./showTitle"
                                 text="Show Title"
                                 uncheckedValue="{Boolean}false"
                                 value="{Boolean}true"/>
-                            <titleIsFirst
+                            <mrName
                                 jcr:primaryType="nt:unstructured"
-                                sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
-                                name="./frmFields/titleIsFirst"
-                                text="Title Is First"
-                                uncheckedValue="{Boolean}false"
-                                value="{Boolean}true"/>
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldDescription="Enter title for Mr"
+                                fieldLabel="Mr Title Label"
+                                name="./frmFields/titleOptions/item0/name"
+                                value="Mr"/>
+                            <mrValue
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/hidden"
+                                fieldLabel="Mr Title Value"
+                                name="./frmFields/titleOptions/item0/value"
+                                value="Mr"/>
+                            <mrsName
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldDescription="Enter Title for Mrs"
+                                fieldLabel="Mrs Title Label"
+                                name="./frmFields/titleOptions/item1/name"
+                                value="Mrs."/>
+                            <mrsValue
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/hidden"
+                                fieldLabel="Mrs Title Value"
+                                name="./frmFields/titleOptions/item1/value"
+                                value="Mrs"/>
+                            <missName
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldDescription="Enter title for Miss"
+                                fieldLabel="Miss Title Label"
+                                name="./frmFields/titleOptions/item2/name"
+                                value="Miss"/>
+                            <missValue
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/hidden"
+                                fieldLabel="Miss Title Value"
+                                name="./frmFields/titleOptions/item2/value"
+                                value="Miss"/>
                             <emailAddressLabel
                                 jcr:primaryType="nt:unstructured"
                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
@@ -73,13 +99,6 @@
                                 fieldLabel="Email Address Placeholder"
                                 name="./frmFields/emailPlaceholder"
                                 value="Enter Your Email Address"/>
-                            <enableEmailCheckbox
-                                jcr:primaryType="nt:unstructured"
-                                sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
-                                name="./frmFields/enableEmailCheckbox"
-                                text="Enable Email"
-                                uncheckedValue="{Boolean}false"
-                                value="{Boolean}true"/>
                             <firstNameLabel
                                 jcr:primaryType="nt:unstructured"
                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
@@ -90,94 +109,135 @@
                             <firstNamePlaceholder
                                 jcr:primaryType="nt:unstructured"
                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                fieldDescription="Enter Your First Name"
+                                fieldDescription="Enter First Name Placeholder"
                                 fieldLabel="First Name Placeholder"
                                 name="./frmFields/fnamePlaceholder"
                                 value="Enter Your First Name"/>
                             <lastNameLabel
                                 jcr:primaryType="nt:unstructured"
                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldDescription="Enter Last Name Label"
                                 fieldLabel="Last Name Label"
                                 name="./frmFields/lNameLabel"
                                 value="Last Name"/>
                             <lastNamePlaceholder
                                 jcr:primaryType="nt:unstructured"
                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                fieldDescription="Enter Your First Name"
+                                fieldDescription="Enter Last Name Placeholder"
                                 fieldLabel="Last Name Placeholder"
                                 name="./frmFields/lNamePlaceholder"
-                                value="Enter Your First Name"/>
+                                value="Enter Your Last Name"/>
                             <dobtitle
                                 jcr:primaryType="nt:unstructured"
                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldDescription="Enter DOB Label"
                                 fieldLabel="DOB title"
                                 name="./frmFields/dobLabel"
                                 value="Date of Birth"/>
-                            <showDob
+                            <dobSelectsMode
                                 jcr:primaryType="nt:unstructured"
                                 sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
-                                name="./frmFields/showDob"
-                                text="Show Date of birth"
+                                checked="{Boolean}true"
+                                name="./dobSelectsMode"
+                                text="Enable Date of birth select?"
                                 uncheckedValue="{Boolean}false"
                                 value="{Boolean}true"/>
                             <dayfieldlabel
                                 jcr:primaryType="nt:unstructured"
                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldDescription="Enter Day Label"
                                 fieldLabel="Day Field Label "
                                 name="./frmFields/dayLabel"
                                 value="Day"/>
                             <dayPalceholder
                                 jcr:primaryType="nt:unstructured"
                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                fieldDescription="Enter Day"
+                                fieldDescription="Enter Day Placeholder"
                                 fieldLabel="Day Placeholder"
                                 name="./frmFields/dayPalceholder"
-                                value="Enter Day"/>
+                                value="DD"/>
                             <monthLabel
                                 jcr:primaryType="nt:unstructured"
                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldDescription="Enter Month Label"
                                 fieldLabel="Month Field Label "
                                 name="./frmFields/monthLabel"
                                 value="Month"/>
                             <monthPlaceholder
                                 jcr:primaryType="nt:unstructured"
                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                fieldDescription="Enter Month"
+                                fieldDescription="Enter Month Placeholder"
                                 fieldLabel="Month Placeholder"
                                 name="./frmFields/monthPlaceholder"
-                                value="Enter Month"/>
+                                value="MM"/>
                             <yearLabel
                                 jcr:primaryType="nt:unstructured"
                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldDescription="Enter Year Label"
                                 fieldLabel="Year Field Label "
                                 name="./frmFields/yearLabel"
                                 value="Year"/>
                             <yearPlaceholder
                                 jcr:primaryType="nt:unstructured"
                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                fieldDescription="Enter Year"
+                                fieldDescription="Enter Year Placeholder"
                                 fieldLabel="Year Placeholder"
                                 name="./frmFields/yearPlaceholder"
-                                value="Enter Year"/>
-                            <dayOfBirthByFields
+                                value="YYYY"/>
+                            <hideOrderSummary
                                 jcr:primaryType="nt:unstructured"
                                 sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
-                                name="./frmFields/dayOfBirthByFields"
-                                text="Day of birth by fields"
+                                checked="{Boolean}true"
+                                name="./hideOrderSummary"
+                                text="Hide Order Summary"
                                 uncheckedValue="{Boolean}false"
                                 value="{Boolean}true"/>
-                            <showAddressCard
+                            <hideConsentTrustworthy
                                 jcr:primaryType="nt:unstructured"
                                 sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
-                                name="./frmFields/showAddressCard"
-                                text="Show Address Card"
+                                checked="{Boolean}true"
+                                name="./hideConsentTrustworthy"
+                                text="Hide Consent Trustworthy"
                                 uncheckedValue="{Boolean}false"
                                 value="{Boolean}true"/>
-                            <cardMode
+                            <hideAddressSection
                                 jcr:primaryType="nt:unstructured"
                                 sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
-                                name="./frmFields/cardMode"
-                                text="Card Mode"
+                                checked="{Boolean}true"
+                                name="./hideAddressSection"
+                                text="Hide Address Section"
+                                uncheckedValue="{Boolean}false"
+                                value="{Boolean}true"/>
+                            <numberInSimOnly
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                checked="{Boolean}true"
+                                name="./numberInSimOnly"
+                                text="Number In Sim Only"
+                                uncheckedValue="{Boolean}false"
+                                value="{Boolean}true"/>
+                            <onlyExternalHeading
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                checked="{Boolean}true"
+                                name="./onlyExternalHeading"
+                                text="Only External Heading"
+                                uncheckedValue="{Boolean}false"
+                                value="{Boolean}true"/>
+                            <formPaddingsForCardMode
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                checked="{Boolean}true"
+                                name="./formPaddingsForCardMode"
+                                text="Form Paddings For Card Mode"
+                                uncheckedValue="{Boolean}false"
+                                value="{Boolean}true"/>
+                            <bigHeading
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                checked="{Boolean}true"
+                                name="./bigHeading"
+                                text="Big Heading"
                                 uncheckedValue="{Boolean}false"
                                 value="{Boolean}true"/>
                         </items>
@@ -190,12 +250,14 @@
                             <portingSectionHeading
                                 jcr:primaryType="nt:unstructured"
                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldDescription="Enter Porting Section Heading"
                                 fieldLabel="Port Your Number Title"
-                                name="./frmFields/portingSectionHeading"
-                                value="Would you like to Port your Number?"/>
+                                name="./portingSectionHeading"
+                                value="Number Port-in"/>
                             <nothanksLabel
                                 jcr:primaryType="nt:unstructured"
                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldDescription="Enter Label for No Thanks Radio Button"
                                 fieldLabel="No Thanks Radio Label"
                                 name="./frmFields/portInOptions/item0/label"
                                 value="No, I want a new number"/>
@@ -208,6 +270,7 @@
                             <wantToPortLabel
                                 jcr:primaryType="nt:unstructured"
                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldDescription="Enter Label for Want to Portin Radio Button"
                                 fieldLabel="Want To Port In Radio Label"
                                 name="./frmFields/portInOptions/item1/label"
                                 value="Yes, I would like to transfer my number"/>
@@ -220,18 +283,21 @@
                             <portInNumberLabel
                                 jcr:primaryType="nt:unstructured"
                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldDescription="Enter Label for Porting Number"
                                 fieldLabel="Number To Port Label"
                                 name="./frmFields/portInNumberLabel"
                                 value="Number to ported to Sim only"/>
                             <portInNumberPlaceHolder
                                 jcr:primaryType="nt:unstructured"
                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldDescription="Enter PortIn Number Placeholder"
                                 fieldLabel="Port In Number PlaceHolder"
                                 name="./frmFields/portInNumberPlaceHolder"
                                 value="Enter your mobile number"/>
                             <noPortInDescription
                                 jcr:primaryType="nt:unstructured"
                                 sling:resourceType="cq/gui/components/authoring/dialog/richtext"
+                                fieldDescription="Enter Description For No Thanks Port In"
                                 fieldLabel="No PortIn Description"
                                 name="./frmFields/noPortInDescription"
                                 useFixedInlineToolbar="{Boolean}true">
@@ -363,6 +429,7 @@
                             <yesPortInDescription
                                 jcr:primaryType="nt:unstructured"
                                 sling:resourceType="cq/gui/components/authoring/dialog/richtext"
+                                fieldDescription="Enter Description For Yes To Port In"
                                 fieldLabel="Yes PortIn Description"
                                 name="./frmFields/yesPortInDescription"
                                 useFixedInlineToolbar="{Boolean}true">
@@ -494,16 +561,10 @@
                             <ctaContinueLabel
                                 jcr:primaryType="nt:unstructured"
                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldDescription="Enter Continue CTA Label"
                                 fieldLabel="Continue CTA Label"
                                 name="./frmFields/ctaContinueLabel"
                                 value="Continue"/>
-                            <showContinueButton
-                                jcr:primaryType="nt:unstructured"
-                                sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
-                                name="./frmFields/showContinueButton"
-                                text="Show Continue Button"
-                                uncheckedValue="{Boolean}false"
-                                value="{Boolean}true"/>
                         </items>
                     </column2>
                     <column3

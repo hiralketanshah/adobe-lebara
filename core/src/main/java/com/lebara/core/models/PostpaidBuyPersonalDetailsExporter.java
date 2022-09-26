@@ -1,5 +1,7 @@
 package com.lebara.core.models;
 
+import java.util.Optional;
+
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.models.annotations.DefaultInjectionStrategy;
@@ -7,9 +9,11 @@ import org.apache.sling.models.annotations.Exporter;
 import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.injectorspecific.ChildResource;
 import org.apache.sling.models.annotations.injectorspecific.ScriptVariable;
+import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
 
 import com.adobe.cq.export.json.ComponentExporter;
 import com.adobe.cq.export.json.ExporterConstants;
+import com.adobe.cq.wcm.style.ComponentStyleInfo;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.lebara.core.models.beans.PostpaidBuyPersonalDetailsFormFields;
 import com.lebara.core.models.beans.PostpaidPersonalDetailsErrorMsg;
@@ -25,9 +29,52 @@ public class PostpaidBuyPersonalDetailsExporter implements ComponentExporter {
     private Resource resource;
 	@ChildResource
     private PostpaidBuyPersonalDetailsFormFields frmFields;
+	
+	@ValueMapValue
+	private String heading;
 
+	@ValueMapValue
+	private String portingSectionHeading;
+	
+	@ValueMapValue
+    private boolean hideOrderSummary;
+
+    @ValueMapValue
+    private boolean hideConsentTrustworthy;
+    
+    @ValueMapValue
+    private boolean hideAddressSection;
+    
+    @ValueMapValue
+    private boolean numberInSimOnly;
+    
+    @ValueMapValue
+    private boolean onlyExternalHeading;
+    
+    @ValueMapValue
+    private boolean formPaddingsForCardMode;
+    
+    @ValueMapValue
+    private boolean bigHeading;
+    
+    @ValueMapValue
+    private boolean showTitle;
+    
+    @ValueMapValue
+    private boolean dobSelectsMode;
+    
+    private String appliedStyles;
+    
     @ChildResource
     private  PostpaidPersonalDetailsErrorMsg validationMessages;
+	
+	public String getHeading() {
+		return heading;
+	}
+
+	public String getPortingSectionHeading() {
+		return portingSectionHeading;
+	}
 	
 	@JsonProperty("frmFields")
     public PostpaidBuyPersonalDetailsFormFields getFrmFields() {
@@ -37,6 +84,47 @@ public class PostpaidBuyPersonalDetailsExporter implements ComponentExporter {
 	@JsonProperty("validationMessages")
     public PostpaidPersonalDetailsErrorMsg getValidationMessages() {
         return validationMessages;
+    }
+	
+	public boolean isHideOrderSummary() {
+		return hideOrderSummary;
+	}
+
+	public boolean isHideConsentTrustworthy() {
+		return hideConsentTrustworthy;
+	}
+
+	public boolean isHideAddressSection() {
+		return hideAddressSection;
+	}
+
+	public boolean isNumberInSimOnly() {
+		return numberInSimOnly;
+	}
+
+	public boolean isOnlyExternalHeading() {
+		return onlyExternalHeading;
+	}
+
+	public boolean isFormPaddingsForCardMode() {
+		return formPaddingsForCardMode;
+	}
+
+	public boolean isBigHeading() {
+		return bigHeading;
+	}
+
+	public boolean isShowTitle() {
+		return showTitle;
+	}
+
+	public boolean isDobSelectsMode() {
+		return dobSelectsMode;
+	}
+
+	public String getAppliedStyles() {
+        return Optional.of(resource).map(resource -> resource.adaptTo(ComponentStyleInfo.class))
+                .map(cmpStyleInfo -> cmpStyleInfo.getAppliedCssClasses()).orElse("");
     }
 	
 	@Override
