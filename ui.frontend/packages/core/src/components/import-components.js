@@ -101,3 +101,5 @@ import "../aemConfigs/QuickActionConfig.js";
 import "../aemConfigs/DestinationTableAemConfig.js";
 import "../aemConfigs/SuccessPopupAemConfig.js";
 import "../aemConfigs/InformativeTableAemConfig.js";
+import "../aemConfigs/PaymentSummaryAemConfig.js";
+import "../aemConfigs/PersonalDetailsSummaryAemConfig.js";
