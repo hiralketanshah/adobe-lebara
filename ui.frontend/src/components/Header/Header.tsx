@@ -31,7 +31,7 @@ import {selectIsAuthenticated} from "@lebara/ui/src/redux/selectors/userSelector
 import {globalConfigs as GC} from "@lebara/ui/src/configs/globalConfigs.js";
 import {useApolloClient, useQuery} from "@apollo/client";
 import GET_CART from "@lebara/ui/src/graphql/GET_CART";
-import {loadInitialCart, setCartItemsLoading} from "@lebara/ui/src/redux/actions/cartActions";
+import {loadInitialCart, setCartItemsLoading, loadRafProducts} from "@lebara/ui/src/redux/actions/cartActions";
 import mapMagentoProductToCartItem from "@lebara/ui/src/utils/mapMagentoProductToCartItem";
 import {saveTopUps} from "@lebara/ui/src/redux/actions/topUpActions";
 import GET_TOP_UPS from "@lebara/ui/src/graphql/GET_TOP_UPS";
@@ -45,6 +45,8 @@ import aemUtils from "../../utils/aem-utils";
 import { BACKGROUND_OPACITY_SAERCH_BAR } from "@lebara/ui/src/utils/lebara.constants";
 import useLoadPaymentMethods from "@lebara/ui/src/hooks/useLoadPaymentMethods";
 import io from "socket.io-client";
+import GET_RAFS from "@lebara/ui/src/graphql/GET_RAFS";
+import queryString from "query-string";
 
 const SingleMenu = ({ menuItem, newText }: { menuItem: children, newText: any }) => {
   const DEFUALT_GROUP_MENU_UPTO = 5;
@@ -325,6 +327,21 @@ const Header: React.FC<HeaderProps> = ({
       );
     });
   }, [client, dispatch]);
+
+  const getRafProducts = useCallback(() => {
+    client.query({ query: GET_RAFS }).then((res) => {
+      dispatch(loadRafProducts(res?.data?.getRafs));
+    });
+  }, [client, dispatch]);
+  React.useEffect(() => {
+    const { fromRedirect } = queryString.parse(window.location.search);
+    if (fromRedirect) {
+      dispatch(loadInitialCart([]));
+      return;
+    }
+    getCart();
+    getRafProducts();
+  }, [dispatch, getCart, getRafProducts]);
 
   const handleCartClick = () => {
     onCloseSearch();
