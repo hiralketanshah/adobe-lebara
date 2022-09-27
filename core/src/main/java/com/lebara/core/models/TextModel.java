@@ -28,6 +28,8 @@ public class TextModel implements Text {
     @ValueMapValue
     private String textalignment;
 
+    @ValueMapValue
+    private boolean isNewDesign;
 
     @SlingObject
     private SlingHttpServletRequest slingRequest;
@@ -39,6 +41,10 @@ public class TextModel implements Text {
 
     public String getTextalignment() {
         return textalignment;
+    }
+
+	public boolean getIsNewDesign() {
+        return isNewDesign;
     }
 
     @Override
