@@ -853,6 +853,12 @@
                                                 fieldLabel="Payment Fail Button Text"
                                                 name="./paymentMessages/paymentFailButtonText"
                                                 value="Try Again"/>
+                                            <freeSimOrderFailedUrl
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                                rootPath="/content/lebara"
+                                                fieldLabel="Payment - Free Sim Order Failed URL"
+                                                name="./paymentMessages/freeSimOrderFailedUrl"/>
                                         </items>
                                     </column>
                                 </items>
