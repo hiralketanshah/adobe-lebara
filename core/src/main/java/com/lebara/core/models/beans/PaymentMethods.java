@@ -83,6 +83,9 @@ public class PaymentMethods {
     @ValueMapValue
     private String paymentFailButtonText;
 
+    @ValueMapValue
+    private String freeSimOrderFailedUrl;
+
     public String getCard() {
         return getUTFStr(card);
     }
@@ -170,6 +173,10 @@ public class PaymentMethods {
 	public String getPaymentFailButtonText() {
 		return paymentFailButtonText;
 	}
+
+    public String getFreeSimOrderFailedUrl() {
+        return AemUtils.getLinkWithExtension(freeSimOrderFailedUrl);
+    }
 
 	private String getUTFStr(String rawString) {
         if (rawString != null) {
