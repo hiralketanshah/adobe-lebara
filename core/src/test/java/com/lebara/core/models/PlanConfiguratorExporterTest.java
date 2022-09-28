@@ -116,8 +116,13 @@ class PlanConfiguratorExporterTest {
     }
 
     @Test
-    void testGetUnlimitedMinsSmsText() {
-        assertEquals("Unlimited min/text", planConfiguratorExporter.getUnlimitedMinsSmsText());
+    void testGetNationalUnlimitedPlanText() {
+        assertEquals("Unlimited min/text", planConfiguratorExporter.getNationalUnlimitedPlanText());
+    }
+    
+    @Test
+    public void testGetNationalUnlimitedPlanTextSummary() {
+        assertEquals("Unlimited Calling National", planConfiguratorExporter.getNationalUnlimitedPlanTextSummary());
     }
 
     @Test
@@ -151,13 +156,18 @@ class PlanConfiguratorExporterTest {
     }
 
     @Test
-    void testGetUnlimitedCallsSmsText() {
-        assertEquals("Unlimited Calling & Texting", planConfiguratorExporter.getUnlimitedCallsSmsText());
+    void testGetInternationalUnlimitedPlanText() {
+        assertEquals("Unlimited Calling & Texting", planConfiguratorExporter.getInternationalUnlimitedPlanText());
     }
 
     @Test
-    void testGetUnlimitedCallsSmsDescription() {
-        assertEquals("45 Countries", planConfiguratorExporter.getUnlimitedCallsSmsDescription());
+    void testGetInternationalUnlimitedPlanDescription() {
+        assertEquals("45 Countries", planConfiguratorExporter.getInternationalUnlimitedPlanDescription());
+    }
+    
+    @Test
+    public void testGetInternationalUnlimitedPlanTextSummary() {
+        assertEquals("Unlimited Calling International", planConfiguratorExporter.getInternationalUnlimitedPlanTextSummary());
     }
     
     @Test

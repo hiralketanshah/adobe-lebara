@@ -66,7 +66,9 @@ public class PlanConfiguratorExporter implements ComponentExporter {
     @ValueMapValue
     private String callingtextingPopupInfo;
     @ValueMapValue
-    private String unlimitedMinsSmsText;
+    private String nationalUnlimitedPlanText;
+    @ValueMapValue
+    private String nationalUnlimitedPlanTextSummary;
     @ValueMapValue
     private String speedLabel;
     @ValueMapValue
@@ -84,9 +86,11 @@ public class PlanConfiguratorExporter implements ComponentExporter {
     @ValueMapValue
     private String internationalCallingPopupInfo;
     @ValueMapValue
-    private String unlimitedCallsSmsText;
+    private String internationalUnlimitedPlanText;
     @ValueMapValue
-    private String unlimitedCallsSmsDescription;
+    private String internationalUnlimitedPlanDescription;
+    @ValueMapValue
+    private String internationalUnlimitedPlanTextSummary;
 
     private String appliedStyles;
 
@@ -162,8 +166,8 @@ public class PlanConfiguratorExporter implements ComponentExporter {
         return AemUtils.updateShortenLinksInRichText(callingtextingPopupInfo, slingRequest);
     }
 
-    public String getUnlimitedMinsSmsText() {
-        return unlimitedMinsSmsText;
+    public String getNationalUnlimitedPlanText() {
+        return nationalUnlimitedPlanText;
     }
 
     public String getSpeedLabel() {
@@ -190,12 +194,12 @@ public class PlanConfiguratorExporter implements ComponentExporter {
         return AemUtils.updateShortenLinksInRichText(internationalCallingPopupInfo, slingRequest);
     }
 
-    public String getUnlimitedCallsSmsText() {
-        return unlimitedCallsSmsText;
+    public String getInternationalUnlimitedPlanText() {
+        return internationalUnlimitedPlanText;
     }
 
-    public String getUnlimitedCallsSmsDescription() {
-        return AemUtils.updateShortenLinksInRichText(unlimitedCallsSmsDescription, slingRequest);
+    public String getInternationalUnlimitedPlanDescription() {
+        return AemUtils.updateShortenLinksInRichText(internationalUnlimitedPlanDescription, slingRequest);
     }
 
     public String getAppliedStyles() {
@@ -209,6 +213,14 @@ public class PlanConfiguratorExporter implements ComponentExporter {
 
     public String getAdvancedSpeedTitle() {
         return advancedSpeedTitle;
+    }
+ 
+    public String getNationalUnlimitedPlanTextSummary() {
+        return nationalUnlimitedPlanTextSummary;
+    }
+
+    public String getInternationalUnlimitedPlanTextSummary() {
+        return internationalUnlimitedPlanTextSummary;
     }
 
     @Override
