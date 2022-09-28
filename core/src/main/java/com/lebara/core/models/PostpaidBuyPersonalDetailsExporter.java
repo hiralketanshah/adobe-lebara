@@ -31,7 +31,7 @@ public class PostpaidBuyPersonalDetailsExporter implements ComponentExporter {
     private PostpaidBuyPersonalDetailsFormFields frmFields;
 	
 	@ValueMapValue
-	private String heading;
+	private String redirectAddress;
 
 	@ValueMapValue
 	private String portingSectionHeading;
@@ -49,7 +49,7 @@ public class PostpaidBuyPersonalDetailsExporter implements ComponentExporter {
     private boolean numberInSimOnly;
     
     @ValueMapValue
-    private boolean onlyExternalHeading;
+    private boolean hideInternalHeading;
     
     @ValueMapValue
     private boolean formPaddingsForCardMode;
@@ -61,6 +61,9 @@ public class PostpaidBuyPersonalDetailsExporter implements ComponentExporter {
     private boolean showTitle;
     
     @ValueMapValue
+    private boolean customFormFieldOrder;
+    
+    @ValueMapValue
     private boolean dobSelectsMode;
     
     private String appliedStyles;
@@ -68,8 +71,8 @@ public class PostpaidBuyPersonalDetailsExporter implements ComponentExporter {
     @ChildResource
     private  PostpaidPersonalDetailsErrorMsg validationMessages;
 	
-	public String getHeading() {
-		return heading;
+	public String getRedirectAddress() {
+		return redirectAddress;
 	}
 
 	public String getPortingSectionHeading() {
@@ -102,8 +105,8 @@ public class PostpaidBuyPersonalDetailsExporter implements ComponentExporter {
 		return numberInSimOnly;
 	}
 
-	public boolean isOnlyExternalHeading() {
-		return onlyExternalHeading;
+	public boolean isHideInternalHeading() {
+		return hideInternalHeading;
 	}
 
 	public boolean isFormPaddingsForCardMode() {
@@ -120,6 +123,10 @@ public class PostpaidBuyPersonalDetailsExporter implements ComponentExporter {
 
 	public boolean isDobSelectsMode() {
 		return dobSelectsMode;
+	}
+
+	public boolean isCustomFormFieldOrder() {
+		return customFormFieldOrder;
 	}
 
 	public String getAppliedStyles() {

@@ -17,13 +17,6 @@
                         jcr:title="Name Section"
                         sling:resourceType="granite/ui/components/coral/foundation/container">
                         <items jcr:primaryType="nt:unstructured">
-                            <personalDetailsHeading
-                                jcr:primaryType="nt:unstructured"
-                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                fieldDescription="Your personal details"
-                                fieldLabel="Personal Details Title"
-                                name="./heading"
-                                value="Your personal details"/>
                             <titleLabel
                                 jcr:primaryType="nt:unstructured"
                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
@@ -216,12 +209,12 @@
                                 text="Number In Sim Only"
                                 uncheckedValue="{Boolean}false"
                                 value="{Boolean}true"/>
-                            <onlyExternalHeading
+                            <hideInternalHeading
                                 jcr:primaryType="nt:unstructured"
                                 sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
                                 checked="{Boolean}true"
-                                name="./onlyExternalHeading"
-                                text="Only External Heading"
+                                name="./hideInternalHeading"
+                                text="Hide Internal Heading"
                                 uncheckedValue="{Boolean}false"
                                 value="{Boolean}true"/>
                             <formPaddingsForCardMode
@@ -238,6 +231,14 @@
                                 checked="{Boolean}true"
                                 name="./bigHeading"
                                 text="Big Heading"
+                                uncheckedValue="{Boolean}false"
+                                value="{Boolean}true"/>
+							<customFormFieldOrder
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                checked="{Boolean}true"
+                                name="./customFormFieldOrder"
+                                text="Custom Form Field Order"
                                 uncheckedValue="{Boolean}false"
                                 value="{Boolean}true"/>
                         </items>
@@ -565,6 +566,12 @@
                                 fieldLabel="Continue CTA Label"
                                 name="./frmFields/ctaContinueLabel"
                                 value="Continue"/>
+							<redirectAddress
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                fieldDescription="Enter continue cta link"
+                                fieldLabel="Continue CTA Link"
+                                name="./redirectAddress"/>
                         </items>
                     </column2>
                     <column3

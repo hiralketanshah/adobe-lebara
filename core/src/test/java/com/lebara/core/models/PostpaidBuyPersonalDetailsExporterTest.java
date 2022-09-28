@@ -27,8 +27,8 @@ class PostpaidBuyPersonalDetailsExporterTest {
     }
 	
 	@Test
-	void testGetHeading() {
-		assertEquals("Contact Details" , postpaidBuyPersonalDetailsExporter.getHeading());
+	void testGetRedirectAddress() {
+		assertEquals("/postpaid/details" , postpaidBuyPersonalDetailsExporter.getRedirectAddress());
 	}
 	
 	@Test
@@ -107,8 +107,8 @@ class PostpaidBuyPersonalDetailsExporterTest {
 	}
 	
 	@Test
-	void testIsOnlyExternalHeading() {
-		assertEquals(true , postpaidBuyPersonalDetailsExporter.isOnlyExternalHeading());
+	void testIsHideInternalHeading() {
+		assertEquals(true , postpaidBuyPersonalDetailsExporter.isHideInternalHeading());
 	}
 	
 	@Test
