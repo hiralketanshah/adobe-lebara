@@ -81,11 +81,20 @@ public class PostpaidBuyPersonalDetailsFormFields {
 	@ValueMapValue
 	private String yesPortInDescription;
 
+	@ValueMapValue
+	private String prepaidDropdownLabel;
+	
+	@ValueMapValue
+	private String portInNumberCanBeUseWithLoginWarnMsg;
+	
 	@ChildResource
 	protected Resource portInOptions;
 	
 	@ChildResource
 	protected Resource titleOptions;
+	
+	@ChildResource
+	protected Resource lebaraPrepaidOptions;
 
 	public String getTitleLabel() {
 		return titleLabel;
@@ -167,6 +176,14 @@ public class PostpaidBuyPersonalDetailsFormFields {
 		return yesPortInDescription;
 	}
 
+	public String getPrepaidDropdownLabel() {
+		return prepaidDropdownLabel;
+	}
+
+	public String getPortInNumberCanBeUseWithLoginWarnMsg() {
+		return portInNumberCanBeUseWithLoginWarnMsg;
+	}
+
 	@JsonProperty("portInOptions")
 	public List<SelectOption> getPortInOptionArray() {
 		List<SelectOption> options = new ArrayList<>();
@@ -195,5 +212,18 @@ public class PostpaidBuyPersonalDetailsFormFields {
 		return titles;
 	}
 
+	@JsonProperty("lebaraPrepaidOptions")
+	public List<SelectTitle> getLebaraPrepaidOptionsArray() {
+		List<SelectTitle> options = new ArrayList<>();
+		if (lebaraPrepaidOptions != null) {
+			for (Resource item : lebaraPrepaidOptions.getChildren()) {
+				SelectTitle option = new SelectTitle();
+				option.setName(AemUtils.getStringProperty(item, NAME));
+				option.setValue(AemUtils.getStringProperty(item, VALUE));
+				options.add(option);
+			}
+		}
+		return options;
+	}
 	
 }

@@ -33,6 +33,8 @@
 		"emailLabel": "Email Address",
 		"portInNumberLabel": "Number to ported to Sim only",
 		"emailPlaceholder": "Enter Your Email Address",
+		"prepaidDropdownLabel": "Is this a lebara Prepaid number?",
+		"portInNumberCanBeUseWithLoginWarnMsg": "the mobile number attached with ****45@gmail.com",
 		"dayLabel": "Day",
 		"portInOptions": {
 			"jcr:primaryType": "nt:unstructured",
@@ -62,6 +64,19 @@
 				"jcr:primaryType": "nt:unstructured",
 				"name": "Miss",
 				"value": "Miss"
+			}
+		},
+		"lebaraPrepaidOptions": {
+			"jcr:primaryType": "nt:unstructured",
+			"item0": {
+				"jcr:primaryType": "nt:unstructured",
+				"name": "No",
+				"value": "No"
+			},
+			"item1": {
+				"jcr:primaryType": "nt:unstructured",
+				"name": "Yes",
+				"value": "Yes"
 			}
 		}
 	},
