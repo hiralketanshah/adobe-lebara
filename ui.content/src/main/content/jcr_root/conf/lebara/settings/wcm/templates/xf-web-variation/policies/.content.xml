@@ -33,6 +33,26 @@
                         sling:resourceType="wcm/core/components/policies/mapping"/>
                 </components>
             </mysite>
+            <lebara jcr:primaryType="nt:unstructured">
+                <components jcr:primaryType="nt:unstructured">
+                    <aboutlebara
+                        cq:policy="lebara/components/aboutlebara/policy_1660217571187"
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="wcm/core/components/policies/mapping"/>
+                    <wheretocall
+                        cq:policy="lebara/components/wheretocall/policy_1660219165057"
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="wcm/core/components/policies/mapping"/>
+                    <usp
+                        cq:policy="lebara/components/usp/policy_1660219197465"
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="wcm/core/components/policies/mapping"/>
+                    <awards
+                        cq:policy="lebara/components/awards/policy_1660640547466"
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="wcm/core/components/policies/mapping"/>
+                </components>
+            </lebara>
         </root>
     </jcr:content>
 </jcr:root>
