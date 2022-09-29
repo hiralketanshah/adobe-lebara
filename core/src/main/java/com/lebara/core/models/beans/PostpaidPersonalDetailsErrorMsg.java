@@ -16,6 +16,9 @@ public class PostpaidPersonalDetailsErrorMsg {
     
     @SlingObject
     private SlingHttpServletRequest slingRequest;
+    
+    @ValueMapValue
+    private String titleRequiredMsg;
 
 	@ValueMapValue
     private String emailRequiredMsg;
@@ -109,7 +112,11 @@ public class PostpaidPersonalDetailsErrorMsg {
 
     @ValueMapValue
     private String cityErrorRequired;
-
+    
+    public String getTitleRequiredMsg() {
+		return titleRequiredMsg;
+	}
+    
     public String getCityErrorRequired() {
         return cityErrorRequired;
     }

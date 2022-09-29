@@ -21,4 +21,8 @@ public class ImageIcon {
     public String getName() {
         return name;
     }
+    
+    public void setImage(String image) {
+        this.image = image;
+    }
 }

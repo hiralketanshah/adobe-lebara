@@ -24,25 +24,25 @@ public class AltLinkUtils {
         String de_default = "/de/de";
         Map<String, String> deCountryMap = new HashMap<>();
         deCountryMap.put("/de/de", "de-de");
-        deCountryMap.put("/de/pl", "de-pl");
-        deCountryMap.put("/de/ro", "de-ro");
-        deCountryMap.put("/de/en", "de-en");
+        deCountryMap.put("/de/pl", "pl-de");
+        deCountryMap.put("/de/ro", "ro-de");
+        deCountryMap.put("/de/en", "en-de");
 
         String fr_default = "/fr/fr";
         Map<String, String> frCountryMap = new HashMap<>();
         frCountryMap.put("/fr/fr", "fr-fr");
-        frCountryMap.put("/fr/en", "fr-en");
+        frCountryMap.put("/fr/en", "en-fr");
 
         String nl_default = "/nl/nl";
         Map<String, String> nlCountryMap = new HashMap<>();
         nlCountryMap.put("/nl/nl", "nl-nl");
-        nlCountryMap.put("/nl/pl", "nl-pl");
-        nlCountryMap.put("/nl/en", "nl-en");
+        nlCountryMap.put("/nl/pl", "pl-nl");
+        nlCountryMap.put("/nl/en", "en-nl");
 
         String dk_default = "/dk/da";
         Map<String, String> dkCountryMap = new HashMap<>();
-        dkCountryMap.put("/dk/da", "dk-da");
-        dkCountryMap.put("/dk/en", "dk-en");
+        dkCountryMap.put("/dk/da", "da-dk");
+        dkCountryMap.put("/dk/en", "en-dk");
 
         if (StringUtils.equalsIgnoreCase(country, "de")) {
             currentDomain = AemUtils.DE_DOMAIN_NAME;

@@ -1,11 +1,11 @@
 import { MapTo } from "@adobe/aem-react-editable-components";
-import Trustpilot from "@lebara/core/components/Trustpilot/Trustpilot";
+import TrustpilotReviews from "@lebara/netherlands/components/TrustpilotReviews/index";
 
 const TrustpilotConfig = {
-    emptyLabel: "Trust Pilot",
+    emptyLabel: "Trust Pilot Component",
     isEmpty: function (props) {
-      return !props.totalRatings | !props.ratingValue | !props.totalStars
+      return !props.title
     },
 };
 
-MapTo("lebara/components/trustpilotrating")(Trustpilot, TrustpilotConfig);
+MapTo("lebara/components/trustpilot")(TrustpilotReviews, TrustpilotConfig);

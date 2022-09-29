@@ -126,7 +126,13 @@
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                                 fieldLabel="Auto Top up Button Label"
                                                 name="./autoTopupButtonLabel"
-                                                value="Save auto topup"/>
+                                                value="Active"/>
+                                            <notactiveautotopupbuttonlabel
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="Not Active Auto Top up Button Label"
+                                                name="./notActiveAutoTopupButtonLabel"
+                                                value="Not active"/>
                                             <saveautotopupbuttonlabel
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
