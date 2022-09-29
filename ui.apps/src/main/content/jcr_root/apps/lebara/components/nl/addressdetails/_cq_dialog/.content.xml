@@ -213,6 +213,13 @@
                                 fieldLabel="City Empty Error Message"
                                 name="./cityEmptyErrorMessage"
                                 value="Please enter your city. This field is mandatory."/>
+                            <noaddressfoundmessage
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldDescription="Example:  No Address Found."
+                                fieldLabel="Address Not Found Message"
+                                name="./noAddressFoundMessage"
+                                value="No Address Found."/>
                         </items>
                     </column3>
                 </items>
