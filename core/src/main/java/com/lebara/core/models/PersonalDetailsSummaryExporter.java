@@ -21,7 +21,7 @@ import com.lebara.core.utils.AemUtils;
 @Exporter(name = ExporterConstants.SLING_MODEL_EXPORTER_NAME, extensions = ExporterConstants.SLING_MODEL_EXTENSION)
 public class PersonalDetailsSummaryExporter implements ComponentExporter {
 
-    protected static final String RESOURCE_TYPE = "/apps/lebara/components/nl/personaldetailssummary";
+    protected static final String RESOURCE_TYPE = "lebara/components/nl/personaldetailssummary";
 
     @SlingObject
     Resource resource;
