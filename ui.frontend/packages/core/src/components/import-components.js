@@ -105,3 +105,4 @@ import "../aemConfigs/DestinationTableAemConfig.js";
 import "../aemConfigs/SuccessPopupAemConfig.js";
 import "../aemConfigs/InformativeTableAemConfig.js";
 import "../aemConfigs/PostpaidBuyPersonalDetailsAemConfig.js";
+import "../aemConfigs/IconTextListAemConfig.js";
