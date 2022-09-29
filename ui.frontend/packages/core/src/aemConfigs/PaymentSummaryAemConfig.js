@@ -8,4 +8,4 @@ const PaymentSummaryConfig = {
   },
 };
 
-MapTo("lebara/components/paymentsummary")(PaymentSummary, PersonalDetailsConfig);
+MapTo("lebara/components/nl/paymentsummary")(PaymentSummary, PersonalDetailsConfig);

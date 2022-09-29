@@ -305,6 +305,12 @@
                                                 fieldLabel="Pay with iDEAL Button Label"
                                                 name="./buttonLabel"
                                                 value="Pay with iDEAL"/>
+                                            <orderSuccessPage
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                                fieldLabel="Order Success Page Link"
+                                                name="./orderSuccessPage"
+                                                rootPath="/content/lebara"/>
                                         </items>
                                     </column>
                                 </items>

@@ -115,10 +115,14 @@
                                                         jcr:primaryType="nt:unstructured"
                                                         text="Germany"
                                                         value="DE"/>
-                                                    <eur
+                                                    <france
                                                         jcr:primaryType="nt:unstructured"
                                                         text="France"
                                                         value="FR"/>
+                                                    <netherlands
+                                                        jcr:primaryType="nt:unstructured"
+                                                        text="Netherlands"
+                                                        value="NL"/>
                                                 </items>
                                             </country>
                                             <locale
