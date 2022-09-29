@@ -241,6 +241,14 @@
                                 text="Custom Form Field Order"
                                 uncheckedValue="{Boolean}false"
                                 value="{Boolean}true"/>
+							<alreadyEmailNavigateToAddress
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                checked="{Boolean}true"
+                                name="./alreadyEmailNavigateToAddress"
+                                text="Already Email Navigate To Address"
+                                uncheckedValue="{Boolean}false"
+                                value="{Boolean}true"/>
                         </items>
                     </column1>
                     <column2

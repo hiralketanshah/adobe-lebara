@@ -64,6 +64,9 @@ public class PostpaidBuyPersonalDetailsExporter implements ComponentExporter {
     private boolean customFormFieldOrder;
     
     @ValueMapValue
+    private boolean alreadyEmailNavigateToAddress;
+    
+    @ValueMapValue
     private boolean dobSelectsMode;
     
     private String appliedStyles;
@@ -127,6 +130,10 @@ public class PostpaidBuyPersonalDetailsExporter implements ComponentExporter {
 
 	public boolean isCustomFormFieldOrder() {
 		return customFormFieldOrder;
+	}
+
+	public boolean isAlreadyEmailNavigateToAddress() {
+		return alreadyEmailNavigateToAddress;
 	}
 
 	public String getAppliedStyles() {

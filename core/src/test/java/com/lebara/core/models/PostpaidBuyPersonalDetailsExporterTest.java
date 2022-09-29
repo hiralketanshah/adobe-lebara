@@ -131,6 +131,16 @@ class PostpaidBuyPersonalDetailsExporterTest {
 	}
 	
 	@Test
+	void testIsCustomFormFieldOrder() {
+		assertEquals(true , postpaidBuyPersonalDetailsExporter.isCustomFormFieldOrder());
+	}
+	
+	@Test
+	void testIsAlreadyEmailNavigateToAddress() {
+		assertEquals(true , postpaidBuyPersonalDetailsExporter.isAlreadyEmailNavigateToAddress());
+	}
+	
+	@Test
     void testGetAppliedStyles() {
         assertEquals("", postpaidBuyPersonalDetailsExporter.getAppliedStyles());
     }

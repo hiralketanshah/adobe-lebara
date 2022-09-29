@@ -5,6 +5,8 @@
 	"portingSectionHeading": "Number Port-in",
 	"showTitle": "true",
 	"hideOrderSummary": "true",
+	"customFormFieldOrder": "true",
+	"alreadyEmailNavigateToAddress": "true",
 	"hideConsentTrustworthy": "true",
 	"hideAddressSection": "true",
 	"numberInSimOnly": "true",
