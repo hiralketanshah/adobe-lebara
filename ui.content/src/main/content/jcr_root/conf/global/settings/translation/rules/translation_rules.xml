@@ -449,6 +449,9 @@
 		<property name="pdfDownloadLabel"/>
 		<property name="pdfCloseLabel"/>
 		<property name="alertMessageText"/>
+		<property name="conditionsContent"/>
+		<property name="termsAndConditionsContent"/>
+		<property name="getNewNumberText"/>
 		<!--Payment Method component -->
 		<property name="preferredPaymentLabel"/>
 		<property name="preferredPaymentDesc"/>
