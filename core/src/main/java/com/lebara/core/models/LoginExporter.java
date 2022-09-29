@@ -208,6 +208,21 @@ public class LoginExporter implements ComponentExporter {
 
     @ValueMapValue
     private boolean showExpiryMessage;
+    
+    /**
+     * App - Heading/text fields labels
+     */
+    @ValueMapValue
+    private String loginHeading;
+    
+    @ValueMapValue
+    private String loginText;
+    
+    @ValueMapValue
+    private String registerHeading;
+    
+    @ValueMapValue
+    private String registerText;
 
     public String getLoginModuleType() {
         return loginModuleType;
@@ -425,7 +440,23 @@ public class LoginExporter implements ComponentExporter {
         return showExpiryMessage;
     }
 
-    @Override
+    public String getLoginHeading() {
+		return loginHeading;
+	}
+
+	public String getLoginText() {
+		return loginText;
+	}
+
+	public String getRegisterHeading() {
+		return registerHeading;
+	}
+
+	public String getRegisterText() {
+		return registerText;
+	}
+
+	@Override
     public String getExportedType() {
         return resource.getResourceType();
     }

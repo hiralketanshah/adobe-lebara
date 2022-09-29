@@ -11,6 +11,8 @@ export interface HeaderProps {
   id?: string;
   newText?: string;
   logoPath?: string;
+  backgroundColor?: string;
+  textColor?: string;
   items?: children[];
   searchPlaceholder?: string;
   logoutLabel?: string;
