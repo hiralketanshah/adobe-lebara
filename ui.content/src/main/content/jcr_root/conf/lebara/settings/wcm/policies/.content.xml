@@ -267,7 +267,7 @@
                         jcr:primaryType="nt:unstructured"
                         jcr:title="XF Root"
                         sling:resourceType="wcm/core/components/policy/policy"
-                        components="[/libs/wcm/foundation/components/responsivegrid,group:Lebara - Content SPA,group:Lebara - Structure,group:Lebara - Dashboard,group:Lebara - Support,group:Lebara - User]">
+                        components="[/libs/wcm/foundation/components/responsivegrid,group:Lebara - Content SPA,group:Lebara - Structure,group:Lebara - Dashboard,group:Lebara - Support,group:Lebara - User, group:Lebara - NL]">
                     <jcr:content jcr:primaryType="nt:unstructured"/>
                     <cq:authoring jcr:primaryType="nt:unstructured">
                         <assetToComponentMapping jcr:primaryType="nt:unstructured">
