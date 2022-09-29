@@ -46,7 +46,7 @@ import { BACKGROUND_OPACITY_SAERCH_BAR } from "@lebara/core/utils/lebara.constan
 import useLoadPaymentMethods from "@lebara/core/hooks/useLoadPaymentMethods";
 import io from "socket.io-client";
 
-const SingleMenu = ({ menuItem, newText }: { menuItem: children, newText: any }) => {
+const SingleMenu = ({ menuItem, newText, textColor }: { menuItem: children, newText: any, textColor:string }) => {
   const DEFUALT_GROUP_MENU_UPTO = 5;
   const history = useHistory();
   const timerRef = useRef<any>();
@@ -117,7 +117,7 @@ const SingleMenu = ({ menuItem, newText }: { menuItem: children, newText: any })
               fontSize={{ lg: "14px", md: "12px" }}
               lineHeight="20px"
               align="left"
-              color="white"
+              color={textColor}
               fontWeight="normal"
             >
               {menuItem.title}
@@ -221,6 +221,8 @@ const SingleMenu = ({ menuItem, newText }: { menuItem: children, newText: any })
 
 const Header: React.FC<HeaderProps> = ({
   logoPath,
+  backgroundColor="lightenPrimary.500",
+  textColor="white",
   items,
   newText,
   topupCtaText,
@@ -398,8 +400,8 @@ const Header: React.FC<HeaderProps> = ({
               alignItems="center"
               px={{lg: "20px", xl: "50.88px"}}
               py={{ lg: "12px", md: "6px" }}
-              background="lightenPrimary.500"
-              color="white"
+              background={backgroundColor}
+              color={textColor}
               height="95px"
               borderBottom="none"
           >
@@ -418,7 +420,7 @@ const Header: React.FC<HeaderProps> = ({
             <Flex alignItems="left" ml={{ xl: "60px", lg: "40px", md: "15px" }}  gridGap={{lg: "20px", xl: "30px"}}>
               {items?.map((menuItem: children) => (
                   <React.Fragment key={menuItem.title}>
-                    <SingleMenu menuItem={menuItem} newText={newText} />
+                    <SingleMenu menuItem={menuItem} newText={newText} textColor={textColor} />
                   </React.Fragment>
               ))}
             </Flex>
@@ -454,6 +456,7 @@ const Header: React.FC<HeaderProps> = ({
                           }}
                           paddingLeft={{ lg: "35px!important", md: "26px!important" }}
                           colorScheme="dark"
+                          color = {textColor}
                       />
                     </Button>
                 ) : (

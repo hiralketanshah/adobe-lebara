@@ -267,7 +267,7 @@
                         jcr:primaryType="nt:unstructured"
                         jcr:title="XF Root"
                         sling:resourceType="wcm/core/components/policy/policy"
-                        components="[/libs/wcm/foundation/components/responsivegrid,group:Lebara - Content SPA,group:Lebara - Structure,group:Lebara - Dashboard,group:Lebara - Support,group:Lebara - User]">
+                        components="[/libs/wcm/foundation/components/responsivegrid,group:Lebara - Content SPA,group:Lebara - Structure,group:Lebara - Dashboard,group:Lebara - Support,group:Lebara - User, group:Lebara - NL]">
                     <jcr:content jcr:primaryType="nt:unstructured"/>
                     <cq:authoring jcr:primaryType="nt:unstructured">
                         <assetToComponentMapping jcr:primaryType="nt:unstructured">
@@ -343,6 +343,19 @@
                         sling:resourceType="wcm/core/components/policy/policy"
                         renderAlternateLanguageLinks="true">
                     <jcr:content jcr:primaryType="nt:unstructured"/>
+					<cq:styleGroups jcr:primaryType="nt:unstructured">
+                        <item0
+                            cq:styleGroupLabel="Background Color"
+                            jcr:primaryType="nt:unstructured">
+                            <cq:styles jcr:primaryType="nt:unstructured">
+                                <item0
+                                    cq:styleClasses="page-bg-color-blue"
+                                    cq:styleId="1663162527132"
+                                    cq:styleLabel="Blue"
+                                    jcr:primaryType="nt:unstructured"/>
+                            </cq:styles>
+                        </item0>
+                    </cq:styleGroups>
                 </policy_spa>
                 <policy_spa_journey
                     cq:styleDefaultClasses="journey-page-body"                                        
@@ -426,6 +439,7 @@
                     <jcr:content jcr:primaryType="nt:unstructured"/>
                 </policy_1660640547466>
             </awards>
+            <nl jcr:primaryType="nt:unstructured"/>
         </components>
     </lebara>
     <wcm jcr:primaryType="nt:unstructured">
