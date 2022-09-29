@@ -733,6 +733,35 @@
                                     value="Address has been successfully changed!SMS confirmation was sent to your mobile number"/>
                          </items>
                     </column6>
+					<column7
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Account Setup Popup"
+                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                        <items jcr:primaryType="nt:unstructured">
+                            <successTitle
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldDescription="Account Setup Success Title"
+                                fieldLabel="Account Setup Success Title"
+                                name="./accountSetupPopup/successTitle"
+                                value="Your MyLebara account is successfully setup"/>
+                            <buttonText
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldDescription="Enter button label"
+                                fieldLabel="Button Label"
+                                name="./accountSetupPopup/buttonText"
+                                value="Go to Dashboard"/>
+                            <buttonLink
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                fieldDescription="Enter button link"
+                                fieldLabel="Button Link"
+                                name="./accountSetupPopup/buttonLink"
+								rootPath="/content/lebara"
+                                value="/dashboard"/>
+                        </items>
+                    </column7>
                 </items>
             </tabs>
         </items>
