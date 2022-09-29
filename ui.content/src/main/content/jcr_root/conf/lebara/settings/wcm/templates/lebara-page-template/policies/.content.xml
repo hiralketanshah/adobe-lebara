@@ -47,17 +47,17 @@
                             cq:policy="lebara/components/postpaidbuypersonaldetails/policy_1663592440963"
                             jcr:primaryType="nt:unstructured"
                             sling:resourceType="wcm/core/components/policies/mapping"/>
-                        <personaldetailssummary
-                            cq:policy="lebara/components/personaldetailssummary/policy_1663592440963"
-                            jcr:primaryType="nt:unstructured"
-                            sling:resourceType="wcm/core/components/policies/mapping"/>
-                        <paymentsummary
-                            cq:policy="lebara/components/paymentsummary/policy_1663592440963"
-                            jcr:primaryType="nt:unstructured"
-                            sling:resourceType="wcm/core/components/policies/mapping"/>
                         <nl jcr:primaryType="nt:unstructured">
                             <addressdetails
                                 cq:policy="lebara/components/nl/addressdetails/policy_1663592440963"
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="wcm/core/components/policies/mapping"/>
+                            <personaldetailssummary
+                                cq:policy="lebara/components/nl/personaldetailssummary/policy_1663592440963"
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="wcm/core/components/policies/mapping"/>
+                            <paymentsummary
+                                cq:policy="lebara/components/nl/paymentsummary/policy_1663592440963"
                                 jcr:primaryType="nt:unstructured"
                                 sling:resourceType="wcm/core/components/policies/mapping"/>
                         </nl>
