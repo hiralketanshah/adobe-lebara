@@ -178,7 +178,7 @@ public class PostpaidBuyPersonalDetailsFormFields {
 	}
 
 	public String getCtaContinueLink() {
-		return ctaContinueLink;
+		return AemUtils.getLinkWithExtension(ctaContinueLink);
 	}
 
 	public String getNoPortInDescription() {
