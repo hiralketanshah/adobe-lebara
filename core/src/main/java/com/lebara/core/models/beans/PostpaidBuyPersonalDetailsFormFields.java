@@ -87,6 +87,18 @@ public class PostpaidBuyPersonalDetailsFormFields {
 	@ValueMapValue
 	private String portInNumberCanBeUseWithLoginWarnMsg;
 	
+	@ValueMapValue
+	private String prepaidUserMessage;
+	
+	@ValueMapValue
+	private String postpaidUserMessage;
+	
+	@ValueMapValue
+	private String takeNumberToSimOnly;
+	
+	@ValueMapValue
+	private String tooManyTriesMessage;
+	
 	@ChildResource
 	protected Resource portInOptions;
 	
@@ -182,6 +194,22 @@ public class PostpaidBuyPersonalDetailsFormFields {
 
 	public String getPortInNumberCanBeUseWithLoginWarnMsg() {
 		return portInNumberCanBeUseWithLoginWarnMsg;
+	}
+
+	public String getPrepaidUserMessage() {
+		return prepaidUserMessage;
+	}
+
+	public String getPostpaidUserMessage() {
+		return postpaidUserMessage;
+	}
+
+	public String getTakeNumberToSimOnly() {
+		return takeNumberToSimOnly;
+	}
+
+	public String getTooManyTriesMessage() {
+		return tooManyTriesMessage;
 	}
 
 	@JsonProperty("portInOptions")
