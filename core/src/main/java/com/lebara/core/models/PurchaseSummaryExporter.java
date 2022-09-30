@@ -27,6 +27,12 @@ public class PurchaseSummaryExporter implements ComponentExporter {
 
     @ValueMapValue
     private String title;
+    
+    @ValueMapValue
+    private String monthText;
+    
+    @ValueMapValue
+    private String monthsText;
 
     @ValueMapValue
     private String buttonLabel;
@@ -54,6 +60,15 @@ public class PurchaseSummaryExporter implements ComponentExporter {
 
     @ValueMapValue
     private String discountLabel;
+    
+    @ValueMapValue
+    private String totalLabel;
+    
+    @ValueMapValue
+    private String activationFeeValue;
+    
+    @ValueMapValue
+    private boolean isActivationFeeDiscount;
     
     @ValueMapValue
     private String headerLabel;
@@ -103,8 +118,28 @@ public class PurchaseSummaryExporter implements ComponentExporter {
     public String getHeaderLabel() {
 		return headerLabel;
 	}
+    
+	public String getMonthText() {
+        return monthText;
+    }
 
-	public String getAppliedStyles() {
+    public String getMonthsText() {
+        return monthsText;
+    }
+
+    public String getTotalLabel() {
+        return totalLabel;
+    }
+
+    public String getActivationFeeValue() {
+        return activationFeeValue;
+    }
+
+    public boolean getIsActivationFeeDiscount() {
+        return isActivationFeeDiscount;
+    }
+
+    public String getAppliedStyles() {
         return Optional.of(resource).map(resource -> resource.adaptTo(ComponentStyleInfo.class))
                 .map(cmpStyleInfo -> cmpStyleInfo.getAppliedCssClasses()).orElse("");
     }
