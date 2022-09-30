@@ -1,0 +1,15 @@
+{
+"jcr:primaryType": "nt:unstructured",
+"title": "Sim Only 24 Months",
+"buttonLabel": "Order Now",
+"buttonCTALink": "en/postpaid/details.html",
+"editLabel": "Edit",
+"editCTALink": "en/postpaid.html",
+"businessSubscriptionLabel": "Business Subscription",
+"initialDiscountHeaderLabel": "The first 6 months",
+"afterDiscountLabel": "After per month",
+"activationFeeLabel": "Activation Fee",
+"discountLabel": "Discount",
+"headerLabel": "Your Orders",
+"sling:resourceType": "lebara/components/purchasesummary"
+}
