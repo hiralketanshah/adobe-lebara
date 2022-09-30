@@ -102,6 +102,7 @@ import "../aemConfigs/OurPromotionsAemConfig.js";
 import "../aemConfigs/RecentPostsAemConfig.js";
 import "../aemConfigs/QuickActionConfig.js";
 import "../aemConfigs/DestinationTableAemConfig.js";
+import "../aemConfigs/DashboardBannerAemConfig.js";
 import "../aemConfigs/SuccessPopupAemConfig.js";
 import "../aemConfigs/InformativeTableAemConfig.js";
 import "../aemConfigs/PaymentSummaryAemConfig.js";
