@@ -27,11 +27,6 @@ class PostpaidBuyPersonalDetailsExporterTest {
     }
 	
 	@Test
-	void testGetRedirectAddress() {
-		assertEquals("/postpaid/details" , postpaidBuyPersonalDetailsExporter.getRedirectAddress());
-	}
-	
-	@Test
 	void testGetPortingSectionHeading() {
 		assertEquals("Number Port-in" , postpaidBuyPersonalDetailsExporter.getPortingSectionHeading());
 	}
@@ -62,9 +57,6 @@ class PostpaidBuyPersonalDetailsExporterTest {
 		assertEquals( "No" , postpaidBuyPersonalDetailsExporter.getFrmFields().getPortInOptionArray().get(0).getValue());
 		assertEquals("Mr." , postpaidBuyPersonalDetailsExporter.getFrmFields().getTitleOptionArray().get(0).getName());
 		assertEquals( "Mr" , postpaidBuyPersonalDetailsExporter.getFrmFields().getTitleOptionArray().get(0).getValue());
-		assertEquals("No" , postpaidBuyPersonalDetailsExporter.getFrmFields().getLebaraPrepaidOptionsArray().get(0).getName());
-		assertEquals( "No" , postpaidBuyPersonalDetailsExporter.getFrmFields().getLebaraPrepaidOptionsArray().get(0).getValue());
-		assertEquals("Is this a lebara Prepaid number?" , postpaidBuyPersonalDetailsExporter.getFrmFields().getPrepaidDropdownLabel());
 		assertEquals("the mobile number attached with ****45@gmail.com" , postpaidBuyPersonalDetailsExporter.getFrmFields().getPortInNumberCanBeUseWithLoginWarnMsg());
 	}
 	

@@ -30,8 +30,6 @@ public class PostpaidBuyPersonalDetailsExporter implements ComponentExporter {
 	@ChildResource
     private PostpaidBuyPersonalDetailsFormFields frmFields;
 	
-	@ValueMapValue
-	private String redirectAddress;
 
 	@ValueMapValue
 	private String portingSectionHeading;
@@ -73,10 +71,6 @@ public class PostpaidBuyPersonalDetailsExporter implements ComponentExporter {
     
     @ChildResource
     private  PostpaidPersonalDetailsErrorMsg validationMessages;
-	
-	public String getRedirectAddress() {
-		return redirectAddress;
-	}
 
 	public String getPortingSectionHeading() {
 		return portingSectionHeading;

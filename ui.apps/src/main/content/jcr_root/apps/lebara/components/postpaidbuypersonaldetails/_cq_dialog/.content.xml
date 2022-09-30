@@ -179,7 +179,7 @@
                                 value="YYYY"/>
                             <hideOrderSummary
                                 jcr:primaryType="nt:unstructured"
-                                sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/hidden"
                                 checked="{Boolean}true"
                                 name="./hideOrderSummary"
                                 text="Hide Order Summary"
@@ -187,7 +187,7 @@
                                 value="{Boolean}true"/>
                             <hideConsentTrustworthy
                                 jcr:primaryType="nt:unstructured"
-                                sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/hidden"
                                 checked="{Boolean}true"
                                 name="./hideConsentTrustworthy"
                                 text="Hide Consent Trustworthy"
@@ -195,7 +195,7 @@
                                 value="{Boolean}true"/>
                             <hideAddressSection
                                 jcr:primaryType="nt:unstructured"
-                                sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/hidden"
                                 checked="{Boolean}true"
                                 name="./hideAddressSection"
                                 text="Hide Address Section"
@@ -203,7 +203,7 @@
                                 value="{Boolean}true"/>
                             <numberInSimOnly
                                 jcr:primaryType="nt:unstructured"
-                                sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/hidden"
                                 checked="{Boolean}true"
                                 name="./numberInSimOnly"
                                 text="Number In Sim Only"
@@ -211,7 +211,7 @@
                                 value="{Boolean}true"/>
                             <hideInternalHeading
                                 jcr:primaryType="nt:unstructured"
-                                sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/hidden"
                                 checked="{Boolean}true"
                                 name="./hideInternalHeading"
                                 text="Hide Internal Heading"
@@ -219,7 +219,7 @@
                                 value="{Boolean}true"/>
                             <formPaddingsForCardMode
                                 jcr:primaryType="nt:unstructured"
-                                sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/hidden"
                                 checked="{Boolean}true"
                                 name="./formPaddingsForCardMode"
                                 text="Form Paddings For Card Mode"
@@ -227,7 +227,7 @@
                                 value="{Boolean}true"/>
                             <bigHeading
                                 jcr:primaryType="nt:unstructured"
-                                sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/hidden"
                                 checked="{Boolean}true"
                                 name="./bigHeading"
                                 text="Big Heading"
@@ -235,7 +235,7 @@
                                 value="{Boolean}true"/>
 							<customFormFieldOrder
                                 jcr:primaryType="nt:unstructured"
-                                sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/hidden"
                                 checked="{Boolean}true"
                                 name="./customFormFieldOrder"
                                 text="Custom Form Field Order"
@@ -243,7 +243,7 @@
                                 value="{Boolean}true"/>
 							<alreadyEmailNavigateToAddress
                                 jcr:primaryType="nt:unstructured"
-                                sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/hidden"
                                 checked="{Boolean}true"
                                 name="./alreadyEmailNavigateToAddress"
                                 text="Already Email Navigate To Address"
@@ -317,53 +317,20 @@
                                 fieldLabel="Want To Port In Radio Value"
                                 name="./frmFields/portInOptions/item1/value"
                                 value="Yes"/>
-							<noPrepaidLabel
-                                jcr:primaryType="nt:unstructured"
-                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                fieldDescription="Enter Label for dropdown select - No"
-                                fieldLabel="Dropdown Select No Label"
-                                name="./frmFields/lebaraPrepaidOptions/item0/name"
-                                value="No"/>
-                            <noPrepaidValue
-                                jcr:primaryType="nt:unstructured"
-                                sling:resourceType="granite/ui/components/coral/foundation/form/hidden"
-                                fieldLabel="Dropdown Select No Value"
-                                name="./frmFields/lebaraPrepaidOptions/item0/value"
-                                value="No"/>
-                            <yesPrepaidLabel
-                                jcr:primaryType="nt:unstructured"
-                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                fieldDescription="Enter Label for dropdown select - Yes"
-                                fieldLabel="Dropdown Select Yes Label"
-                                name="./frmFields/lebaraPrepaidOptions/item1/name"
-                                value="Yes"/>
-                            <yesPrepaidValue
-                                jcr:primaryType="nt:unstructured"
-                                sling:resourceType="granite/ui/components/coral/foundation/form/hidden"
-                                fieldLabel="Dropdown Select Yes Value"
-                                name="./frmFields/lebaraPrepaidOptions/item1/value"
-                                value="Yes"/>
-							<prepaidDropdownLabel
-                                jcr:primaryType="nt:unstructured"
-                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                fieldDescription="Enter Label for selecting whether prepaid or not"
-                                fieldLabel="Prepaid Dropdown Label"
-                                name="./frmFields/prepaidDropdownLabel"
-                                value="Is this a lebara Prepaid number?"/>
                             <portInNumberLabel
                                 jcr:primaryType="nt:unstructured"
                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                 fieldDescription="Enter Label for Porting Number"
                                 fieldLabel="Number To Port Label"
                                 name="./frmFields/portInNumberLabel"
-                                value="Lebara Prepaid number to be ported to Sim only"/>
+                                value="Number to be ported to Sim only"/>
                             <portInNumberPlaceHolder
                                 jcr:primaryType="nt:unstructured"
                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                 fieldDescription="Enter PortIn Number Placeholder"
                                 fieldLabel="Port In Number PlaceHolder"
                                 name="./frmFields/portInNumberPlaceHolder"
-                                value=""/>
+                                value="eg. 0633610036"/>
                             <noPortInDescription
                                 jcr:primaryType="nt:unstructured"
                                 sling:resourceType="cq/gui/components/authoring/dialog/richtext"
@@ -767,12 +734,12 @@
                                 fieldLabel="Continue CTA Label"
                                 name="./frmFields/ctaContinueLabel"
                                 value="Continue"/>
-							<redirectAddress
+							<ctaContinueLink
                                 jcr:primaryType="nt:unstructured"
                                 sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
                                 fieldDescription="Enter continue cta link"
                                 fieldLabel="Continue CTA Link"
-                                name="./redirectAddress"/>
+                                name="./frmFields/ctaContinueLink"/>
                         </items>
                     </column2>
                     <column3
