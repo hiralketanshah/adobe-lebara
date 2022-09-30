@@ -1,7 +1,6 @@
 {
 	"jcr:primaryType": "nt:unstructured",
 	"sling:resourceType": "lebara/components/postpaidbuypersonaldetails",
-	"redirectAddress": "/postpaid/details",
 	"portingSectionHeading": "Number Port-in",
 	"showTitle": "true",
 	"hideOrderSummary": "true",
@@ -31,11 +30,11 @@
 		"fnamePlaceholder": "Enter Your First Name",
 		"lNamePlaceholder": "Enter Your First Name",
 		"ctaContinueLabel": "Continue",
+		"ctaContinueLink": "/postpaid/details",
 		"noPortInDescription": "<p>You can activate and start using your subscription immediately </p>",
 		"emailLabel": "Email Address",
 		"portInNumberLabel": "Number to ported to Sim only",
 		"emailPlaceholder": "Enter Your Email Address",
-		"prepaidDropdownLabel": "Is this a lebara Prepaid number?",
 		"portInNumberCanBeUseWithLoginWarnMsg": "the mobile number attached with ****45@gmail.com",
 		"dayLabel": "Day",
 		"portInOptions": {
@@ -66,19 +65,6 @@
 				"jcr:primaryType": "nt:unstructured",
 				"name": "Miss",
 				"value": "Miss"
-			}
-		},
-		"lebaraPrepaidOptions": {
-			"jcr:primaryType": "nt:unstructured",
-			"item0": {
-				"jcr:primaryType": "nt:unstructured",
-				"name": "No",
-				"value": "No"
-			},
-			"item1": {
-				"jcr:primaryType": "nt:unstructured",
-				"name": "Yes",
-				"value": "Yes"
 			}
 		}
 	},
