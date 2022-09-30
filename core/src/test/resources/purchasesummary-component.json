@@ -11,5 +11,10 @@
 "activationFeeLabel": "Activation Fee",
 "discountLabel": "Discount",
 "headerLabel": "Your Orders",
+"monthText": "Month",
+"monthsText": "Months",
+"activationFeeValue":"1500",
+"isActivationFeeDiscount": true,
+"totalLabel": "Per Month",
 "sling:resourceType": "lebara/components/purchasesummary"
 }

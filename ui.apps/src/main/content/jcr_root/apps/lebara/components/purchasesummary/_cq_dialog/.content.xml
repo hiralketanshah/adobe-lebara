@@ -31,14 +31,30 @@
                                             <title
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                                fieldDescription="Purchase Summary Title"
+                                                fieldDescription="Purchase Summary Title Example : Sim Only {0} {1}"
                                                 fieldLabel="Title"
+                                                value="Sim Only {0} {1}"
                                                 name="./title"/>
+                                            <monthtext
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="Text for Month word Example: Month"
+                                                fieldLabel="Month Text"
+                                                value="Month"
+                                                name="./monthText"/>
+                                            <monthstext
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="Text for Months word Example: Months"
+                                                fieldLabel="Months Text"
+                                                value="Months"
+                                                name="./monthsText"/>
                                             <buttonlabel
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                                fieldDescription="Button Label"
+                                                fieldDescription="Button Label Example : Order Now"
                                                 fieldLabel="Button Label"
+                                                value="Order Now"
                                                 name="./buttonLabel"/>
 											<buttonCTALink
                                                 jcr:primaryType="nt:unstructured"
@@ -50,8 +66,9 @@
                                             <editlabel
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                                fieldDescription="EditLabel"
+                                                fieldDescription="EditLabel Example : Edit"
                                                 fieldLabel="EditLabel"
+                                                value="Edit"
                                                 name="./editLabel"/>
 											<editCTALink
                                                 jcr:primaryType="nt:unstructured"
@@ -63,38 +80,67 @@
                                             <businesssubscriotionlabel
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                                fieldDescription="Business Subscription Label"
+                                                fieldDescription="Business Subscription Label Example : Business Subscription"
                                                 fieldLabel="Business Subscription Label"
+                                                value="Business Subscription"
                                                 name="./businessSubscriptionLabel"/>
                                             <initialDiscountHeaderLabel
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                                 fieldDescription="Ex: The first 6 months"
                                                 fieldLabel="Initial Discount Label"
+                                                value="The first 6 months"
                                                 name="./initialDiscountHeaderLabel"/>
                                             <afterDiscountLabel
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                                 fieldDescription="Ex: After per month"
                                                 fieldLabel="After Discount Label "
+                                                value="After per month"
                                                 name="./afterDiscountLabel"/>
+                                            <totalLabel
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="Label that will appear in case of No discount or 1 month plan for total Ex: Per month"
+                                                fieldLabel="Total/Per Month Label"
+                                                value="Per month"
+                                                name="./totalLabel"/>
                                             <activationfeelabel
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                                fieldDescription="Activation fee label"
+                                                fieldDescription="Activation fee label Example : Activation fee"
                                                 fieldLabel="Activation Fee Label"
+                                                value="Activation fee"
                                                 name="./activationFeeLabel"/>
+                                            <activationfeevalue
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="Activation fee Value Example : 1500"
+                                                fieldLabel="Activation Fee Value"
+                                                value="1500"
+                                                name="./activationFeeValue"/>
+                                            <isactivationfeediscount
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                                checked="{Boolean}false"
+                                                fieldDescription="When checked, enables Activation Fee Discount"
+                                                name="./isActivationFeeDiscount"
+                                                text="Enable Activation Fee Discount"
+                                                uncheckedValue="{Boolean}false"
+                                                value="{Boolean}true"/>
                                             <discountlabel
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                                fieldDescription="Discount"
+                                                fieldDescription="Example : Discount"
                                                 fieldLabel="Discount Label"
+                                                value="Discount"
                                                 name="./discountLabel"/>
 											<headerLabel
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                                fieldDescription="Header label for mobile"
+                                                fieldDescription="Header label for mobile Example : Your Order"
                                                 fieldLabel="Mobile Header Label"
+                                                value="Your Order"
                                                 name="./headerLabel"/>
                                         </items>
                                     </column>

@@ -1,6 +1,7 @@
 package com.lebara.core.models;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -75,8 +76,33 @@ public class PurchaseSummaryExporterTest {
     }
     
     @Test
+    void testGetMonthText() {
+    	assertEquals("Month", purchaseSummaryExporter.getMonthText());
+    }
+    
+    @Test
+    void testGetMonthsText() {
+        assertEquals("Months", purchaseSummaryExporter.getMonthsText());
+    }
+    
+    @Test
+    void testGetTotalLabel() {
+        assertEquals("Per Month", purchaseSummaryExporter.getTotalLabel());
+    }
+    
+    @Test
+    void testGetIsActivationFeeDiscount() {
+        assertTrue(purchaseSummaryExporter.getIsActivationFeeDiscount());
+    }
+    
+    @Test
+    void testGetActivationFeeValue() {
+        assertEquals("1500", purchaseSummaryExporter.getActivationFeeValue());
+    }
+    
+    @Test
     void testGetHeaderLabel() {
-    	assertEquals("Your Orders", purchaseSummaryExporter.getHeaderLabel());
+        assertEquals("Your Orders", purchaseSummaryExporter.getHeaderLabel());
     }
     
     @Test
