@@ -263,6 +263,34 @@
                                 fieldLabel="Port Your Number Title"
                                 name="./portingSectionHeading"
                                 value="Number Port-in"/>
+							<prepaidUserMessage
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldDescription="Enter Prepaid User Message"
+                                fieldLabel="Prepaid User Message"
+                                name="./frmFields/prepaidUserMessage"
+                                value="Your connection will keep working and your current credit is transferred with you"/>
+							<postpaidUserMessage
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldDescription="Enter Postpaid User Message"
+                                fieldLabel="Postpaid User Message"
+                                name="./frmFields/postpaidUserMessage"
+                                value="Your connection will keep working and your current credit is transferred with you"/>
+							<takeNumberToSimOnly
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldDescription="Take Number to Sim Only"
+                                fieldLabel="Take Number To Sim Only Message"
+                                name="./frmFields/takeNumberToSimOnly"
+                                value="You take your number with you to Sim Only"/>
+							<tooManyTriesMessage
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldDescription="Enter Too Many Tries Message"
+                                fieldLabel="Too Many Tries Message"
+                                name="./frmFields/tooManyTriesMessage"
+                                value="Too Many Tries. Please wait 15 minutes before trying again."/>
                             <nothanksLabel
                                 jcr:primaryType="nt:unstructured"
                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
