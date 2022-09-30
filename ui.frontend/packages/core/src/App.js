@@ -34,6 +34,24 @@ const theme = extendTheme(
       heading: "Chiswick Grotesque Lebara",
       body: "Roboto",
     },
+    components: {
+      Radio: {
+        parts: ['label'],
+        baseStyle: {
+          label: {
+            flex: "1",
+          }
+        }
+      },
+      Checkbox: {
+        parts: ['label'],
+        baseStyle: {
+          label: {
+            flex: "1",
+          }
+        }
+      }
+    }
   },
   withDefaultColorScheme({ colorScheme: "primary" })
 );
