@@ -97,7 +97,8 @@ public class InformativeCardExporter implements ComponentExporter {
     }
 
     public String getAppliedStyles() {
-        return Optional.of(resource).map(resource -> resource.adaptTo(ComponentStyleInfo.class)).map(cmpStyleInfo -> cmpStyleInfo.getAppliedCssClasses()).orElse("");
+        return Optional.of(resource).map(resource -> resource.adaptTo(ComponentStyleInfo.class))
+                .map(cmpStyleInfo -> cmpStyleInfo.getAppliedCssClasses()).orElse("");
     }
 
     public String getExportedType() {
