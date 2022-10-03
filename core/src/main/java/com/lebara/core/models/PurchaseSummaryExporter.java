@@ -20,7 +20,7 @@ import com.lebara.core.utils.AemUtils;
 @Exporter(name = ExporterConstants.SLING_MODEL_EXPORTER_NAME, extensions = ExporterConstants.SLING_MODEL_EXTENSION)
 public class PurchaseSummaryExporter implements ComponentExporter {
 
-    protected static final String RESOURCE_TYPE = "lebara/components/purchasesummary";
+    protected static final String RESOURCE_TYPE = "lebara/components/nl/purchasesummary";
 
     @ScriptVariable
     protected Resource resource;

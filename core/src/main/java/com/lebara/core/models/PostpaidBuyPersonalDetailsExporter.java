@@ -23,7 +23,7 @@ resourceType = PostpaidBuyPersonalDetailsExporter.RESOURCE_TYPE, defaultInjectio
 @Exporter(name = ExporterConstants.SLING_MODEL_EXPORTER_NAME, extensions = ExporterConstants.SLING_MODEL_EXTENSION)
 public class PostpaidBuyPersonalDetailsExporter implements ComponentExporter {
 
-	protected static final String RESOURCE_TYPE = "lebara/components/postpaidbuypersonaldetails";
+	protected static final String RESOURCE_TYPE = "lebara/components/nl/postpaidbuypersonaldetails";
 	
 	@ScriptVariable
     private Resource resource;
