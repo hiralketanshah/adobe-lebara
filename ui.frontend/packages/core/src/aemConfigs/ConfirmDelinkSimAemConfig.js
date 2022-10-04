@@ -1,5 +1,5 @@
 import { MapTo } from "@adobe/aem-react-editable-components";
-import ConfirmDeLinkSimRoute from "@lebara/core/rotues/ConfirmDeLinkSimRoute";
+import ConfirmDeLinkSimRoute from "@lebara/core/routes/ConfirmDeLinkSimRoute";
 
 const ConfirmDelinkSimConfig = {
   emptyLabel: "Confirm delink sim Component",
