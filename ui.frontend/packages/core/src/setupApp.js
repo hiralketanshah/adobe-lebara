@@ -44,7 +44,8 @@ const {
 
 let storeUpdated = store;
 let isSocketConnected = false;
-export function withPageHook(Component, store) {
+let themeUpdated = theme;
+export function withPageHook(Component, store, theme) {
 
   return function WrappedComponent(props) {
     const client = useApolloClient();
@@ -53,6 +54,7 @@ export function withPageHook(Component, store) {
     const [isAuthLoading, setIsAuthLoading] = useState(true);
     const socket = useSelector(selectSocket);
     storeUpdated = store;
+    themeUpdated = theme;
     React.useEffect(() => {
       client
         .query({
@@ -104,7 +106,7 @@ class App extends Page {
 
     return (
       <Provider store={storeUpdated}>
-        <ChakraProvider theme={theme}>
+        <ChakraProvider theme={themeUpdated}>
           <LoadingOverlay
             active={!AuthoringUtils.isInEditor() ? isLoading : false}
             spinner={<ScaleLoader color="#00A6EB" />}
