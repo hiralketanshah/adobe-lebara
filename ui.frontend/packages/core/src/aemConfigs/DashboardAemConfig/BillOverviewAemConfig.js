@@ -1,5 +1,5 @@
 import { MapTo } from "@adobe/aem-react-editable-components";
-import PostpaidBillsRoute from "@lebara/core/rotues/PostpaidBillsRoute";
+import PostpaidBillsRoute from "@lebara/core/routes/PostpaidBillsRoute";
 
 const BillsOverviewConfig = {
   emptyLabel: "Dashboard - My Bills Overview",

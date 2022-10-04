@@ -1,5 +1,5 @@
 import { MapTo } from "@adobe/aem-react-editable-components";
-import VerfiyRegisterMobileRoute from "@lebara/core/rotues/VerifyRegisterMobileRoute";
+import VerfiyRegisterMobileRoute from "@lebara/core/routes/VerifyRegisterMobileRoute";
 
 
 const VerifyMobileNumberConfig = {
