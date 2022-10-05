@@ -739,7 +739,8 @@
                                 sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
                                 fieldDescription="Enter continue cta link"
                                 fieldLabel="Continue CTA Link"
-                                name="./frmFields/ctaContinueLink"/>
+                                name="./frmFields/ctaContinueLink"
+								rootPath="/content/lebara"/>
                         </items>
                     </column2>
                     <column3
