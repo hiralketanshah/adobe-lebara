@@ -88,6 +88,7 @@ const ExpandableSimPlanCard: React.FC<ExpandableSimPlanCardProps> = ({
     history.push(isAuthenticated && msisdn ? "/order-details" : "/login");
   };
   const isCenterAligned: boolean = (textAlignment === "center");
+  const postpaidAllowanceMins: allowanceListProps | undefined = allowanceList && allowanceList.find((list) => list.name && list.name.includes('DE_Postpaid_Intl_Mins'));
   let filteredAllowanceList: allowanceListProps = {};
   const dataAllowanceType: allowanceListProps | undefined = allowanceList && allowanceList.find((list) => list.name && list.name.toLowerCase().includes('data'));
   if (dataAllowanceType) {
@@ -170,7 +171,7 @@ const ExpandableSimPlanCard: React.FC<ExpandableSimPlanCardProps> = ({
       }
       case OfferTypes.POSTPAID: {
         try {
-          await addItemToCart(parseInt(id || ''), planName, (JSON.stringify(description || '')), Number(cost?.replaceAll(',', '.') || ''), "postpaid", true, undefined, undefined, autoRenew);
+          await addItemToCart(parseInt(id || ''), planName, (JSON.stringify(description || '')), Number(cost?.replaceAll(',', '.') || ''), "postpaid", true, undefined, undefined, autoRenew, filteredAllowanceList.formatedValue, postpaidAllowanceMins?.value);
           isRemoveFromCart && onClose ? onClose() : isLoggedInUser ? client
             .query({ query: GET_PERSONAL_DETAILS })
             .then((personalDetailsRes) => {
