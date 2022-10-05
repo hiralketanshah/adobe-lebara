@@ -26,6 +26,7 @@ export interface MenuProps {
 export interface SubMenuProps {
   label: string;
   link: string;
+  ariaLabel?: string;
 }
 
 export interface DesktopFooterText {
