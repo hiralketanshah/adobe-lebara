@@ -146,7 +146,7 @@ public class PurchaseSummaryExporter implements ComponentExporter {
 
     @Override
     public String getExportedType() {
-        return resource.getResourceType();
+        return RESOURCE_TYPE;
     }
 
 }
