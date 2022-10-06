@@ -8,4 +8,4 @@ const PlanConfiguratorConfig = {
   },
 };
 
-MapTo("lebara/components/planconfigurator")(PlanConfigurator, PlanConfiguratorConfig);
+MapTo("lebara/components/nl/planconfigurator")(PlanConfigurator, PlanConfiguratorConfig);

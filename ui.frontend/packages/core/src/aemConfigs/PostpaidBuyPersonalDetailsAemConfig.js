@@ -7,4 +7,4 @@ const PostpaidPersonalDetailsConfig = {
   },
 };
 
-MapTo("lebara/components/postpaidbuypersonaldetails")(PostpaidPersonalDetails, PostpaidPersonalDetailsConfig);
+MapTo("lebara/components/nl/postpaidbuypersonaldetails")(PostpaidPersonalDetails, PostpaidPersonalDetailsConfig);

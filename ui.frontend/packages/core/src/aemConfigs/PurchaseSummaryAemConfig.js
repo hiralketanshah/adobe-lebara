@@ -8,4 +8,4 @@ const PurchaseSummaryConfig = {
   },
 };
 
-MapTo("lebara/components/purchasesummary")(SimPurchaseSummary, PurchaseSummaryConfig);
+MapTo("lebara/components/nl/purchasesummary")(SimPurchaseSummary, PurchaseSummaryConfig);
