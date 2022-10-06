@@ -13,6 +13,7 @@ import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
 import com.adobe.cq.export.json.ComponentExporter;
 import com.adobe.cq.export.json.ExporterConstants;
 import com.adobe.cq.wcm.style.ComponentStyleInfo;
+import com.lebara.core.utils.AemUtils;
 
 @Model(adaptables = SlingHttpServletRequest.class, adapters = { AddressDetailsExporter.class,
         ComponentExporter.class }, resourceType = AddressDetailsExporter.RESOURCE_TYPE, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
@@ -126,7 +127,7 @@ public class AddressDetailsExporter implements ComponentExporter {
     }
 
     public String getContinueCTALink() {
-        return continueCTALink;
+        return AemUtils.getLinkWithExtension(continueCTALink);
     }
 
     public String getHouseNumberInvalidCharErrorMessage() {
