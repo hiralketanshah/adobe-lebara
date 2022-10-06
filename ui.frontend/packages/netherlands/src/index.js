@@ -7,7 +7,7 @@ import {createBrowserHistory} from "history";
 import React from "react";
 import {render} from "react-dom";
 import {Router} from "react-router-dom";
-import App from "../../core/src/App";
+import App from "./App";
 import LebaraModelClient from "../../core/src/LebaraModelClient";
 import "../../core/src/components/import-components";
 import "./index.css";

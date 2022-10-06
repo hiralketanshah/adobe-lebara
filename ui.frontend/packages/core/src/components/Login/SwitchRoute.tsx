@@ -1,7 +1,7 @@
 import React from "react";
 import {SwitchRouteProps} from "./types";
-import LoginRoute from "@lebara/core/rotues/LoginRoute";
-import RegisterRoute from "@lebara/core/rotues/RegisterRoute";
+import LoginRoute from "@lebara/core/routes/LoginRoute";
+import RegisterRoute from "@lebara/core/routes/RegisterRoute";
 
 const SwitchRoute: React.FC<SwitchRouteProps> = ({ ...loginModuleProps }) => {
     const loginModuleType =

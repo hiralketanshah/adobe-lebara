@@ -1,5 +1,5 @@
 import { MapTo } from "@adobe/aem-react-editable-components";
-import UserPersonalDetailsRoute from "@lebara/core/rotues/AddressChangeOtpRoute";
+import UserPersonalDetailsRoute from "@lebara/core/routes/AddressChangeOtpRoute";
 
 const AddressChangeOtpConfig = {
   emptyLabel: "Address change OTP Component",

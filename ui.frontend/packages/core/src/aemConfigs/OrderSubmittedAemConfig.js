@@ -1,5 +1,5 @@
 import {MapTo} from "@adobe/aem-react-editable-components";
-import OrderSubmittedRoute from "@lebara/core/rotues/OrderSubmittedRoute";
+import OrderSubmittedRoute from "@lebara/core/routes/OrderSubmittedRoute";
 
 const OrderSubmittedConfig = {
 

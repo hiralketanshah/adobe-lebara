@@ -1,5 +1,5 @@
 import { MapTo } from "@adobe/aem-react-editable-components";
-import AddEditDebitCreditCardRoute from "@lebara/core/rotues/AddEditDebitCreditCardRoute";
+import AddEditDebitCreditCardRoute from "@lebara/core/routes/AddEditDebitCreditCardRoute";
 
 const AddEditDebitCreditCardConfig = {
   emptyLabel: "Add/Edit credit/debit card component",

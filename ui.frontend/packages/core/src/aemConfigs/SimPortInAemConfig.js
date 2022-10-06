@@ -1,5 +1,5 @@
 import { MapTo } from "@adobe/aem-react-editable-components";
-import SimChoiceRoute from "@lebara/core/rotues/SimChoiceRoute";
+import SimChoiceRoute from "@lebara/core/routes/SimChoiceRoute";
 
 const PortingConfig = {
   emptyLabel: "Sim Porting component",
