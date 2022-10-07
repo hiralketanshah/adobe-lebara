@@ -8,7 +8,7 @@
 Include conf.d/rewrites/default_rewrite.rules
 
 # rewrite for root redirect
-RewriteRule ^/?$ /dk/home.html [L,R=301,NE]
+RewriteRule ^/?$ /da/home.html [L,R=301,NE]
 
 # rewrite for removing trailing slash
 RewriteRule ^/(.*)/$ $1 [L,R=301,NE]
