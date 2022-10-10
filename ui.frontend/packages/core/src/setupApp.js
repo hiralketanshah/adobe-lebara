@@ -53,8 +53,8 @@ export function withPageHook(Component, store, theme) {
     const isLoading = useSelector(selectIsLoading);
     const [isAuthLoading, setIsAuthLoading] = useState(true);
     const socket = useSelector(selectSocket);
-    storeUpdated = store;
-    themeUpdated = theme;
+    storeUpdated = store ? store : storeUpdated;
+    themeUpdated = theme ? theme : themeUpdated;
     React.useEffect(() => {
       client
         .query({
