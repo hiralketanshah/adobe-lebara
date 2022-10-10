@@ -520,6 +520,8 @@
 		<property name="recurringLabel"/>
 		<property name="directDebitCheckboxText"/>
 		<property name="mandatoryCheckBoxLabel"/>
+		<property name="postpaidMsisdnToKeepFail"/>
+		<property name="prepaidMsisdnToKeepFail"/>
 
 		<!--Support component -->
 		<property name="ctaLinkLabel"/>

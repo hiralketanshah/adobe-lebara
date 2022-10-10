@@ -86,6 +86,12 @@ public class PaymentMethods {
     @ValueMapValue
     private String freeSimOrderFailedUrl;
 
+    @ValueMapValue
+    private String postpaidMsisdnToKeepFail;
+
+    @ValueMapValue
+    private String prepaidMsisdnToKeepFail;
+
     public String getCard() {
         return getUTFStr(card);
     }
@@ -160,6 +166,14 @@ public class PaymentMethods {
     
     public String getMandatoryCheckBoxLabel() {
     	return mandatoryCheckBoxLabel;
+    }
+
+    public String getPostpaidMsisdnToKeepFail() {
+        return postpaidMsisdnToKeepFail;
+    }
+
+    public String getPrepaidMsisdnToKeepFail() {
+        return prepaidMsisdnToKeepFail;
     }
 
     public String getPaymentFailHeader() {
