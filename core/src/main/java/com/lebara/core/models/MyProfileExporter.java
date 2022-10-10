@@ -54,6 +54,9 @@ public class MyProfileExporter implements ComponentExporter{
     @ValueMapValue
     private String exceededLimitDesc;
 
+    @ValueMapValue
+    private String settingsUpdatedLabel;
+
     @ChildResource
     private MyProfileFormFields frmFields;
 
@@ -65,6 +68,12 @@ public class MyProfileExporter implements ComponentExporter{
 
     @ChildResource
     private MyProfileChangeAddressPopup changeAddressPopup;
+    
+    @ValueMapValue
+    private String logoutLabel;
+    
+    @ValueMapValue
+    private String logoutDesc;
 
     @JsonProperty("frmFields")
     public MyProfileFormFields getFrmFields() {
@@ -126,9 +135,23 @@ public class MyProfileExporter implements ComponentExporter{
         return exceededLimitDesc;
     }
 
-    public String getChangePasswordSuccessMsg() { return changePasswordSuccessMsg;}
+    public String getSettingsUpdatedLabel() {
+        return settingsUpdatedLabel;
+    }
 
-    @Override
+    public String getChangePasswordSuccessMsg() { return changePasswordSuccessMsg;}
+    
+    
+
+    public String getLogoutLabel() {
+		return logoutLabel;
+	}
+
+	public String getLogoutDesc() {
+		return logoutDesc;
+	}
+
+	@Override
     public String getExportedType() {
         return RESOURCE_TYPE;
     }

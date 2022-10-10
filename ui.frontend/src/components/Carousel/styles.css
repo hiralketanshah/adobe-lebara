@@ -26,6 +26,8 @@
 		margin-bottom: 24px;
 		font-weight: 500;
         line-height: 0.93;
+		text-indent: -35px;
+		padding-left: 25px;
 	}
 	.about-lebara ul li:before {
 		font-size: 24px;

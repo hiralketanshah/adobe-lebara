@@ -29,4 +29,8 @@ public class ImageProperties {
 	public String getIcon() {
 		return icon;
 	}
+	
+	public void setIcon(String icon) {
+		this.icon = icon;
+	}
 }

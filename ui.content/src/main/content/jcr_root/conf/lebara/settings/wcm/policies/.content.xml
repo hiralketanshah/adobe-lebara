@@ -20,6 +20,7 @@
                         jcr:description="- Enable lazy loading for faster page loading.&#xd;&#xa;- Define allowed image widths for automatic loading of the image in the most optimal resolution, given the size at which each image is displayed on the page, and the visitor's pixel density.&#xd;&#xa;- Disallow direct asset upload, to force authors to first upload the images to Assets."
                         jcr:primaryType="nt:unstructured"
                         jcr:title="Content Image"
+                        rendition="extra-large"
                         sling:resourceType="wcm/core/components/policy/policy"
                         allowedRenditionWidths="[320,480,600,800,1024,1200,1600]"
                         disableLazyLoading="false"
@@ -389,7 +390,54 @@
                     <jcr:content jcr:primaryType="nt:unstructured"/>
                 </policy_1639144570135>
             </embed>
-
+           <aboutlebara jcr:primaryType="nt:unstructured">
+                <policy_1660217571187
+                    jcr:primaryType="nt:unstructured"
+                    jcr:title="About Lebara Policy"
+                    sling:resourceType="wcm/core/components/policy/policy"
+                    allowedHeadingElements="[h1,h2,h3,h4,h5,h6]"
+                    rendition="medium"
+                    showTitleType="false"
+                    titleType="h2">
+                    <jcr:content jcr:primaryType="nt:unstructured"/>
+                </policy_1660217571187>
+            </aboutlebara>
+            <wheretocall jcr:primaryType="nt:unstructured">
+                <policy_1660219165057
+                    jcr:primaryType="nt:unstructured"
+                    jcr:title="Where to call Policy"
+                    sling:resourceType="wcm/core/components/policy/policy"
+                    rendition="large">
+                    <jcr:content jcr:primaryType="nt:unstructured"/>
+                </policy_1660219165057>
+            </wheretocall>
+            <usp jcr:primaryType="nt:unstructured">
+                <policy_1660219197465
+                    jcr:primaryType="nt:unstructured"
+                    jcr:title="USP Policy"
+                    sling:resourceType="wcm/core/components/policy/policy"
+                    rendition="extra-small">
+                    <jcr:content jcr:primaryType="nt:unstructured"/>
+                </policy_1660219197465>
+            </usp>
+           <awards jcr:primaryType="nt:unstructured">
+                <policy_1660640547466
+                    jcr:primaryType="nt:unstructured"
+                    jcr:title="Awards Policy "
+                    sling:resourceType="wcm/core/components/policy/policy"
+                    rendition="small">
+                    <jcr:content jcr:primaryType="nt:unstructured"/>
+                </policy_1660640547466>
+            </awards>
+            <getitnow jcr:primaryType="nt:unstructured">
+                <policy_1662709032825
+                    jcr:primaryType="nt:unstructured"
+                    jcr:title="Get It Now Policy"
+                    sling:resourceType="wcm/core/components/policy/policy"
+                    rendition="medium">
+                    <jcr:content jcr:primaryType="nt:unstructured"/>
+                </policy_1662709032825>
+            </getitnow>
         </components>
     </lebara>
     <wcm jcr:primaryType="nt:unstructured">

@@ -669,6 +669,12 @@
                                     fieldLabel="Password Successfully Updated Success Message"
                                     name="./changePasswordSuccessMsg"
                                     value="Password Successfully Updated"/>
+                            <settingsUpdatedLabel
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                    fieldLabel="Settings Updated Success Message"
+                                    name="./settingsUpdatedLabel"
+                                    fieldDescription="Your settings have been updated"/>
                         </items>
                     </column5>
                     <column6
@@ -727,6 +733,27 @@
                                     value="Address has been successfully changed!SMS confirmation was sent to your mobile number"/>
                          </items>
                     </column6>
+					<column7
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="App logout properties"
+                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                        <items jcr:primaryType="nt:unstructured">
+                            <logoutLabel
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldDescription="Logout Label"
+                                fieldLabel="Logout label title"
+                                name="./logoutLabel"
+                                value="Logout"/>
+                            <logoutDesc
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldDescription="Logout description"
+                                fieldLabel="Logout description"
+                                name="./logoutDesc"
+                                value="If you want to create account you need to"/>
+                        </items>
+                    </column7>
                 </items>
             </tabs>
         </items>

@@ -6,6 +6,7 @@ import com.lebara.core.utils.AemUtils;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.api.resource.ResourceResolver;
+import org.apache.sling.models.annotations.Default;
 import org.apache.sling.models.annotations.DefaultInjectionStrategy;
 import org.apache.sling.models.annotations.Exporter;
 import org.apache.sling.models.annotations.Model;
@@ -64,7 +65,7 @@ public class DashboardPlansExporter extends HeadingExporter {
     @ValueMapValue
     private String cancelChangePlanCancelLabel;
     @ValueMapValue
-    private Boolean showPlansWithProgress;
+    private boolean showPlansWithProgress;
     @ValueMapValue
     private String dataValue;
     @ValueMapValue
@@ -75,6 +76,16 @@ public class DashboardPlansExporter extends HeadingExporter {
     private String leftOfLabel;
     @ValueMapValue
     private String validLabel;
+    @ValueMapValue
+    private String dataTabName;
+    @ValueMapValue
+    private String minTabName;
+    @ValueMapValue
+    private String smsTabName;
+    @ValueMapValue
+    private String internationalMinTabName;
+    @ValueMapValue @Default(values="{0} {1} Used")
+    private String usedLabel;
 
     public String getButtonLabel() {
         return buttonLabel;
@@ -136,7 +147,7 @@ public class DashboardPlansExporter extends HeadingExporter {
         return cancelChangePlanCancelLabel;
     }
 
-    public Boolean getShowPlansWithProgress() {
+    public boolean getShowPlansWithProgress() {
         return showPlansWithProgress;
     }
 
@@ -158,6 +169,26 @@ public class DashboardPlansExporter extends HeadingExporter {
 
     public String getValidLabel() {
         return validLabel;
+    }
+
+    public String getDataTabName() {
+        return dataTabName;
+    }
+
+    public String getMinTabName() {
+        return minTabName;
+    }
+
+    public String getSmsTabName() {
+        return smsTabName;
+    }
+
+    public String getInternationalMinTabName() {
+        return internationalMinTabName;
+    }
+
+    public String getUsedLabel() {
+        return usedLabel;
     }
 
     @Override

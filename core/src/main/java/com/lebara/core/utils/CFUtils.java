@@ -125,10 +125,14 @@ public class CFUtils {
                 String countryLandingPageUrl = CFUtils.getElementValue(irFragment, "countryLandingPageURL");
                 countryLandingPageUrl = AemUtils.getLinkWithExtension(countryLandingPageUrl, resolver);
                 String countryName = CFUtils.getElementValue(irFragment, "countryName");
+                String countryFlag = CFUtils.getElementValue(irFragment, "countryFlag");
                 if (StringUtils.isNotBlank(countryLandingPageUrl) && StringUtils.isNotBlank(countryName)) {
                     SelectOption selectOption = new SelectOption();
                     selectOption.setLabel(countryName);
                     selectOption.setValue(countryLandingPageUrl);
+                    if(StringUtils.isNotBlank(countryFlag)) {
+                    	selectOption.setCountryFlag(countryFlag);
+                    }
                     internationalRateBeanList.add(selectOption);
                 }
             }

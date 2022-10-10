@@ -72,6 +72,9 @@ public class LoginExporter implements ComponentExporter {
 
     @ValueMapValue
     private String registrationEmailAddress;
+    
+    @ValueMapValue
+    private String registrationEmailAddressPlaceholder;
 
     @ValueMapValue
     private String registrationPassword;
@@ -124,6 +127,9 @@ public class LoginExporter implements ComponentExporter {
      */
     @ValueMapValue
     private String emailFieldErrorMessage;
+    
+    @ValueMapValue
+    private String loginEmailFieldErrorMessage;
 
     @ValueMapValue
     private String validEmailFieldErrorMessage;
@@ -174,6 +180,9 @@ public class LoginExporter implements ComponentExporter {
     private String  exitingUserErrorMsg;
 
     @ValueMapValue
+    private String  captchaFieldErrorMessage;
+
+    @ValueMapValue
     private String  postalCodeText;
 
     @ValueMapValue
@@ -199,6 +208,21 @@ public class LoginExporter implements ComponentExporter {
 
     @ValueMapValue
     private boolean showExpiryMessage;
+    
+    /**
+     * App - Heading/text fields labels
+     */
+    @ValueMapValue
+    private String loginHeading;
+    
+    @ValueMapValue
+    private String loginText;
+    
+    @ValueMapValue
+    private String registerHeading;
+    
+    @ValueMapValue
+    private String registerText;
 
     public String getLoginModuleType() {
         return loginModuleType;
@@ -233,6 +257,10 @@ public class LoginExporter implements ComponentExporter {
 
     public String getRegistrationEmailAddress() {
         return registrationEmailAddress;
+    }
+    
+    public String getRegistrationEmailAddressPlaceholder() {
+        return registrationEmailAddressPlaceholder;
     }
 
     public String getRegistrationPassword() {
@@ -293,6 +321,10 @@ public class LoginExporter implements ComponentExporter {
 
     public String getEmailFieldErrorMessage() {
         return emailFieldErrorMessage;
+    }
+    
+    public String getLoginEmailFieldErrorMessage() {
+        return loginEmailFieldErrorMessage;
     }
 
     public String getValidEmailFieldErrorMessage() {
@@ -359,6 +391,10 @@ public class LoginExporter implements ComponentExporter {
         return exitingUserErrorMsg;
     }
 
+    public String getCaptchaFieldErrorMessage() {
+        return captchaFieldErrorMessage;
+    }
+
     public String getPostalCodeText() {
         return postalCodeText;
     }
@@ -404,7 +440,23 @@ public class LoginExporter implements ComponentExporter {
         return showExpiryMessage;
     }
 
-    @Override
+    public String getLoginHeading() {
+		return loginHeading;
+	}
+
+	public String getLoginText() {
+		return loginText;
+	}
+
+	public String getRegisterHeading() {
+		return registerHeading;
+	}
+
+	public String getRegisterText() {
+		return registerText;
+	}
+
+	@Override
     public String getExportedType() {
         return resource.getResourceType();
     }
