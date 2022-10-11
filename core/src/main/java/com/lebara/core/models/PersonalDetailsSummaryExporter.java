@@ -66,8 +66,12 @@ public class PersonalDetailsSummaryExporter implements ComponentExporter {
         return emailLabel;
     }
 
-    public String geMobileNumberLabel() {
+    public String getMobileNumberLabel() {
         return mobileNumberLabel;
+    }
+
+    public String getShippingAddressLabel() {
+        return shippingAddressLabel;
     }
 
     public String getGetNewNumberText() {
