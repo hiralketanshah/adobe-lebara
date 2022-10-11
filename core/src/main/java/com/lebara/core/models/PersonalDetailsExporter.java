@@ -373,6 +373,22 @@ public class PersonalDetailsExporter implements ComponentExporter {
     public String getAddressRequired() {
         return addressRequired;
     }
+    
+    public String getStreetLabelErrorMax() {
+        return streetLabelErrorMax;
+    }
+
+    public String getHouseNumberErrorMax() {
+        return houseNumberErrorMax;
+    }
+
+    public String getZipCodeErrorMin() {
+        return zipCodeErrorMin;
+    }
+
+    public String getZipCodeErrorMax() {
+        return zipCodeErrorMax;
+    }
 
     public boolean getWeekStartFromMonday() {
         return weekStartFromMonday;
