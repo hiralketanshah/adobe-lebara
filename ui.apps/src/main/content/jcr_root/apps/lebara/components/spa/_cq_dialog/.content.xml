@@ -102,6 +102,10 @@
                                                         jcr:primaryType="nt:unstructured"
                                                         text="EUR"
                                                         value="EUR"/>
+                                                    <dkk
+                                                        jcr:primaryType="nt:unstructured"
+                                                        text="DKK"
+                                                        value="DKK"/>
                                                 </items>
                                             </currencyname>
                                             <country
