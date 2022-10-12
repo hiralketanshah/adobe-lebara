@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="nt:unstructured"
+    jcr:title="Informative Banner"
+    sling:resourceType="cq/gui/components/authoring/dialog">
+    <content
+        jcr:primaryType="nt:unstructured"
+        sling:resourceType="granite/ui/components/coral/foundation/container">
+        <items jcr:primaryType="nt:unstructured">
+            <tabs
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="granite/ui/components/coral/foundation/tabs"
+                maximized="{Boolean}true">
+                <items jcr:primaryType="nt:unstructured">
+                    <image
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Image"
+                        sling:resourceType="granite/ui/components/coral/foundation/container"
+                        margin="{Boolean}true">
+                        <items jcr:primaryType="nt:unstructured">
+                            <columns
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+                                margin="{Boolean}true">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <column
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <file
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="cq/gui/components/authoring/dialog/fileupload"
+                                                allowUpload="{Boolean}false"
+                                                autoStart="{Boolean}false"
+                                                class="cq-droptarget"
+                                                fieldLabel="Background Image"
+                                                fileNameParameter="./fileName"
+                                                fileReferenceParameter="./fileReference"
+                                                mimeTypes="[image/gif,image/jpeg,image/png,image/tiff,image/svg+xml]"
+                                                multiple="{Boolean}false"
+                                                name="./file"
+                                                title="Upload Image Asset"
+                                                uploadUrl="${suffix.path}"
+                                                useHTML5="{Boolean}true"/>
+                                            <alt
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="Image Alt Text"
+                                                fieldLabel="Alt. Text"
+                                                name="./alt"/>
+                                        </items>
+                                    </column>
+                                </items>
+                            </columns>
+                        </items>
+                    </image>
+                    <text
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Text"
+                        sling:resourceType="granite/ui/components/coral/foundation/container"
+                        margin="{Boolean}true">
+                        <items jcr:primaryType="nt:unstructured">
+                            <columns
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+                                margin="{Boolean}true">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <column
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                                        <items
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:hideChildren="[descriptionGroup,id,titleGroup]">
+                                            <title
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="A title to display as the heading of the Banner Example : Time to renew!"
+                                                fieldLabel="Title"
+												value="Time to renew!"
+                                                name="./title"/>
+                                            <subtitle
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="A title to display as the sub-heading of the Banner Example : First 3 months are free of change!"
+                                                fieldLabel="Sub Title"
+												value="First 3 months are free of change!"
+                                                name="./subTitle"/>
+                                            <description
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="cq/gui/components/authoring/dialog/richtext"
+                                                fieldLabel="Description"
+                                                name="./description"
+                                                useFixedInlineToolbar="{Boolean}true">
+                                                <rtePlugins
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceSuperType="/apps/lebara/components/dialogutils/rtePlugins"/>
+                                                <uiSettings
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceSuperType="/apps/lebara/components/dialogutils/uiSettings"/>
+                                            </description>
+                                            <textcolor
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/colorfield"
+                                                classicPaletteType="true"
+                                                editType="true"
+												value="#FFFFFF"
+                                                fieldLabel="Text Color"
+                                                name="./textColor"/>
+                                            <backgroundcolor
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/colorfield"
+                                                classicPaletteType="true"
+                                                editType="true"
+												value="#1978CD"
+                                                fieldLabel="Background Color"
+                                                name="./backgroundColor"/>
+                                            <ctalabel
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="CTA Label Example : Order Now/ Renew Now"
+                                                fieldLabel="CTA Label"
+                                                name="./ctaLabel"/>
+                                            <ctalink
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                                fieldDescription="CTA Link"
+                                                fieldLabel="CTA Link"
+                                                name="./ctaLink"
+                                                rootPath="/content/lebara"/>
+                                        </items>
+                                    </column>
+                                </items>
+                            </columns>
+                        </items>
+                    </text>
+                </items>
+            </tabs>
+        </items>
+    </content>
+</jcr:root>
