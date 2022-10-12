@@ -16,5 +16,6 @@
 "activationFeeValue":"1500",
 "isActivationFeeDiscount": true,
 "totalLabel": "Per Month",
-"sling:resourceType": "lebara/components/nl/purchasesummary"
+"sling:resourceType": "lebara/components/nl/purchasesummary",
+"isRetentionGrandTotal" : false
 }

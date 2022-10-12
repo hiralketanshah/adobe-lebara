@@ -111,6 +111,11 @@ public class PurchaseSummaryExporterTest {
     }
     
     @Test
+    void testGetIsRetentionGrandTotal() {
+        assertEquals(false, purchaseSummaryExporter.getIsRetentionGrandTotal());
+    }
+    
+    @Test
     void testGetExportedType() {
         assertEquals(PurchaseSummaryExporter.RESOURCE_TYPE, purchaseSummaryExporter.getExportedType());
     }

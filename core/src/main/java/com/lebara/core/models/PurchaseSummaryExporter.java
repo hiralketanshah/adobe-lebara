@@ -72,6 +72,9 @@ public class PurchaseSummaryExporter implements ComponentExporter {
     
     @ValueMapValue
     private String headerLabel;
+    
+    @ValueMapValue
+    private boolean isRetentionGrandTotal;
 
     private String appliedStyles;
 
@@ -137,6 +140,10 @@ public class PurchaseSummaryExporter implements ComponentExporter {
 
     public boolean getIsActivationFeeDiscount() {
         return isActivationFeeDiscount;
+    }
+    
+    public boolean getIsRetentionGrandTotal() {
+        return isRetentionGrandTotal;
     }
 
     public String getAppliedStyles() {
