@@ -56,14 +56,14 @@
                                 cq:policy="lebara/components/dialogutils/policy_1663592440963"
                                 jcr:primaryType="nt:unstructured"
                                 sling:resourceType="wcm/core/components/policies/mapping"/>
-							<planconfigurator
-								cq:policy="lebara/components/dialogutils/policy_1663592440963"
-								jcr:primaryType="nt:unstructured"
-								sling:resourceType="wcm/core/components/policies/mapping"/>
-							<purchasesummary
-								cq:policy="lebara/components/dialogutils/policy_1663592440963"
-								jcr:primaryType="nt:unstructured"
-								sling:resourceType="wcm/core/components/policies/mapping"/>
+			    <planconfigurator
+				cq:policy="lebara/components/dialogutils/policy_1663592440963"
+				jcr:primaryType="nt:unstructured"
+				sling:resourceType="wcm/core/components/policies/mapping"/>
+			    <purchasesummary
+				cq:policy="lebara/components/dialogutils/policy_1663592440963"
+				jcr:primaryType="nt:unstructured"
+				sling:resourceType="wcm/core/components/policies/mapping"/>
                             <personaldetailssummary
                                 cq:policy="lebara/components/dialogutils/policy_1663592440963"
                                 jcr:primaryType="nt:unstructured"
