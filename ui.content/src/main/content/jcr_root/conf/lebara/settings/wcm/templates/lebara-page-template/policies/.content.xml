@@ -24,15 +24,15 @@
                             jcr:primaryType="nt:unstructured"
                             sling:resourceType="wcm/core/components/policies/mapping"/>
                         <informativecard
-                            cq:policy="lebara/components/informativecard/policy_1663592440963"
+                            cq:policy="lebara/components/dialogutils/policy_1663592440963"
                             jcr:primaryType="nt:unstructured"
                             sling:resourceType="wcm/core/components/policies/mapping"/>
                         <icontextlist
-                            cq:policy="lebara/components/icontextlist/policy_1663592440963"
+                            cq:policy="lebara/components/dialogutils/policy_1663592440963"
                             jcr:primaryType="nt:unstructured"
                             sling:resourceType="wcm/core/components/policies/mapping"/>
                         <trustpilot
-                            cq:policy="lebara/components/trustpilot/policy_1663592440963"
+                            cq:policy="lebara/components/dialogutils/policy_1663592440963"
                             jcr:primaryType="nt:unstructured"
                             sling:resourceType="wcm/core/components/policies/mapping"/>
                         <aboutlebara
@@ -53,27 +53,27 @@
                             sling:resourceType="wcm/core/components/policies/mapping"/>
                         <nl jcr:primaryType="nt:unstructured">
                             <addressdetails
-                                cq:policy="lebara/components/nl/addressdetails/policy_1663592440963"
+                                cq:policy="lebara/components/dialogutils/policy_1663592440963"
                                 jcr:primaryType="nt:unstructured"
                                 sling:resourceType="wcm/core/components/policies/mapping"/>
 							<planconfigurator
-								cq:policy="lebara/components/nl/planconfigurator/policy_1663592440963"
+								cq:policy="lebara/components/dialogutils/policy_1663592440963"
 								jcr:primaryType="nt:unstructured"
 								sling:resourceType="wcm/core/components/policies/mapping"/>
 							<purchasesummary
-								cq:policy="lebara/components/nl/purchasesummary/policy_1663592440963"
+								cq:policy="lebara/components/dialogutils/policy_1663592440963"
 								jcr:primaryType="nt:unstructured"
 								sling:resourceType="wcm/core/components/policies/mapping"/>
                             <personaldetailssummary
-                                cq:policy="lebara/components/nl/personaldetailssummary/policy_1663592440963"
+                                cq:policy="lebara/components/dialogutils/policy_1663592440963"
                                 jcr:primaryType="nt:unstructured"
                                 sling:resourceType="wcm/core/components/policies/mapping"/>
                             <paymentsummary
-                                cq:policy="lebara/components/nl/paymentsummary/policy_1663592440963"
+                                cq:policy="lebara/components/dialogutils/policy_1663592440963"
                                 jcr:primaryType="nt:unstructured"
                                 sling:resourceType="wcm/core/components/policies/mapping"/>
                             <postpaidbuypersonaldetails
-                                cq:policy="lebara/components/nl/postpaidbuypersonaldetails/policy_1663592440963"
+                                cq:policy="lebara/components/dialogutils/policy_1663592440963"
                                 jcr:primaryType="nt:unstructured"
                                 sling:resourceType="wcm/core/components/policies/mapping"/>
                        </nl>
