@@ -30,7 +30,7 @@ import Cookies from "universal-cookie";
 import { isAddressUpdateBlockedCookieKey } from "@lebara/core/components/UserDetails/constats";
 import {getLocale} from "@lebara/core/hooks/useLocale";
 
-pdfjs.GlobalWorkerOptions.workerSrc = '/etc.clientlibs/lebara/clientlibs/clientlib-react/resources/pdf.worker.js';
+pdfjs.GlobalWorkerOptions.workerSrc = '/etc.clientlibs/lebara/clientlibs/clientlib-react-DK/resources/pdf.worker.js';
 const defaultOptions = {
     watchQuery: {
         fetchPolicy: "no-cache",
