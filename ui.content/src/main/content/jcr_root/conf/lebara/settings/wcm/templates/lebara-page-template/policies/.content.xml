@@ -27,10 +27,6 @@
                             cq:policy="lebara/components/informativecard/policy_1663592440963"
                             jcr:primaryType="nt:unstructured"
                             sling:resourceType="wcm/core/components/policies/mapping"/>
-						<informativebanner
-                            cq:policy="lebara/components/informativecard/policy_1663592440963"
-                            jcr:primaryType="nt:unstructured"
-                            sling:resourceType="wcm/core/components/policies/mapping"/>
                         <icontextlist
                             cq:policy="lebara/components/icontextlist/policy_1663592440963"
                             jcr:primaryType="nt:unstructured"
