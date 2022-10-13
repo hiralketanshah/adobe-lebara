@@ -286,14 +286,14 @@ const ExpandableSimPlanCard: React.FC<ExpandableSimPlanCardProps> = ({
           isOpen={isDialogOpen}
           onClose={() => setIsDialogOpen(false)}
           planName={planName}
-          price={promotionPrice? Number(promotionPrice) : (cost || '')}
+          price={promotionPrice || cost || ''}
           duration={!(offerType === OfferTypes.BOLTON) ? (validity || '') : ''}
           countries={(planInfo && planInfo.countryList) || []}
           previewIcon={previewIcon}
           previewItems={(planInfo && planInfo.listPlanItem) || []}
           title={planInfo?.title}
           countryTitle={planInfo?.countryTitle}
-          dataValue={promotionData? promotionData : filteredAllowanceList.formatedValue}
+          dataValue={promotionData || filteredAllowanceList.formatedValue}
           isButtonDisabled={isButtonDisabled}
           onActionClick={handleAddToCart}
           buttonText={buttonLabel}
