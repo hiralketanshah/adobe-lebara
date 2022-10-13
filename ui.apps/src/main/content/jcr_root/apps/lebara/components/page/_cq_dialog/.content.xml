@@ -50,8 +50,8 @@
 											<noScriptVal
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textarea"
-                                                fieldDescription="Enter noScript"
-                                                fieldLabel="Enter noScript that enables GTM as an image"
+                                                fieldDescription="Enter Script to be added in body tag"
+                                                fieldLabel="Enter Script to be added in body tag"
                                                 name="./noScriptVal"/>
                                         </items>
                                     </pageNav>
