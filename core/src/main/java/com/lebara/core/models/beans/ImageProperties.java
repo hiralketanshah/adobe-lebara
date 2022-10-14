@@ -4,10 +4,16 @@ import org.apache.sling.api.resource.Resource;
 import org.apache.sling.models.annotations.DefaultInjectionStrategy;
 import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
+import com.lebara.core.utils.AemUtils;
+import org.apache.sling.api.SlingHttpServletRequest;
+import org.apache.sling.models.annotations.injectorspecific.SlingObject;
 
 @Model(adapters = { ImageProperties.class }, adaptables = {
 		Resource.class }, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
 public class ImageProperties {
+	
+	@SlingObject
+    private SlingHttpServletRequest request;
 
 	@ValueMapValue
 	private String body;
@@ -17,6 +23,9 @@ public class ImageProperties {
 
 	@ValueMapValue
 	private String icon;
+	
+	@ValueMapValue
+	private String imageUrl;
 
 	public String getBody() {
 		return body;
@@ -32,5 +41,9 @@ public class ImageProperties {
 	
 	public void setIcon(String icon) {
 		this.icon = icon;
+	}
+	
+	public String getImageUrl() {
+		return AemUtils.getLinkWithExtension(imageUrl, request);
 	}
 }
