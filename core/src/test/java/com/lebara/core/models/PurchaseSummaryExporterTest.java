@@ -116,6 +116,21 @@ public class PurchaseSummaryExporterTest {
     }
     
     @Test
+    public void testGetStickyPromoLabel() {
+        assertEquals("First 3 months for free", purchaseSummaryExporter.getStickyPromoLabel());
+    }
+
+    @Test
+    public void testGetStickyActivationFeeLabel() {
+        assertEquals("Activation fee", purchaseSummaryExporter.getStickyActivationFeeLabel());
+    }
+
+    @Test
+    public void testGetStickyTotalLabel() {
+        assertEquals("Per month", purchaseSummaryExporter.getStickyTotalLabel());
+    }
+    
+    @Test
     void testGetExportedType() {
         assertEquals(PurchaseSummaryExporter.RESOURCE_TYPE, purchaseSummaryExporter.getExportedType());
     }

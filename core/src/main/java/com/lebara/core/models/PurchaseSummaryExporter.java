@@ -74,6 +74,15 @@ public class PurchaseSummaryExporter implements ComponentExporter {
     private String headerLabel;
     
     @ValueMapValue
+    private String stickyPromoLabel;
+
+    @ValueMapValue
+    private String stickyActivationFeeLabel;
+
+    @ValueMapValue
+    private String stickyTotalLabel;
+    
+    @ValueMapValue
     private boolean isRetentionGrandTotal;
 
     private String appliedStyles;
@@ -144,6 +153,18 @@ public class PurchaseSummaryExporter implements ComponentExporter {
     
     public boolean getIsRetentionGrandTotal() {
         return isRetentionGrandTotal;
+    }
+    
+    public String getStickyPromoLabel() {
+        return stickyPromoLabel;
+    }
+
+    public String getStickyActivationFeeLabel() {
+        return stickyActivationFeeLabel;
+    }
+
+    public String getStickyTotalLabel() {
+        return stickyTotalLabel;
     }
 
     public String getAppliedStyles() {
