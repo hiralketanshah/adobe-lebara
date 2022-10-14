@@ -97,7 +97,6 @@ import "../aemConfigs/AttachYourSimAemConfig.js";
 import "./CallSupport/AemConfig.js";
 import "./CallSupport/WeAreHere/AemConfig.js";
 import "../aemConfigs/PlanConfiguratorAemConfig.js";
-import "../aemConfigs/FloatingCardAemConfig.js";
 import "../aemConfigs/SimDetails.js";
 import "../aemConfigs/SelectionConfig.js";
 import "../aemConfigs/FailedLegalRegConfig.js";
