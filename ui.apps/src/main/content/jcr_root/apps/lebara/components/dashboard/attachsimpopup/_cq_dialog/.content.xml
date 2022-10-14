@@ -192,7 +192,14 @@
                                     fieldLabel="CTA Link URL"
                                     name="./attachSimModal/frmFields/ctaLink"
                                     rootPath="/content/lebara"/>
-
+                            <showUpdatedModal
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                name="./showUpdatedModal"
+                                text="Show Updated Modal"
+                                uncheckedValue="{Boolean}false"
+                                value="{Boolean}true">
+                            </showUpdatedModal>
                         </items>
                     </column1>
                     <column2

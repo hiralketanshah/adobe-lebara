@@ -30,21 +30,23 @@ import {headerSearch} from "@lebara/core/redux/actions/headerSearchActions";
 import {selectIsAuthenticated} from "@lebara/core/redux/selectors/userSelectors";
 import {globalConfigs as GC} from "@lebara/core/configs/globalConfigs";
 import {useApolloClient, useQuery} from "@apollo/client";
-import GET_CART from "@lebara/core/graphql/GET_CART";
-import {loadInitialCart, setCartItemsLoading} from "@lebara/core/redux/actions/cartActions";
-import mapMagentoProductToCartItem from "@lebara/core/utils/mapMagentoProductToCartItem";
-import {saveTopUps} from "@lebara/core/redux/actions/topUpActions";
-import GET_TOP_UPS from "@lebara/core/graphql/GET_TOP_UPS";
-import { useHistory, RouterLink } from "@lebara/core/hooks/useHistory";
-import fetchUserPaymentMethods from "@lebara/core/redux/redux-actions/fetchUserPaymentMethods";
-import {saveSocket} from "@lebara/core/redux/actions/socketActions";
-import PlanNotEligibleDialog from "@lebara/core/components/PlanNotEligibleDialog/PlanNotEligibleDialog";
-import { toggleDialogState } from "@lebara/core/redux/actions/modalsActions";
+import GET_CART from "@lebara/ui/src/graphql/GET_CART";
+import {loadInitialCart, setCartItemsLoading, loadRafProducts} from "@lebara/ui/src/redux/actions/cartActions";
+import mapMagentoProductToCartItem from "@lebara/ui/src/utils/mapMagentoProductToCartItem";
+import {saveTopUps} from "@lebara/ui/src/redux/actions/topUpActions";
+import GET_TOP_UPS from "@lebara/ui/src/graphql/GET_TOP_UPS";
+import { useHistory, RouterLink } from "@lebara/ui/src/hooks/useHistory";
+import fetchUserPaymentMethods from "@lebara/ui/src/redux/redux-actions/fetchUserPaymentMethods";
+import {saveSocket} from "@lebara/ui/src/redux/actions/socketActions";
+import PlanNotEligibleDialog from "@lebara/ui/src/components/PlanNotEligibleDialog/PlanNotEligibleDialog";
+import { toggleDialogState } from "@lebara/ui/src/redux/actions/modalsActions";
 import SearchResults from "../Search/SearchResults";
 import aemUtils from "../../utils/aem-utils";
 import { BACKGROUND_OPACITY_SAERCH_BAR } from "@lebara/core/utils/lebara.constants";
 import useLoadPaymentMethods from "@lebara/core/hooks/useLoadPaymentMethods";
 import io from "socket.io-client";
+import GET_RAFS from "@lebara/ui/src/graphql/GET_RAFS";
+import queryString from "query-string";
 
 const SingleMenu = ({ menuItem, newText, textColor }: { menuItem: children, newText: any, textColor:string }) => {
   const DEFUALT_GROUP_MENU_UPTO = 5;
@@ -327,6 +329,21 @@ const Header: React.FC<HeaderProps> = ({
       );
     });
   }, [client, dispatch]);
+
+  const getRafProducts = useCallback(() => {
+    client.query({ query: GET_RAFS }).then((res) => {
+      dispatch(loadRafProducts(res?.data?.getRafs));
+    });
+  }, [client, dispatch]);
+  React.useEffect(() => {
+    const { fromRedirect } = queryString.parse(window.location.search);
+    if (fromRedirect) {
+      dispatch(loadInitialCart([]));
+      return;
+    }
+    getCart();
+    getRafProducts();
+  }, [dispatch, getCart, getRafProducts]);
 
   const handleCartClick = () => {
     onCloseSearch();

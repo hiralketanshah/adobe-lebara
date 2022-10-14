@@ -10,6 +10,8 @@ import org.apache.sling.models.annotations.DefaultInjectionStrategy;
 import org.apache.sling.models.annotations.Exporter;
 import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.injectorspecific.ChildResource;
+import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
+
 
 @Model(adaptables = SlingHttpServletRequest.class, adapters = {AttachSimPopupExporter.class, ComponentExporter.class},
         resourceType = AttachSimPopupExporter.RESOURCE_TYPE, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
@@ -20,6 +22,9 @@ public class AttachSimPopupExporter implements ComponentExporter{
 
     @ChildResource
     private AttachSimBean attachSimModal;
+    
+    @ValueMapValue
+    private boolean showUpdatedModal;
 
     @ChildResource
     private ActivateSimBean activateSimModal;
@@ -33,6 +38,10 @@ public class AttachSimPopupExporter implements ComponentExporter{
     public ActivateSimBean getActivateSimModal() {
         return activateSimModal;
     }
+    
+    public boolean getShowUpdatedModal() {
+ 		return showUpdatedModal;
+ 	}
 
     @Override
     public String getExportedType() {

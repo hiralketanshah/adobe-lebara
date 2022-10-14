@@ -3,6 +3,7 @@ package com.lebara.core.utils;
 
 import com.day.cq.commons.inherit.HierarchyNodeInheritanceValueMap;
 import com.day.cq.commons.inherit.InheritanceValueMap;
+import com.day.cq.commons.jcr.JcrConstants;
 import com.day.cq.commons.mail.MailTemplate;
 import com.day.cq.i18n.I18n;
 import com.day.cq.mailer.MailingException;
@@ -208,10 +209,13 @@ public class AemUtils {
      * @return externalized path.
      */
     public static String getLinkWithExtension(String payloadPath, SlingHttpServletRequest request) {
+    	if(null!=request) {
+    		payloadPath = getRedirectedPath(payloadPath, request.getResourceResolver());
+    	}
         if (StringUtils.isBlank(payloadPath) || isExternalLink(payloadPath)) {
             return payloadPath;
         }
-        return ((request == null) ? payloadPath : trimmedPath(payloadPath)) + (isHtmlExtensionRequired(payloadPath) ? LebaraConstants.HTML_EXTENSION : StringUtils.EMPTY);
+        return (trimmedPath(payloadPath)) + (isHtmlExtensionRequired(payloadPath) ? LebaraConstants.HTML_EXTENSION : StringUtils.EMPTY);
     }
 
     public static String getLinkWithExtension(String payloadPath) {
@@ -220,6 +224,20 @@ public class AemUtils {
         }
         return trimmedPath(payloadPath) + (isHtmlExtensionRequired(payloadPath) ? LebaraConstants.HTML_EXTENSION : StringUtils.EMPTY);
     }
+    
+	private static String getRedirectedPath(String payloadPath, ResourceResolver resourceResolver) {
+		if (null != resourceResolver) {
+			Resource page = resourceResolver.getResource(payloadPath + "/" + JcrConstants.JCR_CONTENT);
+			if (null != page) {
+				String redirectPath = getStringProperty(page, LebaraConstants.PN_REDIRECT_TARGET);
+				if (null != redirectPath) {
+					return redirectPath;
+				}
+
+			}
+		}
+		return payloadPath;
+	}
 
     private static String trimmedPath(String payloadPath) {
         if(StringUtils.isNotBlank(payloadPath)){
@@ -233,10 +251,11 @@ public class AemUtils {
     }
 
     public static String getLinkWithExtension(String payloadPath, ResourceResolver resourceResolver) {
+    	payloadPath = getRedirectedPath(payloadPath, resourceResolver);
         if (StringUtils.isBlank(payloadPath) || isExternalLink(payloadPath)) {
             return payloadPath;
         }
-        return ((resourceResolver == null) ? payloadPath : trimmedPath(payloadPath)) + (isHtmlExtensionRequired(payloadPath) ? LebaraConstants.HTML_EXTENSION : StringUtils.EMPTY);
+        return (trimmedPath(payloadPath)) + (isHtmlExtensionRequired(payloadPath) ? LebaraConstants.HTML_EXTENSION : StringUtils.EMPTY);
     }
 
     public static String updateShortenLinksInRichText(String text, SlingHttpServletRequest slingRequest) {
