@@ -13,11 +13,11 @@
             value="all"/>
 		<allloggedin
             jcr:primaryType="nt:unstructured"
-            text="All Logged In Users"
+            text="All Logged In Users ( Yet to be Implemented )"
             value="allLoggedIn"/>
 		<allnonloggedin
             jcr:primaryType="nt:unstructured"
-            text="All Non Logged In Users"
+            text="All Non Logged In Users ( Yet to be Implemented )"
             value="allNonLoggedIn"/>
 		<prepaid
             jcr:primaryType="nt:unstructured"

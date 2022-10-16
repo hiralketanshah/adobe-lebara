@@ -8,4 +8,4 @@ const RetentionBannerConfig = {
     }
 };
 
-MapTo("lebara/components/nl/retentionbanner")(RetentionRenewBanner, RetentionBannerConfig);
+MapTo("lebara/components/retentionbanner")(RetentionRenewBanner, RetentionBannerConfig);
