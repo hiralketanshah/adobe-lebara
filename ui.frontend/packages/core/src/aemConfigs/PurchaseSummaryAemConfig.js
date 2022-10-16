@@ -1,5 +1,5 @@
 import { MapTo } from "@adobe/aem-react-editable-components";
-import SimPurchaseSummary from "@lebara/netherlands/components/SimPurchaseSummary/SimPurchaseSummary";
+import SimPurchaseSummary from "@lebara/netherlands/components/SimPurchaseSummary/index";
 
 const PurchaseSummaryConfig = {
   emptyLabel: "Purchase Summary Component",
