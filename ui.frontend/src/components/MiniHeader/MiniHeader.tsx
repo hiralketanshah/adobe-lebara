@@ -218,7 +218,7 @@ const MiniHeader: React.FC<MiniHeaderProps> = ({
       {isProfileDropdownOpen && isAuthenticated ? (
         <Box backgroundColor="white" width="100%" height="100%" ref={ref}>
           <Flex
-            zIndex="3"
+            zIndex="999999999"
             width="18rem"
             ml="0px"
             position="absolute"
