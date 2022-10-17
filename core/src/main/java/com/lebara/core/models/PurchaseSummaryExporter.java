@@ -4,10 +4,12 @@ import java.util.Optional;
 
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;
+import org.apache.sling.api.resource.ResourceResolver;
 import org.apache.sling.models.annotations.DefaultInjectionStrategy;
 import org.apache.sling.models.annotations.Exporter;
 import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.injectorspecific.ScriptVariable;
+import org.apache.sling.models.annotations.injectorspecific.SlingObject;
 import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
 
 import com.adobe.cq.export.json.ComponentExporter;
@@ -24,6 +26,9 @@ public class PurchaseSummaryExporter implements ComponentExporter {
 
     @ScriptVariable
     protected Resource resource;
+    
+    @SlingObject
+    private ResourceResolver resourceResolver;
 
     @ValueMapValue
     private String title;
@@ -84,6 +89,21 @@ public class PurchaseSummaryExporter implements ComponentExporter {
     
     @ValueMapValue
     private boolean isRetentionGrandTotal;
+    
+    @ValueMapValue
+    private String termsAndConditionsContent;
+    
+    @ValueMapValue
+    private String contractSummaryLabel;
+
+    @ValueMapValue
+    private String contractSummaryPdfRootPath;
+
+    @ValueMapValue
+    private String pdfDownloadLabel;
+
+    @ValueMapValue
+    private String pdfCloseLabel;
 
     private String appliedStyles;
 
@@ -165,6 +185,26 @@ public class PurchaseSummaryExporter implements ComponentExporter {
 
     public String getStickyTotalLabel() {
         return stickyTotalLabel;
+    }
+
+    public String getTermsAndConditionsContent() {
+        return AemUtils.updateShortenLinksInRichText(termsAndConditionsContent,resourceResolver);
+    }
+
+    public String getContractSummaryLabel() {
+        return contractSummaryLabel;
+    }
+
+    public String getContractSummaryPdfRootPath() {
+        return contractSummaryPdfRootPath;
+    }
+
+    public String getPdfDownloadLabel() {
+        return pdfDownloadLabel;
+    }
+
+    public String getPdfCloseLabel() {
+        return pdfCloseLabel;
     }
 
     public String getAppliedStyles() {

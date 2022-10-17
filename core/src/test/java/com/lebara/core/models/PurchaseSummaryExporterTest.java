@@ -129,6 +129,31 @@ public class PurchaseSummaryExporterTest {
     public void testGetStickyTotalLabel() {
         assertEquals("Per month", purchaseSummaryExporter.getStickyTotalLabel());
     }
+
+    @Test
+    public void testGetTermsAndConditionsContent() {
+        assertEquals("test", purchaseSummaryExporter.getTermsAndConditionsContent());
+    }
+    
+    @Test
+    public void testGetContractSummaryLabel() {
+        assertEquals("Contract", purchaseSummaryExporter.getContractSummaryLabel());
+    }
+    
+    @Test
+    public void testGetContractSummaryPdfRootPath() {
+        assertEquals("#", purchaseSummaryExporter.getContractSummaryPdfRootPath());
+    }
+    
+    @Test
+    public void testGetPdfDownloadLabel() {
+        assertEquals("download", purchaseSummaryExporter.getPdfDownloadLabel());
+    }
+    
+    @Test
+    public void testGetPdfCloseLabel() {
+        assertEquals("close", purchaseSummaryExporter.getPdfCloseLabel());
+    }
     
     @Test
     void testGetExportedType() {

@@ -68,6 +68,11 @@ public class InformativeBannerExporterTest {
     }
 
     @Test
+    public void testGetCtaColor() {
+        assertEquals("#FF3182", informativeBannerExporter.getCtaColor());
+    }
+
+    @Test
     public void testGetTextColor() {
         assertEquals("#FFFFFF", informativeBannerExporter.getTextColor());
     }
@@ -86,5 +91,4 @@ public class InformativeBannerExporterTest {
     public void testGetExportedType() {
         assertEquals(InformativeBannerExporter.RESOURCE_TYPE, informativeBannerExporter.getExportedType());
     }
-
 }

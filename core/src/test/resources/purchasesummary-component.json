@@ -20,5 +20,10 @@
    "stickyActivationFeeLabel":"Activation fee",
    "stickyTotalLabel":"Per month",
    "sling:resourceType":"lebara/components/nl/purchasesummary",
+   "termsAndConditionsContent":"test",
+   "contractSummaryLabel":"Contract",
+   "contractSummaryPdfRootPath":"#",
+   "pdfDownloadLabel":"download",
+   "pdfCloseLabel":"close",
    "isRetentionGrandTotal":false
 }
