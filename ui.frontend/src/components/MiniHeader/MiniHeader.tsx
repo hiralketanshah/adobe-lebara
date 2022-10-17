@@ -115,7 +115,7 @@ const MiniHeader: React.FC<MiniHeaderProps> = ({
             colorScheme="dark"
             onClick={onOpen}
           />
-          <ChakraLink mr={{ base: "5px" }}>
+          <ChakraLink ml={{ base: "4px" }} mr={{ base: "5px" }}>
             <Link to={logoLinkURL || "/"}>
               <Image src={logoPath} alt="Logo" minW={75} />
             </Link>
@@ -126,20 +126,19 @@ const MiniHeader: React.FC<MiniHeaderProps> = ({
             data-testid="top-up-btn"
             fontSize="12px"
             padding={2}
-            bg="secondary.500"
+            bg="primary.500"
             onClick={() => {
               history.push(topupCtaLink || "/top-up");
               onCloseSearch();
             }}
             borderRadius="5"
             height="30px"
-            mr="10px"
             mt="8px"
           >
             {topupCtaText}
           </Button>
         {!isSearchOpened ? (
-            <Box>
+            <Box ml="20px">
               <Button
                 onClick={onSearchClick}
                 padding="initial"
@@ -161,7 +160,7 @@ const MiniHeader: React.FC<MiniHeaderProps> = ({
             <></>
           )}
           <IconButton
-              mx="20px"
+            ml="20px"
             colorScheme="dark"
             icon={<AiOutlineUser />}
             fontSize={20}
@@ -172,8 +171,8 @@ const MiniHeader: React.FC<MiniHeaderProps> = ({
           />
           <Box pos="relative" onClick={handleCartClick}>
             <IconButton
-                height="45px"
-              p="absolute"
+              ml="20px"
+              height="45px"
               fontSize={20}
               colorScheme="dark"
               icon={<RiShoppingCartLine />}
@@ -219,7 +218,7 @@ const MiniHeader: React.FC<MiniHeaderProps> = ({
       {isProfileDropdownOpen && isAuthenticated ? (
         <Box backgroundColor="white" width="100%" height="100%" ref={ref}>
           <Flex
-            zIndex="3"
+            zIndex="999999999"
             width="18rem"
             ml="0px"
             position="absolute"
