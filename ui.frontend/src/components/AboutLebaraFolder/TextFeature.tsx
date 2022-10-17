@@ -3,6 +3,7 @@ import { Flex, Spacer } from "@chakra-ui/react";
 import { AboutLebaraProps } from "./types";
 import TextBlock from "../TextBlock/TextBlock";
 import { Image } from "@lebara/ui/src/components/Image/Image";
+import { useHistory } from "@lebara/ui/src/hooks/useHistory";
 
 const TextFeature: React.FC<AboutLebaraProps> = ({
   pretitle,
@@ -20,6 +21,7 @@ const TextFeature: React.FC<AboutLebaraProps> = ({
   buttonTextColor,
   buttonHoverBgColor,
   buttonHoverTextColor,
+  imageUrl,
 }) => {
   const buttonCustomMakeup = {
     buttonBackgroundColor: (buttonBackgroundColor || ""),
@@ -27,7 +29,7 @@ const TextFeature: React.FC<AboutLebaraProps> = ({
     buttonHoverBgColor: (buttonHoverBgColor || ""),
     buttonHoverTextColor: (buttonHoverTextColor || ""),
   }
-
+  const history = useHistory();
   return (
     <>
       {(!imageAlign || (imageAlign === '' || imageAlign === 'left')) && (<Flex
@@ -45,6 +47,7 @@ const TextFeature: React.FC<AboutLebaraProps> = ({
               height="100%"
               alt={title} 
               mb={{ base: 0, lg: 0 }}
+              onClick={imageUrl ? (() => history.push(imageUrl)) : undefined}
             />
           )}
         </Flex>
@@ -93,6 +96,7 @@ const TextFeature: React.FC<AboutLebaraProps> = ({
               alt={title} 
               mb={{ base: 0, lg: 0 }}
               w={{ base: "100%" }}
+              onClick={imageUrl ? (() => history.push(imageUrl)) : undefined}
             />
           )}
         </Flex>
