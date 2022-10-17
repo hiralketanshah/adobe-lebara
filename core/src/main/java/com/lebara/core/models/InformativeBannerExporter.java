@@ -54,13 +54,16 @@ public class InformativeBannerExporter implements ComponentExporter {
 
     @ValueMapValue
     private String ctaLabel;
+    
+    @ValueMapValue
+    private String ctaColor;
 
     @ValueMapValue
     private String textColor;
 
     @ValueMapValue
     private String backgroundColor;
-
+    
     private String appliedStyles;
 
     public String getImage() {
@@ -93,6 +96,10 @@ public class InformativeBannerExporter implements ComponentExporter {
 
     public String getCtaLabel() {
         return ctaLabel;
+    }
+
+    public String getCtaColor() {
+        return ctaColor;
     }
 
     public String getTextColor() {

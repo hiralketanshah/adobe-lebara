@@ -14,5 +14,6 @@
   "ctaLink": "/content/lebara/nl/en/sim-only",
   "sling:resourceType": "lebara/components/informativebanner",
   "backgroundColor": "#1978CD",
+  "ctaColor":"#FF3182",
   "textIsRich": "true"
 }
