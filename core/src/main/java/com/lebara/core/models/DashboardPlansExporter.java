@@ -97,6 +97,8 @@ public class DashboardPlansExporter extends HeadingExporter {
     private String pendingRetentionLabel;
     @ValueMapValue
     private String activeRetentionBanner;
+    @ValueMapValue
+    private boolean showTabData;
     
     public String getButtonLabel() {
         return buttonLabel;
@@ -222,6 +224,10 @@ public class DashboardPlansExporter extends HeadingExporter {
 		return activeRetentionBanner;
 	}
 
+    public boolean isShowTabData() {
+        return showTabData;
+    }
+    
 	@Override
     public String getExportedType() {
         return RESOURCE_TYPE;

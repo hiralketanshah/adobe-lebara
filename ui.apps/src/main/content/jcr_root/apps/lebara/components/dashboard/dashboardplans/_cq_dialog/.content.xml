@@ -561,6 +561,13 @@
                                 fieldLabel="Active Retention Banner Message"
                                 name="./activeRetentionBanner"
                                 value="Your renewal offer is now active"/>
+							<showTabData
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                name="./showTabData"
+                                text="Show Tab Data?"
+                                uncheckedValue="{Boolean}false"
+                                value="{Boolean}true"/>
                         </items>
                     </retentionProps>
                 </items>
