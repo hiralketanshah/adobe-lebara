@@ -21,7 +21,7 @@ import "@fontsource/roboto/500.css";
 import "@fontsource/roboto/700.css";
 import "@fontsource/roboto/900.css";
 import {globalConfigs} from '@lebara/core/configs/globalConfigs';
-import store from "@lebara/core/store";
+import store from "@lebara/netherlands/redux/store";
 import { pdfjs } from "react-pdf";
 import axios from "axios";
 import {onError} from "@apollo/client/link/error";
