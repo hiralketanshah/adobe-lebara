@@ -30,6 +30,9 @@ public class PaymentSummaryExporter implements ComponentExporter {
     private ResourceResolver resourceResolver;
 
     @ValueMapValue
+    private String conditionsHeader;
+
+    @ValueMapValue
     private String conditionsContent;
 
     @ValueMapValue
@@ -56,6 +59,9 @@ public class PaymentSummaryExporter implements ComponentExporter {
     @ValueMapValue
     private String orderSuccessPage;
 
+    public String getConditionsHeader() {
+        return conditionsHeader;
+    }
 
     public String getConditionsContent() {
         return AemUtils.updateShortenLinksInRichText(conditionsContent, resourceResolver);

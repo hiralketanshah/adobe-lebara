@@ -450,6 +450,7 @@
 		<property name="pdfCloseLabel"/>
 		<property name="alertMessageText"/>
 		<property name="conditionsContent"/>
+		<property name="conditionsHeader"/>
 		<property name="termsAndConditionsContent"/>
 		<property name="getNewNumberText"/>
 		<!--Payment Method component -->
