@@ -45,9 +45,6 @@ public class WhereToCallExporter implements ComponentExporter {
 
     @ValueMapValue
     private String fileReference;
-    
-	@ValueMapValue
-	private String imageUrl;
 
     @ValueMapValue
     private String title;
@@ -62,10 +59,6 @@ public class WhereToCallExporter implements ComponentExporter {
 
 	public String getFileReference() {
 		return AemUtils.getImageRendition(fileReference, currentStyle.get("rendition", String.class), resourceResolver);
-	}
-	
-	public String getImageUrl() {
-		return AemUtils.getLinkWithExtension(imageUrl, request);
 	}
 
     public String getTitle() {
