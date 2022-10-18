@@ -375,7 +375,6 @@
                         structureDepth="0"
                 />
             </spa>
-
             <embed jcr:primaryType="nt:unstructured">
                 <policy_1639144570135
                         jcr:lastModified="{Date}2021-12-10T19:26:32.259+05:30"
@@ -439,7 +438,6 @@
                     <jcr:content jcr:primaryType="nt:unstructured"/>
                 </policy_1660640547466>
             </awards>
-            <nl jcr:primaryType="nt:unstructured"/>
             <getitnow jcr:primaryType="nt:unstructured">
                 <policy_1662709032825
                     jcr:primaryType="nt:unstructured"
@@ -449,6 +447,8 @@
                     <jcr:content jcr:primaryType="nt:unstructured"/>
                 </policy_1662709032825>
             </getitnow>
+            <nl jcr:primaryType="nt:unstructured"/>
+	        <dialogutils jcr:primaryType="nt:unstructured"/>
         </components>
     </lebara>
     <wcm jcr:primaryType="nt:unstructured">
