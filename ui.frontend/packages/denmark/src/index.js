@@ -12,6 +12,7 @@ import LebaraModelClient from "../../core/src/LebaraModelClient";
 import "../../core/src/components/import-components";
 import "./index.css";
 import "../../core/src/styles/index.scss";
+import "../../core/src/styles/richtext-new.style.scss";
 import {Provider} from "react-redux";
 import {ApolloClient, ApolloProvider, HttpLink, InMemoryCache} from "@apollo/client";
 import "@fontsource/roboto/100.css";

@@ -24,6 +24,7 @@ import "@fontsource/roboto/900.css";
 import Fonts from "./Fonts";
 import GoogleAnalytics from "@lebara/core/GoogleAnalytics";
 import store from "@lebara/core/store";
+import "./styles/richtext-new.style.scss"
 
 const theme = extendTheme(
   {
