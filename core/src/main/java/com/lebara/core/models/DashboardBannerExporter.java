@@ -24,6 +24,9 @@ public class DashboardBannerExporter implements ComponentExporter {
 
 	@ValueMapValue
 	private String fileReference;
+	
+	@ValueMapValue
+    private String fileReferenceMobile;
 
 	@ValueMapValue
 	private String imageAlt;
@@ -34,6 +37,10 @@ public class DashboardBannerExporter implements ComponentExporter {
 	public String getImage() {
 		return fileReference;
 	}
+	
+	public String getMobileImage() {
+        return fileReferenceMobile;
+    }
 
 	public String getImageAlt() {
 		return imageAlt;
