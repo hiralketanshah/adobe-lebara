@@ -4,7 +4,7 @@
     <cui jcr:primaryType="nt:unstructured">
         <inline
             jcr:primaryType="nt:unstructured"
-            toolbar="[format#bold,format#italic,format#underline,#justify,#lists,links#modifylink,links#unlink,#paraformat,misctools#sourceedit]">
+            toolbar="[format#bold,format#italic,format#underline,#justify,#lists,links#modifylink,links#unlink,#paraformat,misctools#sourceedit,experience-aem#colorPicker]">
             <popovers jcr:primaryType="nt:unstructured">
                 <justify
                     jcr:primaryType="nt:unstructured"
@@ -22,7 +22,7 @@
         </inline>
         <dialogFullScreen
             jcr:primaryType="nt:unstructured"
-            toolbar="[format#bold,format#italic,format#underline,justify#justifyleft,justify#justifycenter,justify#justifyright,lists#unordered,lists#ordered,lists#outdent,lists#indent,links#modifylink,links#unlink,table#createoredit,#paraformat,image#imageProps,misctools#sourceedit]">
+            toolbar="[format#bold,format#italic,format#underline,justify#justifyleft,justify#justifycenter,justify#justifyright,lists#unordered,lists#ordered,lists#outdent,lists#indent,links#modifylink,links#unlink,table#createoredit,#paraformat,image#imageProps,misctools#sourceedit,experience-aem#colorPicker]">
             <popovers jcr:primaryType="nt:unstructured">
                 <paraformat
                     jcr:primaryType="nt:unstructured"
