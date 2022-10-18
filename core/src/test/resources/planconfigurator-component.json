@@ -31,5 +31,6 @@
   "nationalUnlimitedPlanTextSummary": "Unlimited Calling National",
   "internationalUnlimitedPlanTextSummary": "Unlimited Calling International",
   "advancedSpeedTitle": "4G Extra",
-  "mostPopularBundleId": "bundle1"
+  "mostPopularBundleId": "bundle1",
+  "isRetentionConfigurator" : false
 }

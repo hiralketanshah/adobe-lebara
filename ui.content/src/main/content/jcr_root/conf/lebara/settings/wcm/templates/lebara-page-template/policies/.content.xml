@@ -85,6 +85,10 @@
                                 jcr:primaryType="nt:unstructured"
                                 sling:resourceType="wcm/core/components/policies/mapping"/>
                        </nl>
+                        <getitnow
+                            cq:policy="lebara/components/getitnow/policy_1662709032825"
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="wcm/core/components/policies/mapping"/>
                     </components>
                 </lebara>
             </responsivegrid>

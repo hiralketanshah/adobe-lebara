@@ -438,6 +438,15 @@
                     <jcr:content jcr:primaryType="nt:unstructured"/>
                 </policy_1660640547466>
             </awards>
+            <getitnow jcr:primaryType="nt:unstructured">
+                <policy_1662709032825
+                    jcr:primaryType="nt:unstructured"
+                    jcr:title="Get It Now Policy"
+                    sling:resourceType="wcm/core/components/policy/policy"
+                    rendition="medium">
+                    <jcr:content jcr:primaryType="nt:unstructured"/>
+                </policy_1662709032825>
+            </getitnow>
             <nl jcr:primaryType="nt:unstructured"/>
 	        <dialogutils jcr:primaryType="nt:unstructured"/>
         </components>

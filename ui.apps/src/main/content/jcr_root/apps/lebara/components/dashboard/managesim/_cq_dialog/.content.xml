@@ -363,6 +363,14 @@
                                                     jcr:primaryType="nt:unstructured"
                                                     acs-checkboxshowhidetargetvalue="true"/>
                                             </termsAndConditionsLabel>
+                                            <showUpdatedModal
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                                name="./showUpdatedModal"
+                                                text="Show Updated Modal"
+                                                uncheckedValue="{Boolean}false"
+                                                value="{Boolean}true">
+                                            </showUpdatedModal>
                                         </items>
                                     </column>
                                 </items>

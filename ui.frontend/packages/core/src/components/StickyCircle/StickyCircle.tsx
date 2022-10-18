@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useMemo } from "react";
 import { Text, Box, Button, Circle } from "@chakra-ui/react";
 import { StickyCircleProps } from "./types";
 import { useHistory } from "@lebara/core/hooks/useHistory";
@@ -15,6 +15,16 @@ const StickyCircle: React.FC<StickyCircleProps> = ({
   const dispatch = useDispatch();
   const [addItemToCart] = useAddToCart();
   const cartItems = useSelector((state: ReduxState) => state.cart.items);
+  const previousTopUp = useMemo(
+    () =>
+      cartItems.find(
+        (t) =>
+          t.duration.includes("Free Sim Top Up") ||
+          t.duration.includes("Top-up") ||
+          t.id === 99999998
+      ),
+    [cartItems]
+  );
   return (
     <Box
       position="fixed"
@@ -40,7 +50,7 @@ const StickyCircle: React.FC<StickyCircleProps> = ({
           onClick={linkPath ? ()=> history.push(linkPath) : async () => {
             dispatch(setLoading(true));
             try{
-              if (!cartItems.find((t : any) => t.id === 99999998)) {
+              if (!previousTopUp) {
                 await addItemToCart(
                     99999998,
                     "Free Sim Top Up",

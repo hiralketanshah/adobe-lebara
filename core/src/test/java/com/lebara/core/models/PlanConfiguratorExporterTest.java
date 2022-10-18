@@ -184,6 +184,11 @@ class PlanConfiguratorExporterTest {
     void testGetAdvancedSpeedTitle() {
         assertEquals("4G Extra", planConfiguratorExporter.getAdvancedSpeedTitle());
     }
+    
+    @Test
+    void testGetIsRetentionConfigurator() {
+        assertEquals(false, planConfiguratorExporter.getIsRetentionConfigurator());
+    }
 
     @Test
     void testGetExportedType() {

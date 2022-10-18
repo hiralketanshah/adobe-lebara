@@ -450,6 +450,7 @@
 		<property name="pdfCloseLabel"/>
 		<property name="alertMessageText"/>
 		<property name="conditionsContent"/>
+		<property name="conditionsHeader"/>
 		<property name="termsAndConditionsContent"/>
 		<property name="getNewNumberText"/>
 		<!--Payment Method component -->
@@ -523,6 +524,8 @@
 		<property name="recurringLabel"/>
 		<property name="directDebitCheckboxText"/>
 		<property name="mandatoryCheckBoxLabel"/>
+		<property name="postpaidMsisdnToKeepFail"/>
+		<property name="prepaidMsisdnToKeepFail"/>
 
 		<!--Support component -->
 		<property name="ctaLinkLabel"/>

@@ -14,9 +14,10 @@
                 sling:resourceType="granite/ui/components/coral/foundation/tabs"
                 maximized="{Boolean}true">
                 <items jcr:primaryType="nt:unstructured">
-                    <column
+                    <summary
                         jcr:primaryType="nt:unstructured"
                         sling:resourceType="granite/ui/components/coral/foundation/container"
+                        jcr:title="Summary Section"
                         margin="{Boolean}true">
                         <items jcr:primaryType="nt:unstructured">
                             <columns
@@ -28,6 +29,15 @@
                                         jcr:primaryType="nt:unstructured"
                                         sling:resourceType="granite/ui/components/coral/foundation/container">
                                         <items jcr:primaryType="nt:unstructured">
+                                            <isretentiongrandtotal
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                                checked="{Boolean}false"
+                                                fieldDescription="When checked, enables Retention Summary"
+                                                name="./isRetentionGrandTotal"
+                                                text="Enable Retention Summary"
+                                                uncheckedValue="{Boolean}false"
+                                                value="{Boolean}true"/>
                                             <title
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
@@ -138,8 +148,8 @@
 											<headerLabel
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                                fieldDescription="Header label for mobile Example : Your Order"
-                                                fieldLabel="Mobile Header Label"
+                                                fieldDescription="Header label for for Summary. In case of Purchase Summary ( Retention Summary Disabled ), it will be shown only on Mobile Example : Your Order/ Grand Total"
+                                                fieldLabel="Header Label"
                                                 value="Your Order"
                                                 name="./headerLabel"/>
                                         </items>
@@ -147,7 +157,111 @@
                                 </items>
                             </columns>
                         </items>
-                    </column>
+                    </summary>
+                    <card
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/coral/foundation/container"
+                        jcr:title="Floating Section"
+                        margin="{Boolean}true">
+                        <items jcr:primaryType="nt:unstructured">
+                            <columns
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+                                margin="{Boolean}true">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <column
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <stickypromolabel
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="Text for Sticky Promotion Example : First 3 months for free"
+                                                fieldLabel="Sticky Promotion Label"
+                                                value="First 3 months for free"
+                                                name="./stickyPromoLabel"/>
+											<stickyactivationfeelabel
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="Sticky Activation fee label Example : Activation fee"
+                                                fieldLabel="Sticky Activation Fee Label"
+                                                value="Activation fee"
+                                                name="./stickyActivationFeeLabel"/>
+											<stickytotallabel
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="Label that will appear for total/Per Month text Ex: Per month"
+                                                fieldLabel="Sticky Total/Per Month Label"
+                                                value="Per month"
+                                                name="./stickyTotalLabel"/>
+                                        </items>
+                                    </column>
+                                </items>
+                            </columns>
+                        </items>
+                    </card>
+                    <contractSummary
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Contract Summary"
+                        sling:resourceType="granite/ui/components/coral/foundation/container"
+                        margin="{Boolean}true">
+                        <items jcr:primaryType="nt:unstructured">
+                            <columns
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+                                margin="{Boolean}true">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <column
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <contractSummarylabel
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="Contract Summary Label Ex: Contract Summary"
+                                                fieldLabel="Contract Summary Label"
+                                                name="./contractSummaryLabel"
+                                                value="Contract Summary"/>
+                                            <contractsummarypdfrootpath
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                                fieldLabel="Root path for Contract Summary PDF"
+                                                name="./contractSummaryPdfRootPath"
+                                                rootPath="/content/dam/lebara"/>
+                                            <termsAndConditionsContent
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="cq/gui/components/authoring/dialog/richtext"
+                                                fieldDescription="I agree with the mentioned payment terms above, the return and guarantee policy and the terms &amp; conditions. I also read and agreed with Lebara’s privacy statement."
+                                                fieldLabel="Terms &amp; Conditions Content"
+                                                name="./termsAndConditionsContent"
+                                                useFixedInlineToolbar="{Boolean}true">
+                                                <rtePlugins
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceSuperType="/apps/lebara/components/dialogutils/rtePlugins"/>
+                                                <uiSettings
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceSuperType="/apps/lebara/components/dialogutils/uiSettings"/>
+                                            </termsAndConditionsContent>
+                                            <pdfdownloadlabel
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="PDF Download Label"
+                                                fieldLabel="PDF Download Label"
+                                                name="./pdfDownloadLabel"
+                                                value="Download"/>
+                                            <pdfcloselabel
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="PDF Close Label"
+                                                fieldLabel="PDF Close Label"
+                                                name="./pdfCloseLabel"
+                                                value="Close"/>
+                                        </items>
+                                    </column>
+                                </items>
+                            </columns>
+                        </items>
+                    </contractSummary>
                 </items>
             </tabs>
         </items>

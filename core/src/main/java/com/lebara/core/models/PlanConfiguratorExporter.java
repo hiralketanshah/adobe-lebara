@@ -91,6 +91,8 @@ public class PlanConfiguratorExporter implements ComponentExporter {
     private String internationalUnlimitedPlanDescription;
     @ValueMapValue
     private String internationalUnlimitedPlanTextSummary;
+    @ValueMapValue
+    private boolean isRetentionConfigurator;
 
     private String appliedStyles;
 
@@ -223,6 +225,10 @@ public class PlanConfiguratorExporter implements ComponentExporter {
         return internationalUnlimitedPlanTextSummary;
     }
 
+    public boolean getIsRetentionConfigurator() {
+        return isRetentionConfigurator;
+    }
+    
     @Override
     public String getExportedType() {
         return RESOURCE_TYPE;

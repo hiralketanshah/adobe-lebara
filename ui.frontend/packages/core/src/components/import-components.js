@@ -30,6 +30,8 @@ import "../aemConfigs/PersonalDetailsFormAemConfig.js";
 import "../aemConfigs/EmptyCartRouteConfig.js";
 import "../aemConfigs/LoginAemConfig";
 import "../aemConfigs/InformativeCardAemConfig.js";
+import "../aemConfigs/InformativeBannerAemConfig.js";
+import "../aemConfigs/RetentionBannerAemConfig.js";
 import "../aemConfigs/NewPostPaidNumberAemConfig";
 import "../aemConfigs/CreateNewPasswordAemConfig";
 import "../aemConfigs/ResetPasswordAemConfig";

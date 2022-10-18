@@ -111,6 +111,51 @@ public class PurchaseSummaryExporterTest {
     }
     
     @Test
+    void testGetIsRetentionGrandTotal() {
+        assertEquals(false, purchaseSummaryExporter.getIsRetentionGrandTotal());
+    }
+    
+    @Test
+    public void testGetStickyPromoLabel() {
+        assertEquals("First 3 months for free", purchaseSummaryExporter.getStickyPromoLabel());
+    }
+
+    @Test
+    public void testGetStickyActivationFeeLabel() {
+        assertEquals("Activation fee", purchaseSummaryExporter.getStickyActivationFeeLabel());
+    }
+
+    @Test
+    public void testGetStickyTotalLabel() {
+        assertEquals("Per month", purchaseSummaryExporter.getStickyTotalLabel());
+    }
+
+    @Test
+    public void testGetTermsAndConditionsContent() {
+        assertEquals("test", purchaseSummaryExporter.getTermsAndConditionsContent());
+    }
+    
+    @Test
+    public void testGetContractSummaryLabel() {
+        assertEquals("Contract", purchaseSummaryExporter.getContractSummaryLabel());
+    }
+    
+    @Test
+    public void testGetContractSummaryPdfRootPath() {
+        assertEquals("#", purchaseSummaryExporter.getContractSummaryPdfRootPath());
+    }
+    
+    @Test
+    public void testGetPdfDownloadLabel() {
+        assertEquals("download", purchaseSummaryExporter.getPdfDownloadLabel());
+    }
+    
+    @Test
+    public void testGetPdfCloseLabel() {
+        assertEquals("close", purchaseSummaryExporter.getPdfCloseLabel());
+    }
+    
+    @Test
     void testGetExportedType() {
         assertEquals(PurchaseSummaryExporter.RESOURCE_TYPE, purchaseSummaryExporter.getExportedType());
     }

@@ -87,6 +87,19 @@ public class DashboardPlansExporter extends HeadingExporter {
     @ValueMapValue @Default(values="{0} {1} Used")
     private String usedLabel;
 
+    @ValueMapValue
+    private String cantChangePlanLastMonthMessage;
+    @ValueMapValue
+    private String cantChangePlanActivePromoMessage;
+    @ValueMapValue
+    private String newPlanTitle;
+    @ValueMapValue
+    private String pendingRetentionLabel;
+    @ValueMapValue
+    private String activeRetentionBanner;
+    @ValueMapValue
+    private boolean showTabData;
+    
     public String getButtonLabel() {
         return buttonLabel;
     }
@@ -191,7 +204,31 @@ public class DashboardPlansExporter extends HeadingExporter {
         return usedLabel;
     }
 
-    @Override
+    public String getCantChangePlanLastMonthMessage() {
+		return cantChangePlanLastMonthMessage;
+	}
+
+	public String getCantChangePlanActivePromoMessage() {
+		return cantChangePlanActivePromoMessage;
+	}
+    
+    public String getNewPlanTitle() {
+		return newPlanTitle;
+	}
+
+	public String getPendingRetentionLabel() {
+		return pendingRetentionLabel;
+	}
+
+	public String getActiveRetentionBanner() {
+		return activeRetentionBanner;
+	}
+
+    public boolean isShowTabData() {
+        return showTabData;
+    }
+    
+	@Override
     public String getExportedType() {
         return RESOURCE_TYPE;
     }
