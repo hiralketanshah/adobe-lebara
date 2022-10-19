@@ -64,6 +64,14 @@ public class PostpaidPersonalDetailsExporter implements ComponentExporter{
     private String yourOrderTwentyFourMonthsLabel;
     @ValueMapValue
     private String yourOrderOneMonthLabel;
+    @ValueMapValue
+    public String streetLabelErrorMax;
+    @ValueMapValue
+    public String houseNumberErrorMax;
+    @ValueMapValue
+    public String zipCodeErrorMax;
+    @ValueMapValue
+    public String zipCodeErrorMin;
     @ChildResource
     private PostpaidPersonalDetailsFormFields frmFields;
 
@@ -142,6 +150,22 @@ public class PostpaidPersonalDetailsExporter implements ComponentExporter{
 
     public String getYourOrderOneMonthLabel() {
         return yourOrderOneMonthLabel;
+    }
+    
+	public String getStreetLabelErrorMax() {
+        return streetLabelErrorMax;
+    }
+
+    public String getHouseNumberErrorMax() {
+        return houseNumberErrorMax;
+    }
+
+    public String getZipCodeErrorMin() {
+        return zipCodeErrorMin;
+    }
+
+    public String getZipCodeErrorMax() {
+        return zipCodeErrorMax;
     }
 
     @Override

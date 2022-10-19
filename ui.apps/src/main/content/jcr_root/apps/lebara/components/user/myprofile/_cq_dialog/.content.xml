@@ -562,7 +562,7 @@
                                     jcr:primaryType="nt:unstructured"
                                     sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                     fieldLabel="Post Code Min. Character Limit Error message"
-                                    value="Must be 5 characters or more"
+                                    value="Your zip code must have at least 5 characters. Please enter your zip code."
                                     name="./validationMessages/zipCodeErrorMin"/>
                             <postCodeErrorRequired
                                     jcr:primaryType="nt:unstructured"
@@ -582,7 +582,7 @@
                                     jcr:primaryType="nt:unstructured"
                                     sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                     fieldLabel="Post Code Max Character Limit Error Message"
-                                    value="Must be 10 characters or less"
+                                    value="Your zip code can have a maximum of 10 characters. Please enter your zip code."
                                     name="./validationMessages/zipCodeErrorMax"/>
                             <cityErrorMax
                                     jcr:primaryType="nt:unstructured"
@@ -601,7 +601,7 @@
                                     jcr:primaryType="nt:unstructured"
                                     sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                     fieldLabel="House Number Character Limit Error Message"
-                                    value="Must be 20 characters or less"
+                                    value="The house number can have a maximum of 25 characters. Please enter your house number."
                                     name="./validationMessages/houseNumberErrorMax"/>
                             <houseNumberErrorRequired
                                     jcr:primaryType="nt:unstructured"
@@ -620,7 +620,7 @@
                                     jcr:primaryType="nt:unstructured"
                                     sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                     fieldLabel="Street Name Character Limit Error Message"
-                                    value="Must be 250 characters or less"
+                                    value="The street name can have a maximum of 25 characters. Please enter your street name."
                                     name="./validationMessages/streetLabelErrorMax"/>
                             <streetLabelErrorRequired
                                     jcr:primaryType="nt:unstructured"
