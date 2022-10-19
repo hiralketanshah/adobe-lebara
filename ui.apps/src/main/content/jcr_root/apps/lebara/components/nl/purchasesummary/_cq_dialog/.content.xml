@@ -173,6 +173,15 @@
                                         jcr:primaryType="nt:unstructured"
                                         sling:resourceType="granite/ui/components/coral/foundation/container">
                                         <items jcr:primaryType="nt:unstructured">
+                                            <enableFloatingCard
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                                checked="{Boolean}false"
+                                                fieldDescription="When checked, enables Floating Card"
+                                                name="./enableFloatingCard"
+                                                text="Enable Floating Card"
+                                                uncheckedValue="{Boolean}false"
+                                                value="{Boolean}true"/>										
                                             <stickypromolabel
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"

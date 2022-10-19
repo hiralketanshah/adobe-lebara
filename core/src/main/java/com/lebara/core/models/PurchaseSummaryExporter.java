@@ -79,6 +79,9 @@ public class PurchaseSummaryExporter implements ComponentExporter {
     private String headerLabel;
     
     @ValueMapValue
+    private boolean enableFloatingCard;
+
+    @ValueMapValue
     private String stickyPromoLabel;
 
     @ValueMapValue
@@ -174,7 +177,11 @@ public class PurchaseSummaryExporter implements ComponentExporter {
     public boolean getIsRetentionGrandTotal() {
         return isRetentionGrandTotal;
     }
-    
+
+    public boolean isEnableFloatingCard() {
+        return enableFloatingCard;
+    }
+
     public String getStickyPromoLabel() {
         return stickyPromoLabel;
     }
