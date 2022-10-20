@@ -1424,6 +1424,18 @@
                                 fieldLabel="Error Message on Empty city name"
                                 name="./validationMessages/cityErrorRequired"
                                 value="Town/city is Required"/>
+                            <cityPatternError
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldLabel="Error Message on invalid city name pattern"
+                                name="./validationMessages/cityPatternError"
+                                value="Please enter a valid city"/>
+                            <cityMaxCharError
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldLabel="Error Message on max character limit on city name"
+                                name="./validationMessages/cityMaxCharError"
+                                value="The city name can have a maximum of 60 characters. Please enter your city."/>
                         </items>
                     </column5>
                     <yourOrder

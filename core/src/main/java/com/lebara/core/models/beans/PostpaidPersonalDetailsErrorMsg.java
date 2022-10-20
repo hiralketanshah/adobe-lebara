@@ -121,6 +121,12 @@ public class PostpaidPersonalDetailsErrorMsg {
     
     @ValueMapValue
     public String zipCodeErrorMin;
+    
+    @ValueMapValue
+    public String cityPatternError;
+    
+    @ValueMapValue
+    public String cityMaxCharError;
 
     public String getCityErrorRequired() {
         return cityErrorRequired;
@@ -262,4 +268,13 @@ public class PostpaidPersonalDetailsErrorMsg {
     public String getZipCodeErrorMax() {
         return zipCodeErrorMax;
     }
+
+	public String getCityPatternError() {
+		return cityPatternError;
+	}
+
+	public String getCityMaxCharError() {
+		return cityMaxCharError;
+	}
+    
 }

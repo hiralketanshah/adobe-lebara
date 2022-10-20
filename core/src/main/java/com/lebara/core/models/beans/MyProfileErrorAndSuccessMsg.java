@@ -75,6 +75,12 @@ public class MyProfileErrorAndSuccessMsg {
 
     @ValueMapValue
     private String emailAlreadyExistsErrorMsg;
+    
+    @ValueMapValue
+    private String cityErrorPattern;
+
+    @ValueMapValue
+    private String additionalInformationInValidMsg;
 
     public String getfNameRequiredMsg() {
         return fNameRequiredMsg;
@@ -159,5 +165,12 @@ public class MyProfileErrorAndSuccessMsg {
         return emailAlreadyExistsErrorMsg;
     }
 
+	public String getCityErrorPattern() {
+		return cityErrorPattern;
+	}
 
+	public String getAdditionalInformationInValidMsg() {
+		return additionalInformationInValidMsg;
+	}
+    
 }
