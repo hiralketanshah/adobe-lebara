@@ -102,6 +102,7 @@ import "../aemConfigs/SelectionConfig.js";
 import "../aemConfigs/FailedLegalRegConfig.js";
 import "../aemConfigs/OurPromotionsAemConfig.js";
 import "../aemConfigs/RecentPostsAemConfig.js";
+import "../aemConfigs/RetentionNumberVerificationAemConfig.js";
 import "../aemConfigs/QuickActionConfig.js";
 import "../aemConfigs/DestinationTableAemConfig.js";
 import "../aemConfigs/DashboardBannerAemConfig.js";
