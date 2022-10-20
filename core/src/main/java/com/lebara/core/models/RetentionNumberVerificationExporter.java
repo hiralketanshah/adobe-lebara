@@ -75,7 +75,7 @@ public class RetentionNumberVerificationExporter implements ComponentExporter {
     @ValueMapValue
     private String enterValidOtpErrorMessage;
 
-    public boolean isVerifyOtp() {
+    public boolean getIsVerifyOtp() {
         return isVerifyOtp;
     }
 
