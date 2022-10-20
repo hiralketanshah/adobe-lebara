@@ -11,6 +11,7 @@ import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.injectorspecific.ScriptVariable;
 import org.apache.sling.models.annotations.injectorspecific.SlingObject;
 import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
+import com.lebara.core.utils.AemUtils;
 
 
 @Model(adaptables = SlingHttpServletRequest.class, adapters = {LoginExporter.class, ComponentExporter.class},
@@ -208,6 +209,9 @@ public class LoginExporter implements ComponentExporter {
 
     @ValueMapValue
     private boolean showExpiryMessage;
+    
+    @ValueMapValue
+    private String[] skipVerifyMobileFlowPages;
     
     /**
      * App - Heading/text fields labels
@@ -454,6 +458,15 @@ public class LoginExporter implements ComponentExporter {
 
 	public String getRegisterText() {
 		return registerText;
+	}
+	
+	public String[] getSkipVerifyMobileFlowPages() {
+		
+		for(int i=0;i<skipVerifyMobileFlowPages.length;i++) {
+			skipVerifyMobileFlowPages[i] = AemUtils.getLinkWithExtension(skipVerifyMobileFlowPages[i], slingRequest);
+		}
+		return skipVerifyMobileFlowPages;
+		
 	}
 
 	@Override
