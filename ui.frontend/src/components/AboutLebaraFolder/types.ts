@@ -15,6 +15,7 @@ export interface AboutLebaraProps {
 	buttonHoverBgColor?: string;
 	buttonHoverTextColor?: string;
 	headingType?: string;
+	imageUrl?: string;
 }
 
 export interface ButtonActionProps {
