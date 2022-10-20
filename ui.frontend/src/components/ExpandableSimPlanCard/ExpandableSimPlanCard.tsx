@@ -162,11 +162,7 @@ const ExpandableSimPlanCard: React.FC<ExpandableSimPlanCardProps> = ({
     dispatch(isPromotionalAmount(promotionPrice));
     switch (offerType) {
       case OfferTypes.BOLTON: {
-        if (cartItems?.some(item => !!item.isPostPaid)) {
-          setIsFailedtoAddOpen(true);
-        } else {
-          handleToastView(description || "");
-        }
+        handleToastView(description || "");
         break;
       }
       case OfferTypes.TOPUP: {
