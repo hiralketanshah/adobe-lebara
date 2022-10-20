@@ -165,11 +165,11 @@ public class MyProfileErrorAndSuccessMsg {
         return emailAlreadyExistsErrorMsg;
     }
 
-	public String getCityErrorPattern() {
+    public String getCityErrorPattern() {
 		return cityErrorPattern;
 	}
 
-	public String getAdditionalInformationInValidMsg() {
+    public String getAdditionalInformationInValidMsg() {
 		return additionalInformationInValidMsg;
 	}
     

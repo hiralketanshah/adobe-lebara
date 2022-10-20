@@ -251,9 +251,8 @@ public class PostpaidPersonalDetailsErrorMsg {
     public String getVerifyCodeRequiredMsg() {
         return verifyCodeRequiredMsg;
     }
-    
-    
-	public String getStreetLabelErrorMax() {
+
+    public String getStreetLabelErrorMax() {
         return streetLabelErrorMax;
     }
 
@@ -269,12 +268,12 @@ public class PostpaidPersonalDetailsErrorMsg {
         return zipCodeErrorMax;
     }
 
-	public String getCityPatternError() {
-		return cityPatternError;
-	}
+    public String getCityPatternError() {
+        return cityPatternError;
+    }
 
-	public String getCityMaxCharError() {
-		return cityMaxCharError;
-	}
+    public String getCityMaxCharError() {
+        return cityMaxCharError;
+    }
     
 }
