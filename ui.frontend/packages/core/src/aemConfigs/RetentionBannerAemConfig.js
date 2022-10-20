@@ -4,7 +4,7 @@ import RetentionRenewBanner from "@lebara/core/components/RetentionRenewBanner/R
 const RetentionBannerConfig = {
     emptyLabel: "Retention Banner Component",
     isEmpty: function (props) {
-      return true;
+      return !props || !props.title;
     }
 };
 
