@@ -90,4 +90,7 @@
     <tracklinks
         jcr:primaryType="nt:unstructured"
         features="*"/>
+    <experience-aem
+        jcr:primaryType="nt:unstructured"
+        features="*"/>
 </jcr:root>
