@@ -211,7 +211,7 @@ public class LoginExporter implements ComponentExporter {
     private boolean showExpiryMessage;
     
     @ValueMapValue
-    private String[] skipVerifyMobileFlowPages;
+    private String[] skipVerifyMobileFlowPages = new String[0];
     
     /**
      * App - Heading/text fields labels
