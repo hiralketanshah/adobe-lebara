@@ -643,6 +643,7 @@
 		<property name="showPasswordLabel"/>
 		<property name="hidePasswordLabel"/>
 		<property name="confirmPasswordPatternError"/>
+		<property name="multiMsisdnErrorMsg"/>
 		<property name="passwordPatternError"/>
 		<property name="registerLaterLabel"/>
 		<property name="simRegistrationInfo"/>
