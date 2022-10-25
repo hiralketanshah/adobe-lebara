@@ -2,7 +2,11 @@ package com.lebara.core.models;
 
 import com.adobe.cq.export.json.ComponentExporter;
 import com.adobe.cq.export.json.ExporterConstants;
+import com.adobe.cq.wcm.style.ComponentStyleInfo;
 import com.lebara.core.utils.AemUtils;
+
+import java.util.Optional;
+
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.api.resource.ResourceResolver;
@@ -99,6 +103,8 @@ public class DashboardPlansExporter extends HeadingExporter {
     private String activeRetentionBanner;
     @ValueMapValue
     private boolean showTabData;
+    
+    private String appliedStyles;
     
     public String getButtonLabel() {
         return buttonLabel;
@@ -226,6 +232,10 @@ public class DashboardPlansExporter extends HeadingExporter {
 
     public boolean isShowTabData() {
         return showTabData;
+    }
+    
+    public String getAppliedStyles() {
+        return Optional.of(resource).map(resource -> resource.adaptTo(ComponentStyleInfo.class)).map(cmpStyleInfo -> cmpStyleInfo.getAppliedCssClasses()).orElse("");
     }
     
 	@Override
