@@ -189,6 +189,11 @@ class PlanConfiguratorExporterTest {
     void testGetIsRetentionConfigurator() {
         assertEquals(false, planConfiguratorExporter.getIsRetentionConfigurator());
     }
+    
+    @Test
+    public void testGetRetentionMapping() {
+        assertEquals(3, planConfiguratorExporter.getRetentionMapping().size());
+    }
 
     @Test
     void testGetExportedType() {

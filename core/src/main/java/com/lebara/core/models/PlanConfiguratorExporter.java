@@ -1,18 +1,24 @@
 package com.lebara.core.models;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.models.annotations.DefaultInjectionStrategy;
 import org.apache.sling.models.annotations.Exporter;
 import org.apache.sling.models.annotations.Model;
+import org.apache.sling.models.annotations.injectorspecific.ChildResource;
 import org.apache.sling.models.annotations.injectorspecific.SlingObject;
 import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
 
 import com.adobe.cq.export.json.ComponentExporter;
 import com.adobe.cq.export.json.ExporterConstants;
 import com.adobe.cq.wcm.style.ComponentStyleInfo;
+import com.lebara.core.models.beans.MapperBean;
 import com.lebara.core.utils.AemUtils;
 
 @Model(adaptables = SlingHttpServletRequest.class, adapters = { PlanConfiguratorExporter.class,
@@ -93,6 +99,8 @@ public class PlanConfiguratorExporter implements ComponentExporter {
     private String internationalUnlimitedPlanTextSummary;
     @ValueMapValue
     private boolean isRetentionConfigurator;
+    @ChildResource
+    private List<MapperBean> retentionMapping;
 
     private String appliedStyles;
 
@@ -208,7 +216,7 @@ public class PlanConfiguratorExporter implements ComponentExporter {
         return Optional.of(resource).map(resource -> resource.adaptTo(ComponentStyleInfo.class))
                 .map(cmpStyleInfo -> cmpStyleInfo.getAppliedCssClasses()).orElse("");
     }
-    
+
     public String getBasicSpeedTitle() {
         return basicSpeedTitle;
     }
@@ -216,7 +224,7 @@ public class PlanConfiguratorExporter implements ComponentExporter {
     public String getAdvancedSpeedTitle() {
         return advancedSpeedTitle;
     }
- 
+
     public String getNationalUnlimitedPlanTextSummary() {
         return nationalUnlimitedPlanTextSummary;
     }
@@ -228,7 +236,15 @@ public class PlanConfiguratorExporter implements ComponentExporter {
     public boolean getIsRetentionConfigurator() {
         return isRetentionConfigurator;
     }
-    
+
+    public Map<String, String> getRetentionMapping() {
+        Map<String, String> retentionMap = new HashMap<String, String>();
+        if (null != retentionMapping && !retentionMapping.isEmpty()) {
+            retentionMap = retentionMapping.stream().collect(Collectors.toMap(p -> p.getKey(), p -> p.getValue()));
+        }
+        return retentionMap;
+    }
+
     @Override
     public String getExportedType() {
         return RESOURCE_TYPE;

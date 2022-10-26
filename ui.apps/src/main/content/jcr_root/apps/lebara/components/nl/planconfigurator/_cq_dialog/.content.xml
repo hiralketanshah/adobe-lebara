@@ -317,6 +317,52 @@
                                 value="International calling &amp; texting to 44 countries"/>
                         </items>
                     </internationalCalling>
+                    <preselectmapping
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Retention Preselection Product Mapping"
+                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                        <items jcr:primaryType="nt:unstructured">
+                            <note
+                                granite:class="cmp-form-textfield-readonlyselected-alert"
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/alert"
+                                size="L"
+                                text="Please fill out below the Pre-selection Mapping for retention customers from current/Old Product to new Product."
+                                variant="warning"/>
+                            <mapping
+                                jcr:primaryType="nt:unstructured"
+                                jcr:title="Retention Preselection Product Mapping"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
+                                composite="{Boolean}true"
+                                fieldLabel="Product Mapping">
+                                <field
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/container"
+                                    name="./retentionMapping">
+                                    <items jcr:primaryType="nt:unstructured">
+                                        <well
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/well">
+                                            <items jcr:primaryType="nt:unstructured">
+                                                <oldproductid
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                    fieldLabel="Old Product ID"
+                                                    fieldDescription="Product ID of the current/old Plan"
+                                                    name="./key"/>
+                                                <newproductid
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                    fieldLabel="New Product ID"
+                                                    fieldDescription="Product ID of the new Plan which should be preselected for respective user of oldProductId"
+                                                    name="./value"/>
+                                            </items>
+                                        </well>
+                                    </items>
+                                </field>
+                            </mapping>
+                        </items>
+                    </preselectmapping>
                  </items>
             </tabs>
         </items>
