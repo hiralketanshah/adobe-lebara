@@ -101,6 +101,8 @@ public class PlanConfiguratorExporter implements ComponentExporter {
     private boolean isRetentionConfigurator;
     @ChildResource
     private List<MapperBean> retentionMapping;
+    @ValueMapValue
+    private String verificationPageRedirect;
 
     private String appliedStyles;
 
@@ -243,6 +245,10 @@ public class PlanConfiguratorExporter implements ComponentExporter {
             retentionMap = retentionMapping.stream().collect(Collectors.toMap(p -> p.getKey(), p -> p.getValue()));
         }
         return retentionMap;
+    }
+
+    public String getVerificationPageRedirect() {
+        return AemUtils.getLinkWithExtension(verificationPageRedirect);
     }
 
     @Override

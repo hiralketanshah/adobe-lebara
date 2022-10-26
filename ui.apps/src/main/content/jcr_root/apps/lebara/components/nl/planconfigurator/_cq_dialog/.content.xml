@@ -66,6 +66,13 @@
                                 fieldLabel="Extra Option Label"
                                 name="./extraOptionLabel"
                                 value="Extra Option"/>
+                            <verificationpageredirect
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                fieldDescription="Redirect Link to Verification Page in case user is not Eligible for retention"
+                                fieldLabel="Verification Page Redirect"
+                                name="./verificationPageRedirect"
+                                rootPath="/content/lebara"/>
                         </items>
                     </common>
                     <duration

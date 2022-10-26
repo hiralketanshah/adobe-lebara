@@ -196,6 +196,11 @@ class PlanConfiguratorExporterTest {
     }
 
     @Test
+    public void testGetVerificationPageRedirect() {
+        assertEquals("/en/postpaid/details.html", planConfiguratorExporter.getVerificationPageRedirect());
+    }
+
+    @Test
     void testGetExportedType() {
         assertEquals(PlanConfiguratorExporter.RESOURCE_TYPE, planConfiguratorExporter.getExportedType());
     }

@@ -33,6 +33,7 @@
   "advancedSpeedTitle": "4G Extra",
   "mostPopularBundleId": "bundle1",
   "isRetentionConfigurator" : false,
+  "verificationPageRedirect" : "/content/lebara/nl/en/postpaid/details.html",
   "retentionMapping" :{
 	   "item0":{
 	      "key":"319979",
