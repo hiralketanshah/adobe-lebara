@@ -113,3 +113,5 @@ import "../aemConfigs/PersonalDetailsSummaryAemConfig.js";
 import "../aemConfigs/PostpaidBuyPersonalDetailsAemConfig.js";
 import "../aemConfigs/IconTextListAemConfig.js";
 import "../aemConfigs/PurchaseSummaryAemConfig.js";
+import "../aemConfigs/SetupPasswordAemConfig.js";
+import "../aemConfigs/InformativeTableAemConfig.js";
