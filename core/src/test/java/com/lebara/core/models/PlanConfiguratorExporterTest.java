@@ -189,6 +189,16 @@ class PlanConfiguratorExporterTest {
     void testGetIsRetentionConfigurator() {
         assertEquals(false, planConfiguratorExporter.getIsRetentionConfigurator());
     }
+    
+    @Test
+    public void testGetRetentionMapping() {
+        assertEquals(3, planConfiguratorExporter.getRetentionMapping().size());
+    }
+
+    @Test
+    public void testGetVerificationPageRedirect() {
+        assertEquals("/en/postpaid/details.html", planConfiguratorExporter.getVerificationPageRedirect());
+    }
 
     @Test
     void testGetExportedType() {
