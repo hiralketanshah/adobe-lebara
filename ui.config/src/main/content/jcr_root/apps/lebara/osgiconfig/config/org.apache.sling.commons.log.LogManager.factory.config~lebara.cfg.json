@@ -1,4 +1,0 @@
-{"org.apache.sling.commons.log.pattern": "{0,date,yyyy-MM-dd HH:mm:ss.SSS} *{4}* [{2}] {3} {5}",
-  "org.apache.sling.commons.log.names": ["com.lebara","com.day.cq.mcm.campaign","com.day.cq.mailer"],
-  "org.apache.sling.commons.log.level": "debug"
-}

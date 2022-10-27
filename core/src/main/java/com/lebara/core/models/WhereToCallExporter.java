@@ -2,8 +2,11 @@ package com.lebara.core.models;
 
 import com.adobe.cq.export.json.ComponentExporter;
 import com.adobe.cq.export.json.ExporterConstants;
+import com.day.cq.wcm.api.designer.Style;
 import com.lebara.core.dto.SelectBean;
+import com.lebara.core.utils.AemUtils;
 import com.lebara.core.utils.CFUtils;
+
 import org.apache.commons.lang3.StringUtils;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;
@@ -27,9 +30,15 @@ public class WhereToCallExporter implements ComponentExporter {
      * The resource type.
      */
     protected static final String RESOURCE_TYPE = "lebara/components/wheretocall";
+    
+    @SlingObject
+	private SlingHttpServletRequest request;
 
     @SlingObject
     private ResourceResolver resourceResolver;
+    
+    @ScriptVariable
+    private Style currentStyle;
 
     @ScriptVariable
     private Resource resource;
@@ -48,20 +57,20 @@ public class WhereToCallExporter implements ComponentExporter {
 
     private List<SelectBean> countryList;
 
-    public String getFileReference() {
-        return fileReference;
-    }
+	public String getFileReference() {
+		return AemUtils.getImageRendition(fileReference, currentStyle.get("rendition", String.class), resourceResolver);
+	}
 
     public String getTitle() {
         return title;
     }
 
-    public List<SelectBean> getCountries() {
-        if (StringUtils.isNotBlank(fragmentRootPath)) {
-            countryList = CFUtils.getWhereToCallRates(resourceResolver, fragmentRootPath);
-        }
-        return (countryList == null) ? Collections.emptyList() : Collections.unmodifiableList(countryList);
-    }    
+	public List<SelectBean> getCountries() {
+		if (StringUtils.isNotBlank(fragmentRootPath)) {
+			countryList = CFUtils.getWhereToCallRates(resourceResolver, fragmentRootPath);
+		}
+		return (countryList == null) ? Collections.emptyList() : Collections.unmodifiableList(countryList);
+	}
 
     public String getPlaceholder() {
         return placeholder;

@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="nt:unstructured"
+    jcr:title="Address Details Component"
+    sling:resourceType="cq/gui/components/authoring/dialog">
+    <content
+        jcr:primaryType="nt:unstructured"
+        sling:resourceType="granite/ui/components/coral/foundation/container">
+        <items jcr:primaryType="nt:unstructured">
+            <tabs
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="granite/ui/components/coral/foundation/tabs"
+                maximized="{Boolean}true">
+                <items jcr:primaryType="nt:unstructured">
+                    <column1
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Address Search"
+                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                        <items jcr:primaryType="nt:unstructured">
+                            <postcodelabel
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldDescription="Label for Post Code Example:  Postcode"
+                                fieldLabel="Post Code Label"
+                                name="./postCodeLabel"
+                                value="Postcode"/>
+                            <postcodeplaceholder 
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldDescription="Placeholder Text for Post Code Example:  Enter your postcode"
+                                fieldLabel="Post Code Placeholder"
+                                name="./postCodePlaceholder"
+                                value="Enter your postcode"/>
+                            <housenumberlabel
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldDescription="Label for House number Example:  House number"
+                                fieldLabel="House number Label"
+                                name="./houseNumberLabel"
+                                value="House number"/>
+                            <housenumberplaceholder 
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldDescription="Placeholder Text for House number Example:  Enter your House number"
+                                fieldLabel="House number Placeholder"
+                                name="./houseNumberPlaceholder"
+                                value="Enter your House number"/>
+                            <searchaddresslabel
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldDescription="Label for Search Address Button Example: Search address"
+                                fieldLabel="Search Address Button Label"
+                                name="./searchAddressLabel"
+                                value="Search address"/>
+                            <enteraddressmanually
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldDescription="Label for Manual Address Search Button Example: Enter your address manually ?"
+                                fieldLabel="Manual Address Search Button Label"
+                                name="./enterAddressManually"
+                                value="Enter your address manually ?"/>
+                            <keyinaddress
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldDescription="Helper Text that will appear in Mobile for Address Key In details Example : Key in your postal code and house number to find your address"
+                                fieldLabel="Address Helper Text - Mobile"
+                                name="./keyInAddress"
+                                value="Key in your postal code and house number to find your address"/>
+                            <addresslistmodalheading
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldDescription="Heading for Modal that shows Search Results Example: Search result"
+                                fieldLabel="Search Result Modal Heading"
+                                name="./addressListModalHeading"
+                                value="Search result"/>
+                        </items>
+                    </column1>
+                    <column2
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Address Form"
+                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                        <items jcr:primaryType="nt:unstructured">
+                            <streetlabel
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldDescription="Label for Street Example:  Street"
+                                fieldLabel="Street Label"
+                                name="./streetLabel"
+                                value="Street"/>
+                            <streetplaceholder 
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldDescription="Placeholder Text for Street Example:  Enter your street name"
+                                fieldLabel="Street Placeholder"
+                                name="./streetPlaceholder"
+                                value="Enter your street name"/>
+                            <citylabel
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldDescription="Label for City Example:  City"
+                                fieldLabel="City Label"
+                                name="./cityLabel"
+                                value="City"/>
+                            <cityplaceholder 
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldDescription="Placeholder Text for City Example:  Enter your city"
+                                fieldLabel="City Placeholder"
+                                name="./cityPlaceholder"
+                                value="Enter your city"/>
+                            <continuebuttonlabel
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldDescription="Label for Countinue Button Example: Continue"
+                                fieldLabel="Continue Button Label"
+                                name="./continueButtonLabel"
+                                value="Continue"/>
+							<continuectalink
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                fieldDescription="Link for Countinue Button"
+                                rootPath="/content/lebara"
+                                fieldLabel="Continue Button Link"
+                                name="./continueCTALink"/>
+                        </items>
+                    </column2>
+                    <column3
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Error Messages"
+                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                        <items jcr:primaryType="nt:unstructured">
+                            <streetcharlimiterrormessage
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldDescription="Example:  The street name can have a maximum of 56 alphanumeric characters."
+                                fieldLabel="Street Character Limit Error Message"
+                                name="./streetCharLimitErrorMessage"
+                                value="The street name can have a maximum of 56 alphanumeric characters."/>
+                            <streetinvalidcharerrormessage
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldDescription="Example:  Invalid street name. Please enter your street."
+                                fieldLabel="Street Invalid Character Error Message"
+                                name="./streetInvalidCharErrorMessage"
+                                value="Invalid street name. Please enter your street."/>
+                            <streetemptyerrormessage
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldDescription="Example:  Please enter your street. This field is mandatory."
+                                fieldLabel="Street Empty Error Message"
+                                name="./streetEmptyErrorMessage"
+                                value="Please enter your street. This field is mandatory."/>
+                            <housenumbercharlimiterrormessage
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldDescription="Example:  Your house number can have a maximum of 25 characters. Please enter your house number."
+                                fieldLabel="House Number Character Limit Error Message"
+                                name="./houseNumberCharLimitErrorMessage"
+                                value="Your house number can have a maximum of 25 characters. Please enter your house number."/>
+                            <housenumberinvalidcharerrormessage
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldDescription="Example:  Invalid house number. The house number must not have special characters ($, @, #, !, %. * ^() ?)"
+                                fieldLabel="Street Invalid Character Error Message"
+                                name="./houseNumberInvalidCharErrorMessage"
+                                value="Invalid house number. The house number must not have special characters ($, @, #, !, %. * ^() ?)"/>
+                            <houseNumberEmptyErrorMessage
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldDescription="Example:  Please enter your house number. This field is mandatory."
+                                fieldLabel="Street Empty Error Message"
+                                name="./houseNumberEmptyErrorMessage"
+                                value="Please enter your house number. This field is mandatory."/>
+                            <postcodemincharerrormessage
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldDescription="Example:  Your postcode must have at least 5 characters. Please enter your postcode."
+                                fieldLabel="Post Code Min Character Limit Error Message"
+                                name="./postCodeMinCharErrorMessage"
+                                value="Your postcode must have at least 5 characters. Please enter your postcode."/>
+                            <postcodemaxcharerrormessage
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldDescription="Example:  Your postcode can have a maximum of 10 characters. Please enter your postcode."
+                                fieldLabel="Post Code Max Character Error Message"
+                                name="./postCodeMaxCharErrorMessage"
+                                value="Your postcode can have a maximum of 10 characters. Please enter your postcode."/>
+                            <postcodeemptyerrormessage
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldDescription="Example:  Please enter your postcode. This field is mandatory."
+                                fieldLabel="Post Code Empty Error Message"
+                                name="./postCodeEmptyErrorMessage"
+                                value="Please enter your postcode. This field is mandatory."/>
+                            <postcodeinvalidcharerrormessage
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldDescription="Example:  Invalid postcode. The postcode must not have special characters ($, @, #, !, %. * ^() ?)"
+                                fieldLabel="Post Code Invalid Character Error Message"
+                                name="./postcodeInvalidCharErrorMessage"
+                                value="Invalid postcode. The postcode must not have special characters ($, @, #, !, %. * ^() ?)"/>
+                            <citycharlimiterrormessage
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldDescription="Example:  The city name can have a maximum of 20 characters. Please enter your city."
+                                fieldLabel="City Character Limit Error Message"
+                                name="./cityCharLimitErrorMessage"
+                                value="The city name can have a maximum of 20 characters. Please enter your city."/>
+                            <cityemptyerrormessage
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldDescription="Example:  Please enter your city. This field is mandatory."
+                                fieldLabel="City Empty Error Message"
+                                name="./cityEmptyErrorMessage"
+                                value="Please enter your city. This field is mandatory."/>
+                            <noaddressfoundmessage
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldDescription="Example:  No Address Found."
+                                fieldLabel="Address Not Found Message"
+                                name="./noAddressFoundMessage"
+                                value="No Address Found."/>
+                        </items>
+                    </column3>
+                </items>
+            </tabs>
+        </items>
+    </content>
+</jcr:root>

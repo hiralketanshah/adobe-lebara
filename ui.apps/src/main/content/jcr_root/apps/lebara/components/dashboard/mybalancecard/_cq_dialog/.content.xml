@@ -126,6 +126,18 @@
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                                 fieldLabel="Auto Top up Button Label"
                                                 name="./autoTopupButtonLabel"
+                                                value="Active"/>
+                                            <notactiveautotopupbuttonlabel
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="Not Active Auto Top up Button Label"
+                                                name="./notActiveAutoTopupButtonLabel"
+                                                value="Not active"/>
+                                            <saveautotopupbuttonlabel
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="Save auto topup"
+                                                name="./saveAutoTopupButtonLabel"
                                                 value="Save auto topup"/>
                                             <cftopupplanpath
                                                 jcr:primaryType="nt:unstructured"
@@ -134,12 +146,71 @@
                                                 name="./cfTopupPlanPath"
                                                 required="{Boolean}true"
                                                 rootPath="/content/dam/lebara"/>
+                                            <creditListCount
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/numberfield"
+                                                fieldLabel="Credit List Count"
+                                                fieldDescription="5"
+                                                name="./creditListCount"/>
                                         </items>
                                     </column>
                                 </items>
                             </columns>
                         </items>
                     </popup>
+                    <successoverlay
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Success Overlay"
+                        sling:resourceType="granite/ui/components/coral/foundation/container"
+                        margin="{Boolean}true">
+                        <items jcr:primaryType="nt:unstructured">
+                            <columns
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+                                margin="{Boolean}true">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <column
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <showSuccessMessageOverlay
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                                name="./showSuccessMessageOverlay"
+                                                text="Show Success Message Overlay?"
+                                                uncheckedValue="{Boolean}false"
+                                                value="{Boolean}true"/>
+                                            <successOverlayTitle
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="Success Overlay Title"
+                                                name="./successOverlayTitle"
+                                                fieldDescription="Success"/>
+                                            <successOverlaySubTitle
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="Success Overlay Subtitle"
+                                                name="./successOverlaySubTitle"
+                                                fieldDescription="Auto topup has been done successfully"/>
+                                            <ctaCloseLabel
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="Close CTA Label"
+                                                name="./ctaCloseLabel"
+                                                fieldDescription="Close"/>
+                                            <deactivateSuccessOverlaySubTitle
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                                name="./deactivateSuccessOverlaySubTitle"
+                                                text="Deactivate Success Overlay Subtitle?"
+                                                uncheckedValue="{Boolean}false"
+                                                value="{Boolean}true"/>
+                                        </items>
+                                    </column>
+                                </items>
+                            </columns>
+                        </items>
+                    </successoverlay>
                 </items>
             </tabs>
         </items>

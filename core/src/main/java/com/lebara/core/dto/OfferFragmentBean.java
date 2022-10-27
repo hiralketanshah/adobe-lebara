@@ -30,6 +30,15 @@ public class OfferFragmentBean {
     private String promotionPrice;
     private String promotionData;
     private String allowanceType;
+    private String autoRenew;
+
+    public String getAutoRenew() {
+        return autoRenew;
+    }
+
+    public void setAutoRenew(String autoRenew) {
+        this.autoRenew = autoRenew;
+    }
 
     public String getAllowanceType() {
         return allowanceType;

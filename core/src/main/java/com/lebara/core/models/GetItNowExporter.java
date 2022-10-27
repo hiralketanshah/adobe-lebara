@@ -2,11 +2,16 @@ package com.lebara.core.models;
 
 import com.adobe.cq.export.json.ComponentExporter;
 import com.adobe.cq.export.json.ExporterConstants;
+import com.day.cq.wcm.api.designer.Style;
 import com.lebara.core.utils.AemUtils;
+
+import javax.inject.Inject;
+
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.models.annotations.DefaultInjectionStrategy;
 import org.apache.sling.models.annotations.Exporter;
 import org.apache.sling.models.annotations.Model;
+import org.apache.sling.models.annotations.Source;
 import org.apache.sling.models.annotations.injectorspecific.SlingObject;
 import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
 
@@ -21,6 +26,12 @@ public class GetItNowExporter extends IntroExporter {
 
     @ValueMapValue
     private String imagePath;
+    
+	@ValueMapValue
+	private String imageUrl;
+    
+    @Inject @Source("script-bindings")
+    private Style currentStyle;
 
     @ValueMapValue
     private String title;
@@ -35,6 +46,10 @@ public class GetItNowExporter extends IntroExporter {
     private String getItNowErrorMessage;
     @ValueMapValue
     private String description;
+    @ValueMapValue
+    private boolean isSimChoiceFlow;
+    @ValueMapValue
+    private boolean showAttachSim;
 
     @Override
     public String getDescription() {
@@ -42,8 +57,12 @@ public class GetItNowExporter extends IntroExporter {
     }
 
     public String getImagePath() {
-        return imagePath;
+        return AemUtils.getImageRendition(imagePath, currentStyle.get("rendition", String.class), request.getResourceResolver());
     }
+    
+	public String getImageUrl() {
+		return AemUtils.getLinkWithExtension(imageUrl, request);
+	}
 
     public String getTitle() {
         return title;
@@ -63,6 +82,14 @@ public class GetItNowExporter extends IntroExporter {
 
     public String getGetItNowErrorMessage() {
         return getItNowErrorMessage;
+    }
+
+    public boolean getIsSimChoiceFlow() {
+        return isSimChoiceFlow;
+    }
+    
+    public boolean getShowAttachSim() {
+        return showAttachSim;
     }
 
     @Override

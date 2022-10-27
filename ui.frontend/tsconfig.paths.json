@@ -1,9 +1,0 @@
-{
-  "compilerOptions": {
-    "baseUrl": "./packages/lebara-client/src",
-    "paths": {
-      "@components/*" : ["./components/*"],
-      "@hooks/*" : ["./hooks/*"]
-    }
-  }
-}

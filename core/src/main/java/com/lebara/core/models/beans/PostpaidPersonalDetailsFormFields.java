@@ -191,6 +191,9 @@ public class PostpaidPersonalDetailsFormFields {
     public String mobileLabel;
     
     @ValueMapValue
+    public String subMobileLabel;
+
+    @ValueMapValue
     public String mobilePlaceholder;
     
     @ValueMapValue
@@ -432,6 +435,10 @@ public class PostpaidPersonalDetailsFormFields {
 
     public String getMobileLabel() {
         return mobileLabel;
+    }
+
+    public String getSubMobileLabel() {
+        return subMobileLabel;
     }
 
     public String getMobilePlaceholder() {

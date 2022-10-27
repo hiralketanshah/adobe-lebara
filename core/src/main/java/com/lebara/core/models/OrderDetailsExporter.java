@@ -56,6 +56,9 @@ public class OrderDetailsExporter implements ComponentExporter {
     private String topupAutoRenewDesc;
 
     @ValueMapValue
+    private String autoRenewLabel;
+
+    @ValueMapValue
     private String prepaidAutoRenewDesc;
 
     @ValueMapValue
@@ -191,6 +194,15 @@ public class OrderDetailsExporter implements ComponentExporter {
     private String pdfCloseLabel;
 
     @ValueMapValue
+    private boolean showDeactivatedContent;
+
+    @ValueMapValue
+    private String alertMessageText;
+
+    @ValueMapValue
+    private String freeSimJourneyRoute;
+
+    @ValueMapValue
     private String yourOrderOneTimeActivationFeeLabel;
 
     @ValueMapValue
@@ -198,6 +210,21 @@ public class OrderDetailsExporter implements ComponentExporter {
 
     @ValueMapValue
     private String totalLabel;
+
+    @ValueMapValue
+    private int creditListCount;
+
+    @ValueMapValue
+    private boolean hideContract;
+
+    @ValueMapValue
+    private boolean showUpdatedAddressFormat;
+
+    @ValueMapValue
+    private String additionalDeliveryLabel;
+
+    @ValueMapValue
+    private boolean hideTermsAndConditions;
 
     @ValueMapValue
     private String promotionsAppliedLabel;
@@ -243,6 +270,10 @@ public class OrderDetailsExporter implements ComponentExporter {
 
     public String getTopupAutoRenewLabel() {
         return topupAutoRenewLabel;
+    }
+
+    public String getAutoRenewLabel() {
+        return autoRenewLabel;
     }
 
     public String getTopupAutoRenewDesc() {
@@ -449,12 +480,43 @@ public class OrderDetailsExporter implements ComponentExporter {
         return pdfCloseLabel;
     }
 
+    public boolean getShowDeactivatedContent() {
+        return showDeactivatedContent;
+    }
+
+    public String getAlertMessageText() {
+        return alertMessageText;
+    }
+
+    public String getFreeSimJourneyRoute() {
+        return AemUtils.getLinkWithExtension(freeSimJourneyRoute, slingRequest);
+    }
     public String getYourOrderOneTimeActivationFeeLabel() {
         return yourOrderOneTimeActivationFeeLabel;
     }
 
     public String getYourOrderOneTimeActivationFee() {
         return yourOrderOneTimeActivationFee;
+    }
+
+    public int getCreditListCount() {
+        return creditListCount;
+    }
+
+    public boolean getHideContract() {
+        return hideContract;
+    }
+
+    public boolean getShowUpdatedAddressFormat() {
+        return showUpdatedAddressFormat;
+    }
+
+    public boolean getHideTermsAndConditions() {
+        return hideTermsAndConditions;
+    }
+
+    public String getAdditionalDeliveryLabel() {
+        return additionalDeliveryLabel ;
     }
 
 

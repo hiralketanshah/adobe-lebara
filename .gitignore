@@ -106,3 +106,4 @@ dispatcher/src/conf.d/variables/default.vars
 clientlibs/clientlib-react/
 
 .vscode
+ui.frontend/packages/ui.apps/src/main/content/jcr_root/apps/lebara/clientlibs/

@@ -96,6 +96,7 @@ public class CFUtils {
             ContentFragment cityFragment = cfResource.adaptTo(ContentFragment.class);
             if (null != cityFragment) {
                 String[] cityArray = CFUtils.getElementArrayValue(cityFragment, "value");
+                Arrays.sort(cityArray);
                 for (int i = 0; i < cityArray.length; i++) {
                     SelectBean city = new SelectBean();
                     city.setValue(cityArray[i]);
@@ -103,7 +104,6 @@ public class CFUtils {
                     city.setKey(String.valueOf(i));
                     cities.add(city);
                 }
-                return cities;
             }
         }
         return cities;
@@ -125,10 +125,14 @@ public class CFUtils {
                 String countryLandingPageUrl = CFUtils.getElementValue(irFragment, "countryLandingPageURL");
                 countryLandingPageUrl = AemUtils.getLinkWithExtension(countryLandingPageUrl, resolver);
                 String countryName = CFUtils.getElementValue(irFragment, "countryName");
+                String countryFlag = CFUtils.getElementValue(irFragment, "countryFlag");
                 if (StringUtils.isNotBlank(countryLandingPageUrl) && StringUtils.isNotBlank(countryName)) {
                     SelectOption selectOption = new SelectOption();
                     selectOption.setLabel(countryName);
                     selectOption.setValue(countryLandingPageUrl);
+                    if(StringUtils.isNotBlank(countryFlag)) {
+                    	selectOption.setCountryFlag(countryFlag);
+                    }
                     internationalRateBeanList.add(selectOption);
                 }
             }
@@ -224,6 +228,12 @@ public class CFUtils {
             ContentFragment offerFragment = cfResource.adaptTo(ContentFragment.class);
             if (null != offerFragment) {
                 offerFragmentBean = new OfferFragmentBean();
+                String autoRenew = CFUtils.getElementValue(offerFragment, "showAutorenewOnCheckout");
+                if (StringUtils.equalsIgnoreCase(autoRenew, "true")) {
+                    offerFragmentBean.setAutoRenew("true");
+                }else{
+                    offerFragmentBean.setAutoRenew("false");
+                }
                 String activePromotion = CFUtils.getElementValue(offerFragment, "activatePromotion");
                 if (StringUtils.equalsIgnoreCase(activePromotion, "true")) {
                     offerFragmentBean.setPromotionID(CFUtils.getElementValue(offerFragment, "promotionId"));
@@ -296,7 +306,7 @@ public class CFUtils {
             int value = Integer.parseInt(val);
             switch (unit.toLowerCase()) {
                 case "mb":
-                    formattedValue = (value >= 1024) ? (new DecimalFormat("#.##").format(value/1024.0) + "GB") : (value + "MB");
+                    formattedValue = (value >= 1024) ? (new DecimalFormat("#.##").format(value/1024.0) + (i18n == null ? "GB" : i18n.get("GB"))) : (value + (i18n == null ? "MB" : i18n.get("MB")));
                     break;
                 case "sms":
                     formattedValue = value + " SMS";
@@ -332,6 +342,12 @@ public class CFUtils {
 
     private static List<CountryInfo> setPlanInfoCountryList(Resource cfPlanResource, ContentFragment cfPlanFragment) {
         String countryListFragmentPath = CFUtils.getElementValue(cfPlanFragment, "countryList");
+        List<CountryInfo> countryData = getCountryList(cfPlanResource, countryListFragmentPath);
+
+        return countryData;
+    }
+
+    public static List<CountryInfo> getCountryList(Resource cfPlanResource, String countryListFragmentPath) {
         if (StringUtils.isBlank(countryListFragmentPath)) {
             return ListUtils.EMPTY_LIST;
         }
@@ -392,8 +408,8 @@ public class CFUtils {
                     if (currentContentFragment != null) {
                         selectBean.setName(CFUtils.getElementValue(currentContentFragment, "name"));
                         selectBean.setValue(CFUtils.getElementValue(currentContentFragment, "value"));
+                        currentProviderList.add(selectBean);
                     }
-                    currentProviderList.add(selectBean);
                 }
             }
         }

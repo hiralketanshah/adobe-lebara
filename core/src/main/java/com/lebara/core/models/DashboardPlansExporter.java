@@ -2,10 +2,15 @@ package com.lebara.core.models;
 
 import com.adobe.cq.export.json.ComponentExporter;
 import com.adobe.cq.export.json.ExporterConstants;
+import com.adobe.cq.wcm.style.ComponentStyleInfo;
 import com.lebara.core.utils.AemUtils;
+
+import java.util.Optional;
+
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.api.resource.ResourceResolver;
+import org.apache.sling.models.annotations.Default;
 import org.apache.sling.models.annotations.DefaultInjectionStrategy;
 import org.apache.sling.models.annotations.Exporter;
 import org.apache.sling.models.annotations.Model;
@@ -63,7 +68,44 @@ public class DashboardPlansExporter extends HeadingExporter {
     private String cancelChangePlanConfirmLabel;
     @ValueMapValue
     private String cancelChangePlanCancelLabel;
+    @ValueMapValue
+    private boolean showPlansWithProgress;
+    @ValueMapValue
+    private String dataValue;
+    @ValueMapValue
+    private String minutesValue;
+    @ValueMapValue
+    private String smsValue;
+    @ValueMapValue
+    private String leftOfLabel;
+    @ValueMapValue
+    private String validLabel;
+    @ValueMapValue
+    private String dataTabName;
+    @ValueMapValue
+    private String minTabName;
+    @ValueMapValue
+    private String smsTabName;
+    @ValueMapValue
+    private String internationalMinTabName;
+    @ValueMapValue @Default(values="{0} {1} Used")
+    private String usedLabel;
 
+    @ValueMapValue
+    private String cantChangePlanLastMonthMessage;
+    @ValueMapValue
+    private String cantChangePlanActivePromoMessage;
+    @ValueMapValue
+    private String newPlanTitle;
+    @ValueMapValue
+    private String pendingRetentionLabel;
+    @ValueMapValue
+    private String activeRetentionBanner;
+    @ValueMapValue
+    private boolean showTabData;
+    
+    private String appliedStyles;
+    
     public String getButtonLabel() {
         return buttonLabel;
     }
@@ -124,7 +166,79 @@ public class DashboardPlansExporter extends HeadingExporter {
         return cancelChangePlanCancelLabel;
     }
 
-    @Override
+    public boolean getShowPlansWithProgress() {
+        return showPlansWithProgress;
+    }
+
+    public String getDataValue() {
+        return dataValue;
+    }
+
+    public String getMinutesValue() {
+        return minutesValue;
+    }
+
+    public String getSmsValue() {
+        return smsValue;
+    }
+
+    public String getLeftOfLabel() {
+        return leftOfLabel;
+    }
+
+    public String getValidLabel() {
+        return validLabel;
+    }
+
+    public String getDataTabName() {
+        return dataTabName;
+    }
+
+    public String getMinTabName() {
+        return minTabName;
+    }
+
+    public String getSmsTabName() {
+        return smsTabName;
+    }
+
+    public String getInternationalMinTabName() {
+        return internationalMinTabName;
+    }
+
+    public String getUsedLabel() {
+        return usedLabel;
+    }
+
+    public String getCantChangePlanLastMonthMessage() {
+		return cantChangePlanLastMonthMessage;
+	}
+
+	public String getCantChangePlanActivePromoMessage() {
+		return cantChangePlanActivePromoMessage;
+	}
+    
+    public String getNewPlanTitle() {
+		return newPlanTitle;
+	}
+
+	public String getPendingRetentionLabel() {
+		return pendingRetentionLabel;
+	}
+
+	public String getActiveRetentionBanner() {
+		return activeRetentionBanner;
+	}
+
+    public boolean isShowTabData() {
+        return showTabData;
+    }
+    
+    public String getAppliedStyles() {
+        return Optional.of(resource).map(resource -> resource.adaptTo(ComponentStyleInfo.class)).map(cmpStyleInfo -> cmpStyleInfo.getAppliedCssClasses()).orElse("");
+    }
+    
+	@Override
     public String getExportedType() {
         return RESOURCE_TYPE;
     }

@@ -1041,6 +1041,12 @@
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                                 fieldLabel="Mobile Number Error Message"
                                                 name="./mobileNumberErrorMessage"/>
+                                            <mobileNumberFieldNumber
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="Mobile Number Field Number"
+                                                fieldDescription="Please enter number not allowed text."
+                                                name="./mobileNumberFieldNumber"/>
                                             <mobilenumbermaxlength
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"

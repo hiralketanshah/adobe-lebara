@@ -20,7 +20,9 @@
     <filter root="/conf/global/settings/workflow/models/lebara-content-fragments" mode="replace"/>
     <filter root="/etc/notifications/email" mode="replace"/>
     <filter root="/etc/notifications" mode="merge"/>
+    <filter root="/etc/map.publish" mode="replace"/>
     <filter root="/content/lebara" mode="merge"/>
     <filter root="/content/cq:tags/lebara" mode="merge"/>
     <filter root="/content/experience-fragments/lebara" mode="merge"/>
+    <filter root="/conf/global/settings/dam/processing" mode="replace"/>
 </workspaceFilter>

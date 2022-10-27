@@ -13,6 +13,7 @@
     "@apollo/client": "^3.3.20",
     "@asgardeo/auth-react": "^0.1.4",
     "@chakra-ui/react": "^1.6.6",
+    "@craco/craco": "^6.4.2",
     "@emotion/react": "^11.4.1",
     "@emotion/styled": "^11.3.0",
     "@fontsource/roboto": "^4.3.0",
@@ -23,6 +24,7 @@
     "@types/moment-duration-format": "^2.2.3",
     "@types/node": "^15.3.0",
     "@types/react": "^17.0.5",
+    "@types/react-datepicker": "^4.4.1",
     "@types/react-dom": "^17.0.5",
     "@types/react-google-recaptcha": "^2.1.2",
     "@types/react-highlight-words": "^0.16.3",
@@ -59,6 +61,7 @@
     "react-app-polyfill": "^1.0.5",
     "react-calendar": "^3.4.0",
     "react-date-picker": "^8.3.2",
+    "react-datepicker": "^4.7.0",
     "react-dom": "^17.0.2",
     "react-dropzone": "^11.3.4",
     "react-google-autocomplete": "^2.6.1",
@@ -95,10 +98,15 @@
     "yup": "^0.32.9"
   },
   "scripts": {
-    "start": "craco start",
-    "build": "craco build && clientlib --verbose",
-    "test": "craco test",
-    "eject": "craco eject",
+    "@germany/start": "yarn workspace @lebara/aem-germany start",
+    "@germany/build": "yarn workspace @lebara/aem-germany build",
+    "@france/start": "yarn workspace @lebara/aem-france start",
+    "@france/build": "yarn workspace @lebara/aem-france build",
+    "@denmark/start": "yarn workspace @lebara/aem-denmark start",
+    "@denmark/build": "yarn workspace @lebara/aem-denmark build",
+    "@netherlands/start": "yarn workspace @lebara/aem-netherlands start",
+    "@netherlands/build": "yarn workspace @lebara/aem-netherlands build",
+    "build": "yarn workspace @lebara/aem-germany build && yarn workspace @lebara/aem-france build && yarn workspace @lebara/aem-denmark build && yarn workspace @lebara/aem-netherlands build",
     "sync": "aemsync -d -w ../ui.apps/src/main/content"
   },
   "eslintConfig": {
@@ -110,7 +118,7 @@
   "workspaces": {
     "packages": [
       "packages/*",
-      "packages/lebara-client/*"
+      "packages/lebara-client/packages/*"
     ],
     "nohoist": []
   },
@@ -132,8 +140,6 @@
     "chromatic": "^5.8.0",
     "clean-webpack-plugin": "^0.1.19",
     "clone": "^2.1.2",
-    "craco": "^0.0.3",
-    "craco-babel-loader": "^1.0.3",
     "css-loader": "^3.4.2",
     "enzyme": "^3.10.0",
     "enzyme-adapter-react-16": "^1.15.1",
@@ -163,6 +169,16 @@
     "webpack-cli": "^3.0.8",
     "webpack-dev-server": "3.11.1",
     "webpack-node-externals": "^1.7.2",
-    "webpack-shell-plugin": "^0.5.0"
+    "webpack-shell-plugin": "^0.5.0",
+    "@lebara/core": "file:./packages/lebara-client/packages/core/src",
+    "@lebara/germany": "file:./packages/lebara-client/packages/germany/src",
+    "@lebara/france": "file:./packages/lebara-client/packages/france/src",
+    "@lebara/denmark": "file:./packages/lebara-client/packages/denmark/src",
+    "@lebara/netherlands": "file:./packages/lebara-client/packages/netherlands/src",
+    "@lebara/aem-core": "file:./packages/lebara-client/packages/core/src",
+    "@lebara/aem-germany": "file:./packages/lebara-client/packages/germany/src",
+    "@lebara/aem-france": "file:./packages/lebara-client/packages/france/src",
+    "@lebara/aem-netherlands": "file:./packages/lebara-client/packages/netherlands/src",
+    "@lebara/aem-denmark": "file:./packages/lebara-client/packages/denmark/src"
   }
 }

@@ -1,7 +1,9 @@
 {
   "Days" : "Tage",
   "Month" : "Monat",
-  "Minutes" : "Protokoll",
+  "Minutes" : "Min",
+  "GB" : "GB",
+  "MB" : "MB",
   "lebara.viewcart.label":"Warenkorb ansehen",
   "lebara.addon.addedtocart.label":"Add-on {0} wurde zum Warenkorb hinzugefügt",
   "lebara.emptycart.addedtocart.label":"Guthaben aufladen {0} zum Warenkorb hinzugefügt",

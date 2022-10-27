@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:granite="http://www.adobe.com/jcr/granite/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="nt:unstructured"
+    jcr:title="Purchase Summary Component"
+    sling:resourceType="cq/gui/components/authoring/dialog"
+    extraClientlibs="[lebara.touchui]">
+    <content
+        granite:class="cmp-navigation__editor"
+        jcr:primaryType="nt:unstructured"
+        sling:resourceType="granite/ui/components/coral/foundation/container">
+        <items jcr:primaryType="nt:unstructured">
+            <tabs
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="granite/ui/components/coral/foundation/tabs"
+                maximized="{Boolean}true">
+                <items jcr:primaryType="nt:unstructured">
+                    <summary
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/coral/foundation/container"
+                        jcr:title="Summary Section"
+                        margin="{Boolean}true">
+                        <items jcr:primaryType="nt:unstructured">
+                            <columns
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+                                margin="{Boolean}true">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <column
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <isretentiongrandtotal
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                                checked="{Boolean}false"
+                                                fieldDescription="When checked, enables Retention Summary"
+                                                name="./isRetentionGrandTotal"
+                                                text="Enable Retention Summary"
+                                                uncheckedValue="{Boolean}false"
+                                                value="{Boolean}true"/>
+                                            <title
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="Purchase Summary Title Example : Sim Only {0} {1}"
+                                                fieldLabel="Title"
+                                                value="Sim Only {0} {1}"
+                                                name="./title"/>
+                                            <monthtext
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="Text for Month word Example: Month"
+                                                fieldLabel="Month Text"
+                                                value="Month"
+                                                name="./monthText"/>
+                                            <monthstext
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="Text for Months word Example: Months"
+                                                fieldLabel="Months Text"
+                                                value="Months"
+                                                name="./monthsText"/>
+                                            <buttonlabel
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="Button Label Example : Order Now"
+                                                fieldLabel="Button Label"
+                                                value="Order Now"
+                                                name="./buttonLabel"/>
+											<buttonCTALink
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                                fieldDescription="Button CTA Link"
+                                                fieldLabel="Button CTA Link"
+                                                name="./buttonCTALink"
+												rootPath="/content/lebara"/>	
+                                            <editlabel
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="EditLabel Example : Edit"
+                                                fieldLabel="EditLabel"
+                                                value="Edit"
+                                                name="./editLabel"/>
+											<editCTALink
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                                fieldDescription="Edit button link"
+                                                fieldLabel="Edit Button Link"
+                                                name="./editCTALink"
+												rootPath="/content/lebara"/>
+                                            <businesssubscriotionlabel
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="Business Subscription Label Example : Business Subscription"
+                                                fieldLabel="Business Subscription Label"
+                                                value="Business Subscription"
+                                                name="./businessSubscriptionLabel"/>
+                                            <initialDiscountHeaderLabel
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="Ex: The first 6 months"
+                                                fieldLabel="Initial Discount Label"
+                                                value="The first 6 months"
+                                                name="./initialDiscountHeaderLabel"/>
+                                            <afterDiscountLabel
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="Ex: After per month"
+                                                fieldLabel="After Discount Label "
+                                                value="After per month"
+                                                name="./afterDiscountLabel"/>
+                                            <totalLabel
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="Label that will appear in case of No discount or 1 month plan for total Ex: Per month"
+                                                fieldLabel="Total/Per Month Label"
+                                                value="Per month"
+                                                name="./totalLabel"/>
+                                            <activationfeelabel
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="Activation fee label Example : Activation fee"
+                                                fieldLabel="Activation Fee Label"
+                                                value="Activation fee"
+                                                name="./activationFeeLabel"/>
+                                            <activationfeevalue
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="Activation fee Value Example : 1500"
+                                                fieldLabel="Activation Fee Value"
+                                                value="1500"
+                                                name="./activationFeeValue"/>
+                                            <isactivationfeediscount
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                                checked="{Boolean}false"
+                                                fieldDescription="When checked, enables Activation Fee Discount"
+                                                name="./isActivationFeeDiscount"
+                                                text="Enable Activation Fee Discount"
+                                                uncheckedValue="{Boolean}false"
+                                                value="{Boolean}true"/>
+                                            <discountlabel
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="Example : Discount"
+                                                fieldLabel="Discount Label"
+                                                value="Discount"
+                                                name="./discountLabel"/>
+											<headerLabel
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="Header label for for Summary. In case of Purchase Summary ( Retention Summary Disabled ), it will be shown only on Mobile Example : Your Order/ Grand Total"
+                                                fieldLabel="Header Label"
+                                                value="Your Order"
+                                                name="./headerLabel"/>
+                                        </items>
+                                    </column>
+                                </items>
+                            </columns>
+                        </items>
+                    </summary>
+                    <card
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/coral/foundation/container"
+                        jcr:title="Floating Section"
+                        margin="{Boolean}true">
+                        <items jcr:primaryType="nt:unstructured">
+                            <columns
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+                                margin="{Boolean}true">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <column
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <enableFloatingCard
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                                checked="{Boolean}false"
+                                                fieldDescription="When checked, enables Floating Card"
+                                                name="./enableFloatingCard"
+                                                text="Enable Floating Card"
+                                                uncheckedValue="{Boolean}false"
+                                                value="{Boolean}true"/>										
+                                            <stickypromolabel
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="Text for Sticky Promotion Example : First 3 months for free"
+                                                fieldLabel="Sticky Promotion Label"
+                                                value="First 3 months for free"
+                                                name="./stickyPromoLabel"/>
+											<stickyactivationfeelabel
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="Sticky Activation fee label Example : Activation fee"
+                                                fieldLabel="Sticky Activation Fee Label"
+                                                value="Activation fee"
+                                                name="./stickyActivationFeeLabel"/>
+											<stickytotallabel
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="Label that will appear for total/Per Month text Ex: Per month"
+                                                fieldLabel="Sticky Total/Per Month Label"
+                                                value="Per month"
+                                                name="./stickyTotalLabel"/>
+                                        </items>
+                                    </column>
+                                </items>
+                            </columns>
+                        </items>
+                    </card>
+                    <contractSummary
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Contract Summary"
+                        sling:resourceType="granite/ui/components/coral/foundation/container"
+                        margin="{Boolean}true">
+                        <items jcr:primaryType="nt:unstructured">
+                            <columns
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+                                margin="{Boolean}true">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <column
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <contractSummarylabel
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="Contract Summary Label Ex: Contract Summary"
+                                                fieldLabel="Contract Summary Label"
+                                                name="./contractSummaryLabel"
+                                                value="Contract Summary"/>
+                                            <contractsummarypdfrootpath
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                                fieldLabel="Root path for Contract Summary PDF"
+                                                name="./contractSummaryPdfRootPath"
+                                                rootPath="/content/dam/lebara"/>
+                                            <termsAndConditionsContent
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="cq/gui/components/authoring/dialog/richtext"
+                                                fieldDescription="I agree with the mentioned payment terms above, the return and guarantee policy and the terms &amp; conditions. I also read and agreed with Lebara’s privacy statement."
+                                                fieldLabel="Terms &amp; Conditions Content"
+                                                name="./termsAndConditionsContent"
+                                                useFixedInlineToolbar="{Boolean}true">
+                                                <rtePlugins
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceSuperType="/apps/lebara/components/dialogutils/rtePlugins"/>
+                                                <uiSettings
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceSuperType="/apps/lebara/components/dialogutils/uiSettings"/>
+                                            </termsAndConditionsContent>
+                                            <pdfdownloadlabel
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="PDF Download Label"
+                                                fieldLabel="PDF Download Label"
+                                                name="./pdfDownloadLabel"
+                                                value="Download"/>
+                                            <pdfcloselabel
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="PDF Close Label"
+                                                fieldLabel="PDF Close Label"
+                                                name="./pdfCloseLabel"
+                                                value="Close"/>
+                                        </items>
+                                    </column>
+                                </items>
+                            </columns>
+                        </items>
+                    </contractSummary>
+                </items>
+            </tabs>
+        </items>
+    </content>
+</jcr:root>

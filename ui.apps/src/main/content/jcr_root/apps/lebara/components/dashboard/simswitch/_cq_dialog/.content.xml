@@ -40,6 +40,31 @@
                                                 fieldLabel="Balance Label"
                                                 name="./balanceLabel"
                                                 value="Balance"/>
+                                            <showPlansWithProgress
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                                name="./showPlansWithProgress"
+                                                text="Show Plans with progress?"
+                                                uncheckedValue="{Boolean}false"
+                                                value="{Boolean}true"/>
+                                            <activeLabel
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="Active Label"
+                                                name="./activeLabel"
+                                                fieldDescription="Active"/>
+                                            <inActiveLabel
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="Inactive Label"
+                                                name="./inActiveLabel"
+                                                fieldDescription="In-Active"/>
+                                            <noSimAttach
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="No sim attach Label"
+                                                name="./noSimAttach"
+                                                fieldDescription="No sim attached"/>
                                         </items>
                                     </column>
                                 </items>
