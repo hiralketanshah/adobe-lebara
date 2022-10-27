@@ -267,7 +267,7 @@
                         jcr:primaryType="nt:unstructured"
                         jcr:title="XF Root"
                         sling:resourceType="wcm/core/components/policy/policy"
-                        components="[/libs/wcm/foundation/components/responsivegrid,group:Lebara - Content SPA,group:Lebara - Structure,group:Lebara - Dashboard,group:Lebara - Support,group:Lebara - User]">
+                        components="[/libs/wcm/foundation/components/responsivegrid,group:Lebara - Content SPA,group:Lebara - Structure,group:Lebara - Dashboard,group:Lebara - Support,group:Lebara - User, group:Lebara - NL]">
                     <jcr:content jcr:primaryType="nt:unstructured"/>
                     <cq:authoring jcr:primaryType="nt:unstructured">
                         <assetToComponentMapping jcr:primaryType="nt:unstructured">
@@ -341,17 +341,28 @@
                         jcr:primaryType="nt:unstructured"
                         jcr:title="Lebara SPA Page Policy"
                         sling:resourceType="wcm/core/components/policy/policy"
-                        renderAlternateLanguageLinks="true"
-                        clientlibs="[lebara.react]">
+                        renderAlternateLanguageLinks="true">
                     <jcr:content jcr:primaryType="nt:unstructured"/>
+					<cq:styleGroups jcr:primaryType="nt:unstructured">
+                        <item0
+                            cq:styleGroupLabel="Background Color"
+                            jcr:primaryType="nt:unstructured">
+                            <cq:styles jcr:primaryType="nt:unstructured">
+                                <item0
+                                    cq:styleClasses="page-bg-color-blue"
+                                    cq:styleId="1663162527132"
+                                    cq:styleLabel="Blue"
+                                    jcr:primaryType="nt:unstructured"/>
+                            </cq:styles>
+                        </item0>
+                    </cq:styleGroups>
                 </policy_spa>
                 <policy_spa_journey
                     cq:styleDefaultClasses="journey-page-body"                                        
                     jcr:primaryType="nt:unstructured"
                     jcr:title="Lebara SPA Journey Page Policy"
                     renderAlternateLanguageLinks="true"
-                    sling:resourceType="wcm/core/components/policy/policy"
-                    clientlibs="[lebara.react]">
+                    sling:resourceType="wcm/core/components/policy/policy">
                     <jcr:content jcr:primaryType="nt:unstructured"/>
                 </policy_spa_journey>
             </page>
@@ -360,12 +371,10 @@
                         jcr:primaryType="nt:unstructured"
                         jcr:title="Lebara App Policy"
                         sling:resourceType="wcm/core/components/policy/policy"
-                        clientlibs="[lebara.react]"
                         isRoot="{Boolean}true"
                         structureDepth="0"
                 />
             </spa>
-
             <embed jcr:primaryType="nt:unstructured">
                 <policy_1639144570135
                         jcr:lastModified="{Date}2021-12-10T19:26:32.259+05:30"
@@ -429,6 +438,17 @@
                     <jcr:content jcr:primaryType="nt:unstructured"/>
                 </policy_1660640547466>
             </awards>
+            <getitnow jcr:primaryType="nt:unstructured">
+                <policy_1662709032825
+                    jcr:primaryType="nt:unstructured"
+                    jcr:title="Get It Now Policy"
+                    sling:resourceType="wcm/core/components/policy/policy"
+                    rendition="medium">
+                    <jcr:content jcr:primaryType="nt:unstructured"/>
+                </policy_1662709032825>
+            </getitnow>
+            <nl jcr:primaryType="nt:unstructured"/>
+	        <dialogutils jcr:primaryType="nt:unstructured"/>
         </components>
     </lebara>
     <wcm jcr:primaryType="nt:unstructured">
@@ -440,7 +460,7 @@
                             jcr:primaryType="nt:unstructured"
                             jcr:title="SPA Content"
                             sling:resourceType="wcm/core/components/policy/policy"
-                            components="[/libs/wcm/foundation/components/responsivegrid,group:Lebara - Content SPA,group:Lebara - App Components,group:Lebara - Dashboard,group:Lebara - Support,group:Lebara - User]">
+                            components="[/libs/wcm/foundation/components/responsivegrid,group:Lebara - Content SPA,group:Lebara - App Components,group:Lebara - Dashboard,group:Lebara - Support,group:Lebara - User,group:Lebara - NL]">
                         <jcr:content jcr:primaryType="nt:unstructured"/>
                     </spa-default>
                 </responsivegrid>

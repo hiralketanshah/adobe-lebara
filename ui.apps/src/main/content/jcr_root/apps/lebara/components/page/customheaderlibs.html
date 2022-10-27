@@ -17,6 +17,7 @@
 <meta data-sly-test.pageTitle="${properties['pageTitle']}" name="title" content="${pageTitle}"/>
 <meta property="cq:errorpages" data-sly-test="${inheritedPageProperties.errorPages}" content="${inheritedPageProperties.errorPages}" />
 <script src="${currentPage.path}.globalConfigs.js" ></script>
+
 <sly data-sly-use.clientlib="/libs/granite/sightly/templates/clientlib.html">
   <sly data-sly-call="${clientlib.css @ categories='lebara.base'}" />
 </sly>
@@ -27,17 +28,17 @@
 <meta name="theme-color" content="#000000" />
 <link
   rel="icon"
-  href="/etc.clientlibs/lebara/clientlibs/clientlib-react/resources/favicon.ico"
+  href="/etc.clientlibs/lebara/clientlibs/clientlib-react-${inheritedPageProperties.country}/resources/favicon.ico"
 />
 <link
   rel="apple-touch-icon"
-  href="/etc.clientlibs/lebara/clientlibs/clientlib-react/resources/logo192.png"
+  href="/etc.clientlibs/lebara/clientlibs/clientlib-react-${inheritedPageProperties.country}/resources/logo192.png"
 />
 <link
   rel="manifest"
-  href="/etc.clientlibs/lebara/clientlibs/clientlib-react/resources/manifest.json"
+  href="/etc.clientlibs/lebara/clientlibs/clientlib-react-${inheritedPageProperties.country}/resources/manifest.json"
 />
-
+</sly>
 <!-- AEM page model -->
 <meta
   property="cq:pagemodel_root_url"

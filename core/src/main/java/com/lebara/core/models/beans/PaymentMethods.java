@@ -83,6 +83,15 @@ public class PaymentMethods {
     @ValueMapValue
     private String paymentFailButtonText;
 
+    @ValueMapValue
+    private String freeSimOrderFailedUrl;
+
+    @ValueMapValue
+    private String postpaidMsisdnToKeepFail;
+
+    @ValueMapValue
+    private String prepaidMsisdnToKeepFail;
+
     public String getCard() {
         return getUTFStr(card);
     }
@@ -159,6 +168,14 @@ public class PaymentMethods {
     	return mandatoryCheckBoxLabel;
     }
 
+    public String getPostpaidMsisdnToKeepFail() {
+        return postpaidMsisdnToKeepFail;
+    }
+
+    public String getPrepaidMsisdnToKeepFail() {
+        return prepaidMsisdnToKeepFail;
+    }
+
     public String getPaymentFailHeader() {
 		return paymentFailHeader;
 	}
@@ -170,6 +187,10 @@ public class PaymentMethods {
 	public String getPaymentFailButtonText() {
 		return paymentFailButtonText;
 	}
+
+    public String getFreeSimOrderFailedUrl() {
+        return AemUtils.getLinkWithExtension(freeSimOrderFailedUrl);
+    }
 
 	private String getUTFStr(String rawString) {
         if (rawString != null) {

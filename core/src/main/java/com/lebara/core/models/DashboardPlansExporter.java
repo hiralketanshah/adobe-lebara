@@ -2,7 +2,11 @@ package com.lebara.core.models;
 
 import com.adobe.cq.export.json.ComponentExporter;
 import com.adobe.cq.export.json.ExporterConstants;
+import com.adobe.cq.wcm.style.ComponentStyleInfo;
 import com.lebara.core.utils.AemUtils;
+
+import java.util.Optional;
+
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.api.resource.ResourceResolver;
@@ -87,6 +91,21 @@ public class DashboardPlansExporter extends HeadingExporter {
     @ValueMapValue @Default(values="{0} {1} Used")
     private String usedLabel;
 
+    @ValueMapValue
+    private String cantChangePlanLastMonthMessage;
+    @ValueMapValue
+    private String cantChangePlanActivePromoMessage;
+    @ValueMapValue
+    private String newPlanTitle;
+    @ValueMapValue
+    private String pendingRetentionLabel;
+    @ValueMapValue
+    private String activeRetentionBanner;
+    @ValueMapValue
+    private boolean showTabData;
+    
+    private String appliedStyles;
+    
     public String getButtonLabel() {
         return buttonLabel;
     }
@@ -191,7 +210,35 @@ public class DashboardPlansExporter extends HeadingExporter {
         return usedLabel;
     }
 
-    @Override
+    public String getCantChangePlanLastMonthMessage() {
+		return cantChangePlanLastMonthMessage;
+	}
+
+	public String getCantChangePlanActivePromoMessage() {
+		return cantChangePlanActivePromoMessage;
+	}
+    
+    public String getNewPlanTitle() {
+		return newPlanTitle;
+	}
+
+	public String getPendingRetentionLabel() {
+		return pendingRetentionLabel;
+	}
+
+	public String getActiveRetentionBanner() {
+		return activeRetentionBanner;
+	}
+
+    public boolean isShowTabData() {
+        return showTabData;
+    }
+    
+    public String getAppliedStyles() {
+        return Optional.of(resource).map(resource -> resource.adaptTo(ComponentStyleInfo.class)).map(cmpStyleInfo -> cmpStyleInfo.getAppliedCssClasses()).orElse("");
+    }
+    
+	@Override
     public String getExportedType() {
         return RESOURCE_TYPE;
     }

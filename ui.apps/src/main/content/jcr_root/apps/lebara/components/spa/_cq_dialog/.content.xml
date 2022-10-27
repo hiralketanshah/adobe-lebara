@@ -102,6 +102,10 @@
                                                         jcr:primaryType="nt:unstructured"
                                                         text="EUR"
                                                         value="EUR"/>
+                                                    <dkk
+                                                        jcr:primaryType="nt:unstructured"
+                                                        text="DKK"
+                                                        value="DKK"/>
                                                 </items>
                                             </currencyname>
                                             <country
@@ -115,10 +119,22 @@
                                                         jcr:primaryType="nt:unstructured"
                                                         text="Germany"
                                                         value="DE"/>
-                                                    <eur
+                                                    <france
                                                         jcr:primaryType="nt:unstructured"
                                                         text="France"
                                                         value="FR"/>
+                                                    <netherlands
+                                                        jcr:primaryType="nt:unstructured"
+                                                        text="Netherlands"
+                                                        value="NL"/>
+                                                    <denmark
+                                                        jcr:primaryType="nt:unstructured"
+                                                        text="Denmark"
+                                                        value="DK"/>
+                                                    <uk
+                                                        jcr:primaryType="nt:unstructured"
+                                                        text="United Kingdom"
+                                                        value="UK"/>
                                                 </items>
                                             </country>
                                             <locale
@@ -152,6 +168,10 @@
                                                         jcr:primaryType="nt:unstructured"
                                                         text="nl-NL"
                                                         value="nl-NL"/>
+                                                    <danish
+                                                        jcr:primaryType="nt:unstructured"
+                                                        text="da-DK"
+                                                        value="da-DK"/>
                                                 </items>
                                             </locale>
                                             <planNotEligibleErrorTitle
@@ -706,7 +726,19 @@
                                                     value="Please select the checkbox"
                                                     fieldDescription="SEPA Mandatory Checkbox label"
                                                     name="./paymentMessages/mandatoryCheckBoxLabel"/>
-											<paymentFailHeader
+                                            <postpaidMsisdnToKeepFail
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                    fieldLabel="Postpaid MSISDN alredy exists in portin Label"
+                                                    fieldDescription="Postpaid MSISDN already exist in PortIn"
+                                                    name="./paymentMessages/postpaidMsisdnToKeepFail"/>
+                                            <prepaidMsisdnToKeepFail
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                    fieldLabel="Prepaid MSISDN already exist in PortIn Label"
+                                                    fieldDescription="Prepaid MSISDN already exist in PortIn"
+                                                    name="./paymentMessages/prepaidMsisdnToKeepFail"/>
+											                      <paymentFailHeader
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                                 fieldDescription="Payment Fail Header"
@@ -853,6 +885,12 @@
                                                 fieldLabel="Payment Fail Button Text"
                                                 name="./paymentMessages/paymentFailButtonText"
                                                 value="Try Again"/>
+                                            <freeSimOrderFailedUrl
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                                rootPath="/content/lebara"
+                                                fieldLabel="Payment - Free Sim Order Failed URL"
+                                                name="./paymentMessages/freeSimOrderFailedUrl"/>
                                         </items>
                                     </column>
                                 </items>

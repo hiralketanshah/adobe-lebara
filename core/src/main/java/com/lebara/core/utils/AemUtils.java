@@ -3,6 +3,7 @@ package com.lebara.core.utils;
 
 import com.day.cq.commons.inherit.HierarchyNodeInheritanceValueMap;
 import com.day.cq.commons.inherit.InheritanceValueMap;
+import com.day.cq.commons.jcr.JcrConstants;
 import com.day.cq.commons.mail.MailTemplate;
 import com.day.cq.i18n.I18n;
 import com.day.cq.mailer.MailingException;
@@ -39,6 +40,7 @@ import javax.mail.internet.InternetAddress;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.*;
+import com.day.cq.dam.api.DamConstants;
 
 /**
  * This is a utility class for aem specific utilities like getting resource etc.
@@ -61,11 +63,11 @@ public class AemUtils {
     public static final String DK_ROOT_PATH = "/content/lebara/dk";
     public static final String UK_ROOT_PATH = "/content/lebara/uk";
 
-    public static String DE_DOMAIN_NAME = "https://www.lebara.de";
-    public static String FR_DOMAIN_NAME = "https://www.lebara.fr";
-    public static String NL_DOMAIN_NAME = "https://www.lebara.nl";
-    public static String DK_DOMAIN_NAME = "https://www.lebara.dk";
-    public static String UK_DOMAIN_NAME = "https://www.lebara.uk";
+    public static final String DE_DOMAIN_NAME = "https://www.lebara.de";
+    public static final String FR_DOMAIN_NAME = "https://www.lebara.fr";
+    public static final String NL_DOMAIN_NAME = "https://www.lebara.nl";
+    public static final String DK_DOMAIN_NAME = "https://www.lebara.dk";
+    public static final String UK_DOMAIN_NAME = "https://www.lebara.uk";
 
     /**
      * Gets property.
@@ -208,10 +210,13 @@ public class AemUtils {
      * @return externalized path.
      */
     public static String getLinkWithExtension(String payloadPath, SlingHttpServletRequest request) {
+    	if(null!=request) {
+    		payloadPath = getRedirectedPath(payloadPath, request.getResourceResolver());
+    	}
         if (StringUtils.isBlank(payloadPath) || isExternalLink(payloadPath)) {
             return payloadPath;
         }
-        return ((request == null) ? payloadPath : trimmedPath(payloadPath)) + (isHtmlExtensionRequired(payloadPath) ? LebaraConstants.HTML_EXTENSION : StringUtils.EMPTY);
+        return (trimmedPath(payloadPath)) + (isHtmlExtensionRequired(payloadPath) ? LebaraConstants.HTML_EXTENSION : StringUtils.EMPTY);
     }
 
     public static String getLinkWithExtension(String payloadPath) {
@@ -220,6 +225,20 @@ public class AemUtils {
         }
         return trimmedPath(payloadPath) + (isHtmlExtensionRequired(payloadPath) ? LebaraConstants.HTML_EXTENSION : StringUtils.EMPTY);
     }
+    
+	private static String getRedirectedPath(String payloadPath, ResourceResolver resourceResolver) {
+		if (null != resourceResolver) {
+			Resource page = resourceResolver.getResource(payloadPath + "/" + JcrConstants.JCR_CONTENT);
+			if (null != page) {
+				String redirectPath = getStringProperty(page, LebaraConstants.PN_REDIRECT_TARGET);
+				if (null != redirectPath) {
+					return redirectPath;
+				}
+
+			}
+		}
+		return payloadPath;
+	}
 
     private static String trimmedPath(String payloadPath) {
         if(StringUtils.isNotBlank(payloadPath)){
@@ -233,10 +252,11 @@ public class AemUtils {
     }
 
     public static String getLinkWithExtension(String payloadPath, ResourceResolver resourceResolver) {
+    	payloadPath = getRedirectedPath(payloadPath, resourceResolver);
         if (StringUtils.isBlank(payloadPath) || isExternalLink(payloadPath)) {
             return payloadPath;
         }
-        return ((resourceResolver == null) ? payloadPath : trimmedPath(payloadPath)) + (isHtmlExtensionRequired(payloadPath) ? LebaraConstants.HTML_EXTENSION : StringUtils.EMPTY);
+        return (trimmedPath(payloadPath)) + (isHtmlExtensionRequired(payloadPath) ? LebaraConstants.HTML_EXTENSION : StringUtils.EMPTY);
     }
 
     public static String updateShortenLinksInRichText(String text, SlingHttpServletRequest slingRequest) {
@@ -376,10 +396,10 @@ public class AemUtils {
             return "fr";
         }
         if (StringUtils.startsWith(pagePath, NL_ROOT_PATH)) {
-            return "nl";
+            return "de";
         }
         if (StringUtils.startsWith(pagePath, DK_ROOT_PATH)) {
-            return "dk";
+            return "de";
         }
         if (StringUtils.startsWith(pagePath, UK_ROOT_PATH)) {
             return "uk";
@@ -395,9 +415,9 @@ public class AemUtils {
 			if (null != metadata) {
 				ValueMap metadataProps = metadata.adaptTo(ValueMap.class);
 				String format = StringUtils.EMPTY;
-				if (metadataProps.containsKey("dc:format")) {
+				if (metadataProps.containsKey(DamConstants.DC_FORMAT)) {
 					String[] whitelistedFormats = { "image/png", "image/jpeg" };
-					format = metadataProps.get("dc:format", String.class);
+					format = metadataProps.get(DamConstants.DC_FORMAT, String.class);
 					if (!Arrays.asList(whitelistedFormats).contains(format)) {
 						return fileReference;
 					}

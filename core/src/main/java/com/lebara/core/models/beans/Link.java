@@ -30,6 +30,9 @@ public class Link {
 
     @ValueMapValue
     protected String icon;
+    
+    @ValueMapValue
+    protected String ariaLabel;
 
     @JsonIgnore
     @ValueMapValue
@@ -78,6 +81,14 @@ public class Link {
 
     public void setIcon(String icon) {
         this.icon = icon;
+    }
+    
+    public String getAriaLabel() {
+        return ariaLabel;
+    }
+
+    public void setAriaLabel(String ariaLabel) {
+        this.ariaLabel = ariaLabel;
     }    
 
 }

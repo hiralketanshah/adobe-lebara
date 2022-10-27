@@ -190,13 +190,12 @@
                                                 fieldLabel="Voucher code Discount Label"
                                                 fieldDescription="Discount"
                                                 name="./voucherCodeDiscountLabel"/>
-                                            <consentlabel
+                                            <consentFragmentPath
                                                 jcr:primaryType="nt:unstructured"
-                                                sling:resourceType="cq/gui/components/authoring/dialog/richtext"
-                                                fieldLabel="Consent Label"
-                                                fieldDescription="I want to receive personalised marketing materials from Lebara."
-                                                name="./consentLabel"
-                                                useFixedInlineToolbar="{Boolean}true">
+                                                sling:resourceType="dam/cfm/components/cfpicker"
+                                                fieldLabel="Select Consent Fragment"
+                                                name="./cfPath"
+                                                rootPath="/content/dam/lebara"/>
                                                 <rtePlugins jcr:primaryType="nt:unstructured">
                                                     <format
                                                         jcr:primaryType="nt:unstructured"

@@ -124,6 +124,8 @@ public class PersonalDetailsExporter implements ComponentExporter {
     @ValueMapValue
     public String existingUserErrorMsg;
     @ValueMapValue
+    public String multiMsisdnErrorMsg;
+    @ValueMapValue
     public String passwordField;
     @ValueMapValue
     public String confirmPasswordField;
@@ -373,6 +375,22 @@ public class PersonalDetailsExporter implements ComponentExporter {
     public String getAddressRequired() {
         return addressRequired;
     }
+    
+    public String getStreetLabelErrorMax() {
+        return streetLabelErrorMax;
+    }
+
+    public String getHouseNumberErrorMax() {
+        return houseNumberErrorMax;
+    }
+
+    public String getZipCodeErrorMin() {
+        return zipCodeErrorMin;
+    }
+
+    public String getZipCodeErrorMax() {
+        return zipCodeErrorMax;
+    }
 
     public boolean getWeekStartFromMonday() {
         return weekStartFromMonday;
@@ -380,6 +398,10 @@ public class PersonalDetailsExporter implements ComponentExporter {
 
     public String getExistingUserErrorMsg() {
         return AemUtils.updateShortenLinksInRichText(existingUserErrorMsg,slingRequest);
+    }
+
+    public String getMultiMsisdnErrorMsg() {
+        return multiMsisdnErrorMsg;
     }
 
     @Override

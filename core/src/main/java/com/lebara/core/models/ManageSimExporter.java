@@ -81,6 +81,9 @@ public class ManageSimExporter implements ComponentExporter {
     
     @ValueMapValue
     private String description;
+    
+    @ValueMapValue
+    private boolean showUpdatedModal;
 
     @ChildResource
     private List<ErrorMessageFields> sendSMSOtpErrorMessages;
@@ -163,6 +166,10 @@ public class ManageSimExporter implements ComponentExporter {
     
     public String getDescription() {
 		return description;
+	}
+    
+    public boolean getShowUpdatedModal() {
+		return showUpdatedModal;
 	}
 
     public Map<String, String> getSendSMSOtpErrorMessages() {
