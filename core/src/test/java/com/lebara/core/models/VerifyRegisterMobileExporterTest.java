@@ -23,12 +23,14 @@ class VerifyRegisterMobileExporterTest {
     void getHeadingTest() {
         aemContext.currentResource(PROPERTIES_JSON);
         VerifyRegisterMobileExporter verifyRegisterMobileExporter = aemContext.request().adaptTo(VerifyRegisterMobileExporter.class);
-        verifyRegisterMobileExporter.getHeading();
-        verifyRegisterMobileExporter.getFrmFields();
-        verifyRegisterMobileExporter.getValidationMessages();
-        verifyRegisterMobileExporter.getTimeCounter();
-        verifyRegisterMobileExporter.getSuccessMessages();
-        verifyRegisterMobileExporter.getInitalCountdownValue();
+        verifyRegisterMobileExporter.getVerifyMobileNumberModal().getHeading();
+        verifyRegisterMobileExporter.getVerifyMobileNumberModal().getFrmFields();
+        verifyRegisterMobileExporter.getVerifyMobileNumberModal().getValidationMessages();
+        verifyRegisterMobileExporter.getVerifyMobileNumberModal().getTimeCounter();
+        verifyRegisterMobileExporter.getVerifyMobileNumberModal().getSuccessMessages();
+        verifyRegisterMobileExporter.getVerifyMobileNumberModal().getInitalCountdownValue();
+        verifyRegisterMobileExporter.getVerifyMobileNumberModal().getEnterValidOtpErrorMessage();
+        verifyRegisterMobileExporter.getVerifyMobileNumberModal().getSendSMSOtpErrorMessages();
         verifyRegisterMobileExporter.getExportedType();
 
     }

@@ -28,6 +28,13 @@
                                         jcr:primaryType="nt:unstructured"
                                         sling:resourceType="granite/ui/components/coral/foundation/container">
                                         <items jcr:primaryType="nt:unstructured">
+                                            <isBonusView
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                                name="./isBonusView"
+                                                text="Is Bonus View?(with white background)"
+                                                uncheckedValue="{Boolean}false"
+                                                value="{Boolean}true"/>
                                             <columnHeader1
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
@@ -58,6 +65,12 @@
                                                             jcr:primaryType="nt:unstructured"
                                                             sling:resourceType="granite/ui/components/coral/foundation/container">
                                                             <items jcr:primaryType="nt:unstructured">
+                                                                <sectionLabel
+                                                                    jcr:primaryType="nt:unstructured"
+                                                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                                    fieldDescription="optional- author this for subheading and leave off other two fields"
+                                                                    fieldLabel="Section Label"
+                                                                    name="./sectionLabel"/>
                                                                 <leftColumn
                                                                     jcr:primaryType="nt:unstructured"
                                                                     sling:resourceType="granite/ui/components/coral/foundation/form/textfield"

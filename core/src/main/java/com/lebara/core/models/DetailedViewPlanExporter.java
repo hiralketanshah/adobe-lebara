@@ -1,12 +1,12 @@
 package com.lebara.core.models;
 
-import com.adobe.cq.export.json.ComponentExporter;
-import com.adobe.cq.export.json.ExporterConstants;
-import com.day.cq.i18n.I18n;
-import com.lebara.core.dto.OfferFragmentBean;
-import com.lebara.core.dto.PlanInfo;
-import com.lebara.core.utils.AemUtils;
-import com.lebara.core.utils.CFUtils;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+
+import javax.annotation.PostConstruct;
+import javax.inject.Inject;
+
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.api.resource.ResourceResolver;
@@ -19,9 +19,13 @@ import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import javax.annotation.PostConstruct;
-import java.util.ArrayList;
-import java.util.List;
+import com.adobe.cq.export.json.ComponentExporter;
+import com.adobe.cq.export.json.ExporterConstants;
+import com.day.cq.commons.inherit.InheritanceValueMap;
+import com.lebara.core.dto.OfferFragmentBean;
+import com.lebara.core.dto.PlanInfo;
+import com.lebara.core.utils.AemUtils;
+import com.lebara.core.utils.CFUtils;
 
 @Model(adaptables = SlingHttpServletRequest.class, adapters = {DetailedViewPlanExporter.class, ComponentExporter.class},
         resourceType = DetailedViewPlanExporter.RESOURCE_TYPE, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
@@ -37,6 +41,9 @@ public class DetailedViewPlanExporter extends ViewPlanExporter implements Compon
 
     @SlingObject
     private SlingHttpServletRequest request;
+
+    @Inject
+    private InheritanceValueMap pageProperties;
 
     @SlingObject
     private ResourceResolver resourceResolver;
@@ -200,6 +207,10 @@ public class DetailedViewPlanExporter extends ViewPlanExporter implements Compon
     }
     public String getAddedtoCartLabel() {
         return (i18n == null ? "Addon {0} added to cart" : i18n.get("lebara.addon.addedtocart.label"));
+    }
+
+    public boolean getShowModelOnAddtoCart(){
+        return Optional.ofNullable(pageProperties.getInherited("showModelOnAddtoCart", Boolean.class)).orElse(false);
     }
     @Override
     public String getExportedType() {

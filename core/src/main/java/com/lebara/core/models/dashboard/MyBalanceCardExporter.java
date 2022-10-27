@@ -64,6 +64,9 @@ public class MyBalanceCardExporter implements ComponentExporter {
 
     @ValueMapValue
     private String autoTopupButtonLabel;
+    
+    @ValueMapValue
+    private String notActiveAutoTopupButtonLabel;
 
     @ValueMapValue
     private String saveAutoTopupButtonLabel;
@@ -79,6 +82,9 @@ public class MyBalanceCardExporter implements ComponentExporter {
 
     @ValueMapValue
     private String successOverlaySubTitle;
+
+    @ValueMapValue
+    private String ctaCloseLabel;
 
     @ValueMapValue
     private Boolean deactivateSuccessOverlaySubTitle;
@@ -133,8 +139,12 @@ public class MyBalanceCardExporter implements ComponentExporter {
     public String getAutoTopupButtonLabel() {
         return autoTopupButtonLabel;
     }
+    
+    public String getNotActiveAutoTopupButtonLabel() {
+		return notActiveAutoTopupButtonLabel;
+	}
 
-    public String getSaveAutoTopupButtonLabel() {
+	public String getSaveAutoTopupButtonLabel() {
         return saveAutoTopupButtonLabel;
     }
 
@@ -156,6 +166,10 @@ public class MyBalanceCardExporter implements ComponentExporter {
 
     public String getSuccessOverlaySubTitle() {
         return successOverlaySubTitle;
+    }
+
+    public String getCtaCloseLabel() {
+        return ctaCloseLabel;
     }
 
     public Boolean getDeactivateSuccessOverlaySubTitle() {

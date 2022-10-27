@@ -10,4 +10,6 @@ public class LebaraConstants {
 	public static final String CONTENT_TYPE_TEXT_PLAIN = "text/plain";
 	public static final String HTML_EXTENSION = ".html";
 	public static final String DAM_ROOT_PATH = "/content/dam";
+	
+	public static final String PN_REDIRECT_TARGET = "cq:redirectTarget";
 }

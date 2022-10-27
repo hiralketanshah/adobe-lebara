@@ -6,10 +6,14 @@ import com.day.cq.wcm.api.Page;
 import com.day.cq.wcm.api.NameConstants;
 import com.day.cq.commons.jcr.JcrConstants;
 import com.day.cq.wcm.api.PageManager;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.net.MediaType;
+import com.lebara.core.models.beans.ActivateSimBean;
+import com.lebara.core.models.beans.ActivateYourSimBean;
 import com.lebara.core.models.beans.AttachSimBean;
 import com.lebara.core.models.beans.PaymentMethods;
+import com.lebara.core.models.beans.VerifyRegisterMobileBean;
 import com.lebara.core.services.GlobalOsgiService;
 import com.lebara.core.utils.AemUtils;
 import org.apache.commons.lang3.ArrayUtils;
@@ -45,9 +49,13 @@ public class GlobalConfigs extends SlingSafeMethodsServlet {
     private static final String LOCALE = "locale";
     private static final String JOURNEY_PAGES = "journeyPages";
     private static final String ATTACH_SIM_MODAL = "attachSimModal";
+    private static final String VERIFY_SIM_MODAL = "verifySimModal";
+    private static final String ACTIVATE_SIM_MODAL = "activateSimModal";
+    private static final String ACTIVATE_YOUR_SIM_MODAL = "activateYourSimModal";
     private static final String PRIVATE_PAGES = "privatePages";
     private static final String PAYMENT_MESSAGES = "paymentMessages";
     private static final String PLAN_NOT_ELIGIBLE_ERROR_MESSAGE = "planNotEligibleErrorMessage";
+    private static final String TOO_MANY_REQUESTS_ERROR_MESSAGE = "tooManyRequestsErrorMessage";
     private static final String PLAN_NOT_ELIGIBLE_ERROR_TITLE = "planNotEligibleErrorTitle";
     private static final String PLAN_NOT_ELIGIBLE_ERROR_BUTTON_TEXT = "planNotEligibleErrorButtonText";
 
@@ -58,7 +66,7 @@ public class GlobalConfigs extends SlingSafeMethodsServlet {
     protected void doGet(final SlingHttpServletRequest req,
                          final SlingHttpServletResponse resp) throws ServletException, IOException {
         resp.setContentType(MediaType.JAVASCRIPT_UTF_8.toString());
-        resp.getWriter().println("var lebaraGlobalConfigs =" + new com.google.gson.Gson().toJson(getGlobalData(req)) + ";");
+        resp.getWriter().println("var lebaraGlobalConfigs =" + new ObjectMapper().writeValueAsString(getGlobalData(req)) + ";");
     }
 
     protected Object getGlobalData(SlingHttpServletRequest request) {
@@ -69,10 +77,12 @@ public class GlobalConfigs extends SlingSafeMethodsServlet {
         if (pageManager != null) {
             page = pageManager.getContainingPage(request.getResource());
         }
+        String apiHostUri = globalOsgiService.getApiHostUri() + AemUtils.getCountrySpecificCode(request.getResource().getPath());
+
         return (new ImmutableMap.Builder())
                 .put("locale", Optional.ofNullable(inheritedProp.getInherited(LOCALE, String.class)).orElse("en-US"))
                 .put("country", Optional.ofNullable(inheritedProp.getInherited(COUNTRY, String.class)).orElse("DE"))
-                .put("apiHostUri", Optional.ofNullable(globalOsgiService.getApiHostUri()).orElse(""))
+                .put("apiHostUri", Optional.ofNullable(apiHostUri).orElse(""))
                 .put("gqlEndpoint", Optional.ofNullable(globalOsgiService.getGqlEndpoint()).orElse(""))
                 .put("paymentClientKey", Optional.ofNullable(globalOsgiService.getPaymentClientKey()).orElse(""))
                 .put("paymentAdeyenEnv", Optional.ofNullable(globalOsgiService.getPaymentAdeyenEnv()).orElse(""))
@@ -81,10 +91,14 @@ public class GlobalConfigs extends SlingSafeMethodsServlet {
                 .put(JOURNEY_PAGES, getJourneyPages(request, page))
                 .put(PRIVATE_PAGES, getPrivatePages(request, inheritedProp.getInherited(PRIVATE_PAGES, String[].class)))
                 .put(PLAN_NOT_ELIGIBLE_ERROR_MESSAGE, Optional.ofNullable(inheritedProp.getInherited(PLAN_NOT_ELIGIBLE_ERROR_MESSAGE, String.class)).orElse(""))
+                .put(TOO_MANY_REQUESTS_ERROR_MESSAGE, Optional.ofNullable(inheritedProp.getInherited(TOO_MANY_REQUESTS_ERROR_MESSAGE, String.class)).orElse(""))
                 .put(PLAN_NOT_ELIGIBLE_ERROR_TITLE, Optional.ofNullable(inheritedProp.getInherited(PLAN_NOT_ELIGIBLE_ERROR_TITLE, String.class)).orElse(""))
                 .put(PLAN_NOT_ELIGIBLE_ERROR_BUTTON_TEXT, Optional.ofNullable(inheritedProp.getInherited(PLAN_NOT_ELIGIBLE_ERROR_BUTTON_TEXT, String.class)).orElse(""))
-                .put(PAYMENT_MESSAGES,getPaymentMethods(page))
-                .put("attachSim",getAttachSimModelData(request, page)).build();
+                .put(PAYMENT_MESSAGES, getPaymentMethods(page))
+                .put("attachSim", getAttachSimModelData(request, page))
+                .put("verifyMobileNumberModal", getVerifySimModelData(request, page))
+                .put("activateSimModal", getActivateSimModelData(request, page))
+                .put("activateYourSimModal", getActivateYourSimModelData(request, page)).build();
     }
 
     private PaymentMethods getPaymentMethods(Page page) {
@@ -138,6 +152,46 @@ public class GlobalConfigs extends SlingSafeMethodsServlet {
             }
         }
         return attachSim;
+    }
+
+    protected VerifyRegisterMobileBean getVerifySimModelData(SlingHttpServletRequest request, Page currentPage) {
+        VerifyRegisterMobileBean verifySim = new VerifyRegisterMobileBean();
+        if (currentPage != null) {
+            while (currentPage.getContentResource(VERIFY_SIM_MODAL) == null && !currentPage.getAbsoluteParent(1).getPath().equals(currentPage.getPath())) {
+                currentPage = currentPage.getParent();
+            }
+            if (currentPage != null && currentPage.getContentResource(VERIFY_SIM_MODAL) != null) {
+               verifySim = currentPage.getContentResource(VERIFY_SIM_MODAL).adaptTo(VerifyRegisterMobileBean.class);
+
+            }
+        }
+        return verifySim;
+    }
+
+    protected ActivateSimBean getActivateSimModelData(SlingHttpServletRequest request, Page currentPage) {
+        ActivateSimBean activateSimData = new ActivateSimBean();
+        if (currentPage != null) {
+            while (currentPage.getContentResource(ACTIVATE_SIM_MODAL) == null && !currentPage.getAbsoluteParent(1).getPath().equals(currentPage.getPath())) {
+                currentPage = currentPage.getParent();
+            }
+            if (currentPage != null && currentPage.getContentResource(ACTIVATE_SIM_MODAL) != null) {
+                activateSimData = currentPage.getContentResource(ACTIVATE_SIM_MODAL).adaptTo(ActivateSimBean.class);
+            }
+        }
+        return activateSimData;
+    }
+
+        protected ActivateYourSimBean getActivateYourSimModelData(SlingHttpServletRequest request, Page currentPage) {
+            ActivateYourSimBean activateYourSimData = new ActivateYourSimBean();
+        if (currentPage != null) {
+            while (currentPage.getContentResource(ACTIVATE_YOUR_SIM_MODAL) == null && !currentPage.getAbsoluteParent(1).getPath().equals(currentPage.getPath())) {
+                currentPage = currentPage.getParent();
+            }
+            if (currentPage != null && currentPage.getContentResource(ACTIVATE_YOUR_SIM_MODAL) != null) {
+                activateYourSimData = currentPage.getContentResource(ACTIVATE_YOUR_SIM_MODAL).adaptTo(ActivateYourSimBean.class);
+            }
+        }
+        return activateYourSimData;
     }
 
     protected List<String> getPrivatePages(SlingHttpServletRequest request, String[] privatePages) {

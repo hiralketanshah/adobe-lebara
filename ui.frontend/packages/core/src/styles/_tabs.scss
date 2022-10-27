@@ -1,0 +1,84 @@
+// Tabs > TabList
+.cmp-tabs {
+    display: block;
+    border-color: var(--chakra-colors-grey-100);
+    padding-bottom: 10px;
+    padding-top: 10px;
+
+    @media (max-width:600px){
+        padding-bottom: 10px;
+        padding-top: 5px;
+    }
+
+    .lb-text-comp > p {
+        font-family: var(--chakra-fonts-body);
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 20px;
+        letter-spacing: 0.5px;
+        
+        @media (max-width:600px){
+            font-size: 14px;
+            letter-spacing: 0.25px;
+        }
+    }
+
+    &__tablist {
+        display: flex;
+        justify-content: flex-start;
+        flex-direction: row;
+        border-bottom-style: solid;
+        border-bottom-width: 2px;
+        border-color: inherit;
+        font-family: var(--chakra-fonts-heading);
+        color: var(--chakra-colors-primary-500);
+        font-weight: 600;
+        font-size: 21px;
+        line-height: 26px;
+        
+        @media (max-width:600px){
+            font-size: 16px;
+            line-height: 22px;
+        }
+    }
+
+    &__tab {
+        outline: transparent solid 2px;
+        outline-offset: 2px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition-property: var(--chakra-transition-property-common);
+        transition-duration: var(--chakra-transition-duration-normal);
+        font-size: var(--chakra-fontSizes-md);
+        padding-top: var(--chakra-space-2);
+        padding-bottom: var(--chakra-space-2);
+        padding-inline-start: 0px;
+        padding-inline-end: var(--chakra-space-4);
+        border-bottom-style: solid;
+        border-bottom-width: 2px;
+        border-color: var(--chakra-colors-transparent);
+        margin-bottom: -2px;
+        margin-right: 50px;
+
+        &--active {
+            border-color: var(--chakra-colors-secondary-500);
+            font-weight: var(--chakra-fontWeights-bold);
+        }
+    }
+
+    // TabPanels > 
+    &>div {
+        // TabPanel
+        &>div {
+            padding: 0px;
+            outline: transparent solid 2px;
+            outline-offset: 2px;
+            text-align: start;
+        }
+    }
+}
+// TabList
+
+
+// Tab

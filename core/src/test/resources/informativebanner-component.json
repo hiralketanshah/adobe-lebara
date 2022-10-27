@@ -1,0 +1,19 @@
+{
+  "jcr:primaryType": "nt:unstructured",
+  "subTitle": "First 3 months are free of change!",
+  "jcr:createdBy": "admin",
+  "description": "test",
+  "fileReference": "/content/dam/lebara/global/retentionConfiguratorBannerImg.png",
+  "jcr:lastModifiedBy": "admin",
+  "textColor": "#FFFFFF",
+  "ctaLabel": "Renew",
+  "jcr:created": "Wed Oct 12 2022 17:20:18 GMT+0530",
+  "alt": "Alt",
+  "title": "Time to renew!",
+  "jcr:lastModified": "Wed Oct 12 2022 19:03:14 GMT+0530",
+  "ctaLink": "/content/lebara/nl/en/sim-only",
+  "sling:resourceType": "lebara/components/informativebanner",
+  "backgroundColor": "#1978CD",
+  "ctaColor":"#FF3182",
+  "textIsRich": "true"
+}

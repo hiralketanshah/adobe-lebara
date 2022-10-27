@@ -56,6 +56,8 @@
 		<property name="cancelChangePlanConfirmLabel" />
 		<property name="cancelChangePlanCancelLabel" />
 		<property name="offlinePlanRenewalMessage" />
+		<property name="congratulationHeader" />
+		<property name="congratulationMessage" />
 
 		<!-- Postpaid Sim Validation props -->
 		<property name="verifySimHeading" />
@@ -227,6 +229,7 @@
 		<property name="mobileNumberErrorMessage" />
 		<property name="mobileNumberMaxLength" />
 		<property name="mobileNumberFieldPattern" />
+		<property name="mobileNumberFieldNumber" />
 		<property name="currentProviderDefaultSelectValue" />
 		<property name="moreLabel" />
 
@@ -360,6 +363,7 @@
 		<property name="guestResetLinkLabel" />
 		<property name="guestContinueLabel" />
 		<property name="guestTabLabel" />
+		<property name="captchaFieldErrorMessage" />
 
 		<!-- Reset Password -->
 		<property name="resetPwdTitle" />
@@ -445,6 +449,10 @@
 		<property name="pdfDownloadLabel"/>
 		<property name="pdfCloseLabel"/>
 		<property name="alertMessageText"/>
+		<property name="conditionsContent"/>
+		<property name="conditionsHeader"/>
+		<property name="termsAndConditionsContent"/>
+		<property name="getNewNumberText"/>
 		<!--Payment Method component -->
 		<property name="preferredPaymentLabel"/>
 		<property name="preferredPaymentDesc"/>
@@ -516,6 +524,8 @@
 		<property name="recurringLabel"/>
 		<property name="directDebitCheckboxText"/>
 		<property name="mandatoryCheckBoxLabel"/>
+		<property name="postpaidMsisdnToKeepFail"/>
+		<property name="prepaidMsisdnToKeepFail"/>
 
 		<!--Support component -->
 		<property name="ctaLinkLabel"/>
@@ -555,12 +565,14 @@
 		<property name="emailLabel"/>
 		<property name="emailPlaceholder"/>
 		<property name="mobileLabel"/>
+		<property name="subMobileLabel"/>
 		<property name="mobilePlaceholder"/>
 		<property name="buttonCTALabel"/>
 		<property name="verifyCodeLabel"/>
 		<property name="otpSentSuccessfullyMsg"/>
 		<property name="label1"/>
 		<property name="label2"/>
+		<property name="sectionLabel"/>
 		<property name="verifyCodePlaceholder"/>
 		<property name="ctaResendVerificationLabel"/>
 		<property name="ctaEditMobileLabel"/>
@@ -635,6 +647,7 @@
 		<property name="showPasswordLabel"/>
 		<property name="hidePasswordLabel"/>
 		<property name="confirmPasswordPatternError"/>
+		<property name="multiMsisdnErrorMsg"/>
 		<property name="passwordPatternError"/>
 		<property name="registerLaterLabel"/>
 		<property name="simRegistrationInfo"/>
@@ -791,6 +804,7 @@
 		<property name="sectionUsernameHeading"/>
 		<property name="sectionAddressHeading"/>
 		<property name="alternativeContactLabel"/>
+		<property name="settingsUpdatedLabel"/>
 		<property name="alternativeNumberPlaceholder"/>
 		<property name="sectionEmailPasswordHeading"/>
 		<property name="passwordLabel"/>

@@ -191,6 +191,9 @@ public class PostpaidPersonalDetailsFormFields {
     public String mobileLabel;
     
     @ValueMapValue
+    public String subMobileLabel;
+
+    @ValueMapValue
     public String mobilePlaceholder;
     
     @ValueMapValue
@@ -343,6 +346,18 @@ public class PostpaidPersonalDetailsFormFields {
         return consentPreviewText;
     }
 
+    public void setConsentPreviewText(String consentPreviewText) {
+        this.consentPreviewText = consentPreviewText;
+    }
+
+    public void setConsentMarketingText(String consentMarketingText) {
+        this.consentMarketingText = consentMarketingText;
+    }
+
+    public void setConsentDescription(String consentDescription) {
+        this.consentDescription = consentDescription;
+    }
+
     public String getShippingHelperText() {
         return shippingHelperText;
     }
@@ -420,6 +435,10 @@ public class PostpaidPersonalDetailsFormFields {
 
     public String getMobileLabel() {
         return mobileLabel;
+    }
+
+    public String getSubMobileLabel() {
+        return subMobileLabel;
     }
 
     public String getMobilePlaceholder() {

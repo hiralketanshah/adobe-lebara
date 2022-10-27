@@ -10,6 +10,7 @@ Include conf.d/rewrites/default_rewrite.rules
 #new site to new site rewrites (global rewrites i.e. without locale)
 RewriteRule ^/AGBneu$ /de/AGBneu.html [L,R=302]
 RewriteRule ^/aktivieren$ https://de-videoident-customer-onboarding.lebara.com/ [L,R=301]
+RewriteRule ^/aktivierung$ https://de-videoident-customer-onboarding.lebara.com/ [L,R=301]
 RewriteRule ^/shopident$ /de/partner/shopsuche.html [L,R=301]
 RewriteRule ^/online-aufladen$ /de/prepaid/guthaben-aufladen.html [L,R=301]
 RewriteRule ^/SIMneu$ /de/neue_sim_karte.html [L,R=302]
@@ -18,6 +19,8 @@ RewriteRule ^/aktivieren-hilfe$ /de/hilfe/anleitung/sim-registrierung.html [L,R=
 RewriteRule ^/sim$ /de/hilfe/netzwechsel.html [L,R=301]
 RewriteRule ^/SIM$ /de/hilfe/netzwechsel.html [L,R=301]
 RewriteRule ^/videoident$ https://de-videoident-customer-onboarding.lebara.com/ [L,R=301]
+RewriteRule ^/topup$ /de/prepaid/guthaben-aufladen.html?utm_source=offline&utm_medium=leaflet&utm_campaign=simpackinsert [L,R=301]
+RewriteRule ^/hilfe$ /de/hilfe.html?utm_source=offline&utm_medium=leaflet&utm_campaign=simpackinsert [L,R=301]
 
 # rewrite for root redirect
 RewriteRule ^/?$ /de/home.html [L,R=301,NE]
@@ -497,6 +500,37 @@ RewriteRule ^/([a-z]+)/vertrag/leb-allnet-tarif/leb-allnet-m-easy.html	/$1/vertr
 RewriteRule ^/([a-z]+)/vertrag/leb-allnet-tarif/leb-allnet-s-easy.html	/$1/vertrag.html [L,R=301]
 RewriteRule ^/([a-z]+)/vertrag/leb-allnet-tarif.html	/$1/vertrag.html [L,R=301]
 RewriteRule ^/([a-z]+)/prepaid/vorteile/bestes-d-netz.html	/$1/prepaid/vorteile.html [L,R=301]
+RewriteRule ^/([a-z]+)/prepaid/vorteile/bestes-d-netz.html$	/$1.html [L,R=301]
+RewriteRule ^/([a-z]+)/sim-aktivierung.html$	https://de-videoident-customer-onboarding.lebara.com/ [L,R=301]
+RewriteRule ^/([a-z]+)/sim-aktivierung/erfolg.html$	/$1/sim-registrierung/success.html [L,R=301]
+
+RewriteRule ^/([a-z]+)/ueber-lebara/stellenangebote/business-service-agent--m-w-d----vollzeit.html$	/$1/ueber-lebara/stellenangebote.html [L,R=301]
+RewriteRule ^/([a-z]+)/ueber-lebara/stellenangebote/crm-manager--m-w-d-.html$	/$1/ueber-lebara/stellenangebote.html [L,R=301]
+RewriteRule ^/([a-z]+)/ueber-lebara/stellenangebote/marketing-manager--m-w-d-.html$	/$1/ueber-lebara/stellenangebote.html [L,R=301]
+RewriteRule ^/([a-z]+)/ueber-lebara/stellenangebote/online-marketing-manager--sea-manager--m-w-d-.html$	/$1/ueber-lebara/stellenangebote.html [L,R=301]
+RewriteRule ^/([a-z]+)/ueber-lebara/stellenangebote/product-manager-mobilfunk--m-w-d-.html$	/$1/ueber-lebara/stellenangebote.html [L,R=301]
+RewriteRule ^/([a-z]+)/ueber-lebara/stellenangebote/social-media--und-community-manager--m-w-d-.html$	/$1/ueber-lebara/stellenangebote.html [L,R=301]
+RewriteRule ^/([a-z]+)/ueber-lebara/stellenangebote/werkstudent-online-marketing--m-w-d-.html$	/$1/ueber-lebara/stellenangebote.html [L,R=301]
+RewriteRule ^/([a-z]+)/vertrag/datenvolumen-aufladen/leb-plus-10gb.html$	/$1/vertrag/datenvolumen-aufladen/plus-10gb.html [L,R=301]
+RewriteRule ^/([a-z]+)/vertrag/datenvolumen-aufladen/leb-plus-1gb.html$	/$1/vertrag/datenvolumen-aufladen/plus-1gb.html [L,R=301]
+RewriteRule ^/([a-z]+)/vertrag/datenvolumen-aufladen/leb-plus-5gb.html$	/$1/vertrag/datenvolumen-aufladen/plus-5gb.html [L,R=301]
+RewriteRule ^/([a-z]+)/prepaid/aktion/3-euro-sim-karte.html$	/$1/prepaid/hello-tarife.html [L,R=301]
+RewriteRule ^/([a-z]+)/prepaid/komplett-tarif.html$	/$1/prepaid/hello-tarife.html [L,R=301]
+RewriteRule ^/([a-z]+)/prepaid/komplett-tarif/tuerkei-extras.html$	/$1/prepaid/hello-tarife.html [L,R=301]
+RewriteRule ^/([a-z]+)/ueber-lebara/pressemitteilungen/komplett-tarife-05-21.html$	/$1/ueber-lebara/pressemitteilungen.html [L,R=301]
+RewriteRule ^/([a-z]+)/ueber-lebara/pressemitteilungen/neue-lebara--komplett--tarife-mit-bester-d-netz-qualitaet.html$	/$1/ueber-lebara/pressemitteilungen.html [L,R=301]
+RewriteRule ^/([a-z]+)/vertrag/leb-allnet-tarif.html$	/$1/vertrag.html [L,R=301]
+RewriteRule ^/([a-z]+)/vertrag/leb-allnet-tarif/leb-allnet-l-easy-24m.html$	/$1/vertrag.html [L,R=301]
+RewriteRule ^/([a-z]+)/vertrag/leb-allnet-tarif/leb-allnet-l-easy.html$	/$1/vertrag.html [L,R=301]
+RewriteRule ^/([a-z]+)/vertrag/leb-allnet-tarif/leb-allnet-m-easy-24m.html$	/$1/vertrag.html [L,R=301]
+RewriteRule ^/([a-z]+)/vertrag/leb-allnet-tarif/leb-allnet-m-easy.html$	/$1/vertrag.html [L,R=301]
+RewriteRule ^/([a-z]+)/vertrag/leb-allnet-tarif/leb-allnet-m-smart-24m.html$	/$1/vertrag.html [L,R=301]
+RewriteRule ^/([a-z]+)/vertrag/leb-allnet-tarif/leb-allnet-s-easy-24m.html$	/$1/vertrag.html [L,R=301]
+RewriteRule ^/([a-z]+)/vertrag/leb-allnet-tarif/leb-allnet-s-easy.html$	/$1/vertrag.html [L,R=301]
+
+
+#email redirect
+RewriteRule ^/([a-z]+)/confirmation$ /$1/mylebara/email-bestatigen.html [L,R=301]
 
 #ALL Country Rewrites
 RewriteRule ^/([a-z]+)/call-afghanistan$	/$1/minutenpreis-auslandsanrufe/afghanistan-anrufen.html [L,R=301]
@@ -627,13 +661,13 @@ RewriteRule ^/([a-z]+)/call-zimbabwe$	/$1/minutenpreis-auslandsanrufe/simbabwe-a
 RewriteRule ^/robots.txt$ /content/dam/${CONTENT_FOLDER_NAME}/markets/de/robots.txt [NC,PT]
 
 # Sitemap rewrite
-RewriteRule ^/sitemap.xml$ /content/${CONTENT_FOLDER_NAME}/de.sitemap.xml [NC,PT]
+RewriteRule ^/sitemap.xml$ /content/${CONTENT_FOLDER_NAME}/de.lebarasitemap.xml [NC,PT]
 
 # SpeedKit rewrite
 RewriteRule ^/wrapper-sw.js$ /etc.clientlibs/lebara/clientlibs/clientlib-speedkit-de.js [NC,PT]
 
 # Google Merchant Center rewrite
-RewriteRule ^/google331b37d915cf40bc.html$ /content/dam/${CONTENT_FOLDER_NAME}/markets/google331b37d915cf40bc.html [NC,PT]
+RewriteRule ^/google331b37d915cf40bc.html$ /content/dam/${CONTENT_FOLDER_NAME}/markets/de/google331b37d915cf40bc.html [NC,PT]
 
 # SpeedKit rewrite
 RewriteRule ^/wrapper-sw.js$ /etc.clientlibs/lebara/clientlibs/clientlib-speedkit-de.js [NC,PT]

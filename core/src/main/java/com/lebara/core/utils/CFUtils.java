@@ -96,6 +96,7 @@ public class CFUtils {
             ContentFragment cityFragment = cfResource.adaptTo(ContentFragment.class);
             if (null != cityFragment) {
                 String[] cityArray = CFUtils.getElementArrayValue(cityFragment, "value");
+                Arrays.sort(cityArray);
                 for (int i = 0; i < cityArray.length; i++) {
                     SelectBean city = new SelectBean();
                     city.setValue(cityArray[i]);
@@ -103,7 +104,6 @@ public class CFUtils {
                     city.setKey(String.valueOf(i));
                     cities.add(city);
                 }
-                return cities;
             }
         }
         return cities;
@@ -125,10 +125,14 @@ public class CFUtils {
                 String countryLandingPageUrl = CFUtils.getElementValue(irFragment, "countryLandingPageURL");
                 countryLandingPageUrl = AemUtils.getLinkWithExtension(countryLandingPageUrl, resolver);
                 String countryName = CFUtils.getElementValue(irFragment, "countryName");
+                String countryFlag = CFUtils.getElementValue(irFragment, "countryFlag");
                 if (StringUtils.isNotBlank(countryLandingPageUrl) && StringUtils.isNotBlank(countryName)) {
                     SelectOption selectOption = new SelectOption();
                     selectOption.setLabel(countryName);
                     selectOption.setValue(countryLandingPageUrl);
+                    if(StringUtils.isNotBlank(countryFlag)) {
+                    	selectOption.setCountryFlag(countryFlag);
+                    }
                     internationalRateBeanList.add(selectOption);
                 }
             }
@@ -187,6 +191,15 @@ public class CFUtils {
             return 0;
         }
     }
+
+    public static ContentFragment getContentFragment(ResourceResolver resourceResolver, String cfPath) {
+        Resource cfResource = resourceResolver.getResource(cfPath);
+        if (cfResource != null) {
+            return cfResource.adaptTo(ContentFragment.class);
+        }
+        return null;
+    }
+
     public static PromotionFragmentBean populatePromotions(ResourceResolver resourceResolver, String promotionFragPath){
         Resource promotionalFragres = resourceResolver.getResource(promotionFragPath);
         PromotionFragmentBean promotionFragmentBean = new PromotionFragmentBean();

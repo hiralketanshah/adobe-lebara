@@ -8,6 +8,10 @@ import com.day.cq.commons.inherit.InheritanceValueMap;
 import com.day.cq.i18n.I18n;
 import com.day.cq.wcm.api.Page;
 import com.day.cq.wcm.api.PageManager;
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
+import com.lebara.core.models.beans.InternationalRatesItem;
 import com.lebara.core.models.beans.SelectOption;
 import com.lebara.core.utils.AemUtils;
 import com.lebara.core.utils.CFUtils;
@@ -27,122 +31,121 @@ import org.slf4j.LoggerFactory;
 import javax.annotation.PostConstruct;
 import java.util.Collections;
 import java.util.List;
+import java.util.LinkedList;
 
-@Model(adaptables = SlingHttpServletRequest.class, adapters = {InternationalRatesExporter.class, ComponentExporter.class},
-        resourceType = InternationalRatesExporter.RESOURCE_TYPE, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
+@Model(adaptables = SlingHttpServletRequest.class, adapters = { InternationalRatesExporter.class,
+		ComponentExporter.class }, resourceType = InternationalRatesExporter.RESOURCE_TYPE, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
 @Exporter(name = ExporterConstants.SLING_MODEL_EXPORTER_NAME, extensions = ExporterConstants.SLING_MODEL_EXTENSION)
 public class InternationalRatesExporter implements ComponentExporter {
 
-    /**
-     * The resource type.
-     */
-    protected static final String RESOURCE_TYPE = "lebara/components/internationalrates";
+	/**
+	 * The resource type.
+	 */
+	protected static final String RESOURCE_TYPE = "lebara/components/internationalrates";
 
-    final static Logger LOGGER = LoggerFactory.getLogger(CFUtils.class);
+	final static Logger LOGGER = LoggerFactory.getLogger(CFUtils.class);
 
-    @SlingObject
-    private ResourceResolver resourceResolver;
+	@SlingObject
+	private ResourceResolver resourceResolver;
 
-    @ScriptVariable
-    private Resource resource;
+	@ScriptVariable
+	private Resource resource;
 
-    @SlingObject
-    private SlingHttpServletRequest slingRequest;
+	@SlingObject
+	private SlingHttpServletRequest slingRequest;
 
-    @ValueMapValue
-    private String cfPath;
+	@ValueMapValue
+	private String cfPath;
 
-    private String selectCountryLabel;
+	@ValueMapValue
+	private String description;
 
-    private String countryLabel;
+	private String countryLabel;
 
-    @ValueMapValue
-    private String description;
+	private String fragmentRootPath;
 
-    private String fragmentRootPath;
+	private I18n i18n;
 
-    private I18n i18n;
+	private String[] contracts;
+	private List<SelectOption> countryList;
 
-    private String landlineCallRate;
-    private String mobileCallRate;
-    private String smsRate;
-    private List<SelectOption> countryList;
+	List<InternationalRatesItem> listOfRates;
 
-    @PostConstruct
-    public void init() {
-        if (StringUtils.isNotBlank(cfPath)) {
-            i18n = AemUtils.geti18n(resourceResolver, resource, slingRequest);
-            PageManager pageManager = resourceResolver.adaptTo(PageManager.class);
-            Page page = null;
-            if (pageManager != null) {
-                page = pageManager.getContainingPage(resource);
-            }
-            if (page != null) {
-                InheritanceValueMap inheritedProp = new HierarchyNodeInheritanceValueMap(page.getContentResource());
-                fragmentRootPath = inheritedProp.getInherited("internationalRatesRootPath", String.class);
-            }
-            Resource cfResource = resourceResolver.getResource(cfPath);
-            if (cfResource != null) {
-                ContentFragment irFragment = cfResource.adaptTo(ContentFragment.class);
-                if (null != irFragment) {
-                    countryLabel = CFUtils.getElementValue(irFragment, "countryName");
-                    landlineCallRate = CFUtils.getElementValue(irFragment, "landlineCallRate");
-                    mobileCallRate = CFUtils.getElementValue(irFragment, "mobileCallRate");
-                    smsRate = CFUtils.getElementValue(irFragment, "smsRate");
-                }
-            }
-            LOGGER.debug("Interntional rates fragmentRootPath is {}", fragmentRootPath);
-            if (StringUtils.isNotBlank(fragmentRootPath)) {
-                countryList = CFUtils.getInternationalRates(resourceResolver, fragmentRootPath);
-            } else {
-                countryList = Collections.emptyList();
-            }
+	@PostConstruct
+	public void init() {
+		if (StringUtils.isNotBlank(cfPath)) {
+			i18n = AemUtils.geti18n(resourceResolver, resource, slingRequest);
+			PageManager pageManager = resourceResolver.adaptTo(PageManager.class);
+			Page page = null;
+			if (pageManager != null) {
+				page = pageManager.getContainingPage(resource);
+			}
+			if (page != null) {
+				InheritanceValueMap inheritedProp = new HierarchyNodeInheritanceValueMap(page.getContentResource());
+				fragmentRootPath = inheritedProp.getInherited("internationalRatesRootPath", String.class);
+			}
+			Resource cfResource = resourceResolver.getResource(cfPath);
+			if (cfResource != null) {
+				ContentFragment irFragment = cfResource.adaptTo(ContentFragment.class);
+				if (null != irFragment) {
+					countryLabel = CFUtils.getElementValue(irFragment, "countryName");
+					contracts = CFUtils.getElementArrayValue(irFragment, "contracts");
+				}
+			}
+			LOGGER.debug("Interntional rates fragmentRootPath is {}", fragmentRootPath);
+			if (StringUtils.isNotBlank(fragmentRootPath)) {
+				countryList = CFUtils.getInternationalRates(resourceResolver, fragmentRootPath);
+			} else {
+				countryList = Collections.emptyList();
+			}
+			listOfRates = getInternationRates();
+		}
+	}
 
-        }
-    }
+	private List<InternationalRatesItem> getInternationRates() {
+		Gson gson = new Gson();
+		List<InternationalRatesItem> listOfRates = new LinkedList<>();
+		for (String contract : contracts) {
+			InternationalRatesItem item = gson.fromJson(contract, InternationalRatesItem.class);
+			listOfRates.add(item);
+		}
+		return listOfRates;
+	}
 
-    public String getSelectCountryLabel() {
-        return (i18n == null ? "Please select a country" : i18n.get("lebara.SelectCountry.label"));
-    }
+	public List<InternationalRatesItem> getContracts() {
+		return listOfRates;
+	}
 
-    public String getCountryLabel() {
-        return countryLabel;
-    }
+	public String getSelectCountryLabel() {
+		return (i18n == null ? "Please select a country" : i18n.get("lebara.SelectCountry.label"));
+	}
 
-    public String getDescription() {
-        return description;
-    }
+	public String getCountryLabel() {
+		return countryLabel;
+	}
 
-    public String getLandlineCallRate() {
-        return landlineCallRate;
-    }
+	public String getDescription() {
+		return description;
+	}
 
-    public String getMobileCallRate() {
-        return mobileCallRate;
-    }
+	public List<SelectOption> getCountryList() {
+		return countryList == null ? (Collections.emptyList()) : (Collections.unmodifiableList(countryList));
+	}
 
-    public String getSmsRate() {
-        return smsRate;
-    }
+	public String getLandlineLabel() {
+		return i18n == null ? "Landline" : i18n.get("landline");
+	}
 
-    public List<SelectOption> getCountryList() {
-        return countryList == null ? (Collections.emptyList()) : (Collections.unmodifiableList(countryList));
-    }
+	public String getMobileLabel() {
+		return i18n == null ? "Mobile" : i18n.get("mobile");
+	}
 
-    public String getLandlineLabel() {
-        return i18n == null ? "Landline" : i18n.get("landline");
-    }
+	public String getSmsLabel() {
+		return i18n == null ? "SMS" : i18n.get("sms");
+	}
 
-    public String getMobileLabel() {
-        return i18n == null ? "Mobile" : i18n.get("mobile");
-    }
-
-    public String getSmsLabel() {
-        return i18n == null ? "SMS" : i18n.get("sms");
-    }
-
-    @Override
-    public String getExportedType() {
-        return RESOURCE_TYPE;
-    }
+	@Override
+	public String getExportedType() {
+		return RESOURCE_TYPE;
+	}
 }
