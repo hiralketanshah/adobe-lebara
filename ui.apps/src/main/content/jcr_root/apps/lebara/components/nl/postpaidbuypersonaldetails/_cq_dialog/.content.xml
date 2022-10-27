@@ -743,7 +743,56 @@
 								rootPath="/content/lebara"/>
                         </items>
                     </column2>
-                    <column3
+                    <column3 
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Business Subscription"
+                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                        <items jcr:primaryType="nt:unstructured">
+                            <companyNameLabel
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldDescription="Label for Company Name field. Example : Company Name"
+                                fieldLabel="Company Name Label"
+                                name="./frmFields/companyNameLabel"
+                                value="Company Name"/>
+                            <companyNamePlaceholder
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldDescription="Placeholder for Company Name field. Example : Name of the company"
+                                fieldLabel="Company Name Placeholder"
+                                name="./frmFields/companyNamePlaceholder"
+                                value="Name of the company"/>
+                            <kvkNumberLabel
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldDescription="Label for kvkNumber field. Example : KVK number (optional)"
+                                fieldLabel="kvk Number Label"
+                                name="./frmFields/kvkNumberLabel"
+                                value="KVK number (optional)"/>
+                            <kvkNumberPlaceholder
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldDescription="Placeholder for kvkNumber field. Example : 12345678"
+                                fieldLabel="kvk Number Placeholder"
+                                name="./frmFields/kvkNumberPlaceholder"
+                                value="12345678"/>
+                            <vatNumberLabel
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldDescription="Label for VAT Number field. Example : VAT-number (optional)"
+                                fieldLabel="VAT Number Label"
+                                name="./frmFields/vatNumberLabel"
+                                value="VAT-number (optional)"/>
+                            <vatNumberPlaceholder
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldDescription="Placeholder for VAT Number field. Example : NL00000000000B00"
+                                fieldLabel="VAT Number Placeholder"
+                                name="./frmFields/vatNumberPlaceholder"
+                                value="NL00000000000B00"/>
+                        </items>
+                    </column3>
+                    <column4
                         jcr:primaryType="nt:unstructured"
                         jcr:title="Error Messages"
                         sling:resourceType="granite/ui/components/coral/foundation/include"
