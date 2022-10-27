@@ -5,6 +5,7 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import org.apache.commons.lang3.StringUtils;
+import com.google.gson.JsonSyntaxException;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.SlingHttpServletResponse;
 import org.apache.sling.api.resource.Resource;
@@ -15,6 +16,7 @@ import org.osgi.framework.Constants;
 import org.osgi.service.component.annotations.Component;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import com.day.cq.commons.jcr.JcrConstants;
 
 import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;
@@ -70,7 +72,7 @@ public class ModelFilter implements Filter {
 			JsonObject model = gson.fromJson(originalContent, JsonObject.class);
 			addAddnPropertiesInPageModel(model, request);
 			modifiedContent = model.toString();
-		} catch (Exception e) {
+		} catch (JsonSyntaxException e) {
 			log.error("Error at ModelFilter : {}", e);
 			modifiedContent = originalContent;
 		}
@@ -87,13 +89,13 @@ public class ModelFilter implements Filter {
 		ResourceResolver resolver = ((SlingHttpServletRequest) request).getResourceResolver();
 		Resource resource = resolver.getResource(path);
 		if (null != resource) {
-			Resource content = resource.getChild("jcr:content");
+			Resource content = resource.getChild(JcrConstants.JCR_CONTENT);
 			if (null != content) {
 				ValueMap properties = content.adaptTo(ValueMap.class);
 				if (properties.containsKey("pageTitle") && null != properties.get("pageTitle")) {
 					pageTitle = properties.get("pageTitle", String.class);
 				} else {
-					pageTitle = properties.get("jcr:title", String.class);
+					pageTitle = properties.get(JcrConstants.JCR_TITLE, String.class);
 				}
 
 			}
