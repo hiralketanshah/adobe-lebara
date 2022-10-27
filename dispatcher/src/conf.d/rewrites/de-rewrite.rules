@@ -18,9 +18,9 @@ RewriteRule ^/agb$ /de/ueber-lebara/agb.html [L,R=301]
 RewriteRule ^/aktivieren-hilfe$ /de/hilfe/anleitung/sim-registrierung.html [L,R=301]
 RewriteRule ^/sim$ /de/hilfe/netzwechsel.html [L,R=301]
 RewriteRule ^/SIM$ /de/hilfe/netzwechsel.html [L,R=301]
+RewriteRule ^/videoident$ https://de-videoident-customer-onboarding.lebara.com/ [L,R=301]
 RewriteRule ^/topup$ /de/prepaid/guthaben-aufladen.html?utm_source=offline&utm_medium=leaflet&utm_campaign=simpackinsert [L,R=301]
 RewriteRule ^/hilfe$ /de/hilfe.html?utm_source=offline&utm_medium=leaflet&utm_campaign=simpackinsert [L,R=301]
-
 
 # rewrite for root redirect
 RewriteRule ^/?$ /de/home.html [L,R=301,NE]
