@@ -55,6 +55,9 @@
 		<property name="cancelChangePlanCheckboxBottom" />
 		<property name="cancelChangePlanConfirmLabel" />
 		<property name="cancelChangePlanCancelLabel" />
+		<property name="offlinePlanRenewalMessage" />
+		<property name="congratulationHeader" />
+		<property name="congratulationMessage" />
 
 		<!-- Postpaid Sim Validation props -->
 		<property name="verifySimHeading" />
@@ -78,16 +81,24 @@
 
 		<!-- selection props -->
 		<property name="cardCtaText" />
-
+		<!-- sim register alert props -->
+		<property name="registerWarningMessage" />
+		<property name="suspendedWarningMessage" />
+		<property name="overlayHeader" />
+		<property name="overlaySuccessLabel" />
+		<property name="overlaySkipLabel" />
 		<!-- simswitch props -->
 		<property name="balanceLabel" />
 		<property name="simName" />
+		<property name="activeLabel" />
+		<property name="inActiveLabel" />
 		<!-- Balance Card props -->
 		<property name="activeDesc" />
 		<property name="inactiveLabel" />
 		<property name="inactiveDesc" />
 		<property name="activeLabel" />
 		<property name="autoTopupButtonLabel" />
+		<property name="saveAutoTopupButtonLabel" />
 		<property name="autoTopupLabel" />
 		<property name="autoTopupStatusLabel" />
 		<property name="description" />
@@ -95,6 +106,8 @@
 		<property name="limitSelectLabel" />
 		<property name="topupLabel" />
 		<property name="topupSelectLabel" />
+		<property name="successOverlayTitle" />
+		<property name="successOverlaySubTitle" />
 		<!-- promotion banner props -->
 		<property name="fileReference" />
 		<!-- Postpaid Plans props -->
@@ -139,6 +152,7 @@
 		<property name="smsLabel" />
 		<property name="smsValue" />
 		<property name="validUntilLabel" />
+		<property name="validLabel" />
 		<property name="aioLabel" />
 		<property name="l2lLabel" />
 		<property name="localLabel" />
@@ -215,8 +229,19 @@
 		<property name="mobileNumberErrorMessage" />
 		<property name="mobileNumberMaxLength" />
 		<property name="mobileNumberFieldPattern" />
+		<property name="mobileNumberFieldNumber" />
 		<property name="currentProviderDefaultSelectValue" />
 		<property name="moreLabel" />
+
+		<property name="rioCodeLabel" />
+		<property name="portDateLabel" />
+		<property name="rioCodePlaceHolder" />
+		<property name="portDatePlaceHolder" />
+		<property name="rioErrorMessage" />
+		<property name="portDateErrorMessage" />
+		<property name="portNotAllowedErrorMessage" />
+		<property name="rioCodeDesc" />
+		<property name="portDateDesc" />
 
 		<!-- Order Submitted / Confirmation Message -->
 		<property name="orderIdTitle" />
@@ -338,6 +363,7 @@
 		<property name="guestResetLinkLabel" />
 		<property name="guestContinueLabel" />
 		<property name="guestTabLabel" />
+		<property name="captchaFieldErrorMessage" />
 
 		<!-- Reset Password -->
 		<property name="resetPwdTitle" />
@@ -375,6 +401,7 @@
 		<property name="phoneNumberLabel" />
 		<property name="freeSimLabel" />
 		<property name="topupAutoRenewLabel" />
+		<property name="autoRenewLabel" />
 		<property name="topupAutoRenewDesc" />
 		<property name="prepaidAutoRenewDesc" />
 		<property name="postpaidAutoRenewDesc" />
@@ -391,6 +418,7 @@
 		<property name="voucherCodeExpiredMessage"/>
 		<property name="voucherCodeDiscountLabel"/>
 		<property name="consentLabel"/>
+		<property name="additionalDeliveryLabel"/>
 		<property name="privacyPolicyLabel"/>		
 		<property name="paymentMethodLabel"/>
 		<property name="paymentButtonLabel"/>
@@ -420,6 +448,11 @@
 		<property name="contractSummary"/>
 		<property name="pdfDownloadLabel"/>
 		<property name="pdfCloseLabel"/>
+		<property name="alertMessageText"/>
+		<property name="conditionsContent"/>
+		<property name="conditionsHeader"/>
+		<property name="termsAndConditionsContent"/>
+		<property name="getNewNumberText"/>
 		<!--Payment Method component -->
 		<property name="preferredPaymentLabel"/>
 		<property name="preferredPaymentDesc"/>
@@ -468,6 +501,8 @@
 
 		<!--Global Configs -->
 		<property name="planNotEligibleErrorMessage"/>
+		<property name="planNotEligibleErrorTitle"/>
+		<property name="planNotEligibleErrorButtonText"/>
 		
 		<!--Payment on Global Configs -->
 		<property name="card"/>
@@ -489,6 +524,8 @@
 		<property name="recurringLabel"/>
 		<property name="directDebitCheckboxText"/>
 		<property name="mandatoryCheckBoxLabel"/>
+		<property name="postpaidMsisdnToKeepFail"/>
+		<property name="prepaidMsisdnToKeepFail"/>
 
 		<!--Support component -->
 		<property name="ctaLinkLabel"/>
@@ -528,12 +565,14 @@
 		<property name="emailLabel"/>
 		<property name="emailPlaceholder"/>
 		<property name="mobileLabel"/>
+		<property name="subMobileLabel"/>
 		<property name="mobilePlaceholder"/>
 		<property name="buttonCTALabel"/>
 		<property name="verifyCodeLabel"/>
 		<property name="otpSentSuccessfullyMsg"/>
 		<property name="label1"/>
 		<property name="label2"/>
+		<property name="sectionLabel"/>
 		<property name="verifyCodePlaceholder"/>
 		<property name="ctaResendVerificationLabel"/>
 		<property name="ctaEditMobileLabel"/>
@@ -548,6 +587,7 @@
 
 		<!-- Personal Details -->
 		<property name="yourPersonalDetailsLabel"/>
+		<property name="simChoiceButtonLabel"/>
 		<property name="firstNameLabel"/>
 		<property name="firstNamePlaceholder"/>
 		<property name="lastNameLabel"/>
@@ -586,7 +626,11 @@
 		<property name="streetLabelErrorPattern"/>
 		<property name="houseNumberErrorMax"/>
 		<property name="houseNumberErrorRequired"/>
-		<property name="cityErrorMax"/>
+		<property name="cityMaxCharError"/>
+		<property name="cityPatternError"/>
+		<property name="legalRegistrationSucess"/>
+		<property name="legalRegistrationLabel"/>
+		<property name="legalRegistrationSucessSubtitle"/>
 		<property name="cityErrorRequired"/>
 		<property name="houseNumberErrorPattern"/>
 		<property name="zipCodeErrorMin"/>
@@ -604,6 +648,27 @@
 		<property name="hidePasswordLabel"/>
 		<property name="confirmPasswordPatternError"/>
 		<property name="passwordPatternError"/>
+		<property name="registerLaterLabel"/>
+		<property name="simRegistrationInfo"/>
+		<property name="documentLabel"/>
+		<property name="documentPlaceholder"/>
+		<property name="documentNumberLabel"/>
+		<property name="documentNumberPlacholder"/>
+		<property name="documentErrorRequired"/>
+		<property name="documentNumberErrorRequired"/>
+		<property name="documentNumberErrorPattern"/>
+		<property name="titleLabel"/>
+		<property name="titlePlaceholder"/>
+		<property name="titleErrorRequired"/>
+		<property name="addressRequired"/>
+		<property name="dobLabel"/>
+		<property name="dobPlaceholder"/>
+		<property name="dobErrorRequired"/>
+		<property name="dobError"/>
+		<property name="termsConditionsError"/>
+		<property name="additionalDeliveryLabel"/>
+		<property name="additionalDeliveryPlaceholder"/>
+		<property name="additionFieldLengthError"/>
 
 		<!-- Postpaid personal details -->
 		<property name="emailLabel"/>
@@ -738,6 +803,7 @@
 		<property name="sectionUsernameHeading"/>
 		<property name="sectionAddressHeading"/>
 		<property name="alternativeContactLabel"/>
+		<property name="settingsUpdatedLabel"/>
 		<property name="alternativeNumberPlaceholder"/>
 		<property name="sectionEmailPasswordHeading"/>
 		<property name="passwordLabel"/>

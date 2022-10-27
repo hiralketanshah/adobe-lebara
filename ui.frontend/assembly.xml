@@ -6,7 +6,28 @@
     <includeBaseDirectory>false</includeBaseDirectory>
     <fileSets>
         <fileSet>
-            <directory>${basedir}/build/</directory>
+            <directory>${basedir}/packages/germany/build/</directory>
+            <includes>
+                <include>**/*</include>
+            </includes>
+            <outputDirectory></outputDirectory>
+        </fileSet>
+        <fileSet>
+            <directory>${basedir}/packages/france/build/</directory>
+            <includes>
+                <include>**/*</include>
+            </includes>
+            <outputDirectory></outputDirectory>
+        </fileSet>
+        <fileSet>
+            <directory>${basedir}/packages/netherlands/build/</directory>
+            <includes>
+                <include>**/*</include>
+            </includes>
+            <outputDirectory></outputDirectory>
+        </fileSet>
+        <fileSet>
+            <directory>${basedir}/packages/denmark/build/</directory>
             <includes>
                 <include>**/*</include>
             </includes>

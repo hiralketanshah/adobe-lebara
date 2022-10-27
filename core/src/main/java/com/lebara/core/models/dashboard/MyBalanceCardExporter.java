@@ -64,9 +64,33 @@ public class MyBalanceCardExporter implements ComponentExporter {
 
     @ValueMapValue
     private String autoTopupButtonLabel;
+    
+    @ValueMapValue
+    private String notActiveAutoTopupButtonLabel;
+
+    @ValueMapValue
+    private String saveAutoTopupButtonLabel;
 
     @ValueMapValue
     private String cfTopupPlanPath;
+
+    @ValueMapValue
+    private Boolean showSuccessMessageOverlay;
+
+    @ValueMapValue
+    private String successOverlayTitle;
+
+    @ValueMapValue
+    private String successOverlaySubTitle;
+
+    @ValueMapValue
+    private String ctaCloseLabel;
+
+    @ValueMapValue
+    private Boolean deactivateSuccessOverlaySubTitle;
+
+    @ValueMapValue
+    private int creditListCount;
 
     public List<String> getTopUpOptions() {
         return CFUtils.populateTopupInfo(resourceResolver.getResource(cfTopupPlanPath));
@@ -115,6 +139,14 @@ public class MyBalanceCardExporter implements ComponentExporter {
     public String getAutoTopupButtonLabel() {
         return autoTopupButtonLabel;
     }
+    
+    public String getNotActiveAutoTopupButtonLabel() {
+		return notActiveAutoTopupButtonLabel;
+	}
+
+	public String getSaveAutoTopupButtonLabel() {
+        return saveAutoTopupButtonLabel;
+    }
 
     public String getInactiveLabel() {
         return inactiveLabel;
@@ -122,6 +154,30 @@ public class MyBalanceCardExporter implements ComponentExporter {
 
     public String getInactiveDesc() {
         return inactiveDesc;
+    }
+
+    public Boolean getShowSuccessMessageOverlay() {
+        return showSuccessMessageOverlay;
+    }
+
+    public String getSuccessOverlayTitle() {
+        return successOverlayTitle;
+    }
+
+    public String getSuccessOverlaySubTitle() {
+        return successOverlaySubTitle;
+    }
+
+    public String getCtaCloseLabel() {
+        return ctaCloseLabel;
+    }
+
+    public Boolean getDeactivateSuccessOverlaySubTitle() {
+        return deactivateSuccessOverlaySubTitle;
+    }
+
+    public int getCreditListCount() {
+        return creditListCount;
     }
 
     @Override

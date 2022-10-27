@@ -19,10 +19,13 @@ import org.apache.sling.models.annotations.injectorspecific.ChildResource;
 import org.apache.sling.models.annotations.injectorspecific.ScriptVariable;
 import org.apache.sling.models.annotations.injectorspecific.SlingObject;
 import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
+import com.day.cq.commons.inherit.InheritanceValueMap;
+import javax.inject.Inject;
 
 import javax.annotation.PostConstruct;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Model(adaptables = SlingHttpServletRequest.class, adapters = {EmptyCartExporter.class, ComponentExporter.class},
         resourceType = EmptyCartExporter.RESOURCE_TYPE, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
@@ -39,6 +42,9 @@ public class EmptyCartExporter implements ComponentExporter {
 
     @ScriptVariable
     private Resource resource;
+
+    @Inject
+    private InheritanceValueMap pageProperties;
 
     @SlingObject
     private SlingHttpServletRequest slingRequest;
@@ -173,7 +179,9 @@ public class EmptyCartExporter implements ComponentExporter {
     public String getAddedtoCartLabel() {
         return (i18n == null ? "Addon {0} added to cart" : i18n.get("lebara.addon.addedtocart.label"));
     }
-
+    public boolean getShowModelOnAddtoCart(){
+        return Optional.ofNullable(pageProperties.getInherited("showModelOnAddtoCart", Boolean.class)).orElse(false);
+    }
     @Override
     public String getExportedType() {
         return RESOURCE_TYPE;

@@ -1,0 +1,33 @@
+{
+  "compilerOptions": {
+    "baseUrl": "./",
+    "paths": {
+      "@lebara/core" : ["./packages/lebara-client/packages/core/src/*"],
+      "@lebara/germany" : ["./packages/lebara-client/packages/germany/src/*"],
+      "@lebara/france" : ["./packages/lebara-client/packages/france/src/*"],
+      "@lebara/denmark" : ["./packages/lebara-client/packages/denmark/src/*"],
+      "@lebara/netherlands" : ["./packages/lebara-client/packages/netherlands/src/*"],
+      "@lebara/aem-core" : ["./packages/core/src/*"],
+    },
+    "target": "es5",
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "noFallthroughCasesInSwitch": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "downlevelIteration": true,
+    "jsx": "react-jsx"
+  }
+}

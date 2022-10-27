@@ -154,7 +154,7 @@
                                                 jcr:primaryType="nt:unstructured"
                                                 toolbar="[table#insertcolumn-before,table#insertcolumn-after,table#removecolumn,-,table#insertrow-before,table#insertrow-after,table#removerow,-,table#mergecells-right,table#mergecells-down,table#mergecells,table#splitcell-horizontal,table#splitcell-vertical,-,table#selectrow,table#selectcolumn,-,table#ensureparagraph,-,table#modifytableandcell,table#removetable,-,undo#undo,undo#redo,-,table#exitTableEditing,-]"/>
                                     </cui>
-                                </uiSettings>mobilePlaceHolder
+                                </uiSettings>
                             </description>
 
                             <lebaraMobileLabel
@@ -206,6 +206,14 @@
                                     fieldLabel="Sim Required Error Message"
                                     name="./attachSimModal/frmFields/simRequiredErrorMsg"
                                     value="Required"/>
+                            <showUpdatedModal
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                name="./showUpdatedModal"
+                                text="Show Updated Modal"
+                                uncheckedValue="{Boolean}false"
+                                value="{Boolean}true">
+                            </showUpdatedModal>
                         </items>
                     </column1>
                     <column2

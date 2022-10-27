@@ -18,6 +18,25 @@
                         sling:resourceType="granite/ui/components/coral/foundation/container">
                         <items jcr:primaryType="nt:unstructured"
                                sling:hideChildren="[unlimitedtextfield,minutesfield]">
+                            <enableCarousel
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                name="./enableCarousel"
+                                text="Enable Carousel?"
+                                uncheckedValue="{Boolean}false"
+                                value="{Boolean}true"/>
+                            <title
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldLabel="Title"
+                                fieldDescription="Recommend Lebara tariffs and benefit twice"
+                                name="./title"/>
+                            <subTitle
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldLabel="Subtitle"
+                                fieldDescription="You receive up to €60 cash reward and your friend gets double data volume in the first 4 weeks"
+                                name="./subTitle"/>
                             <buttonlabel
                                 jcr:primaryType="nt:unstructured"
                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"

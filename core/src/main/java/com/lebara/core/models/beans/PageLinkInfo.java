@@ -5,6 +5,7 @@ import com.day.cq.wcm.api.PageFilter;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.lebara.core.dto.PageLink;
 import com.lebara.core.utils.AemUtils;
+
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.api.resource.ResourceResolver;
 import org.apache.sling.models.annotations.DefaultInjectionStrategy;
@@ -29,6 +30,8 @@ public class PageLinkInfo {
 
     private PageLink pageLinks = new PageLink();
 
+    public static final String JCR_CONTENT_CQ_ROBOTS_TAGS = "cq:robotsTags";
+
     @PostConstruct
     private void init() {
         if (link == null) {
@@ -38,7 +41,9 @@ public class PageLinkInfo {
         PageInfo parentLink = new PageInfo();
         if (linkPage != null) {
             parentLink.setLabel(AemUtils.getTitle(linkPage));
-            parentLink.setLink(link);
+            if(!linkPage.getProperties().get(JCR_CONTENT_CQ_ROBOTS_TAGS, "").contains("noindex")){
+                parentLink.setLink(link);
+            }
             parentLink.setDescription(linkPage.getDescription());
             pageLinks.setParentLinks(parentLink);
             Iterator<Page> childPath = linkPage.listChildren(new PageFilter());

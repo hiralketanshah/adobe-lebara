@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="nt:unstructured"
+    sling:resourceType="granite/ui/components/coral/foundation/form/select"
+    fieldLabel="Target User Type"
+	fieldDescription="Select the User type for which the content of this component should be targeted"
+    name="./userType">
+    <items jcr:primaryType="nt:unstructured">
+        <all
+            jcr:primaryType="nt:unstructured"
+            text="All Users"
+			selected="true"
+            value="all"/>
+		<allloggedin
+            jcr:primaryType="nt:unstructured"
+            text="All Logged In Users ( Yet to be Implemented )"
+            value="allLoggedIn"/>
+		<allnonloggedin
+            jcr:primaryType="nt:unstructured"
+            text="All Non Logged In Users ( Yet to be Implemented )"
+            value="allNonLoggedIn"/>
+		<prepaid
+            jcr:primaryType="nt:unstructured"
+            text="All Prepaid Users ( Yet to be Implemented )"
+            value="prepaid"/>
+		<postpaid
+            jcr:primaryType="nt:unstructured"
+            text="All Postpaid Users ( Yet to be Implemented )"
+            value="postpaid"/>
+		<prepaidnoplans
+            jcr:primaryType="nt:unstructured"
+            text="Prepaid users with no plans ( Yet to be Implemented )"
+            value="prepaidNoPlans"/>
+		<prepaidmultiactiveplans
+            jcr:primaryType="nt:unstructured"
+            text="Prepaid users with multiple Active plans ( Yet to be Implemented )"
+            value="prepaidMultiActivePlans"/>
+		<prepaidsingleactiveplan
+            jcr:primaryType="nt:unstructured"
+            text="Prepaid users with Only One Active plan ( Yet to be Implemented )"
+            value="prepaidSingleActivePlan"/>
+		<prepaidallinactiveplans
+            jcr:primaryType="nt:unstructured"
+            text="Prepaid users with all plans inactive ( Yet to be Implemented )"
+            value="prepaidAllInactivePlans"/>
+		<postpaidonemonth
+            jcr:primaryType="nt:unstructured"
+            text="Postpaid users with 1 Month Contract"
+            value="postpaidOneMonth"/>
+		<postpaidtwentyfourmonths
+            jcr:primaryType="nt:unstructured"
+            text="Postpaid users with 24 Months Contract"
+            value="postpaidTwentyFourMonths"/>
+    </items>
+</jcr:root>

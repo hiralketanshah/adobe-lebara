@@ -17,61 +17,28 @@
 <meta data-sly-test.pageTitle="${properties['pageTitle']}" name="title" content="${pageTitle}"/>
 <meta property="cq:errorpages" data-sly-test="${inheritedPageProperties.errorPages}" content="${inheritedPageProperties.errorPages}" />
 <script src="${currentPage.path}.globalConfigs.js" ></script>
+
 <sly data-sly-use.clientlib="/libs/granite/sightly/templates/clientlib.html">
   <sly data-sly-call="${clientlib.css @ categories='lebara.base'}" />
 </sly>
-<!-- TrustBox script -->
-<script
-  type="text/javascript"
-  src="//widget.trustpilot.com/bootstrap/v5/tp.widget.bootstrap.min.js"
-  async
-></script>
-<!-- End TrustBox script -->
-<!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];
-   // request by digital analytics team to add before the initialization of gtm
-   w[l].push({
-     crmId: null,
-     userId: null,
-     msisdn: null,
-     portIn: null,
-     language: "en",
-     loggedIn: "No",
-     newCustomer: null,
-     contentGroup: "",
-     region: "DE" // needs to be dynamic
-   })
-   w[l].push(
-     {
-       'gtm.start': new Date().getTime(),
-       event:'gtm.js'
-     });
-     var f=d.getElementsByTagName(s)[0],
-     j=d.createElement(s),
-     dl=l!='dataLayer'?'&l='+l:'';
-     j.async=true;
-     j.src=
-     'https://www.googletagmanager.com/gtm.js?id='+i+dl;
-     f.parentNode.insertBefore(j,f);
-     })(window,document,'script','dataLayer','GTM-5LMR5HS');
-</script>
+
 <!--/*
     SPA-specific meta tags
 */-->
 <meta name="theme-color" content="#000000" />
 <link
   rel="icon"
-  href="/etc.clientlibs/lebara/clientlibs/clientlib-react/resources/favicon.ico"
+  href="/etc.clientlibs/lebara/clientlibs/clientlib-react-${inheritedPageProperties.country}/resources/favicon.ico"
 />
 <link
   rel="apple-touch-icon"
-  href="/etc.clientlibs/lebara/clientlibs/clientlib-react/resources/logo192.png"
+  href="/etc.clientlibs/lebara/clientlibs/clientlib-react-${inheritedPageProperties.country}/resources/logo192.png"
 />
 <link
   rel="manifest"
-  href="/etc.clientlibs/lebara/clientlibs/clientlib-react/resources/manifest.json"
+  href="/etc.clientlibs/lebara/clientlibs/clientlib-react-${inheritedPageProperties.country}/resources/manifest.json"
 />
-
+</sly>
 <!-- AEM page model -->
 <meta
   property="cq:pagemodel_root_url"

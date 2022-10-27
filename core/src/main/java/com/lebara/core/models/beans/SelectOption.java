@@ -13,6 +13,8 @@ public class SelectOption {
 
     @ValueMapValue
     private String value;
+    
+    private String countryFlag;
 
 	public String getLabel() {
 		return label;
@@ -28,5 +30,13 @@ public class SelectOption {
 
 	public void setValue(String value) {
 		this.value = value;
+	}
+	
+	public String getCountryFlag() {
+		return countryFlag;
+	}
+
+	public void setCountryFlag(String countryFlag) {
+		this.countryFlag = countryFlag;
 	}
 }

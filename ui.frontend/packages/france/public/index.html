@@ -1,0 +1,63 @@
+<!-- This file is only used during development -->
+
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <meta name="description" content="Lebara" />
+    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    <title>Lebara</title>
+    <style>
+        .react-pdf__Page__canvas {
+            margin: 0 auto;
+            width: 80% !important;
+            height: 100% !important;
+        }
+
+        .pac-container {
+            z-index: 1500;
+        }
+    </style>
+    <!-- AEM page model -->
+    <meta property="cq:pagemodel_root_url" content="/content/lebara/de/en/home.html" />
+    <script src="/content/lebara/fr/en/home.globalConfigs.js"></script>
+    <!-- AEM Base ClientLib -->
+    <link rel="stylesheet" href="/etc.clientlibs/lebara/clientlibs/clientlib-base.css" type="text/css" />
+    <!-- TrustBox script -->
+    <script type="text/javascript" src="//widget.trustpilot.com/bootstrap/v5/tp.widget.bootstrap.min.js" async></script>
+    <!-- End TrustBox script -->
+       <!-- Google Tag Manager -->
+       <script>(function(w,d,s,l,i){w[l]=w[l]||[];
+        w[l].push(
+          {
+            'gtm.start': new Date().getTime(),
+            event:'gtm.js'
+          });
+          var f=d.getElementsByTagName(s)[0],
+          j=d.createElement(s),
+          dl=l!='dataLayer'?'&l='+l:'';
+          j.async=true;
+          j.src=
+          'https://www.googletagmanager.com/gtm.js?id='+i+dl;
+          f.parentNode.insertBefore(j,f);
+          })(window,document,'script','dataLayer','GTM-5LMR5HS');
+        </script>
+    <!-- In development mode, redirect from "/" to app root -->
+    <script>
+        if ('%NODE_ENV%' === 'development' && location.pathname === '/' && '%REACT_APP_ROOT%') {
+            location.href = '%REACT_APP_ROOT%';
+        }
+    </script>
+</head>
+
+<body class="page basicpage">
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="spa-root"></div>
+</body>
+
+</html>

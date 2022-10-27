@@ -1,7 +1,9 @@
 {
   "Days" : "Days",
   "Month" : "Month",
-  "Minutes" : "Minutes",
+  "Minutes" : "Min",
+  "GB" : "GB",
+  "MB" : "MB",
   "lebara.viewcart.label":"View Cart",
   "lebara.addon.addedtocart.label":"Addon {0} added to cart",
   "lebara.emptycart.addedtocart.label":"Top up Credit {0} added to cart",
