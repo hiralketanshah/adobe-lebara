@@ -124,6 +124,8 @@ public class PersonalDetailsExporter implements ComponentExporter {
     @ValueMapValue
     public String existingUserErrorMsg;
     @ValueMapValue
+    public String multiMsisdnErrorMsg;
+    @ValueMapValue
     public String passwordField;
     @ValueMapValue
     public String confirmPasswordField;
@@ -396,6 +398,10 @@ public class PersonalDetailsExporter implements ComponentExporter {
 
     public String getExistingUserErrorMsg() {
         return AemUtils.updateShortenLinksInRichText(existingUserErrorMsg,slingRequest);
+    }
+
+    public String getMultiMsisdnErrorMsg() {
+        return multiMsisdnErrorMsg;
     }
 
     @Override

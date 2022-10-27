@@ -6,6 +6,7 @@ import com.day.cq.wcm.api.designer.Style;
 import com.lebara.core.dto.SelectBean;
 import com.lebara.core.utils.AemUtils;
 import com.lebara.core.utils.CFUtils;
+
 import org.apache.commons.lang3.StringUtils;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;
@@ -29,6 +30,9 @@ public class WhereToCallExporter implements ComponentExporter {
      * The resource type.
      */
     protected static final String RESOURCE_TYPE = "lebara/components/wheretocall";
+    
+    @SlingObject
+	private SlingHttpServletRequest request;
 
     @SlingObject
     private ResourceResolver resourceResolver;

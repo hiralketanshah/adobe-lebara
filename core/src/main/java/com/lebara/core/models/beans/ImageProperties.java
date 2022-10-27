@@ -33,4 +33,5 @@ public class ImageProperties {
 	public void setIcon(String icon) {
 		this.icon = icon;
 	}
+	
 }

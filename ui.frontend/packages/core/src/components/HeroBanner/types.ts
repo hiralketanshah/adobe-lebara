@@ -8,4 +8,5 @@ export interface HeroBannerProps {
   headingType?: any;
   isSimChoiceFlow?: boolean;
   showAttachSim?: boolean;
+  imageUrl?: string;
 }
