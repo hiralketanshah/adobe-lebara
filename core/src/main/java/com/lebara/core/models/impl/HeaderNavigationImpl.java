@@ -122,6 +122,12 @@ public class HeaderNavigationImpl implements ComponentExporter {
 
     @ChildResource
     private List<Resource> header6;
+    
+    @ValueMapValue
+    private String backgroundColor;
+    
+    @ValueMapValue
+    private String textColor;
 
     private ResourceResolver resourceResolver;
     /**
@@ -238,4 +244,12 @@ public class HeaderNavigationImpl implements ComponentExporter {
         }
         return properties;
     }
+
+	public String getBackgroundColor() {
+		return backgroundColor;
+	}
+
+	public String getTextColor() {
+		return textColor;
+	}
 }

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="nt:unstructured"
+    jcr:title="Personal Details Summary"
+    sling:resourceType="cq/gui/components/authoring/dialog">
+    <content
+        jcr:primaryType="nt:unstructured"
+        sling:resourceType="granite/ui/components/coral/foundation/container">
+        <items jcr:primaryType="nt:unstructured">
+            <tabs
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="granite/ui/components/coral/foundation/tabs"
+                maximized="{Boolean}true">
+                <items jcr:primaryType="nt:unstructured">
+                    <personaldetails
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Personal Details"
+                        sling:resourceType="granite/ui/components/coral/foundation/container"
+                        margin="{Boolean}true">
+                        <items jcr:primaryType="nt:unstructured">
+                            <personaldetailslabel
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldDescription="Your personal details"
+                                fieldLabel="Personal details Label"
+                                name="./personalDetailsLabel"
+                                value="Your personal details"/>
+                            <namelabel
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldDescription="Your name:"
+                                fieldLabel="NameTitle"
+                                name="./nameLabel"
+                                value="Your name:"/>
+                            <emaillabel
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldDescription="Your email address:"
+                                fieldLabel="Email Label"
+                                name="./emailLabel"
+                                value="Your email address:"/>
+                            <mobilenumberlabel
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldDescription="Your mobile number:"
+                                fieldLabel="Mobile Number Label"
+                                name="./mobileNumberLabel"
+                                value="Your mobile number:"/>
+                            <shippingaddresslabel
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldDescription="Your shipping address:"
+                                fieldLabel="Shipping address Label"
+                                name="./shippingAddressLabel"
+                                value="Your shipping address:"/>
+                            <getNewNumberText
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldDescription="Ex: I want a new number"
+                                fieldLabel="Get New Number Text Label"
+                                name="./getNewNumberText"
+                                value="I want a new number"/>
+                            <editlabel
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldDescription="Edit"
+                                fieldLabel="Edit Label"
+                                name="./editLabel"
+                                value="Edit"/>
+                            <editCTALink
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                fieldLabel="Edit Link"
+                                name="./editCTALink"
+                                rootPath="/content/lebara"/>
+                        </items>
+                    </personaldetails>
+                </items>
+            </tabs>
+        </items>
+    </content>
+</jcr:root>

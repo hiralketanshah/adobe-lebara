@@ -1,4 +1,4 @@
 [submodule "ui.frontend/packages/lebara-client"]
 	path = ui.frontend/packages/lebara-client
-	url = https://git.cloudmanager.adobe.com/lebara/storybook/
-    branch = main
+	url =  https://git.cloudmanager.adobe.com/lebara/storybook/
+    branch = workspaces/main
