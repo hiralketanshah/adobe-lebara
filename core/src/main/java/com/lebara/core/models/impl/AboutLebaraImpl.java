@@ -9,6 +9,7 @@ import javax.inject.Inject;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.lebara.core.models.beans.ListItem;
 import com.lebara.core.utils.AemUtils;
+
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.models.annotations.DefaultInjectionStrategy;
@@ -18,6 +19,7 @@ import org.apache.sling.models.annotations.Source;
 import org.apache.sling.models.annotations.Via;
 import org.apache.sling.models.annotations.injectorspecific.*;
 import org.apache.sling.models.annotations.via.ResourceSuperType;
+import org.apache.sling.models.annotations.injectorspecific.SlingObject;
 
 import com.adobe.cq.export.json.ComponentExporter;
 import com.adobe.cq.export.json.ExporterConstants;
@@ -44,6 +46,9 @@ public class AboutLebaraImpl implements AboutLebara {
 
 	@ValueMapValue
 	private String fileReference;
+	
+	@ValueMapValue
+	private String imageUrl;
 
 	@ChildResource
 	private List<ListItem> actions;
@@ -157,6 +162,10 @@ public class AboutLebaraImpl implements AboutLebara {
 	public String getImagePath() {
 		return AemUtils.getImageRendition(fileReference, currentStyle.get("rendition", String.class),
 				request.getResourceResolver());
+	}
+	
+	public String getImageUrl() {
+		return AemUtils.getLinkWithExtension(imageUrl, request);
 	}
 
 	public String getHeadingType() {

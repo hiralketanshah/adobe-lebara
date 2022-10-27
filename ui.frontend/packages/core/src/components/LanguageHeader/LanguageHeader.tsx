@@ -18,7 +18,7 @@ const LanguageHeader: React.FC<LanguageHeaderProps> = ({
       px={{ base: 4, md: 10 }}
       justifyContent="flex-end"
       background="lightenPrimary.200"
-      color="white"
+      color="lightenPrimary.500"
       display={'flex'}
     >
       <Box>
