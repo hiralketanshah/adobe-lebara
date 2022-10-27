@@ -1,0 +1,40 @@
+{
+  "jcr:primaryType": "nt:unstructured",
+  "jcr:createdBy": "gaurav.sarang-ext@lebara.com",
+  "delinkConfirmationMsg": "Etes-vous sûr de vouloir dissocier le numéro de téléphone {0} de votre compte ?",
+  "jcr:lastModifiedBy": "admin",
+  "clickHereLabel": "Cliquez ici ",
+  "followLinkLabel": "Veuillez suivre les instructions de l'email pour finaliser l'opération",
+  "linkedSimDesc": "Il y a {0} numéro associé à votre compte MyLebara",
+  "confirmationEmailLabel": "Un lien de confirmation vous a été envoyé par email.",
+  "mailNotReceivedLabel": "Si vous n'avez pas encore reçu l'email",
+  "jcr:created": "Mon Dec 13 2021 11:15:03 GMT+0000",
+  "mobilePlaceholderLabel": "Numéro de téléphone Lebara",
+  "title": "Ajouter une carte SIM",
+  "termsAndConditionsLabel": "Terms",
+  "delinkLabel": "Dissocier la SIM",
+  "activeMonthPlanLabel": "Ce numéro a un forfait actif",
+  "jcr:lastModified": "Fri Aug 05 2022 16:58:27 GMT+0530",
+  "ctaContinueLabel": "Continuer",
+  "sling:resourceType": "lebara/components/dashboard/managesim",
+  "showTermsAndConditions": true,
+  "textIsRich": true,
+  "linkSimLabel": "Veuillez remplir le formulaire ci-dessous pour lier votre carte SIM.",
+  "noSimLabel": "Je n'ai pas de SIM",
+  "attachNewSim": "Associer une nouvelle carte SIM",
+  "toResendLabel": "pour les renvoyer.",
+  "noLabel": "Non",
+  "sendSMSOtpErrorMessages": {
+    "jcr:primaryType": "nt:unstructured",
+    "item0": {
+      "jcr:primaryType": "nt:unstructured",
+      "errorCode": "ICCID_DO_NOT_MATCH",
+      "errorMessage": "ICCD do not match"
+    },
+    "item1": {
+      "jcr:primaryType": "nt:unstructured",
+      "errorCode": "CONTRACT_NOT_FOUND",
+      "errorMessage": "Contract Missing"
+    }
+  }
+}

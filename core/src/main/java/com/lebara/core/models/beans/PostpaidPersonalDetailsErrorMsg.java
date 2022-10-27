@@ -1,14 +1,24 @@
 package com.lebara.core.models.beans;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
+import com.lebara.core.utils.AemUtils;
+
+import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.models.annotations.DefaultInjectionStrategy;
 import org.apache.sling.models.annotations.Model;
+import org.apache.sling.models.annotations.injectorspecific.SlingObject;
 import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @Model(adaptables = {Resource.class}, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
 public class PostpaidPersonalDetailsErrorMsg {
+    
+    @SlingObject
+    private SlingHttpServletRequest slingRequest;
+    
+    @ValueMapValue
+    private String titleRequiredMsg;
 
 	@ValueMapValue
     private String emailRequiredMsg;
@@ -102,7 +112,29 @@ public class PostpaidPersonalDetailsErrorMsg {
 
     @ValueMapValue
     private String cityErrorRequired;
+    
+    @ValueMapValue
+    public String streetLabelErrorMax;
+    
+    @ValueMapValue
+    public String houseNumberErrorMax;
+    
+    @ValueMapValue
+    public String zipCodeErrorMax;
+    
+    @ValueMapValue
+    public String zipCodeErrorMin;
+    
+    @ValueMapValue
+    public String cityPatternError;
+    
+    @ValueMapValue
+    public String cityMaxCharError;
 
+    public String getTitleRequiredMsg() {
+		return titleRequiredMsg;
+	}
+    
     public String getCityErrorRequired() {
         return cityErrorRequired;
     }
@@ -160,7 +192,7 @@ public class PostpaidPersonalDetailsErrorMsg {
     }
 
     public String getExistingUserErrorMsg() {
-        return existingUserErrorMsg;
+        return AemUtils.updateShortenLinksInRichText(existingUserErrorMsg,slingRequest);
     }
 
     public String getSecondSubscriptionDisplayText() {
@@ -226,4 +258,29 @@ public class PostpaidPersonalDetailsErrorMsg {
     public String getVerifyCodeRequiredMsg() {
         return verifyCodeRequiredMsg;
     }
+
+    public String getStreetLabelErrorMax() {
+        return streetLabelErrorMax;
+    }
+
+    public String getHouseNumberErrorMax() {
+        return houseNumberErrorMax;
+    }
+
+    public String getZipCodeErrorMin() {
+        return zipCodeErrorMin;
+    }
+
+    public String getZipCodeErrorMax() {
+        return zipCodeErrorMax;
+    }
+
+    public String getCityPatternError() {
+        return cityPatternError;
+    }
+
+    public String getCityMaxCharError() {
+        return cityMaxCharError;
+    }
+    
 }

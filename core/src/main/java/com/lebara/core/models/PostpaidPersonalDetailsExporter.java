@@ -1,8 +1,12 @@
 package com.lebara.core.models;
 
+import com.adobe.cq.dam.cfm.ContentFragment;
 import com.adobe.cq.export.json.ComponentExporter;
 import com.adobe.cq.export.json.ExporterConstants;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.lebara.core.utils.AemUtils;
+import com.lebara.core.utils.CFUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.api.resource.ResourceResolver;
@@ -11,6 +15,8 @@ import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.injectorspecific.*;
 import org.apache.sling.models.annotations.Exporter;
 import com.lebara.core.models.beans.*;
+
+import javax.annotation.PostConstruct;
 
 
 @Model(adaptables = SlingHttpServletRequest.class, adapters = {PostpaidPersonalDetailsExporter.class, ComponentExporter.class},
@@ -37,6 +43,9 @@ public class PostpaidPersonalDetailsExporter implements ComponentExporter{
 
     @ValueMapValue
     private  String termsAndConditionsLabel;
+
+    @ValueMapValue
+    private String cfPath;
 
     @ValueMapValue
     private String orderTotalLabel;
@@ -69,6 +78,18 @@ public class PostpaidPersonalDetailsExporter implements ComponentExporter{
 
     @ChildResource
     private  PostpaidPersonalDetailsErrorMsg validationMessages;
+
+    @PostConstruct
+    private void setConsentFields() {
+        if (StringUtils.isNotBlank(cfPath)) {
+            ContentFragment cf = CFUtils.getContentFragment(resourceResolver, cfPath);
+            if (cf != null) {
+                frmFields.setConsentPreviewText(AemUtils.updateShortenLinksInRichText(CFUtils.getElementValue(cf, "consentPreviewText"), resourceResolver));
+                frmFields.setConsentDescription(AemUtils.updateShortenLinksInRichText(CFUtils.getElementValue(cf, "consentDescription"), resourceResolver));
+                frmFields.setConsentMarketingText(AemUtils.updateShortenLinksInRichText(CFUtils.getElementValue(cf, "consentMarketingText"), resourceResolver));
+            }
+        }
+    }
 
     public String getHeading() {
         return heading;

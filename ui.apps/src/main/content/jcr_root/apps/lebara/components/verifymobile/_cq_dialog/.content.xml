@@ -179,6 +179,43 @@
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                                 fieldLabel="Verification Code Invalid Error Message"
                                                 name="./validationMessages/verifyCodeInvalidMsg"/>
+                                            <enterValidOtpErrorMessage
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="Error Message for Invalid OTP"
+                                                fieldLabel="Enter Valid OTP Error Message"
+                                                name="./enterValidOtpErrorMessage"
+                                                value="Error: Invalid OTP:"/>
+                                            <errormsgs
+                                                jcr:primaryType="nt:unstructured"
+                                                jcr:title="Error Type &amp; Text"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
+                                                composite="{Boolean}true"
+                                                fieldLabel="Error Type &amp; Text">
+                                                <field
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/container"
+                                                    name="./sendSMSOtpErrorMessages">
+                                                    <items jcr:primaryType="nt:unstructured">
+                                                        <column
+                                                            jcr:primaryType="nt:unstructured"
+                                                            sling:resourceType="granite/ui/components/coral/foundation/container">
+                                                            <items jcr:primaryType="nt:unstructured">
+                                                                <errorcode
+                                                                    jcr:primaryType="nt:unstructured"
+                                                                    sling:resourceType="granite/ui/components/coral/foundation/include"
+                                                                    path="/apps/lebara/components/dialogutils/errorcode"/>
+                                                                <message
+                                                                    jcr:primaryType="nt:unstructured"
+                                                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                                    fieldLabel="Error Message"
+                                                                    name="./errorMessage"
+                                                                    required="true"/>
+                                                            </items>
+                                                        </column>
+                                                    </items>
+                                                </field>
+                                            </errormsgs>
                                         </items>
                                     </column>
                                 </items>

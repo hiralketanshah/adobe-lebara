@@ -1,9 +1,0 @@
-.tarrif-slider .slick-prev:before, .slick-next:before {
-    color: darkgray;
-}
-.tarrif-slider .slick-next {
-    right: 0px;
-}
-.tarrif-slider .slick-prev {
-    left: 0px;
-}

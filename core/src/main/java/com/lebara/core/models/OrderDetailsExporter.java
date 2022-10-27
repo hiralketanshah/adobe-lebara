@@ -1,9 +1,12 @@
 package com.lebara.core.models;
 
+import com.adobe.cq.dam.cfm.ContentFragment;
 import com.adobe.cq.export.json.ComponentExporter;
 import com.adobe.cq.export.json.ExporterConstants;
 import com.lebara.core.models.beans.ImageIcon;
 import com.lebara.core.utils.AemUtils;
+import com.lebara.core.utils.CFUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.models.annotations.DefaultInjectionStrategy;
@@ -14,6 +17,7 @@ import org.apache.sling.models.annotations.injectorspecific.ScriptVariable;
 import org.apache.sling.models.annotations.injectorspecific.SlingObject;
 import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
 
+import javax.annotation.PostConstruct;
 import java.util.Collections;
 import java.util.List;
 
@@ -233,6 +237,20 @@ public class OrderDetailsExporter implements ComponentExporter {
 
     @ValueMapValue
     private String discountLabel;
+
+    @ValueMapValue
+    private String cfPath;
+
+    @PostConstruct
+    private void setConsentFields() {
+        if (StringUtils.isNotBlank(cfPath)) {
+            ContentFragment cf = CFUtils.getContentFragment(slingRequest.getResourceResolver(), cfPath);
+            if (cf != null) {
+                consentLabel = CFUtils.getElementValue(cf, "consentDescription");
+                termsAndConditionsLabel = CFUtils.getElementValue(cf, "consentMarketingText");
+            }
+        }
+    }
 
     public String getSelectedProductLabel() {
         return selectedProductLabel;

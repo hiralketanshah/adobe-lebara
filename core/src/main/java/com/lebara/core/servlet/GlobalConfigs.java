@@ -6,6 +6,7 @@ import com.day.cq.wcm.api.Page;
 import com.day.cq.wcm.api.NameConstants;
 import com.day.cq.commons.jcr.JcrConstants;
 import com.day.cq.wcm.api.PageManager;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.net.MediaType;
 import com.lebara.core.models.beans.ActivateSimBean;
@@ -54,6 +55,7 @@ public class GlobalConfigs extends SlingSafeMethodsServlet {
     private static final String PRIVATE_PAGES = "privatePages";
     private static final String PAYMENT_MESSAGES = "paymentMessages";
     private static final String PLAN_NOT_ELIGIBLE_ERROR_MESSAGE = "planNotEligibleErrorMessage";
+    private static final String TOO_MANY_REQUESTS_ERROR_MESSAGE = "tooManyRequestsErrorMessage";
     private static final String PLAN_NOT_ELIGIBLE_ERROR_TITLE = "planNotEligibleErrorTitle";
     private static final String PLAN_NOT_ELIGIBLE_ERROR_BUTTON_TEXT = "planNotEligibleErrorButtonText";
 
@@ -64,7 +66,7 @@ public class GlobalConfigs extends SlingSafeMethodsServlet {
     protected void doGet(final SlingHttpServletRequest req,
                          final SlingHttpServletResponse resp) throws ServletException, IOException {
         resp.setContentType(MediaType.JAVASCRIPT_UTF_8.toString());
-        resp.getWriter().println("var lebaraGlobalConfigs =" + new com.google.gson.Gson().toJson(getGlobalData(req)) + ";");
+        resp.getWriter().println("var lebaraGlobalConfigs =" + new ObjectMapper().writeValueAsString(getGlobalData(req)) + ";");
     }
 
     protected Object getGlobalData(SlingHttpServletRequest request) {
@@ -89,6 +91,7 @@ public class GlobalConfigs extends SlingSafeMethodsServlet {
                 .put(JOURNEY_PAGES, getJourneyPages(request, page))
                 .put(PRIVATE_PAGES, getPrivatePages(request, inheritedProp.getInherited(PRIVATE_PAGES, String[].class)))
                 .put(PLAN_NOT_ELIGIBLE_ERROR_MESSAGE, Optional.ofNullable(inheritedProp.getInherited(PLAN_NOT_ELIGIBLE_ERROR_MESSAGE, String.class)).orElse(""))
+                .put(TOO_MANY_REQUESTS_ERROR_MESSAGE, Optional.ofNullable(inheritedProp.getInherited(TOO_MANY_REQUESTS_ERROR_MESSAGE, String.class)).orElse(""))
                 .put(PLAN_NOT_ELIGIBLE_ERROR_TITLE, Optional.ofNullable(inheritedProp.getInherited(PLAN_NOT_ELIGIBLE_ERROR_TITLE, String.class)).orElse(""))
                 .put(PLAN_NOT_ELIGIBLE_ERROR_BUTTON_TEXT, Optional.ofNullable(inheritedProp.getInherited(PLAN_NOT_ELIGIBLE_ERROR_BUTTON_TEXT, String.class)).orElse(""))
                 .put(PAYMENT_MESSAGES, getPaymentMethods(page))

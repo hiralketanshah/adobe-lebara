@@ -51,6 +51,28 @@
                                                 fieldLabel="Dashboard Button Label"
                                                 value="Dashboard Button Label"
                                                 name="./dashboardButtonLabel"/>
+                                            <errorAlreadyActivatedMessage
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="Already Activated Legal Registration Error Message"
+                                                value="Sim already registered"
+                                                fieldLabel="Already Activated Legal Registration Error Message"
+                                                name="./errorAlreadyActivatedMessage"/>
+                                            <errorAlreadyActivatedBody
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="Already Activated Legal Registration Error Message Body"
+                                                value="Your have already completed the legal registration, if you want to change your details you need to get in touch with our customer service"
+                                                fieldLabel="Already Activated Legal Registration Error Message Body"
+                                                name="./errorAlreadyActivatedBody"/>
+                                            <isSuccessFlow
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                                name="./isSuccessFlow"
+                                                text="Is Success Flow?"
+                                                fieldDescription="Enable this when success icon has to be shown"
+                                                uncheckedValue="{Boolean}false"
+                                                value="{Boolean}true"/>
                                         </items>
                                     </column>
                                 </items>

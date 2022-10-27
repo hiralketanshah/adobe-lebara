@@ -87,8 +87,7 @@ public class SitemapFilter implements Filter {
                     .replaceAll(AemUtils.NL_ROOT_PATH, "")
                     .replaceAll(AemUtils.DK_ROOT_PATH, "")
                     .replaceAll(AemUtils.UK_ROOT_PATH, "");
-            return content_without_countries.replaceAll("<loc>", "<loc>" + externalPath)
-                    .replaceAll("href=\"/", "href=\"" + externalPath + "/");
+            return content_without_countries;
         }
         return originalContent;
     }
