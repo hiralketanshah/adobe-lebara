@@ -44,7 +44,7 @@ public class SetPasswordErrorCard {
 	}
 
 	public String getButtonLink() {
-		return AemUtils.getLinkWithExtension(buttonLabel);
+		return AemUtils.getLinkWithExtension(buttonLink);
 	}
 	
 	

@@ -14,12 +14,26 @@ import { HomeFaqsProps } from "./types";
 
 const HomeFaqs: React.FC<HomeFaqsProps> = ({ title, options,
   backgroundColor,
+  showStructuredData
  }) => {
   const half = Math.ceil(options.length / 2);
 
   const firstHalf = options.slice(0, half);
   const secondHalf = options.slice(-options.length / 2);
+  const mainEntityValue = options.map((menuItem: any) => ({
+    "@type": "Question",
+    name: `${menuItem?.question}`,
+    acceptedAnswer: {
+      "@type": "Answer",
+      text: `<p>${menuItem?.answer}</p>`,
+    },
+  }));
 
+  const faqStructuredData = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: mainEntityValue,
+  };
   const renderAccordions = (items: any[]) =>
     items.map((menuItem) => (
       <AccordionItem
@@ -70,6 +84,11 @@ const HomeFaqs: React.FC<HomeFaqsProps> = ({ title, options,
       px={{ base: "20px", lg: "80px" }}
       bg={backgroundColor ? backgroundColor : `lightenPrimary.50`}
     >
+      {showStructuredData && (
+        <script type="application/ld+json">
+          {JSON.stringify(faqStructuredData)}
+        </script>
+      )}
       <Heading color="primary.500" fontSize={{ base: "32px", lg: " 47px" }}>
         {title}
       </Heading>
