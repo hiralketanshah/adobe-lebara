@@ -101,6 +101,12 @@ public class DetailedViewPlanExporter extends ViewPlanExporter implements Compon
 
     @ValueMapValue
     private String labelTextColor;
+    
+    @ValueMapValue
+    private boolean showStructuredData;
+
+    @ValueMapValue
+    private String imageForStructuredData;
 
     @PostConstruct
     protected void init() {
@@ -212,6 +218,15 @@ public class DetailedViewPlanExporter extends ViewPlanExporter implements Compon
     public boolean getShowModelOnAddtoCart(){
         return Optional.ofNullable(pageProperties.getInherited("showModelOnAddtoCart", Boolean.class)).orElse(false);
     }
+    
+    public String getImageForStructuredData() {
+    	return imageForStructuredData;
+    }
+
+    public boolean getShowStructuredData() {
+    	return showStructuredData;
+    }
+    
     @Override
     public String getExportedType() {
         return resource.getResourceType();
