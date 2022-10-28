@@ -31,7 +31,7 @@ import {selectIsAuthenticated} from "@lebara/core/redux/selectors/userSelectors"
 import {globalConfigs as GC} from "@lebara/core/configs/globalConfigs";
 import {useApolloClient, useQuery} from "@apollo/client";
 import GET_CART from "@lebara/core/graphql/GET_CART";
-import {loadInitialCart, setCartItemsLoading} from "@lebara/core/redux/actions/cartActions";
+import {loadInitialCart, setCartItemsLoading, loadRafProducts} from "@lebara/core/redux/actions/cartActions";
 import mapMagentoProductToCartItem from "@lebara/core/utils/mapMagentoProductToCartItem";
 import {saveTopUps} from "@lebara/core/redux/actions/topUpActions";
 import GET_TOP_UPS from "@lebara/core/graphql/GET_TOP_UPS";
@@ -45,8 +45,10 @@ import aemUtils from "../../utils/aem-utils";
 import { BACKGROUND_OPACITY_SAERCH_BAR } from "@lebara/core/utils/lebara.constants";
 import useLoadPaymentMethods from "@lebara/core/hooks/useLoadPaymentMethods";
 import io from "socket.io-client";
+import GET_RAFS from "@lebara/core/graphql/GET_RAFS";
+import queryString from "query-string";
 
-const SingleMenu = ({ menuItem, newText }: { menuItem: children, newText: any }) => {
+const SingleMenu = ({ menuItem, newText, textColor }: { menuItem: children, newText: any, textColor:string }) => {
   const DEFUALT_GROUP_MENU_UPTO = 5;
   const history = useHistory();
   const timerRef = useRef<any>();
@@ -91,7 +93,7 @@ const SingleMenu = ({ menuItem, newText }: { menuItem: children, newText: any })
   }
 
   return (
-    <Menu
+    <Menu 
       isOpen={isOpenMenu}>
       <MenuButton
         onClick={() => onMenuLinkNavigate(menuItem?.url)}
@@ -114,11 +116,12 @@ const SingleMenu = ({ menuItem, newText }: { menuItem: children, newText: any })
           >
             <Text
               textTransform="capitalize"
-              fontSize={{ lg: "14px", md: "12px" }}
+              fontSize={{ lg: "16px", md: "12px" }}
               lineHeight="20px"
               align="left"
-              color="white"
-              fontWeight="normal"
+              color={textColor}
+              fontFamily="Roboto"
+              fontWeight="400"
             >
               {menuItem.title}
             </Text>
@@ -221,6 +224,8 @@ const SingleMenu = ({ menuItem, newText }: { menuItem: children, newText: any })
 
 const Header: React.FC<HeaderProps> = ({
   logoPath,
+  backgroundColor="lightenPrimary.500",
+  textColor="white",
   items,
   newText,
   topupCtaText,
@@ -326,6 +331,21 @@ const Header: React.FC<HeaderProps> = ({
     });
   }, [client, dispatch]);
 
+  const getRafProducts = useCallback(() => {
+    client.query({ query: GET_RAFS }).then((res) => {
+      dispatch(loadRafProducts(res?.data?.getRafs));
+    });
+  }, [client, dispatch]);
+  React.useEffect(() => {
+    const { fromRedirect } = queryString.parse(window.location.search);
+    if (fromRedirect) {
+      dispatch(loadInitialCart([]));
+      return;
+    }
+    getCart();
+    getRafProducts();
+  }, [dispatch, getCart, getRafProducts]);
+
   const handleCartClick = () => {
     onCloseSearch();
     history.push(cartItems.length === 0 ?"/empty-cart"  : "/order-details");
@@ -398,8 +418,8 @@ const Header: React.FC<HeaderProps> = ({
               alignItems="center"
               px={{lg: "20px", xl: "50.88px"}}
               py={{ lg: "12px", md: "6px" }}
-              background="lightenPrimary.500"
-              color="white"
+              background={backgroundColor}
+              color={textColor}
               height="95px"
               borderBottom="none"
           >
@@ -415,18 +435,20 @@ const Header: React.FC<HeaderProps> = ({
               </RouterLink>
             </ChakraLink>
 
-            <Flex alignItems="left" ml={{ xl: "60px", lg: "40px", md: "15px" }}  gridGap={{lg: "20px", xl: "30px"}}>
+            <Flex alignItems="left" mx={{ md: "50px" }} gridGap={{md: "30px"}}>
               {items?.map((menuItem: children) => (
                   <React.Fragment key={menuItem.title}>
-                    <SingleMenu menuItem={menuItem} newText={newText} />
+                    <SingleMenu menuItem={menuItem} newText={newText} textColor={textColor} />
                   </React.Fragment>
               ))}
             </Flex>
             <Spacer />
             <Box>
               <Button
-                  w={{lg: "100px", xl: "130px"}}
-                  fontSize={{ lg: "14px", md: "12px" }}
+                  w="auto"
+                  px="30px"
+                  fontSize={{ lg: "16px", md: "12px" }}
+                  fontFamily="Roboto"
                   onClick={() => history.push("/top-up")}
               >
                 {topupCtaText}
@@ -454,6 +476,7 @@ const Header: React.FC<HeaderProps> = ({
                           }}
                           paddingLeft={{ lg: "35px!important", md: "26px!important" }}
                           colorScheme="dark"
+                          color = {textColor}
                       />
                     </Button>
                 ) : (

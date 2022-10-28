@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:granite="http://www.adobe.com/jcr/granite/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="nt:unstructured"
+    jcr:title="Retention Number Verification"
+    sling:resourceType="cq/gui/components/authoring/dialog"
+    extraClientlibs="[lebara.touchui]">
+    <content
+        granite:class="cmp-navigation__editor"
+        jcr:primaryType="nt:unstructured"
+        sling:resourceType="granite/ui/components/coral/foundation/container">
+        <items jcr:primaryType="nt:unstructured">
+            <tabs
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="granite/ui/components/coral/foundation/tabs"
+                maximized="{Boolean}true">
+                <items jcr:primaryType="nt:unstructured">
+                    <retentionprops
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Retention Props"
+                        sling:resourceType="granite/ui/components/coral/foundation/container"
+                        margin="{Boolean}true">
+                        <items jcr:primaryType="nt:unstructured">
+                            <columns
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+                                margin="{Boolean}true">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <column
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <isVerifyOtp
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                                checked="{Boolean}false"
+                                                fieldDescription="When checked, enables Verify Otp dialog"
+                                                name="./isVerifyOtp"
+                                                text="Enable Verify Otp"
+                                                uncheckedValue="{Boolean}false"
+                                                value="{Boolean}true"/>
+                                            <compHeading
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="Request your renewal offer and receive 3 months for free!"
+                                                fieldLabel="Title"
+                                                name="./compHeading"
+                                                value="Request your renewal offer and receive 3 months for free!"/>
+                                            <verificationHeadingMessage
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="Enter the 5 digit verification code"
+                                                fieldLabel="Verification Heading Message"
+                                                name="./verificationHeadingMessage"
+                                                value="Enter the 5 digit verification code"/>
+                                            <frmBtnPrimaryLabel
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="Button Label Example : Next"
+                                                fieldLabel="Button Label"
+                                                name="./frmBtnPrimaryLabel"
+                                                value="Next"/>
+                                            <ctaLink
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                                fieldDescription="Button CTA Link"
+                                                fieldLabel="Button CTA Link"
+                                                name="./ctaLink"
+                                                rootPath="/content/lebara/nl"/>
+                                            <frmLabelNumber
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="Enter Label For Verification Code/Mobile Number"
+                                                fieldLabel="Verification Code/Mobile Number Label"
+                                                name="./frmLabelNumber"
+                                                value="Enter your lebara number"/>
+                                            <frmPlaceholderNumber
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="Enter Placeholder For Verification Code/Mobile Number"
+                                                fieldLabel="Verification Code/Mobile Number Placeholder"
+                                                name="./frmPlaceholderNumber"
+                                                value="Enter your lebara number"/>
+                                            <warningMessageTitle
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="Enter Warning Message Title"
+                                                fieldLabel="Warning Message Title"
+                                                name="./warningMessageTitle"
+                                                value="Ineligible for Retention"/>
+                                            <warningMessageDescription
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="Enter Warning Message Description"
+                                                fieldLabel="Warning Message Description"
+                                                name="./warningMessageDescription"
+                                                value="You have been determined ineligible for retention.please try a Different number"/>
+                                            <warningModalButtonLabel
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="Label that will appear in case of No discount or 1 month plan for total Ex: Per month"
+                                                fieldLabel="Warning Modal Button Label"
+                                                name="./warningModalButtonLabel"
+                                                value="Back"/>
+                                            <resendOtpMessage
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="Enter Resend Otp Message"
+                                                fieldLabel="Resent Otp Message"
+                                                name="./resendOtpMessage"
+                                                value="Didn't receive the code yet?"/>
+                                            <resendOtpButtonLabel
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="Enter Resend Otp Button Label"
+                                                fieldLabel="Resend Otp Button Label"
+                                                name="./resendOtpButtonLabel"
+                                                value="Send again"/>
+                                        </items>
+                                    </column>
+                                </items>
+                            </columns>
+                        </items>
+                    </retentionprops>
+                    <validationMessages
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Validation Props"
+                        sling:resourceType="granite/ui/components/coral/foundation/container"
+                        margin="{Boolean}true">
+                        <items jcr:primaryType="nt:unstructured">
+                            <columns
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+                                margin="{Boolean}true">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <column
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <numberRequiredValidationMsg
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="Enter Number Required Validation Message"
+                                                fieldLabel="Number Required Validation Message"
+                                                name="./numberRequiredValidationMsg"
+                                                value="Required"/>
+                                            <errorNumberPatternMsg
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="Error Number Pattern Message"
+                                                fieldLabel="Number Error Pattern Message"
+                                                name="./errorNumberPatternMsg"
+                                                value="Number not in right format"/>
+                                            <errorOtpPatternMsg
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="Enter Error Otp Pattern Message"
+                                                fieldLabel="Otp Error Pattern Message"
+                                                name="./errorOtpPatternMsg"
+                                                value="Enter valid OTP"/>
+                                            <enterValidOtpErrorMessage
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="Enter Valid Otp Error Message"
+                                                fieldLabel="Valid Otp Error Message"
+                                                name="./enterValidOtpErrorMessage"
+                                                value="Please enter valid OTP"/>
+                                            <errorCodes
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/include"
+                                                path="/apps/lebara/components/dashboard/managesim/cq:dialog/content/items/tabs/items/errorCodesTab/items/columns/items/column/items/errorcodes"/>
+                                        </items>
+                                    </column>
+                                </items>
+                            </columns>
+                        </items>
+                    </validationMessages>
+                </items>
+            </tabs>
+        </items>
+    </content>
+</jcr:root>

@@ -41,9 +41,15 @@
                                             <dashboardButtonLabel
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textarea"
-                                                fieldLabel="Dashboard Button Label"
-                                                value="Go To Dashboard"
-                                                name="./dashboardButtonLabel"/>
+                                                fieldLabel="Button Label"
+                                                name="./dashboardButtonLabel"
+                                                value="Go To Dashboard"/>
+                                            <ctaLinkSuccessCard
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                                fieldLabel="Button Link"
+                                                name="./ctaLinkSuccessCard"
+                                                rootPath="/content/lebara"/>
                                         </items>
                                     </column>
                                 </items>

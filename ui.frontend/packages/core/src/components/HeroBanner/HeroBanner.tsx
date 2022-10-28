@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useMemo, useState } from "react";
 import { Box, Flex, Heading, useToast } from "@chakra-ui/react";
 import { HeroBannerProps } from "./types";
 import Button from "../Button/Button";
@@ -25,7 +25,8 @@ const HeroBanner: React.FC<HeroBannerProps> = ({
   getItNowErrorMessage,
   headingType,
   isSimChoiceFlow,
-  showAttachSim
+  showAttachSim,
+  imageUrl,
 }) => {
   const isAuthenticated = useSelector(selectIsAuthenticated);
   const msisdn = useSelector(selectMsisdn);
@@ -37,6 +38,16 @@ const HeroBanner: React.FC<HeroBannerProps> = ({
   const [isAttachSim, setAttachSim] = useState(false);
   const isLoading = useSelector(selectIsLoading);
   const isLogout = useSelector(selectLogout);
+  const previousTopUp = useMemo(
+    () =>
+      cartItems.find(
+        (t) =>
+          t.duration.includes("Free Sim Top Up") ||
+          t.duration.includes("Top-up") ||
+          t.id === 99999998
+      ),
+    [cartItems]
+  );
 return (
   <>
   {isAttachSim && <AttachSimModels />}
@@ -55,6 +66,7 @@ return (
           pos="relative"
           zIndex={1}
           w={{ base: 245, lg: 398 }}
+          onClick={imageUrl ? (() => history.push(imageUrl)) : undefined}
         />
       </Box>
     </Box>
@@ -94,7 +106,7 @@ return (
         if (!cartItems.find((t : any) => t.id === 99999999)) {
           await addItemToCart(99999999, "Free Sim", "", 0, "free-sim");
         }
-        if (!cartItems.find((t : any) => t.id === 99999998)) {
+        if (!previousTopUp) {
           await addItemToCart(
               99999998,
               "Free Sim Top Up",

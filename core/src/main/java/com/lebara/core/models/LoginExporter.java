@@ -11,6 +11,7 @@ import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.injectorspecific.ScriptVariable;
 import org.apache.sling.models.annotations.injectorspecific.SlingObject;
 import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
+import com.lebara.core.utils.AemUtils;
 
 
 @Model(adaptables = SlingHttpServletRequest.class, adapters = {LoginExporter.class, ComponentExporter.class},
@@ -208,6 +209,24 @@ public class LoginExporter implements ComponentExporter {
 
     @ValueMapValue
     private boolean showExpiryMessage;
+    
+    @ValueMapValue
+    private String[] skipVerifyMobileFlowPages = new String[0];
+    
+    /**
+     * App - Heading/text fields labels
+     */
+    @ValueMapValue
+    private String loginHeading;
+    
+    @ValueMapValue
+    private String loginText;
+    
+    @ValueMapValue
+    private String registerHeading;
+    
+    @ValueMapValue
+    private String registerText;
 
     public String getLoginModuleType() {
         return loginModuleType;
@@ -425,7 +444,32 @@ public class LoginExporter implements ComponentExporter {
         return showExpiryMessage;
     }
 
-    @Override
+    public String getLoginHeading() {
+		return loginHeading;
+	}
+
+	public String getLoginText() {
+		return loginText;
+	}
+
+	public String getRegisterHeading() {
+		return registerHeading;
+	}
+
+	public String getRegisterText() {
+		return registerText;
+	}
+	
+	public String[] getSkipVerifyMobileFlowPages() {
+		
+		for(int i=0;i<skipVerifyMobileFlowPages.length;i++) {
+			skipVerifyMobileFlowPages[i] = AemUtils.getLinkWithExtension(skipVerifyMobileFlowPages[i], slingRequest);
+		}
+		return skipVerifyMobileFlowPages;
+		
+	}
+
+	@Override
     public String getExportedType() {
         return resource.getResourceType();
     }

@@ -39,6 +39,9 @@ const aemUtils = {
     const isRealTest = true;
     const str = url.toLowerCase();
     return str.search(isRealTest ? realExternalRegex : textRegex) !== -1 ? true : false;
+  },
+  filterByWebChannel: (offer) => {
+    return offer?.channels?.length === 0 || offer?.channels?.includes("web");
   }
 }
 

@@ -1,0 +1,52 @@
+{
+	"jcr:primaryType": "nt:unstructured",
+	"warningModalButtonLabel": "Back",
+	"verificationHeadingMessage": "Enter the 5 digit verification code",
+	"warningMessageTitle": "Ineligible for Retention",
+	"resendOtpMessage": "Didn't receive the code yet?",
+	"resendOtpButtonLabel": "Send again",
+	"compHeading": "The verification code has been sent to {0}",
+	"numberRequiredValidationMsg": "Required",
+	"errorNumberPatternMsg": "Number not in right format",
+	"frmLabelNumber": "Verification Code",
+	"isVerifyOtp": true,
+	"errorOtpPatternMsg": "Enter valid OTP",
+	"frmBtnPrimaryLabel": "Next",
+	"frmPlaceholderNumber": "Enter your verification code",
+	"ctaLink": "/en/cart/retention-configurator",
+	"sling:resourceType": "lebara/components/nl/retentionnumberverification",
+	"enterValidOtpErrorMessage": "Please enter valid OTP",
+	"warningMessageDescription": "You have been determined ineligible for retention.please try a Different number",
+	"sendSMSOtpErrorMessages": {
+		"item0": {
+			"jcr:primaryType": "nt:unstructured",
+			"errorCode": "FAILED_TO_GET_CUSTOMER",
+			"errorMessage": "Failed to get customer"
+		},
+		"item1": {
+			"jcr:primaryType": "nt:unstructured",
+			"errorCode": "ENTER_VALID_MSISDN",
+			"errorMessage": "Enter Valid Msisdn"
+		},
+		"item2": {
+			"jcr:primaryType": "nt:unstructured",
+			"errorCode": "FAILED_TO_SEND_SMS",
+			"errorMessage": "Failed to send SMS"
+		},
+		"item3": {
+			"jcr:primaryType": "nt:unstructured",
+			"errorCode": "too_many_requests",
+			"errorMessage": "Too many requests sent"
+		},
+		"item4": {
+			"jcr:primaryType": "nt:unstructured",
+			"errorCode": "MSISDN_ALREADY_USED",
+			"errorMessage": "Msisdn already used"
+		},
+		"item5": {
+			"jcr:primaryType": "nt:unstructured",
+			"errorCode": "DEFAULT_ERROR",
+			"errorMessage": "Please enter valid Lebara number"
+		}
+	}
+}

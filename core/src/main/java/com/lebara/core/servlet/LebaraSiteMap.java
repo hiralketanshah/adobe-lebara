@@ -16,7 +16,8 @@ import org.apache.sling.api.servlets.HttpConstants;
 import org.apache.sling.api.servlets.SlingSafeMethodsServlet;
 import org.osgi.framework.Constants;
 import org.osgi.service.component.annotations.Component;
-
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import javax.servlet.Servlet;
 import javax.servlet.ServletException;
 import java.io.IOException;
@@ -33,13 +34,17 @@ import java.util.List;
                 "sling.servlet.extensions=" + "xml"
         })
 public class LebaraSiteMap extends SlingSafeMethodsServlet {
-
-    ResourceResolver resourceResolver;
+	
+	private transient Logger log = LoggerFactory.getLogger(this.getClass());
+	
+	@SuppressWarnings("AEM Rules:AEM-3")
+	transient ResourceResolver resourceResolver;
 
     @Override
     protected void doGet(final SlingHttpServletRequest req,
-                         final SlingHttpServletResponse resp) throws ServletException, IOException {
+                         final SlingHttpServletResponse resp){
         resourceResolver = req.getResourceResolver();
+        try {
         PageManager pageManager = resourceResolver.adaptTo(PageManager.class);
         List<String> pageList = new ArrayList<>();
         String currentDomain = "";
@@ -83,6 +88,10 @@ public class LebaraSiteMap extends SlingSafeMethodsServlet {
         resp.setContentType(MediaType.XML_UTF_8.toString());
         resp.getWriter().println("<?xml version=\"1.0\" encoding=\"UTF-8\"?><urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\" xmlns:xhtml=\"http://www.w3.org/1999/xhtml\" xmlns:video=\"http://www.google.com/schemas/sitemap-video/1.1\" xmlns:image=\"http://www.google.com/schemas/sitemap-image/1.1\" xmlns:news=\"http://www.google.com/schemas/sitemap-news/0.9\">" + innerContent + "</urlset>");
     }
+	    catch(IOException e) {
+	    	log.error("Error at LebaraSiteMap doGet : {}", e);
+		}   
+    }
 
     private String getAlt(String pagePath) {
         List<SelectOption> altLangLinks = AltLinkUtils.populateAlternateLinks(pagePath, resourceResolver);
@@ -99,4 +108,3 @@ public class LebaraSiteMap extends SlingSafeMethodsServlet {
 
 
 }
-

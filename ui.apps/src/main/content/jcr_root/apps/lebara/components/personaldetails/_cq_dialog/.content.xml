@@ -909,6 +909,12 @@
                                     value="Please enter a valid email address. For example username@domain.com"
                                     fieldDescription="Please enter a valid email address. For example username@domain.com"
                                     name="./emailErrorPattern"/>
+                            <multiMsisdnErrorMsg
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldDescription="You already have an attachment, please use another email."
+                                fieldLabel="Multi Msisdn Error Message"
+                                name="./multiMsisdnErrorMsg"/>
                             <existingUserErrorMsg
                                     jcr:primaryType="nt:unstructured"
                                     sling:resourceType="cq/gui/components/authoring/dialog/richtext"
@@ -1020,7 +1026,7 @@
                                     jcr:primaryType="nt:unstructured"
                                     sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                     fieldLabel="Street Name Error message on character limit"
-                                    value="Must be 250 characters or less"
+                                    value="The street name can have a maximum of 25 characters. Please enter your street name."
                                     name="./streetLabelErrorMax"/>
                             <streetLabelErrorRequired
                                     jcr:primaryType="nt:unstructured"
@@ -1038,7 +1044,7 @@
                                     jcr:primaryType="nt:unstructured"
                                     sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                     fieldLabel="House Number Error message on character limit"
-                                    value="Must be 20 characters or less"
+                                    value="The house number can have a maximum of 25 characters. Please enter your house number."
                                     name="./houseNumberErrorMax"/>
                             <houseNumberErrorRequired
                                     jcr:primaryType="nt:unstructured"
@@ -1077,7 +1083,7 @@
                                     jcr:primaryType="nt:unstructured"
                                     sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                     fieldLabel="zipCode Error message on Min character limit"
-                                    value="Must be 5 characters or more"
+                                    value="Your zip code must have at least 5 characters. Please enter your zip code."
                                     name="./zipCodeErrorMin"/>
                             <zipCodeErrorRequired
                                     jcr:primaryType="nt:unstructured"
@@ -1097,7 +1103,7 @@
                                     jcr:primaryType="nt:unstructured"
                                     sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                     fieldLabel="zipCode Error message on Max character limit"
-                                    value="Must be 10 characters or less"
+                                    value="Your zip code can have a maximum of 10 characters. Please enter your zip code."
                                     name="./zipCodeErrorMax"/>
                             <additionFieldLengthError
                                     jcr:primaryType="nt:unstructured"

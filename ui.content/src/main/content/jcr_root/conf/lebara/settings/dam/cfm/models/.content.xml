@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jcr:root xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" jcr:primaryType="cq:Page">
+<jcr:root xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0"
+    jcr:primaryType="cq:Page">
+    <individual-country-fragment/>
+    <countries-list-fragment/>
+    <current-providers-list-fragment/>
     <city-fragment/>
     <top-up-fragment/>
     <planinformation/>
-    <currentproviders/>
-    <countryinformation/>
     <epcmodels/>
-    <dropdown/>
     <international-tariffs-fragment/>
     <promotion-plan-fragment/>
+    <consent-fragment/>
 </jcr:root>

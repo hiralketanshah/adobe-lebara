@@ -7,11 +7,12 @@ import {createBrowserHistory} from "history";
 import React from "react";
 import {render} from "react-dom";
 import {Router} from "react-router-dom";
-import App from "../../core/src/App";
+import App from "./App";
 import LebaraModelClient from "../../core/src/LebaraModelClient";
 import "../../core/src/components/import-components";
 import "./index.css";
 import "../../core/src/styles/index.scss";
+import "./styles/richtext-new.styles.scss";
 import {Provider} from "react-redux";
 import {ApolloClient, ApolloProvider, HttpLink, InMemoryCache} from "@apollo/client";
 import "@fontsource/roboto/100.css";
@@ -21,7 +22,7 @@ import "@fontsource/roboto/500.css";
 import "@fontsource/roboto/700.css";
 import "@fontsource/roboto/900.css";
 import {globalConfigs} from '@lebara/core/configs/globalConfigs';
-import store from "@lebara/core/store";
+import store from "@lebara/netherlands/redux/store";
 import { pdfjs } from "react-pdf";
 import axios from "axios";
 import {onError} from "@apollo/client/link/error";
@@ -30,7 +31,7 @@ import Cookies from "universal-cookie";
 import { isAddressUpdateBlockedCookieKey } from "@lebara/core/components/UserDetails/constats";
 import {getLocale} from "@lebara/core/hooks/useLocale";
 
-pdfjs.GlobalWorkerOptions.workerSrc = '/etc.clientlibs/lebara/clientlibs/clientlib-react/resources/pdf.worker.js';
+pdfjs.GlobalWorkerOptions.workerSrc = '/etc.clientlibs/lebara/clientlibs/clientlib-react-NL/resources/pdf.worker.js';
 const defaultOptions = {
     watchQuery: {
         fetchPolicy: "no-cache",

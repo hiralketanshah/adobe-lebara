@@ -23,11 +23,13 @@
   data-sly-test="${wcmmode.edit || wcmmode.preview}"
   data-sly-call="${clientLib.js @ categories='cq.authoring.pagemodel.messaging'}"
 ></sly>
-<sly data-sly-test.category="lebara.react-${inheritedPageProperties.country}">
-  <sly data-sly-use.clientlib="/libs/granite/sightly/templates/clientlib.html">
-    <sly data-sly-call="${clientlib.all @ categories=category}" />
-  </sly>
-  </sly>
+<sly data-sly-test.country="${inheritedPageProperties.country == null?'DE':inheritedPageProperties.country}">
+	<sly data-sly-test.category="lebara.react-${country}">
+	  <sly data-sly-use.clientlib="/libs/granite/sightly/templates/clientlib.html">
+	    <sly data-sly-call="${clientlib.all @ categories=category}" />
+	  </sly>
+	</sly>
+</sly>
 <sly data-sly-test="${inheritedPageProperties.enableChat}">
 <sly data-sly-call="${clientLib.all @ categories='lebara.chat'}"></sly>
 <!-- consented paragraph HiddenOmniChannelScriptComponentDE -->

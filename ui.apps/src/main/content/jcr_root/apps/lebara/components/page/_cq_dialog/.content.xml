@@ -47,6 +47,12 @@
                                                 fieldLabel="Enter Script for Speedkit or other third party sources"
                                                 fieldDescription="Enter Script"
                                                 name="./scriptVal"/>
+											<noScriptVal
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textarea"
+                                                fieldDescription="Enter Script to be added in body tag"
+                                                fieldLabel="Enter Script to be added in body tag"
+                                                name="./noScriptVal"/>
                                         </items>
                                     </pageNav>
                                 </items>

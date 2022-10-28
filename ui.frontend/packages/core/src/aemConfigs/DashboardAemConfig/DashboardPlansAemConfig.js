@@ -12,9 +12,9 @@ const componentwithofferDataProp = (props) => <Flex flexDirection="column" align
   <Flex
     w={{ base: "100%", lg: "846px" }}
     flexDirection="column"
-    px={{ base: "20px", lg: 0 }}
+    //px={{ base: "20px", lg: 0 }}
     gridGap={{ base: "17px", lg: "20px" }}
-    pt={{ base: "17px", lg: "20px" }}
+    pt={{ base: "17px", lg: "0px" }}
   ><DashboardPlans {...props} fetchDataCallback={(id, isOneEntry) => aemUtils.fetchData(id, isOneEntry)} />
   </Flex>
 </Flex>;

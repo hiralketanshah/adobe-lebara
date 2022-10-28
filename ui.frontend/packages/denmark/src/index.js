@@ -12,6 +12,7 @@ import LebaraModelClient from "../../core/src/LebaraModelClient";
 import "../../core/src/components/import-components";
 import "./index.css";
 import "../../core/src/styles/index.scss";
+import "../../core/src/styles/richtext-new.style.scss";
 import {Provider} from "react-redux";
 import {ApolloClient, ApolloProvider, HttpLink, InMemoryCache} from "@apollo/client";
 import "@fontsource/roboto/100.css";
@@ -30,7 +31,7 @@ import Cookies from "universal-cookie";
 import { isAddressUpdateBlockedCookieKey } from "@lebara/core/components/UserDetails/constats";
 import {getLocale} from "@lebara/core/hooks/useLocale";
 
-pdfjs.GlobalWorkerOptions.workerSrc = '/etc.clientlibs/lebara/clientlibs/clientlib-react/resources/pdf.worker.js';
+pdfjs.GlobalWorkerOptions.workerSrc = '/etc.clientlibs/lebara/clientlibs/clientlib-react-DK/resources/pdf.worker.js';
 const defaultOptions = {
     watchQuery: {
         fetchPolicy: "no-cache",

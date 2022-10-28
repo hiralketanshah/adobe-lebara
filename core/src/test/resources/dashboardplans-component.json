@@ -35,5 +35,6 @@
   "dataTabName": "Data",
   "minTabName": "Min",
   "smsTabName": "SMS",
-  "internationalMinTabName": "International min"
+  "internationalMinTabName": "International min",
+  "usedLabel" : "Consumed"
 }

@@ -6,6 +6,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.lebara.core.models.beans.MyProfileErrorAndSuccessMsg;
 import com.lebara.core.models.beans.MyProfileFormFields;
 import com.lebara.core.models.beans.MyProfileSuccessEmailModal;
+import com.lebara.core.models.beans.MyProfileAccountSetupPopup;
 import com.lebara.core.models.beans.MyProfileChangeAddressPopup;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.models.annotations.DefaultInjectionStrategy;
@@ -68,6 +69,15 @@ public class MyProfileExporter implements ComponentExporter{
 
     @ChildResource
     private MyProfileChangeAddressPopup changeAddressPopup;
+    
+    @ValueMapValue
+    private String logoutLabel;
+    
+    @ValueMapValue
+    private String logoutDesc;
+    
+    @ChildResource
+    private MyProfileAccountSetupPopup accountSetupPopup;
 
     @JsonProperty("frmFields")
     public MyProfileFormFields getFrmFields() {
@@ -86,7 +96,12 @@ public class MyProfileExporter implements ComponentExporter{
     public MyProfileChangeAddressPopup getChangeAddressPopup() {
         return changeAddressPopup;
     }
-    public String getDescription() {
+    @JsonProperty("accountSetupPopup")
+    public MyProfileAccountSetupPopup getAccountSetupPopup() {
+		return accountSetupPopup;
+	}
+
+	public String getDescription() {
         return description;
     }
 
@@ -134,8 +149,18 @@ public class MyProfileExporter implements ComponentExporter{
     }
 
     public String getChangePasswordSuccessMsg() { return changePasswordSuccessMsg;}
+    
+    
 
-    @Override
+    public String getLogoutLabel() {
+		return logoutLabel;
+	}
+
+	public String getLogoutDesc() {
+		return logoutDesc;
+	}
+
+	@Override
     public String getExportedType() {
         return RESOURCE_TYPE;
     }
