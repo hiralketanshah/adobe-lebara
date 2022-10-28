@@ -37,6 +37,12 @@
 		"emailPlaceholder": "Enter Your Email Address",
 		"portInNumberCanBeUseWithLoginWarnMsg": "the mobile number attached with ****45@gmail.com",
 		"dayLabel": "Day",
+		"companyNameLabel": "Company Name",
+		"companyNamePlaceholder": "Name of the company",
+		"kvkNumberLabel": "KVK number (optional)",
+		"kvkNumberPlaceholder": "12345678",
+		"vatNumberLabel": "VAT-number (optional)",
+		"vatNumberPlaceholder": "NL00000000000B00",
 		"portInOptions": {
 			"jcr:primaryType": "nt:unstructured",
 			"item0": {
@@ -82,6 +88,13 @@
 		"yearInValidMsg": "Please Select Year",
 		"lNameInValidMsg": "The Last name cannot contain any special characters ($, @, #, !, %. * ^() ?)",
 		"lNameRequiredMsg": "Please enter a valid Last Name , Last name cannot be empty",
-		"emailRequiredMsg": "The email address field cannot be empty"
+		"emailRequiredMsg": "The email address field cannot be empty",
+		"companyNameErrorRequired": "Please enter company name",
+		"companyNameErrorMinMax": "Company name length should be from 2 to 250 characters",
+		"companyNameErrorPattern": "Please enter valid company name",
+		"kvkNumberErrorMax": "Chamber of Commerce number length should be less than 50 digits",
+		"kvkNumberErrorPattern": "Please enter valid chamber of commerce number",
+		"vatNumberErrorPattern": "Please enter valid vat-number",
+		"vatNumberErrorMax": "Vat-number length should be less than 50 characters"
 	}
 }
