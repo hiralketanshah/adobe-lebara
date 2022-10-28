@@ -1,0 +1,10 @@
+{
+   "jcr:primaryType":"nt:unstructured",
+   "description":"test",
+   "freeGBText":"Upto 2GBs for Free",
+   "ctaLabel":"Renew Now",
+   "ctaLink":"/content/lebara/nl/en/home",
+   "userType":"allNonLoggedIn",
+   "title":"Switch now and get 3months free!",
+   "sling:resourceType":"lebara/components/nl/retentionbanner"
+}

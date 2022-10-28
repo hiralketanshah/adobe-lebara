@@ -33,6 +33,12 @@
                                                 fieldLabel="Background Image Path"
                                                 name="./imagePath"
                                                 rootPath="/content/dam/lebara"/>
+                                            <imageUrl
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/pathbrowser"
+                                                rootPath="/content/lebara"
+                                                fieldLabel="Image URL"
+                                                name="./imageUrl"/>
                                             <title
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"

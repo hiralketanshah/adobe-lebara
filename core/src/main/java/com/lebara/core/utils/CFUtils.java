@@ -125,10 +125,14 @@ public class CFUtils {
                 String countryLandingPageUrl = CFUtils.getElementValue(irFragment, "countryLandingPageURL");
                 countryLandingPageUrl = AemUtils.getLinkWithExtension(countryLandingPageUrl, resolver);
                 String countryName = CFUtils.getElementValue(irFragment, "countryName");
+                String countryFlag = CFUtils.getElementValue(irFragment, "countryFlag");
                 if (StringUtils.isNotBlank(countryLandingPageUrl) && StringUtils.isNotBlank(countryName)) {
                     SelectOption selectOption = new SelectOption();
                     selectOption.setLabel(countryName);
                     selectOption.setValue(countryLandingPageUrl);
+                    if(StringUtils.isNotBlank(countryFlag)) {
+                    	selectOption.setCountryFlag(countryFlag);
+                    }
                     internationalRateBeanList.add(selectOption);
                 }
             }
@@ -187,6 +191,15 @@ public class CFUtils {
             return 0;
         }
     }
+
+    public static ContentFragment getContentFragment(ResourceResolver resourceResolver, String cfPath) {
+        Resource cfResource = resourceResolver.getResource(cfPath);
+        if (cfResource != null) {
+            return cfResource.adaptTo(ContentFragment.class);
+        }
+        return null;
+    }
+
     public static PromotionFragmentBean populatePromotions(ResourceResolver resourceResolver, String promotionFragPath){
         Resource promotionalFragres = resourceResolver.getResource(promotionFragPath);
         PromotionFragmentBean promotionFragmentBean = new PromotionFragmentBean();

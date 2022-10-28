@@ -1,0 +1,15 @@
+import "./BillOverviewAemConfig";
+import "./DashboardAllowancesAemConfig";
+import "./DashboardPlansAemConfig";
+import "./GetAppAemConfig";
+import "./MyBalanceCardAemConfig";
+import "./NextBillAemConfig";
+import "./ManagePostpaidPlansAemConfig";
+import "./PreviousBillsAemConfig";
+import "./PromoBannerSmallAemConfig";
+import "./PromotionBannerAemConfig";
+import "./SimSwitchAemConfig";
+import "./UsageDetailsAemConfig";
+import "./RenewNowAemConfig";
+import "./SimRegisterAlertAemConfig";
+import "./CongratulationsPopupAemConfig";
