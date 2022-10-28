@@ -1,5 +1,7 @@
 package com.lebara.core.models;
 
+import java.util.Optional;
+
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.models.annotations.DefaultInjectionStrategy;
@@ -15,6 +17,7 @@ import org.apache.sling.models.annotations.via.ResourceSuperType;
 import com.adobe.cq.export.json.ComponentExporter;
 import com.adobe.cq.export.json.ExporterConstants;
 import com.adobe.cq.wcm.core.components.models.Button;
+import com.adobe.cq.wcm.style.ComponentStyleInfo;
 import com.lebara.core.utils.AemUtils;
 
 @Model(adaptables = SlingHttpServletRequest.class, adapters = { Button.class,
@@ -35,7 +38,7 @@ public class ButtonExporter implements Button{
 	private Button delegate;
 	
 	@ValueMapValue
-	private boolean openInNewTab;
+	private String buttonBorderColor;
 	
 	@ValueMapValue
 	private String buttonStyle;
@@ -45,6 +48,8 @@ public class ButtonExporter implements Button{
 
 	@ValueMapValue
 	private String buttonHoverBgColor;
+	
+	private String appliedStyles;
 	
 	@Override
 	public String getText() {
@@ -56,8 +61,8 @@ public class ButtonExporter implements Button{
 		return AemUtils.getLinkWithExtension(delegate.getLink(), request);
 	}
 
-	public boolean getOpenInNewTab() {
-		return openInNewTab;
+	public String getButtonBorderColor() {
+		return buttonBorderColor;
 	}
 
 	public String getButtonStyle() {
@@ -71,6 +76,11 @@ public class ButtonExporter implements Button{
 	public String getButtonHoverBgColor() {
 		return buttonHoverBgColor;
 	}
+	
+	public String getAppliedStyles() {
+        return Optional.of(resource).map(resource -> resource.adaptTo(ComponentStyleInfo.class))
+                .map(cmpStyleInfo -> cmpStyleInfo.getAppliedCssClasses()).orElse("");
+    }
 	
 	@Override
 	public String getExportedType() {

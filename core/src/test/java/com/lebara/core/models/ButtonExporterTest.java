@@ -43,8 +43,8 @@ public class ButtonExporterTest {
 	 * Test method for {@link com.lebara.core.models.ButtonExporter#getOpenInNewTab()}.
 	 */
 	@Test
-	void testGetOpenInNewTab() {
-		assertEquals(true, buttonExporter.getOpenInNewTab());
+	void testGetButtonBorderColor() {
+		assertEquals("rgb(127,166,235)", buttonExporter.getButtonBorderColor());
 	}
 
 	/**
@@ -60,7 +60,7 @@ public class ButtonExporterTest {
 	 */
 	@Test
 	void testGetButtonBackgroundColor() {
-		assertEquals("rgb(127,166,235)", buttonExporter.getButtonBackgroundColor());
+		assertEquals("rgb(127,156,235)", buttonExporter.getButtonBackgroundColor());
 	}
 
 	/**
@@ -74,6 +74,11 @@ public class ButtonExporterTest {
 	/**
 	 * Test method for {@link com.lebara.core.models.ButtonExporter#getExportedType()}.
 	 */
+	@Test
+    void testGetAppliedStyles() {
+        assertEquals("", buttonExporter.getAppliedStyles());
+    }
+	
 	@Test
 	void testGetExportedType() {
 		assertEquals("lebara/components/button", buttonExporter.getExportedType());

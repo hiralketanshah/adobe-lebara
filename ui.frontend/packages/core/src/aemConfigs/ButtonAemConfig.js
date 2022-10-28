@@ -1,5 +1,5 @@
 import { MapTo } from "@adobe/aem-react-editable-components";
-import Button from "@lebara/netherlands/components/Button/Button";
+import Button from "../components/Button/Button";
 
 const ButtonConfig = {
   emptyLabel: "Button Component",
