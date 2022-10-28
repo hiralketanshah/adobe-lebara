@@ -79,6 +79,33 @@
                                     fieldValue="bolton"/>
                             </optionsmultifield>
                         </_x0031_633526718213>
+                        <_x0031_659097062755
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="dam/cfm/admin/components/authoring/contenteditor/multicheckbox"
+                            emptyOption="{Boolean}true"
+                            fieldLabel="Channels"
+                            listOrder="6"
+                            metaType="enumeration"
+                            name="channels"
+                            renderReadOnly="false"
+                            showEmptyInReadOnly="true"
+                            valueType="string[]">
+                            <optionsmultifield jcr:primaryType="nt:unstructured">
+                                <item0
+                                    jcr:primaryType="nt:unstructured"
+                                    fieldLabel="Web"
+                                    fieldValue="web"/>
+                                <item1
+                                    jcr:primaryType="nt:unstructured"
+                                    fieldLabel="App"
+                                    fieldValue="app"/>
+                            </optionsmultifield>
+                            <datasource
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="dam/cfm/admin/components/datasources/optionrendererenumeration"
+                                variant="default"/>
+                            <granite:data jcr:primaryType="nt:unstructured"/>
+                        </_x0031_659097062755>
                         <_x0031_626007604231
                             jcr:primaryType="nt:unstructured"
                             sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
@@ -132,50 +159,50 @@
                             <granite:data jcr:primaryType="nt:unstructured"/>
                         </_x0031_626007982326>
                         <_x0031_632203187642
-                                jcr:primaryType="nt:unstructured"
-                                sling:resourceType="dam/cfm/admin/components/authoring/contenteditor/multieditor"
-                                cfm-element="Additional Offer Information"
-                                checked="false"
-                                default-mime-type="text/html"
-                                listOrder="2"
-                                metaType="text-multi"
-                                name="additionalOffers"
-                                renderReadOnly="false"
-                                showEmptyInReadOnly="true"
-                                valueType="string/multiline"/>
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="dam/cfm/admin/components/authoring/contenteditor/multieditor"
+                            cfm-element="Additional Offer Information"
+                            checked="false"
+                            default-mime-type="text/html"
+                            listOrder="2"
+                            metaType="text-multi"
+                            name="additionalOffers"
+                            renderReadOnly="false"
+                            showEmptyInReadOnly="true"
+                            valueType="string/multiline"/>
                         <_x0031_637302965718
-                                jcr:primaryType="nt:unstructured"
-                                sling:resourceType="dam/cfm/models/editor/components/contentreference"
-                                fieldLabel="product information File"
-                                filter="hierarchy"
-                                listOrder="21"
-                                metaType="reference"
-                                name="productInformationFile"
-                                nameSuffix="contentReference"
-                                renderReadOnly="false"
-                                rootPath="/content/dam/lebara"
-                                showEmptyInReadOnly="true"
-                                showThumbnail="false"
-                                validation="cfm.validation.contenttype.pdf"
-                                valueType="string/reference">
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="dam/cfm/models/editor/components/contentreference"
+                            fieldLabel="product information File"
+                            filter="hierarchy"
+                            listOrder="21"
+                            metaType="reference"
+                            name="productInformationFile"
+                            nameSuffix="contentReference"
+                            renderReadOnly="false"
+                            rootPath="/content/dam/lebara"
+                            showEmptyInReadOnly="true"
+                            showThumbnail="false"
+                            validation="cfm.validation.contenttype.pdf"
+                            valueType="string/reference">
                             <granite:data
-                                    jcr:primaryType="nt:unstructured"
-                                    thumbnail-validation="cfm.validation.thumbnail.show"/>
+                                jcr:primaryType="nt:unstructured"
+                                thumbnail-validation="cfm.validation.thumbnail.show"/>
                         </_x0031_637302965718>
                         <_x0031_634548203004
-                                jcr:primaryType="nt:unstructured"
-                                sling:resourceType="dam/cfm/models/editor/components/fragmentreference"
-                                allowNew="{Boolean}false"
-                                fieldLabel="Plan Fragment"
-                                filter="hierarchy"
-                                fragmentmodelreference="/conf/lebara/settings/dam/cfm/models/planinformation"
-                                listOrder="9"
-                                metaType="fragment-reference"
-                                name="planInfoPath"
-                                nameSuffix="contentReference"
-                                renderReadOnly="false"
-                                showEmptyInReadOnly="true"
-                                valueType="string/content-fragment">
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="dam/cfm/models/editor/components/fragmentreference"
+                            allowNew="{Boolean}false"
+                            fieldLabel="Plan Fragment"
+                            filter="hierarchy"
+                            fragmentmodelreference="/conf/lebara/settings/dam/cfm/models/planinformation"
+                            listOrder="9"
+                            metaType="fragment-reference"
+                            name="planInfoPath"
+                            nameSuffix="contentReference"
+                            renderReadOnly="false"
+                            showEmptyInReadOnly="true"
+                            valueType="string/content-fragment">
                             <field jcr:primaryType="nt:unstructured"/>
                             <granite:data jcr:primaryType="nt:unstructured"/>
                         </_x0031_634548203004>
@@ -199,49 +226,81 @@
                             <granite:data jcr:primaryType="nt:unstructured"/>
                         </_x0031_639741886502>
                         <_x0031_638441445406
-                                jcr:primaryType="nt:unstructured"
-                                sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
-                                listOrder="21"
-                                metaType="boolean"
-                                name="showAutorenewOnCheckout"
-                                renderReadOnly="false"
-                                showEmptyInReadOnly="true"
-                                text="Show Auto Renew Toggle on Checkout"
-                                valueType="boolean">
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                            listOrder="21"
+                            metaType="boolean"
+                            name="showAutorenewOnCheckout"
+                            renderReadOnly="false"
+                            showEmptyInReadOnly="true"
+                            text="Show Auto Renew Toggle on Checkout"
+                            valueType="boolean">
                             <granite:data jcr:primaryType="nt:unstructured"/>
                         </_x0031_638441445406>
                         <_x0031_638441445446
-                                jcr:primaryType="nt:unstructured"
-                                sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
-                                listOrder="21"
-                                metaType="boolean"
-                                name="activatePromotion"
-                                renderReadOnly="false"
-                                showEmptyInReadOnly="true"
-                                text="Activate Promotion"
-                                valueType="boolean">
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                            listOrder="21"
+                            metaType="boolean"
+                            name="activatePromotion"
+                            renderReadOnly="false"
+                            showEmptyInReadOnly="true"
+                            text="Activate Web Promotion"
+                            valueType="boolean">
                             <granite:data jcr:primaryType="nt:unstructured"/>
                         </_x0031_638441445446>
                         <_x0031_638509896404
-                                jcr:primaryType="nt:unstructured"
-                                sling:resourceType="dam/cfm/models/editor/components/fragmentreference"
-                                allowNew="{Boolean}true"
-                                fieldLabel="Promotion Fragment"
-                                filter="hierarchy"
-                                fragmentmodelreference="/conf/lebara/settings/dam/cfm/models/promotion-plan-fragment"
-                                listOrder="21"
-                                metaType="fragment-reference"
-                                name="promotionFragment"
-                                nameSuffix="contentReference"
-                                renderReadOnly="false"
-                                rootPath="/content/dam/lebara/markets"
-                                showEmptyInReadOnly="true"
-                                valueType="string/content-fragment">
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="dam/cfm/models/editor/components/fragmentreference"
+                            allowNew="{Boolean}true"
+                            fieldLabel="Promotion Web Fragment"
+                            filter="hierarchy"
+                            fragmentmodelreference="/conf/lebara/settings/dam/cfm/models/promotion-plan-fragment"
+                            listOrder="21"
+                            metaType="fragment-reference"
+                            name="promotionFragment"
+                            nameSuffix="contentReference"
+                            renderReadOnly="false"
+                            rootPath="/content/dam/lebara/markets"
+                            showEmptyInReadOnly="true"
+                            valueType="string/content-fragment">
                             <field
-                                    jcr:primaryType="nt:unstructured"
-                                    rootPath="/content/dam/lebara/markets"/>
+                                jcr:primaryType="nt:unstructured"
+                                rootPath="/content/dam/lebara/markets"/>
                             <granite:data jcr:primaryType="nt:unstructured"/>
                         </_x0031_638509896404>
+                        <_x0031_659102354220
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                            listOrder="21"
+                            metaType="boolean"
+                            name="activateAppPromotion"
+                            renderReadOnly="false"
+                            showEmptyInReadOnly="true"
+                            text="Activate App Promotion"
+                            valueType="boolean">
+                            <granite:data jcr:primaryType="nt:unstructured"/>
+                        </_x0031_659102354220>
+                        <_x0031_659102424665
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="dam/cfm/models/editor/components/fragmentreference"
+                            allowNew="{Boolean}true"
+                            fieldLabel="Promotion App Fragment"
+                            filter="hierarchy"
+                            fragmentmodelreference="/conf/lebara/settings/dam/cfm/models/promotion-plan-fragment"
+                            listOrder="22"
+                            metaType="fragment-reference"
+                            name="promotionAppFragment"
+                            nameSuffix="contentReference"
+                            renderReadOnly="false"
+                            rootPath="/content/dam/lebara/markets"
+                            showEmptyInReadOnly="true"
+                            valueType="string/content-fragment">
+                            <field
+                                jcr:primaryType="nt:unstructured"
+                                rootPath="/content/dam/lebara/markets"/>
+                            <granite:data jcr:primaryType="nt:unstructured"/>
+                        </_x0031_659102424665>
                     </items>
                 </content>
             </cq:dialog>
