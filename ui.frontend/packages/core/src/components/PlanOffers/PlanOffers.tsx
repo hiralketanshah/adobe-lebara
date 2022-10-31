@@ -2,10 +2,10 @@
 // import React, { useEffect, useRef } from "react";
 import { Flex, Box, Text, Heading } from "@chakra-ui/react";
 import { PlanOffersProps } from "./types";
-import Link from "@lebara/ui/src/components/Link/Link";
+import Link from "@lebara/core/components/Link/Link";
 import ExpandableSimPlanCard from "../ExpandableSimPlanCard/ExpandableSimPlanCard";
 import Button from "../Button/Button";
-import { useHistory, useLocation } from "@lebara/ui/src/hooks/useHistory";
+import { useHistory, useLocation } from "@lebara/core/hooks/useHistory";
 import TickInCircle from "../../icons/TickInCircle";
 import React from "react";
 import {googleAnalytics, getTypes} from "../../utils/gtm";
