@@ -75,6 +75,9 @@ public class RetentionNumberVerificationExporter implements ComponentExporter {
     @ValueMapValue
     private String enterValidOtpErrorMessage;
 
+    @ValueMapValue
+    private String ctaLinkStartPage;
+    
     public boolean getIsVerifyOtp() {
         return isVerifyOtp;
     }
@@ -137,6 +140,10 @@ public class RetentionNumberVerificationExporter implements ComponentExporter {
 
     public String getEnterValidOtpErrorMessage() {
         return enterValidOtpErrorMessage;
+    }
+
+    public String getCtaLinkStartPage() {
+        return AemUtils.getLinkWithExtension(ctaLinkStartPage);
     }
 
     @Override
