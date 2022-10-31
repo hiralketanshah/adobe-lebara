@@ -37,18 +37,8 @@ const ProgressStep: React.FC<ProgressStepProps> = ({
                 whiteSpace={{ base: "initial", md: "nowrap" }}
                 textAlign="center"
                 opacity={index > activeStepIndex ? 0.2 : 1}
-                left={index === 0 ? (!borderBoxMode ? -4 : 0) : undefined}
-                right={
-                  index === lastStepIndex
-                    ? !borderBoxMode
-                      ? -5
-                      : 0
-                    : undefined
-                }
-                mx={{
-                  base: index === lastStepIndex || index === 0 ? "20px" : "0px",
-                  lg: "0px",
-                }}
+                left={index === 0 ? 0 : undefined}
+                right={index === lastStepIndex ? 0 : undefined}
               >
                 {step?.label}
               </Text>
