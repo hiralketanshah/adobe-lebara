@@ -2,14 +2,13 @@
 // import React, { useEffect, useRef } from "react";
 import { Flex, Box, Text, Heading } from "@chakra-ui/react";
 import { PlanOffersProps } from "./types";
-import Link from "@lebara/core/components/Link/Link";
+import Link from "@lebara/ui/src/components/Link/Link";
 import ExpandableSimPlanCard from "../ExpandableSimPlanCard/ExpandableSimPlanCard";
 import Button from "../Button/Button";
-import { useHistory, useLocation } from "@lebara/core/hooks/useHistory";
+import { useHistory, useLocation } from "@lebara/ui/src/hooks/useHistory";
 import TickInCircle from "../../icons/TickInCircle";
 import React from "react";
 import {googleAnalytics, getTypes} from "../../utils/gtm";
-import aemUtils from "../../utils/aem-utils";
 const PlanOffers: React.FC<PlanOffersProps> = ({
   offers,
   heading,
@@ -34,7 +33,9 @@ const PlanOffers: React.FC<PlanOffersProps> = ({
   textAlignment,
   columnsView = 3,
   labelTextColor = "primary.600",
-  showModelOnAddtoCart =false
+  showModelOnAddtoCart =false,
+  imageForStructuredData,
+  showStructuredData,
 }) => {
   const history = useHistory();
   const linkStyles = {
@@ -43,9 +44,8 @@ const PlanOffers: React.FC<PlanOffersProps> = ({
     fontWeight: "bold",
   };
   const location = useLocation();
-  const filteredOffers = offers?.filter(aemUtils.filterByWebChannel);
   React.useEffect(() => {
-    const impressions = filteredOffers?.map((plan, index) => ({
+    const impressions = offers?.map((plan, index) => ({
       id: plan?.id,
       name: plan.planName,
       price: plan.cost,
@@ -55,11 +55,42 @@ const PlanOffers: React.FC<PlanOffersProps> = ({
       list: location.pathname,
       position: index + 1
     }));
-    googleAnalytics(filteredOffers?.every(t => t.offerType === "postpaid") ? "EElistPageA" : filteredOffers?.every(t => t.offerType === "prepaid") ? "EElistPageB" : "EElistPageC", {
+    googleAnalytics(offers?.every(t => t.offerType === "postpaid") ? "EElistPageA" : offers?.every(t => t.offerType === "prepaid") ? "EElistPageB" : "EElistPageC", {
       currencyCode: "EUR",
       impressions,
     });
-  }, [filteredOffers]);
+  }, [offers]);
+  
+  const mainEntityValue = offers?.map((offer: any) => {
+  let filteredAllowanceList: allowanceListProps = {};
+  const dataAllowanceType: allowanceListProps | undefined = offer.allowanceList && offer.allowanceList.find((list) => list.name && list.name.toLowerCase().includes('data'));
+  if (dataAllowanceType) {
+    filteredAllowanceList = dataAllowanceType;
+  } else {
+    filteredAllowanceList = (offer.allowanceList && offer.allowanceList.find((list) => list.name && (!list.name.toLowerCase().includes('data') || !list.name.toLowerCase().includes('national_voice')
+      || !list.name.toLowerCase().includes('l2l')))) || {};
+  }
+  return ({
+    "@context": "https://schema.org",
+    "@type": "Product",
+    name: `${offer.planName}`,
+    description: `${filteredAllowanceList.formatedValue} | ${offer.planInfo.listPlanItem}`,
+    image: imageForStructuredData,
+    sku: `${offer.id}`,
+    brand: {
+      "@type": "Brand",
+      name: "Lebara",
+    },
+    offers: {
+      "@type": "Offer",
+      url: `${window.location.href}`,
+      priceCurrency: `${window.lebaraGlobalConfigs.currencyName}`,
+      price: `${offer.cost} ${window.lebaraGlobalConfigs.currencySymbol}`,
+      itemCondition: "https://schema.org/UsedCondition",
+      availability: "https://schema.org/InStock",
+    },
+  
+  })});
   return (
     <Box
       backgroundColor={backgroundColor ? backgroundColor : `lightenPrimary.50`}
@@ -70,6 +101,11 @@ const PlanOffers: React.FC<PlanOffersProps> = ({
       px={{ base: "20px", lg: "80px" }}
       color={labelTextColor}
     >
+    {showStructuredData && (
+        <script type="application/ld+json">
+          {JSON.stringify(mainEntityValue)}
+        </script>
+      )}
       {heading && (
         <Heading
           color={labelTextColor || "primary.600"}
@@ -124,8 +160,8 @@ const PlanOffers: React.FC<PlanOffersProps> = ({
           gridGap={{ base: "10px", lg: "15px" }}
           mt={{ base: "15.31px", lg: "20px" }}
         >
-          {filteredOffers &&
-            filteredOffers?.map((plan: ExpandableSimPlanCardProps) => (
+          {offers &&
+            offers?.map((plan: ExpandableSimPlanCardProps) => (
               <Box
                 flex={1}
                 maxW={{ lg: `${100 / columnsView - 2}%` }}
