@@ -115,7 +115,7 @@
                                                 fieldLabel="Resend Otp Button Label"
                                                 name="./resendOtpButtonLabel"
                                                 value="Send again"/>
-											<ctaLinkStartPage
+						<ctaLinkStartPage
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
                                                 fieldDescription="Enter the page link to redirect on clicking of Back button"
