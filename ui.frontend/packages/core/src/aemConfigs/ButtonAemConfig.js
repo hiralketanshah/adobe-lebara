@@ -1,5 +1,5 @@
 import { MapTo } from "@adobe/aem-react-editable-components";
-import Button from "../components/Button/Button";
+import GenericButton from "@lebara/core/components/GenericButton/GenericButton";
 
 const ButtonConfig = {
   emptyLabel: "Button Component",
@@ -8,4 +8,4 @@ const ButtonConfig = {
   },
 };
 
-MapTo("lebara/components/button")(Button, ButtonConfig);
+MapTo("lebara/components/button")(GenericButton, ButtonConfig);
