@@ -16,6 +16,7 @@ import java.util.Locale;
 public class OfferFragmentBean {
     private String id;
     private String offerType;
+    private String [] channels;
     private String cost;
     private String planName;
     private String validity;
@@ -29,6 +30,10 @@ public class OfferFragmentBean {
     private String promotionMessage;
     private String promotionPrice;
     private String promotionData;
+    private String appPromotionID;
+    private String appPromotionMessage;
+    private String appPromotionPrice;
+    private String appPromotionData;
     private String allowanceType;
     private String autoRenew;
 
@@ -79,6 +84,38 @@ public class OfferFragmentBean {
     public void setPromotionData(String promotionData) {
         this.promotionData = promotionData;
     }
+   
+    public String getAppPromotionID() {
+        return appPromotionID;
+    }
+
+    public void setAppPromotionID(String appPromotionID) {
+        this.appPromotionID = appPromotionID;
+    }
+
+    public String getAppPromotionMessage() {
+        return appPromotionMessage;
+    }
+
+    public void setAppPromotionMessage(String appPromotionMessage) {
+        this.appPromotionMessage = appPromotionMessage;
+    }
+
+    public String getAppPromotionPrice() {
+        return appPromotionPrice;
+    }
+
+    public void setAppPromotionPrice(String appPromotionPrice) {
+        this.appPromotionPrice = appPromotionPrice;
+    }
+
+    public String getAppPromotionData() {
+        return appPromotionData;
+    }
+
+    public void setAppPromotionData(String appPromotionData) {
+        this.appPromotionData = appPromotionData;
+    }
 
     public String getPlanName() {
         return planName;
@@ -102,6 +139,14 @@ public class OfferFragmentBean {
 
     public void setOfferType(String offerType) {
         this.offerType = offerType;
+    }
+    
+    public String[] getChannels() {
+        return channels;
+    }
+
+    public void setChannels(String[] channels) {
+        this.channels = channels;
     }
 
     public String getCost() {

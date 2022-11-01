@@ -28,6 +28,7 @@ const MiniFooter: React.FC<MiniFooterProps> = ({helpText, lookText, links}) => (
       lineHeight={{ base: "20px", lg: "30px" }}
       letterSpacing="0.25px"
       ml={{ base: "initial", md: "50px" }}
+      mt={{ md: "10px" }}
     >{lookText}</Text>
     {links?.map((list, idx) => (
       <Link href={list.link} color="deeppink" key={`mf-link-${idx}`}>
@@ -38,6 +39,7 @@ const MiniFooter: React.FC<MiniFooterProps> = ({helpText, lookText, links}) => (
           lineHeight={{ base: "20px", lg: "30px" }}
           letterSpacing="0.25px"
           ml={{ base: "initial", md: "6px" }}
+          mt={{ md: "10px" }}
         >{list.label}</Text>
       </Link>
     ))}

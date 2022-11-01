@@ -40,6 +40,7 @@ import javax.mail.internet.InternetAddress;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.*;
+import com.day.cq.dam.api.DamConstants;
 
 /**
  * This is a utility class for aem specific utilities like getting resource etc.
@@ -62,11 +63,11 @@ public class AemUtils {
     public static final String DK_ROOT_PATH = "/content/lebara/dk";
     public static final String UK_ROOT_PATH = "/content/lebara/uk";
 
-    public static String DE_DOMAIN_NAME = "https://www.lebara.de";
-    public static String FR_DOMAIN_NAME = "https://www.lebara.fr";
-    public static String NL_DOMAIN_NAME = "https://www.lebara.nl";
-    public static String DK_DOMAIN_NAME = "https://www.lebara.dk";
-    public static String UK_DOMAIN_NAME = "https://www.lebara.uk";
+    public static final String DE_DOMAIN_NAME = "https://www.lebara.de";
+    public static final String FR_DOMAIN_NAME = "https://www.lebara.fr";
+    public static final String NL_DOMAIN_NAME = "https://www.lebara.nl";
+    public static final String DK_DOMAIN_NAME = "https://www.lebara.dk";
+    public static final String UK_DOMAIN_NAME = "https://www.lebara.uk";
 
     /**
      * Gets property.
@@ -414,9 +415,9 @@ public class AemUtils {
 			if (null != metadata) {
 				ValueMap metadataProps = metadata.adaptTo(ValueMap.class);
 				String format = StringUtils.EMPTY;
-				if (metadataProps.containsKey("dc:format")) {
+				if (metadataProps.containsKey(DamConstants.DC_FORMAT)) {
 					String[] whitelistedFormats = { "image/png", "image/jpeg" };
-					format = metadataProps.get("dc:format", String.class);
+					format = metadataProps.get(DamConstants.DC_FORMAT, String.class);
 					if (!Arrays.asList(whitelistedFormats).contains(format)) {
 						return fileReference;
 					}

@@ -32,8 +32,8 @@ import {AuthoringUtils} from "@adobe/aem-spa-page-model-manager";
 export const withRoute = (WrappedComponent, extension) => {
   return class CompositeRoute extends Component {
     render() {
-    const PROJECT_URL_ROOT_REGEX = /^\/content\/lebara\/[a-z]{2}(.*)$/;
-      let routePath = this.props.cqPath;
+      const PROJECT_URL_ROOT_REGEX = /^\/content\/lebara\/[a-z]{2}(.*)$/;
+      let routePath = (/\%/).test(this.props.cqPath) ? decodeURIComponent(this.props.cqPath) : this.props.cqPath;
       document.title = this.props.pageTitle;
 
       if (!routePath) {

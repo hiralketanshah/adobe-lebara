@@ -3,6 +3,7 @@ export interface ProgressStepProps {
   activeStepIndex: number;
   isWhiteBackground?: boolean;
   isSmallWidth?: boolean;
+  borderBoxMode?: boolean;
 }
 
 export interface step {

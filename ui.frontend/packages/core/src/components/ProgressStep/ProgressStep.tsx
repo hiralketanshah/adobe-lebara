@@ -5,13 +5,14 @@ import ProgressStepEllipse from "@lebara/core/components/ProgressStepEllipse/Pro
 
 const ProgressStep: React.FC<ProgressStepProps> = ({
   activeStepIndex,
+  borderBoxMode,
   pageLinks,
   isSmallWidth,
   isWhiteBackground
 }) => {
   const lastStepIndex = pageLinks?.length - 1;
   return (
-    <Center paddingX={"20px"}>
+    <Center paddingX={"20px"} mb={"10px"}>
     <Box w="100%" {...isSmallWidth  && {maxW: "846px"}} {...isWhiteBackground && {bg: {lg: "white"}}} mt={"35px"} px={{ lg: "60px" }}>
       <Flex alignItems="center" gridGap="4px" height="72px" my="12px">
         {pageLinks?.map((step, index) => (
@@ -31,11 +32,13 @@ const ProgressStep: React.FC<ProgressStepProps> = ({
                 fontSize={{ base: "12px", md: "14px" }}
                 fontWeight="bold"
                 position="absolute"
-                bottom="-30px"
+                top="30px"
+                width={{ base: "20vw", md: "unset" }}
+                whiteSpace={{ base: "initial", md: "nowrap" }}
+                textAlign="center"
                 opacity={index > activeStepIndex ? 0.2 : 1}
                 left={index === 0 ? 0 : undefined}
                 right={index === lastStepIndex ? 0 : undefined}
-                whiteSpace="nowrap"
               >
                 {step?.label}
               </Text>

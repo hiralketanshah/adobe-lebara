@@ -33,6 +33,12 @@ public class FailedLegalRegistrationExporter implements ComponentExporter {
 
     @ValueMapValue
     private boolean isSuccessFlow;
+    
+    @ValueMapValue
+    private String errorAlreadyActivatedMessage;
+    
+    @ValueMapValue
+    private String errorAlreadyActivatedBody;
 
     public String getErrorLegalRegistrationMessage() {
         return errorLegalRegistrationMessage;
@@ -48,6 +54,14 @@ public class FailedLegalRegistrationExporter implements ComponentExporter {
 
     public boolean getIsSuccessFlow() {
         return isSuccessFlow;
+    }
+    
+    public String getErrorAlreadyActivatedMessage() {
+    	return errorAlreadyActivatedMessage;
+    }
+    
+    public String getErrorAlreadyActivatedBody() {
+    	return errorAlreadyActivatedBody;
     }
 
     @Override
