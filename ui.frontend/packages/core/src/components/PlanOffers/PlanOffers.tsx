@@ -9,6 +9,7 @@ import { useHistory, useLocation } from "@lebara/core/hooks/useHistory";
 import TickInCircle from "../../icons/TickInCircle";
 import React from "react";
 import {googleAnalytics, getTypes} from "../../utils/gtm";
+import aemUtils from "../../utils/aem-utils";
 const PlanOffers: React.FC<PlanOffersProps> = ({
   offers,
   heading,
@@ -44,8 +45,9 @@ const PlanOffers: React.FC<PlanOffersProps> = ({
     fontWeight: "bold",
   };
   const location = useLocation();
+  const filteredOffers = offers?.filter(aemUtils.filterByWebChannel);
   React.useEffect(() => {
-    const impressions = offers?.map((plan, index) => ({
+    const impressions = filteredOffers?.map((plan, index) => ({
       id: plan?.id,
       name: plan.planName,
       price: plan.cost,
@@ -55,13 +57,13 @@ const PlanOffers: React.FC<PlanOffersProps> = ({
       list: location.pathname,
       position: index + 1
     }));
-    googleAnalytics(offers?.every(t => t.offerType === "postpaid") ? "EElistPageA" : offers?.every(t => t.offerType === "prepaid") ? "EElistPageB" : "EElistPageC", {
+    googleAnalytics(filteredOffers?.every(t => t.offerType === "postpaid") ? "EElistPageA" : filteredOffers?.every(t => t.offerType === "prepaid") ? "EElistPageB" : "EElistPageC", {
       currencyCode: "EUR",
       impressions,
     });
-  }, [offers]);
+  }, [filteredOffers]);
   
-  const mainEntityValue = offers?.map((offer: any) => {
+  const mainEntityValue = filteredOffers?.map((offer: any) => {
   let filteredAllowanceList: allowanceListProps = {};
   const dataAllowanceType: allowanceListProps | undefined = offer.allowanceList && offer.allowanceList.find((list) => list.name && list.name.toLowerCase().includes('data'));
   if (dataAllowanceType) {
