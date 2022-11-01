@@ -320,6 +320,55 @@
                                 fieldLabel="Error Message on Empty city name"
                                 name="./validationMessages/cityErrorRequired"
                                 value="Town/city is Required"/>
+                            <companyNameErrorRequired
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldLabel="Error Message on Empty Company name"
+                                fieldDescription="Example : Please enter company name"
+                                name="./validationMessages/companyNameErrorRequired"
+                                value="Please enter company name"/>
+                            <companyNameErrorMinMax
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldLabel="Error Message on Company Name character limit"
+                                fieldDescription="Example : Company name length should be from 2 to 250 characters"
+                                name="./validationMessages/companyNameErrorMinMax"
+                                value="Company name length should be from 2 to 250 characters"/>
+                            <companyNameErrorPattern
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldLabel="Error Message on Invalid Company name"
+                                fieldDescription="Example : Please enter valid company name"
+                                name="./validationMessages/companyNameErrorPattern"
+                                value="Please enter valid company name"/>
+                            <kvkNumberErrorMax
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldLabel="Error Message on KVK Number character limit"
+                                fieldDescription="Example : Chamber of Commerce number length should be less than 50 digits"
+                                name="./validationMessages/kvkNumberErrorMax"
+                                value="Chamber of Commerce number length should be less than 50 digits"/>
+                            <kvkNumberErrorPattern
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldLabel="Error Message on Invalid KVK Number"
+                                fieldDescription="Example : Please enter valid chamber of commerce number"
+                                name="./validationMessages/kvkNumberErrorPattern"
+                                value="Please enter valid chamber of commerce number"/>
+                            <vatNumberErrorMax
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldLabel="Error Message on VAT Number character limit"
+                                fieldDescription="Example : Vat-number length should be less than 50 characters"
+                                name="./validationMessages/vatNumberErrorMax"
+                                value="Vat-number length should be less than 50 characters"/>
+                            <vatNumberErrorPattern
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldLabel="Error Message on Invalid VAT Number"
+                                fieldDescription="Example : Please enter valid vat-number"
+                                name="./validationMessages/vatNumberErrorPattern"
+                                value="Please enter valid vat-number"/>
                             <cityPatternError
                                 jcr:primaryType="nt:unstructured"
                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
