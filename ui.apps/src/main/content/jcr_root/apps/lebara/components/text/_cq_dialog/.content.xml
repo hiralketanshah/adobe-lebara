@@ -7,6 +7,12 @@
         jcr:primaryType="nt:unstructured"
         sling:resourceType="granite/ui/components/coral/foundation/container">
         <items jcr:primaryType="nt:unstructured">
+            <note
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="granite/ui/components/coral/foundation/alert"
+                size="S"
+                text="New Design will give capabilities to this component such as : Style System Support. Changes done in Styles will reflect only for new Design"
+                variant="help"/>
             <tabs
                 jcr:primaryType="nt:unstructured"
                 sling:resourceType="granite/ui/components/coral/foundation/tabs"

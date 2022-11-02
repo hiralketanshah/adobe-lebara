@@ -55,6 +55,10 @@
                         cq:policy="lebara/components/getitnow/policy_1662709032825"
                         jcr:primaryType="nt:unstructured"
                         sling:resourceType="wcm/core/components/policies/mapping"/>
+					<text
+						cq:policy="lebara/components/text/policy_1663592440963"
+						jcr:primaryType="nt:unstructured"
+						sling:resourceType="wcm/core/components/policies/mapping"/>
                 </components>
             </lebara>
         </root>
