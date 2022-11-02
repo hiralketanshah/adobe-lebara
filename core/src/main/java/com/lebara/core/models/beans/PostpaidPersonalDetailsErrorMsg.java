@@ -113,6 +113,45 @@ public class PostpaidPersonalDetailsErrorMsg {
     @ValueMapValue
     private String cityErrorRequired;
     
+    @ValueMapValue
+    private String companyNameErrorRequired;
+    
+    @ValueMapValue
+    private String companyNameErrorMinMax;
+    
+    @ValueMapValue
+    private String companyNameErrorPattern;
+    
+    @ValueMapValue
+    private String kvkNumberErrorMax;
+    
+    @ValueMapValue
+    private String kvkNumberErrorPattern;
+    
+    @ValueMapValue
+    private String vatNumberErrorMax;
+    
+    @ValueMapValue
+    private String vatNumberErrorPattern;
+
+    @ValueMapValue
+    public String streetLabelErrorMax;
+    
+    @ValueMapValue
+    public String houseNumberErrorMax;
+    
+    @ValueMapValue
+    public String zipCodeErrorMax;
+    
+    @ValueMapValue
+    public String zipCodeErrorMin;
+    
+    @ValueMapValue
+    public String cityPatternError;
+    
+    @ValueMapValue
+    public String cityMaxCharError;
+
     public String getTitleRequiredMsg() {
 		return titleRequiredMsg;
 	}
@@ -240,4 +279,57 @@ public class PostpaidPersonalDetailsErrorMsg {
     public String getVerifyCodeRequiredMsg() {
         return verifyCodeRequiredMsg;
     }
+
+    public String getCompanyNameErrorRequired() {
+        return companyNameErrorRequired;
+    }
+
+    public String getCompanyNameErrorMinMax() {
+        return companyNameErrorMinMax;
+    }
+
+    public String getCompanyNameErrorPattern() {
+        return companyNameErrorPattern;
+    }
+
+    public String getKvkNumberErrorMax() {
+        return kvkNumberErrorMax;
+    }
+
+    public String getKvkNumberErrorPattern() {
+        return kvkNumberErrorPattern;
+    }
+
+    public String getVatNumberErrorMax() {
+        return vatNumberErrorMax;
+    }
+
+    public String getVatNumberErrorPattern() {
+        return vatNumberErrorPattern;
+    }
+    
+    public String getStreetLabelErrorMax() {
+        return streetLabelErrorMax;
+    }
+
+    public String getHouseNumberErrorMax() {
+        return houseNumberErrorMax;
+    }
+
+    public String getZipCodeErrorMin() {
+        return zipCodeErrorMin;
+    }
+
+    public String getZipCodeErrorMax() {
+        return zipCodeErrorMax;
+    }
+
+    public String getCityPatternError() {
+        return cityPatternError;
+    }
+
+    public String getCityMaxCharError() {
+        return cityMaxCharError;
+    }
+    
 }

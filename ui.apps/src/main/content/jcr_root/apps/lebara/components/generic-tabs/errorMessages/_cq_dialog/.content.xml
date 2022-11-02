@@ -266,6 +266,18 @@
                                 fieldLabel="Error Message on invalid Street name"
                                 name="./validationMessages/streetLabelErrorPattern"
                                 value="Please enter valid street name"/>
+                            <streetLabelErrorMax
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldLabel="Street Name Character Limit Error Message"
+                                value="The street name can have a maximum of 25 characters. Please enter your street name."
+                                name="./validationMessages/streetLabelErrorMax"/>
+                            <houseNumberErrorMax
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldLabel="House Number Character Limit Error Message"
+                                value="The house number can have a maximum of 25 characters. Please enter your house number."
+                                name="./validationMessages/houseNumberErrorMax"/>
                             <houseNumberErrorRequired
                                 jcr:primaryType="nt:unstructured"
                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
@@ -278,6 +290,18 @@
                                 fieldLabel="Error Message on invalid House number"
                                 name="./validationMessages/houseNumberErrorPattern"
                                 value="Please enter valid house number"/>
+                            <postCodeErrorMax
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldLabel="Post Code Max Character Limit Error Message"
+                                value="Your zip code can have a maximum of 10 characters. Please enter your zip code."
+                                name="./validationMessages/zipCodeErrorMax"/>
+                            <postCodeErrorMin
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldLabel="Post Code Min. Character Limit Error message"
+                                value="Your zip code must have at least 5 characters. Please enter your zip code."
+                                name="./validationMessages/zipCodeErrorMin"/>
                             <zipCodeErrorRequired
                                 jcr:primaryType="nt:unstructured"
                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
@@ -296,6 +320,67 @@
                                 fieldLabel="Error Message on Empty city name"
                                 name="./validationMessages/cityErrorRequired"
                                 value="Town/city is Required"/>
+                            <companyNameErrorRequired
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldLabel="Error Message on Empty Company name"
+                                fieldDescription="Example : Please enter company name"
+                                name="./validationMessages/companyNameErrorRequired"
+                                value="Please enter company name"/>
+                            <companyNameErrorMinMax
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldLabel="Error Message on Company Name character limit"
+                                fieldDescription="Example : Company name length should be from 2 to 250 characters"
+                                name="./validationMessages/companyNameErrorMinMax"
+                                value="Company name length should be from 2 to 250 characters"/>
+                            <companyNameErrorPattern
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldLabel="Error Message on Invalid Company name"
+                                fieldDescription="Example : Please enter valid company name"
+                                name="./validationMessages/companyNameErrorPattern"
+                                value="Please enter valid company name"/>
+                            <kvkNumberErrorMax
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldLabel="Error Message on KVK Number character limit"
+                                fieldDescription="Example : Chamber of Commerce number length should be less than 50 digits"
+                                name="./validationMessages/kvkNumberErrorMax"
+                                value="Chamber of Commerce number length should be less than 50 digits"/>
+                            <kvkNumberErrorPattern
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldLabel="Error Message on Invalid KVK Number"
+                                fieldDescription="Example : Please enter valid chamber of commerce number"
+                                name="./validationMessages/kvkNumberErrorPattern"
+                                value="Please enter valid chamber of commerce number"/>
+                            <vatNumberErrorMax
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldLabel="Error Message on VAT Number character limit"
+                                fieldDescription="Example : Vat-number length should be less than 50 characters"
+                                name="./validationMessages/vatNumberErrorMax"
+                                value="Vat-number length should be less than 50 characters"/>
+                            <vatNumberErrorPattern
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldLabel="Error Message on Invalid VAT Number"
+                                fieldDescription="Example : Please enter valid vat-number"
+                                name="./validationMessages/vatNumberErrorPattern"
+                                value="Please enter valid vat-number"/>
+                            <cityPatternError
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldLabel="Error Message on invalid city name pattern"
+                                name="./validationMessages/cityPatternError"
+                                value="Please enter a valid city"/>
+                            <cityMaxCharError
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldLabel="Error Message on max character limit on city name"
+                                name="./validationMessages/cityMaxCharError"
+                                value="The city name can have a maximum of 60 characters. Please enter your city."/>
                         </items>
                     </column>
                 </items>

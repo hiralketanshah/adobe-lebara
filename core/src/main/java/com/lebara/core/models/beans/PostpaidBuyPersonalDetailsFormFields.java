@@ -98,6 +98,24 @@ public class PostpaidBuyPersonalDetailsFormFields {
 	
 	@ValueMapValue
 	private String tooManyTriesMessage;
+
+    @ValueMapValue
+    private String companyNameLabel;
+    
+    @ValueMapValue
+    private String companyNamePlaceholder;
+
+    @ValueMapValue
+    private String kvkNumberLabel;
+    
+    @ValueMapValue
+    private String kvkNumberPlaceholder;
+
+    @ValueMapValue
+    private String vatNumberLabel;
+    
+    @ValueMapValue
+    private String vatNumberPlaceholder;
 	
 	@ChildResource
 	protected Resource portInOptions;
@@ -209,7 +227,31 @@ public class PostpaidBuyPersonalDetailsFormFields {
 		return tooManyTriesMessage;
 	}
 
-	@JsonProperty("portInOptions")
+	public String getCompanyNameLabel() {
+        return companyNameLabel;
+    }
+
+    public String getCompanyNamePlaceholder() {
+        return companyNamePlaceholder;
+    }
+
+    public String getKvkNumberLabel() {
+        return kvkNumberLabel;
+    }
+
+    public String getKvkNumberPlaceholder() {
+        return kvkNumberPlaceholder;
+    }
+
+    public String getVatNumberLabel() {
+        return vatNumberLabel;
+    }
+
+    public String getVatNumberPlaceholder() {
+        return vatNumberPlaceholder;
+    }
+
+    @JsonProperty("portInOptions")
 	public List<SelectOption> getPortInOptionArray() {
 		List<SelectOption> options = new ArrayList<>();
 		if (portInOptions != null) {

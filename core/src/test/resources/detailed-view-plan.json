@@ -153,6 +153,61 @@
           }
         }
       },
+      "promotionApp": {
+        "jcr:primaryType": "dam:Asset",
+        "jcr:mixinTypes": [
+          "mix:referenceable",
+          "mix:versionable"
+        ],
+        "jcr:createdBy": "admin",
+        "jcr:versionHistory": "1688f42a-b514-4c4d-820e-9096d61b3592",
+        "jcr:predecessors": [
+          "9f52b5b5-c238-40e8-9d16-eb0633679530"
+        ],
+        "jcr:created": "Sun Dec 26 2021 01:29:44 GMT+0530",
+        "jcr:baseVersion": "9f52b5b5-c238-40e8-9d16-eb0633679530",
+        "jcr:isCheckedOut": true,
+        "jcr:uuid": "20ef8993-d2b6-421d-9e98-c88192120d68",
+        "jcr:content": {
+          "jcr:primaryType": "dam:AssetContent",
+          "jcr:title": "promotiontest",
+          "jcr:lastModifiedBy": "admin",
+          "contentFragment": true,
+          "cq:name": "promotiontest",
+          "jcr:lastModified": "Sun Dec 26 2021 01:30:13 GMT+0530",
+          "lastFragmentSave": "Sun Dec 26 2021 01:30:13 GMT+0530",
+          "cq:parentPath": "/content/dam/lebara/markets/de/de/content-fragments",
+          "renditions": {
+            "jcr:primaryType": "nt:folder",
+            "jcr:createdBy": "admin",
+            "jcr:created": "Sun Dec 26 2021 01:29:44 GMT+0530"
+          },
+          "related": {
+            "jcr:primaryType": "nt:unstructured"
+          },
+          "metadata": {
+            "jcr:primaryType": "nt:unstructured",
+            "jcr:mixinTypes": [
+              "cq:Taggable"
+            ]
+          },
+          "data": {
+            "jcr:primaryType": "nt:unstructured",
+            "cq:model": "/conf/lebara/settings/dam/cfm/models/promotion-plan-fragment",
+            "master": {
+              "jcr:primaryType": "nt:unstructured",
+              "jcr:mixinTypes": [
+                "dam:cfVariationNode",
+                "cq:Taggable"
+              ],
+              "promotionDetails": "Promotion Details",
+              "promotionalPrice": "4 $",
+              "promotionData": "3 GB",
+              "promotionId": "12345"
+            }
+          }
+        }
+      },
       "plan": {
         "jcr:primaryType": "dam:Asset",
         "jcr:mixinTypes": [
@@ -197,10 +252,12 @@
               "active@LastModified": "Fri Nov 26 2021 13:46:42 GMT+0530",
               "active": true,
               "promotionFragment": "/content/lebara/de/de/detailed-viewplan-test/jcr:content/root/promotion",
+              "promotionAppFragment": "/content/lebara/de/de/detailed-viewplan-test/jcr:content/root/promotionApp",
               "planInfoPath": "/content/lebara/de/de/detailed-viewplan-test/jcr:content/root/planpath",
               "validity": "35",
               "additionalOffers": "35",
               "activatePromotion": "true",
+              "activateAppPromotion": "true",
               "offerid@ContentType": "text/plain",
               "productInformationFile@LastModified": "Fri Nov 26 2021 13:46:42 GMT+0530",
               "allowancesList@LastModified": "Fri Nov 26 2021 13:46:42 GMT+0530",

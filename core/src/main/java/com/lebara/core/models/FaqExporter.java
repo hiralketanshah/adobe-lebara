@@ -30,6 +30,9 @@ public class FaqExporter extends HeadingExporter {
     @ScriptVariable
     private Resource resource;
 
+    @ValueMapValue
+    private boolean showStructuredData;
+
     @ChildResource
     private List<Option> options;
 
@@ -41,6 +44,10 @@ public class FaqExporter extends HeadingExporter {
 
     @SlingObject
     private SlingHttpServletRequest slingRequest;
+
+    public boolean isShowStructuredData() {
+        return showStructuredData;
+    }
 
     public List<Option> getOptions() {
         return (options == null) ? Collections.emptyList() : options;

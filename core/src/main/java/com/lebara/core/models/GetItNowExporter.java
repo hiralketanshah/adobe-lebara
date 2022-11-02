@@ -27,6 +27,9 @@ public class GetItNowExporter extends IntroExporter {
     @ValueMapValue
     private String imagePath;
     
+	@ValueMapValue
+	private String imageUrl;
+    
     @Inject @Source("script-bindings")
     private Style currentStyle;
 
@@ -56,6 +59,10 @@ public class GetItNowExporter extends IntroExporter {
     public String getImagePath() {
         return AemUtils.getImageRendition(imagePath, currentStyle.get("rendition", String.class), request.getResourceResolver());
     }
+    
+	public String getImageUrl() {
+		return AemUtils.getLinkWithExtension(imageUrl, request);
+	}
 
     public String getTitle() {
         return title;

@@ -6,4 +6,5 @@ export interface HomeFaqsProps {
   title?: string;
   options: options[] | [];
   backgroundColor?: string;
+  showStructuredData?: boolean;
 }

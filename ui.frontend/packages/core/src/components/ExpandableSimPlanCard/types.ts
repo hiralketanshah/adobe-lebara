@@ -4,6 +4,7 @@ import { allowanceListProps, planDetails } from "../ExpandablePlanCard/types";
 export interface ExpandableSimPlanCardProps {
   planName: string;
   offerType?: string;
+  channels?: string[];
   price: number;
   duration: string;
   countries: CountriesList[];
@@ -32,6 +33,10 @@ export interface ExpandableSimPlanCardProps {
   promotionMessage?: string;
   promotionPrice?: string;
   promotionData?: string;
+  appPromotionID?: string;
+  appPromotionMessage?: string;
+  appPromotionPrice?: string;
+  appPromotionData?: string;
   ctaSelectLabel?: string;
   ctaAddToCartLabel?: string;
   ctaCloseLabel?: string;

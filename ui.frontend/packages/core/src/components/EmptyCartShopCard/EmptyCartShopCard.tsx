@@ -14,6 +14,7 @@ import ExpandableSimPlanCard from "../ExpandableSimPlanCard/ExpandableSimPlanCar
 import TickInCircle from "@lebara/core/icons/TickInCircle";
 import { EmptyCartShopCardProps } from "./types";
 import { ExpandableSimPlanCardProps } from "../ExpandableSimPlanCard/types";
+import aemUtils from "../../utils/aem-utils";
 
 const EmptyCartShopCard: React.FC<EmptyCartShopCardProps> = ({
   expandableAddOnsCardProps,
@@ -119,7 +120,7 @@ const EmptyCartShopCard: React.FC<EmptyCartShopCardProps> = ({
                 gridGap="38px"
                 overflowX="auto"
               >
-                {expandableAddOnsCardProps.map(
+                {expandableAddOnsCardProps.filter(aemUtils.filterByWebChannel).map(
                   (addOnPlan: ExpandableSimPlanCardProps) => (
                     <Box flexDirection="column">
                       <ExpandableSimPlanCard {...addOnPlan}
@@ -142,7 +143,7 @@ const EmptyCartShopCard: React.FC<EmptyCartShopCardProps> = ({
                 gridGap="38px"
                 overflowX="auto"
               >
-                {expandableSimPlanCardProps.map(
+                {expandableSimPlanCardProps.filter(aemUtils.filterByWebChannel).map(
                   (planCard: ExpandableSimPlanCardProps) => (
                     <Box flexDirection="column">
                       <ExpandableSimPlanCard {...planCard}
@@ -164,7 +165,7 @@ const EmptyCartShopCard: React.FC<EmptyCartShopCardProps> = ({
                 gridGap="38px"
                 overflowX="auto"
               >
-                {expandablePlanCardProps.map(
+                {expandablePlanCardProps.filter(aemUtils.filterByWebChannel).map(
                   (simCardPlan: ExpandableSimPlanCardProps) => (
                     <Box flexDirection="column">
                       <ExpandableSimPlanCard {...simCardPlan}

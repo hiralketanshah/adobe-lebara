@@ -909,6 +909,12 @@
                                     value="Please enter a valid email address. For example username@domain.com"
                                     fieldDescription="Please enter a valid email address. For example username@domain.com"
                                     name="./emailErrorPattern"/>
+                            <multiMsisdnErrorMsg
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldDescription="You already have an attachment, please use another email."
+                                fieldLabel="Multi Msisdn Error Message"
+                                name="./multiMsisdnErrorMsg"/>
                             <existingUserErrorMsg
                                     jcr:primaryType="nt:unstructured"
                                     sling:resourceType="cq/gui/components/authoring/dialog/richtext"

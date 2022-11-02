@@ -25,7 +25,8 @@ const HeroBanner: React.FC<HeroBannerProps> = ({
   getItNowErrorMessage,
   headingType,
   isSimChoiceFlow,
-  showAttachSim
+  showAttachSim,
+  imageUrl,
 }) => {
   const isAuthenticated = useSelector(selectIsAuthenticated);
   const msisdn = useSelector(selectMsisdn);
@@ -65,6 +66,7 @@ return (
           pos="relative"
           zIndex={1}
           w={{ base: 245, lg: 398 }}
+          onClick={imageUrl ? (() => history.push(imageUrl)) : undefined}
         />
       </Box>
     </Box>

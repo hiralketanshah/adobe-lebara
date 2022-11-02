@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="nt:unstructured"
+    jcr:title="Setup Password"
+    sling:resourceType="cq/gui/components/authoring/dialog"
+    extraClientlibs="[lebara.touchui]">
+    <content
+        jcr:primaryType="nt:unstructured"
+        sling:resourceType="granite/ui/components/coral/foundation/container">
+        <items jcr:primaryType="nt:unstructured">
+            <tabs
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="granite/ui/components/coral/foundation/tabs"
+                maximized="{Boolean}true">
+                <items jcr:primaryType="nt:unstructured">
+                    <setuppassword
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Setup Password Form Fields"
+                        sling:resourceType="granite/ui/components/coral/foundation/container"
+                        margin="{Boolean}true">
+                        <items jcr:primaryType="nt:unstructured">
+                            <columns
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+                                margin="{Boolean}true">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <column
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <compHeading
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="Title"
+                                                name="./compHeading"
+                                                value="Setup Password"/>
+                                            <pwdHelperMsg
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="Enter Password Helper Message"
+                                                fieldLabel="Password Helper Message"
+                                                name="./pwdHelperMsg"
+                                                value="Minimum 6 Characters."/>
+                                            <pwdConfirmHelperMsg
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="Password Confirm Helper Message"
+                                                name="./pwdConfirmHelperMsg"
+                                                value="Please Confirm Your Password"/>
+                                            <pwdRequiredValidationMsg
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="Password Required Validation Message"
+                                                name="./pwdRequiredValidationMsg"
+                                                value="Required"/>
+                                            <pwdMinValdiationMsg
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="Password Min Validation Message"
+                                                name="./pwdMinValdiationMsg"
+                                                value="Minimum length is 8 characters"/>
+                                            <pwdMaxValdiationMsg
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="Password Max Validation Message"
+                                                name="./pwdMaxValdiationMsg"
+                                                value="Maximum length is 255 characters"/>
+                                            <pwdConfirmRequiredValidationMsg
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="Password Confirm Required Validation Message"
+                                                name="./pwdConfirmRequiredValidationMsg"
+                                                value="Required"/>
+                                            <pwdConfirmMatchValidationMsg
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="Password Match Validation Message"
+                                                name="./pwdConfirmMatchValidationMsg"
+                                                value="Password and password confirmation do not match"/>
+                                            <frmBtnPrimaryLabel
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="Form Button Primary Label"
+                                                name="./frmBtnPrimaryLabel"
+                                                value="Save"/>
+                                            <frmLabelNewPwd
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="Form Label for New Password"
+                                                name="./frmLabelNewPwd"
+                                                value="Password"/>
+                                            <frmLabelReEnterNewPwd
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="Form Label For Reenter New Password"
+                                                name="./frmLabelReEnterNewPwd"
+                                                value="Confirm Password"/>
+                                            <showLabel
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="Show Label"
+                                                name="./showLabel"
+                                                value="Show"/>
+                                            <hideLabel
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="Hide Label"
+                                                name="./hideLabel"
+                                                value="Hide"/>
+                                            <errorPasswordPatternMinMsg
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="Error Password Pattern Minimum Message"
+                                                name="./errorPasswordPatternMinMsg"
+                                                value="Password must contain minimum 8 characters including Alpha numeric, Upper case, Lower case, Number and Special character."/>
+                                            <icon
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/pathbrowser"
+                                                fieldLabel="Error Image"
+                                                name="./errorCard/icon"
+                                                rootPath="/content/dam/lebara"/>
+                                            <title
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="Error Title"
+                                                name="./errorCard/title"
+                                                value="link is expired"/>
+                                            <subtitle
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="Sub Title"
+                                                name="./errorCard/subtitle"
+                                                value="Dear customer, this link is expired, please go to the login screen to reset it."/>
+                                            <buttonLabel
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="Button Label"
+                                                name="./errorCard/buttonLabel"
+                                                value="Go to password reset"/>
+                                            <buttonLink
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                                fieldLabel="Button Link"
+                                                name="./errorCard/buttonLink"
+                                                rootPath="/content/lebara"
+                                                value="/reset-password"/>
+                                        </items>
+                                    </column>
+                                </items>
+                            </columns>
+                        </items>
+                    </setuppassword>
+                </items>
+            </tabs>
+        </items>
+    </content>
+</jcr:root>

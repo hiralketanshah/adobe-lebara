@@ -32,5 +32,20 @@
   "internationalUnlimitedPlanTextSummary": "Unlimited Calling International",
   "advancedSpeedTitle": "4G Extra",
   "mostPopularBundleId": "bundle1",
-  "isRetentionConfigurator" : false
+  "isRetentionConfigurator" : false,
+  "verificationPageRedirect" : "/content/lebara/nl/en/postpaid/details.html",
+  "retentionMapping" :{
+	   "item0":{
+	      "key":"319979",
+	      "value":"319982"
+	   },
+	   "item1":{
+	      "key":"319981",
+	      "value":"319980"
+	   },
+	   "item2":{
+	      "key":"319975",
+	      "value":"319974"
+	   }
+  }
 }

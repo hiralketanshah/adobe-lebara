@@ -9,6 +9,7 @@ import { useHistory, useLocation } from "@lebara/core/hooks/useHistory";
 import TickInCircle from "../../icons/TickInCircle";
 import React from "react";
 import {googleAnalytics, getTypes} from "../../utils/gtm";
+import aemUtils from "../../utils/aem-utils";
 const PlanOffers: React.FC<PlanOffersProps> = ({
   offers,
   heading,
@@ -33,7 +34,9 @@ const PlanOffers: React.FC<PlanOffersProps> = ({
   textAlignment,
   columnsView = 3,
   labelTextColor = "primary.600",
-  showModelOnAddtoCart =false
+  showModelOnAddtoCart =false,
+  imageForStructuredData,
+  showStructuredData,
 }) => {
   const history = useHistory();
   const linkStyles = {
@@ -42,8 +45,9 @@ const PlanOffers: React.FC<PlanOffersProps> = ({
     fontWeight: "bold",
   };
   const location = useLocation();
+  const filteredOffers = offers?.filter(aemUtils.filterByWebChannel);
   React.useEffect(() => {
-    const impressions = offers?.map((plan, index) => ({
+    const impressions = filteredOffers?.map((plan, index) => ({
       id: plan?.id,
       name: plan.planName,
       price: plan.cost,
@@ -53,11 +57,42 @@ const PlanOffers: React.FC<PlanOffersProps> = ({
       list: location.pathname,
       position: index + 1
     }));
-    googleAnalytics(offers?.every(t => t.offerType === "postpaid") ? "EElistPageA" : offers?.every(t => t.offerType === "prepaid") ? "EElistPageB" : "EElistPageC", {
+    googleAnalytics(filteredOffers?.every(t => t.offerType === "postpaid") ? "EElistPageA" : filteredOffers?.every(t => t.offerType === "prepaid") ? "EElistPageB" : "EElistPageC", {
       currencyCode: "EUR",
       impressions,
     });
-  }, [offers]);
+  }, [filteredOffers]);
+  
+  const mainEntityValue = filteredOffers?.map((offer: any) => {
+  let filteredAllowanceList: allowanceListProps = {};
+  const dataAllowanceType: allowanceListProps | undefined = offer.allowanceList && offer.allowanceList.find((list) => list.name && list.name.toLowerCase().includes('data'));
+  if (dataAllowanceType) {
+    filteredAllowanceList = dataAllowanceType;
+  } else {
+    filteredAllowanceList = (offer.allowanceList && offer.allowanceList.find((list) => list.name && (!list.name.toLowerCase().includes('data') || !list.name.toLowerCase().includes('national_voice')
+      || !list.name.toLowerCase().includes('l2l')))) || {};
+  }
+  return ({
+    "@context": "https://schema.org",
+    "@type": "Product",
+    name: `${offer.planName}`,
+    description: `${filteredAllowanceList.formatedValue} | ${offer.planInfo.listPlanItem}`,
+    image: imageForStructuredData,
+    sku: `${offer.id}`,
+    brand: {
+      "@type": "Brand",
+      name: "Lebara",
+    },
+    offers: {
+      "@type": "Offer",
+      url: `${window.location.href}`,
+      priceCurrency: `${window.lebaraGlobalConfigs.currencyName}`,
+      price: `${offer.cost} ${window.lebaraGlobalConfigs.currencySymbol}`,
+      itemCondition: "https://schema.org/UsedCondition",
+      availability: "https://schema.org/InStock",
+    },
+  
+  })});
   return (
     <Box
       backgroundColor={backgroundColor ? backgroundColor : `lightenPrimary.50`}
@@ -68,6 +103,11 @@ const PlanOffers: React.FC<PlanOffersProps> = ({
       px={{ base: "20px", lg: "80px" }}
       color={labelTextColor}
     >
+    {showStructuredData && (
+        <script type="application/ld+json">
+          {JSON.stringify(mainEntityValue)}
+        </script>
+      )}
       {heading && (
         <Heading
           color={labelTextColor || "primary.600"}

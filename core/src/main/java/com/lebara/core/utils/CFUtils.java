@@ -191,6 +191,15 @@ public class CFUtils {
             return 0;
         }
     }
+
+    public static ContentFragment getContentFragment(ResourceResolver resourceResolver, String cfPath) {
+        Resource cfResource = resourceResolver.getResource(cfPath);
+        if (cfResource != null) {
+            return cfResource.adaptTo(ContentFragment.class);
+        }
+        return null;
+    }
+
     public static PromotionFragmentBean populatePromotions(ResourceResolver resourceResolver, String promotionFragPath){
         Resource promotionalFragres = resourceResolver.getResource(promotionFragPath);
         PromotionFragmentBean promotionFragmentBean = new PromotionFragmentBean();
@@ -249,6 +258,30 @@ public class CFUtils {
                         }
                     }
                 }
+                String activateAppPromotion = CFUtils.getElementValue(offerFragment, "activateAppPromotion");
+                if (StringUtils.equalsIgnoreCase(activateAppPromotion, "true")) {
+                    offerFragmentBean.setAppPromotionID(CFUtils.getElementValue(offerFragment, "promotionId"));
+                    offerFragmentBean.setAppPromotionMessage(CFUtils.getElementValue(offerFragment, "promotionalMessage"));
+                    String promotionAppFragPath = CFUtils.getElementValue(offerFragment, "promotionAppFragment");
+                    Resource appPromotionFragres = cfResource.getResourceResolver().getResource(promotionAppFragPath);
+                    if (appPromotionFragres != null) {
+                        ContentFragment appPromotionFragment = appPromotionFragres.adaptTo(ContentFragment.class);
+                        if (appPromotionFragment != null) {
+                            if (StringUtils.isNotBlank(CFUtils.getElementValue(appPromotionFragment, "promotionId"))) {
+                                offerFragmentBean.setAppPromotionID(CFUtils.getElementValue(appPromotionFragment, "promotionId"));
+                            }
+                            if (StringUtils.isNotBlank(CFUtils.getElementValue(appPromotionFragment, "promotionalPrice"))) {
+                                offerFragmentBean.setAppPromotionPrice(CFUtils.getElementValue(appPromotionFragment, "promotionalPrice"));
+                            }
+                            if (StringUtils.isNotBlank(CFUtils.getElementValue(appPromotionFragment, "promotionData"))) {
+                                offerFragmentBean.setAppPromotionData(CFUtils.getElementValue(appPromotionFragment, "promotionData"));
+                            }
+                            if (StringUtils.isBlank(CFUtils.getElementValue(offerFragment, "promotionalMessage"))) {
+                                offerFragmentBean.setAppPromotionMessage(CFUtils.getElementValue(appPromotionFragment, "promotionDetails"));
+                            }
+                        }
+                    }
+                }
                 offerFragmentBean.setCost(CFUtils.getElementValue(offerFragment, "cost"));
                 offerFragmentBean.setPlanName(CFUtils.getElementValue(offerFragment, "name"));
                 String validity = CFUtils.getElementValue(offerFragment, "validity");
@@ -265,6 +298,7 @@ public class CFUtils {
                 offerFragmentBean.setProductInformationFile(CFUtils.getElementValue(offerFragment,"productInformationFile"));
                 offerFragmentBean.setId(CFUtils.getElementValue(offerFragment, "offerid"));
                 offerFragmentBean.setOfferType(CFUtils.getElementValue(offerFragment, "offerType"));
+                offerFragmentBean.setChannels(CFUtils.getElementArrayValue(offerFragment, "channels"));
                 if (offerFragment.getElement("additionalOffers") != null) {
                     offerFragmentBean.setAdditionalOffers(CFUtils.getElementValue(offerFragment, "additionalOffers"));
                 }
