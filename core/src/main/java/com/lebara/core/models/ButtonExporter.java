@@ -49,6 +49,9 @@ public class ButtonExporter implements Button{
 	@ValueMapValue
 	private String buttonHoverBgColor;
 	
+	@ValueMapValue
+    private String buttonTextColor;
+	
 	private String appliedStyles;
 	
 	@Override
@@ -77,7 +80,11 @@ public class ButtonExporter implements Button{
 		return buttonHoverBgColor;
 	}
 	
-	public String getAppliedStyles() {
+	public String getButtonTextColor() {
+        return buttonTextColor;
+    }
+
+    public String getAppliedStyles() {
         return Optional.of(resource).map(resource -> resource.adaptTo(ComponentStyleInfo.class))
                 .map(cmpStyleInfo -> cmpStyleInfo.getAppliedCssClasses()).orElse("");
     }
