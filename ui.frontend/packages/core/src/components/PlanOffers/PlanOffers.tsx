@@ -75,10 +75,10 @@ const PlanOffers: React.FC<PlanOffersProps> = ({
   return ({
     "@context": "https://schema.org",
     "@type": "Product",
-    name: `${offer.planName}`,
-    description: `${filteredAllowanceList.formatedValue} | ${offer.planInfo.listPlanItem}`,
+    name: `${offer?.planName}`,
+    description: `${filteredAllowanceList?.formatedValue} | ${offer?.planInfo?.listPlanItem}`,
     image: imageForStructuredData,
-    sku: `${offer.id}`,
+    sku: `${offer?.id}`,
     brand: {
       "@type": "Brand",
       name: "Lebara",
@@ -87,7 +87,7 @@ const PlanOffers: React.FC<PlanOffersProps> = ({
       "@type": "Offer",
       url: `${window.location.href}`,
       priceCurrency: `${window.lebaraGlobalConfigs.currencyName}`,
-      price: `${offer.cost} ${window.lebaraGlobalConfigs.currencySymbol}`,
+      price: `${offer?.cost} ${window.lebaraGlobalConfigs.currencySymbol}`,
       itemCondition: "https://schema.org/UsedCondition",
       availability: "https://schema.org/InStock",
     },
