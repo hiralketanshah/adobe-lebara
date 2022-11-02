@@ -396,10 +396,10 @@ public class AemUtils {
             return "fr";
         }
         if (StringUtils.startsWith(pagePath, NL_ROOT_PATH)) {
-            return "de";
+            return "nl";
         }
         if (StringUtils.startsWith(pagePath, DK_ROOT_PATH)) {
-            return "de";
+            return "dk";
         }
         if (StringUtils.startsWith(pagePath, UK_ROOT_PATH)) {
             return "uk";
