@@ -7,6 +7,12 @@
         jcr:primaryType="nt:unstructured"
         sling:resourceType="granite/ui/components/coral/foundation/container">
         <items jcr:primaryType="nt:unstructured">
+            <note
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="granite/ui/components/coral/foundation/alert"
+                size="S"
+                text="New Design will give capabilities to this component such as : Style System Support. Changes done in Styles will reflect only for new Design"
+                variant="help"/>
             <tabs
                 jcr:primaryType="nt:unstructured"
                 sling:resourceType="granite/ui/components/coral/foundation/tabs"
@@ -28,10 +34,36 @@
                                         jcr:primaryType="nt:unstructured"
                                         sling:resourceType="granite/ui/components/coral/foundation/container">
                                         <items jcr:primaryType="nt:unstructured">
+                                            <isnewdesign
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                                checked="{Boolean}true"
+                                                fieldDescription="When checked, enables new design for the text component"
+                                                name="./isNewDesign"
+                                                text="Enable New Design for this component"
+                                                sling:orderBefore="id"
+                                                uncheckedValue="{Boolean}false"
+                                                value="{Boolean}true"/>
+                                            <text
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="cq/gui/components/authoring/dialog/richtext"
+                                                fieldDescription="Add text, tables or links in the Rich Text Editor"
+                                                fieldLabel="Rich Text Editor"
+                                                sling:orderBefore="id"
+                                                name="./text"
+                                                useFixedInlineToolbar="{Boolean}true">
+                                                <rtePlugins
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceSuperType="/apps/lebara/components/dialogutils/rtePlugins"/>
+                                                <uiSettings
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceSuperType="/apps/lebara/components/dialogutils/uiSettings"/>
+                                            </text>
                                             <alignment
                                                     jcr:primaryType="nt:unstructured"
                                                     sling:resourceType="granite/ui/components/foundation/form/select"
                                                     fieldLabel="Alignment"
+                                                    sling:orderBefore="id"
                                                     name="./textalignment">
                                                 <items
                                                         jcr:primaryType="nt:unstructured"
