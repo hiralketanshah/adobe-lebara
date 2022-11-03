@@ -75,6 +75,10 @@
 						cq:policy="lebara/components/dialogutils/policy_1663592440963"
 						jcr:primaryType="nt:unstructured"
 						sling:resourceType="wcm/core/components/policies/mapping"/>
+					<text
+						cq:policy="lebara/components/text/policy_1663592440963"
+						jcr:primaryType="nt:unstructured"
+						sling:resourceType="wcm/core/components/policies/mapping"/>
 					<nl jcr:primaryType="nt:unstructured">
 						<addressdetails
 							cq:policy="lebara/components/dialogutils/policy_1663592440963"
