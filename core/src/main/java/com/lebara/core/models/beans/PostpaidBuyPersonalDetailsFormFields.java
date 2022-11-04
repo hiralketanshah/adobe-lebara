@@ -117,6 +117,9 @@ public class PostpaidBuyPersonalDetailsFormFields {
     @ValueMapValue
     private String vatNumberPlaceholder;
 	
+    @ValueMapValue
+    private String companyNameNotification;
+    
 	@ChildResource
 	protected Resource portInOptions;
 	
@@ -249,6 +252,10 @@ public class PostpaidBuyPersonalDetailsFormFields {
 
     public String getVatNumberPlaceholder() {
         return vatNumberPlaceholder;
+    }
+
+    public String getCompanyNameNotification() {
+        return companyNameNotification;
     }
 
     @JsonProperty("portInOptions")

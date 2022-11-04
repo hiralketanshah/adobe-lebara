@@ -51,7 +51,7 @@
                                 sling:resourceType="granite/ui/components/coral/foundation/form/hidden"
                                 fieldLabel="Mr Title Value"
                                 name="./frmFields/titleOptions/item0/value"
-                                value="Mr"/>
+                                value="mr"/>
                             <mrsName
                                 jcr:primaryType="nt:unstructured"
                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
@@ -64,7 +64,7 @@
                                 sling:resourceType="granite/ui/components/coral/foundation/form/hidden"
                                 fieldLabel="Mrs Title Value"
                                 name="./frmFields/titleOptions/item1/value"
-                                value="Mrs"/>
+                                value="mrs"/>
                             <missName
                                 jcr:primaryType="nt:unstructured"
                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
@@ -77,7 +77,7 @@
                                 sling:resourceType="granite/ui/components/coral/foundation/form/hidden"
                                 fieldLabel="Miss Title Value"
                                 name="./frmFields/titleOptions/item2/value"
-                                value="Miss"/>
+                                value="miss"/>
                             <emailAddressLabel
                                 jcr:primaryType="nt:unstructured"
                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
@@ -762,6 +762,13 @@
                                 fieldLabel="Company Name Placeholder"
                                 name="./frmFields/companyNamePlaceholder"
                                 value="Name of the company"/>
+		<companyNameNotification
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldDescription="Company Name Notification Text"
+                                fieldLabel="Company Name Notification Text"
+                                name="./frmFields/companyNameNotification"
+                                value="You will find your company name and VAT amount on the invoice"/>
                             <kvkNumberLabel
                                 jcr:primaryType="nt:unstructured"
                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
