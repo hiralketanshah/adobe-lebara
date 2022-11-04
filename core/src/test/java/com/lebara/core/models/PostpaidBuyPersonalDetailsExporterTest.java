@@ -58,6 +58,12 @@ class PostpaidBuyPersonalDetailsExporterTest {
 		assertEquals("Mr." , postpaidBuyPersonalDetailsExporter.getFrmFields().getTitleOptionArray().get(0).getName());
 		assertEquals( "Mr" , postpaidBuyPersonalDetailsExporter.getFrmFields().getTitleOptionArray().get(0).getValue());
 		assertEquals("the mobile number attached with ****45@gmail.com" , postpaidBuyPersonalDetailsExporter.getFrmFields().getPortInNumberCanBeUseWithLoginWarnMsg());
+		assertEquals("Company Name" , postpaidBuyPersonalDetailsExporter.getFrmFields().getCompanyNameLabel());
+		assertEquals("Name of the company" , postpaidBuyPersonalDetailsExporter.getFrmFields().getCompanyNamePlaceholder());
+		assertEquals("KVK number (optional)" , postpaidBuyPersonalDetailsExporter.getFrmFields().getKvkNumberLabel());
+		assertEquals("12345678" , postpaidBuyPersonalDetailsExporter.getFrmFields().getKvkNumberPlaceholder());
+		assertEquals("VAT-number (optional)" , postpaidBuyPersonalDetailsExporter.getFrmFields().getVatNumberLabel());
+		assertEquals("NL00000000000B00" , postpaidBuyPersonalDetailsExporter.getFrmFields().getVatNumberPlaceholder());
 	}
 	
 	@Test
@@ -75,6 +81,13 @@ class PostpaidBuyPersonalDetailsExporterTest {
 		assertEquals("The Last name cannot contain any special characters ($, @, #, !, %. * ^() ?)" , postpaidBuyPersonalDetailsExporter.getValidationMessages().getlNameInValidMsg());
 		assertEquals("Please enter a valid Last Name , Last name cannot be empty" , postpaidBuyPersonalDetailsExporter.getValidationMessages().getlNameRequiredMsg());
 		assertEquals("The email address field cannot be empty" , postpaidBuyPersonalDetailsExporter.getValidationMessages().getEmailRequiredMsg());
+		assertEquals("Please enter company name" , postpaidBuyPersonalDetailsExporter.getValidationMessages().getCompanyNameErrorRequired());
+		assertEquals("Company name length should be from 2 to 250 characters" , postpaidBuyPersonalDetailsExporter.getValidationMessages().getCompanyNameErrorMinMax());
+		assertEquals("Please enter valid company name" , postpaidBuyPersonalDetailsExporter.getValidationMessages().getCompanyNameErrorPattern());
+		assertEquals("Chamber of Commerce number length should be less than 50 digits" , postpaidBuyPersonalDetailsExporter.getValidationMessages().getKvkNumberErrorMax());
+		assertEquals("Please enter valid chamber of commerce number" , postpaidBuyPersonalDetailsExporter.getValidationMessages().getKvkNumberErrorPattern());
+		assertEquals("Please enter valid vat-number" , postpaidBuyPersonalDetailsExporter.getValidationMessages().getVatNumberErrorPattern());
+		assertEquals("Vat-number length should be less than 50 characters" , postpaidBuyPersonalDetailsExporter.getValidationMessages().getVatNumberErrorMax());
 	}
 	
 	@Test

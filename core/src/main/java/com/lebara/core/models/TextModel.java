@@ -1,7 +1,11 @@
 package com.lebara.core.models;
 
 import com.lebara.core.utils.AemUtils;
+
+import java.util.Optional;
+
 import org.apache.sling.api.SlingHttpServletRequest;
+import org.apache.sling.api.resource.Resource;
 import org.apache.sling.models.annotations.DefaultInjectionStrategy;
 import org.apache.sling.models.annotations.Exporter;
 import org.apache.sling.models.annotations.Model;
@@ -10,6 +14,8 @@ import org.apache.sling.models.annotations.injectorspecific.Self;
 import com.adobe.cq.export.json.ComponentExporter;
 import com.adobe.cq.export.json.ExporterConstants;
 import com.adobe.cq.wcm.core.components.models.Text;
+import com.adobe.cq.wcm.style.ComponentStyleInfo;
+
 import org.apache.sling.models.annotations.injectorspecific.SlingObject;
 import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
 import org.apache.sling.models.annotations.via.ResourceSuperType;
@@ -20,6 +26,9 @@ import org.apache.sling.models.annotations.via.ResourceSuperType;
 public class TextModel implements Text {
 
     protected static final String RESOURCE_TYPE = "lebara/components/text";
+    
+    @SlingObject
+    Resource resource;
 
     @Self
     @Via(type = ResourceSuperType.class)
@@ -28,9 +37,13 @@ public class TextModel implements Text {
     @ValueMapValue
     private String textalignment;
 
+    @ValueMapValue
+    private boolean isNewDesign;
 
     @SlingObject
     private SlingHttpServletRequest slingRequest;
+    
+    private String appliedStyles;
 
     @Override
     public String getText() {
@@ -41,11 +54,20 @@ public class TextModel implements Text {
         return textalignment;
     }
 
+	public boolean getIsNewDesign() {
+        return isNewDesign;
+    }
+
     @Override
     public boolean isRichText() {
         return delegate.isRichText();
     }
 
+    public String getAppliedStyles() {
+        return Optional.of(resource).map(resource -> resource.adaptTo(ComponentStyleInfo.class))
+                .map(cmpStyleInfo -> cmpStyleInfo.getAppliedCssClasses()).orElse("");
+    }
+    
     @Override
     public String getExportedType() {
         return RESOURCE_TYPE;

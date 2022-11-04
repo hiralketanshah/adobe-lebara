@@ -29,6 +29,8 @@ export interface PlanOffersProps {
   columnsView?: number;
   labelTextColor?: string;
   showModelOnAddtoCart ?: boolean;
+  imageForStructuredData?: string;
+  showStructuredData?: boolean;
 }
 
 export interface allowanceListProps {
@@ -37,4 +39,3 @@ export interface allowanceListProps {
   value?: string;
   formatedValue?: string;
 }
-

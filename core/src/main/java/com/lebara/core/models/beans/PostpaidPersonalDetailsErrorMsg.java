@@ -114,6 +114,27 @@ public class PostpaidPersonalDetailsErrorMsg {
     private String cityErrorRequired;
     
     @ValueMapValue
+    private String companyNameErrorRequired;
+    
+    @ValueMapValue
+    private String companyNameErrorMinMax;
+    
+    @ValueMapValue
+    private String companyNameErrorPattern;
+    
+    @ValueMapValue
+    private String kvkNumberErrorMax;
+    
+    @ValueMapValue
+    private String kvkNumberErrorPattern;
+    
+    @ValueMapValue
+    private String vatNumberErrorMax;
+    
+    @ValueMapValue
+    private String vatNumberErrorPattern;
+
+    @ValueMapValue
     public String streetLabelErrorMax;
     
     @ValueMapValue
@@ -259,6 +280,34 @@ public class PostpaidPersonalDetailsErrorMsg {
         return verifyCodeRequiredMsg;
     }
 
+    public String getCompanyNameErrorRequired() {
+        return companyNameErrorRequired;
+    }
+
+    public String getCompanyNameErrorMinMax() {
+        return companyNameErrorMinMax;
+    }
+
+    public String getCompanyNameErrorPattern() {
+        return companyNameErrorPattern;
+    }
+
+    public String getKvkNumberErrorMax() {
+        return kvkNumberErrorMax;
+    }
+
+    public String getKvkNumberErrorPattern() {
+        return kvkNumberErrorPattern;
+    }
+
+    public String getVatNumberErrorMax() {
+        return vatNumberErrorMax;
+    }
+
+    public String getVatNumberErrorPattern() {
+        return vatNumberErrorPattern;
+    }
+    
     public String getStreetLabelErrorMax() {
         return streetLabelErrorMax;
     }

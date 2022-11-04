@@ -18,9 +18,9 @@ const HomeFaqs: React.FC<HomeFaqsProps> = ({ title, options,
  }) => {
   const half = Math.ceil(options.length / 2);
 
-  const firstHalf = options.slice(0, half);
-  const secondHalf = options.slice(-options.length / 2);
-  const mainEntityValue = options.map((menuItem: any) => ({
+  const firstHalf = options?.slice(0, half);
+  const secondHalf = options?.slice(-options.length / 2);
+  const mainEntityValue = options?.map((menuItem: any) => ({
     "@type": "Question",
     name: `${menuItem?.question}`,
     acceptedAnswer: {

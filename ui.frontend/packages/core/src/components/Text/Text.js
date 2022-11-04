@@ -19,6 +19,7 @@ import sanitizeWhiteList from "../sanitize-html.whitelist";
 
 import React, { Component } from "react";
 import extractModelId from "../../utils/extract-model-id";
+import GenericText from "@lebara/core/components/GenericText/index";
 
 import "./text.scss";
 
@@ -41,12 +42,21 @@ class Text extends Component {
     );
   }
 
+  get renderNewDesign() {
+    return <GenericText text={this.props.text} textAlignment={this.props.textalignment} appliedStyles={this.props.appliedStyles} />
+  }
+
   get textContent() {
     return <div style={{textAlign: this.props.textalignment}}>{this.props.text}</div>;
   }
 
   render() {
-    return this.props.richText ? this.richTextContent : this.textContent;
+
+    if(this.props.isNewDesign) {
+      return this.renderNewDesign
+    }else {
+      return this.props.richText ? this.richTextContent : this.textContent;
+    }
   }
 }
 

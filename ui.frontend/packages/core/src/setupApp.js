@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useCallback } from "react";
 import {ChakraProvider, extendTheme, withDefaultColorScheme,} from "@chakra-ui/react";
 import { AuthoringUtils } from "@adobe/aem-spa-page-model-manager";
 import { Page, withModel } from "@adobe/aem-react-editable-components";
@@ -9,6 +9,7 @@ import LoadingOverlay from "react-loading-overlay";
 import ScrollToTop from "@lebara/core/ScrollToTop";
 
 import GET_SESSION_STATUS from "@lebara/core/graphql/GET_SESSION_STATUS";
+import GET_PERSONAL_DETAILS from "@lebara/core/graphql/GET_PERSONAL_DETAILS";
 import { selectIsLoading } from "@lebara/core/redux/selectors/loadingSelectors";
 import { setLoading } from "@lebara/core/redux/actions/loadingActions";
 import { saveUserInfo } from "@lebara/core/redux/actions/userActions";
@@ -25,6 +26,13 @@ import Fonts from "./Fonts";
 import GoogleAnalytics from "@lebara/core/GoogleAnalytics";
 import store from "@lebara/core/store";
 import "./styles/richtext-new.style.scss"
+import {
+  selectIsAuthenticated,
+  selectMsisdn,
+} from "@lebara/core/redux/selectors";
+import {
+  saveFormDetails,
+} from "@lebara/core/redux/actions";
 
 const theme = extendTheme(
   {
@@ -54,8 +62,67 @@ export function withPageHook(Component, store, theme) {
     const isLoading = useSelector(selectIsLoading);
     const [isAuthLoading, setIsAuthLoading] = useState(true);
     const socket = useSelector(selectSocket);
+    const isAuthenticated = useSelector(selectIsAuthenticated);
+    const msisdn = useSelector(selectMsisdn);
+    const [emailValue, setEmailValue] = React.useState("");
     storeUpdated = store ? store : storeUpdated;
     themeUpdated = theme ? theme : themeUpdated;
+    
+    const fetchPersonalDetails = useCallback(() => {
+      if (isAuthenticated) {
+        client
+          .query({
+            query: GET_PERSONAL_DETAILS,
+          })
+          .then((personalDetailsRes) => {
+            const personalDetails = personalDetailsRes.data.getPersonalDetails;
+            const { firstName, lastName } = personalDetails?.name;
+            const { street, houseNumber, city, postCode } =
+              personalDetails?.addresses[0];
+            const date = new Date(personalDetails.dateOfBirth);
+            const day = date?.getDate();
+            const month = date?.getMonth();
+            const year = date?.getFullYear()?.toString();
+            let convertedMsisdn = msisdn;
+            if (msisdn) {
+              convertedMsisdn = `0${convertedMsisdn?.slice(2)}`;
+            }
+            const postpaidPersonalDetailsDataResp = {
+              firstName: firstName || "",
+              lastName: lastName || "",
+              email: emailValue || "",
+              salutationText: personalDetails.title || "",
+              portInNumber: convertedMsisdn || "",
+              portInStatus: msisdn ? "Yes" : "No",
+              day,
+              month,
+              year,
+              houseNumber: houseNumber || "",
+              townCity: city || "",
+              streetName: street || "",
+              zipCode: postCode || "",
+              intialHouseNumber: houseNumber || "",
+              intialPostcode: postCode || "",
+            };
+            dispatch(
+              saveFormDetails({
+                formName: "postpaidPersonalDetails",
+                values: postpaidPersonalDetailsDataResp,
+              })
+            );
+          })
+  
+          .catch(() => {})
+          .finally(() => {
+            dispatch(setLoading(false));
+          });
+      }
+    }, [client, dispatch, emailValue, isAuthenticated, msisdn]);
+    
+    React.useEffect(() => {
+      fetchPersonalDetails();
+    }, [fetchPersonalDetails]);
+
     React.useEffect(() => {
       client
         .query({
