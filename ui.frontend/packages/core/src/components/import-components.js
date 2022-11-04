@@ -108,6 +108,7 @@ import "../aemConfigs/DestinationTableAemConfig.js";
 import "../aemConfigs/DashboardBannerAemConfig.js";
 import "../aemConfigs/SuccessPopupAemConfig.js";
 import "../aemConfigs/InformativeTableAemConfig.js";
+import "../aemConfigs/ButtonAemConfig.js";
 import "../aemConfigs/PaymentSummaryAemConfig.js";
 import "../aemConfigs/PersonalDetailsSummaryAemConfig.js";
 import "../aemConfigs/PostpaidBuyPersonalDetailsAemConfig.js";
