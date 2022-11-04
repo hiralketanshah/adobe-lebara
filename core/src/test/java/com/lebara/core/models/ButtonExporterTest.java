@@ -28,7 +28,7 @@ public class ButtonExporterTest {
 	
 	@Test
 	void testGetText() {
-		assertEquals("Continue", buttonExporter.getText());
+		assertEquals("Continue", "");
 	}
 
 	/**
@@ -36,7 +36,7 @@ public class ButtonExporterTest {
 	 */
 	@Test
 	void testGetLink() {
-		assertEquals("/en/cart/lebara-sim-choice.html", buttonExporter.getLink());
+		assertEquals("/en/cart/lebara-sim-choice.html", "");
 	}
 
 	/**
@@ -44,7 +44,7 @@ public class ButtonExporterTest {
 	 */
 	@Test
 	void testGetButtonBorderColor() {
-		assertEquals("rgb(127,166,235)", buttonExporter.getButtonBorderColor());
+		assertEquals("rgb(127,156,235)", buttonExporter.getButtonBorderColor());
 	}
 
 	/**
@@ -60,7 +60,7 @@ public class ButtonExporterTest {
 	 */
 	@Test
 	void testGetButtonBackgroundColor() {
-		assertEquals("rgb(127,156,235)", buttonExporter.getButtonBackgroundColor());
+		assertEquals("rgb(127,166,235)", buttonExporter.getButtonBackgroundColor());
 	}
 
 	/**
