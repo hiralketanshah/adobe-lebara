@@ -1,5 +1,5 @@
 import React from "react";
-import Button from "../../Button/Button";
+import Button from "@lebara/core/components/Button/Button";
 
 import { Flex, Text, Box } from "@chakra-ui/react";
 import { useHistory } from "@lebara/core/hooks/useHistory";

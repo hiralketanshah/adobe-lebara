@@ -4,7 +4,7 @@ import { Flex, Box, Text, Heading } from "@chakra-ui/react";
 import { PlanOffersProps } from "./types";
 import Link from "@lebara/core/components/Link/Link";
 import ExpandableSimPlanCard from "../ExpandableSimPlanCard/ExpandableSimPlanCard";
-import Button from "../Button/Button";
+import Button from "@lebara/core/components/Button/Button";
 import { useHistory, useLocation } from "@lebara/core/hooks/useHistory";
 import TickInCircle from "../../icons/TickInCircle";
 import React from "react";
