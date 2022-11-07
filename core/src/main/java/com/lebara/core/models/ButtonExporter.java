@@ -52,6 +52,9 @@ public class ButtonExporter implements Button{
 	@ValueMapValue
     private String buttonTextColor;
 	
+	@ValueMapValue
+    private String buttonAlignment;
+	
 	private String appliedStyles;
 	
 	@Override
@@ -82,6 +85,10 @@ public class ButtonExporter implements Button{
 	
 	public String getButtonTextColor() {
         return buttonTextColor;
+    }
+
+    public String getButtonAlignment() {
+        return buttonAlignment;
     }
 
     public String getAppliedStyles() {
