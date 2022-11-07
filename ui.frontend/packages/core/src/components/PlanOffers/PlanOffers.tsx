@@ -162,8 +162,8 @@ const PlanOffers: React.FC<PlanOffersProps> = ({
           gridGap={{ base: "10px", lg: "15px" }}
           mt={{ base: "15.31px", lg: "20px" }}
         >
-          {offers &&
-            offers?.map((plan: ExpandableSimPlanCardProps) => (
+          {filteredOffers &&
+            filteredOffers?.map((plan: ExpandableSimPlanCardProps) => (
               <Box
                 flex={1}
                 maxW={{ lg: `${100 / columnsView - 2}%` }}
