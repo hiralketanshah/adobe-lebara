@@ -2,7 +2,7 @@
 import React from "react";
 import { Box, Text, Heading } from "@chakra-ui/react";
 import { TextBlockProps } from "./types";
-import Button from "../Button/Button";
+import Button from "@lebara/core/components/Button/Button";
 import sanitizeHtml from "sanitize-html";
 import { useHistory } from "@lebara/core/hooks/useHistory";
 // import sanitizeWhiteList from "../sanitize-html.whitelist";

@@ -7,7 +7,7 @@ import {
 } from "@chakra-ui/react";
 import { BsSearch, MdCancel } from "react-icons/all";
 import { SearchProps } from "./types";
-import Button from "../Button/Button";
+import Button from "@lebara/core/components/Button/Button";
 import aemUtils from "../../utils/aem-utils";
 import SearchResults from "./SearchResults";
 import { MIN_CHARS_SEARCH } from "./search.constant";

@@ -1,7 +1,7 @@
 import React, { useMemo, useState } from "react";
 import { Box, Flex, Heading, useToast } from "@chakra-ui/react";
 import { HeroBannerProps } from "./types";
-import Button from "../Button/Button";
+import Button from "@lebara/core/components/Button/Button";
 import { setLoading } from "@lebara/core/redux/actions/loadingActions";
 import {
   selectIsAuthenticated,

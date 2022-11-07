@@ -16,7 +16,7 @@ import {
   Text,
 } from "@chakra-ui/react";
 import { PlanDetailsDialogProps } from "./types";
-import Button from "../Button/Button";
+import Button from "@lebara/core/components/Button/Button";
 import {globalConfigs} from  '@lebara/core/configs/globalConfigs';
 const PlanDetailsDialog: React.FC<PlanDetailsDialogProps> = ({
   isOpen,

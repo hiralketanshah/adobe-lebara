@@ -1,7 +1,7 @@
 import React from "react";
 import { Box, Flex, Text } from "@chakra-ui/react";
 import { Formik } from "formik";
-import Button from "../Button/Button";
+import Button from "@lebara/core/components/Button/Button";
 import FormikInput from "@lebara/core/components/Formik/FormikInput/FormikInput";
 import FormikTextArea from "../Formik/FormikTextArea/FormikTextArea";
 import FormikSelect from "../Formik/FormikSelect/FormikSelect";

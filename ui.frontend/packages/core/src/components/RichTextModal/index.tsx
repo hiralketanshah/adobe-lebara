@@ -12,7 +12,7 @@ import {
   Image
 } from "@chakra-ui/react";
 import { ModalProps } from "./types";
-import Button from "../Button/Button";
+import Button from "@lebara/core/components/Button/Button";
 import FromToIcon from "../../assets/images/nextArrowIcon.png";
 
 const RichTextModal: React.FC<ModalProps> = ({ open, onClose, heading, info, closeLabel, countryFlagFrom, countryFlagTo, additionalInfo }) => {

@@ -27,7 +27,7 @@ import IconButton from "../IconButton/IconButton";
 import SideMenu from "../SideMenu/SideMenu";
 import { ReduxState } from "@lebara/core/redux/types";
 import {selectIsAuthenticated} from "@lebara/core/redux/selectors/userSelectors";
-import Button from "../Button/Button";
+import Button from "@lebara/core/components/Button/Button";
 import UserMenu from "@lebara/core/components/UserMenu/UserMenu";
 import Search from "../Search/Search";
 

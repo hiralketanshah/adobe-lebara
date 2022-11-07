@@ -5,7 +5,7 @@ import {
 import { FiArrowRight, MdCancel } from "react-icons/all";
 import LebaraText from "../LebaraText/LebaraText";
 import { SearchResultProps } from "./types";
-import Button from "../Button/Button";
+import Button from "@lebara/core/components/Button/Button";
 import { RouterLink } from "@lebara/core/hooks/useHistory";
 import { MIN_CHARS_SEARCH } from "./search.constant";
 

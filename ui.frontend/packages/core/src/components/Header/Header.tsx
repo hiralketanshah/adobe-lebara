@@ -20,7 +20,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {children, HeaderProps} from "./types";
 
 import IconButton from "../IconButton/IconButton";
-import Button from "../Button/Button";
+import Button from "@lebara/core/components/Button/Button";
 import MiniHeader from "../MiniHeader/MiniHeader";
 import {ReduxState} from "@lebara/core/redux/types";
 import NewSIMOfferCard from "@lebara/core/components/NewSImOfferCard/NewSImOfferCard";

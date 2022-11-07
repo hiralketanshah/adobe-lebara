@@ -13,7 +13,7 @@ import {
 import { BsEye, BsEyeSlash, HiOutlineExclamation } from "react-icons/all";
 import { useField } from "formik";
 import { FormikPasswordProps } from "./types";
-import Button from "../../Button/Button";
+import Button from "@lebara/core/components/Button/Button";
 
 const FormikPassword: React.FC<FormikPasswordProps> = ({
   name,
