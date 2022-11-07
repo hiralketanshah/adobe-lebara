@@ -34,7 +34,9 @@ export const withRoute = (WrappedComponent, extension) => {
     render() {
       const PROJECT_URL_ROOT_REGEX = /^\/content\/lebara\/[a-z]{2}(.*)$/;
       let routePath = (/\%/).test(this.props.cqPath) ? decodeURIComponent(this.props.cqPath) : this.props.cqPath;
+      if((this.props.cqPath).concat('.html').includes(window.location.pathname)){
       document.title = this.props.pageTitle;
+      }
 
       if (!routePath) {
         return <WrappedComponent {...this.props} />;
