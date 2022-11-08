@@ -20,7 +20,8 @@ import {useDispatch, useSelector} from "react-redux";
 import {children, HeaderProps} from "./types";
 
 import IconButton from "../IconButton/IconButton";
-import Button from "@lebara/core/components/Button/Button";
+import Button from "../Button/Button";
+import TopupButton from "@lebara/core/components/Button/Button";
 import MiniHeader from "../MiniHeader/MiniHeader";
 import {ReduxState} from "@lebara/core/redux/types";
 import NewSIMOfferCard from "@lebara/core/components/NewSImOfferCard/NewSImOfferCard";
@@ -444,7 +445,7 @@ const Header: React.FC<HeaderProps> = ({
             </Flex>
             <Spacer />
             <Box>
-              <Button
+              <TopupButton
                   w="auto"
                   px="30px"
                   fontSize={{ lg: "16px", md: "12px" }}
@@ -452,7 +453,7 @@ const Header: React.FC<HeaderProps> = ({
                   onClick={() => history.push("/top-up")}
               >
                 {topupCtaText}
-              </Button>
+              </TopupButton>
             </Box>
             <Flex>
               <Box>
